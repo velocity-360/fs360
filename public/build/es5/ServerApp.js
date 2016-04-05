@@ -10,8 +10,11 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== "fun
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var React = _interopRequire(require("react"));
+var _react = require("react");
 
+var React = _interopRequire(_react);
+
+var Component = _react.Component;
 var ReactDOM = _interopRequire(require("react-dom"));
 
 var Provider = require("react-redux").Provider;
@@ -19,24 +22,19 @@ var store = _interopRequire(require("./stores/store"));
 
 var Main = _interopRequire(require("./components/Main"));
 
-var App = (function (_React$Component) {
+var App = (function (Component) {
 	function App(props, context) {
 		_classCallCheck(this, App);
 
 		_get(Object.getPrototypeOf(App.prototype), "constructor", this).call(this, props, context);
-		// this.updateVisitor = this.updateVisitor.bind(this);
-		// this.signUp = this.signUp.bind(this);
 		this.refreshData = this.refreshData.bind(this);
-		// this.selectLocation = this.selectLocation.bind(this);
-
-		//		this.changeContent = this.changeContent.bind(this);
 		this.state = {
 			page: null,
 			slug: null
 		};
 	}
 
-	_inherits(App, _React$Component);
+	_inherits(App, Component);
 
 	_prototypeProperties(App, null, {
 		initialState: {
@@ -78,6 +76,6 @@ var App = (function (_React$Component) {
 	});
 
 	return App;
-})(React.Component);
+})(Component);
 
 module.exports = App;

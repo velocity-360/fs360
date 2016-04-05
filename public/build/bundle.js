@@ -21525,7 +21525,7 @@
 					var colClass = index % 3 == 0 ? "col_one_third" : "col_one_third col_last";
 					return _react2.default.createElement(
 						'div',
-						{ className: colClass },
+						{ key: i, className: colClass },
 						_react2.default.createElement(
 							'div',
 							{ className: 'feature-box fbox-plain' },
@@ -21565,7 +21565,7 @@
 						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: "url(images/programming.jpg) center" } },
 						_react2.default.createElement(
 							'div',
-							null,
+							{ className: 'slider-parallax-inner' },
 							_react2.default.createElement(
 								'div',
 								{ className: 'container clearfix' },
@@ -21574,7 +21574,7 @@
 									{ className: 'vertical-middle' },
 									_react2.default.createElement(
 										'div',
-										{ className: 'heading-block center nobottomborder', style: { marginTop: 164 } },
+										{ className: 'heading-block center nobottomborder' },
 										_react2.default.createElement(
 											'h1',
 											{ 'data-animate': 'fadeInUp' },

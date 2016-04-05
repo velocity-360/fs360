@@ -43,7 +43,7 @@ class Home extends Component {
 			var index = i+1;
 			var colClass = (index%3 == 0) ? "col_one_third" : "col_one_third col_last";
 			return (
-				<div className={colClass}>
+				<div key={i} className={colClass}>
 					<div className="feature-box fbox-plain">
 						<div className="fbox-icon" data-animate="bounceIn">
 							<a href="#">
@@ -65,11 +65,11 @@ class Home extends Component {
 
 				<section id="slider" className="slider-parallax dark full-screen" style={{background: "url(images/programming.jpg) center"}}>
 
-					<div>
+					<div className="slider-parallax-inner">
 						<div className="container clearfix">
 							<div className="vertical-middle">
 
-								<div className="heading-block center nobottomborder" style={{marginTop:164}}>
+								<div className="heading-block center nobottomborder">
 									<h1 data-animate="fadeInUp">Its your time to <strong>create</strong> Landing Pages for <strong>FREE</strong></h1>
 									<span data-animate="fadeInUp" data-delay="300">Building a Landing Page was never so Easy &amp; Interactive.</span>
 								</div>
@@ -137,6 +137,8 @@ class Home extends Component {
 						</div>
 
 						<div className="section">
+
+
 							<div className="container clearfix">
 
 								<div id="section-testimonials" className="heading-block title-center page-section">
