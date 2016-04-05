@@ -51,7 +51,7 @@ class Home extends Component {
 							</a>
 						</div>
 						<h3>{course.title}</h3>
-						<p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
+						<p>{course.description}</p>
 					</div>
 				</div>
 			)

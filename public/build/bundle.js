@@ -21546,7 +21546,7 @@
 							_react2.default.createElement(
 								'p',
 								null,
-								'Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.'
+								course.description
 							)
 						)
 					);

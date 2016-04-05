@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var CourseSchema = new mongoose.Schema({
 	title: {type:String, trim:true, default:''},
 	schedule: {type:String, trim:true, default:''},
+	isFeatured: {type:String, trim:true, default:'no'},
 	dates: {type:String, trim:true, default:''},
 	status: {type:String, trim:true, default:'active'}, // active or inactive
 	level: {type:String, trim:true, default:''},
@@ -26,6 +27,7 @@ CourseSchema.methods.summary = function() {
 	var summary = {
 		'title':this.title,
 		'schedule':this.schedule,
+		'isFeatured':this.isFeatured,
 		'dates':this.dates,
 		'level':this.level,
 		'status':this.status,
