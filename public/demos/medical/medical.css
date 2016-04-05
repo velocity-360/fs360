@@ -1,0 +1,79 @@
+/* ----------------------------------------------------------------
+	Canvas: Medical Demo
+	Version: 1.0
+-----------------------------------------------------------------*/
+
+
+.section.dark .bgcolor h2 { color: #FFF; }
+
+.section.dark .bgcolor label {
+	color: rgba(255,255,255,0.9);
+	font-weight: 400;
+	text-transform: capitalize;
+}
+
+
+.footer-big-contacts {
+	color: #333;
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.footer-big-contacts span {
+	display: block;
+	font-size: 11px;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #888;
+	letter-spacing: 2px;
+}
+
+
+#css3-spinner-svg-pulse-wrapper {
+	position: absolute;
+	overflow: hidden;
+	width: 260px;
+	height: 210px;
+	top: 50%;
+	left: 50%;
+	margin-top: -105px;
+	margin-left: -130px;
+	background-color: transparent;
+	animation: none;
+	-webkit-animation: none;
+}
+
+#css3-spinner-svg-pulse {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -105px;
+	margin-left: -275px;
+}
+
+#css3-spinner-pulse {
+	stroke-dasharray: 281;
+	-webkit-animation: dash 5s infinite linear forwards;
+}
+
+/*Animation*/
+@-webkit-keyframes dash {
+	from {
+		stroke-dashoffset:814;
+	}
+
+	to {
+		stroke-dashoffset:-814;
+	}
+}
+
+@keyframes dash {
+	from {
+		stroke-dashoffset:814;
+	}
+
+	to {
+		stroke-dashoffset:-814;
+	}
+}
