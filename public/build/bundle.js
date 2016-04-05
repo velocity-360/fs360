@@ -21501,7 +21501,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				console.log('HOME: componentDidMount');
-				_api2.default.handleGet('/api/course?status=active', { status: 'activ' });
+				_api2.default.handleGet('/api/course?isFeatured=yes', {});
 			}
 		}, {
 			key: 'updateUserRegistration',

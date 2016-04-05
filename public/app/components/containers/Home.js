@@ -20,7 +20,7 @@ class Home extends Component {
 
 	componentDidMount(){
 		console.log('HOME: componentDidMount')
-		api.handleGet('/api/course?status=active', {status: 'activ'});
+		api.handleGet('/api/course?isFeatured=yes', {});
 
 	}
 
