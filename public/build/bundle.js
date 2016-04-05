@@ -21501,7 +21501,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				console.log('HOME: componentDidMount');
-				_api2.default.handleGet('/api/course', { status: 'activ' });
+				_api2.default.handleGet('/api/course?status=active', { status: 'activ' });
 			}
 		}, {
 			key: 'updateUserRegistration',
@@ -21541,7 +21541,11 @@
 							_react2.default.createElement(
 								'h3',
 								null,
-								course.title
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									course.title
+								)
 							),
 							_react2.default.createElement(
 								'p',
@@ -21652,7 +21656,7 @@
 										'FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.'
 									),
 									_react2.default.createElement(
-										'h2',
+										'h3',
 										null,
 										'Featured Courses'
 									)
@@ -21666,125 +21670,41 @@
 								),
 								_react2.default.createElement(
 									'div',
-									{ id: 'section-pricing', className: 'heading-block title-center nobottomborder page-section' },
-									_react2.default.createElement(
-										'h2',
-										null,
-										'Pricing Details'
-									),
-									_react2.default.createElement(
-										'span',
-										null,
-										'Our All inclusive Pricing Plan that covers you well'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing-box pricing-extended bottommargin clearfix' },
+									{ className: 'container clearfix' },
 									_react2.default.createElement(
 										'div',
-										{ className: 'pricing-desc' },
+										{ className: 'col_one_third bottommargin-sm center' },
+										_react2.default.createElement('img', { 'data-animate': 'fadeInLeft', src: 'images/services/iphone6.png', alt: 'Iphone' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_two_third bottommargin-sm col_last' },
 										_react2.default.createElement(
 											'div',
-											{ className: 'pricing-title' },
+											{ className: 'heading-block topmargin-sm' },
 											_react2.default.createElement(
 												'h3',
 												null,
-												'How many Themes can you Download today?'
+												'Optimized for Mobile & Touch Enabled Devices.'
 											)
 										),
 										_react2.default.createElement(
-											'div',
-											{ className: 'pricing-features' },
-											_react2.default.createElement(
-												'ul',
-												{ className: 'iconlist-color clearfix' },
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-desktop' }),
-													' Ultra Responsive Layouts'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-eye-open' }),
-													' Retina Ready Designs'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-beaker' }),
-													' Advanced Admin Panel'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-magic' }),
-													' Tons of Customization Options'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-font' }),
-													' Support for Custom Fonts'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-stack3' }),
-													' Premium Sliders Included'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-file2' }),
-													' Photoshop Source Files Included'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-support' }),
-													' 24x7 Priority Email Support'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'pricing-action-area' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'pricing-meta' },
-											'As Low as'
+											'p',
+											null,
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!'
 										),
 										_react2.default.createElement(
-											'div',
-											{ className: 'pricing-price' },
-											_react2.default.createElement(
-												'span',
-												{ className: 'price-unit' },
-												'€'
-											),
-											'39',
-											_react2.default.createElement(
-												'span',
-												{ className: 'price-tenure' },
-												'monthly'
-											)
+											'p',
+											null,
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam.'
 										),
 										_react2.default.createElement(
-											'div',
-											{ className: 'pricing-action' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#', className: 'button button-3d button-large btn-block nomargin' },
-												'Get Started'
-											)
+											'a',
+											{ href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+											'Learn more'
 										)
 									)
-								),
-								_react2.default.createElement('div', { className: 'clear' })
+								)
 							),
 							_react2.default.createElement(
 								'div',
@@ -21916,295 +21836,6 @@
 													)
 												)
 											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'div',
-												{ className: 'testimonial' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'testi-image' },
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('img', { src: '/images/testimonials/3.jpg', alt: 'Customer Testimonails' })
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'testi-content' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'testi-meta' },
-														'Steve Jobs',
-														_react2.default.createElement(
-															'span',
-															null,
-															'Apple Inc.'
-														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'div',
-												{ className: 'testimonial' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'testi-image' },
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('img', { src: '/images/testimonials/4.jpg', alt: 'Customer Testimonails' })
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'testi-content' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, perspiciatis illum totam dolore deleniti labore.'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'testi-meta' },
-														'Jamie Morrison',
-														_react2.default.createElement(
-															'span',
-															null,
-															'Adobe Inc.'
-														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'div',
-												{ className: 'testimonial' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'testi-image' },
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('img', { src: '/images/testimonials/8.jpg', alt: 'Customer Testimonails' })
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'testi-content' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Porro dolorem saepe reiciendis nihil minus neque. Ducimus rem necessitatibus repellat laborum nemo quod.'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'testi-meta' },
-														'Cyan Taceed',
-														_react2.default.createElement(
-															'span',
-															null,
-															'Tutsplus'
-														)
-													)
-												)
-											)
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ id: 'section-specs', className: 'heading-block title-center page-section' },
-									_react2.default.createElement(
-										'h2',
-										null,
-										'Product Specifications'
-									),
-									_react2.default.createElement(
-										'span',
-										null,
-										'Complete list of the Tech Specifications for your understanding'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ id: 'side-navigation' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_one_third' },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'sidenav' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'ui-tabs-active' },
-												_react2.default.createElement(
-													'a',
-													{ href: '#snav-content1' },
-													_react2.default.createElement('i', { className: 'icon-screen' }),
-													'Responsive Layout',
-													_react2.default.createElement('i', { className: 'icon-chevron-right' })
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#snav-content2' },
-													_react2.default.createElement('i', { className: 'icon-magic' }),
-													'Retina Ready Display',
-													_react2.default.createElement('i', { className: 'icon-chevron-right' })
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#snav-content3' },
-													_react2.default.createElement('i', { className: 'icon-tint' }),
-													'Unlimited Color Options',
-													_react2.default.createElement('i', { className: 'icon-chevron-right' })
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#snav-content4' },
-													_react2.default.createElement('i', { className: 'icon-gift' }),
-													'Bootstrap 3.1 Compatible',
-													_react2.default.createElement('i', { className: 'icon-chevron-right' })
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#snav-content5' },
-													_react2.default.createElement('i', { className: 'icon-adjust' }),
-													'Light & Dark Scheme',
-													_react2.default.createElement('i', { className: 'icon-chevron-right' })
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_two_third col_last' },
-										_react2.default.createElement(
-											'div',
-											{ id: 'snav-content1' },
-											_react2.default.createElement(
-												'h3',
-												null,
-												'Ultra Responsive Template'
-											),
-											_react2.default.createElement('img', { className: 'alignright img-responsive', src: '/images/landing/responsive.png', alt: '' }),
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, ex, inventore, tenetur, repellat ipsam soluta libero amet nam aspernatur perspiciatis quos praesentium et debitis ea odit enim illo aliquid eligendi numquam neque. Ipsum, voluptatibus, perspiciatis a quam aliquid cumque cupiditate id ipsa tempora eveniet. Cupiditate, necessitatibus, consequatur odio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, vitae, laboriosam libero nihil labore hic modi? Odit, veritatis nulla molestiae!'
-										),
-										_react2.default.createElement(
-											'div',
-											{ id: 'snav-content2' },
-											_react2.default.createElement(
-												'h3',
-												null,
-												'Retina Ready Display'
-											),
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptatem reprehenderit natus facilis id deserunt iusto incidunt cumque odit molestias iste dolor eum esse soluta facere quidem minima in voluptate explicabo ducimus alias ratione aut molestiae omnis fuga labore quod optio modi voluptatum nemo suscipit porro maxime ex. Maiores, ratione eligendi labore quaerat veniam laborum nam rem delectus illum aspernatur quas sequi animi quae nulla alias hic inventore ex perspiciatis nisi consequatur enim a aut dolorum modi quod perferendis dicta impedit magni placeat repellat. Soluta, dicta, dolores, reiciendis, eum accusamus esse et debitis rem fugit fugiat dignissimos pariatur sint quod laborum autem. Nulla, ducimus, culpa, vel esse unde sapiente expedita corrupti consectetur veritatis quas autem laborum mollmquam amet eius. Numquam, ad, quaerat, ab, deleniti rem quae doloremque tenetur ea illum hic amet dolor suscipit porro ducimus excepturi perspiciatis modi praesentium voluptas quos expedita provident adipisci dolorem! Aliquam, ipsum voluptatem et voluptates impedit ab libero similique a. Nisi, ea magni et ab voluptatum nemo numquam odio quis libero aspernatur architecto tempore qui quisquam saepe corrupti necessitatibus natus quos aliquid non voluptatibus quod obcaecati fugiat quibusdam quidem inventore quia eveniet iusto culpa incidunt vero vel in accusamus eum. Molestiae nihil voluptate molestias illum eligendi esse nesciunt.'
-										),
-										_react2.default.createElement(
-											'div',
-											{ id: 'snav-content3' },
-											_react2.default.createElement('img', { className: 'alignleft img-responsive', src: 'http://www.w3schools.com/tags/colormap.gif', alt: '' }),
-											_react2.default.createElement(
-												'h3',
-												null,
-												'Unlimited Color Options'
-											),
-											'Dolor aperiam modi aliquam dolores consequatur error commodi ad eius incidunt! Libero, odio incidunt ullam sunt fugiat? Laboriosam, perferendis, debitis, harum soluta iste eos sunt odit architecto porro eveniet sint optio nihil animi. Laudantium, quam, culpa, velit molestias exercitationem reprehenderit enim distinctio aliquam aut ex numquam sequi assumenda veritatis fuga voluptatum. Magni, voluptates adipisci unde sapiente eligendi ea maxime tempora pariatur ipsa.. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, aspernatur, saepe, quidem animi hic rem libero earum fuga voluptas culpa iure qui accusantium ab quae dolorum laborum quia repellat fugit aut minima molestias placeat mollitia doloribus quibusdam consectetur officia nesciunt ad. Ab, quod ipsum commodi assumenda doloribus possimus sed laudantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-										),
-										_react2.default.createElement(
-											'div',
-											{ id: 'snav-content4' },
-											_react2.default.createElement('img', { className: 'alignleft img-responsive', src: '/images/landing/bootstrap.png', alt: '' }),
-											_react2.default.createElement(
-												'h3',
-												null,
-												'Bootstrap v3.2.0 Compatiable'
-											),
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, nostrum, dolores id quo nam repudiandae ad culpa architecto minima nemo eaque soluta nulla laborum neque provident saepe facilis expedita numquam quas alias in perferendis accusamus ipsam blanditiis sit voluptatem temporibus vero error veritatis repellat eos reiciendis repellendus quam. Officia dicta ipsam nostrum aperiam. Dolor, expedita enim modi nostrum commodi sint architecto aliquam aut mollitia repellendus deserunt quaerat aspernatur aperiam voluptatibus consequatur rerum consequuntur.'
-										),
-										_react2.default.createElement(
-											'div',
-											{ id: 'snav-content5' },
-											_react2.default.createElement(
-												'h3',
-												null,
-												'Light & Dark Scheme Available'
-											),
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, temporibus, maxime, laudantium quidem sapiente deserunt error rerum illum explicabo voluptate velit tempora cupiditate reprehenderit consequuntur nemo in et blanditiis soluta tempore perspiciatis at atque excepturi culpa facere sequi impedit cumque illo molestias saepe eveniet ducimus fugiat reiciendis unde. Modi, at laboriosam ex velit commodi officiis! Neque, consequatur, modi, nulla, voluptatem quibusdam incidunt minus dolores repellat nihil consectetur ducimus aliquid. Eaque, tempora voluptatum accusantium expedita obcaecati magnam voluptates consequatur ut harum rem dolor id error. Officia, repudiandae, eos, quibusdam porro eius esse cupiditate non fugit dignissimos delectus et tempora sequi fugiat quo voluptatem temporibus vel obcaecati? Laboriosam, quis obcaecati quas veniam repellendus officiis et quos velit id natus mollitia dacilis ipsum et perspiciatis officia iste cupiditate ducimus nisi consequuntur excepturi dolorum. Sint, architecto, cumque facere officia harum dicta perferendis inventore excepturi sequi explicabo provident omnis dolore quasi fugit molestiae atque id consectetur reprehenderit laborum beatae consequatur similique.'
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'section footer-stick' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'container clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ id: 'section-buy', className: 'heading-block title-center nobottomborder page-section' },
-										_react2.default.createElement(
-											'h2',
-											null,
-											'Enough? Start Building!'
-										),
-										_react2.default.createElement(
-											'span',
-											null,
-											'Now that you have read all the Tid-Bits, so start with a plan'
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'center' },
-										_react2.default.createElement(
-											'a',
-											{ href: '#', 'data-animate': 'tada', className: 'button button-3d button-teal button-xlarge nobottommargin' },
-											_react2.default.createElement('i', { className: 'icon-star3' }),
-											'Start your FREE Trial'
-										),
-										' - OR - ',
-										_react2.default.createElement(
-											'a',
-											{ href: '#', 'data-scrollto': '#section-pricing', className: 'button button-3d button-red button-xlarge nobottommargin' },
-											_react2.default.createElement('i', { className: 'icon-user2' }),
-											'Sign Up for a Subscription'
 										)
 									)
 								)
