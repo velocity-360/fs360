@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
+import Testimonial from '../../components/Testimonial'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -12,6 +13,14 @@ class Home extends Component {
 		super(props, context)
 		this.updateUserRegistration = this.updateUserRegistration.bind(this)
 		this.register = this.register.bind(this)
+		this.state = {
+			testimonials: [
+				{name:'Brian Correa', image:'briancorrea.jpg', course:'iOS Course'},
+				{name:'Mike Maloney', image:'mikemaloney.jpg', course:'MEAN Stack Course'},
+				{name:'Jeff Abraham', image:'jeffabraham.jpg', course:'iOS Course'},
+				{name:'Jennifer Lin', image:'jenn.jpg', course:'Web Development Intensive'}
+			]
+		}
 	}
 
 	componentWillMount(){
@@ -57,6 +66,11 @@ class Home extends Component {
 					</div>
 				</div>
 			)
+		});
+
+		var testimonialList = this.state.testimonials.map(function(testimonial){
+			return <Testimonial testimonial={testimonial} />
+
 		});
 
 		return (
@@ -143,59 +157,8 @@ class Home extends Component {
 									<span>Meet the Bride &amp; the Groom</span>
 								</div>
 
-								<div className="col-md-6 bottommargin">
-									<div className="team team-list clearfix">
-										<div className="team-image" style={{width:150}}>
-											<img className="img-circle" src="images/wedding/17.jpg" alt="Bryant Kellam" />
-										</div>
-										<div className="team-desc">
-											<div className="team-title"><h4>Brian Correa</h4><span>Groom</span></div>
-											<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic.</div>
-											<div className="line topmargin-sm nobottommargin"></div>
-											<a href="#" className="social-icon si-borderless si-small si-facebook" title="Facebook">
-												<i className="icon-facebook"></i>
-												<i className="icon-facebook"></i>
-											</a>
-											<a href="#" className="social-icon si-borderless si-small si-twitter" title="Twitter">
-												<i className="icon-twitter"></i>
-												<i className="icon-twitter"></i>
-											</a>
-											<a href="#" className="social-icon si-borderless si-small si-pinterest" title="Pinterest">
-												<i className="icon-pinterest"></i>
-												<i className="icon-pinterest"></i>
-											</a>
-											<a href="#" className="social-icon si-borderless si-small si-instagram" title="Instagram">
-												<i className="icon-instagram"></i>
-												<i className="icon-instagram"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<div className="col-md-6 bottommargin">
-									<div className="team team-list clearfix">
-										<div className="team-image" style={{width:150}}>
-											<img className="img-circle" src="images/wedding/18.jpg" alt="Leanna Pyburn" />
-										</div>
-										<div className="team-desc">
-											<div className="team-title"><h4>Leanna Pyburn</h4><span>Bride</span></div>
-											<div className="team-content">Blanditiis adipisci laudantium reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita labore nulla commodi numquam perspiciatis, amet doloribus cum sint, quisquam possimus eos aspernatur distinctio similique perferendis.</div>
-											<div className="line topmargin-sm nobottommargin"></div>
-											<a href="#" className="social-icon si-borderless si-small si-facebook" title="Facebook">
-												<i className="icon-facebook"></i>
-												<i className="icon-facebook"></i>
-											</a>
-											<a href="#" className="social-icon si-borderless si-small si-twitter" title="Twitter">
-												<i className="icon-twitter"></i>
-												<i className="icon-twitter"></i>
-											</a>
-											<a href="#" className="social-icon si-borderless si-small si-instagram" title="Instagram">
-												<i className="icon-instagram"></i>
-												<i className="icon-instagram"></i>
-											</a>
-										</div>
-									</div>
-								</div>
+								{testimonialList}
+								
 							</div>
 						</div>
 

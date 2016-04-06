@@ -19,6 +19,8 @@ var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
+var Testimonial = _interopRequire(require("../../components/Testimonial"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -33,6 +35,9 @@ var Home = (function (Component) {
 		_get(Object.getPrototypeOf(Home.prototype), "constructor", this).call(this, props, context);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
 		this.register = this.register.bind(this);
+		this.state = {
+			testimonials: [{ name: "Brian Correa", image: "briancorrea.jpg", course: "iOS Course" }, { name: "Mike Maloney", image: "mikemaloney.jpg", course: "MEAN Stack Course" }, { name: "Jeff Abraham", image: "jeffabraham.jpg", course: "iOS Course" }, { name: "Jennifer Lin", image: "jenn.jpg", course: "Web Development Intensive" }]
+		};
 	}
 
 	_inherits(Home, Component);
@@ -108,6 +113,10 @@ var Home = (function (Component) {
 							)
 						)
 					);
+				});
+
+				var testimonialList = this.state.testimonials.map(function (testimonial) {
+					return React.createElement(Testimonial, { testimonial: testimonial });
 				});
 
 				return React.createElement(
@@ -275,122 +284,7 @@ var Home = (function (Component) {
 											"Meet the Bride & the Groom"
 										)
 									),
-									React.createElement(
-										"div",
-										{ className: "col-md-6 bottommargin" },
-										React.createElement(
-											"div",
-											{ className: "team team-list clearfix" },
-											React.createElement(
-												"div",
-												{ className: "team-image", style: { width: 150 } },
-												React.createElement("img", { className: "img-circle", src: "images/wedding/17.jpg", alt: "Bryant Kellam" })
-											),
-											React.createElement(
-												"div",
-												{ className: "team-desc" },
-												React.createElement(
-													"div",
-													{ className: "team-title" },
-													React.createElement(
-														"h4",
-														null,
-														"Brian Correa"
-													),
-													React.createElement(
-														"span",
-														null,
-														"Groom"
-													)
-												),
-												React.createElement(
-													"div",
-													{ className: "team-content" },
-													"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
-												),
-												React.createElement("div", { className: "line topmargin-sm nobottommargin" }),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
-													React.createElement("i", { className: "icon-facebook" }),
-													React.createElement("i", { className: "icon-facebook" })
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
-													React.createElement("i", { className: "icon-twitter" }),
-													React.createElement("i", { className: "icon-twitter" })
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-pinterest", title: "Pinterest" },
-													React.createElement("i", { className: "icon-pinterest" }),
-													React.createElement("i", { className: "icon-pinterest" })
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
-													React.createElement("i", { className: "icon-instagram" }),
-													React.createElement("i", { className: "icon-instagram" })
-												)
-											)
-										)
-									),
-									React.createElement(
-										"div",
-										{ className: "col-md-6 bottommargin" },
-										React.createElement(
-											"div",
-											{ className: "team team-list clearfix" },
-											React.createElement(
-												"div",
-												{ className: "team-image", style: { width: 150 } },
-												React.createElement("img", { className: "img-circle", src: "images/wedding/18.jpg", alt: "Leanna Pyburn" })
-											),
-											React.createElement(
-												"div",
-												{ className: "team-desc" },
-												React.createElement(
-													"div",
-													{ className: "team-title" },
-													React.createElement(
-														"h4",
-														null,
-														"Leanna Pyburn"
-													),
-													React.createElement(
-														"span",
-														null,
-														"Bride"
-													)
-												),
-												React.createElement(
-													"div",
-													{ className: "team-content" },
-													"Blanditiis adipisci laudantium reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita labore nulla commodi numquam perspiciatis, amet doloribus cum sint, quisquam possimus eos aspernatur distinctio similique perferendis."
-												),
-												React.createElement("div", { className: "line topmargin-sm nobottommargin" }),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
-													React.createElement("i", { className: "icon-facebook" }),
-													React.createElement("i", { className: "icon-facebook" })
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
-													React.createElement("i", { className: "icon-twitter" }),
-													React.createElement("i", { className: "icon-twitter" })
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
-													React.createElement("i", { className: "icon-instagram" }),
-													React.createElement("i", { className: "icon-instagram" })
-												)
-											)
-										)
-									)
+									testimonialList
 								)
 							)
 						)

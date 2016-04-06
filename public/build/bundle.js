@@ -21457,6 +21457,10 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
+	var _Testimonial = __webpack_require__(193);
+	
+	var _Testimonial2 = _interopRequireDefault(_Testimonial);
+	
 	var _store = __webpack_require__(180);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -21489,6 +21493,9 @@
 	
 			_this.updateUserRegistration = _this.updateUserRegistration.bind(_this);
 			_this.register = _this.register.bind(_this);
+			_this.state = {
+				testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Course' }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'MEAN Stack Course' }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Course' }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Development Intensive' }]
+			};
 			return _this;
 		}
 	
@@ -21556,6 +21563,10 @@
 							)
 						)
 					);
+				});
+	
+				var testimonialList = this.state.testimonials.map(function (testimonial) {
+					return _react2.default.createElement(_Testimonial2.default, { testimonial: testimonial });
 				});
 	
 				return _react2.default.createElement(
@@ -21723,122 +21734,7 @@
 											'Meet the Bride & the Groom'
 										)
 									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team team-list clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'team-image', style: { width: 150 } },
-												_react2.default.createElement('img', { className: 'img-circle', src: 'images/wedding/17.jpg', alt: 'Bryant Kellam' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'team-desc' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'team-title' },
-													_react2.default.createElement(
-														'h4',
-														null,
-														'Brian Correa'
-													),
-													_react2.default.createElement(
-														'span',
-														null,
-														'Groom'
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'team-content' },
-													'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic.'
-												),
-												_react2.default.createElement('div', { className: 'line topmargin-sm nobottommargin' }),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-facebook', title: 'Facebook' },
-													_react2.default.createElement('i', { className: 'icon-facebook' }),
-													_react2.default.createElement('i', { className: 'icon-facebook' })
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-twitter', title: 'Twitter' },
-													_react2.default.createElement('i', { className: 'icon-twitter' }),
-													_react2.default.createElement('i', { className: 'icon-twitter' })
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-pinterest', title: 'Pinterest' },
-													_react2.default.createElement('i', { className: 'icon-pinterest' }),
-													_react2.default.createElement('i', { className: 'icon-pinterest' })
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-instagram', title: 'Instagram' },
-													_react2.default.createElement('i', { className: 'icon-instagram' }),
-													_react2.default.createElement('i', { className: 'icon-instagram' })
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team team-list clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'team-image', style: { width: 150 } },
-												_react2.default.createElement('img', { className: 'img-circle', src: 'images/wedding/18.jpg', alt: 'Leanna Pyburn' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'team-desc' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'team-title' },
-													_react2.default.createElement(
-														'h4',
-														null,
-														'Leanna Pyburn'
-													),
-													_react2.default.createElement(
-														'span',
-														null,
-														'Bride'
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'team-content' },
-													'Blanditiis adipisci laudantium reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita labore nulla commodi numquam perspiciatis, amet doloribus cum sint, quisquam possimus eos aspernatur distinctio similique perferendis.'
-												),
-												_react2.default.createElement('div', { className: 'line topmargin-sm nobottommargin' }),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-facebook', title: 'Facebook' },
-													_react2.default.createElement('i', { className: 'icon-facebook' }),
-													_react2.default.createElement('i', { className: 'icon-facebook' })
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-twitter', title: 'Twitter' },
-													_react2.default.createElement('i', { className: 'icon-twitter' }),
-													_react2.default.createElement('i', { className: 'icon-twitter' })
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'social-icon si-borderless si-small si-instagram', title: 'Instagram' },
-													_react2.default.createElement('i', { className: 'icon-instagram' }),
-													_react2.default.createElement('i', { className: 'icon-instagram' })
-												)
-											)
-										)
-									)
+									testimonialList
 								)
 							)
 						)
@@ -22666,6 +22562,111 @@
 	  self.fetch.polyfill = true
 	})(typeof self !== 'undefined' ? self : this);
 
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Testimonial = function (_Component) {
+		_inherits(Testimonial, _Component);
+	
+		function Testimonial() {
+			_classCallCheck(this, Testimonial);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Testimonial).apply(this, arguments));
+		}
+	
+		_createClass(Testimonial, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "col-md-6 bottommargin" },
+					_react2.default.createElement(
+						"div",
+						{ className: "team team-list clearfix" },
+						_react2.default.createElement(
+							"div",
+							{ className: "team-image", style: { width: 150 } },
+							_react2.default.createElement("img", { className: "img-circle", src: '/images/' + this.props.testimonial.image, alt: "Bryant Kellam" })
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "team-desc" },
+							_react2.default.createElement(
+								"div",
+								{ className: "team-title" },
+								_react2.default.createElement(
+									"h4",
+									null,
+									this.props.testimonial.name
+								),
+								_react2.default.createElement(
+									"span",
+									null,
+									this.props.testimonial.course
+								)
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "team-content" },
+								"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
+							),
+							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
+								_react2.default.createElement("i", { className: "icon-facebook" }),
+								_react2.default.createElement("i", { className: "icon-facebook" })
+							),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
+								_react2.default.createElement("i", { className: "icon-twitter" }),
+								_react2.default.createElement("i", { className: "icon-twitter" })
+							),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-pinterest", title: "Pinterest" },
+								_react2.default.createElement("i", { className: "icon-pinterest" }),
+								_react2.default.createElement("i", { className: "icon-pinterest" })
+							),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
+								_react2.default.createElement("i", { className: "icon-instagram" }),
+								_react2.default.createElement("i", { className: "icon-instagram" })
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Testimonial;
+	}(_react.Component);
+	
+	exports.default = Testimonial;
 
 /***/ }
 /******/ ]);
