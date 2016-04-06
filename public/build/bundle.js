@@ -21516,6 +21516,8 @@
 			value: function register(event) {
 				event.preventDefault();
 				console.log('REGISTER: ' + JSON.stringify(this.props.currentUser));
+	
+				_api2.default.handlePost('/api/test', this.props.currentUser);
 			}
 		}, {
 			key: 'render',
@@ -21605,23 +21607,18 @@
 											{ className: 'col_four_fifth nobottommargin' },
 											_react2.default.createElement(
 												'div',
-												{ className: 'col_one_fourth nobottommargin' },
+												{ className: 'col_one_third nobottommargin' },
 												_react2.default.createElement('input', { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'First Name*' })
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'col_one_fourth nobottommargin' },
+												{ className: 'col_one_third nobottommargin' },
 												_react2.default.createElement('input', { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name*' })
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'col_one_fourth nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: 'email', type: 'email', className: 'form-control input-lg not-dark', placeholder: 'Email*' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_fourth col_last nobottommargin' },
-												_react2.default.createElement('input', { id: 'password', type: 'password', className: 'form-control input-lg not-dark', value: '', placeholder: 'Password*' })
+												{ className: 'col_one_third col_last nobottommargin' },
+												_react2.default.createElement('input', { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email*' })
 											)
 										),
 										_react2.default.createElement(
@@ -21629,7 +21626,7 @@
 											{ className: 'col_one_fifth col_last nobottommargin' },
 											_react2.default.createElement(
 												'button',
-												{ className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit', type: 'submit' },
+												{ onClick: this.register, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit', type: 'submit' },
 												'JOIN'
 											)
 										)
@@ -21714,126 +21711,130 @@
 									{ className: 'container clearfix' },
 									_react2.default.createElement(
 										'div',
-										{ id: 'section-testimonials', className: 'heading-block title-center page-section' },
+										{ id: 'section-couple', className: 'heading-block title-center page-section' },
 										_react2.default.createElement(
 											'h2',
 											null,
-											'Testimonials'
+											'Meet Our Students'
 										),
 										_react2.default.createElement(
 											'span',
 											null,
-											'Our All inclusive Pricing Plan that covers you well'
+											'Meet the Bride & the Groom'
 										)
 									),
 									_react2.default.createElement(
-										'ul',
-										{ className: 'testimonials-grid grid-3 clearfix' },
+										'div',
+										{ className: 'col-md-6 bottommargin' },
 										_react2.default.createElement(
-											'li',
-											null,
+											'div',
+											{ className: 'team team-list clearfix' },
 											_react2.default.createElement(
 												'div',
-												{ className: 'testimonial' },
+												{ className: 'team-image', style: { width: 150 } },
+												_react2.default.createElement('img', { className: 'img-circle', src: 'images/wedding/17.jpg', alt: 'Bryant Kellam' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'team-desc' },
 												_react2.default.createElement(
 													'div',
-													{ className: 'testi-image' },
+													{ className: 'team-title' },
 													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('img', { src: '/images/testimonials/1.jpg', alt: 'Customer Testimonails' })
+														'h4',
+														null,
+														'Brian Correa'
+													),
+													_react2.default.createElement(
+														'span',
+														null,
+														'Groom'
 													)
 												),
 												_react2.default.createElement(
 													'div',
-													{ className: 'testi-content' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'testi-meta' },
-														'John Doe',
-														_react2.default.createElement(
-															'span',
-															null,
-															'XYZ Inc.'
-														)
-													)
+													{ className: 'team-content' },
+													'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic.'
+												),
+												_react2.default.createElement('div', { className: 'line topmargin-sm nobottommargin' }),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-facebook', title: 'Facebook' },
+													_react2.default.createElement('i', { className: 'icon-facebook' }),
+													_react2.default.createElement('i', { className: 'icon-facebook' })
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-twitter', title: 'Twitter' },
+													_react2.default.createElement('i', { className: 'icon-twitter' }),
+													_react2.default.createElement('i', { className: 'icon-twitter' })
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-pinterest', title: 'Pinterest' },
+													_react2.default.createElement('i', { className: 'icon-pinterest' }),
+													_react2.default.createElement('i', { className: 'icon-pinterest' })
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-instagram', title: 'Instagram' },
+													_react2.default.createElement('i', { className: 'icon-instagram' }),
+													_react2.default.createElement('i', { className: 'icon-instagram' })
 												)
 											)
-										),
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-6 bottommargin' },
 										_react2.default.createElement(
-											'li',
-											null,
+											'div',
+											{ className: 'team team-list clearfix' },
 											_react2.default.createElement(
 												'div',
-												{ className: 'testimonial' },
+												{ className: 'team-image', style: { width: 150 } },
+												_react2.default.createElement('img', { className: 'img-circle', src: 'images/wedding/18.jpg', alt: 'Leanna Pyburn' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'team-desc' },
 												_react2.default.createElement(
 													'div',
-													{ className: 'testi-image' },
+													{ className: 'team-title' },
 													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('img', { src: '/images/testimonials/2.jpg', alt: 'Customer Testimonails' })
+														'h4',
+														null,
+														'Leanna Pyburn'
+													),
+													_react2.default.createElement(
+														'span',
+														null,
+														'Bride'
 													)
 												),
 												_react2.default.createElement(
 													'div',
-													{ className: 'testi-content' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'testi-meta' },
-														'Collis Taeed',
-														_react2.default.createElement(
-															'span',
-															null,
-															'Envato Inc.'
-														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'div',
-												{ className: 'testimonial' },
+													{ className: 'team-content' },
+													'Blanditiis adipisci laudantium reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita labore nulla commodi numquam perspiciatis, amet doloribus cum sint, quisquam possimus eos aspernatur distinctio similique perferendis.'
+												),
+												_react2.default.createElement('div', { className: 'line topmargin-sm nobottommargin' }),
 												_react2.default.createElement(
-													'div',
-													{ className: 'testi-image' },
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('img', { src: '/images/testimonials/7.jpg', alt: 'Customer Testimonails' })
-													)
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-facebook', title: 'Facebook' },
+													_react2.default.createElement('i', { className: 'icon-facebook' }),
+													_react2.default.createElement('i', { className: 'icon-facebook' })
 												),
 												_react2.default.createElement(
-													'div',
-													{ className: 'testi-content' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Fugit officia dolor sed harum excepturi ex iusto magnam asperiores molestiae qui natus obcaecati facere sint amet.'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'testi-meta' },
-														'Mary Jane',
-														_react2.default.createElement(
-															'span',
-															null,
-															'Google Inc.'
-														)
-													)
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-twitter', title: 'Twitter' },
+													_react2.default.createElement('i', { className: 'icon-twitter' }),
+													_react2.default.createElement('i', { className: 'icon-twitter' })
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'social-icon si-borderless si-small si-instagram', title: 'Instagram' },
+													_react2.default.createElement('i', { className: 'icon-instagram' }),
+													_react2.default.createElement('i', { className: 'icon-instagram' })
 												)
 											)
 										)
@@ -22224,7 +22225,7 @@
 			(0, _isomorphicFetch2.default)(endpoint, {
 				method: 'GET',
 				//		    URLSearchParams: params,
-				header: {
+				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json'
 				}
@@ -22232,6 +22233,26 @@
 				return response.json();
 			}).then(function (json) {
 				return _store2.default.dispatch(_actions2.default.coursesRecieved(json.courses));
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		},
+	
+		handlePost: function handlePost(endpoint, body) {
+			console.log('HANDLE POST: ' + JSON.stringify(body));
+			(0, _isomorphicFetch2.default)(endpoint, {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(body)
+			}).then(function (response) {
+				return response.json();
+			})
+			// .then( json => dispatch( login( json ) ))
+			.then(function (json) {
+				return console.log(JSON.stringify(json));
 			}).catch(function (err) {
 				return console.log(err);
 			});

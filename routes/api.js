@@ -87,6 +87,17 @@ router.get('/:resource/:id', function(req, res, next) {
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
+	if (resource == 'test'){
+		console.log('TEST REQUEST: '+JSON.stringify(req.body));
+		res.json({
+			confirmation:'success',
+			body: req.body
+		});
+
+		return;
+	}
+
+
 	if (resource == 'syllabus'){
 //		console.log('SYLLABUS REQUEST: '+JSON.stringify(req.body));
 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Syllabus Request', JSON.stringify(req.body))

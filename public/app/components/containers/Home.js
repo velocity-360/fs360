@@ -35,6 +35,8 @@ class Home extends Component {
 		event.preventDefault()
 		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 
+		api.handlePost('/api/test', this.props.currentUser);
+
 		
 	}
 
@@ -76,21 +78,18 @@ class Home extends Component {
 
 								<form action="#" method="post" role="form" className="landing-wide-form clearfix">
 									<div className="col_four_fifth nobottommargin">
-										<div className="col_one_fourth nobottommargin">
+										<div className="col_one_third nobottommargin">
 											<input value={this.props.currentUser.firstName} onChange={this.updateUserRegistration} id="firstName" type="text" className="form-control input-lg not-dark" placeholder="First Name*" />
 										</div>
-										<div className="col_one_fourth nobottommargin">
+										<div className="col_one_third nobottommargin">
 											<input value={this.props.currentUser.lastName} onChange={this.updateUserRegistration} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Last Name*" />
 										</div>
-										<div className="col_one_fourth nobottommargin">
-											<input value={this.props.currentUser.email} onChange={this.updateUserRegistration} id="email" type="email" className="form-control input-lg not-dark" placeholder="Email*" />
-										</div>
-										<div className="col_one_fourth col_last nobottommargin">
-											<input id="password" type="password" className="form-control input-lg not-dark" value="" placeholder="Password*" />
+										<div className="col_one_third col_last nobottommargin">
+											<input value={this.props.currentUser.email} onChange={this.updateUserRegistration} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email*" />
 										</div>
 									</div>
 									<div className="col_one_fifth col_last nobottommargin">
-										<button className="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit">JOIN</button>
+										<button onClick={this.register} className="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit">JOIN</button>
 									</div>
 								</form>
 							</div>
@@ -137,62 +136,67 @@ class Home extends Component {
 						</div>
 
 						<div className="section">
-
-
 							<div className="container clearfix">
 
-								<div id="section-testimonials" className="heading-block title-center page-section">
-									<h2>Testimonials</h2>
-									<span>Our All inclusive Pricing Plan that covers you well</span>
+								<div id="section-couple" className="heading-block title-center page-section">
+									<h2>Meet Our Students</h2>
+									<span>Meet the Bride &amp; the Groom</span>
 								</div>
 
-								<ul className="testimonials-grid grid-3 clearfix">
-									<li>
-										<div className="testimonial">
-											<div className="testi-image">
-												<a href="#"><img src="/images/testimonials/1.jpg" alt="Customer Testimonails" /></a>
-											</div>
-											<div className="testi-content">
-												<p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!</p>
-												<div className="testi-meta">
-													John Doe
-													<span>XYZ Inc.</span>
-												</div>
-											</div>
+								<div className="col-md-6 bottommargin">
+									<div className="team team-list clearfix">
+										<div className="team-image" style={{width:150}}>
+											<img className="img-circle" src="images/wedding/17.jpg" alt="Bryant Kellam" />
 										</div>
-									</li>
-									<li>
-										<div className="testimonial">
-											<div className="testi-image">
-												<a href="#"><img src="/images/testimonials/2.jpg" alt="Customer Testimonails" /></a>
-											</div>
-											<div className="testi-content">
-												<p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
-												<div className="testi-meta">
-													Collis Taeed
-													<span>Envato Inc.</span>
-												</div>
-											</div>
+										<div className="team-desc">
+											<div className="team-title"><h4>Brian Correa</h4><span>Groom</span></div>
+											<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic.</div>
+											<div className="line topmargin-sm nobottommargin"></div>
+											<a href="#" className="social-icon si-borderless si-small si-facebook" title="Facebook">
+												<i className="icon-facebook"></i>
+												<i className="icon-facebook"></i>
+											</a>
+											<a href="#" className="social-icon si-borderless si-small si-twitter" title="Twitter">
+												<i className="icon-twitter"></i>
+												<i className="icon-twitter"></i>
+											</a>
+											<a href="#" className="social-icon si-borderless si-small si-pinterest" title="Pinterest">
+												<i className="icon-pinterest"></i>
+												<i className="icon-pinterest"></i>
+											</a>
+											<a href="#" className="social-icon si-borderless si-small si-instagram" title="Instagram">
+												<i className="icon-instagram"></i>
+												<i className="icon-instagram"></i>
+											</a>
 										</div>
-									</li>
-									<li>
-										<div className="testimonial">
-											<div className="testi-image">
-												<a href="#"><img src="/images/testimonials/7.jpg" alt="Customer Testimonails" /></a>
-											</div>
-											<div className="testi-content">
-												<p>Fugit officia dolor sed harum excepturi ex iusto magnam asperiores molestiae qui natus obcaecati facere sint amet.</p>
-												<div className="testi-meta">
-													Mary Jane
-													<span>Google Inc.</span>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
+									</div>
+								</div>
 
+								<div className="col-md-6 bottommargin">
+									<div className="team team-list clearfix">
+										<div className="team-image" style={{width:150}}>
+											<img className="img-circle" src="images/wedding/18.jpg" alt="Leanna Pyburn" />
+										</div>
+										<div className="team-desc">
+											<div className="team-title"><h4>Leanna Pyburn</h4><span>Bride</span></div>
+											<div className="team-content">Blanditiis adipisci laudantium reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita labore nulla commodi numquam perspiciatis, amet doloribus cum sint, quisquam possimus eos aspernatur distinctio similique perferendis.</div>
+											<div className="line topmargin-sm nobottommargin"></div>
+											<a href="#" className="social-icon si-borderless si-small si-facebook" title="Facebook">
+												<i className="icon-facebook"></i>
+												<i className="icon-facebook"></i>
+											</a>
+											<a href="#" className="social-icon si-borderless si-small si-twitter" title="Twitter">
+												<i className="icon-twitter"></i>
+												<i className="icon-twitter"></i>
+											</a>
+											<a href="#" className="social-icon si-borderless si-small si-instagram" title="Instagram">
+												<i className="icon-instagram"></i>
+												<i className="icon-instagram"></i>
+											</a>
+										</div>
+									</div>
+								</div>
 							</div>
-
 						</div>
 
 

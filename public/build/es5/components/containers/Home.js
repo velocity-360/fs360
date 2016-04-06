@@ -66,6 +66,8 @@ var Home = (function (Component) {
 				event.preventDefault();
 				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
 
+				api.handlePost("/api/test", this.props.currentUser);
+
 			},
 			writable: true,
 			configurable: true
@@ -157,23 +159,18 @@ var Home = (function (Component) {
 											{ className: "col_four_fifth nobottommargin" },
 											React.createElement(
 												"div",
-												{ className: "col_one_fourth nobottommargin" },
+												{ className: "col_one_third nobottommargin" },
 												React.createElement("input", { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: "firstName", type: "text", className: "form-control input-lg not-dark", placeholder: "First Name*" })
 											),
 											React.createElement(
 												"div",
-												{ className: "col_one_fourth nobottommargin" },
+												{ className: "col_one_third nobottommargin" },
 												React.createElement("input", { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: "lastName", type: "text", className: "form-control input-lg not-dark", placeholder: "Last Name*" })
 											),
 											React.createElement(
 												"div",
-												{ className: "col_one_fourth nobottommargin" },
-												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "email", type: "email", className: "form-control input-lg not-dark", placeholder: "Email*" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_one_fourth col_last nobottommargin" },
-												React.createElement("input", { id: "password", type: "password", className: "form-control input-lg not-dark", value: "", placeholder: "Password*" })
+												{ className: "col_one_third col_last nobottommargin" },
+												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "email", type: "text", className: "form-control input-lg not-dark", placeholder: "Email*" })
 											)
 										),
 										React.createElement(
@@ -181,7 +178,7 @@ var Home = (function (Component) {
 											{ className: "col_one_fifth col_last nobottommargin" },
 											React.createElement(
 												"button",
-												{ className: "btn btn-lg btn-danger btn-block nomargin", value: "submit", type: "submit" },
+												{ onClick: this.register, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit", type: "submit" },
 												"JOIN"
 											)
 										)
@@ -266,126 +263,130 @@ var Home = (function (Component) {
 									{ className: "container clearfix" },
 									React.createElement(
 										"div",
-										{ id: "section-testimonials", className: "heading-block title-center page-section" },
+										{ id: "section-couple", className: "heading-block title-center page-section" },
 										React.createElement(
 											"h2",
 											null,
-											"Testimonials"
+											"Meet Our Students"
 										),
 										React.createElement(
 											"span",
 											null,
-											"Our All inclusive Pricing Plan that covers you well"
+											"Meet the Bride & the Groom"
 										)
 									),
 									React.createElement(
-										"ul",
-										{ className: "testimonials-grid grid-3 clearfix" },
+										"div",
+										{ className: "col-md-6 bottommargin" },
 										React.createElement(
-											"li",
-											null,
+											"div",
+											{ className: "team team-list clearfix" },
 											React.createElement(
 												"div",
-												{ className: "testimonial" },
+												{ className: "team-image", style: { width: 150 } },
+												React.createElement("img", { className: "img-circle", src: "images/wedding/17.jpg", alt: "Bryant Kellam" })
+											),
+											React.createElement(
+												"div",
+												{ className: "team-desc" },
 												React.createElement(
 													"div",
-													{ className: "testi-image" },
+													{ className: "team-title" },
 													React.createElement(
-														"a",
-														{ href: "#" },
-														React.createElement("img", { src: "/images/testimonials/1.jpg", alt: "Customer Testimonails" })
+														"h4",
+														null,
+														"Brian Correa"
+													),
+													React.createElement(
+														"span",
+														null,
+														"Groom"
 													)
 												),
 												React.createElement(
 													"div",
-													{ className: "testi-content" },
-													React.createElement(
-														"p",
-														null,
-														"Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!"
-													),
-													React.createElement(
-														"div",
-														{ className: "testi-meta" },
-														"John Doe",
-														React.createElement(
-															"span",
-															null,
-															"XYZ Inc."
-														)
-													)
+													{ className: "team-content" },
+													"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
+												),
+												React.createElement("div", { className: "line topmargin-sm nobottommargin" }),
+												React.createElement(
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
+													React.createElement("i", { className: "icon-facebook" }),
+													React.createElement("i", { className: "icon-facebook" })
+												),
+												React.createElement(
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
+													React.createElement("i", { className: "icon-twitter" }),
+													React.createElement("i", { className: "icon-twitter" })
+												),
+												React.createElement(
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-pinterest", title: "Pinterest" },
+													React.createElement("i", { className: "icon-pinterest" }),
+													React.createElement("i", { className: "icon-pinterest" })
+												),
+												React.createElement(
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
+													React.createElement("i", { className: "icon-instagram" }),
+													React.createElement("i", { className: "icon-instagram" })
 												)
 											)
-										),
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "col-md-6 bottommargin" },
 										React.createElement(
-											"li",
-											null,
+											"div",
+											{ className: "team team-list clearfix" },
 											React.createElement(
 												"div",
-												{ className: "testimonial" },
+												{ className: "team-image", style: { width: 150 } },
+												React.createElement("img", { className: "img-circle", src: "images/wedding/18.jpg", alt: "Leanna Pyburn" })
+											),
+											React.createElement(
+												"div",
+												{ className: "team-desc" },
 												React.createElement(
 													"div",
-													{ className: "testi-image" },
+													{ className: "team-title" },
 													React.createElement(
-														"a",
-														{ href: "#" },
-														React.createElement("img", { src: "/images/testimonials/2.jpg", alt: "Customer Testimonails" })
+														"h4",
+														null,
+														"Leanna Pyburn"
+													),
+													React.createElement(
+														"span",
+														null,
+														"Bride"
 													)
 												),
 												React.createElement(
 													"div",
-													{ className: "testi-content" },
-													React.createElement(
-														"p",
-														null,
-														"Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias."
-													),
-													React.createElement(
-														"div",
-														{ className: "testi-meta" },
-														"Collis Taeed",
-														React.createElement(
-															"span",
-															null,
-															"Envato Inc."
-														)
-													)
-												)
-											)
-										),
-										React.createElement(
-											"li",
-											null,
-											React.createElement(
-												"div",
-												{ className: "testimonial" },
+													{ className: "team-content" },
+													"Blanditiis adipisci laudantium reiciendis distinctio, molestiae, illum. Aut eveniet assumenda expedita labore nulla commodi numquam perspiciatis, amet doloribus cum sint, quisquam possimus eos aspernatur distinctio similique perferendis."
+												),
+												React.createElement("div", { className: "line topmargin-sm nobottommargin" }),
 												React.createElement(
-													"div",
-													{ className: "testi-image" },
-													React.createElement(
-														"a",
-														{ href: "#" },
-														React.createElement("img", { src: "/images/testimonials/7.jpg", alt: "Customer Testimonails" })
-													)
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
+													React.createElement("i", { className: "icon-facebook" }),
+													React.createElement("i", { className: "icon-facebook" })
 												),
 												React.createElement(
-													"div",
-													{ className: "testi-content" },
-													React.createElement(
-														"p",
-														null,
-														"Fugit officia dolor sed harum excepturi ex iusto magnam asperiores molestiae qui natus obcaecati facere sint amet."
-													),
-													React.createElement(
-														"div",
-														{ className: "testi-meta" },
-														"Mary Jane",
-														React.createElement(
-															"span",
-															null,
-															"Google Inc."
-														)
-													)
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
+													React.createElement("i", { className: "icon-twitter" }),
+													React.createElement("i", { className: "icon-twitter" })
+												),
+												React.createElement(
+													"a",
+													{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
+													React.createElement("i", { className: "icon-instagram" }),
+													React.createElement("i", { className: "icon-instagram" })
 												)
 											)
 										)
