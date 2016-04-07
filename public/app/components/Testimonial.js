@@ -21,14 +21,6 @@ class Testimonial extends Component {
 							<i className="icon-twitter"></i>
 							<i className="icon-twitter"></i>
 						</a>
-						<a href="#" className="social-icon si-borderless si-small si-pinterest" title="Pinterest">
-							<i className="icon-pinterest"></i>
-							<i className="icon-pinterest"></i>
-						</a>
-						<a href="#" className="social-icon si-borderless si-small si-instagram" title="Instagram">
-							<i className="icon-instagram"></i>
-							<i className="icon-instagram"></i>
-						</a>
 					</div>
 				</div>
 			</div>			

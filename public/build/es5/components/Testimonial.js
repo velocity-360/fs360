@@ -72,18 +72,6 @@ var Testimonial = (function (Component) {
 								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
 								React.createElement("i", { className: "icon-twitter" }),
 								React.createElement("i", { className: "icon-twitter" })
-							),
-							React.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-pinterest", title: "Pinterest" },
-								React.createElement("i", { className: "icon-pinterest" }),
-								React.createElement("i", { className: "icon-pinterest" })
-							),
-							React.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
-								React.createElement("i", { className: "icon-instagram" }),
-								React.createElement("i", { className: "icon-instagram" })
 							)
 						)
 					)

@@ -43,12 +43,12 @@ var Nav = (function (_React$Component) {
 								{ id: "logo" },
 								React.createElement(
 									"a",
-									{ href: "index.html", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
+									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
 									React.createElement("img", { src: "images/logo-dark.png", alt: "Canvas Logo" })
 								),
 								React.createElement(
 									"a",
-									{ href: "index.html", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
+									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
 									React.createElement("img", { src: "images/logo-dark@2x.png", alt: "Canvas Logo" })
 								)
 							),
@@ -76,11 +76,11 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "#", "data-href": "#section-features" },
+											{ href: "#", "data-href": "#" },
 											React.createElement(
 												"div",
 												null,
-												"Features"
+												"Videos"
 											)
 										)
 									),
@@ -89,11 +89,11 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "#", "data-href": "#section-pricing" },
+											{ href: "#", "data-href": "#" },
 											React.createElement(
 												"div",
 												null,
-												"Pricing"
+												"Courses"
 											)
 										)
 									)

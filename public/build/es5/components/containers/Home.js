@@ -34,10 +34,16 @@ var Home = (function (Component) {
 
 		_get(Object.getPrototypeOf(Home.prototype), "constructor", this).call(this, props, context);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
-		this.register = this.register.bind(this);
-		this.state = {
-			testimonials: [{ name: "Brian Correa", image: "briancorrea.jpg", course: "iOS Course" }, { name: "Mike Maloney", image: "mikemaloney.jpg", course: "MEAN Stack Course" }, { name: "Jeff Abraham", image: "jeffabraham.jpg", course: "iOS Course" }, { name: "Jennifer Lin", image: "jenn.jpg", course: "Web Development Intensive" }]
-		};
+		this.register = this.register.bind(this)
+		// this.state = {
+		// 	testimonials: [
+		// 		{name:'Brian Correa', image:'briancorrea.jpg', course:'iOS Course'},
+		// 		{name:'Mike Maloney', image:'mikemaloney.jpg', course:'MEAN Stack Course'},
+		// 		{name:'Jeff Abraham', image:'jeffabraham.jpg', course:'iOS Course'},
+		// 		{name:'Jennifer Lin', image:'jenn.jpg', course:'Web Development Intensive'}
+		// 	]
+		// }
+		;
 	}
 
 	_inherits(Home, Component);
@@ -115,8 +121,8 @@ var Home = (function (Component) {
 					);
 				});
 
-				var testimonialList = this.state.testimonials.map(function (testimonial) {
-					return React.createElement(Testimonial, { testimonial: testimonial });
+				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
+					return React.createElement(Testimonial, { key: i, testimonial: testimonial });
 				});
 
 				return React.createElement(
@@ -141,18 +147,13 @@ var Home = (function (Component) {
 										React.createElement(
 											"h1",
 											{ "data-animate": "fadeInUp" },
-											"Its your time to ",
+											"Become a ",
 											React.createElement(
 												"strong",
 												null,
-												"create"
+												"Professional"
 											),
-											" Landing Pages for ",
-											React.createElement(
-												"strong",
-												null,
-												"FREE"
-											)
+											" Software Developer"
 										),
 										React.createElement(
 											"span",
@@ -168,18 +169,46 @@ var Home = (function (Component) {
 											{ className: "col_four_fifth nobottommargin" },
 											React.createElement(
 												"div",
-												{ className: "col_one_third nobottommargin" },
+												{ className: "col_one_fourth nobottommargin" },
 												React.createElement("input", { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: "firstName", type: "text", className: "form-control input-lg not-dark", placeholder: "First Name*" })
 											),
 											React.createElement(
 												"div",
-												{ className: "col_one_third nobottommargin" },
+												{ className: "col_one_fourth nobottommargin" },
 												React.createElement("input", { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: "lastName", type: "text", className: "form-control input-lg not-dark", placeholder: "Last Name*" })
 											),
 											React.createElement(
 												"div",
-												{ className: "col_one_third col_last nobottommargin" },
-												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "email", type: "text", className: "form-control input-lg not-dark", placeholder: "Email*" })
+												{ className: "col_one_fourth nobottommargin" },
+												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "lastName", type: "text", className: "form-control input-lg not-dark", placeholder: "Email*" })
+											),
+											React.createElement(
+												"div",
+												{ className: "col_one_fourth col_last nobottommargin" },
+												React.createElement(
+													"select",
+													{ className: "form-control input-lg not-dark" },
+													React.createElement(
+														"option",
+														null,
+														"iOS Bootcamp"
+													),
+													React.createElement(
+														"option",
+														null,
+														"Web Bootcamp"
+													),
+													React.createElement(
+														"option",
+														null,
+														"iOS Part Time"
+													),
+													React.createElement(
+														"option",
+														null,
+														"Web Part Time"
+													)
+												)
 											)
 										),
 										React.createElement(
@@ -188,7 +217,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"button",
 												{ onClick: this.register, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit", type: "submit" },
-												"JOIN"
+												"Request Syllabus"
 											)
 										)
 									)
@@ -210,13 +239,13 @@ var Home = (function (Component) {
 									{ id: "section-features", className: "heading-block title-center page-section" },
 									React.createElement(
 										"div",
-										{ style: { background: "#f9f9f9", border: "1px solid #ddd", padding: 24, marginBottom: 24, fontSize: 16 } },
+										{ style: { background: "#f9f9f9", border: "1px solid #ddd", padding: 24, marginBottom: 24, fontSize: 20, fontWeight: 100 } },
 										"FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course."
 									),
 									React.createElement(
 										"h3",
 										null,
-										"Featured Courses"
+										"Upcoming Courses"
 									)
 								),
 								courses,
@@ -304,7 +333,8 @@ var stateToProps = function (state) {
 	console.log("STATE TO PROPS: " + JSON.stringify(state));
 	return {
 		currentUser: state.profileReducer.currentUser,
-		courses: state.courseReducer.courses
+		courses: state.courseReducer.courses,
+		testimonials: state.staticReducer.testimonials
 	};
 };
 

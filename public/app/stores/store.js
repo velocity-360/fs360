@@ -7,12 +7,13 @@ import thunk from 'redux-thunk'
 // App Reducers
 import profileReducer from '../reducers/profile'
 import courseReducer from '../reducers/course'
+import staticReducer from '../reducers/static'
 
 // Combine Reducers
 var reducers = combineReducers({
     profileReducer: profileReducer,
     courseReducer: courseReducer,
-    // more...
+    staticReducer: staticReducer,
 });
 
 // Create Store

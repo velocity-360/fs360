@@ -21223,22 +21223,26 @@
 	
 	var _course2 = _interopRequireDefault(_course);
 	
+	var _static = __webpack_require__(194);
+	
+	var _static2 = _interopRequireDefault(_static);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Combine Reducers
+	var reducers = (0, _redux.combineReducers)({
+	    profileReducer: _profile2.default,
+	    courseReducer: _course2.default,
+	    staticReducer: _static2.default
+	});
+	
+	// Create Store
 	
 	
 	// Add middleware to createStore
 	//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 	
 	// App Reducers
-	var reducers = (0, _redux.combineReducers)({
-	    profileReducer: _profile2.default,
-	    courseReducer: _course2.default
-	});
-	
-	// Create Store
-	// more...
 	var store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default) // Add middleware to createStore
 	);
 	
@@ -21457,7 +21461,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Testimonial = __webpack_require__(193);
+	var _Testimonial = __webpack_require__(189);
 	
 	var _Testimonial2 = _interopRequireDefault(_Testimonial);
 	
@@ -21465,13 +21469,13 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _actions = __webpack_require__(189);
+	var _actions = __webpack_require__(190);
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
 	var _reactRedux = __webpack_require__(159);
 	
-	var _api = __webpack_require__(190);
+	var _api = __webpack_require__(191);
 	
 	var _api2 = _interopRequireDefault(_api);
 	
@@ -21493,9 +21497,14 @@
 	
 			_this.updateUserRegistration = _this.updateUserRegistration.bind(_this);
 			_this.register = _this.register.bind(_this);
-			_this.state = {
-				testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Course' }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'MEAN Stack Course' }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Course' }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Development Intensive' }]
-			};
+			// this.state = {
+			// 	testimonials: [
+			// 		{name:'Brian Correa', image:'briancorrea.jpg', course:'iOS Course'},
+			// 		{name:'Mike Maloney', image:'mikemaloney.jpg', course:'MEAN Stack Course'},
+			// 		{name:'Jeff Abraham', image:'jeffabraham.jpg', course:'iOS Course'},
+			// 		{name:'Jennifer Lin', image:'jenn.jpg', course:'Web Development Intensive'}
+			// 	]
+			// }
 			return _this;
 		}
 	
@@ -21565,8 +21574,8 @@
 					);
 				});
 	
-				var testimonialList = this.state.testimonials.map(function (testimonial) {
-					return _react2.default.createElement(_Testimonial2.default, { testimonial: testimonial });
+				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
+					return _react2.default.createElement(_Testimonial2.default, { key: i, testimonial: testimonial });
 				});
 	
 				return _react2.default.createElement(
@@ -21591,18 +21600,13 @@
 										_react2.default.createElement(
 											'h1',
 											{ 'data-animate': 'fadeInUp' },
-											'Its your time to ',
+											'Become a ',
 											_react2.default.createElement(
 												'strong',
 												null,
-												'create'
+												'Professional'
 											),
-											' Landing Pages for ',
-											_react2.default.createElement(
-												'strong',
-												null,
-												'FREE'
-											)
+											' Software Developer'
 										),
 										_react2.default.createElement(
 											'span',
@@ -21618,18 +21622,46 @@
 											{ className: 'col_four_fifth nobottommargin' },
 											_react2.default.createElement(
 												'div',
-												{ className: 'col_one_third nobottommargin' },
+												{ className: 'col_one_fourth nobottommargin' },
 												_react2.default.createElement('input', { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'First Name*' })
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'col_one_third nobottommargin' },
+												{ className: 'col_one_fourth nobottommargin' },
 												_react2.default.createElement('input', { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name*' })
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'col_one_third col_last nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email*' })
+												{ className: 'col_one_fourth nobottommargin' },
+												_react2.default.createElement('input', { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email*' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_one_fourth col_last nobottommargin' },
+												_react2.default.createElement(
+													'select',
+													{ className: 'form-control input-lg not-dark' },
+													_react2.default.createElement(
+														'option',
+														null,
+														'iOS Bootcamp'
+													),
+													_react2.default.createElement(
+														'option',
+														null,
+														'Web Bootcamp'
+													),
+													_react2.default.createElement(
+														'option',
+														null,
+														'iOS Part Time'
+													),
+													_react2.default.createElement(
+														'option',
+														null,
+														'Web Part Time'
+													)
+												)
 											)
 										),
 										_react2.default.createElement(
@@ -21638,7 +21670,7 @@
 											_react2.default.createElement(
 												'button',
 												{ onClick: this.register, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit', type: 'submit' },
-												'JOIN'
+												'Request Syllabus'
 											)
 										)
 									)
@@ -21660,13 +21692,13 @@
 									{ id: 'section-features', className: 'heading-block title-center page-section' },
 									_react2.default.createElement(
 										'div',
-										{ style: { background: '#f9f9f9', border: '1px solid #ddd', padding: 24, marginBottom: 24, fontSize: 16 } },
+										{ style: { background: '#f9f9f9', border: '1px solid #ddd', padding: 24, marginBottom: 24, fontSize: 20, fontWeight: 100 } },
 										'FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.'
 									),
 									_react2.default.createElement(
 										'h3',
 										null,
-										'Featured Courses'
+										'Upcoming Courses'
 									)
 								),
 								courses,
@@ -21751,7 +21783,8 @@
 		console.log('STATE TO PROPS: ' + JSON.stringify(state));
 		return {
 			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courses
+			courses: state.courseReducer.courses,
+			testimonials: state.staticReducer.testimonials
 		};
 	};
 	
@@ -21820,12 +21853,12 @@
 								{ id: "logo" },
 								_react2.default.createElement(
 									"a",
-									{ href: "index.html", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
+									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
 									_react2.default.createElement("img", { src: "images/logo-dark.png", alt: "Canvas Logo" })
 								),
 								_react2.default.createElement(
 									"a",
-									{ href: "index.html", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
+									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
 									_react2.default.createElement("img", { src: "images/logo-dark@2x.png", alt: "Canvas Logo" })
 								)
 							),
@@ -21853,11 +21886,11 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "#", "data-href": "#section-features" },
+											{ href: "#", "data-href": "#" },
 											_react2.default.createElement(
 												"div",
 												null,
-												"Features"
+												"Videos"
 											)
 										)
 									),
@@ -21866,11 +21899,11 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "#", "data-href": "#section-pricing" },
+											{ href: "#", "data-href": "#" },
 											_react2.default.createElement(
 												"div",
 												null,
-												"Pricing"
+												"Courses"
 											)
 										)
 									)
@@ -22043,6 +22076,99 @@
 /* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Testimonial = function (_Component) {
+		_inherits(Testimonial, _Component);
+	
+		function Testimonial() {
+			_classCallCheck(this, Testimonial);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Testimonial).apply(this, arguments));
+		}
+	
+		_createClass(Testimonial, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "col-md-6 bottommargin" },
+					_react2.default.createElement(
+						"div",
+						{ className: "team team-list clearfix" },
+						_react2.default.createElement(
+							"div",
+							{ className: "team-image", style: { width: 150 } },
+							_react2.default.createElement("img", { className: "img-circle", src: '/images/' + this.props.testimonial.image, alt: "Bryant Kellam" })
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "team-desc" },
+							_react2.default.createElement(
+								"div",
+								{ className: "team-title" },
+								_react2.default.createElement(
+									"h4",
+									null,
+									this.props.testimonial.name
+								),
+								_react2.default.createElement(
+									"span",
+									null,
+									this.props.testimonial.course
+								)
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "team-content" },
+								"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
+							),
+							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
+								_react2.default.createElement("i", { className: "icon-facebook" }),
+								_react2.default.createElement("i", { className: "icon-facebook" })
+							),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
+								_react2.default.createElement("i", { className: "icon-twitter" }),
+								_react2.default.createElement("i", { className: "icon-twitter" })
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Testimonial;
+	}(_react.Component);
+	
+	exports.default = Testimonial;
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	/*
@@ -22091,7 +22217,7 @@
 	};
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22100,11 +22226,11 @@
 		value: true
 	});
 	
-	var _isomorphicFetch = __webpack_require__(191);
+	var _isomorphicFetch = __webpack_require__(192);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _actions = __webpack_require__(189);
+	var _actions = __webpack_require__(190);
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
@@ -22157,19 +22283,19 @@
 	};
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(192);
+	__webpack_require__(193);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -22564,109 +22690,45 @@
 
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
 	
-	var _react = __webpack_require__(1);
 	
-	var _react2 = _interopRequireDefault(_react);
+		switch (action.type) {
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+			// case constants.UPDATE_CURRENT_USER:
+			// 	var newState = Object.assign({}, state);
+			// 	newState['currentUser'] = action.currentUser;
+			// 	console.log('PROFILE REDUCER - updateCurrentUser: '+JSON.stringify(newState));
+			// 	return newState;
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Testimonial = function (_Component) {
-		_inherits(Testimonial, _Component);
-	
-		function Testimonial() {
-			_classCallCheck(this, Testimonial);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Testimonial).apply(this, arguments));
+			default:
+				return state;
 		}
+	};
 	
-		_createClass(Testimonial, [{
-			key: "render",
-			value: function render() {
-				return _react2.default.createElement(
-					"div",
-					{ className: "col-md-6 bottommargin" },
-					_react2.default.createElement(
-						"div",
-						{ className: "team team-list clearfix" },
-						_react2.default.createElement(
-							"div",
-							{ className: "team-image", style: { width: 150 } },
-							_react2.default.createElement("img", { className: "img-circle", src: '/images/' + this.props.testimonial.image, alt: "Bryant Kellam" })
-						),
-						_react2.default.createElement(
-							"div",
-							{ className: "team-desc" },
-							_react2.default.createElement(
-								"div",
-								{ className: "team-title" },
-								_react2.default.createElement(
-									"h4",
-									null,
-									this.props.testimonial.name
-								),
-								_react2.default.createElement(
-									"span",
-									null,
-									this.props.testimonial.course
-								)
-							),
-							_react2.default.createElement(
-								"div",
-								{ className: "team-content" },
-								"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
-							),
-							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
-								_react2.default.createElement("i", { className: "icon-facebook" }),
-								_react2.default.createElement("i", { className: "icon-facebook" })
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
-								_react2.default.createElement("i", { className: "icon-twitter" }),
-								_react2.default.createElement("i", { className: "icon-twitter" })
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-pinterest", title: "Pinterest" },
-								_react2.default.createElement("i", { className: "icon-pinterest" }),
-								_react2.default.createElement("i", { className: "icon-pinterest" })
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-instagram", title: "Instagram" },
-								_react2.default.createElement("i", { className: "icon-instagram" }),
-								_react2.default.createElement("i", { className: "icon-instagram" })
-							)
-						)
-					)
-				);
-			}
-		}]);
+	var constants = __webpack_require__(183);
 	
-		return Testimonial;
-	}(_react.Component);
+	var initialState = {
+		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Course' }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'MEAN Stack Course' }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Course' }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Development Intensive' }]
 	
-	exports.default = Testimonial;
+	};
+	
+	/*
+	A reducer is a function that takes the current state and an action, and then returns a
+	new state. This reducer is responsible for appState.heroes data.
+	See `initialstate.js` for a clear view of what it looks like!
+	*/
 
 /***/ }
 /******/ ]);

@@ -15,15 +15,19 @@ class Nav extends React.Component {
 						<div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
 
 						<div id="logo">
-							<a href="index.html" className="standard-logo" data-dark-logo="/images/logo-dark.png"><img src="images/logo-dark.png" alt="Canvas Logo" /></a>
-							<a href="index.html" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png"><img src="images/logo-dark@2x.png" alt="Canvas Logo" /></a>
+							<a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png">
+								<img src="images/logo-dark.png" alt="Canvas Logo" />
+							</a>
+							<a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png">
+								<img src="images/logo-dark@2x.png" alt="Canvas Logo" />
+							</a>
 						</div>
 
 						<nav id="primary-menu">
 							<ul className="one-page-menu">
 								<li className="current"><a href="#" data-href="#header"><div>Home</div></a></li>
-								<li><a href="#" data-href="#section-features"><div>Features</div></a></li>
-								<li><a href="#" data-href="#section-pricing"><div>Pricing</div></a></li>
+								<li><a href="#" data-href="#"><div>Videos</div></a></li>
+								<li><a href="#" data-href="#"><div>Courses</div></a></li>
 							</ul>
 						</nav>
 					</div>

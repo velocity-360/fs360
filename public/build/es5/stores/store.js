@@ -17,10 +17,13 @@ var profileReducer = _interopRequire(require("../reducers/profile"));
 
 var courseReducer = _interopRequire(require("../reducers/course"));
 
+var staticReducer = _interopRequire(require("../reducers/static"));
+
 // Combine Reducers
 var reducers = combineReducers({
     profileReducer: profileReducer,
-    courseReducer: courseReducer });
+    courseReducer: courseReducer,
+    staticReducer: staticReducer });
 
 // Create Store
 var store = createStore(reducers, applyMiddleware(thunk) // Add middleware to createStore
@@ -28,4 +31,3 @@ var store = createStore(reducers, applyMiddleware(thunk) // Add middleware to cr
 
 
 module.exports = store;
-// more...
