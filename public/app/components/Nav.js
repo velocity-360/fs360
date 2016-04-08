@@ -16,10 +16,10 @@ class Nav extends React.Component {
 
 						<div id="logo">
 							<a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png">
-								<img src="images/logo-dark.png" alt="Canvas Logo" />
+								<img src="/images/logo-dark.png" alt="Canvas Logo" />
 							</a>
 							<a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png">
-								<img src="images/logo-dark@2x.png" alt="Canvas Logo" />
+								<img src="/images/logo-dark@2x.png" alt="Canvas Logo" />
 							</a>
 						</div>
 

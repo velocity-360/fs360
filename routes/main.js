@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:page', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render(req.params.page, { title: 'Express' });
 });
 
 router.get('/:page/:slug', function(req, res, next) {
@@ -31,6 +31,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		return;
 	}
 	
-    res.render('index', { title: 'Express' });
+    res.render(req.params.page, { title: 'Express' });
 });
 module.exports = router;

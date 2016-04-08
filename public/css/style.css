@@ -2318,13 +2318,12 @@ body:not(.device-touch) #page-menu nav li a {
 	top: 0;
 	left: 0;
 	z-index: 10;
-	width: 260px;
+	width: 320px;
 	height: 100%;
 	background-color: #FFF;
 	border: none;
-	border-right: 1px solid #EEE;
+	border-right: 1px solid #ddd;
 	overflow: hidden;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.065);
 }
 
 .side-header #header-wrap {
@@ -2335,7 +2334,7 @@ body:not(.device-touch) #page-menu nav li a {
 }
 
 .side-header #header .container {
-	width: 260px !important;
+	width: 300px !important;
 	padding: 0 30px !important;
 	margin: 0 !important;
 }
@@ -2451,7 +2450,7 @@ body:not(.device-touch) #page-menu nav li a {
 }
 
 .side-header:not(.open-header) #wrapper {
-	margin: 0 0 0 260px !important;
+	margin: 0 0 0 300px !important;
 	width: auto !important;
 }
 
@@ -2466,13 +2465,13 @@ body:not(.device-touch) #page-menu nav li a {
 
 .side-header.open-header.push-wrapper { overflow-x: hidden; }
 
-.side-header.open-header #header { left: -260px; }
+.side-header.open-header #header { left: -300px; }
 
 .side-header.open-header.side-header-open #header { left: 0; }
 
 .side-header.open-header #wrapper { left: 0; }
 
-.side-header.open-header.push-wrapper.side-header-open #wrapper { left: 260px; }
+.side-header.open-header.push-wrapper.side-header-open #wrapper { left: 300px; }
 
 #header-trigger { display: none; }
 
@@ -2520,11 +2519,11 @@ body:not(.device-touch) #page-menu nav li a {
 	border-left: 1px solid #EEE;
 }
 
-.side-header.side-header-right:not(.open-header) #wrapper { margin: 0 260px 0 0 !important; }
+.side-header.side-header-right:not(.open-header) #wrapper { margin: 0 300px 0 0 !important; }
 
 .side-header.side-header-right.open-header #header {
 	left: auto;
-	right: -260px;
+	right: -300px;
 }
 
 .side-header.side-header-right.open-header.side-header-open #header {
@@ -2532,7 +2531,7 @@ body:not(.device-touch) #page-menu nav li a {
 	right: 0;
 }
 
-.side-header.side-header-right.open-header.push-wrapper.side-header-open #wrapper { left: -260px; }
+.side-header.side-header-right.open-header.push-wrapper.side-header-open #wrapper { left: -300px; }
 
 .side-header.side-header-right.open-header #header-trigger {
 	left: auto;

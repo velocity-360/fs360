@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from './containers/Home'
+import Course from './containers/Course'
 
 class Main extends React.Component {
 
@@ -12,10 +13,24 @@ class Main extends React.Component {
 	}
 
 	render(){
-//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page))
+		console.log('RENDER MAIN: '+JSON.stringify(this.props.page))
+
+		var page = null
+		switch (this.props.page){
+			case 'home':
+				return page = <Home />
+
+			case 'course':
+				return page = <Course />
+
+			default:
+				return page = null
+
+		}
+
 		return (
 			<div>
-				<Home />
+				{page}
 			</div>
 		)
 	}

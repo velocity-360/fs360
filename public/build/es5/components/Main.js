@@ -14,6 +14,8 @@ var React = _interopRequire(require("react"));
 
 var Home = _interopRequire(require("./containers/Home"));
 
+var Course = _interopRequire(require("./containers/Course"));
+
 var Main = (function (_React$Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -27,11 +29,25 @@ var Main = (function (_React$Component) {
 	_prototypeProperties(Main, null, {
 		render: {
 			value: function render() {
-				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page))
+				console.log("RENDER MAIN: " + JSON.stringify(this.props.page));
+
+				var page = null;
+				switch (this.props.page) {
+					case "home":
+						return page = React.createElement(Home, null);
+
+					case "course":
+						return page = React.createElement(Course, null);
+
+					default:
+						return page = null;
+
+				}
+
 				return React.createElement(
 					"div",
 					null,
-					React.createElement(Home, null)
+					page
 				);
 			},
 			writable: true,

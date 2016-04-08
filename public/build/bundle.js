@@ -21447,6 +21447,10 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
+	var _Course = __webpack_require__(195);
+	
+	var _Course2 = _interopRequireDefault(_Course);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21471,11 +21475,25 @@
 		_createClass(Main, [{
 			key: 'render',
 			value: function render() {
-				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page))
+				console.log('RENDER MAIN: ' + JSON.stringify(this.props.page));
+	
+				var page = null;
+				switch (this.props.page) {
+					case 'home':
+						return page = _react2.default.createElement(_Home2.default, null);
+	
+					case 'course':
+						return page = _react2.default.createElement(_Course2.default, null);
+	
+					default:
+						return page = null;
+	
+				}
+	
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_Home2.default, null)
+					page
 				);
 			}
 		}]);
@@ -21573,46 +21591,11 @@
 				event.preventDefault();
 				console.log('REGISTER: ' + JSON.stringify(this.props.currentUser));
 	
-				_api2.default.handlePost('/api/test', this.props.currentUser);
+				//		api.handlePost('/api/test', this.props.currentUser);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var courses = this.props.courses.map(function (course, i) {
-					var index = i + 1;
-					var colClass = index % 3 == 0 ? "col_one_third" : "col_one_third col_last";
-					return _react2.default.createElement(
-						'div',
-						{ key: i, className: colClass },
-						_react2.default.createElement(
-							'div',
-							{ className: 'feature-box fbox-plain' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'fbox-icon', 'data-animate': 'bounceIn' },
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('img', { src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=360', alt: 'Responsive Layout' })
-								)
-							),
-							_react2.default.createElement(
-								'h3',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									course.title
-								)
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								course.description
-							)
-						)
-					);
-				});
 	
 				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
 					return _react2.default.createElement(_Testimonial2.default, { key: i, testimonial: testimonial });
@@ -21765,16 +21748,6 @@
 									{ className: 'divider divider-short divider-center' },
 									_react2.default.createElement('i', { className: 'icon-circle' })
 								),
-								_react2.default.createElement(
-									'div',
-									{ id: 'section-features', className: 'heading-block title-center page-section' },
-									_react2.default.createElement(
-										'h3',
-										null,
-										'Upcoming Courses'
-									)
-								),
-								courses,
 								_react2.default.createElement('div', { className: 'clear' })
 							),
 							_react2.default.createElement(
@@ -21858,7 +21831,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '#', className: 'btn btn-success' },
+											{ href: '/course/123', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21900,7 +21873,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '#', className: 'btn btn-success' },
+											{ href: '/course/123', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21943,7 +21916,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '#', className: 'btn btn-success' },
+											{ href: '/course/123', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21974,7 +21947,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'4 Weeks'
+												'6 Weeks'
 											)
 										),
 										_react2.default.createElement(
@@ -21985,9 +21958,143 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '#', className: 'btn btn-success' },
+											{ href: '/course/123', className: 'btn btn-success' },
 											'Learn More'
 										)
+									)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'divider divider-short divider-center' },
+								_react2.default.createElement('i', { className: 'icon-circle' })
+							),
+							_react2.default.createElement('div', { className: 'clear' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'row clearfix common-height' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-6 center col-padding', style: { background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover' } },
+								_react2.default.createElement(
+									'div',
+									null,
+									' '
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-6 center col-padding', style: { backgroundColor: '#F5F5F5' } },
+								_react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'heading-block nobottomborder' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Walkthrough Videos & Demos'
+										)
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'lead' },
+										'Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.'
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'table-responsive' },
+										_react2.default.createElement(
+											'table',
+											{ className: 'table table-bordered table-striped', style: { background: '#fff', textAlign: 'left' } },
+											_react2.default.createElement(
+												'colgroup',
+												null,
+												_react2.default.createElement('col', { className: 'col-xs-2' }),
+												_react2.default.createElement('col', { className: 'col-xs-4' }),
+												_react2.default.createElement('col', { className: 'col-xs-4' })
+											),
+											_react2.default.createElement(
+												'thead',
+												null,
+												_react2.default.createElement(
+													'tr',
+													null,
+													_react2.default.createElement(
+														'th',
+														null,
+														'Class'
+													),
+													_react2.default.createElement(
+														'th',
+														null,
+														'Dates'
+													),
+													_react2.default.createElement(
+														'th',
+														null,
+														'Status'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'tbody',
+												null,
+												_react2.default.createElement(
+													'tr',
+													null,
+													_react2.default.createElement(
+														'td',
+														null,
+														_react2.default.createElement(
+															'span',
+															null,
+															'iOS + Node'
+														)
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'June 1 - Nov 28'
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'Accepting Applications'
+													)
+												),
+												_react2.default.createElement(
+													'tr',
+													null,
+													_react2.default.createElement(
+														'td',
+														null,
+														_react2.default.createElement(
+															'span',
+															null,
+															'Full Stack Web'
+														)
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'June 1 - Nov 28'
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'Closed'
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'a',
+										{ href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+										'Apply'
 									)
 								)
 							)
@@ -22075,12 +22182,12 @@
 								_react2.default.createElement(
 									"a",
 									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
-									_react2.default.createElement("img", { src: "images/logo-dark.png", alt: "Canvas Logo" })
+									_react2.default.createElement("img", { src: "/images/logo-dark.png", alt: "Canvas Logo" })
 								),
 								_react2.default.createElement(
 									"a",
 									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
-									_react2.default.createElement("img", { src: "images/logo-dark@2x.png", alt: "Canvas Logo" })
+									_react2.default.createElement("img", { src: "/images/logo-dark@2x.png", alt: "Canvas Logo" })
 								)
 							),
 							_react2.default.createElement(
@@ -22909,6 +23016,564 @@
 	  self.fetch.polyfill = true
 	})(typeof self !== 'undefined' ? self : this);
 
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Sidebar = __webpack_require__(196);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(189);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _Testimonial = __webpack_require__(190);
+	
+	var _Testimonial2 = _interopRequireDefault(_Testimonial);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(191);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(192);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Course = function (_Component) {
+		_inherits(Course, _Component);
+	
+		function Course() {
+			_classCallCheck(this, Course);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Course).apply(this, arguments));
+		}
+	
+		_createClass(Course, [{
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'post-timeline clearfix' },
+										_react2.default.createElement('div', { className: 'timeline-border' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'10',
+												_react2.default.createElement(
+													'span',
+													null,
+													'Feb'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'a',
+													{ href: 'images/blog/full/17.jpg', 'data-lightbox': 'image' },
+													_react2.default.createElement('img', { className: 'image_fade', src: '/images/blog/standard/17.jpg', alt: 'Standard Post with Image' })
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h2',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html' },
+														'This is a Standard post with a Preview Image'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'ul',
+												{ className: 'entry-meta clearfix' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														_react2.default.createElement('i', { className: 'icon-user' }),
+														' admin'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement('i', { className: 'icon-folder-open' }),
+													' ',
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														'General'
+													),
+													', ',
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														'Media'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html#comments' },
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' 13 Comments'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														_react2.default.createElement('i', { className: 'icon-camera-retro' })
+													)
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.'
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: 'blog-single.html', className: 'more-link' },
+													'Read More'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'10',
+												_react2.default.createElement(
+													'span',
+													null,
+													'Feb'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h2',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html' },
+														'This is a Standard post with a Preview Image'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'ul',
+												{ className: 'entry-meta clearfix' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														_react2.default.createElement('i', { className: 'icon-user' }),
+														' admin'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement('i', { className: 'icon-folder-open' }),
+													' ',
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														'General'
+													),
+													', ',
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														'Media'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html#comments' },
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' 13 Comments'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														_react2.default.createElement('i', { className: 'icon-camera-retro' })
+													)
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.'
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: 'blog-single.html', className: 'more-link' },
+													'Read More'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'21',
+												_react2.default.createElement(
+													'span',
+													null,
+													'Mar'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body' },
+														'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, fuga optio voluptatibus saepe tenetur aliquam debitis eos accusantium! Vitae, hic, atque aliquid repellendus accusantium laudantium minus eaque quibusdam ratione sapiente.'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'ul',
+												{ className: 'entry-meta clearfix' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														_react2.default.createElement('i', { className: 'icon-user' }),
+														' admin'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement('i', { className: 'icon-folder-open' }),
+													' ',
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														'Status'
+													),
+													', ',
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														'News'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html#comments' },
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' 11 Comments'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#' },
+														_react2.default.createElement('i', { className: 'icon-align-justify2' })
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Course;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		console.log('STATE TO PROPS: ' + JSON.stringify(state));
+		return {
+			currentUser: state.profileReducer.currentUser,
+			testimonials: state.staticReducer.testimonials
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Sidebar = function (_Component) {
+		_inherits(Sidebar, _Component);
+	
+		function Sidebar() {
+			_classCallCheck(this, Sidebar);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Sidebar).apply(this, arguments));
+		}
+	
+		_createClass(Sidebar, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"header",
+					{ id: "header", className: "no-sticky" },
+					_react2.default.createElement(
+						"div",
+						{ id: "header-wrap" },
+						_react2.default.createElement(
+							"div",
+							{ className: "container clearfix" },
+							_react2.default.createElement(
+								"div",
+								{ id: "primary-menu-trigger" },
+								_react2.default.createElement("i", { className: "icon-reorder" })
+							),
+							_react2.default.createElement(
+								"div",
+								{ id: "logo", className: "nobottomborder" },
+								_react2.default.createElement(
+									"a",
+									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-side-dark.png" },
+									_react2.default.createElement("img", { src: "/images/logo-side.png", alt: "Canvas Logo" })
+								),
+								_react2.default.createElement(
+									"a",
+									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-side-dark@2x.png" },
+									_react2.default.createElement("img", { src: "/images/logo-side@2x.png", alt: "Canvas Logo" })
+								)
+							),
+							_react2.default.createElement(
+								"nav",
+								{ id: "primary-menu" },
+								_react2.default.createElement(
+									"ul",
+									null,
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"Home"
+											)
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/about" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"About"
+											)
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"Pages"
+											)
+										),
+										_react2.default.createElement(
+											"ul",
+											null,
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "#" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"One"
+													)
+												)
+											),
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "#" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"Two"
+													)
+												)
+											),
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "#" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"Three"
+													)
+												)
+											)
+										)
+									)
+								)
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "clearfix visible-md visible-lg" },
+								_react2.default.createElement(
+									"a",
+									{ href: "#", className: "social-icon si-small si-borderless si-facebook" },
+									_react2.default.createElement("i", { className: "icon-facebook" }),
+									_react2.default.createElement("i", { className: "icon-facebook" })
+								),
+								_react2.default.createElement(
+									"a",
+									{ href: "#", className: "social-icon si-small si-borderless si-twitter" },
+									_react2.default.createElement("i", { className: "icon-twitter" }),
+									_react2.default.createElement("i", { className: "icon-twitter" })
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Sidebar;
+	}(_react.Component);
+	
+	exports.default = Sidebar;
 
 /***/ }
 /******/ ]);

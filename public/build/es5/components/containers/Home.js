@@ -68,7 +68,7 @@ var Home = (function (Component) {
 				event.preventDefault();
 				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
 
-				api.handlePost("/api/test", this.props.currentUser);
+				//		api.handlePost('/api/test', this.props.currentUser);
 
 			},
 			writable: true,
@@ -76,42 +76,6 @@ var Home = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var courses = this.props.courses.map(function (course, i) {
-					var index = i + 1;
-					var colClass = index % 3 == 0 ? "col_one_third" : "col_one_third col_last";
-					return React.createElement(
-						"div",
-						{ key: i, className: colClass },
-						React.createElement(
-							"div",
-							{ className: "feature-box fbox-plain" },
-							React.createElement(
-								"div",
-								{ className: "fbox-icon", "data-animate": "bounceIn" },
-								React.createElement(
-									"a",
-									{ href: "#" },
-									React.createElement("img", { src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=360", alt: "Responsive Layout" })
-								)
-							),
-							React.createElement(
-								"h3",
-								null,
-								React.createElement(
-									"a",
-									{ href: "#" },
-									course.title
-								)
-							),
-							React.createElement(
-								"p",
-								null,
-								course.description
-							)
-						)
-					);
-				});
-
 				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
 					return React.createElement(Testimonial, { key: i, testimonial: testimonial });
 				});
@@ -263,16 +227,6 @@ var Home = (function (Component) {
 									{ className: "divider divider-short divider-center" },
 									React.createElement("i", { className: "icon-circle" })
 								),
-								React.createElement(
-									"div",
-									{ id: "section-features", className: "heading-block title-center page-section" },
-									React.createElement(
-										"h3",
-										null,
-										"Upcoming Courses"
-									)
-								),
-								courses,
 								React.createElement("div", { className: "clear" })
 							),
 							React.createElement(
@@ -356,7 +310,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "#", className: "btn btn-success" },
+											{ href: "/course/123", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -398,7 +352,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "#", className: "btn btn-success" },
+											{ href: "/course/123", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -441,7 +395,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "#", className: "btn btn-success" },
+											{ href: "/course/123", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -472,7 +426,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"4 Weeks"
+												"6 Weeks"
 											)
 										),
 										React.createElement(
@@ -483,9 +437,143 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "#", className: "btn btn-success" },
+											{ href: "/course/123", className: "btn btn-success" },
 											"Learn More"
 										)
+									)
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "divider divider-short divider-center" },
+								React.createElement("i", { className: "icon-circle" })
+							),
+							React.createElement("div", { className: "clear" })
+						),
+						React.createElement(
+							"div",
+							{ className: "row clearfix common-height" },
+							React.createElement(
+								"div",
+								{ className: "col-md-6 center col-padding", style: { background: "url(\"/images/hacking.jpg\") center center no-repeat", backgroundSize: "cover" } },
+								React.createElement(
+									"div",
+									null,
+									" "
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#F5F5F5" } },
+								React.createElement(
+									"div",
+									null,
+									React.createElement(
+										"div",
+										{ className: "heading-block nobottomborder" },
+										React.createElement(
+											"h3",
+											null,
+											"Walkthrough Videos & Demos"
+										)
+									),
+									React.createElement(
+										"p",
+										{ className: "lead" },
+										"Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive."
+									),
+									React.createElement(
+										"div",
+										{ className: "table-responsive" },
+										React.createElement(
+											"table",
+											{ className: "table table-bordered table-striped", style: { background: "#fff", textAlign: "left" } },
+											React.createElement(
+												"colgroup",
+												null,
+												React.createElement("col", { className: "col-xs-2" }),
+												React.createElement("col", { className: "col-xs-4" }),
+												React.createElement("col", { className: "col-xs-4" })
+											),
+											React.createElement(
+												"thead",
+												null,
+												React.createElement(
+													"tr",
+													null,
+													React.createElement(
+														"th",
+														null,
+														"Class"
+													),
+													React.createElement(
+														"th",
+														null,
+														"Dates"
+													),
+													React.createElement(
+														"th",
+														null,
+														"Status"
+													)
+												)
+											),
+											React.createElement(
+												"tbody",
+												null,
+												React.createElement(
+													"tr",
+													null,
+													React.createElement(
+														"td",
+														null,
+														React.createElement(
+															"span",
+															null,
+															"iOS + Node"
+														)
+													),
+													React.createElement(
+														"td",
+														null,
+														"June 1 - Nov 28"
+													),
+													React.createElement(
+														"td",
+														null,
+														"Accepting Applications"
+													)
+												),
+												React.createElement(
+													"tr",
+													null,
+													React.createElement(
+														"td",
+														null,
+														React.createElement(
+															"span",
+															null,
+															"Full Stack Web"
+														)
+													),
+													React.createElement(
+														"td",
+														null,
+														"June 1 - Nov 28"
+													),
+													React.createElement(
+														"td",
+														null,
+														"Closed"
+													)
+												)
+											)
+										)
+									),
+									React.createElement(
+										"a",
+										{ href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+										"Apply"
 									)
 								)
 							)

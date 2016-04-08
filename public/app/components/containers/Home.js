@@ -36,29 +36,12 @@ class Home extends Component {
 		event.preventDefault()
 		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 
-		api.handlePost('/api/test', this.props.currentUser);
+//		api.handlePost('/api/test', this.props.currentUser);
 
 		
 	}
 
 	render(){
-		var courses = this.props.courses.map(function(course, i){
-			var index = i+1;
-			var colClass = (index%3 == 0) ? "col_one_third" : "col_one_third col_last";
-			return (
-				<div key={i} className={colClass}>
-					<div className="feature-box fbox-plain">
-						<div className="fbox-icon" data-animate="bounceIn">
-							<a href="#">
-								<img src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=360'} alt="Responsive Layout" />
-							</a>
-						</div>
-						<h3><a href="#">{course.title}</a></h3>
-						<p>{course.description}</p>
-					</div>
-				</div>
-			)
-		});
 
 		var testimonialList = this.props.testimonials.map(function(testimonial, i){
 			return <Testimonial key={i} testimonial={testimonial} />
@@ -67,7 +50,6 @@ class Home extends Component {
 		return (
 			<div>
 				<Nav />
-
 				<section id="slider" className="slider-parallax dark full-screen" style={{background: "url(images/programming.jpg) center"}}>
 
 					<div className="slider-parallax-inner">
@@ -79,7 +61,6 @@ class Home extends Component {
 										Become a <strong>Professional</strong> Software Developer 
 									</h1>
 									<span data-animate="fadeInUp" data-delay="300">
-
 										Learn to code in our part time or full time classes for Web and iOS 
 									</span>
 								</div>
@@ -148,26 +129,18 @@ class Home extends Component {
 								<i className="icon-circle"></i>
 							</div>
 
-							<div id="section-features" className="heading-block title-center page-section">
-								<h3>Upcoming Courses</h3>
-							</div>
-
-							{courses}
-
 							<div className="clear"></div>
 
 						</div>
 
 						<div className="section">
 							<div className="container clearfix">
-
 								<div id="section-couple" className="heading-block title-center page-section">
 									<h2>Meet Our Students</h2>
 									<span>Meet the Bride &amp; the Groom</span>
 								</div>
 
 								{testimonialList}
-								
 							</div>
 						</div>
 					</div>
@@ -200,7 +173,7 @@ class Home extends Component {
 										such as Google Maps and Foursquare.
 									</div>
 									<br />
-									<a href="#" className="btn btn-success">
+									<a href="/course/123" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -226,7 +199,7 @@ class Home extends Component {
 										and all development will be done using Swift.
 									</div>
 									<br />
-									<a href="#" className="btn btn-success">
+									<a href="/course/123" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -249,7 +222,7 @@ class Home extends Component {
 									</div>
 									<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
 									<br />
-									<a href="#" className="btn btn-success">
+									<a href="/course/123" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -266,18 +239,78 @@ class Home extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>Web Intensive</h4>
-										<span>4 Weeks</span>
+										<span>6 Weeks</span>
 									</div>
 									<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
 									<br />
-									<a href="#" className="btn btn-success">
+									<a href="/course/123" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
 							</div>
 
 						</div>
+
+						<div className="divider divider-short divider-center">
+							<i className="icon-circle"></i>
+						</div>
+
+						<div className="clear"></div>
+
 					</div>
+
+					<div className="row clearfix common-height">
+						<div className="col-md-6 center col-padding" style={{background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover'}}>
+							<div>&nbsp;</div>
+						</div>
+
+						<div className="col-md-6 center col-padding" style={{backgroundColor: '#F5F5F5'}}>
+							<div>
+								<div className="heading-block nobottomborder">
+									<h3>Walkthrough Videos &amp; Demos</h3>
+								</div>
+
+								<p className="lead">
+									Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural 
+									resources. Governance impact; transformative donation philanthropy, respect 
+									reproductive.
+								</p>
+
+								<div className="table-responsive">
+									<table className="table table-bordered table-striped" style={{background:'#fff', textAlign:'left'}}>
+									  <colgroup>
+										<col className="col-xs-2" />
+										<col className="col-xs-4" />
+										<col className="col-xs-4" />
+									  </colgroup>
+									  <thead>
+										<tr>
+										  <th>Class</th>
+										  <th>Dates</th>
+										  <th>Status</th>
+										</tr>
+									  </thead>
+									  <tbody>
+										<tr>
+										  <td><span>iOS + Node</span></td>
+										  <td>June 1 - Nov 28</td>
+										  <td>Accepting Applications</td>
+										</tr>
+										<tr>
+										  <td><span>Full Stack Web</span></td>
+										  <td>June 1 - Nov 28</td>
+										  <td>Closed</td>
+										</tr>
+									  </tbody>
+									</table>
+								</div>
+
+								<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Apply</a>
+							</div>
+						</div>
+
+					</div>
+
 				</section>
 
 				<Footer />
