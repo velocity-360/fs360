@@ -3,7 +3,7 @@
 var constants = require("../constants/constants");
 
 var initialState = {
-	courses: []
+	courses: {}
 };
 
 /*
@@ -18,7 +18,14 @@ module.exports = function (_x, action) {
 
 		case constants.COURSES_RECIEVED:
 			var newState = Object.assign({}, state);
-			newState.courses = action.courses;
+			var c = action.courses;
+			var courseMap = {};
+			for (var i = 0; i < c.length; i++) {
+				var course = c[i];
+				courseMap[course.id] = course;
+			}
+
+			newState.courses = courseMap;
 			console.log("COURSE REDUCER - COURSES_RECIEVED: " + JSON.stringify(newState));
 			return newState;
 

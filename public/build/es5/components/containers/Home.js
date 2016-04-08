@@ -34,16 +34,7 @@ var Home = (function (Component) {
 
 		_get(Object.getPrototypeOf(Home.prototype), "constructor", this).call(this, props, context);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
-		this.register = this.register.bind(this)
-		// this.state = {
-		// 	testimonials: [
-		// 		{name:'Brian Correa', image:'briancorrea.jpg', course:'iOS Course'},
-		// 		{name:'Mike Maloney', image:'mikemaloney.jpg', course:'MEAN Stack Course'},
-		// 		{name:'Jeff Abraham', image:'jeffabraham.jpg', course:'iOS Course'},
-		// 		{name:'Jennifer Lin', image:'jenn.jpg', course:'Web Development Intensive'}
-		// 	]
-		// }
-		;
+		this.register = this.register.bind(this);
 	}
 
 	_inherits(Home, Component);
@@ -158,7 +149,7 @@ var Home = (function (Component) {
 										React.createElement(
 											"span",
 											{ "data-animate": "fadeInUp", "data-delay": "300" },
-											"Building a Landing Page was never so Easy & Interactive."
+											"Learn to code in our part time or full time classes for Web and iOS"
 										)
 									),
 									React.createElement(
@@ -236,20 +227,37 @@ var Home = (function (Component) {
 								{ className: "container clearfix" },
 								React.createElement(
 									"div",
-									{ id: "section-features", className: "heading-block title-center page-section" },
+									{ className: "col_one_third bottommargin-sm center" },
+									React.createElement("img", { "data-animate": "fadeInLeft", src: "/images/swift-react.png", alt: "Iphone" })
+								),
+								React.createElement(
+									"div",
+									{ className: "col_two_third bottommargin-sm col_last" },
 									React.createElement(
 										"div",
-										{ style: { background: "#f9f9f9", border: "1px solid #ddd", padding: 24, marginBottom: 24, fontSize: 20, fontWeight: 100 } },
+										{ className: "heading-block topmargin-sm" },
+										React.createElement(
+											"h3",
+											null,
+											"Coding Education for Tomorrow"
+										)
+									),
+									React.createElement(
+										"p",
+										null,
 										"FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course."
 									),
 									React.createElement(
-										"h3",
+										"p",
 										null,
-										"Upcoming Courses"
+										"The only constant in the software industry is change. One day, PHP is the king, the next day Ruby on Rails is highest in demand. The major bootcamps in NYC focus on today. Flatiron School, General Assebmbly, Dev Bootcamp all teach Rails while we focus on tomorrow. Our stack is Node JS with React on the front end and ES2015. Will you be among the flood of Rails devs saturating the NYC market or will you be ready for the tech stack of tomorrow?"
+									),
+									React.createElement(
+										"a",
+										{ href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+										"Learn more"
 									)
 								),
-								courses,
-								React.createElement("div", { className: "clear" }),
 								React.createElement(
 									"div",
 									{ className: "divider divider-short divider-center" },
@@ -257,41 +265,15 @@ var Home = (function (Component) {
 								),
 								React.createElement(
 									"div",
-									{ className: "container clearfix" },
+									{ id: "section-features", className: "heading-block title-center page-section" },
 									React.createElement(
-										"div",
-										{ className: "col_one_third bottommargin-sm center" },
-										React.createElement("img", { "data-animate": "fadeInLeft", src: "images/services/iphone6.png", alt: "Iphone" })
-									),
-									React.createElement(
-										"div",
-										{ className: "col_two_third bottommargin-sm col_last" },
-										React.createElement(
-											"div",
-											{ className: "heading-block topmargin-sm" },
-											React.createElement(
-												"h3",
-												null,
-												"Optimized for Mobile & Touch Enabled Devices."
-											)
-										),
-										React.createElement(
-											"p",
-											null,
-											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!"
-										),
-										React.createElement(
-											"p",
-											null,
-											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam."
-										),
-										React.createElement(
-											"a",
-											{ href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-											"Learn more"
-										)
+										"h3",
+										null,
+										"Upcoming Courses"
 									)
-								)
+								),
+								courses,
+								React.createElement("div", { className: "clear" })
 							),
 							React.createElement(
 								"div",
@@ -318,6 +300,197 @@ var Home = (function (Component) {
 							)
 						)
 					),
+					React.createElement(
+						"section",
+						{ id: "section-team", className: "page-section" },
+						React.createElement(
+							"div",
+							{ className: "heading-block center" },
+							React.createElement(
+								"h2",
+								null,
+								"Summer 2016"
+							),
+							React.createElement(
+								"span",
+								null,
+								"The following courses will run in Spring and Summer"
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "container clearfix" },
+							React.createElement(
+								"div",
+								{ className: "col-md-6 bottommargin" },
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { src: "/images/iphone.jpg", alt: "John Doe" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"iOS High School Course"
+											),
+											React.createElement(
+												"span",
+												null,
+												"2 weeks"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"The iOS Crash Course takes beginners through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ href: "#", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "col-md-6 bottommargin" },
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { src: "/images/xcode.jpg", alt: "Nix Maxwell" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"iOS Intensive"
+											),
+											React.createElement(
+												"span",
+												null,
+												"6 Weeks"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"The iOS Intensive covers all aspects of iOS development for beginners. For 4 hours a day, 4 days a week, students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data, and publishing. This course is designed for beginners with little to no programming experience and all development will be done using Swift."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ href: "#", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								)
+							),
+							React.createElement("div", { className: "clear" }),
+							React.createElement(
+								"div",
+								{ className: "col-md-6 bottommargin" },
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { src: "/images/node.jpg", alt: "Josh Clark" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"Web High School Course"
+											),
+											React.createElement(
+												"span",
+												null,
+												"2 Weeks"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ href: "#", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "col-md-6 bottommargin" },
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { src: "/images/react.jpg", alt: "Mary Jane" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"Web Intensive"
+											),
+											React.createElement(
+												"span",
+												null,
+												"4 Weeks"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ href: "#", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								)
+							)
+						)
+					),
 					React.createElement(Footer, null)
 				);
 			},
@@ -331,20 +504,21 @@ var Home = (function (Component) {
 
 var stateToProps = function (state) {
 	console.log("STATE TO PROPS: " + JSON.stringify(state));
+	var courseList = [];
+	var keys = Object.keys(state.courseReducer.courses);
+	for (var i = 0; i < keys.length; i++) {
+		var key = keys[i];
+		courseList.push(state.courseReducer.courses[key]);
+	}
+
+
 	return {
 		currentUser: state.profileReducer.currentUser,
-		courses: state.courseReducer.courses,
+		courses: courseList,
 		testimonials: state.staticReducer.testimonials
 	};
 };
 
-// const StoreSelector = function(store){
-// 	console.log('StoreSelector: '+JSON.stringify(store.profileReducer.currentUser));
-// 	return {
-// 		currentUser: store.profileReducer.currentUser
-// 	}
-
-// }
 
 module.exports = connect(stateToProps)(Home);
 //		getCurrentUser()
