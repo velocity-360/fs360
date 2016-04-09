@@ -22342,7 +22342,7 @@
 							_react2.default.createElement(
 								"div",
 								{ className: "col_half" },
-								"Copyrights © 2014 All Rights Reserved by Canvas Inc.",
+								"Copyrights © 2016 All Rights Reserved by The Grid Media, LLC.",
 								_react2.default.createElement("br", null),
 								_react2.default.createElement(
 									"div",
@@ -22380,39 +22380,9 @@
 									),
 									_react2.default.createElement(
 										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-gplus" },
-										_react2.default.createElement("i", { className: "icon-gplus" }),
-										_react2.default.createElement("i", { className: "icon-gplus" })
-									),
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-pinterest" },
-										_react2.default.createElement("i", { className: "icon-pinterest" }),
-										_react2.default.createElement("i", { className: "icon-pinterest" })
-									),
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-vimeo" },
-										_react2.default.createElement("i", { className: "icon-vimeo" }),
-										_react2.default.createElement("i", { className: "icon-vimeo" })
-									),
-									_react2.default.createElement(
-										"a",
 										{ href: "#", className: "social-icon si-small si-borderless si-github" },
 										_react2.default.createElement("i", { className: "icon-github" }),
 										_react2.default.createElement("i", { className: "icon-github" })
-									),
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-yahoo" },
-										_react2.default.createElement("i", { className: "icon-yahoo" }),
-										_react2.default.createElement("i", { className: "icon-yahoo" })
-									),
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-linkedin" },
-										_react2.default.createElement("i", { className: "icon-linkedin" }),
-										_react2.default.createElement("i", { className: "icon-linkedin" })
 									)
 								),
 								_react2.default.createElement("div", { className: "clear" }),
@@ -22423,15 +22393,6 @@
 									{ className: "middot" },
 									"·"
 								),
-								" ",
-								_react2.default.createElement("i", { className: "icon-headphones" }),
-								" +91-11-6541-6369 ",
-								_react2.default.createElement(
-									"span",
-									{ className: "middot" },
-									"·"
-								),
-								" ",
 								_react2.default.createElement("i", { className: "icon-skype2" }),
 								" CanvasOnSkype"
 							)
