@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
+import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseSection from '../../components/CourseSection'
-//import Testimonial from '../../components/Testimonial'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -11,22 +11,29 @@ import api from '../../api/api'
 class Course extends Component {
 
 	constructor(props, context){
-		// this.updateUserRegistration = this.updateUserRegistration.bind(this)
-		// this.register = this.register.bind(this)
 		super(props, context)
+		this.openModal = this.openModal.bind(this)
+		this.closeModal = this.closeModal.bind(this)
+		this.state = {
+			showModal: false
+		}
 	}
 
 	componentWillMount(){
-		// var course = this.props.courses[this.props.slug]
-		// this.setState({
-		// 	course: course
-		// });
 
 	}
 
 	componentDidMount(){
-		api.handleGet('/api/course?slug='+this.props.slug, {});
+		api.handleGet('/api/course?slug='+this.props.slug, {})
+	}
 
+	openModal(event){
+		event.preventDefault()
+		this.setState({showModal: true})
+	}
+
+	closeModal(){
+		this.setState({showModal: false})
 	}
 
 
@@ -66,9 +73,15 @@ class Course extends Component {
 											</div>
 
 											<div className="col_half panel panel-default col_last">
-												<div className="panel-heading">Panel heading without title</div>
+												<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
 												<div className="panel-body">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?
+													{this.props.course.dates}<br />
+													{this.props.course.schedule}<br />
+													Tuition: ${this.props.course.tuition}<br />
+													Depost: ${this.props.course.deposit}
+													<hr />
+													<a href="#" onClick={this.openModal} style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+													<a href="#" onClick={this.openModal} className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 												</div>
 											</div>
 										</div>
@@ -87,6 +100,9 @@ class Course extends Component {
 												<div className="panel-body" style={{padding:36}}>
 													<h2>Sign Up</h2>
 													<hr />
+													Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
+													<a onClick={this.openModal} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Apply</a>
+													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Request Syllabus</a>
 												</div>
 											</div>
 										</div>
@@ -99,8 +115,17 @@ class Course extends Component {
 
 					</div>
 
-				</section>			
-				
+				</section>
+
+		        <Modal show={this.state.showModal} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:32}}>
+
+			        </Modal.Header>
+			        <Modal.Body>
+
+			        </Modal.Body>
+		        </Modal>
+
 				<Footer />
 			</div>
 		)
@@ -108,9 +133,8 @@ class Course extends Component {
 }
 
 const stateToProps = function(state) {
-	console.log('STATE TO PROPS: '+JSON.stringify(state));
+//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var keys = Object.keys(state.courseReducer.courses)
-
 
     return {
         currentUser: state.profileReducer.currentUser,

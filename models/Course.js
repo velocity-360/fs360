@@ -8,7 +8,6 @@ var CourseSchema = new mongoose.Schema({
 	dates: {type:String, trim:true, default:''},
 	status: {type:String, trim:true, default:'active'}, // active or inactive
 	level: {type:String, trim:true, default:''},
-	paypalId: {type:String, trim:true, default:''},
 	slug: {type:String, trim:true, lowercase:true, default:''},
 	type: {type:String, trim:true, default:'live'}, // live or online
 	description: {type:String, default:''},
@@ -31,7 +30,6 @@ CourseSchema.methods.summary = function() {
 		'dates':this.dates,
 		'level':this.level,
 		'status':this.status,
-		'paypalId':this.paypalId,
 		'slug':this.slug,
 		'type':this.type,
 		'units':this.units,

@@ -29,7 +29,7 @@ export default function(state = initialState, action){
 			}
 
 			newState['courses'] = courseMap;
-			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
 			return newState;
 
 		default:

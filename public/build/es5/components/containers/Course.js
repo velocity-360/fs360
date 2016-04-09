@@ -15,13 +15,17 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var _reactBootstrap = require("react-bootstrap");
+
+var ReactBootstrap = _interopRequire(_reactBootstrap);
+
+var Modal = _reactBootstrap.Modal;
 var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
 var CourseSection = _interopRequire(require("../../components/CourseSection"));
 
-//import Testimonial from '../../components/Testimonial'
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -33,9 +37,12 @@ var Course = (function (Component) {
 	function Course(props, context) {
 		_classCallCheck(this, Course);
 
-		// this.updateUserRegistration = this.updateUserRegistration.bind(this)
-		// this.register = this.register.bind(this)
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
+		this.openModal = this.openModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+		this.state = {
+			showModal: false
+		};
 	}
 
 	_inherits(Course, Component);
@@ -49,6 +56,21 @@ var Course = (function (Component) {
 		componentDidMount: {
 			value: function componentDidMount() {
 				api.handleGet("/api/course?slug=" + this.props.slug, {});
+			},
+			writable: true,
+			configurable: true
+		},
+		openModal: {
+			value: function openModal(event) {
+				event.preventDefault();
+				this.setState({ showModal: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		closeModal: {
+			value: function closeModal() {
+				this.setState({ showModal: false });
 			},
 			writable: true,
 			configurable: true
@@ -128,13 +150,32 @@ var Course = (function (Component) {
 													{ className: "col_half panel panel-default col_last" },
 													React.createElement(
 														"div",
-														{ className: "panel-heading" },
-														"Panel heading without title"
+														{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
+														"Details"
 													),
 													React.createElement(
 														"div",
 														{ className: "panel-body" },
-														"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?"
+														this.props.course.dates,
+														React.createElement("br", null),
+														this.props.course.schedule,
+														React.createElement("br", null),
+														"Tuition: $",
+														this.props.course.tuition,
+														React.createElement("br", null),
+														"Depost: $",
+														this.props.course.deposit,
+														React.createElement("hr", null),
+														React.createElement(
+															"a",
+															{ href: "#", onClick: this.openModal, style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
+															"Apply"
+														),
+														React.createElement(
+															"a",
+															{ href: "#", onClick: this.openModal, className: "button button-border button-dark button-rounded noleftmargin" },
+															"Request Syllabus"
+														)
 													)
 												)
 											)
@@ -168,7 +209,18 @@ var Course = (function (Component) {
 															null,
 															"Sign Up"
 														),
-														React.createElement("hr", null)
+														React.createElement("hr", null),
+														"Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.",
+														React.createElement(
+															"a",
+															{ onClick: this.openModal, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+															"Apply"
+														),
+														React.createElement(
+															"a",
+															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+															"Request Syllabus"
+														)
 													)
 												)
 											)
@@ -177,6 +229,12 @@ var Course = (function (Component) {
 								)
 							)
 						)
+					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showModal, onHide: this.closeModal },
+						React.createElement(Modal.Header, { closeButton: true, style: { textAlign: "center", padding: 32 } }),
+						React.createElement(Modal.Body, null)
 					),
 					React.createElement(Footer, null)
 				);
@@ -190,9 +248,8 @@ var Course = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	console.log("STATE TO PROPS: " + JSON.stringify(state));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var keys = Object.keys(state.courseReducer.courses);
-
 
 	return {
 		currentUser: state.profileReducer.currentUser,
@@ -203,7 +260,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
-// var course = this.props.courses[this.props.slug]
-// this.setState({
-// 	course: course
-// });
