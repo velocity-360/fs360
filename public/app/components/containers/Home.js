@@ -197,7 +197,7 @@ class Home extends Component {
 										and all development will be done using Swift.
 									</div>
 									<br />
-									<a href="/course/first-course" className="btn btn-success">
+									<a href="/course/ios-development" className="btn btn-success">
 										Learn More
 									</a>
 								</div>

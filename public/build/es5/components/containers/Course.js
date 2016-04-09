@@ -234,7 +234,14 @@ var Course = (function (Component) {
 						Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
 						React.createElement(Modal.Header, { closeButton: true, style: { textAlign: "center", padding: 32 } }),
-						React.createElement(Modal.Body, null)
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement("input", { className: "form-control", type: "text", id: "name", placeholder: "Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("br", null)
+						)
 					),
 					React.createElement(Footer, null)
 				);

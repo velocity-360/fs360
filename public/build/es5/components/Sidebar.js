@@ -83,7 +83,7 @@ var Sidebar = (function (Component) {
 											React.createElement(
 												"div",
 												null,
-												"About"
+												"Videos"
 											)
 										)
 									),
@@ -96,7 +96,7 @@ var Sidebar = (function (Component) {
 											React.createElement(
 												"div",
 												null,
-												"Pages"
+												"Courses"
 											)
 										),
 										React.createElement(
@@ -111,7 +111,7 @@ var Sidebar = (function (Component) {
 													React.createElement(
 														"div",
 														null,
-														"One"
+														"Part Time"
 													)
 												)
 											),
@@ -124,20 +124,7 @@ var Sidebar = (function (Component) {
 													React.createElement(
 														"div",
 														null,
-														"Two"
-													)
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "#" },
-													React.createElement(
-														"div",
-														null,
-														"Three"
+														"Bootcamp"
 													)
 												)
 											)

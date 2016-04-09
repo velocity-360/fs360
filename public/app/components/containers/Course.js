@@ -118,12 +118,18 @@ class Course extends Component {
 				</section>
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
-			        <Modal.Header closeButton style={{textAlign:'center', padding:32}}>
-
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h2>Request Syllabus</h2>
 			        </Modal.Header>
-			        <Modal.Body>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<input className="form-control" type="text" id="name" placeholder="Name" /><br />
+			        	<input className="form-control" type="text" id="email" placeholder="Email" /><br />
 
 			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+			        </Modal.Footer>
 		        </Modal>
 
 				<Footer />

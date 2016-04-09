@@ -21873,7 +21873,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/first-course', className: 'btn btn-success' },
+											{ href: '/course/ios-development', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -23311,8 +23311,32 @@
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(_reactBootstrap.Modal.Header, { closeButton: true, style: { textAlign: 'center', padding: 32 } }),
-						_react2.default.createElement(_reactBootstrap.Modal.Body, null)
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Request Syllabus'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
 					),
 					_react2.default.createElement(_Footer2.default, null)
 				);
@@ -41265,7 +41289,7 @@
 											_react2.default.createElement(
 												"div",
 												null,
-												"About"
+												"Videos"
 											)
 										)
 									),
@@ -41278,7 +41302,7 @@
 											_react2.default.createElement(
 												"div",
 												null,
-												"Pages"
+												"Courses"
 											)
 										),
 										_react2.default.createElement(
@@ -41293,7 +41317,7 @@
 													_react2.default.createElement(
 														"div",
 														null,
-														"One"
+														"Part Time"
 													)
 												)
 											),
@@ -41306,20 +41330,7 @@
 													_react2.default.createElement(
 														"div",
 														null,
-														"Two"
-													)
-												)
-											),
-											_react2.default.createElement(
-												"li",
-												null,
-												_react2.default.createElement(
-													"a",
-													{ href: "#" },
-													_react2.default.createElement(
-														"div",
-														null,
-														"Three"
+														"Bootcamp"
 													)
 												)
 											)
