@@ -29,7 +29,7 @@ var Main = (function (_React$Component) {
 	_prototypeProperties(Main, null, {
 		render: {
 			value: function render() {
-				console.log("RENDER MAIN: " + JSON.stringify(this.props.page));
+				console.log("RENDER MAIN: " + JSON.stringify(this.props.page) + ", " + JSON.stringify(this.props.slug));
 
 				var page = null;
 				switch (this.props.page) {
@@ -37,7 +37,7 @@ var Main = (function (_React$Component) {
 						return page = React.createElement(Home, null);
 
 					case "course":
-						return page = React.createElement(Course, null);
+						return page = React.createElement(Course, { slug: this.props.slug });
 
 					default:
 						return page = null;

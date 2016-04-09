@@ -80,15 +80,9 @@
 		function App(props, context) {
 			_classCallCheck(this, App);
 	
-			// this.updateVisitor = this.updateVisitor.bind(this);
-			// this.signUp = this.signUp.bind(this);
-	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props, context));
 	
 			_this.refreshData = _this.refreshData.bind(_this);
-			// this.selectLocation = this.selectLocation.bind(this);
-	
-			//		this.changeContent = this.changeContent.bind(this);
 			_this.state = {
 				page: null,
 				slug: null
@@ -21377,7 +21371,13 @@
 	var constants = __webpack_require__(183);
 	
 	var initialState = {
-		courses: {}
+		courses: {
+			0: {
+				title: '',
+				description: '',
+				units: []
+			}
+		}
 	};
 	
 	/*
@@ -21417,7 +21417,7 @@
 	var constants = __webpack_require__(183);
 	
 	var initialState = {
-		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Course' }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'MEAN Stack Course' }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Course' }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Development Intensive' }]
+		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'Web Development', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }]
 	
 	};
 	
@@ -21475,7 +21475,7 @@
 		_createClass(Main, [{
 			key: 'render',
 			value: function render() {
-				console.log('RENDER MAIN: ' + JSON.stringify(this.props.page));
+				console.log('RENDER MAIN: ' + JSON.stringify(this.props.page) + ', ' + JSON.stringify(this.props.slug));
 	
 				var page = null;
 				switch (this.props.page) {
@@ -21483,7 +21483,7 @@
 						return page = _react2.default.createElement(_Home2.default, null);
 	
 					case 'course':
-						return page = _react2.default.createElement(_Course2.default, null);
+						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
 	
 					default:
 						return page = null;
@@ -21575,7 +21575,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				console.log('HOME: componentDidMount');
-				_api2.default.handleGet('/api/course?isFeatured=yes', {});
+				//		api.handleGet('/api/course?isFeatured=yes', {});
 			}
 		}, {
 			key: 'updateUserRegistration',
@@ -21591,7 +21591,7 @@
 				event.preventDefault();
 				console.log('REGISTER: ' + JSON.stringify(this.props.currentUser));
 	
-				//		api.handlePost('/api/test', this.props.currentUser);
+				_api2.default.handlePost('/api/test', this.props.currentUser);
 			}
 		}, {
 			key: 'render',
@@ -21767,7 +21767,7 @@
 										_react2.default.createElement(
 											'span',
 											null,
-											'Meet the Bride & the Groom'
+											'Current & Former Students'
 										)
 									),
 									testimonialList
@@ -21804,7 +21804,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { src: '/images/iphone.jpg', alt: 'John Doe' })
+										_react2.default.createElement('img', { src: '/images/ios.jpg', alt: 'John Doe' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -21820,18 +21820,18 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'2 weeks'
+												'2 Weeks | Mon - Fri | 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(
 											'div',
 											{ className: 'team-content' },
-											'The iOS Crash Course takes beginners through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare.'
+											'The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare.'
 										),
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/123', className: 'btn btn-success' },
+											{ href: '/course/first-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21862,7 +21862,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'6 Weeks'
+												'6 Weeks | Tue, Thu | 6pm - 9pm'
 											)
 										),
 										_react2.default.createElement(
@@ -21873,7 +21873,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/123', className: 'btn btn-success' },
+											{ href: '/course/first-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21905,7 +21905,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'2 Weeks'
+												'2 Weeks | Mon - Fri | 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(
@@ -21916,7 +21916,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/123', className: 'btn btn-success' },
+											{ href: '/course/first-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21947,7 +21947,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'6 Weeks'
+												'6 Weeks | Mon, Wed | 6pm - 9pm'
 											)
 										),
 										_react2.default.createElement(
@@ -21958,7 +21958,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/123', className: 'btn btn-success' },
+											{ href: '/course/first-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -21985,7 +21985,7 @@
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'col-md-6 center col-padding', style: { backgroundColor: '#F5F5F5' } },
+								{ className: 'col-md-6 center col-padding', style: { backgroundColor: '#F9F9F9' } },
 								_react2.default.createElement(
 									'div',
 									null,
@@ -21995,7 +21995,7 @@
 										_react2.default.createElement(
 											'h3',
 											null,
-											'Walkthrough Videos & Demos'
+											'Bootcamps'
 										)
 									),
 									_react2.default.createElement(
@@ -22057,6 +22057,52 @@
 													_react2.default.createElement(
 														'td',
 														null,
+														'May 2 - Oct 28'
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'Closed'
+													)
+												),
+												_react2.default.createElement(
+													'tr',
+													null,
+													_react2.default.createElement(
+														'td',
+														null,
+														_react2.default.createElement(
+															'span',
+															null,
+															'Full Stack Web'
+														)
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'May 2 - Oct 28'
+													),
+													_react2.default.createElement(
+														'td',
+														null,
+														'Closed'
+													)
+												),
+												_react2.default.createElement(
+													'tr',
+													null,
+													_react2.default.createElement(
+														'td',
+														null,
+														_react2.default.createElement(
+															'span',
+															null,
+															'iOS + Node'
+														)
+													),
+													_react2.default.createElement(
+														'td',
+														null,
 														'June 1 - Nov 28'
 													),
 													_react2.default.createElement(
@@ -22085,7 +22131,7 @@
 													_react2.default.createElement(
 														'td',
 														null,
-														'Closed'
+														'Accepting Applications'
 													)
 												)
 											)
@@ -22467,7 +22513,7 @@
 							_react2.default.createElement(
 								"div",
 								{ className: "team-content" },
-								"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
+								this.props.testimonial.quote
 							),
 							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
 							_react2.default.createElement(
@@ -23041,9 +23087,9 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Testimonial = __webpack_require__(190);
+	var _CourseSection = __webpack_require__(197);
 	
-	var _Testimonial2 = _interopRequireDefault(_Testimonial);
+	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
 	var _store = __webpack_require__(180);
 	
@@ -23066,19 +23112,40 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import Testimonial from '../../components/Testimonial'
+	
 	
 	var Course = function (_Component) {
 		_inherits(Course, _Component);
 	
-		function Course() {
+		function Course(props, context) {
 			_classCallCheck(this, Course);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Course).apply(this, arguments));
+			// this.updateUserRegistration = this.updateUserRegistration.bind(this)
+			// this.register = this.register.bind(this)
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 		}
 	
 		_createClass(Course, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				// var course = this.props.courses[this.props.slug]
+				// this.setState({
+				// 	course: course
+				// });
+	
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
+				var units = this.props.course.units.map(function (unit, i) {
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit });
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -23129,181 +23196,49 @@
 												_react2.default.createElement(
 													'h2',
 													null,
-													_react2.default.createElement(
-														'a',
-														{ href: 'blog-single.html' },
-														'This is a Standard post with a Preview Image'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'ul',
-												{ className: 'entry-meta clearfix' },
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('i', { className: 'icon-user' }),
-														' admin'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-folder-open' }),
-													' ',
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														'General'
-													),
-													', ',
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														'Media'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: 'blog-single.html#comments' },
-														_react2.default.createElement('i', { className: 'icon-comments' }),
-														' 13 Comments'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('i', { className: 'icon-camera-retro' })
-													)
+													this.props.course.title
 												)
 											),
 											_react2.default.createElement(
 												'div',
 												{ className: 'entry-content' },
 												_react2.default.createElement(
-													'p',
-													null,
-													'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.'
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: 'blog-single.html', className: 'more-link' },
-													'Read More'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'10',
-												_react2.default.createElement(
-													'span',
-													null,
-													'Feb'
-												),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h2',
-													null,
+													'div',
+													{ className: 'col_half' },
 													_react2.default.createElement(
-														'a',
-														{ href: 'blog-single.html' },
-														'This is a Standard post with a Preview Image'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'ul',
-												{ className: 'entry-meta clearfix' },
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('i', { className: 'icon-user' }),
-														' admin'
+														'p',
+														null,
+														this.props.course.description
 													)
 												),
 												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-folder-open' }),
-													' ',
+													'div',
+													{ className: 'col_half panel panel-default col_last' },
 													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														'General'
+														'div',
+														{ className: 'panel-heading' },
+														'Panel heading without title'
 													),
-													', ',
 													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														'Media'
+														'div',
+														{ className: 'panel-body' },
+														'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?'
 													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: 'blog-single.html#comments' },
-														_react2.default.createElement('i', { className: 'icon-comments' }),
-														' 13 Comments'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('i', { className: 'icon-camera-retro' })
-													)
-												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.'
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: 'blog-single.html', className: 'more-link' },
-													'Read More'
 												)
 											)
 										),
+										units,
 										_react2.default.createElement(
 											'div',
 											{ className: 'entry clearfix' },
 											_react2.default.createElement(
 												'div',
 												{ className: 'entry-timeline' },
-												'21',
+												'Unit',
 												_react2.default.createElement(
 													'span',
 													null,
-													'Mar'
+													'!'
 												),
 												_react2.default.createElement('div', { className: 'timeline-divider' })
 											),
@@ -23315,58 +23250,13 @@
 													{ className: 'panel panel-default' },
 													_react2.default.createElement(
 														'div',
-														{ className: 'panel-body' },
-														'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, fuga optio voluptatibus saepe tenetur aliquam debitis eos accusantium! Vitae, hic, atque aliquid repellendus accusantium laudantium minus eaque quibusdam ratione sapiente.'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'ul',
-												{ className: 'entry-meta clearfix' },
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('i', { className: 'icon-user' }),
-														' admin'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement('i', { className: 'icon-folder-open' }),
-													' ',
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														'Status'
-													),
-													', ',
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														'News'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: 'blog-single.html#comments' },
-														_react2.default.createElement('i', { className: 'icon-comments' }),
-														' 11 Comments'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#' },
-														_react2.default.createElement('i', { className: 'icon-align-justify2' })
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h2',
+															null,
+															'Sign Up'
+														),
+														_react2.default.createElement('hr', null)
 													)
 												)
 											)
@@ -23386,8 +23276,11 @@
 	
 	var stateToProps = function stateToProps(state) {
 		console.log('STATE TO PROPS: ' + JSON.stringify(state));
+		var keys = Object.keys(state.courseReducer.courses);
+	
 		return {
 			currentUser: state.profileReducer.currentUser,
+			course: state.courseReducer.courses[keys[0]],
 			testimonials: state.staticReducer.testimonials
 		};
 	};
@@ -23547,22 +23440,6 @@
 										)
 									)
 								)
-							),
-							_react2.default.createElement(
-								"div",
-								{ className: "clearfix visible-md visible-lg" },
-								_react2.default.createElement(
-									"a",
-									{ href: "#", className: "social-icon si-small si-borderless si-facebook" },
-									_react2.default.createElement("i", { className: "icon-facebook" }),
-									_react2.default.createElement("i", { className: "icon-facebook" })
-								),
-								_react2.default.createElement(
-									"a",
-									{ href: "#", className: "social-icon si-small si-borderless si-twitter" },
-									_react2.default.createElement("i", { className: "icon-twitter" }),
-									_react2.default.createElement("i", { className: "icon-twitter" })
-								)
 							)
 						)
 					)
@@ -23574,6 +23451,85 @@
 	}(_react.Component);
 	
 	exports.default = Sidebar;
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseSection = function (_Component) {
+		_inherits(CourseSection, _Component);
+	
+		function CourseSection() {
+			_classCallCheck(this, CourseSection);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).apply(this, arguments));
+		}
+	
+		_createClass(CourseSection, [{
+			key: "render",
+			value: function render() {
+	
+				return _react2.default.createElement(
+					"div",
+					{ className: "entry clearfix" },
+					_react2.default.createElement(
+						"div",
+						{ className: "entry-timeline" },
+						"Unit",
+						_react2.default.createElement(
+							"span",
+							null,
+							this.props.unit.index + 1
+						),
+						_react2.default.createElement("div", { className: "timeline-divider" })
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "entry-image" },
+						_react2.default.createElement(
+							"div",
+							{ className: "panel panel-default" },
+							_react2.default.createElement(
+								"div",
+								{ className: "panel-body", style: { padding: 36 } },
+								_react2.default.createElement(
+									"h2",
+									null,
+									this.props.unit.topic
+								),
+								_react2.default.createElement("hr", null),
+								this.props.unit.description
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseSection;
+	}(_react.Component);
+	
+	exports.default = CourseSection;
 
 /***/ }
 /******/ ]);

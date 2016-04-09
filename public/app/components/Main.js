@@ -13,7 +13,7 @@ class Main extends React.Component {
 	}
 
 	render(){
-		console.log('RENDER MAIN: '+JSON.stringify(this.props.page))
+		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
 
 		var page = null
 		switch (this.props.page){
@@ -21,7 +21,7 @@ class Main extends React.Component {
 				return page = <Home />
 
 			case 'course':
-				return page = <Course />
+				return page = <Course slug={this.props.slug} />
 
 			default:
 				return page = null

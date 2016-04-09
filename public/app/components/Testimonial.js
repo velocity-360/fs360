@@ -11,7 +11,9 @@ class Testimonial extends Component {
 					</div>
 					<div className="team-desc">
 						<div className="team-title"><h4>{this.props.testimonial.name}</h4><span>{this.props.testimonial.course}</span></div>
-						<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic.</div>
+						<div className="team-content">
+							{this.props.testimonial.quote}
+						</div>
 						<div className="line topmargin-sm nobottommargin"></div>
 						<a href="#" className="social-icon si-borderless si-small si-facebook" title="Facebook">
 							<i className="icon-facebook"></i>

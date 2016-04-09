@@ -144,22 +144,6 @@ var Sidebar = (function (Component) {
 										)
 									)
 								)
-							),
-							React.createElement(
-								"div",
-								{ className: "clearfix visible-md visible-lg" },
-								React.createElement(
-									"a",
-									{ href: "#", className: "social-icon si-small si-borderless si-facebook" },
-									React.createElement("i", { className: "icon-facebook" }),
-									React.createElement("i", { className: "icon-facebook" })
-								),
-								React.createElement(
-									"a",
-									{ href: "#", className: "social-icon si-small si-borderless si-twitter" },
-									React.createElement("i", { className: "icon-twitter" }),
-									React.createElement("i", { className: "icon-twitter" })
-								)
 							)
 						)
 					)

@@ -48,7 +48,6 @@ var Home = (function (Component) {
 		componentDidMount: {
 			value: function componentDidMount() {
 				console.log("HOME: componentDidMount");
-				api.handleGet("/api/course?isFeatured=yes", {});
 			},
 			writable: true,
 			configurable: true
@@ -68,8 +67,7 @@ var Home = (function (Component) {
 				event.preventDefault();
 				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
 
-				//		api.handlePost('/api/test', this.props.currentUser);
-
+				api.handlePost("/api/test", this.props.currentUser);
 			},
 			writable: true,
 			configurable: true
@@ -246,7 +244,7 @@ var Home = (function (Component) {
 										React.createElement(
 											"span",
 											null,
-											"Meet the Bride & the Groom"
+											"Current & Former Students"
 										)
 									),
 									testimonialList
@@ -283,7 +281,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/iphone.jpg", alt: "John Doe" })
+										React.createElement("img", { src: "/images/ios.jpg", alt: "John Doe" })
 									),
 									React.createElement(
 										"div",
@@ -299,18 +297,18 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"2 weeks"
+												"2 Weeks | Mon - Fri | 9am - 5pm"
 											)
 										),
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The iOS Crash Course takes beginners through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
+											"The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/123", className: "btn btn-success" },
+											{ href: "/course/first-course", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -341,7 +339,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"6 Weeks"
+												"6 Weeks | Tue, Thu | 6pm - 9pm"
 											)
 										),
 										React.createElement(
@@ -352,7 +350,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/123", className: "btn btn-success" },
+											{ href: "/course/first-course", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -384,7 +382,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"2 Weeks"
+												"2 Weeks | Mon - Fri | 9am - 5pm"
 											)
 										),
 										React.createElement(
@@ -395,7 +393,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/123", className: "btn btn-success" },
+											{ href: "/course/first-course", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -426,7 +424,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"6 Weeks"
+												"6 Weeks | Mon, Wed | 6pm - 9pm"
 											)
 										),
 										React.createElement(
@@ -437,7 +435,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/123", className: "btn btn-success" },
+											{ href: "/course/first-course", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -464,7 +462,7 @@ var Home = (function (Component) {
 							),
 							React.createElement(
 								"div",
-								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#F5F5F5" } },
+								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#F9F9F9" } },
 								React.createElement(
 									"div",
 									null,
@@ -474,7 +472,7 @@ var Home = (function (Component) {
 										React.createElement(
 											"h3",
 											null,
-											"Walkthrough Videos & Demos"
+											"Bootcamps"
 										)
 									),
 									React.createElement(
@@ -536,6 +534,52 @@ var Home = (function (Component) {
 													React.createElement(
 														"td",
 														null,
+														"May 2 - Oct 28"
+													),
+													React.createElement(
+														"td",
+														null,
+														"Closed"
+													)
+												),
+												React.createElement(
+													"tr",
+													null,
+													React.createElement(
+														"td",
+														null,
+														React.createElement(
+															"span",
+															null,
+															"Full Stack Web"
+														)
+													),
+													React.createElement(
+														"td",
+														null,
+														"May 2 - Oct 28"
+													),
+													React.createElement(
+														"td",
+														null,
+														"Closed"
+													)
+												),
+												React.createElement(
+													"tr",
+													null,
+													React.createElement(
+														"td",
+														null,
+														React.createElement(
+															"span",
+															null,
+															"iOS + Node"
+														)
+													),
+													React.createElement(
+														"td",
+														null,
 														"June 1 - Nov 28"
 													),
 													React.createElement(
@@ -564,7 +608,7 @@ var Home = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"Closed"
+														"Accepting Applications"
 													)
 												)
 											)
@@ -610,3 +654,4 @@ var stateToProps = function (state) {
 
 module.exports = connect(stateToProps)(Home);
 //		getCurrentUser()
+//		api.handleGet('/api/course?isFeatured=yes', {});

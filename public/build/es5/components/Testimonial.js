@@ -58,7 +58,7 @@ var Testimonial = (function (Component) {
 							React.createElement(
 								"div",
 								{ className: "team-content" },
-								"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, pariatur, magni! Omnis reiciendis architecto, cupiditate fuga dolores nam accusamus iste molestias quos mollitia totam eius porro culpa incidunt, sunt rerum molestiae aliquid non hic."
+								this.props.testimonial.quote
 							),
 							React.createElement("div", { className: "line topmargin-sm nobottommargin" }),
 							React.createElement(

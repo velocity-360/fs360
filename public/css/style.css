@@ -4726,8 +4726,8 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay { display: no
 
 .entry {
 	position: relative;
-	margin: 0 0 50px;
-	padding: 0 0 50px;
+	margin: 0 0 0px;
+	padding: 0 0 0px;
 	border-bottom: 2px solid #F5F5F5;
 }
 
@@ -9427,11 +9427,10 @@ body:not(.device-touch) .clients-grid li a {
 .team-title span {
 	display: block;
 	color: #1ABC9C;
-	font-weight: 400;
-	font-family: 'Crete Round', serif;
-	font-style: italic;
-	font-size: 15px;
-	margin-top: 5px;
+	font-weight: 100;
+	font-family: 'Heiti SC';
+	font-size: 13px;
+	margin-top: 0px;
 }
 
 .team-content {

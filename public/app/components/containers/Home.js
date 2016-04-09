@@ -21,7 +21,7 @@ class Home extends Component {
 
 	componentDidMount(){
 		console.log('HOME: componentDidMount')
-		api.handleGet('/api/course?isFeatured=yes', {});
+//		api.handleGet('/api/course?isFeatured=yes', {});
 
 	}
 
@@ -36,9 +36,7 @@ class Home extends Component {
 		event.preventDefault()
 		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 
-//		api.handlePost('/api/test', this.props.currentUser);
-
-		
+		api.handlePost('/api/test', this.props.currentUser);
 	}
 
 	render(){
@@ -137,7 +135,7 @@ class Home extends Component {
 							<div className="container clearfix">
 								<div id="section-couple" className="heading-block title-center page-section">
 									<h2>Meet Our Students</h2>
-									<span>Meet the Bride &amp; the Groom</span>
+									<span>Current &amp; Former Students</span>
 								</div>
 
 								{testimonialList}
@@ -158,22 +156,22 @@ class Home extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/iphone.jpg" alt="John Doe" />
+									<img src="/images/ios.jpg" alt="John Doe" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>iOS High School Course</h4>
-										<span>2 weeks</span>
+										<span>2 Weeks | Mon - Fri | 9am - 5pm</span>
 									</div>
 									<div className="team-content">
-										The iOS Crash Course takes beginners through the process of 
+										The iOS High School Course takes students through the process of 
 										designing and programming a basic iOS app from start. Students will create a 
 										simple app that utilizes key platform tools including the GPS locator, 
 										accelerator, and camera. In addition, the course will explore third party APIs 
 										such as Google Maps and Foursquare.
 									</div>
 									<br />
-									<a href="/course/123" className="btn btn-success">
+									<a href="/course/first-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -188,7 +186,7 @@ class Home extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>iOS Intensive</h4>
-										<span>6 Weeks</span>
+										<span>6 Weeks | Tue, Thu | 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
 										The iOS Intensive covers all aspects of iOS development 
@@ -199,12 +197,11 @@ class Home extends Component {
 										and all development will be done using Swift.
 									</div>
 									<br />
-									<a href="/course/123" className="btn btn-success">
+									<a href="/course/first-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
 							</div>
-
 						</div>
 
 						<div className="clear"></div>
@@ -218,20 +215,18 @@ class Home extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>Web High School Course</h4>
-										<span>2 Weeks</span>
+										<span>2 Weeks | Mon - Fri | 9am - 5pm</span>
 									</div>
 									<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
 									<br />
-									<a href="/course/123" className="btn btn-success">
+									<a href="/course/first-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
 							</div>
-
 						</div>
 
 						<div className="col-md-6 bottommargin">
-
 							<div className="team team-list clearfix">
 								<div className="team-image">
 									<img src="/images/react.jpg" alt="Mary Jane" />
@@ -239,11 +234,11 @@ class Home extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>Web Intensive</h4>
-										<span>6 Weeks</span>
+										<span>6 Weeks | Mon, Wed | 6pm - 9pm</span>
 									</div>
 									<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
 									<br />
-									<a href="/course/123" className="btn btn-success">
+									<a href="/course/first-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -264,10 +259,10 @@ class Home extends Component {
 							<div>&nbsp;</div>
 						</div>
 
-						<div className="col-md-6 center col-padding" style={{backgroundColor: '#F5F5F5'}}>
+						<div className="col-md-6 center col-padding" style={{backgroundColor: '#F9F9F9'}}>
 							<div>
 								<div className="heading-block nobottomborder">
-									<h3>Walkthrough Videos &amp; Demos</h3>
+									<h3>Bootcamps</h3>
 								</div>
 
 								<p className="lead">
@@ -285,12 +280,20 @@ class Home extends Component {
 									  </colgroup>
 									  <thead>
 										<tr>
-										  <th>Class</th>
-										  <th>Dates</th>
-										  <th>Status</th>
+										  <th>Class</th><th>Dates</th><th>Status</th>
 										</tr>
 									  </thead>
 									  <tbody>
+										<tr>
+										  <td><span>iOS + Node</span></td>
+										  <td>May 2 - Oct 28</td>
+										  <td>Closed</td>
+										</tr>
+										<tr>
+										  <td><span>Full Stack Web</span></td>
+										  <td>May 2 - Oct 28</td>
+										  <td>Closed</td>
+										</tr>
 										<tr>
 										  <td><span>iOS + Node</span></td>
 										  <td>June 1 - Nov 28</td>
@@ -299,7 +302,7 @@ class Home extends Component {
 										<tr>
 										  <td><span>Full Stack Web</span></td>
 										  <td>June 1 - Nov 28</td>
-										  <td>Closed</td>
+										  <td>Accepting Applications</td>
 										</tr>
 									  </tbody>
 									</table>

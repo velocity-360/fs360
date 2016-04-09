@@ -9,12 +9,7 @@ class App extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
-		// this.updateVisitor = this.updateVisitor.bind(this);
-		// this.signUp = this.signUp.bind(this);
 		this.refreshData = this.refreshData.bind(this);
-		// this.selectLocation = this.selectLocation.bind(this);
-
-//		this.changeContent = this.changeContent.bind(this);
 		this.state = {
 			page: null,
 			slug: null

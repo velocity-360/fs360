@@ -3,7 +3,13 @@
 var constants = require("../constants/constants");
 
 var initialState = {
-	courses: {}
+	courses: {
+		0: {
+			title: "",
+			description: "",
+			units: []
+		}
+	}
 };
 
 /*
