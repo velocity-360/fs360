@@ -36,7 +36,7 @@ var Footer = (function (_React$Component) {
 							React.createElement(
 								"div",
 								{ className: "col_half" },
-								"Copyrights © 2014 All Rights Reserved by Canvas Inc.",
+								"Copyrights © 2016 All Rights Reserved by The Grid Media, LLC.",
 								React.createElement("br", null),
 								React.createElement(
 									"div",
@@ -74,39 +74,9 @@ var Footer = (function (_React$Component) {
 									),
 									React.createElement(
 										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-gplus" },
-										React.createElement("i", { className: "icon-gplus" }),
-										React.createElement("i", { className: "icon-gplus" })
-									),
-									React.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-pinterest" },
-										React.createElement("i", { className: "icon-pinterest" }),
-										React.createElement("i", { className: "icon-pinterest" })
-									),
-									React.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-vimeo" },
-										React.createElement("i", { className: "icon-vimeo" }),
-										React.createElement("i", { className: "icon-vimeo" })
-									),
-									React.createElement(
-										"a",
 										{ href: "#", className: "social-icon si-small si-borderless si-github" },
 										React.createElement("i", { className: "icon-github" }),
 										React.createElement("i", { className: "icon-github" })
-									),
-									React.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-yahoo" },
-										React.createElement("i", { className: "icon-yahoo" }),
-										React.createElement("i", { className: "icon-yahoo" })
-									),
-									React.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-linkedin" },
-										React.createElement("i", { className: "icon-linkedin" }),
-										React.createElement("i", { className: "icon-linkedin" })
 									)
 								),
 								React.createElement("div", { className: "clear" }),
@@ -117,15 +87,6 @@ var Footer = (function (_React$Component) {
 									{ className: "middot" },
 									"·"
 								),
-								" ",
-								React.createElement("i", { className: "icon-headphones" }),
-								" +91-11-6541-6369 ",
-								React.createElement(
-									"span",
-									{ className: "middot" },
-									"·"
-								),
-								" ",
 								React.createElement("i", { className: "icon-skype2" }),
 								" CanvasOnSkype"
 							)
