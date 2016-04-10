@@ -10,7 +10,7 @@ var store = _interopRequire(require("../stores/store"));
 
 module.exports = {
 
-	handleGet: function (endpoint, params) {
+	handleGet: function (endpoint, params, completion) {
 		fetch(endpoint, {
 			method: "GET",
 			//		    URLSearchParams: params,
@@ -26,7 +26,7 @@ module.exports = {
 		});
 	},
 
-	handlePost: function (endpoint, body) {
+	handlePost: function (endpoint, body, completion) {
 		console.log("HANDLE POST: " + JSON.stringify(body));
 		fetch(endpoint, {
 			method: "POST",
@@ -37,11 +37,15 @@ module.exports = {
 			body: JSON.stringify(body) }).then(function (response) {
 			return response.json();
 		})
-		// .then( json => dispatch( login( json ) ))
+		//	    .then( json => console.log(JSON.stringify(json)))
 		.then(function (json) {
-			return console.log(JSON.stringify(json));
+			if (completion != null) {
+				completion(null, json);
+			}
 		})["catch"](function (err) {
-			return console.log(err);
+			if (completion != null) {
+				completion(err, null);
+			}
 		});
 	}
 

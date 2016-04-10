@@ -116,6 +116,7 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'rsvp') {
 		var infoRequest = req.body;
+		console.log('RSVP: '+JSON.stringify(infoRequest));
 		var json = JSON.stringify(infoRequest);
 		
 		// send email to yourself for notification:

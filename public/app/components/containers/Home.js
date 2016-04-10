@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import Loader from 'react-loader'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import EventCard from '../../components/EventCard'
@@ -17,9 +18,12 @@ class Home extends Component {
 		this.register = this.register.bind(this)
 		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
+		this.rsvp = this.rsvp.bind(this)
 		this.state = {
+			showLoader: false,
 			showModal: false,
 			selectedEvent: {
+				id: null,
 				subject: '',
 				image: ''
 			}
@@ -32,7 +36,7 @@ class Home extends Component {
 
 	componentDidMount(){
 		console.log('HOME: componentDidMount')
-//		api.handleGet('/api/course?isFeatured=yes', {});
+		// api.handleGet('/api/course?isFeatured=yes', {});
 
 	}
 
@@ -49,6 +53,33 @@ class Home extends Component {
 
 		api.handlePost('/api/test', this.props.currentUser);
 	}
+
+	rsvp(event){
+		event.preventDefault()
+
+		this.setState({
+			showModal: false,
+			showLoader: true
+		});
+
+		var _this = this
+		api.handlePost('/api/rsvp', this.props.currentUser, function(err, response){
+			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
+			_this.setState({
+				showLoader: false
+			});
+
+			if (response.confirmation == 'success'){
+
+			}
+			else {
+				alert(response.message)
+			}
+
+		});
+
+	}
+
 
 	openModal(event){
 		var e = this.props.events[event.target.id];
@@ -75,8 +106,29 @@ class Home extends Component {
 			return <EventCard key={i} event={e} click={_openModal} />
 		});
 
+		var options = {
+		    lines: 13,
+		    length: 20,
+		    width: 10,
+		    radius: 30,
+		    corners: 1,
+		    rotate: 0,
+		    direction: 1,
+		    color: '#fff',
+		    speed: 1,
+		    trail: 60,
+		    shadow: false,
+		    hwaccel: false,
+		    zIndex: 2e9,
+		    top: '50%',
+		    left: '50%',
+		    scale: 1.00
+		};
+	    var loader = <Loader options={options} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />;
+
 		return (
 			<div>
+				{loader}
 				<Nav />
 				<section id="slider" className="slider-parallax dark full-screen" style={{background: "url(images/programming.jpg) center"}}>
 
@@ -371,7 +423,7 @@ class Home extends Component {
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Attend</a>
+						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Attend</a>
 			        </Modal.Footer>
 		        </Modal>
 

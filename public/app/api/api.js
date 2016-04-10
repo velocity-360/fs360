@@ -4,7 +4,7 @@ import store from '../stores/store'
 
 export default {
 
-	handleGet: function(endpoint, params){
+	handleGet: function(endpoint, params, completion){
 
 		fetch(endpoint, {
 		    method: 'GET',
@@ -19,7 +19,7 @@ export default {
 		.catch( err => console.log(err) )
 	},
 
-	handlePost: function(endpoint, body){
+	handlePost: function(endpoint, body, completion){
 		console.log('HANDLE POST: '+JSON.stringify(body));
 	    fetch(endpoint, {
 	        method: 'POST',
@@ -30,9 +30,17 @@ export default {
 	        body: JSON.stringify(body),
 	    })
 	    .then(response => response.json())
-	    // .then( json => dispatch( login( json ) ))
-	    .then( json => console.log(JSON.stringify(json)))
-	    .catch( err => console.log(err) )
+//	    .then( json => console.log(JSON.stringify(json)))
+	    .then(function(json){
+	    	if (completion != null){
+	    		completion(null, json)
+	    	}
+	    })
+	    .catch(function(err){
+	    	if (completion != null){
+	    		completion(err, null)
+	    	}
+	    })
 	}
 
 

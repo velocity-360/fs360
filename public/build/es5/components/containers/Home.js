@@ -20,6 +20,8 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
+var Loader = _interopRequire(require("react-loader"));
+
 var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -44,9 +46,12 @@ var Home = (function (Component) {
 		this.register = this.register.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.rsvp = this.rsvp.bind(this);
 		this.state = {
+			showLoader: false,
 			showModal: false,
 			selectedEvent: {
+				id: null,
 				subject: "",
 				image: ""
 			}
@@ -88,6 +93,30 @@ var Home = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		rsvp: {
+			value: function rsvp(event) {
+				event.preventDefault();
+
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/api/rsvp", this.props.currentUser, function (err, response) {
+					console.log("RSVP REQUEST RESPONSE: " + JSON.stringify(response));
+					_this.setState({
+						showLoader: false
+					});
+
+					if (response.confirmation == "success") {} else {
+						alert(response.message);
+					}
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		openModal: {
 			value: function openModal(event) {
 				var e = this.props.events[event.target.id];
@@ -119,9 +148,30 @@ var Home = (function (Component) {
 					return React.createElement(EventCard, { key: i, event: e, click: _openModal });
 				});
 
+				var options = {
+					lines: 13,
+					length: 20,
+					width: 10,
+					radius: 30,
+					corners: 1,
+					rotate: 0,
+					direction: 1,
+					color: "#fff",
+					speed: 1,
+					trail: 60,
+					shadow: false,
+					hwaccel: false,
+					zIndex: 2000000000,
+					top: "50%",
+					left: "50%",
+					scale: 1
+				};
+				var loader = React.createElement(Loader, { options: options, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" });
+
 				return React.createElement(
 					"div",
 					null,
+					loader,
 					React.createElement(Nav, null),
 					React.createElement(
 						"section",
@@ -715,7 +765,7 @@ var Home = (function (Component) {
 							{ style: { textAlign: "center" } },
 							React.createElement(
 								"a",
-								{ href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								{ onClick: this.rsvp, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 								"Attend"
 							)
 						)
@@ -752,4 +802,4 @@ var stateToProps = function (state) {
 
 module.exports = connect(stateToProps)(Home);
 //		getCurrentUser()
-//		api.handleGet('/api/course?isFeatured=yes', {});
+// api.handleGet('/api/course?isFeatured=yes', {});
