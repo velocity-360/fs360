@@ -42421,28 +42421,6 @@
 										'div',
 										{ id: 'posts', className: 'events small-thumbs' },
 										courseList
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pager nomargin' },
-										_react2.default.createElement(
-											'li',
-											{ className: 'previous' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#' },
-												'← Older'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'next' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#' },
-												'Newer →'
-											)
-										)
 									)
 								)
 							)
@@ -42746,28 +42724,6 @@
 										'div',
 										{ id: 'posts', className: 'events small-thumbs' },
 										courseList
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pager nomargin' },
-										_react2.default.createElement(
-											'li',
-											{ className: 'previous' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#' },
-												'← Older'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'next' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#' },
-												'Newer →'
-											)
-										)
 									)
 								)
 							)

@@ -122,28 +122,6 @@ var Videos = (function (Component) {
 										"div",
 										{ id: "posts", className: "events small-thumbs" },
 										courseList
-									),
-									React.createElement(
-										"ul",
-										{ className: "pager nomargin" },
-										React.createElement(
-											"li",
-											{ className: "previous" },
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"← Older"
-											)
-										),
-										React.createElement(
-											"li",
-											{ className: "next" },
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"Newer →"
-											)
-										)
 									)
 								)
 							)
