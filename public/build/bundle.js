@@ -21353,6 +21353,7 @@
 			case constants.COURSES_RECIEVED:
 				var newState = Object.assign({}, state);
 				var c = action.courses;
+				newState['courseArray'] = c;
 				var courseMap = {};
 				for (var i = 0; i < c.length; i++) {
 					var course = c[i];
@@ -21377,7 +21378,8 @@
 				description: '',
 				units: []
 			}
-		}
+		},
+		courseArray: []
 	};
 	
 	/*
@@ -23315,12 +23317,13 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+		console.log('STATE TO PROPS: ' + JSON.stringify(state));
 		var keys = Object.keys(state.courseReducer.courses);
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
 			course: state.courseReducer.courses[keys[0]],
+			//course: state.courseReducer.courseArray[0],
 			testimonials: state.staticReducer.testimonials
 		};
 	};
@@ -41471,6 +41474,10 @@
 			key: 'render',
 			value: function render() {
 	
+				var courseList = this.props.courses.map(function (course) {
+					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+				});
+	
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -41535,8 +41542,7 @@
 									_react2.default.createElement(
 										'div',
 										{ id: 'posts', className: 'events small-thumbs' },
-										_react2.default.createElement(_CourseCard2.default, null),
-										_react2.default.createElement(_CourseCard2.default, null)
+										courseList
 									),
 									_react2.default.createElement(
 										'ul',
@@ -41577,7 +41583,7 @@
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courses
+			courses: state.courseReducer.courseArray
 		};
 	};
 	
@@ -41598,6 +41604,10 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _TextUtils = __webpack_require__(453);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -41625,7 +41635,7 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'entry-image' },
-						_react2.default.createElement('img', { src: '/images/events/thumbs/1.jpg', alt: 'Inventore voluptates velit totam ipsa tenetur' })
+						_react2.default.createElement('img', { src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=512', alt: 'Inventore voluptates velit totam ipsa tenetur' })
 					),
 					_react2.default.createElement(
 						'div',
@@ -41638,8 +41648,8 @@
 								null,
 								_react2.default.createElement(
 									'a',
-									{ href: '#' },
-									'iOS Development Course'
+									{ href: '/course/' + this.props.course.slug },
+									this.props.course.title
 								)
 							)
 						),
@@ -41673,12 +41683,7 @@
 							_react2.default.createElement(
 								'p',
 								null,
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur voluptate rerum molestiae eaque possimus exercitationem eligendi fuga.'
-							),
-							_react2.default.createElement(
-								'a',
-								{ href: '/course/first-course', className: 'btn btn-danger' },
-								'Learn More'
+								_TextUtils2.default.truncateText(this.props.course.description, 120)
 							)
 						)
 					)
@@ -41690,6 +41695,25 @@
 	}(_react.Component);
 	
 	exports.default = CourseCard;
+
+/***/ },
+/* 453 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+	
+		truncateText: function truncateText(str, limit) {
+			if (str.length < limit) return str;
+	
+			return str.substring(0, limit) + '...';
+		}
+	
+	};
 
 /***/ }
 /******/ ]);

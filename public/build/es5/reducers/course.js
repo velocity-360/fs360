@@ -9,7 +9,8 @@ var initialState = {
 			description: "",
 			units: []
 		}
-	}
+	},
+	courseArray: []
 };
 
 /*
@@ -25,6 +26,7 @@ module.exports = function (_x, action) {
 		case constants.COURSES_RECIEVED:
 			var newState = Object.assign({}, state);
 			var c = action.courses;
+			newState.courseArray = c;
 			var courseMap = {};
 			for (var i = 0; i < c.length; i++) {
 				var course = c[i];

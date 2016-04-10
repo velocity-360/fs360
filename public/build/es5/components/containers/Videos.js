@@ -57,6 +57,10 @@ var Videos = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var courseList = this.props.courses.map(function (course) {
+					return React.createElement(CourseCard, { key: course.id, course: course });
+				});
+
 				return React.createElement(
 					"div",
 					null,
@@ -121,8 +125,7 @@ var Videos = (function (Component) {
 									React.createElement(
 										"div",
 										{ id: "posts", className: "events small-thumbs" },
-										React.createElement(CourseCard, null),
-										React.createElement(CourseCard, null)
+										courseList
 									),
 									React.createElement(
 										"ul",
@@ -166,7 +169,7 @@ var stateToProps = function (state) {
 
 	return {
 		currentUser: state.profileReducer.currentUser,
-		courses: state.courseReducer.courses };
+		courses: state.courseReducer.courseArray };
 };
 
 

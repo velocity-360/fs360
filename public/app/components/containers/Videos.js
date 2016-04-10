@@ -24,6 +24,11 @@ class Videos extends Component {
 
 	render(){
 
+		var courseList = this.props.courses.map(function(course){
+			return <CourseCard key={course.id} course={course} />
+
+		})
+
 		return (
 			<div>
 				<Sidebar />
@@ -53,11 +58,7 @@ class Videos extends Component {
 								</div>
 
 								<div id="posts" className="events small-thumbs">
-
-									<CourseCard />
-									<CourseCard />
-
-
+									{courseList}
 								</div>
 
 								<ul className="pager nomargin">
@@ -82,7 +83,7 @@ const stateToProps = function(state) {
 
     return {
         currentUser: state.profileReducer.currentUser,
-        courses: state.courseReducer.courses,
+        courses: state.courseReducer.courseArray,
     }
 }
 

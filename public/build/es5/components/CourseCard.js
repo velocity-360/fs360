@@ -13,6 +13,8 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var TextUtils = _interopRequire(require("../utils/TextUtils"));
+
 var CourseCard = (function (Component) {
 	function CourseCard() {
 		_classCallCheck(this, CourseCard);
@@ -33,7 +35,7 @@ var CourseCard = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { src: "/images/events/thumbs/1.jpg", alt: "Inventore voluptates velit totam ipsa tenetur" })
+						React.createElement("img", { src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=512", alt: "Inventore voluptates velit totam ipsa tenetur" })
 					),
 					React.createElement(
 						"div",
@@ -46,8 +48,8 @@ var CourseCard = (function (Component) {
 								null,
 								React.createElement(
 									"a",
-									{ href: "#" },
-									"iOS Development Course"
+									{ href: "/course/" + this.props.course.slug },
+									this.props.course.title
 								)
 							)
 						),
@@ -81,12 +83,7 @@ var CourseCard = (function (Component) {
 							React.createElement(
 								"p",
 								null,
-								"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur voluptate rerum molestiae eaque possimus exercitationem eligendi fuga."
-							),
-							React.createElement(
-								"a",
-								{ href: "/course/first-course", className: "btn btn-danger" },
-								"Learn More"
+								TextUtils.truncateText(this.props.course.description, 120)
 							)
 						)
 					)

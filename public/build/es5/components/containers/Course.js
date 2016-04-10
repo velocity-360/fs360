@@ -272,12 +272,13 @@ var Course = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	console.log("STATE TO PROPS: " + JSON.stringify(state));
 	var keys = Object.keys(state.courseReducer.courses);
 
 	return {
 		currentUser: state.profileReducer.currentUser,
 		course: state.courseReducer.courses[keys[0]],
+		//course: state.courseReducer.courseArray[0],
 		testimonials: state.staticReducer.testimonials
 	};
 };
