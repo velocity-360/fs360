@@ -38,8 +38,9 @@ class Course extends Component {
 
 
 	render(){
+		var _course = this.props.course
 		var units = this.props.course.units.map(function(unit, i){
-			return <CourseSection key={unit.index} unit={unit} />
+			return <CourseSection key={unit.index} unit={unit} course={_course} />
 
 		})
 
@@ -64,11 +65,9 @@ class Course extends Component {
 												<img className="image_fade" src="/images/blog/standard/17.jpg" alt="Standard Post with Image" />
 											</a>
 										</div>
-										<div className="entry-title">
-											<h2>{this.props.course.title}</h2>
-										</div>
 										<div className="entry-content">
 											<div className="col_half">
+												<h2 style={{marginBottom:0}}>{this.props.course.title}</h2>
 												<p>{this.props.course.description}</p>
 											</div>
 

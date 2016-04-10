@@ -23125,8 +23125,9 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var _course = this.props.course;
 				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit });
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course });
 				});
 	
 				return _react2.default.createElement(
@@ -23174,19 +23175,15 @@
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h2',
-													null,
-													this.props.course.title
-												)
-											),
-											_react2.default.createElement(
-												'div',
 												{ className: 'entry-content' },
 												_react2.default.createElement(
 													'div',
 													{ className: 'col_half' },
+													_react2.default.createElement(
+														'h2',
+														{ style: { marginBottom: 0 } },
+														this.props.course.title
+													),
 													_react2.default.createElement(
 														'p',
 														null,
@@ -41324,7 +41321,7 @@
 /* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -41354,39 +41351,65 @@
 		}
 	
 		_createClass(CourseSection, [{
-			key: "render",
+			key: 'render',
 			value: function render() {
 	
+				// if (this.props.course.type == 'online'){
+				// 	if (this.props.unit.index < 2){ // always show first video
+				// 		videoThumb = <span className={'wistia_embed wistia_async_'+this.props.section.wistia+' popover=true popoverAnimateThumbnail=true'} style={{display:'inline-block',height:168,width:300,marginTop:24}}>&nbsp;</span>;
+				// 	}
+				// 	else if (this.props.accountType == 'premium'){
+				// 		videoThumb = <span className={'wistia_embed wistia_async_'+this.props.section.wistia+' popover=true popoverAnimateThumbnail=true'} style={{display:'inline-block',height:168,width:300,marginTop:24}}>&nbsp;</span>;
+				// 	}
+				// 	else if (this.props.accountType == 'basic' || this.props.accountType == ''){
+				// 		videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#fff', marginTop:12, marginBottom:12}}>To view this video, please <a style={{color:'red'}} onClick={this.subscribeAction} href="#">upgrade</a> your account to Premium</div>
+				// 	}
+				// 	else if (this.props.accountType == 'none'){ // not logged in
+				// 		videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#fff', marginTop:12, marginBottom:12}}>Please log in or <a style={{color:'red'}} href="/premium">register</a> to view this video.</div>
+				// 	}
+				// }
+	
+				var videoThumb = null;
+				if (this.props.course.type == 'online') {
+					videoThumb = _react2.default.createElement(
+						'div',
+						{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+						' '
+					);
+				}
+	
 				return _react2.default.createElement(
-					"div",
-					{ className: "entry clearfix" },
+					'div',
+					{ className: 'entry clearfix' },
 					_react2.default.createElement(
-						"div",
-						{ className: "entry-timeline" },
-						"Unit",
+						'div',
+						{ className: 'entry-timeline' },
+						'Unit',
 						_react2.default.createElement(
-							"span",
+							'span',
 							null,
 							this.props.unit.index + 1
 						),
-						_react2.default.createElement("div", { className: "timeline-divider" })
+						_react2.default.createElement('div', { className: 'timeline-divider' })
 					),
 					_react2.default.createElement(
-						"div",
-						{ className: "entry-image" },
+						'div',
+						{ className: 'entry-image' },
 						_react2.default.createElement(
-							"div",
-							{ className: "panel panel-default" },
+							'div',
+							{ className: 'panel panel-default' },
 							_react2.default.createElement(
-								"div",
-								{ className: "panel-body", style: { padding: 36 } },
+								'div',
+								{ className: 'panel-body', style: { padding: 36 } },
 								_react2.default.createElement(
-									"h2",
+									'h2',
 									null,
 									this.props.unit.topic
 								),
-								_react2.default.createElement("hr", null),
-								this.props.unit.description
+								_react2.default.createElement('hr', null),
+								this.props.unit.description,
+								_react2.default.createElement('br', null),
+								videoThumb
 							)
 						)
 					)

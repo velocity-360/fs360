@@ -77,8 +77,9 @@ var Course = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var _course = this.props.course;
 				var units = this.props.course.units.map(function (unit, i) {
-					return React.createElement(CourseSection, { key: unit.index, unit: unit });
+					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course });
 				});
 
 				return React.createElement(
@@ -126,19 +127,15 @@ var Course = (function (Component) {
 											),
 											React.createElement(
 												"div",
-												{ className: "entry-title" },
-												React.createElement(
-													"h2",
-													null,
-													this.props.course.title
-												)
-											),
-											React.createElement(
-												"div",
 												{ className: "entry-content" },
 												React.createElement(
 													"div",
 													{ className: "col_half" },
+													React.createElement(
+														"h2",
+														{ style: { marginBottom: 0 } },
+														this.props.course.title
+													),
 													React.createElement(
 														"p",
 														null,
