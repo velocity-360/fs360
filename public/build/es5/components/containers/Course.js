@@ -20,6 +20,8 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
+var Loader = _interopRequire(require("react-loader"));
+
 var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -41,8 +43,8 @@ var Course = (function (Component) {
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.state = {
-			showModal: false
-		};
+			showLoader: false,
+			showModal: false };
 	}
 
 	_inherits(Course, Component);
@@ -82,9 +84,12 @@ var Course = (function (Component) {
 					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course });
 				});
 
+
+
 				return React.createElement(
 					"div",
 					null,
+					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(Sidebar, null),
 					React.createElement(
 						"section",
@@ -276,7 +281,9 @@ var stateToProps = function (state) {
 		currentUser: state.profileReducer.currentUser,
 		course: state.courseReducer.courses[keys[0]],
 		//course: state.courseReducer.courseArray[0],
-		testimonials: state.staticReducer.testimonials
+		testimonials: state.staticReducer.testimonials,
+		loaderOptions: state.staticReducer.loaderConfig
+
 	};
 };
 

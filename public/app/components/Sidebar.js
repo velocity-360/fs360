@@ -29,8 +29,8 @@ class Sidebar extends Component {
 	                            
 	                            <li><a href="/courses"><div>Courses</div></a>
 	                                <ul>
-	                                    <li><a href="#"><div>Part Time</div></a></li>
-	                                    <li><a href="#"><div>Bootcamp</div></a></li>
+	                                    <li><a href="/courses?type=live"><div>Part Time</div></a></li>
+	                                    <li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 	                                </ul>
 	                            </li>
 	                        </ul>

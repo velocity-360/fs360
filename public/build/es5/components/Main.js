@@ -14,6 +14,8 @@ var React = _interopRequire(require("react"));
 
 var Home = _interopRequire(require("./containers/Home"));
 
+var Courses = _interopRequire(require("./containers/Courses"));
+
 var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
@@ -40,6 +42,9 @@ var Main = (function (_React$Component) {
 
 					case "course":
 						return page = React.createElement(Course, { slug: this.props.slug });
+
+					case "courses":
+						return page = React.createElement(Courses, { params: this.props.params });
 
 					case "videos":
 						return page = React.createElement(Videos, null);

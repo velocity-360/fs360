@@ -40,7 +40,7 @@ class App extends Component {
 	render(){
 		return (
 			<Provider store={store}>
-				<Main page={this.props.page} slug={this.props.slug} />
+				<Main page={this.props.page} slug={this.props.slug} params={this.props.params} />
 			</Provider>				
 		)
 	}

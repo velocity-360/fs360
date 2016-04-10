@@ -107,7 +107,7 @@ var Sidebar = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "#" },
+													{ href: "/courses?type=live" },
 													React.createElement(
 														"div",
 														null,
@@ -120,7 +120,7 @@ var Sidebar = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "#" },
+													{ href: "/courses?type=immersive" },
 													React.createElement(
 														"div",
 														null,

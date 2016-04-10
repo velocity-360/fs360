@@ -112,9 +112,30 @@
 					if (parts.length > 1) slug = parts[1];
 				}
 	
+				var address = window.location.href; // http://localhost:3000/courses?type=online
+				var params = null;
+				if (address.indexOf('?') != -1) {
+					params = {};
+					var parts = address.split('?');
+					var paramsString = parts[1]; // key=value&key=value
+					var keyValuePairs = paramsString.split('&');
+					for (var i = 0; i < keyValuePairs.length; i++) {
+						var keyValue = keyValuePairs[i];
+						if (keyValue.indexOf('=') == -1) continue;
+	
+						var pieces = keyValue.split('=');
+						var key = pieces[0];
+						var value = pieces[1];
+						params[key] = value;
+					}
+				}
+	
+				console.log('PARAMS: ' + JSON.stringify(params));
+	
 				this.setState({
 					page: page,
-					slug: slug
+					slug: slug,
+					params: params
 				});
 			}
 		}, {
@@ -126,7 +147,7 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement(_Main2.default, { page: this.state.page, slug: this.state.slug });
+				return _react2.default.createElement(_Main2.default, { page: this.state.page, slug: this.state.slug, params: this.state.params });
 			}
 		}]);
 	
@@ -21420,7 +21441,25 @@
 	
 	var initialState = {
 		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'Web Development', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }],
-		events: [{ id: 0, 'subject': 'Node + iOS Workshop', 'fee': 'Free', 'date': 'April 5, 2016', 'time': '7:00pm', 'description': 'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.', 'image': 'apple.jpg' }, { id: 1, 'subject': 'Node JS Workshop', 'fee': 'Free', 'date': 'April 6, 2016', 'time': '7:00pm', 'description': 'Learn how to build a full MEAN stack application with the SendGrid API. We\'ll build a Node server with a landing page to collect signups, create profiles, and automate welcome emails.', 'image': 'node.png' }]
+		events: [{ id: 0, 'subject': 'Node + iOS Workshop', 'fee': 'Free', 'date': 'April 5, 2016', 'time': '7:00pm', 'description': 'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.', 'image': 'apple.jpg', button: 'Attend' }, { id: 1, 'subject': 'Node JS Workshop', 'fee': 'Free', 'date': 'April 6, 2016', 'time': '7:00pm', 'description': 'Learn how to build a full MEAN stack application with the SendGrid API. We\'ll build a Node server with a landing page to collect signups, create profiles, and automate welcome emails.', 'image': 'node.png', button: 'Attend' }],
+		loaderConfig: {
+			lines: 13,
+			length: 20,
+			width: 10,
+			radius: 30,
+			corners: 1,
+			rotate: 0,
+			direction: 1,
+			color: '#fff',
+			speed: 1,
+			trail: 60,
+			shadow: false,
+			hwaccel: false,
+			zIndex: 2e9,
+			top: '50%',
+			left: '50%',
+			scale: 1.00
+		}
 	
 	};
 	
@@ -21449,6 +21488,10 @@
 	var _Home = __webpack_require__(187);
 	
 	var _Home2 = _interopRequireDefault(_Home);
+	
+	var _Courses = __webpack_require__(457);
+	
+	var _Courses2 = _interopRequireDefault(_Courses);
 	
 	var _Course = __webpack_require__(451);
 	
@@ -21491,6 +21534,9 @@
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
+	
+					case 'courses':
+						return page = _react2.default.createElement(_Courses2.default, { params: this.props.params });
 	
 					case 'videos':
 						return page = _react2.default.createElement(_Videos2.default, null);
@@ -21591,6 +21637,11 @@
 			_this2.state = {
 				showLoader: false,
 				showModal: false,
+				bootcamp: {
+					subject: 'Bootcamp',
+					image: 'logo_round_green_260.png',
+					button: 'Request Info'
+				},
 				selectedEvent: {
 					id: null,
 					subject: '',
@@ -21644,20 +21695,16 @@
 						showLoader: false
 					});
 	
-					if (response.confirmation == 'success') {} else {
-						alert(response.message);
-					}
+					if (response.confirmation == 'success') alert('Thanks for your interest! Please check your email for confirmation.');else alert(response.message);
 				});
 			}
 		}, {
 			key: 'openModal',
 			value: function openModal(event) {
-				var e = this.props.events[event.target.id];
-				console.log('OPEN MODAL: ' + JSON.stringify(e));
 				event.preventDefault();
 				this.setState({
 					showModal: true,
-					selectedEvent: this.props.events[event.target.id]
+					selectedEvent: event.target.id == 'bootcamp' ? this.state.bootcamp : this.props.events[event.target.id]
 				});
 			}
 		}, {
@@ -21668,7 +21715,6 @@
 		}, {
 			key: 'render',
 			value: function render() {
-	
 				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
 					return _react2.default.createElement(_Testimonial2.default, { key: i, testimonial: testimonial });
 				});
@@ -21678,30 +21724,10 @@
 					return _react2.default.createElement(_EventCard2.default, { key: i, event: e, click: _openModal });
 				});
 	
-				var options = {
-					lines: 13,
-					length: 20,
-					width: 10,
-					radius: 30,
-					corners: 1,
-					rotate: 0,
-					direction: 1,
-					color: '#fff',
-					speed: 1,
-					trail: 60,
-					shadow: false,
-					hwaccel: false,
-					zIndex: 2e9,
-					top: '50%',
-					left: '50%',
-					scale: 1.00
-				};
-				var loader = _react2.default.createElement(_reactLoader2.default, { options: options, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' });
-	
 				return _react2.default.createElement(
 					'div',
 					null,
-					loader,
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(_Nav2.default, null),
 					_react2.default.createElement(
 						'section',
@@ -21790,7 +21816,7 @@
 											{ className: 'col_one_fifth col_last nobottommargin' },
 											_react2.default.createElement(
 												'button',
-												{ onClick: this.register, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit', type: 'submit' },
+												{ onClick: this.register, id: 'bootcamp', className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
 												'Request Syllabus'
 											)
 										)
@@ -22233,7 +22259,7 @@
 									),
 									_react2.default.createElement(
 										'a',
-										{ href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+										{ onClick: this.openModal, id: 'bootcamp', href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
 										'Request Information'
 									)
 								)
@@ -22296,7 +22322,7 @@
 							_react2.default.createElement(
 								'a',
 								{ onClick: this.rsvp, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Attend'
+								this.state.selectedEvent.button
 							)
 						)
 					),
@@ -22321,7 +22347,8 @@
 			currentUser: state.profileReducer.currentUser,
 			courses: courseList,
 			testimonials: state.staticReducer.testimonials,
-			events: state.staticReducer.events
+			events: state.staticReducer.events,
+			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
 	
@@ -41672,6 +41699,10 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
+	var _reactLoader = __webpack_require__(441);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
 	var _Sidebar = __webpack_require__(452);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
@@ -41717,6 +41748,7 @@
 			_this.openModal = _this.openModal.bind(_this);
 			_this.closeModal = _this.closeModal.bind(_this);
 			_this.state = {
+				showLoader: false,
 				showModal: false
 			};
 			return _this;
@@ -41752,6 +41784,7 @@
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(_Sidebar2.default, null),
 					_react2.default.createElement(
 						'section',
@@ -41940,7 +41973,9 @@
 			currentUser: state.profileReducer.currentUser,
 			course: state.courseReducer.courses[keys[0]],
 			//course: state.courseReducer.courseArray[0],
-			testimonials: state.staticReducer.testimonials
+			testimonials: state.staticReducer.testimonials,
+			loaderOptions: state.staticReducer.loaderConfig
+	
 		};
 	};
 	
@@ -42062,7 +42097,7 @@
 												null,
 												_react2.default.createElement(
 													"a",
-													{ href: "#" },
+													{ href: "/courses?type=live" },
 													_react2.default.createElement(
 														"div",
 														null,
@@ -42075,7 +42110,7 @@
 												null,
 												_react2.default.createElement(
 													"a",
-													{ href: "#" },
+													{ href: "/courses?type=immersive" },
 													_react2.default.createElement(
 														"div",
 														null,
@@ -42510,6 +42545,209 @@
 		}
 	
 	};
+
+/***/ },
+/* 457 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _Sidebar = __webpack_require__(452);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(444);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseCard = __webpack_require__(455);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(447);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(448);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Courses = function (_Component) {
+		_inherits(Courses, _Component);
+	
+		function Courses(props, context) {
+			_classCallCheck(this, Courses);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Courses).call(this, props, context));
+		}
+	
+		_createClass(Courses, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var endpoint = '/api/course';
+				if (this.props.params == null) {
+					_api2.default.handleGet(endpoint, {});
+					return;
+				}
+	
+				// TODO: move this to api.js soon
+				endpoint = endpoint + '?';
+				var keys = Object.keys(this.props.params);
+				for (var i = 0; i < keys.length; i++) {
+					var key = keys[i];
+					endpoint = endpoint + key;
+					endpoint = endpoint + '=';
+					endpoint = endpoint + this.props.params[key];
+				}
+	
+				console.log('ENDPOINT == ' + endpoint);
+				_api2.default.handleGet(endpoint, {});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var courseList = this.props.courses.map(function (course) {
+					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginBottom: 0 } },
+													'Videos'
+												),
+												_react2.default.createElement(
+													'p',
+													null,
+													'Description'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half panel panel-default col_last' },
+												_react2.default.createElement(
+													'div',
+													{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+													'Details'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel-body' },
+													_react2.default.createElement('hr', null),
+													_react2.default.createElement(
+														'a',
+														{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
+														'Apply'
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'events small-thumbs' },
+										courseList
+									),
+									_react2.default.createElement(
+										'ul',
+										{ className: 'pager nomargin' },
+										_react2.default.createElement(
+											'li',
+											{ className: 'previous' },
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'← Older'
+											)
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'next' },
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'Newer →'
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Courses;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Courses);
 
 /***/ }
 /******/ ]);

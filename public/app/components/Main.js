@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from './containers/Home'
+import Courses from './containers/Courses'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
 
@@ -23,6 +24,9 @@ class Main extends React.Component {
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />
+
+			case 'courses':
+				return page = <Courses params={this.props.params} />
 
 			case 'videos':
 				return page = <Videos />

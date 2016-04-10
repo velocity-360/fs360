@@ -22,6 +22,11 @@ class Home extends Component {
 		this.state = {
 			showLoader: false,
 			showModal: false,
+			bootcamp: {
+				subject: 'Bootcamp',
+				image: 'logo_round_green_260.png',
+				button: 'Request Info'
+			},
 			selectedEvent: {
 				id: null,
 				subject: '',
@@ -69,25 +74,19 @@ class Home extends Component {
 				showLoader: false
 			});
 
-			if (response.confirmation == 'success'){
-
-			}
-			else {
+			if (response.confirmation == 'success')
+				alert('Thanks for your interest! Please check your email for confirmation.')
+			else 
 				alert(response.message)
-			}
-
 		});
-
 	}
 
 
 	openModal(event){
-		var e = this.props.events[event.target.id];
-		console.log('OPEN MODAL: '+JSON.stringify(e))
 		event.preventDefault()
 		this.setState({
 			showModal: true,
-			selectedEvent: this.props.events[event.target.id]
+			selectedEvent: (event.target.id == 'bootcamp') ? this.state.bootcamp : this.props.events[event.target.id]
 		})
 	}
 
@@ -96,7 +95,6 @@ class Home extends Component {
 	}
 
 	render(){
-
 		var testimonialList = this.props.testimonials.map(function(testimonial, i){
 			return <Testimonial key={i} testimonial={testimonial} />
 		});
@@ -106,29 +104,10 @@ class Home extends Component {
 			return <EventCard key={i} event={e} click={_openModal} />
 		});
 
-		var options = {
-		    lines: 13,
-		    length: 20,
-		    width: 10,
-		    radius: 30,
-		    corners: 1,
-		    rotate: 0,
-		    direction: 1,
-		    color: '#fff',
-		    speed: 1,
-		    trail: 60,
-		    shadow: false,
-		    hwaccel: false,
-		    zIndex: 2e9,
-		    top: '50%',
-		    left: '50%',
-		    scale: 1.00
-		};
-	    var loader = <Loader options={options} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />;
 
 		return (
 			<div>
-				{loader}
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Nav />
 				<section id="slider" className="slider-parallax dark full-screen" style={{background: "url(images/programming.jpg) center"}}>
 
@@ -166,7 +145,7 @@ class Home extends Component {
 										</div>
 									</div>
 									<div className="col_one_fifth col_last nobottommargin">
-										<button onClick={this.register} className="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit">Request Syllabus</button>
+										<button onClick={this.register} id="bootcamp" className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
 									</div>
 								</form>
 							</div>
@@ -389,7 +368,7 @@ class Home extends Component {
 									</table>
 								</div>
 
-								<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
+								<a onClick={this.openModal} id="bootcamp" href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
 									Request Information
 								</a>
 							</div>
@@ -423,7 +402,7 @@ class Home extends Component {
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Attend</a>
+						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">{this.state.selectedEvent.button}</a>
 			        </Modal.Footer>
 		        </Modal>
 
@@ -448,7 +427,8 @@ const stateToProps = function(state) {
         currentUser: state.profileReducer.currentUser,
         courses: courseList,
         testimonials: state.staticReducer.testimonials,
-        events: state.staticReducer.events
+        events: state.staticReducer.events,
+        loaderOptions: state.staticReducer.loaderConfig
     }
 }
 

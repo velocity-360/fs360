@@ -50,6 +50,11 @@ var Home = (function (Component) {
 		this.state = {
 			showLoader: false,
 			showModal: false,
+			bootcamp: {
+				subject: "Bootcamp",
+				image: "logo_round_green_260.png",
+				button: "Request Info"
+			},
 			selectedEvent: {
 				id: null,
 				subject: "",
@@ -109,9 +114,7 @@ var Home = (function (Component) {
 						showLoader: false
 					});
 
-					if (response.confirmation == "success") {} else {
-						alert(response.message);
-					}
+					if (response.confirmation == "success") alert("Thanks for your interest! Please check your email for confirmation.");else alert(response.message);
 				});
 			},
 			writable: true,
@@ -119,12 +122,10 @@ var Home = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
-				var e = this.props.events[event.target.id];
-				console.log("OPEN MODAL: " + JSON.stringify(e));
 				event.preventDefault();
 				this.setState({
 					showModal: true,
-					selectedEvent: this.props.events[event.target.id]
+					selectedEvent: event.target.id == "bootcamp" ? this.state.bootcamp : this.props.events[event.target.id]
 				});
 			},
 			writable: true,
@@ -148,30 +149,11 @@ var Home = (function (Component) {
 					return React.createElement(EventCard, { key: i, event: e, click: _openModal });
 				});
 
-				var options = {
-					lines: 13,
-					length: 20,
-					width: 10,
-					radius: 30,
-					corners: 1,
-					rotate: 0,
-					direction: 1,
-					color: "#fff",
-					speed: 1,
-					trail: 60,
-					shadow: false,
-					hwaccel: false,
-					zIndex: 2000000000,
-					top: "50%",
-					left: "50%",
-					scale: 1
-				};
-				var loader = React.createElement(Loader, { options: options, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" });
 
 				return React.createElement(
 					"div",
 					null,
-					loader,
+					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(Nav, null),
 					React.createElement(
 						"section",
@@ -260,7 +242,7 @@ var Home = (function (Component) {
 											{ className: "col_one_fifth col_last nobottommargin" },
 											React.createElement(
 												"button",
-												{ onClick: this.register, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit", type: "submit" },
+												{ onClick: this.register, id: "bootcamp", className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
 												"Request Syllabus"
 											)
 										)
@@ -703,7 +685,7 @@ var Home = (function (Component) {
 									),
 									React.createElement(
 										"a",
-										{ href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+										{ onClick: this.openModal, id: "bootcamp", href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
 										"Request Information"
 									)
 								)
@@ -766,7 +748,7 @@ var Home = (function (Component) {
 							React.createElement(
 								"a",
 								{ onClick: this.rsvp, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Attend"
+								this.state.selectedEvent.button
 							)
 						)
 					),
@@ -795,7 +777,8 @@ var stateToProps = function (state) {
 		currentUser: state.profileReducer.currentUser,
 		courses: courseList,
 		testimonials: state.staticReducer.testimonials,
-		events: state.staticReducer.events
+		events: state.staticReducer.events,
+		loaderOptions: state.staticReducer.loaderConfig
 	};
 };
 

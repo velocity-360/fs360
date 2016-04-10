@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import Loader from 'react-loader'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseSection from '../../components/CourseSection'
@@ -15,7 +16,8 @@ class Course extends Component {
 		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
 		this.state = {
-			showModal: false
+			showLoader: false,
+			showModal: false,
 		}
 	}
 
@@ -41,11 +43,13 @@ class Course extends Component {
 		var _course = this.props.course
 		var units = this.props.course.units.map(function(unit, i){
 			return <CourseSection key={unit.index} unit={unit} course={_course} />
-
 		})
+
+
 
 		return (
 			<div>
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Sidebar />
 				<section id="content" style={{backgroundColor: '#F5F5F5'}}>
 
@@ -145,7 +149,9 @@ const stateToProps = function(state) {
         currentUser: state.profileReducer.currentUser,
         course: state.courseReducer.courses[keys[0]],
         //course: state.courseReducer.courseArray[0],
-        testimonials: state.staticReducer.testimonials
+        testimonials: state.staticReducer.testimonials,
+        loaderOptions: state.staticReducer.loaderConfig
+
     }
 }
 
