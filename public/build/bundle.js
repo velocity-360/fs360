@@ -40796,11 +40796,54 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "/courses", "data-href": "#" },
+											{ href: "/courses" },
 											_react2.default.createElement(
 												"div",
 												null,
 												"Courses"
+											)
+										),
+										_react2.default.createElement(
+											"ul",
+											null,
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "/courses?type=live" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"Part Time"
+													)
+												)
+											),
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "/courses?type=immersive" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"Bootcamp"
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/courses", "data-href": "#" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"Login"
 											)
 										)
 									)

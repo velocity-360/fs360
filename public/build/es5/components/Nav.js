@@ -89,11 +89,54 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/courses", "data-href": "#" },
+											{ href: "/courses" },
 											React.createElement(
 												"div",
 												null,
 												"Courses"
+											)
+										),
+										React.createElement(
+											"ul",
+											null,
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "/courses?type=live" },
+													React.createElement(
+														"div",
+														null,
+														"Part Time"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "/courses?type=immersive" },
+													React.createElement(
+														"div",
+														null,
+														"Bootcamp"
+													)
+												)
+											)
+										)
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement(
+											"a",
+											{ href: "/courses", "data-href": "#" },
+											React.createElement(
+												"div",
+												null,
+												"Login"
 											)
 										)
 									)

@@ -27,7 +27,14 @@ class Nav extends React.Component {
 							<ul className="one-page-menu">
 								<li className="current"><a href="#" data-href="#header"><div>Home</div></a></li>
 								<li><a href="/videos" data-href="#"><div>Videos</div></a></li>
-								<li><a href="/courses" data-href="#"><div>Courses</div></a></li>
+								<li><a href="/courses"><div>Courses</div></a>
+									<ul>
+										<li><a href="/courses?type=live"><div>Part Time</div></a></li>
+										<li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
+									</ul>
+								</li>
+								<li><a href="/courses" data-href="#"><div>Login</div></a></li>
+
 							</ul>
 						</nav>
 					</div>
