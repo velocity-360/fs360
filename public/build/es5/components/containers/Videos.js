@@ -63,7 +63,7 @@ var Videos = (function (Component) {
 
 				return React.createElement(
 					"div",
-					null,
+					{ style: { background: "#f5f5f5" } },
 					React.createElement(Sidebar, null),
 					React.createElement(
 						"section",

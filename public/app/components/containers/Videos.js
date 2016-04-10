@@ -30,7 +30,7 @@ class Videos extends Component {
 		})
 
 		return (
-			<div>
+			<div style={{background:'#f5f5f5'}}>
 				<Sidebar />
 				<section id="content">
 

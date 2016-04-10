@@ -35,7 +35,7 @@ var CourseCard = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=512", alt: "Inventore voluptates velit totam ipsa tenetur" })
+						React.createElement("img", { style: { border: "1px solid #ddd" }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=512", alt: "Inventore voluptates velit totam ipsa tenetur" })
 					),
 					React.createElement(
 						"div",
@@ -48,7 +48,7 @@ var CourseCard = (function (Component) {
 								null,
 								React.createElement(
 									"a",
-									{ href: "/course/" + this.props.course.slug },
+									{ style: { color: "#1ABC9C" }, href: "/course/" + this.props.course.slug },
 									this.props.course.title
 								)
 							)
@@ -59,31 +59,26 @@ var CourseCard = (function (Component) {
 							React.createElement(
 								"li",
 								null,
-								React.createElement(
-									"a",
-									{ href: "#" },
-									React.createElement("i", { className: "icon-time" }),
-									" 11:00 - 19:00"
-								)
+								React.createElement("i", { className: "icon-time" }),
+								" ",
+								this.props.course.units.length,
+								" Videos"
 							),
 							React.createElement(
 								"li",
 								null,
-								React.createElement(
-									"a",
-									{ href: "#" },
-									React.createElement("i", { className: "icon-map-marker2" }),
-									" Melbourne, Australia"
-								)
+								React.createElement("i", { className: "icon-map-marker2" }),
+								" Melbourne, Australia"
 							)
 						),
+						React.createElement("hr", null),
 						React.createElement(
 							"div",
 							{ className: "entry-content" },
 							React.createElement(
 								"p",
 								null,
-								TextUtils.truncateText(this.props.course.description, 120)
+								TextUtils.truncateText(this.props.course.description, 220)
 							)
 						)
 					)

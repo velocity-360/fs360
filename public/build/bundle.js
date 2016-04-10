@@ -41480,7 +41480,7 @@
 	
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ style: { background: '#f5f5f5' } },
 					_react2.default.createElement(_Sidebar2.default, null),
 					_react2.default.createElement(
 						'section',
@@ -41635,7 +41635,7 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'entry-image' },
-						_react2.default.createElement('img', { src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=512', alt: 'Inventore voluptates velit totam ipsa tenetur' })
+						_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=512', alt: 'Inventore voluptates velit totam ipsa tenetur' })
 					),
 					_react2.default.createElement(
 						'div',
@@ -41648,7 +41648,7 @@
 								null,
 								_react2.default.createElement(
 									'a',
-									{ href: '/course/' + this.props.course.slug },
+									{ style: { color: '#1ABC9C' }, href: '/course/' + this.props.course.slug },
 									this.props.course.title
 								)
 							)
@@ -41659,31 +41659,26 @@
 							_react2.default.createElement(
 								'li',
 								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-time' }),
-									' 11:00 - 19:00'
-								)
+								_react2.default.createElement('i', { className: 'icon-time' }),
+								' ',
+								this.props.course.units.length,
+								' Videos'
 							),
 							_react2.default.createElement(
 								'li',
 								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-map-marker2' }),
-									' Melbourne, Australia'
-								)
+								_react2.default.createElement('i', { className: 'icon-map-marker2' }),
+								' Melbourne, Australia'
 							)
 						),
+						_react2.default.createElement('hr', null),
 						_react2.default.createElement(
 							'div',
 							{ className: 'entry-content' },
 							_react2.default.createElement(
 								'p',
 								null,
-								_TextUtils2.default.truncateText(this.props.course.description, 120)
+								_TextUtils2.default.truncateText(this.props.course.description, 220)
 							)
 						)
 					)
