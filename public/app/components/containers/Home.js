@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
+import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
+import EventCard from '../../components/EventCard'
 import Testimonial from '../../components/Testimonial'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
@@ -13,6 +15,15 @@ class Home extends Component {
 		super(props, context)
 		this.updateUserRegistration = this.updateUserRegistration.bind(this)
 		this.register = this.register.bind(this)
+		this.openModal = this.openModal.bind(this)
+		this.closeModal = this.closeModal.bind(this)
+		this.state = {
+			showModal: false,
+			selectedEvent: {
+				subject: '',
+				image: ''
+			}
+		}
 	}
 
 	componentWillMount(){
@@ -39,10 +50,29 @@ class Home extends Component {
 		api.handlePost('/api/test', this.props.currentUser);
 	}
 
+	openModal(event){
+		var e = this.props.events[event.target.id];
+		console.log('OPEN MODAL: '+JSON.stringify(e))
+		event.preventDefault()
+		this.setState({
+			showModal: true,
+			selectedEvent: this.props.events[event.target.id]
+		})
+	}
+
+	closeModal(){
+		this.setState({showModal: false})
+	}
+
 	render(){
 
 		var testimonialList = this.props.testimonials.map(function(testimonial, i){
 			return <Testimonial key={i} testimonial={testimonial} />
+		});
+
+		var _openModal = this.openModal;
+		var events = this.props.events.map(function(e, i){
+			return <EventCard key={i} event={e} click={_openModal} />
 		});
 
 		return (
@@ -123,28 +153,29 @@ class Home extends Component {
 								<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Learn more</a>
 							</div>
 
+							<div id="events" className="divider divider-short divider-center">
+								<i className="icon-circle"></i>
+							</div>
+
+							<div id="posts" className="events small-thumbs">
+								<div style={{textAlign:'center', paddingTop:64}}>
+									<h3>Events</h3>
+								</div>
+
+								{events}
+
+							</div>		
+
 							<div className="divider divider-short divider-center">
 								<i className="icon-circle"></i>
 							</div>
 
 							<div className="clear"></div>
-
-						</div>
-
-						<div className="section">
-							<div className="container clearfix">
-								<div id="section-couple" className="heading-block title-center page-section">
-									<h2>Meet Our Students</h2>
-									<span>Current &amp; Former Students</span>
-								</div>
-
-								{testimonialList}
-							</div>
 						</div>
 					</div>
 				</section>
 
-				<section id="section-team" className="page-section">
+				<section id="section-team" className="page-section" style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 
 					<div className="heading-block center">
 						<h2>Summer 2016</h2>
@@ -207,7 +238,6 @@ class Home extends Component {
 						<div className="clear"></div>
 
 						<div className="col-md-6 bottommargin">
-
 							<div className="team team-list clearfix">
 								<div className="team-image">
 									<img src="/images/node.jpg" alt="Josh Clark" />
@@ -251,24 +281,23 @@ class Home extends Component {
 						</div>
 
 						<div className="clear"></div>
-
 					</div>
 
-					<div className="row clearfix common-height">
+					<div className="row clearfix common-height" style={{borderTop:'1px solid #ddd'}}>
 						<div className="col-md-6 center col-padding" style={{background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover'}}>
 							<div>&nbsp;</div>
 						</div>
 
-						<div className="col-md-6 center col-padding" style={{backgroundColor: '#F9F9F9'}}>
+						<div className="col-md-6 center col-padding" style={{backgroundColor: '#fff'}}>
 							<div>
 								<div className="heading-block nobottomborder">
 									<h3>Bootcamps</h3>
 								</div>
 
 								<p className="lead">
-									Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural 
-									resources. Governance impact; transformative donation philanthropy, respect 
-									reproductive.
+									FS360 operates 24-week bootcamps that run during evenings and weekends. Designed 
+									for working professionals, our bootcamps train students for a career change without 
+									having to leave their current job.
 								</p>
 
 								<div className="table-responsive">
@@ -308,13 +337,44 @@ class Home extends Component {
 									</table>
 								</div>
 
-								<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Apply</a>
+								<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
+									Request Information
+								</a>
 							</div>
 						</div>
-
 					</div>
 
+					<div className="section">
+						<div className="container clearfix">
+							<div id="section-couple" className="heading-block title-center page-section">
+								<h2>Meet Our Students</h2>
+								<span>Current &amp; Former Students</span>
+							</div>
+
+							{testimonialList}
+						</div>
+					</div>
 				</section>
+
+		        <Modal show={this.state.showModal} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h2>{this.state.selectedEvent.subject}</h2>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<div style={{textAlign:'center'}}>
+				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24, padding:12}} src={'/images/'+this.state.selectedEvent.image} />
+			        	</div>
+			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
+			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
+			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
+
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Attend</a>
+			        </Modal.Footer>
+		        </Modal>
+
 
 				<Footer />
 			</div>
@@ -335,7 +395,8 @@ const stateToProps = function(state) {
     return {
         currentUser: state.profileReducer.currentUser,
         courses: courseList,
-        testimonials: state.staticReducer.testimonials
+        testimonials: state.staticReducer.testimonials,
+        events: state.staticReducer.events
     }
 }
 

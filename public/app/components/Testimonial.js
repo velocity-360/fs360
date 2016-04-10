@@ -15,9 +15,9 @@ class Testimonial extends Component {
 							{this.props.testimonial.quote}
 						</div>
 						<div className="line topmargin-sm nobottommargin"></div>
-						<a href="#" className="social-icon si-borderless si-small si-facebook" title="Facebook">
-							<i className="icon-facebook"></i>
-							<i className="icon-facebook"></i>
+						<a href="#" className="social-icon si-small si-borderless si-github">
+							<i className="icon-github"></i>
+							<i className="icon-github"></i>
 						</a>
 						<a href="#" className="social-icon si-borderless si-small si-twitter" title="Twitter">
 							<i className="icon-twitter"></i>

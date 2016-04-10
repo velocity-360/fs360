@@ -15,9 +15,16 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var _reactBootstrap = require("react-bootstrap");
+
+var ReactBootstrap = _interopRequire(_reactBootstrap);
+
+var Modal = _reactBootstrap.Modal;
 var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
+
+var EventCard = _interopRequire(require("../../components/EventCard"));
 
 var Testimonial = _interopRequire(require("../../components/Testimonial"));
 
@@ -35,6 +42,15 @@ var Home = (function (Component) {
 		_get(Object.getPrototypeOf(Home.prototype), "constructor", this).call(this, props, context);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
 		this.register = this.register.bind(this);
+		this.openModal = this.openModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+		this.state = {
+			showModal: false,
+			selectedEvent: {
+				subject: "",
+				image: ""
+			}
+		};
 	}
 
 	_inherits(Home, Component);
@@ -72,10 +88,35 @@ var Home = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		openModal: {
+			value: function openModal(event) {
+				var e = this.props.events[event.target.id];
+				console.log("OPEN MODAL: " + JSON.stringify(e));
+				event.preventDefault();
+				this.setState({
+					showModal: true,
+					selectedEvent: this.props.events[event.target.id]
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		closeModal: {
+			value: function closeModal() {
+				this.setState({ showModal: false });
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
 					return React.createElement(Testimonial, { key: i, testimonial: testimonial });
+				});
+
+				var _openModal = this.openModal;
+				var events = this.props.events.map(function (e, i) {
+					return React.createElement(EventCard, { key: i, event: e, click: _openModal });
 				});
 
 				return React.createElement(
@@ -222,39 +263,35 @@ var Home = (function (Component) {
 								),
 								React.createElement(
 									"div",
+									{ id: "events", className: "divider divider-short divider-center" },
+									React.createElement("i", { className: "icon-circle" })
+								),
+								React.createElement(
+									"div",
+									{ id: "posts", className: "events small-thumbs" },
+									React.createElement(
+										"div",
+										{ style: { textAlign: "center", paddingTop: 64 } },
+										React.createElement(
+											"h3",
+											null,
+											"Events"
+										)
+									),
+									events
+								),
+								React.createElement(
+									"div",
 									{ className: "divider divider-short divider-center" },
 									React.createElement("i", { className: "icon-circle" })
 								),
 								React.createElement("div", { className: "clear" })
-							),
-							React.createElement(
-								"div",
-								{ className: "section" },
-								React.createElement(
-									"div",
-									{ className: "container clearfix" },
-									React.createElement(
-										"div",
-										{ id: "section-couple", className: "heading-block title-center page-section" },
-										React.createElement(
-											"h2",
-											null,
-											"Meet Our Students"
-										),
-										React.createElement(
-											"span",
-											null,
-											"Current & Former Students"
-										)
-									),
-									testimonialList
-								)
 							)
 						)
 					),
 					React.createElement(
 						"section",
-						{ id: "section-team", className: "page-section" },
+						{ id: "section-team", className: "page-section", style: { background: "#f9f9f9", paddingTop: 48, borderTop: "1px solid #ddd" } },
 						React.createElement(
 							"div",
 							{ className: "heading-block center" },
@@ -450,7 +487,7 @@ var Home = (function (Component) {
 						),
 						React.createElement(
 							"div",
-							{ className: "row clearfix common-height" },
+							{ className: "row clearfix common-height", style: { borderTop: "1px solid #ddd" } },
 							React.createElement(
 								"div",
 								{ className: "col-md-6 center col-padding", style: { background: "url(\"/images/hacking.jpg\") center center no-repeat", backgroundSize: "cover" } },
@@ -462,7 +499,7 @@ var Home = (function (Component) {
 							),
 							React.createElement(
 								"div",
-								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#F9F9F9" } },
+								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#fff" } },
 								React.createElement(
 									"div",
 									null,
@@ -478,7 +515,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"p",
 										{ className: "lead" },
-										"Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive."
+										"FS360 operates 24-week bootcamps that run during evenings and weekends. Designed for working professionals, our bootcamps train students for a career change without having to leave their current job."
 									),
 									React.createElement(
 										"div",
@@ -617,9 +654,69 @@ var Home = (function (Component) {
 									React.createElement(
 										"a",
 										{ href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-										"Apply"
+										"Request Information"
 									)
 								)
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "section" },
+							React.createElement(
+								"div",
+								{ className: "container clearfix" },
+								React.createElement(
+									"div",
+									{ id: "section-couple", className: "heading-block title-center page-section" },
+									React.createElement(
+										"h2",
+										null,
+										"Meet Our Students"
+									),
+									React.createElement(
+										"span",
+										null,
+										"Current & Former Students"
+									)
+								),
+								testimonialList
+							)
+						)
+					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showModal, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h2",
+								null,
+								this.state.selectedEvent.subject
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement(
+								"div",
+								{ style: { textAlign: "center" } },
+								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24, padding: 12 }, src: "/images/" + this.state.selectedEvent.image })
+							),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "firstName", className: "form-control", type: "text", placeholder: "First Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "lastName", className: "form-control", type: "text", placeholder: "Last Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
+							React.createElement("br", null)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Attend"
 							)
 						)
 					),
@@ -647,7 +744,8 @@ var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
 		courses: courseList,
-		testimonials: state.staticReducer.testimonials
+		testimonials: state.staticReducer.testimonials,
+		events: state.staticReducer.events
 	};
 };
 

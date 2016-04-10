@@ -63,9 +63,9 @@ var Testimonial = (function (Component) {
 							React.createElement("div", { className: "line topmargin-sm nobottommargin" }),
 							React.createElement(
 								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-facebook", title: "Facebook" },
-								React.createElement("i", { className: "icon-facebook" }),
-								React.createElement("i", { className: "icon-facebook" })
+								{ href: "#", className: "social-icon si-small si-borderless si-github" },
+								React.createElement("i", { className: "icon-github" }),
+								React.createElement("i", { className: "icon-github" })
 							),
 							React.createElement(
 								"a",
