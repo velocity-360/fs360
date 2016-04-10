@@ -82,19 +82,15 @@ var Videos = (function (Component) {
 										{ className: "entry clearfix" },
 										React.createElement(
 											"div",
-											{ className: "entry-title" },
-											React.createElement(
-												"h2",
-												null,
-												"Videos"
-											)
-										),
-										React.createElement(
-											"div",
 											{ className: "entry-content" },
 											React.createElement(
 												"div",
 												{ className: "col_half" },
+												React.createElement(
+													"h2",
+													{ style: { marginBottom: 0 } },
+													"Videos"
+												),
 												React.createElement(
 													"p",
 													null,

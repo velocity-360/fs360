@@ -39,11 +39,9 @@ class Videos extends Component {
 							<div className="postcontent nobottommargin col_last">
 
 								<div className="entry clearfix">
-									<div className="entry-title">
-										<h2>Videos</h2>
-									</div>
 									<div className="entry-content">
 										<div className="col_half">
+											<h2 style={{marginBottom:0}}>Videos</h2>
 											<p>Description</p>
 										</div>
 

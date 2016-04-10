@@ -41522,19 +41522,15 @@
 										{ className: 'entry clearfix' },
 										_react2.default.createElement(
 											'div',
-											{ className: 'entry-title' },
-											_react2.default.createElement(
-												'h2',
-												null,
-												'Videos'
-											)
-										),
-										_react2.default.createElement(
-											'div',
 											{ className: 'entry-content' },
 											_react2.default.createElement(
 												'div',
 												{ className: 'col_half' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginBottom: 0 } },
+													'Videos'
+												),
 												_react2.default.createElement(
 													'p',
 													null,
@@ -41682,7 +41678,7 @@
 							_react2.default.createElement(
 								'li',
 								null,
-								_react2.default.createElement('i', { className: 'icon-time' }),
+								_react2.default.createElement('i', { className: 'icon-video' }),
 								' ',
 								this.props.course.units.length,
 								' Videos'
@@ -41690,8 +41686,9 @@
 							_react2.default.createElement(
 								'li',
 								null,
-								_react2.default.createElement('i', { className: 'icon-map-marker2' }),
-								' Melbourne, Australia'
+								_react2.default.createElement('i', { className: 'icon-meter' }),
+								' ',
+								this.props.course.level
 							)
 						),
 						_react2.default.createElement('hr', null),

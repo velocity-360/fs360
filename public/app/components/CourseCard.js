@@ -15,8 +15,8 @@ class CourseCard extends Component {
 						<h2><a style={{color:'#1ABC9C'}} href={'/course/'+this.props.course.slug}>{this.props.course.title}</a></h2>
 					</div>
 					<ul className="entry-meta clearfix">
-						<li><i className="icon-time"></i> {this.props.course.units.length} Videos</li>
-						<li><i className="icon-map-marker2"></i> Melbourne, Australia</li>
+						<li><i className="icon-video"></i> {this.props.course.units.length} Videos</li>
+						<li><i className="icon-meter"></i> {this.props.course.level}</li>
 					</ul>
 					<hr />
 					<div className="entry-content">

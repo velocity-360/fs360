@@ -59,7 +59,7 @@ var CourseCard = (function (Component) {
 							React.createElement(
 								"li",
 								null,
-								React.createElement("i", { className: "icon-time" }),
+								React.createElement("i", { className: "icon-video" }),
 								" ",
 								this.props.course.units.length,
 								" Videos"
@@ -67,8 +67,9 @@ var CourseCard = (function (Component) {
 							React.createElement(
 								"li",
 								null,
-								React.createElement("i", { className: "icon-map-marker2" }),
-								" Melbourne, Australia"
+								React.createElement("i", { className: "icon-meter" }),
+								" ",
+								this.props.course.level
 							)
 						),
 						React.createElement("hr", null),
