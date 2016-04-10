@@ -16,6 +16,8 @@ var Home = _interopRequire(require("./containers/Home"));
 
 var Course = _interopRequire(require("./containers/Course"));
 
+var Videos = _interopRequire(require("./containers/Videos"));
+
 var Main = (function (_React$Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -38,6 +40,9 @@ var Main = (function (_React$Component) {
 
 					case "course":
 						return page = React.createElement(Course, { slug: this.props.slug });
+
+					case "videos":
+						return page = React.createElement(Videos, null);
 
 					default:
 						return page = null;

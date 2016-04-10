@@ -76,7 +76,7 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "#", "data-href": "#" },
+											{ href: "/videos", "data-href": "#" },
 											React.createElement(
 												"div",
 												null,
@@ -89,7 +89,7 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "#", "data-href": "#" },
+											{ href: "/courses", "data-href": "#" },
 											React.createElement(
 												"div",
 												null,

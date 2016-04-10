@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:page', function(req, res, next) {
+	var page = req.params.page;
     var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page}));
     res.render(page, {react: html});
 });

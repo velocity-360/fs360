@@ -24,10 +24,10 @@ class Sidebar extends Component {
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li>
-	                                <a href="/about"><div>Videos</div></a>
+	                                <a href="/videos"><div>Videos</div></a>
 	                            </li>
 	                            
-	                            <li><a href="/"><div>Courses</div></a>
+	                            <li><a href="/courses"><div>Courses</div></a>
 	                                <ul>
 	                                    <li><a href="#"><div>Part Time</div></a></li>
 	                                    <li><a href="#"><div>Bootcamp</div></a></li>

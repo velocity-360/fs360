@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './containers/Home'
 import Course from './containers/Course'
+import Videos from './containers/Videos'
 
 class Main extends React.Component {
 
@@ -22,6 +23,9 @@ class Main extends React.Component {
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />
+
+			case 'videos':
+				return page = <Videos />
 
 			default:
 				return page = null

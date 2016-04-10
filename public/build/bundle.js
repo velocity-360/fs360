@@ -21451,6 +21451,10 @@
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
+	var _Videos = __webpack_require__(451);
+	
+	var _Videos2 = _interopRequireDefault(_Videos);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21484,6 +21488,9 @@
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
+	
+					case 'videos':
+						return page = _react2.default.createElement(_Videos2.default, null);
 	
 					default:
 						return page = null;
@@ -22260,7 +22267,7 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "#", "data-href": "#" },
+											{ href: "/videos", "data-href": "#" },
 											_react2.default.createElement(
 												"div",
 												null,
@@ -22273,7 +22280,7 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "#", "data-href": "#" },
+											{ href: "/courses", "data-href": "#" },
 											_react2.default.createElement(
 												"div",
 												null,
@@ -41246,7 +41253,7 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "/about" },
+											{ href: "/videos" },
 											_react2.default.createElement(
 												"div",
 												null,
@@ -41259,7 +41266,7 @@
 										null,
 										_react2.default.createElement(
 											"a",
-											{ href: "/" },
+											{ href: "/courses" },
 											_react2.default.createElement(
 												"div",
 												null,
@@ -41388,6 +41395,301 @@
 	}(_react.Component);
 	
 	exports.default = CourseSection;
+
+/***/ },
+/* 451 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(196);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _Sidebar = __webpack_require__(449);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(189);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseCard = __webpack_require__(452);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(191);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(192);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Videos = function (_Component) {
+		_inherits(Videos, _Component);
+	
+		function Videos(props, context) {
+			_classCallCheck(this, Videos);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Videos).call(this, props, context));
+		}
+	
+		_createClass(Videos, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?type=online', {});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-title' },
+											_react2.default.createElement(
+												'h2',
+												null,
+												'Videos'
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Description'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half panel panel-default col_last' },
+												_react2.default.createElement(
+													'div',
+													{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+													'Details'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel-body' },
+													_react2.default.createElement('hr', null),
+													_react2.default.createElement(
+														'a',
+														{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
+														'Apply'
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'events small-thumbs' },
+										_react2.default.createElement(_CourseCard2.default, null),
+										_react2.default.createElement(_CourseCard2.default, null)
+									),
+									_react2.default.createElement(
+										'ul',
+										{ className: 'pager nomargin' },
+										_react2.default.createElement(
+											'li',
+											{ className: 'previous' },
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'← Older'
+											)
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'next' },
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'Newer →'
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Videos;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courses
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
+
+/***/ },
+/* 452 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseCard = function (_Component) {
+		_inherits(CourseCard, _Component);
+	
+		function CourseCard() {
+			_classCallCheck(this, CourseCard);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseCard).apply(this, arguments));
+		}
+	
+		_createClass(CourseCard, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix', style: { background: '#fff', border: '1px solid #ddd', marginBottom: 24 } },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement('img', { src: '/images/events/thumbs/1.jpg', alt: 'Inventore voluptates velit totam ipsa tenetur' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-c' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-title' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									'iOS Development Course'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'ul',
+							{ className: 'entry-meta clearfix' },
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'icon-time' }),
+									' 11:00 - 19:00'
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'icon-map-marker2' }),
+									' Melbourne, Australia'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-content' },
+							_react2.default.createElement(
+								'p',
+								null,
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur voluptate rerum molestiae eaque possimus exercitationem eligendi fuga.'
+							),
+							_react2.default.createElement(
+								'a',
+								{ href: '/course/first-course', className: 'btn btn-danger' },
+								'Learn More'
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseCard;
+	}(_react.Component);
+	
+	exports.default = CourseCard;
 
 /***/ }
 /******/ ]);
