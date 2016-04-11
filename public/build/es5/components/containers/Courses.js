@@ -122,7 +122,7 @@ var Courses = (function (Component) {
 												React.createElement(
 													"h2",
 													{ style: { marginBottom: 0 } },
-													"Videos"
+													"Courses"
 												),
 												React.createElement(
 													"p",

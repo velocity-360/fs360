@@ -61,7 +61,7 @@ var Home = (function (Component) {
 				subject: "",
 				image: ""
 			},
-			selectedCourse: null // for syllabus requests
+			selectedCourse: "ios bootcamp" // for syllabus requests
 		};
 	}
 
@@ -267,6 +267,26 @@ var Home = (function (Component) {
 													{ onChange: this.updateUserRegistration, id: "course", className: "form-control input-lg not-dark" },
 													React.createElement(
 														"option",
+														{ value: "ios intensive" },
+														"iOS Intensive"
+													),
+													React.createElement(
+														"option",
+														{ value: "web intensive" },
+														"Web Intensive"
+													),
+													React.createElement(
+														"option",
+														{ value: "ios hs course" },
+														"iOS HS Course"
+													),
+													React.createElement(
+														"option",
+														{ value: "web hs course" },
+														"Web HS Course"
+													),
+													React.createElement(
+														"option",
 														{ value: "ios bootcamp" },
 														"iOS Bootcamp"
 													),
@@ -274,16 +294,6 @@ var Home = (function (Component) {
 														"option",
 														{ value: "web bootcamp" },
 														"Web Bootcamp"
-													),
-													React.createElement(
-														"option",
-														{ value: "ios part time" },
-														"iOS Part Time"
-													),
-													React.createElement(
-														"option",
-														{ value: "web part time" },
-														"Web Part Time"
 													)
 												)
 											)
@@ -340,8 +350,8 @@ var Home = (function (Component) {
 									),
 									React.createElement(
 										"a",
-										{ href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-										"Learn more"
+										{ href: "/courses", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+										"View Courses"
 									)
 								),
 								React.createElement(

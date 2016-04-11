@@ -74,7 +74,7 @@ class Courses extends Component {
 								<div className="entry clearfix">
 									<div className="entry-content">
 										<div className="col_half">
-											<h2 style={{marginBottom:0}}>Videos</h2>
+											<h2 style={{marginBottom:0}}>Courses</h2>
 											<p>Description</p>
 										</div>
 

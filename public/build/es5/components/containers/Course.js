@@ -281,7 +281,7 @@ var Course = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	console.log("STATE TO PROPS: " + JSON.stringify(state));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var keys = Object.keys(state.courseReducer.courses);
 
 	return {

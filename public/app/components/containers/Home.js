@@ -33,7 +33,7 @@ class Home extends Component {
 				subject: '',
 				image: ''
 			},
-			selectedCourse: null // for syllabus requests
+			selectedCourse: 'ios bootcamp' // for syllabus requests
 		}
 	}
 
@@ -184,10 +184,12 @@ class Home extends Component {
 										</div>
 										<div className="col_one_fourth col_last nobottommargin">
 											<select onChange={this.updateUserRegistration} id="course" className="form-control input-lg not-dark">
+												<option value="ios intensive">iOS Intensive</option>
+												<option value="web intensive">Web Intensive</option>
+												<option value="ios hs course">iOS HS Course</option>
+												<option value="web hs course">Web HS Course</option>
 												<option value="ios bootcamp">iOS Bootcamp</option>
 												<option value="web bootcamp">Web Bootcamp</option>
-												<option value="ios part time">iOS Part Time</option>
-												<option value="web part time">Web Part Time</option>
 											</select>
 										</div>
 									</div>
@@ -227,7 +229,7 @@ class Home extends Component {
 									the front end and ES2015. Will you be among the flood of Rails devs 
 									saturating the NYC market or will you be ready for the tech stack of tomorrow?
 								</p>
-								<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Learn more</a>
+								<a href="/courses" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">View Courses</a>
 							</div>
 
 							<div id="events" className="divider divider-short divider-center">

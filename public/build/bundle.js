@@ -21656,7 +21656,7 @@
 					subject: '',
 					image: ''
 				},
-				selectedCourse: null // for syllabus requests
+				selectedCourse: 'ios bootcamp' // for syllabus requests
 			};
 			return _this2;
 		}
@@ -21850,6 +21850,26 @@
 													{ onChange: this.updateUserRegistration, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
+														{ value: 'ios intensive' },
+														'iOS Intensive'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'web intensive' },
+														'Web Intensive'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'ios hs course' },
+														'iOS HS Course'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'web hs course' },
+														'Web HS Course'
+													),
+													_react2.default.createElement(
+														'option',
 														{ value: 'ios bootcamp' },
 														'iOS Bootcamp'
 													),
@@ -21857,16 +21877,6 @@
 														'option',
 														{ value: 'web bootcamp' },
 														'Web Bootcamp'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios part time' },
-														'iOS Part Time'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'web part time' },
-														'Web Part Time'
 													)
 												)
 											)
@@ -21923,8 +21933,8 @@
 									),
 									_react2.default.createElement(
 										'a',
-										{ href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-										'Learn more'
+										{ href: '/courses', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+										'View Courses'
 									)
 								),
 								_react2.default.createElement(
@@ -42124,7 +42134,7 @@
 												_react2.default.createElement(
 													'h2',
 													{ style: { marginBottom: 0 } },
-													'Videos'
+													'Courses'
 												),
 												_react2.default.createElement(
 													'p',
@@ -42749,7 +42759,7 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		console.log('STATE TO PROPS: ' + JSON.stringify(state));
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 		var keys = Object.keys(state.courseReducer.courses);
 	
 		return {
