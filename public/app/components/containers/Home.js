@@ -73,7 +73,7 @@ class Home extends Component {
 		store.dispatch(actions.updateCurrentUser(updatedUser));
 	}
 
-	validate(){
+	validate(withPassword){
 		console.log('VALIDATE: '+JSON.stringify(this.props.currentUser))
 		if (this.props.currentUser.firstName.length == 0)
 			return 'First Name'
@@ -84,13 +84,19 @@ class Home extends Component {
 		if (this.props.currentUser.email.length == 0)
 			return 'Email'
 
+		if (withPassword == false)
+			return null
+
+		if (this.props.currentUser.password.length == 0)
+			return 'Password'
+
 		return null // this is successful
 	}
 
 	register(event){
 		event.preventDefault()
 //		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
-		var missingField = this.validate();
+		var missingField = this.validate(true);
 		if (missingField != null){
 			alert('Please enter your '+missingField);
 			return
@@ -121,7 +127,7 @@ class Home extends Component {
 
 	rsvp(event){
 		event.preventDefault()
-		var missingField = this.validate();
+		var missingField = this.validate(false);
 		if (missingField != null){
 			alert('Please enter your '+missingField);
 			return
@@ -157,7 +163,7 @@ class Home extends Component {
 		event.preventDefault()
 		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 
-		var missingField = this.validate();
+		var missingField = this.validate(false);
 		if (missingField != null){
 			alert('Please enter your '+missingField);
 			return
@@ -588,6 +594,7 @@ class Home extends Component {
 			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
 			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
 			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
+			        	<input onChange={this.updateUserRegistration} id="password" className="form-control" type="password" placeholder="Password" /><br />
 						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
 							<option value="basic">Basic</option>
 							<option value="starter">Starter</option>

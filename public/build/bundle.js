@@ -21704,13 +21704,17 @@
 			}
 		}, {
 			key: 'validate',
-			value: function validate() {
+			value: function validate(withPassword) {
 				console.log('VALIDATE: ' + JSON.stringify(this.props.currentUser));
 				if (this.props.currentUser.firstName.length == 0) return 'First Name';
 	
 				if (this.props.currentUser.lastName.length == 0) return 'Last Name';
 	
 				if (this.props.currentUser.email.length == 0) return 'Email';
+	
+				if (withPassword == false) return null;
+	
+				if (this.props.currentUser.password.length == 0) return 'Password';
 	
 				return null; // this is successful
 			}
@@ -21719,7 +21723,7 @@
 			value: function register(event) {
 				event.preventDefault();
 				//		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
-				var missingField = this.validate();
+				var missingField = this.validate(true);
 				if (missingField != null) {
 					alert('Please enter your ' + missingField);
 					return;
@@ -21750,7 +21754,7 @@
 			key: 'rsvp',
 			value: function rsvp(event) {
 				event.preventDefault();
-				var missingField = this.validate();
+				var missingField = this.validate(false);
 				if (missingField != null) {
 					alert('Please enter your ' + missingField);
 					return;
@@ -21787,7 +21791,7 @@
 				event.preventDefault();
 				console.log('SYLLABUS REQUEST: ' + this.state.selectedCourse);
 	
-				var missingField = this.validate();
+				var missingField = this.validate(false);
 				if (missingField != null) {
 					alert('Please enter your ' + missingField);
 					return;
@@ -22669,6 +22673,8 @@
 							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'lastName', className: 'form-control', type: 'text', placeholder: 'Last Name' }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', type: 'password', placeholder: 'Password' }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'select',
