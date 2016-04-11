@@ -257,7 +257,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "col_one_fourth nobottommargin" },
-												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "lastName", type: "text", className: "form-control input-lg not-dark", placeholder: "Email*" })
+												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "email", type: "text", className: "form-control input-lg not-dark", placeholder: "Email*" })
 											),
 											React.createElement(
 												"div",

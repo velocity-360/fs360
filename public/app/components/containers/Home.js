@@ -180,7 +180,7 @@ class Home extends Component {
 											<input value={this.props.currentUser.lastName} onChange={this.updateUserRegistration} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Last Name*" />
 										</div>
 										<div className="col_one_fourth nobottommargin">
-											<input value={this.props.currentUser.email} onChange={this.updateUserRegistration} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Email*" />
+											<input value={this.props.currentUser.email} onChange={this.updateUserRegistration} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email*" />
 										</div>
 										<div className="col_one_fourth col_last nobottommargin">
 											<select onChange={this.updateUserRegistration} id="course" className="form-control input-lg not-dark">
