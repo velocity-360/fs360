@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+	    {{>head}}
+		
+    </head>
+	
+    <body ng-app="FullStack360" ng-controller="PostController" ng-init="init()">
+		{{>login}}
+		
+	    {{>nav}}
+		
+		
+        <div class="main-container">
+		
+		  <section class="page-title page-title-4 image-bg overlay parallax">
+                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); top: -100px; background: url('/site/img/cover12.jpg');">
+                    <img alt="Background Image" class="background-image" src="/site/img/cover12.jpg" style="display: none;">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="uppercase mb0">Post</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <ol class="breadcrumb breadcrumb-2">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/">Forum</a></li>
+                                <li class="active">Post</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+					
+			
+            <section style="border-top:1px solid #ddd">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 mb-xs-24">
+                            <div class="post-snippet mb64">
+                                <div class="post-title">
+                                    <h4 class="inline-block"><% post.title %></h4>
+                                </div>
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="ti-user"></i>
+                                        <span><a href="#"><% post.profile.username %></a></span>
+                                    </li>
+                                    <li>
+                                        <i class="ti-tag"></i>
+                                        <span><a href="#"><% generalService.formattedDate(post.timestamp) %></a></span>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <p ng-bind-html="post.text" class="lead"></p>
+                            </div>
+                            <!--end of post snippet-->
+							
+                            <textarea ng-model="comment.text" rows="3" placeholder="Comment"></textarea>
+                            <button ng-click="submitComment()" style="background:#fff;border-radius:22px" class="btn btn-large">Leave Comment</button>
+							<br /><br />
+							
+                            <hr>
+							
+							
+                            <div class="comments">
+                                <h5 class="uppercase"><% post.comments.length %> Comments</h5>
+                                <ul class="comments-list">
+                                    <li ng-repeat="comment in post.comments track by $index">
+                                        <div>
+                                            <span style="margin-bottom:0px;color:#337ab7;" class="uppercase author"><% comment.profile.username %>, <% generalService.formattedDate(comment.timestamp) %></span>
+                                			<p ng-bind-html="comment.text"></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end of comments-->
+                        </div>
+                        <!--end of nine col-->
+						
+                        <div class="col-md-3 hidden-sm">
+							
+                            <div class="widget">
+                                <h6 class="title">Recent Posts</h6>
+                                <hr>
+                                <ul class="link-list recent-posts">
+                                    <li ng-repeat="post in recentPosts track by $index">
+                                        <a ng-click="openPost(post)" style="color:#337ab7;" href=""><% post.title %></a>
+                                        <span class="date"><% generalService.formattedDate(post.timestamp) %></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end of widget-->
+
+
+                            <div class="widget">
+                                <h6 class="title">Workshops</h6>
+                                <hr>
+                                <ul class="link-list recent-posts">
+                                    <li>
+                                        <a href="/#workshops">MEAN Stack Demo</a>
+                                        <span class="date">Sept 12, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="/#workshops">iOS Demo</a>
+                                        <span class="date">Sept 19, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="/#workshops">Node JS Crashcourse</a>
+                                        <span class="date">Sept 26-27, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="/#workshops">iOS Crashcourse</a>
+                                        <span class="date">Sept 26-27, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="/#workshops">8-Week Node JS Course</a>
+                                        <span class="date">Oct 06, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="/#workshops">8-Week iOS Course</a>
+                                        <span class="date">Oct 05, 2015</span>
+                                    </li>
+									
+                                </ul>
+                            </div>
+                            <!--end of widget-->
+							
+							
+                        </div>
+                        <!--end of sidebar-->
+                    </div>
+                    <!--end of container row-->
+                </div>
+                <!--end of container-->
+            </section>
+			
+			{{>footer}}
+
+
+        </div>
+		
+		{{>scripts}}
+		
+    </body>
+</html>

@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+    <head>
+	    {{>head}}
+		
+    </head>
+	
+    <body ng-app="FullStack360" ng-controller="HomeController" ng-init="init()">
+	    {{>login}}
+
+
+        <!-- Workshop Modal -->
+        <div class="modal fade" id="workshopModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div style="width:35%;min-width:360px;margin-left:auto;margin-right:auto" class="modal-dialog">
+            <div class="modal-content">
+              <button type="button" class="close" data-dismiss="modal"><span style="margin-right:5px;" aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div style="background:rgba(249, 249, 249, 0.96);border:1px solid #ddd;padding:32px 16px 0px 16px;min-height:300px;text-align:center">
+					<img style="width:60%" src="/site/img/logo-dark.png" /><br />
+					<hr />
+                    <h3 style="margin-top:30px;text-align:center"><% selectedWorkshop %></h3>
+					Please send me more information about the <% selectedWorkshop %>.
+                    <div class="contact-form" style="margin-top:40px;width:90%;margin-left:auto;margin-right:auto">
+                        <input style="background:#fff" ng-model="credentials.name" type="text" placeholder="Name" class="form-control">
+                        <input style="background:#fff" ng-model="credentials.email" type="text" placeholder="Email" class="form-control">
+                        <input style="background:#fff" ng-model="credentials.password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <div class="row" style="background:#fff;border-top:1px solid #ddd;margin-top:36px;padding-top:24px">
+                          <button style="background:#fff" ng-click="sendInfoRequest()" data-toggle="modal" data-target="#workshopModal" type="submit" class="btn btn-large">Send More Info</button>
+                    </div>
+           	 	</div>
+				
+          	</div>
+          </div>
+        </div>        
+
+	
+	  {{>nav}}
+
+        <div class="main-container">
+		
+            <section class="image-square right">
+                <div class="col-md-6 image">
+                    <div class="background-image-holder">
+                        <img alt="image" class="background-image" src="/site/img/class.jpg" />
+                    </div>
+                </div>
+                <div class="col-md-6 content">
+                    <div class="text-right text-left-xs">
+						<h2 class="uppercase bold italic">Workshops</h2>
+						<p>
+						  Take the jump. Learn to build a full stack - frontend and backend - over a weekend intensive workshop.
+						   We'll build a dynamic website interacting with a server and database. Our instructors will 
+						   guide you through the process from start to finish.
+						</p>
+						<h6 class="uppercase mb8">Free Workshops</h6>
+						<h6 class="uppercase mb8">Weekend Workshops</h6>
+						<h6 class="uppercase mb8">10-Week Workshops</h6>
+						<a class="btn btn-lg mt32 mb0" id="workshopsButton">View Workshops</a>
+					</div>
+                </div>
+            </section>
+			
+					
+            <section class="image-square left bg-secondary">
+                <div class="col-md-6 image">
+                    <div class="background-image-holder">
+                        <img alt="image" class="background-image" src="/site/img/hackingBlue.jpg" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-offset-1 content overflow-hidden">
+                    <div>
+						<h2 class="uppercase bold italic">Connect</h2>
+						<p>
+						  The Full Stack is an exclusive recruitment platform for talented engineers.
+						  Whether it's frontend, backend or mobile, our roster of developers are ready for any task. Our engineers are vetted before joining the 
+						  platform. Find your technical team on the Full Stack.
+						</p>
+						<h6 class="uppercase mb8">Curated Software Developers</h6>
+						<h6 class="uppercase mb8">Junior and Senior level</h6>
+						<a class="btn btn-lg mt32 mb0" href="#">Coming Soon</a>
+					</div>
+                </div>
+            </section>
+			
+			
+            <section id="workshops" style="border-top:1px solid #ddd">
+            	<div class="container">
+            		<div class="row mb80 mb-xs-40">
+            			<div class="col-sm-12 text-center">
+            				<h2 class="bold italic uppercase fade-3-4 mb0">Upcoming Workshops</h2>
+            			</div>
+            		</div><!--end of row-->
+					
+            		<div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="tabbed-content button-tabs">
+                                <ul class="tabs thirds mb64 mb-xs-24">
+                                    <li class="active">
+                                        <div class="tab-title">
+                                            <span>Free</span>
+                                        </div>
+										
+                                        <div class="tab-content text-left">
+                                        	<div>
+                                            	<div class="overflow-hidden">
+                                                    <div class="inline-block pull-left">
+														<img align="right" style="width:200px" src="/site/img/mean.png" />
+                                                        <h4 style="margin-bottom:0px;color:#337ab7;">MEAN STACK DEMO</h4>
+														<h6 style="line-height:20px">
+														  Sept 12<span style="margin-left:8px;margin-right:8px">|</span>11:00am - 2:00pm<br />
+                                                       	  WeWork, NOMAD<br />
+                                                          27 East 28th Street, New York<br />
+														</h6>
+																												  
+														<p style="margin-top:12px;width:60%">
+														    Join us for a 3 hour demo of the MEAN (Mongo, Express, Angular, Node) Stack. During this workshop, we will
+															start a project from scratch and deploy it to Heroku.<br /><br />
+															The MEAN stack has been gaining tremendously in popularity during the past few years. Written with
+															JavaScript, the MEAN stack will soon sit along side Rails and Django as the dominant web frameworks for 
+															startups.
+														</p>
+                                                        <div class="inline-block pull-left pt48 pt-xs-24" style="padding-top:0px">
+                                                    	  <button ng-click="selectWorkshop(0)" style="background:#fff" data-toggle="modal" data-target="#workshopModal" class="btn btn-lg">Learn More</button>
+														  
+                                                        </div>
+														
+                                                    </div>
+                                                </div>
+                                                <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                                            </div>
+											<!--end of class-->
+											
+                                            <div>
+                                            	<div class="overflow-hidden">
+                                                    <div class="inline-block pull-left">
+														  <img align="right" style="width:240px" src="/site/img/ios.jpg" />
+                                                        <h4 style="margin-bottom:0px;color:#337ab7;">iOS DEMO</h4>
+														<h6 style="line-height:20px">
+														  Sept 26<span style="margin-left:8px;margin-right:8px">|</span>11:00am - 2:00pm<br />
+                                                       	  WeWork, NOMAD<br />
+                                                          27 East 28th Street, New York<br />
+														</h6>
+																												  
+														<p style="margin-top:12px;width:60%">
+														    Got an idea for an iPhone app? Learn how to get it started in this 3-hour demo for iOS development. Using
+															Objective C, we will develop a very simple memory game in which players have to repeat a sequence of 
+															flashes on the screen in the correct order.<br /><br />
+															This demo moves quickly and is not meant to be followed along to learn programming. Rather, it is intended
+															to introduce beginners to the basic concepts of iOS development and to explain these concepts as they are being 
+															implemented.
+														</p>
+                                                        <div class="inline-block pull-left pt48 pt-xs-24" style="padding-top:0px">
+                                                    	  <a ng-click="selectWorkshop(1)" class="btn btn-lg" data-toggle="modal" data-target="#workshopModal" href="#">Learn More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!--end of class-->
+											
+											
+                                                
+                                    	</div><!--end of tab content-->
+                                    </li>
+                                    <li>
+                                        <div class="tab-title">
+                                            <span>Weekend</span>
+                                        </div>
+                                        <div class="tab-content text-left">
+                                        	<div>
+                                            	<div class="overflow-hidden">
+                                                    <div class="inline-block pull-left">
+													    <img align="right" style="width:200px" src="/site/img/node.png" />
+                                                        <h4 style="margin-bottom:0px;color:#337ab7;">Node JS Crashcourse</h4>
+														<h6 style="line-height:20px">
+														  Sept 26, 27<span style="margin-left:8px;margin-right:8px">|</span>10:00am - 6:00pm<br />
+                                                       	  WeWork, NOMAD<br />
+                                                          27 East 28th Street, New York<br />
+														  $500
+														</h6>
+														
+														<p style="margin-top:12px;">
+															<strong>OVERVIEW</strong><br />
+															Over two full days (8 hours each), we will:<br />
+															1. Develop a site using the Express Framework for Node<br />
+															2. Create dynamic web pages<br />
+															3. Incorporate HTML themes to make your site look professional<br />
+															4. Use JavaScript to enhance the capabilities of your site<br />
+															5. Deploy your site to Heroku to make it live<br />
+															
+															<br />
+															<strong>WHO</strong><br />
+															This workshop is intended for beginners with little to no programming experience. It is not designed to 
+															turn novices into professional programmers. Rather, it is best suited for those who work in tech 
+															(startups, product managers) how wish to gain more than just a basic understanding of technical concepts.
+														</p>
+														
+                                                        <div class="inline-block pull-left pt48 pt-xs-24" style="padding-top:0px">
+                                                    	  <a ng-click="selectWorkshop(2)" class="btn btn-lg" data-toggle="modal" data-target="#workshopModal" href="#">Learn More</a>
+                                                        </div>
+                                                    </div>
+												
+                                                </div>
+                                                <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                                            </div><!--end of class-->
+											
+                                            <div>
+                                            	<div class="overflow-hidden">
+                                                    <div class="inline-block pull-left">
+													    <img align="right" style="width:200px" src="/site/img/xcode.png" />
+                                                        <h4 style="margin-bottom:0px;color:#337ab7;">iOS Crashcourse</h4>
+														<h6 style="line-height:20px">
+														  Sept 26, 27<span style="margin-left:8px;margin-right:8px">|</span>10:00am - 6:00pm<br />
+                                                       	  WeWork, NOMAD<br />
+                                                          27 East 28th Street, New York<br />
+														  $500
+														</h6>
+														
+														<p style="margin-top:12px;">
+															<strong>OVERVIEW</strong><br />
+															Over two full days (8 hours each), we will:<br />
+															1. Develop a simple iOS app<br />
+															2. Use the gps location tools for finding user location<br />
+															3. Leverage Foursquare API for finding nearby restaurants/venues<br />
+															
+															<br />
+															<strong>WHO</strong><br />
+															This workshop is intended for beginners with little to no programming experience. It is not designed to 
+															turn novices into professional programmers. Rather, it is best suited for those who work in tech 
+															(startups, product managers) how wish to gain more than just a basic understanding of technical concepts.
+														</p>
+														
+                                                        <div class="inline-block pull-left pt48 pt-xs-24" style="padding-top:0px">
+                                                    	  <a ng-click="selectWorkshop(3)" class="btn btn-lg" data-toggle="modal" data-target="#workshopModal" href="#">Learn More</a>
+                                                        </div>
+                                                    </div>
+												
+												
+												
+                                                </div>
+                                            </div><!--end of class-->
+                                                
+                                    	</div><!--end of tab content-->
+                                    </li>
+                                    <li>
+                                        <div class="tab-title">
+                                            <span>8-Week</span>
+                                        </div>
+                                        <div class="tab-content text-left">
+                                        	<div>
+                                            	<div class="overflow-hidden">
+                                                    <div class="inline-block pull-left">
+                                                        <h4 style="margin-bottom:0px;color:#337ab7;">8-Week Node JS Course</h4>
+													    <img align="right" style="width:200px" src="/site/img/node.png" />
+														<h6 style="line-height:20px">
+														  Oct 6 - Dec 5<br />
+														  Tues / Thurs, 6:30 - 9:00pm<br />
+														  Sat, 12 - 4pm<br />
+                                                       	  Location: TBD (NYC)<br />
+														  $3,200
+														</h6>
+														
+														<p style="margin-top:12px;">
+															<strong>OVERVIEW</strong><br />
+															The 8-week bootcamp covers:<br />
+															1. Full development of a site with database support and scalable deployment<br />
+															2. Mongo DB, Express Framework, Angular JS, Node JS (MEAN Stack)<br />
+															3. REST API Development<br />
+															4. Frontend design with web templates and Bootstrap<br />
+															5. Frontend Development with Angular<br />
+															6. Full CRUD operation capability from frontend to backend<br />
+															7. Deployment on Heroku and Amazon Web Services<br />
+															
+															<br />
+															<strong>WHO</strong><br />
+															The bootcamp is designed for those who aim to become professional software developers. While no 
+															formal programming background is required, the concepts covered will be intense and those with no 
+															experience will have to dedicate more time in between sessions. By the end of the 12-week course, 
+															students will have a solid foundation to pursue a career in web programming at a junior level. We 
+															will work with students to place them with early stage startups in our network.
+														</p>
+														
+                                                        <div class="inline-block pull-left pt48 pt-xs-24" style="padding-top:0px">
+                                                    	  <a ng-click="selectWorkshop(4)" class="btn btn-lg" data-toggle="modal" data-target="#workshopModal" href="#">Learn More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                                            </div><!--end of class-->
+											
+                                            <div>
+                                            	<div class="overflow-hidden">
+                                                    <div class="inline-block pull-left">
+                                                        <h4 style="margin-bottom:0px;color:#337ab7;">8-Week iOS Course</h4>
+													    <img align="right" style="width:240px;" src="/site/img/ios9.png" />
+														<h6 style="line-height:20px">
+														  Oct 6 - Dec 5<br />
+														  Tues / Thurs, 6:30 - 9:00pm<br />
+														  Sat, 12 - 4pm<br />
+                                                       	  Location: TBD (NYC)<br />
+														  $3,200
+														</h6>
+														
+														<p style="margin-top:12px;">
+															<strong>OVERVIEW</strong><br />
+															The 8-week iOS course is the only one of its kind that develops an actual iOS app which will be submitted
+															and published in the app store. 
+															The 8-week bootcamp covers:<br />
+															1. Full development of a site with database support and scalable deployment<br />
+															2. Mongo DB, Express Framework, Angular JS, Node JS (MEAN Stack)<br />
+															3. REST API Development<br />
+															4. Frontend design with web templates and Bootstrap<br />
+															5. Frontend Development with Angular<br />
+															6. Full CRUD operation capability from frontend to backend<br />
+															7. Deployment on Heroku and Amazon Web Services<br />
+															
+															<br />
+															<strong>WHO</strong><br />
+															The bootcamp is designed for those who aim to become professional software developers. While no 
+															formal programming background is required, the concepts covered will be intense and those with no 
+															experience will have to dedicate more time in between sessions. By the end of the 12-week course, 
+															students will have a solid foundation to pursue a career in web programming at a junior level. We 
+															will work with students to place them with early stage startups in our network.
+														</p>
+														
+                                                        <div class="inline-block pull-left pt48 pt-xs-24" style="padding-top:0px">
+                                                    	  <a ng-click="selectWorkshop(5)" class="btn btn-lg" data-toggle="modal" data-target="#workshopModal" href="#">Learn More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!--end of class-->
+											
+											
+                                                
+                                    	</div><!--end of tab content-->
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end of button tabs-->
+                        </div>
+                    </div>
+            	</div><!--end of container-->
+            </section>
+			
+			
+			<section style="border-top:1px solid #ddd;background:#f9f9f9">
+				<div class="container">
+					<div class="row mb80 mb-xs-40">
+						<div class="col-sm-6 col-sm-offset-3 text-center">
+            				<h2 style="color:#47b475;text-shadow: 1px 1px #222;" class="uppercase bold italic fade-3-4 mb0">Forum</h2>
+            			</div>
+					</div><!--end of row-->
+					
+					<div class="row masonry">
+					
+            			<div ng-repeat="post in recentPosts track by $index" class="masonry-item col-md-4 col-sm-6">
+            				<div class="feature bg-secondary p32 pt40 pb40 mb0" style="background:#fff">
+            					<span class="fade-1-4 mb16 display-block">
+								  <i class="fa fa-calendar-check-o"></i> 
+								  <% generalService.formattedDate(post.timestamp) %>
+								</span>
+            					<h5 style="margin-bottom:8px;" class="mb120 uppercase bold italic">
+								  <a ng-click="openPost(post)" style="color:#337ab7" href=""><% post.title %></a>
+								</h5>
+								<p ng-show="post.text.length > 0"><% generalService.truncatedText(post.text, 240) %></p>
+								<strong ng-show="post.link.length > 0"><% post.source %></strong><br />
+								<a href="/site/post/<% post.id %>"><i class="fa fa-comments"></i> Comments</a><br />
+            					<a style="margin-top:6px" ng-click="openPost(post)" href="" class="mb0 btn">Read <i class="ti-arrow-right"></i></a>
+            				</div>
+            			</div>
+						
+						
+            		</div><!--end of row-->
+				</div><!--end of container-->
+			</section>
+			
+			{{>footer}}
+
+        </div>
+		
+		
+		{{>scripts}}
+		
+		<script>
+		  $("#workshopsButton").click(function() {
+		     $('html, body').animate({
+		         scrollTop: $("#workshops").offset().top
+		     }, 500);
+		  });
+		</script>
+    </body>
+</html>

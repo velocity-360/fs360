@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" ng-app="FullStack360Admin">
+    <head>
+        <meta charset="utf-8">
+        <title>The Full Stack</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
+        <link href="/admin/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/ytplayer.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Angular -->
+        
+        <script src="https://malsup.github.com/jquery.form.js"></script>
+        <script src="/admin/angular/thirdparty/fileupload/angular-file-upload-shim.js"></script>
+        <script src="/admin/bower_components/angular/angular.js"></script>
+        <script src="/admin/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="/admin/angular/thirdparty/fileupload/angular-file-upload.js"></script>
+        <script src="/admin/bower_components/angular-resource/angular-resource.js"></script>
+        
+        <script src='/admin/angular/app.js'></script>
+        <script src='/admin/angular/services/restService.js'></script>
+        <script src='/admin/angular/services/accountService.js'></script>
+        <script src='/admin/angular/services/uploadService.js'></script>
+        <script src='/admin/angular/services/generalService.js'></script>
+        <script src='/admin/angular/controllers/duplicates.js'></script>
+        <script src='/admin/angular/controllers/email.js'></script>
+        <script src='/admin/angular/controllers/course.js'></script>
+        <script src='/admin/angular/controllers/courselist.js'></script>
+        <script src='/admin/angular/controllers/scrape.js'></script>
+        <script src='/admin/angular/controllers/series.js'></script>
+        
+    </head>
+    
+    <body ng-controller="CoursesController" ng-init="init()">
+        {{>login}}
+        {{>nav}}
+        
+        
+        <div class="main-container">
+        
+          <section class="page-title page-title-4 image-bg overlay parallax">
+                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); top: -100px; background: url('/admin/img/cover12.jpg');">
+                    <img alt="Background Image" class="background-image" src="/admin/img/cover12.jpg" style="display: none;">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="uppercase mb0">Courses</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <ol class="breadcrumb breadcrumb-2">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/">Forum</a></li>
+                                <li class="active">Post</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+                    
+            
+            <section style="border-top:1px solid #ddd">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6 mb-xs-24">
+                            <h4>Courses</h4>
+                            <ul>
+                                <li ng-repeat="course in courses track by $index">
+                                    <a href="/admin/edit-course/<% course.id %>"><% course.title %></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+
+
+                        
+                    </div>
+                    <!--end of container row-->
+                </div>
+                <!--end of container-->
+            </section>
+            
+            {{>footer}}
+
+
+        </div>
+        
+        
+    </body>
+</html>

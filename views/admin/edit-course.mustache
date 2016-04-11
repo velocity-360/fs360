@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" ng-app="FullStack360Admin">
+    <head>
+        <meta charset="utf-8">
+        <title>The Full Stack</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
+        <link href="/admin/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/ytplayer.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/admin/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Angular -->
+        
+        <script src="https://malsup.github.com/jquery.form.js"></script>
+        <script src="/admin/angular/thirdparty/fileupload/angular-file-upload-shim.js"></script>
+        <script src="/admin/bower_components/angular/angular.js"></script>
+        <script src="/admin/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="/admin/angular/thirdparty/fileupload/angular-file-upload.js"></script>
+        <script src="/admin/bower_components/angular-resource/angular-resource.js"></script>
+        
+        <script src='/admin/angular/app.js'></script>
+        <script src='/admin/angular/services/restService.js'></script>
+        <script src='/admin/angular/services/accountService.js'></script>
+        <script src='/admin/angular/services/uploadService.js'></script>
+        <script src='/admin/angular/services/generalService.js'></script>
+        <script src='/admin/angular/controllers/duplicates.js'></script>
+        <script src='/admin/angular/controllers/email.js'></script>
+        <script src='/admin/angular/controllers/course.js'></script>
+        <script src='/admin/angular/controllers/courselist.js'></script>
+        <script src='/admin/angular/controllers/scrape.js'></script>
+        <script src='/admin/angular/controllers/series.js'></script>
+        
+    </head>
+    
+    <body ng-controller="CourseController" ng-init="init()">
+        {{>login}}
+        {{>nav}}
+        
+        
+        <div class="main-container">
+        
+          <section class="page-title page-title-4 image-bg overlay parallax">
+                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); top: -100px; background: url('/site/img/cover12.jpg');">
+                    <img alt="Background Image" class="background-image" src="/site/img/cover12.jpg" style="display: none;">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="uppercase mb0">Course</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <ol class="breadcrumb breadcrumb-2">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/">Forum</a></li>
+                                <li class="active">Post</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+                    
+            
+            <section style="border-top:1px solid #ddd">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6 mb-xs-24">
+                            <input ng-model="course.title" type="text" placeholder="Title" class="form-control" />
+                            <input ng-model="course.tuition" type="text" placeholder="Tuition" class="form-control mt24" />
+                            <input ng-model="course.deposit" type="text" placeholder="Deposit" class="form-control mt24" />
+                            <input ng-model="course.paypalId" type="text" placeholder="Paypal ID" class="form-control" />
+                            <select ng-model="course.level">
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                            </select>
+                            <select ng-model="course.type">
+                                <option value="immersive">Immersive</option>
+                                <option value="live">Part Time</option>
+                                <option value="online">Online</option>
+                            </select>
+                            <select ng-model="course.isFeatured">
+                                <option value="yes">Featured</option>
+                                <option value="no">Not Featured</option>
+                            </select>
+
+                            <select ng-model="course.profile.name">
+                                <option value="dankwon">Dan Kwon</option>
+                                <option value="jakegreenstein">Jake Greenstein</option>
+                                <option value="danmorena">Dan Morena</option>
+                                <option value="andrewcallahan">Andrew Callahan</option>
+                            </select>
+                            <textarea ng-model="course.description" rows="6" placeholder="Description"></textarea>
+
+                            <button ng-click="updateCourse()" style="background:#fff;border-radius:22px" class="btn btn-large">Update Course</button>
+                            
+                        </div>
+
+                        <div class="col-md-6 mb-xs-24">
+                            <div class="row">
+                                <input ng-model="course.dates" type="text" placeholder="Dates" class="form-control" />
+                                <input ng-model="course.schedule" type="text" placeholder="Schedule" class="form-control mt24" />
+                                <div class="col-md-6 mb-xs-24">
+                                    <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadImage($files)">
+                                        <img style="width:72px;border:1px solid #ddd" ng-show="course.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% course.image %>?crop=360" />
+                                        Drag &amp; drop image
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-xs-24">
+                                    <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadSyllabus($files)">
+                                        <a ng-show="course.syllabus.length > 0" href="https://media-service.appspot.com/site/pdf/<% course.syllabus %>">Syllabus</a><br />
+                                        Drag &amp; drop syllabus                                        
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <h4 class="mt24">Units</h4>
+                                <ol style="padding-left:24px">
+                                    <li ng-repeat="unit in course.units track by $index">
+                                        <span><a ng-click="selectUnit(unit)" style="color:red" href=""><% unit.topic %></a></span>
+                                        <p style="color:#777">
+                                            <% unit.description %>
+                                            <br />
+                                            <a ng-click="removeUnit(unit)" href="">Remove</a>
+                                        </p>
+                                    </li>
+                                </ol>
+
+                                <input ng-model="unit.topic" type="text" placeholder="Topic" class="form-control" />
+                                <input ng-show="course.type == 'online'" ng-model="unit.wistia" type="text" placeholder="Wistia ID" class="form-control" />
+                                <input ng-model="unit.package" type="text" placeholder="Package" class="form-control" />
+                                <textarea ng-model="unit.description" rows="3" placeholder="Description"></textarea>
+
+                                <a class="btn btn-rounded btn-sm" ng-click="addUnit()" href="">+ Add Unit</a>
+
+                            </div>
+
+                        </div>
+
+                        
+                    </div>
+                    <!--end of container row-->
+                </div>
+                <!--end of container-->
+            </section>
+            
+            {{>footer}}
+
+
+        </div>
+        
+        
+    </body>
+</html>
