@@ -49,7 +49,9 @@ var Home = (function (Component) {
 		this.rsvp = this.rsvp.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.validate = this.validate.bind(this);
+		this.showRegistrationForm = this.showRegistrationForm.bind(this);
 		this.state = {
+			showRegistration: false,
 			showLoader: false,
 			showModal: false,
 			bootcamp: {
@@ -62,6 +64,7 @@ var Home = (function (Component) {
 				subject: "",
 				image: ""
 			},
+			membershiptype: "premium",
 			selectedCourse: "ios bootcamp" // for syllabus requests
 		};
 	}
@@ -91,6 +94,12 @@ var Home = (function (Component) {
 					return;
 				}
 
+				if (event.target.id == "membershiptype") {
+					this.setState({
+						membershiptype: event.target.value
+					});
+				}
+
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				updatedUser[event.target.id] = event.target.value;
 				store.dispatch(actions.updateCurrentUser(updatedUser));
@@ -116,14 +125,33 @@ var Home = (function (Component) {
 		register: {
 			value: function register(event) {
 				event.preventDefault();
-				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
+				//		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 				var missingField = this.validate();
 				if (missingField != null) {
 					alert("Please enter your " + missingField);
 					return;
 				}
 
-				// api.handlePost('/api/test', this.props.currentUser, null);
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/api/profile", this.props.currentUser, function (err, response) {
+					console.log("REGISTER RESPONSE: " + JSON.stringify(response));
+
+					if (err) {
+						_this.setState({
+							showLoader: false
+						});
+						alert(err.message);
+						return;
+					}
+
+					//			alert(response.message)
+					window.location.href = "/courses";
+				});
 			},
 			writable: true,
 			configurable: true
@@ -216,7 +244,21 @@ var Home = (function (Component) {
 		},
 		closeModal: {
 			value: function closeModal() {
-				this.setState({ showModal: false });
+				this.setState({
+					showRegistration: false,
+					showModal: false
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		showRegistrationForm: {
+			value: function showRegistrationForm(event) {
+				event.preventDefault();
+				this.setState({
+					membershiptype: event.target.id,
+					showRegistration: true
+				});
 			},
 			writable: true,
 			configurable: true
@@ -849,7 +891,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"p",
 										{ className: "pricing--sentence" },
-										"Small business solution"
+										"Hobbyist"
 									),
 									React.createElement(
 										"ul",
@@ -857,22 +899,22 @@ var Home = (function (Component) {
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Unlimited calls"
+											"Limited Video Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Free hosting"
+											"Forum Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"40MB of storage space"
+											"Discounts to Live Events"
 										)
 									),
 									React.createElement(
 										"button",
-										{ className: "pricing--action" },
+										{ onClick: this.showRegistrationForm, id: "basic", className: "pricing--action" },
 										"Join"
 									)
 								),
@@ -897,7 +939,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"p",
 										{ className: "pricing--sentence" },
-										"Medium business solution"
+										"Beginner"
 									),
 									React.createElement(
 										"ul",
@@ -905,32 +947,22 @@ var Home = (function (Component) {
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Unlimited calls"
+											"Full Video Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Free hosting"
+											"Forum Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"10 hours of support"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Social media integration"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"1GB of storage space"
+											"Discounts to Live Events"
 										)
 									),
 									React.createElement(
 										"button",
-										{ className: "pricing--action" },
+										{ onClick: this.showRegistrationForm, id: "starter", className: "pricing--action" },
 										"Join"
 									)
 								),
@@ -955,7 +987,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"p",
 										{ className: "pricing--sentence" },
-										"Gigantic business solution"
+										"Pro"
 									),
 									React.createElement(
 										"ul",
@@ -963,37 +995,32 @@ var Home = (function (Component) {
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Unlimited calls"
+											"Downloadable Code Samples"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Free hosting"
+											"Job Match Notifications"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Unlimited hours of support"
+											"Full Video Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Social media integration"
+											"Forum Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"Anaylitcs integration"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Unlimited storage space"
+											"Discounts to Live Events"
 										)
 									),
 									React.createElement(
 										"button",
-										{ className: "pricing--action" },
+										{ onClick: this.showRegistrationForm, id: "premium", className: "pricing--action" },
 										"Join"
 									)
 								)
@@ -1034,6 +1061,62 @@ var Home = (function (Component) {
 								"a",
 								{ onClick: this.rsvp, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 								this.state.selectedEvent.button
+							)
+						)
+					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showRegistration, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h3",
+								null,
+								"Join"
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement(
+								"div",
+								{ style: { textAlign: "center" } },
+								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
+							),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "firstName", className: "form-control", type: "text", placeholder: "First Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "lastName", className: "form-control", type: "text", placeholder: "Last Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
+							React.createElement("br", null),
+							React.createElement(
+								"select",
+								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },
+								React.createElement(
+									"option",
+									{ value: "basic" },
+									"Basic"
+								),
+								React.createElement(
+									"option",
+									{ value: "starter" },
+									"Starter"
+								),
+								React.createElement(
+									"option",
+									{ value: "premium" },
+									"Premium"
+								)
+							)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ onClick: this.register, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Register"
 							)
 						)
 					),

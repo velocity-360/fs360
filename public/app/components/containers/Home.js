@@ -21,7 +21,9 @@ class Home extends Component {
 		this.rsvp = this.rsvp.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.validate = this.validate.bind(this)
+		this.showRegistrationForm = this.showRegistrationForm.bind(this)
 		this.state = {
+			showRegistration: false,
 			showLoader: false,
 			showModal: false,
 			bootcamp: {
@@ -34,6 +36,7 @@ class Home extends Component {
 				subject: '',
 				image: ''
 			},
+			membershiptype: 'premium',
 			selectedCourse: 'ios bootcamp' // for syllabus requests
 		}
 	}
@@ -59,6 +62,12 @@ class Home extends Component {
 			return
 		}
 
+		if (event.target.id == 'membershiptype'){
+			this.setState({
+				membershiptype: event.target.value
+			})
+		}
+
 		var updatedUser = Object.assign({}, this.props.currentUser);
 		updatedUser[event.target.id] = event.target.value
 		store.dispatch(actions.updateCurrentUser(updatedUser));
@@ -80,14 +89,34 @@ class Home extends Component {
 
 	register(event){
 		event.preventDefault()
-		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
+//		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 		var missingField = this.validate();
 		if (missingField != null){
 			alert('Please enter your '+missingField);
 			return
 		}
 
-		// api.handlePost('/api/test', this.props.currentUser, null);
+		this.setState({
+			showModal: false,
+			showLoader: true
+		});
+
+		var _this = this
+		api.handlePost('/api/profile', this.props.currentUser, function(err, response){
+			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
+
+			if (err){
+				_this.setState({
+					showLoader: false
+				});
+				alert(err.message)
+				return
+			}
+
+//			alert(response.message)
+			window.location.href = '/courses'
+		});
+
 	}
 
 	rsvp(event){
@@ -169,7 +198,18 @@ class Home extends Component {
 	}
 
 	closeModal(){
-		this.setState({showModal: false})
+		this.setState({
+			showRegistration: false,
+			showModal: false
+		})
+	}
+
+	showRegistrationForm(event){
+		event.preventDefault()
+		this.setState({
+			membershiptype: event.target.id,
+			showRegistration: true
+		})
 	}
 
 	render(){
@@ -481,40 +521,37 @@ class Home extends Component {
 							<div className="pricing--item">
 								<h3 className="pricing--title">Basic</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
-								<p className="pricing--sentence">Small business solution</p>
+								<p className="pricing--sentence">Hobbyist</p>
 								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Unlimited calls</li>
-									<li className="pricing--feature">Free hosting</li>
-									<li className="pricing--feature">40MB of storage space</li>
+									<li className="pricing--feature">Limited Video Access</li>
+									<li className="pricing--feature">Forum Access</li>
+									<li className="pricing--feature">Discounts to Live Events</li>
 								</ul>
-								<button className="pricing--action">Join</button>
+								<button onClick={this.showRegistrationForm} id="basic" className="pricing--action">Join</button>
 							</div>
 							<div className="pricing--item">
 								<h3 className="pricing--title">Starter</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
-								<p className="pricing--sentence">Medium business solution</p>
+								<p className="pricing--sentence">Beginner</p>
 								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Unlimited calls</li>
-									<li className="pricing--feature">Free hosting</li>
-									<li className="pricing--feature">10 hours of support</li>
-									<li className="pricing--feature">Social media integration</li>
-									<li className="pricing--feature">1GB of storage space</li>
+									<li className="pricing--feature">Full Video Access</li>
+									<li className="pricing--feature">Forum Access</li>
+									<li className="pricing--feature">Discounts to Live Events</li>
 								</ul>
-								<button className="pricing--action">Join</button>
+								<button onClick={this.showRegistrationForm} id="starter" className="pricing--action">Join</button>
 							</div>
 							<div className="pricing--item">
 								<h3 className="pricing--title">Premium</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>29.99/mo</div>
-								<p className="pricing--sentence">Gigantic business solution</p>
+								<p className="pricing--sentence">Pro</p>
 								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Unlimited calls</li>
-									<li className="pricing--feature">Free hosting</li>
-									<li className="pricing--feature">Unlimited hours of support</li>
-									<li className="pricing--feature">Social media integration</li>
-									<li className="pricing--feature">Anaylitcs integration</li>
-									<li className="pricing--feature">Unlimited storage space</li>
+									<li className="pricing--feature">Downloadable Code Samples</li>
+									<li className="pricing--feature">Job Match Notifications</li>
+									<li className="pricing--feature">Full Video Access</li>
+									<li className="pricing--feature">Forum Access</li>
+									<li className="pricing--feature">Discounts to Live Events</li>
 								</ul>
-								<button className="pricing--action">Join</button>
+								<button onClick={this.showRegistrationForm} id="premium" className="pricing--action">Join</button>
 							</div>
 						</div>
 					</div>
@@ -539,6 +576,30 @@ class Home extends Component {
 			        </Modal.Footer>
 		        </Modal>
 
+
+		        <Modal show={this.state.showRegistration} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h3>Join</h3>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<div style={{textAlign:'center'}}>
+				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_green_260.png' />
+			        	</div>
+			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
+			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
+			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
+						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
+							<option value="basic">Basic</option>
+							<option value="starter">Starter</option>
+							<option value="premium">Premium</option>
+						</select>
+
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a onClick={this.register} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Register</a>
+			        </Modal.Footer>
+		        </Modal>
 
 				<Footer />
 			</div>
