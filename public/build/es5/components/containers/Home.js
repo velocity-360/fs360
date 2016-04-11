@@ -48,6 +48,7 @@ var Home = (function (Component) {
 		this.closeModal = this.closeModal.bind(this);
 		this.rsvp = this.rsvp.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
+		this.validate = this.validate.bind(this);
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -97,10 +98,30 @@ var Home = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		validate: {
+			value: function validate() {
+				console.log("VALIDATE: " + JSON.stringify(this.props.currentUser));
+				if (this.props.currentUser.firstName.length == 0) {
+					return "First Name";
+				}if (this.props.currentUser.lastName.length == 0) {
+					return "Last Name";
+				}if (this.props.currentUser.email.length == 0) {
+					return "Email";
+				}return null // this is successful
+				;
+			},
+			writable: true,
+			configurable: true
+		},
 		register: {
 			value: function register(event) {
 				event.preventDefault();
 				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
+				var missingField = this.validate();
+				if (missingField != null) {
+					alert("Please enter your " + missingField);
+					return;
+				}
 
 				// api.handlePost('/api/test', this.props.currentUser, null);
 			},
@@ -110,6 +131,11 @@ var Home = (function (Component) {
 		rsvp: {
 			value: function rsvp(event) {
 				event.preventDefault();
+				var missingField = this.validate();
+				if (missingField != null) {
+					alert("Please enter your " + missingField);
+					return;
+				}
 
 				this.setState({
 					showModal: false,
@@ -143,6 +169,12 @@ var Home = (function (Component) {
 			value: function syllabusRequest(event) {
 				event.preventDefault();
 				console.log("SYLLABUS REQUEST: " + this.state.selectedCourse);
+
+				var missingField = this.validate();
+				if (missingField != null) {
+					alert("Please enter your " + missingField);
+					return;
+				}
 
 				var pkg = {
 					course: this.state.selectedCourse,

@@ -20,6 +20,7 @@ class Home extends Component {
 		this.closeModal = this.closeModal.bind(this)
 		this.rsvp = this.rsvp.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
+		this.validate = this.validate.bind(this)
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -63,15 +64,39 @@ class Home extends Component {
 		store.dispatch(actions.updateCurrentUser(updatedUser));
 	}
 
+	validate(){
+		console.log('VALIDATE: '+JSON.stringify(this.props.currentUser))
+		if (this.props.currentUser.firstName.length == 0)
+			return 'First Name'
+
+		if (this.props.currentUser.lastName.length == 0)
+			return 'Last Name'
+
+		if (this.props.currentUser.email.length == 0)
+			return 'Email'
+
+		return null // this is successful
+	}
+
 	register(event){
 		event.preventDefault()
 		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
+		var missingField = this.validate();
+		if (missingField != null){
+			alert('Please enter your '+missingField);
+			return
+		}
 
 		// api.handlePost('/api/test', this.props.currentUser, null);
 	}
 
 	rsvp(event){
 		event.preventDefault()
+		var missingField = this.validate();
+		if (missingField != null){
+			alert('Please enter your '+missingField);
+			return
+		}
 
 		this.setState({
 			showModal: false,
@@ -102,6 +127,12 @@ class Home extends Component {
 	syllabusRequest(event){
 		event.preventDefault()
 		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
+
+		var missingField = this.validate();
+		if (missingField != null){
+			alert('Please enter your '+missingField);
+			return
+		}
 
 		var pkg = {
 			course: this.state.selectedCourse,

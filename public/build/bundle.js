@@ -21324,6 +21324,8 @@
 		currentUser: {
 			id: null,
 			name: '',
+			firstName: '',
+			lastName: '',
 			email: '',
 			password: ''
 		}
@@ -21643,6 +21645,7 @@
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.rsvp = _this2.rsvp.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
+			_this2.validate = _this2.validate.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showModal: false,
@@ -21691,10 +21694,27 @@
 				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
 			}
 		}, {
+			key: 'validate',
+			value: function validate() {
+				console.log('VALIDATE: ' + JSON.stringify(this.props.currentUser));
+				if (this.props.currentUser.firstName.length == 0) return 'First Name';
+	
+				if (this.props.currentUser.lastName.length == 0) return 'Last Name';
+	
+				if (this.props.currentUser.email.length == 0) return 'Email';
+	
+				return null; // this is successful
+			}
+		}, {
 			key: 'register',
 			value: function register(event) {
 				event.preventDefault();
 				console.log('REGISTER: ' + JSON.stringify(this.props.currentUser));
+				var missingField = this.validate();
+				if (missingField != null) {
+					alert('Please enter your ' + missingField);
+					return;
+				}
 	
 				// api.handlePost('/api/test', this.props.currentUser, null);
 			}
@@ -21702,6 +21722,11 @@
 			key: 'rsvp',
 			value: function rsvp(event) {
 				event.preventDefault();
+				var missingField = this.validate();
+				if (missingField != null) {
+					alert('Please enter your ' + missingField);
+					return;
+				}
 	
 				this.setState({
 					showModal: false,
@@ -21733,6 +21758,12 @@
 			value: function syllabusRequest(event) {
 				event.preventDefault();
 				console.log('SYLLABUS REQUEST: ' + this.state.selectedCourse);
+	
+				var missingField = this.validate();
+				if (missingField != null) {
+					alert('Please enter your ' + missingField);
+					return;
+				}
 	
 				var pkg = {
 					course: this.state.selectedCourse,

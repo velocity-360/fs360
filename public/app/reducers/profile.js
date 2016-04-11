@@ -4,6 +4,8 @@ var initialState = {
 	currentUser: {
 		id: null,
 		name: '',
+		firstName: '',
+		lastName: '',
 		email: '',
 		password: ''
 	}
