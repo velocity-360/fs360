@@ -50,7 +50,13 @@ var Videos = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				api.handleGet("/api/course?type=online", {});
+				api.handleGet("/api/course?type=online", {}, function (err, response) {
+					if (err) {
+						return;
+					}
+
+					store.dispatch(actions.coursesRecieved(response.courses));
+				});
 			},
 			writable: true,
 			configurable: true

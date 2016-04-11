@@ -57,7 +57,14 @@ var Course = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				api.handleGet("/api/course?slug=" + this.props.slug, {});
+				api.handleGet("/api/course?slug=" + this.props.slug, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					store.dispatch(actions.coursesRecieved(response.courses));
+				});
 			},
 			writable: true,
 			configurable: true

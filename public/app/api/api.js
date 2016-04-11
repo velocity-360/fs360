@@ -15,12 +15,19 @@ export default {
 		    },
 		})
 		.then(response => response.json())
-		.then(json => store.dispatch(actions.coursesRecieved(json.courses)))
+		.then(function(json){
+	    	if (completion != null){
+	    		if (json.confirmation == 'success')
+		    		completion(null, json)
+	    		else
+		    		completion({message: json.message}, null)
+	    	}
+		})
 		.catch( err => console.log(err) )
 	},
 
 	handlePost: function(endpoint, body, completion){
-		console.log('HANDLE POST: '+JSON.stringify(body));
+//		console.log('HANDLE POST: '+JSON.stringify(body));
 	    fetch(endpoint, {
 	        method: 'POST',
 	        headers: {
@@ -30,16 +37,19 @@ export default {
 	        body: JSON.stringify(body),
 	    })
 	    .then(response => response.json())
-//	    .then( json => console.log(JSON.stringify(json)))
 	    .then(function(json){
 	    	if (completion != null){
-	    		completion(null, json)
+	    		if (json.confirmation == 'success')
+		    		completion(null, json)
+	    		else
+		    		completion({message: json.message}, null)
 	    	}
+	    	
 	    })
 	    .catch(function(err){
-	    	if (completion != null){
+	    	if (completion != null)
 	    		completion(err, null)
-	    	}
+	    	
 	    })
 	}
 

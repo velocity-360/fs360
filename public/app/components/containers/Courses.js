@@ -19,9 +19,18 @@ class Courses extends Component {
 	}
 
 	componentDidMount(){
+
+
 		var endpoint = '/api/course'
 		if (this.props.params == null){
-			api.handleGet(endpoint, {})
+			api.handleGet(endpoint, {}, function(err, response){
+				if (err){
+					alert(response.message)
+					return
+				}
+
+				store.dispatch(actions.coursesRecieved(response.courses))
+			})
 			return;
 		}
 
@@ -36,7 +45,14 @@ class Courses extends Component {
 		}
 
 		console.log('ENDPOINT == '+endpoint)
-		api.handleGet(endpoint, {})
+		api.handleGet(endpoint, {}, function(err, response){
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			store.dispatch(actions.coursesRecieved(response.courses))
+		})
 	}
 
 	render(){

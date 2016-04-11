@@ -56,7 +56,7 @@ class Home extends Component {
 		event.preventDefault()
 		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 
-		api.handlePost('/api/test', this.props.currentUser);
+		api.handlePost('/api/test', this.props.currentUser, null);
 	}
 
 	rsvp(event){
@@ -152,7 +152,6 @@ class Home extends Component {
 						</div>
 					</div>
 				</section>
-
 
 				<section id="content">
 					<div className="content-wrap">
@@ -387,6 +386,52 @@ class Home extends Component {
 					</div>
 				</section>
 
+					<section className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
+						<div className="container clearfix">
+							<h2 className="pricing-section--title center">Jinpa</h2>
+							<div className="pricing pricing--jinpa">
+								<div className="pricing--item">
+									<h3 className="pricing--title">Startup</h3>
+									<div className="pricing--price"><span className="pricing--currency">$</span>9.90</div>
+									<p className="pricing--sentence">Small business solution</p>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Unlimited calls</li>
+										<li className="pricing--feature">Free hosting</li>
+										<li className="pricing--feature">40MB of storage space</li>
+									</ul>
+									<button className="pricing--action">Choose plan</button>
+								</div>
+								<div className="pricing--item">
+									<h3 className="pricing--title">Medium</h3>
+									<div className="pricing--price"><span className="pricing--currency">$</span>29,90</div>
+									<p className="pricing--sentence">Medium business solution</p>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Unlimited calls</li>
+										<li className="pricing--feature">Free hosting</li>
+										<li className="pricing--feature">10 hours of support</li>
+										<li className="pricing--feature">Social media integration</li>
+										<li className="pricing--feature">1GB of storage space</li>
+									</ul>
+									<button className="pricing--action">Choose plan</button>
+								</div>
+								<div className="pricing--item">
+									<h3 className="pricing--title">Large</h3>
+									<div className="pricing--price"><span className="pricing--currency">$</span>59,90</div>
+									<p className="pricing--sentence">Gigantic business solution</p>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Unlimited calls</li>
+										<li className="pricing--feature">Free hosting</li>
+										<li className="pricing--feature">Unlimited hours of support</li>
+										<li className="pricing--feature">Social media integration</li>
+										<li className="pricing--feature">Anaylitcs integration</li>
+										<li className="pricing--feature">Unlimited storage space</li>
+									</ul>
+									<button className="pricing--action">Choose plan</button>
+								</div>
+							</div>
+						</div>
+					</section>				
+
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
 			        	<h2>{this.state.selectedEvent.subject}</h2>
@@ -414,14 +459,13 @@ class Home extends Component {
 }
 
 const stateToProps = function(state) {
-	console.log('STATE TO PROPS: '+JSON.stringify(state));
+//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var courseList = [];
 	var keys = Object.keys(state.courseReducer.courses);
 	for (var i=0; i<keys.length; i++){
 		var key = keys[i];
 		courseList.push(state.courseReducer.courses[key]);
 	}
-
 
     return {
         currentUser: state.profileReducer.currentUser,

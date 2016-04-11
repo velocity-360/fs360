@@ -2,6 +2,7 @@ var constants = require('../constants/constants');
 
 var initialState = {
 	currentUser: {
+		id: null,
 		name: '',
 		email: '',
 		password: ''
@@ -21,6 +22,11 @@ export default function(state = initialState, action){
 			var newState = Object.assign({}, state);
 			newState['currentUser'] = action.currentUser;
 			console.log('PROFILE REDUCER - updateCurrentUser: '+JSON.stringify(newState));
+			return newState;
+
+		case constants.CURRENT_USER_RECIEVED:
+			var newState = Object.assign({}, state);
+			newState['currentUser'] = action.currentUser;
 			return newState;
 
 		default:

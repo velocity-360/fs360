@@ -16,9 +16,6 @@ class Footer extends React.Component {
 
 						<div className="col_half">
 							Copyrights &copy; 2016 All Rights Reserved by The Grid Media, LLC.<br />
-							<div className="copyright-links">
-								<a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
-							</div>
 						</div>
 
 						<div className="col_half col_last tright">
@@ -42,8 +39,8 @@ class Footer extends React.Component {
 
 							<div className="clear"></div>
 
-							<i className="icon-envelope2"></i> info@canvas.com <span className="middot">&middot;</span> 
-							<i className="icon-skype2"></i> CanvasOnSkype
+							<i className="icon-envelope2"></i> info@fullstack360.com <span className="middot">&middot;</span> 
+							<i className="icon-skype2"></i> FS360
 						</div>
 
 					</div>

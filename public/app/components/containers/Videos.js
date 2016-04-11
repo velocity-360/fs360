@@ -19,7 +19,14 @@ class Videos extends Component {
 	}
 
 	componentDidMount(){
-		api.handleGet('/api/course?type=online', {})
+		api.handleGet('/api/course?type=online', {}, function(err, response){
+			if (err){
+
+				return
+			}
+
+			store.dispatch(actions.coursesRecieved(response.courses))
+		})
 	}
 
 	render(){

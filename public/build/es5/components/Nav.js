@@ -12,6 +12,13 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var React = _interopRequire(require("react"));
 
+var store = _interopRequire(require("../stores/store"));
+
+var actions = _interopRequire(require("../actions/actions"));
+
+var connect = require("react-redux").connect;
+var api = _interopRequire(require("../api/api"));
+
 var Nav = (function (_React$Component) {
 	function Nav(props, context) {
 		_classCallCheck(this, Nav);
@@ -22,6 +29,19 @@ var Nav = (function (_React$Component) {
 	_inherits(Nav, _React$Component);
 
 	_prototypeProperties(Nav, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				api.handleGet("/account/currentuser", {}, function (err, response) {
+					if (err) {
+						return;
+					}
+
+					store.dispatch(actions.currentUserRecieved(response.profile));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				return React.createElement(
@@ -132,7 +152,7 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/courses", "data-href": "#" },
+											{ href: "/login", "data-href": "#" },
 											React.createElement(
 												"div",
 												null,
@@ -154,4 +174,11 @@ var Nav = (function (_React$Component) {
 	return Nav;
 })(React.Component);
 
-module.exports = Nav;
+var stateToProps = function (state) {
+	return {
+		currentUser: state.profileReducer.currentUser
+	};
+};
+
+
+module.exports = connect(stateToProps)(Nav);

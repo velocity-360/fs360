@@ -23,17 +23,13 @@ router.get('/:page', function(req, res, next) {
 
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page;
-	if (page == 'api'){
+	if (page == 'api' || page == 'admin' || page == 'account'){
 		next();
 		return;
 	}
 
-	if (page == 'admin'){
-		next();
-		return;
-	}
-	
     var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page}));
     res.render(page, {react: html});
 });
+
 module.exports = router;

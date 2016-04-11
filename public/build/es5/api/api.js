@@ -20,14 +20,16 @@ module.exports = {
 			} }).then(function (response) {
 			return response.json();
 		}).then(function (json) {
-			return store.dispatch(actions.coursesRecieved(json.courses));
+			if (completion != null) {
+				if (json.confirmation == "success") completion(null, json);else completion({ message: json.message }, null);
+			}
 		})["catch"](function (err) {
 			return console.log(err);
 		});
 	},
 
 	handlePost: function (endpoint, body, completion) {
-		console.log("HANDLE POST: " + JSON.stringify(body));
+		//		console.log('HANDLE POST: '+JSON.stringify(body));
 		fetch(endpoint, {
 			method: "POST",
 			headers: {
@@ -36,16 +38,12 @@ module.exports = {
 			},
 			body: JSON.stringify(body) }).then(function (response) {
 			return response.json();
-		})
-		//	    .then( json => console.log(JSON.stringify(json)))
-		.then(function (json) {
+		}).then(function (json) {
 			if (completion != null) {
-				completion(null, json);
+				if (json.confirmation == "success") completion(null, json);else completion({ message: json.message }, null);
 			}
 		})["catch"](function (err) {
-			if (completion != null) {
-				completion(err, null);
-			}
+			if (completion != null) completion(err, null);
 		});
 	}
 

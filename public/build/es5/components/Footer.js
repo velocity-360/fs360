@@ -37,22 +37,7 @@ var Footer = (function (_React$Component) {
 								"div",
 								{ className: "col_half" },
 								"Copyrights © 2016 All Rights Reserved by The Grid Media, LLC.",
-								React.createElement("br", null),
-								React.createElement(
-									"div",
-									{ className: "copyright-links" },
-									React.createElement(
-										"a",
-										{ href: "#" },
-										"Terms of Use"
-									),
-									" / ",
-									React.createElement(
-										"a",
-										{ href: "#" },
-										"Privacy Policy"
-									)
-								)
+								React.createElement("br", null)
 							),
 							React.createElement(
 								"div",
@@ -81,14 +66,14 @@ var Footer = (function (_React$Component) {
 								),
 								React.createElement("div", { className: "clear" }),
 								React.createElement("i", { className: "icon-envelope2" }),
-								" info@canvas.com ",
+								" info@fullstack360.com ",
 								React.createElement(
 									"span",
 									{ className: "middot" },
 									"·"
 								),
 								React.createElement("i", { className: "icon-skype2" }),
-								" CanvasOnSkype"
+								" FS360"
 							)
 						)
 					)

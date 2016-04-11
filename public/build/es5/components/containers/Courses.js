@@ -50,9 +50,18 @@ var Courses = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
+
+
 				var endpoint = "/api/course";
 				if (this.props.params == null) {
-					api.handleGet(endpoint, {});
+					api.handleGet(endpoint, {}, function (err, response) {
+						if (err) {
+							alert(response.message);
+							return;
+						}
+
+						store.dispatch(actions.coursesRecieved(response.courses));
+					});
 					return;
 				}
 
@@ -67,7 +76,14 @@ var Courses = (function (Component) {
 				}
 
 				console.log("ENDPOINT == " + endpoint);
-				api.handleGet(endpoint, {});
+				api.handleGet(endpoint, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					store.dispatch(actions.coursesRecieved(response.courses));
+				});
 			},
 			writable: true,
 			configurable: true

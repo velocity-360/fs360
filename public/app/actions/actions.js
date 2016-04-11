@@ -17,6 +17,13 @@ module.exports = {
 		};
 	},
 
+	currentUserRecieved: function(user){
+		return {
+			type:constants.CURRENT_USER_RECIEVED,
+			currentUser: user
+		}
+	},
+
 	updateCurrentUser: function(updatedUser){
 		console.log('updateCurrentUser: '+JSON.stringify(store));
 		return {

@@ -1,11 +1,26 @@
 import React from 'react'
+import store from '../stores/store'
+import actions from '../actions/actions'
+import { connect } from 'react-redux'
+import api from '../api/api'
+
 
 class Nav extends React.Component {
 
 	constructor(props, context){
 		super(props, context)
-
 	}
+
+	componentDidMount(){
+		api.handleGet('/account/currentuser', {}, function(err, response){
+			if (err){
+				return
+			}
+
+			store.dispatch(actions.currentUserRecieved(response.profile));
+		});
+	}
+
 
 	render(){
 		return (
@@ -33,7 +48,7 @@ class Nav extends React.Component {
 										<li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 									</ul>
 								</li>
-								<li><a href="/courses" data-href="#"><div>Login</div></a></li>
+								<li><a href="/login" data-href="#"><div>Login</div></a></li>
 
 							</ul>
 						</nav>
@@ -41,10 +56,18 @@ class Nav extends React.Component {
 				</div>
 
 			</header>
-
 		)
 	}
 
 }
 
-export default Nav
+const stateToProps = function(state) {
+
+    return {
+        currentUser: state.profileReducer.currentUser
+    }
+}
+
+
+export default connect(stateToProps)(Nav)
+

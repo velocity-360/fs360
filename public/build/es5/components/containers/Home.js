@@ -93,7 +93,7 @@ var Home = (function (Component) {
 				event.preventDefault();
 				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
 
-				api.handlePost("/api/test", this.props.currentUser);
+				api.handlePost("/api/test", this.props.currentUser, null);
 			},
 			writable: true,
 			configurable: true
@@ -716,6 +716,192 @@ var Home = (function (Component) {
 						)
 					),
 					React.createElement(
+						"section",
+						{ className: "section pricing-section nomargin", style: { backgroundColor: "#FFF" } },
+						React.createElement(
+							"div",
+							{ className: "container clearfix" },
+							React.createElement(
+								"h2",
+								{ className: "pricing-section--title center" },
+								"Jinpa"
+							),
+							React.createElement(
+								"div",
+								{ className: "pricing pricing--jinpa" },
+								React.createElement(
+									"div",
+									{ className: "pricing--item" },
+									React.createElement(
+										"h3",
+										{ className: "pricing--title" },
+										"Startup"
+									),
+									React.createElement(
+										"div",
+										{ className: "pricing--price" },
+										React.createElement(
+											"span",
+											{ className: "pricing--currency" },
+											"$"
+										),
+										"9.90"
+									),
+									React.createElement(
+										"p",
+										{ className: "pricing--sentence" },
+										"Small business solution"
+									),
+									React.createElement(
+										"ul",
+										{ className: "pricing--feature-list" },
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Unlimited calls"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Free hosting"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"40MB of storage space"
+										)
+									),
+									React.createElement(
+										"button",
+										{ className: "pricing--action" },
+										"Choose plan"
+									)
+								),
+								React.createElement(
+									"div",
+									{ className: "pricing--item" },
+									React.createElement(
+										"h3",
+										{ className: "pricing--title" },
+										"Medium"
+									),
+									React.createElement(
+										"div",
+										{ className: "pricing--price" },
+										React.createElement(
+											"span",
+											{ className: "pricing--currency" },
+											"$"
+										),
+										"29,90"
+									),
+									React.createElement(
+										"p",
+										{ className: "pricing--sentence" },
+										"Medium business solution"
+									),
+									React.createElement(
+										"ul",
+										{ className: "pricing--feature-list" },
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Unlimited calls"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Free hosting"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"10 hours of support"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Social media integration"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"1GB of storage space"
+										)
+									),
+									React.createElement(
+										"button",
+										{ className: "pricing--action" },
+										"Choose plan"
+									)
+								),
+								React.createElement(
+									"div",
+									{ className: "pricing--item" },
+									React.createElement(
+										"h3",
+										{ className: "pricing--title" },
+										"Large"
+									),
+									React.createElement(
+										"div",
+										{ className: "pricing--price" },
+										React.createElement(
+											"span",
+											{ className: "pricing--currency" },
+											"$"
+										),
+										"59,90"
+									),
+									React.createElement(
+										"p",
+										{ className: "pricing--sentence" },
+										"Gigantic business solution"
+									),
+									React.createElement(
+										"ul",
+										{ className: "pricing--feature-list" },
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Unlimited calls"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Free hosting"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Unlimited hours of support"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Social media integration"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Anaylitcs integration"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Unlimited storage space"
+										)
+									),
+									React.createElement(
+										"button",
+										{ className: "pricing--action" },
+										"Choose plan"
+									)
+								)
+							)
+						)
+					),
+					React.createElement(
 						Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
 						React.createElement(
@@ -764,14 +950,13 @@ var Home = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	console.log("STATE TO PROPS: " + JSON.stringify(state));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var courseList = [];
 	var keys = Object.keys(state.courseReducer.courses);
 	for (var i = 0; i < keys.length; i++) {
 		var key = keys[i];
 		courseList.push(state.courseReducer.courses[key]);
 	}
-
 
 	return {
 		currentUser: state.profileReducer.currentUser,
