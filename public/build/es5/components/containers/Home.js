@@ -119,6 +119,11 @@ var Home = (function (Component) {
 						showLoader: false
 					});
 
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
 					alert(response.message);
 				});
 			},
@@ -976,8 +981,3 @@ var stateToProps = function (state) {
 module.exports = connect(stateToProps)(Home);
 //		getCurrentUser()
 // api.handleGet('/api/course?isFeatured=yes', {});
-
-// if (response.confirmation == 'success')
-// 	alert('Thanks for your interest! Please check your email for confirmation.')
-// else
-// 	alert(response.message)

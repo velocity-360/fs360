@@ -21708,12 +21708,12 @@
 						showLoader: false
 					});
 	
-					alert(response.message);
+					if (err) {
+						alert(err.message);
+						return;
+					}
 	
-					// if (response.confirmation == 'success')
-					// 	alert('Thanks for your interest! Please check your email for confirmation.')
-					// else
-					// 	alert(response.message)
+					alert(response.message);
 				});
 			}
 		}, {
