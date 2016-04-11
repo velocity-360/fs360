@@ -21699,7 +21699,7 @@
 				var _this = this;
 				var pkg = {
 					visitor: this.props.currentUser,
-					event: null
+					event: this.state.selectedEvent
 				};
 	
 				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {

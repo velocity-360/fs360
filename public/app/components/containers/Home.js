@@ -70,9 +70,9 @@ class Home extends Component {
 		var _this = this
 		var pkg = {
 			visitor: this.props.currentUser,
-			event: null
+			event: this.state.selectedEvent
 		}
-		
+
 		api.handlePost('/api/rsvp', pkg, function(err, response){
 			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
 			_this.setState({
