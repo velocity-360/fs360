@@ -393,51 +393,51 @@ class Home extends Component {
 					</div>
 				</section>
 
-					<section className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
-						<div className="container clearfix">
-							<h2 className="pricing-section--title center">Jinpa</h2>
-							<div className="pricing pricing--jinpa">
-								<div className="pricing--item">
-									<h3 className="pricing--title">Startup</h3>
-									<div className="pricing--price"><span className="pricing--currency">$</span>9.90</div>
-									<p className="pricing--sentence">Small business solution</p>
-									<ul className="pricing--feature-list">
-										<li className="pricing--feature">Unlimited calls</li>
-										<li className="pricing--feature">Free hosting</li>
-										<li className="pricing--feature">40MB of storage space</li>
-									</ul>
-									<button className="pricing--action">Choose plan</button>
-								</div>
-								<div className="pricing--item">
-									<h3 className="pricing--title">Medium</h3>
-									<div className="pricing--price"><span className="pricing--currency">$</span>29,90</div>
-									<p className="pricing--sentence">Medium business solution</p>
-									<ul className="pricing--feature-list">
-										<li className="pricing--feature">Unlimited calls</li>
-										<li className="pricing--feature">Free hosting</li>
-										<li className="pricing--feature">10 hours of support</li>
-										<li className="pricing--feature">Social media integration</li>
-										<li className="pricing--feature">1GB of storage space</li>
-									</ul>
-									<button className="pricing--action">Choose plan</button>
-								</div>
-								<div className="pricing--item">
-									<h3 className="pricing--title">Large</h3>
-									<div className="pricing--price"><span className="pricing--currency">$</span>59,90</div>
-									<p className="pricing--sentence">Gigantic business solution</p>
-									<ul className="pricing--feature-list">
-										<li className="pricing--feature">Unlimited calls</li>
-										<li className="pricing--feature">Free hosting</li>
-										<li className="pricing--feature">Unlimited hours of support</li>
-										<li className="pricing--feature">Social media integration</li>
-										<li className="pricing--feature">Anaylitcs integration</li>
-										<li className="pricing--feature">Unlimited storage space</li>
-									</ul>
-									<button className="pricing--action">Choose plan</button>
-								</div>
+				<section className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
+					<div className="container clearfix">
+						<h2 className="pricing-section--title center">Sign Up</h2>
+						<div className="pricing pricing--jinpa">
+							<div className="pricing--item">
+								<h3 className="pricing--title">Basic</h3>
+								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
+								<p className="pricing--sentence">Small business solution</p>
+								<ul className="pricing--feature-list">
+									<li className="pricing--feature">Unlimited calls</li>
+									<li className="pricing--feature">Free hosting</li>
+									<li className="pricing--feature">40MB of storage space</li>
+								</ul>
+								<button className="pricing--action">Join</button>
+							</div>
+							<div className="pricing--item">
+								<h3 className="pricing--title">Starter</h3>
+								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
+								<p className="pricing--sentence">Medium business solution</p>
+								<ul className="pricing--feature-list">
+									<li className="pricing--feature">Unlimited calls</li>
+									<li className="pricing--feature">Free hosting</li>
+									<li className="pricing--feature">10 hours of support</li>
+									<li className="pricing--feature">Social media integration</li>
+									<li className="pricing--feature">1GB of storage space</li>
+								</ul>
+								<button className="pricing--action">Join</button>
+							</div>
+							<div className="pricing--item">
+								<h3 className="pricing--title">Premium</h3>
+								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>29.99/mo</div>
+								<p className="pricing--sentence">Gigantic business solution</p>
+								<ul className="pricing--feature-list">
+									<li className="pricing--feature">Unlimited calls</li>
+									<li className="pricing--feature">Free hosting</li>
+									<li className="pricing--feature">Unlimited hours of support</li>
+									<li className="pricing--feature">Social media integration</li>
+									<li className="pricing--feature">Anaylitcs integration</li>
+									<li className="pricing--feature">Unlimited storage space</li>
+								</ul>
+								<button className="pricing--action">Join</button>
 							</div>
 						</div>
-					</section>				
+					</div>
+				</section>				
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

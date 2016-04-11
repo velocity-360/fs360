@@ -734,7 +734,7 @@ var Home = (function (Component) {
 							React.createElement(
 								"h2",
 								{ className: "pricing-section--title center" },
-								"Jinpa"
+								"Sign Up"
 							),
 							React.createElement(
 								"div",
@@ -745,17 +745,12 @@ var Home = (function (Component) {
 									React.createElement(
 										"h3",
 										{ className: "pricing--title" },
-										"Startup"
+										"Basic"
 									),
 									React.createElement(
 										"div",
-										{ className: "pricing--price" },
-										React.createElement(
-											"span",
-											{ className: "pricing--currency" },
-											"$"
-										),
-										"9.90"
+										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
+										"FREE"
 									),
 									React.createElement(
 										"p",
@@ -784,7 +779,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"button",
 										{ className: "pricing--action" },
-										"Choose plan"
+										"Join"
 									)
 								),
 								React.createElement(
@@ -793,17 +788,17 @@ var Home = (function (Component) {
 									React.createElement(
 										"h3",
 										{ className: "pricing--title" },
-										"Medium"
+										"Starter"
 									),
 									React.createElement(
 										"div",
-										{ className: "pricing--price" },
+										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
 										React.createElement(
 											"span",
 											{ className: "pricing--currency" },
 											"$"
 										),
-										"29,90"
+										"19.99/mo"
 									),
 									React.createElement(
 										"p",
@@ -842,7 +837,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"button",
 										{ className: "pricing--action" },
-										"Choose plan"
+										"Join"
 									)
 								),
 								React.createElement(
@@ -851,17 +846,17 @@ var Home = (function (Component) {
 									React.createElement(
 										"h3",
 										{ className: "pricing--title" },
-										"Large"
+										"Premium"
 									),
 									React.createElement(
 										"div",
-										{ className: "pricing--price" },
+										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
 										React.createElement(
 											"span",
 											{ className: "pricing--currency" },
 											"$"
 										),
-										"59,90"
+										"29.99/mo"
 									),
 									React.createElement(
 										"p",
@@ -905,7 +900,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"button",
 										{ className: "pricing--action" },
-										"Choose plan"
+										"Join"
 									)
 								)
 							)

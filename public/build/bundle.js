@@ -22316,7 +22316,7 @@
 							_react2.default.createElement(
 								'h2',
 								{ className: 'pricing-section--title center' },
-								'Jinpa'
+								'Sign Up'
 							),
 							_react2.default.createElement(
 								'div',
@@ -22327,17 +22327,12 @@
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },
-										'Startup'
+										'Basic'
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'pricing--price' },
-										_react2.default.createElement(
-											'span',
-											{ className: 'pricing--currency' },
-											'$'
-										),
-										'9.90'
+										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
+										'FREE'
 									),
 									_react2.default.createElement(
 										'p',
@@ -22366,7 +22361,7 @@
 									_react2.default.createElement(
 										'button',
 										{ className: 'pricing--action' },
-										'Choose plan'
+										'Join'
 									)
 								),
 								_react2.default.createElement(
@@ -22375,17 +22370,17 @@
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },
-										'Medium'
+										'Starter'
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'pricing--price' },
+										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
 										_react2.default.createElement(
 											'span',
 											{ className: 'pricing--currency' },
 											'$'
 										),
-										'29,90'
+										'19.99/mo'
 									),
 									_react2.default.createElement(
 										'p',
@@ -22424,7 +22419,7 @@
 									_react2.default.createElement(
 										'button',
 										{ className: 'pricing--action' },
-										'Choose plan'
+										'Join'
 									)
 								),
 								_react2.default.createElement(
@@ -22433,17 +22428,17 @@
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },
-										'Large'
+										'Premium'
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'pricing--price' },
+										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
 										_react2.default.createElement(
 											'span',
 											{ className: 'pricing--currency' },
 											'$'
 										),
-										'59,90'
+										'29.99/mo'
 									),
 									_react2.default.createElement(
 										'p',
@@ -22487,7 +22482,7 @@
 									_react2.default.createElement(
 										'button',
 										{ className: 'pricing--action' },
-										'Choose plan'
+										'Join'
 									)
 								)
 							)
