@@ -21305,7 +21305,7 @@
 			case constants.UPDATE_CURRENT_USER:
 				var newState = Object.assign({}, state);
 				newState['currentUser'] = action.currentUser;
-				console.log('PROFILE REDUCER - updateCurrentUser: ' + JSON.stringify(newState));
+				//			console.log('PROFILE REDUCER - updateCurrentUser: '+JSON.stringify(newState));
 				return newState;
 	
 			case constants.CURRENT_USER_RECIEVED:
@@ -21697,13 +21697,23 @@
 				});
 	
 				var _this = this;
-				_api2.default.handlePost('/api/rsvp', this.props.currentUser, function (err, response) {
+				var pkg = {
+					visitor: this.props.currentUser,
+					event: null
+				};
+	
+				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {
 					console.log('RSVP REQUEST RESPONSE: ' + JSON.stringify(response));
 					_this.setState({
 						showLoader: false
 					});
 	
-					if (response.confirmation == 'success') alert('Thanks for your interest! Please check your email for confirmation.');else alert(response.message);
+					alert(response.message);
+	
+					// if (response.confirmation == 'success')
+					// 	alert('Thanks for your interest! Please check your email for confirmation.')
+					// else
+					// 	alert(response.message)
 				});
 			}
 		}, {

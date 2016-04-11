@@ -24,7 +24,7 @@ module.exports = function (_x, action) {
 		case constants.UPDATE_CURRENT_USER:
 			var newState = Object.assign({}, state);
 			newState.currentUser = action.currentUser;
-			console.log("PROFILE REDUCER - updateCurrentUser: " + JSON.stringify(newState));
+			//			console.log('PROFILE REDUCER - updateCurrentUser: '+JSON.stringify(newState));
 			return newState;
 
 		case constants.CURRENT_USER_RECIEVED:
