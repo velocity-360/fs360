@@ -22372,6 +22372,17 @@
 							),
 							_react2.default.createElement(
 								'div',
+								{ style: { textAlign: 'center' } },
+								_react2.default.createElement(
+									'p',
+									{ style: { fontSize: 15 } },
+									'Cant make it to our live courses? Join our online service. ',
+									_react2.default.createElement('br', null),
+									'Online members have access to videos, code samples, the forum and more.'
+								)
+							),
+							_react2.default.createElement(
+								'div',
 								{ className: 'pricing pricing--jinpa' },
 								_react2.default.createElement(
 									'div',
@@ -42383,6 +42394,23 @@
 		_createClass(CourseCard, [{
 			key: 'render',
 			value: function render() {
+				var units = null;
+				if (this.props.course.type == 'online') units = _react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement('i', { className: 'icon-video' }),
+					' ',
+					this.props.course.units.length,
+					' Videos '
+				);else units = _react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement('i', { className: 'icon-desktop' }),
+					' ',
+					this.props.course.units.length,
+					' Sections '
+				);
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'entry clearfix', style: { background: '#fff', border: '1px solid #ddd', marginBottom: 24 } },
@@ -42410,18 +42438,11 @@
 						_react2.default.createElement(
 							'ul',
 							{ className: 'entry-meta clearfix' },
+							units,
 							_react2.default.createElement(
 								'li',
 								null,
-								_react2.default.createElement('i', { className: 'icon-video' }),
-								' ',
-								this.props.course.units.length,
-								' Videos'
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement('i', { className: 'icon-meter' }),
+								_react2.default.createElement('i', { className: 'icon-star' }),
 								' ',
 								this.props.course.level
 							)

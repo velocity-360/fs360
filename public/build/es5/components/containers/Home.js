@@ -789,6 +789,17 @@ var Home = (function (Component) {
 							),
 							React.createElement(
 								"div",
+								{ style: { textAlign: "center" } },
+								React.createElement(
+									"p",
+									{ style: { fontSize: 15 } },
+									"Cant make it to our live courses? Join our online service. ",
+									React.createElement("br", null),
+									"Online members have access to videos, code samples, the forum and more."
+								)
+							),
+							React.createElement(
+								"div",
 								{ className: "pricing pricing--jinpa" },
 								React.createElement(
 									"div",

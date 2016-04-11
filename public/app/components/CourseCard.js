@@ -5,6 +5,12 @@ import TextUtils from '../utils/TextUtils'
 class CourseCard extends Component {
 
 	render(){
+		var units = null
+		if (this.props.course.type == 'online')
+			units = <li><i className="icon-video"></i> {this.props.course.units.length} Videos </li>
+		else 
+			units = <li><i className="icon-desktop"></i> {this.props.course.units.length} Sections </li>
+
 		return (
 			<div className="entry clearfix" style={{background:'#fff', border:'1px solid #ddd', marginBottom:24}}>
 				<div className="entry-image">
@@ -15,8 +21,8 @@ class CourseCard extends Component {
 						<h2><a style={{color:'#1ABC9C'}} href={'/course/'+this.props.course.slug}>{this.props.course.title}</a></h2>
 					</div>
 					<ul className="entry-meta clearfix">
-						<li><i className="icon-video"></i> {this.props.course.units.length} Videos</li>
-						<li><i className="icon-meter"></i> {this.props.course.level}</li>
+						{units}
+						<li><i className="icon-star"></i> {this.props.course.level}</li>
 					</ul>
 					<hr />
 					<div className="entry-content">

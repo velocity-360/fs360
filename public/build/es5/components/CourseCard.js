@@ -29,6 +29,23 @@ var CourseCard = (function (Component) {
 	_prototypeProperties(CourseCard, null, {
 		render: {
 			value: function render() {
+				var units = null;
+				if (this.props.course.type == "online") units = React.createElement(
+					"li",
+					null,
+					React.createElement("i", { className: "icon-video" }),
+					" ",
+					this.props.course.units.length,
+					" Videos "
+				);else units = React.createElement(
+					"li",
+					null,
+					React.createElement("i", { className: "icon-desktop" }),
+					" ",
+					this.props.course.units.length,
+					" Sections "
+				);
+
 				return React.createElement(
 					"div",
 					{ className: "entry clearfix", style: { background: "#fff", border: "1px solid #ddd", marginBottom: 24 } },
@@ -56,18 +73,11 @@ var CourseCard = (function (Component) {
 						React.createElement(
 							"ul",
 							{ className: "entry-meta clearfix" },
+							units,
 							React.createElement(
 								"li",
 								null,
-								React.createElement("i", { className: "icon-video" }),
-								" ",
-								this.props.course.units.length,
-								" Videos"
-							),
-							React.createElement(
-								"li",
-								null,
-								React.createElement("i", { className: "icon-meter" }),
+								React.createElement("i", { className: "icon-star" }),
 								" ",
 								this.props.course.level
 							)

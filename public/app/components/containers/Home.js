@@ -229,6 +229,7 @@ class Home extends Component {
 									the front end and ES2015. Will you be among the flood of Rails devs 
 									saturating the NYC market or will you be ready for the tech stack of tomorrow?
 								</p>
+
 								<a href="/courses" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">View Courses</a>
 							</div>
 
@@ -438,6 +439,13 @@ class Home extends Component {
 				<section className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
 					<div className="container clearfix">
 						<h2 className="pricing-section--title center">Sign Up</h2>
+						<div style={{textAlign:'center'}}>
+							<p style={{fontSize:15}}>
+								Cant make it to our live courses? Join our online service. <br />Online members 
+								have access to videos, code samples, the forum and more.
+							</p>
+
+						</div>
 						<div className="pricing pricing--jinpa">
 							<div className="pricing--item">
 								<h3 className="pricing--title">Basic</h3>
