@@ -130,7 +130,7 @@
 					}
 				}
 	
-				console.log('PARAMS: ' + JSON.stringify(params));
+				//		console.log('PARAMS: '+JSON.stringify(params));
 	
 				this.setState({
 					page: page,
@@ -21533,7 +21533,7 @@
 		_createClass(Main, [{
 			key: 'render',
 			value: function render() {
-				console.log('RENDER MAIN: ' + JSON.stringify(this.props.page) + ', ' + JSON.stringify(this.props.slug));
+				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
 	
 				var page = null;
 				switch (this.props.page) {
@@ -21642,6 +21642,7 @@
 			_this2.openModal = _this2.openModal.bind(_this2);
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.rsvp = _this2.rsvp.bind(_this2);
+			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showModal: false,
@@ -21654,7 +21655,8 @@
 					id: null,
 					subject: '',
 					image: ''
-				}
+				},
+				selectedCourse: null // for syllabus requests
 			};
 			return _this2;
 		}
@@ -21667,13 +21669,23 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				console.log('HOME: componentDidMount');
+				//		console.log('HOME: componentDidMount')
 				// api.handleGet('/api/course?isFeatured=yes', {});
+	
 			}
 		}, {
 			key: 'updateUserRegistration',
 			value: function updateUserRegistration(event) {
+				console.log('updateUserRegistration: ' + event.target.id);
 				event.preventDefault();
+	
+				if (event.target.id == 'course') {
+					this.setState({
+						selectedCourse: event.target.value
+					});
+					return;
+				}
+	
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				updatedUser[event.target.id] = event.target.value;
 				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
@@ -21684,7 +21696,7 @@
 				event.preventDefault();
 				console.log('REGISTER: ' + JSON.stringify(this.props.currentUser));
 	
-				_api2.default.handlePost('/api/test', this.props.currentUser, null);
+				// api.handlePost('/api/test', this.props.currentUser, null);
 			}
 		}, {
 			key: 'rsvp',
@@ -21704,6 +21716,36 @@
 	
 				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {
 					console.log('RSVP REQUEST RESPONSE: ' + JSON.stringify(response));
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'syllabusRequest',
+			value: function syllabusRequest(event) {
+				event.preventDefault();
+				console.log('SYLLABUS REQUEST: ' + this.state.selectedCourse);
+	
+				var pkg = {
+					course: this.state.selectedCourse,
+					visitor: this.props.currentUser
+				};
+	
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+	
+				var _this = this;
+				_api2.default.handlePost('/api/syllabus', pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -21805,25 +21847,25 @@
 												{ className: 'col_one_fourth col_last nobottommargin' },
 												_react2.default.createElement(
 													'select',
-													{ className: 'form-control input-lg not-dark' },
+													{ onChange: this.updateUserRegistration, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
-														null,
+														{ value: 'ios bootcamp' },
 														'iOS Bootcamp'
 													),
 													_react2.default.createElement(
 														'option',
-														null,
+														{ value: 'web bootcamp' },
 														'Web Bootcamp'
 													),
 													_react2.default.createElement(
 														'option',
-														null,
+														{ value: 'ios part time' },
 														'iOS Part Time'
 													),
 													_react2.default.createElement(
 														'option',
-														null,
+														{ value: 'web part time' },
 														'Web Part Time'
 													)
 												)
@@ -21834,7 +21876,7 @@
 											{ className: 'col_one_fifth col_last nobottommargin' },
 											_react2.default.createElement(
 												'button',
-												{ onClick: this.register, id: 'bootcamp', className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
+												{ onClick: this.syllabusRequest, id: 'bootcamp', className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
 												'Request Syllabus'
 											)
 										)

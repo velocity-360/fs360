@@ -47,6 +47,7 @@ var Home = (function (Component) {
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.rsvp = this.rsvp.bind(this);
+		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -59,7 +60,8 @@ var Home = (function (Component) {
 				id: null,
 				subject: "",
 				image: ""
-			}
+			},
+			selectedCourse: null // for syllabus requests
 		};
 	}
 
@@ -72,15 +74,22 @@ var Home = (function (Component) {
 			configurable: true
 		},
 		componentDidMount: {
-			value: function componentDidMount() {
-				console.log("HOME: componentDidMount");
-			},
+			value: function componentDidMount() {},
 			writable: true,
 			configurable: true
 		},
 		updateUserRegistration: {
 			value: function updateUserRegistration(event) {
+				console.log("updateUserRegistration: " + event.target.id);
 				event.preventDefault();
+
+				if (event.target.id == "course") {
+					this.setState({
+						selectedCourse: event.target.value
+					});
+					return;
+				}
+
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				updatedUser[event.target.id] = event.target.value;
 				store.dispatch(actions.updateCurrentUser(updatedUser));
@@ -93,7 +102,7 @@ var Home = (function (Component) {
 				event.preventDefault();
 				console.log("REGISTER: " + JSON.stringify(this.props.currentUser));
 
-				api.handlePost("/api/test", this.props.currentUser, null);
+				// api.handlePost('/api/test', this.props.currentUser, null);
 			},
 			writable: true,
 			configurable: true
@@ -115,6 +124,38 @@ var Home = (function (Component) {
 
 				api.handlePost("/api/rsvp", pkg, function (err, response) {
 					console.log("RSVP REQUEST RESPONSE: " + JSON.stringify(response));
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		syllabusRequest: {
+			value: function syllabusRequest(event) {
+				event.preventDefault();
+				console.log("SYLLABUS REQUEST: " + this.state.selectedCourse);
+
+				var pkg = {
+					course: this.state.selectedCourse,
+					visitor: this.props.currentUser
+				};
+
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/api/syllabus", pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -223,25 +264,25 @@ var Home = (function (Component) {
 												{ className: "col_one_fourth col_last nobottommargin" },
 												React.createElement(
 													"select",
-													{ className: "form-control input-lg not-dark" },
+													{ onChange: this.updateUserRegistration, id: "course", className: "form-control input-lg not-dark" },
 													React.createElement(
 														"option",
-														null,
+														{ value: "ios bootcamp" },
 														"iOS Bootcamp"
 													),
 													React.createElement(
 														"option",
-														null,
+														{ value: "web bootcamp" },
 														"Web Bootcamp"
 													),
 													React.createElement(
 														"option",
-														null,
+														{ value: "ios part time" },
 														"iOS Part Time"
 													),
 													React.createElement(
 														"option",
-														null,
+														{ value: "web part time" },
 														"Web Part Time"
 													)
 												)
@@ -252,7 +293,7 @@ var Home = (function (Component) {
 											{ className: "col_one_fifth col_last nobottommargin" },
 											React.createElement(
 												"button",
-												{ onClick: this.register, id: "bootcamp", className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
+												{ onClick: this.syllabusRequest, id: "bootcamp", className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
 												"Request Syllabus"
 											)
 										)
@@ -975,4 +1016,5 @@ var stateToProps = function (state) {
 
 module.exports = connect(stateToProps)(Home);
 //		getCurrentUser()
+//		console.log('HOME: componentDidMount')
 // api.handleGet('/api/course?isFeatured=yes', {});

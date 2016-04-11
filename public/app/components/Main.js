@@ -15,7 +15,7 @@ class Main extends React.Component {
 	}
 
 	render(){
-		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
+//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
 
 		var page = null
 		switch (this.props.page){

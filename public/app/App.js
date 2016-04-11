@@ -56,7 +56,7 @@ class App extends React.Component {
 			}
 		}
 
-		console.log('PARAMS: '+JSON.stringify(params));
+//		console.log('PARAMS: '+JSON.stringify(params));
 
 
 		this.setState({

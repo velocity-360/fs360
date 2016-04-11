@@ -33,7 +33,7 @@ var Main = (function (_React$Component) {
 	_prototypeProperties(Main, null, {
 		render: {
 			value: function render() {
-				console.log("RENDER MAIN: " + JSON.stringify(this.props.page) + ", " + JSON.stringify(this.props.slug));
+				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
 
 				var page = null;
 				switch (this.props.page) {

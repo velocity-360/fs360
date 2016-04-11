@@ -19,6 +19,7 @@ class Home extends Component {
 		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
 		this.rsvp = this.rsvp.bind(this)
+		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -31,7 +32,8 @@ class Home extends Component {
 				id: null,
 				subject: '',
 				image: ''
-			}
+			},
+			selectedCourse: null // for syllabus requests
 		}
 	}
 
@@ -40,13 +42,22 @@ class Home extends Component {
 	}
 
 	componentDidMount(){
-		console.log('HOME: componentDidMount')
+//		console.log('HOME: componentDidMount')
 		// api.handleGet('/api/course?isFeatured=yes', {});
 
 	}
 
 	updateUserRegistration(event){
+		console.log('updateUserRegistration: '+event.target.id)
 		event.preventDefault()
+
+		if (event.target.id == 'course'){
+			this.setState({
+				selectedCourse: event.target.value
+			})
+			return
+		}
+
 		var updatedUser = Object.assign({}, this.props.currentUser);
 		updatedUser[event.target.id] = event.target.value
 		store.dispatch(actions.updateCurrentUser(updatedUser));
@@ -56,7 +67,7 @@ class Home extends Component {
 		event.preventDefault()
 		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 
-		api.handlePost('/api/test', this.props.currentUser, null);
+		// api.handlePost('/api/test', this.props.currentUser, null);
 	}
 
 	rsvp(event){
@@ -75,6 +86,35 @@ class Home extends Component {
 
 		api.handlePost('/api/rsvp', pkg, function(err, response){
 			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
+			_this.setState({
+				showLoader: false
+			});
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		});
+	}
+
+	syllabusRequest(event){
+		event.preventDefault()
+		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
+
+		var pkg = {
+			course: this.state.selectedCourse,
+			visitor: this.props.currentUser
+		}
+
+		this.setState({
+			showModal: false,
+			showLoader: true
+		});
+
+		var _this = this
+		api.handlePost('/api/syllabus', pkg, function(err, response){
 			_this.setState({
 				showLoader: false
 			});
@@ -143,16 +183,16 @@ class Home extends Component {
 											<input value={this.props.currentUser.email} onChange={this.updateUserRegistration} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Email*" />
 										</div>
 										<div className="col_one_fourth col_last nobottommargin">
-											<select className="form-control input-lg not-dark">
-												<option>iOS Bootcamp</option>
-												<option>Web Bootcamp</option>
-												<option>iOS Part Time</option>
-												<option>Web Part Time</option>
+											<select onChange={this.updateUserRegistration} id="course" className="form-control input-lg not-dark">
+												<option value="ios bootcamp">iOS Bootcamp</option>
+												<option value="web bootcamp">Web Bootcamp</option>
+												<option value="ios part time">iOS Part Time</option>
+												<option value="web part time">Web Part Time</option>
 											</select>
 										</div>
 									</div>
 									<div className="col_one_fifth col_last nobottommargin">
-										<button onClick={this.register} id="bootcamp" className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
+										<button onClick={this.syllabusRequest} id="bootcamp" className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
 									</div>
 								</form>
 							</div>
