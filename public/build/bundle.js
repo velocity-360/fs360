@@ -22085,7 +22085,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'2 Weeks | Mon - Fri | 9am - 5pm'
+												'3 Weeks | Mon - Fri | 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(
@@ -22170,7 +22170,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'2 Weeks | Mon - Fri | 9am - 5pm'
+												'3 Weeks | Mon - Fri | 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(

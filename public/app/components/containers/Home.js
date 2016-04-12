@@ -349,7 +349,7 @@ class Home extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>iOS High School Course</h4>
-										<span>2 Weeks | Mon - Fri | 9am - 5pm</span>
+										<span>3 Weeks | Mon - Fri | 9am - 5pm</span>
 									</div>
 									<div className="team-content">
 										The iOS High School Course takes students through the process of 
@@ -402,7 +402,7 @@ class Home extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>Web High School Course</h4>
-										<span>2 Weeks | Mon - Fri | 9am - 5pm</span>
+										<span>3 Weeks | Mon - Fri | 9am - 5pm</span>
 									</div>
 									<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
 									<br />
