@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sessions({
   cookieName: 'session',
-  secret: 'awfjiowejfae',
+  secret: 'ajajfjwfajwef',
   duration: 24*60*60*1000, // 24 hours
   activeDuration:30*60*1000,
 }));
@@ -49,8 +49,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', main);
 app.use('/api', api);
-app.use('/admin', admin);
 app.use('/account', account);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

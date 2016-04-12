@@ -33,6 +33,34 @@ var fetchFile = function(path){
 router.get('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
+	if (resource == 'currentuser') {
+		if (req.session == null){
+			res.json({'message':'User not logged in.'});
+			return;
+		}
+
+		if (req.session.user == null){
+			console.log('TEST 2');
+			res.json({'message':'User not logged in.'});
+			return;
+		}
+
+
+
+
+		var accountController = require('../controllers/AccountController');
+		accountController.checkCurrentUser(req, function(err, results){
+			if (err){
+				res.json({confirmation:'fail', message:err.message});
+				return;
+			}
+
+			res.json({confirmation:'success', profile:results});
+		});
+		return;
+	}
+
+
 	if (resource == 'unsubscribe') {
 		var email = req.query.email;
 		if (email == null)

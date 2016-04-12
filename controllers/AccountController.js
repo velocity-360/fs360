@@ -49,18 +49,18 @@ module.exports = {
 	},
 
 	checkCurrentUser: function(req, completion){
-		if (!req.session){
+		if (req.session == null){
 			completion({'message':'User not logged in.'}, null);
 			return;
 		}
 
-		if (!req.session.user){
+		if (req.session.user == null){
+			console.log('TEST');
 			completion({'message':'User not logged in.'}, null);
 			return;
 		}
 		
 		var userId = req.session.user;
-//		console.log('USER '+userId+' LOGGED IN');
 		
 		Profile.findById(userId, function(err, profile){
 			if (err){

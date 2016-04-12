@@ -27,7 +27,8 @@
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
     "sendgrid": "^2.0.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "superagent": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",
