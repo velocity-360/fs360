@@ -21747,7 +21747,7 @@
 					}
 	
 					//			alert(response.message)
-					//			window.location.href = '/courses'
+					window.location.href = '/courses';
 				});
 			}
 		}, {

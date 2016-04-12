@@ -120,7 +120,7 @@ class Home extends Component {
 			}
 
 //			alert(response.message)
-//			window.location.href = '/courses'
+			window.location.href = '/courses'
 		});
 
 	}

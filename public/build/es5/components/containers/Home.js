@@ -154,7 +154,7 @@ var Home = (function (Component) {
 					}
 
 					//			alert(response.message)
-					//			window.location.href = '/courses'
+					window.location.href = "/courses";
 				});
 			},
 			writable: true,
