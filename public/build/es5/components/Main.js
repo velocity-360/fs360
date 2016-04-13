@@ -20,7 +20,7 @@ var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
 
-var IOSHighSchool = _interopRequire(require("./containers/IOSHighSchool"));
+//import IOSHighSchool from './containers/IOSHighSchool'
 
 var Main = (function (_React$Component) {
 	function Main(props, context) {
@@ -48,9 +48,9 @@ var Main = (function (_React$Component) {
 					case "courses":
 						return page = React.createElement(Courses, { params: this.props.params });
 
-					case "ioshighschool":
-						console.log("TEST");
-						return page = React.createElement(IOSHighSchool, null);
+					// case 'ioshighschool':
+					// 	console.log('TEST');
+					// 	return page = <IOSHighSchool />
 
 					case "videos":
 						return page = React.createElement(Videos, null);
