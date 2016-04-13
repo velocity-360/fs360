@@ -20,6 +20,8 @@ var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
 
+var iOSHighSchool = _interopRequire(require("./containers/iOSHighSchool"));
+
 var Main = (function (_React$Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -48,6 +50,9 @@ var Main = (function (_React$Component) {
 
 					case "videos":
 						return page = React.createElement(Videos, null);
+
+					case "ios-hs:":
+						return page = React.createElement("iOSHighSchool", null);
 
 					default:
 						return page = null;

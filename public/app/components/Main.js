@@ -3,6 +3,7 @@ import Home from './containers/Home'
 import Courses from './containers/Courses'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
+import iOSHighSchool from './containers/iOSHighSchool'
 
 class Main extends React.Component {
 
@@ -30,6 +31,9 @@ class Main extends React.Component {
 
 			case 'videos':
 				return page = <Videos />
+
+			case 'ios-hs:':
+				return page = <iOSHighSchool />
 
 			default:
 				return page = null

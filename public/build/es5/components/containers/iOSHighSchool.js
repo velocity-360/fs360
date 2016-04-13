@@ -35,11 +35,11 @@ var actions = _interopRequire(require("../../actions/actions"));
 var connect = require("react-redux").connect;
 var api = _interopRequire(require("../../api/api"));
 
-var Course = (function (Component) {
-	function Course(props, context) {
-		_classCallCheck(this, Course);
+var IOSHighSchool = (function (Component) {
+	function IOSHighSchool(props, context) {
+		_classCallCheck(this, IOSHighSchool);
 
-		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
+		_get(Object.getPrototypeOf(IOSHighSchool.prototype), "constructor", this).call(this, props, context);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.state = {
@@ -47,9 +47,9 @@ var Course = (function (Component) {
 			showModal: false };
 	}
 
-	_inherits(Course, Component);
+	_inherits(IOSHighSchool, Component);
 
-	_prototypeProperties(Course, null, {
+	_prototypeProperties(IOSHighSchool, null, {
 		componentWillMount: {
 			value: function componentWillMount() {},
 			writable: true,
@@ -57,7 +57,7 @@ var Course = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				api.handleGet("/api/course?slug=" + this.props.slug, {}, function (err, response) {
+				api.handleGet("/api/course?slug=first-course", {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -277,7 +277,7 @@ var Course = (function (Component) {
 		}
 	});
 
-	return Course;
+	return IOSHighSchool;
 })(Component);
 
 var stateToProps = function (state) {
@@ -287,12 +287,10 @@ var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
 		course: state.courseReducer.courses[keys[0]],
-		//course: state.courseReducer.courseArray[0],
 		testimonials: state.staticReducer.testimonials,
 		loaderOptions: state.staticReducer.loaderConfig
-
 	};
 };
 
 
-module.exports = connect(stateToProps)(Course);
+module.exports = connect(stateToProps)(IOSHighSchool);

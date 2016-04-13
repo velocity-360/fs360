@@ -9,7 +9,7 @@ import actions from '../../actions/actions'
 import { connect } from 'react-redux'
 import api from '../../api/api'
 
-class Course extends Component {
+class IOSHighSchool extends Component {
 
 	constructor(props, context){
 		super(props, context)
@@ -26,7 +26,7 @@ class Course extends Component {
 	}
 
 	componentDidMount(){
-		api.handleGet('/api/course?slug='+this.props.slug, {}, function(err, response){
+		api.handleGet('/api/course?slug=first-course', {}, function(err, response){
 			if (err){
 				alert(response.message)
 				return
@@ -155,12 +155,10 @@ const stateToProps = function(state) {
     return {
         currentUser: state.profileReducer.currentUser,
         course: state.courseReducer.courses[keys[0]],
-        //course: state.courseReducer.courseArray[0],
         testimonials: state.staticReducer.testimonials,
         loaderOptions: state.staticReducer.loaderConfig
-
     }
 }
 
 
-export default connect(stateToProps)(Course)
+export default connect(stateToProps)(IOSHighSchool)

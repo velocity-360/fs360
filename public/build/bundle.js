@@ -21499,17 +21499,21 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Courses = __webpack_require__(451);
+	var _Courses = __webpack_require__(457);
 	
 	var _Courses2 = _interopRequireDefault(_Courses);
 	
-	var _Course = __webpack_require__(455);
+	var _Course = __webpack_require__(461);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Videos = __webpack_require__(457);
+	var _Videos = __webpack_require__(463);
 	
 	var _Videos2 = _interopRequireDefault(_Videos);
+	
+	var _iOSHighSchool = __webpack_require__(464);
+	
+	var _iOSHighSchool2 = _interopRequireDefault(_iOSHighSchool);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21550,6 +21554,9 @@
 	
 					case 'videos':
 						return page = _react2.default.createElement(_Videos2.default, null);
+	
+					case 'ios-hs:':
+						return page = _react2.default.createElement('iOSHighSchool', null);
 	
 					default:
 						return page = null;
@@ -21597,15 +21604,15 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
-	var _Footer = __webpack_require__(448);
+	var _Footer = __webpack_require__(454);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _EventCard = __webpack_require__(449);
+	var _EventCard = __webpack_require__(455);
 	
 	var _EventCard2 = _interopRequireDefault(_EventCard);
 	
-	var _Testimonial = __webpack_require__(450);
+	var _Testimonial = __webpack_require__(456);
 	
 	var _Testimonial2 = _interopRequireDefault(_Testimonial);
 	
@@ -41340,11 +41347,11 @@
 		value: true
 	});
 	
-	var _superagent = __webpack_require__(458);
+	var _superagent = __webpack_require__(446);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
-	var _isomorphicFetch = __webpack_require__(446);
+	var _isomorphicFetch = __webpack_require__(452);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
@@ -41423,1805 +41430,14 @@
 /* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// the whatwg-fetch polyfill installs the fetch() function
-	// on the global object (window or self)
-	//
-	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(447);
-	module.exports = self.fetch.bind(self);
-
-
-/***/ },
-/* 447 */
-/***/ function(module, exports) {
-
-	(function(self) {
-	  'use strict';
-	
-	  if (self.fetch) {
-	    return
-	  }
-	
-	  function normalizeName(name) {
-	    if (typeof name !== 'string') {
-	      name = String(name)
-	    }
-	    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
-	      throw new TypeError('Invalid character in header field name')
-	    }
-	    return name.toLowerCase()
-	  }
-	
-	  function normalizeValue(value) {
-	    if (typeof value !== 'string') {
-	      value = String(value)
-	    }
-	    return value
-	  }
-	
-	  function Headers(headers) {
-	    this.map = {}
-	
-	    if (headers instanceof Headers) {
-	      headers.forEach(function(value, name) {
-	        this.append(name, value)
-	      }, this)
-	
-	    } else if (headers) {
-	      Object.getOwnPropertyNames(headers).forEach(function(name) {
-	        this.append(name, headers[name])
-	      }, this)
-	    }
-	  }
-	
-	  Headers.prototype.append = function(name, value) {
-	    name = normalizeName(name)
-	    value = normalizeValue(value)
-	    var list = this.map[name]
-	    if (!list) {
-	      list = []
-	      this.map[name] = list
-	    }
-	    list.push(value)
-	  }
-	
-	  Headers.prototype['delete'] = function(name) {
-	    delete this.map[normalizeName(name)]
-	  }
-	
-	  Headers.prototype.get = function(name) {
-	    var values = this.map[normalizeName(name)]
-	    return values ? values[0] : null
-	  }
-	
-	  Headers.prototype.getAll = function(name) {
-	    return this.map[normalizeName(name)] || []
-	  }
-	
-	  Headers.prototype.has = function(name) {
-	    return this.map.hasOwnProperty(normalizeName(name))
-	  }
-	
-	  Headers.prototype.set = function(name, value) {
-	    this.map[normalizeName(name)] = [normalizeValue(value)]
-	  }
-	
-	  Headers.prototype.forEach = function(callback, thisArg) {
-	    Object.getOwnPropertyNames(this.map).forEach(function(name) {
-	      this.map[name].forEach(function(value) {
-	        callback.call(thisArg, value, name, this)
-	      }, this)
-	    }, this)
-	  }
-	
-	  function consumed(body) {
-	    if (body.bodyUsed) {
-	      return Promise.reject(new TypeError('Already read'))
-	    }
-	    body.bodyUsed = true
-	  }
-	
-	  function fileReaderReady(reader) {
-	    return new Promise(function(resolve, reject) {
-	      reader.onload = function() {
-	        resolve(reader.result)
-	      }
-	      reader.onerror = function() {
-	        reject(reader.error)
-	      }
-	    })
-	  }
-	
-	  function readBlobAsArrayBuffer(blob) {
-	    var reader = new FileReader()
-	    reader.readAsArrayBuffer(blob)
-	    return fileReaderReady(reader)
-	  }
-	
-	  function readBlobAsText(blob) {
-	    var reader = new FileReader()
-	    reader.readAsText(blob)
-	    return fileReaderReady(reader)
-	  }
-	
-	  var support = {
-	    blob: 'FileReader' in self && 'Blob' in self && (function() {
-	      try {
-	        new Blob();
-	        return true
-	      } catch(e) {
-	        return false
-	      }
-	    })(),
-	    formData: 'FormData' in self,
-	    arrayBuffer: 'ArrayBuffer' in self
-	  }
-	
-	  function Body() {
-	    this.bodyUsed = false
-	
-	
-	    this._initBody = function(body) {
-	      this._bodyInit = body
-	      if (typeof body === 'string') {
-	        this._bodyText = body
-	      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
-	        this._bodyBlob = body
-	      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-	        this._bodyFormData = body
-	      } else if (!body) {
-	        this._bodyText = ''
-	      } else if (support.arrayBuffer && ArrayBuffer.prototype.isPrototypeOf(body)) {
-	        // Only support ArrayBuffers for POST method.
-	        // Receiving ArrayBuffers happens via Blobs, instead.
-	      } else {
-	        throw new Error('unsupported BodyInit type')
-	      }
-	
-	      if (!this.headers.get('content-type')) {
-	        if (typeof body === 'string') {
-	          this.headers.set('content-type', 'text/plain;charset=UTF-8')
-	        } else if (this._bodyBlob && this._bodyBlob.type) {
-	          this.headers.set('content-type', this._bodyBlob.type)
-	        }
-	      }
-	    }
-	
-	    if (support.blob) {
-	      this.blob = function() {
-	        var rejected = consumed(this)
-	        if (rejected) {
-	          return rejected
-	        }
-	
-	        if (this._bodyBlob) {
-	          return Promise.resolve(this._bodyBlob)
-	        } else if (this._bodyFormData) {
-	          throw new Error('could not read FormData body as blob')
-	        } else {
-	          return Promise.resolve(new Blob([this._bodyText]))
-	        }
-	      }
-	
-	      this.arrayBuffer = function() {
-	        return this.blob().then(readBlobAsArrayBuffer)
-	      }
-	
-	      this.text = function() {
-	        var rejected = consumed(this)
-	        if (rejected) {
-	          return rejected
-	        }
-	
-	        if (this._bodyBlob) {
-	          return readBlobAsText(this._bodyBlob)
-	        } else if (this._bodyFormData) {
-	          throw new Error('could not read FormData body as text')
-	        } else {
-	          return Promise.resolve(this._bodyText)
-	        }
-	      }
-	    } else {
-	      this.text = function() {
-	        var rejected = consumed(this)
-	        return rejected ? rejected : Promise.resolve(this._bodyText)
-	      }
-	    }
-	
-	    if (support.formData) {
-	      this.formData = function() {
-	        return this.text().then(decode)
-	      }
-	    }
-	
-	    this.json = function() {
-	      return this.text().then(JSON.parse)
-	    }
-	
-	    return this
-	  }
-	
-	  // HTTP methods whose capitalization should be normalized
-	  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
-	
-	  function normalizeMethod(method) {
-	    var upcased = method.toUpperCase()
-	    return (methods.indexOf(upcased) > -1) ? upcased : method
-	  }
-	
-	  function Request(input, options) {
-	    options = options || {}
-	    var body = options.body
-	    if (Request.prototype.isPrototypeOf(input)) {
-	      if (input.bodyUsed) {
-	        throw new TypeError('Already read')
-	      }
-	      this.url = input.url
-	      this.credentials = input.credentials
-	      if (!options.headers) {
-	        this.headers = new Headers(input.headers)
-	      }
-	      this.method = input.method
-	      this.mode = input.mode
-	      if (!body) {
-	        body = input._bodyInit
-	        input.bodyUsed = true
-	      }
-	    } else {
-	      this.url = input
-	    }
-	
-	    this.credentials = options.credentials || this.credentials || 'omit'
-	    if (options.headers || !this.headers) {
-	      this.headers = new Headers(options.headers)
-	    }
-	    this.method = normalizeMethod(options.method || this.method || 'GET')
-	    this.mode = options.mode || this.mode || null
-	    this.referrer = null
-	
-	    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
-	      throw new TypeError('Body not allowed for GET or HEAD requests')
-	    }
-	    this._initBody(body)
-	  }
-	
-	  Request.prototype.clone = function() {
-	    return new Request(this)
-	  }
-	
-	  function decode(body) {
-	    var form = new FormData()
-	    body.trim().split('&').forEach(function(bytes) {
-	      if (bytes) {
-	        var split = bytes.split('=')
-	        var name = split.shift().replace(/\+/g, ' ')
-	        var value = split.join('=').replace(/\+/g, ' ')
-	        form.append(decodeURIComponent(name), decodeURIComponent(value))
-	      }
-	    })
-	    return form
-	  }
-	
-	  function headers(xhr) {
-	    var head = new Headers()
-	    var pairs = xhr.getAllResponseHeaders().trim().split('\n')
-	    pairs.forEach(function(header) {
-	      var split = header.trim().split(':')
-	      var key = split.shift().trim()
-	      var value = split.join(':').trim()
-	      head.append(key, value)
-	    })
-	    return head
-	  }
-	
-	  Body.call(Request.prototype)
-	
-	  function Response(bodyInit, options) {
-	    if (!options) {
-	      options = {}
-	    }
-	
-	    this.type = 'default'
-	    this.status = options.status
-	    this.ok = this.status >= 200 && this.status < 300
-	    this.statusText = options.statusText
-	    this.headers = options.headers instanceof Headers ? options.headers : new Headers(options.headers)
-	    this.url = options.url || ''
-	    this._initBody(bodyInit)
-	  }
-	
-	  Body.call(Response.prototype)
-	
-	  Response.prototype.clone = function() {
-	    return new Response(this._bodyInit, {
-	      status: this.status,
-	      statusText: this.statusText,
-	      headers: new Headers(this.headers),
-	      url: this.url
-	    })
-	  }
-	
-	  Response.error = function() {
-	    var response = new Response(null, {status: 0, statusText: ''})
-	    response.type = 'error'
-	    return response
-	  }
-	
-	  var redirectStatuses = [301, 302, 303, 307, 308]
-	
-	  Response.redirect = function(url, status) {
-	    if (redirectStatuses.indexOf(status) === -1) {
-	      throw new RangeError('Invalid status code')
-	    }
-	
-	    return new Response(null, {status: status, headers: {location: url}})
-	  }
-	
-	  self.Headers = Headers;
-	  self.Request = Request;
-	  self.Response = Response;
-	
-	  self.fetch = function(input, init) {
-	    return new Promise(function(resolve, reject) {
-	      var request
-	      if (Request.prototype.isPrototypeOf(input) && !init) {
-	        request = input
-	      } else {
-	        request = new Request(input, init)
-	      }
-	
-	      var xhr = new XMLHttpRequest()
-	
-	      function responseURL() {
-	        if ('responseURL' in xhr) {
-	          return xhr.responseURL
-	        }
-	
-	        // Avoid security warnings on getResponseHeader when not allowed by CORS
-	        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
-	          return xhr.getResponseHeader('X-Request-URL')
-	        }
-	
-	        return;
-	      }
-	
-	      xhr.onload = function() {
-	        var status = (xhr.status === 1223) ? 204 : xhr.status
-	        if (status < 100 || status > 599) {
-	          reject(new TypeError('Network request failed'))
-	          return
-	        }
-	        var options = {
-	          status: status,
-	          statusText: xhr.statusText,
-	          headers: headers(xhr),
-	          url: responseURL()
-	        }
-	        var body = 'response' in xhr ? xhr.response : xhr.responseText;
-	        resolve(new Response(body, options))
-	      }
-	
-	      xhr.onerror = function() {
-	        reject(new TypeError('Network request failed'))
-	      }
-	
-	      xhr.open(request.method, request.url, true)
-	
-	      if (request.credentials === 'include') {
-	        xhr.withCredentials = true
-	      }
-	
-	      if ('responseType' in xhr && support.blob) {
-	        xhr.responseType = 'blob'
-	      }
-	
-	      request.headers.forEach(function(value, name) {
-	        xhr.setRequestHeader(name, value)
-	      })
-	
-	      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
-	    })
-	  }
-	  self.fetch.polyfill = true
-	})(typeof self !== 'undefined' ? self : this);
-
-
-/***/ },
-/* 448 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Footer = function (_React$Component) {
-		_inherits(Footer, _React$Component);
-	
-		function Footer(props, context) {
-			_classCallCheck(this, Footer);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this, props, context));
-		}
-	
-		_createClass(Footer, [{
-			key: "render",
-			value: function render() {
-				return _react2.default.createElement(
-					"footer",
-					{ id: "footer", className: "dark" },
-					_react2.default.createElement(
-						"div",
-						{ id: "copyrights" },
-						_react2.default.createElement(
-							"div",
-							{ className: "container clearfix" },
-							_react2.default.createElement(
-								"div",
-								{ className: "col_half" },
-								"Copyrights © 2016 All Rights Reserved by The Grid Media, LLC.",
-								_react2.default.createElement("br", null)
-							),
-							_react2.default.createElement(
-								"div",
-								{ className: "col_half col_last tright" },
-								_react2.default.createElement(
-									"div",
-									{ className: "fright clearfix" },
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-facebook" },
-										_react2.default.createElement("i", { className: "icon-facebook" }),
-										_react2.default.createElement("i", { className: "icon-facebook" })
-									),
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-twitter" },
-										_react2.default.createElement("i", { className: "icon-twitter" }),
-										_react2.default.createElement("i", { className: "icon-twitter" })
-									),
-									_react2.default.createElement(
-										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-github" },
-										_react2.default.createElement("i", { className: "icon-github" }),
-										_react2.default.createElement("i", { className: "icon-github" })
-									)
-								),
-								_react2.default.createElement("div", { className: "clear" }),
-								_react2.default.createElement("i", { className: "icon-envelope2" }),
-								" info@fullstack360.com ",
-								_react2.default.createElement(
-									"span",
-									{ className: "middot" },
-									"·"
-								),
-								_react2.default.createElement("i", { className: "icon-skype2" }),
-								" FS360"
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Footer;
-	}(_react2.default.Component);
-	
-	exports.default = Footer;
-
-/***/ },
-/* 449 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var EventCard = function (_Component) {
-		_inherits(EventCard, _Component);
-	
-		function EventCard(props, context) {
-			_classCallCheck(this, EventCard);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(EventCard).call(this, props, context));
-	
-			_this.selectEvent = _this.selectEvent.bind(_this);
-			return _this;
-		}
-	
-		_createClass(EventCard, [{
-			key: 'selectEvent',
-			value: function selectEvent(event) {
-				event.preventDefault();
-				var cbk = this.props.click;
-				cbk(event);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix', style: { marginBottom: 24, border: '1px solid #ddd' } },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, src: '/images/' + this.props.event.image, alt: this.props.event.subject })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-c' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-title' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									this.props.event.subject
-								)
-							)
-						),
-						_react2.default.createElement(
-							'ul',
-							{ className: 'entry-meta clearfix' },
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-calendar' }),
-									' ',
-									this.props.event.date
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-time' }),
-									' ',
-									this.props.event.time
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-map-marker2' }),
-									' 27 East 28th Street, NYC'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-content' },
-							this.props.event.description,
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ id: this.props.event.id, onClick: this.selectEvent, href: '#', className: 'btn btn-success' },
-								'RSVP'
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return EventCard;
-	}(_react.Component);
-	
-	exports.default = EventCard;
-
-/***/ },
-/* 450 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Testimonial = function (_Component) {
-		_inherits(Testimonial, _Component);
-	
-		function Testimonial() {
-			_classCallCheck(this, Testimonial);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Testimonial).apply(this, arguments));
-		}
-	
-		_createClass(Testimonial, [{
-			key: "render",
-			value: function render() {
-				return _react2.default.createElement(
-					"div",
-					{ className: "col-md-6 bottommargin" },
-					_react2.default.createElement(
-						"div",
-						{ className: "team team-list clearfix" },
-						_react2.default.createElement(
-							"div",
-							{ className: "team-image", style: { width: 150 } },
-							_react2.default.createElement("img", { className: "img-circle", src: '/images/' + this.props.testimonial.image, alt: "Bryant Kellam" })
-						),
-						_react2.default.createElement(
-							"div",
-							{ className: "team-desc" },
-							_react2.default.createElement(
-								"div",
-								{ className: "team-title" },
-								_react2.default.createElement(
-									"h4",
-									null,
-									this.props.testimonial.name
-								),
-								_react2.default.createElement(
-									"span",
-									null,
-									this.props.testimonial.course
-								)
-							),
-							_react2.default.createElement(
-								"div",
-								{ className: "team-content" },
-								this.props.testimonial.quote
-							),
-							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-small si-borderless si-github" },
-								_react2.default.createElement("i", { className: "icon-github" }),
-								_react2.default.createElement("i", { className: "icon-github" })
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
-								_react2.default.createElement("i", { className: "icon-twitter" }),
-								_react2.default.createElement("i", { className: "icon-twitter" })
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Testimonial;
-	}(_react.Component);
-	
-	exports.default = Testimonial;
-
-/***/ },
-/* 451 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(188);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _Sidebar = __webpack_require__(452);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(448);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CourseCard = __webpack_require__(453);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(444);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _api = __webpack_require__(445);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Courses = function (_Component) {
-		_inherits(Courses, _Component);
-	
-		function Courses(props, context) {
-			_classCallCheck(this, Courses);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Courses).call(this, props, context));
-		}
-	
-		_createClass(Courses, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-	
-				var endpoint = '/api/course';
-				if (this.props.params == null) {
-					_api2.default.handleGet(endpoint, {}, function (err, response) {
-						if (err) {
-							alert(response.message);
-							return;
-						}
-	
-						_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
-					});
-					return;
-				}
-	
-				// TODO: move this to api.js soon
-				endpoint = endpoint + '?';
-				var keys = Object.keys(this.props.params);
-				for (var i = 0; i < keys.length; i++) {
-					var key = keys[i];
-					endpoint = endpoint + key;
-					endpoint = endpoint + '=';
-					endpoint = endpoint + this.props.params[key];
-				}
-	
-				console.log('ENDPOINT == ' + endpoint);
-				_api2.default.handleGet(endpoint, {}, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-	
-				var courseList = this.props.courses.map(function (course) {
-					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
-				});
-	
-				return _react2.default.createElement(
-					'div',
-					{ style: { background: '#f5f5f5' } },
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin col_last' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'entry clearfix' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry-content' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_half' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginBottom: 0 } },
-													'Courses'
-												),
-												_react2.default.createElement(
-													'p',
-													null,
-													'Description'
-												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_half panel panel-default col_last' },
-												_react2.default.createElement(
-													'div',
-													{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-													'Details'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel-body' },
-													_react2.default.createElement('hr', null),
-													_react2.default.createElement(
-														'a',
-														{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
-														'Apply'
-													)
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ id: 'posts', className: 'events small-thumbs' },
-										courseList
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Courses;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courseArray
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Courses);
-
-/***/ },
-/* 452 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Sidebar = function (_Component) {
-		_inherits(Sidebar, _Component);
-	
-		function Sidebar() {
-			_classCallCheck(this, Sidebar);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Sidebar).apply(this, arguments));
-		}
-	
-		_createClass(Sidebar, [{
-			key: "render",
-			value: function render() {
-				return _react2.default.createElement(
-					"header",
-					{ id: "header", className: "no-sticky" },
-					_react2.default.createElement(
-						"div",
-						{ id: "header-wrap" },
-						_react2.default.createElement(
-							"div",
-							{ className: "container clearfix" },
-							_react2.default.createElement(
-								"div",
-								{ id: "primary-menu-trigger" },
-								_react2.default.createElement("i", { className: "icon-reorder" })
-							),
-							_react2.default.createElement(
-								"div",
-								{ id: "logo", className: "nobottomborder" },
-								_react2.default.createElement(
-									"a",
-									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-side-dark.png" },
-									_react2.default.createElement("img", { src: "/images/logo-side.png", alt: "Canvas Logo" })
-								),
-								_react2.default.createElement(
-									"a",
-									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-side-dark@2x.png" },
-									_react2.default.createElement("img", { src: "/images/logo-side@2x.png", alt: "Canvas Logo" })
-								)
-							),
-							_react2.default.createElement(
-								"nav",
-								{ id: "primary-menu" },
-								_react2.default.createElement(
-									"ul",
-									null,
-									_react2.default.createElement(
-										"li",
-										null,
-										_react2.default.createElement(
-											"a",
-											{ href: "/" },
-											_react2.default.createElement(
-												"div",
-												null,
-												"Home"
-											)
-										)
-									),
-									_react2.default.createElement(
-										"li",
-										null,
-										_react2.default.createElement(
-											"a",
-											{ href: "/videos" },
-											_react2.default.createElement(
-												"div",
-												null,
-												"Videos"
-											)
-										)
-									),
-									_react2.default.createElement(
-										"li",
-										null,
-										_react2.default.createElement(
-											"a",
-											{ href: "/courses" },
-											_react2.default.createElement(
-												"div",
-												null,
-												"Courses"
-											)
-										),
-										_react2.default.createElement(
-											"ul",
-											null,
-											_react2.default.createElement(
-												"li",
-												null,
-												_react2.default.createElement(
-													"a",
-													{ href: "/courses?type=live" },
-													_react2.default.createElement(
-														"div",
-														null,
-														"Part Time"
-													)
-												)
-											),
-											_react2.default.createElement(
-												"li",
-												null,
-												_react2.default.createElement(
-													"a",
-													{ href: "/courses?type=immersive" },
-													_react2.default.createElement(
-														"div",
-														null,
-														"Bootcamp"
-													)
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Sidebar;
-	}(_react.Component);
-	
-	exports.default = Sidebar;
-
-/***/ },
-/* 453 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _TextUtils = __webpack_require__(454);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CourseCard = function (_Component) {
-		_inherits(CourseCard, _Component);
-	
-		function CourseCard() {
-			_classCallCheck(this, CourseCard);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseCard).apply(this, arguments));
-		}
-	
-		_createClass(CourseCard, [{
-			key: 'render',
-			value: function render() {
-				var units = null;
-				if (this.props.course.type == 'online') units = _react2.default.createElement(
-					'li',
-					null,
-					_react2.default.createElement('i', { className: 'icon-video' }),
-					' ',
-					this.props.course.units.length,
-					' Videos '
-				);else units = _react2.default.createElement(
-					'li',
-					null,
-					_react2.default.createElement('i', { className: 'icon-desktop' }),
-					' ',
-					this.props.course.units.length,
-					' Sections '
-				);
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix', style: { background: '#fff', border: '1px solid #ddd', marginBottom: 24 } },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=512', alt: 'Inventore voluptates velit totam ipsa tenetur' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-c' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-title' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ style: { color: '#1ABC9C' }, href: '/course/' + this.props.course.slug },
-									this.props.course.title
-								)
-							)
-						),
-						_react2.default.createElement(
-							'ul',
-							{ className: 'entry-meta clearfix' },
-							units,
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement('i', { className: 'icon-star' }),
-								' ',
-								this.props.course.level
-							)
-						),
-						_react2.default.createElement('hr', null),
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-content' },
-							_react2.default.createElement(
-								'p',
-								null,
-								_TextUtils2.default.truncateText(this.props.course.description, 220)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return CourseCard;
-	}(_react.Component);
-	
-	exports.default = CourseCard;
-
-/***/ },
-/* 454 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-	
-		truncateText: function truncateText(str, limit) {
-			if (str.length < limit) return str;
-	
-			return str.substring(0, limit) + '...';
-		}
-	
-	};
-
-/***/ },
-/* 455 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(188);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _reactLoader = __webpack_require__(441);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Sidebar = __webpack_require__(452);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(448);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CourseSection = __webpack_require__(456);
-	
-	var _CourseSection2 = _interopRequireDefault(_CourseSection);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(444);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _api = __webpack_require__(445);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Course = function (_Component) {
-		_inherits(Course, _Component);
-	
-		function Course(props, context) {
-			_classCallCheck(this, Course);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
-	
-			_this.openModal = _this.openModal.bind(_this);
-			_this.closeModal = _this.closeModal.bind(_this);
-			_this.state = {
-				showLoader: false,
-				showModal: false
-			};
-			return _this;
-		}
-	
-		_createClass(Course, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
-				});
-			}
-		}, {
-			key: 'openModal',
-			value: function openModal(event) {
-				event.preventDefault();
-				this.setState({ showModal: true });
-			}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({ showModal: false });
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _course = this.props.course;
-				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course });
-				});
-	
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin col_last clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ id: 'posts', className: 'post-timeline clearfix' },
-										_react2.default.createElement('div', { className: 'timeline-border' }),
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'10',
-												_react2.default.createElement(
-													'span',
-													null,
-													'Feb'
-												),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement(
-													'a',
-													{ href: 'images/blog/full/17.jpg', 'data-lightbox': 'image' },
-													_react2.default.createElement('img', { className: 'image_fade', src: '/images/blog/standard/17.jpg', alt: 'Standard Post with Image' })
-												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_half' },
-													_react2.default.createElement(
-														'h2',
-														{ style: { marginBottom: 0 } },
-														this.props.course.title
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														this.props.course.description
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_half panel panel-default col_last' },
-													_react2.default.createElement(
-														'div',
-														{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-														'Details'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body' },
-														this.props.course.dates,
-														_react2.default.createElement('br', null),
-														this.props.course.schedule,
-														_react2.default.createElement('br', null),
-														'Tuition: $',
-														this.props.course.tuition,
-														_react2.default.createElement('br', null),
-														'Depost: $',
-														this.props.course.deposit,
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'a',
-															{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Apply'
-														),
-														_react2.default.createElement(
-															'a',
-															{ href: '#', onClick: this.openModal, className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
-														)
-													)
-												)
-											)
-										),
-										units,
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Unit',
-												_react2.default.createElement(
-													'span',
-													null,
-													'!'
-												),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
-														_react2.default.createElement(
-															'h2',
-															null,
-															'Sign Up'
-														),
-														_react2.default.createElement('hr', null),
-														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openModal, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-															'Apply'
-														),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-															'Request Syllabus'
-														)
-													)
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Request Syllabus'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Course;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-		var keys = Object.keys(state.courseReducer.courses);
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			course: state.courseReducer.courses[keys[0]],
-			//course: state.courseReducer.courseArray[0],
-			testimonials: state.staticReducer.testimonials,
-			loaderOptions: state.staticReducer.loaderConfig
-	
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
-
-/***/ },
-/* 456 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CourseSection = function (_Component) {
-		_inherits(CourseSection, _Component);
-	
-		function CourseSection() {
-			_classCallCheck(this, CourseSection);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).apply(this, arguments));
-		}
-	
-		_createClass(CourseSection, [{
-			key: 'render',
-			value: function render() {
-	
-				// if (this.props.course.type == 'online'){
-				// 	if (this.props.unit.index < 2){ // always show first video
-				// 		videoThumb = <span className={'wistia_embed wistia_async_'+this.props.section.wistia+' popover=true popoverAnimateThumbnail=true'} style={{display:'inline-block',height:168,width:300,marginTop:24}}>&nbsp;</span>;
-				// 	}
-				// 	else if (this.props.accountType == 'premium'){
-				// 		videoThumb = <span className={'wistia_embed wistia_async_'+this.props.section.wistia+' popover=true popoverAnimateThumbnail=true'} style={{display:'inline-block',height:168,width:300,marginTop:24}}>&nbsp;</span>;
-				// 	}
-				// 	else if (this.props.accountType == 'basic' || this.props.accountType == ''){
-				// 		videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#fff', marginTop:12, marginBottom:12}}>To view this video, please <a style={{color:'red'}} onClick={this.subscribeAction} href="#">upgrade</a> your account to Premium</div>
-				// 	}
-				// 	else if (this.props.accountType == 'none'){ // not logged in
-				// 		videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#fff', marginTop:12, marginBottom:12}}>Please log in or <a style={{color:'red'}} href="/premium">register</a> to view this video.</div>
-				// 	}
-				// }
-	
-				var videoThumb = null;
-				if (this.props.course.type == 'online') {
-					videoThumb = _react2.default.createElement(
-						'div',
-						{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-						' '
-					);
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-timeline' },
-						'Unit',
-						_react2.default.createElement(
-							'span',
-							null,
-							this.props.unit.index + 1
-						),
-						_react2.default.createElement('div', { className: 'timeline-divider' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36 } },
-								_react2.default.createElement(
-									'h2',
-									null,
-									this.props.unit.topic
-								),
-								_react2.default.createElement('hr', null),
-								this.props.unit.description,
-								_react2.default.createElement('br', null),
-								videoThumb
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return CourseSection;
-	}(_react.Component);
-	
-	exports.default = CourseSection;
-
-/***/ },
-/* 457 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(188);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _Sidebar = __webpack_require__(452);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(448);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CourseCard = __webpack_require__(453);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(444);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _api = __webpack_require__(445);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Videos = function (_Component) {
-		_inherits(Videos, _Component);
-	
-		function Videos(props, context) {
-			_classCallCheck(this, Videos);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Videos).call(this, props, context));
-		}
-	
-		_createClass(Videos, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				_api2.default.handleGet('/api/course?type=online', {}, function (err, response) {
-					if (err) {
-	
-						return;
-					}
-	
-					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-	
-				var courseList = this.props.courses.map(function (course) {
-					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
-				});
-	
-				return _react2.default.createElement(
-					'div',
-					{ style: { background: '#f5f5f5' } },
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin col_last' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'entry clearfix' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry-content' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_half' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginBottom: 0 } },
-													'Videos'
-												),
-												_react2.default.createElement(
-													'p',
-													null,
-													'Description'
-												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_half panel panel-default col_last' },
-												_react2.default.createElement(
-													'div',
-													{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-													'Details'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel-body' },
-													_react2.default.createElement('hr', null),
-													_react2.default.createElement(
-														'a',
-														{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
-														'Apply'
-													)
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ id: 'posts', className: 'events small-thumbs' },
-										courseList
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Videos;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courseArray
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
-
-/***/ },
-/* 458 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/**
 	 * Module dependencies.
 	 */
 	
-	var Emitter = __webpack_require__(459);
-	var reduce = __webpack_require__(460);
-	var requestBase = __webpack_require__(461);
-	var isObject = __webpack_require__(462);
+	var Emitter = __webpack_require__(447);
+	var reduce = __webpack_require__(448);
+	var requestBase = __webpack_require__(449);
+	var isObject = __webpack_require__(450);
 	
 	/**
 	 * Root reference for iframes.
@@ -43270,7 +41486,7 @@
 	 * Expose `request`.
 	 */
 	
-	var request = module.exports = __webpack_require__(463).bind(null, Request);
+	var request = module.exports = __webpack_require__(451).bind(null, Request);
 	
 	/**
 	 * Determine XHR.
@@ -44294,7 +42510,7 @@
 
 
 /***/ },
-/* 459 */
+/* 447 */
 /***/ function(module, exports) {
 
 	
@@ -44461,7 +42677,7 @@
 
 
 /***/ },
-/* 460 */
+/* 448 */
 /***/ function(module, exports) {
 
 	
@@ -44490,13 +42706,13 @@
 	};
 
 /***/ },
-/* 461 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(462);
+	var isObject = __webpack_require__(450);
 	
 	/**
 	 * Clear previous timeout.
@@ -44662,7 +42878,7 @@
 
 
 /***/ },
-/* 462 */
+/* 450 */
 /***/ function(module, exports) {
 
 	/**
@@ -44681,7 +42897,7 @@
 
 
 /***/ },
-/* 463 */
+/* 451 */
 /***/ function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
@@ -44717,6 +42933,2104 @@
 	
 	module.exports = request;
 
+
+/***/ },
+/* 452 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// the whatwg-fetch polyfill installs the fetch() function
+	// on the global object (window or self)
+	//
+	// Return that as the export for use in Webpack, Browserify etc.
+	__webpack_require__(453);
+	module.exports = self.fetch.bind(self);
+
+
+/***/ },
+/* 453 */
+/***/ function(module, exports) {
+
+	(function(self) {
+	  'use strict';
+	
+	  if (self.fetch) {
+	    return
+	  }
+	
+	  function normalizeName(name) {
+	    if (typeof name !== 'string') {
+	      name = String(name)
+	    }
+	    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
+	      throw new TypeError('Invalid character in header field name')
+	    }
+	    return name.toLowerCase()
+	  }
+	
+	  function normalizeValue(value) {
+	    if (typeof value !== 'string') {
+	      value = String(value)
+	    }
+	    return value
+	  }
+	
+	  function Headers(headers) {
+	    this.map = {}
+	
+	    if (headers instanceof Headers) {
+	      headers.forEach(function(value, name) {
+	        this.append(name, value)
+	      }, this)
+	
+	    } else if (headers) {
+	      Object.getOwnPropertyNames(headers).forEach(function(name) {
+	        this.append(name, headers[name])
+	      }, this)
+	    }
+	  }
+	
+	  Headers.prototype.append = function(name, value) {
+	    name = normalizeName(name)
+	    value = normalizeValue(value)
+	    var list = this.map[name]
+	    if (!list) {
+	      list = []
+	      this.map[name] = list
+	    }
+	    list.push(value)
+	  }
+	
+	  Headers.prototype['delete'] = function(name) {
+	    delete this.map[normalizeName(name)]
+	  }
+	
+	  Headers.prototype.get = function(name) {
+	    var values = this.map[normalizeName(name)]
+	    return values ? values[0] : null
+	  }
+	
+	  Headers.prototype.getAll = function(name) {
+	    return this.map[normalizeName(name)] || []
+	  }
+	
+	  Headers.prototype.has = function(name) {
+	    return this.map.hasOwnProperty(normalizeName(name))
+	  }
+	
+	  Headers.prototype.set = function(name, value) {
+	    this.map[normalizeName(name)] = [normalizeValue(value)]
+	  }
+	
+	  Headers.prototype.forEach = function(callback, thisArg) {
+	    Object.getOwnPropertyNames(this.map).forEach(function(name) {
+	      this.map[name].forEach(function(value) {
+	        callback.call(thisArg, value, name, this)
+	      }, this)
+	    }, this)
+	  }
+	
+	  function consumed(body) {
+	    if (body.bodyUsed) {
+	      return Promise.reject(new TypeError('Already read'))
+	    }
+	    body.bodyUsed = true
+	  }
+	
+	  function fileReaderReady(reader) {
+	    return new Promise(function(resolve, reject) {
+	      reader.onload = function() {
+	        resolve(reader.result)
+	      }
+	      reader.onerror = function() {
+	        reject(reader.error)
+	      }
+	    })
+	  }
+	
+	  function readBlobAsArrayBuffer(blob) {
+	    var reader = new FileReader()
+	    reader.readAsArrayBuffer(blob)
+	    return fileReaderReady(reader)
+	  }
+	
+	  function readBlobAsText(blob) {
+	    var reader = new FileReader()
+	    reader.readAsText(blob)
+	    return fileReaderReady(reader)
+	  }
+	
+	  var support = {
+	    blob: 'FileReader' in self && 'Blob' in self && (function() {
+	      try {
+	        new Blob();
+	        return true
+	      } catch(e) {
+	        return false
+	      }
+	    })(),
+	    formData: 'FormData' in self,
+	    arrayBuffer: 'ArrayBuffer' in self
+	  }
+	
+	  function Body() {
+	    this.bodyUsed = false
+	
+	
+	    this._initBody = function(body) {
+	      this._bodyInit = body
+	      if (typeof body === 'string') {
+	        this._bodyText = body
+	      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+	        this._bodyBlob = body
+	      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+	        this._bodyFormData = body
+	      } else if (!body) {
+	        this._bodyText = ''
+	      } else if (support.arrayBuffer && ArrayBuffer.prototype.isPrototypeOf(body)) {
+	        // Only support ArrayBuffers for POST method.
+	        // Receiving ArrayBuffers happens via Blobs, instead.
+	      } else {
+	        throw new Error('unsupported BodyInit type')
+	      }
+	
+	      if (!this.headers.get('content-type')) {
+	        if (typeof body === 'string') {
+	          this.headers.set('content-type', 'text/plain;charset=UTF-8')
+	        } else if (this._bodyBlob && this._bodyBlob.type) {
+	          this.headers.set('content-type', this._bodyBlob.type)
+	        }
+	      }
+	    }
+	
+	    if (support.blob) {
+	      this.blob = function() {
+	        var rejected = consumed(this)
+	        if (rejected) {
+	          return rejected
+	        }
+	
+	        if (this._bodyBlob) {
+	          return Promise.resolve(this._bodyBlob)
+	        } else if (this._bodyFormData) {
+	          throw new Error('could not read FormData body as blob')
+	        } else {
+	          return Promise.resolve(new Blob([this._bodyText]))
+	        }
+	      }
+	
+	      this.arrayBuffer = function() {
+	        return this.blob().then(readBlobAsArrayBuffer)
+	      }
+	
+	      this.text = function() {
+	        var rejected = consumed(this)
+	        if (rejected) {
+	          return rejected
+	        }
+	
+	        if (this._bodyBlob) {
+	          return readBlobAsText(this._bodyBlob)
+	        } else if (this._bodyFormData) {
+	          throw new Error('could not read FormData body as text')
+	        } else {
+	          return Promise.resolve(this._bodyText)
+	        }
+	      }
+	    } else {
+	      this.text = function() {
+	        var rejected = consumed(this)
+	        return rejected ? rejected : Promise.resolve(this._bodyText)
+	      }
+	    }
+	
+	    if (support.formData) {
+	      this.formData = function() {
+	        return this.text().then(decode)
+	      }
+	    }
+	
+	    this.json = function() {
+	      return this.text().then(JSON.parse)
+	    }
+	
+	    return this
+	  }
+	
+	  // HTTP methods whose capitalization should be normalized
+	  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
+	
+	  function normalizeMethod(method) {
+	    var upcased = method.toUpperCase()
+	    return (methods.indexOf(upcased) > -1) ? upcased : method
+	  }
+	
+	  function Request(input, options) {
+	    options = options || {}
+	    var body = options.body
+	    if (Request.prototype.isPrototypeOf(input)) {
+	      if (input.bodyUsed) {
+	        throw new TypeError('Already read')
+	      }
+	      this.url = input.url
+	      this.credentials = input.credentials
+	      if (!options.headers) {
+	        this.headers = new Headers(input.headers)
+	      }
+	      this.method = input.method
+	      this.mode = input.mode
+	      if (!body) {
+	        body = input._bodyInit
+	        input.bodyUsed = true
+	      }
+	    } else {
+	      this.url = input
+	    }
+	
+	    this.credentials = options.credentials || this.credentials || 'omit'
+	    if (options.headers || !this.headers) {
+	      this.headers = new Headers(options.headers)
+	    }
+	    this.method = normalizeMethod(options.method || this.method || 'GET')
+	    this.mode = options.mode || this.mode || null
+	    this.referrer = null
+	
+	    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+	      throw new TypeError('Body not allowed for GET or HEAD requests')
+	    }
+	    this._initBody(body)
+	  }
+	
+	  Request.prototype.clone = function() {
+	    return new Request(this)
+	  }
+	
+	  function decode(body) {
+	    var form = new FormData()
+	    body.trim().split('&').forEach(function(bytes) {
+	      if (bytes) {
+	        var split = bytes.split('=')
+	        var name = split.shift().replace(/\+/g, ' ')
+	        var value = split.join('=').replace(/\+/g, ' ')
+	        form.append(decodeURIComponent(name), decodeURIComponent(value))
+	      }
+	    })
+	    return form
+	  }
+	
+	  function headers(xhr) {
+	    var head = new Headers()
+	    var pairs = xhr.getAllResponseHeaders().trim().split('\n')
+	    pairs.forEach(function(header) {
+	      var split = header.trim().split(':')
+	      var key = split.shift().trim()
+	      var value = split.join(':').trim()
+	      head.append(key, value)
+	    })
+	    return head
+	  }
+	
+	  Body.call(Request.prototype)
+	
+	  function Response(bodyInit, options) {
+	    if (!options) {
+	      options = {}
+	    }
+	
+	    this.type = 'default'
+	    this.status = options.status
+	    this.ok = this.status >= 200 && this.status < 300
+	    this.statusText = options.statusText
+	    this.headers = options.headers instanceof Headers ? options.headers : new Headers(options.headers)
+	    this.url = options.url || ''
+	    this._initBody(bodyInit)
+	  }
+	
+	  Body.call(Response.prototype)
+	
+	  Response.prototype.clone = function() {
+	    return new Response(this._bodyInit, {
+	      status: this.status,
+	      statusText: this.statusText,
+	      headers: new Headers(this.headers),
+	      url: this.url
+	    })
+	  }
+	
+	  Response.error = function() {
+	    var response = new Response(null, {status: 0, statusText: ''})
+	    response.type = 'error'
+	    return response
+	  }
+	
+	  var redirectStatuses = [301, 302, 303, 307, 308]
+	
+	  Response.redirect = function(url, status) {
+	    if (redirectStatuses.indexOf(status) === -1) {
+	      throw new RangeError('Invalid status code')
+	    }
+	
+	    return new Response(null, {status: status, headers: {location: url}})
+	  }
+	
+	  self.Headers = Headers;
+	  self.Request = Request;
+	  self.Response = Response;
+	
+	  self.fetch = function(input, init) {
+	    return new Promise(function(resolve, reject) {
+	      var request
+	      if (Request.prototype.isPrototypeOf(input) && !init) {
+	        request = input
+	      } else {
+	        request = new Request(input, init)
+	      }
+	
+	      var xhr = new XMLHttpRequest()
+	
+	      function responseURL() {
+	        if ('responseURL' in xhr) {
+	          return xhr.responseURL
+	        }
+	
+	        // Avoid security warnings on getResponseHeader when not allowed by CORS
+	        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
+	          return xhr.getResponseHeader('X-Request-URL')
+	        }
+	
+	        return;
+	      }
+	
+	      xhr.onload = function() {
+	        var status = (xhr.status === 1223) ? 204 : xhr.status
+	        if (status < 100 || status > 599) {
+	          reject(new TypeError('Network request failed'))
+	          return
+	        }
+	        var options = {
+	          status: status,
+	          statusText: xhr.statusText,
+	          headers: headers(xhr),
+	          url: responseURL()
+	        }
+	        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+	        resolve(new Response(body, options))
+	      }
+	
+	      xhr.onerror = function() {
+	        reject(new TypeError('Network request failed'))
+	      }
+	
+	      xhr.open(request.method, request.url, true)
+	
+	      if (request.credentials === 'include') {
+	        xhr.withCredentials = true
+	      }
+	
+	      if ('responseType' in xhr && support.blob) {
+	        xhr.responseType = 'blob'
+	      }
+	
+	      request.headers.forEach(function(value, name) {
+	        xhr.setRequestHeader(name, value)
+	      })
+	
+	      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
+	    })
+	  }
+	  self.fetch.polyfill = true
+	})(typeof self !== 'undefined' ? self : this);
+
+
+/***/ },
+/* 454 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Footer = function (_React$Component) {
+		_inherits(Footer, _React$Component);
+	
+		function Footer(props, context) {
+			_classCallCheck(this, Footer);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this, props, context));
+		}
+	
+		_createClass(Footer, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"footer",
+					{ id: "footer", className: "dark" },
+					_react2.default.createElement(
+						"div",
+						{ id: "copyrights" },
+						_react2.default.createElement(
+							"div",
+							{ className: "container clearfix" },
+							_react2.default.createElement(
+								"div",
+								{ className: "col_half" },
+								"Copyrights © 2016 All Rights Reserved by The Grid Media, LLC.",
+								_react2.default.createElement("br", null)
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "col_half col_last tright" },
+								_react2.default.createElement(
+									"div",
+									{ className: "fright clearfix" },
+									_react2.default.createElement(
+										"a",
+										{ href: "#", className: "social-icon si-small si-borderless si-facebook" },
+										_react2.default.createElement("i", { className: "icon-facebook" }),
+										_react2.default.createElement("i", { className: "icon-facebook" })
+									),
+									_react2.default.createElement(
+										"a",
+										{ href: "#", className: "social-icon si-small si-borderless si-twitter" },
+										_react2.default.createElement("i", { className: "icon-twitter" }),
+										_react2.default.createElement("i", { className: "icon-twitter" })
+									),
+									_react2.default.createElement(
+										"a",
+										{ href: "#", className: "social-icon si-small si-borderless si-github" },
+										_react2.default.createElement("i", { className: "icon-github" }),
+										_react2.default.createElement("i", { className: "icon-github" })
+									)
+								),
+								_react2.default.createElement("div", { className: "clear" }),
+								_react2.default.createElement("i", { className: "icon-envelope2" }),
+								" info@fullstack360.com ",
+								_react2.default.createElement(
+									"span",
+									{ className: "middot" },
+									"·"
+								),
+								_react2.default.createElement("i", { className: "icon-skype2" }),
+								" FS360"
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Footer;
+	}(_react2.default.Component);
+	
+	exports.default = Footer;
+
+/***/ },
+/* 455 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EventCard = function (_Component) {
+		_inherits(EventCard, _Component);
+	
+		function EventCard(props, context) {
+			_classCallCheck(this, EventCard);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(EventCard).call(this, props, context));
+	
+			_this.selectEvent = _this.selectEvent.bind(_this);
+			return _this;
+		}
+	
+		_createClass(EventCard, [{
+			key: 'selectEvent',
+			value: function selectEvent(event) {
+				event.preventDefault();
+				var cbk = this.props.click;
+				cbk(event);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix', style: { marginBottom: 24, border: '1px solid #ddd' } },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, src: '/images/' + this.props.event.image, alt: this.props.event.subject })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-c' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-title' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									this.props.event.subject
+								)
+							)
+						),
+						_react2.default.createElement(
+							'ul',
+							{ className: 'entry-meta clearfix' },
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'icon-calendar' }),
+									' ',
+									this.props.event.date
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'icon-time' }),
+									' ',
+									this.props.event.time
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'icon-map-marker2' }),
+									' 27 East 28th Street, NYC'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-content' },
+							this.props.event.description,
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'a',
+								{ id: this.props.event.id, onClick: this.selectEvent, href: '#', className: 'btn btn-success' },
+								'RSVP'
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return EventCard;
+	}(_react.Component);
+	
+	exports.default = EventCard;
+
+/***/ },
+/* 456 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Testimonial = function (_Component) {
+		_inherits(Testimonial, _Component);
+	
+		function Testimonial() {
+			_classCallCheck(this, Testimonial);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Testimonial).apply(this, arguments));
+		}
+	
+		_createClass(Testimonial, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "col-md-6 bottommargin" },
+					_react2.default.createElement(
+						"div",
+						{ className: "team team-list clearfix" },
+						_react2.default.createElement(
+							"div",
+							{ className: "team-image", style: { width: 150 } },
+							_react2.default.createElement("img", { className: "img-circle", src: '/images/' + this.props.testimonial.image, alt: "Bryant Kellam" })
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "team-desc" },
+							_react2.default.createElement(
+								"div",
+								{ className: "team-title" },
+								_react2.default.createElement(
+									"h4",
+									null,
+									this.props.testimonial.name
+								),
+								_react2.default.createElement(
+									"span",
+									null,
+									this.props.testimonial.course
+								)
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "team-content" },
+								this.props.testimonial.quote
+							),
+							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-small si-borderless si-github" },
+								_react2.default.createElement("i", { className: "icon-github" }),
+								_react2.default.createElement("i", { className: "icon-github" })
+							),
+							_react2.default.createElement(
+								"a",
+								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
+								_react2.default.createElement("i", { className: "icon-twitter" }),
+								_react2.default.createElement("i", { className: "icon-twitter" })
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Testimonial;
+	}(_react.Component);
+	
+	exports.default = Testimonial;
+
+/***/ },
+/* 457 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseCard = __webpack_require__(459);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Courses = function (_Component) {
+		_inherits(Courses, _Component);
+	
+		function Courses(props, context) {
+			_classCallCheck(this, Courses);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Courses).call(this, props, context));
+		}
+	
+		_createClass(Courses, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+	
+				var endpoint = '/api/course';
+				if (this.props.params == null) {
+					_api2.default.handleGet(endpoint, {}, function (err, response) {
+						if (err) {
+							alert(response.message);
+							return;
+						}
+	
+						_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+					});
+					return;
+				}
+	
+				// TODO: move this to api.js soon
+				endpoint = endpoint + '?';
+				var keys = Object.keys(this.props.params);
+				for (var i = 0; i < keys.length; i++) {
+					var key = keys[i];
+					endpoint = endpoint + key;
+					endpoint = endpoint + '=';
+					endpoint = endpoint + this.props.params[key];
+				}
+	
+				console.log('ENDPOINT == ' + endpoint);
+				_api2.default.handleGet(endpoint, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var courseList = this.props.courses.map(function (course) {
+					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginBottom: 0 } },
+													'Courses'
+												),
+												_react2.default.createElement(
+													'p',
+													null,
+													'Description'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half panel panel-default col_last' },
+												_react2.default.createElement(
+													'div',
+													{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+													'Details'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel-body' },
+													_react2.default.createElement('hr', null),
+													_react2.default.createElement(
+														'a',
+														{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
+														'Apply'
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'events small-thumbs' },
+										courseList
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Courses;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Courses);
+
+/***/ },
+/* 458 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Sidebar = function (_Component) {
+		_inherits(Sidebar, _Component);
+	
+		function Sidebar() {
+			_classCallCheck(this, Sidebar);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Sidebar).apply(this, arguments));
+		}
+	
+		_createClass(Sidebar, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"header",
+					{ id: "header", className: "no-sticky" },
+					_react2.default.createElement(
+						"div",
+						{ id: "header-wrap" },
+						_react2.default.createElement(
+							"div",
+							{ className: "container clearfix" },
+							_react2.default.createElement(
+								"div",
+								{ id: "primary-menu-trigger" },
+								_react2.default.createElement("i", { className: "icon-reorder" })
+							),
+							_react2.default.createElement(
+								"div",
+								{ id: "logo", className: "nobottomborder" },
+								_react2.default.createElement(
+									"a",
+									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-side-dark.png" },
+									_react2.default.createElement("img", { src: "/images/logo-side.png", alt: "Canvas Logo" })
+								),
+								_react2.default.createElement(
+									"a",
+									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-side-dark@2x.png" },
+									_react2.default.createElement("img", { src: "/images/logo-side@2x.png", alt: "Canvas Logo" })
+								)
+							),
+							_react2.default.createElement(
+								"nav",
+								{ id: "primary-menu" },
+								_react2.default.createElement(
+									"ul",
+									null,
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"Home"
+											)
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/videos" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"Videos"
+											)
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "/courses" },
+											_react2.default.createElement(
+												"div",
+												null,
+												"Courses"
+											)
+										),
+										_react2.default.createElement(
+											"ul",
+											null,
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "/courses?type=live" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"Part Time"
+													)
+												)
+											),
+											_react2.default.createElement(
+												"li",
+												null,
+												_react2.default.createElement(
+													"a",
+													{ href: "/courses?type=immersive" },
+													_react2.default.createElement(
+														"div",
+														null,
+														"Bootcamp"
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Sidebar;
+	}(_react.Component);
+	
+	exports.default = Sidebar;
+
+/***/ },
+/* 459 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _TextUtils = __webpack_require__(460);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseCard = function (_Component) {
+		_inherits(CourseCard, _Component);
+	
+		function CourseCard() {
+			_classCallCheck(this, CourseCard);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseCard).apply(this, arguments));
+		}
+	
+		_createClass(CourseCard, [{
+			key: 'render',
+			value: function render() {
+				var units = null;
+				if (this.props.course.type == 'online') units = _react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement('i', { className: 'icon-video' }),
+					' ',
+					this.props.course.units.length,
+					' Videos '
+				);else units = _react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement('i', { className: 'icon-desktop' }),
+					' ',
+					this.props.course.units.length,
+					' Sections '
+				);
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix', style: { background: '#fff', border: '1px solid #ddd', marginBottom: 24 } },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=512', alt: 'Inventore voluptates velit totam ipsa tenetur' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-c' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-title' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ style: { color: '#1ABC9C' }, href: '/course/' + this.props.course.slug },
+									this.props.course.title
+								)
+							)
+						),
+						_react2.default.createElement(
+							'ul',
+							{ className: 'entry-meta clearfix' },
+							units,
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement('i', { className: 'icon-star' }),
+								' ',
+								this.props.course.level
+							)
+						),
+						_react2.default.createElement('hr', null),
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-content' },
+							_react2.default.createElement(
+								'p',
+								null,
+								_TextUtils2.default.truncateText(this.props.course.description, 220)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseCard;
+	}(_react.Component);
+	
+	exports.default = CourseCard;
+
+/***/ },
+/* 460 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+	
+		truncateText: function truncateText(str, limit) {
+			if (str.length < limit) return str;
+	
+			return str.substring(0, limit) + '...';
+		}
+	
+	};
+
+/***/ },
+/* 461 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(441);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseSection = __webpack_require__(462);
+	
+	var _CourseSection2 = _interopRequireDefault(_CourseSection);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Course = function (_Component) {
+		_inherits(Course, _Component);
+	
+		function Course(props, context) {
+			_classCallCheck(this, Course);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
+	
+			_this.openModal = _this.openModal.bind(_this);
+			_this.closeModal = _this.closeModal.bind(_this);
+			_this.state = {
+				showLoader: false,
+				showModal: false
+			};
+			return _this;
+		}
+	
+		_createClass(Course, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'openModal',
+			value: function openModal(event) {
+				event.preventDefault();
+				this.setState({ showModal: true });
+			}
+		}, {
+			key: 'closeModal',
+			value: function closeModal() {
+				this.setState({ showModal: false });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _course = this.props.course;
+				var units = this.props.course.units.map(function (unit, i) {
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'post-timeline clearfix' },
+										_react2.default.createElement('div', { className: 'timeline-border' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'10',
+												_react2.default.createElement(
+													'span',
+													null,
+													'Feb'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'a',
+													{ href: 'images/blog/full/17.jpg', 'data-lightbox': 'image' },
+													_react2.default.createElement('img', { className: 'image_fade', src: '/images/hacking-2.jpg', alt: 'Standard Post with Image' })
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_half' },
+													_react2.default.createElement(
+														'h2',
+														{ style: { marginBottom: 0 } },
+														this.props.course.title
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														this.props.course.description
+													)
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_half panel panel-default col_last' },
+													_react2.default.createElement(
+														'div',
+														{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+														'Details'
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body' },
+														this.props.course.dates,
+														_react2.default.createElement('br', null),
+														this.props.course.schedule,
+														_react2.default.createElement('br', null),
+														'Tuition: $',
+														this.props.course.tuition,
+														_react2.default.createElement('br', null),
+														'Depost: $',
+														this.props.course.deposit,
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'a',
+															{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Apply'
+														),
+														_react2.default.createElement(
+															'a',
+															{ href: '#', onClick: this.openModal, className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Request Syllabus'
+														)
+													)
+												)
+											)
+										),
+										units,
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Unit',
+												_react2.default.createElement(
+													'span',
+													null,
+													'!'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h2',
+															null,
+															'Sign Up'
+														),
+														_react2.default.createElement('hr', null),
+														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openModal, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+															'Apply'
+														),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+															'Request Syllabus'
+														)
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showModal, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Request Syllabus'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Course;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+		var keys = Object.keys(state.courseReducer.courses);
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			course: state.courseReducer.courses[keys[0]],
+			//course: state.courseReducer.courseArray[0],
+			testimonials: state.staticReducer.testimonials,
+			loaderOptions: state.staticReducer.loaderConfig
+	
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
+
+/***/ },
+/* 462 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseSection = function (_Component) {
+		_inherits(CourseSection, _Component);
+	
+		function CourseSection() {
+			_classCallCheck(this, CourseSection);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).apply(this, arguments));
+		}
+	
+		_createClass(CourseSection, [{
+			key: 'render',
+			value: function render() {
+	
+				// if (this.props.course.type == 'online'){
+				// 	if (this.props.unit.index < 2){ // always show first video
+				// 		videoThumb = <span className={'wistia_embed wistia_async_'+this.props.section.wistia+' popover=true popoverAnimateThumbnail=true'} style={{display:'inline-block',height:168,width:300,marginTop:24}}>&nbsp;</span>;
+				// 	}
+				// 	else if (this.props.accountType == 'premium'){
+				// 		videoThumb = <span className={'wistia_embed wistia_async_'+this.props.section.wistia+' popover=true popoverAnimateThumbnail=true'} style={{display:'inline-block',height:168,width:300,marginTop:24}}>&nbsp;</span>;
+				// 	}
+				// 	else if (this.props.accountType == 'basic' || this.props.accountType == ''){
+				// 		videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#fff', marginTop:12, marginBottom:12}}>To view this video, please <a style={{color:'red'}} onClick={this.subscribeAction} href="#">upgrade</a> your account to Premium</div>
+				// 	}
+				// 	else if (this.props.accountType == 'none'){ // not logged in
+				// 		videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#fff', marginTop:12, marginBottom:12}}>Please log in or <a style={{color:'red'}} href="/premium">register</a> to view this video.</div>
+				// 	}
+				// }
+	
+				var videoThumb = null;
+				if (this.props.course.type == 'online') {
+					videoThumb = _react2.default.createElement(
+						'div',
+						{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+						' '
+					);
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-timeline' },
+						'Unit',
+						_react2.default.createElement(
+							'span',
+							null,
+							this.props.unit.index + 1
+						),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									this.props.unit.topic
+								),
+								_react2.default.createElement('hr', null),
+								this.props.unit.description,
+								_react2.default.createElement('br', null),
+								videoThumb
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseSection;
+	}(_react.Component);
+	
+	exports.default = CourseSection;
+
+/***/ },
+/* 463 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseCard = __webpack_require__(459);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Videos = function (_Component) {
+		_inherits(Videos, _Component);
+	
+		function Videos(props, context) {
+			_classCallCheck(this, Videos);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Videos).call(this, props, context));
+		}
+	
+		_createClass(Videos, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?type=online', {}, function (err, response) {
+					if (err) {
+	
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var courseList = this.props.courses.map(function (course) {
+					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginBottom: 0 } },
+													'Videos'
+												),
+												_react2.default.createElement(
+													'p',
+													null,
+													'Description'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half panel panel-default col_last' },
+												_react2.default.createElement(
+													'div',
+													{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+													'Details'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel-body' },
+													_react2.default.createElement('hr', null),
+													_react2.default.createElement(
+														'a',
+														{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
+														'Apply'
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'events small-thumbs' },
+										courseList
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Videos;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
+
+/***/ },
+/* 464 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(441);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseSection = __webpack_require__(462);
+	
+	var _CourseSection2 = _interopRequireDefault(_CourseSection);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var IOSHighSchool = function (_Component) {
+		_inherits(IOSHighSchool, _Component);
+	
+		function IOSHighSchool(props, context) {
+			_classCallCheck(this, IOSHighSchool);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(IOSHighSchool).call(this, props, context));
+	
+			_this.openModal = _this.openModal.bind(_this);
+			_this.closeModal = _this.closeModal.bind(_this);
+			_this.state = {
+				showLoader: false,
+				showModal: false
+			};
+			return _this;
+		}
+	
+		_createClass(IOSHighSchool, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?slug=first-course', {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'openModal',
+			value: function openModal(event) {
+				event.preventDefault();
+				this.setState({ showModal: true });
+			}
+		}, {
+			key: 'closeModal',
+			value: function closeModal() {
+				this.setState({ showModal: false });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _course = this.props.course;
+				var units = this.props.course.units.map(function (unit, i) {
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'post-timeline clearfix' },
+										_react2.default.createElement('div', { className: 'timeline-border' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'10',
+												_react2.default.createElement(
+													'span',
+													null,
+													'Feb'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'a',
+													{ href: 'images/blog/full/17.jpg', 'data-lightbox': 'image' },
+													_react2.default.createElement('img', { className: 'image_fade', src: '/images/hacking-2.jpg', alt: 'Standard Post with Image' })
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_half' },
+													_react2.default.createElement(
+														'h2',
+														{ style: { marginBottom: 0 } },
+														this.props.course.title
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														this.props.course.description
+													)
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_half panel panel-default col_last' },
+													_react2.default.createElement(
+														'div',
+														{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+														'Details'
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body' },
+														this.props.course.dates,
+														_react2.default.createElement('br', null),
+														this.props.course.schedule,
+														_react2.default.createElement('br', null),
+														'Tuition: $',
+														this.props.course.tuition,
+														_react2.default.createElement('br', null),
+														'Depost: $',
+														this.props.course.deposit,
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'a',
+															{ href: '#', onClick: this.openModal, style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Apply'
+														),
+														_react2.default.createElement(
+															'a',
+															{ href: '#', onClick: this.openModal, className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Request Syllabus'
+														)
+													)
+												)
+											)
+										),
+										units,
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Unit',
+												_react2.default.createElement(
+													'span',
+													null,
+													'!'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h2',
+															null,
+															'Sign Up'
+														),
+														_react2.default.createElement('hr', null),
+														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openModal, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+															'Apply'
+														),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+															'Request Syllabus'
+														)
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showModal, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Request Syllabus'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return IOSHighSchool;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+		var keys = Object.keys(state.courseReducer.courses);
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			course: state.courseReducer.courses[keys[0]],
+			testimonials: state.staticReducer.testimonials,
+			loaderOptions: state.staticReducer.loaderConfig
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(IOSHighSchool);
 
 /***/ }
 /******/ ]);
