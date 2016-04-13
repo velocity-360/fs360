@@ -20,7 +20,7 @@ var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
 
-var iOSHighSchool = _interopRequire(require("./containers/iOSHighSchool"));
+var IOSHighSchool = _interopRequire(require("./containers/IOSHighSchool"));
 
 var Main = (function (_React$Component) {
 	function Main(props, context) {
@@ -35,7 +35,7 @@ var Main = (function (_React$Component) {
 	_prototypeProperties(Main, null, {
 		render: {
 			value: function render() {
-				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
+				console.log("RENDER MAIN: " + JSON.stringify(this.props.page) + ", " + JSON.stringify(this.props.slug));
 
 				var page = null;
 				switch (this.props.page) {
@@ -48,11 +48,12 @@ var Main = (function (_React$Component) {
 					case "courses":
 						return page = React.createElement(Courses, { params: this.props.params });
 
+					case "ioshighschool":
+						console.log("TEST");
+						return page = React.createElement(IOSHighSchool, null);
+
 					case "videos":
 						return page = React.createElement(Videos, null);
-
-					case "ios-hs:":
-						return page = React.createElement("iOSHighSchool", null);
 
 					default:
 						return page = null;

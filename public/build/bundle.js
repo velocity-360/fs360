@@ -21511,9 +21511,9 @@
 	
 	var _Videos2 = _interopRequireDefault(_Videos);
 	
-	var _iOSHighSchool = __webpack_require__(464);
+	var _IOSHighSchool = __webpack_require__(464);
 	
-	var _iOSHighSchool2 = _interopRequireDefault(_iOSHighSchool);
+	var _IOSHighSchool2 = _interopRequireDefault(_IOSHighSchool);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21539,7 +21539,7 @@
 		_createClass(Main, [{
 			key: 'render',
 			value: function render() {
-				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
+				console.log('RENDER MAIN: ' + JSON.stringify(this.props.page) + ', ' + JSON.stringify(this.props.slug));
 	
 				var page = null;
 				switch (this.props.page) {
@@ -21552,11 +21552,12 @@
 					case 'courses':
 						return page = _react2.default.createElement(_Courses2.default, { params: this.props.params });
 	
+					case 'ioshighschool':
+						console.log('TEST');
+						return page = _react2.default.createElement(_IOSHighSchool2.default, null);
+	
 					case 'videos':
 						return page = _react2.default.createElement(_Videos2.default, null);
-	
-					case 'ios-hs:':
-						return page = _react2.default.createElement('iOSHighSchool', null);
 	
 					default:
 						return page = null;
@@ -44806,7 +44807,7 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				_api2.default.handleGet('/api/course?slug=first-course', {}, function (err, response) {
+				_api2.default.handleGet('/api/course?slug=ios-high-school-course', {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;

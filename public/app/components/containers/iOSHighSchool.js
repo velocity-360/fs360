@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 import api from '../../api/api'
 
 class IOSHighSchool extends Component {
-
 	constructor(props, context){
 		super(props, context)
 		this.openModal = this.openModal.bind(this)
@@ -26,7 +25,7 @@ class IOSHighSchool extends Component {
 	}
 
 	componentDidMount(){
-		api.handleGet('/api/course?slug=first-course', {}, function(err, response){
+		api.handleGet('/api/course?slug=ios-high-school-course', {}, function(err, response){
 			if (err){
 				alert(response.message)
 				return
@@ -51,8 +50,6 @@ class IOSHighSchool extends Component {
 		var units = this.props.course.units.map(function(unit, i){
 			return <CourseSection key={unit.index} unit={unit} course={_course} />
 		})
-
-
 
 		return (
 			<div>
@@ -124,9 +121,7 @@ class IOSHighSchool extends Component {
 						</div>
 
 					</div>
-
 				</section>
-
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
 			        	<h2>Request Syllabus</h2>
@@ -143,6 +138,7 @@ class IOSHighSchool extends Component {
 		        </Modal>
 
 				<Footer />
+				
 			</div>
 		)
 	}

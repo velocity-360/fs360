@@ -3,7 +3,7 @@ import Home from './containers/Home'
 import Courses from './containers/Courses'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
-import iOSHighSchool from './containers/iOSHighSchool'
+import IOSHighSchool from './containers/IOSHighSchool'
 
 class Main extends React.Component {
 
@@ -16,7 +16,7 @@ class Main extends React.Component {
 	}
 
 	render(){
-//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
+		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
 
 		var page = null
 		switch (this.props.page){
@@ -29,11 +29,12 @@ class Main extends React.Component {
 			case 'courses':
 				return page = <Courses params={this.props.params} />
 
+			case 'ioshighschool':
+				console.log('TEST');
+				return page = <IOSHighSchool />
+
 			case 'videos':
 				return page = <Videos />
-
-			case 'ios-hs:':
-				return page = <iOSHighSchool />
 
 			default:
 				return page = null

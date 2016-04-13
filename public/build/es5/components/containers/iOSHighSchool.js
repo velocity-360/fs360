@@ -57,7 +57,7 @@ var IOSHighSchool = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				api.handleGet("/api/course?slug=first-course", {}, function (err, response) {
+				api.handleGet("/api/course?slug=ios-high-school-course", {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -90,8 +90,6 @@ var IOSHighSchool = (function (Component) {
 				var units = this.props.course.units.map(function (unit, i) {
 					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course });
 				});
-
-
 
 				return React.createElement(
 					"div",
