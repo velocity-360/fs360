@@ -20,8 +20,6 @@ var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
 
-//import IOSHighSchool from './containers/IOSHighSchool'
-
 var Main = (function (_React$Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);

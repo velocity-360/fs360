@@ -505,7 +505,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"3 Weeks | Mon - Fri | 9am - 5pm"
+												"2 Weeks | Mon - Fri | 9am - 5pm"
 											)
 										),
 										React.createElement(
@@ -590,7 +590,7 @@ var Home = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"3 Weeks | Mon - Fri | 9am - 5pm"
+												"2 Weeks | Mon - Fri | 9am - 5pm"
 											)
 										),
 										React.createElement(

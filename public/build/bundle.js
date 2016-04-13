@@ -21519,8 +21519,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import IOSHighSchool from './containers/IOSHighSchool'
-	
 	var Main = function (_React$Component) {
 		_inherits(Main, _React$Component);
 	
@@ -22091,7 +22089,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'3 Weeks | Mon - Fri | 9am - 5pm'
+												'2 Weeks | Mon - Fri | 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(
@@ -22176,7 +22174,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'3 Weeks | Mon - Fri | 9am - 5pm'
+												'2 Weeks | Mon - Fri | 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(
