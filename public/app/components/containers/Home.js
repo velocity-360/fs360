@@ -359,7 +359,7 @@ class Home extends Component {
 										such as Google Maps and Foursquare.
 									</div>
 									<br />
-									<a href="/course/first-course" className="btn btn-success">
+									<a href="/course/ios-high-school-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>

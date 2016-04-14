@@ -22100,7 +22100,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/first-course', className: 'btn btn-success' },
+											{ href: '/course/ios-high-school-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
