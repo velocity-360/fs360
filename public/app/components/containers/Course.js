@@ -177,17 +177,16 @@ class Course extends Component {
 								<div className="col-md-4 col-sm-6 bottommargin">
 									<div className="ipost clearfix">
 										<div className="entry-image">
-											<a href="#"><img className="image_fade" src="/images/magazine/thumb/1.jpg" alt="Image" /></a>
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="Image" />
 										</div>
 										<div className="entry-title">
-											<h3><a href="blog-single.html">Bloomberg smart cities; change-makers economic security</a></h3>
+											<h3><a href="blog-single.html">Small Classes</a></h3>
+											<hr />
 										</div>
-										<ul className="entry-meta clearfix">
-											<li><i className="icon-calendar3"></i> 13th Jun 2014</li>
-											<li><a href="blog-single.html#comments"><i className="icon-comments"></i> 53</a></li>
-										</ul>
 										<div className="entry-content">
-											<p>Prevention effect, advocate dialogue rural development lifting people up community civil society. Catalyst, grantees leverage.</p>
+											<p>
+												Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.
+											</p>
 										</div>
 									</div>
 								</div>
@@ -195,17 +194,16 @@ class Course extends Component {
 								<div className="col-md-4 col-sm-6 bottommargin">
 									<div className="ipost clearfix">
 										<div className="entry-image">
-											<a href="#"><img className="image_fade" src="/images/magazine/thumb/2.jpg" alt="Image" /></a>
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="Image" />
 										</div>
 										<div className="entry-title">
-											<h3><a href="blog-single.html">Medicine new approaches communities, outcomes partnership</a></h3>
+											<h3><a href="blog-single.html">Realistic Projects</a></h3>
+											<hr />
 										</div>
-										<ul className="entry-meta clearfix">
-											<li><i className="icon-calendar3"></i> 24th Feb 2014</li>
-											<li><a href="blog-single.html#comments"><i className="icon-comments"></i> 17</a></li>
-										</ul>
 										<div className="entry-content">
-											<p>Cross-agency coordination clean water rural, promising development turmoil inclusive education transformative community.</p>
+											<p>
+												All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.
+											</p>
 										</div>
 									</div>
 								</div>
@@ -213,15 +211,12 @@ class Course extends Component {
 								<div className="col-md-4 col-sm-6 bottommargin">
 									<div className="ipost clearfix">
 										<div className="entry-image">
-											<a href="#"><img className="image_fade" src="/images/magazine/thumb/4.jpg" alt="Image" /></a>
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="Image" />
 										</div>
 										<div className="entry-title">
 											<h3><a href="blog-single.html">Compassion conflict resolution, progressive; tackle</a></h3>
+											<hr />
 										</div>
-										<ul className="entry-meta clearfix">
-											<li><i className="icon-calendar3"></i> 15th Jan 2014</li>
-											<li><a href="blog-single.html#comments"><i className="icon-comments"></i> 54</a></li>
-										</ul>
 										<div className="entry-content">
 											<p>Community health workers best practices, effectiveness meaningful work The Elders fairness. Our ambitions local solutions globalization.</p>
 										</div>
@@ -234,68 +229,37 @@ class Course extends Component {
 
 
 					<div className="container clearfix">
-
 						<div id="faqs" className="faqs">
 							<h3 style={{marginTop:48}}>Some of your Questions:</h3>
 							<div className="divider"><i className="icon-circle"></i></div>
 
 							<div className="col_half nobottommargin">
-								<h4 id="faq-1"><strong>Q.</strong> How do I become an author?</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</p>
+								<h4 id="faq-1"><strong>Q.</strong>  I don’t have a lot of experience coding; can I still take your summer class?</h4>
+								<p>Of course!  FS360 High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.</p>
+								<p>However we do screen our students.  We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.</p>
 
 								<div className="line"></div>
 
-								<h4 id="faq-2"><strong>Q.</strong> Helpful Resources for Authors</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.</p>
+								<h4 id="faq-2"><strong>Q.</strong> Who are the instructors for the summer classes?</h4>
+								<p>All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!</p>
 
 								<div className="line"></div>
 
-								<h4 id="faq-3"><strong>Q.</strong> How much money can I make?</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!</p>
+								<h4 id="faq-3"><strong>Q.</strong> Will this class help me get into College?  What about an internship in the future?</h4>
+								<p>Yes, I am glad you asked.  FS360 Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites.</p>
+								<p>YAlso if your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take.  Technology startups and technology giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 3 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.</p>
 
-								<div className="line"></div>
-
-								<h4 id="faq-4"><strong>Q.</strong> Can I offer my items for free on a promotional basis?</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!</p>
-
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed facere eos harum ipsum quia recusandae sunt fugit ad quaerat sapiente. Iure, ut maiores commodi voluptas ullam sunt harum autem veniam.</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-5"><strong>Q.</strong> An Introduction to the Marketplaces for Authors</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, quisquam atque vero delectus corrupti! Quo, maiores, dolorem, hic commodi nulla ratione accusamus doloribus fuga magnam id temporibus dignissimos deleniti quidem ipsam corporis sapiente nam expedita saepe quas ab? Vero, assumenda.</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-6"><strong>Q.</strong> How does the Tuts+ Premium affiliate program work?</h4>
-								<p className="nobottommargin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad odio ab quis architecto recusandae doloremque incidunt! Eius, quidem, pariatur necessitatibus commodi aliquid deleniti repudiandae accusantium tempora soluta vel nesciunt est quibusdam iure adipisci aspernatur maiores saepe ea eaque quo harum reprehenderit similique nemo voluptate ullam natus illum magnam alias nobis doloremque delectus ipsa dicta repellat maxime dignissimos eveniet quae debitis ratione assumenda tempore officiis fugiat dolor. Saepe iusto praesentium ullam aliquam impedit distinctio blanditiis soluta cum! Fugiat, aliquam, ad, nam mollitia accusantium facere fugit ex libero quidem cupiditate placeat eveniet provident id aspernatur harum sed in enim cum reiciendis delectus.</p>
 							</div>
 
 							<div className="col_half nobottommargin col_last">
-								<h4 id="faq-7"><strong>Q.</strong> What Images, Videos, Code or Music Can I Use in my Items?</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad odio ab quis architecto recusandae doloremque incidunt! Eius, quidem, pariatur necessitatibus commodi aliquid deleniti repudiandae accusantium tempora soluta vel nesciunt est quibusdam iure adipisci aspernatur maiores saepe ea eaque quo harum reprehenderit similique nemo voluptate ullam natus illum magnam alias nobis doloremque delectus ipsa dicta repellat maxime dignissimos eveniet quae debitis ratione assumenda tempore officiis fugiat dolor. Saepe iusto praesentium ullam aliquam impedit.</p>
+								<h4 id="faq-4"><strong>Q.</strong> Will I Have Fun?</h4>
+								<p>Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.</p>
 
 								<div className="line"></div>
 
-								<h4 id="faq-8"><strong>Q.</strong> Can I use trademarked names in my items?</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nisi, laborum autem reprehenderit excepturi harum ipsum quod sit. Inventore et sunt nemo natus labore voluptate omnis reprehenderit culpa. Minus vitae molestiae totam ut a accusamus at fugiat nemo debitis delectus? Consectetur, deleniti, cupiditate ad doloribus numquam minus illum fugit laborum a voluptatum nulla at autem ab beatae odio dolorem assumenda magni laudantium saepe recusandae doloremque illo nesciunt aut quos debitis neque reiciendis veritatis iusto eos aliquid voluptatem pariatur eveniet velit?</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, esse, dolore, animi sed aliquam est consequatur atque magnam sunt voluptas nostrum sint minus neque iste ut velit iure eius! Hic, laudantium, consequatur veniam magnam ullam eveniet sed minus rem deleniti!</p>
+								<h4 id="faq-5"><strong>Q.</strong> Where is the Summer Program for FS360?</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, quisquam atque vero delectus corrupti! Quo, maiores, dolorem, hic commodi nulla ratione accusamus doloribus fuga magnam id temporibus dignissimos deleniti quidem ipsam corporis sapiente nam expedita saepe quas ab? Vero, assumenda.</p>
 
-								<div className="line"></div>
-
-								<h4 id="faq-9"><strong>Q.</strong> Tips for Increasing Your Referral Income</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nisi, laborum autem reprehenderit excepturi harum ipsum quod sit. Inventore et sunt nemo natus labore voluptate omnis reprehenderit culpa. Minus vitae molestiae totam ut a accusamus at fugiat nemo debitis delectus? Consectetur, deleniti, cupiditate ad doloribus numquam minus illum fugit laborum a voluptatum nulla at autem ab beatae odio dolorem assumenda magni laudantium saepe recusandae doloremque illo nesciunt aut quos debitis neque reiciendis veritatis iusto eos aliquid voluptatem pariatur eveniet velit?</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-10"><strong>Q.</strong> How can I get support for an item which isnt working correctly?</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, culpa eaque! Accusamus, molestiae, aspernatur, consequatur eaque laborum ipsum iure tempora minus laudantium inventore dolor assumenda magni cum id odio quam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo iusto aliquam voluptatem? Reiciendis, beatae, ipsam delectus voluptas ea error voluptates labore corporis ad tenetur sunt temporibus aperiam sit quis quasi tempora enim quo numquam provident ullam velit cumque similique veritatis quidem aliquam voluptatibus atque fugiat recusandae accusamus praesentium aut ipsa.</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-11"><strong>Q.</strong> How do I pay for items on the Marketplaces?</h4>
-								<p className="nobottommargin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo iusto aliquam voluptatem? Reiciendis, beatae, ipsam delectus voluptas ea error voluptates labore corporis ad tenetur sunt temporibus aperiam sit quis quasi tempora enim quo numquam provident ullam velit cumque similique veritatis quidem aliquam voluptatibus atque fugiat recusandae accusamus praesentium aut ipsa.</p>
 							</div>
 						</div>
 					</div>
