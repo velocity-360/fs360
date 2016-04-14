@@ -406,7 +406,7 @@ class Home extends Component {
 									</div>
 									<div className="team-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia.</div>
 									<br />
-									<a href="/course/first-course" className="btn btn-success">
+									<a href="/course/web-high-school-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>

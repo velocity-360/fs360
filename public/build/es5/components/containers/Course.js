@@ -261,7 +261,7 @@ var Course = (function (Component) {
 										React.createElement(
 											"h3",
 											null,
-											"Welcome"
+											"Prepare for Tomorrow"
 										)
 									),
 									React.createElement(
@@ -291,12 +291,6 @@ var Course = (function (Component) {
 												{ href: "#", className: "social-icon inline-block si-small si-light si-rounded si-twitter" },
 												React.createElement("i", { className: "icon-twitter" }),
 												React.createElement("i", { className: "icon-twitter" })
-											),
-											React.createElement(
-												"a",
-												{ href: "#", className: "social-icon inline-block si-small si-light si-rounded si-gplus" },
-												React.createElement("i", { className: "icon-gplus" }),
-												React.createElement("i", { className: "icon-gplus" })
 											)
 										)
 									)
@@ -433,7 +427,7 @@ var Course = (function (Component) {
 								React.createElement(
 									"h3",
 									{ style: { marginTop: 48 } },
-									"Some of your Questions:"
+									"Frequently Asked Questions:"
 								),
 								React.createElement(
 									"div",
@@ -498,7 +492,7 @@ var Course = (function (Component) {
 									React.createElement(
 										"p",
 										null,
-										"YAlso if your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take.  Technology startups and technology giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 3 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume."
+										"If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume."
 									)
 								),
 								React.createElement(

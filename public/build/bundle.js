@@ -22185,7 +22185,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/first-course', className: 'btn btn-success' },
+											{ href: '/course/web-high-school-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -44414,7 +44414,7 @@
 										_react2.default.createElement(
 											'h3',
 											null,
-											'Welcome'
+											'Prepare for Tomorrow'
 										)
 									),
 									_react2.default.createElement(
@@ -44444,12 +44444,6 @@
 												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
 												_react2.default.createElement('i', { className: 'icon-twitter' }),
 												_react2.default.createElement('i', { className: 'icon-twitter' })
-											),
-											_react2.default.createElement(
-												'a',
-												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-gplus' },
-												_react2.default.createElement('i', { className: 'icon-gplus' }),
-												_react2.default.createElement('i', { className: 'icon-gplus' })
 											)
 										)
 									)
@@ -44586,7 +44580,7 @@
 								_react2.default.createElement(
 									'h3',
 									{ style: { marginTop: 48 } },
-									'Some of your Questions:'
+									'Frequently Asked Questions:'
 								),
 								_react2.default.createElement(
 									'div',
@@ -44651,7 +44645,7 @@
 									_react2.default.createElement(
 										'p',
 										null,
-										'YAlso if your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take.  Technology startups and technology giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 3 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.'
+										'If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.'
 									)
 								),
 								_react2.default.createElement(

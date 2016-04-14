@@ -601,7 +601,7 @@ var Home = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/first-course", className: "btn btn-success" },
+											{ href: "/course/web-high-school-course", className: "btn btn-success" },
 											"Learn More"
 										)
 									)

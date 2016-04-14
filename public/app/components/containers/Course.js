@@ -138,7 +138,7 @@ class Course extends Component {
 						<div className="col-sm-8 col-padding">
 							<div>
 								<div className="heading-block">
-									<h3>Welcome</h3>
+									<h3>Prepare for Tomorrow</h3>
 								</div>
 
 								<div className="row clearfix">
@@ -156,10 +156,6 @@ class Course extends Component {
 										<a href="#" className="social-icon inline-block si-small si-light si-rounded si-twitter">
 											<i className="icon-twitter"></i>
 											<i className="icon-twitter"></i>
-										</a>
-										<a href="#" className="social-icon inline-block si-small si-light si-rounded si-gplus">
-											<i className="icon-gplus"></i>
-											<i className="icon-gplus"></i>
 										</a>
 									</div>
 								</div>
@@ -230,7 +226,7 @@ class Course extends Component {
 
 					<div className="container clearfix">
 						<div id="faqs" className="faqs">
-							<h3 style={{marginTop:48}}>Some of your Questions:</h3>
+							<h3 style={{marginTop:48}}>Frequently Asked Questions:</h3>
 							<div className="divider"><i className="icon-circle"></i></div>
 
 							<div className="col_half nobottommargin">
@@ -247,8 +243,7 @@ class Course extends Component {
 
 								<h4 id="faq-3"><strong>Q.</strong> Will this class help me get into College?  What about an internship in the future?</h4>
 								<p>Yes, I am glad you asked.  FS360 Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites.</p>
-								<p>YAlso if your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take.  Technology startups and technology giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 3 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.</p>
-
+								<p>If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.</p>
 							</div>
 
 							<div className="col_half nobottommargin col_last">
