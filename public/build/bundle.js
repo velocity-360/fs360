@@ -44246,6 +44246,10 @@
 					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course });
 				});
 	
+				if (this.props.slug == 'ios-high-school-course') {
+					console.log('IOS HIGH SCHOOL COURSE');
+				}
+	
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -44286,7 +44290,7 @@
 												{ className: 'entry-image' },
 												_react2.default.createElement(
 													'a',
-													{ href: 'images/blog/full/17.jpg', 'data-lightbox': 'image' },
+													{ href: '/images/blog/full/17.jpg', 'data-lightbox': 'image' },
 													_react2.default.createElement('img', { className: 'image_fade', src: '/images/hacking-2.jpg', alt: 'Standard Post with Image' })
 												)
 											),
@@ -44387,6 +44391,472 @@
 												)
 											)
 										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 48 } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-8 col-padding' },
+								_react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'heading-block' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Welcome'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'row clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-10' },
+											_react2.default.createElement(
+												'p',
+												null,
+												'Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, this 2-week class will put you on the right track to achieve any of these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.'
+											),
+											_react2.default.createElement(
+												'p',
+												null,
+												'Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.'
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
+												_react2.default.createElement('i', { className: 'icon-facebook' }),
+												_react2.default.createElement('i', { className: 'icon-facebook' })
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
+												_react2.default.createElement('i', { className: 'icon-twitter' }),
+												_react2.default.createElement('i', { className: 'icon-twitter' })
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-gplus' },
+												_react2.default.createElement('i', { className: 'icon-gplus' }),
+												_react2.default.createElement('i', { className: 'icon-gplus' })
+											)
+										)
+									)
+								)
+							),
+							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clear-bottommargin clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-4 col-sm-6 bottommargin' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'ipost clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'a',
+													{ href: '#' },
+													_react2.default.createElement('img', { className: 'image_fade', src: '/images/magazine/thumb/1.jpg', alt: 'Image' })
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h3',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html' },
+														'Bloomberg smart cities; change-makers economic security'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'ul',
+												{ className: 'entry-meta clearfix' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement('i', { className: 'icon-calendar3' }),
+													' 13th Jun 2014'
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html#comments' },
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' 53'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Prevention effect, advocate dialogue rural development lifting people up community civil society. Catalyst, grantees leverage.'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-4 col-sm-6 bottommargin' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'ipost clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'a',
+													{ href: '#' },
+													_react2.default.createElement('img', { className: 'image_fade', src: '/images/magazine/thumb/2.jpg', alt: 'Image' })
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h3',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html' },
+														'Medicine new approaches communities, outcomes partnership'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'ul',
+												{ className: 'entry-meta clearfix' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement('i', { className: 'icon-calendar3' }),
+													' 24th Feb 2014'
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html#comments' },
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' 17'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Cross-agency coordination clean water rural, promising development turmoil inclusive education transformative community.'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-4 col-sm-6 bottommargin' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'ipost clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'a',
+													{ href: '#' },
+													_react2.default.createElement('img', { className: 'image_fade', src: '/images/magazine/thumb/4.jpg', alt: 'Image' })
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h3',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html' },
+														'Compassion conflict resolution, progressive; tackle'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'ul',
+												{ className: 'entry-meta clearfix' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement('i', { className: 'icon-calendar3' }),
+													' 15th Jan 2014'
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: 'blog-single.html#comments' },
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' 54'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Community health workers best practices, effectiveness meaningful work The Elders fairness. Our ambitions local solutions globalization.'
+												)
+											)
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ id: 'faqs', className: 'faqs' },
+								_react2.default.createElement(
+									'h3',
+									{ style: { marginTop: 48 } },
+									'Some of your Questions:'
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'divider' },
+									_react2.default.createElement('i', { className: 'icon-circle' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_half nobottommargin' },
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-1' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' How do I become an author?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-2' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' Helpful Resources for Authors'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-3' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' How much money can I make?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-4' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' Can I offer my items for free on a promotional basis?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed facere eos harum ipsum quia recusandae sunt fugit ad quaerat sapiente. Iure, ut maiores commodi voluptas ullam sunt harum autem veniam.'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-5' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' An Introduction to the Marketplaces for Authors'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, quisquam atque vero delectus corrupti! Quo, maiores, dolorem, hic commodi nulla ratione accusamus doloribus fuga magnam id temporibus dignissimos deleniti quidem ipsam corporis sapiente nam expedita saepe quas ab? Vero, assumenda.'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-6' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' How does the Tuts+ Premium affiliate program work?'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'nobottommargin' },
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad odio ab quis architecto recusandae doloremque incidunt! Eius, quidem, pariatur necessitatibus commodi aliquid deleniti repudiandae accusantium tempora soluta vel nesciunt est quibusdam iure adipisci aspernatur maiores saepe ea eaque quo harum reprehenderit similique nemo voluptate ullam natus illum magnam alias nobis doloremque delectus ipsa dicta repellat maxime dignissimos eveniet quae debitis ratione assumenda tempore officiis fugiat dolor. Saepe iusto praesentium ullam aliquam impedit distinctio blanditiis soluta cum! Fugiat, aliquam, ad, nam mollitia accusantium facere fugit ex libero quidem cupiditate placeat eveniet provident id aspernatur harum sed in enim cum reiciendis delectus.'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_half nobottommargin col_last' },
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-7' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' What Images, Videos, Code or Music Can I Use in my Items?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad odio ab quis architecto recusandae doloremque incidunt! Eius, quidem, pariatur necessitatibus commodi aliquid deleniti repudiandae accusantium tempora soluta vel nesciunt est quibusdam iure adipisci aspernatur maiores saepe ea eaque quo harum reprehenderit similique nemo voluptate ullam natus illum magnam alias nobis doloremque delectus ipsa dicta repellat maxime dignissimos eveniet quae debitis ratione assumenda tempore officiis fugiat dolor. Saepe iusto praesentium ullam aliquam impedit.'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-8' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' Can I use trademarked names in my items?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nisi, laborum autem reprehenderit excepturi harum ipsum quod sit. Inventore et sunt nemo natus labore voluptate omnis reprehenderit culpa. Minus vitae molestiae totam ut a accusamus at fugiat nemo debitis delectus? Consectetur, deleniti, cupiditate ad doloribus numquam minus illum fugit laborum a voluptatum nulla at autem ab beatae odio dolorem assumenda magni laudantium saepe recusandae doloremque illo nesciunt aut quos debitis neque reiciendis veritatis iusto eos aliquid voluptatem pariatur eveniet velit?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, esse, dolore, animi sed aliquam est consequatur atque magnam sunt voluptas nostrum sint minus neque iste ut velit iure eius! Hic, laudantium, consequatur veniam magnam ullam eveniet sed minus rem deleniti!'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-9' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' Tips for Increasing Your Referral Income'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nisi, laborum autem reprehenderit excepturi harum ipsum quod sit. Inventore et sunt nemo natus labore voluptate omnis reprehenderit culpa. Minus vitae molestiae totam ut a accusamus at fugiat nemo debitis delectus? Consectetur, deleniti, cupiditate ad doloribus numquam minus illum fugit laborum a voluptatum nulla at autem ab beatae odio dolorem assumenda magni laudantium saepe recusandae doloremque illo nesciunt aut quos debitis neque reiciendis veritatis iusto eos aliquid voluptatem pariatur eveniet velit?'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-10' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' How can I get support for an item which isnt working correctly?'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, culpa eaque! Accusamus, molestiae, aspernatur, consequatur eaque laborum ipsum iure tempora minus laudantium inventore dolor assumenda magni cum id odio quam.'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo iusto aliquam voluptatem? Reiciendis, beatae, ipsam delectus voluptas ea error voluptates labore corporis ad tenetur sunt temporibus aperiam sit quis quasi tempora enim quo numquam provident ullam velit cumque similique veritatis quidem aliquam voluptatibus atque fugiat recusandae accusamus praesentium aut ipsa.'
+									),
+									_react2.default.createElement('div', { className: 'line' }),
+									_react2.default.createElement(
+										'h4',
+										{ id: 'faq-11' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Q.'
+										),
+										' How do I pay for items on the Marketplaces?'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'nobottommargin' },
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo iusto aliquam voluptatem? Reiciendis, beatae, ipsam delectus voluptas ea error voluptates labore corporis ad tenetur sunt temporibus aperiam sit quis quasi tempora enim quo numquam provident ullam velit cumque similique veritatis quidem aliquam voluptatibus atque fugiat recusandae accusamus praesentium aut ipsa.'
 									)
 								)
 							)
