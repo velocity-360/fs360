@@ -91,12 +91,15 @@ var Course = (function (Component) {
 					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course });
 				});
 
-
-				if (this.props.slug == "ios-high-school-course") {
-					console.log("IOS HIGH SCHOOL COURSE");
+				var questions = null;
+				if (this.props.slug == "ios-high-school-course" || this.props.slug == "web-high-school-course") {
+					// console.log('IOS HIGH SCHOOL COURSE');
+					questions = this.props.faq.highschool;
+				} else {
+					questions = this.props.faq.general;
 				}
 
-				var faq = this.props.faq.highschool.map(function (qa, i) {
+				var faq = questions.map(function (qa, i) {
 					return React.createElement(
 						"div",
 						null,
