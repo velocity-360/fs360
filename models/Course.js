@@ -12,6 +12,7 @@ var CourseSchema = new mongoose.Schema({
 	type: {type:String, trim:true, default:'live'}, // live or online
 	description: {type:String, default:''},
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
+	tags: {type:Array, default:[]},
 	tuition: {type:Number, default:0},
 	deposit: {type:Number, default:0},
 	image: {type:String, trim:true, default:''},
@@ -33,6 +34,7 @@ CourseSchema.methods.summary = function() {
 		'slug':this.slug,
 		'type':this.type,
 		'units':this.units,
+		'tags':this.tags,
 		'tuition':this.tuition,
 		'deposit':this.deposit,
 		'description':this.description,
