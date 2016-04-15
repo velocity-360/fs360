@@ -149,12 +149,8 @@ var Course = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-timeline" },
-												"10",
-												React.createElement(
-													"span",
-													null,
-													"Feb"
-												),
+												"Intro",
+												React.createElement("span", null),
 												React.createElement("div", { className: "timeline-divider" })
 											),
 											React.createElement(

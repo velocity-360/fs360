@@ -88,7 +88,7 @@ class Course extends Component {
 
 									<div className="entry clearfix">
 										<div className="entry-timeline">
-											10<span>Feb</span>
+											Intro<span></span>
 											<div className="timeline-divider"></div>
 										</div>
 										<div className="entry-image">

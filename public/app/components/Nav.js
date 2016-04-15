@@ -3,12 +3,18 @@ import store from '../stores/store'
 import actions from '../actions/actions'
 import { connect } from 'react-redux'
 import api from '../api/api'
+import ReactBootstrap, { Modal } from 'react-bootstrap'
 
 
 class Nav extends React.Component {
 
 	constructor(props, context){
 		super(props, context)
+		this.openModal = this.openModal.bind(this)
+		this.closeModal = this.closeModal.bind(this)
+		this.state = {
+			showModal: false
+		}
 	}
 
 	componentDidMount(){
@@ -21,6 +27,15 @@ class Nav extends React.Component {
 		});
 	}
 
+	openModal(event){
+		event.preventDefault()
+		console.log('OPEN MODAL')
+		this.setState({showModal: true})
+	}
+
+	closeModal(){
+		this.setState({showModal: false})
+	}
 
 	render(){
 		return (
@@ -48,12 +63,27 @@ class Nav extends React.Component {
 										<li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 									</ul>
 								</li>
-								<li><a href="/login" data-href="#"><div>Login</div></a></li>
+								<li><a onClick={this.openModal} href="#">Login</a></li>
 
 							</ul>
 						</nav>
 					</div>
 				</div>
+
+		        <Modal show={this.state.showModal} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h2>Log In</h2>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<input className="form-control" type="text" id="email" placeholder="Email" /><br />
+			        	<input className="form-control" type="password" id="password" placeholder="Password" /><br />
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
+			        </Modal.Footer>
+		        </Modal>
+
 
 			</header>
 		)

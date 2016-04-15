@@ -19,11 +19,21 @@ var actions = _interopRequire(require("../actions/actions"));
 var connect = require("react-redux").connect;
 var api = _interopRequire(require("../api/api"));
 
+var _reactBootstrap = require("react-bootstrap");
+
+var ReactBootstrap = _interopRequire(_reactBootstrap);
+
+var Modal = _reactBootstrap.Modal;
 var Nav = (function (_React$Component) {
 	function Nav(props, context) {
 		_classCallCheck(this, Nav);
 
 		_get(Object.getPrototypeOf(Nav.prototype), "constructor", this).call(this, props, context);
+		this.openModal = this.openModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+		this.state = {
+			showModal: false
+		};
 	}
 
 	_inherits(Nav, _React$Component);
@@ -38,6 +48,22 @@ var Nav = (function (_React$Component) {
 
 					store.dispatch(actions.currentUserRecieved(response.profile));
 				});
+			},
+			writable: true,
+			configurable: true
+		},
+		openModal: {
+			value: function openModal(event) {
+				event.preventDefault();
+				console.log("OPEN MODAL");
+				this.setState({ showModal: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		closeModal: {
+			value: function closeModal() {
+				this.setState({ showModal: false });
 			},
 			writable: true,
 			configurable: true
@@ -152,15 +178,41 @@ var Nav = (function (_React$Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/login", "data-href": "#" },
-											React.createElement(
-												"div",
-												null,
-												"Login"
-											)
+											{ onClick: this.openModal, href: "#" },
+											"Login"
 										)
 									)
 								)
+							)
+						)
+					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showModal, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h2",
+								null,
+								"Log In"
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement("input", { className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("br", null),
+							React.createElement("input", { className: "form-control", type: "password", id: "password", placeholder: "Password" }),
+							React.createElement("br", null)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Log In"
 							)
 						)
 					)
