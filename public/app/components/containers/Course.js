@@ -55,8 +55,17 @@ class Course extends Component {
 
 		if (this.props.slug == 'ios-high-school-course'){
 			console.log('IOS HIGH SCHOOL COURSE');
-
 		}
+
+		var faq = this.props.faq.highschool.map(function(qa, i){
+			return (
+				<div>
+					<h4><strong>Q.</strong> {qa.question}</h4>
+					<p dangerouslySetInnerHTML={{__html: qa.answer}}></p>
+					<div className="line"></div>
+				</div>
+			)
+		});
 
 
 		return (
@@ -95,7 +104,7 @@ class Course extends Component {
 													Tuition: ${this.props.course.tuition}<br />
 													Depost: ${this.props.course.deposit}
 													<hr />
-													<a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+													{ (this.props.course.type == 'immersive') ? <a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a> : null }
 													<a href="#" onClick={this.openModal} className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 												</div>
 											</div>
@@ -116,8 +125,9 @@ class Course extends Component {
 													<h2>Sign Up</h2>
 													<hr />
 													Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
-													<a onClick={this.openModal} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Apply</a>
-													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Request Syllabus</a>
+													<br /><br />
+													{ (this.props.course.type == 'immersive') ? <a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a> : null }
+													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>												
 												</div>
 											</div>
 										</div>
@@ -229,34 +239,8 @@ class Course extends Component {
 							<h3 style={{marginTop:48}}>Frequently Asked Questions:</h3>
 							<div className="divider"><i className="icon-circle"></i></div>
 
-							<div className="col_half nobottommargin">
-								<h4 id="faq-1"><strong>Q.</strong>  I don’t have a lot of experience coding; can I still take your summer class?</h4>
-								<p>Of course!  FS360 High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.</p>
-								<p>However we do screen our students.  We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-2"><strong>Q.</strong> Who are the instructors for the summer classes?</h4>
-								<p>All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-3"><strong>Q.</strong> Will this class help me get into College?  What about an internship in the future?</h4>
-								<p>Yes, I am glad you asked.  FS360 Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites.</p>
-								<p>If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.</p>
-							</div>
-
-							<div className="col_half nobottommargin col_last">
-								<h4 id="faq-4"><strong>Q.</strong> Will I Have Fun?</h4>
-								<p>Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.</p>
-
-								<div className="line"></div>
-
-								<h4 id="faq-5"><strong>Q.</strong> Where is the Summer Program for FS360?</h4>
-								<p>
-									Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at FS360 you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations. 
-								</p>
-
+							<div className="col_full nobottommargin">
+								{faq}
 							</div>
 						</div>
 					</div>
@@ -293,6 +277,7 @@ const stateToProps = function(state) {
         course: state.courseReducer.courses[keys[0]],
         //course: state.courseReducer.courseArray[0],
         testimonials: state.staticReducer.testimonials,
+        faq: state.staticReducer.faq,
         loaderOptions: state.staticReducer.loaderConfig
 
     }

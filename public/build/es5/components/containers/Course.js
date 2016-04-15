@@ -96,6 +96,26 @@ var Course = (function (Component) {
 					console.log("IOS HIGH SCHOOL COURSE");
 				}
 
+				var faq = this.props.faq.highschool.map(function (qa, i) {
+					return React.createElement(
+						"div",
+						null,
+						React.createElement(
+							"h4",
+							null,
+							React.createElement(
+								"strong",
+								null,
+								"Q."
+							),
+							" ",
+							qa.question
+						),
+						React.createElement("p", { dangerouslySetInnerHTML: { __html: qa.answer } }),
+						React.createElement("div", { className: "line" })
+					);
+				});
+
 
 				return React.createElement(
 					"div",
@@ -179,11 +199,11 @@ var Course = (function (Component) {
 														"Depost: $",
 														this.props.course.deposit,
 														React.createElement("hr", null),
-														React.createElement(
+														this.props.course.type == "immersive" ? React.createElement(
 															"a",
 															{ href: "/application", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
 															"Apply"
-														),
+														) : null,
 														React.createElement(
 															"a",
 															{ href: "#", onClick: this.openModal, className: "button button-border button-dark button-rounded noleftmargin" },
@@ -224,14 +244,16 @@ var Course = (function (Component) {
 														),
 														React.createElement("hr", null),
 														"Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.",
-														React.createElement(
+														React.createElement("br", null),
+														React.createElement("br", null),
+														this.props.course.type == "immersive" ? React.createElement(
 															"a",
-															{ onClick: this.openModal, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+															{ href: "/application", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
 															"Apply"
-														),
+														) : null,
 														React.createElement(
 															"a",
-															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
 															"Request Syllabus"
 														)
 													)
@@ -436,105 +458,8 @@ var Course = (function (Component) {
 								),
 								React.createElement(
 									"div",
-									{ className: "col_half nobottommargin" },
-									React.createElement(
-										"h4",
-										{ id: "faq-1" },
-										React.createElement(
-											"strong",
-											null,
-											"Q."
-										),
-										"  I don’t have a lot of experience coding; can I still take your summer class?"
-									),
-									React.createElement(
-										"p",
-										null,
-										"Of course!  FS360 High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you."
-									),
-									React.createElement(
-										"p",
-										null,
-										"However we do screen our students.  We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in."
-									),
-									React.createElement("div", { className: "line" }),
-									React.createElement(
-										"h4",
-										{ id: "faq-2" },
-										React.createElement(
-											"strong",
-											null,
-											"Q."
-										),
-										" Who are the instructors for the summer classes?"
-									),
-									React.createElement(
-										"p",
-										null,
-										"All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!"
-									),
-									React.createElement("div", { className: "line" }),
-									React.createElement(
-										"h4",
-										{ id: "faq-3" },
-										React.createElement(
-											"strong",
-											null,
-											"Q."
-										),
-										" Will this class help me get into College?  What about an internship in the future?"
-									),
-									React.createElement(
-										"p",
-										null,
-										"Yes, I am glad you asked.  FS360 Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites."
-									),
-									React.createElement(
-										"p",
-										null,
-										"If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume."
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "col_half nobottommargin col_last" },
-									React.createElement(
-										"h4",
-										{ id: "faq-4" },
-										React.createElement(
-											"strong",
-											null,
-											"Q."
-										),
-										" Will I Have Fun?"
-									),
-									React.createElement(
-										"p",
-										null,
-										"Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition."
-									),
-									React.createElement("div", { className: "line" }),
-									React.createElement(
-										"h4",
-										{ id: "faq-5" },
-										React.createElement(
-											"strong",
-											null,
-											"Q."
-										),
-										" Where is the Summer Program for FS360?"
-									),
-									React.createElement(
-										"p",
-										null,
-										"Our location is ",
-										React.createElement(
-											"a",
-											{ target: "_blank", href: "https://www.wework.com/locations/new-york-city/nomad" },
-											"WeWork"
-										),
-										" which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at FS360 you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations."
-									)
+									{ className: "col_full nobottommargin" },
+									faq
 								)
 							)
 						)
@@ -589,6 +514,7 @@ var stateToProps = function (state) {
 		course: state.courseReducer.courses[keys[0]],
 		//course: state.courseReducer.courseArray[0],
 		testimonials: state.staticReducer.testimonials,
+		faq: state.staticReducer.faq,
 		loaderOptions: state.staticReducer.loaderConfig
 
 	};
