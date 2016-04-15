@@ -116,6 +116,8 @@ var Course = (function (Component) {
 					);
 				});
 
+				var random = Math.floor(Math.random() * this.props.banners.length);
+				var banner = this.props.banners[random];
 
 				return React.createElement(
 					"div",
@@ -155,11 +157,7 @@ var Course = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-image" },
-												React.createElement(
-													"a",
-													{ href: "/images/blog/full/17.jpg", "data-lightbox": "image" },
-													React.createElement("img", { className: "image_fade", src: "/images/hacking-2.jpg", alt: "Standard Post with Image" })
-												)
+												React.createElement("img", { className: "image_fade", src: "/images/" + banner, alt: "FullStack 360" })
 											),
 											React.createElement(
 												"div",
@@ -338,7 +336,7 @@ var Course = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-image" },
-												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/class.jpg", alt: "Image" })
+												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/class.jpg", alt: "FullStack 360" })
 											),
 											React.createElement(
 												"div",
@@ -374,7 +372,7 @@ var Course = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-image" },
-												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/phone.jpg", alt: "Image" })
+												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/phone.jpg", alt: "FullStack 360" })
 											),
 											React.createElement(
 												"div",
@@ -410,7 +408,7 @@ var Course = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-image" },
-												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/joe.jpg", alt: "Image" })
+												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/joe.jpg", alt: "FullStack 360" })
 											),
 											React.createElement(
 												"div",
@@ -506,17 +504,15 @@ var Course = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var keys = Object.keys(state.courseReducer.courses);
 
 	return {
 		currentUser: state.profileReducer.currentUser,
 		course: state.courseReducer.courses[keys[0]],
-		//course: state.courseReducer.courseArray[0],
 		testimonials: state.staticReducer.testimonials,
 		faq: state.staticReducer.faq,
-		loaderOptions: state.staticReducer.loaderConfig
-
+		loaderOptions: state.staticReducer.loaderConfig,
+		banners: state.staticReducer.banners
 	};
 };
 

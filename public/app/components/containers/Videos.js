@@ -49,16 +49,8 @@ class Videos extends Component {
 									<div className="entry-content">
 										<div className="col_half">
 											<h2 style={{marginBottom:0}}>Videos</h2>
-											<p>Description</p>
 										</div>
 
-										<div className="col_half panel panel-default col_last">
-											<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
-											<div className="panel-body">
-												<hr />
-												<a href="#" onClick={this.openModal} style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a>
-											</div>
-										</div>
 									</div>
 								</div>
 

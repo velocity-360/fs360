@@ -123,11 +123,6 @@ var Courses = (function (Component) {
 													"h2",
 													{ style: { marginBottom: 0 } },
 													"Courses"
-												),
-												React.createElement(
-													"p",
-													null,
-													"Description"
 												)
 											)
 										)

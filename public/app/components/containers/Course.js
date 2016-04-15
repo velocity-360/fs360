@@ -67,6 +67,8 @@ class Course extends Component {
 			)
 		});
 
+		var random = Math.floor(Math.random() * (this.props.banners.length));
+		var banner = this.props.banners[random];
 
 		return (
 			<div>
@@ -86,9 +88,7 @@ class Course extends Component {
 											<div className="timeline-divider"></div>
 										</div>
 										<div className="entry-image">
-											<a href="/images/blog/full/17.jpg" data-lightbox="image">
-												<img className="image_fade" src="/images/hacking-2.jpg" alt="Standard Post with Image" />
-											</a>
+											<img className="image_fade" src={'/images/'+banner} alt="FullStack 360" />
 										</div>
 										<div className="entry-content">
 											<div className="col_half">
@@ -183,7 +183,7 @@ class Course extends Component {
 								<div className="col-md-4 col-sm-6 bottommargin">
 									<div className="ipost clearfix">
 										<div className="entry-image">
-											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="Image" />
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="FullStack 360" />
 										</div>
 										<div className="entry-title">
 											<h3><a href="blog-single.html">Small Classes</a></h3>
@@ -200,7 +200,7 @@ class Course extends Component {
 								<div className="col-md-4 col-sm-6 bottommargin">
 									<div className="ipost clearfix">
 										<div className="entry-image">
-											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="Image" />
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="FullStack 360" />
 										</div>
 										<div className="entry-title">
 											<h3><a href="blog-single.html">Realistic Projects</a></h3>
@@ -217,7 +217,7 @@ class Course extends Component {
 								<div className="col-md-4 col-sm-6 bottommargin">
 									<div className="ipost clearfix">
 										<div className="entry-image">
-											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="Image" />
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="FullStack 360" />
 										</div>
 										<div className="entry-title">
 											<h3><a href="blog-single.html">Compassion conflict resolution, progressive; tackle</a></h3>
@@ -269,17 +269,15 @@ class Course extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var keys = Object.keys(state.courseReducer.courses)
 
     return {
         currentUser: state.profileReducer.currentUser,
         course: state.courseReducer.courses[keys[0]],
-        //course: state.courseReducer.courseArray[0],
         testimonials: state.staticReducer.testimonials,
         faq: state.staticReducer.faq,
-        loaderOptions: state.staticReducer.loaderConfig
-
+        loaderOptions: state.staticReducer.loaderConfig,
+        banners: state.staticReducer.banners
     }
 }
 

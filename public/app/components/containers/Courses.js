@@ -75,7 +75,6 @@ class Courses extends Component {
 									<div className="entry-content">
 										<div className="col_half">
 											<h2 style={{marginBottom:0}}>Courses</h2>
-											<p>Description</p>
 										</div>
 
 									</div>

@@ -96,30 +96,6 @@ var Videos = (function (Component) {
 													"h2",
 													{ style: { marginBottom: 0 } },
 													"Videos"
-												),
-												React.createElement(
-													"p",
-													null,
-													"Description"
-												)
-											),
-											React.createElement(
-												"div",
-												{ className: "col_half panel panel-default col_last" },
-												React.createElement(
-													"div",
-													{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
-													"Details"
-												),
-												React.createElement(
-													"div",
-													{ className: "panel-body" },
-													React.createElement("hr", null),
-													React.createElement(
-														"a",
-														{ href: "#", onClick: this.openModal, style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
-														"Apply"
-													)
 												)
 											)
 										)
