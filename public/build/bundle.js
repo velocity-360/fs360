@@ -44292,7 +44292,7 @@
 				var faq = questions.map(function (qa, i) {
 					return _react2.default.createElement(
 						'div',
-						null,
+						{ key: i },
 						_react2.default.createElement(
 							'h4',
 							null,

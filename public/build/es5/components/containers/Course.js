@@ -102,7 +102,7 @@ var Course = (function (Component) {
 				var faq = questions.map(function (qa, i) {
 					return React.createElement(
 						"div",
-						null,
+						{ key: i },
 						React.createElement(
 							"h4",
 							null,

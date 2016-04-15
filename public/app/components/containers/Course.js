@@ -63,7 +63,7 @@ class Course extends Component {
 
 		var faq = questions.map(function(qa, i){
 			return (
-				<div>
+				<div key={i}>
 					<h4><strong>Q.</strong> {qa.question}</h4>
 					<p dangerouslySetInnerHTML={{__html: qa.answer}}></p>
 					<div className="line"></div>
