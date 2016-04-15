@@ -181,7 +181,7 @@ var Course = (function (Component) {
 														React.createElement("hr", null),
 														React.createElement(
 															"a",
-															{ href: "#", onClick: this.openModal, style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
+															{ href: "/application", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
 															"Apply"
 														),
 														React.createElement(

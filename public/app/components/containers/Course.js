@@ -95,7 +95,7 @@ class Course extends Component {
 													Tuition: ${this.props.course.tuition}<br />
 													Depost: ${this.props.course.deposit}
 													<hr />
-													<a href="#" onClick={this.openModal} style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+													<a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a>
 													<a href="#" onClick={this.openModal} className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 												</div>
 											</div>

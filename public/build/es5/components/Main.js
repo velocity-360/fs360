@@ -20,6 +20,8 @@ var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
 
+var Application = _interopRequire(require("./containers/Application"));
+
 var Main = (function (_React$Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -45,6 +47,9 @@ var Main = (function (_React$Component) {
 
 					case "courses":
 						return page = React.createElement(Courses, { params: this.props.params });
+
+					case "application":
+						return page = React.createElement(Application, { params: this.props.params });
 
 					// case 'ioshighschool':
 					// 	console.log('TEST');

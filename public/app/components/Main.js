@@ -3,6 +3,7 @@ import Home from './containers/Home'
 import Courses from './containers/Courses'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
+import Application from './containers/Application'
 
 class Main extends React.Component {
 
@@ -27,6 +28,9 @@ class Main extends React.Component {
 
 			case 'courses':
 				return page = <Courses params={this.props.params} />
+
+			case 'application':
+				return page = <Application params={this.props.params} />
 
 			// case 'ioshighschool':
 			// 	console.log('TEST');
