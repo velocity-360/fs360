@@ -596,7 +596,7 @@ var Home = (function (Component) {
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia."
+											"The Web Development High School Course covers backend and frontend development using the most up-to-date technologies. We will create a fully functional website with user registration, email notification, and more functionality and more from scratch. Using Node JS, Mongo, Express and React (with ES6), the 'stack' will be very modern and relevant to the tech environment of tomorrow."
 										),
 										React.createElement("br", null),
 										React.createElement(
@@ -638,12 +638,12 @@ var Home = (function (Component) {
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat assumenda similique unde mollitia."
+											"The Web Development Intensive is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/first-course", className: "btn btn-success" },
+											{ href: "/course/web-intensive", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
