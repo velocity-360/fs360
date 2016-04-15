@@ -13,8 +13,8 @@ var initialState = {
 		'girl.jpg'
 	],
 	events:[
-		{id:0, 'subject':'Node + iOS Workshop', 'fee':'Free', 'date':'April 5, 2016', 'time':'7:00pm', 'description':'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.' , 'image':'apple.jpg', button:'Attend'},
-		{id:1, 'subject':'Node JS Workshop', 'fee':'Free', 'date':'April 6, 2016', 'time':'7:00pm', 'description':'Learn how to build a full MEAN stack application with the SendGrid API. We\'ll build a Node server with a landing page to collect signups, create profiles, and automate welcome emails.' , 'image':'node.png', button:'Attend'},
+		{id:0, 'subject':'React Workshop', 'fee':'Free', 'date':'April 18, 2016', 'time':'7:00pm', 'description':'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.' , 'image':'react-360.png', button:'Attend'},
+		{id:1, 'subject':'Node JS Workshop', 'fee':'Free', 'date':'April 20, 2016', 'time':'7:00pm', 'description':'Learn how to build a full MEAN stack application with the SendGrid API. We\'ll build a Node server with a landing page to collect signups, create profiles, and automate welcome emails.' , 'image':'node.png', button:'Attend'},
 	],
 	faq: {
 		highschool:[

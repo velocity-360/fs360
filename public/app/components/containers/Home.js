@@ -95,7 +95,6 @@ class Home extends Component {
 
 	register(event){
 		event.preventDefault()
-//		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 		var missingField = this.validate(true);
 		if (missingField != null){
 			alert('Please enter your '+missingField);
@@ -316,7 +315,7 @@ class Home extends Component {
 
 							<div id="posts" className="events small-thumbs">
 								<div style={{textAlign:'center', paddingTop:64}}>
-									<h3>Events</h3>
+									<h2>Events</h2>
 								</div>
 
 								{events}

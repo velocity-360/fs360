@@ -55,6 +55,7 @@ var Application = (function (Component) {
 										null,
 										"Application"
 									),
+									React.createElement("hr", null),
 									React.createElement(
 										"div",
 										{ className: "contact-widget" },
@@ -96,13 +97,46 @@ var Application = (function (Component) {
 											React.createElement("div", { className: "clear" }),
 											React.createElement(
 												"div",
-												{ className: "col_two_third" },
+												{ className: "col_full" },
 												React.createElement(
 													"label",
 													{ "for": "template-contactform-subject" },
-													"Subject"
+													"Course"
 												),
-												React.createElement("input", { type: "text", id: "template-contactform-subject", name: "template-contactform-subject", value: "", className: "required sm-form-control" })
+												React.createElement(
+													"select",
+													{ id: "course", className: "form-control input-lg not-dark" },
+													React.createElement(
+														"option",
+														{ value: "ios intensive" },
+														"iOS Intensive"
+													),
+													React.createElement(
+														"option",
+														{ value: "web intensive" },
+														"Web Intensive"
+													),
+													React.createElement(
+														"option",
+														{ value: "ios hs course" },
+														"iOS HS Course"
+													),
+													React.createElement(
+														"option",
+														{ value: "web hs course" },
+														"Web HS Course"
+													),
+													React.createElement(
+														"option",
+														{ value: "ios bootcamp" },
+														"iOS Bootcamp"
+													),
+													React.createElement(
+														"option",
+														{ value: "web bootcamp" },
+														"Web Bootcamp"
+													)
+												)
 											),
 											React.createElement("div", { className: "clear" }),
 											React.createElement(
@@ -111,12 +145,17 @@ var Application = (function (Component) {
 												React.createElement(
 													"label",
 													{ "for": "template-contactform-message" },
-													"Message ",
-													React.createElement(
-														"small",
-														null,
-														"*"
-													)
+													"What is your goal in technology for the next 6 to 12 months?"
+												),
+												React.createElement("textarea", { className: "required sm-form-control", id: "template-contactform-message", name: "template-contactform-message", rows: "6", cols: "30" })
+											),
+											React.createElement(
+												"div",
+												{ className: "col_full" },
+												React.createElement(
+													"label",
+													{ "for": "template-contactform-message" },
+													"What have your worked on so far? (GitHub, side projects, etc.)"
 												),
 												React.createElement("textarea", { className: "required sm-form-control", id: "template-contactform-message", name: "template-contactform-message", rows: "6", cols: "30" })
 											),
@@ -129,9 +168,9 @@ var Application = (function (Component) {
 												"div",
 												{ className: "col_full" },
 												React.createElement(
-													"button",
-													{ className: "btn btn-success", type: "submit", id: "template-contactform-submit", name: "template-contactform-submit", value: "submit" },
-													"Send Message"
+													"a",
+													{ href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+													"Submit"
 												)
 											)
 										)

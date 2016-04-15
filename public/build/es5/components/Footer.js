@@ -36,7 +36,7 @@ var Footer = (function (_React$Component) {
 							React.createElement(
 								"div",
 								{ className: "col_half" },
-								"Copyrights © 2016 All Rights Reserved by The Grid Media, LLC.",
+								"Copyright © 2016 All Rights Reserved by The Grid Media, LLC.",
 								React.createElement("br", null)
 							),
 							React.createElement(
@@ -47,13 +47,13 @@ var Footer = (function (_React$Component) {
 									{ className: "fright clearfix" },
 									React.createElement(
 										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-facebook" },
+										{ target: "_blank", href: "https://www.facebook.com/FullStack-360-1631852427085987/", className: "social-icon si-small si-borderless si-facebook" },
 										React.createElement("i", { className: "icon-facebook" }),
 										React.createElement("i", { className: "icon-facebook" })
 									),
 									React.createElement(
 										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-twitter" },
+										{ target: "_blank", href: "https://twitter.com/fullstack360", className: "social-icon si-small si-borderless si-twitter" },
 										React.createElement("i", { className: "icon-twitter" }),
 										React.createElement("i", { className: "icon-twitter" })
 									),
@@ -72,7 +72,6 @@ var Footer = (function (_React$Component) {
 									{ className: "middot" },
 									"·"
 								),
-								React.createElement("i", { className: "icon-skype2" }),
 								" FS360"
 							)
 						)

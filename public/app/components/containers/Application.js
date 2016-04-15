@@ -18,6 +18,7 @@ class Application extends Component {
 
 							<div className="postcontent bothsidebar nobottommargin">
 								<h3>Application</h3>
+								<hr />
 
 								<div className="contact-widget">
 
@@ -42,16 +43,28 @@ class Application extends Component {
 
 										<div className="clear"></div>
 
-										<div className="col_two_third">
-											<label for="template-contactform-subject">Subject</label>
-											<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" className="required sm-form-control" />
+										<div className="col_full">
+											<label for="template-contactform-subject">Course</label>
+											<select id="course" className="form-control input-lg not-dark">
+												<option value="ios intensive">iOS Intensive</option>
+												<option value="web intensive">Web Intensive</option>
+												<option value="ios hs course">iOS HS Course</option>
+												<option value="web hs course">Web HS Course</option>
+												<option value="ios bootcamp">iOS Bootcamp</option>
+												<option value="web bootcamp">Web Bootcamp</option>
+											</select>
 										</div>
 
 
 										<div className="clear"></div>
 
 										<div className="col_full">
-											<label for="template-contactform-message">Message <small>*</small></label>
+											<label for="template-contactform-message">What is your goal in technology for the next 6 to 12 months?</label>
+											<textarea className="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+										</div>
+
+										<div className="col_full">
+											<label for="template-contactform-message">What have your worked on so far? (GitHub, side projects, etc.)</label>
 											<textarea className="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
 										</div>
 
@@ -60,7 +73,7 @@ class Application extends Component {
 										</div>
 
 										<div className="col_full">
-											<button className="btn btn-success" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+											<a href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
 										</div>
 									</form>
 

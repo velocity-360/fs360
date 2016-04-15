@@ -15,17 +15,17 @@ class Footer extends React.Component {
 					<div className="container clearfix">
 
 						<div className="col_half">
-							Copyrights &copy; 2016 All Rights Reserved by The Grid Media, LLC.<br />
+							Copyright &copy; 2016 All Rights Reserved by The Grid Media, LLC.<br />
 						</div>
 
 						<div className="col_half col_last tright">
 							<div className="fright clearfix">
-								<a href="#" className="social-icon si-small si-borderless si-facebook">
+								<a target="_blank" href="https://www.facebook.com/FullStack-360-1631852427085987/" className="social-icon si-small si-borderless si-facebook">
 									<i className="icon-facebook"></i>
 									<i className="icon-facebook"></i>
 								</a>
 
-								<a href="#" className="social-icon si-small si-borderless si-twitter">
+								<a target="_blank" href="https://twitter.com/fullstack360" className="social-icon si-small si-borderless si-twitter">
 									<i className="icon-twitter"></i>
 									<i className="icon-twitter"></i>
 								</a>
@@ -39,8 +39,7 @@ class Footer extends React.Component {
 
 							<div className="clear"></div>
 
-							<i className="icon-envelope2"></i> info@fullstack360.com <span className="middot">&middot;</span> 
-							<i className="icon-skype2"></i> FS360
+							<i className="icon-envelope2"></i> info@fullstack360.com <span className="middot">&middot;</span> FS360
 						</div>
 
 					</div>

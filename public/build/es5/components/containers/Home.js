@@ -129,7 +129,6 @@ var Home = (function (Component) {
 		register: {
 			value: function register(event) {
 				event.preventDefault();
-				//		console.log('REGISTER: '+JSON.stringify(this.props.currentUser));
 				var missingField = this.validate(true);
 				if (missingField != null) {
 					alert("Please enter your " + missingField);
@@ -444,7 +443,7 @@ var Home = (function (Component) {
 										"div",
 										{ style: { textAlign: "center", paddingTop: 64 } },
 										React.createElement(
-											"h3",
+											"h2",
 											null,
 											"Events"
 										)
