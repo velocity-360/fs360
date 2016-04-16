@@ -41933,7 +41933,7 @@
 	
 				var endpoint = '/api/course';
 				if (this.props.params == null) {
-					_api2.default.handleGet(endpoint, {}, function (err, response) {
+					_api2.default.handleGet(endpoint + '?isFeatured=yes', {}, function (err, response) {
 						if (err) {
 							alert(response.message);
 							return;
@@ -41954,6 +41954,7 @@
 					endpoint = endpoint + this.props.params[key];
 				}
 	
+				endpoint = endpoint + '&isFeatured=yes';
 				console.log('ENDPOINT == ' + endpoint);
 				_api2.default.handleGet(endpoint, {}, function (err, response) {
 					if (err) {

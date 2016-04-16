@@ -23,7 +23,7 @@ class Courses extends Component {
 
 		var endpoint = '/api/course'
 		if (this.props.params == null){
-			api.handleGet(endpoint, {}, function(err, response){
+			api.handleGet(endpoint+'?isFeatured=yes', {}, function(err, response){
 				if (err){
 					alert(response.message)
 					return
@@ -44,6 +44,7 @@ class Courses extends Component {
 			endpoint = endpoint+this.props.params[key]
 		}
 
+		endpoint = endpoint+'&isFeatured=yes'
 		console.log('ENDPOINT == '+endpoint)
 		api.handleGet(endpoint, {}, function(err, response){
 			if (err){
