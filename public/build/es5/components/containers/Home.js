@@ -855,7 +855,7 @@ var Home = (function (Component) {
 					),
 					React.createElement(
 						"section",
-						{ className: "section pricing-section nomargin", style: { backgroundColor: "#FFF" } },
+						{ id: "register", className: "section pricing-section nomargin", style: { backgroundColor: "#FFF" } },
 						React.createElement(
 							"div",
 							{ className: "container clearfix" },

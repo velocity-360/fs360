@@ -525,7 +525,7 @@ class Home extends Component {
 					</div>
 				</section>
 
-				<section className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
+				<section id="register" className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
 					<div className="container clearfix">
 						<h2 className="pricing-section--title center">Sign Up</h2>
 						<div style={{textAlign:'center'}}>
