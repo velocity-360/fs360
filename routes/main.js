@@ -28,7 +28,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		return;
 	}
 
-    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:this.param.slug}));
+    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:req.params.slug}));
     res.render(page, {react: html});
 });
 
