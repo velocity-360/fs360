@@ -195,7 +195,7 @@ class Course extends Component {
 											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="FullStack 360" />
 										</div>
 										<div className="entry-title">
-											<h3><a href="blog-single.html">Small Classes</a></h3>
+											<h3>Small Classes</h3>
 											<hr />
 										</div>
 										<div className="entry-content">
@@ -212,7 +212,7 @@ class Course extends Component {
 											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="FullStack 360" />
 										</div>
 										<div className="entry-title">
-											<h3><a href="blog-single.html">Realistic Projects</a></h3>
+											<h3>Realistic Projects</h3>
 											<hr />
 										</div>
 										<div className="entry-content">
@@ -229,11 +229,13 @@ class Course extends Component {
 											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="FullStack 360" />
 										</div>
 										<div className="entry-title">
-											<h3><a href="blog-single.html">Compassion conflict resolution, progressive; tackle</a></h3>
+											<h3>Cutting Edge Curriculum</h3>
 											<hr />
 										</div>
 										<div className="entry-content">
-											<p>Community health workers best practices, effectiveness meaningful work The Elders fairness. Our ambitions local solutions globalization.</p>
+											<p>
+												Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.
+											</p>
 										</div>
 									</div>
 								</div>

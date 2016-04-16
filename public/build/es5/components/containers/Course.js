@@ -346,11 +346,7 @@ var Course = (function (Component) {
 												React.createElement(
 													"h3",
 													null,
-													React.createElement(
-														"a",
-														{ href: "blog-single.html" },
-														"Small Classes"
-													)
+													"Small Classes"
 												),
 												React.createElement("hr", null)
 											),
@@ -382,11 +378,7 @@ var Course = (function (Component) {
 												React.createElement(
 													"h3",
 													null,
-													React.createElement(
-														"a",
-														{ href: "blog-single.html" },
-														"Realistic Projects"
-													)
+													"Realistic Projects"
 												),
 												React.createElement("hr", null)
 											),
@@ -418,11 +410,7 @@ var Course = (function (Component) {
 												React.createElement(
 													"h3",
 													null,
-													React.createElement(
-														"a",
-														{ href: "blog-single.html" },
-														"Compassion conflict resolution, progressive; tackle"
-													)
+													"Cutting Edge Curriculum"
 												),
 												React.createElement("hr", null)
 											),
@@ -432,7 +420,7 @@ var Course = (function (Component) {
 												React.createElement(
 													"p",
 													null,
-													"Community health workers best practices, effectiveness meaningful work The Elders fairness. Our ambitions local solutions globalization."
+													"Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that."
 												)
 											)
 										)
