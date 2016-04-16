@@ -44,13 +44,16 @@ class Nav extends Component {
 	login(event){
 		event.preventDefault()
 		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
+		this.setState({showModal: false})
 		api.handlePost('/account/login', this.props.currentUser, function(err, response){
 			if (err){
-				console.log('TEST 1: '+JSON.stringify(this.props))
+//				console.log('TEST 1: '+JSON.stringify(this.props))
+				alert(err.message)
 				return
 			}
 
-			store.dispatch(actions.currentUserRecieved(response.profile));
+//			store.dispatch(actions.currentUserRecieved(response.profile));
+			window.location.href = '/courses'
 		});
 
 	}

@@ -33,6 +33,7 @@ var initialState = {
 			{question:'Where is FS360 located?', answer:'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at FS360 you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.'}
 		]
 	},
+	isLoading: true,
 	loaderConfig: {
 	    lines: 13,
 	    length: 20,
@@ -51,7 +52,6 @@ var initialState = {
 	    left: '50%',
 	    scale: 1.00
 	}
-	
 };
 
 /*

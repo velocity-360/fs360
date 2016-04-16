@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Home from './containers/Home'
 import Courses from './containers/Courses'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
 import Application from './containers/Application'
 
-class Main extends React.Component {
+class Main extends Component {
 
 	constructor(props, context){
-		super(props, context);
+		super(props, context)
 		this.state = {
-
+			
 		}
-
 	}
 
 	render(){
-		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
+//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
 
 		var page = null
 		switch (this.props.page){
@@ -32,19 +32,15 @@ class Main extends React.Component {
 			case 'application':
 				return page = <Application params={this.props.params} />
 
-			// case 'ioshighschool':
-			// 	console.log('TEST');
-			// 	return page = <IOSHighSchool />
-
 			case 'videos':
 				return page = <Videos />
 
 			default:
 				return page = null
-
 		}
 
 		return (
+
 			<div>
 				{page}
 			</div>
@@ -53,4 +49,13 @@ class Main extends React.Component {
 
 } 
 
-export default Main;
+const stateToProps = function(state) {
+//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+
+    return {
+
+    }
+}
+
+
+export default connect(stateToProps)(Main)
