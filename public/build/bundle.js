@@ -42422,8 +42422,9 @@
 			key: 'render',
 			value: function render() {
 				var _course = this.props.course;
+				var _accountType = this.props.currentUser.accountType;
 				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course });
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course, accountType: _accountType });
 				});
 	
 				var questions = null;

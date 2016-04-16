@@ -87,8 +87,9 @@ var Course = (function (Component) {
 		render: {
 			value: function render() {
 				var _course = this.props.course;
+				var _accountType = this.props.currentUser.accountType;
 				var units = this.props.course.units.map(function (unit, i) {
-					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course });
+					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course, accountType: _accountType });
 				});
 
 				var questions = null;
