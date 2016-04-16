@@ -44494,7 +44494,7 @@
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
+												{ target: '_blank', href: 'https://www.facebook.com/FullStack-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
 												_react2.default.createElement('i', { className: 'icon-facebook' }),
 												_react2.default.createElement('i', { className: 'icon-facebook' })
 											),
