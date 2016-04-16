@@ -44309,8 +44309,11 @@
 					);
 				});
 	
-				var random = Math.floor(Math.random() * this.props.banners.length);
-				var banner = this.props.banners[random];
+				var bannerIndex = 0;
+				if (this.props.course.type == 'online') bannerIndex = 1;
+				if (this.props.course.type == 'immersive') bannerIndex = 2;
+	
+				var banner = this.props.banners[bannerIndex];
 	
 				return _react2.default.createElement(
 					'div',
@@ -44497,7 +44500,7 @@
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
+												{ target: '_blank', href: 'https://twitter.com/fullstack360', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
 												_react2.default.createElement('i', { className: 'icon-twitter' }),
 												_react2.default.createElement('i', { className: 'icon-twitter' })
 											)

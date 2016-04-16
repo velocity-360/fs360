@@ -71,8 +71,13 @@ class Course extends Component {
 			)
 		});
 
-		var random = Math.floor(Math.random() * (this.props.banners.length));
-		var banner = this.props.banners[random];
+		var bannerIndex = 0;
+		if (this.props.course.type == 'online')
+			bannerIndex = 1;
+		if (this.props.course.type == 'immersive')
+			bannerIndex = 2;
+
+		var banner = this.props.banners[bannerIndex];
 
 		return (
 			<div>
@@ -167,7 +172,7 @@ class Course extends Component {
 											<i className="icon-facebook"></i>
 											<i className="icon-facebook"></i>
 										</a>
-										<a href="#" className="social-icon inline-block si-small si-light si-rounded si-twitter">
+										<a target="_blank" href="https://twitter.com/fullstack360" className="social-icon inline-block si-small si-light si-rounded si-twitter">
 											<i className="icon-twitter"></i>
 											<i className="icon-twitter"></i>
 										</a>
