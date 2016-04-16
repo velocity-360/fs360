@@ -22,18 +22,16 @@ class Nav extends Component {
 	componentDidMount(){
 		api.handleGet('/account/currentuser', {}, function(err, response){
 			if (err){
-//				console.log('TEST 1: '+JSON.stringify(err))
 				return
 			}
 
-			console.log('TEST 2: '+JSON.stringify(response))
+//			console.log('TEST 2: '+JSON.stringify(response))
 			store.dispatch(actions.currentUserRecieved(response.profile));
 		});
 	}
 
 	openModal(event){
 		event.preventDefault()
-//		console.log('OPEN MODAL')
 		this.setState({showModal: true})
 	}
 
@@ -47,19 +45,16 @@ class Nav extends Component {
 		this.setState({showModal: false})
 		api.handlePost('/account/login', this.props.currentUser, function(err, response){
 			if (err){
-//				console.log('TEST 1: '+JSON.stringify(this.props))
 				alert(err.message)
 				return
 			}
 
-//			store.dispatch(actions.currentUserRecieved(response.profile));
 			window.location.href = '/courses'
 		});
 
 	}
 
 	updateLogin(event){
-//		console.log('updateLogin: '+JSON.stringify(this.props.currentUser))
 		event.preventDefault()
 
 		var updatedUser = Object.assign({}, this.props.currentUser);

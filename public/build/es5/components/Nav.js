@@ -48,11 +48,10 @@ var Nav = (function (Component) {
 			value: function componentDidMount() {
 				api.handleGet("/account/currentuser", {}, function (err, response) {
 					if (err) {
-						//				console.log('TEST 1: '+JSON.stringify(err))
 						return;
 					}
 
-					console.log("TEST 2: " + JSON.stringify(response));
+					//			console.log('TEST 2: '+JSON.stringify(response))
 					store.dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
@@ -62,7 +61,6 @@ var Nav = (function (Component) {
 		openModal: {
 			value: function openModal(event) {
 				event.preventDefault();
-				//		console.log('OPEN MODAL')
 				this.setState({ showModal: true });
 			},
 			writable: true,
@@ -82,12 +80,10 @@ var Nav = (function (Component) {
 				this.setState({ showModal: false });
 				api.handlePost("/account/login", this.props.currentUser, function (err, response) {
 					if (err) {
-						//				console.log('TEST 1: '+JSON.stringify(this.props))
 						alert(err.message);
 						return;
 					}
 
-					//			store.dispatch(actions.currentUserRecieved(response.profile));
 					window.location.href = "/courses";
 				});
 			},
@@ -96,7 +92,6 @@ var Nav = (function (Component) {
 		},
 		updateLogin: {
 			value: function updateLogin(event) {
-				//		console.log('updateLogin: '+JSON.stringify(this.props.currentUser))
 				event.preventDefault();
 
 				var updatedUser = Object.assign({}, this.props.currentUser);

@@ -41157,11 +41157,10 @@
 			value: function componentDidMount() {
 				_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 					if (err) {
-						//				console.log('TEST 1: '+JSON.stringify(err))
 						return;
 					}
 	
-					console.log('TEST 2: ' + JSON.stringify(response));
+					//			console.log('TEST 2: '+JSON.stringify(response))
 					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
 				});
 			}
@@ -41169,7 +41168,6 @@
 			key: 'openModal',
 			value: function openModal(event) {
 				event.preventDefault();
-				//		console.log('OPEN MODAL')
 				this.setState({ showModal: true });
 			}
 		}, {
@@ -41185,19 +41183,16 @@
 				this.setState({ showModal: false });
 				_api2.default.handlePost('/account/login', this.props.currentUser, function (err, response) {
 					if (err) {
-						//				console.log('TEST 1: '+JSON.stringify(this.props))
 						alert(err.message);
 						return;
 					}
 	
-					//			store.dispatch(actions.currentUserRecieved(response.profile));
 					window.location.href = '/courses';
 				});
 			}
 		}, {
 			key: 'updateLogin',
 			value: function updateLogin(event) {
-				//		console.log('updateLogin: '+JSON.stringify(this.props.currentUser))
 				event.preventDefault();
 	
 				var updatedUser = Object.assign({}, this.props.currentUser);
