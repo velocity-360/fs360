@@ -42037,7 +42037,7 @@
 /* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -42048,6 +42048,20 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	var _reactRedux = __webpack_require__(159);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -42060,113 +42074,125 @@
 	var Sidebar = function (_Component) {
 		_inherits(Sidebar, _Component);
 	
-		function Sidebar() {
+		function Sidebar(props, context) {
 			_classCallCheck(this, Sidebar);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Sidebar).apply(this, arguments));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Sidebar).call(this, props, context));
 		}
 	
 		_createClass(Sidebar, [{
-			key: "render",
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+					if (err) {
+						return;
+					}
+	
+					//			console.log('TEST 2: '+JSON.stringify(response))
+					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+				});
+			}
+		}, {
+			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					"header",
-					{ id: "header", className: "no-sticky" },
+					'header',
+					{ id: 'header', className: 'no-sticky' },
 					_react2.default.createElement(
-						"div",
-						{ id: "header-wrap" },
+						'div',
+						{ id: 'header-wrap' },
 						_react2.default.createElement(
-							"div",
-							{ className: "container clearfix" },
+							'div',
+							{ className: 'container clearfix' },
 							_react2.default.createElement(
-								"div",
-								{ id: "primary-menu-trigger" },
-								_react2.default.createElement("i", { className: "icon-reorder" })
+								'div',
+								{ id: 'primary-menu-trigger' },
+								_react2.default.createElement('i', { className: 'icon-reorder' })
 							),
 							_react2.default.createElement(
-								"div",
-								{ id: "logo", className: "nobottomborder" },
+								'div',
+								{ id: 'logo', className: 'nobottomborder' },
 								_react2.default.createElement(
-									"a",
-									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-side-dark.png" },
-									_react2.default.createElement("img", { src: "/images/logo-side.png", alt: "Canvas Logo" })
+									'a',
+									{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-side-dark.png' },
+									_react2.default.createElement('img', { src: '/images/logo-side.png', alt: 'Canvas Logo' })
 								),
 								_react2.default.createElement(
-									"a",
-									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-side-dark@2x.png" },
-									_react2.default.createElement("img", { src: "/images/logo-side@2x.png", alt: "Canvas Logo" })
+									'a',
+									{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-side-dark@2x.png' },
+									_react2.default.createElement('img', { src: '/images/logo-side@2x.png', alt: 'Canvas Logo' })
 								)
 							),
 							_react2.default.createElement(
-								"nav",
-								{ id: "primary-menu" },
+								'nav',
+								{ id: 'primary-menu' },
 								_react2.default.createElement(
-									"ul",
+									'ul',
 									null,
 									_react2.default.createElement(
-										"li",
+										'li',
 										null,
 										_react2.default.createElement(
-											"a",
-											{ href: "/" },
+											'a',
+											{ href: '/' },
 											_react2.default.createElement(
-												"div",
+												'div',
 												null,
-												"Home"
+												'Home'
 											)
 										)
 									),
 									_react2.default.createElement(
-										"li",
+										'li',
 										null,
 										_react2.default.createElement(
-											"a",
-											{ href: "/videos" },
+											'a',
+											{ href: '/videos' },
 											_react2.default.createElement(
-												"div",
+												'div',
 												null,
-												"Videos"
+												'Videos'
 											)
 										)
 									),
 									_react2.default.createElement(
-										"li",
+										'li',
 										null,
 										_react2.default.createElement(
-											"a",
-											{ href: "/courses" },
+											'a',
+											{ href: '/courses' },
 											_react2.default.createElement(
-												"div",
+												'div',
 												null,
-												"Courses"
+												'Courses'
 											)
 										),
 										_react2.default.createElement(
-											"ul",
+											'ul',
 											null,
 											_react2.default.createElement(
-												"li",
+												'li',
 												null,
 												_react2.default.createElement(
-													"a",
-													{ href: "/courses?type=live" },
+													'a',
+													{ href: '/courses?type=live' },
 													_react2.default.createElement(
-														"div",
+														'div',
 														null,
-														"Part Time"
+														'Part Time'
 													)
 												)
 											),
 											_react2.default.createElement(
-												"li",
+												'li',
 												null,
 												_react2.default.createElement(
-													"a",
-													{ href: "/courses?type=immersive" },
+													'a',
+													{ href: '/courses?type=immersive' },
 													_react2.default.createElement(
-														"div",
+														'div',
 														null,
-														"Bootcamp"
+														'Bootcamp'
 													)
 												)
 											)
@@ -42183,7 +42209,15 @@
 		return Sidebar;
 	}(_react.Component);
 	
-	exports.default = Sidebar;
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state))
+	
+		return {
+			currentUser: state.profileReducer.currentUser
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Sidebar);
 
 /***/ },
 /* 451 */
@@ -42828,6 +42862,7 @@
 	
 	var stateToProps = function stateToProps(state) {
 		var keys = Object.keys(state.courseReducer.courses);
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
@@ -42877,6 +42912,7 @@
 		_createClass(CourseSection, [{
 			key: 'render',
 			value: function render() {
+				console.log('ACCOUNT TYPE: ' + this.props.accountType);
 	
 				// var videoThumb = null;
 				// if (this.props.course.type == 'online'){

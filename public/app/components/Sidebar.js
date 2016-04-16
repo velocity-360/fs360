@@ -1,6 +1,26 @@
 import React, {Component} from 'react'
+import store from '../stores/store'
+import actions from '../actions/actions'
+import api from '../api/api'
+import { connect } from 'react-redux'
+
 
 class Sidebar extends Component {
+	constructor(props, context){
+		super(props, context)
+	}
+
+	componentDidMount(){
+		api.handleGet('/account/currentuser', {}, function(err, response){
+			if (err){
+				return
+			}
+
+//			console.log('TEST 2: '+JSON.stringify(response))
+			store.dispatch(actions.currentUserRecieved(response.profile));
+		});
+	}
+
 
 	render(){
 		return (
@@ -43,4 +63,13 @@ class Sidebar extends Component {
 	}
 }
 
-export default Sidebar
+const stateToProps = function(state) {
+//	console.log('STATE TO PROPS: '+JSON.stringify(state))
+
+    return {
+        currentUser: state.profileReducer.currentUser
+    }
+}
+
+
+export default connect(stateToProps)(Sidebar)

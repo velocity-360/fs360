@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class CourseSection extends Component {
 
 	render(){
+		console.log('ACCOUNT TYPE: '+this.props.accountType)
 
 		// var videoThumb = null;
 		// if (this.props.course.type == 'online'){

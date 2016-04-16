@@ -27,6 +27,8 @@ var CourseSection = (function (Component) {
 	_prototypeProperties(CourseSection, null, {
 		render: {
 			value: function render() {
+				console.log("ACCOUNT TYPE: " + this.props.accountType);
+
 				// var videoThumb = null;
 				// if (this.props.course.type == 'online'){
 				// 	videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>

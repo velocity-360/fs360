@@ -496,6 +496,7 @@ var Course = (function (Component) {
 
 var stateToProps = function (state) {
 	var keys = Object.keys(state.courseReducer.courses);
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 
 	return {
 		currentUser: state.profileReducer.currentUser,

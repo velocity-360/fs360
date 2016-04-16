@@ -282,6 +282,7 @@ class Course extends Component {
 
 const stateToProps = function(state) {
 	var keys = Object.keys(state.courseReducer.courses)
+//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 
     return {
         currentUser: state.profileReducer.currentUser,
