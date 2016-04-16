@@ -152,7 +152,7 @@ router.post('/:resource', function(req, res, next) {
 		.then(function(){
 			// var firstName = infoRequest.visitor.name.split(' ')[0];
 			// var confirmationMsg = 'Dear '+Helpers.capitalize(firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.subject+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="http://www.fullstack360.com">The Full Stack</a>. The Full Stack offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="http://www.fullstack360.com">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="http://www.fullstack360.com">The Full Stack</a><br />';
-			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.subject+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="http://www.fullstack360.com">The Full Stack</a>. The Full Stack offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="http://www.fullstack360.com">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="http://www.fullstack360.com">The Full Stack</a><br />';
+			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.subject+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="http://www.fullstack360.com">The Full Stack</a>. The Full Stack offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="http://www.fullstack360.com">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="http://www.fullstack360.com">FullStack 360</a><br />';
 			var subscriber = {
 				name: infoRequest.visitor.firstName+infoRequest.visitor.lastName,
 				email: infoRequest.visitor.email,
@@ -207,7 +207,7 @@ router.post('/:resource', function(req, res, next) {
 				sendgrid.send({
 					to:       address,
 					from:     'info@fullstack360.com',
-					fromname: 'The Full Stack',
+					fromname: 'FullStack 360',
 					subject:  subject,
 					html:     formatted
 				}, function(err, json) {
