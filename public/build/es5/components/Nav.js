@@ -10,8 +10,11 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== "fun
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var React = _interopRequire(require("react"));
+var _react = require("react");
 
+var React = _interopRequire(_react);
+
+var Component = _react.Component;
 var store = _interopRequire(require("../stores/store"));
 
 var actions = _interopRequire(require("../actions/actions"));
@@ -24,28 +27,32 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
-var Nav = (function (_React$Component) {
+var Nav = (function (Component) {
 	function Nav(props, context) {
 		_classCallCheck(this, Nav);
 
 		_get(Object.getPrototypeOf(Nav.prototype), "constructor", this).call(this, props, context);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.login = this.login.bind(this);
+		this.updateLogin = this.updateLogin.bind(this);
 		this.state = {
 			showModal: false
 		};
 	}
 
-	_inherits(Nav, _React$Component);
+	_inherits(Nav, Component);
 
 	_prototypeProperties(Nav, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
 				api.handleGet("/account/currentuser", {}, function (err, response) {
 					if (err) {
+						//				console.log('TEST 1: '+JSON.stringify(err))
 						return;
 					}
 
+					console.log("TEST 2: " + JSON.stringify(response));
 					store.dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
@@ -55,7 +62,7 @@ var Nav = (function (_React$Component) {
 		openModal: {
 			value: function openModal(event) {
 				event.preventDefault();
-				console.log("OPEN MODAL");
+				//		console.log('OPEN MODAL')
 				this.setState({ showModal: true });
 			},
 			writable: true,
@@ -68,8 +75,54 @@ var Nav = (function (_React$Component) {
 			writable: true,
 			configurable: true
 		},
+		login: {
+			value: function login(event) {
+				event.preventDefault();
+				console.log("LOGIN: " + JSON.stringify(this.props.currentUser));
+				api.handlePost("/account/login", this.props.currentUser, function (err, response) {
+					if (err) {
+						console.log("TEST 1: " + JSON.stringify(this.props));
+						return;
+					}
+
+					store.dispatch(actions.currentUserRecieved(response.profile));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateLogin: {
+			value: function updateLogin(event) {
+				//		console.log('updateLogin: '+JSON.stringify(this.props.currentUser))
+				event.preventDefault();
+
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				updatedUser[event.target.id] = event.target.value;
+				store.dispatch(actions.updateCurrentUser(updatedUser));
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
+				var login = this.props.currentUser.id == null ? React.createElement(
+					"li",
+					null,
+					React.createElement(
+						"a",
+						{ onClick: this.openModal, href: "#" },
+						"Login"
+					)
+				) : React.createElement(
+					"li",
+					null,
+					React.createElement(
+						"a",
+						{ href: "/courses" },
+						this.props.currentUser.firstName
+					)
+				);
+
 				return React.createElement(
 					"header",
 					{ id: "header", className: "full-header static-sticky dark" },
@@ -173,15 +226,7 @@ var Nav = (function (_React$Component) {
 											)
 										)
 									),
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ onClick: this.openModal, href: "#" },
-											"Login"
-										)
-									)
+									login
 								)
 							)
 						)
@@ -201,9 +246,9 @@ var Nav = (function (_React$Component) {
 						React.createElement(
 							Modal.Body,
 							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement("input", { className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
 							React.createElement("br", null),
-							React.createElement("input", { className: "form-control", type: "password", id: "password", placeholder: "Password" }),
+							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.password, className: "form-control", type: "password", id: "password", placeholder: "Password" }),
 							React.createElement("br", null)
 						),
 						React.createElement(
@@ -211,7 +256,7 @@ var Nav = (function (_React$Component) {
 							{ style: { textAlign: "center" } },
 							React.createElement(
 								"a",
-								{ href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								{ onClick: this.login, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 								"Log In"
 							)
 						)
@@ -224,9 +269,11 @@ var Nav = (function (_React$Component) {
 	});
 
 	return Nav;
-})(React.Component);
+})(Component);
 
 var stateToProps = function (state) {
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+
 	return {
 		currentUser: state.profileReducer.currentUser
 	};

@@ -40,7 +40,7 @@ module.exports = {
 	},
 
 	coursesRecieved: function(courses){
-		console.log('ACTIONS - coursesRecieved: '+JSON.stringify(courses));
+//		console.log('ACTIONS - coursesRecieved: '+JSON.stringify(courses));
 		// A normal action creator, returns a simple object describing the action.
 		return {
 			type: constants.COURSES_RECIEVED,
