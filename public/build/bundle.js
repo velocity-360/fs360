@@ -22025,8 +22025,14 @@
 									),
 									_react2.default.createElement(
 										'a',
-										{ href: '/courses', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+										{ href: '/courses?type=live', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
 										'View Courses'
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'a',
+										{ href: '/courses?type=immersive', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+										'View Bootcamps'
 									)
 								),
 								_react2.default.createElement(
@@ -41286,7 +41292,7 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/courses' },
+											{ href: '#' },
 											_react2.default.createElement(
 												'div',
 												null,
@@ -44076,7 +44082,7 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/courses' },
+											{ href: '#' },
 											_react2.default.createElement(
 												'div',
 												null,

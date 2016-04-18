@@ -113,7 +113,7 @@ var Sidebar = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/courses" },
+											{ href: "#" },
 											React.createElement(
 												"div",
 												null,

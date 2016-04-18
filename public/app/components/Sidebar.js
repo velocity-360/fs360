@@ -47,7 +47,7 @@ class Sidebar extends Component {
 	                                <a href="/videos"><div>Videos</div></a>
 	                            </li>
 	                            
-	                            <li><a href="/courses"><div>Courses</div></a>
+	                            <li><a href="#"><div>Courses</div></a>
 	                                <ul>
 	                                    <li><a href="/courses?type=live"><div>Part Time</div></a></li>
 	                                    <li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>

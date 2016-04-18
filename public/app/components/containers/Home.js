@@ -306,7 +306,8 @@ class Home extends Component {
 									saturating the NYC market or will you be ready for the tech stack of tomorrow?
 								</p>
 
-								<a href="/courses" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">View Courses</a>
+								<a href="/courses?type=live" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">View Courses</a><br />
+								<a href="/courses?type=immersive" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">View Bootcamps</a>
 							</div>
 
 							<div id="events" className="divider divider-short divider-center">

@@ -427,8 +427,14 @@ var Home = (function (Component) {
 									),
 									React.createElement(
 										"a",
-										{ href: "/courses", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+										{ href: "/courses?type=live", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
 										"View Courses"
+									),
+									React.createElement("br", null),
+									React.createElement(
+										"a",
+										{ href: "/courses?type=immersive", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+										"View Bootcamps"
 									)
 								),
 								React.createElement(
