@@ -114,8 +114,8 @@ class Course extends Component {
 													Tuition: ${this.props.course.tuition}<br />
 													Depost: ${this.props.course.deposit}
 													<hr />
-													{ (this.props.course.type == 'immersive') ? <a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a> : null }
-													<a href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+													<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 												</div>
 											</div>
 										</div>
@@ -136,8 +136,8 @@ class Course extends Component {
 													<hr />
 													Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
 													<br /><br />
-													{ (this.props.course.type == 'immersive') ? <a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a> : null }
-													<a href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
+													<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
+													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 												</div>
 											</div>
 										</div>

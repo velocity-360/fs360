@@ -200,15 +200,15 @@ var Course = (function (Component) {
 														"Depost: $",
 														this.props.course.deposit,
 														React.createElement("hr", null),
-														this.props.course.type == "immersive" ? React.createElement(
-															"a",
-															{ href: "/application", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
-															"Apply"
-														) : null,
 														React.createElement(
 															"a",
-															{ href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
+															{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
 															"Apply"
+														),
+														React.createElement(
+															"a",
+															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+															"Request Syllabus"
 														)
 													)
 												)
@@ -247,15 +247,15 @@ var Course = (function (Component) {
 														"Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.",
 														React.createElement("br", null),
 														React.createElement("br", null),
-														this.props.course.type == "immersive" ? React.createElement(
-															"a",
-															{ href: "/application", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded noleftmargin" },
-															"Apply"
-														) : null,
 														React.createElement(
 															"a",
-															{ href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
+															{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
 															"Apply"
+														),
+														React.createElement(
+															"a",
+															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+															"Request Syllabus"
 														)
 													)
 												)
