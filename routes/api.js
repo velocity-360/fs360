@@ -126,6 +126,7 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'application'){
+		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Course Application', JSON.stringify(req.body))
 		res.json({
 			confirmation:'success', 
 			message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
