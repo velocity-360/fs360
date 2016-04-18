@@ -254,7 +254,7 @@ var Course = (function (Component) {
 														) : null,
 														React.createElement(
 															"a",
-															{ href: "/applications", className: "button button-border button-dark button-rounded noleftmargin" },
+															{ href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
 															"Apply"
 														)
 													)

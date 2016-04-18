@@ -137,7 +137,7 @@ class Course extends Component {
 													Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
 													<br /><br />
 													{ (this.props.course.type == 'immersive') ? <a href="/application" style={{marginRight:12}} className="button button-border button-dark button-rounded noleftmargin">Apply</a> : null }
-													<a href="/applications" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
+													<a href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
 												</div>
 											</div>
 										</div>

@@ -44539,7 +44539,7 @@
 														) : null,
 														_react2.default.createElement(
 															'a',
-															{ href: '/applications', className: 'button button-border button-dark button-rounded noleftmargin' },
+															{ href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
 															'Apply'
 														)
 													)
