@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Home from './containers/Home'
 import Courses from './containers/Courses'
+import Events from './containers/Events'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
 import Application from './containers/Application'
@@ -34,6 +35,9 @@ class Main extends Component {
 
 			case 'videos':
 				return page = <Videos />
+
+			case 'events':
+				return page = <Events />
 
 			default:
 				return page = null
