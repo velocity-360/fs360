@@ -488,7 +488,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/ios.jpg", alt: "John Doe" })
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "FullStack 360" })
 									),
 									React.createElement(
 										"div",
@@ -499,12 +499,12 @@ var Home = (function (Component) {
 											React.createElement(
 												"h4",
 												null,
-												"iOS High School Course"
+												"iOS & Node High School Course"
 											),
 											React.createElement(
 												"span",
 												null,
-												"2 Weeks | Mon - Fri | 9am - 5pm"
+												"Jul 5 to Jul 15 | Mon - Fri | 9am - 5pm"
 											)
 										),
 										React.createElement(
@@ -530,7 +530,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/xcode.jpg", alt: "Nix Maxwell" })
+										React.createElement("img", { src: "/images/xcode.jpg", alt: "FullStack 360" })
 									),
 									React.createElement(
 										"div",
@@ -541,18 +541,18 @@ var Home = (function (Component) {
 											React.createElement(
 												"h4",
 												null,
-												"iOS Intensive"
+												"iOS & Node Evening Course"
 											),
 											React.createElement(
 												"span",
 												null,
-												"6 Weeks | Tue, Thu | 6pm - 9pm"
+												"8 Weeks | Mon, Wed | 6pm - 9pm"
 											)
 										),
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The iOS Intensive covers all aspects of iOS development for beginners. For 4 hours a day, 4 days a week, students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data, and publishing. This course is designed for beginners with little to no programming experience and all development will be done using Swift."
+											"The iOS Intensive covers all aspects of iOS development for beginners. Students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data, and publishing. This course is designed for beginners with little to no programming experience and all development will be done using Swift."
 										),
 										React.createElement("br", null),
 										React.createElement(
@@ -573,7 +573,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/node.jpg", alt: "Josh Clark" })
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "FullStack 360" })
 									),
 									React.createElement(
 										"div",
@@ -584,23 +584,23 @@ var Home = (function (Component) {
 											React.createElement(
 												"h4",
 												null,
-												"Web High School Course"
+												"iOS & Node High School Course"
 											),
 											React.createElement(
 												"span",
 												null,
-												"2 Weeks | Mon - Fri | 9am - 5pm"
+												"Jul 18 to Jul 29 | Mon - Fri | 9am - 5pm"
 											)
 										),
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The Web Development High School Course covers backend and frontend development using the most up-to-date technologies. We will create a fully functional website with user registration, email notification, and more functionality and more from scratch. Using Node JS, Mongo, Express and React (with ES6), the 'stack' will be very modern and relevant to the tech environment of tomorrow."
+											"The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ href: "/course/web-high-school-course", className: "btn btn-success" },
+											{ href: "/course/ios-high-school-course", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -615,7 +615,7 @@ var Home = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/react.jpg", alt: "Mary Jane" })
+										React.createElement("img", { src: "/images/react.jpg", alt: "FullStack 360" })
 									),
 									React.createElement(
 										"div",
@@ -626,18 +626,18 @@ var Home = (function (Component) {
 											React.createElement(
 												"h4",
 												null,
-												"Web Intensive"
+												"Node & React Evening Course"
 											),
 											React.createElement(
 												"span",
 												null,
-												"6 Weeks | Mon, Wed | 6pm - 9pm"
+												"8 Weeks | Tues, Thurs | 6pm - 9pm"
 											)
 										),
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The Web Development Intensive is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
+											"The Node & React Development Intensive is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
 										),
 										React.createElement("br", null),
 										React.createElement(

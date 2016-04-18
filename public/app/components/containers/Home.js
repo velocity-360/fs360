@@ -343,12 +343,12 @@ class Home extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/ios.jpg" alt="John Doe" />
+									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="FullStack 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>iOS High School Course</h4>
-										<span>2 Weeks | Mon - Fri | 9am - 5pm</span>
+										<h4>iOS &amp; Node High School Course</h4>
+										<span>Jul 5 to Jul 15 | Mon - Fri | 9am - 5pm</span>
 									</div>
 									<div className="team-content">
 										The iOS High School Course takes students through the process of 
@@ -368,16 +368,16 @@ class Home extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/xcode.jpg" alt="Nix Maxwell" />
+									<img src="/images/xcode.jpg" alt="FullStack 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>iOS Intensive</h4>
-										<span>6 Weeks | Tue, Thu | 6pm - 9pm</span>
+										<h4>iOS & Node Evening Course</h4>
+										<span>8 Weeks | Mon, Wed | 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
 										The iOS Intensive covers all aspects of iOS development 
-										for beginners. For 4 hours a day, 4 days a week, students will 
+										for beginners. Students will 
 										cover the key aspects of iOS development from creating sleek UI’s, 
 										animations, GPS locator, integrating 3rd party data, and publishing. This 
 										course is designed for beginners with little to no programming experience 
@@ -396,23 +396,22 @@ class Home extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/node.jpg" alt="Josh Clark" />
+									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="FullStack 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>Web High School Course</h4>
-										<span>2 Weeks | Mon - Fri | 9am - 5pm</span>
+										<h4>iOS &amp; Node High School Course</h4>
+										<span>Jul 18 to Jul 29 | Mon - Fri | 9am - 5pm</span>
 									</div>
 									<div className="team-content">
-										The Web Development High School Course covers backend and frontend development 
-										using the most up-to-date technologies. We will create a fully functional 
-										website with user registration, email notification, and more functionality 
-										and more from scratch. Using Node JS, Mongo, Express and React 
-										(with ES6), the 'stack' will be very modern and relevant to the tech 
-										environment of tomorrow.
+										The iOS High School Course takes students through the process of 
+										designing and programming a basic iOS app from start. Students will create a 
+										simple app that utilizes key platform tools including the GPS locator, 
+										accelerator, and camera. In addition, the course will explore third party APIs 
+										such as Google Maps and Foursquare.
 									</div>
 									<br />
-									<a href="/course/web-high-school-course" className="btn btn-success">
+									<a href="/course/ios-high-school-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -422,15 +421,15 @@ class Home extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/react.jpg" alt="Mary Jane" />
+									<img src="/images/react.jpg" alt="FullStack 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>Web Intensive</h4>
-										<span>6 Weeks | Mon, Wed | 6pm - 9pm</span>
+										<h4>Node &amp; React Evening Course</h4>
+										<span>8 Weeks | Tues, Thurs | 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
-										The Web Development Intensive is a 6-week crash course on backend and 
+										The Node &amp; React Development Intensive is a 6-week crash course on backend and 
 										frontend development using the most up-to-date technologies. Using Node JS, 
 										Mongo, Express and React (with ES6), we will create a fully functional 
 										website with user registration, image uploading, email notification 
