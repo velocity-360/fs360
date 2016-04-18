@@ -169,23 +169,18 @@ var Application = (function (Component) {
 													{ onChange: this.updateApplication, value: this.state.application.course, id: "course", className: "form-control input-lg not-dark" },
 													React.createElement(
 														"option",
-														{ value: "ios intensive" },
-														"iOS Intensive"
+														{ value: "ios + node hs course" },
+														"iOS & Node HS Course"
 													),
 													React.createElement(
 														"option",
-														{ value: "web intensive" },
-														"Web Intensive"
+														{ value: "ios + node evening course" },
+														"iOS & Node Evening Course"
 													),
 													React.createElement(
 														"option",
-														{ value: "ios hs course" },
-														"iOS HS Course"
-													),
-													React.createElement(
-														"option",
-														{ value: "web hs course" },
-														"Web HS Course"
+														{ value: "node + react evening course" },
+														"Node & React Evening Course"
 													),
 													React.createElement(
 														"option",

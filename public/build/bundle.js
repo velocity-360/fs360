@@ -45254,23 +45254,18 @@
 													{ onChange: this.updateApplication, value: this.state.application.course, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
-														{ value: 'ios intensive' },
-														'iOS Intensive'
+														{ value: 'ios + node hs course' },
+														'iOS & Node HS Course'
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'web intensive' },
-														'Web Intensive'
+														{ value: 'ios + node evening course' },
+														'iOS & Node Evening Course'
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'ios hs course' },
-														'iOS HS Course'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'web hs course' },
-														'Web HS Course'
+														{ value: 'node + react evening course' },
+														'Node & React Evening Course'
 													),
 													_react2.default.createElement(
 														'option',
