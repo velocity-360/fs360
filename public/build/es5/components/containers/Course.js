@@ -207,8 +207,8 @@ var Course = (function (Component) {
 														) : null,
 														React.createElement(
 															"a",
-															{ href: "#", onClick: this.openModal, className: "button button-border button-dark button-rounded noleftmargin" },
-															"Request Syllabus"
+															{ href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
+															"Apply"
 														)
 													)
 												)
@@ -254,8 +254,8 @@ var Course = (function (Component) {
 														) : null,
 														React.createElement(
 															"a",
-															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-															"Request Syllabus"
+															{ href: "/applications", className: "button button-border button-dark button-rounded noleftmargin" },
+															"Apply"
 														)
 													)
 												)

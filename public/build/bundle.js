@@ -44492,8 +44492,8 @@
 														) : null,
 														_react2.default.createElement(
 															'a',
-															{ href: '#', onClick: this.openModal, className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
+															{ href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Apply'
 														)
 													)
 												)
@@ -44539,8 +44539,8 @@
 														) : null,
 														_react2.default.createElement(
 															'a',
-															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
+															{ href: '/applications', className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Apply'
 														)
 													)
 												)
