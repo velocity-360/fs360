@@ -3,14 +3,72 @@ import { connect } from 'react-redux'
 import store from '../../stores/store'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
+import api from '../../api/api'
+import Loader from 'react-loader'
 
 
 class Application extends Component {
+
+	constructor(props, context){
+		super(props, context)
+		this.updateApplication = this.updateApplication.bind(this)
+		this.submitApplication = this.submitApplication.bind(this)
+		this.state = {
+			showLoader: false,
+			application: {
+				name: '',
+				email: '',
+				phone: '',
+				course: 'ios intensive',
+				goal: '',
+				history: ''
+			}
+		}
+	}
+
+	updateApplication(event){
+		console.log('updateUserApplication: '+event.target.id)
+		event.preventDefault()
+
+
+		var updatedApplication = Object.assign({}, this.state.application)
+		updatedApplication[event.target.id] = event.target.value
+		this.setState({
+			application: updatedApplication
+		})
+	}
+
+	submitApplication(event){
+		event.preventDefault()
+		console.log('submitApplication: '+JSON.stringify(this.state.application))
+
+		this.setState({
+			showLoader: true
+		});
+
+		var _this = this
+		api.handlePost('/api/application', this.state.application, function(err, response){
+//			console.log('RESPONSE: '+JSON.stringify(response));
+			_this.setState({
+				showLoader: false
+			});
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		});
+
+
+	}
 
 	render (){
 		return (
 			<div>
 				<Sidebar />
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 
 				<section id="content" style={{background:'#f9f9f9'}}>
 					<div className="content-wrap">
@@ -28,24 +86,24 @@ class Application extends Component {
 										<div className="form-process"></div>
 										<div className="col_full">
 											<label for="template-contactform-name">Name</label>
-											<input type="text" id="template-contactform-name" name="template-contactform-name" value="" className="sm-form-control required" />
+											<input type="text" onChange={this.updateApplication} id="name" value={this.state.application.name} name="template-contactform-name" className="sm-form-control required" />
 										</div>
 
 										<div className="col_full">
 											<label for="template-contactform-email">Email</label>
-											<input type="email" id="template-contactform-email" name="template-contactform-email" value="" className="required email sm-form-control" />
+											<input type="email" onChange={this.updateApplication} id="email" value={this.state.application.email} name="template-contactform-email" className="required email sm-form-control" />
 										</div>
 
 										<div className="col_full">
 											<label for="template-contactform-phone">Phone</label>
-											<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" className="sm-form-control" />
+											<input type="text" onChange={this.updateApplication} id="phone" value={this.state.application.phone} name="template-contactform-phone" className="sm-form-control" />
 										</div>
 
 										<div className="clear"></div>
 
 										<div className="col_full">
 											<label for="template-contactform-subject">Course</label>
-											<select id="course" className="form-control input-lg not-dark">
+											<select onChange={this.updateApplication} value={this.state.application.course} id="course" className="form-control input-lg not-dark">
 												<option value="ios intensive">iOS Intensive</option>
 												<option value="web intensive">Web Intensive</option>
 												<option value="ios hs course">iOS HS Course</option>
@@ -60,12 +118,12 @@ class Application extends Component {
 
 										<div className="col_full">
 											<label for="template-contactform-message">What is your goal in technology for the next 6 to 12 months?</label>
-											<textarea className="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+											<textarea onChange={this.updateApplication} value={this.state.application.goal} className="required sm-form-control" id="goal" name="template-contactform-message" rows="6" cols="30"></textarea>
 										</div>
 
 										<div className="col_full">
 											<label for="template-contactform-message">What have your worked on so far? (GitHub, side projects, etc.)</label>
-											<textarea className="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+											<textarea onChange={this.updateApplication} value={this.state.application.history} className="required sm-form-control" id="history" name="template-contactform-message" rows="6" cols="30"></textarea>
 										</div>
 
 										<div className="col_full hidden">
@@ -73,7 +131,7 @@ class Application extends Component {
 										</div>
 
 										<div className="col_full">
-											<a href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+											<a onClick={this.submitApplication} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
 										</div>
 									</form>
 
@@ -99,7 +157,8 @@ const stateToProps = function(state) {
 //	console.log('STATE TO PROPS: '+JSON.stringify(state));
 
     return {
-        currentUser: state.profileReducer.currentUser
+        currentUser: state.profileReducer.currentUser,
+        loaderOptions: state.staticReducer.loaderConfig        
     }
 }
 

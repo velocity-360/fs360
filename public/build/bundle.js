@@ -45093,6 +45093,14 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	var _reactLoader = __webpack_require__(441);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45104,19 +45112,72 @@
 	var Application = function (_Component) {
 		_inherits(Application, _Component);
 	
-		function Application() {
+		function Application(props, context) {
 			_classCallCheck(this, Application);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Application).apply(this, arguments));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Application).call(this, props, context));
+	
+			_this2.updateApplication = _this2.updateApplication.bind(_this2);
+			_this2.submitApplication = _this2.submitApplication.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				application: {
+					name: '',
+					email: '',
+					phone: '',
+					course: 'ios intensive',
+					goal: '',
+					history: ''
+				}
+			};
+			return _this2;
 		}
 	
 		_createClass(Application, [{
+			key: 'updateApplication',
+			value: function updateApplication(event) {
+				console.log('updateUserApplication: ' + event.target.id);
+				event.preventDefault();
+	
+				var updatedApplication = Object.assign({}, this.state.application);
+				updatedApplication[event.target.id] = event.target.value;
+				this.setState({
+					application: updatedApplication
+				});
+			}
+		}, {
+			key: 'submitApplication',
+			value: function submitApplication(event) {
+				event.preventDefault();
+				console.log('submitApplication: ' + JSON.stringify(this.state.application));
+	
+				this.setState({
+					showLoader: true
+				});
+	
+				var _this = this;
+				_api2.default.handlePost('/api/application', this.state.application, function (err, response) {
+					//			console.log('RESPONSE: '+JSON.stringify(response));
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
 						'section',
 						{ id: 'content', style: { background: '#f9f9f9' } },
@@ -45151,7 +45212,7 @@
 													{ 'for': 'template-contactform-name' },
 													'Name'
 												),
-												_react2.default.createElement('input', { type: 'text', id: 'template-contactform-name', name: 'template-contactform-name', value: '', className: 'sm-form-control required' })
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', className: 'sm-form-control required' })
 											),
 											_react2.default.createElement(
 												'div',
@@ -45161,7 +45222,7 @@
 													{ 'for': 'template-contactform-email' },
 													'Email'
 												),
-												_react2.default.createElement('input', { type: 'email', id: 'template-contactform-email', name: 'template-contactform-email', value: '', className: 'required email sm-form-control' })
+												_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', className: 'required email sm-form-control' })
 											),
 											_react2.default.createElement(
 												'div',
@@ -45171,7 +45232,7 @@
 													{ 'for': 'template-contactform-phone' },
 													'Phone'
 												),
-												_react2.default.createElement('input', { type: 'text', id: 'template-contactform-phone', name: 'template-contactform-phone', value: '', className: 'sm-form-control' })
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', className: 'sm-form-control' })
 											),
 											_react2.default.createElement('div', { className: 'clear' }),
 											_react2.default.createElement(
@@ -45184,7 +45245,7 @@
 												),
 												_react2.default.createElement(
 													'select',
-													{ id: 'course', className: 'form-control input-lg not-dark' },
+													{ onChange: this.updateApplication, value: this.state.application.course, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
 														{ value: 'ios intensive' },
@@ -45226,7 +45287,7 @@
 													{ 'for': 'template-contactform-message' },
 													'What is your goal in technology for the next 6 to 12 months?'
 												),
-												_react2.default.createElement('textarea', { className: 'required sm-form-control', id: 'template-contactform-message', name: 'template-contactform-message', rows: '6', cols: '30' })
+												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'required sm-form-control', id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
 											),
 											_react2.default.createElement(
 												'div',
@@ -45236,7 +45297,7 @@
 													{ 'for': 'template-contactform-message' },
 													'What have your worked on so far? (GitHub, side projects, etc.)'
 												),
-												_react2.default.createElement('textarea', { className: 'required sm-form-control', id: 'template-contactform-message', name: 'template-contactform-message', rows: '6', cols: '30' })
+												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.history, className: 'required sm-form-control', id: 'history', name: 'template-contactform-message', rows: '6', cols: '30' })
 											),
 											_react2.default.createElement(
 												'div',
@@ -45248,7 +45309,7 @@
 												{ className: 'col_full' },
 												_react2.default.createElement(
 													'a',
-													{ href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+													{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
 													'Submit'
 												)
 											)
@@ -45270,7 +45331,8 @@
 		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	
 		return {
-			currentUser: state.profileReducer.currentUser
+			currentUser: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
 	

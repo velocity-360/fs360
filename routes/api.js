@@ -125,6 +125,14 @@ router.post('/:resource', function(req, res, next) {
 		return;
 	}
 
+	if (resource == 'application'){
+		res.json({
+			confirmation:'success', 
+			message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
+		});
+
+		return;
+	}
 
 	if (resource == 'syllabus'){
 //		console.log('SYLLABUS REQUEST: '+JSON.stringify(req.body));
