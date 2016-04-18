@@ -21942,13 +21942,13 @@
 													{ onChange: this.updateUserRegistration, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
-														{ value: 'ios+node evening' },
-														'iOS & Node Evening Course'
+														{ value: 'ios bootcamp' },
+														'iOS Bootcamp'
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'react+node evening' },
-														'React & Node Evening Course'
+														{ value: 'web bootcamp' },
+														'Web Bootcamp'
 													),
 													_react2.default.createElement(
 														'option',
@@ -21957,18 +21957,13 @@
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'web hs course' },
-														'Node & React HS Course'
+														{ value: 'ios+node evening' },
+														'iOS & Node Evening Course'
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'ios bootcamp' },
-														'iOS Bootcamp'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'web bootcamp' },
-														'Web Bootcamp'
+														{ value: 'react+node evening' },
+														'React & Node Evening Course'
 													)
 												)
 											)

@@ -344,13 +344,13 @@ var Home = (function (Component) {
 													{ onChange: this.updateUserRegistration, id: "course", className: "form-control input-lg not-dark" },
 													React.createElement(
 														"option",
-														{ value: "ios+node evening" },
-														"iOS & Node Evening Course"
+														{ value: "ios bootcamp" },
+														"iOS Bootcamp"
 													),
 													React.createElement(
 														"option",
-														{ value: "react+node evening" },
-														"React & Node Evening Course"
+														{ value: "web bootcamp" },
+														"Web Bootcamp"
 													),
 													React.createElement(
 														"option",
@@ -359,18 +359,13 @@ var Home = (function (Component) {
 													),
 													React.createElement(
 														"option",
-														{ value: "web hs course" },
-														"Node & React HS Course"
+														{ value: "ios+node evening" },
+														"iOS & Node Evening Course"
 													),
 													React.createElement(
 														"option",
-														{ value: "ios bootcamp" },
-														"iOS Bootcamp"
-													),
-													React.createElement(
-														"option",
-														{ value: "web bootcamp" },
-														"Web Bootcamp"
+														{ value: "react+node evening" },
+														"React & Node Evening Course"
 													)
 												)
 											)
