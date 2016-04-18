@@ -21942,23 +21942,23 @@
 													{ onChange: this.updateUserRegistration, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
-														{ value: 'ios intensive' },
-														'iOS Intensive'
+														{ value: 'ios+node evening' },
+														'iOS & Node Evening Course'
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'web intensive' },
-														'Web Intensive'
+														{ value: 'react+node evening' },
+														'React & Node Evening Course'
 													),
 													_react2.default.createElement(
 														'option',
 														{ value: 'ios hs course' },
-														'iOS HS Course'
+														'iOS & Node HS Course'
 													),
 													_react2.default.createElement(
 														'option',
 														{ value: 'web hs course' },
-														'Web HS Course'
+														'Node & React HS Course'
 													),
 													_react2.default.createElement(
 														'option',
@@ -22246,7 +22246,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/web-intensive', className: 'btn btn-success' },
+											{ href: '/course/node-react-evening-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)

@@ -260,10 +260,10 @@ class Home extends Component {
 										</div>
 										<div className="col_one_fourth col_last nobottommargin">
 											<select onChange={this.updateUserRegistration} id="course" className="form-control input-lg not-dark">
-												<option value="ios intensive">iOS Intensive</option>
-												<option value="web intensive">Web Intensive</option>
-												<option value="ios hs course">iOS HS Course</option>
-												<option value="web hs course">Web HS Course</option>
+												<option value="ios+node evening">iOS & Node Evening Course</option>
+												<option value="react+node evening">React & Node Evening Course</option>
+												<option value="ios hs course">iOS & Node HS Course</option>
+												<option value="web hs course">Node & React HS Course</option>
 												<option value="ios bootcamp">iOS Bootcamp</option>
 												<option value="web bootcamp">Web Bootcamp</option>
 											</select>
@@ -437,7 +437,7 @@ class Home extends Component {
 										functionality.
 									</div>
 									<br />
-									<a href="/course/web-intensive" className="btn btn-success">
+									<a href="/course/node-react-evening-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
