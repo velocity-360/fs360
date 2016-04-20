@@ -21452,7 +21452,7 @@
 	var initialState = {
 		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Intensive', quote: "On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with FS360. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects.  I am confident that after the FS360 class, my skill-set will be appealing to companies looking to hire a junior developer." }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'Web Development', quote: "After 20 years on Broadway, I was skeptical if the FS360 class would work for me. However I quickly realized that FS360 was exactly what I needed. We spent practically the entire day coding from the minute I walked into class every morning.  I started with the full-time Web intensive class and I am now in the middle of taking an iOS class. What separates FS360 is that I learn only very relevant technologies that will be useful in the near future.  When you stumble down the rabbit hole, the instructor guides you but does not hold your hand.  Lastly, the culture at FS360 is hard to match, with its offices being centrally located at WeWork, and the great collaborative environment between both the students and instructors." }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }],
 		banners: ['hackathon.jpg', 'hacking-2.jpg', 'girl.jpg'],
-		events: [{ id: 0, 'subject': 'Node + iOS Workshop', 'fee': 'Free', 'date': 'April 18, 2016', 'time': '7:00pm', 'description': 'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.', 'image': 'ios-260.jpg', button: 'Attend' }, { id: 1, 'subject': 'Node JS Workshop', 'fee': 'Free', 'date': 'April 20, 2016', 'time': '7:00pm', 'description': 'Learn how to build a full MEAN stack application with the SendGrid API. We\'ll build a Node server with a landing page to collect signups, create profiles, and automate welcome emails.', 'image': 'node.png', button: 'Attend' }],
+		events: [{ id: 0, 'subject': 'Node + iOS Workshop', 'fee': 'Free', 'date': 'April 18, 2016', 'time': '7:00pm', 'description': 'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.', 'image': 'ios-260.jpg', button: 'Attend' }, { id: 1, 'subject': 'Node & React Demo', 'fee': 'Free', 'date': 'April 26, 2016', 'time': '7:00pm', 'description': 'React is a cutting-edge view library which is revolutionizing the way developers build front end components. Developed by Facebook, React is quickly establishing itself as a major player in the front end ecosystem along side Angular and Backbone. See how React works in this demo where we will create a simple website using React components.', 'image': 'node.png', button: 'Attend' }],
 		faq: {
 			highschool: [{ question: 'Will I Have Fun?', answer: 'Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.' }, { question: 'I don’t have a lot of experience coding - can I still take your summer class?', answer: 'Of course!  FS360 High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.' }, { question: 'Is there a screening process?', answer: 'We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.' }, { question: 'Who are the instructors for the summer classes?', answer: 'All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!' }, { question: 'Will this class help me get into college?  What about an internship in the future?', answer: 'Yes, I am glad you asked.  FS360 Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites. If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.' }, { question: 'Where is the Summer Program for FS360?', answer: 'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at FS360 you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.' }],
 			general: [{ question: 'I don’t have a lot of experience coding - can I still take a class?', answer: 'Of course!  FS360 programs are designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.' }, { question: 'Is there a screening process?', answer: 'We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.' }, { question: 'Who are the instructors?', answer: 'All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!' }, { question: 'Will this class help me get a job or an internship?', answer: 'Yes, I am glad you asked.  FS360 Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites. If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at FS360 is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at FS360 you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.' }, { question: 'Where is FS360 located?', answer: 'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at FS360 you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.' }]
@@ -21510,19 +21510,19 @@
 	
 	var _Courses2 = _interopRequireDefault(_Courses);
 	
-	var _Events = __webpack_require__(465);
+	var _Events = __webpack_require__(461);
 	
 	var _Events2 = _interopRequireDefault(_Events);
 	
-	var _Course = __webpack_require__(461);
+	var _Course = __webpack_require__(462);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Videos = __webpack_require__(463);
+	var _Videos = __webpack_require__(464);
 	
 	var _Videos2 = _interopRequireDefault(_Videos);
 	
-	var _Application = __webpack_require__(464);
+	var _Application = __webpack_require__(465);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -44299,1072 +44299,6 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _Sidebar = __webpack_require__(458);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(454);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CourseSection = __webpack_require__(462);
-	
-	var _CourseSection2 = _interopRequireDefault(_CourseSection);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(444);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _api = __webpack_require__(445);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Course = function (_Component) {
-		_inherits(Course, _Component);
-	
-		function Course(props, context) {
-			_classCallCheck(this, Course);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
-	
-			_this.openModal = _this.openModal.bind(_this);
-			_this.closeModal = _this.closeModal.bind(_this);
-			_this.state = {
-				showLoader: false,
-				showModal: false
-			};
-			return _this;
-		}
-	
-		_createClass(Course, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
-				});
-			}
-		}, {
-			key: 'openModal',
-			value: function openModal(event) {
-				event.preventDefault();
-				this.setState({ showModal: true });
-			}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({ showModal: false });
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _course = this.props.course;
-				var _accountType = this.props.currentUser.accountType;
-				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course, accountType: _accountType });
-				});
-	
-				var questions = null;
-				if (this.props.slug == 'ios-high-school-course' || this.props.slug == 'web-high-school-course') {
-					// console.log('IOS HIGH SCHOOL COURSE');
-					questions = this.props.faq.highschool;
-				} else {
-					questions = this.props.faq.general;
-				}
-	
-				var faq = questions.map(function (qa, i) {
-					return _react2.default.createElement(
-						'div',
-						{ key: i },
-						_react2.default.createElement(
-							'h4',
-							null,
-							_react2.default.createElement(
-								'strong',
-								null,
-								'Q.'
-							),
-							' ',
-							qa.question
-						),
-						_react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: qa.answer } }),
-						_react2.default.createElement('div', { className: 'line' })
-					);
-				});
-	
-				var bannerIndex = 0;
-				if (this.props.course.type == 'online') bannerIndex = 1;
-				if (this.props.course.type == 'immersive') bannerIndex = 2;
-	
-				var banner = this.props.banners[bannerIndex];
-	
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin col_last clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ id: 'posts', className: 'post-timeline clearfix' },
-										_react2.default.createElement('div', { className: 'timeline-border' }),
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Intro',
-												_react2.default.createElement('span', null),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { className: 'image_fade', src: '/images/' + banner, alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_half' },
-													_react2.default.createElement(
-														'h2',
-														{ style: { marginBottom: 0 } },
-														this.props.course.title
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														this.props.course.description
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_half panel panel-default col_last' },
-													_react2.default.createElement(
-														'div',
-														{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-														'Details'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body' },
-														this.props.course.dates,
-														_react2.default.createElement('br', null),
-														this.props.course.schedule,
-														_react2.default.createElement('br', null),
-														'Tuition: $',
-														this.props.course.tuition,
-														_react2.default.createElement('br', null),
-														'Depost: $',
-														this.props.course.deposit,
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'a',
-															{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Apply'
-														),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
-														)
-													)
-												)
-											)
-										),
-										units,
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Unit',
-												_react2.default.createElement(
-													'span',
-													null,
-													'!'
-												),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
-														_react2.default.createElement(
-															'h2',
-															null,
-															'Sign Up'
-														),
-														_react2.default.createElement('hr', null),
-														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
-														_react2.default.createElement('br', null),
-														_react2.default.createElement('br', null),
-														_react2.default.createElement(
-															'a',
-															{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Apply'
-														),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
-														)
-													)
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 48 } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-sm-8 col-padding' },
-								_react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Prepare for Tomorrow'
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'row clearfix' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-md-10' },
-											_react2.default.createElement(
-												'p',
-												null,
-												'Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, this 2-week class will put you on the right track to achieve any of these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.'
-											),
-											_react2.default.createElement(
-												'p',
-												null,
-												'Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.'
-											),
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://www.facebook.com/FullStack-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
-												_react2.default.createElement('i', { className: 'icon-facebook' }),
-												_react2.default.createElement('i', { className: 'icon-facebook' })
-											),
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://twitter.com/fullstack360', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
-												_react2.default.createElement('i', { className: 'icon-twitter' }),
-												_react2.default.createElement('i', { className: 'icon-twitter' })
-											)
-										)
-									)
-								)
-							),
-							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clear-bottommargin clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'row' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-4 col-sm-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'ipost clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/class.jpg', alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Small Classes'
-												),
-												_react2.default.createElement('hr', null)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-4 col-sm-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'ipost clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/phone.jpg', alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Realistic Projects'
-												),
-												_react2.default.createElement('hr', null)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-4 col-sm-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'ipost clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/joe.jpg', alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Cutting Edge Curriculum'
-												),
-												_react2.default.createElement('hr', null)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.'
-												)
-											)
-										)
-									)
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ id: 'faqs', className: 'faqs' },
-								_react2.default.createElement(
-									'h3',
-									{ style: { marginTop: 48 } },
-									'Frequently Asked Questions:'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'divider' },
-									_react2.default.createElement('i', { className: 'icon-circle' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full nobottommargin' },
-									faq
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Request Syllabus'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Course;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		var keys = Object.keys(state.courseReducer.courses);
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state))
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			course: state.courseReducer.courses[keys[0]],
-			testimonials: state.staticReducer.testimonials,
-			faq: state.staticReducer.faq,
-			loaderOptions: state.staticReducer.loaderConfig,
-			banners: state.staticReducer.banners
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
-
-/***/ },
-/* 462 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CourseSection = function (_Component) {
-		_inherits(CourseSection, _Component);
-	
-		function CourseSection() {
-			_classCallCheck(this, CourseSection);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).apply(this, arguments));
-		}
-	
-		_createClass(CourseSection, [{
-			key: 'render',
-			value: function render() {
-				var videoThumb = null;
-				if (this.props.course.type == 'online') {
-					if (this.props.unit.index < 1) {
-						// always show first video
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-							' '
-						);
-					} else if (this.props.accountType == 'premium') {
-						// premium subscriber
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-							' '
-						);
-					} else if (this.props.accountType == 'basic' || this.props.accountType == '') {
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
-							'To view this video, please ',
-							_react2.default.createElement(
-								'a',
-								{ style: { color: 'red' }, onClick: this.subscribeAction, href: '#' },
-								'upgrade'
-							),
-							' your account to Premium'
-						);
-					} else {
-						// not logged in
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
-							'Please log in or ',
-							_react2.default.createElement(
-								'a',
-								{ style: { color: 'red' }, href: '/#register' },
-								'register'
-							),
-							' to view this video.'
-						);
-					}
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-timeline' },
-						'Unit',
-						_react2.default.createElement(
-							'span',
-							null,
-							this.props.unit.index + 1
-						),
-						_react2.default.createElement('div', { className: 'timeline-divider' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36 } },
-								_react2.default.createElement(
-									'h2',
-									null,
-									this.props.unit.topic
-								),
-								_react2.default.createElement('hr', null),
-								this.props.unit.description,
-								_react2.default.createElement('br', null),
-								videoThumb
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return CourseSection;
-	}(_react.Component);
-	
-	exports.default = CourseSection;
-
-/***/ },
-/* 463 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(188);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _Sidebar = __webpack_require__(458);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(454);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CourseCard = __webpack_require__(459);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(444);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _api = __webpack_require__(445);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Videos = function (_Component) {
-		_inherits(Videos, _Component);
-	
-		function Videos(props, context) {
-			_classCallCheck(this, Videos);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Videos).call(this, props, context));
-		}
-	
-		_createClass(Videos, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				_api2.default.handleGet('/api/course?type=online', {}, function (err, response) {
-					if (err) {
-	
-						return;
-					}
-	
-					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-	
-				var courseList = this.props.courses.map(function (course) {
-					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
-				});
-	
-				return _react2.default.createElement(
-					'div',
-					{ style: { background: '#f5f5f5' } },
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin col_last' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'entry clearfix' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry-content' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_half' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginBottom: 0 } },
-													'Videos'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ id: 'posts', className: 'events small-thumbs' },
-										courseList
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Videos;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courseArray
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
-
-/***/ },
-/* 464 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _Sidebar = __webpack_require__(458);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(454);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _api = __webpack_require__(445);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	var _reactLoader = __webpack_require__(441);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Application = function (_Component) {
-		_inherits(Application, _Component);
-	
-		function Application(props, context) {
-			_classCallCheck(this, Application);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Application).call(this, props, context));
-	
-			_this2.updateApplication = _this2.updateApplication.bind(_this2);
-			_this2.submitApplication = _this2.submitApplication.bind(_this2);
-			_this2.state = {
-				showLoader: false,
-				application: {
-					name: '',
-					email: '',
-					phone: '',
-					course: 'ios intensive',
-					goal: '',
-					history: ''
-				}
-			};
-			return _this2;
-		}
-	
-		_createClass(Application, [{
-			key: 'updateApplication',
-			value: function updateApplication(event) {
-				console.log('updateUserApplication: ' + event.target.id);
-				event.preventDefault();
-	
-				var updatedApplication = Object.assign({}, this.state.application);
-				updatedApplication[event.target.id] = event.target.value;
-				this.setState({
-					application: updatedApplication
-				});
-			}
-		}, {
-			key: 'submitApplication',
-			value: function submitApplication(event) {
-				event.preventDefault();
-				console.log('submitApplication: ' + JSON.stringify(this.state.application));
-	
-				this.setState({
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/api/application', this.state.application, function (err, response) {
-					//			console.log('RESPONSE: '+JSON.stringify(response));
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { background: '#f9f9f9' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent bothsidebar nobottommargin' },
-									_react2.default.createElement(
-										'h3',
-										null,
-										'Application'
-									),
-									_react2.default.createElement('hr', null),
-									_react2.default.createElement(
-										'div',
-										{ className: 'contact-widget' },
-										_react2.default.createElement('div', { className: 'contact-form-result' }),
-										_react2.default.createElement(
-											'form',
-											{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
-											_react2.default.createElement('div', { className: 'form-process' }),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-name' },
-													'Name'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', className: 'sm-form-control required' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-email' },
-													'Email'
-												),
-												_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', className: 'required email sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-phone' },
-													'Phone'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', className: 'sm-form-control' })
-											),
-											_react2.default.createElement('div', { className: 'clear' }),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-subject' },
-													'Course'
-												),
-												_react2.default.createElement(
-													'select',
-													{ onChange: this.updateApplication, value: this.state.application.course, id: 'course', className: 'form-control input-lg not-dark' },
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios + node hs course' },
-														'iOS & Node HS Course'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios + node evening course' },
-														'iOS & Node Evening Course'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'node + react evening course' },
-														'Node & React Evening Course'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios bootcamp' },
-														'iOS Bootcamp'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'web bootcamp' },
-														'Web Bootcamp'
-													)
-												)
-											),
-											_react2.default.createElement('div', { className: 'clear' }),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-message' },
-													'What is your goal in technology for the next 6 to 12 months?'
-												),
-												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'required sm-form-control', id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-message' },
-													'What have your worked on so far? (GitHub, side projects, etc.)'
-												),
-												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.history, className: 'required sm-form-control', id: 'history', name: 'template-contactform-message', rows: '6', cols: '30' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full hidden' },
-												_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', className: 'sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'a',
-													{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-													'Submit'
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Application;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			loaderOptions: state.staticReducer.loaderConfig
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
-
-/***/ },
-/* 465 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(188);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _reactLoader = __webpack_require__(441);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
 	var _Nav = __webpack_require__(443);
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -46505,6 +45439,1072 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Events);
+
+/***/ },
+/* 462 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(441);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseSection = __webpack_require__(463);
+	
+	var _CourseSection2 = _interopRequireDefault(_CourseSection);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Course = function (_Component) {
+		_inherits(Course, _Component);
+	
+		function Course(props, context) {
+			_classCallCheck(this, Course);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
+	
+			_this.openModal = _this.openModal.bind(_this);
+			_this.closeModal = _this.closeModal.bind(_this);
+			_this.state = {
+				showLoader: false,
+				showModal: false
+			};
+			return _this;
+		}
+	
+		_createClass(Course, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'openModal',
+			value: function openModal(event) {
+				event.preventDefault();
+				this.setState({ showModal: true });
+			}
+		}, {
+			key: 'closeModal',
+			value: function closeModal() {
+				this.setState({ showModal: false });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _course = this.props.course;
+				var _accountType = this.props.currentUser.accountType;
+				var units = this.props.course.units.map(function (unit, i) {
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course, accountType: _accountType });
+				});
+	
+				var questions = null;
+				if (this.props.slug == 'ios-high-school-course' || this.props.slug == 'web-high-school-course') {
+					// console.log('IOS HIGH SCHOOL COURSE');
+					questions = this.props.faq.highschool;
+				} else {
+					questions = this.props.faq.general;
+				}
+	
+				var faq = questions.map(function (qa, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: i },
+						_react2.default.createElement(
+							'h4',
+							null,
+							_react2.default.createElement(
+								'strong',
+								null,
+								'Q.'
+							),
+							' ',
+							qa.question
+						),
+						_react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: qa.answer } }),
+						_react2.default.createElement('div', { className: 'line' })
+					);
+				});
+	
+				var bannerIndex = 0;
+				if (this.props.course.type == 'online') bannerIndex = 1;
+				if (this.props.course.type == 'immersive') bannerIndex = 2;
+	
+				var banner = this.props.banners[bannerIndex];
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'post-timeline clearfix' },
+										_react2.default.createElement('div', { className: 'timeline-border' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Intro',
+												_react2.default.createElement('span', null),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement('img', { className: 'image_fade', src: '/images/' + banner, alt: 'FullStack 360' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_half' },
+													_react2.default.createElement(
+														'h2',
+														{ style: { marginBottom: 0 } },
+														this.props.course.title
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														this.props.course.description
+													)
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_half panel panel-default col_last' },
+													_react2.default.createElement(
+														'div',
+														{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+														'Details'
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body' },
+														this.props.course.dates,
+														_react2.default.createElement('br', null),
+														this.props.course.schedule,
+														_react2.default.createElement('br', null),
+														'Tuition: $',
+														this.props.course.tuition,
+														_react2.default.createElement('br', null),
+														'Depost: $',
+														this.props.course.deposit,
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'a',
+															{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Apply'
+														),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Request Syllabus'
+														)
+													)
+												)
+											)
+										),
+										units,
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Unit',
+												_react2.default.createElement(
+													'span',
+													null,
+													'!'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h2',
+															null,
+															'Sign Up'
+														),
+														_react2.default.createElement('hr', null),
+														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
+														_react2.default.createElement('br', null),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement(
+															'a',
+															{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Apply'
+														),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+															'Request Syllabus'
+														)
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 48 } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-8 col-padding' },
+								_react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'heading-block' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Prepare for Tomorrow'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'row clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-10' },
+											_react2.default.createElement(
+												'p',
+												null,
+												'Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, this 2-week class will put you on the right track to achieve any of these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.'
+											),
+											_react2.default.createElement(
+												'p',
+												null,
+												'Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.'
+											),
+											_react2.default.createElement(
+												'a',
+												{ target: '_blank', href: 'https://www.facebook.com/FullStack-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
+												_react2.default.createElement('i', { className: 'icon-facebook' }),
+												_react2.default.createElement('i', { className: 'icon-facebook' })
+											),
+											_react2.default.createElement(
+												'a',
+												{ target: '_blank', href: 'https://twitter.com/fullstack360', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
+												_react2.default.createElement('i', { className: 'icon-twitter' }),
+												_react2.default.createElement('i', { className: 'icon-twitter' })
+											)
+										)
+									)
+								)
+							),
+							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clear-bottommargin clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-4 col-sm-6 bottommargin' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'ipost clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/class.jpg', alt: 'FullStack 360' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h3',
+													null,
+													'Small Classes'
+												),
+												_react2.default.createElement('hr', null)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-4 col-sm-6 bottommargin' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'ipost clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/phone.jpg', alt: 'FullStack 360' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h3',
+													null,
+													'Realistic Projects'
+												),
+												_react2.default.createElement('hr', null)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-4 col-sm-6 bottommargin' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'ipost clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/joe.jpg', alt: 'FullStack 360' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-title' },
+												_react2.default.createElement(
+													'h3',
+													null,
+													'Cutting Edge Curriculum'
+												),
+												_react2.default.createElement('hr', null)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.'
+												)
+											)
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ id: 'faqs', className: 'faqs' },
+								_react2.default.createElement(
+									'h3',
+									{ style: { marginTop: 48 } },
+									'Frequently Asked Questions:'
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'divider' },
+									_react2.default.createElement('i', { className: 'icon-circle' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full nobottommargin' },
+									faq
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showModal, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Request Syllabus'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Course;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		var keys = Object.keys(state.courseReducer.courses);
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state))
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			course: state.courseReducer.courses[keys[0]],
+			testimonials: state.staticReducer.testimonials,
+			faq: state.staticReducer.faq,
+			loaderOptions: state.staticReducer.loaderConfig,
+			banners: state.staticReducer.banners
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
+
+/***/ },
+/* 463 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseSection = function (_Component) {
+		_inherits(CourseSection, _Component);
+	
+		function CourseSection() {
+			_classCallCheck(this, CourseSection);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).apply(this, arguments));
+		}
+	
+		_createClass(CourseSection, [{
+			key: 'render',
+			value: function render() {
+				var videoThumb = null;
+				if (this.props.course.type == 'online') {
+					if (this.props.unit.index < 1) {
+						// always show first video
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+							' '
+						);
+					} else if (this.props.accountType == 'premium') {
+						// premium subscriber
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+							' '
+						);
+					} else if (this.props.accountType == 'basic' || this.props.accountType == '') {
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+							'To view this video, please ',
+							_react2.default.createElement(
+								'a',
+								{ style: { color: 'red' }, onClick: this.subscribeAction, href: '#' },
+								'upgrade'
+							),
+							' your account to Premium'
+						);
+					} else {
+						// not logged in
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+							'Please log in or ',
+							_react2.default.createElement(
+								'a',
+								{ style: { color: 'red' }, href: '/#register' },
+								'register'
+							),
+							' to view this video.'
+						);
+					}
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-timeline' },
+						'Unit',
+						_react2.default.createElement(
+							'span',
+							null,
+							this.props.unit.index + 1
+						),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									this.props.unit.topic
+								),
+								_react2.default.createElement('hr', null),
+								this.props.unit.description,
+								_react2.default.createElement('br', null),
+								videoThumb
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseSection;
+	}(_react.Component);
+	
+	exports.default = CourseSection;
+
+/***/ },
+/* 464 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(188);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseCard = __webpack_require__(459);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(444);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Videos = function (_Component) {
+		_inherits(Videos, _Component);
+	
+		function Videos(props, context) {
+			_classCallCheck(this, Videos);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Videos).call(this, props, context));
+		}
+	
+		_createClass(Videos, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_api2.default.handleGet('/api/course?type=online', {}, function (err, response) {
+					if (err) {
+	
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var courseList = this.props.courses.map(function (course) {
+					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginBottom: 0 } },
+													'Videos'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'events small-thumbs' },
+										courseList
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Videos;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
+
+/***/ },
+/* 465 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _Sidebar = __webpack_require__(458);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(454);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _api = __webpack_require__(445);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	var _reactLoader = __webpack_require__(441);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Application = function (_Component) {
+		_inherits(Application, _Component);
+	
+		function Application(props, context) {
+			_classCallCheck(this, Application);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Application).call(this, props, context));
+	
+			_this2.updateApplication = _this2.updateApplication.bind(_this2);
+			_this2.submitApplication = _this2.submitApplication.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				application: {
+					name: '',
+					email: '',
+					phone: '',
+					course: 'ios intensive',
+					goal: '',
+					history: ''
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(Application, [{
+			key: 'updateApplication',
+			value: function updateApplication(event) {
+				console.log('updateUserApplication: ' + event.target.id);
+				event.preventDefault();
+	
+				var updatedApplication = Object.assign({}, this.state.application);
+				updatedApplication[event.target.id] = event.target.value;
+				this.setState({
+					application: updatedApplication
+				});
+			}
+		}, {
+			key: 'submitApplication',
+			value: function submitApplication(event) {
+				event.preventDefault();
+				console.log('submitApplication: ' + JSON.stringify(this.state.application));
+	
+				this.setState({
+					showLoader: true
+				});
+	
+				var _this = this;
+				_api2.default.handlePost('/api/application', this.state.application, function (err, response) {
+					//			console.log('RESPONSE: '+JSON.stringify(response));
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { background: '#f9f9f9' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent bothsidebar nobottommargin' },
+									_react2.default.createElement(
+										'h3',
+										null,
+										'Application'
+									),
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement(
+										'div',
+										{ className: 'contact-widget' },
+										_react2.default.createElement('div', { className: 'contact-form-result' }),
+										_react2.default.createElement(
+											'form',
+											{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
+											_react2.default.createElement('div', { className: 'form-process' }),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'label',
+													{ 'for': 'template-contactform-name' },
+													'Name'
+												),
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', className: 'sm-form-control required' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'label',
+													{ 'for': 'template-contactform-email' },
+													'Email'
+												),
+												_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', className: 'required email sm-form-control' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'label',
+													{ 'for': 'template-contactform-phone' },
+													'Phone'
+												),
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', className: 'sm-form-control' })
+											),
+											_react2.default.createElement('div', { className: 'clear' }),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'label',
+													{ 'for': 'template-contactform-subject' },
+													'Course'
+												),
+												_react2.default.createElement(
+													'select',
+													{ onChange: this.updateApplication, value: this.state.application.course, id: 'course', className: 'form-control input-lg not-dark' },
+													_react2.default.createElement(
+														'option',
+														{ value: 'ios + node hs course' },
+														'iOS & Node HS Course'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'ios + node evening course' },
+														'iOS & Node Evening Course'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'node + react evening course' },
+														'Node & React Evening Course'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'ios bootcamp' },
+														'iOS Bootcamp'
+													),
+													_react2.default.createElement(
+														'option',
+														{ value: 'web bootcamp' },
+														'Web Bootcamp'
+													)
+												)
+											),
+											_react2.default.createElement('div', { className: 'clear' }),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'label',
+													{ 'for': 'template-contactform-message' },
+													'What is your goal in technology for the next 6 to 12 months?'
+												),
+												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'required sm-form-control', id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'label',
+													{ 'for': 'template-contactform-message' },
+													'What have your worked on so far? (GitHub, side projects, etc.)'
+												),
+												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.history, className: 'required sm-form-control', id: 'history', name: 'template-contactform-message', rows: '6', cols: '30' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full hidden' },
+												_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', className: 'sm-form-control' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_full' },
+												_react2.default.createElement(
+													'a',
+													{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+													'Submit'
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Application;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
 
 /***/ }
 /******/ ]);
