@@ -144,7 +144,9 @@ var Feed = (function (Component) {
 			value: function submitPost(event) {
 				event.preventDefault();
 				var _this = this;
-				api.handlePost("/api/post", this.state.post, function (err, response) {
+				var post = Object.assign({}, this.state.post);
+
+				api.handlePost("/api/post", post, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
