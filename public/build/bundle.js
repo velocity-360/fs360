@@ -21471,7 +21471,17 @@
 	
 	var initialState = {
 		posts: {},
-		postsArray: []
+		postsArray: [],
+		emptyPost: {
+			text: '',
+			image: '',
+			title: '',
+			slug: '',
+			date: null,
+			profile: {
+				name: ''
+			}
+		}
 	};
 	
 	/*
@@ -21579,6 +21589,10 @@
 	
 	var _Feed2 = _interopRequireDefault(_Feed);
 	
+	var _PostPage = __webpack_require__(576);
+	
+	var _PostPage2 = _interopRequireDefault(_PostPage);
+	
 	var _Course = __webpack_require__(465);
 	
 	var _Course2 = _interopRequireDefault(_Course);
@@ -21638,6 +21652,9 @@
 	
 					case 'feed':
 						return page = _react2.default.createElement(_Feed2.default, null);
+	
+					case 'post':
+						return page = _react2.default.createElement(_PostPage2.default, { slug: this.props.slug });
 	
 					default:
 						return page = null;
@@ -45882,18 +45899,6 @@
 		_createClass(Post, [{
 			key: 'render',
 			value: function render() {
-				// var now = new Date();
-				// var timestamp = new Date(this.props.post.timestamp);
-				// var diff = now-timestamp;
-	
-				// var date = null;
-				// if (diff > 24*60*1000) {
-				//     date = <Time value={timestamp} format="MMM DD, YYYY" /> ;
-				// }
-				// else {
-				//     date = <Time value={timestamp} titleFormat="YYYY/MM/DD HH:mm" relative />;
-				// }
-	
 				var timestamp = new Date(this.props.post.timestamp);
 				var date = _DateUtils2.default.formattedDate(timestamp);
 	
@@ -45916,7 +45921,7 @@
 								null,
 								_react2.default.createElement(
 									'a',
-									{ href: '/post/' + this.props.post.id },
+									{ href: '/post/' + this.props.post.slug },
 									this.props.post.title
 								)
 							)
@@ -61416,6 +61421,186 @@
 	       }
 	
 	};
+
+/***/ },
+/* 576 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactLoader = __webpack_require__(442);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Sidebar = __webpack_require__(459);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(455);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(445);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(446);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PostPage = function (_Component) {
+		_inherits(PostPage, _Component);
+	
+		function PostPage(props, context) {
+			_classCallCheck(this, PostPage);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PostPage).call(this, props, context));
+	
+			_this.state = {
+				showLoader: false
+			};
+			return _this;
+		}
+	
+		_createClass(PostPage, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var url = '/api/post?slug=' + this.props.slug;
+				_api2.default.handleGet(url, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+					_store2.default.dispatch(_actions2.default.postsRecieved(response.posts));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var find = '\n';
+				var re = new RegExp(find, 'g');
+				var postHTML = this.props.post.text.replace(re, '<br />');
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'entry clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'container clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'heading-block center' },
+										_react2.default.createElement(
+											'h1',
+											null,
+											this.props.post.title
+										),
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.props.post.image + '?crop=260', alt: 'FullStack 360' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry-c' },
+										_react2.default.createElement(
+											'ul',
+											{ className: 'entry-meta clearfix' },
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '#' },
+													_react2.default.createElement('i', { className: 'icon-user' }),
+													' ',
+													this.props.post.profile.name
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: 'blog-single.html#comments' },
+													_react2.default.createElement('i', { className: 'icon-comments' }),
+													' ',
+													this.props.post.numReplies,
+													' comments'
+												)
+											)
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'panel panel-default' },
+												_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: postHTML }, style: { padding: 16 }, className: 'panel-body' })
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return PostPage;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		var posts = state.postReducer.postsArray;
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			post: posts.length == 0 ? state.postReducer.emptyPost : posts[0],
+			loaderOptions: state.staticReducer.loaderConfig
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(PostPage);
 
 /***/ }
 /******/ ]);

@@ -8,18 +8,6 @@ class Post extends Component {
 	}
 
 	render(){
-        // var now = new Date();
-        // var timestamp = new Date(this.props.post.timestamp);
-        // var diff = now-timestamp;
-
-        // var date = null;
-        // if (diff > 24*60*1000) {
-        //     date = <Time value={timestamp} format="MMM DD, YYYY" /> ;
-        // }
-        // else {
-        //     date = <Time value={timestamp} titleFormat="YYYY/MM/DD HH:mm" relative />;
-        // } 
-
         var timestamp = new Date(this.props.post.timestamp);
         var date = DateUtils.formattedDate(timestamp)
 
@@ -31,7 +19,7 @@ class Post extends Component {
 				<div className="entry-c">
 					<div className="entry-title">
 						<h2>
-							<a href={'/post/'+this.props.post.id}>{this.props.post.title}</a>
+							<a href={'/post/'+this.props.post.slug}>{this.props.post.title}</a>
 						</h2>
 					</div>
 					<ul className="entry-meta clearfix">

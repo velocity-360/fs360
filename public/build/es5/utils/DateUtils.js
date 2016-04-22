@@ -4,21 +4,19 @@ var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["defau
 
 var Time = _interopRequire(require("react-time"));
 
+var React = _interopRequire(require("react"));
+
 module.exports = {
 
-    formattedDate: function (timestamp) {
-        var now = new Date();
-        var timestamp = new Date(this.props.post.timestamp);
-        var diff = now - timestamp;
+       formattedDate: function (timestamp) {
+              var now = new Date();
+              var timestamp = new Date(timestamp);
+              var diff = now - timestamp;
 
-        var date = null;
-        if (diff > 24 * 60 * 1000) {
-            date = React.createElement(Time, { value: timestamp, format: "MMM DD, YYYY" });
-        } else {
-            date = React.createElement(Time, { value: timestamp, titleFormat: "YYYY/MM/DD HH:mm", relative: true });
-        }
+              var date = null;
+              if (diff > 24 * 60 * 1000) return React.createElement(Time, { value: timestamp, format: "MMM DD, YYYY" });
 
-        return date;
-    }
+              return React.createElement(Time, { value: timestamp, titleFormat: "YYYY/MM/DD HH:mm", relative: true });
+       }
 
 };

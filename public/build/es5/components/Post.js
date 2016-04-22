@@ -31,18 +31,6 @@ var Post = (function (Component) {
 	_prototypeProperties(Post, null, {
 		render: {
 			value: function render() {
-				// var now = new Date();
-				// var timestamp = new Date(this.props.post.timestamp);
-				// var diff = now-timestamp;
-
-				// var date = null;
-				// if (diff > 24*60*1000) {
-				//     date = <Time value={timestamp} format="MMM DD, YYYY" /> ;
-				// }
-				// else {
-				//     date = <Time value={timestamp} titleFormat="YYYY/MM/DD HH:mm" relative />;
-				// }
-
 				var timestamp = new Date(this.props.post.timestamp);
 				var date = DateUtils.formattedDate(timestamp);
 
@@ -65,7 +53,7 @@ var Post = (function (Component) {
 								null,
 								React.createElement(
 									"a",
-									{ href: "/post/" + this.props.post.id },
+									{ href: "/post/" + this.props.post.slug },
 									this.props.post.title
 								)
 							)

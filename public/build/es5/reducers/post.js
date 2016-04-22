@@ -4,7 +4,17 @@ var constants = require("../constants/constants");
 
 var initialState = {
 	posts: {},
-	postsArray: []
+	postsArray: [],
+	emptyPost: {
+		text: "",
+		image: "",
+		title: "",
+		slug: "",
+		date: null,
+		profile: {
+			name: ""
+		}
+	}
 };
 
 /*
