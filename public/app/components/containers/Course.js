@@ -15,9 +15,13 @@ class Course extends Component {
 		super(props, context)
 		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
+		this.showLogin = this.showLogin.bind(this)
+		this.login = this.login.bind(this)
+		this.updateLogin = this.updateLogin.bind(this)
 		this.state = {
 			showLoader: false,
 			showModal: false,
+			showLogin: false
 		}
 	}
 
@@ -42,25 +46,81 @@ class Course extends Component {
 	}
 
 	closeModal(){
-		this.setState({showModal: false})
+		this.setState({
+			showModal: false,
+			showLogin: false
+		})
 	}
 
+	showLogin(){
+		console.log('Show Login')
+		this.setState({showLogin: true})
+	}
+
+	updateLogin(event){
+		event.preventDefault()
+
+		var updatedUser = Object.assign({}, this.props.currentUser);
+		updatedUser[event.target.id] = event.target.value
+		store.dispatch(actions.updateCurrentUser(updatedUser));
+	}
+
+	login(event){
+		event.preventDefault()
+		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
+		this.setState({
+			showModal: false,
+			showLogin: false,
+			showLoader: true
+		})
+
+		var _this = this
+		api.handlePost('/account/login', this.props.currentUser, function(err, response){
+			_this.setState({
+				showLoader: false
+			})
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			store.dispatch(actions.currentUserRecieved(response.profile));
+		});
+	}
 
 	render(){
+		var detailBox = null
+		if (this.props.course.type != 'online'){
+			detailBox =	<div className="col_half panel panel-default col_last">
+							<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
+							<div className="panel-body">
+								{this.props.course.dates}<br />
+								{this.props.course.schedule}<br />
+								Tuition: ${this.props.course.tuition}<br />
+								Depost: ${this.props.course.deposit}
+								<hr />
+								<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+								<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
+							</div>
+						</div>
+
+		}
+
+
 		var _course = this.props.course
 		var _accountType = this.props.currentUser.accountType
+		var _showLogin = this.showLogin
 		var units = this.props.course.units.map(function(unit, i){
-			return <CourseSection key={unit.index} unit={unit} course={_course} accountType={_accountType} />
+			return <CourseSection key={unit.index} loginAction={_showLogin} unit={unit} course={_course} accountType={_accountType} />
 		})
 
 		var questions = null;
-		if (this.props.slug=='ios-high-school-course' || this.props.slug=='web-high-school-course'){
-			// console.log('IOS HIGH SCHOOL COURSE');
-			questions = this.props.faq.highschool
-		}
-		else {
+		if (this.props.slug=='ios-high-school-course' || this.props.slug=='web-high-school-course')
+			questions = this.props.faq.highschool		
+		else 
 			questions = this.props.faq.general
-		}
+		
 
 		var faq = questions.map(function(qa, i){
 			return (
@@ -106,42 +166,37 @@ class Course extends Component {
 												<p>{this.props.course.description}</p>
 											</div>
 
-											<div className="col_half panel panel-default col_last">
-												<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
-												<div className="panel-body">
-													{this.props.course.dates}<br />
-													{this.props.course.schedule}<br />
-													Tuition: ${this.props.course.tuition}<br />
-													Depost: ${this.props.course.deposit}
-													<hr />
-													<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
-													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
-												</div>
-											</div>
+											{ detailBox }
+
 										</div>
 									</div>
 
 									{units}
 
 
-									<div className="entry clearfix">
-										<div className="entry-timeline">
-											Unit<span>!</span>
-											<div className="timeline-divider"></div>
-										</div>
-										<div className="entry-image">
-											<div className="panel panel-default">
-												<div className="panel-body" style={{padding:36}}>
-													<h2>Sign Up</h2>
-													<hr />
-													Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
-													<br /><br />
-													<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
-													<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
+									{
+										(this.props.course.type == 'online') ? null :
+											<div className="entry clearfix">
+												<div className="entry-timeline">
+													Unit<span>!</span>
+													<div className="timeline-divider"></div>
 												</div>
-											</div>
-										</div>
-									</div>
+												<div className="entry-image">
+													<div className="panel panel-default">
+														<div className="panel-body" style={{padding:36}}>
+															<h2>Sign Up</h2>
+															<hr />
+															Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
+															<br /><br />
+															<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
+															<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
+														</div>
+													</div>
+												</div>
+											</div>										
+									}
+
+
 
 								</div>
 							</div>
@@ -256,8 +311,22 @@ class Course extends Component {
 							</div>
 						</div>
 					</div>
-
 				</section>
+
+		        <Modal show={this.state.showLogin} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h2>Login</h2>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<input onChange={this.updateLogin} value={this.props.currentUser.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
+			        	<input onChange={this.updateLogin} value={this.props.currentUser.password} className="form-control" type="password" id="password" placeholder="Password" /><br />
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a onClick={this.login} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
+			        </Modal.Footer>
+		        </Modal>
+
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

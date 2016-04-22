@@ -50,7 +50,6 @@ class Nav extends Component {
 
 			window.location.href = '/courses'
 		});
-
 	}
 
 	updateLogin(event){

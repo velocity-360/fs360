@@ -60641,15 +60641,19 @@
 		function Course(props, context) {
 			_classCallCheck(this, Course);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 	
-			_this.openModal = _this.openModal.bind(_this);
-			_this.closeModal = _this.closeModal.bind(_this);
-			_this.state = {
+			_this2.openModal = _this2.openModal.bind(_this2);
+			_this2.closeModal = _this2.closeModal.bind(_this2);
+			_this2.showLogin = _this2.showLogin.bind(_this2);
+			_this2.login = _this2.login.bind(_this2);
+			_this2.updateLogin = _this2.updateLogin.bind(_this2);
+			_this2.state = {
 				showLoader: false,
-				showModal: false
+				showModal: false,
+				showLogin: false
 			};
-			return _this;
+			return _this2;
 		}
 	
 		_createClass(Course, [{
@@ -60676,24 +60680,100 @@
 		}, {
 			key: 'closeModal',
 			value: function closeModal() {
-				this.setState({ showModal: false });
+				this.setState({
+					showModal: false,
+					showLogin: false
+				});
+			}
+		}, {
+			key: 'showLogin',
+			value: function showLogin() {
+				console.log('Show Login');
+				this.setState({ showLogin: true });
+			}
+		}, {
+			key: 'updateLogin',
+			value: function updateLogin(event) {
+				event.preventDefault();
+	
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				updatedUser[event.target.id] = event.target.value;
+				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				console.log('LOGIN: ' + JSON.stringify(this.props.currentUser));
+				this.setState({
+					showModal: false,
+					showLogin: false,
+					showLoader: true
+				});
+	
+				var _this = this;
+				_api2.default.handlePost('/account/login', this.props.currentUser, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+				});
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+				var detailBox = null;
+				if (this.props.course.type != 'online') {
+					detailBox = _react2.default.createElement(
+						'div',
+						{ className: 'col_half panel panel-default col_last' },
+						_react2.default.createElement(
+							'div',
+							{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+							'Details'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body' },
+							this.props.course.dates,
+							_react2.default.createElement('br', null),
+							this.props.course.schedule,
+							_react2.default.createElement('br', null),
+							'Tuition: $',
+							this.props.course.tuition,
+							_react2.default.createElement('br', null),
+							'Depost: $',
+							this.props.course.deposit,
+							_react2.default.createElement('hr', null),
+							_react2.default.createElement(
+								'a',
+								{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
+								'Apply'
+							),
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+								'Request Syllabus'
+							)
+						)
+					);
+				}
+	
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.accountType;
+				var _showLogin = this.showLogin;
 				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, unit: unit, course: _course, accountType: _accountType });
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
 	
 				var questions = null;
-				if (this.props.slug == 'ios-high-school-course' || this.props.slug == 'web-high-school-course') {
-					// console.log('IOS HIGH SCHOOL COURSE');
-					questions = this.props.faq.highschool;
-				} else {
-					questions = this.props.faq.general;
-				}
+				if (this.props.slug == 'ios-high-school-course' || this.props.slug == 'web-high-school-course') questions = this.props.faq.highschool;else questions = this.props.faq.general;
 	
 				var faq = questions.map(function (qa, i) {
 					return _react2.default.createElement(
@@ -60774,43 +60854,11 @@
 														this.props.course.description
 													)
 												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_half panel panel-default col_last' },
-													_react2.default.createElement(
-														'div',
-														{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-														'Details'
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body' },
-														this.props.course.dates,
-														_react2.default.createElement('br', null),
-														this.props.course.schedule,
-														_react2.default.createElement('br', null),
-														'Tuition: $',
-														this.props.course.tuition,
-														_react2.default.createElement('br', null),
-														'Depost: $',
-														this.props.course.deposit,
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'a',
-															{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Apply'
-														),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
-														)
-													)
-												)
+												detailBox
 											)
 										),
 										units,
-										_react2.default.createElement(
+										this.props.course.type == 'online' ? null : _react2.default.createElement(
 											'div',
 											{ className: 'entry clearfix' },
 											_react2.default.createElement(
@@ -61050,6 +61098,36 @@
 					),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
+						{ show: this.state.showLogin, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Login'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.password, className: 'form-control', type: 'password', id: 'password', placeholder: 'Password' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.login, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Log In'
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Header,
@@ -61129,13 +61207,25 @@
 	var CourseSection = function (_Component) {
 		_inherits(CourseSection, _Component);
 	
-		function CourseSection() {
+		function CourseSection(props, context) {
 			_classCallCheck(this, CourseSection);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).call(this, props, context));
+	
+			_this.login = _this.login.bind(_this);
+	
+			return _this;
 		}
 	
 		_createClass(CourseSection, [{
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				console.log('LOGIN');
+	
+				this.props.loginAction();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var videoThumb = null;
@@ -61171,7 +61261,13 @@
 						videoThumb = _react2.default.createElement(
 							'div',
 							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
-							'Please log in or ',
+							'Please ',
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.login, style: { color: 'red' }, href: '#' },
+								'log in'
+							),
+							' or ',
 							_react2.default.createElement(
 								'a',
 								{ style: { color: 'red' }, href: '/#register' },

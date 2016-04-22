@@ -42,9 +42,14 @@ var Course = (function (Component) {
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.showLogin = this.showLogin.bind(this);
+		this.login = this.login.bind(this);
+		this.updateLogin = this.updateLogin.bind(this);
 		this.state = {
 			showLoader: false,
-			showModal: false };
+			showModal: false,
+			showLogin: false
+		};
 	}
 
 	_inherits(Course, Component);
@@ -79,26 +84,110 @@ var Course = (function (Component) {
 		},
 		closeModal: {
 			value: function closeModal() {
-				this.setState({ showModal: false });
+				this.setState({
+					showModal: false,
+					showLogin: false
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		showLogin: {
+			value: function showLogin() {
+				console.log("Show Login");
+				this.setState({ showLogin: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		updateLogin: {
+			value: function updateLogin(event) {
+				event.preventDefault();
+
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				updatedUser[event.target.id] = event.target.value;
+				store.dispatch(actions.updateCurrentUser(updatedUser));
+			},
+			writable: true,
+			configurable: true
+		},
+		login: {
+			value: function login(event) {
+				event.preventDefault();
+				console.log("LOGIN: " + JSON.stringify(this.props.currentUser));
+				this.setState({
+					showModal: false,
+					showLogin: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/account/login", this.props.currentUser, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					store.dispatch(actions.currentUserRecieved(response.profile));
+				});
 			},
 			writable: true,
 			configurable: true
 		},
 		render: {
 			value: function render() {
+				var detailBox = null;
+				if (this.props.course.type != "online") {
+					detailBox = React.createElement(
+						"div",
+						{ className: "col_half panel panel-default col_last" },
+						React.createElement(
+							"div",
+							{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
+							"Details"
+						),
+						React.createElement(
+							"div",
+							{ className: "panel-body" },
+							this.props.course.dates,
+							React.createElement("br", null),
+							this.props.course.schedule,
+							React.createElement("br", null),
+							"Tuition: $",
+							this.props.course.tuition,
+							React.createElement("br", null),
+							"Depost: $",
+							this.props.course.deposit,
+							React.createElement("hr", null),
+							React.createElement(
+								"a",
+								{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
+								"Apply"
+							),
+							React.createElement(
+								"a",
+								{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+								"Request Syllabus"
+							)
+						)
+					);
+				}
+
+
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.accountType;
+				var _showLogin = this.showLogin;
 				var units = this.props.course.units.map(function (unit, i) {
-					return React.createElement(CourseSection, { key: unit.index, unit: unit, course: _course, accountType: _accountType });
+					return React.createElement(CourseSection, { key: unit.index, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
 
 				var questions = null;
-				if (this.props.slug == "ios-high-school-course" || this.props.slug == "web-high-school-course") {
-					// console.log('IOS HIGH SCHOOL COURSE');
-					questions = this.props.faq.highschool;
-				} else {
-					questions = this.props.faq.general;
-				}
+				if (this.props.slug == "ios-high-school-course" || this.props.slug == "web-high-school-course") questions = this.props.faq.highschool;else questions = this.props.faq.general;
+
 
 				var faq = questions.map(function (qa, i) {
 					return React.createElement(
@@ -179,43 +268,11 @@ var Course = (function (Component) {
 														this.props.course.description
 													)
 												),
-												React.createElement(
-													"div",
-													{ className: "col_half panel panel-default col_last" },
-													React.createElement(
-														"div",
-														{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
-														"Details"
-													),
-													React.createElement(
-														"div",
-														{ className: "panel-body" },
-														this.props.course.dates,
-														React.createElement("br", null),
-														this.props.course.schedule,
-														React.createElement("br", null),
-														"Tuition: $",
-														this.props.course.tuition,
-														React.createElement("br", null),
-														"Depost: $",
-														this.props.course.deposit,
-														React.createElement("hr", null),
-														React.createElement(
-															"a",
-															{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
-															"Apply"
-														),
-														React.createElement(
-															"a",
-															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-															"Request Syllabus"
-														)
-													)
-												)
+												detailBox
 											)
 										),
 										units,
-										React.createElement(
+										this.props.course.type == "online" ? null : React.createElement(
 											"div",
 											{ className: "entry clearfix" },
 											React.createElement(
@@ -450,6 +507,36 @@ var Course = (function (Component) {
 									{ className: "col_full nobottommargin" },
 									faq
 								)
+							)
+						)
+					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showLogin, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h2",
+								null,
+								"Login"
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.password, className: "form-control", type: "password", id: "password", placeholder: "Password" }),
+							React.createElement("br", null)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ onClick: this.login, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Log In"
 							)
 						)
 					),
