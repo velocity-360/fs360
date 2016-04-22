@@ -15,6 +15,10 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var TextUtils = _interopRequire(require("../utils/TextUtils"));
+
+var DateUtils = _interopRequire(require("../utils/DateUtils"));
+
 var Post = (function (Component) {
 	function Post(props, context) {
 		_classCallCheck(this, Post);
@@ -27,13 +31,28 @@ var Post = (function (Component) {
 	_prototypeProperties(Post, null, {
 		render: {
 			value: function render() {
+				// var now = new Date();
+				// var timestamp = new Date(this.props.post.timestamp);
+				// var diff = now-timestamp;
+
+				// var date = null;
+				// if (diff > 24*60*1000) {
+				//     date = <Time value={timestamp} format="MMM DD, YYYY" /> ;
+				// }
+				// else {
+				//     date = <Time value={timestamp} titleFormat="YYYY/MM/DD HH:mm" relative />;
+				// }
+
+				var timestamp = new Date(this.props.post.timestamp);
+				var date = DateUtils.formattedDate(timestamp);
+
 				return React.createElement(
 					"div",
 					{ className: "entry clearfix" },
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { style: { border: "1px solid #ddd" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.post.image + "?crop=260", alt: "FullStack 360" })
+						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.post.image + "?crop=260", alt: "FullStack 360" })
 					),
 					React.createElement(
 						"div",
@@ -46,7 +65,7 @@ var Post = (function (Component) {
 								null,
 								React.createElement(
 									"a",
-									{ href: "blog-single.html" },
+									{ href: "/post/" + this.props.post.id },
 									this.props.post.title
 								)
 							)
@@ -58,7 +77,8 @@ var Post = (function (Component) {
 								"li",
 								null,
 								React.createElement("i", { className: "icon-calendar3" }),
-								" 10th February 2014"
+								" ",
+								date
 							),
 							React.createElement(
 								"li",
@@ -92,8 +112,8 @@ var Post = (function (Component) {
 								{ className: "panel panel-default" },
 								React.createElement(
 									"div",
-									{ className: "panel-body" },
-									this.props.post.text
+									{ style: { padding: 16 }, className: "panel-body" },
+									TextUtils.truncateText(this.props.post.text, 260)
 								)
 							)
 						)
