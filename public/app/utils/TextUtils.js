@@ -5,6 +5,13 @@ export default {
 			return str
 
 		return str.substring(0, limit)+'...'
+	},
+
+	convertToHtml: function(str){
+		var find = '\n'
+		var re = new RegExp(find, 'g')
+        var html = str.replace(re, '<br />')
+        return html
 	}
 
 }

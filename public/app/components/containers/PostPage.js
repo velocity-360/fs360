@@ -6,6 +6,8 @@ import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
 import api from '../../api/api'
+import DateUtils from '../../utils/DateUtils'
+import TextUtils from '../../utils/TextUtils'
 
 
 class PostPage extends Component {
@@ -35,9 +37,6 @@ class PostPage extends Component {
 	}
 
 	render(){
-		var find = '\n';
-		var re = new RegExp(find, 'g');
-        var postHTML = this.props.post.text.replace(re, '<br />');
 
 		return (
 			<div style={{background:'#f5f5f5'}}>
@@ -55,14 +54,16 @@ class PostPage extends Component {
 								</div>
 
 								<div className="entry-c">
-									<ul className="entry-meta clearfix">
-										<li><a href="#"><i className="icon-user"></i> {this.props.post.profile.name}</a></li>
-										<li><a href="blog-single.html#comments"><i className="icon-comments"></i> {this.props.post.numReplies} comments</a></li>
-									</ul>
-									<br />
 									<div className="entry-content">
-										<div className="panel panel-default">
-											<div dangerouslySetInnerHTML={{__html: postHTML}} style={{padding: 16}} className="panel-body">
+										<div className="panel panel-default" style={{background:'#f1f9f5'}}>
+
+											<ul className="entry-meta clearfix" style={{paddingLeft:24, paddingTop:10, paddingBottom:16, borderBottom:'1px solid #eee'}}>
+												<li><i className="icon-calendar3"></i> { DateUtils.formattedDate(this.props.post.timestamp) }</li>
+												<li><a href="#"><i className="icon-user"></i> {this.props.post.profile.name}</a></li>
+												<li><i className="icon-comments"></i> {this.props.post.numReplies} comments</li>
+											</ul>
+
+											<div style={{background:'#fff', padding: 24}} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.post.text) }} className="panel-body">
 											</div>
 										</div>
 									</div>

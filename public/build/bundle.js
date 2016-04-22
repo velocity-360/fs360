@@ -44391,6 +44391,13 @@
 			if (str.length < limit) return str;
 	
 			return str.substring(0, limit) + '...';
+		},
+	
+		convertToHtml: function convertToHtml(str) {
+			var find = '\n';
+			var re = new RegExp(find, 'g');
+			var html = str.replace(re, '<br />');
+			return html;
 		}
 	
 	};
@@ -61464,6 +61471,14 @@
 	
 	var _api2 = _interopRequireDefault(_api);
 	
+	var _DateUtils = __webpack_require__(575);
+	
+	var _DateUtils2 = _interopRequireDefault(_DateUtils);
+	
+	var _TextUtils = __webpack_require__(461);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61506,9 +61521,6 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var find = '\n';
-				var re = new RegExp(find, 'g');
-				var postHTML = this.props.post.text.replace(re, '<br />');
 	
 				return _react2.default.createElement(
 					'div',
@@ -61541,40 +61553,42 @@
 										'div',
 										{ className: 'entry-c' },
 										_react2.default.createElement(
-											'ul',
-											{ className: 'entry-meta clearfix' },
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#' },
-													_react2.default.createElement('i', { className: 'icon-user' }),
-													' ',
-													this.props.post.profile.name
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: 'blog-single.html#comments' },
-													_react2.default.createElement('i', { className: 'icon-comments' }),
-													' ',
-													this.props.post.numReplies,
-													' comments'
-												)
-											)
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
 											'div',
 											{ className: 'entry-content' },
 											_react2.default.createElement(
 												'div',
-												{ className: 'panel panel-default' },
-												_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: postHTML }, style: { padding: 16 }, className: 'panel-body' })
+												{ className: 'panel panel-default', style: { background: '#f1f9f5' } },
+												_react2.default.createElement(
+													'ul',
+													{ className: 'entry-meta clearfix', style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: '1px solid #eee' } },
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement('i', { className: 'icon-calendar3' }),
+														' ',
+														_DateUtils2.default.formattedDate(this.props.post.timestamp)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: '#' },
+															_react2.default.createElement('i', { className: 'icon-user' }),
+															' ',
+															this.props.post.profile.name
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement('i', { className: 'icon-comments' }),
+														' ',
+														this.props.post.numReplies,
+														' comments'
+													)
+												),
+												_react2.default.createElement('div', { style: { background: '#fff', padding: 24 }, dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.post.text) }, className: 'panel-body' })
 											)
 										)
 									)

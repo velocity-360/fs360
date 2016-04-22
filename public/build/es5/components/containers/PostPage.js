@@ -28,6 +28,10 @@ var actions = _interopRequire(require("../../actions/actions"));
 var connect = require("react-redux").connect;
 var api = _interopRequire(require("../../api/api"));
 
+var DateUtils = _interopRequire(require("../../utils/DateUtils"));
+
+var TextUtils = _interopRequire(require("../../utils/TextUtils"));
+
 var PostPage = (function (Component) {
 	function PostPage(props, context) {
 		_classCallCheck(this, PostPage);
@@ -63,10 +67,6 @@ var PostPage = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var find = "\n";
-				var re = new RegExp(find, "g");
-				var postHTML = this.props.post.text.replace(re, "<br />");
-
 				return React.createElement(
 					"div",
 					{ style: { background: "#f5f5f5" } },
@@ -98,40 +98,42 @@ var PostPage = (function (Component) {
 										"div",
 										{ className: "entry-c" },
 										React.createElement(
-											"ul",
-											{ className: "entry-meta clearfix" },
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "#" },
-													React.createElement("i", { className: "icon-user" }),
-													" ",
-													this.props.post.profile.name
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "blog-single.html#comments" },
-													React.createElement("i", { className: "icon-comments" }),
-													" ",
-													this.props.post.numReplies,
-													" comments"
-												)
-											)
-										),
-										React.createElement("br", null),
-										React.createElement(
 											"div",
 											{ className: "entry-content" },
 											React.createElement(
 												"div",
-												{ className: "panel panel-default" },
-												React.createElement("div", { dangerouslySetInnerHTML: { __html: postHTML }, style: { padding: 16 }, className: "panel-body" })
+												{ className: "panel panel-default", style: { background: "#f1f9f5" } },
+												React.createElement(
+													"ul",
+													{ className: "entry-meta clearfix", style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: "1px solid #eee" } },
+													React.createElement(
+														"li",
+														null,
+														React.createElement("i", { className: "icon-calendar3" }),
+														" ",
+														DateUtils.formattedDate(this.props.post.timestamp)
+													),
+													React.createElement(
+														"li",
+														null,
+														React.createElement(
+															"a",
+															{ href: "#" },
+															React.createElement("i", { className: "icon-user" }),
+															" ",
+															this.props.post.profile.name
+														)
+													),
+													React.createElement(
+														"li",
+														null,
+														React.createElement("i", { className: "icon-comments" }),
+														" ",
+														this.props.post.numReplies,
+														" comments"
+													)
+												),
+												React.createElement("div", { style: { background: "#fff", padding: 24 }, dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(this.props.post.text) }, className: "panel-body" })
 											)
 										)
 									)
