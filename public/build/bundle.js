@@ -41253,7 +41253,6 @@
 						return;
 					}
 	
-					//			console.log('TEST 2: '+JSON.stringify(response))
 					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
 				});
 			}
@@ -41334,12 +41333,12 @@
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-dark.png' },
-									_react2.default.createElement('img', { src: '/images/logo-dark.png', alt: 'Canvas Logo' })
+									_react2.default.createElement('img', { src: '/images/logo-dark.png', alt: 'FullStack 360' })
 								),
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-dark@2x.png' },
-									_react2.default.createElement('img', { src: '/images/logo-dark@2x.png', alt: 'Canvas Logo' })
+									_react2.default.createElement('img', { src: '/images/logo-dark@2x.png', alt: 'FullStack 360' })
 								)
 							),
 							_react2.default.createElement(
@@ -41414,6 +41413,19 @@
 														'Bootcamp'
 													)
 												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '/feed', 'data-href': '#' },
+											_react2.default.createElement(
+												'div',
+												null,
+												'Blog'
 											)
 										)
 									),
@@ -44159,12 +44171,12 @@
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-side-dark.png' },
-									_react2.default.createElement('img', { src: '/images/logo-side.png', alt: 'Canvas Logo' })
+									_react2.default.createElement('img', { src: '/images/logo-side.png', alt: 'FullStack 360' })
 								),
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-side-dark@2x.png' },
-									_react2.default.createElement('img', { src: '/images/logo-side@2x.png', alt: 'Canvas Logo' })
+									_react2.default.createElement('img', { src: '/images/logo-side@2x.png', alt: 'FullStack 360' })
 								)
 							),
 							_react2.default.createElement(
@@ -44196,6 +44208,19 @@
 												'div',
 												null,
 												'Videos'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '/feed' },
+											_react2.default.createElement(
+												'div',
+												null,
+												'Blog'
 											)
 										)
 									),

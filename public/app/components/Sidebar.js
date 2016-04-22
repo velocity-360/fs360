@@ -31,10 +31,10 @@ class Sidebar extends Component {
 	                    <div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
 	                    <div id="logo" className="nobottomborder">
 	                        <a href="/" className="standard-logo" data-dark-logo="/images/logo-side-dark.png">
-	                        	<img src="/images/logo-side.png" alt="Canvas Logo" />
+	                        	<img src="/images/logo-side.png" alt="FullStack 360" />
 	                        </a>
 	                        <a href="/" className="retina-logo" data-dark-logo="/images/logo-side-dark@2x.png">
-	                        	<img src="/images/logo-side@2x.png" alt="Canvas Logo" />
+	                        	<img src="/images/logo-side@2x.png" alt="FullStack 360" />
 	                        </a>
 	                    </div>
 
@@ -46,6 +46,9 @@ class Sidebar extends Component {
 	                            <li>
 	                                <a href="/videos"><div>Videos</div></a>
 	                            </li>
+	                            <li>
+	                                <a href="/feed"><div>Blog</div></a>
+	                            </li>
 	                            
 	                            <li><a href="#"><div>Courses</div></a>
 	                                <ul>
@@ -53,6 +56,7 @@ class Sidebar extends Component {
 	                                    <li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 	                                </ul>
 	                            </li>
+
 	                        </ul>
 	                    </nav>
 

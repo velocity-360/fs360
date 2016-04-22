@@ -68,12 +68,12 @@ var Sidebar = (function (Component) {
 								React.createElement(
 									"a",
 									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-side-dark.png" },
-									React.createElement("img", { src: "/images/logo-side.png", alt: "Canvas Logo" })
+									React.createElement("img", { src: "/images/logo-side.png", alt: "FullStack 360" })
 								),
 								React.createElement(
 									"a",
 									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-side-dark@2x.png" },
-									React.createElement("img", { src: "/images/logo-side@2x.png", alt: "Canvas Logo" })
+									React.createElement("img", { src: "/images/logo-side@2x.png", alt: "FullStack 360" })
 								)
 							),
 							React.createElement(
@@ -105,6 +105,19 @@ var Sidebar = (function (Component) {
 												"div",
 												null,
 												"Videos"
+											)
+										)
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement(
+											"a",
+											{ href: "/feed" },
+											React.createElement(
+												"div",
+												null,
+												"Blog"
 											)
 										)
 									),

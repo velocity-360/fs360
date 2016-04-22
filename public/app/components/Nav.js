@@ -25,7 +25,6 @@ class Nav extends Component {
 				return
 			}
 
-//			console.log('TEST 2: '+JSON.stringify(response))
 			store.dispatch(actions.currentUserRecieved(response.profile));
 		});
 	}
@@ -74,10 +73,10 @@ class Nav extends Component {
 
 						<div id="logo">
 							<a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png">
-								<img src="/images/logo-dark.png" alt="Canvas Logo" />
+								<img src="/images/logo-dark.png" alt="FullStack 360" />
 							</a>
 							<a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png">
-								<img src="/images/logo-dark@2x.png" alt="Canvas Logo" />
+								<img src="/images/logo-dark@2x.png" alt="FullStack 360" />
 							</a>
 						</div>
 
@@ -91,6 +90,7 @@ class Nav extends Component {
 										<li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 									</ul>
 								</li>
+								<li><a href="/feed" data-href="#"><div>Blog</div></a></li>
 								{login}
 							</ul>
 						</nav>

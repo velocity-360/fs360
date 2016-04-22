@@ -51,7 +51,6 @@ var Nav = (function (Component) {
 						return;
 					}
 
-					//			console.log('TEST 2: '+JSON.stringify(response))
 					store.dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
@@ -141,12 +140,12 @@ var Nav = (function (Component) {
 								React.createElement(
 									"a",
 									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
-									React.createElement("img", { src: "/images/logo-dark.png", alt: "Canvas Logo" })
+									React.createElement("img", { src: "/images/logo-dark.png", alt: "FullStack 360" })
 								),
 								React.createElement(
 									"a",
 									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
-									React.createElement("img", { src: "/images/logo-dark@2x.png", alt: "Canvas Logo" })
+									React.createElement("img", { src: "/images/logo-dark@2x.png", alt: "FullStack 360" })
 								)
 							),
 							React.createElement(
@@ -221,6 +220,19 @@ var Nav = (function (Component) {
 														"Bootcamp"
 													)
 												)
+											)
+										)
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement(
+											"a",
+											{ href: "/feed", "data-href": "#" },
+											React.createElement(
+												"div",
+												null,
+												"Blog"
 											)
 										)
 									),
