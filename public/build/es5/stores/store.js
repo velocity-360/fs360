@@ -17,12 +17,15 @@ var profileReducer = _interopRequire(require("../reducers/profile"));
 
 var courseReducer = _interopRequire(require("../reducers/course"));
 
+var postReducer = _interopRequire(require("../reducers/post"));
+
 var staticReducer = _interopRequire(require("../reducers/static"));
 
 // Combine Reducers
 var reducers = combineReducers({
     profileReducer: profileReducer,
     courseReducer: courseReducer,
+    postReducer: postReducer,
     staticReducer: staticReducer });
 
 // Create Store

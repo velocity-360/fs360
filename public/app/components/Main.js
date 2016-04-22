@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Home from './containers/Home'
 import Courses from './containers/Courses'
 import Events from './containers/Events'
+import Feed from './containers/Feed'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
 import Application from './containers/Application'
@@ -38,6 +39,9 @@ class Main extends Component {
 
 			case 'events':
 				return page = <Events />
+
+			case 'feed':
+				return page = <Feed />
 
 			default:
 				return page = null

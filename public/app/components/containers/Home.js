@@ -484,21 +484,21 @@ class Home extends Component {
 										<tr>
 										  <td><span>iOS + Node</span></td>
 										  <td>May 2 - Oct 28</td>
-										  <td>Closed</td>
+										  <td>Closed (Accepting Waitlist)</td>
 										</tr>
 										<tr>
 										  <td><span>Full Stack Web</span></td>
 										  <td>May 2 - Oct 28</td>
-										  <td>Closed</td>
+										  <td>Closed (Accepting Waitlist)</td>
 										</tr>
 										<tr>
 										  <td><span>iOS + Node</span></td>
-										  <td>June 1 - Nov 28</td>
+										  <td>June 6 - Dec 2, Mon/Wed/Sat</td>
 										  <td>Accepting Applications</td>
 										</tr>
 										<tr>
-										  <td><span>Full Stack Web</span></td>
-										  <td>June 1 - Nov 28</td>
+										  <td><span>React + Node</span></td>
+										  <td>June 7 - Dec 2, Tue/Thu/Sat</td>
 										  <td>Accepting Applications</td>
 										</tr>
 									  </tbody>

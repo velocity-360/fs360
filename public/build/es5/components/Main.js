@@ -22,6 +22,8 @@ var Courses = _interopRequire(require("./containers/Courses"));
 
 var Events = _interopRequire(require("./containers/Events"));
 
+var Feed = _interopRequire(require("./containers/Feed"));
+
 var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
@@ -62,6 +64,9 @@ var Main = (function (Component) {
 
 					case "events":
 						return page = React.createElement(Events, null);
+
+					case "feed":
+						return page = React.createElement(Feed, null);
 
 					default:
 						return page = null;

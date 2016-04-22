@@ -747,7 +747,7 @@ var Home = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"Closed"
+														"Closed (Accepting Waitlist)"
 													)
 												),
 												React.createElement(
@@ -770,7 +770,7 @@ var Home = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"Closed"
+														"Closed (Accepting Waitlist)"
 													)
 												),
 												React.createElement(
@@ -788,7 +788,7 @@ var Home = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"June 1 - Nov 28"
+														"June 6 - Dec 2, Mon/Wed/Sat"
 													),
 													React.createElement(
 														"td",
@@ -805,13 +805,13 @@ var Home = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"Full Stack Web"
+															"React + Node"
 														)
 													),
 													React.createElement(
 														"td",
 														null,
-														"June 1 - Nov 28"
+														"June 7 - Dec 2, Tue/Thu/Sat"
 													),
 													React.createElement(
 														"td",
