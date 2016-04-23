@@ -59,7 +59,7 @@ module.exports = {
 		
 		delete params['limit'];
 		
-		Course.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, courses) {
+		Course.find(params, null, {limit:limit, sort:{priority: -1}}, function(err, courses) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null);
 				return;
