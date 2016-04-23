@@ -11,12 +11,14 @@ var profileController = require('../controllers/ProfileController');
 var subscriberController = require('../controllers/SubscriberController');
 var postController = require('../controllers/PostController');
 var commentController = require('../controllers/CommentController');
+var eventController = require('../controllers/EventController');
 var controllers = {
 	'course': courseController,
 	'profile': profileController,
 	'subscriber': subscriberController,
 	'post': postController,
-	'comment': commentController
+	'comment': commentController,
+	'event': eventController
 };
 
 var fetchFile = function(path){
@@ -282,7 +284,31 @@ router.put('/:resource/:id', function(req, res, next) {
 		data[resource] = result;
 		res.json(data);
 	});
+});
+
+router.delete('/:resource/:id', function(req, res, next) {
+	var resource = req.params.resource;
+	var resourceId = req.params.id;
+
+	var controller = controllers[resource];
+	if (controller == null){
+		res.json({confirmation:'fail', message:'Invalid Resource'});
+		return;
+	}
+
+	controller.delete(resourceId, function(err, result){
+		if (err){
+			res.json({confirmation:'fail', message:err.message});
+			return;
+		}
+
+		res.json({
+			confirmation:'success',
+			message:'Resource Deleted'
+		});
+	});
 
 });
+
 
 module.exports = router;

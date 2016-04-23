@@ -41,56 +41,46 @@
         
     </head>
     
-    <body ng-controller="CoursesController" ng-init="init()">
+    <body ng-controller="EventsController" ng-init="init()">
         {{>login}}
         {{>nav}}
         
         
         <div class="main-container">
         
-          <section class="page-title page-title-4 image-bg overlay parallax">
-                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); top: -100px; background: url('/admin/img/cover12.jpg');">
-                    <img alt="Background Image" class="background-image" src="/admin/img/cover12.jpg" style="display: none;">
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 class="uppercase mb0">Courses</h3>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <ol class="breadcrumb breadcrumb-2">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/">Forum</a></li>
-                                <li class="active">Post</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <!--end of row-->
-                </div>
-                <!--end of container-->
-            </section>
-                    
-            
             <section style="border-top:1px solid #ddd">
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-md-6 mb-xs-24">
-                            <h4>Courses</h4>
+                        <div class="col-md-2 mb-xs-24">
+                            <h4>Events</h4>
                             <ul>
-                                <li ng-repeat="course in courses track by $index">
-                                    <a href="/admin/edit-course/<% course.id %>"><% course.title %></a>
+                                <li ng-repeat="event in events track by $index">
+                                    <a ng-click="selectEvent(event)" href=""><% event.title %></a>
                                 </li>
                             </ul>
                             
                         </div>
 
+                        <div class="col-md-10 mb-xs-24">
+                            <h4>Edit Event / Create Event</h4>
+                            <input ng-model="event.title" class="form-control" type="text" placeholder="Title" />
+                            <input ng-model="event.date" class="form-control" type="text" placeholder="Date" />
+                            <input ng-model="event.time" class="form-control" type="text" placeholder="Time" />
+                            <input ng-model="event.address" class="form-control" type="text" placeholder="Address" />
+                            <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777;margin-bottom:24px" ng-file-drop="uploadImage($files)">
+                                <img style="width:72px;border:1px solid #ddd" ng-show="event.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% event.image %>?crop=360" />
+                                Drag &amp; drop image
+                            </div>
+
+                            <textarea ng-model="event.description" class="form-control" type="text" placeholder="Description" style="height:220px"></textarea>
+                            <a class="btn btn-rounded btn-lg" ng-click="updateEvent()" href="">Submit</a>
+                            <a ng-show="event.id != null" class="btn btn-rounded btn-lg" ng-click="removeEvent()" href="">Delete Event</a>
+                        </div>
 
                         
                     </div>
-                    <!--end of container row-->
                 </div>
-                <!--end of container-->
             </section>
             
             {{>footer}}

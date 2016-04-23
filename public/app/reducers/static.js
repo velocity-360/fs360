@@ -13,8 +13,7 @@ var initialState = {
 		'girl.jpg'
 	],
 	events:[
-		{id:0, 'subject':'Node + iOS Workshop', 'fee':'Free', 'date':'April 18, 2016', 'time':'7:00pm', 'description':'Watch how the full stack comes together in this 2-hour demo. We will build and deploy a simple Node JS backend. Then we will create an iPhone app that queries the API and renders data in a table. This is a true full stack demo which involves several technologies.' , 'image':'ios-260.jpg', button:'Attend'},
-		{id:1, 'subject':'Node & React Demo', 'fee':'Free', 'date':'April 26, 2016', 'time':'7:00pm', 'description':'React is a cutting-edge view library which is revolutionizing the way developers build front end components. Developed by Facebook, React is quickly establishing itself as a major player in the front end ecosystem along side Angular and Backbone. See how React works in this demo where we will create a simple website using React components.' , 'image':'node.png', button:'Attend'},
+		{id:0, 'subject':'Node & React Demo', 'fee':'Free', 'date':'April 26, 2016', 'time':'7:00pm', 'description':'React is a cutting-edge view library which is revolutionizing the way developers build front end components. Developed by Facebook, React is quickly establishing itself as a major player in the front end ecosystem along side Angular and Backbone. See how React works in this demo where we will create a simple website using React components.' , 'image':'node.png', button:'Attend'},
 	],
 	faq: {
 		highschool:[
