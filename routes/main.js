@@ -64,6 +64,7 @@ router.get('/:page', function(req, res, next) {
 
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page;
+	var slug = req.params.slug;
 	if (page == 'api' || page == 'admin' || page == 'account'){
 		next();
 		return;
@@ -71,13 +72,13 @@ router.get('/:page/:slug', function(req, res, next) {
 
 	var controller = controllers[page];
 	if (controller == null){
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:req.params.slug}));
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug}));
 	    res.render(page, {react: html});
 		return;
 	}
 
 	var fbTags = null;
-	controller.get({slug: req.params.slug}, function(err, results){
+	controller.get({slug: slug}, function(err, results){
 		if (err){
 
 		}
@@ -94,7 +95,7 @@ router.get('/:page/:slug', function(req, res, next) {
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
 	    res.render(page, {react:html, tags:fbTags});
 		return;
 	});
