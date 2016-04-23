@@ -586,7 +586,7 @@ class Home extends Component {
 			        </Modal.Header>
 			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
 			        	<div style={{textAlign:'center'}}>
-				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24, padding:12}} src={'/images/'+this.state.selectedEvent.image} />
+				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24, padding:12}} src={'https://media-service.appspot.com/site/images/'+this.state.selectedEvent.image+'?crop=360'} />
 			        	</div>
 			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
 			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />

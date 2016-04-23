@@ -22758,7 +22758,7 @@
 							_react2.default.createElement(
 								'div',
 								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24, padding: 12 }, src: '/images/' + this.state.selectedEvent.image })
+								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24, padding: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.state.selectedEvent.image + '?crop=360' })
 							),
 							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'firstName', className: 'form-control', type: 'text', placeholder: 'First Name' }),
 							_react2.default.createElement('br', null),
@@ -45525,7 +45525,7 @@
 							_react2.default.createElement(
 								'div',
 								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24, padding: 12 }, src: '/images/' + this.state.selectedEvent.image })
+								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24, padding: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.state.selectedEvent.image + '?crop=360' })
 							),
 							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'firstName', className: 'form-control', type: 'text', placeholder: 'First Name' }),
 							_react2.default.createElement('br', null),

@@ -1067,7 +1067,7 @@ var Home = (function (Component) {
 							React.createElement(
 								"div",
 								{ style: { textAlign: "center" } },
-								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24, padding: 12 }, src: "/images/" + this.state.selectedEvent.image })
+								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24, padding: 12 }, src: "https://media-service.appspot.com/site/images/" + this.state.selectedEvent.image + "?crop=360" })
 							),
 							React.createElement("input", { onChange: this.updateUserRegistration, id: "firstName", className: "form-control", type: "text", placeholder: "First Name" }),
 							React.createElement("br", null),
