@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var ProfileSchema = new mongoose.Schema({
 	firstName: {type:String, trim:true, lowercase:true, default:''},
 	lastName: {type:String, trim:true, lowercase:true, default:''},
+	promoCode: {type:String, trim:true, lowercase:true, default:''},
 	email: {type:String, trim:true, lowercase:true, default:''},
 	accountType: {type:String, trim:true, lowercase:true, default:'basic'}, // basic, premium
 	city: {type:String, trim:true, lowercase:true, default:''},
@@ -24,6 +25,7 @@ ProfileSchema.methods.summary = function() {
 	var summary = {
 		'firstName':this.firstName,
 		'lastName':this.lastName,
+		'promoCode':this.promoCode,
 		'githubId':this.githubId,
 		'accountType':this.accountType,
 		'stripeId':this.stripeId,

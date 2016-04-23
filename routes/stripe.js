@@ -3,6 +3,7 @@ var router = express.Router();
 var Profile = require('../models/Profile');
 var Course = require('../models/Course');
 var Promise = require('bluebird');
+var EmailManager = require('../managers/EmailManager');
 
 
 function createProfile(profileInfo){
@@ -228,20 +229,23 @@ router.post('/:resource', function(req, res, next) {
 				}
 				
 				profile['accountType'] = 'premium';
-				profile['monthlyRate'] = 35;
+				profile['monthlyRate'] = 19.99;
 				var promoCode = req.body.promoCode;
 
 				if (promoCode != null){ // check promo code
+					profile['promoCode'] = promoCode;
 					if (promoCode == 'nyu'){
-						profile['monthlyRate'] = 25;
+						profile['monthlyRate'] = 19.99;
 					}
 				}
 
 				res.json({'confirmation':'success', 'profile':profile.summary()});
 				
 				var card = customer.sources.data[0];
-				profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand};
 				profile['stripeId'] = customer.id;
+				profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand};
+
+				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'New Premium Subscriber', JSON.stringify(profile.summary()));
 				profile.save();
 				return;
 			});
