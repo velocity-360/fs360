@@ -64,12 +64,12 @@ router.get('/:page', function(req, res, next) {
 
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page;
-	var slug = req.params.slug;
 	if (page == 'api' || page == 'admin' || page == 'account'){
 		next();
 		return;
 	}
 
+	var slug = req.params.slug;
 	var controller = controllers[page];
 	if (controller == null){
 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug}));
@@ -91,7 +91,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		fbTags = {
 			title: entity.title,
 			description: desc,
-			url: 'http://www.fullstack360.com/'+page,
+			url: 'http://www.fullstack360.com/'+page+'/'+slug,
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
@@ -100,8 +100,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		return;
 	});
 
-    // var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:req.params.slug}));
-    // res.render(page, {react: html});
 });
 
 module.exports = router;
