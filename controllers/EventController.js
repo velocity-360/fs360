@@ -79,6 +79,7 @@ module.exports = {
 				slug += '-';
 		}
 
+		slug = slug.replace('?', '');
 		eventInfo['slug'] = slug;
 		Event.create(eventInfo, function(err, event){
 			if (err){

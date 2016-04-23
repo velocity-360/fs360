@@ -10,11 +10,12 @@ var EventSchema = new mongoose.Schema({
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''},
+	priority: {type:Number, default:0},
 	timestamp: {type:Date, default:Date.now},
 });
 
 
-EventSchema.methods.summary = function() {
+EventSchema.methods.summary = function(type) {
 	var summary = {
 		'title':this.title,
 		'date':this.date,
@@ -24,6 +25,7 @@ EventSchema.methods.summary = function() {
 		'image':this.image,
 		'slug':this.slug,
 		'link':this.link,
+		'priority':this.priority,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
@@ -31,7 +33,6 @@ EventSchema.methods.summary = function() {
 };
 
 
-
-
-
 module.exports = mongoose.model('EventSchema', EventSchema);
+
+

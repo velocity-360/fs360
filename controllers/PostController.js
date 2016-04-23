@@ -25,7 +25,6 @@ function randomString(limit){
 }
 
 module.exports = {
-
 	pluralKey: function(){
 		return 'posts';
 	},
@@ -79,8 +78,8 @@ module.exports = {
 				slug += '-';
 		}
 
+		slug = slug.replace('?', '');
 		postInfo['slug'] = slug;
-
 		Post.create(postInfo, function(err, post){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
