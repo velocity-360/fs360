@@ -107,11 +107,7 @@ export default {
 
                 if (completion != null)
 	                completion()
-                
 
-//				FullStackServerActionCreator.userLoggedIn(response.profile);
-//                document.getElementById('refreshProfileButton').click();
-//				window.location.href = '/account';
             }
         });
   

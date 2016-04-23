@@ -100,7 +100,6 @@ module.exports = {
 				console.log("UPLOAD COMPLETE: ");
 
 				if (completion != null) completion();
-
 			}
 		});
 
@@ -112,6 +111,3 @@ module.exports = {
 
 
 };
-//				FullStackServerActionCreator.userLoggedIn(response.profile);
-//                document.getElementById('refreshProfileButton').click();
-//				window.location.href = '/account';
