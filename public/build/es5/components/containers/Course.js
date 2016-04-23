@@ -45,6 +45,7 @@ var Course = (function (Component) {
 		this.showLogin = this.showLogin.bind(this);
 		this.login = this.login.bind(this);
 		this.updateLogin = this.updateLogin.bind(this);
+		this.openStripeModal = this.openStripeModal.bind(this);
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -62,11 +63,44 @@ var Course = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
+				var _this = this;
 				api.handleGet("/api/course?slug=" + this.props.slug, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
 					}
+
+					var course = response.courses[0];
+					if (course.type == "online") {
+						// for videos, show subscription prompt:
+						var handler = StripeCheckout.configure({
+							key: "pk_live_yKFwKJsJXwOxC0yZob29rIN5",
+							image: "/images/logo_round_blue_260.png",
+							locale: "auto",
+							panelLabel: "Subscribe: $19.99/month",
+							token: function (token) {
+								// You can access the token ID with `token.id`
+
+								//		        	FullStackActionCreator.submitStripeToken(token);
+								_this.setState({ showLoader: true });
+								api.submitStripeToken(token, function () {
+									api.handleGet("/account/currentuser", {}, function (err, response) {
+										_this.setState({ showLoader: false });
+										if (err) {
+											return;
+										}
+
+										store.dispatch(actions.currentUserRecieved(response.profile));
+									});
+								});
+							}
+						});
+					}
+
+					_this.setState({
+						stripeHandler: handler
+					});
+
 
 					store.dispatch(actions.coursesRecieved(response.courses));
 				});
@@ -138,6 +172,18 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		openStripeModal: {
+			value: function openStripeModal() {
+				//		event.preventDefault()
+
+				this.state.stripeHandler.open({
+					name: "FullStack 360",
+					description: "Premium Subscription"
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var detailBox = null;
@@ -181,8 +227,9 @@ var Course = (function (Component) {
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
+				var _openStripeModal = this.openStripeModal;
 				var units = this.props.course.units.map(function (unit, i) {
-					return React.createElement(CourseSection, { key: unit.index, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
+					return React.createElement(CourseSection, { key: unit.index, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
 
 				var questions = null;

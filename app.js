@@ -13,6 +13,7 @@ var main = require('./routes/main');
 var api = require('./routes/api');
 var admin = require('./routes/admin');
 var account = require('./routes/account');
+var stripe = require('./routes/stripe');
 
 // Here we find an appropriate database to connect to, defaulting to localhost if we don't find one.  
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/'+appName;
@@ -51,6 +52,7 @@ app.use('/', main);
 app.use('/api', api);
 app.use('/account', account);
 app.use('/admin', admin);
+app.use('/stripe', stripe);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

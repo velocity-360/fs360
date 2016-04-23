@@ -41653,33 +41653,33 @@
 					completion(null, image);
 				});
 			});
+		},
+	
+		submitStripeToken: function submitStripeToken(token, completion) {
+			var http = new XMLHttpRequest();
+			var url = "/stripe/card";
+			var params = "stripeToken=" + token.id;
+			http.open("POST", url, true);
+	
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+			// notice that the event handler is on xhr and not xhr.upload
+			http.addEventListener('readystatechange', function (e) {
+				if (this.readyState === 4) {
+					// the transfer has completed and the server closed the connection.
+					console.log('UPLOAD COMPLETE: ');
+	
+					if (completion != null) completion();
+	
+					//				FullStackServerActionCreator.userLoggedIn(response.profile);
+					//                document.getElementById('refreshProfileButton').click();
+					//				window.location.href = '/account';
+				}
+			});
+	
+			var response = http.send(params);
+			console.log('RESPONSE: ' + response);
 		}
-	
-		// handlePost: function(endpoint, body, completion){
-		//     fetch(endpoint, {
-		//         method: 'POST',
-		//         headers: {
-		// 	        'Accept': 'application/json',
-		// 	        'Content-Type': 'application/json'
-		//         },
-		//         body: JSON.stringify(body),
-		//     })
-		//     .then(response => response.json())
-		//     .then(function(json){
-		//     	if (completion != null){
-		//     		if (json.confirmation == 'success')
-		// 	    		completion(null, json)
-		//     		else
-		// 	    		completion({message: json.message}, null)
-		//     	}
-	
-		//     })
-		//     .catch(function(err){
-		// if (completion != null)
-		// 	completion(err, null)
-	
-		//     })
-		// }
 	
 	};
 
@@ -60648,6 +60648,7 @@
 			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
+			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showModal: false,
@@ -60662,11 +60663,45 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+	
+				var _this = this;
 				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
 					}
+	
+					var course = response.courses[0];
+					if (course.type == 'online') {
+						// for videos, show subscription prompt:
+						var handler = StripeCheckout.configure({
+							key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+							image: '/images/logo_round_blue_260.png',
+							locale: 'auto',
+							panelLabel: 'Subscribe: $19.99/month',
+							token: function token(_token) {
+								// You can access the token ID with `token.id`
+	
+								//		        	FullStackActionCreator.submitStripeToken(token);
+								_this.setState({ showLoader: true });
+								_api2.default.submitStripeToken(_token, function () {
+	
+									_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+										_this.setState({ showLoader: false });
+										if (err) {
+											return;
+										}
+	
+										_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+									});
+								});
+							}
+						});
+					}
+	
+					_this.setState({
+						stripeHandler: handler
+					});
 	
 					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
 				});
@@ -60726,6 +60761,16 @@
 				});
 			}
 		}, {
+			key: 'openStripeModal',
+			value: function openStripeModal() {
+				//		event.preventDefault()
+	
+				this.state.stripeHandler.open({
+					name: 'FullStack 360',
+					description: 'Premium Subscription'
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var detailBox = null;
@@ -60768,8 +60813,9 @@
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
+				var _openStripeModal = this.openStripeModal;
 				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
+					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
 	
 				var questions = null;
@@ -61213,7 +61259,7 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).call(this, props, context));
 	
 			_this.login = _this.login.bind(_this);
-	
+			_this.subscribe = _this.subscribe.bind(_this);
 			return _this;
 		}
 	
@@ -61224,6 +61270,12 @@
 				console.log('LOGIN');
 	
 				this.props.loginAction();
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				this.props.subscribeAction();
 			}
 		}, {
 			key: 'render',
@@ -61251,7 +61303,7 @@
 							'To view this video, please ',
 							_react2.default.createElement(
 								'a',
-								{ style: { color: 'red' }, onClick: this.subscribeAction, href: '#' },
+								{ style: { color: 'red' }, onClick: this.subscribe, href: '#' },
 								'upgrade'
 							),
 							' your account to Premium'

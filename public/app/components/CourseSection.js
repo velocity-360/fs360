@@ -5,7 +5,7 @@ class CourseSection extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.login = this.login.bind(this)
-
+		this.subscribe = this.subscribe.bind(this)
 	}
 
 	login(event){
@@ -13,6 +13,12 @@ class CourseSection extends Component {
 		console.log('LOGIN')
 
 		this.props.loginAction()
+	}
+
+	subscribe(event){
+		event.preventDefault()
+		this.props.subscribeAction()
+
 	}
 
 	render(){
@@ -25,7 +31,7 @@ class CourseSection extends Component {
 				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			}
 			else if (this.props.accountType == 'basic' || this.props.accountType == ''){
-				videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>To view this video, please <a style={{color:'red'}} onClick={ this.subscribeAction } href="#">upgrade</a> your account to Premium</div>
+				videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>To view this video, please <a style={{color:'red'}} onClick={ this.subscribe } href="#">upgrade</a> your account to Premium</div>
 			}
 			else { // not logged in
 				videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to view this video.</div>

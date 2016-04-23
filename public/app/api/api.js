@@ -90,34 +90,35 @@ export default {
 
 
 		})
+	},
 
+	submitStripeToken: function(token, completion){
+        var http = new XMLHttpRequest();
+        var url = "/stripe/card";
+        var params = "stripeToken="+token.id;
+        http.open("POST", url, true);
+        
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
+        // notice that the event handler is on xhr and not xhr.upload
+        http.addEventListener('readystatechange', function(e) {
+            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
+                console.log('UPLOAD COMPLETE: ');
+
+                if (completion != null)
+	                completion()
+                
+
+//				FullStackServerActionCreator.userLoggedIn(response.profile);
+//                document.getElementById('refreshProfileButton').click();
+//				window.location.href = '/account';
+            }
+        });
+  
+        var response = http.send(params);
+        console.log('RESPONSE: '+response);
 	}
-
-	// handlePost: function(endpoint, body, completion){
-	//     fetch(endpoint, {
-	//         method: 'POST',
-	//         headers: {
-	// 	        'Accept': 'application/json',
-	// 	        'Content-Type': 'application/json'
-	//         },
-	//         body: JSON.stringify(body),
-	//     })
-	//     .then(response => response.json())
-	//     .then(function(json){
-	//     	if (completion != null){
-	//     		if (json.confirmation == 'success')
-	// 	    		completion(null, json)
-	//     		else
-	// 	    		completion({message: json.message}, null)
-	//     	}
 	    	
-	//     })
-	//     .catch(function(err){
-	    	// if (completion != null)
-	    	// 	completion(err, null)
-	    	
-	//     })
-	// }
 
 
 

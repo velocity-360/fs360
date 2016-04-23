@@ -21,6 +21,7 @@ var CourseSection = (function (Component) {
 
 		_get(Object.getPrototypeOf(CourseSection.prototype), "constructor", this).call(this, props, context);
 		this.login = this.login.bind(this);
+		this.subscribe = this.subscribe.bind(this);
 	}
 
 	_inherits(CourseSection, Component);
@@ -32,6 +33,14 @@ var CourseSection = (function (Component) {
 				console.log("LOGIN");
 
 				this.props.loginAction();
+			},
+			writable: true,
+			configurable: true
+		},
+		subscribe: {
+			value: function subscribe(event) {
+				event.preventDefault();
+				this.props.subscribeAction();
 			},
 			writable: true,
 			configurable: true
@@ -61,7 +70,7 @@ var CourseSection = (function (Component) {
 							"To view this video, please ",
 							React.createElement(
 								"a",
-								{ style: { color: "red" }, onClick: this.subscribeAction, href: "#" },
+								{ style: { color: "red" }, onClick: this.subscribe, href: "#" },
 								"upgrade"
 							),
 							" your account to Premium"
