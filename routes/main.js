@@ -34,7 +34,6 @@ router.get('/:page', function(req, res, next) {
 		return;
 	}
 
-	var fbTags = null;
 	controller.get({}, function(err, results){
 		if (err){
 
@@ -42,10 +41,10 @@ router.get('/:page', function(req, res, next) {
 
 		var entity = results[0]
 		var desc = (entity.description == null) ? entity.text : entity.description
-		if (desc.length > 260)
-			desc = desc.substring(0, 260)+'...'
+		if (desc.length > 200)
+			desc = desc.substring(0, 200)+'...'
 		
-		fbTags = {
+		var fbTags = {
 			title: entity.title,
 			description: desc,
 			url: 'http://www.fullstack360.com/'+page,
@@ -56,10 +55,6 @@ router.get('/:page', function(req, res, next) {
 	    res.render(page, {react:html, tags:fbTags});
 		return;
 	});
-
-
-    // var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
-    // res.render(page, {react:html, tags:fbTags});
 });
 
 router.get('/:page/:slug', function(req, res, next) {
@@ -77,7 +72,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		return;
 	}
 
-	var fbTags = null;
 	controller.get({slug: slug}, function(err, results){
 		if (err){
 
@@ -85,10 +79,10 @@ router.get('/:page/:slug', function(req, res, next) {
 
 		var entity = results[0]
 		var desc = (entity.description == null) ? entity.text : entity.description
-		if (desc.length > 260)
-			desc = desc.substring(0, 260)+'...'
+		if (desc.length > 200)
+			desc = desc.substring(0, 200)+'...'
 		
-		fbTags = {
+		var fbTags = {
 			title: entity.title,
 			description: desc,
 			url: 'http://www.fullstack360.com/'+page+'/'+slug,
