@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+
+// These are the pages which have FB tags:
 var courseController = require('../controllers/CourseController');
 var postController = require('../controllers/PostController');
 var eventController = require('../controllers/EventController');
@@ -30,7 +32,7 @@ router.get('/:page', function(req, res, next) {
 	var controller = controllers[page];
 	if (controller == null){
 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
-	    res.render(page, {react:html, tags:fbTags});
+	    res.render(page, {react:html});
 		return;
 	}
 
