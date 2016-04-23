@@ -492,12 +492,12 @@ class Home extends Component {
 										  <td>Closed (Accepting Waitlist)</td>
 										</tr>
 										<tr>
-										  <td><span>iOS + Node</span></td>
+										  <td><span><a href="/course/node-react-bootcamp">iOS + Node</a></span></td>
 										  <td>June 6 - Dec 2, Mon/Wed/Sat</td>
 										  <td>Accepting Applications</td>
 										</tr>
 										<tr>
-										  <td><span>React + Node</span></td>
+										  <td><span><a href="/course/node-react-bootcamp">React + Node</a></span></td>
 										  <td>June 7 - Dec 2, Tue/Thu/Sat</td>
 										  <td>Accepting Applications</td>
 										</tr>

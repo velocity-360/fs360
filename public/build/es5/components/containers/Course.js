@@ -87,6 +87,7 @@ var Course = (function (Component) {
 									api.handleGet("/account/currentuser", {}, function (err, response) {
 										_this.setState({ showLoader: false });
 										if (err) {
+											alert(response.message);
 											return;
 										}
 
@@ -296,7 +297,7 @@ var Course = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-image" },
-												React.createElement("img", { className: "image_fade", src: "/images/" + banner, alt: "FullStack 360" })
+												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/" + banner, alt: "FullStack 360" })
 											),
 											React.createElement(
 												"div",

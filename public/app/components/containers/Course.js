@@ -55,10 +55,11 @@ class Course extends Component {
 							api.handleGet('/account/currentuser', {}, function(err, response){
 								_this.setState({showLoader: false})
 								if (err){
+									alert(response.message)
 									return
 								}
 
-								store.dispatch(actions.currentUserRecieved(response.profile));
+								store.dispatch(actions.currentUserRecieved(response.profile))
 							});
 
 						})
@@ -204,7 +205,7 @@ class Course extends Component {
 											<div className="timeline-divider"></div>
 										</div>
 										<div className="entry-image">
-											<img className="image_fade" src={'/images/'+banner} alt="FullStack 360" />
+											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src={'/images/'+banner} alt="FullStack 360" />
 										</div>
 										<div className="entry-content">
 											<div className="col_half">

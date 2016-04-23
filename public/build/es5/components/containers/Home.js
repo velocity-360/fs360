@@ -782,7 +782,11 @@ var Home = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"iOS + Node"
+															React.createElement(
+																"a",
+																{ href: "/course/node-react-bootcamp" },
+																"iOS + Node"
+															)
 														)
 													),
 													React.createElement(
@@ -805,7 +809,11 @@ var Home = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"React + Node"
+															React.createElement(
+																"a",
+																{ href: "/course/node-react-bootcamp" },
+																"React + Node"
+															)
 														)
 													),
 													React.createElement(

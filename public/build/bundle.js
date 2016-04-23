@@ -22472,7 +22472,11 @@
 														_react2.default.createElement(
 															'span',
 															null,
-															'iOS + Node'
+															_react2.default.createElement(
+																'a',
+																{ href: '/course/node-react-bootcamp' },
+																'iOS + Node'
+															)
 														)
 													),
 													_react2.default.createElement(
@@ -22495,7 +22499,11 @@
 														_react2.default.createElement(
 															'span',
 															null,
-															'React + Node'
+															_react2.default.createElement(
+																'a',
+																{ href: '/course/node-react-bootcamp' },
+																'React + Node'
+															)
 														)
 													),
 													_react2.default.createElement(
@@ -60689,6 +60697,7 @@
 									_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 										_this.setState({ showLoader: false });
 										if (err) {
+											alert(response.message);
 											return;
 										}
 	
@@ -60881,7 +60890,7 @@
 											_react2.default.createElement(
 												'div',
 												{ className: 'entry-image' },
-												_react2.default.createElement('img', { className: 'image_fade', src: '/images/' + banner, alt: 'FullStack 360' })
+												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/' + banner, alt: 'FullStack 360' })
 											),
 											_react2.default.createElement(
 												'div',
