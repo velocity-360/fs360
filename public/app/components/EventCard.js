@@ -19,7 +19,7 @@ class EventCard extends Component {
 
 			<div className="entry clearfix" style={{marginBottom:24, border:'1px solid #ddd'}}>
 				<div className="entry-image">
-					<img style={{border:'1px solid #ddd', background:'#fff'}} src={'/images/'+this.props.event.image} alt={this.props.event.title} />
+					<img style={{border:'1px solid #ddd', background:'#fff', width:360}} src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=400'} alt={this.props.event.title} />
 				</div>
 				<div className="entry-c">
 					<div className="entry-title">

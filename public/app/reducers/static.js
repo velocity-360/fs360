@@ -12,9 +12,6 @@ var initialState = {
 		'hacking-2.jpg',
 		'girl.jpg'
 	],
-	events:[
-		{id:0, 'subject':'Node & React Demo', 'fee':'Free', 'date':'April 26, 2016', 'time':'7:00pm', 'description':'React is a cutting-edge view library which is revolutionizing the way developers build front end components. Developed by Facebook, React is quickly establishing itself as a major player in the front end ecosystem along side Angular and Backbone. See how React works in this demo where we will create a simple website using React components.' , 'image':'node.png', button:'Attend'},
-	],
 	faq: {
 		highschool:[
 			{question:'Will I Have Fun?', answer:'Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.'},

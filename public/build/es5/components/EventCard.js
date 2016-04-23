@@ -43,7 +43,7 @@ var EventCard = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, src: "/images/" + this.props.event.image, alt: this.props.event.title })
+						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", width: 360 }, src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=400", alt: this.props.event.title })
 					),
 					React.createElement(
 						"div",
