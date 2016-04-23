@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var courseController = require('../controllers/CourseController');
+var postController = require('../controllers/PostController');
+var eventController = require('../controllers/EventController');
 
 require('node-jsx').install({ extension: ".js" });
 var React = require('react');
@@ -17,8 +20,33 @@ router.get('/', function(req, res, next) {
 
 router.get('/:page', function(req, res, next) {
 	var page = req.params.page;
-    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, params:req.query}));
-    res.render(page, {react: html});
+
+	var fbTags = null;
+	if (page == 'events'){
+		eventController.get({}, function(err, results){
+			if (err){
+
+			}
+
+			var nextEvent = results[0]
+			fbTags = {
+				title: nextEvent.title,
+				description: nextEvent.description,
+				url: 'http://www.fullstack360.com/'+page,
+				image: 'https://media-service.appspot.com/site/images/'+nextEvent.image+'?crop=260'
+			}
+
+		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
+		    res.render(page, {react:html, tags:fbTags});
+			return;
+		});
+
+		return;
+	}
+
+
+    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
+    res.render(page, {react:html, tags:fbTags});
 });
 
 router.get('/:page/:slug', function(req, res, next) {
