@@ -61,7 +61,7 @@ var Events = (function (Component) {
 			},
 			selectedEvent: {
 				id: null,
-				subject: "",
+				title: "",
 				image: ""
 			},
 			membershiptype: "premium",
@@ -78,7 +78,15 @@ var Events = (function (Component) {
 			configurable: true
 		},
 		componentDidMount: {
-			value: function componentDidMount() {},
+			value: function componentDidMount() {
+				api.handleGet("/api/event", {}, function (err, response) {
+					if (err) {
+						return;
+					}
+
+					store.dispatch(actions.eventsRecieved(response.events));
+				});
+			},
 			writable: true,
 			configurable: true
 		},
@@ -236,7 +244,9 @@ var Events = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
+				console.log("OPEN MODAL: " + event.target.id);
 				event.preventDefault();
+
 				this.setState({
 					showModal: true,
 					selectedEvent: event.target.id == "bootcamp" ? this.state.bootcamp : this.props.events[event.target.id]
@@ -274,7 +284,7 @@ var Events = (function (Component) {
 
 				var _openModal = this.openModal;
 				var events = this.props.events.map(function (e, i) {
-					return React.createElement(EventCard, { key: i, event: e, click: _openModal });
+					return React.createElement(EventCard, { key: e.id, index: i, event: e, click: _openModal });
 				});
 
 
@@ -747,7 +757,7 @@ var Events = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"Closed"
+														"Closed (Accepting Waitlist)"
 													)
 												),
 												React.createElement(
@@ -770,7 +780,7 @@ var Events = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"Closed"
+														"Closed (Accepting Waitlist)"
 													)
 												),
 												React.createElement(
@@ -782,13 +792,17 @@ var Events = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"iOS + Node"
+															React.createElement(
+																"a",
+																{ href: "/course/node-react-bootcamp" },
+																"iOS + Node"
+															)
 														)
 													),
 													React.createElement(
 														"td",
 														null,
-														"June 1 - Nov 28"
+														"June 6 - Dec 2, Mon/Wed/Sat"
 													),
 													React.createElement(
 														"td",
@@ -805,13 +819,17 @@ var Events = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"Full Stack Web"
+															React.createElement(
+																"a",
+																{ href: "/course/node-react-bootcamp" },
+																"React + Node"
+															)
 														)
 													),
 													React.createElement(
 														"td",
 														null,
-														"June 1 - Nov 28"
+														"June 7 - Dec 2, Tue/Thu/Sat"
 													),
 													React.createElement(
 														"td",
@@ -1040,7 +1058,7 @@ var Events = (function (Component) {
 							React.createElement(
 								"h2",
 								null,
-								this.state.selectedEvent.subject
+								this.state.selectedEvent.title
 							)
 						),
 						React.createElement(
@@ -1064,7 +1082,7 @@ var Events = (function (Component) {
 							React.createElement(
 								"a",
 								{ onClick: this.rsvp, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								this.state.selectedEvent.button
+								"Submit"
 							)
 						)
 					),
@@ -1147,10 +1165,10 @@ var stateToProps = function (state) {
 	}
 
 	return {
+		events: state.eventReducer.eventArray,
 		currentUser: state.profileReducer.currentUser,
 		courses: courseList,
 		testimonials: state.staticReducer.testimonials,
-		events: state.staticReducer.events,
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };
@@ -1158,5 +1176,3 @@ var stateToProps = function (state) {
 
 module.exports = connect(stateToProps)(Events);
 //		getCurrentUser()
-//		console.log('HOME: componentDidMount')
-// api.handleGet('/api/course?isFeatured=yes', {});

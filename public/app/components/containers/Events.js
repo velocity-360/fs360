@@ -33,7 +33,7 @@ class Events extends Component {
 			},
 			selectedEvent: {
 				id: null,
-				subject: '',
+				title: '',
 				image: ''
 			},
 			membershiptype: 'premium',
@@ -46,9 +46,13 @@ class Events extends Component {
 	}
 
 	componentDidMount(){
-//		console.log('HOME: componentDidMount')
-		// api.handleGet('/api/course?isFeatured=yes', {});
+		api.handleGet('/api/event', {}, function(err, response){
+			if (err){
+				return
+			}
 
+			store.dispatch(actions.eventsRecieved(response.events))
+		});
 	}
 
 	updateUserRegistration(event){
@@ -195,7 +199,9 @@ class Events extends Component {
 
 
 	openModal(event){
+		console.log('OPEN MODAL: '+event.target.id)
 		event.preventDefault()
+
 		this.setState({
 			showModal: true,
 			selectedEvent: (event.target.id == 'bootcamp') ? this.state.bootcamp : this.props.events[event.target.id]
@@ -224,7 +230,7 @@ class Events extends Component {
 
 		var _openModal = this.openModal;
 		var events = this.props.events.map(function(e, i){
-			return <EventCard key={i} event={e} click={_openModal} />
+			return <EventCard key={e.id} index={i} event={e} click={_openModal} />
 		});
 
 
@@ -484,21 +490,21 @@ class Events extends Component {
 										<tr>
 										  <td><span>iOS + Node</span></td>
 										  <td>May 2 - Oct 28</td>
-										  <td>Closed</td>
+										  <td>Closed (Accepting Waitlist)</td>
 										</tr>
 										<tr>
 										  <td><span>Full Stack Web</span></td>
 										  <td>May 2 - Oct 28</td>
-										  <td>Closed</td>
+										  <td>Closed (Accepting Waitlist)</td>
 										</tr>
 										<tr>
-										  <td><span>iOS + Node</span></td>
-										  <td>June 1 - Nov 28</td>
+										  <td><span><a href="/course/node-react-bootcamp">iOS + Node</a></span></td>
+										  <td>June 6 - Dec 2, Mon/Wed/Sat</td>
 										  <td>Accepting Applications</td>
 										</tr>
 										<tr>
-										  <td><span>Full Stack Web</span></td>
-										  <td>June 1 - Nov 28</td>
+										  <td><span><a href="/course/node-react-bootcamp">React + Node</a></span></td>
+										  <td>June 7 - Dec 2, Tue/Thu/Sat</td>
 										  <td>Accepting Applications</td>
 										</tr>
 									  </tbody>
@@ -576,7 +582,7 @@ class Events extends Component {
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>{this.state.selectedEvent.subject}</h2>
+			        	<h2>{this.state.selectedEvent.title}</h2>
 			        </Modal.Header>
 			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
 			        	<div style={{textAlign:'center'}}>
@@ -589,7 +595,7 @@ class Events extends Component {
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">{this.state.selectedEvent.button}</a>
+						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 			        </Modal.Footer>
 		        </Modal>
 
@@ -635,10 +641,10 @@ const stateToProps = function(state) {
 	}
 
     return {
+    	events: state.eventReducer.eventArray,
         currentUser: state.profileReducer.currentUser,
         courses: courseList,
         testimonials: state.staticReducer.testimonials,
-        events: state.staticReducer.events,
         loaderOptions: state.staticReducer.loaderConfig
     }
 }

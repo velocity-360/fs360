@@ -61,7 +61,7 @@ var Home = (function (Component) {
 			},
 			selectedEvent: {
 				id: null,
-				subject: "",
+				title: "",
 				image: ""
 			},
 			membershiptype: "premium",
@@ -78,7 +78,15 @@ var Home = (function (Component) {
 			configurable: true
 		},
 		componentDidMount: {
-			value: function componentDidMount() {},
+			value: function componentDidMount() {
+				api.handleGet("/api/event", {}, function (err, response) {
+					if (err) {
+						return;
+					}
+
+					store.dispatch(actions.eventsRecieved(response.events));
+				});
+			},
 			writable: true,
 			configurable: true
 		},
@@ -236,7 +244,9 @@ var Home = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
+				console.log("OPEN MODAL: " + event.target.id);
 				event.preventDefault();
+
 				this.setState({
 					showModal: true,
 					selectedEvent: event.target.id == "bootcamp" ? this.state.bootcamp : this.props.events[event.target.id]
@@ -274,7 +284,7 @@ var Home = (function (Component) {
 
 				var _openModal = this.openModal;
 				var events = this.props.events.map(function (e, i) {
-					return React.createElement(EventCard, { key: i, event: e, click: _openModal });
+					return React.createElement(EventCard, { key: e.id, index: i, event: e, click: _openModal });
 				});
 
 
@@ -1048,7 +1058,7 @@ var Home = (function (Component) {
 							React.createElement(
 								"h2",
 								null,
-								this.state.selectedEvent.subject
+								this.state.selectedEvent.title
 							)
 						),
 						React.createElement(
@@ -1072,7 +1082,7 @@ var Home = (function (Component) {
 							React.createElement(
 								"a",
 								{ onClick: this.rsvp, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								this.state.selectedEvent.button
+								"Submit"
 							)
 						)
 					),
@@ -1155,10 +1165,10 @@ var stateToProps = function (state) {
 	}
 
 	return {
+		events: state.eventReducer.eventArray,
 		currentUser: state.profileReducer.currentUser,
 		courses: courseList,
 		testimonials: state.staticReducer.testimonials,
-		events: state.staticReducer.events,
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };
@@ -1166,5 +1176,3 @@ var stateToProps = function (state) {
 
 module.exports = connect(stateToProps)(Home);
 //		getCurrentUser()
-//		console.log('HOME: componentDidMount')
-// api.handleGet('/api/course?isFeatured=yes', {});

@@ -8,6 +8,7 @@ import thunk from 'redux-thunk'
 import profileReducer from '../reducers/profile'
 import courseReducer from '../reducers/course'
 import postReducer from '../reducers/post'
+import eventReducer from '../reducers/event'
 import staticReducer from '../reducers/static'
 
 // Combine Reducers
@@ -15,6 +16,7 @@ var reducers = combineReducers({
     profileReducer: profileReducer,
     courseReducer: courseReducer,
     postReducer: postReducer,
+    eventReducer: eventReducer,
     staticReducer: staticReducer,
 });
 

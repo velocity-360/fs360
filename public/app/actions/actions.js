@@ -55,6 +55,12 @@ module.exports = {
 		};
 	},
 
+	eventsRecieved: function(events){
+		return {
+			type: constants.EVENTS_RECIEVED,
+			events: events
+		};
+	},
 
 	postCreated: function(post){
 		return {

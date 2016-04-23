@@ -43,7 +43,7 @@ var EventCard = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, src: "/images/" + this.props.event.image, alt: this.props.event.subject })
+						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, src: "/images/" + this.props.event.image, alt: this.props.event.title })
 					),
 					React.createElement(
 						"div",
@@ -57,7 +57,7 @@ var EventCard = (function (Component) {
 								React.createElement(
 									"a",
 									{ href: "#" },
-									this.props.event.subject
+									this.props.event.title
 								)
 							)
 						),
@@ -93,7 +93,9 @@ var EventCard = (function (Component) {
 									"a",
 									{ href: "#" },
 									React.createElement("i", { className: "icon-map-marker2" }),
-									" 27 East 28th Street, NYC"
+									" ",
+									this.props.event.address,
+									", NYC"
 								)
 							)
 						),
@@ -105,7 +107,7 @@ var EventCard = (function (Component) {
 							React.createElement("br", null),
 							React.createElement(
 								"a",
-								{ id: this.props.event.id, onClick: this.selectEvent, href: "#", className: "btn btn-success" },
+								{ id: this.props.index, onClick: this.selectEvent, href: "#", className: "btn btn-success" },
 								"RSVP"
 							)
 						)

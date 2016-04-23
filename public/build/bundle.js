@@ -21242,6 +21242,10 @@
 	
 	var _post2 = _interopRequireDefault(_post);
 	
+	var _event = __webpack_require__(577);
+	
+	var _event2 = _interopRequireDefault(_event);
+	
 	var _static = __webpack_require__(186);
 	
 	var _static2 = _interopRequireDefault(_static);
@@ -21249,20 +21253,21 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Combine Reducers
+	var reducers = (0, _redux.combineReducers)({
+	    profileReducer: _profile2.default,
+	    courseReducer: _course2.default,
+	    postReducer: _post2.default,
+	    eventReducer: _event2.default,
+	    staticReducer: _static2.default
+	});
+	
+	// Create Store
 	
 	
 	// Add middleware to createStore
 	//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 	
 	// App Reducers
-	var reducers = (0, _redux.combineReducers)({
-	    profileReducer: _profile2.default,
-	    courseReducer: _course2.default,
-	    postReducer: _post2.default,
-	    staticReducer: _static2.default
-	});
-	
-	// Create Store
 	var store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default) // Add middleware to createStore
 	);
 	
@@ -21354,7 +21359,8 @@
 		COURSES_RECIEVED: 'COURSES_RECIEVED',
 		CURRENT_USER_RECIEVED: 'CURRENT_USER_RECIEVED',
 		POSTS_RECIEVED: 'POSTS_RECIEVED',
-		POST_CREATED: 'POST_CREATED'
+		POST_CREATED: 'POST_CREATED',
+		EVENTS_RECIEVED: 'EVENTS_RECIEVED'
 	
 		// ACTION TYPES
 		// AIM_AT: "AIM_AT",
@@ -21768,7 +21774,7 @@
 				},
 				selectedEvent: {
 					id: null,
-					subject: '',
+					title: '',
 					image: ''
 				},
 				membershiptype: 'premium',
@@ -21785,9 +21791,13 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		console.log('HOME: componentDidMount')
-				// api.handleGet('/api/course?isFeatured=yes', {});
+				_api2.default.handleGet('/api/event', {}, function (err, response) {
+					if (err) {
+						return;
+					}
 	
+					_store2.default.dispatch(_actions2.default.eventsRecieved(response.events));
+				});
 			}
 		}, {
 			key: 'updateUserRegistration',
@@ -21933,7 +21943,9 @@
 		}, {
 			key: 'openModal',
 			value: function openModal(event) {
+				console.log('OPEN MODAL: ' + event.target.id);
 				event.preventDefault();
+	
 				this.setState({
 					showModal: true,
 					selectedEvent: event.target.id == 'bootcamp' ? this.state.bootcamp : this.props.events[event.target.id]
@@ -21965,7 +21977,7 @@
 	
 				var _openModal = this.openModal;
 				var events = this.props.events.map(function (e, i) {
-					return _react2.default.createElement(_EventCard2.default, { key: i, event: e, click: _openModal });
+					return _react2.default.createElement(_EventCard2.default, { key: e.id, index: i, event: e, click: _openModal });
 				});
 	
 				return _react2.default.createElement(
@@ -22738,7 +22750,7 @@
 							_react2.default.createElement(
 								'h2',
 								null,
-								this.state.selectedEvent.subject
+								this.state.selectedEvent.title
 							)
 						),
 						_react2.default.createElement(
@@ -22762,7 +22774,7 @@
 							_react2.default.createElement(
 								'a',
 								{ onClick: this.rsvp, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								this.state.selectedEvent.button
+								'Submit'
 							)
 						)
 					),
@@ -22842,10 +22854,10 @@
 		}
 	
 		return {
+			events: state.eventReducer.eventArray,
 			currentUser: state.profileReducer.currentUser,
 			courses: courseList,
 			testimonials: state.staticReducer.testimonials,
-			events: state.staticReducer.events,
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
@@ -41552,6 +41564,13 @@
 			};
 		},
 	
+		eventsRecieved: function eventsRecieved(events) {
+			return {
+				type: constants.EVENTS_RECIEVED,
+				events: events
+			};
+		},
+	
 		postCreated: function postCreated(post) {
 			return {
 				type: constants.POST_CREATED,
@@ -43751,7 +43770,7 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'entry-image' },
-						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, src: '/images/' + this.props.event.image, alt: this.props.event.subject })
+						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, src: '/images/' + this.props.event.image, alt: this.props.event.title })
 					),
 					_react2.default.createElement(
 						'div',
@@ -43765,7 +43784,7 @@
 								_react2.default.createElement(
 									'a',
 									{ href: '#' },
-									this.props.event.subject
+									this.props.event.title
 								)
 							)
 						),
@@ -43801,7 +43820,9 @@
 									'a',
 									{ href: '#' },
 									_react2.default.createElement('i', { className: 'icon-map-marker2' }),
-									' 27 East 28th Street, NYC'
+									' ',
+									this.props.event.address,
+									', NYC'
 								)
 							)
 						),
@@ -43813,7 +43834,7 @@
 							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'a',
-								{ id: this.props.event.id, onClick: this.selectEvent, href: '#', className: 'btn btn-success' },
+								{ id: this.props.index, onClick: this.selectEvent, href: '#', className: 'btn btn-success' },
 								'RSVP'
 							)
 						)
@@ -44520,7 +44541,7 @@
 				},
 				selectedEvent: {
 					id: null,
-					subject: '',
+					title: '',
 					image: ''
 				},
 				membershiptype: 'premium',
@@ -44537,9 +44558,13 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		console.log('HOME: componentDidMount')
-				// api.handleGet('/api/course?isFeatured=yes', {});
+				_api2.default.handleGet('/api/event', {}, function (err, response) {
+					if (err) {
+						return;
+					}
 	
+					_store2.default.dispatch(_actions2.default.eventsRecieved(response.events));
+				});
 			}
 		}, {
 			key: 'updateUserRegistration',
@@ -44685,7 +44710,9 @@
 		}, {
 			key: 'openModal',
 			value: function openModal(event) {
+				console.log('OPEN MODAL: ' + event.target.id);
 				event.preventDefault();
+	
 				this.setState({
 					showModal: true,
 					selectedEvent: event.target.id == 'bootcamp' ? this.state.bootcamp : this.props.events[event.target.id]
@@ -44717,7 +44744,7 @@
 	
 				var _openModal = this.openModal;
 				var events = this.props.events.map(function (e, i) {
-					return _react2.default.createElement(_EventCard2.default, { key: i, event: e, click: _openModal });
+					return _react2.default.createElement(_EventCard2.default, { key: e.id, index: i, event: e, click: _openModal });
 				});
 	
 				return _react2.default.createElement(
@@ -45189,7 +45216,7 @@
 													_react2.default.createElement(
 														'td',
 														null,
-														'Closed'
+														'Closed (Accepting Waitlist)'
 													)
 												),
 												_react2.default.createElement(
@@ -45212,7 +45239,7 @@
 													_react2.default.createElement(
 														'td',
 														null,
-														'Closed'
+														'Closed (Accepting Waitlist)'
 													)
 												),
 												_react2.default.createElement(
@@ -45224,13 +45251,17 @@
 														_react2.default.createElement(
 															'span',
 															null,
-															'iOS + Node'
+															_react2.default.createElement(
+																'a',
+																{ href: '/course/node-react-bootcamp' },
+																'iOS + Node'
+															)
 														)
 													),
 													_react2.default.createElement(
 														'td',
 														null,
-														'June 1 - Nov 28'
+														'June 6 - Dec 2, Mon/Wed/Sat'
 													),
 													_react2.default.createElement(
 														'td',
@@ -45247,13 +45278,17 @@
 														_react2.default.createElement(
 															'span',
 															null,
-															'Full Stack Web'
+															_react2.default.createElement(
+																'a',
+																{ href: '/course/node-react-bootcamp' },
+																'React + Node'
+															)
 														)
 													),
 													_react2.default.createElement(
 														'td',
 														null,
-														'June 1 - Nov 28'
+														'June 7 - Dec 2, Tue/Thu/Sat'
 													),
 													_react2.default.createElement(
 														'td',
@@ -45482,7 +45517,7 @@
 							_react2.default.createElement(
 								'h2',
 								null,
-								this.state.selectedEvent.subject
+								this.state.selectedEvent.title
 							)
 						),
 						_react2.default.createElement(
@@ -45506,7 +45541,7 @@
 							_react2.default.createElement(
 								'a',
 								{ onClick: this.rsvp, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								this.state.selectedEvent.button
+								'Submit'
 							)
 						)
 					),
@@ -45586,10 +45621,10 @@
 		}
 	
 		return {
+			events: state.eventReducer.eventArray,
 			currentUser: state.profileReducer.currentUser,
 			courses: courseList,
 			testimonials: state.staticReducer.testimonials,
-			events: state.staticReducer.events,
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
@@ -61795,6 +61830,59 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
+
+/***/ },
+/* 577 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+	
+			case constants.EVENTS_RECIEVED:
+				var newState = Object.assign({}, state);
+				var c = action.events;
+				newState['eventArray'] = c;
+				var eventMap = {};
+				for (var i = 0; i < c.length; i++) {
+					var event = c[i];
+					eventMap[event.id] = event;
+				}
+	
+				newState['events'] = eventMap;
+				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				return newState;
+	
+			default:
+				return state;
+		}
+	};
+	
+	var constants = __webpack_require__(183);
+	
+	var initialState = {
+		events: {
+			0: {
+				title: '',
+				description: ''
+			}
+		},
+		eventArray: []
+	};
+	
+	/*
+	A reducer is a function that takes the current state and an action, and then returns a
+	new state. This reducer is responsible for appState.heroes data.
+	See `initialstate.js` for a clear view of what it looks like!
+	*/
 
 /***/ }
 /******/ ]);
