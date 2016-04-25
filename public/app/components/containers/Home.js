@@ -305,7 +305,7 @@ class Home extends Component {
 								<p>
 									The only constant in the software industry is change. One day, PHP is the 
 									king, the next day Ruby on Rails is highest in demand. The major bootcamps 
-									in NYC focus on today. Flatiron School, General Assebmbly, Dev Bootcamp all 
+									in NYC focus on today. Flatiron School, General Assembly, Dev Bootcamp all 
 									teach Rails while we focus on tomorrow. Our stack is Node JS with React on 
 									the front end and ES2015. Will you be among the flood of Rails devs 
 									saturating the NYC market or will you be ready for the tech stack of tomorrow?
