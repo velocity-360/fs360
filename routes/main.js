@@ -47,7 +47,7 @@ router.get('/:page', function(req, res, next) {
 			return;
 		}
 
-		var entity = results[0]
+		var entity = results[results.length-1]
 		var desc = (entity.description == null) ? entity.text : entity.description
 		if (desc.length > 200)
 			desc = desc.substring(0, 200)+'...'
