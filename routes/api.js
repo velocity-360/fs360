@@ -174,7 +174,8 @@ router.post('/:resource', function(req, res, next) {
 			return EmailManager.sendHtmlEmail('dkwon@fullstack360.com', infoRequest.visitor.email, infoRequest.event.subject, confirmationMsg);
 		})
 		.then(function(){
-			var msg = 'Thanks for your interest in the '+infoRequest.event.subject+'. Please check your email for a confirmation. Looking forward to seeing you there!';
+//			var msg = 'Thanks for your interest in the '+infoRequest.event.subject+'. Please check your email for a confirmation. Looking forward to seeing you there!';
+			var msg = 'Thanks for your interest in the '+infoRequest.event.title+'. Please check your email for a confirmation. Looking forward to seeing you there!';
 			res.json({'confirmation':'success', 'message':msg});
 			return;
 		})
