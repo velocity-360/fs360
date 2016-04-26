@@ -41,6 +41,12 @@ router.get('/:page', function(req, res, next) {
 
 		}
 
+		if (results.length == 0){
+		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+		    res.render(page, {react:html, tags:{}});
+			return;
+		}
+
 		var entity = results[0]
 		var desc = (entity.description == null) ? entity.text : entity.description
 		if (desc.length > 200)
@@ -77,6 +83,12 @@ router.get('/:page/:slug', function(req, res, next) {
 	controller.get({slug: slug}, function(err, results){
 		if (err){
 
+		}
+
+		if (results.length == 0){
+		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+		    res.render(page, {react:html, tags:{}});
+			return;
 		}
 
 		var entity = results[0]
