@@ -794,7 +794,7 @@ var Home = (function (Component) {
 															null,
 															React.createElement(
 																"a",
-																{ href: "/course/node-react-bootcamp" },
+																{ href: "/course/ios-node-bootcamp" },
 																"iOS + Node"
 															)
 														)
