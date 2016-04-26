@@ -209,6 +209,8 @@ router.post('/:resource', function(req, res, next) {
 		var subject = 'Programming Workshop';
 		if (template == 'video')
 			subject = 'Programming Video Series';
+		if (template == 'summer')
+			subject = 'Summer iOS, Node, React Courses';
 
 		fetchFile(path)
 		.then(function(data){
