@@ -58,7 +58,7 @@ module.exports = {
 		
 		delete params['limit'];
 		
-		Event.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, events) {
+		Event.find(params, null, {limit:limit, sort:{timestamp: 1}}, function(err, events) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null);
 				return;
