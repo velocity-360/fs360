@@ -74,6 +74,9 @@ module.exports = {
 				var list = [];
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
+					if (list.indexOf(subscriber.email) != -1)
+						continue;
+					
 					list.push(subscriber.email)
 				}
 
