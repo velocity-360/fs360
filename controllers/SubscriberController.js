@@ -57,12 +57,30 @@ module.exports = {
 			limit = '0';
 		
 		delete params['limit'];
+
+		var format = 'json';
+		if (params['format'] != null){
+			format = 'list';
+			delete params['format'];
+		}
+		
 		Subscriber.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, subscribers) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null);
 				return;
 			}
 			
+			if (format == 'list'){
+				var list = [];
+				for (var i=0; i<subscribers.length; i++){
+					var subscriber = subscribers[i]
+					list.push(subscriber.email)
+				}
+
+				completion(null, list);
+				return;
+			}
+
 			completion(null, convertToJson(subscribers));
 		});
 	},
