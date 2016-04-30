@@ -21,6 +21,7 @@ class Account extends Component {
 		this.uploadImage = this.uploadImage.bind(this)
 		this.submitProject = this.submitProject.bind(this)
 		this.state = {
+			showLoader: false,
 			showModal: false,
 			selectedProject: null,
 			project: {
@@ -50,27 +51,46 @@ class Account extends Component {
 		})
 	}
 
-	uploadImage(){
+	uploadImage(files){
+		this.setState({
+			showLoader: true
+		})
 
+		var _this = this
+		api.upload(files[0], function(err, response){
+			_this.setState({
+				showLoader: false
+			})
+
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			var project = Object.assign({}, _this.state.project)
+			project['image'] = response.id
+			_this.setState({
+				project: project
+			})
+
+		})
 	}
 
 	updateProject(event){
 		event.preventDefault()
 		var proj = Object.assign({}, this.state.project)
 		proj[event.target.id] = event.target.value
-//		console.log('updateProject: '+JSON.stringify(proj))
 		this.setState({
 			project: proj
 		})
-
-
 	}
+	
 
 	submitProject(event){
 		event.preventDefault()
 		var proj = Object.assign({}, this.state.project)
 
-		var t = this.state.project.split(',')
+		var t = this.state.project.tagString.split(',')
 		var tags = []
 		for (var i=0; i<t.length; i++){
 			var tag = t[i]
@@ -110,6 +130,7 @@ class Account extends Component {
 		return (
 
 			<div>
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Sidebar />
 
 				<section id="content">
@@ -164,6 +185,7 @@ class Account extends Component {
 					        	<input onChange={this.updateProject} id="tagString" value={this.state.project.tagString} className="form-control" type="text" placeholder="Python, iOS, JavaScript, etc." /><br />
 					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
 					              <div style={{padding:24}}>
+					              	{ (this.state.project.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.state.project.image+'?crop=120'} /> }
 					              	Drop file here, or click to select image to upload.
 					              </div>
 					            </Dropzone>
@@ -205,7 +227,8 @@ const stateToProps = function(state){
 
 	return {
 		profile: currentUser,
-		projects: projectsArray
+		projects: projectsArray,
+        loaderOptions: state.staticReducer.loaderConfig
 	}
 }
 
