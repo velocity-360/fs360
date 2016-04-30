@@ -28,7 +28,7 @@ class Account extends Component {
 				description: '',
 				image: 'tHyPScSk', // blue logo
 				link: '',
-				tags: [], // tech used
+				tagString: ''
 			}
 		}
 	}
@@ -69,6 +69,18 @@ class Account extends Component {
 	submitProject(event){
 		event.preventDefault()
 		var proj = Object.assign({}, this.state.project)
+
+		var t = this.state.project.split(',')
+		var tags = []
+		for (var i=0; i<t.length; i++){
+			var tag = t[i]
+			if (tag.length == 0)
+				continue
+
+			tags.push(tag.trim())
+		}
+
+		proj['tags'] = tags
 		proj['profile'] = {
 			id: this.props.profile.id,
 			image: this.props.profile.image,
@@ -92,7 +104,6 @@ class Account extends Component {
 		if (this.props.projects != null){
 			projectList = this.props.projects.map(function(project, i){
 				return <ProjectCard key={project.id} project={project} />
-
 			})
 		}
 
@@ -150,6 +161,7 @@ class Account extends Component {
 				        	<div className="col-md-6">
 					        	<input onChange={this.updateProject} id="title" value={this.state.project.title} className="form-control" type="text" placeholder="Title" /><br />
 					        	<input onChange={this.updateProject} id="link" value={this.state.project.link} className="form-control" type="text" placeholder="http://" /><br />
+					        	<input onChange={this.updateProject} id="tagString" value={this.state.project.tagString} className="form-control" type="text" placeholder="Python, iOS, JavaScript, etc." /><br />
 					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
 					              <div style={{padding:24}}>
 					              	Drop file here, or click to select image to upload.

@@ -61717,14 +61717,14 @@
 					description: '',
 					image: 'tHyPScSk', // blue logo
 					link: '',
-					tags: [] }
+					tagString: ''
+				}
 			};
 			return _this;
 		}
 	
 		_createClass(Account, [{
 			key: 'componentDidMount',
-			// tech used
 			value: function componentDidMount() {}
 		}, {
 			key: 'openModal',
@@ -61760,6 +61760,17 @@
 			value: function submitProject(event) {
 				event.preventDefault();
 				var proj = Object.assign({}, this.state.project);
+	
+				var t = this.state.project.split(',');
+				var tags = [];
+				for (var i = 0; i < t.length; i++) {
+					var tag = t[i];
+					if (tag.length == 0) continue;
+	
+					tags.push(tag.trim());
+				}
+	
+				proj['tags'] = tags;
 				proj['profile'] = {
 					id: this.props.profile.id,
 					image: this.props.profile.image,
@@ -61879,6 +61890,8 @@
 									_react2.default.createElement('input', { onChange: this.updateProject, id: 'title', value: this.state.project.title, className: 'form-control', type: 'text', placeholder: 'Title' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement('input', { onChange: this.updateProject, id: 'link', value: this.state.project.link, className: 'form-control', type: 'text', placeholder: 'http://' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { onChange: this.updateProject, id: 'tagString', value: this.state.project.tagString, className: 'form-control', type: 'text', placeholder: 'Python, iOS, JavaScript, etc.' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
 										_reactDropzone2.default,
