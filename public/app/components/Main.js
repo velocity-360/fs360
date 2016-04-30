@@ -7,6 +7,7 @@ import Feed from './containers/Feed'
 import PostPage from './containers/PostPage'
 import Course from './containers/Course'
 import Videos from './containers/Videos'
+import Account from './containers/Account'
 import Application from './containers/Application'
 
 class Main extends Component {
@@ -46,6 +47,9 @@ class Main extends Component {
 
 			case 'post':
 				return page = <PostPage slug={this.props.slug} />
+
+			case 'account':
+				return page = <Account />
 
 			default:
 				return page = null

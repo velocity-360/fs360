@@ -58,6 +58,13 @@ module.exports = {
 		};
 	},
 
+	projectsRecieved: function (projects) {
+		return {
+			type: constants.PROJECTS_RECIEVED,
+			projects: projects
+		};
+	},
+
 	eventsRecieved: function (events) {
 		return {
 			type: constants.EVENTS_RECIEVED,

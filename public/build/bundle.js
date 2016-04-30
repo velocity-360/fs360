@@ -21246,6 +21246,10 @@
 	
 	var _event2 = _interopRequireDefault(_event);
 	
+	var _project = __webpack_require__(579);
+	
+	var _project2 = _interopRequireDefault(_project);
+	
 	var _static = __webpack_require__(187);
 	
 	var _static2 = _interopRequireDefault(_static);
@@ -21253,21 +21257,22 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Combine Reducers
-	var reducers = (0, _redux.combineReducers)({
-	    profileReducer: _profile2.default,
-	    courseReducer: _course2.default,
-	    postReducer: _post2.default,
-	    eventReducer: _event2.default,
-	    staticReducer: _static2.default
-	});
-	
-	// Create Store
 	
 	
 	// Add middleware to createStore
 	//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 	
 	// App Reducers
+	var reducers = (0, _redux.combineReducers)({
+	    profileReducer: _profile2.default,
+	    courseReducer: _course2.default,
+	    postReducer: _post2.default,
+	    eventReducer: _event2.default,
+	    staticReducer: _static2.default,
+	    projectReducer: _project2.default
+	});
+	
+	// Create Store
 	var store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default) // Add middleware to createStore
 	);
 	
@@ -21360,7 +21365,9 @@
 		CURRENT_USER_RECIEVED: 'CURRENT_USER_RECIEVED',
 		POSTS_RECIEVED: 'POSTS_RECIEVED',
 		POST_CREATED: 'POST_CREATED',
-		EVENTS_RECIEVED: 'EVENTS_RECIEVED'
+		EVENTS_RECIEVED: 'EVENTS_RECIEVED',
+		PROJECT_CREATED: 'PROJECT_CREATED',
+		PROJECTS_RECIEVED: 'PROJECTS_RECIEVED'
 	
 		// ACTION TYPES
 		// AIM_AT: "AIM_AT",
@@ -21659,7 +21666,11 @@
 	
 	var _Videos2 = _interopRequireDefault(_Videos);
 	
-	var _Application = __webpack_require__(577);
+	var _Account = __webpack_require__(577);
+	
+	var _Account2 = _interopRequireDefault(_Account);
+	
+	var _Application = __webpack_require__(578);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -21713,6 +21724,9 @@
 	
 					case 'post':
 						return page = _react2.default.createElement(_PostPage2.default, { slug: this.props.slug });
+	
+					case 'account':
+						return page = _react2.default.createElement(_Account2.default, null);
 	
 					default:
 						return page = null;
@@ -41613,6 +41627,13 @@
 			return {
 				type: constants.POSTS_RECIEVED,
 				posts: posts
+			};
+		},
+	
+		projectsRecieved: function projectsRecieved(projects) {
+			return {
+				type: constants.PROJECTS_RECIEVED,
+				projects: projects
 			};
 		},
 	
@@ -61631,6 +61652,311 @@
 	
 	var _reactRedux = __webpack_require__(159);
 	
+	var _reactBootstrap = __webpack_require__(190);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactDropzone = __webpack_require__(465);
+	
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+	
+	var _reactLoader = __webpack_require__(443);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(446);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _Sidebar = __webpack_require__(460);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(456);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _ProjectCard = __webpack_require__(580);
+	
+	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
+	
+	var _api = __webpack_require__(447);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Account = function (_Component) {
+		_inherits(Account, _Component);
+	
+		function Account(props, context) {
+			_classCallCheck(this, Account);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Account).call(this, props, context));
+	
+			_this.openModal = _this.openModal.bind(_this);
+			_this.closeModal = _this.closeModal.bind(_this);
+			_this.updateProject = _this.updateProject.bind(_this);
+			_this.uploadImage = _this.uploadImage.bind(_this);
+			_this.submitProject = _this.submitProject.bind(_this);
+			_this.state = {
+				showModal: false,
+				selectedProject: null,
+				project: {
+					title: '',
+					description: '',
+					image: 'tHyPScSk', // blue logo
+					link: '',
+					tags: [] }
+			};
+			return _this;
+		}
+	
+		_createClass(Account, [{
+			key: 'componentDidMount',
+			// tech used
+			value: function componentDidMount() {}
+		}, {
+			key: 'openModal',
+			value: function openModal(event) {
+				event.preventDefault();
+				this.setState({
+					showModal: true
+				});
+			}
+		}, {
+			key: 'closeModal',
+			value: function closeModal() {
+				this.setState({
+					showModal: false
+				});
+			}
+		}, {
+			key: 'uploadImage',
+			value: function uploadImage() {}
+		}, {
+			key: 'updateProject',
+			value: function updateProject(event) {
+				event.preventDefault();
+				var proj = Object.assign({}, this.state.project);
+				proj[event.target.id] = event.target.value;
+				//		console.log('updateProject: '+JSON.stringify(proj))
+				this.setState({
+					project: proj
+				});
+			}
+		}, {
+			key: 'submitProject',
+			value: function submitProject(event) {
+				event.preventDefault();
+				var proj = Object.assign({}, this.state.project);
+				proj['profile'] = {
+					id: this.props.profile.id,
+					image: this.props.profile.image,
+					name: this.props.profile.username
+				};
+	
+				_api2.default.handlePost('/api/project', proj, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					console.log('PROJECT CREATED: ' + JSON.stringify(response));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var projectList = null;
+				if (this.props.projects != null) {
+					projectList = this.props.projects.map(function (project, i) {
+						return _react2.default.createElement(_ProjectCard2.default, { key: project.id, project: project });
+					});
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'tabs clearfix', id: 'tab-1' },
+										_react2.default.createElement(
+											'ul',
+											{ className: 'tab-nav clearfix' },
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '#tabs-2' },
+													'Account'
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '#tabs-4' },
+													'Portfolio'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'tab-container' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'tab-content clearfix', id: 'tabs-2' },
+												'Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.'
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'tab-content clearfix', id: 'tabs-4' },
+												this.props.profile.id == null ? null : _react2.default.createElement(
+													'a',
+													{ style: { marginRight: 12, marginBottom: 24 }, onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+													'Add Project'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'row' },
+													projectList
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showModal, onHide: this.closeModal, bsSize: 'large' },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Project'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									_react2.default.createElement('input', { onChange: this.updateProject, id: 'title', value: this.state.project.title, className: 'form-control', type: 'text', placeholder: 'Title' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { onChange: this.updateProject, id: 'link', value: this.state.project.link, className: 'form-control', type: 'text', placeholder: 'http://' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										_reactDropzone2.default,
+										{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px dotted #ddd' }, onDrop: this.uploadImage },
+										_react2.default.createElement(
+											'div',
+											{ style: { padding: 24 } },
+											'Drop file here, or click to select image to upload.'
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									_react2.default.createElement('textarea', { onChange: this.updateProject, id: 'description', value: this.state.project.description, className: 'form-control', placeholder: 'Text', style: { minHeight: 260 } }),
+									_react2.default.createElement('br', null)
+								)
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.submitProject, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Account;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		var currentUser = state.profileReducer.currentUser;
+		var projectsArray = state.projectReducer.projectsArray;
+	
+		if (projectsArray == null && currentUser.id != null) {
+			_api2.default.handleGet('/api/project?profile.id=' + currentUser.id, {}, function (err, response) {
+				if (err) {
+					return;
+				}
+	
+				console.log('FETCH PROJECTS: ' + JSON.stringify(response));
+				_store2.default.dispatch(_actions2.default.projectsRecieved(response.projects));
+			});
+		}
+	
+		return {
+			profile: currentUser,
+			projects: projectsArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
+
+/***/ },
+/* 578 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(159);
+	
 	var _store = __webpack_require__(180);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -61882,6 +62208,141 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
+
+/***/ },
+/* 579 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+	
+			case constants.PROJECT_CREATED:
+				var newState = Object.assign({}, state);
+				var project = action.project;
+				newState.projects[project.id] = project;
+				newState.projectsArray.unshift(project);
+				return newState;
+	
+			case constants.PROJECTS_RECIEVED:
+				var newState = Object.assign({}, state);
+	
+				var c = action.projects;
+				newState['projectsArray'] = c;
+				var projectsMap = {};
+				for (var i = 0; i < c.length; i++) {
+					var project = c[i];
+					projectsMap[project.id] = project;
+				}
+	
+				newState['projects'] = projectsMap;
+				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				return newState;
+	
+			default:
+				return state;
+		}
+	};
+	
+	var constants = __webpack_require__(183);
+	
+	var initialState = {
+		projects: {},
+		projectsArray: null
+	};
+	
+	/* A reducer is a function that takes the current state and an action, and 
+	then returns a new state. This reducer is responsible for appState.heroes 
+	data. See `initialstate.js` for a clear view of what it looks like! */
+
+/***/ },
+/* 580 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ProjectCard = function (_Component) {
+		_inherits(ProjectCard, _Component);
+	
+		function ProjectCard(props, context) {
+			_classCallCheck(this, ProjectCard);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(ProjectCard).call(this, props, context));
+		}
+	
+		_createClass(ProjectCard, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "col-md-4 col-sm-6 bottommargin" },
+					_react2.default.createElement(
+						"div",
+						{ className: "ipost clearfix", style: { background: '#f9f9f9', border: '1px solid #ddd', padding: 16 } },
+						_react2.default.createElement(
+							"div",
+							{ className: "entry-image" },
+							_react2.default.createElement("img", { style: { background: '#fff', border: '1px solid #ddd' }, className: "image_fade", src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=460', alt: "FullStack 360" })
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "entry-title" },
+							_react2.default.createElement(
+								"h3",
+								null,
+								this.props.project.title
+							),
+							_react2.default.createElement("hr", null)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "entry-content" },
+							_react2.default.createElement(
+								"p",
+								null,
+								this.props.project.description
+							)
+						),
+						_react2.default.createElement(
+							"a",
+							{ style: { marginTop: 16, marginBottom: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+							"View"
+						)
+					)
+				);
+			}
+		}]);
+	
+		return ProjectCard;
+	}(_react.Component);
+	
+	exports.default = ProjectCard;
 
 /***/ }
 /******/ ]);

@@ -30,6 +30,8 @@ var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
 
+var Account = _interopRequire(require("./containers/Account"));
+
 var Application = _interopRequire(require("./containers/Application"));
 
 var Main = (function (Component) {
@@ -72,6 +74,9 @@ var Main = (function (Component) {
 
 					case "post":
 						return page = React.createElement(PostPage, { slug: this.props.slug });
+
+					case "account":
+						return page = React.createElement(Account, null);
 
 					default:
 						return page = null;

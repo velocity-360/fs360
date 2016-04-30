@@ -9,6 +9,7 @@ import profileReducer from '../reducers/profile'
 import courseReducer from '../reducers/course'
 import postReducer from '../reducers/post'
 import eventReducer from '../reducers/event'
+import projectReducer from '../reducers/project'
 import staticReducer from '../reducers/static'
 
 // Combine Reducers
@@ -18,6 +19,7 @@ var reducers = combineReducers({
     postReducer: postReducer,
     eventReducer: eventReducer,
     staticReducer: staticReducer,
+    projectReducer: projectReducer,
 });
 
 // Create Store

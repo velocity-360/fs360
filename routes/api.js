@@ -12,13 +12,15 @@ var subscriberController = require('../controllers/SubscriberController');
 var postController = require('../controllers/PostController');
 var commentController = require('../controllers/CommentController');
 var eventController = require('../controllers/EventController');
+var projectController = require('../controllers/ProjectController');
 var controllers = {
 	'course': courseController,
 	'profile': profileController,
 	'subscriber': subscriberController,
 	'post': postController,
 	'comment': commentController,
-	'event': eventController
+	'event': eventController,
+	'project': projectController
 };
 
 var fetchFile = function(path){

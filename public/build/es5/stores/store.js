@@ -21,6 +21,8 @@ var postReducer = _interopRequire(require("../reducers/post"));
 
 var eventReducer = _interopRequire(require("../reducers/event"));
 
+var projectReducer = _interopRequire(require("../reducers/project"));
+
 var staticReducer = _interopRequire(require("../reducers/static"));
 
 // Combine Reducers
@@ -29,7 +31,8 @@ var reducers = combineReducers({
     courseReducer: courseReducer,
     postReducer: postReducer,
     eventReducer: eventReducer,
-    staticReducer: staticReducer });
+    staticReducer: staticReducer,
+    projectReducer: projectReducer });
 
 // Create Store
 var store = createStore(reducers, applyMiddleware(thunk) // Add middleware to createStore
