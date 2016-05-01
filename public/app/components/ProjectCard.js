@@ -20,7 +20,7 @@ class ProjectCard extends Component {
 					<div className="entry-content">
 						<p>{ this.props.project.description }</p>
 					</div>
-					<a style={{marginTop:16, marginBottom:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">View</a>												
+					<a style={{marginTop:16, marginBottom:12}} href={'/project/'+this.props.project.slug} className="button button-border button-dark button-rounded noleftmargin">View</a>												
 				</div>
 			</div>
 

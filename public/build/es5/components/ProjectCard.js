@@ -59,7 +59,7 @@ var ProjectCard = (function (Component) {
 						),
 						React.createElement(
 							"a",
-							{ style: { marginTop: 16, marginBottom: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+							{ style: { marginTop: 16, marginBottom: 12 }, href: "/project/" + this.props.project.slug, className: "button button-border button-dark button-rounded noleftmargin" },
 							"View"
 						)
 					)

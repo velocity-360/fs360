@@ -4,8 +4,18 @@ var constants = require("../constants/constants");
 
 var initialState = {
 	projects: {},
-	projectsArray: null
+	projectsArray: null,
+	emptyProject: {
+		title: "",
+		image: "",
+		description: "",
+		tags: [],
+		profile: {
+			name: ""
+		}
+	}
 };
+
 
 /* A reducer is a function that takes the current state and an action, and 
 then returns a new state. This reducer is responsible for appState.heroes 

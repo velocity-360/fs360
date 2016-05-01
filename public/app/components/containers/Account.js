@@ -107,13 +107,18 @@ class Account extends Component {
 			name: this.props.profile.username
 		}
 
+		this.setState({
+			showLoader: true
+		})
+
 		api.handlePost('/api/project', proj, function(err, response){
 			if (err){
 				alert(response.message)
 				return
 			}
 
-			console.log('PROJECT CREATED: '+JSON.stringify(response))
+//			console.log('PROJECT CREATED: '+JSON.stringify(response))
+			window.location.href = '/project/'+response.project.slug
 		})
 
 	}

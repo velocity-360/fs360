@@ -21603,7 +21603,16 @@
 	
 	var initialState = {
 		projects: {},
-		projectsArray: null
+		projectsArray: null,
+		emptyProject: {
+			title: '',
+			image: '',
+			description: '',
+			tags: [],
+			profile: {
+				name: ''
+			}
+		}
 	};
 	
 	/* A reducer is a function that takes the current state and an action, and 
@@ -21712,6 +21721,10 @@
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
+	var _Project = __webpack_require__(581);
+	
+	var _Project2 = _interopRequireDefault(_Project);
+	
 	var _Course = __webpack_require__(575);
 	
 	var _Course2 = _interopRequireDefault(_Course);
@@ -21778,6 +21791,9 @@
 	
 					case 'post':
 						return page = _react2.default.createElement(_PostPage2.default, { slug: this.props.slug });
+	
+					case 'project':
+						return page = _react2.default.createElement(_Project2.default, { slug: this.props.slug });
 	
 					case 'account':
 						return page = _react2.default.createElement(_Account2.default, null);
@@ -61853,13 +61869,18 @@
 					name: this.props.profile.username
 				};
 	
+				this.setState({
+					showLoader: true
+				});
+	
 				_api2.default.handlePost('/api/project', proj, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
 					}
 	
-					console.log('PROJECT CREATED: ' + JSON.stringify(response));
+					//			console.log('PROJECT CREATED: '+JSON.stringify(response))
+					window.location.href = '/project/' + response.project.slug;
 				});
 			}
 		}, {
@@ -62099,7 +62120,7 @@
 						),
 						_react2.default.createElement(
 							"a",
-							{ style: { marginTop: 16, marginBottom: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+							{ style: { marginTop: 16, marginBottom: 12 }, href: '/project/' + this.props.project.slug, className: "button button-border button-dark button-rounded noleftmargin" },
 							"View"
 						)
 					)
@@ -62381,6 +62402,165 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
+
+/***/ },
+/* 581 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactLoader = __webpack_require__(444);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Sidebar = __webpack_require__(461);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(457);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(447);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(448);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	var _DateUtils = __webpack_require__(468);
+	
+	var _DateUtils2 = _interopRequireDefault(_DateUtils);
+	
+	var _TextUtils = __webpack_require__(463);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Project = function (_Component) {
+		_inherits(Project, _Component);
+	
+		function Project(props, context) {
+			_classCallCheck(this, Project);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props, context));
+	
+			_this.state = {
+				showLoader: false
+			};
+			return _this;
+		}
+	
+		_createClass(Project, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var url = '/api/project?slug=' + this.props.slug;
+				_api2.default.handleGet(url, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+					_store2.default.dispatch(_actions2.default.projectsRecieved(response.projects));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'entry clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'container clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'heading-block center' },
+										_react2.default.createElement(
+											'h1',
+											null,
+											this.props.project.title
+										),
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=260', alt: 'FullStack 360' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry-c' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'panel panel-default', style: { background: '#f1f9f5' } },
+												_react2.default.createElement('ul', { className: 'entry-meta clearfix', style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: '1px solid #eee' } }),
+												_react2.default.createElement('div', { style: { background: '#fff', padding: 24 }, dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.project.description) }, className: 'panel-body' })
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Project;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		var projects = state.projectReducer.projectsArray;
+		console.log('STATE TO PROPS: ' + JSON.stringify(projects));
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			project: projects == null ? state.projectReducer.emptyProject : projects[0],
+			loaderOptions: state.staticReducer.loaderConfig
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ }
 /******/ ]);

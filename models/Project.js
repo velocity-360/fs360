@@ -6,6 +6,7 @@ var ProjectSchema = new mongoose.Schema({
 	description: {type:String, trim:true, default: ''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
 	slug: {type:String, lowercase:true, trim:true, default:''},
+	repo: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''},
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	tags: {type: Array, default:[]}, // tech used
@@ -20,6 +21,7 @@ ProjectSchema.methods.summary = function() {
 		'image':this.image,
 		'profile':this.profile,
 		'slug':this.slug,
+		'repo':this.repo,
 		'link':this.link,
 		'tags':this.tags,
 		'timestamp':this.timestamp,

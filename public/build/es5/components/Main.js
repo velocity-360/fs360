@@ -26,6 +26,8 @@ var Feed = _interopRequire(require("./containers/Feed"));
 
 var PostPage = _interopRequire(require("./containers/PostPage"));
 
+var Project = _interopRequire(require("./containers/Project"));
+
 var Course = _interopRequire(require("./containers/Course"));
 
 var Videos = _interopRequire(require("./containers/Videos"));
@@ -74,6 +76,9 @@ var Main = (function (Component) {
 
 					case "post":
 						return page = React.createElement(PostPage, { slug: this.props.slug });
+
+					case "project":
+						return page = React.createElement(Project, { slug: this.props.slug });
 
 					case "account":
 						return page = React.createElement(Account, null);
