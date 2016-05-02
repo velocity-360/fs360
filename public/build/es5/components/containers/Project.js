@@ -86,25 +86,85 @@ var Project = (function (Component) {
 									{ className: "container clearfix" },
 									React.createElement(
 										"div",
-										{ className: "heading-block center" },
-										React.createElement(
-											"h1",
-											null,
-											this.props.project.title
-										),
-										React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=260", alt: "FullStack 360" })
-									),
-									React.createElement(
-										"div",
-										{ className: "entry-c" },
+										{ className: "postcontent nobottommargin col_last clearfix" },
 										React.createElement(
 											"div",
-											{ className: "entry-content" },
+											{ id: "posts", className: "post-timeline clearfix" },
+											React.createElement("div", { className: "timeline-border" }),
 											React.createElement(
 												"div",
-												{ className: "panel panel-default", style: { background: "#f1f9f5" } },
-												React.createElement("ul", { className: "entry-meta clearfix", style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: "1px solid #eee" } }),
-												React.createElement("div", { style: { background: "#fff", padding: 24 }, dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(this.props.project.description) }, className: "panel-body" })
+												{ className: "entry clearfix" },
+												React.createElement(
+													"div",
+													{ className: "entry-timeline" },
+													"Intro",
+													React.createElement("span", null),
+													React.createElement("div", { className: "timeline-divider" })
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-image" },
+													React.createElement(
+														"div",
+														{ className: "panel panel-default" },
+														React.createElement(
+															"div",
+															{ className: "panel-body", style: { padding: 36 } },
+															React.createElement(
+																"div",
+																{ className: "row" },
+																React.createElement(
+																	"div",
+																	{ className: "col-md-3" },
+																	React.createElement("img", { style: { width: "100%", marginBottom: 16 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=420" })
+																),
+																React.createElement(
+																	"div",
+																	{ className: "col-md-9" },
+																	React.createElement(
+																		"h2",
+																		null,
+																		this.props.project.title
+																	),
+																	React.createElement("hr", null),
+																	this.props.project.description,
+																	React.createElement("br", null)
+																)
+															)
+														)
+													)
+												)
+											),
+											React.createElement(
+												"div",
+												{ className: "entry clearfix" },
+												React.createElement(
+													"div",
+													{ className: "entry-timeline" },
+													"Intro",
+													React.createElement("span", null),
+													React.createElement("div", { className: "timeline-divider" })
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-image" },
+													React.createElement(
+														"div",
+														{ className: "panel panel-default" },
+														React.createElement(
+															"div",
+															{ className: "panel-body", style: { padding: 36 } },
+															React.createElement(
+																"h3",
+																null,
+																"Comments"
+															),
+															React.createElement("hr", null),
+															this.props.project.description,
+															React.createElement("br", null)
+														)
+													)
+												)
 											)
 										)
 									)

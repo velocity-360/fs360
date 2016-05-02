@@ -60871,25 +60871,85 @@
 									{ className: 'container clearfix' },
 									_react2.default.createElement(
 										'div',
-										{ className: 'heading-block center' },
-										_react2.default.createElement(
-											'h1',
-											null,
-											this.props.project.title
-										),
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=260', alt: 'FullStack 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'entry-c' },
+										{ className: 'postcontent nobottommargin col_last clearfix' },
 										_react2.default.createElement(
 											'div',
-											{ className: 'entry-content' },
+											{ id: 'posts', className: 'post-timeline clearfix' },
+											_react2.default.createElement('div', { className: 'timeline-border' }),
 											_react2.default.createElement(
 												'div',
-												{ className: 'panel panel-default', style: { background: '#f1f9f5' } },
-												_react2.default.createElement('ul', { className: 'entry-meta clearfix', style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: '1px solid #eee' } }),
-												_react2.default.createElement('div', { style: { background: '#fff', padding: 24 }, dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.project.description) }, className: 'panel-body' })
+												{ className: 'entry clearfix' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'entry-timeline' },
+													'Intro',
+													_react2.default.createElement('span', null),
+													_react2.default.createElement('div', { className: 'timeline-divider' })
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'entry-image' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel panel-default' },
+														_react2.default.createElement(
+															'div',
+															{ className: 'panel-body', style: { padding: 36 } },
+															_react2.default.createElement(
+																'div',
+																{ className: 'row' },
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'col-md-3' },
+																	_react2.default.createElement('img', { style: { width: '100%', marginBottom: 16 }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=420' })
+																),
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'col-md-9' },
+																	_react2.default.createElement(
+																		'h2',
+																		null,
+																		this.props.project.title
+																	),
+																	_react2.default.createElement('hr', null),
+																	this.props.project.description,
+																	_react2.default.createElement('br', null)
+																)
+															)
+														)
+													)
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry clearfix' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'entry-timeline' },
+													'Intro',
+													_react2.default.createElement('span', null),
+													_react2.default.createElement('div', { className: 'timeline-divider' })
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'entry-image' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel panel-default' },
+														_react2.default.createElement(
+															'div',
+															{ className: 'panel-body', style: { padding: 36 } },
+															_react2.default.createElement(
+																'h3',
+																null,
+																'Comments'
+															),
+															_react2.default.createElement('hr', null),
+															this.props.project.description,
+															_react2.default.createElement('br', null)
+														)
+													)
+												)
 											)
 										)
 									)

@@ -48,24 +48,59 @@ class Project extends Component {
 
 						<div className="entry clearfix">
 							<div className="container clearfix">
-								<div className="heading-block center">
-									<h1>{this.props.project.title}</h1>
-									<img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+this.props.project.image+'?crop=260'} alt="FullStack 360" />
-								</div>
+								<div className="postcontent nobottommargin col_last clearfix">
 
-								<div className="entry-c">
-									<div className="entry-content">
-										<div className="panel panel-default" style={{background:'#f1f9f5'}}>
+								<div id="posts" className="post-timeline clearfix">
+									<div className="timeline-border"></div>
 
-											<ul className="entry-meta clearfix" style={{paddingLeft:24, paddingTop:10, paddingBottom:16, borderBottom:'1px solid #eee'}}>
-											</ul>
+									<div className="entry clearfix">
+										<div className="entry-timeline">
+											Intro<span></span>
+											<div className="timeline-divider"></div>
+										</div>
+										<div className="entry-image">
+											<div className="panel panel-default">
+												<div className="panel-body" style={{padding:36}}>
+													<div className="row">
+														<div className="col-md-3">
+															<img style={{width:'100%', marginBottom:16}} src={'https://media-service.appspot.com/site/images/'+this.props.project.image+'?crop=420'} />
+														</div>
+														<div className="col-md-9">
+															<h2>{this.props.project.title}</h2>
+															<hr />
+															{this.props.project.description}<br />
+														</div>
 
-											<div style={{background:'#fff', padding: 24}} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.project.description) }} className="panel-body">
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
+
+
+									<div className="entry clearfix">
+										<div className="entry-timeline">
+											Intro<span></span>
+											<div className="timeline-divider"></div>
+										</div>
+										<div className="entry-image">
+											<div className="panel panel-default">
+												<div className="panel-body" style={{padding:36}}>
+													<h3>Comments</h3>
+													<hr />
+													{this.props.project.description}<br />
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
 								</div>
 
+
+
+								</div>
 							</div>
 						</div>
 
