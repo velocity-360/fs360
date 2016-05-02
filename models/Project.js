@@ -10,6 +10,7 @@ var ProjectSchema = new mongoose.Schema({
 	link: {type:String, trim:true, lowercase:true, default:''},
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	tags: {type: Array, default:[]}, // tech used
+	milestones: {type: Array, default:[]},
 	timestamp: {type:Date, default:Date.now},
 });
 
@@ -24,6 +25,7 @@ ProjectSchema.methods.summary = function() {
 		'repo':this.repo,
 		'link':this.link,
 		'tags':this.tags,
+		'milestones':this.milestones,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};

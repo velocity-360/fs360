@@ -125,7 +125,7 @@ var Project = (function (Component) {
 
 var stateToProps = function (state) {
 	var projects = state.projectReducer.projectsArray;
-	console.log("STATE TO PROPS: " + JSON.stringify(projects));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(projects))
 
 	return {
 		currentUser: state.profileReducer.currentUser,

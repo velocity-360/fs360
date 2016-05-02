@@ -225,7 +225,7 @@ const stateToProps = function(state){
 				return
 			}
 
-			console.log('FETCH PROJECTS: '+JSON.stringify(response))
+//			console.log('FETCH PROJECTS: '+JSON.stringify(response))
 			store.dispatch(actions.projectsRecieved(response.projects))
 		})
 	}
