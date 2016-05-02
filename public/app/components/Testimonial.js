@@ -7,7 +7,7 @@ class Testimonial extends Component {
 			<div className="col-md-6 bottommargin">
 				<div className="team team-list clearfix">
 					<div className="team-image" style={{width:150}}>
-						<img className="img-circle" src={'/images/'+this.props.testimonial.image} alt="Bryant Kellam" />
+						<img className="img-circle" src={'/images/'+this.props.testimonial.image} alt="FullStaack 360" />
 					</div>
 					<div className="team-desc">
 						<div className="team-title"><h4>{this.props.testimonial.name}</h4><span>{this.props.testimonial.course}</span></div>

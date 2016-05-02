@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Home from './containers/Home'
+import Ios from './containers/Ios'
 import Courses from './containers/Courses'
 import Events from './containers/Events'
 import Feed from './containers/Feed'
@@ -27,6 +28,9 @@ class Main extends Component {
 		switch (this.props.page){
 			case 'home':
 				return page = <Home />
+
+			case 'ios':
+				return page = <Ios />
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />

@@ -36,7 +36,7 @@ var Testimonial = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "team-image", style: { width: 150 } },
-							React.createElement("img", { className: "img-circle", src: "/images/" + this.props.testimonial.image, alt: "Bryant Kellam" })
+							React.createElement("img", { className: "img-circle", src: "/images/" + this.props.testimonial.image, alt: "FullStaack 360" })
 						),
 						React.createElement(
 							"div",

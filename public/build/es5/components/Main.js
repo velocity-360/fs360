@@ -18,6 +18,8 @@ var Component = _react.Component;
 var connect = require("react-redux").connect;
 var Home = _interopRequire(require("./containers/Home"));
 
+var Ios = _interopRequire(require("./containers/Ios"));
+
 var Courses = _interopRequire(require("./containers/Courses"));
 
 var Events = _interopRequire(require("./containers/Events"));
@@ -55,6 +57,9 @@ var Main = (function (Component) {
 				switch (this.props.page) {
 					case "home":
 						return page = React.createElement(Home, null);
+
+					case "ios":
+						return page = React.createElement(Ios, null);
 
 					case "course":
 						return page = React.createElement(Course, { slug: this.props.slug });
