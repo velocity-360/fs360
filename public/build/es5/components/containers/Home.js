@@ -839,11 +839,6 @@ var Home = (function (Component) {
 												)
 											)
 										)
-									),
-									React.createElement(
-										"a",
-										{ onClick: this.openModal, id: "bootcamp", href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-										"Request Information"
 									)
 								)
 							)
