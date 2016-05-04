@@ -141,10 +141,18 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'syllabus'){
 //		console.log('SYLLABUS REQUEST: '+JSON.stringify(req.body));
-		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Syllabus Request', JSON.stringify(req.body))
+		var body = req.body
+		var subscriber = {
+			name: body.firstName+body.lastName,
+			email: body.email,
+			workshop: body.course
+		}
+
+		subscriberController.post(subscriber, null);
+		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Syllabus Request', JSON.stringify(body))
 		.then(function(){
 			res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
-			return;
+			return
 		})
 		.catch(function(err){
 			res.json({'confirmation':'fail', 'message':err.message});
@@ -208,7 +216,7 @@ router.post('/:resource', function(req, res, next) {
 		var path = 'public/email/'+template+'/email.html';
 //		var path = 'public/email/subscribers/email.html';
 
-		var subject = 'Programming Workshop';
+		var subject = 'iOS Development Workshop';
 		if (template == 'video')
 			subject = 'Programming Video Series';
 		if (template == 'summer')
