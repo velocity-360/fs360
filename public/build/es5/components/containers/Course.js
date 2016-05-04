@@ -46,10 +46,16 @@ var Course = (function (Component) {
 		this.login = this.login.bind(this);
 		this.updateLogin = this.updateLogin.bind(this);
 		this.openStripeModal = this.openStripeModal.bind(this);
+		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
+		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
 			showLoader: false,
 			showModal: false,
-			showLogin: false
+			showLogin: false,
+			syllabusRequest: {
+				name: "",
+				email: ""
+			}
 		};
 	}
 
@@ -111,8 +117,48 @@ var Course = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
+				console.log("OPEN MODAL");
 				event.preventDefault();
 				this.setState({ showModal: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		updateSyllabusRequest: {
+			value: function updateSyllabusRequest(event) {
+				var s = Object.assign({}, this.state.syllabusRequest);
+				s[event.target.id] = event.target.value;
+				this.setState({
+					syllabusRequest: s
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		syllabusRequest: {
+			value: function syllabusRequest(event) {
+				event.preventDefault();
+				//		console.log('SYLLABUS REQUEST: '+JSON.stringify(this.state.syllabusRequest))
+
+
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/api/syllabus", _this.state.syllabusRequest, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
 			},
 			writable: true,
 			configurable: true
@@ -149,7 +195,7 @@ var Course = (function (Component) {
 		login: {
 			value: function login(event) {
 				event.preventDefault();
-				console.log("LOGIN: " + JSON.stringify(this.props.currentUser));
+				//		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
 				this.setState({
 					showModal: false,
 					showLogin: false,
@@ -603,9 +649,9 @@ var Course = (function (Component) {
 						React.createElement(
 							Modal.Body,
 							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement("input", { className: "form-control", type: "text", id: "name", placeholder: "Name" }),
+							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: "form-control", type: "text", id: "name", placeholder: "Name" }),
 							React.createElement("br", null),
-							React.createElement("input", { className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
 							React.createElement("br", null)
 						),
 						React.createElement(
@@ -613,7 +659,7 @@ var Course = (function (Component) {
 							{ style: { textAlign: "center" } },
 							React.createElement(
 								"a",
-								{ href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								{ onClick: this.syllabusRequest, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 								"Submit"
 							)
 						)

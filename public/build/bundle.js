@@ -62261,10 +62261,16 @@
 			_this2.login = _this2.login.bind(_this2);
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
+			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
+			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showModal: false,
-				showLogin: false
+				showLogin: false,
+				syllabusRequest: {
+					name: '',
+					email: ''
+				}
 			};
 			return _this2;
 		}
@@ -62322,8 +62328,43 @@
 		}, {
 			key: 'openModal',
 			value: function openModal(event) {
+				console.log('OPEN MODAL');
 				event.preventDefault();
 				this.setState({ showModal: true });
+			}
+		}, {
+			key: 'updateSyllabusRequest',
+			value: function updateSyllabusRequest(event) {
+				var s = Object.assign({}, this.state.syllabusRequest);
+				s[event.target.id] = event.target.value;
+				this.setState({
+					syllabusRequest: s
+				});
+			}
+		}, {
+			key: 'syllabusRequest',
+			value: function syllabusRequest(event) {
+				event.preventDefault();
+				//		console.log('SYLLABUS REQUEST: '+JSON.stringify(this.state.syllabusRequest))
+	
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+	
+				var _this = this;
+				_api2.default.handlePost('/api/syllabus', _this.state.syllabusRequest, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
 			}
 		}, {
 			key: 'closeModal',
@@ -62352,7 +62393,7 @@
 			key: 'login',
 			value: function login(event) {
 				event.preventDefault();
-				console.log('LOGIN: ' + JSON.stringify(this.props.currentUser));
+				//		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
 				this.setState({
 					showModal: false,
 					showLogin: false,
@@ -62800,9 +62841,9 @@
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Body,
 							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
+							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
 							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
 							_react2.default.createElement('br', null)
 						),
 						_react2.default.createElement(
@@ -62810,7 +62851,7 @@
 							{ style: { textAlign: 'center' } },
 							_react2.default.createElement(
 								'a',
-								{ href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								{ onClick: this.syllabusRequest, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
 								'Submit'
 							)
 						)

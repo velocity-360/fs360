@@ -19,10 +19,16 @@ class Course extends Component {
 		this.login = this.login.bind(this)
 		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
+		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
+		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
 			showLoader: false,
 			showModal: false,
-			showLogin: false
+			showLogin: false,
+			syllabusRequest: {
+				name: '',
+				email: ''
+			}
 		}
 	}
 
@@ -78,9 +84,44 @@ class Course extends Component {
 	}
 
 	openModal(event){
+		console.log('OPEN MODAL')
 		event.preventDefault()
 		this.setState({showModal: true})
 	}
+
+	updateSyllabusRequest(event){
+		var s = Object.assign({}, this.state.syllabusRequest)
+		s[event.target.id] = event.target.value
+		this.setState({
+			syllabusRequest: s
+		})
+
+	}
+
+	syllabusRequest(event){
+		event.preventDefault()
+//		console.log('SYLLABUS REQUEST: '+JSON.stringify(this.state.syllabusRequest))
+
+
+		this.setState({
+			showModal: false,
+			showLoader: true
+		});
+
+		var _this = this
+		api.handlePost('/api/syllabus', _this.state.syllabusRequest, function(err, response){
+			_this.setState({
+				showLoader: false
+			});
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		});
+	}	
 
 	closeModal(){
 		this.setState({
@@ -104,7 +145,7 @@ class Course extends Component {
 
 	login(event){
 		event.preventDefault()
-		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
+//		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
 		this.setState({
 			showModal: false,
 			showLogin: false,
@@ -380,13 +421,13 @@ class Course extends Component {
 			        	<h2>Request Syllabus</h2>
 			        </Modal.Header>
 			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<input className="form-control" type="text" id="name" placeholder="Name" /><br />
-			        	<input className="form-control" type="text" id="email" placeholder="Email" /><br />
+			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} className="form-control" type="text" id="name" placeholder="Name" /><br />
+			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
 
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+						<a onClick={this.syllabusRequest} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 			        </Modal.Footer>
 		        </Modal>
 
