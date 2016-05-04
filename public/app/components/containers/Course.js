@@ -27,7 +27,8 @@ class Course extends Component {
 			showLogin: false,
 			syllabusRequest: {
 				name: '',
-				email: ''
+				email: '',
+				course: ''
 			}
 		}
 	}
@@ -92,6 +93,7 @@ class Course extends Component {
 	updateSyllabusRequest(event){
 		var s = Object.assign({}, this.state.syllabusRequest)
 		s[event.target.id] = event.target.value
+		s['course'] = this.props.course.title
 		this.setState({
 			syllabusRequest: s
 		})
