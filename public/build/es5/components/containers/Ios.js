@@ -57,7 +57,7 @@ var Ios = (function (Component) {
 				lastName: "",
 				email: "",
 				phone: "",
-				course: ""
+				course: "ios-node-bootcamp"
 			}
 		};
 	}
@@ -294,29 +294,29 @@ var Ios = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col_full" },
-									React.createElement("input", { type: "text", className: "form-control input-lg not-dark", placeholder: "Name" })
+									React.createElement("input", { onChange: this.updateVisitor, id: "firstName", type: "text", className: "form-control input-lg not-dark", placeholder: "First Name" })
 								),
 								React.createElement(
 									"div",
 									{ className: "col_full" },
-									React.createElement("input", { type: "text", className: "form-control input-lg not-dark", placeholder: "Last Name" })
+									React.createElement("input", { onChange: this.updateVisitor, id: "lastName", type: "text", className: "form-control input-lg not-dark", placeholder: "Last Name" })
 								),
 								React.createElement(
 									"div",
 									{ className: "col_full" },
-									React.createElement("input", { type: "email", className: "form-control input-lg not-dark", placeholder: "Email" })
+									React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "text", className: "form-control input-lg not-dark", placeholder: "Email" })
 								),
 								React.createElement(
 									"div",
 									{ className: "col_full" },
-									React.createElement("input", { type: "password", className: "form-control input-lg not-dark", placeholder: "Phone" })
+									React.createElement("input", { onChange: this.updateVisitor, id: "phone", type: "text", className: "form-control input-lg not-dark", placeholder: "Phone" })
 								),
 								React.createElement(
 									"div",
 									{ className: "col_full nobottommargin" },
 									React.createElement(
 										"button",
-										{ className: "btn btn-lg btn-danger btn-block nomargin", value: "submit", type: "submit" },
+										{ onClick: this.submitInfoRequest, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
 										"Submit"
 									)
 								)
@@ -338,7 +338,7 @@ var Ios = (function (Component) {
 									React.createElement(
 										"h3",
 										null,
-										"Become a Profession iOS Developer in 24 Weeks"
+										"Become a Professional iOS Developer in 24 Weeks"
 									),
 									React.createElement(
 										"span",
@@ -439,7 +439,7 @@ var Ios = (function (Component) {
 										React.createElement(
 											"a",
 											{ target: "_blank", href: "http://eranyc.com/" },
-											"ERA Accelerator"
+											" ERA Accelerator"
 										),
 										", and several NYC based startups."
 									)

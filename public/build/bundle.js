@@ -44495,7 +44495,7 @@
 					lastName: '',
 					email: '',
 					phone: '',
-					course: ''
+					course: 'ios-node-bootcamp'
 				}
 			};
 			return _this2;
@@ -44719,29 +44719,29 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
-									_react2.default.createElement('input', { type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'First Name' })
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
-									_react2.default.createElement('input', { type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name' })
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name' })
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
-									_react2.default.createElement('input', { type: 'email', className: 'form-control input-lg not-dark', placeholder: 'Email' })
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' })
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
-									_react2.default.createElement('input', { type: 'password', className: 'form-control input-lg not-dark', placeholder: 'Phone' })
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'phone', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Phone' })
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full nobottommargin' },
 									_react2.default.createElement(
 										'button',
-										{ className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit', type: 'submit' },
+										{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
 										'Submit'
 									)
 								)
@@ -44763,7 +44763,7 @@
 									_react2.default.createElement(
 										'h3',
 										null,
-										'Become a Profession iOS Developer in 24 Weeks'
+										'Become a Professional iOS Developer in 24 Weeks'
 									),
 									_react2.default.createElement(
 										'span',
@@ -44864,7 +44864,7 @@
 										_react2.default.createElement(
 											'a',
 											{ target: '_blank', href: 'http://eranyc.com/' },
-											'ERA Accelerator'
+											' ERA Accelerator'
 										),
 										', and several NYC based startups.'
 									)

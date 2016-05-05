@@ -29,7 +29,7 @@ class Ios extends Component {
 				lastName: '',
 				email: '',
 				phone: '',
-				course: ''
+				course: 'ios-node-bootcamp'
 			}
 		}
 	}
@@ -196,19 +196,19 @@ class Ios extends Component {
 		                    </div>
 		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 		                    <div className="col_full">
-		                        <input type="text" className="form-control input-lg not-dark" placeholder="Name" />
+		                        <input onChange={this.updateVisitor} id="firstName" type="text" className="form-control input-lg not-dark" placeholder="First Name" />
 		                    </div>
 		                    <div className="col_full">
-		                        <input type="text" className="form-control input-lg not-dark" placeholder="Last Name" />
+		                        <input onChange={this.updateVisitor} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Last Name" />
 		                    </div>
 		                    <div className="col_full">
-		                        <input type="email" className="form-control input-lg not-dark" placeholder="Email" />
+		                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
 		                    </div>
 		                    <div className="col_full">
-		                        <input type="password" className="form-control input-lg not-dark" placeholder="Phone" />
+		                        <input onChange={this.updateVisitor} id="phone" type="text" className="form-control input-lg not-dark" placeholder="Phone" />
 		                    </div>
 		                    <div className="col_full nobottommargin">
-		                        <button className="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit">Submit</button>
+		                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Submit</button>
 		                    </div>
 		                </form>
 
@@ -221,7 +221,7 @@ class Ios extends Component {
 
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
-		                        <h3>Become a Profession iOS Developer in 24 Weeks</h3>
+		                        <h3>Become a Professional iOS Developer in 24 Weeks</h3>
 		                        <span>
 		                        	Learn iOS and Web development in the evening without leaving your job.
 		                        </span>
@@ -278,7 +278,7 @@ class Ios extends Component {
 									FS360 will help the transition. We provide students with interview preparation, practice, 
 									and assigments gathered from previous students who have gone through many interview 
 									processes. Our former students have gone on to work at companies like the New York Times, 
-									<a target="_blank" href="http://eranyc.com/">ERA Accelerator</a>, and several NYC based 
+									<a target="_blank" href="http://eranyc.com/"> ERA Accelerator</a>, and several NYC based 
 									startups.
 								</p>
 							</div>
