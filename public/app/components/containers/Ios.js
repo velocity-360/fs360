@@ -14,30 +14,23 @@ class Ios extends Component {
 
 	constructor(props, context){
 		super(props, context)
-		this.updateUserRegistration = this.updateUserRegistration.bind(this)
-		this.register = this.register.bind(this)
+		this.updateVisitor = this.updateVisitor.bind(this)
+		this.submitInfoRequest = this.submitInfoRequest.bind(this)
 		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
-		this.rsvp = this.rsvp.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.validate = this.validate.bind(this)
-		this.showRegistrationForm = this.showRegistrationForm.bind(this)
 		this.state = {
 			showRegistration: false,
 			showLoader: false,
 			showModal: false,
-			bootcamp: {
-				subject: 'Bootcamp',
-				image: 'logo_round_green_260.png',
-				button: 'Request Info'
-			},
-			selectedEvent: {
-				id: null,
-				title: '',
-				image: ''
-			},
-			membershiptype: 'premium',
-			selectedCourse: 'ios bootcamp' // for syllabus requests
+			visitor: {
+				firstName: '',
+				lastName: '',
+				email: '',
+				phone: '',
+				course: ''
+			}
 		}
 	}
 
@@ -45,91 +38,22 @@ class Ios extends Component {
 //		getCurrentUser()
 	}
 
-	componentDidMount(){
-		api.handleGet('/api/event', {}, function(err, response){
-			if (err){
-				return
-			}
 
-			store.dispatch(actions.eventsRecieved(response.events))
-		});
-	}
-
-	updateUserRegistration(event){
-		console.log('updateUserRegistration: '+event.target.id)
+	updateVisitor(event){
+		console.log('updateVisitor: '+event.target.id)
 		event.preventDefault()
 
-		if (event.target.id == 'course'){
-			this.setState({
-				selectedCourse: event.target.value
-			})
-			return
-		}
-
-		if (event.target.id == 'membershiptype'){
-			this.setState({
-				membershiptype: event.target.value
-			})
-		}
-
-		var updatedUser = Object.assign({}, this.props.currentUser);
-		updatedUser[event.target.id] = event.target.value
-		store.dispatch(actions.updateCurrentUser(updatedUser));
-	}
-
-	validate(withPassword){
-		console.log('VALIDATE: '+JSON.stringify(this.props.currentUser))
-		if (this.props.currentUser.firstName.length == 0)
-			return 'First Name'
-
-		if (this.props.currentUser.lastName.length == 0)
-			return 'Last Name'
-
-		if (this.props.currentUser.email.length == 0)
-			return 'Email'
-
-		if (withPassword == false)
-			return null
-
-		if (this.props.currentUser.password.length == 0)
-			return 'Password'
-
-		return null // this is successful
-	}
-
-	register(event){
-		event.preventDefault()
-		var missingField = this.validate(true);
-		if (missingField != null){
-			alert('Please enter your '+missingField);
-			return
-		}
-
+		var visitor = Object.assign({}, this.state.visitor)
+		visitor[event.target.id] = event.target.value
 		this.setState({
-			showModal: false,
-			showLoader: true
-		});
-
-		var _this = this
-		api.handlePost('/api/profile', this.props.currentUser, function(err, response){
-			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
-
-			if (err){
-				_this.setState({
-					showLoader: false
-				});
-				alert(err.message)
-				return
-			}
-
-//			alert(response.message)
-			window.location.href = '/courses'
-		});
-
+			visitor: visitor
+		})
 	}
 
-	rsvp(event){
+	submitInfoRequest(event){
 		event.preventDefault()
+//		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
+
 		var missingField = this.validate(false);
 		if (missingField != null){
 			alert('Please enter your '+missingField);
@@ -142,13 +66,7 @@ class Ios extends Component {
 		});
 
 		var _this = this
-		var pkg = {
-			visitor: this.props.currentUser,
-			event: this.state.selectedEvent
-		}
-
-		api.handlePost('/api/rsvp', pkg, function(err, response){
-			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
+		api.handlePost('/api/info', this.state.visitor, function(err, response){
 			_this.setState({
 				showLoader: false
 			});
@@ -161,6 +79,29 @@ class Ios extends Component {
 			alert(response.message)
 		});
 	}
+
+
+	validate(withPassword){
+		var visitor = this.state.visitor
+		console.log('VALIDATE: '+JSON.stringify(visitor))
+		if (visitor.firstName.length == 0)
+			return 'First Name'
+
+		if (visitor.lastName.length == 0)
+			return 'Last Name'
+
+		if (visitor.email.length == 0)
+			return 'Email'
+
+		if (withPassword == false)
+			return null
+
+		if (visitor.password.length == 0)
+			return 'Password'
+
+		return null // this is successful
+	}
+
 
 	syllabusRequest(event){
 		event.preventDefault()
@@ -202,9 +143,12 @@ class Ios extends Component {
 		console.log('OPEN MODAL: '+event.target.id)
 		event.preventDefault()
 
+		var visitor = Object.assign({}, this.state.visitor)
+		visitor['course'] = event.target.id
+
 		this.setState({
 			showModal: true,
-			selectedEvent: (event.target.id == 'bootcamp') ? this.state.bootcamp : this.props.events[event.target.id]
+			visitor: visitor
 		})
 	}
 
@@ -215,13 +159,6 @@ class Ios extends Component {
 		})
 	}
 
-	showRegistrationForm(event){
-		event.preventDefault()
-		this.setState({
-			membershiptype: event.target.id,
-			showRegistration: true
-		})
-	}
 
 	render(){
 
@@ -284,8 +221,10 @@ class Ios extends Component {
 
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
-		                        <h3>Beautiful Landing Page designs waiting for you inside</h3>
-		                        <span>Youll love our beautiful &amp; interactive builder that makes your build process easier &amp; fun.</span>
+		                        <h3>Become a Profession iOS Developer in 24 Weeks</h3>
+		                        <span>
+		                        	Learn iOS and Web development in the evening without leaving your job.
+		                        </span>
 		                    </div>
 		                </div>
 
@@ -333,13 +272,15 @@ class Ios extends Component {
 
 								<hr />
 
-								<h3>Learn to Build Real iPhone Apps</h3>
+								<h3>Beyond the Course</h3>
 								<p>
-									FullStack 360 is designed for part-time students who want to accelerate their learning through a
-									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
-									of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.
+									Whether you are looking for a job as a software developer or starting your own company, 
+									FS360 will help the transition. We provide students with interview preparation, practice, 
+									and assigments gathered from previous students who have gone through many interview 
+									processes. Our former students have gone on to work at companies like the New York Times, 
+									<a target="_blank" href="http://eranyc.com/">ERA Accelerator</a>, and several NYC based 
+									startups.
 								</p>
-
 							</div>
 
 						</div>
@@ -348,7 +289,7 @@ class Ios extends Component {
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
-						<h2>iOS Courses</h2>
+						<h2>Courses</h2>
 					</div>
 
 					<div className="content-wrap" style={{paddingTop:0}}>
@@ -360,18 +301,23 @@ class Ios extends Component {
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>iOS &amp; Node 24-Week Part Time Bootcamp</h4>
-										<span>Jul 5 to Jul 15 | Mon - Fri | 9am - 5pm</span>
+										<h4>iOS &amp; Node 24-Week Bootcamp</h4>
+										<span>June 6th - Dec 2nd</span>
+										<span>Tues/Thur, 6pm - 9pm</span>
+										<span>Sat, 12pm - 4pm</span>
 									</div>
 									<div className="team-content">
-										The iOS High School Course takes students through the process of 
-										designing and programming a basic iOS app from start. Students will create a 
-										simple app that utilizes key platform tools including the GPS locator, 
-										accelerator, and camera. In addition, the course will explore third party APIs 
-										such as Google Maps and Foursquare.
+										The 24-Week iOS Intensive is a comprehensive course in all aspects of iOS 
+										development for beginners. 3 days a week, students will cover the key aspects 
+										of iOS development from creating sleek UI’s, animations, GPS locator, 
+										integrating 3rd party data, and publishing. This course is designed for 
+										beginners with little to no programming experience and all development is 
+										done with Swift. By the end of the course, students will have published at least 
+										one app to the App Store and gained the skills neccessary to begin working as 
+										junior iOS developers.
 									</div>
 									<br />
-									<a href="/course/ios-high-school-course" className="btn btn-success">
+									<a onClick={this.openModal} id="ios-node-bootcamp" href="#" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -386,17 +332,18 @@ class Ios extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>iOS &amp; Node Evening Course</h4>
-										<span>June 6 to July 27 | Mon, Wed | 6pm - 9pm</span>
+										<span>June 6 to July 27</span>
+										<span>Mon/Wed, 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
-										The iOS High School Course takes students through the process of 
-										designing and programming a basic iOS app from start. Students will create a 
-										simple app that utilizes key platform tools including the GPS locator, 
-										accelerator, and camera. In addition, the course will explore third party APIs 
-										such as Google Maps and Foursquare.
+										The 8-week iOS Evening Course takes beginners through the process of designing 
+										and programming a basic iOS app from start. Students will create a simple app 
+										that utilizes key platform tools including the GPS locator, accelerator, and 
+										camera. In addition, the course will explore third party APIs such as Google 
+										Maps and Foursquare.
 									</div>
 									<br />
-									<a href="/course/ios-high-school-course" className="btn btn-success">
+									<a onClick={this.openModal} id="ios-node-evening" href="#" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -408,47 +355,22 @@ class Ios extends Component {
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>{this.state.selectedEvent.title}</h2>
+			        	<h2>Request Info</h2>
 			        </Modal.Header>
 			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
 			        	<div style={{textAlign:'center'}}>
-				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24, padding:12}} src={'https://media-service.appspot.com/site/images/'+this.state.selectedEvent.image+'?crop=360'} />
+				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', marginBottom:24}} src="/images/logo_round_green_260.png" />
 			        	</div>
-			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
-			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
-			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
-
+			        	<input onChange={this.updateVisitor} value={this.state.visitor.firstName} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
+			        	<input onChange={this.updateVisitor} value={this.state.visitor.lastName} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
+			        	<input onChange={this.updateVisitor} value={this.state.visitor.email} id="email" className="form-control" type="text" placeholder="Email" /><br />
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+						<a onClick={this.submitInfoRequest} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 			        </Modal.Footer>
 		        </Modal>
 
-		        <Modal show={this.state.showRegistration} onHide={this.closeModal}>
-			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h3>Join</h3>
-			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<div style={{textAlign:'center'}}>
-				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_green_260.png' />
-			        	</div>
-			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
-			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
-			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
-			        	<input onChange={this.updateUserRegistration} id="password" className="form-control" type="password" placeholder="Password" /><br />
-						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
-							<option value="basic">Basic</option>
-							<option value="starter">Starter</option>
-							<option value="premium">Premium</option>
-						</select>
-
-			        </Modal.Body>
-
-			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.register} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Register</a>
-			        </Modal.Footer>
-		        </Modal>
 
 				<Footer />
 			</div>

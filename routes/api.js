@@ -119,16 +119,6 @@ router.get('/:resource/:id', function(req, res, next) {
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
-	if (resource == 'test'){
-		console.log('TEST REQUEST: '+JSON.stringify(req.body));
-		res.json({
-			confirmation:'success',
-			body: req.body
-		});
-
-		return;
-	}
-
 	if (resource == 'application'){
 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Course Application', JSON.stringify(req.body))
 		res.json({
@@ -138,6 +128,31 @@ router.post('/:resource', function(req, res, next) {
 
 		return;
 	}
+
+	if (resource == 'info'){
+//		console.log('SYLLABUS REQUEST: '+JSON.stringify(req.body));
+		var body = req.body
+		var subscriber = {
+			name: body.firstName+body.lastName,
+			email: body.email,
+			workshop: body.course
+		}
+
+		subscriberController.post(subscriber, null);
+		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'General Info Request', JSON.stringify(body))
+		.then(function(){
+			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
+			return
+		})
+		.catch(function(err){
+			res.json({'confirmation':'fail', 'message':err.message});
+			return
+
+		});
+
+		return;
+	}
+
 
 	if (resource == 'syllabus'){
 //		console.log('SYLLABUS REQUEST: '+JSON.stringify(req.body));
