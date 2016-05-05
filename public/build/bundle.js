@@ -44696,79 +44696,122 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var _openModal = this.openModal;
-				var events = this.props.events.map(function (e, i) {
-					return _react2.default.createElement(_EventCard2.default, { key: e.id, index: i, event: e, click: _openModal });
-				});
 	
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Nav2.default, null),
 					_react2.default.createElement(
-						'section',
-						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: "url(images/ios-banner.jpg) center" } },
+						'header',
+						{ id: 'header', className: 'transparent-header page-section dark' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'slider-parallax-inner' },
+							{ id: 'header-wrap' },
 							_react2.default.createElement(
 								'div',
 								{ className: 'container clearfix' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'vertical-middle' },
+									{ id: 'primary-menu-trigger' },
+									_react2.default.createElement('i', { className: 'icon-reorder' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ id: 'logo' },
 									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block center nobottomborder' },
-										_react2.default.createElement(
-											'h1',
-											{ 'data-animate': 'fadeInUp' },
-											'Become an ',
-											_react2.default.createElement(
-												'strong',
-												null,
-												'iOS'
-											),
-											' Developer'
-										),
-										_react2.default.createElement(
-											'span',
-											{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
-											'24-Week Part Time Bootcamp and 8-Week Courses'
-										)
+										'a',
+										{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-dark.png' },
+										_react2.default.createElement('img', { src: '/images/logo.png', alt: 'FullStack 360' })
 									),
 									_react2.default.createElement(
-										'form',
-										{ action: '#', method: 'post', role: 'form', className: 'landing-wide-form clearfix' },
+										'a',
+										{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-dark@2x.png' },
+										_react2.default.createElement('img', { src: '/images/logo@2x.png', alt: 'FullStack 360' })
+									)
+								),
+								_react2.default.createElement(
+									'nav',
+									{ id: 'primary-menu' },
+									_react2.default.createElement(
+										'ul',
+										{ className: 'one-page-menu' },
 										_react2.default.createElement(
-											'div',
-											{ className: 'col_four_fifth nobottommargin' },
+											'li',
+											{ className: 'current' },
 											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_third nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'First Name*' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_third nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name*' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_third col_last nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email*' })
+												'a',
+												{ href: '/', 'data-href': '#header' },
+												_react2.default.createElement(
+													'div',
+													null,
+													'Home'
+												)
 											)
 										),
 										_react2.default.createElement(
-											'div',
-											{ className: 'col_one_fifth col_last nobottommargin' },
+											'li',
+											null,
 											_react2.default.createElement(
-												'button',
-												{ onClick: this.syllabusRequest, id: 'bootcamp', className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-												'Request Syllabus'
+												'a',
+												{ href: '/application', 'data-href': '#section-buy' },
+												_react2.default.createElement(
+													'div',
+													null,
+													'Apply'
+												)
 											)
 										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'slider', style: { background: 'url("/images/ios-banner.jpg") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'form',
+								{ action: '#', method: 'post', role: 'form', className: 'landing-wide-form landing-form-overlay dark clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'heading-block nobottommargin nobottomborder' },
+									_react2.default.createElement(
+										'h2',
+										null,
+										'Request More Info'
+									)
+								),
+								_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement('input', { type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement('input', { type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement('input', { type: 'email', className: 'form-control input-lg not-dark', placeholder: 'Email' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement('input', { type: 'password', className: 'form-control input-lg not-dark', placeholder: 'Phone' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full nobottommargin' },
+									_react2.default.createElement(
+										'button',
+										{ className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit', type: 'submit' },
+										'Submit'
 									)
 								)
 							)
@@ -44782,7 +44825,25 @@
 							{ className: 'content-wrap' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'container clearfix' },
+								{ className: 'promo promo-dark promo-full landing-promo header-stick' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'container clearfix' },
+									_react2.default.createElement(
+										'h3',
+										null,
+										'Beautiful Landing Page designs waiting for you inside'
+									),
+									_react2.default.createElement(
+										'span',
+										null,
+										'Youll love our beautiful & interactive builder that makes your build process easier & fun.'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix', style: { paddingTop: 64 } },
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_one_third bottommargin-sm', style: { background: '#f9f9f9' } },
@@ -44847,23 +44908,28 @@
 									'div',
 									{ className: 'col_two_third bottommargin-sm col_last' },
 									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block topmargin-sm' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Coding Education for Tomorrow'
-										)
+										'h3',
+										null,
+										'Learn to Build Real iPhone Apps'
 									),
 									_react2.default.createElement(
 										'p',
 										null,
-										'FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.'
+										'FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.',
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('br', null),
+										'Our focus is to teach the most up-to-date technologies to prepare students for the rapidly changing landscape in software. It all too common that aspiring developers waste valuable time learning outdated languages and frameworks, only to find out they do not have the marketable skills to transition into tech.'
+									),
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement(
+										'h3',
+										null,
+										'Learn to Build Real iPhone Apps'
 									),
 									_react2.default.createElement(
 										'p',
 										null,
-										'The only constant in the software industry is change. One day, PHP is the king, the next day Ruby on Rails is highest in demand. The major bootcamps in NYC focus on today. Flatiron School, General Assembly, Dev Bootcamp all teach Rails while we focus on tomorrow. Our stack is Node JS with React on the front end and ES2015. Will you be among the flood of Rails devs saturating the NYC market or will you be ready for the tech stack of tomorrow?'
+										'FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.'
 									)
 								)
 							)
@@ -44962,211 +45028,6 @@
 											{ href: '/course/ios-high-school-course', className: 'btn btn-success' },
 											'Learn More'
 										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'section-team', className: 'page-section', style: { paddingTop: 48, borderTop: '1px solid #ddd' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'heading-block center' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Upcoming Events'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ id: 'posts', className: 'events small-thumbs' },
-								events
-							),
-							_react2.default.createElement('div', { className: 'clear' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'row clearfix common-height', style: { borderTop: '1px solid #ddd', marginTop: 48 } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 center col-padding', style: { background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover' } },
-								_react2.default.createElement(
-									'div',
-									null,
-									' '
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 center col-padding', style: { backgroundColor: '#fff' } },
-								_react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block nobottomborder' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Bootcamps'
-										)
-									),
-									_react2.default.createElement(
-										'p',
-										{ className: 'lead' },
-										'FS360 operates 24-week bootcamps that run during evenings and weekends. Designed for working professionals, our bootcamps train students for a career change without having to leave their current job.'
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'table-responsive' },
-										_react2.default.createElement(
-											'table',
-											{ className: 'table table-bordered table-striped', style: { background: '#fff', textAlign: 'left' } },
-											_react2.default.createElement(
-												'colgroup',
-												null,
-												_react2.default.createElement('col', { className: 'col-xs-2' }),
-												_react2.default.createElement('col', { className: 'col-xs-4' }),
-												_react2.default.createElement('col', { className: 'col-xs-4' })
-											),
-											_react2.default.createElement(
-												'thead',
-												null,
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'th',
-														null,
-														'Class'
-													),
-													_react2.default.createElement(
-														'th',
-														null,
-														'Dates'
-													),
-													_react2.default.createElement(
-														'th',
-														null,
-														'Status'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'tbody',
-												null,
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															'iOS + Node'
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'May 2 - Oct 28'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Closed (Accepting Waitlist)'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															'Full Stack Web'
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'May 2 - Oct 28'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Closed (Accepting Waitlist)'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															_react2.default.createElement(
-																'a',
-																{ href: '/course/ios-node-bootcamp' },
-																'iOS + Node'
-															)
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'June 6 - Dec 2, Mon/Wed/Sat'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Accepting Applications'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															_react2.default.createElement(
-																'a',
-																{ href: '/course/node-react-bootcamp' },
-																'React + Node'
-															)
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'June 7 - Dec 2, Tue/Thu/Sat'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Accepting Applications'
-													)
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.openModal, id: 'bootcamp', href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-										'Request Information'
 									)
 								)
 							)
@@ -45285,7 +45146,7 @@
 		}
 	
 		return {
-			events: state.eventReducer.eventArray,
+			//    	events: state.eventReducer.eventArray,
 			currentUser: state.profileReducer.currentUser,
 			courses: courseList,
 			testimonials: state.staticReducer.testimonials,

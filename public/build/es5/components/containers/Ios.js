@@ -278,80 +278,121 @@ var Ios = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var _openModal = this.openModal;
-				var events = this.props.events.map(function (e, i) {
-					return React.createElement(EventCard, { key: e.id, index: i, event: e, click: _openModal });
-				});
-
-
 				return React.createElement(
 					"div",
 					null,
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
-					React.createElement(Nav, null),
 					React.createElement(
-						"section",
-						{ id: "slider", className: "slider-parallax dark full-screen", style: { background: "url(images/ios-banner.jpg) center" } },
+						"header",
+						{ id: "header", className: "transparent-header page-section dark" },
 						React.createElement(
 							"div",
-							{ className: "slider-parallax-inner" },
+							{ id: "header-wrap" },
 							React.createElement(
 								"div",
 								{ className: "container clearfix" },
 								React.createElement(
 									"div",
-									{ className: "vertical-middle" },
+									{ id: "primary-menu-trigger" },
+									React.createElement("i", { className: "icon-reorder" })
+								),
+								React.createElement(
+									"div",
+									{ id: "logo" },
 									React.createElement(
-										"div",
-										{ className: "heading-block center nobottomborder" },
-										React.createElement(
-											"h1",
-											{ "data-animate": "fadeInUp" },
-											"Become an ",
-											React.createElement(
-												"strong",
-												null,
-												"iOS"
-											),
-											" Developer"
-										),
-										React.createElement(
-											"span",
-											{ "data-animate": "fadeInUp", "data-delay": "300" },
-											"24-Week Part Time Bootcamp and 8-Week Courses"
-										)
+										"a",
+										{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
+										React.createElement("img", { src: "/images/logo.png", alt: "FullStack 360" })
 									),
 									React.createElement(
-										"form",
-										{ action: "#", method: "post", role: "form", className: "landing-wide-form clearfix" },
+										"a",
+										{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
+										React.createElement("img", { src: "/images/logo@2x.png", alt: "FullStack 360" })
+									)
+								),
+								React.createElement(
+									"nav",
+									{ id: "primary-menu" },
+									React.createElement(
+										"ul",
+										{ className: "one-page-menu" },
 										React.createElement(
-											"div",
-											{ className: "col_four_fifth nobottommargin" },
+											"li",
+											{ className: "current" },
 											React.createElement(
-												"div",
-												{ className: "col_one_third nobottommargin" },
-												React.createElement("input", { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: "firstName", type: "text", className: "form-control input-lg not-dark", placeholder: "First Name*" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_one_third nobottommargin" },
-												React.createElement("input", { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: "lastName", type: "text", className: "form-control input-lg not-dark", placeholder: "Last Name*" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_one_third col_last nobottommargin" },
-												React.createElement("input", { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: "email", type: "text", className: "form-control input-lg not-dark", placeholder: "Email*" })
+												"a",
+												{ href: "/", "data-href": "#header" },
+												React.createElement(
+													"div",
+													null,
+													"Home"
+												)
 											)
 										),
 										React.createElement(
-											"div",
-											{ className: "col_one_fifth col_last nobottommargin" },
+											"li",
+											null,
 											React.createElement(
-												"button",
-												{ onClick: this.syllabusRequest, id: "bootcamp", className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
-												"Request Syllabus"
+												"a",
+												{ href: "/application", "data-href": "#section-buy" },
+												React.createElement(
+													"div",
+													null,
+													"Apply"
+												)
 											)
 										)
+									)
+								)
+							)
+						)
+					),
+					React.createElement(
+						"section",
+						{ id: "slider", style: { background: "url(\"/images/ios-banner.jpg\") center", overflow: "visible" }, "data-height-lg": "450", "data-height-md": "450", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
+						React.createElement(
+							"div",
+							{ className: "container clearfix" },
+							React.createElement(
+								"form",
+								{ action: "#", method: "post", role: "form", className: "landing-wide-form landing-form-overlay dark clearfix" },
+								React.createElement(
+									"div",
+									{ className: "heading-block nobottommargin nobottomborder" },
+									React.createElement(
+										"h2",
+										null,
+										"Request More Info"
+									)
+								),
+								React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
+								React.createElement(
+									"div",
+									{ className: "col_full" },
+									React.createElement("input", { type: "text", className: "form-control input-lg not-dark", placeholder: "Name" })
+								),
+								React.createElement(
+									"div",
+									{ className: "col_full" },
+									React.createElement("input", { type: "text", className: "form-control input-lg not-dark", placeholder: "Last Name" })
+								),
+								React.createElement(
+									"div",
+									{ className: "col_full" },
+									React.createElement("input", { type: "email", className: "form-control input-lg not-dark", placeholder: "Email" })
+								),
+								React.createElement(
+									"div",
+									{ className: "col_full" },
+									React.createElement("input", { type: "password", className: "form-control input-lg not-dark", placeholder: "Phone" })
+								),
+								React.createElement(
+									"div",
+									{ className: "col_full nobottommargin" },
+									React.createElement(
+										"button",
+										{ className: "btn btn-lg btn-danger btn-block nomargin", value: "submit", type: "submit" },
+										"Submit"
 									)
 								)
 							)
@@ -365,7 +406,25 @@ var Ios = (function (Component) {
 							{ className: "content-wrap" },
 							React.createElement(
 								"div",
-								{ className: "container clearfix" },
+								{ className: "promo promo-dark promo-full landing-promo header-stick" },
+								React.createElement(
+									"div",
+									{ className: "container clearfix" },
+									React.createElement(
+										"h3",
+										null,
+										"Beautiful Landing Page designs waiting for you inside"
+									),
+									React.createElement(
+										"span",
+										null,
+										"Youll love our beautiful & interactive builder that makes your build process easier & fun."
+									)
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "container clearfix", style: { paddingTop: 64 } },
 								React.createElement(
 									"div",
 									{ className: "col_one_third bottommargin-sm", style: { background: "#f9f9f9" } },
@@ -430,23 +489,28 @@ var Ios = (function (Component) {
 									"div",
 									{ className: "col_two_third bottommargin-sm col_last" },
 									React.createElement(
-										"div",
-										{ className: "heading-block topmargin-sm" },
-										React.createElement(
-											"h3",
-											null,
-											"Coding Education for Tomorrow"
-										)
+										"h3",
+										null,
+										"Learn to Build Real iPhone Apps"
 									),
 									React.createElement(
 										"p",
 										null,
-										"FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course."
+										"FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.",
+										React.createElement("br", null),
+										React.createElement("br", null),
+										"Our focus is to teach the most up-to-date technologies to prepare students for the rapidly changing landscape in software. It all too common that aspiring developers waste valuable time learning outdated languages and frameworks, only to find out they do not have the marketable skills to transition into tech."
+									),
+									React.createElement("hr", null),
+									React.createElement(
+										"h3",
+										null,
+										"Learn to Build Real iPhone Apps"
 									),
 									React.createElement(
 										"p",
 										null,
-										"The only constant in the software industry is change. One day, PHP is the king, the next day Ruby on Rails is highest in demand. The major bootcamps in NYC focus on today. Flatiron School, General Assembly, Dev Bootcamp all teach Rails while we focus on tomorrow. Our stack is Node JS with React on the front end and ES2015. Will you be among the flood of Rails devs saturating the NYC market or will you be ready for the tech stack of tomorrow?"
+										"FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store."
 									)
 								)
 							)
@@ -545,211 +609,6 @@ var Ios = (function (Component) {
 											{ href: "/course/ios-high-school-course", className: "btn btn-success" },
 											"Learn More"
 										)
-									)
-								)
-							)
-						)
-					),
-					React.createElement(
-						"section",
-						{ id: "section-team", className: "page-section", style: { paddingTop: 48, borderTop: "1px solid #ddd" } },
-						React.createElement(
-							"div",
-							{ className: "heading-block center" },
-							React.createElement(
-								"h2",
-								null,
-								"Upcoming Events"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "container clearfix" },
-							React.createElement(
-								"div",
-								{ id: "posts", className: "events small-thumbs" },
-								events
-							),
-							React.createElement("div", { className: "clear" })
-						),
-						React.createElement(
-							"div",
-							{ className: "row clearfix common-height", style: { borderTop: "1px solid #ddd", marginTop: 48 } },
-							React.createElement(
-								"div",
-								{ className: "col-md-6 center col-padding", style: { background: "url(\"/images/hacking.jpg\") center center no-repeat", backgroundSize: "cover" } },
-								React.createElement(
-									"div",
-									null,
-									" "
-								)
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#fff" } },
-								React.createElement(
-									"div",
-									null,
-									React.createElement(
-										"div",
-										{ className: "heading-block nobottomborder" },
-										React.createElement(
-											"h3",
-											null,
-											"Bootcamps"
-										)
-									),
-									React.createElement(
-										"p",
-										{ className: "lead" },
-										"FS360 operates 24-week bootcamps that run during evenings and weekends. Designed for working professionals, our bootcamps train students for a career change without having to leave their current job."
-									),
-									React.createElement(
-										"div",
-										{ className: "table-responsive" },
-										React.createElement(
-											"table",
-											{ className: "table table-bordered table-striped", style: { background: "#fff", textAlign: "left" } },
-											React.createElement(
-												"colgroup",
-												null,
-												React.createElement("col", { className: "col-xs-2" }),
-												React.createElement("col", { className: "col-xs-4" }),
-												React.createElement("col", { className: "col-xs-4" })
-											),
-											React.createElement(
-												"thead",
-												null,
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"th",
-														null,
-														"Class"
-													),
-													React.createElement(
-														"th",
-														null,
-														"Dates"
-													),
-													React.createElement(
-														"th",
-														null,
-														"Status"
-													)
-												)
-											),
-											React.createElement(
-												"tbody",
-												null,
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															"iOS + Node"
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"May 2 - Oct 28"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Closed (Accepting Waitlist)"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															"Full Stack Web"
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"May 2 - Oct 28"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Closed (Accepting Waitlist)"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															React.createElement(
-																"a",
-																{ href: "/course/ios-node-bootcamp" },
-																"iOS + Node"
-															)
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"June 6 - Dec 2, Mon/Wed/Sat"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Accepting Applications"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															React.createElement(
-																"a",
-																{ href: "/course/node-react-bootcamp" },
-																"React + Node"
-															)
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"June 7 - Dec 2, Tue/Thu/Sat"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Accepting Applications"
-													)
-												)
-											)
-										)
-									),
-									React.createElement(
-										"a",
-										{ onClick: this.openModal, id: "bootcamp", href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-										"Request Information"
 									)
 								)
 							)
@@ -871,7 +730,7 @@ var stateToProps = function (state) {
 	}
 
 	return {
-		events: state.eventReducer.eventArray,
+		//    	events: state.eventReducer.eventArray,
 		currentUser: state.profileReducer.currentUser,
 		courses: courseList,
 		testimonials: state.staticReducer.testimonials,

@@ -224,55 +224,72 @@ class Ios extends Component {
 	}
 
 	render(){
-		var _openModal = this.openModal;
-		var events = this.props.events.map(function(e, i){
-			return <EventCard key={e.id} index={i} event={e} click={_openModal} />
-		});
-
 
 		return (
 			<div>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
-				<Nav />
-				<section id="slider" className="slider-parallax dark full-screen" style={{background: "url(images/ios-banner.jpg) center"}}>
 
-					<div className="slider-parallax-inner">
-						<div className="container clearfix">
-							<div className="vertical-middle">
+		        <header id="header" className="transparent-header page-section dark">
+		            <div id="header-wrap">
+		                <div className="container clearfix">
+		                    <div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
 
-								<div className="heading-block center nobottomborder">
-									<h1 data-animate="fadeInUp">
-										Become an <strong>iOS</strong> Developer 
-									</h1>
-									<span data-animate="fadeInUp" data-delay="300">
-										24-Week Part Time Bootcamp and 8-Week Courses
-									</span>
-								</div>
+		                    <div id="logo">
+		                        <a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png"><img src="/images/logo.png" alt="FullStack 360" /></a>
+		                        <a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png"><img src="/images/logo@2x.png" alt="FullStack 360" /></a>
+		                    </div>
 
-								<form action="#" method="post" role="form" className="landing-wide-form clearfix">
-									<div className="col_four_fifth nobottommargin">
-										<div className="col_one_third nobottommargin">
-											<input value={this.props.currentUser.firstName} onChange={this.updateUserRegistration} id="firstName" type="text" className="form-control input-lg not-dark" placeholder="First Name*" />
-										</div>
-										<div className="col_one_third nobottommargin">
-											<input value={this.props.currentUser.lastName} onChange={this.updateUserRegistration} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Last Name*" />
-										</div>
-										<div className="col_one_third col_last nobottommargin">
-											<input value={this.props.currentUser.email} onChange={this.updateUserRegistration} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email*" />
-										</div>
-									</div>
-									<div className="col_one_fifth col_last nobottommargin">
-										<button onClick={this.syllabusRequest} id="bootcamp" className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</section>
+		                    <nav id="primary-menu">
+		                        <ul className="one-page-menu">
+		                            <li className="current"><a href="/" data-href="#header"><div>Home</div></a></li>
+		                            <li><a href="/application" data-href="#section-buy"><div>Apply</div></a></li>
+		                        </ul>
+		                    </nav>
+		                </div>
+		            </div>
+		        </header>
+
+
+		        <section id="slider" style={{background: 'url("/images/ios-banner.jpg") center', overflow:'visible'}} data-height-lg="450" data-height-md="450" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
+		            <div className="container clearfix">
+
+		                <form action="#" method="post" role="form" className="landing-wide-form landing-form-overlay dark clearfix">
+		                    <div className="heading-block nobottommargin nobottomborder">
+		                        <h2>Request More Info</h2>
+		                    </div>
+		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
+		                    <div className="col_full">
+		                        <input type="text" className="form-control input-lg not-dark" placeholder="Name" />
+		                    </div>
+		                    <div className="col_full">
+		                        <input type="text" className="form-control input-lg not-dark" placeholder="Last Name" />
+		                    </div>
+		                    <div className="col_full">
+		                        <input type="email" className="form-control input-lg not-dark" placeholder="Email" />
+		                    </div>
+		                    <div className="col_full">
+		                        <input type="password" className="form-control input-lg not-dark" placeholder="Phone" />
+		                    </div>
+		                    <div className="col_full nobottommargin">
+		                        <button className="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit">Submit</button>
+		                    </div>
+		                </form>
+
+		            </div>
+		        </section>
+
 
 				<section id="content">
 					<div className="content-wrap">
-						<div className="container clearfix">
+
+		                <div className="promo promo-dark promo-full landing-promo header-stick">
+		                    <div className="container clearfix">
+		                        <h3>Beautiful Landing Page designs waiting for you inside</h3>
+		                        <span>Youll love our beautiful &amp; interactive builder that makes your build process easier &amp; fun.</span>
+		                    </div>
+		                </div>
+
+						<div className="container clearfix" style={{paddingTop:64}}>
 
 							<div className="col_one_third bottommargin-sm" style={{background:'#f9f9f9'}}>
 								<div className="widget clearfix" style={{padding:24}}>
@@ -283,9 +300,13 @@ class Ios extends Component {
 									<strong style={{color:'#1ABC9C'}}>iOS &amp; Node Course</strong>
 									<br />
 									<p>
-										On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with FS360. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the FS360 class, my skill-set will be appealing to companies looking to hire a junior developer.
+										On the first day of class my instructor taught me more than I taught myself in 
+										the three weeks. I immediately knew I made the right choice to learn iOS with 
+										FS360. The hands-on structure of the class is the best use of my time and 
+										prevents me from wasting time trying to get one thing off the ground. Instead, 
+										I was immediately building projects. I am confident that after the FS360 class, 
+										my skill-set will be appealing to companies looking to hire a junior developer.
 									</p>
-
 
 									<div className="tagcloud">
 										<a href="#">iOS</a>
@@ -295,35 +316,35 @@ class Ios extends Component {
 										<a href="#">JavaScript</a>
 									</div>
 								</div>
-
-
 							</div>
 
 							<div className="col_two_third bottommargin-sm col_last">
-								<div className="heading-block topmargin-sm">
-									<h3>Coding Education for Tomorrow</h3>
-								</div>
+								<h3>Learn to Build Real iPhone Apps</h3>
 								<p>
-									FullStack 360 conducts development courses that are relevant in the 
-									startup and tech world today. We focus on the most up-to-date frameworks 
-									and libraries such as React, Angular, and Node JS. Our students are always 
-									prepared for rapid changes in the industry and are ready to work in tech 
-									after a course.
+									FullStack 360 is designed for part-time students who want to accelerate their learning through a
+									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
+									of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.
+									<br /><br />
+									Our focus is to teach the most up-to-date technologies to prepare students for the rapidly changing
+									landscape in software. It all too common that aspiring developers waste valuable time learning 
+									outdated languages and frameworks, only to find out they do not have the marketable skills to
+									transition into tech.
 								</p>
+
+								<hr />
+
+								<h3>Learn to Build Real iPhone Apps</h3>
 								<p>
-									The only constant in the software industry is change. One day, PHP is the 
-									king, the next day Ruby on Rails is highest in demand. The major bootcamps 
-									in NYC focus on today. Flatiron School, General Assembly, Dev Bootcamp all 
-									teach Rails while we focus on tomorrow. Our stack is Node JS with React on 
-									the front end and ES2015. Will you be among the flood of Rails devs 
-									saturating the NYC market or will you be ready for the tech stack of tomorrow?
+									FullStack 360 is designed for part-time students who want to accelerate their learning through a
+									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
+									of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.
 								</p>
+
 							</div>
 
 						</div>
 					</div>
 				</section>
-
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
@@ -385,88 +406,6 @@ class Ios extends Component {
 					</div>
 				</section>
 
-
-				<section id="section-team" className="page-section" style={{paddingTop:48, borderTop:'1px solid #ddd'}}>
-
-					<div className="heading-block center">
-						<h2>Upcoming Events</h2>
-					</div>
-
-					<div className="container clearfix">
-						<div id="posts" className="events small-thumbs">
-							{events}
-						</div>		
-
-						<div className="clear"></div>
-					</div>
-
-
-
-					<div className="row clearfix common-height" style={{borderTop:'1px solid #ddd', marginTop:48}}>
-						<div className="col-md-6 center col-padding" style={{background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover'}}>
-							<div>&nbsp;</div>
-						</div>
-
-						<div className="col-md-6 center col-padding" style={{backgroundColor: '#fff'}}>
-							<div>
-								<div className="heading-block nobottomborder">
-									<h3>Bootcamps</h3>
-								</div>
-
-								<p className="lead">
-									FS360 operates 24-week bootcamps that run during evenings and weekends. Designed 
-									for working professionals, our bootcamps train students for a career change without 
-									having to leave their current job.
-								</p>
-
-								<div className="table-responsive">
-									<table className="table table-bordered table-striped" style={{background:'#fff', textAlign:'left'}}>
-									  <colgroup>
-										<col className="col-xs-2" />
-										<col className="col-xs-4" />
-										<col className="col-xs-4" />
-									  </colgroup>
-									  <thead>
-										<tr>
-										  <th>Class</th><th>Dates</th><th>Status</th>
-										</tr>
-									  </thead>
-									  <tbody>
-										<tr>
-										  <td><span>iOS + Node</span></td>
-										  <td>May 2 - Oct 28</td>
-										  <td>Closed (Accepting Waitlist)</td>
-										</tr>
-										<tr>
-										  <td><span>Full Stack Web</span></td>
-										  <td>May 2 - Oct 28</td>
-										  <td>Closed (Accepting Waitlist)</td>
-										</tr>
-										<tr>
-										  <td><span><a href="/course/ios-node-bootcamp">iOS + Node</a></span></td>
-										  <td>June 6 - Dec 2, Mon/Wed/Sat</td>
-										  <td>Accepting Applications</td>
-										</tr>
-										<tr>
-										  <td><span><a href="/course/node-react-bootcamp">React + Node</a></span></td>
-										  <td>June 7 - Dec 2, Tue/Thu/Sat</td>
-										  <td>Accepting Applications</td>
-										</tr>
-									  </tbody>
-									</table>
-								</div>
-
-								<a onClick={this.openModal} id="bootcamp" href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
-									Request Information
-								</a>
-							</div>
-						</div>
-					</div>
-
-				</section>
-
-			
-
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
 			        	<h2>{this.state.selectedEvent.title}</h2>
@@ -485,7 +424,6 @@ class Ios extends Component {
 						<a onClick={this.rsvp} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 			        </Modal.Footer>
 		        </Modal>
-
 
 		        <Modal show={this.state.showRegistration} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
@@ -528,7 +466,7 @@ const stateToProps = function(state) {
 	}
 
     return {
-    	events: state.eventReducer.eventArray,
+//    	events: state.eventReducer.eventArray,
         currentUser: state.profileReducer.currentUser,
         courses: courseList,
         testimonials: state.staticReducer.testimonials,
