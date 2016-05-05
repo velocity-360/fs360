@@ -343,7 +343,7 @@ var Ios = (function (Component) {
 									React.createElement(
 										"span",
 										null,
-										"Learn iOS and Web development in the evening without leaving your job."
+										"Learn iOS and Web development in the evening without leaving your current job."
 									)
 								)
 							),

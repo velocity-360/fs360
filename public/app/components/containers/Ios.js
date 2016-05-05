@@ -223,7 +223,7 @@ class Ios extends Component {
 		                    <div className="container clearfix">
 		                        <h3>Become a Professional iOS Developer in 24 Weeks</h3>
 		                        <span>
-		                        	Learn iOS and Web development in the evening without leaving your job.
+		                        	Learn iOS and Web development in the evening without leaving your current job.
 		                        </span>
 		                    </div>
 		                </div>
