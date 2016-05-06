@@ -122,7 +122,7 @@ var Home = (function (Component) {
 		},
 		updateUserRegistration: {
 			value: function updateUserRegistration(event) {
-				console.log("updateUserRegistration: " + event.target.id);
+				//		console.log('updateUserRegistration: '+event.target.id)
 				event.preventDefault();
 
 				if (event.target.id == "course") {
@@ -154,7 +154,6 @@ var Home = (function (Component) {
 		},
 		validate: {
 			value: function validate(withPassword) {
-				console.log("VALIDATE: " + JSON.stringify(this.props.currentUser));
 				if (this.props.currentUser.firstName.length == 0) {
 					return "First Name";
 				}if (this.props.currentUser.lastName.length == 0) {
@@ -187,7 +186,6 @@ var Home = (function (Component) {
 
 				var _this = this;
 				api.handlePost("/api/profile", this.props.currentUser, function (err, response) {
-					//			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
 					_this.setState({
 						showRegistration: false,
 						showLoader: false
@@ -234,7 +232,7 @@ var Home = (function (Component) {
 				};
 
 				api.handlePost("/api/rsvp", pkg, function (err, response) {
-					console.log("RSVP REQUEST RESPONSE: " + JSON.stringify(response));
+					//			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
 					_this.setState({
 						showLoader: false
 					});
@@ -253,7 +251,6 @@ var Home = (function (Component) {
 		syllabusRequest: {
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				console.log("SYLLABUS REQUEST: " + this.state.selectedCourse);
 
 				var missingField = this.validate(false);
 				if (missingField != null) {
@@ -290,7 +287,6 @@ var Home = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
-				console.log("OPEN MODAL: " + event.target.id);
 				event.preventDefault();
 
 				this.setState({

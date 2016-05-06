@@ -86,7 +86,7 @@ class Home extends Component {
 
 
 	updateUserRegistration(event){
-		console.log('updateUserRegistration: '+event.target.id)
+//		console.log('updateUserRegistration: '+event.target.id)
 		event.preventDefault()
 
 		if (event.target.id == 'course'){
@@ -118,7 +118,6 @@ class Home extends Component {
 	}
 
 	validate(withPassword){
-		console.log('VALIDATE: '+JSON.stringify(this.props.currentUser))
 		if (this.props.currentUser.firstName.length == 0)
 			return 'First Name'
 
@@ -152,7 +151,6 @@ class Home extends Component {
 
 		var _this = this
 		api.handlePost('/api/profile', this.props.currentUser, function(err, response){
-//			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
 			_this.setState({
 				showRegistration: false,
 				showLoader: false
@@ -196,7 +194,7 @@ class Home extends Component {
 		}
 
 		api.handlePost('/api/rsvp', pkg, function(err, response){
-			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
+//			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
 			_this.setState({
 				showLoader: false
 			});
@@ -212,7 +210,6 @@ class Home extends Component {
 
 	syllabusRequest(event){
 		event.preventDefault()
-		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 
 		var missingField = this.validate(false);
 		if (missingField != null){
@@ -246,8 +243,7 @@ class Home extends Component {
 	}
 
 
-	openModal(event){
-		console.log('OPEN MODAL: '+event.target.id)
+	openModal(event){		
 		event.preventDefault()
 
 		this.setState({

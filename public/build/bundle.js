@@ -22226,7 +22226,7 @@
 		}, {
 			key: 'updateUserRegistration',
 			value: function updateUserRegistration(event) {
-				console.log('updateUserRegistration: ' + event.target.id);
+				//		console.log('updateUserRegistration: '+event.target.id)
 				event.preventDefault();
 	
 				if (event.target.id == 'course') {
@@ -22256,7 +22256,6 @@
 		}, {
 			key: 'validate',
 			value: function validate(withPassword) {
-				console.log('VALIDATE: ' + JSON.stringify(this.props.currentUser));
 				if (this.props.currentUser.firstName.length == 0) return 'First Name';
 	
 				if (this.props.currentUser.lastName.length == 0) return 'Last Name';
@@ -22286,7 +22285,6 @@
 	
 				var _this = this;
 				_api2.default.handlePost('/api/profile', this.props.currentUser, function (err, response) {
-					//			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
 					_this.setState({
 						showRegistration: false,
 						showLoader: false
@@ -22331,7 +22329,7 @@
 				};
 	
 				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {
-					console.log('RSVP REQUEST RESPONSE: ' + JSON.stringify(response));
+					//			console.log('RSVP REQUEST RESPONSE: '+JSON.stringify(response));
 					_this.setState({
 						showLoader: false
 					});
@@ -22348,7 +22346,6 @@
 			key: 'syllabusRequest',
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				console.log('SYLLABUS REQUEST: ' + this.state.selectedCourse);
 	
 				var missingField = this.validate(false);
 				if (missingField != null) {
@@ -22383,7 +22380,6 @@
 		}, {
 			key: 'openModal',
 			value: function openModal(event) {
-				console.log('OPEN MODAL: ' + event.target.id);
 				event.preventDefault();
 	
 				this.setState({
