@@ -29,7 +29,7 @@ class CourseCard extends Component {
 						{units}
 						<li><i className="icon-star"></i> {this.props.course.level}</li>
 					</ul>
-					<hr />
+					<hr style={{marginBottom:10}} />
 
 					<div className="entry-content">
 						<p style={{marginBottom:20}}>{ TextUtils.truncateText(this.props.course.description, 170) }</p>

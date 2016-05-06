@@ -45466,7 +45466,7 @@
 								this.props.course.level
 							)
 						),
-						_react2.default.createElement('hr', null),
+						_react2.default.createElement('hr', { style: { marginBottom: 10 } }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'entry-content' },

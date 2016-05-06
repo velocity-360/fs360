@@ -90,7 +90,7 @@ var CourseCard = (function (Component) {
 								this.props.course.level
 							)
 						),
-						React.createElement("hr", null),
+						React.createElement("hr", { style: { marginBottom: 10 } }),
 						React.createElement(
 							"div",
 							{ className: "entry-content" },
