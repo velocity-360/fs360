@@ -79,6 +79,36 @@ var Home = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
+				var _this = this;
+				var handler = StripeCheckout.configure({
+					key: "pk_live_yKFwKJsJXwOxC0yZob29rIN5",
+					image: "/images/logo_round_blue_260.png",
+					locale: "auto",
+					panelLabel: "Premium: $19.99/month",
+					token: function (token) {
+						// You can access the token ID with `token.id`
+
+						_this.setState({ showLoader: true });
+						api.submitStripeToken(token, function () {
+							api.handleGet("/account/currentuser", {}, function (err, response) {
+								_this.setState({ showLoader: false });
+								if (err) {
+									alert(response.message);
+									return;
+								}
+
+								window.location.href = "/courses"
+								// store.dispatch(actions.currentUserRecieved(response.profile))
+								;
+							});
+						});
+					}
+				});
+
+				this.setState({
+					stripeHandler: handler
+				});
+
 				api.handleGet("/api/event", {}, function (err, response) {
 					if (err) {
 						return;
@@ -109,7 +139,14 @@ var Home = (function (Component) {
 				}
 
 				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
+				if (event.target.id == "name") {
+					var parts = event.target.value.split(" ");
+					updatedUser.firstName = parts[0];
+					if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
+				} else {
+					updatedUser[event.target.id] = event.target.value;
+				}
+
 				store.dispatch(actions.updateCurrentUser(updatedUser));
 			},
 			writable: true,
@@ -150,18 +187,27 @@ var Home = (function (Component) {
 
 				var _this = this;
 				api.handlePost("/api/profile", this.props.currentUser, function (err, response) {
-					console.log("REGISTER RESPONSE: " + JSON.stringify(response));
+					//			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
+					_this.setState({
+						showRegistration: false,
+						showLoader: false
+					});
 
 					if (err) {
-						_this.setState({
-							showLoader: false
-						});
 						alert(err.message);
 						return;
 					}
 
-					//			alert(response.message)
-					window.location.href = "/courses";
+					if (_this.state.membershiptype == "basic") {
+						window.location.href = "/courses";
+						return;
+					}
+
+					// premium registration, show stripe modal
+					_this.state.stripeHandler.open({
+						name: "FullStack 360",
+						description: "Premium Subscription"
+					});
 				});
 			},
 			writable: true,
@@ -746,52 +792,6 @@ var Home = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"iOS + Node"
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"May 2 - Oct 28"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Closed (Accepting Waitlist)"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															"Full Stack Web"
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"May 2 - Oct 28"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Closed (Accepting Waitlist)"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
 															React.createElement(
 																"a",
 																{ href: "/course/ios-node-bootcamp" },
@@ -906,27 +906,26 @@ var Home = (function (Component) {
 										"FREE"
 									),
 									React.createElement(
-										"p",
-										{ className: "pricing--sentence" },
-										"Hobbyist"
-									),
-									React.createElement(
-										"ul",
-										{ className: "pricing--feature-list" },
+										"div",
+										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
 										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Limited Video Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Discounts to Live Events"
+											"ul",
+											{ className: "pricing--feature-list" },
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Limited Video Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Forum Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Discounts to Live Events"
+											)
 										)
 									),
 									React.createElement(
@@ -937,55 +936,7 @@ var Home = (function (Component) {
 								),
 								React.createElement(
 									"div",
-									{ className: "pricing--item" },
-									React.createElement(
-										"h3",
-										{ className: "pricing--title" },
-										"Starter"
-									),
-									React.createElement(
-										"div",
-										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
-										React.createElement(
-											"span",
-											{ className: "pricing--currency" },
-											"$"
-										),
-										"19.99/mo"
-									),
-									React.createElement(
-										"p",
-										{ className: "pricing--sentence" },
-										"Beginner"
-									),
-									React.createElement(
-										"ul",
-										{ className: "pricing--feature-list" },
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Full Video Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Discounts to Live Events"
-										)
-									),
-									React.createElement(
-										"button",
-										{ onClick: this.showRegistrationForm, id: "starter", className: "pricing--action" },
-										"Join"
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "pricing--item" },
+									{ className: "pricing--item", style: { marginLeft: 24, border: "1px solid #eee" } },
 									React.createElement(
 										"h3",
 										{ className: "pricing--title" },
@@ -999,40 +950,39 @@ var Home = (function (Component) {
 											{ className: "pricing--currency" },
 											"$"
 										),
-										"29.99/mo"
+										"19.99/mo"
 									),
 									React.createElement(
-										"p",
-										{ className: "pricing--sentence" },
-										"Pro"
-									),
-									React.createElement(
-										"ul",
-										{ className: "pricing--feature-list" },
+										"div",
+										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
 										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Downloadable Code Samples"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Job Match Notifications"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Full Video Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Discounts to Live Events"
+											"ul",
+											{ className: "pricing--feature-list" },
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Full Video Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Downloadable Code Samples"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Customized Job Listings"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Forum Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Discounts to Live Events"
+											)
 										)
 									),
 									React.createElement(
@@ -1101,9 +1051,7 @@ var Home = (function (Component) {
 								{ style: { textAlign: "center" } },
 								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
 							),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "firstName", className: "form-control", type: "text", placeholder: "First Name" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "lastName", className: "form-control", type: "text", placeholder: "Last Name" }),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", type: "text", placeholder: "Name" }),
 							React.createElement("br", null),
 							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
 							React.createElement("br", null),
@@ -1151,7 +1099,6 @@ var Home = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var courseList = [];
 	var keys = Object.keys(state.courseReducer.courses);
 	for (var i = 0; i < keys.length; i++) {

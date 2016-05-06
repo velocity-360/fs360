@@ -22185,6 +22185,36 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				var _this = this;
+				var handler = StripeCheckout.configure({
+					key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+					image: '/images/logo_round_blue_260.png',
+					locale: 'auto',
+					panelLabel: 'Premium: $19.99/month',
+					token: function token(_token) {
+						// You can access the token ID with `token.id`
+	
+						_this.setState({ showLoader: true });
+						_api2.default.submitStripeToken(_token, function () {
+	
+							_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+								_this.setState({ showLoader: false });
+								if (err) {
+									alert(response.message);
+									return;
+								}
+	
+								window.location.href = '/courses';
+								// store.dispatch(actions.currentUserRecieved(response.profile))
+							});
+						});
+					}
+				});
+	
+				this.setState({
+					stripeHandler: handler
+				});
+	
 				_api2.default.handleGet('/api/event', {}, function (err, response) {
 					if (err) {
 						return;
@@ -22213,7 +22243,14 @@
 				}
 	
 				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
+				if (event.target.id == 'name') {
+					var parts = event.target.value.split(' ');
+					updatedUser['firstName'] = parts[0];
+					if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
+				} else {
+					updatedUser[event.target.id] = event.target.value;
+				}
+	
 				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
 			}
 		}, {
@@ -22249,18 +22286,27 @@
 	
 				var _this = this;
 				_api2.default.handlePost('/api/profile', this.props.currentUser, function (err, response) {
-					console.log('REGISTER RESPONSE: ' + JSON.stringify(response));
+					//			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
+					_this.setState({
+						showRegistration: false,
+						showLoader: false
+					});
 	
 					if (err) {
-						_this.setState({
-							showLoader: false
-						});
 						alert(err.message);
 						return;
 					}
 	
-					//			alert(response.message)
-					window.location.href = '/courses';
+					if (_this.state.membershiptype == 'basic') {
+						window.location.href = '/courses';
+						return;
+					}
+	
+					// premium registration, show stripe modal
+					_this.state.stripeHandler.open({
+						name: 'FullStack 360',
+						description: 'Premium Subscription'
+					});
 				});
 			}
 		}, {
@@ -22832,52 +22878,6 @@
 														_react2.default.createElement(
 															'span',
 															null,
-															'iOS + Node'
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'May 2 - Oct 28'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Closed (Accepting Waitlist)'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															'Full Stack Web'
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'May 2 - Oct 28'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Closed (Accepting Waitlist)'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
 															_react2.default.createElement(
 																'a',
 																{ href: '/course/ios-node-bootcamp' },
@@ -22992,27 +22992,26 @@
 										'FREE'
 									),
 									_react2.default.createElement(
-										'p',
-										{ className: 'pricing--sentence' },
-										'Hobbyist'
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pricing--feature-list' },
+										'div',
+										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
 										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Limited Video Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Forum Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Discounts to Live Events'
+											'ul',
+											{ className: 'pricing--feature-list' },
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Limited Video Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Forum Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Discounts to Live Events'
+											)
 										)
 									),
 									_react2.default.createElement(
@@ -23023,55 +23022,7 @@
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'pricing--item' },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Starter'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										_react2.default.createElement(
-											'span',
-											{ className: 'pricing--currency' },
-											'$'
-										),
-										'19.99/mo'
-									),
-									_react2.default.createElement(
-										'p',
-										{ className: 'pricing--sentence' },
-										'Beginner'
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pricing--feature-list' },
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Full Video Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Forum Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Discounts to Live Events'
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'starter', className: 'pricing--action' },
-										'Join'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item' },
+									{ className: 'pricing--item', style: { marginLeft: 24, border: '1px solid #eee' } },
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },
@@ -23085,40 +23036,39 @@
 											{ className: 'pricing--currency' },
 											'$'
 										),
-										'29.99/mo'
+										'19.99/mo'
 									),
 									_react2.default.createElement(
-										'p',
-										{ className: 'pricing--sentence' },
-										'Pro'
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pricing--feature-list' },
+										'div',
+										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
 										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Downloadable Code Samples'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Job Match Notifications'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Full Video Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Forum Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Discounts to Live Events'
+											'ul',
+											{ className: 'pricing--feature-list' },
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Full Video Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Downloadable Code Samples'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Customized Job Listings'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Forum Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Discounts to Live Events'
+											)
 										)
 									),
 									_react2.default.createElement(
@@ -23187,9 +23137,7 @@
 								{ style: { textAlign: 'center' } },
 								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
 							),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'firstName', className: 'form-control', type: 'text', placeholder: 'First Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'lastName', className: 'form-control', type: 'text', placeholder: 'Last Name' }),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
 							_react2.default.createElement('br', null),
@@ -23234,7 +23182,6 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 		var courseList = [];
 		var keys = Object.keys(state.courseReducer.courses);
 		for (var i = 0; i < keys.length; i++) {

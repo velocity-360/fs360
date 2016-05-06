@@ -46,6 +46,35 @@ class Home extends Component {
 	}
 
 	componentDidMount(){
+		var _this = this
+	    var handler = StripeCheckout.configure({
+	        key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+	        image: '/images/logo_round_blue_260.png',
+	        locale: 'auto',
+	        panelLabel: 'Premium: $19.99/month',
+	        token: function(token) { // You can access the token ID with `token.id`
+
+				_this.setState({showLoader: true})
+				api.submitStripeToken(token, function(){
+
+					api.handleGet('/account/currentuser', {}, function(err, response){
+						_this.setState({showLoader: false})
+						if (err){
+							alert(response.message)
+							return
+						}
+
+						window.location.href = '/courses'
+						// store.dispatch(actions.currentUserRecieved(response.profile))
+					});
+				})
+	        }
+	    });
+
+	    this.setState({
+	    	stripeHandler:handler
+	    });
+
 		api.handleGet('/api/event', {}, function(err, response){
 			if (err){
 				return
@@ -54,6 +83,7 @@ class Home extends Component {
 			store.dispatch(actions.eventsRecieved(response.events))
 		});
 	}
+
 
 	updateUserRegistration(event){
 		console.log('updateUserRegistration: '+event.target.id)
@@ -73,7 +103,17 @@ class Home extends Component {
 		}
 
 		var updatedUser = Object.assign({}, this.props.currentUser);
-		updatedUser[event.target.id] = event.target.value
+		if (event.target.id == 'name'){
+			var parts = event.target.value.split(' ')
+			updatedUser['firstName'] = parts[0]
+			if (parts.length > 1)
+				updatedUser['lastName'] = parts[parts.length-1]
+		}
+		else {
+			updatedUser[event.target.id] = event.target.value
+
+		}
+
 		store.dispatch(actions.updateCurrentUser(updatedUser));
 	}
 
@@ -112,20 +152,28 @@ class Home extends Component {
 
 		var _this = this
 		api.handlePost('/api/profile', this.props.currentUser, function(err, response){
-			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
+//			console.log('REGISTER RESPONSE: '+JSON.stringify(response));
+			_this.setState({
+				showRegistration: false,
+				showLoader: false
+			});
 
 			if (err){
-				_this.setState({
-					showLoader: false
-				});
 				alert(err.message)
 				return
 			}
 
-//			alert(response.message)
-			window.location.href = '/courses'
-		});
+			if (_this.state.membershiptype == 'basic'){
+				window.location.href = '/courses'
+				return
+			}
 
+			// premium registration, show stripe modal
+		    _this.state.stripeHandler.open({
+			    name: 'FullStack 360',
+			    description: 'Premium Subscription'
+		    });
+		});
 	}
 
 	rsvp(event){
@@ -488,16 +536,6 @@ class Home extends Component {
 									  </thead>
 									  <tbody>
 										<tr>
-										  <td><span>iOS + Node</span></td>
-										  <td>May 2 - Oct 28</td>
-										  <td>Closed (Accepting Waitlist)</td>
-										</tr>
-										<tr>
-										  <td><span>Full Stack Web</span></td>
-										  <td>May 2 - Oct 28</td>
-										  <td>Closed (Accepting Waitlist)</td>
-										</tr>
-										<tr>
 										  <td><span><a href="/course/ios-node-bootcamp">iOS + Node</a></span></td>
 										  <td>June 6 - Dec 2, Mon/Wed/Sat</td>
 										  <td>Accepting Applications</td>
@@ -541,36 +579,28 @@ class Home extends Component {
 							<div className="pricing--item">
 								<h3 className="pricing--title">Basic</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
-								<p className="pricing--sentence">Hobbyist</p>
-								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Limited Video Access</li>
-									<li className="pricing--feature">Forum Access</li>
-									<li className="pricing--feature">Discounts to Live Events</li>
-								</ul>
+								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Limited Video Access</li>
+										<li className="pricing--feature">Forum Access</li>
+										<li className="pricing--feature">Discounts to Live Events</li>
+									</ul>
+								</div>
 								<button onClick={this.showRegistrationForm} id="basic" className="pricing--action">Join</button>
 							</div>
-							<div className="pricing--item">
-								<h3 className="pricing--title">Starter</h3>
-								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
-								<p className="pricing--sentence">Beginner</p>
-								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Full Video Access</li>
-									<li className="pricing--feature">Forum Access</li>
-									<li className="pricing--feature">Discounts to Live Events</li>
-								</ul>
-								<button onClick={this.showRegistrationForm} id="starter" className="pricing--action">Join</button>
-							</div>
-							<div className="pricing--item">
+							<div className="pricing--item" style={{marginLeft:24, border:'1px solid #eee'}}>
 								<h3 className="pricing--title">Premium</h3>
-								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>29.99/mo</div>
-								<p className="pricing--sentence">Pro</p>
-								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Downloadable Code Samples</li>
-									<li className="pricing--feature">Job Match Notifications</li>
-									<li className="pricing--feature">Full Video Access</li>
-									<li className="pricing--feature">Forum Access</li>
-									<li className="pricing--feature">Discounts to Live Events</li>
-								</ul>
+								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
+								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Full Video Access</li>
+										<li className="pricing--feature">Downloadable Code Samples</li>
+										<li className="pricing--feature">Customized Job Listings</li>
+										<li className="pricing--feature">Forum Access</li>
+										<li className="pricing--feature">Discounts to Live Events</li>
+									</ul>
+
+								</div>
 								<button onClick={this.showRegistrationForm} id="premium" className="pricing--action">Join</button>
 							</div>
 						</div>
@@ -605,8 +635,7 @@ class Home extends Component {
 			        	<div style={{textAlign:'center'}}>
 				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_green_260.png' />
 			        	</div>
-			        	<input onChange={this.updateUserRegistration} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
-			        	<input onChange={this.updateUserRegistration} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
+			        	<input onChange={this.updateUserRegistration} id="name" className="form-control" type="text" placeholder="Name" /><br />
 			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
 			        	<input onChange={this.updateUserRegistration} id="password" className="form-control" type="password" placeholder="Password" /><br />
 						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
@@ -629,7 +658,6 @@ class Home extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	var courseList = [];
 	var keys = Object.keys(state.courseReducer.courses);
 	for (var i=0; i<keys.length; i++){
