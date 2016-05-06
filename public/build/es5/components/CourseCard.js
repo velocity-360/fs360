@@ -49,7 +49,7 @@ var CourseCard = (function (Component) {
 				var tags = this.props.course.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
-						{ style: { background: "#f9f9f9" }, href: "#" },
+						{ key: i, style: { background: "#f9f9f9" }, href: "#" },
 						tag
 					);
 				});
@@ -96,7 +96,7 @@ var CourseCard = (function (Component) {
 							{ className: "entry-content" },
 							React.createElement(
 								"p",
-								null,
+								{ style: { marginBottom: 20 } },
 								TextUtils.truncateText(this.props.course.description, 170)
 							),
 							React.createElement(

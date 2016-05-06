@@ -45425,7 +45425,7 @@
 				var tags = this.props.course.tags.map(function (tag, i) {
 					return _react2.default.createElement(
 						'a',
-						{ style: { background: '#f9f9f9' }, href: '#' },
+						{ key: i, style: { background: '#f9f9f9' }, href: '#' },
 						tag
 					);
 				});
@@ -45472,7 +45472,7 @@
 							{ className: 'entry-content' },
 							_react2.default.createElement(
 								'p',
-								null,
+								{ style: { marginBottom: 20 } },
 								_TextUtils2.default.truncateText(this.props.course.description, 170)
 							),
 							_react2.default.createElement(

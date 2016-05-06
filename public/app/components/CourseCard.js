@@ -12,7 +12,7 @@ class CourseCard extends Component {
 			units = <li><i className="icon-desktop"></i> {this.props.course.units.length} Sections </li>
 
 		var tags = this.props.course.tags.map(function(tag, i){
-			return <a style={{background:'#f9f9f9'}} href="#">{tag}</a>
+			return <a key={i} style={{background:'#f9f9f9'}} href="#">{tag}</a>
 
 		})
 
@@ -32,7 +32,7 @@ class CourseCard extends Component {
 					<hr />
 
 					<div className="entry-content">
-						<p>{ TextUtils.truncateText(this.props.course.description, 170) }</p>
+						<p style={{marginBottom:20}}>{ TextUtils.truncateText(this.props.course.description, 170) }</p>
 						<div className="tagcloud">
 							{tags}
 						</div>
