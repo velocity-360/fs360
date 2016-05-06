@@ -97,7 +97,7 @@ var Home = (function (Component) {
 									return;
 								}
 
-								window.location.href = "/courses"
+								window.location.href = "/videos"
 								// store.dispatch(actions.currentUserRecieved(response.profile))
 								;
 							});
