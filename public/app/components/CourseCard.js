@@ -11,6 +11,11 @@ class CourseCard extends Component {
 		else 
 			units = <li><i className="icon-desktop"></i> {this.props.course.units.length} Sections </li>
 
+		var tags = this.props.course.tags.map(function(tag, i){
+			return <a style={{background:'#f9f9f9'}} href="#">{tag}</a>
+
+		})
+
 		return (
 			<div className="entry clearfix" style={{background:'#fff', border:'1px solid #ddd', marginBottom:24}}>
 				<div className="entry-image">
@@ -25,8 +30,12 @@ class CourseCard extends Component {
 						<li><i className="icon-star"></i> {this.props.course.level}</li>
 					</ul>
 					<hr />
+
 					<div className="entry-content">
 						<p>{ TextUtils.truncateText(this.props.course.description, 220) }</p>
+						<div className="tagcloud">
+							{tags}
+						</div>
 					</div>
 
 				</div>

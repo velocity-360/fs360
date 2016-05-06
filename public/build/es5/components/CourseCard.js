@@ -46,6 +46,14 @@ var CourseCard = (function (Component) {
 					" Sections "
 				);
 
+				var tags = this.props.course.tags.map(function (tag, i) {
+					return React.createElement(
+						"a",
+						{ style: { background: "#f9f9f9" }, href: "#" },
+						tag
+					);
+				});
+
 				return React.createElement(
 					"div",
 					{ className: "entry clearfix", style: { background: "#fff", border: "1px solid #ddd", marginBottom: 24 } },
@@ -90,6 +98,11 @@ var CourseCard = (function (Component) {
 								"p",
 								null,
 								TextUtils.truncateText(this.props.course.description, 220)
+							),
+							React.createElement(
+								"div",
+								{ className: "tagcloud" },
+								tags
 							)
 						)
 					)

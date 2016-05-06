@@ -45422,6 +45422,14 @@
 					' Sections '
 				);
 	
+				var tags = this.props.course.tags.map(function (tag, i) {
+					return _react2.default.createElement(
+						'a',
+						{ style: { background: '#f9f9f9' }, href: '#' },
+						tag
+					);
+				});
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'entry clearfix', style: { background: '#fff', border: '1px solid #ddd', marginBottom: 24 } },
@@ -45466,6 +45474,11 @@
 								'p',
 								null,
 								_TextUtils2.default.truncateText(this.props.course.description, 220)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'tagcloud' },
+								tags
 							)
 						)
 					)
