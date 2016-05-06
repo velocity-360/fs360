@@ -61936,6 +61936,10 @@
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
+	var _CourseCopy = __webpack_require__(588);
+	
+	var _CourseCopy2 = _interopRequireDefault(_CourseCopy);
+	
 	var _store = __webpack_require__(185);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -62185,29 +62189,6 @@
 					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
 	
-				var questions = null;
-				if (this.props.slug == 'ios-high-school-course' || this.props.slug == 'web-high-school-course') questions = this.props.faq.highschool;else questions = this.props.faq.general;
-	
-				var faq = questions.map(function (qa, i) {
-					return _react2.default.createElement(
-						'div',
-						{ key: i },
-						_react2.default.createElement(
-							'h4',
-							null,
-							_react2.default.createElement(
-								'strong',
-								null,
-								'Q.'
-							),
-							' ',
-							qa.question
-						),
-						_react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: qa.answer } }),
-						_react2.default.createElement('div', { className: 'line' })
-					);
-				});
-	
 				var bannerIndex = 0;
 				if (this.props.course.type == 'online') bannerIndex = 1;
 				if (this.props.course.type == 'immersive') bannerIndex = 2;
@@ -62322,193 +62303,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 48 } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-sm-8 col-padding' },
-								_react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Prepare for Tomorrow'
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'row clearfix' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-md-10' },
-											_react2.default.createElement(
-												'p',
-												null,
-												'Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, this 2-week class will put you on the right track to achieve any of these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.'
-											),
-											_react2.default.createElement(
-												'p',
-												null,
-												'Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.'
-											),
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://www.facebook.com/FullStack-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
-												_react2.default.createElement('i', { className: 'icon-facebook' }),
-												_react2.default.createElement('i', { className: 'icon-facebook' })
-											),
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://twitter.com/fullstack360', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
-												_react2.default.createElement('i', { className: 'icon-twitter' }),
-												_react2.default.createElement('i', { className: 'icon-twitter' })
-											)
-										)
-									)
-								)
-							),
-							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clear-bottommargin clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'row' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-4 col-sm-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'ipost clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/class.jpg', alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Small Classes'
-												),
-												_react2.default.createElement('hr', null)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-4 col-sm-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'ipost clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/phone.jpg', alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Realistic Projects'
-												),
-												_react2.default.createElement('hr', null)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-4 col-sm-6 bottommargin' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'ipost clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/joe.jpg', alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-title' },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Cutting Edge Curriculum'
-												),
-												_react2.default.createElement('hr', null)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-content' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.'
-												)
-											)
-										)
-									)
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ id: 'faqs', className: 'faqs' },
-								_react2.default.createElement(
-									'h3',
-									{ style: { marginTop: 48 } },
-									'Frequently Asked Questions:'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'divider' },
-									_react2.default.createElement('i', { className: 'icon-circle' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full nobottommargin' },
-									faq
-								)
-							)
-						)
-					),
+					this.props.course.type == 'online' ? null : _react2.default.createElement(_CourseCopy2.default, { questions: this.props.faq.general }),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },
@@ -63586,6 +63381,261 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
+
+/***/ },
+/* 588 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _TextUtils = __webpack_require__(469);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseCopy = function (_Component) {
+		_inherits(CourseCopy, _Component);
+	
+		function CourseCopy() {
+			_classCallCheck(this, CourseCopy);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CourseCopy).apply(this, arguments));
+		}
+	
+		_createClass(CourseCopy, [{
+			key: 'render',
+			value: function render() {
+				var faq = this.props.questions.map(function (qa, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: i },
+						_react2.default.createElement(
+							'h4',
+							null,
+							_react2.default.createElement(
+								'strong',
+								null,
+								'Q.'
+							),
+							' ',
+							qa.question
+						),
+						_react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: qa.answer } }),
+						_react2.default.createElement('div', { className: 'line' })
+					);
+				});
+	
+				return _react2.default.createElement(
+					'section',
+					{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 48 } },
+					_react2.default.createElement(
+						'div',
+						{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-sm-8 col-padding' },
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									'div',
+									{ className: 'heading-block' },
+									_react2.default.createElement(
+										'h3',
+										null,
+										'Prepare for Tomorrow'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'row clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-10' },
+										_react2.default.createElement(
+											'p',
+											null,
+											'Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, this 2-week class will put you on the right track to achieve any of these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											'Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.'
+										),
+										_react2.default.createElement(
+											'a',
+											{ target: '_blank', href: 'https://www.facebook.com/FullStack-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
+											_react2.default.createElement('i', { className: 'icon-facebook' }),
+											_react2.default.createElement('i', { className: 'icon-facebook' })
+										),
+										_react2.default.createElement(
+											'a',
+											{ target: '_blank', href: 'https://twitter.com/fullstack360', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
+											_react2.default.createElement('i', { className: 'icon-twitter' }),
+											_react2.default.createElement('i', { className: 'icon-twitter' })
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'content-wrap', style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clear-bottommargin clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-4 col-sm-6 bottommargin' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'ipost clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-image' },
+											_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/class.jpg', alt: 'FullStack 360' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-title' },
+											_react2.default.createElement(
+												'h3',
+												null,
+												'Small Classes'
+											),
+											_react2.default.createElement('hr', null)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'p',
+												null,
+												'Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.'
+											)
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-4 col-sm-6 bottommargin' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'ipost clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-image' },
+											_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/phone.jpg', alt: 'FullStack 360' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-title' },
+											_react2.default.createElement(
+												'h3',
+												null,
+												'Realistic Projects'
+											),
+											_react2.default.createElement('hr', null)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'p',
+												null,
+												'All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.'
+											)
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-4 col-sm-6 bottommargin' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'ipost clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-image' },
+											_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/joe.jpg', alt: 'FullStack 360' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-title' },
+											_react2.default.createElement(
+												'h3',
+												null,
+												'Cutting Edge Curriculum'
+											),
+											_react2.default.createElement('hr', null)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'p',
+												null,
+												'Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.'
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'container clearfix' },
+						_react2.default.createElement(
+							'div',
+							{ id: 'faqs', className: 'faqs' },
+							_react2.default.createElement(
+								'h3',
+								{ style: { marginTop: 48 } },
+								'Frequently Asked Questions:'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'divider' },
+								_react2.default.createElement('i', { className: 'icon-circle' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_full nobottommargin' },
+								faq
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseCopy;
+	}(_react.Component);
+	
+	exports.default = CourseCopy;
 
 /***/ }
 /******/ ]);
