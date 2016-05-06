@@ -85,6 +85,19 @@ var Sidebar = (function (Component) {
 									React.createElement(
 										"li",
 										null,
+										this.props.currentUser.id == null ? null : React.createElement(
+											"a",
+											{ href: "/account" },
+											React.createElement(
+												"div",
+												null,
+												this.props.currentUser.firstName
+											)
+										)
+									),
+									React.createElement(
+										"li",
+										null,
 										React.createElement(
 											"a",
 											{ href: "/" },
@@ -179,7 +192,7 @@ var Sidebar = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state))
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
 
 	return {
 		currentUser: state.profileReducer.currentUser

@@ -47,6 +47,7 @@ var Account = (function (Component) {
 		this.updateProject = this.updateProject.bind(this);
 		this.uploadImage = this.uploadImage.bind(this);
 		this.submitProject = this.submitProject.bind(this);
+		this.updateProfile = this.updateProfile.bind(this);
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -165,6 +166,13 @@ var Account = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		updateProfile: {
+			value: function updateProfile(event) {
+				event.preventDefault();
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var projectList = null;
@@ -222,7 +230,86 @@ var Account = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "tab-content clearfix", id: "tabs-2" },
-												"Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus."
+												React.createElement(
+													"div",
+													{ id: "contact-form-overlay", className: "clearfix" },
+													React.createElement("div", { id: "contact-form-result", "data-notify-type": "success", "data-notify-msg": "<i className=icon-ok-sign></i> Message Sent Successfully!" }),
+													React.createElement(
+														"form",
+														{ className: "nobottommargin", id: "template-contactform", name: "template-contactform", action: "", method: "post" },
+														React.createElement(
+															"div",
+															{ className: "col_half" },
+															React.createElement(
+																"label",
+																null,
+																"First Name"
+															),
+															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.firstName, className: "form-control" })
+														),
+														React.createElement(
+															"div",
+															{ className: "col_half col_last" },
+															React.createElement(
+																"label",
+																null,
+																"Last Name"
+															),
+															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.lastName, className: "form-control" })
+														),
+														React.createElement("div", { className: "clear" }),
+														React.createElement(
+															"div",
+															{ className: "col_half" },
+															React.createElement(
+																"label",
+																null,
+																"Username"
+															),
+															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.username, className: "form-control" })
+														),
+														React.createElement(
+															"div",
+															{ className: "col_half col_last" },
+															React.createElement(
+																"label",
+																null,
+																"GitHub"
+															),
+															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.lastName, className: "form-control" })
+														),
+														React.createElement("div", { className: "clear" }),
+														React.createElement(
+															"div",
+															{ className: "col_full" },
+															React.createElement(
+																"label",
+																{ "for": "template-contactform-message" },
+																"Bio ",
+																React.createElement(
+																	"small",
+																	null,
+																	"*"
+																)
+															),
+															React.createElement("textarea", { className: "form-control", name: "template-contactform-message", rows: "6", cols: "30" })
+														),
+														React.createElement(
+															"div",
+															{ className: "col_full hidden" },
+															React.createElement("input", { type: "text", id: "template-contactform-botcheck", name: "template-contactform-botcheck", value: "", className: "sm-form-control" })
+														),
+														React.createElement(
+															"div",
+															{ className: "col_full" },
+															React.createElement(
+																"button",
+																{ onClick: this.updateProfile, className: "button button-border button-dark button-rounded noleftmargin", type: "submit" },
+																"Update"
+															)
+														)
+													)
+												)
 											),
 											React.createElement(
 												"div",

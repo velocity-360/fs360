@@ -41,6 +41,14 @@ class Sidebar extends Component {
 	                    <nav id="primary-menu">
 	                        <ul>
 	                            <li>
+		                        	{ (this.props.currentUser.id == null) ? 
+		                        		null
+		                        		: 
+		                        		<a href="/account"><div>{ this.props.currentUser.firstName }</div></a>
+		                        	}
+	                            </li>
+	                            
+	                            <li>
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li>
@@ -56,7 +64,6 @@ class Sidebar extends Component {
 	                                    <li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 	                                </ul>
 	                            </li>
-
 	                        </ul>
 	                    </nav>
 
@@ -68,7 +75,7 @@ class Sidebar extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state))
+//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
 
     return {
         currentUser: state.profileReducer.currentUser

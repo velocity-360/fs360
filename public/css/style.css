@@ -10555,12 +10555,12 @@ form .col_five_sixth { margin-bottom: 25px; }
 #contact-form-overlay-mini {
 	position: relative;
 	max-width: 800px;
-	background-color: #FFF;
+	background-color: #F9F9F9;
 	padding: 40px;
 	margin: 0 auto;
 	z-index: 10;
-	border-radius: 4px;
-	box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+	border-radius: 3px;
+	border: 1px solid #ddd;
 }
 
 #contact-form-overlay-mini {

@@ -115,7 +115,7 @@ var Nav = (function (Component) {
 					null,
 					React.createElement(
 						"a",
-						{ href: "/courses" },
+						{ href: "/account" },
 						this.props.currentUser.firstName
 					)
 				);

@@ -219,6 +219,7 @@ class Course extends Component {
 			<div>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Sidebar />
+
 				<section id="content" style={{backgroundColor: '#F5F5F5'}}>
 
 					<div className="content-wrap">
@@ -283,9 +284,6 @@ class Course extends Component {
 					: 
 					<CourseCopy questions={this.props.faq.general} />
 				}
-
-
-
 
 		        <Modal show={this.state.showLogin} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

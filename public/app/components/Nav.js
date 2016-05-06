@@ -62,7 +62,7 @@ class Nav extends Component {
 
 	render(){
 
-		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#">Login</a></li> : <li><a href="/courses">{this.props.currentUser.firstName}</a></li>
+		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#">Login</a></li> : <li><a href="/account">{this.props.currentUser.firstName}</a></li>
 
 		return (
 			<header id="header" className="full-header static-sticky dark">
