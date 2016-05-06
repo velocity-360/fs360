@@ -1,6 +1,6 @@
-FullStack 360 Website: www.fullstack360.com
+# FullStack 360 Website: www.fullstack360.com
 
-To Run:
+## To Run:
 1. clone
 2. npm install
 3. webpack -w (in a different tab)
