@@ -22,6 +22,7 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 
 			console.log('CourseController: '+JSON.stringify(response));
 			$scope.course = response.course;
+			$scope.course['tagString'] = $scope.course.tags.toString();
 		});
 	}
 
@@ -93,7 +94,27 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 		$scope.updateCourse(null);
 	}
 
+	function processTagString(){
+		var tagString = $scope.course.tagString;
+		if (tagString == null)
+			return;
+
+		var tags = [];
+		var t = tagString.split(',');
+		for (var i=0; i<t.length; i++){
+			var tag = t[i];
+			if (tag.length == 0)
+				continue;
+
+			tags.push(tag.trim())
+		}
+
+		$scope.course['tags'] = tags;
+
+	}
+
 	$scope.createCourse = function(completion){
+		processTagString();
 		RestService.post({resource:'course', id:null}, $scope.course, function(response){
 			if (response.confirmation != 'success'){
 				alert(response.message);
@@ -111,6 +132,7 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 		if ($scope.course.id == null)
 			return;
 
+		processTagString();
 		RestService.put({resource:'course', id:$scope.course.id}, $scope.course, function(response){
 			if (response.confirmation != 'success'){
 				alert(response.message);
