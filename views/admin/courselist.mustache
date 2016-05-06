@@ -77,11 +77,22 @@
 
                         <div class="col-md-6 mb-xs-24">
                             <h4>Courses</h4>
-                            <ul>
-                                <li ng-repeat="course in courses track by $index">
-                                    <a href="/admin/edit-course/<% course.id %>"><% course.title %></a>
-                                </li>
-                            </ul>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>Title</td>
+                                        <td>Type</td>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat="course in courses track by $index">
+                                        <td><a href="/admin/edit-course/<% course.id %>"><% course.title %></a></td>
+                                        <td><% course.type %></td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
                             
                         </div>
 
