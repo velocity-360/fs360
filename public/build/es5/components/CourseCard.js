@@ -97,7 +97,7 @@ var CourseCard = (function (Component) {
 							React.createElement(
 								"p",
 								null,
-								TextUtils.truncateText(this.props.course.description, 220)
+								TextUtils.truncateText(this.props.course.description, 170)
 							),
 							React.createElement(
 								"div",

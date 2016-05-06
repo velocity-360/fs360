@@ -32,7 +32,7 @@ class CourseCard extends Component {
 					<hr />
 
 					<div className="entry-content">
-						<p>{ TextUtils.truncateText(this.props.course.description, 220) }</p>
+						<p>{ TextUtils.truncateText(this.props.course.description, 170) }</p>
 						<div className="tagcloud">
 							{tags}
 						</div>

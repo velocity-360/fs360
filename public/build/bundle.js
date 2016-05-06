@@ -45473,7 +45473,7 @@
 							_react2.default.createElement(
 								'p',
 								null,
-								_TextUtils2.default.truncateText(this.props.course.description, 220)
+								_TextUtils2.default.truncateText(this.props.course.description, 170)
 							),
 							_react2.default.createElement(
 								'div',
