@@ -22,6 +22,7 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
+var connect = require("react-redux").connect;
 var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -34,7 +35,8 @@ var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var connect = require("react-redux").connect;
+var stripe = _interopRequire(require("../../utils/StripeUtils"));
+
 var api = _interopRequire(require("../../api/api"));
 
 var Course = (function (Component) {
@@ -65,11 +67,6 @@ var Course = (function (Component) {
 	_inherits(Course, Component);
 
 	_prototypeProperties(Course, null, {
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
 		componentDidMount: {
 			value: function componentDidMount() {
 				var _this = this;
@@ -82,34 +79,29 @@ var Course = (function (Component) {
 					var course = response.courses[0];
 					if (course.type == "online") {
 						// for videos, show subscription prompt:
-						var handler = StripeCheckout.configure({
-							key: "pk_live_yKFwKJsJXwOxC0yZob29rIN5",
-							image: "/images/logo_round_blue_260.png",
-							locale: "auto",
-							panelLabel: "Subscribe: $19.99/month",
-							token: function (token) {
-								// You can access the token ID with `token.id`
 
-								//		        	FullStackActionCreator.submitStripeToken(token);
-								_this.setState({ showLoader: true });
-								api.submitStripeToken(token, function () {
-									api.handleGet("/account/currentuser", {}, function (err, response) {
-										_this.setState({ showLoader: false });
-										if (err) {
-											alert(response.message);
-											return;
-										}
+						stripe.initialize(function (token) {
+							_this.setState({ showLoader: true });
+							api.submitStripeToken(token, function () {
+								api.handleGet("/account/currentuser", {}, function (err, response) {
+									_this.setState({ showLoader: false });
+									if (err) {
+										alert(response.message);
+										return;
+									}
 
-										store.dispatch(actions.currentUserRecieved(response.profile));
-									});
+									store.dispatch(actions.currentUserRecieved(response.profile));
 								});
-							}
+							});
 						});
+
+
+
 					}
 
-					_this.setState({
-						stripeHandler: handler
-					});
+					// _this.setState({
+					// 	stripeHandler:handler
+					// });
 
 
 					store.dispatch(actions.coursesRecieved(response.courses));
@@ -227,10 +219,11 @@ var Course = (function (Component) {
 			value: function openStripeModal() {
 				//		event.preventDefault()
 
-				this.state.stripeHandler.open({
-					name: "FullStack 360",
-					description: "Premium Subscription"
-				});
+				// this.state.stripeHandler.open({
+				//  name: 'FullStack 360',
+				//  description: 'Premium Subscription'
+				// });
+				stripe.showModal();
 			},
 			writable: true,
 			configurable: true
@@ -486,3 +479,27 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
+//  var handler = StripeCheckout.configure({
+//      key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+//      image: '/images/logo_round_blue_260.png',
+//      locale: 'auto',
+//      panelLabel: 'Subscribe: $19.99/month',
+//      token: function(token) { // You can access the token ID with `token.id`
+
+// _this.setState({showLoader: true})
+// api.submitStripeToken(token, function(){
+
+// 	api.handleGet('/account/currentuser', {}, function(err, response){
+// 		_this.setState({showLoader: false})
+// 		if (err){
+// 			alert(response.message)
+// 			return
+// 		}
+
+// 		store.dispatch(actions.currentUserRecieved(response.profile))
+// 	});
+
+// })
+
+//      }
+//  });

@@ -22,6 +22,7 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
+var connect = require("react-redux").connect;
 var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -34,7 +35,8 @@ var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var connect = require("react-redux").connect;
+var stripe = _interopRequire(require("../../utils/StripeUtils"));
+
 var api = _interopRequire(require("../../api/api"));
 
 var Home = (function (Component) {
@@ -72,42 +74,54 @@ var Home = (function (Component) {
 	_inherits(Home, Component);
 
 	_prototypeProperties(Home, null, {
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
 		componentDidMount: {
 			value: function componentDidMount() {
 				var _this = this;
-				var handler = StripeCheckout.configure({
-					key: "pk_live_yKFwKJsJXwOxC0yZob29rIN5",
-					image: "/images/logo_round_blue_260.png",
-					locale: "auto",
-					panelLabel: "Premium: $19.99/month",
-					token: function (token) {
-						// You can access the token ID with `token.id`
+				stripe.initialize(function (token) {
+					_this.setState({ showLoader: true });
+					api.submitStripeToken(token, function () {
+						api.handleGet("/account/currentuser", {}, function (err, response) {
+							_this.setState({ showLoader: false });
+							if (err) {
+								alert(response.message);
+								return;
+							}
 
-						_this.setState({ showLoader: true });
-						api.submitStripeToken(token, function () {
-							api.handleGet("/account/currentuser", {}, function (err, response) {
-								_this.setState({ showLoader: false });
-								if (err) {
-									alert(response.message);
-									return;
-								}
-
-								window.location.href = "/account"
-								// store.dispatch(actions.currentUserRecieved(response.profile))
-								;
-							});
+							window.location.href = "/account"
+							// store.dispatch(actions.currentUserRecieved(response.profile))
+							;
 						});
-					}
+					});
 				});
 
-				this.setState({
-					stripeHandler: handler
-				});
+
+				//  var handler = StripeCheckout.configure({
+				//      key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+				//      image: '/images/logo_round_blue_260.png',
+				//      locale: 'auto',
+				//      panelLabel: 'Premium: $19.99/month',
+				//      token: function(token) { // You can access the token ID with `token.id`
+
+				// _this.setState({showLoader: true})
+				// api.submitStripeToken(token, function(){
+
+				// 	api.handleGet('/account/currentuser', {}, function(err, response){
+				// 		_this.setState({showLoader: false})
+				// 		if (err){
+				// 			alert(response.message)
+				// 			return
+				// 		}
+
+				// 		window.location.href = '/account'
+				// 		// store.dispatch(actions.currentUserRecieved(response.profile))
+				// 	});
+				// })
+				//      }
+				//  });
+
+				// this.setState({
+				// 	stripeHandler:handler
+				// });
 
 				api.handleGet("/api/event", {}, function (err, response) {
 					if (err) {
@@ -202,10 +216,7 @@ var Home = (function (Component) {
 					}
 
 					// premium registration, show stripe modal
-					_this.state.stripeHandler.open({
-						name: "FullStack 360",
-						description: "Premium Subscription"
-					});
+					stripe.showModal();
 				});
 			},
 			writable: true,
@@ -1110,4 +1121,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Home);
-//		getCurrentUser()
