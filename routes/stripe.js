@@ -235,7 +235,7 @@ router.post('/:resource', function(req, res, next) {
 				if (promoCode != null){ // check promo code
 					profile['promoCode'] = promoCode;
 					if (promoCode == 'nyu'){
-						profile['monthlyRate'] = 19.99;
+						profile['monthlyRate'] = 9.99;
 					}
 				}
 

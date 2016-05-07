@@ -87,41 +87,10 @@ var Home = (function (Component) {
 								return;
 							}
 
-							window.location.href = "/account"
-							// store.dispatch(actions.currentUserRecieved(response.profile))
-							;
+							window.location.href = "/account";
 						});
 					});
 				});
-
-
-				//  var handler = StripeCheckout.configure({
-				//      key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-				//      image: '/images/logo_round_blue_260.png',
-				//      locale: 'auto',
-				//      panelLabel: 'Premium: $19.99/month',
-				//      token: function(token) { // You can access the token ID with `token.id`
-
-				// _this.setState({showLoader: true})
-				// api.submitStripeToken(token, function(){
-
-				// 	api.handleGet('/account/currentuser', {}, function(err, response){
-				// 		_this.setState({showLoader: false})
-				// 		if (err){
-				// 			alert(response.message)
-				// 			return
-				// 		}
-
-				// 		window.location.href = '/account'
-				// 		// store.dispatch(actions.currentUserRecieved(response.profile))
-				// 	});
-				// })
-				//      }
-				//  });
-
-				// this.setState({
-				// 	stripeHandler:handler
-				// });
 
 				api.handleGet("/api/event", {}, function (err, response) {
 					if (err) {

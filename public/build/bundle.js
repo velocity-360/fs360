@@ -22188,7 +22188,6 @@
 				_StripeUtils2.default.initialize(function (token) {
 					_this.setState({ showLoader: true });
 					_api2.default.submitStripeToken(token, function () {
-	
 						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 							_this.setState({ showLoader: false });
 							if (err) {
@@ -22197,38 +22196,9 @@
 							}
 	
 							window.location.href = '/account';
-							// store.dispatch(actions.currentUserRecieved(response.profile))
 						});
 					});
 				});
-	
-				//  var handler = StripeCheckout.configure({
-				//      key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-				//      image: '/images/logo_round_blue_260.png',
-				//      locale: 'auto',
-				//      panelLabel: 'Premium: $19.99/month',
-				//      token: function(token) { // You can access the token ID with `token.id`
-	
-				// _this.setState({showLoader: true})
-				// api.submitStripeToken(token, function(){
-	
-				// 	api.handleGet('/account/currentuser', {}, function(err, response){
-				// 		_this.setState({showLoader: false})
-				// 		if (err){
-				// 			alert(response.message)
-				// 			return
-				// 		}
-	
-				// 		window.location.href = '/account'
-				// 		// store.dispatch(actions.currentUserRecieved(response.profile))
-				// 	});
-				// })
-				//      }
-				//  });
-	
-				// this.setState({
-				// 	stripeHandler:handler
-				// });
 	
 				_api2.default.handleGet('/api/event', {}, function (err, response) {
 					if (err) {
@@ -42086,7 +42056,7 @@
 			});
 	
 			var response = http.send(params);
-			console.log('RESPONSE: ' + response);
+			//        console.log('RESPONSE: '+response);
 		}
 	
 	};
@@ -62040,7 +62010,6 @@
 					var course = response.courses[0];
 					if (course.type == 'online') {
 						// for videos, show subscription prompt:
-	
 						_StripeUtils2.default.initialize(function (token) {
 							_this.setState({ showLoader: true });
 							_api2.default.submitStripeToken(token, function () {
@@ -62056,36 +62025,7 @@
 								});
 							});
 						});
-	
-						//  var handler = StripeCheckout.configure({
-						//      key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-						//      image: '/images/logo_round_blue_260.png',
-						//      locale: 'auto',
-						//      panelLabel: 'Subscribe: $19.99/month',
-						//      token: function(token) { // You can access the token ID with `token.id`
-	
-						// _this.setState({showLoader: true})
-						// api.submitStripeToken(token, function(){
-	
-						// 	api.handleGet('/account/currentuser', {}, function(err, response){
-						// 		_this.setState({showLoader: false})
-						// 		if (err){
-						// 			alert(response.message)
-						// 			return
-						// 		}
-	
-						// 		store.dispatch(actions.currentUserRecieved(response.profile))
-						// 	});
-	
-						// })
-	
-						//      }
-						//  });
 					}
-	
-					// _this.setState({
-					// 	stripeHandler:handler
-					// });
 	
 					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
 				});
@@ -62111,7 +62051,6 @@
 			key: 'syllabusRequest',
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				//		console.log('SYLLABUS REQUEST: '+JSON.stringify(this.state.syllabusRequest))
 	
 				this.setState({
 					showModal: false,
@@ -62159,7 +62098,6 @@
 			key: 'login',
 			value: function login(event) {
 				event.preventDefault();
-				//		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
 				this.setState({
 					showModal: false,
 					showLogin: false,
@@ -62183,12 +62121,6 @@
 		}, {
 			key: 'openStripeModal',
 			value: function openStripeModal() {
-				//		event.preventDefault()
-	
-				// this.state.stripeHandler.open({
-				//  name: 'FullStack 360',
-				//  description: 'Premium Subscription'
-				// });
 				_StripeUtils2.default.showModal();
 			}
 		}, {
