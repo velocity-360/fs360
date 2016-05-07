@@ -97,7 +97,7 @@ var Home = (function (Component) {
 									return;
 								}
 
-								window.location.href = "/videos"
+								window.location.href = "/account"
 								// store.dispatch(actions.currentUserRecieved(response.profile))
 								;
 							});
@@ -197,7 +197,7 @@ var Home = (function (Component) {
 					}
 
 					if (_this.state.membershiptype == "basic") {
-						window.location.href = "/courses";
+						window.location.href = "/account";
 						return;
 					}
 
@@ -1053,6 +1053,8 @@ var Home = (function (Component) {
 							React.createElement("br", null),
 							React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", type: "password", placeholder: "Password" }),
 							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", type: "text", placeholder: "Promo Code" }),
+							React.createElement("br", null),
 							React.createElement(
 								"select",
 								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },
@@ -1060,11 +1062,6 @@ var Home = (function (Component) {
 									"option",
 									{ value: "basic" },
 									"Basic"
-								),
-								React.createElement(
-									"option",
-									{ value: "starter" },
-									"Starter"
 								),
 								React.createElement(
 									"option",

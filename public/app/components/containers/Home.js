@@ -64,7 +64,7 @@ class Home extends Component {
 							return
 						}
 
-						window.location.href = '/videos'
+						window.location.href = '/account'
 						// store.dispatch(actions.currentUserRecieved(response.profile))
 					});
 				})
@@ -162,7 +162,7 @@ class Home extends Component {
 			}
 
 			if (_this.state.membershiptype == 'basic'){
-				window.location.href = '/courses'
+				window.location.href = '/account'
 				return
 			}
 
@@ -634,9 +634,9 @@ class Home extends Component {
 			        	<input onChange={this.updateUserRegistration} id="name" className="form-control" type="text" placeholder="Name" /><br />
 			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
 			        	<input onChange={this.updateUserRegistration} id="password" className="form-control" type="password" placeholder="Password" /><br />
+			        	<input onChange={this.updateUserRegistration} id="promoCode" className="form-control" type="text" placeholder="Promo Code" /><br />
 						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
 							<option value="basic">Basic</option>
-							<option value="starter">Starter</option>
 							<option value="premium">Premium</option>
 						</select>
 

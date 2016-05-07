@@ -22204,7 +22204,7 @@
 									return;
 								}
 	
-								window.location.href = '/videos';
+								window.location.href = '/account';
 								// store.dispatch(actions.currentUserRecieved(response.profile))
 							});
 						});
@@ -22296,7 +22296,7 @@
 					}
 	
 					if (_this.state.membershiptype == 'basic') {
-						window.location.href = '/courses';
+						window.location.href = '/account';
 						return;
 					}
 	
@@ -23139,6 +23139,8 @@
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', type: 'password', placeholder: 'Password' }),
 							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', type: 'text', placeholder: 'Promo Code' }),
+							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'select',
 								{ onChange: this.updateUserRegistration, id: 'membershiptype', value: this.state.membershiptype, className: 'form-control input-md not-dark' },
@@ -23146,11 +23148,6 @@
 									'option',
 									{ value: 'basic' },
 									'Basic'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'starter' },
-									'Starter'
 								),
 								_react2.default.createElement(
 									'option',
