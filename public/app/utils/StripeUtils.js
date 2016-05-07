@@ -4,7 +4,7 @@ export default {
 	callback: null,
 
 	initialize: function(completion){
-		callback: completion
+		this.callback: completion
 		var _this = this
 	    this.handler = StripeCheckout.configure({
 	        key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
@@ -12,7 +12,7 @@ export default {
 	        locale: 'auto',
 	        panelLabel: 'Premium: $19.99/month',
 	        token: function(token) { // You can access the token ID with `token.id`
-	        	_this.completion(token)
+	        	_this.callback(token)
 	        }
 	    });
 	},
