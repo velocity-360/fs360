@@ -48,6 +48,7 @@ var Account = (function (Component) {
 		this.uploadImage = this.uploadImage.bind(this);
 		this.submitProject = this.submitProject.bind(this);
 		this.updateProfile = this.updateProfile.bind(this);
+		this.updateCurrentUser = this.updateCurrentUser.bind(this);
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -166,9 +167,31 @@ var Account = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		updateCurrentUser: {
+			value: function updateCurrentUser(event) {
+				//		console.log('updateCurrentUser: '+event.target.id)
+				event.preventDefault();
+				var updatedUser = Object.assign({}, this.props.profile);
+				updatedUser[event.target.id] = event.target.value;
+				store.dispatch(actions.updateCurrentUser(updatedUser));
+			},
+			writable: true,
+			configurable: true
+		},
 		updateProfile: {
 			value: function updateProfile(event) {
 				event.preventDefault();
+
+				var endpoint = "/api/profile/" + this.props.profile.id;
+				api.handlePut(endpoint, this.props.profile, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					store.dispatch(actions.currentUserRecieved(response.profile));
+					alert("Profile Updated");
+				});
 			},
 			writable: true,
 			configurable: true
@@ -245,7 +268,7 @@ var Account = (function (Component) {
 																null,
 																"First Name"
 															),
-															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.firstName, className: "form-control" })
+															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "firstName", value: this.props.profile.firstName, className: "form-control" })
 														),
 														React.createElement(
 															"div",
@@ -255,7 +278,7 @@ var Account = (function (Component) {
 																null,
 																"Last Name"
 															),
-															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.lastName, className: "form-control" })
+															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "lastName", value: this.props.profile.lastName, className: "form-control" })
 														),
 														React.createElement("div", { className: "clear" }),
 														React.createElement(
@@ -266,7 +289,7 @@ var Account = (function (Component) {
 																null,
 																"Username"
 															),
-															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.username, className: "form-control" })
+															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "username", value: this.props.profile.username, className: "form-control" })
 														),
 														React.createElement(
 															"div",
@@ -276,7 +299,7 @@ var Account = (function (Component) {
 																null,
 																"GitHub"
 															),
-															React.createElement("input", { type: "text", name: "template-contactform-name", value: this.props.profile.lastName, className: "form-control" })
+															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "githubId", value: this.props.profile.githubId, className: "form-control", placeholder: "e.g. https://github.com/fullstack360" })
 														),
 														React.createElement("div", { className: "clear" }),
 														React.createElement(
@@ -292,7 +315,7 @@ var Account = (function (Component) {
 																	"*"
 																)
 															),
-															React.createElement("textarea", { className: "form-control", name: "template-contactform-message", rows: "6", cols: "30" })
+															React.createElement("textarea", { className: "form-control", onChange: this.updateCurrentUser, id: "bio", value: this.props.profile.bio, rows: "6", cols: "30" })
 														),
 														React.createElement(
 															"div",

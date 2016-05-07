@@ -62,6 +62,17 @@ module.exports = {
 		});
 	},
 
+	handlePut: function (endpoint, body, completion) {
+		superagent.put(endpoint).send(body).set("Accept", "application/json").end(function (err, res) {
+			if (err) {
+				if (completion != null) completion(err, null);
+			} else {
+				if (completion != null) completion(null, res.body);
+			}
+		});
+	},
+
+
 	upload: function (file, completion) {
 		var _file = file;
 		this.handleGet("https://media-service.appspot.com/api/upload", null, function (err, response) {

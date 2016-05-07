@@ -42026,6 +42026,16 @@
 			});
 		},
 	
+		handlePut: function handlePut(endpoint, body, completion) {
+			_superagent2.default.put(endpoint).send(body).set('Accept', 'application/json').end(function (err, res) {
+				if (err) {
+					if (completion != null) completion(err, null);
+				} else {
+					if (completion != null) completion(null, res.body);
+				}
+			});
+		},
+	
 		upload: function upload(file, completion) {
 			var _file = file;
 			this.handleGet('https://media-service.appspot.com/api/upload', null, function (err, response) {
@@ -63027,6 +63037,7 @@
 			_this2.uploadImage = _this2.uploadImage.bind(_this2);
 			_this2.submitProject = _this2.submitProject.bind(_this2);
 			_this2.updateProfile = _this2.updateProfile.bind(_this2);
+			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showModal: false,
@@ -63132,9 +63143,29 @@
 				});
 			}
 		}, {
+			key: 'updateCurrentUser',
+			value: function updateCurrentUser(event) {
+				//		console.log('updateCurrentUser: '+event.target.id)
+				event.preventDefault();
+				var updatedUser = Object.assign({}, this.props.profile);
+				updatedUser[event.target.id] = event.target.value;
+				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+			}
+		}, {
 			key: 'updateProfile',
 			value: function updateProfile(event) {
 				event.preventDefault();
+	
+				var endpoint = '/api/profile/' + this.props.profile.id;
+				_api2.default.handlePut(endpoint, this.props.profile, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+					alert('Profile Updated');
+				});
 			}
 		}, {
 			key: 'render',
@@ -63210,7 +63241,7 @@
 																null,
 																'First Name'
 															),
-															_react2.default.createElement('input', { type: 'text', name: 'template-contactform-name', value: this.props.profile.firstName, className: 'form-control' })
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'firstName', value: this.props.profile.firstName, className: 'form-control' })
 														),
 														_react2.default.createElement(
 															'div',
@@ -63220,7 +63251,7 @@
 																null,
 																'Last Name'
 															),
-															_react2.default.createElement('input', { type: 'text', name: 'template-contactform-name', value: this.props.profile.lastName, className: 'form-control' })
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'lastName', value: this.props.profile.lastName, className: 'form-control' })
 														),
 														_react2.default.createElement('div', { className: 'clear' }),
 														_react2.default.createElement(
@@ -63231,7 +63262,7 @@
 																null,
 																'Username'
 															),
-															_react2.default.createElement('input', { type: 'text', name: 'template-contactform-name', value: this.props.profile.username, className: 'form-control' })
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'username', value: this.props.profile.username, className: 'form-control' })
 														),
 														_react2.default.createElement(
 															'div',
@@ -63241,7 +63272,7 @@
 																null,
 																'GitHub'
 															),
-															_react2.default.createElement('input', { type: 'text', name: 'template-contactform-name', value: this.props.profile.lastName, className: 'form-control' })
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'githubId', value: this.props.profile.githubId, className: 'form-control', placeholder: 'e.g. https://github.com/fullstack360' })
 														),
 														_react2.default.createElement('div', { className: 'clear' }),
 														_react2.default.createElement(
@@ -63257,7 +63288,7 @@
 																	'*'
 																)
 															),
-															_react2.default.createElement('textarea', { className: 'form-control', name: 'template-contactform-message', rows: '6', cols: '30' })
+															_react2.default.createElement('textarea', { className: 'form-control', onChange: this.updateCurrentUser, id: 'bio', value: this.props.profile.bio, rows: '6', cols: '30' })
 														),
 														_react2.default.createElement(
 															'div',

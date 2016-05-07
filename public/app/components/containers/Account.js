@@ -21,6 +21,7 @@ class Account extends Component {
 		this.uploadImage = this.uploadImage.bind(this)
 		this.submitProject = this.submitProject.bind(this)
 		this.updateProfile = this.updateProfile.bind(this)
+		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.state = {
 			showLoader: false,
 			showModal: false,
@@ -123,9 +124,28 @@ class Account extends Component {
 		})
 	}
 
+	updateCurrentUser(event){
+//		console.log('updateCurrentUser: '+event.target.id)
+		event.preventDefault()
+		var updatedUser = Object.assign({}, this.props.profile);
+		updatedUser[event.target.id] = event.target.value
+		store.dispatch(actions.updateCurrentUser(updatedUser));
+	}
+
+
 	updateProfile(event){
 		event.preventDefault()
 
+		var endpoint = '/api/profile/'+this.props.profile.id
+		api.handlePut(endpoint, this.props.profile, function(err, response){
+			if (err){
+				alert(response.message)
+				return
+			}
+			
+			store.dispatch(actions.currentUserRecieved(response.profile));
+			alert('Profile Updated')
+		})
 	}
 
 	render(){
@@ -165,31 +185,31 @@ class Account extends Component {
 
 							                        <div className="col_half">
 							                            <label>First Name</label>
-							                            <input type="text" name="template-contactform-name" value={this.props.profile.firstName} className="form-control" />
+							                            <input type="text" onChange={this.updateCurrentUser} id="firstName" value={this.props.profile.firstName} className="form-control" />
 							                        </div>
 
 							                        <div className="col_half col_last">
 							                            <label>Last Name</label>
-							                            <input type="text" name="template-contactform-name" value={this.props.profile.lastName}  className="form-control" />
+							                            <input type="text" onChange={this.updateCurrentUser} id="lastName" value={this.props.profile.lastName}  className="form-control" />
 							                        </div>
 
 							                        <div className="clear"></div>
 
 							                        <div className="col_half">
 							                            <label>Username</label>
-							                            <input type="text" name="template-contactform-name" value={this.props.profile.username}  className="form-control" />
+							                            <input type="text" onChange={this.updateCurrentUser} id="username" value={this.props.profile.username}  className="form-control" />
 							                        </div>
 
 							                        <div className="col_half col_last">
 							                            <label>GitHub</label>
-							                            <input type="text" name="template-contactform-name" value={this.props.profile.lastName}  className="form-control" />
+							                            <input type="text" onChange={this.updateCurrentUser} id="githubId" value={this.props.profile.githubId} className="form-control" placeholder="e.g. https://github.com/fullstack360" />
 							                        </div>
 
 							                        <div className="clear"></div>
 
 							                        <div className="col_full">
 							                            <label for="template-contactform-message">Bio <small>*</small></label>
-							                            <textarea className="form-control" name="template-contactform-message" rows="6" cols="30"></textarea>
+							                            <textarea className="form-control" onChange={this.updateCurrentUser} id="bio" value={this.props.profile.bio} rows="6" cols="30"></textarea>
 							                        </div>
 
 							                        <div className="col_full hidden">
