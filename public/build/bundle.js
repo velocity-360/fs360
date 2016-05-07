@@ -22129,7 +22129,7 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _StripeUtils = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../utils/StripeUtils\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _StripeUtils = __webpack_require__(589);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
@@ -61982,7 +61982,7 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _StripeUtils = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../utils/StripeUtils\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _StripeUtils = __webpack_require__(589);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
@@ -63792,6 +63792,44 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
+
+/***/ },
+/* 589 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+	
+		handler: null,
+		callback: null,
+	
+		initialize: function initialize(completion) {
+			this.callback = completion;
+			var _this = this;
+			this.handler = StripeCheckout.configure({
+				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+				image: '/images/logo_round_blue_260.png',
+				locale: 'auto',
+				panelLabel: 'Premium: $19.99/month',
+				token: function token(_token) {
+					// You can access the token ID with `token.id`
+					_this.callback(_token);
+				}
+			});
+		},
+	
+		showModal: function showModal() {
+			this.handler.open({
+				name: 'FullStack 360',
+				description: 'Premium Subscription'
+			});
+		}
+	
+	};
 
 /***/ }
 /******/ ]);

@@ -4,7 +4,7 @@ export default {
 	callback: null,
 
 	initialize: function(completion){
-		this.callback: completion
+		this.callback = completion
 		var _this = this
 	    this.handler = StripeCheckout.configure({
 	        key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
