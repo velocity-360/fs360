@@ -197,7 +197,7 @@ var Ios = (function (Component) {
 		syllabusRequest: {
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				console.log("SYLLABUS REQUEST: " + this.state.selectedCourse);
+				//		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 
 				var missingField = this.validate(false);
 				if (missingField != null) {
@@ -356,7 +356,7 @@ var Ios = (function (Component) {
 								{ className: "container clearfix", style: { paddingTop: 64 } },
 								React.createElement(
 									"div",
-									{ className: "col_one_third bottommargin-sm", style: { background: "#f9f9f9" } },
+									{ className: "col_one_third bottommargin-sm hidden-xs", style: { background: "#f9f9f9" } },
 									React.createElement(
 										"div",
 										{ className: "widget clearfix", style: { padding: 24 } },
@@ -428,17 +428,6 @@ var Ios = (function (Component) {
 										"FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.",
 										React.createElement("br", null),
 										React.createElement("br", null),
-										"Our focus is to teach the most up-to-date technologies to prepare students for the rapidly changing landscape in software. It all too common that aspiring developers waste valuable time learning outdated languages and frameworks, only to find out they do not have the marketable skills to transition into tech."
-									),
-									React.createElement("hr", null),
-									React.createElement(
-										"h3",
-										null,
-										"Beyond the Course"
-									),
-									React.createElement(
-										"p",
-										null,
 										"Whether you are looking for a job as a software developer or starting your own company, FS360 will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,",
 										React.createElement(
 											"a",
@@ -446,6 +435,107 @@ var Ios = (function (Component) {
 											" ERA Accelerator"
 										),
 										", and several NYC based startups."
+									),
+									React.createElement("hr", null),
+									React.createElement(
+										"div",
+										{ className: "row" },
+										React.createElement(
+											"div",
+											{ className: "col-md-4 col-sm-6 bottommargin" },
+											React.createElement(
+												"div",
+												{ className: "ipost clearfix" },
+												React.createElement(
+													"div",
+													{ className: "entry-image" },
+													React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/class.jpg", alt: "FullStack 360" })
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-title" },
+													React.createElement(
+														"h3",
+														null,
+														"Small Classes"
+													),
+													React.createElement("hr", null)
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-content" },
+													React.createElement(
+														"p",
+														null,
+														"Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind."
+													)
+												)
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "col-md-4 col-sm-6 bottommargin" },
+											React.createElement(
+												"div",
+												{ className: "ipost clearfix" },
+												React.createElement(
+													"div",
+													{ className: "entry-image" },
+													React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/joe.jpg", alt: "FullStack 360" })
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-title" },
+													React.createElement(
+														"h3",
+														null,
+														"Cutting Edge Curriculum"
+													),
+													React.createElement("hr", null)
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-content" },
+													React.createElement(
+														"p",
+														null,
+														"Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that."
+													)
+												)
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "col-md-4 col-sm-6 bottommargin" },
+											React.createElement(
+												"div",
+												{ className: "ipost clearfix" },
+												React.createElement(
+													"div",
+													{ className: "entry-image" },
+													React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/phone.jpg", alt: "FullStack 360" })
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-title" },
+													React.createElement(
+														"h3",
+														null,
+														"Realistic Projects"
+													),
+													React.createElement("hr", null)
+												),
+												React.createElement(
+													"div",
+													{ className: "entry-content" },
+													React.createElement(
+														"p",
+														null,
+														"All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face."
+													)
+												)
+											)
+										)
 									)
 								)
 							)

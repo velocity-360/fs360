@@ -158,7 +158,7 @@ class Ios extends Component {
 
 	syllabusRequest(event){
 		event.preventDefault()
-		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
+//		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 
 		var missingField = this.validate(false);
 		if (missingField != null){
@@ -271,7 +271,7 @@ class Ios extends Component {
 
 						<div className="container clearfix" style={{paddingTop:64}}>
 
-							<div className="col_one_third bottommargin-sm" style={{background:'#f9f9f9'}}>
+							<div className="col_one_third bottommargin-sm hidden-xs" style={{background:'#f9f9f9'}}>
 								<div className="widget clearfix" style={{padding:24}}>
 									<h4>Spotlight</h4>
 									<img style={{width:128, borderRadius:64}} src="/images/briancorrea.jpg" alt="FullStaack 360" />
@@ -305,23 +305,74 @@ class Ios extends Component {
 									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
 									of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.
 									<br /><br />
-									Our focus is to teach the most up-to-date technologies to prepare students for the rapidly changing
-									landscape in software. It all too common that aspiring developers waste valuable time learning 
-									outdated languages and frameworks, only to find out they do not have the marketable skills to
-									transition into tech.
-								</p>
-
-								<hr />
-
-								<h3>Beyond the Course</h3>
-								<p>
 									Whether you are looking for a job as a software developer or starting your own company, 
 									FS360 will help the transition. We provide students with interview preparation, practice, 
 									and assigments gathered from previous students who have gone through many interview 
 									processes. Our former students have gone on to work at companies like the New York Times, 
 									<a target="_blank" href="http://eranyc.com/"> ERA Accelerator</a>, and several NYC based 
 									startups.
+
 								</p>
+
+								<hr />
+
+								<div className="row">
+
+									<div className="col-md-4 col-sm-6 bottommargin">
+										<div className="ipost clearfix">
+											<div className="entry-image">
+												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="FullStack 360" />
+											</div>
+											<div className="entry-title">
+												<h3>Small Classes</h3>
+												<hr />
+											</div>
+											<div className="entry-content">
+												<p>
+													Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.
+												</p>
+											</div>
+										</div>
+									</div>
+
+									<div className="col-md-4 col-sm-6 bottommargin">
+										<div className="ipost clearfix">
+											<div className="entry-image">
+												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="FullStack 360" />
+											</div>
+											<div className="entry-title">
+												<h3>Cutting Edge Curriculum</h3>
+												<hr />
+											</div>
+											<div className="entry-content">
+												<p>
+													Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.
+												</p>
+											</div>
+										</div>
+									</div>
+
+									<div className="col-md-4 col-sm-6 bottommargin">
+										<div className="ipost clearfix">
+											<div className="entry-image">
+												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="FullStack 360" />
+											</div>
+											<div className="entry-title">
+												<h3>Realistic Projects</h3>
+												<hr />
+											</div>
+											<div className="entry-content">
+												<p>
+													All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.
+												</p>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+
 							</div>
 
 						</div>
