@@ -48,7 +48,7 @@ class Nav extends Component {
 				return
 			}
 
-			window.location.href = '/courses'
+			window.location.href = '/account'
 		});
 	}
 
@@ -62,7 +62,7 @@ class Nav extends Component {
 
 	render(){
 
-		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#">Login</a></li> : <li><a href="/account">{this.props.currentUser.firstName}</a></li>
+		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
 
 		return (
 
@@ -78,18 +78,22 @@ class Nav extends Component {
 
 	                    <nav id="primary-menu">
 	                        <ul className="one-page-menu">
-	                            <li className="current"><a href="/"><div>Home</div></a></li>
-	                            <li><a href="/videos"><div>Videos</div></a></li>
-								<li><a href="#"><div>Courses</div></a>
+	                            <li className="current"><a href="/"><div style={{padding:4}}>Home</div></a></li>
+	                            <li><a href="/videos"><div style={{padding:4}}>Videos</div></a></li>
+								<li><a href="#"><div style={{padding:4}}>Courses</div></a>
 									<ul>
-										<li><a href="/courses?type=live"><div>Part Time</div></a></li>
-										<li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
+										<li><a href="/courses?type=live"><div style={{padding:4}}>Part Time</div></a></li>
+										<li><a href="/courses?type=immersive"><div style={{padding:4}}>Bootcamp</div></a></li>
 									</ul>
 								</li>
-								<li><a href="/feed" data-href="#"><div>Blog</div></a></li>
+								<li><a href="/feed"><div style={{padding:4}}>Blog</div></a></li>
 								{login}
 
-	                            <li><a href="/application" data-href="#section-buy"><div>Apply</div></a></li>
+	                            <li>
+	                            	<a href="/application">
+	                            		<div style={{background:'#5cb85c', padding:4, borderRadius:2, paddingRight:8, paddingLeft:8}}>Apply</div>
+	                            	</a>
+	                            </li>
 	                        </ul>
 	                    </nav>
 	                </div>

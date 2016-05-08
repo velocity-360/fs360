@@ -41652,7 +41652,7 @@
 						return;
 					}
 	
-					window.location.href = '/courses';
+					window.location.href = '/account';
 				});
 			}
 		}, {
@@ -41674,7 +41674,11 @@
 					_react2.default.createElement(
 						'a',
 						{ onClick: this.openModal, href: '#' },
-						'Login'
+						_react2.default.createElement(
+							'div',
+							{ style: { padding: 4 } },
+							'Login'
+						)
 					)
 				) : _react2.default.createElement(
 					'li',
@@ -41682,7 +41686,11 @@
 					_react2.default.createElement(
 						'a',
 						{ href: '/account' },
-						this.props.currentUser.firstName
+						_react2.default.createElement(
+							'div',
+							{ style: { padding: 4 } },
+							this.props.currentUser.firstName
+						)
 					)
 				);
 	
@@ -41728,7 +41736,7 @@
 											{ href: '/' },
 											_react2.default.createElement(
 												'div',
-												null,
+												{ style: { padding: 4 } },
 												'Home'
 											)
 										)
@@ -41741,7 +41749,7 @@
 											{ href: '/videos' },
 											_react2.default.createElement(
 												'div',
-												null,
+												{ style: { padding: 4 } },
 												'Videos'
 											)
 										)
@@ -41754,7 +41762,7 @@
 											{ href: '#' },
 											_react2.default.createElement(
 												'div',
-												null,
+												{ style: { padding: 4 } },
 												'Courses'
 											)
 										),
@@ -41769,7 +41777,7 @@
 													{ href: '/courses?type=live' },
 													_react2.default.createElement(
 														'div',
-														null,
+														{ style: { padding: 4 } },
 														'Part Time'
 													)
 												)
@@ -41782,7 +41790,7 @@
 													{ href: '/courses?type=immersive' },
 													_react2.default.createElement(
 														'div',
-														null,
+														{ style: { padding: 4 } },
 														'Bootcamp'
 													)
 												)
@@ -41794,10 +41802,10 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/feed', 'data-href': '#' },
+											{ href: '/feed' },
 											_react2.default.createElement(
 												'div',
-												null,
+												{ style: { padding: 4 } },
 												'Blog'
 											)
 										)
@@ -41808,10 +41816,10 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/application', 'data-href': '#section-buy' },
+											{ href: '/application' },
 											_react2.default.createElement(
 												'div',
-												null,
+												{ style: { background: '#5cb85c', padding: 4, borderRadius: 2, paddingRight: 8, paddingLeft: 8 } },
 												'Apply'
 											)
 										)

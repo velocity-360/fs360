@@ -166,6 +166,7 @@ class Ios extends Component {
 			<div>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Nav />
+
 		        <section id="slider" style={{background: 'url("/images/ios-banner.jpg") center', overflow:'visible'}} data-height-lg="450" data-height-md="450" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
 		            <div className="container clearfix">
 

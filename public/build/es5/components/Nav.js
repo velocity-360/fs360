@@ -83,7 +83,7 @@ var Nav = (function (Component) {
 						return;
 					}
 
-					window.location.href = "/courses";
+					window.location.href = "/account";
 				});
 			},
 			writable: true,
@@ -108,7 +108,11 @@ var Nav = (function (Component) {
 					React.createElement(
 						"a",
 						{ onClick: this.openModal, href: "#" },
-						"Login"
+						React.createElement(
+							"div",
+							{ style: { padding: 4 } },
+							"Login"
+						)
 					)
 				) : React.createElement(
 					"li",
@@ -116,7 +120,11 @@ var Nav = (function (Component) {
 					React.createElement(
 						"a",
 						{ href: "/account" },
-						this.props.currentUser.firstName
+						React.createElement(
+							"div",
+							{ style: { padding: 4 } },
+							this.props.currentUser.firstName
+						)
 					)
 				);
 
@@ -162,7 +170,7 @@ var Nav = (function (Component) {
 											{ href: "/" },
 											React.createElement(
 												"div",
-												null,
+												{ style: { padding: 4 } },
 												"Home"
 											)
 										)
@@ -175,7 +183,7 @@ var Nav = (function (Component) {
 											{ href: "/videos" },
 											React.createElement(
 												"div",
-												null,
+												{ style: { padding: 4 } },
 												"Videos"
 											)
 										)
@@ -188,7 +196,7 @@ var Nav = (function (Component) {
 											{ href: "#" },
 											React.createElement(
 												"div",
-												null,
+												{ style: { padding: 4 } },
 												"Courses"
 											)
 										),
@@ -203,7 +211,7 @@ var Nav = (function (Component) {
 													{ href: "/courses?type=live" },
 													React.createElement(
 														"div",
-														null,
+														{ style: { padding: 4 } },
 														"Part Time"
 													)
 												)
@@ -216,7 +224,7 @@ var Nav = (function (Component) {
 													{ href: "/courses?type=immersive" },
 													React.createElement(
 														"div",
-														null,
+														{ style: { padding: 4 } },
 														"Bootcamp"
 													)
 												)
@@ -228,10 +236,10 @@ var Nav = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/feed", "data-href": "#" },
+											{ href: "/feed" },
 											React.createElement(
 												"div",
-												null,
+												{ style: { padding: 4 } },
 												"Blog"
 											)
 										)
@@ -242,10 +250,10 @@ var Nav = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/application", "data-href": "#section-buy" },
+											{ href: "/application" },
 											React.createElement(
 												"div",
-												null,
+												{ style: { background: "#5cb85c", padding: 4, borderRadius: 2, paddingRight: 8, paddingLeft: 8 } },
 												"Apply"
 											)
 										)
