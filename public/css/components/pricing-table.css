@@ -100,8 +100,9 @@
 	margin: 1.5em 0;
 	padding: 2em;
 	cursor: default;
-	color: #333;
 	border: 1px solid #EEE;
+	color: #444;
+	background: #F5F5F5;
 	-webkit-transition: background-color 0.6s, color 0.3s;
 	transition: background-color 0.6s, color 0.3s;
 }
@@ -126,9 +127,9 @@
 .pricing--jinpa .pricing--price {
 	font-size: 1.45em;
 	font-weight: bold;
-	line-height: 95px;
-	width: 100px;
-	height: 100px;
+	line-height: 125px;
+	width: 140px;
+	height: 140px;
 	margin: 1.15em auto 1em;
 	border-radius: 50%;
 	background: #ea716e;
@@ -167,7 +168,6 @@
 	font-weight: bold;
 	margin-top: auto;
 	padding: 0.75em 2em;
-	opacity: 0;
 	color: #fff;
 	background: #82C57E;
 	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
@@ -176,11 +176,6 @@
 	transform: translate3d(0, -15px, 0);
 }
 
-.pricing--jinpa .pricing--item:hover .pricing--action {
-	opacity: 1;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-}
 
 .pricing--jinpa .pricing--action:hover,
 .pricing--jinpa .pricing--action:focus {
