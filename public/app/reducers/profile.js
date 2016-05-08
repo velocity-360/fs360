@@ -7,7 +7,8 @@ var initialState = {
 		firstName: '',
 		lastName: '',
 		email: '',
-		password: ''
+		password: '',
+		tagString: ''
 	}
 };
 
@@ -27,8 +28,24 @@ export default function(state = initialState, action){
 			return newState;
 
 		case constants.CURRENT_USER_RECIEVED:
-			var newState = Object.assign({}, state);
-			newState['currentUser'] = action.currentUser;
+			var newState = Object.assign({}, state)
+			var currentUser = action.currentUser
+			var tags = currentUser.tags
+			var tagString = ''
+			for (var i=0; i<tags.length; i++){
+				var tag = tags[i]
+				if (tag.length == 0)
+					continue
+
+				tagString = tagString+tag
+				if (i==tags.length-1)
+					continue
+
+				tagString = tagString+', '
+			}
+
+			currentUser['tagString'] = tagString
+			newState['currentUser'] = currentUser
 			return newState;
 
 		default:

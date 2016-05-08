@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Dropzone from 'react-dropzone'
 import Loader from 'react-loader'
+import TextUtils from '../../utils/TextUtils'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import Sidebar from '../../components/Sidebar'
@@ -19,6 +20,7 @@ class Account extends Component {
 		this.closeModal = this.closeModal.bind(this)
 		this.updateProject = this.updateProject.bind(this)
 		this.uploadImage = this.uploadImage.bind(this)
+		this.uploadProfileImage = this.uploadProfileImage.bind(this)
 		this.submitProject = this.submitProject.bind(this)
 		this.updateProfile = this.updateProfile.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
@@ -34,10 +36,6 @@ class Account extends Component {
 				tagString: ''
 			}
 		}
-	}
-
-	componentDidMount(){
-
 	}
 
 	openModal(event){
@@ -78,6 +76,29 @@ class Account extends Component {
 		})
 	}
 
+	uploadProfileImage(files){
+		this.setState({
+			showLoader: true
+		})
+
+		var _this = this
+		api.upload(files[0], function(err, response){
+			_this.setState({
+				showLoader: false
+			})
+
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			var updatedUser = Object.assign({}, _this.props.profile);
+			updatedUser['image'] = response.id
+			store.dispatch(actions.updateCurrentUser(updatedUser));
+		})
+
+	}
+
 	updateProject(event){
 		event.preventDefault()
 		var proj = Object.assign({}, this.state.project)
@@ -91,18 +112,7 @@ class Account extends Component {
 	submitProject(event){
 		event.preventDefault()
 		var proj = Object.assign({}, this.state.project)
-
-		var t = this.state.project.tagString.split(',')
-		var tags = []
-		for (var i=0; i<t.length; i++){
-			var tag = t[i]
-			if (tag.length == 0)
-				continue
-
-			tags.push(tag.trim())
-		}
-
-		proj['tags'] = tags
+		proj['tags'] = TextUtils.stringToArray(this.state.project.tagString, ',')
 		proj['profile'] = {
 			id: this.props.profile.id,
 			image: this.props.profile.image,
@@ -136,8 +146,11 @@ class Account extends Component {
 	updateProfile(event){
 		event.preventDefault()
 
-		var endpoint = '/api/profile/'+this.props.profile.id
-		api.handlePut(endpoint, this.props.profile, function(err, response){
+		var profile = Object.assign({}, this.props.profile)
+		profile['tags'] = TextUtils.stringToArray(profile.tagString, ',')
+
+		var endpoint = '/api/profile/'+profile.id
+		api.handlePut(endpoint, profile, function(err, response){
 			if (err){
 				alert(response.message)
 				return
@@ -205,6 +218,22 @@ class Account extends Component {
 							                            <input type="text" onChange={this.updateCurrentUser} id="githubId" value={this.props.profile.githubId} className="form-control" placeholder="e.g. https://github.com/fullstack360" />
 							                        </div>
 
+							                        <div className="col_half">
+							                            <label for="template-contactform-message">Profile Image</label>
+											            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px solid #ddd'}} onDrop={this.uploadProfileImage}>
+											              <div style={{padding:24}}>
+											              	{ (this.state.project.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.props.profile.image+'?crop=120'} /> }
+											              	Drop file here, or click to select image to upload.
+											              </div>
+											            </Dropzone>
+							                        </div>
+
+							                        <div className="col_half col_last">
+							                            <label>Skills</label>
+							                            <input type="text" onChange={this.updateCurrentUser} id="tagString" value={this.props.profile.tagString} className="form-control" placeholder="iOS, Python, git..." />
+							                        </div>
+
+
 							                        <div className="clear"></div>
 
 							                        <div className="col_full">
@@ -212,13 +241,11 @@ class Account extends Component {
 							                            <textarea className="form-control" onChange={this.updateCurrentUser} id="bio" value={this.props.profile.bio} rows="6" cols="30"></textarea>
 							                        </div>
 
-							                        <div className="col_full hidden">
-							                            <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" className="sm-form-control" />
-							                        </div>
 
 							                        <div className="col_full">
 							                            <button onClick={this.updateProfile} className="button button-border button-dark button-rounded noleftmargin" type="submit">Update</button>
 							                        </div>
+
 							                    </form>
 
 							                </div>
@@ -238,7 +265,6 @@ class Account extends Component {
 							</div>
 						</div>
 					</div>
-
 
 				</section>
 

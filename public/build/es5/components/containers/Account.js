@@ -25,6 +25,8 @@ var Dropzone = _interopRequire(require("react-dropzone"));
 
 var Loader = _interopRequire(require("react-loader"));
 
+var TextUtils = _interopRequire(require("../../utils/TextUtils"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -46,6 +48,7 @@ var Account = (function (Component) {
 		this.closeModal = this.closeModal.bind(this);
 		this.updateProject = this.updateProject.bind(this);
 		this.uploadImage = this.uploadImage.bind(this);
+		this.uploadProfileImage = this.uploadProfileImage.bind(this);
 		this.submitProject = this.submitProject.bind(this);
 		this.updateProfile = this.updateProfile.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
@@ -66,11 +69,6 @@ var Account = (function (Component) {
 	_inherits(Account, Component);
 
 	_prototypeProperties(Account, null, {
-		componentDidMount: {
-			value: function componentDidMount() {},
-			writable: true,
-			configurable: true
-		},
 		openModal: {
 			value: function openModal(event) {
 				event.preventDefault();
@@ -117,6 +115,31 @@ var Account = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		uploadProfileImage: {
+			value: function uploadProfileImage(files) {
+				this.setState({
+					showLoader: true
+				});
+
+				var _this = this;
+				api.upload(files[0], function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					var updatedUser = Object.assign({}, _this.props.profile);
+					updatedUser.image = response.id;
+					store.dispatch(actions.updateCurrentUser(updatedUser));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		updateProject: {
 			value: function updateProject(event) {
 				event.preventDefault();
@@ -133,17 +156,7 @@ var Account = (function (Component) {
 			value: function submitProject(event) {
 				event.preventDefault();
 				var proj = Object.assign({}, this.state.project);
-
-				var t = this.state.project.tagString.split(",");
-				var tags = [];
-				for (var i = 0; i < t.length; i++) {
-					var tag = t[i];
-					if (tag.length == 0) continue;
-
-					tags.push(tag.trim());
-				}
-
-				proj.tags = tags;
+				proj.tags = TextUtils.stringToArray(this.state.project.tagString, ",");
 				proj.profile = {
 					id: this.props.profile.id,
 					image: this.props.profile.image,
@@ -182,8 +195,11 @@ var Account = (function (Component) {
 			value: function updateProfile(event) {
 				event.preventDefault();
 
-				var endpoint = "/api/profile/" + this.props.profile.id;
-				api.handlePut(endpoint, this.props.profile, function (err, response) {
+				var profile = Object.assign({}, this.props.profile);
+				profile.tags = TextUtils.stringToArray(profile.tagString, ",");
+
+				var endpoint = "/api/profile/" + profile.id;
+				api.handlePut(endpoint, profile, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -301,6 +317,35 @@ var Account = (function (Component) {
 															),
 															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "githubId", value: this.props.profile.githubId, className: "form-control", placeholder: "e.g. https://github.com/fullstack360" })
 														),
+														React.createElement(
+															"div",
+															{ className: "col_half" },
+															React.createElement(
+																"label",
+																{ "for": "template-contactform-message" },
+																"Profile Image"
+															),
+															React.createElement(
+																Dropzone,
+																{ style: { width: 100 + "%", marginBottom: 24, background: "#fff", border: "1px solid #ddd" }, onDrop: this.uploadProfileImage },
+																React.createElement(
+																	"div",
+																	{ style: { padding: 24 } },
+																	this.state.project.image.length == 0 ? null : React.createElement("img", { style: { width: 64, border: "1px solid #ddd", marginRight: 6 }, src: "https://media-service.appspot.com/site/images/" + this.props.profile.image + "?crop=120" }),
+																	"Drop file here, or click to select image to upload."
+																)
+															)
+														),
+														React.createElement(
+															"div",
+															{ className: "col_half col_last" },
+															React.createElement(
+																"label",
+																null,
+																"Skills"
+															),
+															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "tagString", value: this.props.profile.tagString, className: "form-control", placeholder: "iOS, Python, git..." })
+														),
 														React.createElement("div", { className: "clear" }),
 														React.createElement(
 															"div",
@@ -316,11 +361,6 @@ var Account = (function (Component) {
 																)
 															),
 															React.createElement("textarea", { className: "form-control", onChange: this.updateCurrentUser, id: "bio", value: this.props.profile.bio, rows: "6", cols: "30" })
-														),
-														React.createElement(
-															"div",
-															{ className: "col_full hidden" },
-															React.createElement("input", { type: "text", id: "template-contactform-botcheck", name: "template-contactform-botcheck", value: "", className: "sm-form-control" })
 														),
 														React.createElement(
 															"div",
