@@ -207,71 +207,7 @@ var Ios = (function (Component) {
 					"div",
 					null,
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
-					React.createElement(
-						"header",
-						{ id: "header", className: "transparent-header page-section dark" },
-						React.createElement(
-							"div",
-							{ id: "header-wrap" },
-							React.createElement(
-								"div",
-								{ className: "container clearfix" },
-								React.createElement(
-									"div",
-									{ id: "primary-menu-trigger" },
-									React.createElement("i", { className: "icon-reorder" })
-								),
-								React.createElement(
-									"div",
-									{ id: "logo" },
-									React.createElement(
-										"a",
-										{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
-										React.createElement("img", { src: "/images/logo.png", alt: "FullStack 360" })
-									),
-									React.createElement(
-										"a",
-										{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
-										React.createElement("img", { src: "/images/logo@2x.png", alt: "FullStack 360" })
-									)
-								),
-								React.createElement(
-									"nav",
-									{ id: "primary-menu" },
-									React.createElement(
-										"ul",
-										{ className: "one-page-menu" },
-										React.createElement(
-											"li",
-											{ className: "current" },
-											React.createElement(
-												"a",
-												{ href: "/", "data-href": "#header" },
-												React.createElement(
-													"div",
-													null,
-													"Home"
-												)
-											)
-										),
-										React.createElement(
-											"li",
-											null,
-											React.createElement(
-												"a",
-												{ href: "/application", "data-href": "#section-buy" },
-												React.createElement(
-													"div",
-													null,
-													"Apply"
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
+					React.createElement(Nav, null),
 					React.createElement(
 						"section",
 						{ id: "slider", style: { background: "url(\"/images/ios-banner.jpg\") center", overflow: "visible" }, "data-height-lg": "450", "data-height-md": "450", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },

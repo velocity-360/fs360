@@ -65,24 +65,21 @@ class Nav extends Component {
 		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#">Login</a></li> : <li><a href="/account">{this.props.currentUser.firstName}</a></li>
 
 		return (
-			<header id="header" className="full-header static-sticky dark">
-				<div id="header-wrap">
-					<div className="container clearfix">
-						<div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
 
-						<div id="logo">
-							<a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png">
-								<img src="/images/logo-dark.png" alt="FullStack 360" />
-							</a>
-							<a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png">
-								<img src="/images/logo-dark@2x.png" alt="FullStack 360" />
-							</a>
-						</div>
+	        <header id="header" className="transparent-header page-section dark">
+	            <div id="header-wrap">
+	                <div className="container clearfix">
+	                    <div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
 
-						<nav id="primary-menu">
-							<ul className="one-page-menu">
-								<li className="current"><a href="#" data-href="#header"><div>Home</div></a></li>
-								<li><a href="/videos" data-href="#"><div>Videos</div></a></li>
+	                    <div id="logo">
+	                        <a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png"><img src="/images/logo.png" alt="FullStack 360" /></a>
+	                        <a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png"><img src="/images/logo@2x.png" alt="FullStack 360" /></a>
+	                    </div>
+
+	                    <nav id="primary-menu">
+	                        <ul className="one-page-menu">
+	                            <li className="current"><a href="/"><div>Home</div></a></li>
+	                            <li><a href="/videos"><div>Videos</div></a></li>
 								<li><a href="#"><div>Courses</div></a>
 									<ul>
 										<li><a href="/courses?type=live"><div>Part Time</div></a></li>
@@ -91,10 +88,12 @@ class Nav extends Component {
 								</li>
 								<li><a href="/feed" data-href="#"><div>Blog</div></a></li>
 								{login}
-							</ul>
-						</nav>
-					</div>
-				</div>
+
+	                            <li><a href="/application" data-href="#section-buy"><div>Apply</div></a></li>
+	                        </ul>
+	                    </nav>
+	                </div>
+	            </div>
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
@@ -108,10 +107,9 @@ class Nav extends Component {
 			        <Modal.Footer style={{textAlign:'center'}}>
 						<a onClick={this.login} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
 			        </Modal.Footer>
-		        </Modal>
+		        </Modal>	            
+	        </header>
 
-
-			</header>
 		)
 	}
 

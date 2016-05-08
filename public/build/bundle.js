@@ -22039,7 +22039,7 @@
 				var page = null;
 				switch (this.props.page) {
 					case 'home':
-						return page = _react2.default.createElement(_Home2.default, null);
+						return page = _react2.default.createElement(_Ios2.default, null);
 	
 					case 'ios':
 						return page = _react2.default.createElement(_Ios2.default, null);
@@ -41688,7 +41688,7 @@
 	
 				return _react2.default.createElement(
 					'header',
-					{ id: 'header', className: 'full-header static-sticky dark' },
+					{ id: 'header', className: 'transparent-header page-section dark' },
 					_react2.default.createElement(
 						'div',
 						{ id: 'header-wrap' },
@@ -41706,12 +41706,12 @@
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-dark.png' },
-									_react2.default.createElement('img', { src: '/images/logo-dark.png', alt: 'FullStack 360' })
+									_react2.default.createElement('img', { src: '/images/logo.png', alt: 'FullStack 360' })
 								),
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-dark@2x.png' },
-									_react2.default.createElement('img', { src: '/images/logo-dark@2x.png', alt: 'FullStack 360' })
+									_react2.default.createElement('img', { src: '/images/logo@2x.png', alt: 'FullStack 360' })
 								)
 							),
 							_react2.default.createElement(
@@ -41725,7 +41725,7 @@
 										{ className: 'current' },
 										_react2.default.createElement(
 											'a',
-											{ href: '#', 'data-href': '#header' },
+											{ href: '/' },
 											_react2.default.createElement(
 												'div',
 												null,
@@ -41738,7 +41738,7 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/videos', 'data-href': '#' },
+											{ href: '/videos' },
 											_react2.default.createElement(
 												'div',
 												null,
@@ -41802,7 +41802,20 @@
 											)
 										)
 									),
-									login
+									login,
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '/application', 'data-href': '#section-buy' },
+											_react2.default.createElement(
+												'div',
+												null,
+												'Apply'
+											)
+										)
+									)
 								)
 							)
 						)
@@ -44617,71 +44630,7 @@
 					'div',
 					null,
 					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(
-						'header',
-						{ id: 'header', className: 'transparent-header page-section dark' },
-						_react2.default.createElement(
-							'div',
-							{ id: 'header-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ id: 'primary-menu-trigger' },
-									_react2.default.createElement('i', { className: 'icon-reorder' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ id: 'logo' },
-									_react2.default.createElement(
-										'a',
-										{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-dark.png' },
-										_react2.default.createElement('img', { src: '/images/logo.png', alt: 'FullStack 360' })
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-dark@2x.png' },
-										_react2.default.createElement('img', { src: '/images/logo@2x.png', alt: 'FullStack 360' })
-									)
-								),
-								_react2.default.createElement(
-									'nav',
-									{ id: 'primary-menu' },
-									_react2.default.createElement(
-										'ul',
-										{ className: 'one-page-menu' },
-										_react2.default.createElement(
-											'li',
-											{ className: 'current' },
-											_react2.default.createElement(
-												'a',
-												{ href: '/', 'data-href': '#header' },
-												_react2.default.createElement(
-													'div',
-													null,
-													'Home'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: '/application', 'data-href': '#section-buy' },
-												_react2.default.createElement(
-													'div',
-													null,
-													'Apply'
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
+					_react2.default.createElement(_Nav2.default, null),
 					_react2.default.createElement(
 						'section',
 						{ id: 'slider', style: { background: 'url("/images/ios-banner.jpg") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },

@@ -122,7 +122,7 @@ var Nav = (function (Component) {
 
 				return React.createElement(
 					"header",
-					{ id: "header", className: "full-header static-sticky dark" },
+					{ id: "header", className: "transparent-header page-section dark" },
 					React.createElement(
 						"div",
 						{ id: "header-wrap" },
@@ -140,12 +140,12 @@ var Nav = (function (Component) {
 								React.createElement(
 									"a",
 									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
-									React.createElement("img", { src: "/images/logo-dark.png", alt: "FullStack 360" })
+									React.createElement("img", { src: "/images/logo.png", alt: "FullStack 360" })
 								),
 								React.createElement(
 									"a",
 									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
-									React.createElement("img", { src: "/images/logo-dark@2x.png", alt: "FullStack 360" })
+									React.createElement("img", { src: "/images/logo@2x.png", alt: "FullStack 360" })
 								)
 							),
 							React.createElement(
@@ -159,7 +159,7 @@ var Nav = (function (Component) {
 										{ className: "current" },
 										React.createElement(
 											"a",
-											{ href: "#", "data-href": "#header" },
+											{ href: "/" },
 											React.createElement(
 												"div",
 												null,
@@ -172,7 +172,7 @@ var Nav = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/videos", "data-href": "#" },
+											{ href: "/videos" },
 											React.createElement(
 												"div",
 												null,
@@ -236,7 +236,20 @@ var Nav = (function (Component) {
 											)
 										)
 									),
-									login
+									login,
+									React.createElement(
+										"li",
+										null,
+										React.createElement(
+											"a",
+											{ href: "/application", "data-href": "#section-buy" },
+											React.createElement(
+												"div",
+												null,
+												"Apply"
+											)
+										)
+									)
 								)
 							)
 						)

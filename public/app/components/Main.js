@@ -27,7 +27,7 @@ class Main extends Component {
 		var page = null
 		switch (this.props.page){
 			case 'home':
-				return page = <Home />
+				return page = <Ios />
 
 			case 'ios':
 				return page = <Ios />

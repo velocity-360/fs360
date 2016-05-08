@@ -165,28 +165,7 @@ class Ios extends Component {
 		return (
 			<div>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
-
-		        <header id="header" className="transparent-header page-section dark">
-		            <div id="header-wrap">
-		                <div className="container clearfix">
-		                    <div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
-
-		                    <div id="logo">
-		                        <a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png"><img src="/images/logo.png" alt="FullStack 360" /></a>
-		                        <a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png"><img src="/images/logo@2x.png" alt="FullStack 360" /></a>
-		                    </div>
-
-		                    <nav id="primary-menu">
-		                        <ul className="one-page-menu">
-		                            <li className="current"><a href="/" data-href="#header"><div>Home</div></a></li>
-		                            <li><a href="/application" data-href="#section-buy"><div>Apply</div></a></li>
-		                        </ul>
-		                    </nav>
-		                </div>
-		            </div>
-		        </header>
-
-
+				<Nav />
 		        <section id="slider" style={{background: 'url("/images/ios-banner.jpg") center', overflow:'visible'}} data-height-lg="450" data-height-md="450" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
 		            <div className="container clearfix">
 
