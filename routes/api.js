@@ -13,7 +13,7 @@ var postController = require('../controllers/PostController');
 var commentController = require('../controllers/CommentController');
 var eventController = require('../controllers/EventController');
 var projectController = require('../controllers/ProjectController');
-var sampleController = require('../controllers/sampleController');
+var sampleController = require('../controllers/SampleController');
 var controllers = {
 	'course': courseController,
 	'profile': profileController,
