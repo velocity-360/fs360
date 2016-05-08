@@ -13,6 +13,7 @@ var postController = require('../controllers/PostController');
 var commentController = require('../controllers/CommentController');
 var eventController = require('../controllers/EventController');
 var projectController = require('../controllers/ProjectController');
+var sampleController = require('../controllers/sampleController');
 var controllers = {
 	'course': courseController,
 	'profile': profileController,
@@ -20,7 +21,8 @@ var controllers = {
 	'post': postController,
 	'comment': commentController,
 	'event': eventController,
-	'project': projectController
+	'project': projectController,
+	'sample': sampleController
 };
 
 var fetchFile = function(path){
