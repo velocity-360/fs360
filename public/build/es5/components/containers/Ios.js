@@ -22,6 +22,7 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
+var connect = require("react-redux").connect;
 var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -34,7 +35,8 @@ var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var connect = require("react-redux").connect;
+var stripe = _interopRequire(require("../../utils/StripeUtils"));
+
 var api = _interopRequire(require("../../api/api"));
 
 var Ios = (function (Component) {
@@ -43,10 +45,13 @@ var Ios = (function (Component) {
 
 		_get(Object.getPrototypeOf(Ios.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
+		this.updateUserRegistration = this.updateUserRegistration.bind(this);
 		this.submitInfoRequest = this.submitInfoRequest.bind(this);
 		this.openModal = this.openModal.bind(this);
+		this.showRegistrationForm = this.showRegistrationForm.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
+		this.register = this.register.bind(this);
 		this.validate = this.validate.bind(this);
 		this.state = {
 			showRegistration: false,
@@ -65,11 +70,6 @@ var Ios = (function (Component) {
 	_inherits(Ios, Component);
 
 	_prototypeProperties(Ios, null, {
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
 				console.log("updateVisitor: " + event.target.id);
@@ -84,12 +84,69 @@ var Ios = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		updateUserRegistration: {
+			value: function updateUserRegistration(event) {
+				//		console.log('updateUserRegistration: '+event.target.id)
+				event.preventDefault();
+
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				if (event.target.id == "name") {
+					var parts = event.target.value.split(" ");
+					updatedUser.firstName = parts[0];
+					if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
+				} else {
+					updatedUser[event.target.id] = event.target.value;
+				}
+
+				store.dispatch(actions.updateCurrentUser(updatedUser));
+			},
+			writable: true,
+			configurable: true
+		},
+		register: {
+			value: function register(event) {
+				event.preventDefault();
+				var missingField = this.validate(this.props.currentUser, true);
+				if (missingField != null) {
+					alert("Please enter your " + missingField);
+					return;
+				}
+
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/api/profile", this.props.currentUser, function (err, response) {
+					_this.setState({
+						showRegistration: false,
+						showLoader: false
+					});
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					if (_this.state.membershiptype == "basic") {
+						window.location.href = "/account";
+						return;
+					}
+
+					// premium registration, show stripe modal
+					stripe.showModal();
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		submitInfoRequest: {
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
 				//		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
 
-				var missingField = this.validate(false);
+				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
 					alert("Please enter your " + missingField);
 					return;
@@ -118,18 +175,18 @@ var Ios = (function (Component) {
 			configurable: true
 		},
 		validate: {
-			value: function validate(withPassword) {
-				var visitor = this.state.visitor;
-				console.log("VALIDATE: " + JSON.stringify(visitor));
-				if (visitor.firstName.length == 0) {
+			value: function validate(profile, withPassword) {
+				//		var visitor = this.state.visitor
+				console.log("VALIDATE: " + JSON.stringify(profile));
+				if (profile.firstName.length == 0) {
 					return "First Name";
-				}if (visitor.lastName.length == 0) {
+				}if (profile.lastName.length == 0) {
 					return "Last Name";
-				}if (visitor.email.length == 0) {
+				}if (profile.email.length == 0) {
 					return "Email";
 				}if (withPassword == false) {
 					return null;
-				}if (visitor.password.length == 0) {
+				}if (profile.password.length == 0) {
 					return "Password";
 				}return null // this is successful
 				;
@@ -186,6 +243,17 @@ var Ios = (function (Component) {
 				this.setState({
 					showModal: true,
 					visitor: visitor
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		showRegistrationForm: {
+			value: function showRegistrationForm(event) {
+				event.preventDefault();
+				this.setState({
+					membershiptype: event.target.id,
+					showRegistration: true
 				});
 			},
 			writable: true,
@@ -497,6 +565,133 @@ var Ios = (function (Component) {
 						)
 					),
 					React.createElement(
+						"section",
+						{ id: "register", className: "section pricing-section nomargin", style: { backgroundColor: "#FFF" } },
+						React.createElement(
+							"div",
+							{ className: "container clearfix" },
+							React.createElement(
+								"h2",
+								{ className: "pricing-section--title center" },
+								"Cant make it to our live courses?"
+							),
+							React.createElement(
+								"div",
+								{ style: { textAlign: "center" } },
+								React.createElement(
+									"p",
+									{ style: { fontSize: 16 } },
+									"Join our online service. ",
+									React.createElement("br", null),
+									"Online members have access to videos, code samples, the forum and more."
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "pricing pricing--jinpa" },
+								React.createElement(
+									"div",
+									{ className: "pricing--item" },
+									React.createElement(
+										"h3",
+										{ className: "pricing--title" },
+										"Basic"
+									),
+									React.createElement(
+										"div",
+										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
+										"FREE"
+									),
+									React.createElement(
+										"div",
+										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
+										React.createElement(
+											"ul",
+											{ className: "pricing--feature-list" },
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Limited Video Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Forum Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Discounts to Live Events"
+											)
+										)
+									),
+									React.createElement(
+										"button",
+										{ onClick: this.showRegistrationForm, id: "basic", className: "pricing--action" },
+										"Join"
+									)
+								),
+								React.createElement(
+									"div",
+									{ className: "pricing--item", style: { marginLeft: 24, border: "1px solid #eee" } },
+									React.createElement(
+										"h3",
+										{ className: "pricing--title" },
+										"Premium"
+									),
+									React.createElement(
+										"div",
+										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
+										React.createElement(
+											"span",
+											{ className: "pricing--currency" },
+											"$"
+										),
+										"19.99/mo"
+									),
+									React.createElement(
+										"div",
+										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
+										React.createElement(
+											"ul",
+											{ className: "pricing--feature-list" },
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Full Video Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Downloadable Code Samples"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Customized Job Listings"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Forum Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Discounts to Live Events"
+											)
+										)
+									),
+									React.createElement(
+										"button",
+										{ onClick: this.showRegistrationForm, id: "premium", className: "pricing--action" },
+										"Join"
+									)
+								)
+							)
+						)
+					),
+					React.createElement(
 						Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
 						React.createElement(
@@ -533,6 +728,59 @@ var Ios = (function (Component) {
 							)
 						)
 					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showRegistration, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h3",
+								null,
+								"Join"
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement(
+								"div",
+								{ style: { textAlign: "center" } },
+								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
+							),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", type: "text", placeholder: "Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", type: "password", placeholder: "Password" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", type: "text", placeholder: "Promo Code" }),
+							React.createElement("br", null),
+							React.createElement(
+								"select",
+								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },
+								React.createElement(
+									"option",
+									{ value: "basic" },
+									"Basic"
+								),
+								React.createElement(
+									"option",
+									{ value: "premium" },
+									"Premium"
+								)
+							)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ onClick: this.register, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Register"
+							)
+						)
+					),
 					React.createElement(Footer, null)
 				);
 			},
@@ -545,23 +793,13 @@ var Ios = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-	var courseList = [];
-	var keys = Object.keys(state.courseReducer.courses);
-	for (var i = 0; i < keys.length; i++) {
-		var key = keys[i];
-		courseList.push(state.courseReducer.courses[key]);
-	}
+	console.log("STATE TO PROPS: " + JSON.stringify(state.profileReducer.currentUser));
 
 	return {
-		//    	events: state.eventReducer.eventArray,
 		currentUser: state.profileReducer.currentUser,
-		courses: courseList,
-		testimonials: state.staticReducer.testimonials,
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };
 
 
 module.exports = connect(stateToProps)(Ios);
-//		getCurrentUser()

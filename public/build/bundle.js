@@ -44440,6 +44440,8 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
+	var _reactRedux = __webpack_require__(159);
+	
 	var _Nav = __webpack_require__(451);
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -44464,7 +44466,9 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _reactRedux = __webpack_require__(159);
+	var _StripeUtils = __webpack_require__(465);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
 	var _api = __webpack_require__(453);
 	
@@ -44487,10 +44491,13 @@
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Ios).call(this, props, context));
 	
 			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
 			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
 			_this2.openModal = _this2.openModal.bind(_this2);
+			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
+			_this2.register = _this2.register.bind(_this2);
 			_this2.validate = _this2.validate.bind(_this2);
 			_this2.state = {
 				showRegistration: false,
@@ -44508,11 +44515,6 @@
 		}
 	
 		_createClass(Ios, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				//		getCurrentUser()
-			}
-		}, {
 			key: 'updateVisitor',
 			value: function updateVisitor(event) {
 				console.log('updateVisitor: ' + event.target.id);
@@ -44525,12 +44527,65 @@
 				});
 			}
 		}, {
+			key: 'updateUserRegistration',
+			value: function updateUserRegistration(event) {
+				//		console.log('updateUserRegistration: '+event.target.id)
+				event.preventDefault();
+	
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				if (event.target.id == 'name') {
+					var parts = event.target.value.split(' ');
+					updatedUser['firstName'] = parts[0];
+					if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
+				} else {
+					updatedUser[event.target.id] = event.target.value;
+				}
+	
+				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+			}
+		}, {
+			key: 'register',
+			value: function register(event) {
+				event.preventDefault();
+				var missingField = this.validate(this.props.currentUser, true);
+				if (missingField != null) {
+					alert('Please enter your ' + missingField);
+					return;
+				}
+	
+				this.setState({
+					showModal: false,
+					showLoader: true
+				});
+	
+				var _this = this;
+				_api2.default.handlePost('/api/profile', this.props.currentUser, function (err, response) {
+					_this.setState({
+						showRegistration: false,
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					if (_this.state.membershiptype == 'basic') {
+						window.location.href = '/account';
+						return;
+					}
+	
+					// premium registration, show stripe modal
+					_StripeUtils2.default.showModal();
+				});
+			}
+		}, {
 			key: 'submitInfoRequest',
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
 				//		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
 	
-				var missingField = this.validate(false);
+				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
 					alert('Please enter your ' + missingField);
 					return;
@@ -44557,18 +44612,18 @@
 			}
 		}, {
 			key: 'validate',
-			value: function validate(withPassword) {
-				var visitor = this.state.visitor;
-				console.log('VALIDATE: ' + JSON.stringify(visitor));
-				if (visitor.firstName.length == 0) return 'First Name';
+			value: function validate(profile, withPassword) {
+				//		var visitor = this.state.visitor
+				console.log('VALIDATE: ' + JSON.stringify(profile));
+				if (profile.firstName.length == 0) return 'First Name';
 	
-				if (visitor.lastName.length == 0) return 'Last Name';
+				if (profile.lastName.length == 0) return 'Last Name';
 	
-				if (visitor.email.length == 0) return 'Email';
+				if (profile.email.length == 0) return 'Email';
 	
 				if (withPassword == false) return null;
 	
-				if (visitor.password.length == 0) return 'Password';
+				if (profile.password.length == 0) return 'Password';
 	
 				return null; // this is successful
 			}
@@ -44620,6 +44675,15 @@
 				this.setState({
 					showModal: true,
 					visitor: visitor
+				});
+			}
+		}, {
+			key: 'showRegistrationForm',
+			value: function showRegistrationForm(event) {
+				event.preventDefault();
+				this.setState({
+					membershiptype: event.target.id,
+					showRegistration: true
 				});
 			}
 		}, {
@@ -44928,6 +44992,133 @@
 						)
 					),
 					_react2.default.createElement(
+						'section',
+						{ id: 'register', className: 'section pricing-section nomargin', style: { backgroundColor: '#FFF' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'h2',
+								{ className: 'pricing-section--title center' },
+								'Cant make it to our live courses?'
+							),
+							_react2.default.createElement(
+								'div',
+								{ style: { textAlign: 'center' } },
+								_react2.default.createElement(
+									'p',
+									{ style: { fontSize: 16 } },
+									'Join our online service. ',
+									_react2.default.createElement('br', null),
+									'Online members have access to videos, code samples, the forum and more.'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'pricing pricing--jinpa' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'pricing--item' },
+									_react2.default.createElement(
+										'h3',
+										{ className: 'pricing--title' },
+										'Basic'
+									),
+									_react2.default.createElement(
+										'div',
+										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
+										'FREE'
+									),
+									_react2.default.createElement(
+										'div',
+										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
+										_react2.default.createElement(
+											'ul',
+											{ className: 'pricing--feature-list' },
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Limited Video Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Forum Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Discounts to Live Events'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'button',
+										{ onClick: this.showRegistrationForm, id: 'basic', className: 'pricing--action' },
+										'Join'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'pricing--item', style: { marginLeft: 24, border: '1px solid #eee' } },
+									_react2.default.createElement(
+										'h3',
+										{ className: 'pricing--title' },
+										'Premium'
+									),
+									_react2.default.createElement(
+										'div',
+										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
+										_react2.default.createElement(
+											'span',
+											{ className: 'pricing--currency' },
+											'$'
+										),
+										'19.99/mo'
+									),
+									_react2.default.createElement(
+										'div',
+										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
+										_react2.default.createElement(
+											'ul',
+											{ className: 'pricing--feature-list' },
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Full Video Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Downloadable Code Samples'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Customized Job Listings'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Forum Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Discounts to Live Events'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'button',
+										{ onClick: this.showRegistrationForm, id: 'premium', className: 'pricing--action' },
+										'Join'
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
 						_react2.default.createElement(
@@ -44964,6 +45155,59 @@
 							)
 						)
 					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showRegistration, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Join'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement(
+								'div',
+								{ style: { textAlign: 'center' } },
+								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
+							),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', type: 'password', placeholder: 'Password' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', type: 'text', placeholder: 'Promo Code' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'select',
+								{ onChange: this.updateUserRegistration, id: 'membershiptype', value: this.state.membershiptype, className: 'form-control input-md not-dark' },
+								_react2.default.createElement(
+									'option',
+									{ value: 'basic' },
+									'Basic'
+								),
+								_react2.default.createElement(
+									'option',
+									{ value: 'premium' },
+									'Premium'
+								)
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.register, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Register'
+							)
+						)
+					),
 					_react2.default.createElement(_Footer2.default, null)
 				);
 			}
@@ -44973,19 +45217,10 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-		var courseList = [];
-		var keys = Object.keys(state.courseReducer.courses);
-		for (var i = 0; i < keys.length; i++) {
-			var key = keys[i];
-			courseList.push(state.courseReducer.courses[key]);
-		}
+		console.log('STATE TO PROPS: ' + JSON.stringify(state.profileReducer.currentUser));
 	
 		return {
-			//    	events: state.eventReducer.eventArray,
 			currentUser: state.profileReducer.currentUser,
-			courses: courseList,
-			testimonials: state.staticReducer.testimonials,
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};

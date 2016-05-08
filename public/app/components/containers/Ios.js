@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
+import { connect } from 'react-redux'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import EventCard from '../../components/EventCard'
 import Testimonial from '../../components/Testimonial'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import { connect } from 'react-redux'
+import stripe from '../../utils/StripeUtils'
 import api from '../../api/api'
 
 class Ios extends Component {
@@ -15,10 +16,13 @@ class Ios extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.updateVisitor = this.updateVisitor.bind(this)
+		this.updateUserRegistration = this.updateUserRegistration.bind(this)
 		this.submitInfoRequest = this.submitInfoRequest.bind(this)
 		this.openModal = this.openModal.bind(this)
+		this.showRegistrationForm = this.showRegistrationForm.bind(this)
 		this.closeModal = this.closeModal.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
+		this.register = this.register.bind(this)
 		this.validate = this.validate.bind(this)
 		this.state = {
 			showRegistration: false,
@@ -34,11 +38,6 @@ class Ios extends Component {
 		}
 	}
 
-	componentWillMount(){
-//		getCurrentUser()
-	}
-
-
 	updateVisitor(event){
 		console.log('updateVisitor: '+event.target.id)
 		event.preventDefault()
@@ -50,11 +49,65 @@ class Ios extends Component {
 		})
 	}
 
+	updateUserRegistration(event){
+//		console.log('updateUserRegistration: '+event.target.id)
+		event.preventDefault()
+
+		var updatedUser = Object.assign({}, this.props.currentUser);
+		if (event.target.id == 'name'){
+			var parts = event.target.value.split(' ')
+			updatedUser['firstName'] = parts[0]
+			if (parts.length > 1)
+				updatedUser['lastName'] = parts[parts.length-1]
+		}
+		else {
+			updatedUser[event.target.id] = event.target.value
+
+		}
+
+		store.dispatch(actions.updateCurrentUser(updatedUser));
+	}
+
+	register(event){
+		event.preventDefault()
+		var missingField = this.validate(this.props.currentUser, true);
+		if (missingField != null){
+			alert('Please enter your '+missingField);
+			return
+		}
+
+		this.setState({
+			showModal: false,
+			showLoader: true
+		});
+
+		var _this = this
+		api.handlePost('/api/profile', this.props.currentUser, function(err, response){
+			_this.setState({
+				showRegistration: false,
+				showLoader: false
+			});
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			if (_this.state.membershiptype == 'basic'){
+				window.location.href = '/account'
+				return
+			}
+
+			// premium registration, show stripe modal
+			stripe.showModal()
+		});
+	}
+
 	submitInfoRequest(event){
 		event.preventDefault()
 //		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
 
-		var missingField = this.validate(false);
+		var missingField = this.validate(this.state.visitor, false);
 		if (missingField != null){
 			alert('Please enter your '+missingField);
 			return
@@ -81,22 +134,22 @@ class Ios extends Component {
 	}
 
 
-	validate(withPassword){
-		var visitor = this.state.visitor
-		console.log('VALIDATE: '+JSON.stringify(visitor))
-		if (visitor.firstName.length == 0)
+	validate(profile, withPassword){
+//		var visitor = this.state.visitor
+		console.log('VALIDATE: '+JSON.stringify(profile))
+		if (profile.firstName.length == 0)
 			return 'First Name'
 
-		if (visitor.lastName.length == 0)
+		if (profile.lastName.length == 0)
 			return 'Last Name'
 
-		if (visitor.email.length == 0)
+		if (profile.email.length == 0)
 			return 'Email'
 
 		if (withPassword == false)
 			return null
 
-		if (visitor.password.length == 0)
+		if (profile.password.length == 0)
 			return 'Password'
 
 		return null // this is successful
@@ -149,6 +202,14 @@ class Ios extends Component {
 		this.setState({
 			showModal: true,
 			visitor: visitor
+		})
+	}
+
+	showRegistrationForm(event){
+		event.preventDefault()
+		this.setState({
+			membershiptype: event.target.id,
+			showRegistration: true
 		})
 	}
 
@@ -333,6 +394,48 @@ class Ios extends Component {
 					</div>
 				</section>
 
+				<section id="register" className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
+					<div className="container clearfix">
+						<h2 className="pricing-section--title center">Cant make it to our live courses?</h2>
+						<div style={{textAlign:'center'}}>
+							<p style={{fontSize:16}}>
+								Join our online service. <br />Online members 
+								have access to videos, code samples, the forum and more.
+							</p>
+
+						</div>
+						<div className="pricing pricing--jinpa">
+							<div className="pricing--item">
+								<h3 className="pricing--title">Basic</h3>
+								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
+								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Limited Video Access</li>
+										<li className="pricing--feature">Forum Access</li>
+										<li className="pricing--feature">Discounts to Live Events</li>
+									</ul>
+								</div>
+								<button onClick={this.showRegistrationForm} id="basic" className="pricing--action">Join</button>
+							</div>
+							<div className="pricing--item" style={{marginLeft:24, border:'1px solid #eee'}}>
+								<h3 className="pricing--title">Premium</h3>
+								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
+								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Full Video Access</li>
+										<li className="pricing--feature">Downloadable Code Samples</li>
+										<li className="pricing--feature">Customized Job Listings</li>
+										<li className="pricing--feature">Forum Access</li>
+										<li className="pricing--feature">Discounts to Live Events</li>
+									</ul>
+
+								</div>
+								<button onClick={this.showRegistrationForm} id="premium" className="pricing--action">Join</button>
+							</div>
+						</div>
+					</div>
+				</section>				
+
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
 			        	<h2>Request Info</h2>
@@ -351,6 +454,29 @@ class Ios extends Component {
 			        </Modal.Footer>
 		        </Modal>
 
+		        <Modal show={this.state.showRegistration} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h3>Join</h3>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<div style={{textAlign:'center'}}>
+				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_green_260.png' />
+			        	</div>
+			        	<input onChange={this.updateUserRegistration} id="name" className="form-control" type="text" placeholder="Name" /><br />
+			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
+			        	<input onChange={this.updateUserRegistration} id="password" className="form-control" type="password" placeholder="Password" /><br />
+			        	<input onChange={this.updateUserRegistration} id="promoCode" className="form-control" type="text" placeholder="Promo Code" /><br />
+						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
+							<option value="basic">Basic</option>
+							<option value="premium">Premium</option>
+						</select>
+
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a onClick={this.register} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Register</a>
+			        </Modal.Footer>
+		        </Modal>
 
 				<Footer />
 			</div>
@@ -359,19 +485,10 @@ class Ios extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-	var courseList = [];
-	var keys = Object.keys(state.courseReducer.courses);
-	for (var i=0; i<keys.length; i++){
-		var key = keys[i];
-		courseList.push(state.courseReducer.courses[key]);
-	}
+	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
 
     return {
-//    	events: state.eventReducer.eventArray,
         currentUser: state.profileReducer.currentUser,
-        courses: courseList,
-        testimonials: state.staticReducer.testimonials,
         loaderOptions: state.staticReducer.loaderConfig
     }
 }
