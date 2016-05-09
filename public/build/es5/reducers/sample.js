@@ -4,7 +4,7 @@ var constants = require("../constants/constants");
 
 var initialState = {
 	samples: {},
-	samplesArray: null,
+	samplesArray: [],
 	emptySample: {
 		title: "",
 		image: "",

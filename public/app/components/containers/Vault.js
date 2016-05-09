@@ -15,6 +15,8 @@ class Vault extends Component {
 		super(props, context)
 		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
+		this.updateSample = this.updateSample.bind(this)
+		this.createSample = this.createSample.bind(this)
 		this.state = {
 			showModal: false,
 			sample:{
@@ -39,11 +41,62 @@ class Vault extends Component {
 		})
 	}
 
-	componentDidMount(){
+	updateSample(event){
+		event.preventDefault()
 
+		var updatedSample = Object.assign({}, this.state.sample)
+		updatedSample[event.target.id] = event.target.value
+		this.setState({
+			sample: updatedSample
+		})
+	}
+
+	componentDidMount(){
+		var endpoint = '/api/sample'
+		api.handleGet(endpoint, {}, function(err, response){
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			store.dispatch(actions.samplesRecieved(response.samples))
+		})
+	}
+
+	createSample(event){
+		event.preventDefault()
+		this.setState({
+			showModal: false
+		})
+
+		var endpoint = '/api/sample'
+		api.handlePost(endpoint, this.state.sample, function(err, response){
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			store.dispatch(actions.sampleCreated(response.sample))
+		})
 	}
 
 	render(){
+
+		var list = this.props.samples.map(function(sample, i){
+			var divClass = (i%2 == 0) ? 'col_half panel panel-default' : 'col_half panel panel-default col_last'
+			return (
+
+                <div key={sample.id} className={divClass}>
+                    <div className="panel-heading" style={{background:'#f1f9f5'}}>
+                        <h2 className="panel-title">{sample.title}</h2>
+                    </div>
+                    <div className="panel-body">
+                    	{sample.description}
+                    </div>
+                </div>
+			)
+		})
+
 
 		return (
 			<div style={{background:'#f5f5f5'}}>
@@ -64,25 +117,7 @@ class Vault extends Component {
 									</div>
 								</div>
 
-
-		                        <div className="col_half panel panel-default">
-		                            <div className="panel-heading" style={{background:'#f1f9f5'}}>
-		                                <h2 className="panel-title">Panel title</h2>
-		                            </div>
-		                            <div className="panel-body">
-		                            	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?
-		                            </div>
-		                        </div>
-
-		                        <div className="col_half panel panel-default col_last">
-		                            <div className="panel-heading" style={{background:'#f1f9f5'}}>
-		                                <h2 className="panel-title">Panel title</h2>
-		                            </div>
-		                            <div className="panel-body">
-		                            	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam suscipit inventore neque. Distinctio, impedit.
-		                            </div>
-		                        </div>
-
+								{ list }
 
 							</div>
 						</div>
@@ -96,9 +131,9 @@ class Vault extends Component {
 			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
 			        	<div className="row">
 				        	<div className="col-md-6">
-					        	<input onChange={this.updateProject} id="title" value={this.state.sample.title} className="form-control" type="text" placeholder="Title" /><br />
-					        	<input onChange={this.updateProject} id="url" value={this.state.sample.url} className="form-control" type="text" placeholder="http://" /><br />
-					        	<input onChange={this.updateProject} id="tagString" value={this.state.sample.tagString} className="form-control" type="text" placeholder="Python, iOS, JavaScript, etc." /><br />
+					        	<input onChange={this.updateSample} id="title" value={this.state.sample.title} className="form-control" type="text" placeholder="Title" /><br />
+					        	<input onChange={this.updateSample} id="url" value={this.state.sample.url} className="form-control" type="text" placeholder="http://" /><br />
+					        	<input onChange={this.updateSample} id="tagString" value={this.state.sample.tagString} className="form-control" type="text" placeholder="Python, iOS, JavaScript, etc." /><br />
 					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
 					              <div style={{padding:24}}>
 					              	{ (this.state.sample.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.state.sample.image+'?crop=120'} /> }
@@ -108,14 +143,14 @@ class Vault extends Component {
 				        	</div>
 
 				        	<div className="col-md-6">
-					        	<textarea onChange={this.updateProject} id="description" value={this.state.sample.description} className="form-control" placeholder="Text" style={{minHeight:260}}></textarea><br />
+					        	<textarea onChange={this.updateSample} id="description" value={this.state.sample.description} className="form-control" placeholder="Text" style={{minHeight:260}}></textarea><br />
 				        	</div>
 			        	</div>
 
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.submitProject} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+						<a onClick={this.createSample} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 			        </Modal.Footer>
 		        </Modal>
 
@@ -127,10 +162,11 @@ class Vault extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	console.log('STATE TO PROPS: '+JSON.stringify(state.sampleReducer.samplesArray));
 
     return {
-        currentUser: state.profileReducer.currentUser
+        currentUser: state.profileReducer.currentUser,
+        samples: state.sampleReducer.samplesArray
     }
 }
 

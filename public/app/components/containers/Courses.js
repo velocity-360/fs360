@@ -14,13 +14,7 @@ class Courses extends Component {
 		super(props, context)
 	}
 
-	componentWillMount(){
-
-	}
-
 	componentDidMount(){
-
-
 		var endpoint = '/api/course'
 		if (this.props.params == null){
 			api.handleGet(endpoint+'?isFeatured=yes', {}, function(err, response){

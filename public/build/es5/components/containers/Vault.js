@@ -42,6 +42,8 @@ var Vault = (function (Component) {
 		_get(Object.getPrototypeOf(Vault.prototype), "constructor", this).call(this, props, context);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.updateSample = this.updateSample.bind(this);
+		this.createSample = this.createSample.bind(this);
 		this.state = {
 			showModal: false,
 			sample: {
@@ -75,13 +77,79 @@ var Vault = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		updateSample: {
+			value: function updateSample(event) {
+				event.preventDefault();
+
+				var updatedSample = Object.assign({}, this.state.sample);
+				updatedSample[event.target.id] = event.target.value;
+				this.setState({
+					sample: updatedSample
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		componentDidMount: {
-			value: function componentDidMount() {},
+			value: function componentDidMount() {
+				var endpoint = "/api/sample";
+				api.handleGet(endpoint, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					store.dispatch(actions.samplesRecieved(response.samples));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		createSample: {
+			value: function createSample(event) {
+				event.preventDefault();
+				this.setState({
+					showModal: false
+				});
+
+				var endpoint = "/api/sample";
+				api.handlePost(endpoint, this.state.sample, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					store.dispatch(actions.sampleCreated(response.sample));
+				});
+			},
 			writable: true,
 			configurable: true
 		},
 		render: {
 			value: function render() {
+				var list = this.props.samples.map(function (sample, i) {
+					var divClass = i % 2 == 0 ? "col_half panel panel-default" : "col_half panel panel-default col_last";
+					return React.createElement(
+						"div",
+						{ key: sample.id, className: divClass },
+						React.createElement(
+							"div",
+							{ className: "panel-heading", style: { background: "#f1f9f5" } },
+							React.createElement(
+								"h2",
+								{ className: "panel-title" },
+								sample.title
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "panel-body" },
+							sample.description
+						)
+					);
+				});
+
+
 				return React.createElement(
 					"div",
 					{ style: { background: "#f5f5f5" } },
@@ -120,42 +188,7 @@ var Vault = (function (Component) {
 											)
 										)
 									),
-									React.createElement(
-										"div",
-										{ className: "col_half panel panel-default" },
-										React.createElement(
-											"div",
-											{ className: "panel-heading", style: { background: "#f1f9f5" } },
-											React.createElement(
-												"h2",
-												{ className: "panel-title" },
-												"Panel title"
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "panel-body" },
-											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?"
-										)
-									),
-									React.createElement(
-										"div",
-										{ className: "col_half panel panel-default col_last" },
-										React.createElement(
-											"div",
-											{ className: "panel-heading", style: { background: "#f1f9f5" } },
-											React.createElement(
-												"h2",
-												{ className: "panel-title" },
-												"Panel title"
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "panel-body" },
-											"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam suscipit inventore neque. Distinctio, impedit."
-										)
-									)
+									list
 								)
 							)
 						)
@@ -181,11 +214,11 @@ var Vault = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col-md-6" },
-									React.createElement("input", { onChange: this.updateProject, id: "title", value: this.state.sample.title, className: "form-control", type: "text", placeholder: "Title" }),
+									React.createElement("input", { onChange: this.updateSample, id: "title", value: this.state.sample.title, className: "form-control", type: "text", placeholder: "Title" }),
 									React.createElement("br", null),
-									React.createElement("input", { onChange: this.updateProject, id: "url", value: this.state.sample.url, className: "form-control", type: "text", placeholder: "http://" }),
+									React.createElement("input", { onChange: this.updateSample, id: "url", value: this.state.sample.url, className: "form-control", type: "text", placeholder: "http://" }),
 									React.createElement("br", null),
-									React.createElement("input", { onChange: this.updateProject, id: "tagString", value: this.state.sample.tagString, className: "form-control", type: "text", placeholder: "Python, iOS, JavaScript, etc." }),
+									React.createElement("input", { onChange: this.updateSample, id: "tagString", value: this.state.sample.tagString, className: "form-control", type: "text", placeholder: "Python, iOS, JavaScript, etc." }),
 									React.createElement("br", null),
 									React.createElement(
 										Dropzone,
@@ -201,7 +234,7 @@ var Vault = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col-md-6" },
-									React.createElement("textarea", { onChange: this.updateProject, id: "description", value: this.state.sample.description, className: "form-control", placeholder: "Text", style: { minHeight: 260 } }),
+									React.createElement("textarea", { onChange: this.updateSample, id: "description", value: this.state.sample.description, className: "form-control", placeholder: "Text", style: { minHeight: 260 } }),
 									React.createElement("br", null)
 								)
 							)
@@ -211,7 +244,7 @@ var Vault = (function (Component) {
 							{ style: { textAlign: "center" } },
 							React.createElement(
 								"a",
-								{ onClick: this.submitProject, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								{ onClick: this.createSample, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 								"Submit"
 							)
 						)
@@ -228,10 +261,11 @@ var Vault = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	console.log("STATE TO PROPS: " + JSON.stringify(state.sampleReducer.samplesArray));
 
 	return {
-		currentUser: state.profileReducer.currentUser
+		currentUser: state.profileReducer.currentUser,
+		samples: state.sampleReducer.samplesArray
 	};
 };
 

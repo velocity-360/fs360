@@ -21501,13 +21501,13 @@
 	
 	var _project2 = _interopRequireDefault(_project);
 	
-	var _static = __webpack_require__(193);
-	
-	var _static2 = _interopRequireDefault(_static);
-	
 	var _sample = __webpack_require__(591);
 	
 	var _sample2 = _interopRequireDefault(_sample);
+	
+	var _static = __webpack_require__(193);
+	
+	var _static2 = _interopRequireDefault(_static);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -45409,12 +45409,8 @@
 		}
 	
 		_createClass(Courses, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-	
 				var endpoint = '/api/course';
 				if (this.props.params == null) {
 					_api2.default.handleGet(endpoint + '?isFeatured=yes', {}, function (err, response) {
@@ -63217,6 +63213,8 @@
 	
 			_this.openModal = _this.openModal.bind(_this);
 			_this.closeModal = _this.closeModal.bind(_this);
+			_this.updateSample = _this.updateSample.bind(_this);
+			_this.createSample = _this.createSample.bind(_this);
 			_this.state = {
 				showModal: false,
 				sample: {
@@ -63245,11 +63243,72 @@
 				});
 			}
 		}, {
+			key: 'updateSample',
+			value: function updateSample(event) {
+				event.preventDefault();
+	
+				var updatedSample = Object.assign({}, this.state.sample);
+				updatedSample[event.target.id] = event.target.value;
+				this.setState({
+					sample: updatedSample
+				});
+			}
+		}, {
 			key: 'componentDidMount',
-			value: function componentDidMount() {}
+			value: function componentDidMount() {
+				var endpoint = '/api/sample';
+				_api2.default.handleGet(endpoint, {}, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.samplesRecieved(response.samples));
+				});
+			}
+		}, {
+			key: 'createSample',
+			value: function createSample(event) {
+				event.preventDefault();
+				this.setState({
+					showModal: false
+				});
+	
+				var endpoint = '/api/sample';
+				_api2.default.handlePost(endpoint, this.state.sample, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.sampleCreated(response.sample));
+				});
+			}
 		}, {
 			key: 'render',
 			value: function render() {
+	
+				var list = this.props.samples.map(function (sample, i) {
+					var divClass = i % 2 == 0 ? 'col_half panel panel-default' : 'col_half panel panel-default col_last';
+					return _react2.default.createElement(
+						'div',
+						{ key: sample.id, className: divClass },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-heading', style: { background: '#f1f9f5' } },
+							_react2.default.createElement(
+								'h2',
+								{ className: 'panel-title' },
+								sample.title
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body' },
+							sample.description
+						)
+					);
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -63289,42 +63348,7 @@
 											)
 										)
 									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_half panel panel-default' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-heading', style: { background: '#f1f9f5' } },
-											_react2.default.createElement(
-												'h2',
-												{ className: 'panel-title' },
-												'Panel title'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body' },
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?'
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_half panel panel-default col_last' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-heading', style: { background: '#f1f9f5' } },
-											_react2.default.createElement(
-												'h2',
-												{ className: 'panel-title' },
-												'Panel title'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body' },
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam suscipit inventore neque. Distinctio, impedit.'
-										)
-									)
+									list
 								)
 							)
 						)
@@ -63350,11 +63374,11 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col-md-6' },
-									_react2.default.createElement('input', { onChange: this.updateProject, id: 'title', value: this.state.sample.title, className: 'form-control', type: 'text', placeholder: 'Title' }),
+									_react2.default.createElement('input', { onChange: this.updateSample, id: 'title', value: this.state.sample.title, className: 'form-control', type: 'text', placeholder: 'Title' }),
 									_react2.default.createElement('br', null),
-									_react2.default.createElement('input', { onChange: this.updateProject, id: 'url', value: this.state.sample.url, className: 'form-control', type: 'text', placeholder: 'http://' }),
+									_react2.default.createElement('input', { onChange: this.updateSample, id: 'url', value: this.state.sample.url, className: 'form-control', type: 'text', placeholder: 'http://' }),
 									_react2.default.createElement('br', null),
-									_react2.default.createElement('input', { onChange: this.updateProject, id: 'tagString', value: this.state.sample.tagString, className: 'form-control', type: 'text', placeholder: 'Python, iOS, JavaScript, etc.' }),
+									_react2.default.createElement('input', { onChange: this.updateSample, id: 'tagString', value: this.state.sample.tagString, className: 'form-control', type: 'text', placeholder: 'Python, iOS, JavaScript, etc.' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
 										_reactDropzone2.default,
@@ -63370,7 +63394,7 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col-md-6' },
-									_react2.default.createElement('textarea', { onChange: this.updateProject, id: 'description', value: this.state.sample.description, className: 'form-control', placeholder: 'Text', style: { minHeight: 260 } }),
+									_react2.default.createElement('textarea', { onChange: this.updateSample, id: 'description', value: this.state.sample.description, className: 'form-control', placeholder: 'Text', style: { minHeight: 260 } }),
 									_react2.default.createElement('br', null)
 								)
 							)
@@ -63380,7 +63404,7 @@
 							{ style: { textAlign: 'center' } },
 							_react2.default.createElement(
 								'a',
-								{ onClick: this.submitProject, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								{ onClick: this.createSample, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
 								'Submit'
 							)
 						)
@@ -63394,10 +63418,11 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+		console.log('STATE TO PROPS: ' + JSON.stringify(state.sampleReducer.samplesArray));
 	
 		return {
-			currentUser: state.profileReducer.currentUser
+			currentUser: state.profileReducer.currentUser,
+			samples: state.sampleReducer.samplesArray
 		};
 	};
 	
@@ -64444,7 +64469,7 @@
 	
 	var initialState = {
 		samples: {},
-		samplesArray: null,
+		samplesArray: [],
 		emptySample: {
 			title: '',
 			image: '',

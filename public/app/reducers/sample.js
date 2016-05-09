@@ -4,7 +4,7 @@ var initialState = {
 	samples: {
 
 	},
-	samplesArray: null,
+	samplesArray: [],
 	emptySample: {
 		title: '',
 		image: '',
@@ -38,14 +38,14 @@ export default function(state = initialState, action){
 			var newState = Object.assign({}, state);
 
 			var c = action.samples
-			newState['samplesArray'] = c;
+			newState['samplesArray'] = c
 			var samplesMap = {}
 			for (var i=0; i<c.length; i++){
-				var sample = c[i];
-				samplesMap[sample.id] = sample;
+				var sample = c[i]
+				samplesMap[sample.id] = sample
 			}
 
-			newState['samples'] = samplesMap;
+			newState['samples'] = samplesMap
 //			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
 			return newState;
 

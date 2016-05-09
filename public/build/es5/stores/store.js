@@ -23,9 +23,9 @@ var eventReducer = _interopRequire(require("../reducers/event"));
 
 var projectReducer = _interopRequire(require("../reducers/project"));
 
-var staticReducer = _interopRequire(require("../reducers/static"));
-
 var sampleReducer = _interopRequire(require("../reducers/sample"));
+
+var staticReducer = _interopRequire(require("../reducers/static"));
 
 // Combine Reducers
 var reducers = combineReducers({
