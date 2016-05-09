@@ -8,6 +8,7 @@ import Feed from './containers/Feed'
 import PostPage from './containers/PostPage'
 import Project from './containers/Project'
 import Course from './containers/Course'
+import Vault from './containers/Vault'
 import Videos from './containers/Videos'
 import Account from './containers/Account'
 import Application from './containers/Application'
@@ -37,6 +38,9 @@ class Main extends Component {
 
 			case 'courses':
 				return page = <Courses params={this.props.params} />
+
+			case 'vault':
+				return page = <Vault params={this.props.params} />
 
 			case 'application':
 				return page = <Application params={this.props.params} />

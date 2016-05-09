@@ -9,6 +9,7 @@ var PostSchema = new mongoose.Schema({
 	link: {type:String, trim:true, lowercase:true, default:''},
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	numReplies: {type:Number, default:0},
+	isPublic: {type:String, trim:true, default:'yes'},
 	thread: {type:String, default:'' },
 	timestamp: {type:Date, default:Date.now},
 });
@@ -21,6 +22,7 @@ PostSchema.methods.summary = function() {
 		'profile':this.profile,
 		'text':this.text,
 		'slug':this.slug,
+		'isPublic':this.isPublic,
 		'numReplies':this.numReplies,
 		'link':this.link,
 		'thread':this.thread,

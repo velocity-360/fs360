@@ -21999,15 +21999,19 @@
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Videos = __webpack_require__(586);
+	var _Vault = __webpack_require__(586);
+	
+	var _Vault2 = _interopRequireDefault(_Vault);
+	
+	var _Videos = __webpack_require__(587);
 	
 	var _Videos2 = _interopRequireDefault(_Videos);
 	
-	var _Account = __webpack_require__(587);
+	var _Account = __webpack_require__(588);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Application = __webpack_require__(589);
+	var _Application = __webpack_require__(590);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -22049,6 +22053,9 @@
 	
 					case 'courses':
 						return page = _react2.default.createElement(_Courses2.default, { params: this.props.params });
+	
+					case 'vault':
+						return page = _react2.default.createElement(_Vault2.default, { params: this.props.params });
 	
 					case 'application':
 						return page = _react2.default.createElement(_Application2.default, { params: this.props.params });
@@ -63136,6 +63143,260 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
+	var _reactDropzone = __webpack_require__(473);
+	
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+	
+	var _Sidebar = __webpack_require__(468);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(462);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CourseCard = __webpack_require__(469);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _store = __webpack_require__(185);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(452);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _api = __webpack_require__(453);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Vault = function (_Component) {
+		_inherits(Vault, _Component);
+	
+		function Vault(props, context) {
+			_classCallCheck(this, Vault);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Vault).call(this, props, context));
+	
+			_this.openModal = _this.openModal.bind(_this);
+			_this.closeModal = _this.closeModal.bind(_this);
+			_this.state = {
+				showModal: false,
+				sample: {
+					title: '',
+					image: '',
+					url: '',
+					description: '',
+					tagString: ''
+				}
+			};
+			return _this;
+		}
+	
+		_createClass(Vault, [{
+			key: 'openModal',
+			value: function openModal() {
+				this.setState({
+					showModal: true
+				});
+			}
+		}, {
+			key: 'closeModal',
+			value: function closeModal() {
+				this.setState({
+					showModal: false
+				});
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'entry clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry-content' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'col_half' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginBottom: 16 } },
+													'Code Vault'
+												),
+												_react2.default.createElement(
+													'button',
+													{ onClick: this.openModal, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
+													'Add Code Sample'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_half panel panel-default' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-heading', style: { background: '#f1f9f5' } },
+											_react2.default.createElement(
+												'h2',
+												{ className: 'panel-title' },
+												'Panel title'
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body' },
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, velit, eaque officiis mollitia inventore ipsum minus quo itaque provident error adipisci quisquam ratione assumenda at illo doloribus beatae totam?'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_half panel panel-default col_last' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-heading', style: { background: '#f1f9f5' } },
+											_react2.default.createElement(
+												'h2',
+												{ className: 'panel-title' },
+												'Panel title'
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body' },
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam suscipit inventore neque. Distinctio, impedit.'
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showModal, onHide: this.closeModal, bsSize: 'large' },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Project'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									_react2.default.createElement('input', { onChange: this.updateProject, id: 'title', value: this.state.sample.title, className: 'form-control', type: 'text', placeholder: 'Title' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { onChange: this.updateProject, id: 'url', value: this.state.sample.url, className: 'form-control', type: 'text', placeholder: 'http://' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { onChange: this.updateProject, id: 'tagString', value: this.state.sample.tagString, className: 'form-control', type: 'text', placeholder: 'Python, iOS, JavaScript, etc.' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										_reactDropzone2.default,
+										{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px dotted #ddd' }, onDrop: this.uploadImage },
+										_react2.default.createElement(
+											'div',
+											{ style: { padding: 24 } },
+											this.state.sample.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.state.sample.image + '?crop=120' }),
+											'Drop file here, or click to select image to upload.'
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									_react2.default.createElement('textarea', { onChange: this.updateProject, id: 'description', value: this.state.sample.description, className: 'form-control', placeholder: 'Text', style: { minHeight: 260 } }),
+									_react2.default.createElement('br', null)
+								)
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.submitProject, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Vault;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	
+		return {
+			currentUser: state.profileReducer.currentUser
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Vault);
+
+/***/ },
+/* 587 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(196);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
 	var _Sidebar = __webpack_require__(468);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
@@ -63264,7 +63525,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
 
 /***/ },
-/* 587 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63313,7 +63574,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _ProjectCard = __webpack_require__(588);
+	var _ProjectCard = __webpack_require__(589);
 	
 	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
 	
@@ -63760,7 +64021,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 588 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63841,7 +64102,7 @@
 	exports.default = ProjectCard;
 
 /***/ },
-/* 589 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
