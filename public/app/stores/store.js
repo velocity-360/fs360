@@ -11,6 +11,7 @@ import postReducer from '../reducers/post'
 import eventReducer from '../reducers/event'
 import projectReducer from '../reducers/project'
 import staticReducer from '../reducers/static'
+import sampleReducer from '../reducers/sample'
 
 // Combine Reducers
 var reducers = combineReducers({
@@ -20,6 +21,7 @@ var reducers = combineReducers({
     eventReducer: eventReducer,
     staticReducer: staticReducer,
     projectReducer: projectReducer,
+    sampleReducer: sampleReducer
 });
 
 // Create Store

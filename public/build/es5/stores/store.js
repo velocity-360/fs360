@@ -25,6 +25,8 @@ var projectReducer = _interopRequire(require("../reducers/project"));
 
 var staticReducer = _interopRequire(require("../reducers/static"));
 
+var sampleReducer = _interopRequire(require("../reducers/sample"));
+
 // Combine Reducers
 var reducers = combineReducers({
     profileReducer: profileReducer,
@@ -32,7 +34,9 @@ var reducers = combineReducers({
     postReducer: postReducer,
     eventReducer: eventReducer,
     staticReducer: staticReducer,
-    projectReducer: projectReducer });
+    projectReducer: projectReducer,
+    sampleReducer: sampleReducer
+});
 
 // Create Store
 var store = createStore(reducers, applyMiddleware(thunk) // Add middleware to createStore

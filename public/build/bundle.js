@@ -21505,25 +21505,30 @@
 	
 	var _static2 = _interopRequireDefault(_static);
 	
+	var _sample = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../reducers/sample\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var _sample2 = _interopRequireDefault(_sample);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Combine Reducers
-	
-	
-	// Add middleware to createStore
-	//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
-	
-	// App Reducers
 	var reducers = (0, _redux.combineReducers)({
 	    profileReducer: _profile2.default,
 	    courseReducer: _course2.default,
 	    postReducer: _post2.default,
 	    eventReducer: _event2.default,
 	    staticReducer: _static2.default,
-	    projectReducer: _project2.default
+	    projectReducer: _project2.default,
+	    sampleReducer: _sample2.default
 	});
 	
 	// Create Store
+	
+	
+	// Add middleware to createStore
+	//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+	
+	// App Reducers
 	var store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default) // Add middleware to createStore
 	);
 	
