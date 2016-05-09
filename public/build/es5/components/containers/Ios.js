@@ -289,9 +289,9 @@ var Ios = (function (Component) {
 									"div",
 									{ className: "heading-block nobottommargin nobottomborder" },
 									React.createElement(
-										"h2",
+										"h3",
 										null,
-										"Request More Info"
+										"Learn iOS Development"
 									)
 								),
 								React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
@@ -312,16 +312,11 @@ var Ios = (function (Component) {
 								),
 								React.createElement(
 									"div",
-									{ className: "col_full" },
-									React.createElement("input", { onChange: this.updateVisitor, id: "phone", type: "text", className: "form-control input-lg not-dark", placeholder: "Phone" })
-								),
-								React.createElement(
-									"div",
 									{ className: "col_full nobottommargin" },
 									React.createElement(
 										"button",
 										{ onClick: this.submitInfoRequest, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
-										"Submit"
+										"Request Info"
 									)
 								)
 							)

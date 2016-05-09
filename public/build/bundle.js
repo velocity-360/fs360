@@ -44716,9 +44716,9 @@
 									'div',
 									{ className: 'heading-block nobottommargin nobottomborder' },
 									_react2.default.createElement(
-										'h2',
+										'h3',
 										null,
-										'Request More Info'
+										'Learn iOS Development'
 									)
 								),
 								_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
@@ -44739,16 +44739,11 @@
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'phone', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Phone' })
-								),
-								_react2.default.createElement(
-									'div',
 									{ className: 'col_full nobottommargin' },
 									_react2.default.createElement(
 										'button',
 										{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-										'Submit'
+										'Request Info'
 									)
 								)
 							)

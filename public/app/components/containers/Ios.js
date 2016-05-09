@@ -233,7 +233,7 @@ class Ios extends Component {
 
 		                <form action="#" method="post" role="form" className="landing-wide-form landing-form-overlay dark clearfix">
 		                    <div className="heading-block nobottommargin nobottomborder">
-		                        <h2>Request More Info</h2>
+		                        <h3>Learn iOS Development</h3>
 		                    </div>
 		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 		                    <div className="col_full">
@@ -245,11 +245,8 @@ class Ios extends Component {
 		                    <div className="col_full">
 		                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
 		                    </div>
-		                    <div className="col_full">
-		                        <input onChange={this.updateVisitor} id="phone" type="text" className="form-control input-lg not-dark" placeholder="Phone" />
-		                    </div>
 		                    <div className="col_full nobottommargin">
-		                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Submit</button>
+		                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Info</button>
 		                    </div>
 		                </form>
 
