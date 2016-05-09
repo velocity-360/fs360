@@ -55,6 +55,13 @@ module.exports = {
 		};
 	},
 
+	postCreated: function(post){
+		return {
+			type: constants.POST_CREATED,
+			post: post
+		};
+	},
+
 	projectsRecieved: function(projects){
 		return {
 			type: constants.PROJECTS_RECIEVED,
@@ -69,12 +76,21 @@ module.exports = {
 		};
 	},
 
-	postCreated: function(post){
+
+	samplesRecieved: function(samples){
 		return {
-			type: constants.POST_CREATED,
-			post: post
+			type: constants.SAMPLES_RECIEVED,
+			samples: samples
 		};
 	},
+
+	sampleCreated: function(sample){
+		return {
+			type: constants.SAMPLE_CREATED,
+			sample: sample
+		};
+	},
+
 
 	// duckDown: function(who){
 	// 	// here we take advantage of Redux-thunk; instead of returning an object describing an action,

@@ -8,7 +8,7 @@ var initialState = {
 	emptySample: {
 		title: '',
 		image: '',
-		url: ''
+		url: '',
 		description: '',
 		tags: [],
 		profile: {

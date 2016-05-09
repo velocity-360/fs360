@@ -21505,7 +21505,7 @@
 	
 	var _static2 = _interopRequireDefault(_static);
 	
-	var _sample = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../reducers/sample\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _sample = __webpack_require__(591);
 	
 	var _sample2 = _interopRequireDefault(_sample);
 	
@@ -21632,13 +21632,20 @@
 	module.exports = {
 	
 		UPDATE_CURRENT_USER: 'UPDATE_CURRENT_USER',
-		COURSES_RECIEVED: 'COURSES_RECIEVED',
 		CURRENT_USER_RECIEVED: 'CURRENT_USER_RECIEVED',
+	
+		COURSES_RECIEVED: 'COURSES_RECIEVED',
+	
 		POSTS_RECIEVED: 'POSTS_RECIEVED',
 		POST_CREATED: 'POST_CREATED',
+	
 		EVENTS_RECIEVED: 'EVENTS_RECIEVED',
+	
 		PROJECT_CREATED: 'PROJECT_CREATED',
-		PROJECTS_RECIEVED: 'PROJECTS_RECIEVED'
+		PROJECTS_RECIEVED: 'PROJECTS_RECIEVED',
+	
+		SAMPLE_CREATED: 'SAMPLE_CREATED',
+		SAMPLES_RECIEVED: 'SAMPLES_RECIEVED'
 	
 		// ACTION TYPES
 		// AIM_AT: "AIM_AT",
@@ -41950,6 +41957,13 @@
 			};
 		},
 	
+		postCreated: function postCreated(post) {
+			return {
+				type: constants.POST_CREATED,
+				post: post
+			};
+		},
+	
 		projectsRecieved: function projectsRecieved(projects) {
 			return {
 				type: constants.PROJECTS_RECIEVED,
@@ -41964,10 +41978,17 @@
 			};
 		},
 	
-		postCreated: function postCreated(post) {
+		samplesRecieved: function samplesRecieved(samples) {
 			return {
-				type: constants.POST_CREATED,
-				post: post
+				type: constants.SAMPLES_RECIEVED,
+				samples: samples
+			};
+		},
+	
+		sampleCreated: function sampleCreated(sample) {
+			return {
+				type: constants.SAMPLE_CREATED,
+				sample: sample
 			};
 		}
 	
@@ -64375,6 +64396,72 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Application);
+
+/***/ },
+/* 591 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+	
+			case constants.SAMPLE_CREATED:
+				var newState = Object.assign({}, state);
+				var sample = action.sample;
+				newState.samples[sample.id] = sample;
+				newState.samplesArray.unshift(sample);
+				return newState;
+	
+			case constants.SAMPLES_RECIEVED:
+				var newState = Object.assign({}, state);
+	
+				var c = action.samples;
+				newState['samplesArray'] = c;
+				var samplesMap = {};
+				for (var i = 0; i < c.length; i++) {
+					var sample = c[i];
+					samplesMap[sample.id] = sample;
+				}
+	
+				newState['samples'] = samplesMap;
+				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				return newState;
+	
+			default:
+				return state;
+		}
+	};
+	
+	var constants = __webpack_require__(188);
+	
+	var initialState = {
+		samples: {},
+		samplesArray: null,
+		emptySample: {
+			title: '',
+			image: '',
+			url: '',
+			description: '',
+			tags: [],
+			profile: {
+				name: '',
+				image: '',
+				id: null
+			}
+		}
+	};
+	
+	/* A reducer is a function that takes the current state and an action, and 
+	then returns a new state. This reducer is responsible for appState.heroes 
+	data. See `initialstate.js` for a clear view of what it looks like! */
 
 /***/ }
 /******/ ]);
