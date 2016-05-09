@@ -30,7 +30,7 @@ class Footer extends React.Component {
 									<i className="icon-twitter"></i>
 								</a>
 
-								<a href="#" className="social-icon si-small si-borderless si-github">
+								<a target="_blank" href="https://github.com/fullstack360" className="social-icon si-small si-borderless si-github">
 									<i className="icon-github"></i>
 									<i className="icon-github"></i>
 								</a>

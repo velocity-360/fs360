@@ -91,6 +91,8 @@ class Vault extends Component {
                     </div>
                     <div className="panel-body">
                     	{sample.description}
+                    	<br /><br />
+	                    <a className="btn btn-info" href={sample.url}>Download</a>
                     </div>
                 </div>
 			)

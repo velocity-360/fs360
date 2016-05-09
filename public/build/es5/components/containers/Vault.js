@@ -144,7 +144,14 @@ var Vault = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "panel-body" },
-							sample.description
+							sample.description,
+							React.createElement("br", null),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ className: "btn btn-info", href: sample.url },
+								"Download"
+							)
 						)
 					);
 				});

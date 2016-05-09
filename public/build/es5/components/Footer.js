@@ -59,7 +59,7 @@ var Footer = (function (_React$Component) {
 									),
 									React.createElement(
 										"a",
-										{ href: "#", className: "social-icon si-small si-borderless si-github" },
+										{ target: "_blank", href: "https://github.com/fullstack360", className: "social-icon si-small si-borderless si-github" },
 										React.createElement("i", { className: "icon-github" }),
 										React.createElement("i", { className: "icon-github" })
 									)
