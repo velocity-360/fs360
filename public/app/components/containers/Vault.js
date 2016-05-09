@@ -85,7 +85,6 @@ class Vault extends Component {
 		var list = this.props.samples.map(function(sample, i){
 			var divClass = (i%2 == 0) ? 'col_half panel panel-default' : 'col_half panel panel-default col_last'
 			return (
-
                 <div key={sample.id} className={divClass}>
                     <div className="panel-heading" style={{background:'#f1f9f5'}}>
                         <h2 className="panel-title">{sample.title}</h2>
@@ -96,6 +95,8 @@ class Vault extends Component {
                 </div>
 			)
 		})
+
+		var btnAddsample = (this.props.currentUser.id == null ) ? null : <button onClick={this.openModal} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Add Code Sample</button>
 
 
 		return (
@@ -111,7 +112,7 @@ class Vault extends Component {
 									<div className="entry-content">
 										<div className="col_half">
 											<h2 style={{ marginBottom:16 }}>Code Vault</h2>
-		                        			<button onClick={this.openModal} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Add Code Sample</button>
+											{ btnAddsample }		                        			
 										</div>
 
 									</div>

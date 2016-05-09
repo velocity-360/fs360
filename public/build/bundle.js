@@ -41765,11 +41765,41 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/videos' },
+											{ href: '#' },
 											_react2.default.createElement(
 												'div',
 												{ style: { padding: 4 } },
-												'Videos'
+												'Code'
+											)
+										),
+										_react2.default.createElement(
+											'ul',
+											null,
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '/videos' },
+													_react2.default.createElement(
+														'div',
+														{ style: { padding: 4 } },
+														'Videos'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '/vault' },
+													_react2.default.createElement(
+														'div',
+														{ style: { padding: 4 } },
+														'Code Vault'
+													)
+												)
 											)
 										)
 									),
@@ -45641,11 +45671,11 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/videos' },
+											{ href: '/feed' },
 											_react2.default.createElement(
 												'div',
 												null,
-												'Videos'
+												'Blog'
 											)
 										)
 									),
@@ -45654,11 +45684,41 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: '/feed' },
+											{ href: '#' },
 											_react2.default.createElement(
 												'div',
 												null,
-												'Blog'
+												'Code'
+											)
+										),
+										_react2.default.createElement(
+											'ul',
+											null,
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '/videos' },
+													_react2.default.createElement(
+														'div',
+														null,
+														'Videos'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '/vault' },
+													_react2.default.createElement(
+														'div',
+														null,
+														'Code Vault'
+													)
+												)
 											)
 										)
 									),
@@ -63310,6 +63370,12 @@
 					);
 				});
 	
+				var btnAddsample = this.props.currentUser.id == null ? null : _react2.default.createElement(
+					'button',
+					{ onClick: this.openModal, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
+					'Add Code Sample'
+				);
+	
 				return _react2.default.createElement(
 					'div',
 					{ style: { background: '#f5f5f5' } },
@@ -63340,11 +63406,7 @@
 													{ style: { marginBottom: 16 } },
 													'Code Vault'
 												),
-												_react2.default.createElement(
-													'button',
-													{ onClick: this.openModal, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-													'Add Code Sample'
-												)
+												btnAddsample
 											)
 										)
 									),

@@ -113,11 +113,11 @@ var Sidebar = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/videos" },
+											{ href: "/feed" },
 											React.createElement(
 												"div",
 												null,
-												"Videos"
+												"Blog"
 											)
 										)
 									),
@@ -126,11 +126,41 @@ var Sidebar = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/feed" },
+											{ href: "#" },
 											React.createElement(
 												"div",
 												null,
-												"Blog"
+												"Code"
+											)
+										),
+										React.createElement(
+											"ul",
+											null,
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "/videos" },
+													React.createElement(
+														"div",
+														null,
+														"Videos"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "/vault" },
+													React.createElement(
+														"div",
+														null,
+														"Code Vault"
+													)
+												)
 											)
 										)
 									),

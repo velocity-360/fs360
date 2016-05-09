@@ -149,6 +149,12 @@ var Vault = (function (Component) {
 					);
 				});
 
+				var btnAddsample = this.props.currentUser.id == null ? null : React.createElement(
+					"button",
+					{ onClick: this.openModal, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
+					"Add Code Sample"
+				);
+
 
 				return React.createElement(
 					"div",
@@ -180,11 +186,7 @@ var Vault = (function (Component) {
 													{ style: { marginBottom: 16 } },
 													"Code Vault"
 												),
-												React.createElement(
-													"button",
-													{ onClick: this.openModal, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
-													"Add Code Sample"
-												)
+												btnAddsample
 											)
 										)
 									),

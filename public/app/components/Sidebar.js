@@ -52,10 +52,14 @@ class Sidebar extends Component {
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li>
-	                                <a href="/videos"><div>Videos</div></a>
-	                            </li>
-	                            <li>
 	                                <a href="/feed"><div>Blog</div></a>
+	                            </li>
+
+	                            <li><a href="#"><div>Code</div></a>
+	                                <ul>
+	                                    <li><a href="/videos"><div>Videos</div></a></li>
+	                                    <li><a href="/vault"><div>Code Vault</div></a></li>
+	                                </ul>
 	                            </li>
 	                            
 	                            <li><a href="#"><div>Courses</div></a>

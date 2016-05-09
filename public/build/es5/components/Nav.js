@@ -180,11 +180,41 @@ var Nav = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "/videos" },
+											{ href: "#" },
 											React.createElement(
 												"div",
 												{ style: { padding: 4 } },
-												"Videos"
+												"Code"
+											)
+										),
+										React.createElement(
+											"ul",
+											null,
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "/videos" },
+													React.createElement(
+														"div",
+														{ style: { padding: 4 } },
+														"Videos"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "/vault" },
+													React.createElement(
+														"div",
+														{ style: { padding: 4 } },
+														"Code Vault"
+													)
+												)
 											)
 										)
 									),
