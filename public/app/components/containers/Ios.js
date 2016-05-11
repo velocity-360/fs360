@@ -118,9 +118,10 @@ class Ios extends Component {
 			showLoader: true
 		});
 
-		this.state.visitor['headers'] = this.props.headers
+		var pkg = Object.assign({}, this.state.visitor)
+		pkg['headers'] = this.props.headers
 		var _this = this
-		api.handlePost('/api/info', this.state.visitor, function(err, response){
+		api.handlePost('/api/info', pkg, function(err, response){
 			_this.setState({
 				showLoader: false
 			});
