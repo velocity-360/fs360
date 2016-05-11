@@ -83,18 +83,18 @@ class Vault extends Component {
 	render(){
 
 		var list = this.props.samples.map(function(sample, i){
-			var divClass = (i%2 == 0) ? 'col_half panel panel-default' : 'col_half panel panel-default col_last'
 			return (
-                <div key={sample.id} className={divClass}>
-                    <div className="panel-heading" style={{background:'#f1f9f5'}}>
-                        <h2 className="panel-title">{sample.title}</h2>
-                    </div>
-                    <div className="panel-body">
-                    	{sample.description}
-                    	<br /><br />
-	                    <a className="btn btn-info" href={sample.url}>Download</a>
-                    </div>
-                </div>
+	              <div key={sample.id} className="col-sm-6 col-md-4">
+	                <div className="thumbnail" style={{padding:12}}>
+	                  <img alt="FullStack 360" src="/images/apple-2.jpg" style={{display: 'block'}} />
+	                  <div className="caption">
+	                    <h3 style={{marginBottom:6}}>{sample.title}</h3>
+	                    <hr style={{marginTop:0}} />
+	                    <p>{sample.description}</p>
+	                    <a href={sample.url} className="btn btn-primary" role="button">Download</a>
+	                  </div>
+	                </div>
+	              </div>
 			)
 		})
 
@@ -120,7 +120,9 @@ class Vault extends Component {
 									</div>
 								</div>
 
-								{ list }
+								<div className="row">
+									{list}
+		                        </div>
 
 							</div>
 						</div>
@@ -165,7 +167,7 @@ class Vault extends Component {
 }
 
 const stateToProps = function(state) {
-	console.log('STATE TO PROPS: '+JSON.stringify(state.sampleReducer.samplesArray));
+//	console.log('STATE TO PROPS: '+JSON.stringify(state.sampleReducer.samplesArray));
 
     return {
         currentUser: state.profileReducer.currentUser,

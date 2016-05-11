@@ -128,29 +128,32 @@ var Vault = (function (Component) {
 		render: {
 			value: function render() {
 				var list = this.props.samples.map(function (sample, i) {
-					var divClass = i % 2 == 0 ? "col_half panel panel-default" : "col_half panel panel-default col_last";
 					return React.createElement(
 						"div",
-						{ key: sample.id, className: divClass },
+						{ key: sample.id, className: "col-sm-6 col-md-4" },
 						React.createElement(
 							"div",
-							{ className: "panel-heading", style: { background: "#f1f9f5" } },
+							{ className: "thumbnail", style: { padding: 12 } },
+							React.createElement("img", { alt: "FullStack 360", src: "/images/apple-2.jpg", style: { display: "block" } }),
 							React.createElement(
-								"h2",
-								{ className: "panel-title" },
-								sample.title
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-body" },
-							sample.description,
-							React.createElement("br", null),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ className: "btn btn-info", href: sample.url },
-								"Download"
+								"div",
+								{ className: "caption" },
+								React.createElement(
+									"h3",
+									{ style: { marginBottom: 6 } },
+									sample.title
+								),
+								React.createElement("hr", { style: { marginTop: 0 } }),
+								React.createElement(
+									"p",
+									null,
+									sample.description
+								),
+								React.createElement(
+									"a",
+									{ href: sample.url, className: "btn btn-primary", role: "button" },
+									"Download"
+								)
 							)
 						)
 					);
@@ -197,7 +200,11 @@ var Vault = (function (Component) {
 											)
 										)
 									),
-									list
+									React.createElement(
+										"div",
+										{ className: "row" },
+										list
+									)
 								)
 							)
 						)
@@ -270,7 +277,7 @@ var Vault = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	console.log("STATE TO PROPS: " + JSON.stringify(state.sampleReducer.samplesArray));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state.sampleReducer.samplesArray));
 
 	return {
 		currentUser: state.profileReducer.currentUser,

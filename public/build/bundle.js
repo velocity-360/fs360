@@ -63418,29 +63418,32 @@
 			value: function render() {
 	
 				var list = this.props.samples.map(function (sample, i) {
-					var divClass = i % 2 == 0 ? 'col_half panel panel-default' : 'col_half panel panel-default col_last';
 					return _react2.default.createElement(
 						'div',
-						{ key: sample.id, className: divClass },
+						{ key: sample.id, className: 'col-sm-6 col-md-4' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'panel-heading', style: { background: '#f1f9f5' } },
+							{ className: 'thumbnail', style: { padding: 12 } },
+							_react2.default.createElement('img', { alt: 'FullStack 360', src: '/images/apple-2.jpg', style: { display: 'block' } }),
 							_react2.default.createElement(
-								'h2',
-								{ className: 'panel-title' },
-								sample.title
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body' },
-							sample.description,
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ className: 'btn btn-info', href: sample.url },
-								'Download'
+								'div',
+								{ className: 'caption' },
+								_react2.default.createElement(
+									'h3',
+									{ style: { marginBottom: 6 } },
+									sample.title
+								),
+								_react2.default.createElement('hr', { style: { marginTop: 0 } }),
+								_react2.default.createElement(
+									'p',
+									null,
+									sample.description
+								),
+								_react2.default.createElement(
+									'a',
+									{ href: sample.url, className: 'btn btn-primary', role: 'button' },
+									'Download'
+								)
 							)
 						)
 					);
@@ -63486,7 +63489,11 @@
 											)
 										)
 									),
-									list
+									_react2.default.createElement(
+										'div',
+										{ className: 'row' },
+										list
+									)
 								)
 							)
 						)
@@ -63556,7 +63563,7 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		console.log('STATE TO PROPS: ' + JSON.stringify(state.sampleReducer.samplesArray));
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state.sampleReducer.samplesArray));
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
