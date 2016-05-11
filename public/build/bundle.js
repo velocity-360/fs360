@@ -63348,6 +63348,7 @@
 				showModal: false,
 				sample: {
 					title: '',
+					topic: 'ios',
 					image: '',
 					url: '',
 					description: '',
@@ -63418,13 +63419,23 @@
 			value: function render() {
 	
 				var list = this.props.samples.map(function (sample, i) {
+					var image = '';
+					if (sample.topic == 'ios') {
+						image = 'apple-2.jpg';
+					}
+					if (sample.topic == 'node') {
+						image = 'node-red.png';
+					}
+					if (sample.topic == 'react') {
+						image = 'apple-2.jpg';
+					}
 					return _react2.default.createElement(
 						'div',
 						{ key: sample.id, className: 'col-sm-6 col-md-4' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'thumbnail', style: { padding: 12 } },
-							_react2.default.createElement('img', { alt: 'FullStack 360', src: '/images/apple-2.jpg', style: { display: 'block' } }),
+							_react2.default.createElement('img', { alt: 'FullStack 360', src: '/images/' + image, style: { display: 'block' } }),
 							_react2.default.createElement(
 								'div',
 								{ className: 'caption' },
@@ -63526,13 +63537,27 @@
 									_react2.default.createElement('input', { onChange: this.updateSample, id: 'tagString', value: this.state.sample.tagString, className: 'form-control', type: 'text', placeholder: 'Python, iOS, JavaScript, etc.' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
-										_reactDropzone2.default,
-										{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px dotted #ddd' }, onDrop: this.uploadImage },
+										'select',
+										{ onChange: this.updateSample, id: 'topic', className: 'form-control' },
 										_react2.default.createElement(
-											'div',
-											{ style: { padding: 24 } },
-											this.state.sample.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.state.sample.image + '?crop=120' }),
-											'Drop file here, or click to select image to upload.'
+											'option',
+											{ value: 'ios' },
+											'iOS'
+										),
+										_react2.default.createElement(
+											'option',
+											{ value: 'node' },
+											'Node'
+										),
+										_react2.default.createElement(
+											'option',
+											{ value: 'react' },
+											'React'
+										),
+										_react2.default.createElement(
+											'option',
+											{ value: 'angular' },
+											'Angular'
 										)
 									)
 								),

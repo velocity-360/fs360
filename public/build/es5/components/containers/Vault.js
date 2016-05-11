@@ -48,6 +48,7 @@ var Vault = (function (Component) {
 			showModal: false,
 			sample: {
 				title: "",
+				topic: "ios",
 				image: "",
 				url: "",
 				description: "",
@@ -128,13 +129,23 @@ var Vault = (function (Component) {
 		render: {
 			value: function render() {
 				var list = this.props.samples.map(function (sample, i) {
+					var image = "";
+					if (sample.topic == "ios") {
+						image = "apple-2.jpg";
+					}
+					if (sample.topic == "node") {
+						image = "node-red.png";
+					}
+					if (sample.topic == "react") {
+						image = "apple-2.jpg";
+					}
 					return React.createElement(
 						"div",
 						{ key: sample.id, className: "col-sm-6 col-md-4" },
 						React.createElement(
 							"div",
 							{ className: "thumbnail", style: { padding: 12 } },
-							React.createElement("img", { alt: "FullStack 360", src: "/images/apple-2.jpg", style: { display: "block" } }),
+							React.createElement("img", { alt: "FullStack 360", src: "/images/" + image, style: { display: "block" } }),
 							React.createElement(
 								"div",
 								{ className: "caption" },
@@ -237,13 +248,27 @@ var Vault = (function (Component) {
 									React.createElement("input", { onChange: this.updateSample, id: "tagString", value: this.state.sample.tagString, className: "form-control", type: "text", placeholder: "Python, iOS, JavaScript, etc." }),
 									React.createElement("br", null),
 									React.createElement(
-										Dropzone,
-										{ style: { width: 100 + "%", marginBottom: 24, background: "#fff", border: "1px dotted #ddd" }, onDrop: this.uploadImage },
+										"select",
+										{ onChange: this.updateSample, id: "topic", className: "form-control" },
 										React.createElement(
-											"div",
-											{ style: { padding: 24 } },
-											this.state.sample.image.length == 0 ? null : React.createElement("img", { style: { width: 64, border: "1px solid #ddd", marginRight: 6 }, src: "https://media-service.appspot.com/site/images/" + this.state.sample.image + "?crop=120" }),
-											"Drop file here, or click to select image to upload."
+											"option",
+											{ value: "ios" },
+											"iOS"
+										),
+										React.createElement(
+											"option",
+											{ value: "node" },
+											"Node"
+										),
+										React.createElement(
+											"option",
+											{ value: "react" },
+											"React"
+										),
+										React.createElement(
+											"option",
+											{ value: "angular" },
+											"Angular"
 										)
 									)
 								),

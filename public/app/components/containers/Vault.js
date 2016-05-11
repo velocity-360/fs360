@@ -21,6 +21,7 @@ class Vault extends Component {
 			showModal: false,
 			sample:{
 				title:'',
+				topic:'ios',
 				image:'',
 				url:'',
 				description:'',
@@ -83,10 +84,20 @@ class Vault extends Component {
 	render(){
 
 		var list = this.props.samples.map(function(sample, i){
+			var image = ''
+			if (sample.topic == 'ios'){
+				image = 'apple-2.jpg'
+			}
+			if (sample.topic == 'node'){
+				image = 'node-red.png'
+			}
+			if (sample.topic == 'react'){
+				image = 'apple-2.jpg'
+			}
 			return (
 	              <div key={sample.id} className="col-sm-6 col-md-4">
 	                <div className="thumbnail" style={{padding:12}}>
-	                  <img alt="FullStack 360" src="/images/apple-2.jpg" style={{display: 'block'}} />
+	                  <img alt="FullStack 360" src={'/images/'+image} style={{display: 'block'}} />
 	                  <div className="caption">
 	                    <h3 style={{marginBottom:6}}>{sample.title}</h3>
 	                    <hr style={{marginTop:0}} />
@@ -139,12 +150,12 @@ class Vault extends Component {
 					        	<input onChange={this.updateSample} id="title" value={this.state.sample.title} className="form-control" type="text" placeholder="Title" /><br />
 					        	<input onChange={this.updateSample} id="url" value={this.state.sample.url} className="form-control" type="text" placeholder="http://" /><br />
 					        	<input onChange={this.updateSample} id="tagString" value={this.state.sample.tagString} className="form-control" type="text" placeholder="Python, iOS, JavaScript, etc." /><br />
-					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
-					              <div style={{padding:24}}>
-					              	{ (this.state.sample.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.state.sample.image+'?crop=120'} /> }
-					              	Drop file here, or click to select image to upload.
-					              </div>
-					            </Dropzone>
+					        	<select onChange={this.updateSample} id="topic" className="form-control">
+					        		<option value="ios">iOS</option>
+					        		<option value="node">Node</option>
+					        		<option value="react">React</option>
+					        		<option value="angular">Angular</option>
+					        	</select>
 				        	</div>
 
 				        	<div className="col-md-6">
