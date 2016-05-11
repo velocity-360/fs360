@@ -118,6 +118,7 @@ class Ios extends Component {
 			showLoader: true
 		});
 
+		this.state.visitor['headers'] = this.props.headers
 		var _this = this
 		api.handlePost('/api/info', this.state.visitor, function(err, response){
 			_this.setState({
@@ -168,7 +169,8 @@ class Ios extends Component {
 
 		var pkg = {
 			course: this.state.selectedCourse,
-			visitor: this.props.currentUser
+			visitor: this.props.currentUser,
+			headers: this.props.headers
 		}
 
 		this.setState({

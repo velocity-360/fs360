@@ -20,7 +20,8 @@ var ServerApp = require('../public/build/es5/ServerApp');
 
 
 router.get('/', function(req, res, next) {
-    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:'home'}));
+//	console.log('HEADERS: '+JSON.stringify(req.headers))
+    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:'home', headers:req.headers}));
     res.render('index', {react: html});
 
 //    res.render('index', { title: 'Express' });
@@ -31,7 +32,7 @@ router.get('/:page', function(req, res, next) {
 
 	var controller = controllers[page];
 	if (controller == null){
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}));
 	    res.render(page, {react:html});
 		return;
 	}
@@ -42,7 +43,7 @@ router.get('/:page', function(req, res, next) {
 		}
 
 		if (results.length == 0){
-		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug, headers:req.headers}));
 		    res.render(page, {react:html, tags:{}});
 			return;
 		}
@@ -59,7 +60,7 @@ router.get('/:page', function(req, res, next) {
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query}));
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}));
 	    res.render(page, {react:html, tags:fbTags});
 		return;
 	});
@@ -75,7 +76,7 @@ router.get('/:page/:slug', function(req, res, next) {
 	var slug = req.params.slug;
 	var controller = controllers[page];
 	if (controller == null){
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug}));
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug, headers:req.headers}));
 	    res.render(page, {react: html});
 		return;
 	}
@@ -86,7 +87,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		}
 
 		if (results.length == 0){
-		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug, headers:req.headers}));
 		    res.render(page, {react:html, tags:{}});
 			return;
 		}
@@ -103,7 +104,7 @@ router.get('/:page/:slug', function(req, res, next) {
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug, headers:req.headers}));
 	    res.render(page, {react:html, tags:fbTags});
 		return;
 	});

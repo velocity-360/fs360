@@ -58,10 +58,10 @@ var Main = (function (Component) {
 				var page = null;
 				switch (this.props.page) {
 					case "home":
-						return page = React.createElement(Ios, null);
+						return page = React.createElement(Ios, { headers: this.props.headers });
 
 					case "ios":
-						return page = React.createElement(Ios, null);
+						return page = React.createElement(Ios, { headers: this.props.headers });
 
 					case "course":
 						return page = React.createElement(Course, { slug: this.props.slug });

@@ -28,10 +28,10 @@ class Main extends Component {
 		var page = null
 		switch (this.props.page){
 			case 'home':
-				return page = <Ios />
+				return page = <Ios headers={this.props.headers} />
 
 			case 'ios':
-				return page = <Ios />
+				return page = <Ios headers={this.props.headers} />
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />

@@ -22121,10 +22121,10 @@
 				var page = null;
 				switch (this.props.page) {
 					case 'home':
-						return page = _react2.default.createElement(_Ios2.default, null);
+						return page = _react2.default.createElement(_Ios2.default, { headers: this.props.headers });
 	
 					case 'ios':
-						return page = _react2.default.createElement(_Ios2.default, null);
+						return page = _react2.default.createElement(_Ios2.default, { headers: this.props.headers });
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
@@ -44725,6 +44725,7 @@
 					showLoader: true
 				});
 	
+				this.state.visitor['headers'] = this.props.headers;
 				var _this = this;
 				_api2.default.handlePost('/api/info', this.state.visitor, function (err, response) {
 					_this.setState({
@@ -44770,7 +44771,8 @@
 	
 				var pkg = {
 					course: this.state.selectedCourse,
-					visitor: this.props.currentUser
+					visitor: this.props.currentUser,
+					headers: this.props.headers
 				};
 	
 				this.setState({
