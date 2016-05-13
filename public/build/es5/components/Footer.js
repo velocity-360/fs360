@@ -66,7 +66,7 @@ var Footer = (function (_React$Component) {
 								),
 								React.createElement("div", { className: "clear" }),
 								React.createElement("i", { className: "icon-envelope2" }),
-								" info@fullstack360.com ",
+								" dkwon@velocity360.io ",
 								React.createElement(
 									"span",
 									{ className: "middot" },

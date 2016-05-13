@@ -44265,7 +44265,7 @@
 								),
 								_react2.default.createElement("div", { className: "clear" }),
 								_react2.default.createElement("i", { className: "icon-envelope2" }),
-								" info@fullstack360.com ",
+								" dkwon@velocity360.io ",
 								_react2.default.createElement(
 									"span",
 									{ className: "middot" },
