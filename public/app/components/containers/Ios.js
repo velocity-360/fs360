@@ -393,14 +393,13 @@ class Ios extends Component {
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>iOS &amp; Node 24-Week Bootcamp</h4>
-										<span>June 6th - Dec 2nd</span>
-										<span>Tues/Thur, 6pm - 9pm</span>
-										<span>Sat, 12pm - 4pm</span>
+										<h4>iOS &amp; Node 6-Week Bootcamp</h4>
+										<span>June 6th - July 15th</span>
+										<span>Mon - Fri, 9am - 5pm</span>
 									</div>
 									<div className="team-content">
-										The 24-Week iOS Intensive is a comprehensive course in all aspects of iOS 
-										development for beginners. 3 days a week, students will cover the key aspects 
+										The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS 
+										development for beginners. 5 days a week, 8 hours a day, students cover the key aspects 
 										of iOS development from creating sleek UI’s, animations, GPS locator, 
 										integrating 3rd party data, and publishing. This course is designed for 
 										beginners with little to no programming experience and all development is 
