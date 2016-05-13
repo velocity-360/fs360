@@ -423,7 +423,7 @@ var Events = (function (Component) {
 									React.createElement(
 										"p",
 										null,
-										"FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course."
+										"Velocity conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course."
 									),
 									React.createElement(
 										"p",
@@ -499,7 +499,7 @@ var Events = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "FullStack 360" })
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "Velocity" })
 									),
 									React.createElement(
 										"div",
@@ -541,7 +541,7 @@ var Events = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/xcode.jpg", alt: "FullStack 360" })
+										React.createElement("img", { src: "/images/xcode.jpg", alt: "Velocity" })
 									),
 									React.createElement(
 										"div",
@@ -584,7 +584,7 @@ var Events = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "FullStack 360" })
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "Velocity" })
 									),
 									React.createElement(
 										"div",
@@ -626,7 +626,7 @@ var Events = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "team-image" },
-										React.createElement("img", { src: "/images/react.jpg", alt: "FullStack 360" })
+										React.createElement("img", { src: "/images/react.jpg", alt: "Velocity" })
 									),
 									React.createElement(
 										"div",
@@ -696,7 +696,7 @@ var Events = (function (Component) {
 									React.createElement(
 										"p",
 										{ className: "lead" },
-										"FS360 operates 24-week bootcamps that run during evenings and weekends. Designed for working professionals, our bootcamps train students for a career change without having to leave their current job."
+										"Velocity operates 6-week bootcamps that run Monday through Friday. Designed for career changers, our bootcamps train students to enter the field as junior developers and start contributing right away."
 									),
 									React.createElement(
 										"div",
@@ -881,15 +881,15 @@ var Events = (function (Component) {
 							React.createElement(
 								"h2",
 								{ className: "pricing-section--title center" },
-								"Sign Up"
+								"Cant make it to our live courses?"
 							),
 							React.createElement(
 								"div",
 								{ style: { textAlign: "center" } },
 								React.createElement(
 									"p",
-									{ style: { fontSize: 15 } },
-									"Cant make it to our live courses? Join our online service. ",
+									{ style: { fontSize: 16 } },
+									"Join our online service. ",
 									React.createElement("br", null),
 									"Online members have access to videos, code samples, the forum and more."
 								)
@@ -911,27 +911,26 @@ var Events = (function (Component) {
 										"FREE"
 									),
 									React.createElement(
-										"p",
-										{ className: "pricing--sentence" },
-										"Hobbyist"
-									),
-									React.createElement(
-										"ul",
-										{ className: "pricing--feature-list" },
+										"div",
+										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
 										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Limited Video Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Discounts to Live Events"
+											"ul",
+											{ className: "pricing--feature-list" },
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Limited Video Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Forum Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Discounts to Live Events"
+											)
 										)
 									),
 									React.createElement(
@@ -942,55 +941,7 @@ var Events = (function (Component) {
 								),
 								React.createElement(
 									"div",
-									{ className: "pricing--item" },
-									React.createElement(
-										"h3",
-										{ className: "pricing--title" },
-										"Starter"
-									),
-									React.createElement(
-										"div",
-										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
-										React.createElement(
-											"span",
-											{ className: "pricing--currency" },
-											"$"
-										),
-										"19.99/mo"
-									),
-									React.createElement(
-										"p",
-										{ className: "pricing--sentence" },
-										"Beginner"
-									),
-									React.createElement(
-										"ul",
-										{ className: "pricing--feature-list" },
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Full Video Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Discounts to Live Events"
-										)
-									),
-									React.createElement(
-										"button",
-										{ onClick: this.showRegistrationForm, id: "starter", className: "pricing--action" },
-										"Join"
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "pricing--item" },
+									{ className: "pricing--item", style: { marginLeft: 24, border: "1px solid #eee" } },
 									React.createElement(
 										"h3",
 										{ className: "pricing--title" },
@@ -1004,40 +955,39 @@ var Events = (function (Component) {
 											{ className: "pricing--currency" },
 											"$"
 										),
-										"29.99/mo"
+										"19.99/mo"
 									),
 									React.createElement(
-										"p",
-										{ className: "pricing--sentence" },
-										"Pro"
-									),
-									React.createElement(
-										"ul",
-										{ className: "pricing--feature-list" },
+										"div",
+										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
 										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Downloadable Code Samples"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Job Match Notifications"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Full Video Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Discounts to Live Events"
+											"ul",
+											{ className: "pricing--feature-list" },
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Full Video Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Downloadable Code Samples"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Customized Job Listings"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Forum Access"
+											),
+											React.createElement(
+												"li",
+												{ className: "pricing--feature" },
+												"Discounts to Live Events"
+											)
 										)
 									),
 									React.createElement(

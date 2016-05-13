@@ -44271,7 +44271,7 @@
 									{ className: "middot" },
 									"·"
 								),
-								" FS360"
+								" Velocity"
 							)
 						)
 					)
@@ -44896,12 +44896,12 @@
 									_react2.default.createElement(
 										'h3',
 										null,
-										'Become a Professional iOS Developer in 24 Weeks'
+										'Become a Professional iOS Developer in 6 Weeks'
 									),
 									_react2.default.createElement(
 										'span',
 										null,
-										'Learn iOS and Web development in the evening without leaving your current job.'
+										'Learn iOS and Web development in our accelerated 6-week Bootcamp.'
 									)
 								)
 							),
@@ -44935,7 +44935,7 @@
 										_react2.default.createElement(
 											'p',
 											null,
-											'On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with FS360. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the FS360 class, my skill-set will be appealing to companies looking to hire a junior developer.'
+											'On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer.'
 										),
 										_react2.default.createElement(
 											'div',
@@ -44979,10 +44979,10 @@
 									_react2.default.createElement(
 										'p',
 										null,
-										'FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.',
+										'Velocity is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.',
 										_react2.default.createElement('br', null),
 										_react2.default.createElement('br', null),
-										'Whether you are looking for a job as a software developer or starting your own company, FS360 will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,',
+										'Whether you are looking for a job as a software developer or starting your own company, Velocity will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,',
 										_react2.default.createElement(
 											'a',
 											{ target: '_blank', href: 'http://eranyc.com/' },
@@ -46450,7 +46450,7 @@
 									_react2.default.createElement(
 										'p',
 										null,
-										'FullStack 360 conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.'
+										'Velocity conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.'
 									),
 									_react2.default.createElement(
 										'p',
@@ -46526,7 +46526,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -46568,7 +46568,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { src: '/images/xcode.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { src: '/images/xcode.jpg', alt: 'Velocity' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -46611,7 +46611,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -46653,7 +46653,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { src: '/images/react.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { src: '/images/react.jpg', alt: 'Velocity' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -46723,7 +46723,7 @@
 									_react2.default.createElement(
 										'p',
 										{ className: 'lead' },
-										'FS360 operates 24-week bootcamps that run during evenings and weekends. Designed for working professionals, our bootcamps train students for a career change without having to leave their current job.'
+										'Velocity operates 6-week bootcamps that run Monday through Friday. Designed for career changers, our bootcamps train students to enter the field as junior developers and start contributing right away.'
 									),
 									_react2.default.createElement(
 										'div',
@@ -46908,15 +46908,15 @@
 							_react2.default.createElement(
 								'h2',
 								{ className: 'pricing-section--title center' },
-								'Sign Up'
+								'Cant make it to our live courses?'
 							),
 							_react2.default.createElement(
 								'div',
 								{ style: { textAlign: 'center' } },
 								_react2.default.createElement(
 									'p',
-									{ style: { fontSize: 15 } },
-									'Cant make it to our live courses? Join our online service. ',
+									{ style: { fontSize: 16 } },
+									'Join our online service. ',
 									_react2.default.createElement('br', null),
 									'Online members have access to videos, code samples, the forum and more.'
 								)
@@ -46938,27 +46938,26 @@
 										'FREE'
 									),
 									_react2.default.createElement(
-										'p',
-										{ className: 'pricing--sentence' },
-										'Hobbyist'
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pricing--feature-list' },
+										'div',
+										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
 										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Limited Video Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Forum Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Discounts to Live Events'
+											'ul',
+											{ className: 'pricing--feature-list' },
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Limited Video Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Forum Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Discounts to Live Events'
+											)
 										)
 									),
 									_react2.default.createElement(
@@ -46969,55 +46968,7 @@
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'pricing--item' },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Starter'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										_react2.default.createElement(
-											'span',
-											{ className: 'pricing--currency' },
-											'$'
-										),
-										'19.99/mo'
-									),
-									_react2.default.createElement(
-										'p',
-										{ className: 'pricing--sentence' },
-										'Beginner'
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pricing--feature-list' },
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Full Video Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Forum Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Discounts to Live Events'
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'starter', className: 'pricing--action' },
-										'Join'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item' },
+									{ className: 'pricing--item', style: { marginLeft: 24, border: '1px solid #eee' } },
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },
@@ -47031,40 +46982,39 @@
 											{ className: 'pricing--currency' },
 											'$'
 										),
-										'29.99/mo'
+										'19.99/mo'
 									),
 									_react2.default.createElement(
-										'p',
-										{ className: 'pricing--sentence' },
-										'Pro'
-									),
-									_react2.default.createElement(
-										'ul',
-										{ className: 'pricing--feature-list' },
+										'div',
+										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
 										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Downloadable Code Samples'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Job Match Notifications'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Full Video Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Forum Access'
-										),
-										_react2.default.createElement(
-											'li',
-											{ className: 'pricing--feature' },
-											'Discounts to Live Events'
+											'ul',
+											{ className: 'pricing--feature-list' },
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Full Video Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Downloadable Code Samples'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Customized Job Listings'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Forum Access'
+											),
+											_react2.default.createElement(
+												'li',
+												{ className: 'pricing--feature' },
+												'Discounts to Live Events'
+											)
 										)
 									),
 									_react2.default.createElement(

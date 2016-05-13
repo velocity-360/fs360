@@ -39,7 +39,7 @@ class Footer extends React.Component {
 
 							<div className="clear"></div>
 
-							<i className="icon-envelope2"></i> info@fullstack360.com <span className="middot">&middot;</span> FS360
+							<i className="icon-envelope2"></i> info@fullstack360.com <span className="middot">&middot;</span> Velocity
 						</div>
 
 					</div>

@@ -296,7 +296,7 @@ class Events extends Component {
 									<h3>Coding Education for Tomorrow</h3>
 								</div>
 								<p>
-									FullStack 360 conducts development courses that are relevant in the 
+									Velocity conducts development courses that are relevant in the 
 									startup and tech world today. We focus on the most up-to-date frameworks 
 									and libraries such as React, Angular, and Node JS. Our students are always 
 									prepared for rapid changes in the industry and are ready to work in tech 
@@ -349,7 +349,7 @@ class Events extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="FullStack 360" />
+									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -374,7 +374,7 @@ class Events extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/xcode.jpg" alt="FullStack 360" />
+									<img src="/images/xcode.jpg" alt="Velocity" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -402,7 +402,7 @@ class Events extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="FullStack 360" />
+									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -427,7 +427,7 @@ class Events extends Component {
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img src="/images/react.jpg" alt="FullStack 360" />
+									<img src="/images/react.jpg" alt="Velocity" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -469,9 +469,9 @@ class Events extends Component {
 								</div>
 
 								<p className="lead">
-									FS360 operates 24-week bootcamps that run during evenings and weekends. Designed 
-									for working professionals, our bootcamps train students for a career change without 
-									having to leave their current job.
+									Velocity operates 6-week bootcamps that run Monday through Friday. Designed 
+									for career changers, our bootcamps train students to enter the field as junior developers
+									and start contributing right away.
 								</p>
 
 								<div className="table-responsive">
@@ -532,10 +532,10 @@ class Events extends Component {
 
 				<section id="register" className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
 					<div className="container clearfix">
-						<h2 className="pricing-section--title center">Sign Up</h2>
+						<h2 className="pricing-section--title center">Cant make it to our live courses?</h2>
 						<div style={{textAlign:'center'}}>
-							<p style={{fontSize:15}}>
-								Cant make it to our live courses? Join our online service. <br />Online members 
+							<p style={{fontSize:16}}>
+								Join our online service. <br />Online members 
 								have access to videos, code samples, the forum and more.
 							</p>
 
@@ -544,36 +544,28 @@ class Events extends Component {
 							<div className="pricing--item">
 								<h3 className="pricing--title">Basic</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
-								<p className="pricing--sentence">Hobbyist</p>
-								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Limited Video Access</li>
-									<li className="pricing--feature">Forum Access</li>
-									<li className="pricing--feature">Discounts to Live Events</li>
-								</ul>
+								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Limited Video Access</li>
+										<li className="pricing--feature">Forum Access</li>
+										<li className="pricing--feature">Discounts to Live Events</li>
+									</ul>
+								</div>
 								<button onClick={this.showRegistrationForm} id="basic" className="pricing--action">Join</button>
 							</div>
-							<div className="pricing--item">
-								<h3 className="pricing--title">Starter</h3>
-								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
-								<p className="pricing--sentence">Beginner</p>
-								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Full Video Access</li>
-									<li className="pricing--feature">Forum Access</li>
-									<li className="pricing--feature">Discounts to Live Events</li>
-								</ul>
-								<button onClick={this.showRegistrationForm} id="starter" className="pricing--action">Join</button>
-							</div>
-							<div className="pricing--item">
+							<div className="pricing--item" style={{marginLeft:24, border:'1px solid #eee'}}>
 								<h3 className="pricing--title">Premium</h3>
-								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>29.99/mo</div>
-								<p className="pricing--sentence">Pro</p>
-								<ul className="pricing--feature-list">
-									<li className="pricing--feature">Downloadable Code Samples</li>
-									<li className="pricing--feature">Job Match Notifications</li>
-									<li className="pricing--feature">Full Video Access</li>
-									<li className="pricing--feature">Forum Access</li>
-									<li className="pricing--feature">Discounts to Live Events</li>
-								</ul>
+								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
+								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
+									<ul className="pricing--feature-list">
+										<li className="pricing--feature">Full Video Access</li>
+										<li className="pricing--feature">Downloadable Code Samples</li>
+										<li className="pricing--feature">Customized Job Listings</li>
+										<li className="pricing--feature">Forum Access</li>
+										<li className="pricing--feature">Discounts to Live Events</li>
+									</ul>
+
+								</div>
 								<button onClick={this.showRegistrationForm} id="premium" className="pricing--action">Join</button>
 							</div>
 						</div>

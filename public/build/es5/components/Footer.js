@@ -72,7 +72,7 @@ var Footer = (function (_React$Component) {
 									{ className: "middot" },
 									"·"
 								),
-								" FS360"
+								" Velocity"
 							)
 						)
 					)

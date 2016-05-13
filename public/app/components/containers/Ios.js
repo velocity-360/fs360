@@ -262,9 +262,9 @@ class Ios extends Component {
 
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
-		                        <h3>Become a Professional iOS Developer in 24 Weeks</h3>
+		                        <h3>Become a Professional iOS Developer in 6 Weeks</h3>
 		                        <span>
-		                        	Learn iOS and Web development in the evening without leaving your current job.
+		                        	Learn iOS and Web development in our accelerated 6-week Bootcamp.
 		                        </span>
 		                    </div>
 		                </div>
@@ -282,9 +282,9 @@ class Ios extends Component {
 									<p>
 										On the first day of class my instructor taught me more than I taught myself in 
 										the three weeks. I immediately knew I made the right choice to learn iOS with 
-										FS360. The hands-on structure of the class is the best use of my time and 
+										Velocity. The hands-on structure of the class is the best use of my time and 
 										prevents me from wasting time trying to get one thing off the ground. Instead, 
-										I was immediately building projects. I am confident that after the FS360 class, 
+										I was immediately building projects. I am confident that after the Velocity class, 
 										my skill-set will be appealing to companies looking to hire a junior developer.
 									</p>
 
@@ -301,12 +301,12 @@ class Ios extends Component {
 							<div className="col_two_third bottommargin-sm col_last">
 								<h3>Learn to Build Real iPhone Apps</h3>
 								<p>
-									FullStack 360 is designed for part-time students who want to accelerate their learning through a
+									Velocity is designed for part-time students who want to accelerate their learning through a
 									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
 									of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.
 									<br /><br />
 									Whether you are looking for a job as a software developer or starting your own company, 
-									FS360 will help the transition. We provide students with interview preparation, practice, 
+									Velocity will help the transition. We provide students with interview preparation, practice, 
 									and assigments gathered from previous students who have gone through many interview 
 									processes. Our former students have gone on to work at companies like the New York Times, 
 									<a target="_blank" href="http://eranyc.com/"> ERA Accelerator</a>, and several NYC based 

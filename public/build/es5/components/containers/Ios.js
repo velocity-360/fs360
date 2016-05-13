@@ -340,12 +340,12 @@ var Ios = (function (Component) {
 									React.createElement(
 										"h3",
 										null,
-										"Become a Professional iOS Developer in 24 Weeks"
+										"Become a Professional iOS Developer in 6 Weeks"
 									),
 									React.createElement(
 										"span",
 										null,
-										"Learn iOS and Web development in the evening without leaving your current job."
+										"Learn iOS and Web development in our accelerated 6-week Bootcamp."
 									)
 								)
 							),
@@ -379,7 +379,7 @@ var Ios = (function (Component) {
 										React.createElement(
 											"p",
 											null,
-											"On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with FS360. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the FS360 class, my skill-set will be appealing to companies looking to hire a junior developer."
+											"On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer."
 										),
 										React.createElement(
 											"div",
@@ -423,10 +423,10 @@ var Ios = (function (Component) {
 									React.createElement(
 										"p",
 										null,
-										"FullStack 360 is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.",
+										"Velocity is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.",
 										React.createElement("br", null),
 										React.createElement("br", null),
-										"Whether you are looking for a job as a software developer or starting your own company, FS360 will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,",
+										"Whether you are looking for a job as a software developer or starting your own company, Velocity will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,",
 										React.createElement(
 											"a",
 											{ target: "_blank", href: "http://eranyc.com/" },
