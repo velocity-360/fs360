@@ -584,7 +584,7 @@ var Ios = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"Mon-Fri, 9am - 5pm"
+												"Mon - Fri, 9am - 5pm"
 											)
 										),
 										React.createElement(

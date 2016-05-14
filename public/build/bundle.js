@@ -41799,12 +41799,12 @@
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-dark.png' },
-									_react2.default.createElement('img', { src: '/images/logo.png', alt: 'FullStack 360' })
+									_react2.default.createElement('img', { src: '/images/logo.png', alt: 'Velocity 360' })
 								),
 								_react2.default.createElement(
 									'a',
 									{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-dark@2x.png' },
-									_react2.default.createElement('img', { src: '/images/logo@2x.png', alt: 'FullStack 360' })
+									_react2.default.createElement('img', { src: '/images/logo@2x.png', alt: 'Velocity 360' })
 								)
 							),
 							_react2.default.createElement(
