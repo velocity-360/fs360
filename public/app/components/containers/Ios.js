@@ -285,7 +285,7 @@ class Ios extends Component {
 		        </section>
 
 
-				<section id="content">
+				<section>
 					<div className="content-wrap">
 
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
@@ -299,34 +299,7 @@ class Ios extends Component {
 
 						<div className="container clearfix" style={{paddingTop:64}}>
 
-							<div className="col_one_third bottommargin-sm hidden-xs" style={{background:'#f9f9f9'}}>
-								<div className="widget clearfix" style={{padding:24}}>
-									<h4>Spotlight</h4>
-									<img style={{width:128, borderRadius:64}} src="/images/briancorrea.jpg" alt="FullStaack 360" />
-									<hr />
-									<h3 style={{marginBottom:6}}>Brian Correa</h3>
-									<strong style={{color:'#1ABC9C'}}>iOS &amp; Node Course</strong>
-									<br />
-									<p>
-										On the first day of class my instructor taught me more than I taught myself in 
-										the three weeks. I immediately knew I made the right choice to learn iOS with 
-										Velocity. The hands-on structure of the class is the best use of my time and 
-										prevents me from wasting time trying to get one thing off the ground. Instead, 
-										I was immediately building projects. I am confident that after the Velocity class, 
-										my skill-set will be appealing to companies looking to hire a junior developer.
-									</p>
-
-									<div className="tagcloud">
-										<a href="#">iOS</a>
-										<a href="#">Node JS</a>
-										<a href="#">Swift</a>
-										<a href="#">REST API</a>
-										<a href="#">JavaScript</a>
-									</div>
-								</div>
-							</div>
-
-							<div className="col_two_third bottommargin-sm col_last">
+							<div className="col_two_third bottommargin-sm">
 								<h3>Learn to Build Real iPhone Apps</h3>
 								<p>
 									Velocity is designed for part-time students who want to accelerate their learning through a
@@ -396,12 +369,35 @@ class Ios extends Component {
 											</div>
 										</div>
 									</div>
-
 								</div>
-
-
-
 							</div>
+
+							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{background:'#f9f9f9'}}>
+								<div className="widget clearfix" style={{padding:24}}>
+									<h4>Spotlight</h4>
+									<img style={{width:128, borderRadius:64}} src="/images/briancorrea.jpg" alt="FullStaack 360" />
+									<hr />
+									<h3 style={{marginBottom:6}}>Brian Correa</h3>
+									<strong style={{color:'#1ABC9C'}}>iOS &amp; Node Course</strong>
+									<br />
+									<p>
+										On the first day of class my instructor taught me more than I taught myself in 
+										the three weeks. I immediately knew I made the right choice to learn iOS with 
+										Velocity. The hands-on structure of the class is the best use of my time and 
+										prevents me from wasting time trying to get one thing off the ground. Instead, 
+										I was immediately building projects. I am confident that after the Velocity class, 
+										my skill-set will be appealing to companies looking to hire a junior developer.
+									</p>
+
+									<div className="tagcloud">
+										<a href="#">iOS</a>
+										<a href="#">Node JS</a>
+										<a href="#">Swift</a>
+										<a href="#">REST API</a>
+										<a href="#">JavaScript</a>
+									</div>
+								</div>
+							</div>							
 
 						</div>
 					</div>

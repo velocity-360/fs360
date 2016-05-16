@@ -357,7 +357,7 @@ var Ios = (function (Component) {
 					),
 					React.createElement(
 						"section",
-						{ id: "content" },
+						null,
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },
@@ -384,67 +384,7 @@ var Ios = (function (Component) {
 								{ className: "container clearfix", style: { paddingTop: 64 } },
 								React.createElement(
 									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs", style: { background: "#f9f9f9" } },
-									React.createElement(
-										"div",
-										{ className: "widget clearfix", style: { padding: 24 } },
-										React.createElement(
-											"h4",
-											null,
-											"Spotlight"
-										),
-										React.createElement("img", { style: { width: 128, borderRadius: 64 }, src: "/images/briancorrea.jpg", alt: "FullStaack 360" }),
-										React.createElement("hr", null),
-										React.createElement(
-											"h3",
-											{ style: { marginBottom: 6 } },
-											"Brian Correa"
-										),
-										React.createElement(
-											"strong",
-											{ style: { color: "#1ABC9C" } },
-											"iOS & Node Course"
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"p",
-											null,
-											"On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer."
-										),
-										React.createElement(
-											"div",
-											{ className: "tagcloud" },
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"iOS"
-											),
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"Node JS"
-											),
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"Swift"
-											),
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"REST API"
-											),
-											React.createElement(
-												"a",
-												{ href: "#" },
-												"JavaScript"
-											)
-										)
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "col_two_third bottommargin-sm col_last" },
+									{ className: "col_two_third bottommargin-sm" },
 									React.createElement(
 										"h3",
 										null,
@@ -562,6 +502,66 @@ var Ios = (function (Component) {
 														"All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face."
 													)
 												)
+											)
+										)
+									)
+								),
+								React.createElement(
+									"div",
+									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { background: "#f9f9f9" } },
+									React.createElement(
+										"div",
+										{ className: "widget clearfix", style: { padding: 24 } },
+										React.createElement(
+											"h4",
+											null,
+											"Spotlight"
+										),
+										React.createElement("img", { style: { width: 128, borderRadius: 64 }, src: "/images/briancorrea.jpg", alt: "FullStaack 360" }),
+										React.createElement("hr", null),
+										React.createElement(
+											"h3",
+											{ style: { marginBottom: 6 } },
+											"Brian Correa"
+										),
+										React.createElement(
+											"strong",
+											{ style: { color: "#1ABC9C" } },
+											"iOS & Node Course"
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"p",
+											null,
+											"On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer."
+										),
+										React.createElement(
+											"div",
+											{ className: "tagcloud" },
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"iOS"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"Node JS"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"Swift"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"REST API"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"JavaScript"
 											)
 										)
 									)
