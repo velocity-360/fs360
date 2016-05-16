@@ -22,7 +22,7 @@ module.exports = {
 
 	showModal: function () {
 		this.handler.open({
-			name: "FullStack 360",
+			name: "Velocity 360",
 			description: "Premium Subscription"
 		});
 	}

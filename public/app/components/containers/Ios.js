@@ -38,6 +38,25 @@ class Ios extends Component {
 		}
 	}
 
+	componentDidMount(){
+		var _this = this
+		stripe.initialize(function(token){
+			_this.setState({showLoader: true})
+			api.submitStripeToken(token, function(){
+				api.handleGet('/account/currentuser', {}, function(err, response){
+					_this.setState({showLoader: false})
+					if (err){
+						alert(response.message)
+						return
+					}
+
+					window.location.href = '/account'
+				});
+			})			
+		})
+	}
+
+
 	updateVisitor(event){
 		console.log('updateVisitor: '+event.target.id)
 		event.preventDefault()
@@ -52,6 +71,15 @@ class Ios extends Component {
 	updateUserRegistration(event){
 //		console.log('updateUserRegistration: '+event.target.id)
 		event.preventDefault()
+
+		if (event.target.id == 'membershiptype'){
+			this.setState({
+				membershiptype: event.target.value
+			})
+
+			return
+		}
+
 
 		var updatedUser = Object.assign({}, this.props.currentUser);
 		if (event.target.id == 'name'){
@@ -535,7 +563,7 @@ class Ios extends Component {
 }
 
 const stateToProps = function(state) {
-	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
+//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
 
     return {
         currentUser: state.profileReducer.currentUser,

@@ -105,7 +105,7 @@ var Home = (function (Component) {
 		},
 		updateUserRegistration: {
 			value: function updateUserRegistration(event) {
-				//		console.log('updateUserRegistration: '+event.target.id)
+				console.log("updateUserRegistration: " + event.target.id);
 				event.preventDefault();
 
 				if (event.target.id == "course") {
@@ -115,17 +115,15 @@ var Home = (function (Component) {
 					return;
 				}
 
-				if (event.target.id == "membershiptype") {
-					this.setState({
-						membershiptype: event.target.value
-					});
-				}
-
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				if (event.target.id == "name") {
 					var parts = event.target.value.split(" ");
 					updatedUser.firstName = parts[0];
 					if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
+				} else if (event.target.id == "membershiptype") {
+					this.setState({
+						membershiptype: event.target.value
+					});
 				} else {
 					updatedUser[event.target.id] = event.target.value;
 				}

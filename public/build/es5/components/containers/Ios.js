@@ -70,6 +70,27 @@ var Ios = (function (Component) {
 	_inherits(Ios, Component);
 
 	_prototypeProperties(Ios, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				var _this = this;
+				stripe.initialize(function (token) {
+					_this.setState({ showLoader: true });
+					api.submitStripeToken(token, function () {
+						api.handleGet("/account/currentuser", {}, function (err, response) {
+							_this.setState({ showLoader: false });
+							if (err) {
+								alert(response.message);
+								return;
+							}
+
+							window.location.href = "/account";
+						});
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
 				console.log("updateVisitor: " + event.target.id);
@@ -88,6 +109,15 @@ var Ios = (function (Component) {
 			value: function updateUserRegistration(event) {
 				//		console.log('updateUserRegistration: '+event.target.id)
 				event.preventDefault();
+
+				if (event.target.id == "membershiptype") {
+					this.setState({
+						membershiptype: event.target.value
+					});
+
+					return;
+				}
+
 
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				if (event.target.id == "name") {
@@ -876,7 +906,7 @@ var Ios = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	console.log("STATE TO PROPS: " + JSON.stringify(state.profileReducer.currentUser));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
 
 	return {
 		currentUser: state.profileReducer.currentUser,

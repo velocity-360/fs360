@@ -22311,7 +22311,7 @@
 		}, {
 			key: 'updateUserRegistration',
 			value: function updateUserRegistration(event) {
-				//		console.log('updateUserRegistration: '+event.target.id)
+				console.log('updateUserRegistration: ' + event.target.id);
 				event.preventDefault();
 	
 				if (event.target.id == 'course') {
@@ -22321,17 +22321,15 @@
 					return;
 				}
 	
-				if (event.target.id == 'membershiptype') {
-					this.setState({
-						membershiptype: event.target.value
-					});
-				}
-	
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				if (event.target.id == 'name') {
 					var parts = event.target.value.split(' ');
 					updatedUser['firstName'] = parts[0];
 					if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
+				} else if (event.target.id == 'membershiptype') {
+					this.setState({
+						membershiptype: event.target.value
+					});
 				} else {
 					updatedUser[event.target.id] = event.target.value;
 				}
@@ -44538,7 +44536,7 @@
 	
 		showModal: function showModal() {
 			this.handler.open({
-				name: 'FullStack 360',
+				name: 'Velocity 360',
 				description: 'Premium Subscription'
 			});
 		}
@@ -44644,6 +44642,25 @@
 		}
 	
 		_createClass(Ios, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this = this;
+				_StripeUtils2.default.initialize(function (token) {
+					_this.setState({ showLoader: true });
+					_api2.default.submitStripeToken(token, function () {
+						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+							_this.setState({ showLoader: false });
+							if (err) {
+								alert(response.message);
+								return;
+							}
+	
+							window.location.href = '/account';
+						});
+					});
+				});
+			}
+		}, {
 			key: 'updateVisitor',
 			value: function updateVisitor(event) {
 				console.log('updateVisitor: ' + event.target.id);
@@ -44660,6 +44677,14 @@
 			value: function updateUserRegistration(event) {
 				//		console.log('updateUserRegistration: '+event.target.id)
 				event.preventDefault();
+	
+				if (event.target.id == 'membershiptype') {
+					this.setState({
+						membershiptype: event.target.value
+					});
+	
+					return;
+				}
 	
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				if (event.target.id == 'name') {
@@ -45429,7 +45454,7 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		console.log('STATE TO PROPS: ' + JSON.stringify(state.profileReducer.currentUser));
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
