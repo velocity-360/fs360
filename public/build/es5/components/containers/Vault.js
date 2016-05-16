@@ -141,32 +141,25 @@ var Vault = (function (Component) {
 					}
 					return React.createElement(
 						"div",
-						{ key: sample.id, className: "col-sm-6 col-md-4" },
+						{ key: sample.id, href: "#", className: "list-group-item" },
+						React.createElement("img", { style: { float: "left", width: 96, marginRight: 24 }, src: "/images/" + image }),
 						React.createElement(
-							"div",
-							{ className: "thumbnail", style: { padding: 12 } },
-							React.createElement("img", { alt: "FullStack 360", src: "/images/" + image, style: { display: "block" } }),
-							React.createElement(
-								"div",
-								{ className: "caption" },
-								React.createElement(
-									"h3",
-									{ style: { marginBottom: 6 } },
-									sample.title
-								),
-								React.createElement("hr", { style: { marginTop: 0 } }),
-								React.createElement(
-									"p",
-									null,
-									sample.description
-								),
-								React.createElement(
-									"a",
-									{ href: sample.url, className: "btn btn-primary", role: "button" },
-									"Download"
-								)
-							)
-						)
+							"h4",
+							{ className: "list-group-item-heading" },
+							sample.title
+						),
+						React.createElement(
+							"p",
+							{ className: "list-group-item-text" },
+							sample.description
+						),
+						React.createElement(
+							"a",
+							{ href: sample.url, style: { float: "right" }, className: "btn btn-primary", role: "button" },
+							"Download"
+						),
+						React.createElement("br", null),
+						React.createElement("br", null)
 					);
 				});
 
@@ -213,7 +206,7 @@ var Vault = (function (Component) {
 									),
 									React.createElement(
 										"div",
-										{ className: "row" },
+										{ className: "list-group" },
 										list
 									)
 								)

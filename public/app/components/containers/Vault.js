@@ -95,17 +95,16 @@ class Vault extends Component {
 				image = 'apple-2.jpg'
 			}
 			return (
-	              <div key={sample.id} className="col-sm-6 col-md-4">
-	                <div className="thumbnail" style={{padding:12}}>
-	                  <img alt="FullStack 360" src={'/images/'+image} style={{display: 'block'}} />
-	                  <div className="caption">
-	                    <h3 style={{marginBottom:6}}>{sample.title}</h3>
-	                    <hr style={{marginTop:0}} />
-	                    <p>{sample.description}</p>
-	                    <a href={sample.url} className="btn btn-primary" role="button">Download</a>
-	                  </div>
-	                </div>
-	              </div>
+
+                <div key={sample.id} href="#" className="list-group-item">
+                	<img style={{float:'left', width:96, marginRight:24}} src={'/images/'+image} />
+                    <h4 className="list-group-item-heading">{sample.title}</h4>
+                    <p className="list-group-item-text">
+						{sample.description}
+                    </p>
+		            <a href={sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a>
+		            <br /><br />
+                </div>
 			)
 		})
 
@@ -131,9 +130,13 @@ class Vault extends Component {
 									</div>
 								</div>
 
-								<div className="row">
+		                        <div className="list-group">
 									{list}
 		                        </div>
+
+
+
+
 
 							</div>
 						</div>

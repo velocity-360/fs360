@@ -63376,32 +63376,25 @@
 					}
 					return _react2.default.createElement(
 						'div',
-						{ key: sample.id, className: 'col-sm-6 col-md-4' },
+						{ key: sample.id, href: '#', className: 'list-group-item' },
+						_react2.default.createElement('img', { style: { float: 'left', width: 96, marginRight: 24 }, src: '/images/' + image }),
 						_react2.default.createElement(
-							'div',
-							{ className: 'thumbnail', style: { padding: 12 } },
-							_react2.default.createElement('img', { alt: 'FullStack 360', src: '/images/' + image, style: { display: 'block' } }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'caption' },
-								_react2.default.createElement(
-									'h3',
-									{ style: { marginBottom: 6 } },
-									sample.title
-								),
-								_react2.default.createElement('hr', { style: { marginTop: 0 } }),
-								_react2.default.createElement(
-									'p',
-									null,
-									sample.description
-								),
-								_react2.default.createElement(
-									'a',
-									{ href: sample.url, className: 'btn btn-primary', role: 'button' },
-									'Download'
-								)
-							)
-						)
+							'h4',
+							{ className: 'list-group-item-heading' },
+							sample.title
+						),
+						_react2.default.createElement(
+							'p',
+							{ className: 'list-group-item-text' },
+							sample.description
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
+							'Download'
+						),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('br', null)
 					);
 				});
 	
@@ -63447,7 +63440,7 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'row' },
+										{ className: 'list-group' },
 										list
 									)
 								)
