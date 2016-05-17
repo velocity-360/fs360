@@ -147,7 +147,7 @@ class Vault extends Component {
 			return <CodeSample key={i} sample={sample} loginAction={_this.showLogin} accountType={_this.props.currentUser.accountType} />
 		})
 
-		var btnAddsample = (this.props.currentUser.isAdmin == 'yes' ) ? null : <button onClick={this.openModal} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Add Code Sample</button>
+		var btnAddsample = (this.props.currentUser.isAdmin == 'yes' ) ? <button onClick={this.openModal} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Add Code Sample</button> : null
 
 		return (
 			<div style={{background:'#f5f5f5'}}>
