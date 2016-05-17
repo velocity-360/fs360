@@ -97,7 +97,7 @@ var CodeSample = (function (Component) {
 				return React.createElement(
 					"div",
 					{ key: this.props.sample.id, href: "#", className: "list-group-item" },
-					React.createElement("img", { style: { float: "right", width: 96, borderRadius: 48, marginRight: 24 }, src: "/images/" + image }),
+					React.createElement("img", { style: { float: "left", width: 96, borderRadius: 48, marginRight: 24 }, src: "/images/" + image }),
 					React.createElement(
 						"h4",
 						{ className: "list-group-item-heading" },
@@ -105,7 +105,7 @@ var CodeSample = (function (Component) {
 					),
 					React.createElement(
 						"div",
-						{ className: "tagcloud clearfix", style: { marginTop: 0 } },
+						{ className: "tagcloud clearfix", style: { marginTop: 0, marginBottom: 0 } },
 						tags
 					),
 					React.createElement(

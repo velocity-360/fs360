@@ -63655,7 +63655,7 @@
 				return _react2.default.createElement(
 					'div',
 					{ key: this.props.sample.id, href: '#', className: 'list-group-item' },
-					_react2.default.createElement('img', { style: { float: 'right', width: 96, borderRadius: 48, marginRight: 24 }, src: '/images/' + image }),
+					_react2.default.createElement('img', { style: { float: 'left', width: 96, borderRadius: 48, marginRight: 24 }, src: '/images/' + image }),
 					_react2.default.createElement(
 						'h4',
 						{ className: 'list-group-item-heading' },
@@ -63663,7 +63663,7 @@
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'tagcloud clearfix', style: { marginTop: 0 } },
+						{ className: 'tagcloud clearfix', style: { marginTop: 0, marginBottom: 0 } },
 						tags
 					),
 					_react2.default.createElement(
