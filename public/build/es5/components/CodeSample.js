@@ -110,7 +110,7 @@ var CodeSample = (function (Component) {
 					),
 					React.createElement(
 						"p",
-						{ className: "list-group-item-text" },
+						{ className: "list-group-item-text", style: { marginTop: 6 } },
 						this.props.sample.description
 					),
 					React.createElement("br", null),

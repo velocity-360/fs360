@@ -41,7 +41,7 @@ class CodeSample extends Component {
 				<div className="tagcloud clearfix" style={{marginTop:0}}>
 					{tags}
 				</div>
-                <p className="list-group-item-text">
+                <p className="list-group-item-text" style={{marginTop:6}}>
 					{this.props.sample.description}
                 </p>
                 <br />

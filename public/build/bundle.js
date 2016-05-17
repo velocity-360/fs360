@@ -63656,7 +63656,7 @@
 					),
 					_react2.default.createElement(
 						'p',
-						{ className: 'list-group-item-text' },
+						{ className: 'list-group-item-text', style: { marginTop: 6 } },
 						this.props.sample.description
 					),
 					_react2.default.createElement('br', null),
