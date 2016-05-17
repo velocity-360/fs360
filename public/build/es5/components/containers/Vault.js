@@ -46,8 +46,13 @@ var Vault = (function (Component) {
 		this.closeModal = this.closeModal.bind(this);
 		this.updateSample = this.updateSample.bind(this);
 		this.createSample = this.createSample.bind(this);
+		this.showLogin = this.showLogin.bind(this);
+		this.login = this.login.bind(this);
+		this.updateLogin = this.updateLogin.bind(this);
 		this.state = {
+			showLoader: false,
 			showModal: false,
+			showLogin: false,
 			sample: {
 				title: "",
 				topic: "ios",
@@ -74,6 +79,7 @@ var Vault = (function (Component) {
 		closeModal: {
 			value: function closeModal() {
 				this.setState({
+					showLogin: false,
 					showModal: false
 				});
 			},
@@ -141,11 +147,58 @@ var Vault = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		showLogin: {
+			value: function showLogin() {
+				console.log("LOGIN");
+				this.setState({
+					showLogin: true
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateLogin: {
+			value: function updateLogin(event) {
+				event.preventDefault();
+
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				updatedUser[event.target.id] = event.target.value;
+				store.dispatch(actions.updateCurrentUser(updatedUser));
+			},
+			writable: true,
+			configurable: true
+		},
+		login: {
+			value: function login(event) {
+				event.preventDefault();
+				this.setState({
+					showModal: false,
+					showLogin: false,
+					showLoader: true
+				});
+
+				var _this = this;
+				api.handlePost("/account/login", this.props.currentUser, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					store.dispatch(actions.currentUserRecieved(response.profile));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var _this = this;
 				var list = this.props.samples.map(function (sample, i) {
-					return React.createElement(CodeSample, { key: i, sample: sample, accountType: _this.props.currentUser.accountType });
+					return React.createElement(CodeSample, { key: i, sample: sample, loginAction: _this.showLogin, accountType: _this.props.currentUser.accountType });
 				});
 
 				var btnAddsample = this.props.currentUser.id == null ? null : React.createElement(
@@ -195,6 +248,36 @@ var Vault = (function (Component) {
 										list
 									)
 								)
+							)
+						)
+					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showLogin, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h2",
+								null,
+								"Login"
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.password, className: "form-control", type: "password", id: "password", placeholder: "Password" }),
+							React.createElement("br", null)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ onClick: this.login, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Log In"
 							)
 						)
 					),
@@ -284,8 +367,8 @@ var stateToProps = function (state) {
 
 	return {
 		currentUser: state.profileReducer.currentUser,
-		samples: state.sampleReducer.samplesArray
-	};
+		samples: state.sampleReducer.samplesArray,
+		loaderOptions: state.staticReducer.loaderConfig };
 };
 
 

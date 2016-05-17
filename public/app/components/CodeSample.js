@@ -5,9 +5,18 @@ class CodeSample extends Component {
 
 	constructor(props, context){
 		super(props, context)
-		// this.login = this.login.bind(this)
-		// this.subscribe = this.subscribe.bind(this)
+		this.login = this.login.bind(this)
+		this.subscribe = this.subscribe.bind(this)
+	}
 
+	login(event){
+		event.preventDefault()
+		this.props.loginAction()
+	}
+
+	subscribe(event){
+		event.preventDefault()
+		this.props.subscribeAction()
 	}
 
 	render(){
@@ -36,6 +45,8 @@ class CodeSample extends Component {
 			btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to download.</div>
 		}
 
+		btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to download.</div>
+
 		var tags = this.props.sample.tags.map(function(tag, i){
 			return <a key={i} style={{background:'#f9f9f9', marginRight:6}} href="#">{tag}</a>
 		})
@@ -55,8 +66,6 @@ class CodeSample extends Component {
                 <br />
                 { btnDownload }	            
             </div>
-
-
 		)
 	}
 

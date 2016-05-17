@@ -18,8 +18,13 @@ class Vault extends Component {
 		this.closeModal = this.closeModal.bind(this)
 		this.updateSample = this.updateSample.bind(this)
 		this.createSample = this.createSample.bind(this)
+		this.showLogin = this.showLogin.bind(this)
+		this.login = this.login.bind(this)
+		this.updateLogin = this.updateLogin.bind(this)
 		this.state = {
+			showLoader: false,
 			showModal: false,
+			showLogin: false,
 			sample:{
 				title:'',
 				topic:'ios',
@@ -39,6 +44,7 @@ class Vault extends Component {
 
 	closeModal(){
 		this.setState({
+			showLogin: false,
 			showModal: false
 		})
 	}
@@ -96,11 +102,49 @@ class Vault extends Component {
 		})
 	}
 
-	render(){
+	showLogin(){
+		console.log('LOGIN')
+		this.setState({
+			showLogin: true
+		})
+	}
+
+	updateLogin(event){
+		event.preventDefault()
+
+		var updatedUser = Object.assign({}, this.props.currentUser);
+		updatedUser[event.target.id] = event.target.value
+		store.dispatch(actions.updateCurrentUser(updatedUser));
+	}
+
+	login(event){
+		event.preventDefault()
+		this.setState({
+			showModal: false,
+			showLogin: false,
+			showLoader: true
+		})
 
 		var _this = this
+		api.handlePost('/account/login', this.props.currentUser, function(err, response){
+			_this.setState({
+				showLoader: false
+			})
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			store.dispatch(actions.currentUserRecieved(response.profile));
+		});
+	}
+
+
+	render(){
+		var _this = this
 		var list = this.props.samples.map(function(sample, i){
-			return <CodeSample key={i} sample={sample} accountType={_this.props.currentUser.accountType} />
+			return <CodeSample key={i} sample={sample} loginAction={_this.showLogin} accountType={_this.props.currentUser.accountType} />
 		})
 
 		var btnAddsample = (this.props.currentUser.id == null ) ? null : <button onClick={this.openModal} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Add Code Sample</button>
@@ -133,6 +177,20 @@ class Vault extends Component {
 						</div>
 					</div>
 				</section>
+
+		        <Modal show={this.state.showLogin} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h2>Login</h2>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<input onChange={this.updateLogin} value={this.props.currentUser.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
+			        	<input onChange={this.updateLogin} value={this.props.currentUser.password} className="form-control" type="password" id="password" placeholder="Password" /><br />
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a onClick={this.login} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
+			        </Modal.Footer>
+		        </Modal>
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal} bsSize="large" >
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
@@ -176,7 +234,8 @@ const stateToProps = function(state) {
 
     return {
         currentUser: state.profileReducer.currentUser,
-        samples: state.sampleReducer.samplesArray
+        samples: state.sampleReducer.samplesArray,
+        loaderOptions: state.staticReducer.loaderConfig,
     }
 }
 

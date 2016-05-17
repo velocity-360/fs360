@@ -20,11 +20,29 @@ var CodeSample = (function (Component) {
 		_classCallCheck(this, CodeSample);
 
 		_get(Object.getPrototypeOf(CodeSample.prototype), "constructor", this).call(this, props, context);
+		this.login = this.login.bind(this);
+		this.subscribe = this.subscribe.bind(this);
 	}
 
 	_inherits(CodeSample, Component);
 
 	_prototypeProperties(CodeSample, null, {
+		login: {
+			value: function login(event) {
+				event.preventDefault();
+				this.props.loginAction();
+			},
+			writable: true,
+			configurable: true
+		},
+		subscribe: {
+			value: function subscribe(event) {
+				event.preventDefault();
+				this.props.subscribeAction();
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var image = "";
@@ -96,6 +114,24 @@ var CodeSample = (function (Component) {
 					);
 				}
 
+				btnDownload = React.createElement(
+					"div",
+					{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12 } },
+					"Please ",
+					React.createElement(
+						"a",
+						{ onClick: this.login, style: { color: "red" }, href: "#" },
+						"log in"
+					),
+					" or ",
+					React.createElement(
+						"a",
+						{ style: { color: "red" }, href: "/#register" },
+						"register"
+					),
+					" to download."
+				);
+
 				var tags = this.props.sample.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
@@ -138,5 +174,3 @@ var CodeSample = (function (Component) {
 })(Component);
 
 module.exports = CodeSample;
-// this.login = this.login.bind(this)
-// this.subscribe = this.subscribe.bind(this)

@@ -63318,8 +63318,13 @@
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.updateSample = _this2.updateSample.bind(_this2);
 			_this2.createSample = _this2.createSample.bind(_this2);
+			_this2.showLogin = _this2.showLogin.bind(_this2);
+			_this2.login = _this2.login.bind(_this2);
+			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.state = {
+				showLoader: false,
 				showModal: false,
+				showLogin: false,
 				sample: {
 					title: '',
 					topic: 'ios',
@@ -63343,6 +63348,7 @@
 			key: 'closeModal',
 			value: function closeModal() {
 				this.setState({
+					showLogin: false,
 					showModal: false
 				});
 			}
@@ -63401,12 +63407,52 @@
 				});
 			}
 		}, {
-			key: 'render',
-			value: function render() {
+			key: 'showLogin',
+			value: function showLogin() {
+				console.log('LOGIN');
+				this.setState({
+					showLogin: true
+				});
+			}
+		}, {
+			key: 'updateLogin',
+			value: function updateLogin(event) {
+				event.preventDefault();
+	
+				var updatedUser = Object.assign({}, this.props.currentUser);
+				updatedUser[event.target.id] = event.target.value;
+				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				this.setState({
+					showModal: false,
+					showLogin: false,
+					showLoader: true
+				});
 	
 				var _this = this;
+				_api2.default.handlePost('/account/login', this.props.currentUser, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this = this;
 				var list = this.props.samples.map(function (sample, i) {
-					return _react2.default.createElement(_CodeSample2.default, { key: i, sample: sample, accountType: _this.props.currentUser.accountType });
+					return _react2.default.createElement(_CodeSample2.default, { key: i, sample: sample, loginAction: _this.showLogin, accountType: _this.props.currentUser.accountType });
 				});
 	
 				var btnAddsample = this.props.currentUser.id == null ? null : _react2.default.createElement(
@@ -63455,6 +63501,36 @@
 										list
 									)
 								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showLogin, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Login'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.password, className: 'form-control', type: 'password', id: 'password', placeholder: 'Password' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.login, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Log In'
 							)
 						)
 					),
@@ -63541,7 +63617,8 @@
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			samples: state.sampleReducer.samplesArray
+			samples: state.sampleReducer.samplesArray,
+			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
 	
@@ -63577,12 +63654,26 @@
 		function CodeSample(props, context) {
 			_classCallCheck(this, CodeSample);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).call(this, props, context));
-			// this.login = this.login.bind(this)
-			// this.subscribe = this.subscribe.bind(this)
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).call(this, props, context));
+	
+			_this.login = _this.login.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
+			return _this;
 		}
 	
 		_createClass(CodeSample, [{
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				this.props.loginAction();
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				this.props.subscribeAction();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var image = '';
@@ -63653,6 +63744,24 @@
 						' to download.'
 					);
 				}
+	
+				btnDownload = _react2.default.createElement(
+					'div',
+					{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12 } },
+					'Please ',
+					_react2.default.createElement(
+						'a',
+						{ onClick: this.login, style: { color: 'red' }, href: '#' },
+						'log in'
+					),
+					' or ',
+					_react2.default.createElement(
+						'a',
+						{ style: { color: 'red' }, href: '/#register' },
+						'register'
+					),
+					' to download.'
+				);
 	
 				var tags = this.props.sample.tags.map(function (tag, i) {
 					return _react2.default.createElement(
