@@ -114,23 +114,6 @@ var CodeSample = (function (Component) {
 					);
 				}
 
-				btnDownload = React.createElement(
-					"div",
-					{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12 } },
-					"Please ",
-					React.createElement(
-						"a",
-						{ onClick: this.login, style: { color: "red" }, href: "#" },
-						"log in"
-					),
-					" or ",
-					React.createElement(
-						"a",
-						{ style: { color: "red" }, href: "/#register" },
-						"register"
-					),
-					" to download."
-				);
 
 				var tags = this.props.sample.tags.map(function (tag, i) {
 					return React.createElement(
