@@ -45,10 +45,11 @@ class CodeSample extends Component {
             <div key={this.props.sample.id} href="#" className="list-group-item">
             	<img style={{float:'left', width:96, borderRadius:48, marginRight:24}} src={'/images/'+image} />
                 <h4 className="list-group-item-heading">{this.props.sample.title}</h4>
+				<div className="tagcloud" style={{marginTop:6, marginBottom:0}}>
+					{tags}
+				</div>
+				<div className="clearfix"></div>
                 <p className="list-group-item-text" style={{marginTop:0}}>
-					<div className="tagcloud" style={{marginTop:6, marginBottom:0}}>
-						{tags}
-					</div>
 					{this.props.sample.description}
                 </p>
                 <br />

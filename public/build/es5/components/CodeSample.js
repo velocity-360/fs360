@@ -115,13 +115,14 @@ var CodeSample = (function (Component) {
 						this.props.sample.title
 					),
 					React.createElement(
+						"div",
+						{ className: "tagcloud", style: { marginTop: 6, marginBottom: 0 } },
+						tags
+					),
+					React.createElement("div", { className: "clearfix" }),
+					React.createElement(
 						"p",
 						{ className: "list-group-item-text", style: { marginTop: 0 } },
-						React.createElement(
-							"div",
-							{ className: "tagcloud", style: { marginTop: 6, marginBottom: 0 } },
-							tags
-						),
 						this.props.sample.description
 					),
 					React.createElement("br", null),

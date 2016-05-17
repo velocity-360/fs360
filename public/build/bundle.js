@@ -63672,13 +63672,14 @@
 						this.props.sample.title
 					),
 					_react2.default.createElement(
+						'div',
+						{ className: 'tagcloud', style: { marginTop: 6, marginBottom: 0 } },
+						tags
+					),
+					_react2.default.createElement('div', { className: 'clearfix' }),
+					_react2.default.createElement(
 						'p',
 						{ className: 'list-group-item-text', style: { marginTop: 0 } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'tagcloud', style: { marginTop: 6, marginBottom: 0 } },
-							tags
-						),
 						this.props.sample.description
 					),
 					_react2.default.createElement('br', null),
