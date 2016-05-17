@@ -42,7 +42,7 @@ class CodeSample extends Component {
 					{tags}
 				</div>
                 <br />
-	            <a href={this.props.sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a>
+                { btnDownload }
 	            <br /><br />
             </div>
 

@@ -85,11 +85,7 @@ var CodeSample = (function (Component) {
 						tags
 					),
 					React.createElement("br", null),
-					React.createElement(
-						"a",
-						{ href: this.props.sample.url, style: { float: "right" }, className: "btn btn-primary", role: "button" },
-						"Download"
-					),
+					btnDownload,
 					React.createElement("br", null),
 					React.createElement("br", null)
 				);

@@ -63631,11 +63631,7 @@
 						tags
 					),
 					_react2.default.createElement('br', null),
-					_react2.default.createElement(
-						'a',
-						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
-						'Download'
-					),
+					btnDownload,
 					_react2.default.createElement('br', null),
 					_react2.default.createElement('br', null)
 				);
