@@ -15,15 +15,11 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
-var TextUtils = _interopRequire(require("../utils/TextUtils"));
-
 var CodeSample = (function (Component) {
 	function CodeSample(props, context) {
 		_classCallCheck(this, CodeSample);
 
 		_get(Object.getPrototypeOf(CodeSample.prototype), "constructor", this).call(this, props, context);
-		this.login = this.login.bind(this);
-		this.subscribe = this.subscribe.bind(this);
 	}
 
 	_inherits(CodeSample, Component);
@@ -41,14 +37,6 @@ var CodeSample = (function (Component) {
 				if (this.props.sample.topic == "react") {
 					image = "apple-2.jpg";
 				}
-
-				var tags = this.props.sample.tags.map(function (tag, i) {
-					return React.createElement(
-						"a",
-						{ key: i, style: { background: "#f9f9f9", marginRight: 6 }, href: "#" },
-						tag
-					);
-				});
 
 				var btnDownload = "";
 				if (this.props.sample.isPublic == "yes") {
@@ -108,6 +96,15 @@ var CodeSample = (function (Component) {
 					);
 				}
 
+				var tags = this.props.sample.tags.map(function (tag, i) {
+					return React.createElement(
+						"a",
+						{ key: i, style: { background: "#f9f9f9", marginRight: 6 }, href: "#" },
+						tag
+					);
+				});
+
+
 				return React.createElement(
 					"div",
 					{ key: this.props.sample.id, href: "#", className: "list-group-item" },
@@ -119,9 +116,10 @@ var CodeSample = (function (Component) {
 					),
 					React.createElement(
 						"div",
-						{ className: "tagcloud clearfix", style: { marginTop: 6, marginBottom: 0 } },
+						{ className: "tagcloud", style: { marginTop: 6, marginBottom: 0 } },
 						tags
 					),
+					React.createElement("hr", null),
 					React.createElement(
 						"p",
 						{ className: "list-group-item-text", style: { marginTop: 0 } },
@@ -140,3 +138,5 @@ var CodeSample = (function (Component) {
 })(Component);
 
 module.exports = CodeSample;
+// this.login = this.login.bind(this)
+// this.subscribe = this.subscribe.bind(this)

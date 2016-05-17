@@ -63563,10 +63563,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(471);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63581,12 +63577,9 @@
 		function CodeSample(props, context) {
 			_classCallCheck(this, CodeSample);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).call(this, props, context));
-	
-			_this.login = _this.login.bind(_this);
-			_this.subscribe = _this.subscribe.bind(_this);
-	
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).call(this, props, context));
+			// this.login = this.login.bind(this)
+			// this.subscribe = this.subscribe.bind(this)
 		}
 	
 		_createClass(CodeSample, [{
@@ -63602,14 +63595,6 @@
 				if (this.props.sample.topic == 'react') {
 					image = 'apple-2.jpg';
 				}
-	
-				var tags = this.props.sample.tags.map(function (tag, i) {
-					return _react2.default.createElement(
-						'a',
-						{ key: i, style: { background: '#f9f9f9', marginRight: 6 }, href: '#' },
-						tag
-					);
-				});
 	
 				var btnDownload = '';
 				if (this.props.sample.isPublic == 'yes') {
@@ -63669,6 +63654,14 @@
 					);
 				}
 	
+				var tags = this.props.sample.tags.map(function (tag, i) {
+					return _react2.default.createElement(
+						'a',
+						{ key: i, style: { background: '#f9f9f9', marginRight: 6 }, href: '#' },
+						tag
+					);
+				});
+	
 				return _react2.default.createElement(
 					'div',
 					{ key: this.props.sample.id, href: '#', className: 'list-group-item' },
@@ -63680,9 +63673,10 @@
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'tagcloud clearfix', style: { marginTop: 6, marginBottom: 0 } },
+						{ className: 'tagcloud', style: { marginTop: 6, marginBottom: 0 } },
 						tags
 					),
+					_react2.default.createElement('hr', null),
 					_react2.default.createElement(
 						'p',
 						{ className: 'list-group-item-text', style: { marginTop: 0 } },
