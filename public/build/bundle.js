@@ -63607,8 +63607,37 @@
 						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
 						'Download'
 					);
+				} else if (this.props.accountType == 'basic' || this.props.accountType == '') {
+					btnDownload = _react2.default.createElement(
+						'div',
+						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+						'To download, please ',
+						_react2.default.createElement(
+							'a',
+							{ style: { color: 'red' }, onClick: this.subscribe, href: '#' },
+							'upgrade'
+						),
+						' your account to Premium'
+					);
 				} else {
-					btnDownload = 'Please Log in or Subscribe to Download';
+					// not logged in
+					btnDownload = _react2.default.createElement(
+						'div',
+						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+						'Please ',
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.login, style: { color: 'red' }, href: '#' },
+							'log in'
+						),
+						' or ',
+						_react2.default.createElement(
+							'a',
+							{ style: { color: 'red' }, href: '/#register' },
+							'register'
+						),
+						' to download.'
+					);
 				}
 	
 				return _react2.default.createElement(

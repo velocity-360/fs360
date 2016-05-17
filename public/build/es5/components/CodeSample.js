@@ -61,8 +61,37 @@ var CodeSample = (function (Component) {
 						{ href: this.props.sample.url, style: { float: "right" }, className: "btn btn-primary", role: "button" },
 						"Download"
 					);
+				} else if (this.props.accountType == "basic" || this.props.accountType == "") {
+					btnDownload = React.createElement(
+						"div",
+						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },
+						"To download, please ",
+						React.createElement(
+							"a",
+							{ style: { color: "red" }, onClick: this.subscribe, href: "#" },
+							"upgrade"
+						),
+						" your account to Premium"
+					);
 				} else {
-					btnDownload = "Please Log in or Subscribe to Download";
+					// not logged in
+					btnDownload = React.createElement(
+						"div",
+						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },
+						"Please ",
+						React.createElement(
+							"a",
+							{ onClick: this.login, style: { color: "red" }, href: "#" },
+							"log in"
+						),
+						" or ",
+						React.createElement(
+							"a",
+							{ style: { color: "red" }, href: "/#register" },
+							"register"
+						),
+						" to download."
+					);
 				}
 
 				return React.createElement(
