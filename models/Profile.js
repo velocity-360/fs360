@@ -18,6 +18,7 @@ var ProfileSchema = new mongoose.Schema({
 	username: {type:String, trim:true, default:''},
 	monthlyRate: {type: Number, default: 0},
 	image: {type:String, trim:true, default:'qeodpw-g'}, // default profile icon
+	isAdmin: {type:String, trim:true, lowercase:true, default:'no'},
 	timestamp: {type:Date, default:Date.now},
 });
 
@@ -40,6 +41,7 @@ ProfileSchema.methods.summary = function() {
 		'monthlyRate':this.monthlyRate,
 		'image':this.image,
 		'timestamp':this.timestamp,
+		'isAdmin':this.isAdmin,
 		'id':this._id
 	};
 	

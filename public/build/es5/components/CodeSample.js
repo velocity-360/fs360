@@ -114,7 +114,6 @@ var CodeSample = (function (Component) {
 					);
 				}
 
-
 				var tags = this.props.sample.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",

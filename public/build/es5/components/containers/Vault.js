@@ -201,12 +201,11 @@ var Vault = (function (Component) {
 					return React.createElement(CodeSample, { key: i, sample: sample, loginAction: _this.showLogin, accountType: _this.props.currentUser.accountType });
 				});
 
-				var btnAddsample = this.props.currentUser.id == null ? null : React.createElement(
+				var btnAddsample = this.props.currentUser.isAdmin == "yes" ? null : React.createElement(
 					"button",
 					{ onClick: this.openModal, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
 					"Add Code Sample"
 				);
-
 
 				return React.createElement(
 					"div",

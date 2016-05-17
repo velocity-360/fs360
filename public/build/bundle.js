@@ -63455,7 +63455,7 @@
 					return _react2.default.createElement(_CodeSample2.default, { key: i, sample: sample, loginAction: _this.showLogin, accountType: _this.props.currentUser.accountType });
 				});
 	
-				var btnAddsample = this.props.currentUser.id == null ? null : _react2.default.createElement(
+				var btnAddsample = this.props.currentUser.isAdmin == 'yes' ? null : _react2.default.createElement(
 					'button',
 					{ onClick: this.openModal, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
 					'Add Code Sample'
