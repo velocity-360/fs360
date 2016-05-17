@@ -28,7 +28,7 @@ class CodeSample extends Component {
 			image = 'node-red.png'
 		}
 		if (this.props.sample.topic == 'react'){
-			image = 'apple-2.jpg'
+			image = 'react-360.png'
 		}
 
 		var btnDownload = ''
