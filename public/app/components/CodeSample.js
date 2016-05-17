@@ -28,10 +28,10 @@ class CodeSample extends Component {
 	        btnDownload = <a href={this.props.sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a>
 		}
 		else if (this.props.accountType == 'basic' || this.props.accountType == ''){
-			btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>To download, please <a style={{color:'red'}} onClick={ this.subscribe } href="#">upgrade</a> your account to Premium</div>
+			btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12}}>To download, please <a style={{color:'red'}} onClick={ this.subscribe } href="#">upgrade</a> your account to Premium</div>
 		}
 		else { // not logged in
-			btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to download.</div>
+			btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to download.</div>
 		}
 
 		return (
@@ -41,7 +41,7 @@ class CodeSample extends Component {
 				<div className="tagcloud clearfix" style={{marginTop:0}}>
 					{tags}
 				</div>
-                <p className="list-group-item-text" style={{marginTop:6}}>
+                <p className="list-group-item-text" style={{marginTop:0}}>
 					{this.props.sample.description}
                 </p>
                 <br />

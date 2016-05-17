@@ -115,8 +115,21 @@ var Vault = (function (Component) {
 					showModal: false
 				});
 
+				var sample = Object.assign({}, this.state.sample);
+				var t = sample.tagString.split(",");
+				var tags = [];
+				for (var i = 0; i < t.length; i++) {
+					var tag = t[i];
+					if (tag.length < 2) continue;
+
+					tags.push(tag);
+				}
+
+				sample.tags = tags;
+
+
 				var endpoint = "/api/sample";
-				api.handlePost(endpoint, this.state.sample, function (err, response) {
+				api.handlePost(endpoint, sample, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;

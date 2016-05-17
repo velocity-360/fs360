@@ -64,7 +64,7 @@ var CodeSample = (function (Component) {
 				} else if (this.props.accountType == "basic" || this.props.accountType == "") {
 					btnDownload = React.createElement(
 						"div",
-						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },
+						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12 } },
 						"To download, please ",
 						React.createElement(
 							"a",
@@ -77,7 +77,7 @@ var CodeSample = (function (Component) {
 					// not logged in
 					btnDownload = React.createElement(
 						"div",
-						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },
+						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12 } },
 						"Please ",
 						React.createElement(
 							"a",
@@ -110,7 +110,7 @@ var CodeSample = (function (Component) {
 					),
 					React.createElement(
 						"p",
-						{ className: "list-group-item-text", style: { marginTop: 6 } },
+						{ className: "list-group-item-text", style: { marginTop: 0 } },
 						this.props.sample.description
 					),
 					React.createElement("br", null),

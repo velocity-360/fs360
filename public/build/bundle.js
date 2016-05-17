@@ -63378,8 +63378,20 @@
 					showModal: false
 				});
 	
+				var sample = Object.assign({}, this.state.sample);
+				var t = sample.tagString.split(',');
+				var tags = [];
+				for (var i = 0; i < t.length; i++) {
+					var tag = t[i];
+					if (tag.length < 2) continue;
+	
+					tags.push(tag);
+				}
+	
+				sample['tags'] = tags;
+	
 				var endpoint = '/api/sample';
-				_api2.default.handlePost(endpoint, this.state.sample, function (err, response) {
+				_api2.default.handlePost(endpoint, sample, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -63610,7 +63622,7 @@
 				} else if (this.props.accountType == 'basic' || this.props.accountType == '') {
 					btnDownload = _react2.default.createElement(
 						'div',
-						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12 } },
 						'To download, please ',
 						_react2.default.createElement(
 							'a',
@@ -63623,7 +63635,7 @@
 					// not logged in
 					btnDownload = _react2.default.createElement(
 						'div',
-						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12 } },
 						'Please ',
 						_react2.default.createElement(
 							'a',
@@ -63656,7 +63668,7 @@
 					),
 					_react2.default.createElement(
 						'p',
-						{ className: 'list-group-item-text', style: { marginTop: 6 } },
+						{ className: 'list-group-item-text', style: { marginTop: 0 } },
 						this.props.sample.description
 					),
 					_react2.default.createElement('br', null),
