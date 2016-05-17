@@ -63676,7 +63676,7 @@
 						{ className: 'tagcloud', style: { marginTop: 6, marginBottom: 0 } },
 						tags
 					),
-					_react2.default.createElement('hr', { style: { color: '#fff', background: '#fff' } }),
+					_react2.default.createElement('div', { className: 'clearfix' }),
 					_react2.default.createElement(
 						'p',
 						{ className: 'list-group-item-text', style: { marginTop: 0 } },

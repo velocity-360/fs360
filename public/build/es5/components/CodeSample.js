@@ -119,7 +119,7 @@ var CodeSample = (function (Component) {
 						{ className: "tagcloud", style: { marginTop: 6, marginBottom: 0 } },
 						tags
 					),
-					React.createElement("hr", { style: { color: "#fff", background: "#fff" } }),
+					React.createElement("div", { className: "clearfix" }),
 					React.createElement(
 						"p",
 						{ className: "list-group-item-text", style: { marginTop: 0 } },
