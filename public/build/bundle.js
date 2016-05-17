@@ -63650,14 +63650,14 @@
 						this.props.sample.title
 					),
 					_react2.default.createElement(
+						'div',
+						{ className: 'tagcloud', style: { marginTop: 0 } },
+						tags
+					),
+					_react2.default.createElement(
 						'p',
 						{ className: 'list-group-item-text' },
 						this.props.sample.description
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'tagcloud', style: { marginTop: 12 } },
-						tags
 					),
 					_react2.default.createElement('br', null),
 					btnDownload,

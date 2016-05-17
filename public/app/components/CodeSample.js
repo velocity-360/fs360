@@ -38,12 +38,12 @@ class CodeSample extends Component {
             <div key={this.props.sample.id} href="#" className="list-group-item">
             	<img style={{float:'left', width:96, borderRadius:48, marginRight:24}} src={'/images/'+image} />
                 <h4 className="list-group-item-heading">{this.props.sample.title}</h4>
+				<div className="tagcloud" style={{marginTop:0}}>
+					{tags}
+				</div>
                 <p className="list-group-item-text">
 					{this.props.sample.description}
                 </p>
-				<div className="tagcloud" style={{marginTop:12}}>
-					{tags}
-				</div>
                 <br />
                 { btnDownload }
 	            <br /><br />

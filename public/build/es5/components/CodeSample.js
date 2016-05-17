@@ -104,14 +104,14 @@ var CodeSample = (function (Component) {
 						this.props.sample.title
 					),
 					React.createElement(
+						"div",
+						{ className: "tagcloud", style: { marginTop: 0 } },
+						tags
+					),
+					React.createElement(
 						"p",
 						{ className: "list-group-item-text" },
 						this.props.sample.description
-					),
-					React.createElement(
-						"div",
-						{ className: "tagcloud", style: { marginTop: 12 } },
-						tags
 					),
 					React.createElement("br", null),
 					btnDownload,
