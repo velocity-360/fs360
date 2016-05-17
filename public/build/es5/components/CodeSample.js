@@ -105,7 +105,7 @@ var CodeSample = (function (Component) {
 					),
 					React.createElement(
 						"div",
-						{ className: "tagcloud clearfix", style: { marginTop: 0, marginBottom: 0 } },
+						{ className: "tagcloud clearfix", style: { marginTop: 6, marginBottom: 0 } },
 						tags
 					),
 					React.createElement(
