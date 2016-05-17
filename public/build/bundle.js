@@ -63601,7 +63601,7 @@
 				var tags = this.props.sample.tags.map(function (tag, i) {
 					return _react2.default.createElement(
 						'a',
-						{ style: { background: '#f9f9f9', marginRight: 6 }, href: '#' },
+						{ key: i, style: { background: '#f9f9f9', marginRight: 6 }, href: '#' },
 						tag
 					);
 				});
@@ -63655,7 +63655,7 @@
 				return _react2.default.createElement(
 					'div',
 					{ key: this.props.sample.id, href: '#', className: 'list-group-item' },
-					_react2.default.createElement('img', { style: { float: 'left', width: 96, borderRadius: 48, marginRight: 24 }, src: '/images/' + image }),
+					_react2.default.createElement('img', { style: { float: 'right', width: 96, borderRadius: 48, marginRight: 24 }, src: '/images/' + image }),
 					_react2.default.createElement(
 						'h4',
 						{ className: 'list-group-item-heading' },

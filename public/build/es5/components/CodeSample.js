@@ -43,7 +43,7 @@ var CodeSample = (function (Component) {
 				var tags = this.props.sample.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
-						{ style: { background: "#f9f9f9", marginRight: 6 }, href: "#" },
+						{ key: i, style: { background: "#f9f9f9", marginRight: 6 }, href: "#" },
 						tag
 					);
 				});
@@ -97,7 +97,7 @@ var CodeSample = (function (Component) {
 				return React.createElement(
 					"div",
 					{ key: this.props.sample.id, href: "#", className: "list-group-item" },
-					React.createElement("img", { style: { float: "left", width: 96, borderRadius: 48, marginRight: 24 }, src: "/images/" + image }),
+					React.createElement("img", { style: { float: "right", width: 96, borderRadius: 48, marginRight: 24 }, src: "/images/" + image }),
 					React.createElement(
 						"h4",
 						{ className: "list-group-item-heading" },
