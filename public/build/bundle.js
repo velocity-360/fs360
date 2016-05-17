@@ -63651,7 +63651,7 @@
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'tagcloud', style: { marginTop: 0 } },
+						{ className: 'tagcloud clearfix', style: { marginTop: 0 } },
 						tags
 					),
 					_react2.default.createElement(
