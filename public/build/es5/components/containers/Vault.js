@@ -28,6 +28,8 @@ var Footer = _interopRequire(require("../../components/Footer"));
 
 var CourseCard = _interopRequire(require("../../components/CourseCard"));
 
+var CodeSample = _interopRequire(require("../../components/CodeSample"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -128,39 +130,9 @@ var Vault = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var _this = this;
 				var list = this.props.samples.map(function (sample, i) {
-					var image = "";
-					if (sample.topic == "ios") {
-						image = "apple-2.jpg";
-					}
-					if (sample.topic == "node") {
-						image = "node-red.png";
-					}
-					if (sample.topic == "react") {
-						image = "apple-2.jpg";
-					}
-					return React.createElement(
-						"div",
-						{ key: sample.id, href: "#", className: "list-group-item" },
-						React.createElement("img", { style: { float: "left", width: 96, marginRight: 24 }, src: "/images/" + image }),
-						React.createElement(
-							"h4",
-							{ className: "list-group-item-heading" },
-							sample.title
-						),
-						React.createElement(
-							"p",
-							{ className: "list-group-item-text" },
-							sample.description
-						),
-						React.createElement(
-							"a",
-							{ href: sample.url, style: { float: "right" }, className: "btn btn-primary", role: "button" },
-							"Download"
-						),
-						React.createElement("br", null),
-						React.createElement("br", null)
-					);
+					return React.createElement(CodeSample, { key: i, sample: sample, accountType: _this.props.currentUser.accountType });
 				});
 
 				var btnAddsample = this.props.currentUser.id == null ? null : React.createElement(

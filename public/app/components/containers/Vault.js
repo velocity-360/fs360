@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseCard from '../../components/CourseCard'
+import CodeSample from '../../components/CodeSample'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -83,29 +84,9 @@ class Vault extends Component {
 
 	render(){
 
+		var _this = this
 		var list = this.props.samples.map(function(sample, i){
-			var image = ''
-			if (sample.topic == 'ios'){
-				image = 'apple-2.jpg'
-			}
-			if (sample.topic == 'node'){
-				image = 'node-red.png'
-			}
-			if (sample.topic == 'react'){
-				image = 'apple-2.jpg'
-			}
-			return (
-
-                <div key={sample.id} href="#" className="list-group-item">
-                	<img style={{float:'left', width:96, marginRight:24}} src={'/images/'+image} />
-                    <h4 className="list-group-item-heading">{sample.title}</h4>
-                    <p className="list-group-item-text">
-						{sample.description}
-                    </p>
-		            <a href={sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a>
-		            <br /><br />
-                </div>
-			)
+			return <CodeSample key={i} sample={sample} accountType={_this.props.currentUser.accountType} />
 		})
 
 		var btnAddsample = (this.props.currentUser.id == null ) ? null : <button onClick={this.openModal} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Add Code Sample</button>
@@ -133,10 +114,6 @@ class Vault extends Component {
 		                        <div className="list-group">
 									{list}
 		                        </div>
-
-
-
-
 
 							</div>
 						</div>

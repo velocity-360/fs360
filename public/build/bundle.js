@@ -22081,15 +22081,15 @@
 	
 	var _Vault2 = _interopRequireDefault(_Vault);
 	
-	var _Videos = __webpack_require__(588);
+	var _Videos = __webpack_require__(589);
 	
 	var _Videos2 = _interopRequireDefault(_Videos);
 	
-	var _Account = __webpack_require__(589);
+	var _Account = __webpack_require__(590);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Application = __webpack_require__(591);
+	var _Application = __webpack_require__(592);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -63280,6 +63280,10 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
+	var _CodeSample = __webpack_require__(588);
+	
+	var _CodeSample2 = _interopRequireDefault(_CodeSample);
+	
 	var _store = __webpack_require__(185);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -63308,13 +63312,13 @@
 		function Vault(props, context) {
 			_classCallCheck(this, Vault);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Vault).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Vault).call(this, props, context));
 	
-			_this.openModal = _this.openModal.bind(_this);
-			_this.closeModal = _this.closeModal.bind(_this);
-			_this.updateSample = _this.updateSample.bind(_this);
-			_this.createSample = _this.createSample.bind(_this);
-			_this.state = {
+			_this2.openModal = _this2.openModal.bind(_this2);
+			_this2.closeModal = _this2.closeModal.bind(_this2);
+			_this2.updateSample = _this2.updateSample.bind(_this2);
+			_this2.createSample = _this2.createSample.bind(_this2);
+			_this2.state = {
 				showModal: false,
 				sample: {
 					title: '',
@@ -63325,7 +63329,7 @@
 					tagString: ''
 				}
 			};
-			return _this;
+			return _this2;
 		}
 	
 		_createClass(Vault, [{
@@ -63388,39 +63392,9 @@
 			key: 'render',
 			value: function render() {
 	
+				var _this = this;
 				var list = this.props.samples.map(function (sample, i) {
-					var image = '';
-					if (sample.topic == 'ios') {
-						image = 'apple-2.jpg';
-					}
-					if (sample.topic == 'node') {
-						image = 'node-red.png';
-					}
-					if (sample.topic == 'react') {
-						image = 'apple-2.jpg';
-					}
-					return _react2.default.createElement(
-						'div',
-						{ key: sample.id, href: '#', className: 'list-group-item' },
-						_react2.default.createElement('img', { style: { float: 'left', width: 96, marginRight: 24 }, src: '/images/' + image }),
-						_react2.default.createElement(
-							'h4',
-							{ className: 'list-group-item-heading' },
-							sample.title
-						),
-						_react2.default.createElement(
-							'p',
-							{ className: 'list-group-item-text' },
-							sample.description
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
-							'Download'
-						),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement('br', null)
-					);
+					return _react2.default.createElement(_CodeSample2.default, { key: i, sample: sample, accountType: _this.props.currentUser.accountType });
 				});
 	
 				var btnAddsample = this.props.currentUser.id == null ? null : _react2.default.createElement(
@@ -63577,6 +63551,118 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _TextUtils = __webpack_require__(471);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CodeSample = function (_Component) {
+		_inherits(CodeSample, _Component);
+	
+		function CodeSample() {
+			_classCallCheck(this, CodeSample);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).apply(this, arguments));
+		}
+	
+		_createClass(CodeSample, [{
+			key: 'render',
+			value: function render() {
+				var image = '';
+				if (this.props.sample.topic == 'ios') {
+					image = 'apple-2.jpg';
+				}
+				if (this.props.sample.topic == 'node') {
+					image = 'node-red.png';
+				}
+				if (this.props.sample.topic == 'react') {
+					image = 'apple-2.jpg';
+				}
+	
+				var tags = this.props.sample.tags.map(function (tag, i) {
+					return _react2.default.createElement(
+						'a',
+						{ style: { background: '#f9f9f9', marginRight: 6 }, href: '#' },
+						tag
+					);
+				});
+	
+				var btnDownload = '';
+				if (this.props.sample.isPublic == 'yes') {
+					btnDownload = _react2.default.createElement(
+						'a',
+						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
+						'Download'
+					);
+				} else if (this.props.accountType == 'premium') {
+					btnDownload = _react2.default.createElement(
+						'a',
+						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
+						'Download'
+					);
+				} else {
+					btnDownload = 'Please Log in or Subscribe to Download';
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ key: this.props.sample.id, href: '#', className: 'list-group-item' },
+					_react2.default.createElement('img', { style: { float: 'left', width: 96, borderRadius: 48, marginRight: 24 }, src: '/images/' + image }),
+					_react2.default.createElement(
+						'h4',
+						{ className: 'list-group-item-heading' },
+						this.props.sample.title
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'list-group-item-text' },
+						this.props.sample.description
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'tagcloud', style: { marginTop: 12 } },
+						tags
+					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'a',
+						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
+						'Download'
+					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null)
+				);
+			}
+		}]);
+	
+		return CodeSample;
+	}(_react.Component);
+	
+	exports.default = CodeSample;
+
+/***/ },
+/* 589 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _reactBootstrap = __webpack_require__(197);
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
@@ -63709,7 +63795,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Videos);
 
 /***/ },
-/* 589 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63758,7 +63844,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _ProjectCard = __webpack_require__(590);
+	var _ProjectCard = __webpack_require__(591);
 	
 	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
 	
@@ -64205,7 +64291,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 590 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64286,7 +64372,7 @@
 	exports.default = ProjectCard;
 
 /***/ },
-/* 591 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
