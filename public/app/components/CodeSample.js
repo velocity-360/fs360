@@ -4,6 +4,13 @@ import TextUtils from '../utils/TextUtils'
 
 class CodeSample extends Component {
 
+	constructor(props, context){
+		super(props, context)
+		this.login = this.login.bind(this)
+		this.subscribe = this.subscribe.bind(this)
+
+	}
+
 	render(){
 		var image = ''
 		if (this.props.sample.topic == 'ios'){
@@ -22,10 +29,10 @@ class CodeSample extends Component {
 
 		var btnDownload = ''
 		if (this.props.sample.isPublic == 'yes'){
-	        btnDownload = <a href={this.props.sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a>
+	        btnDownload = <div><a href={this.props.sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a><br /><br /></div>
 		}
 		else if (this.props.accountType == 'premium'){
-	        btnDownload = <a href={this.props.sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a>
+	        btnDownload = <div><a href={this.props.sample.url} style={{float:'right'}} className="btn btn-primary" role="button">Download</a><br /><br /></div>
 		}
 		else if (this.props.accountType == 'basic' || this.props.accountType == ''){
 			btnDownload = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12}}>To download, please <a style={{color:'red'}} onClick={ this.subscribe } href="#">upgrade</a> your account to Premium</div>
@@ -45,8 +52,7 @@ class CodeSample extends Component {
 					{this.props.sample.description}
                 </p>
                 <br />
-                { btnDownload }
-	            <br /><br />
+                { btnDownload }	            
             </div>
 
 

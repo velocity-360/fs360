@@ -63578,10 +63578,15 @@
 	var CodeSample = function (_Component) {
 		_inherits(CodeSample, _Component);
 	
-		function CodeSample() {
+		function CodeSample(props, context) {
 			_classCallCheck(this, CodeSample);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CodeSample).call(this, props, context));
+	
+			_this.login = _this.login.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
+	
+			return _this;
 		}
 	
 		_createClass(CodeSample, [{
@@ -63609,15 +63614,27 @@
 				var btnDownload = '';
 				if (this.props.sample.isPublic == 'yes') {
 					btnDownload = _react2.default.createElement(
-						'a',
-						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
-						'Download'
+						'div',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
+							'Download'
+						),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('br', null)
 					);
 				} else if (this.props.accountType == 'premium') {
 					btnDownload = _react2.default.createElement(
-						'a',
-						{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
-						'Download'
+						'div',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: this.props.sample.url, style: { float: 'right' }, className: 'btn btn-primary', role: 'button' },
+							'Download'
+						),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('br', null)
 					);
 				} else if (this.props.accountType == 'basic' || this.props.accountType == '') {
 					btnDownload = _react2.default.createElement(
@@ -63672,9 +63689,7 @@
 						this.props.sample.description
 					),
 					_react2.default.createElement('br', null),
-					btnDownload,
-					_react2.default.createElement('br', null),
-					_react2.default.createElement('br', null)
+					btnDownload
 				);
 			}
 		}]);
