@@ -56,7 +56,7 @@ router.get('/:page', function(req, res, next) {
 		var fbTags = {
 			title: entity.title,
 			description: desc,
-			url: 'http://www.fullstack360.com/'+page,
+			url: 'http://www.velocity360.io/'+page,
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
@@ -100,7 +100,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		var fbTags = {
 			title: entity.title,
 			description: desc,
-			url: 'http://www.fullstack360.com/'+page+'/'+slug,
+			url: 'http://www.velocity360.io/'+page+'/'+slug,
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
