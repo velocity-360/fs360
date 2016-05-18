@@ -251,7 +251,7 @@ router.post('/:resource', function(req, res, next) {
 				var template = data.replace('{{title}}', nextEvent.title);
 				template = template.replace('{{description}}', nextEvent.description);
 				template = template.replace('{{image}}', nextEvent.image);
-				var time = nextEvent.date+', 'nextEvent.time
+				var time = nextEvent.date+', '+nextEvent.time
 				template = template.replace('{{time}}', time);
 
 				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
