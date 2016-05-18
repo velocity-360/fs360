@@ -241,23 +241,54 @@ router.post('/:resource', function(req, res, next) {
 
 		fetchFile(path)
 		.then(function(data){
-			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-			for (var i=0; i<recipients.length; i++){
-				var address = recipients[i];
-				var formatted = data.replace('{{email}}', address);
-				sendgrid.send({
-					to:       address,
-					from:     'info@fullstack360.com',
-					fromname: 'FullStack 360',
-					subject:  subject,
-					html:     formatted
-				}, function(err, json) {
-					if (err) { }
-				});
-			}
+			eventController.get(null, function(err, events){
+				if (err){
+					res.json({'confirmation':'fail','message':err.message});
+					return;
+				}
+
+				var template = data.replace('{{title}}', nextEvent.title);
+				template = template.replace('{{description}}', nextEvent.description);
+
+				var nextEvent = events[0]
+
+				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+				for (var i=0; i<recipients.length; i++){
+					var address = recipients[i];
+					var formatted = template.replace('{{email}}', address); // for unsubscribe link
+					sendgrid.send({
+						to:       address,
+						from:     'info@fullstack360.com',
+						fromname: 'Velocity 360',
+						subject:  nextEvent.title,
+						html:     formatted
+					}, function(err, json) {
+						if (err) { }
+					});
+				}
+			
+				res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
+				return;
+			})
+
+
+			// var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+			// for (var i=0; i<recipients.length; i++){
+			// 	var address = recipients[i];
+			// 	var formatted = data.replace('{{email}}', address);
+			// 	sendgrid.send({
+			// 		to:       address,
+			// 		from:     'info@fullstack360.com',
+			// 		fromname: 'FullStack 360',
+			// 		subject:  subject,
+			// 		html:     formatted
+			// 	}, function(err, json) {
+			// 		if (err) { }
+			// 	});
+			// }
 		
-			res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
-			return;
+			// res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
+			// return;
 		})
 		.catch(function(err){
 			res.json({'confirmation':'fail','message':err.message});
