@@ -609,7 +609,7 @@ var Ios = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"June 6th - July 15th"
+												"July 11th - August 19th"
 											),
 											React.createElement(
 												"span",
@@ -670,6 +670,50 @@ var Ios = (function (Component) {
 										React.createElement(
 											"a",
 											{ onClick: this.openModal, id: "ios-node-evening", href: "#", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								),
+								React.createElement("div", { style: { margin: 36 } }),
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/react.jpg", alt: "FullStack 360" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"Node & React Evening Course"
+											),
+											React.createElement(
+												"span",
+												null,
+												"June 7th to July 28th"
+											),
+											React.createElement(
+												"span",
+												null,
+												"Tue/Thu, 6pm - 9pm"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"The Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ onClick: this.openModal, id: "node-react-evening", href: "#", className: "btn btn-success" },
 											"Learn More"
 										)
 									)

@@ -45160,7 +45160,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'June 6th - July 15th'
+												'July 11th - August 19th'
 											),
 											_react2.default.createElement(
 												'span',
@@ -45221,6 +45221,50 @@
 										_react2.default.createElement(
 											'a',
 											{ onClick: this.openModal, id: 'ios-node-evening', href: '#', className: 'btn btn-success' },
+											'Learn More'
+										)
+									)
+								),
+								_react2.default.createElement('div', { style: { margin: 36 } }),
+								_react2.default.createElement(
+									'div',
+									{ className: 'team team-list clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'team-image' },
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/react.jpg', alt: 'FullStack 360' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'team-desc' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'team-title' },
+											_react2.default.createElement(
+												'h4',
+												null,
+												'Node & React Evening Course'
+											),
+											_react2.default.createElement(
+												'span',
+												null,
+												'June 7th to July 28th'
+											),
+											_react2.default.createElement(
+												'span',
+												null,
+												'Tue/Thu, 6pm - 9pm'
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'team-content' },
+											'The Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'a',
+											{ onClick: this.openModal, id: 'node-react-evening', href: '#', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)

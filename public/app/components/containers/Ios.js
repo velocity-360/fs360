@@ -418,7 +418,7 @@ class Ios extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>iOS &amp; Node 6-Week Bootcamp</h4>
-										<span>June 6th - July 15th</span>
+										<span>July 11th - August 19th</span>
 										<span>Mon - Fri, 9am - 5pm</span>
 									</div>
 									<div className="team-content">
@@ -463,6 +463,34 @@ class Ios extends Component {
 									</a>
 								</div>
 							</div>
+
+							<div style={{margin:36}}></div>
+
+							<div className="team team-list clearfix">
+								<div className="team-image">
+									<img style={{border:'1px solid #ddd'}} src="/images/react.jpg" alt="FullStack 360" />
+								</div>
+								<div className="team-desc">
+									<div className="team-title">
+										<h4>Node &amp; React Evening Course</h4>
+										<span>June 7th to July 28th</span>
+										<span>Tue/Thu, 6pm - 9pm</span>
+									</div>
+									<div className="team-content">
+										The Node & React Development Evening course is an 8-week class that 
+										covers backend and frontend development using the most up-to-date 
+										technologies. Using Node JS, Mongo, Express and React (with ES6), we 
+										will create a fully functional website with user registration, image 
+										uploading, email notification functionality.
+									</div>
+									<br />
+									<a onClick={this.openModal} id="node-react-evening" href="#" className="btn btn-success">
+										Learn More
+									</a>
+								</div>
+							</div>
+
+
 						</div>
 
 					</div>
