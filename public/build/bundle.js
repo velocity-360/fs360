@@ -63756,7 +63756,7 @@
 				return _react2.default.createElement(
 					'div',
 					{ key: this.props.sample.id, href: '#', className: 'list-group-item' },
-					_react2.default.createElement('img', { style: { float: 'left', width: 96, borderRadius: 48, marginRight: 24 }, src: '/images/' + image }),
+					_react2.default.createElement('img', { style: { float: 'left', width: 64, borderRadius: 32, marginRight: 16 }, src: '/images/' + image }),
 					_react2.default.createElement(
 						'h4',
 						{ className: 'list-group-item-heading' },
@@ -63770,7 +63770,7 @@
 					_react2.default.createElement('div', { className: 'clearfix' }),
 					_react2.default.createElement(
 						'p',
-						{ className: 'list-group-item-text', style: { marginTop: 0 } },
+						{ className: 'list-group-item-text', style: { marginTop: 6 } },
 						this.props.sample.description
 					),
 					_react2.default.createElement('br', null),

@@ -126,7 +126,7 @@ var CodeSample = (function (Component) {
 				return React.createElement(
 					"div",
 					{ key: this.props.sample.id, href: "#", className: "list-group-item" },
-					React.createElement("img", { style: { float: "left", width: 96, borderRadius: 48, marginRight: 24 }, src: "/images/" + image }),
+					React.createElement("img", { style: { float: "left", width: 64, borderRadius: 32, marginRight: 16 }, src: "/images/" + image }),
 					React.createElement(
 						"h4",
 						{ className: "list-group-item-heading" },
@@ -140,7 +140,7 @@ var CodeSample = (function (Component) {
 					React.createElement("div", { className: "clearfix" }),
 					React.createElement(
 						"p",
-						{ className: "list-group-item-text", style: { marginTop: 0 } },
+						{ className: "list-group-item-text", style: { marginTop: 6 } },
 						this.props.sample.description
 					),
 					React.createElement("br", null),
