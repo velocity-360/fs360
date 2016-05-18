@@ -241,16 +241,16 @@ router.post('/:resource', function(req, res, next) {
 
 		fetchFile(path)
 		.then(function(data){
-			eventController.get(null, function(err, events){
+			eventController.get({}, function(err, events){
 				if (err){
 					res.json({'confirmation':'fail','message':err.message});
 					return;
 				}
 
-				var template = data.replace('{{title}}', nextEvent.title);
-				template = template.replace('{{description}}', nextEvent.description);
 
 				var nextEvent = events[0]
+				var template = data.replace('{{title}}', nextEvent.title);
+				template = template.replace('{{description}}', nextEvent.description);
 
 				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 				for (var i=0; i<recipients.length; i++){
