@@ -9,6 +9,7 @@ module.exports = {
 			sendgrid.send({
 				to:       recipient,
 				from:     from,
+				fromname: 'Velocity 360',
 				subject:  subject,
 				text:     text
 			}, function(err) {
@@ -25,6 +26,7 @@ module.exports = {
 			sendgrid.send({
 				to:       recipient,
 				from:     from,
+				fromname: 'Velocity 360',
 				subject:  subject,
 				html:     html
 			}, function(err) {
