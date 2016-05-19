@@ -62544,6 +62544,7 @@
 			_this2.login = _this2.login.bind(_this2);
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
+			_this2.submitDeposit = _this2.submitDeposit.bind(submitDeposit);
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
@@ -62705,18 +62706,36 @@
 				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
 		}, {
+			key: 'submitDeposit',
+			value: function submitDeposit(event) {
+				event.preventDefault();
+				console.log('submitDeposit');
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var detailBox = null;
-				var btnRegister = this.props.currentUser.id == null ? _react2.default.createElement(
-					'a',
-					{ onClick: this.showLogin, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-					'Register'
-				) : _react2.default.createElement(
-					'a',
-					{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-					'Register'
-				);
+				var btnRegister = '';
+				if (this.props.currentUser.id == null) {
+					btnRegister = _react2.default.createElement(
+						'a',
+						{ onClick: this.showLogin, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+						'Register'
+					);
+				} else if (this.props.currentUser.stripeId == null) {
+					btnRegister = _react2.default.createElement(
+						'a',
+						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+						'Register'
+					);
+				} else {
+					btnRegister = _react2.default.createElement(
+						'a',
+						{ onClick: this.submitDeposit, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+						'Register'
+					);
+				}
+	
 				if (this.props.course.type != 'online') {
 					detailBox = _react2.default.createElement(
 						'div',

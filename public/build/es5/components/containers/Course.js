@@ -50,6 +50,7 @@ var Course = (function (Component) {
 		this.login = this.login.bind(this);
 		this.updateLogin = this.updateLogin.bind(this);
 		this.openStripeModal = this.openStripeModal.bind(this);
+		this.submitDeposit = this.submitDeposit.bind(submitDeposit);
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
@@ -228,18 +229,38 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		submitDeposit: {
+			value: function submitDeposit(event) {
+				event.preventDefault();
+				console.log("submitDeposit");
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var detailBox = null;
-				var btnRegister = this.props.currentUser.id == null ? React.createElement(
-					"a",
-					{ onClick: this.showLogin, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-					"Register"
-				) : React.createElement(
-					"a",
-					{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-					"Register"
-				);
+				var btnRegister = "";
+				if (this.props.currentUser.id == null) {
+					btnRegister = React.createElement(
+						"a",
+						{ onClick: this.showLogin, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+						"Register"
+					);
+				} else if (this.props.currentUser.stripeId == null) {
+					btnRegister = React.createElement(
+						"a",
+						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+						"Register"
+					);
+				} else {
+					btnRegister = React.createElement(
+						"a",
+						{ onClick: this.submitDeposit, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+						"Register"
+					);
+				}
+
 				if (this.props.course.type != "online") {
 					detailBox = React.createElement(
 						"div",

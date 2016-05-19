@@ -21,6 +21,7 @@ class Course extends Component {
 		this.login = this.login.bind(this)
 		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
+		this.submitDeposit = this.submitDeposit.bind(submitDeposit)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
@@ -175,9 +176,24 @@ class Course extends Component {
 			stripe.showModalWithText(this.props.course.title)
 	}
 
+	submitDeposit(event){
+		event.preventDefault()
+		console.log('submitDeposit')
+	}
+
 	render(){
 		var detailBox = null
-		var btnRegister = (this.props.currentUser.id == null) ? <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a> : <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		var btnRegister = '';
+		if (this.props.currentUser.id == null){
+			btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		}
+		else if (this.props.currentUser.stripeId == null){
+			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		}
+		else {
+			btnRegister = <a onClick={this.submitDeposit} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		}
+
 		if (this.props.course.type != 'online'){
 			detailBox =	<div className="col_half panel panel-default col_last">
 							<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
