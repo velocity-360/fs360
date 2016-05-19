@@ -120,7 +120,7 @@ var Course = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
-				console.log("OPEN MODAL");
+				//		console.log('OPEN MODAL')
 				event.preventDefault();
 				this.setState({ showModal: true });
 			},
@@ -233,6 +233,25 @@ var Course = (function (Component) {
 			value: function submitDeposit(event) {
 				event.preventDefault();
 				console.log("submitDeposit");
+
+				this.setState({
+					showLoader: false
+				});
+
+				var _this = this;
+				var pkg = { amount: 5 };
+				api.handlePost("/stripe/charge", pkg, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
 			},
 			writable: true,
 			configurable: true
