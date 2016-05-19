@@ -62544,7 +62544,7 @@
 			_this2.login = _this2.login.bind(_this2);
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
-			_this2.submitDeposit = _this2.submitDeposit.bind(submitDeposit);
+			_this2.submitDeposit = _this2.submitDeposit.bind(_this2);
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
