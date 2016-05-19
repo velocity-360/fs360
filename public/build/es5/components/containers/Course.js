@@ -93,6 +93,22 @@ var Course = (function (Component) {
 								});
 							});
 						});
+					} else {
+						stripe.initializeWithText("Submit Deposit", function (token) {
+							_this.setState({ showLoader: true });
+
+							api.submitStripeCharge(token, _this.props.course.id, 5, function () {
+								api.handleGet("/account/currentuser", {}, function (err, response) {
+									_this.setState({ showLoader: false });
+									if (err) {
+										alert(response.message);
+										return;
+									}
+
+									store.dispatch(actions.currentUserRecieved(response.profile));
+								});
+							});
+						});
 					}
 
 					store.dispatch(actions.coursesRecieved(response.courses));
@@ -159,7 +175,8 @@ var Course = (function (Component) {
 			configurable: true
 		},
 		showLogin: {
-			value: function showLogin() {
+			value: function showLogin(event) {
+				event.preventDefault();
 				console.log("Show Login");
 				this.setState({ showLogin: true });
 			},
@@ -204,8 +221,9 @@ var Course = (function (Component) {
 			configurable: true
 		},
 		openStripeModal: {
-			value: function openStripeModal() {
-				stripe.showModal();
+			value: function openStripeModal(event) {
+				event.preventDefault();
+				if (this.props.course.type == "online") stripe.showModal();else stripe.showModalWithText(this.props.course.title);
 			},
 			writable: true,
 			configurable: true
@@ -213,6 +231,15 @@ var Course = (function (Component) {
 		render: {
 			value: function render() {
 				var detailBox = null;
+				var btnRegister = this.props.currentUser.id == null ? React.createElement(
+					"a",
+					{ onClick: this.showLogin, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+					"Register"
+				) : React.createElement(
+					"a",
+					{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+					"Register"
+				);
 				if (this.props.course.type != "online") {
 					detailBox = React.createElement(
 						"div",
@@ -235,11 +262,7 @@ var Course = (function (Component) {
 							"Depost: $",
 							this.props.course.deposit,
 							React.createElement("hr", null),
-							React.createElement(
-								"a",
-								{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
-								"Apply"
-							),
+							btnRegister,
 							React.createElement(
 								"a",
 								{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },

@@ -40,7 +40,7 @@ var CourseSection = (function (Component) {
 		subscribe: {
 			value: function subscribe(event) {
 				event.preventDefault();
-				this.props.subscribeAction();
+				this.props.subscribeAction(event);
 			},
 			writable: true,
 			configurable: true

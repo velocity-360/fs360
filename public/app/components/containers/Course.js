@@ -58,7 +58,25 @@ class Course extends Component {
 
 							store.dispatch(actions.currentUserRecieved(response.profile))
 						});
-					})					
+					})
+				})
+			}
+			else {
+				stripe.initializeWithText('Submit Deposit', function(token){
+					_this.setState({showLoader: true})
+					
+					api.submitStripeCharge(token, _this.props.course.id, 5, function(){
+
+						api.handleGet('/account/currentuser', {}, function(err, response){
+							_this.setState({showLoader: false})
+							if (err){
+								alert(response.message)
+								return
+							}
+
+							store.dispatch(actions.currentUserRecieved(response.profile))
+						});
+					})
 				})
 			}
 
@@ -112,7 +130,8 @@ class Course extends Component {
 		})
 	}
 
-	showLogin(){
+	showLogin(event){
+		event.preventDefault()
 		console.log('Show Login')
 		this.setState({showLogin: true})
 	}
@@ -148,12 +167,17 @@ class Course extends Component {
 		});
 	}
 
-	openStripeModal(){
-		stripe.showModal()
+	openStripeModal(event){
+		event.preventDefault()
+		if (this.props.course.type == 'online')
+			stripe.showModal()
+		else 
+			stripe.showModalWithText(this.props.course.title)
 	}
 
 	render(){
 		var detailBox = null
+		var btnRegister = (this.props.currentUser.id == null) ? <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a> : <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
 		if (this.props.course.type != 'online'){
 			detailBox =	<div className="col_half panel panel-default col_last">
 							<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
@@ -163,7 +187,7 @@ class Course extends Component {
 								Tuition: ${this.props.course.tuition}<br />
 								Depost: ${this.props.course.deposit}
 								<hr />
-								<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+								{btnRegister}
 								<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 							</div>
 						</div>

@@ -17,7 +17,7 @@ class CourseSection extends Component {
 
 	subscribe(event){
 		event.preventDefault()
-		this.props.subscribeAction()
+		this.props.subscribeAction(event)
 
 	}
 

@@ -131,8 +131,32 @@ export default {
   
         var response = http.send(params);
 //        console.log('RESPONSE: '+response);
+	},
+
+	submitStripeCharge: function(token, courseId, amt, completion){
+        var http = new XMLHttpRequest();
+        var url = '/stripe/charge';
+        var params = "stripeToken="+token.id+"&course="+courseId+"&amount="+amt;
+        http.open("POST", url, true);
+        
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
+        // notice that the event handler is on xhr and not xhr.upload
+        http.addEventListener('readystatechange', function(e) {
+            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
+                console.log('UPLOAD COMPLETE: ');
+
+//				FullStackServerActionCreator.userLoggedIn(response.profile);
+//                document.getElementById('refreshProfileButton').click();
+
+                if (completion != null)
+	                completion()
+            }
+        });
+  
+        var response = http.send(params);
+        console.log('RESPONSE: '+response);
 	}
-	    	
 
 
 

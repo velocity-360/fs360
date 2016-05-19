@@ -42220,6 +42220,31 @@
 	
 			var response = http.send(params);
 			//        console.log('RESPONSE: '+response);
+		},
+	
+		submitStripeCharge: function submitStripeCharge(token, courseId, amt, completion) {
+			var http = new XMLHttpRequest();
+			var url = '/stripe/charge';
+			var params = "stripeToken=" + token.id + "&course=" + courseId + "&amount=" + amt;
+			http.open("POST", url, true);
+	
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+			// notice that the event handler is on xhr and not xhr.upload
+			http.addEventListener('readystatechange', function (e) {
+				if (this.readyState === 4) {
+					// the transfer has completed and the server closed the connection.
+					console.log('UPLOAD COMPLETE: ');
+	
+					//				FullStackServerActionCreator.userLoggedIn(response.profile);
+					//                document.getElementById('refreshProfileButton').click();
+	
+					if (completion != null) completion();
+				}
+			});
+	
+			var response = http.send(params);
+			console.log('RESPONSE: ' + response);
 		}
 	
 	};
@@ -44534,10 +44559,32 @@
 			});
 		},
 	
+		initializeWithText: function initializeWithText(text, completion) {
+			this.callback = completion;
+			var _this = this;
+			this.handler = StripeCheckout.configure({
+				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+				image: '/images/logo_round_blue_260.png',
+				locale: 'auto',
+				panelLabel: text,
+				token: function token(_token2) {
+					// You can access the token ID with `token.id`
+					_this.callback(_token2);
+				}
+			});
+		},
+	
 		showModal: function showModal() {
 			this.handler.open({
 				name: 'Velocity 360',
 				description: 'Premium Subscription'
+			});
+		},
+	
+		showModalWithText: function showModalWithText(text) {
+			this.handler.open({
+				name: 'Velocity 360',
+				description: text
 			});
 		}
 	
@@ -62540,6 +62587,23 @@
 								});
 							});
 						});
+					} else {
+						_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+							_this.setState({ showLoader: true });
+	
+							_api2.default.submitStripeCharge(token, _this.props.course.id, 5, function () {
+	
+								_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+									_this.setState({ showLoader: false });
+									if (err) {
+										alert(response.message);
+										return;
+									}
+	
+									_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+								});
+							});
+						});
 					}
 	
 					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
@@ -62596,7 +62660,8 @@
 			}
 		}, {
 			key: 'showLogin',
-			value: function showLogin() {
+			value: function showLogin(event) {
+				event.preventDefault();
 				console.log('Show Login');
 				this.setState({ showLogin: true });
 			}
@@ -62635,13 +62700,23 @@
 			}
 		}, {
 			key: 'openStripeModal',
-			value: function openStripeModal() {
-				_StripeUtils2.default.showModal();
+			value: function openStripeModal(event) {
+				event.preventDefault();
+				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 				var detailBox = null;
+				var btnRegister = this.props.currentUser.id == null ? _react2.default.createElement(
+					'a',
+					{ onClick: this.showLogin, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+					'Register'
+				) : _react2.default.createElement(
+					'a',
+					{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+					'Register'
+				);
 				if (this.props.course.type != 'online') {
 					detailBox = _react2.default.createElement(
 						'div',
@@ -62664,11 +62739,7 @@
 							'Depost: $',
 							this.props.course.deposit,
 							_react2.default.createElement('hr', null),
-							_react2.default.createElement(
-								'a',
-								{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
-								'Apply'
-							),
+							btnRegister,
 							_react2.default.createElement(
 								'a',
 								{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
@@ -62934,7 +63005,7 @@
 			key: 'subscribe',
 			value: function subscribe(event) {
 				event.preventDefault();
-				this.props.subscribeAction();
+				this.props.subscribeAction(event);
 			}
 		}, {
 			key: 'render',
