@@ -19,6 +19,32 @@ module.exports = {
 		});
 	},
 
+	sendEmails: function(from, recipients, subject, text){
+		return new Promise(function (resolve, reject){
+
+			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+			for (var i=0; i<recipients.length; i++){
+				var recipient = recipients[i]
+				if (recipient.indexOf('@') == -1) // invalid
+					continue
+
+				sendgrid.send({
+					to:       recipient,
+					from:     from,
+					fromname: 'Velocity 360',
+					subject:  subject,
+					text:     text
+				}, function(err) {
+					// if (err) {reject(err); }
+					// else { resolve(); }
+				});
+			}
+
+			resolve();
+
+		});
+	},	
+
 	sendHtmlEmail: function(from, recipient, subject, html){
 		return new Promise(function (resolve, reject){
 

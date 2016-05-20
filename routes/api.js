@@ -123,10 +123,11 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'application'){
 		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
-		for (var i=0; i<emailList.length; i++){
-			var email = emailList[i]
-			EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Application', JSON.stringify(req.body))
-		}
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
+		// for (var i=0; i<emailList.length; i++){
+		// 	var email = emailList[i]
+		// 	EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Application', JSON.stringify(req.body))
+		// }
 
 		res.json({
 			confirmation:'success', 
@@ -147,10 +148,12 @@ router.post('/:resource', function(req, res, next) {
 
 		subscriberController.post(subscriber, null);
 		var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
-		for (var i=0; i<emailList.length; i++){
-			var email = emailList[i]
-			EmailManager.sendEmail('info@thegridmedia.com', email, 'General Info Request', JSON.stringify(body))
-		}
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
+
+		// for (var i=0; i<emailList.length; i++){
+		// 	var email = emailList[i]
+		// 	EmailManager.sendEmail('info@thegridmedia.com', email, 'General Info Request', JSON.stringify(body))
+		// }
 
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
 		return
@@ -169,10 +172,11 @@ router.post('/:resource', function(req, res, next) {
 		subscriberController.post(subscriber, null);
 
 		var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
-		for (var i=0; i<emailList.length; i++){
-			var email = emailList[i]
-			EmailManager.sendEmail('info@thegridmedia.com', email, 'Syllabus Request', JSON.stringify(body))
-		}
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
+		// for (var i=0; i<emailList.length; i++){
+		// 	var email = emailList[i]
+		// 	EmailManager.sendEmail('info@thegridmedia.com', email, 'Syllabus Request', JSON.stringify(body))
+		// }
 
 		res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
 		return
