@@ -168,7 +168,7 @@ router.post('/:resource', function(req, res, next) {
 				}
 
 				var text = customerEmail+' submitted a depost for '+course.title
-				var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+				var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
 				for (var i=0; i<emailList.length; i++){
 					var email = emailList[i]
 					EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Deposit', text)

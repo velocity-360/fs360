@@ -146,7 +146,7 @@ router.post('/:resource', function(req, res, next) {
 		}
 
 		subscriberController.post(subscriber, null);
-		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
 		for (var i=0; i<emailList.length; i++){
 			var email = emailList[i]
 			EmailManager.sendEmail('info@thegridmedia.com', email, 'General Info Request', JSON.stringify(body))
@@ -168,7 +168,7 @@ router.post('/:resource', function(req, res, next) {
 
 		subscriberController.post(subscriber, null);
 
-		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
 		for (var i=0; i<emailList.length; i++){
 			var email = emailList[i]
 			EmailManager.sendEmail('info@thegridmedia.com', email, 'Syllabus Request', JSON.stringify(body))
