@@ -67,7 +67,6 @@ function createStripeAccount(stripe, profile, stripeToken, amount){ // amount ca
 				'brand':card.brand
 			};
 			profile['stripeId'] = customer.id;
-//			profile['accountType'] = 'premium';
 			profile.save();
 
 			if (amount == null){
@@ -97,7 +96,6 @@ function createStripeAccount(stripe, profile, stripeToken, amount){ // amount ca
 }
 
 function createStripeCharge(stripe, amount, customerId, description){
-
     return new Promise(function (resolve, reject){
 		stripe.charges.create({
 				amount: amount*100, // amount in cents
@@ -115,6 +113,25 @@ function createStripeCharge(stripe, amount, customerId, description){
     });
 }
 
+function createNonregisteredStripeCharge(stripe, stripeToken, amount, description){
+    return new Promise(function (resolve, reject){
+		stripe.charges.create({
+				amount: amount*100, // amount in cents
+				currency: 'usd',
+				source: stripeToken,
+				description: description,
+			}, function(err, charge) {
+				if (err){ // check for `err`
+		            reject(err);
+		            return
+				}
+
+		    	resolve(charge);
+		});
+    });
+}
+
+
 
 
 router.post('/:resource', function(req, res, next) {
@@ -123,7 +140,7 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'register') { // new user signing up as premium subscriber
 		createProfile(req.body)
 		.then(function(profile){
-			var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+			var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 			return createStripeAccount(stripe, profile, req.body.stripeToken, null);
 		})
 		.catch(function(err){
@@ -132,32 +149,12 @@ router.post('/:resource', function(req, res, next) {
 		});
 	}
 
-
 	if (resource == 'charge') {
-		if (!req.session){
-			res.send({'confirmation':'fail', 'message':'User not logged in.'});
-			return;
-		}
-
-		if (!req.session.user){
-			res.send({'confirmation':'fail', 'message':'User not logged in.'});
-			return;
-		}
-
-
-		var userId = req.session.user; // this is the currently logged in user
-
-		findProfile(userId)
-		.then(function(profile){
-			var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
-			// already has a stripe account:
-			if (profile.stripeId.length == 0)
-				return createStripeAccount(stripe, profile, req.body.stripeToken, req.body.amount);
-			else 
-				return createStripeCharge(stripe, req.body.amount, profile.stripeId, 'TEST STRIPE CHARGE 1');
-		})
+		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'TEST STRIPE CHARGE 1')
 		.then(function(charge){
+			// find user email, apply stripeId if necessary
+
 			var courseId = req.body.course;
 
 			// find course and add profile to subscribers array.
@@ -172,10 +169,10 @@ router.post('/:resource', function(req, res, next) {
 		            return; 
 				}
 
-				if (course.subscribers.indexOf(userId) == -1){
-					course.subscribers.push(userId);
-					course.save();
-				}
+				// if (course.subscribers.indexOf(userId) == -1){
+				// 	course.subscribers.push(userId);
+				// 	course.save();
+				// }
 
 				res.send({'confirmation':'success', 'course':course.summary()});
 	            return;
@@ -189,6 +186,64 @@ router.post('/:resource', function(req, res, next) {
 		
 		return;
 	}
+
+
+	// if (resource == 'charge') {
+	// 	if (!req.session){
+	// 		res.send({'confirmation':'fail', 'message':'User not logged in.'});
+	// 		return;
+	// 	}
+
+	// 	if (!req.session.user){
+	// 		res.send({'confirmation':'fail', 'message':'User not logged in.'});
+	// 		return;
+	// 	}
+
+
+	// 	var userId = req.session.user; // this is the currently logged in user
+
+	// 	findProfile(userId)
+	// 	.then(function(profile){
+	// 		var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+	// 		// already has a stripe account:
+	// 		if (profile.stripeId.length == 0)
+	// 			return createStripeAccount(stripe, profile, req.body.stripeToken, req.body.amount);
+	// 		else 
+	// 			return createStripeCharge(stripe, req.body.amount, profile.stripeId, 'TEST STRIPE CHARGE 1');
+	// 	})
+	// 	.then(function(charge){
+	// 		var courseId = req.body.course;
+
+	// 		// find course and add profile to subscribers array.
+	// 		Course.findById(courseId, function(err, course){
+	// 			if (err){
+	// 				res.send({'confirmation':'fail', 'message':err.message});
+	// 	            return; 
+	// 			}
+			
+	// 			if (course == null){
+	// 				res.send({'confirmation':'fail', 'message':'Course '+courseId+' not found.'});
+	// 	            return; 
+	// 			}
+
+	// 			if (course.subscribers.indexOf(userId) == -1){
+	// 				course.subscribers.push(userId);
+	// 				course.save();
+	// 			}
+
+	// 			res.send({'confirmation':'success', 'course':course.summary()});
+	//             return;
+	// 		});
+	// 		return;
+	// 	})
+	// 	.catch(function(err){
+	// 		res.send({'confirmation':'fail', 'message':err.message});
+	// 		return;
+	// 	});
+		
+	// 	return;
+	// }
 
 	
 	

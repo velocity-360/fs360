@@ -132,8 +132,6 @@ module.exports = {
 				// the transfer has completed and the server closed the connection.
 				console.log("UPLOAD COMPLETE: ");
 
-				//				FullStackServerActionCreator.userLoggedIn(response.profile);
-				//                document.getElementById('refreshProfileButton').click();
 
 				if (completion != null) completion();
 			}
