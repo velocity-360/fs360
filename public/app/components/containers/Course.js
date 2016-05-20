@@ -28,6 +28,7 @@ class Course extends Component {
 			showLoader: false,
 			showModal: false,
 			showLogin: false,
+			showConfirmation: false,
 			syllabusRequest: {
 				name: '',
 				email: '',
@@ -49,7 +50,6 @@ class Course extends Component {
 				stripe.initialize(function(token){
 					_this.setState({showLoader: true})
 					api.submitStripeToken(token, function(){
-
 						api.handleGet('/account/currentuser', {}, function(err, response){
 							_this.setState({showLoader: false})
 							if (err){
@@ -67,15 +67,19 @@ class Course extends Component {
 					_this.setState({showLoader: true})
 					
 					api.submitStripeCharge(token, _this.props.course.id, 5, function(){
-
 						api.handleGet('/account/currentuser', {}, function(err, response){
-							_this.setState({showLoader: false})
-							if (err){
-								alert(response.message)
-								return
-							}
+							_this.setState({
+								showConfirmation: true,
+								showLoader: false
+							})
 
-							store.dispatch(actions.currentUserRecieved(response.profile))
+							// if (err){
+							// 	alert(response.message)
+							// 	return
+							// }
+
+							// store.dispatch(actions.currentUserRecieved(response.profile))
+
 						});
 					})
 				})
@@ -204,7 +208,7 @@ class Course extends Component {
 	render(){
 		var detailBox = null
 		var btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		
+
 		// var btnRegister = '';
 		// if (this.props.currentUser.id == null){
 			// btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
@@ -335,6 +339,21 @@ class Course extends Component {
 
 
 		        <Modal show={this.state.showModal} onHide={this.closeModal}>
+			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
+			        	<h2>Request Syllabus</h2>
+			        </Modal.Header>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
+			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} className="form-control" type="text" id="name" placeholder="Name" /><br />
+			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
+
+			        </Modal.Body>
+
+			        <Modal.Footer style={{textAlign:'center'}}>
+						<a onClick={this.syllabusRequest} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+			        </Modal.Footer>
+		        </Modal>
+
+		        <Modal show={this.state.showConfirmation} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
 			        	<h2>Request Syllabus</h2>
 			        </Modal.Header>

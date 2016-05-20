@@ -57,6 +57,7 @@ var Course = (function (Component) {
 			showLoader: false,
 			showModal: false,
 			showLogin: false,
+			showConfirmation: false,
 			syllabusRequest: {
 				name: "",
 				email: "",
@@ -100,13 +101,10 @@ var Course = (function (Component) {
 
 							api.submitStripeCharge(token, _this.props.course.id, 5, function () {
 								api.handleGet("/account/currentuser", {}, function (err, response) {
-									_this.setState({ showLoader: false });
-									if (err) {
-										alert(response.message);
-										return;
-									}
-
-									store.dispatch(actions.currentUserRecieved(response.profile));
+									_this.setState({
+										showConfirmation: true,
+										showLoader: false
+									});
 								});
 							});
 						});
@@ -493,6 +491,36 @@ var Course = (function (Component) {
 							)
 						)
 					),
+					React.createElement(
+						Modal,
+						{ show: this.state.showConfirmation, onHide: this.closeModal },
+						React.createElement(
+							Modal.Header,
+							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
+							React.createElement(
+								"h2",
+								null,
+								"Request Syllabus"
+							)
+						),
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24 } },
+							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: "form-control", type: "text", id: "name", placeholder: "Name" }),
+							React.createElement("br", null),
+							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
+							React.createElement("br", null)
+						),
+						React.createElement(
+							Modal.Footer,
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"a",
+								{ onClick: this.syllabusRequest, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"Submit"
+							)
+						)
+					),
 					React.createElement(Footer, null)
 				);
 			},
@@ -520,3 +548,9 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
+// if (err){
+// 	alert(response.message)
+// 	return
+// }
+
+// store.dispatch(actions.currentUserRecieved(response.profile))

@@ -62548,6 +62548,7 @@
 				showLoader: false,
 				showModal: false,
 				showLogin: false,
+				showConfirmation: false,
 				syllabusRequest: {
 					name: '',
 					email: '',
@@ -62573,7 +62574,6 @@
 						_StripeUtils2.default.initialize(function (token) {
 							_this.setState({ showLoader: true });
 							_api2.default.submitStripeToken(token, function () {
-	
 								_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 									_this.setState({ showLoader: false });
 									if (err) {
@@ -62590,15 +62590,18 @@
 							_this.setState({ showLoader: true });
 	
 							_api2.default.submitStripeCharge(token, _this.props.course.id, 5, function () {
-	
 								_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
-									_this.setState({ showLoader: false });
-									if (err) {
-										alert(response.message);
-										return;
-									}
+									_this.setState({
+										showConfirmation: true,
+										showLoader: false
+									});
 	
-									_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+									// if (err){
+									// 	alert(response.message)
+									// 	return
+									// }
+	
+									// store.dispatch(actions.currentUserRecieved(response.profile))
 								});
 							});
 						});
@@ -62936,6 +62939,36 @@
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showModal, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Request Syllabus'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24 } },
+							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
+							_react2.default.createElement('br', null)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.syllabusRequest, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'Submit'
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showConfirmation, onHide: this.closeModal },
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Header,
 							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
