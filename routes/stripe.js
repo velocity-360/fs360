@@ -169,10 +169,12 @@ router.post('/:resource', function(req, res, next) {
 
 				var text = customerEmail+' submitted a depost for '+course.title
 				var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
-				for (var i=0; i<emailList.length; i++){
-					var email = emailList[i]
-					EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Deposit', text)
-				}
+				EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Deposit', text)
+				
+				// for (var i=0; i<emailList.length; i++){
+				// 	var email = emailList[i]
+				// 	EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Deposit', text)
+				// }
 
 				res.send({'confirmation':'success', 'course':course.summary()});
 	            return;
