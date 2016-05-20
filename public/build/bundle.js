@@ -42241,7 +42241,7 @@
 			});
 	
 			var response = http.send(params);
-			console.log('RESPONSE: ' + response);
+			//        console.log('RESPONSE: '+response);
 		}
 	
 	};
@@ -62656,7 +62656,8 @@
 			value: function closeModal() {
 				this.setState({
 					showModal: false,
-					showLogin: false
+					showLogin: false,
+					showConfirmation: false
 				});
 			}
 		}, {
@@ -62733,24 +62734,8 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
 				var detailBox = null;
-				var btnRegister = _react2.default.createElement(
-					'a',
-					{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-					'Register'
-				);
-	
-				// var btnRegister = '';
-				// if (this.props.currentUser.id == null){
-				// btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-				// }
-				// else if (this.props.currentUser.stripeId.length == ''){
-				// btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-				// }
-				// else {
-				// 	btnRegister = <a onClick={this.submitDeposit} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-				// }
-	
 				if (this.props.course.type != 'online') {
 					detailBox = _react2.default.createElement(
 						'div',
@@ -62770,10 +62755,14 @@
 							'Tuition: $',
 							this.props.course.tuition,
 							_react2.default.createElement('br', null),
-							'Depost: $',
+							'Deposit: $',
 							this.props.course.deposit,
 							_react2.default.createElement('hr', null),
-							btnRegister,
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+								'Register'
+							),
 							_react2.default.createElement(
 								'a',
 								{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
@@ -62975,24 +62964,30 @@
 							_react2.default.createElement(
 								'h2',
 								null,
-								'Request Syllabus'
-							)
+								'Deposit Confirmed'
+							),
+							_react2.default.createElement('img', { style: { width: 120, borderRadius: 60 }, src: '/images/logo_round_blue_260.png' })
 						),
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
+							{ style: { background: '#f9f9f9', padding: 24, textAlign: 'center' } },
+							_react2.default.createElement(
+								'p',
+								null,
+								'Thank you for submitting a deposit to the ',
+								this.props.course.title,
+								'. We look forward to meeting you on ',
+								startDate,
+								'. If you have any questions or concerns, feel free to contact us at katrina@velocity360.io. Thank you.'
+							)
 						),
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Footer,
 							{ style: { textAlign: 'center' } },
 							_react2.default.createElement(
 								'a',
-								{ onClick: this.syllabusRequest, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
+								{ onClick: this.closeModal, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'OK'
 							)
 						)
 					),

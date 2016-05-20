@@ -131,7 +131,8 @@ class Course extends Component {
 	closeModal(){
 		this.setState({
 			showModal: false,
-			showLogin: false
+			showLogin: false,
+			showConfirmation: false
 		})
 	}
 
@@ -206,20 +207,8 @@ class Course extends Component {
 	
 
 	render(){
+		var startDate = (this.props.course.dates == null) ? '' : this.props.course.dates.split('-')[0].trim()
 		var detailBox = null
-		var btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-
-		// var btnRegister = '';
-		// if (this.props.currentUser.id == null){
-			// btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		// }
-		// else if (this.props.currentUser.stripeId.length == ''){
-			// btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		// }
-		// else {
-		// 	btnRegister = <a onClick={this.submitDeposit} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		// }
-
 		if (this.props.course.type != 'online'){
 			detailBox =	<div className="col_half panel panel-default col_last">
 							<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
@@ -227,9 +216,9 @@ class Course extends Component {
 								{this.props.course.dates}<br />
 								{this.props.course.schedule}<br />
 								Tuition: ${this.props.course.tuition}<br />
-								Depost: ${this.props.course.deposit}
+								Deposit: ${this.props.course.deposit}
 								<hr />
-								{btnRegister}
+								<a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
 								<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 							</div>
 						</div>
@@ -355,17 +344,20 @@ class Course extends Component {
 
 		        <Modal show={this.state.showConfirmation} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>Request Syllabus</h2>
+			        	<h2>Deposit Confirmed</h2>
+			        	<img style={{width:120, borderRadius:60}} src="/images/logo_round_blue_260.png" />
 			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} className="form-control" type="text" id="name" placeholder="Name" /><br />
-			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
-
+			        <Modal.Body style={{background:'#f9f9f9', padding:24, textAlign:'center'}}>
+			        	<p>
+			        		Thank you for submitting a deposit to the {this.props.course.title}. We look forward
+			        		to meeting you on {startDate}. If you have any questions or concerns, feel
+			        		free to contact us at katrina@velocity360.io. Thank you.
+			        	</p>
 			        </Modal.Body>
-
 			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.syllabusRequest} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+						<a onClick={this.closeModal} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">OK</a>
 			        </Modal.Footer>
+
 		        </Modal>
 
 				<Footer />

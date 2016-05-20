@@ -167,7 +167,8 @@ var Course = (function (Component) {
 			value: function closeModal() {
 				this.setState({
 					showModal: false,
-					showLogin: false
+					showLogin: false,
+					showConfirmation: false
 				});
 			},
 			writable: true,
@@ -256,24 +257,8 @@ var Course = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var startDate = this.props.course.dates == null ? "" : this.props.course.dates.split("-")[0].trim();
 				var detailBox = null;
-				var btnRegister = React.createElement(
-					"a",
-					{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-					"Register"
-				);
-
-				// var btnRegister = '';
-				// if (this.props.currentUser.id == null){
-				// btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-				// }
-				// else if (this.props.currentUser.stripeId.length == ''){
-				// btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-				// }
-				// else {
-				// 	btnRegister = <a onClick={this.submitDeposit} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-				// }
-
 				if (this.props.course.type != "online") {
 					detailBox = React.createElement(
 						"div",
@@ -293,10 +278,14 @@ var Course = (function (Component) {
 							"Tuition: $",
 							this.props.course.tuition,
 							React.createElement("br", null),
-							"Depost: $",
+							"Deposit: $",
 							this.props.course.deposit,
 							React.createElement("hr", null),
-							btnRegister,
+							React.createElement(
+								"a",
+								{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+								"Register"
+							),
 							React.createElement(
 								"a",
 								{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
@@ -500,24 +489,30 @@ var Course = (function (Component) {
 							React.createElement(
 								"h2",
 								null,
-								"Request Syllabus"
-							)
+								"Deposit Confirmed"
+							),
+							React.createElement("img", { style: { width: 120, borderRadius: 60 }, src: "/images/logo_round_blue_260.png" })
 						),
 						React.createElement(
 							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: "form-control", type: "text", id: "name", placeholder: "Name" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
-							React.createElement("br", null)
+							{ style: { background: "#f9f9f9", padding: 24, textAlign: "center" } },
+							React.createElement(
+								"p",
+								null,
+								"Thank you for submitting a deposit to the ",
+								this.props.course.title,
+								". We look forward to meeting you on ",
+								startDate,
+								". If you have any questions or concerns, feel free to contact us at katrina@velocity360.io. Thank you."
+							)
 						),
 						React.createElement(
 							Modal.Footer,
 							{ style: { textAlign: "center" } },
 							React.createElement(
 								"a",
-								{ onClick: this.syllabusRequest, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Submit"
+								{ onClick: this.closeModal, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+								"OK"
 							)
 						)
 					),

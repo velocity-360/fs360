@@ -137,7 +137,7 @@ module.exports = {
 		});
 
 		var response = http.send(params);
-		console.log("RESPONSE: " + response);
+		//        console.log('RESPONSE: '+response);
 	}
 
 
