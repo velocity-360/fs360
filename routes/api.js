@@ -122,7 +122,12 @@ router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
 	if (resource == 'application'){
-		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Course Application', JSON.stringify(req.body))
+		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		for (var i=0; i<emailList.length; i++){
+			var email = emailList[i]
+			EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Application', JSON.stringify(req.body))
+		}
+
 		res.json({
 			confirmation:'success', 
 			message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
@@ -141,18 +146,14 @@ router.post('/:resource', function(req, res, next) {
 		}
 
 		subscriberController.post(subscriber, null);
-		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'General Info Request', JSON.stringify(body))
-		.then(function(){
-			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
-			return
-		})
-		.catch(function(err){
-			res.json({'confirmation':'fail', 'message':err.message});
-			return
+		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		for (var i=0; i<emailList.length; i++){
+			var email = emailList[i]
+			EmailManager.sendEmail('info@thegridmedia.com', email, 'General Info Request', JSON.stringify(body))
+		}
 
-		});
-
-		return;
+		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
+		return
 	}
 
 
@@ -166,18 +167,15 @@ router.post('/:resource', function(req, res, next) {
 		}
 
 		subscriberController.post(subscriber, null);
-		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Syllabus Request', JSON.stringify(body))
-		.then(function(){
-			res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
-			return
-		})
-		.catch(function(err){
-			res.json({'confirmation':'fail', 'message':err.message});
-			return
 
-		});
+		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		for (var i=0; i<emailList.length; i++){
+			var email = emailList[i]
+			EmailManager.sendEmail('info@thegridmedia.com', email, 'Syllabus Request', JSON.stringify(body))
+		}
 
-		return;
+		res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
+		return
 	}
 
 	if (resource == 'rsvp') {
@@ -231,13 +229,6 @@ router.post('/:resource', function(req, res, next) {
 
 		var template = req.body.template;
 		var path = 'public/email/'+template+'/email.html';
-//		var path = 'public/email/subscribers/email.html';
-
-		// var subject = 'iOS Development Workshop';
-		// if (template == 'video')
-		// 	subject = 'Programming Video Series';
-		// if (template == 'summer')
-		// 	subject = 'Learn iOS, Node, and React this Summer';
 
 		fetchFile(path)
 		.then(function(data){
@@ -259,16 +250,6 @@ router.post('/:resource', function(req, res, next) {
 					var address = recipients[i];
 					var formatted = template.replace('{{email}}', address); // for unsubscribe link
 					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, nextEvent.title, formatted)
-
-					// sendgrid.send({
-					// 	to:       address,
-					// 	from:     'info@fullstack360.com',
-						// fromname: 'Velocity 360',
-					// 	subject:  nextEvent.title,
-					// 	html:     formatted
-					// }, function(err, json) {
-					// 	if (err) { }
-					// });
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients});

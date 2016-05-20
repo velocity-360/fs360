@@ -168,7 +168,11 @@ router.post('/:resource', function(req, res, next) {
 				}
 
 				var text = customerEmail+' submitted a depost for '+course.title
-				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Course Deposit', text)
+				var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+				for (var i=0; i<emailList.length; i++){
+					var email = emailList[i]
+					EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Deposit', text)
+				}
 
 				res.send({'confirmation':'success', 'course':course.summary()});
 	            return;
