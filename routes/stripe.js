@@ -151,7 +151,7 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'charge') {
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'TEST STRIPE CHARGE 1')
+		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360 Course Deposit')
 		.then(function(charge){
 			var courseId = req.body.course;
 			var customerEmail = charge.source.name
