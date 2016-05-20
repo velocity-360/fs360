@@ -50,7 +50,7 @@ var Course = (function (Component) {
 		this.login = this.login.bind(this);
 		this.updateLogin = this.updateLogin.bind(this);
 		this.openStripeModal = this.openStripeModal.bind(this);
-		this.submitDeposit = this.submitDeposit.bind(this);
+		//		this.submitDeposit = this.submitDeposit.bind(this)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
@@ -99,7 +99,7 @@ var Course = (function (Component) {
 						stripe.initializeWithText("Submit Deposit", function (token) {
 							_this.setState({ showLoader: true });
 
-							api.submitStripeCharge(token, _this.props.course.id, 5, function () {
+							api.submitStripeCharge(token, _this.props.course.id, _this.props.course.deposit, function () {
 								api.handleGet("/account/currentuser", {}, function (err, response) {
 									_this.setState({
 										showConfirmation: true,
@@ -228,34 +228,33 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		submitDeposit: {
-			value: function submitDeposit(event) {
-				event.preventDefault();
-				console.log("submitDeposit");
-
-				this.setState({
-					showLoader: false
-				});
-
-				var _this = this;
-				var pkg = { amount: 5 };
-				api.handlePost("/stripe/charge", pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		render: {
+
+			// submitDeposit(event){
+			// 	event.preventDefault()
+			// 	console.log('submitDeposit')
+
+			// 	this.setState({
+			// 		showLoader: false
+			// 	});
+
+			// 	var _this = this
+			// 	var pkg = {amount:5}
+			// 	api.handlePost('/stripe/charge', pkg, function(err, response){
+			// 		_this.setState({
+			// 			showLoader: false
+			// 		});
+
+			// 		if (err){
+			// 			alert(err.message)
+			// 			return
+			// 		}
+
+			// 		alert(response.message)
+			// 	});
+			// }
+
+
 			value: function render() {
 				var startDate = this.props.course.dates == null ? "" : this.props.course.dates.split("-")[0].trim();
 				var detailBox = null;
@@ -543,9 +542,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
-// if (err){
-// 	alert(response.message)
-// 	return
-// }
-
-// store.dispatch(actions.currentUserRecieved(response.profile))

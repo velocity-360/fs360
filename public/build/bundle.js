@@ -62541,7 +62541,7 @@
 			_this2.login = _this2.login.bind(_this2);
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
-			_this2.submitDeposit = _this2.submitDeposit.bind(_this2);
+			//		this.submitDeposit = this.submitDeposit.bind(this)
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
@@ -62589,19 +62589,12 @@
 						_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
 							_this.setState({ showLoader: true });
 	
-							_api2.default.submitStripeCharge(token, _this.props.course.id, 5, function () {
+							_api2.default.submitStripeCharge(token, _this.props.course.id, _this.props.course.deposit, function () {
 								_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 									_this.setState({
 										showConfirmation: true,
 										showLoader: false
 									});
-	
-									// if (err){
-									// 	alert(response.message)
-									// 	return
-									// }
-	
-									// store.dispatch(actions.currentUserRecieved(response.profile))
 								});
 							});
 						});
@@ -62706,31 +62699,31 @@
 				event.preventDefault();
 				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
-		}, {
-			key: 'submitDeposit',
-			value: function submitDeposit(event) {
-				event.preventDefault();
-				console.log('submitDeposit');
 	
-				this.setState({
-					showLoader: false
-				});
+			// submitDeposit(event){
+			// 	event.preventDefault()
+			// 	console.log('submitDeposit')
 	
-				var _this = this;
-				var pkg = { amount: 5 };
-				_api2.default.handlePost('/stripe/charge', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
+			// 	this.setState({
+			// 		showLoader: false
+			// 	});
 	
-					if (err) {
-						alert(err.message);
-						return;
-					}
+			// 	var _this = this
+			// 	var pkg = {amount:5}
+			// 	api.handlePost('/stripe/charge', pkg, function(err, response){
+			// 		_this.setState({
+			// 			showLoader: false
+			// 		});
 	
-					alert(response.message);
-				});
-			}
+			// 		if (err){
+			// 			alert(err.message)
+			// 			return
+			// 		}
+	
+			// 		alert(response.message)
+			// 	});
+			// }
+	
 		}, {
 			key: 'render',
 			value: function render() {

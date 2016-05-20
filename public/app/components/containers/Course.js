@@ -21,7 +21,7 @@ class Course extends Component {
 		this.login = this.login.bind(this)
 		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
-		this.submitDeposit = this.submitDeposit.bind(this)
+//		this.submitDeposit = this.submitDeposit.bind(this)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
@@ -66,19 +66,12 @@ class Course extends Component {
 				stripe.initializeWithText('Submit Deposit', function(token){
 					_this.setState({showLoader: true})
 					
-					api.submitStripeCharge(token, _this.props.course.id, 5, function(){
+					api.submitStripeCharge(token, _this.props.course.id, _this.props.course.deposit, function(){
 						api.handleGet('/account/currentuser', {}, function(err, response){
 							_this.setState({
 								showConfirmation: true,
 								showLoader: false
 							})
-
-							// if (err){
-							// 	alert(response.message)
-							// 	return
-							// }
-
-							// store.dispatch(actions.currentUserRecieved(response.profile))
 
 						});
 					})
@@ -181,29 +174,29 @@ class Course extends Component {
 			stripe.showModalWithText(this.props.course.title)
 	}
 
-	submitDeposit(event){
-		event.preventDefault()
-		console.log('submitDeposit')
+	// submitDeposit(event){
+	// 	event.preventDefault()
+	// 	console.log('submitDeposit')
 
-		this.setState({
-			showLoader: false
-		});
+	// 	this.setState({
+	// 		showLoader: false
+	// 	});
 
-		var _this = this
-		var pkg = {amount:5}
-		api.handlePost('/stripe/charge', pkg, function(err, response){
-			_this.setState({
-				showLoader: false
-			});
+	// 	var _this = this
+	// 	var pkg = {amount:5}
+	// 	api.handlePost('/stripe/charge', pkg, function(err, response){
+	// 		_this.setState({
+	// 			showLoader: false
+	// 		});
 
-			if (err){
-				alert(err.message)
-				return
-			}
+	// 		if (err){
+	// 			alert(err.message)
+	// 			return
+	// 		}
 
-			alert(response.message)
-		});
-	}
+	// 		alert(response.message)
+	// 	});
+	// }
 	
 
 	render(){
