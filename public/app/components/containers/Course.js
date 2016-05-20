@@ -207,7 +207,7 @@ class Course extends Component {
 		if (this.props.currentUser.id == null){
 			btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
 		}
-		else if (this.props.currentUser.stripeId == null){
+		else if (this.props.currentUser.stripeId.length == ''){
 			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
 		}
 		else {

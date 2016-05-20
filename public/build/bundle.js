@@ -62741,7 +62741,7 @@
 						{ onClick: this.showLogin, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
 						'Register'
 					);
-				} else if (this.props.currentUser.stripeId == null) {
+				} else if (this.props.currentUser.stripeId.length == '') {
 					btnRegister = _react2.default.createElement(
 						'a',
 						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },

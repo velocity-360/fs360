@@ -59,7 +59,13 @@ function createStripeAccount(stripe, profile, stripeToken, amount){ // amount ca
 			}
 			
 			var card = customer.sources.data[0];
-			profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand};
+			profile['creditCard'] = {
+				'id':customer.id,
+				'lastFour':card.last4,
+				'exp_month':card.exp_month,
+				'exp_year':card.exp_year,
+				'brand':card.brand
+			};
 			profile['stripeId'] = customer.id;
 //			profile['accountType'] = 'premium';
 			profile.save();
