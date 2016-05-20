@@ -132,7 +132,6 @@ module.exports = {
 				// the transfer has completed and the server closed the connection.
 				console.log("UPLOAD COMPLETE: ");
 
-
 				if (completion != null) completion();
 			}
 		});

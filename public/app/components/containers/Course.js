@@ -203,16 +203,18 @@ class Course extends Component {
 
 	render(){
 		var detailBox = null
-		var btnRegister = '';
-		if (this.props.currentUser.id == null){
-			btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		}
-		else if (this.props.currentUser.stripeId.length == ''){
-			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		}
-		else {
-			btnRegister = <a onClick={this.submitDeposit} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
-		}
+		var btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		
+		// var btnRegister = '';
+		// if (this.props.currentUser.id == null){
+			// btnRegister = <a onClick={this.showLogin} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		// }
+		// else if (this.props.currentUser.stripeId.length == ''){
+			// btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		// }
+		// else {
+		// 	btnRegister = <a onClick={this.submitDeposit} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		// }
 
 		if (this.props.course.type != 'online'){
 			detailBox =	<div className="col_half panel panel-default col_last">
