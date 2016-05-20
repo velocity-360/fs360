@@ -153,11 +153,9 @@ router.post('/:resource', function(req, res, next) {
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'TEST STRIPE CHARGE 1')
 		.then(function(charge){
-			// find user email, apply stripeId if necessary
-
 			var courseId = req.body.course;
+			var customerEmail = charge.source.name
 
-			// find course and add profile to subscribers array.
 			Course.findById(courseId, function(err, course){
 				if (err){
 					res.send({'confirmation':'fail', 'message':err.message});
@@ -169,14 +167,13 @@ router.post('/:resource', function(req, res, next) {
 		            return; 
 				}
 
-				// if (course.subscribers.indexOf(userId) == -1){
-				// 	course.subscribers.push(userId);
-				// 	course.save();
-				// }
+				var text = customerEmail+' submitted a depost for '+course.title
+				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Course Deposit', text)
 
 				res.send({'confirmation':'success', 'course':course.summary()});
 	            return;
 			});
+
 			return;
 		})
 		.catch(function(err){

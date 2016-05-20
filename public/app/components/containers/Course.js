@@ -291,7 +291,7 @@ class Course extends Component {
 															<hr />
 															Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
 															<br /><br />
-															<a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>												
+															<a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
 															<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 														</div>
 													</div>
