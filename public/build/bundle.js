@@ -21914,10 +21914,17 @@
 		switch (action.type) {
 	
 			case constants.SAMPLE_CREATED:
-				var newState = Object.assign({}, state);
 				var sample = action.sample;
-				newState.samples[sample.id] = sample;
-				newState.samplesArray.unshift(sample);
+	
+				var newState = Object.assign({}, state);
+				var s = Object.assign({}, newState.samples);
+				s[sample.id] = sample;
+				newState['samples'] = s;
+	
+				var a = Object.assign([], newState.samplesArray);
+				a.unshift(sample);
+				newState['samplesArray'] = a;
+	
 				return newState;
 	
 			case constants.SAMPLES_RECIEVED:
