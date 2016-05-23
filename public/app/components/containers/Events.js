@@ -488,23 +488,13 @@ class Events extends Component {
 									  </thead>
 									  <tbody>
 										<tr>
-										  <td><span>iOS + Node</span></td>
-										  <td>May 2 - Oct 28</td>
-										  <td>Closed (Accepting Waitlist)</td>
-										</tr>
-										<tr>
-										  <td><span>Full Stack Web</span></td>
-										  <td>May 2 - Oct 28</td>
-										  <td>Closed (Accepting Waitlist)</td>
-										</tr>
-										<tr>
 										  <td><span><a href="/course/node-react-bootcamp">iOS + Node</a></span></td>
-										  <td>June 6 - Dec 2, Mon/Wed/Sat</td>
+										  <td>July 11th - August 19th</td>
 										  <td>Accepting Applications</td>
 										</tr>
 										<tr>
-										  <td><span><a href="/course/node-react-bootcamp">React + Node</a></span></td>
-										  <td>June 7 - Dec 2, Tue/Thu/Sat</td>
+										  <td><span><a href="/course/ios-node-bootcamp">React + Node</a></span></td>
+										  <td>August 22nd - September 30th</td>
 										  <td>Accepting Applications</td>
 										</tr>
 									  </tbody>

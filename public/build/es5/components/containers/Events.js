@@ -746,52 +746,6 @@ var Events = (function (Component) {
 														React.createElement(
 															"span",
 															null,
-															"iOS + Node"
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"May 2 - Oct 28"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Closed (Accepting Waitlist)"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															"Full Stack Web"
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"May 2 - Oct 28"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Closed (Accepting Waitlist)"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
 															React.createElement(
 																"a",
 																{ href: "/course/node-react-bootcamp" },
@@ -802,7 +756,7 @@ var Events = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"June 6 - Dec 2, Mon/Wed/Sat"
+														"July 11th - August 19th"
 													),
 													React.createElement(
 														"td",
@@ -821,7 +775,7 @@ var Events = (function (Component) {
 															null,
 															React.createElement(
 																"a",
-																{ href: "/course/node-react-bootcamp" },
+																{ href: "/course/ios-node-bootcamp" },
 																"React + Node"
 															)
 														)
@@ -829,7 +783,7 @@ var Events = (function (Component) {
 													React.createElement(
 														"td",
 														null,
-														"June 7 - Dec 2, Tue/Thu/Sat"
+														"August 22nd - September 30th"
 													),
 													React.createElement(
 														"td",

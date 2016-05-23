@@ -46888,52 +46888,6 @@
 														_react2.default.createElement(
 															'span',
 															null,
-															'iOS + Node'
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'May 2 - Oct 28'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Closed (Accepting Waitlist)'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															'Full Stack Web'
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'May 2 - Oct 28'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Closed (Accepting Waitlist)'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
 															_react2.default.createElement(
 																'a',
 																{ href: '/course/node-react-bootcamp' },
@@ -46944,7 +46898,7 @@
 													_react2.default.createElement(
 														'td',
 														null,
-														'June 6 - Dec 2, Mon/Wed/Sat'
+														'July 11th - August 19th'
 													),
 													_react2.default.createElement(
 														'td',
@@ -46963,7 +46917,7 @@
 															null,
 															_react2.default.createElement(
 																'a',
-																{ href: '/course/node-react-bootcamp' },
+																{ href: '/course/ios-node-bootcamp' },
 																'React + Node'
 															)
 														)
@@ -46971,7 +46925,7 @@
 													_react2.default.createElement(
 														'td',
 														null,
-														'June 7 - Dec 2, Tue/Thu/Sat'
+														'August 22nd - September 30th'
 													),
 													_react2.default.createElement(
 														'td',
