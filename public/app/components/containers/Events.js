@@ -337,7 +337,7 @@ class Events extends Component {
 					</div>
 				</section>
 
-				<section id="section-team" className="page-section" style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
+				<section id="section-team" className="page-section" style={{background:'#fff', paddingTop:48}}>
 
 					<div className="heading-block center">
 						<h2>Summer 2016</h2>
@@ -345,31 +345,6 @@ class Events extends Component {
 					</div>
 
 					<div className="container clearfix">
-
-						<div className="col-md-6 bottommargin">
-							<div className="team team-list clearfix">
-								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity" />
-								</div>
-								<div className="team-desc">
-									<div className="team-title">
-										<h4>iOS &amp; Node High School Course</h4>
-										<span>Jul 5 to Jul 15 | Mon - Fri | 9am - 5pm</span>
-									</div>
-									<div className="team-content">
-										The iOS High School Course takes students through the process of 
-										designing and programming a basic iOS app from start. Students will create a 
-										simple app that utilizes key platform tools including the GPS locator, 
-										accelerator, and camera. In addition, the course will explore third party APIs 
-										such as Google Maps and Foursquare.
-									</div>
-									<br />
-									<a href="/course/ios-high-school-course" className="btn btn-success">
-										Learn More
-									</a>
-								</div>
-							</div>
-						</div>
 
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
@@ -397,33 +372,6 @@ class Events extends Component {
 							</div>
 						</div>
 
-						<div className="clear"></div>
-
-						<div className="col-md-6 bottommargin">
-							<div className="team team-list clearfix">
-								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity" />
-								</div>
-								<div className="team-desc">
-									<div className="team-title">
-										<h4>iOS &amp; Node High School Course</h4>
-										<span>Jul 18 to Jul 29 | Mon - Fri | 9am - 5pm</span>
-									</div>
-									<div className="team-content">
-										The iOS High School Course takes students through the process of 
-										designing and programming a basic iOS app from start. Students will create a 
-										simple app that utilizes key platform tools including the GPS locator, 
-										accelerator, and camera. In addition, the course will explore third party APIs 
-										such as Google Maps and Foursquare.
-									</div>
-									<br />
-									<a href="/course/ios-high-school-course" className="btn btn-success">
-										Learn More
-									</a>
-								</div>
-							</div>
-						</div>
-
 						<div className="col-md-6 bottommargin">
 							<div className="team team-list clearfix">
 								<div className="team-image">
@@ -435,11 +383,11 @@ class Events extends Component {
 										<span>8 Weeks | Tues, Thurs | 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
-										The Node &amp; React Development Intensive is a 6-week crash course on backend and 
-										frontend development using the most up-to-date technologies. Using Node JS, 
-										Mongo, Express and React (with ES6), we will create a fully functional 
-										website with user registration, image uploading, email notification 
-										functionality.
+										React and NodeThe Node & React Development Evening course is an 8-week class 
+										that covers backend and frontend development using the most up-to-date 
+										technologies. Using Node JS, Mongo, Express and React (with ES6), we will 
+										create a fully functional website with user registration, image uploading, 
+										email notification functionality.									
 									</div>
 									<br />
 									<a href="/course/node-react-evening-course" className="btn btn-success">
@@ -450,6 +398,64 @@ class Events extends Component {
 
 						</div>
 
+						<div className="clear"></div>
+
+						<div className="col-md-6 bottommargin">
+							<div className="team team-list clearfix">
+								<div className="team-image">
+									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity" />
+								</div>
+								<div className="team-desc">
+									<div className="team-title">
+										<h4>6-Week Node &amp; iOS Bootcamp</h4>
+										<span>July 11th to August 19th</span>
+										<span>Mon - Fri | 9am - 6pm</span>
+									</div>
+									<div className="team-content">
+										The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS 
+										development for beginners. Students will 
+										cover the key aspects of iOS development from creating sleek UI’s, 
+										animations, GPS locator, integrating 3rd party data. This 
+										course is designed for beginners with little to no programming experience 
+										and all development is done with Swift. By the end of the course, students 
+										will have submitted at least one app to the App Store and gained the skills 
+										necessary to begin working as junior iOS developers.
+									</div>
+									<br />
+									<a href="/course/ios-node-bootcamp" className="btn btn-success">
+										Learn More
+									</a>
+								</div>
+							</div>
+						</div>
+
+
+						<div className="col-md-6 bottommargin">
+							<div className="team team-list clearfix">
+								<div className="team-image">
+									<img src="/images/node.jpg" alt="Velocity" />
+								</div>
+								<div className="team-desc">
+									<div className="team-title">
+										<h4>6-Week Node &amp; React Bootcamp</h4>
+										<span>August 22nd to September 30th</span>
+										<span>Mon - Fri | 9am - 6pm</span>
+									</div>
+									<div className="team-content">
+										The Node &amp; React Bootcamp is a 6-week crash course on backend and 
+										frontend development using the most up-to-date technologies. Using Node JS, 
+										Mongo, Express and React (with ES6), we will create a fully functional 
+										website with user registration, image uploading, email notification 
+										functionality.
+									</div>
+									<br />
+									<a href="/course/node-react-bootcamp" className="btn btn-success">
+										Learn More
+									</a>
+								</div>
+							</div>
+						</div>
+
 						<div className="divider divider-short divider-center">
 							<i className="icon-circle"></i>
 						</div>
@@ -457,56 +463,6 @@ class Events extends Component {
 						<div className="clear"></div>
 					</div>
 
-					<div className="row clearfix common-height" style={{borderTop:'1px solid #ddd'}}>
-						<div className="col-md-6 center col-padding" style={{background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover'}}>
-							<div>&nbsp;</div>
-						</div>
-
-						<div className="col-md-6 center col-padding" style={{backgroundColor: '#fff'}}>
-							<div>
-								<div className="heading-block nobottomborder">
-									<h3>Bootcamps</h3>
-								</div>
-
-								<p className="lead">
-									Velocity operates 6-week bootcamps that run Monday through Friday. Designed 
-									for career changers, our bootcamps train students to enter the field as junior developers
-									and start contributing right away.
-								</p>
-
-								<div className="table-responsive">
-									<table className="table table-bordered table-striped" style={{background:'#fff', textAlign:'left'}}>
-									  <colgroup>
-										<col className="col-xs-2" />
-										<col className="col-xs-4" />
-										<col className="col-xs-4" />
-									  </colgroup>
-									  <thead>
-										<tr>
-										  <th>Class</th><th>Dates</th><th>Status</th>
-										</tr>
-									  </thead>
-									  <tbody>
-										<tr>
-										  <td><span><a href="/course/ios-node-bootcamp">iOS + Node</a></span></td>
-										  <td>July 11th - August 19th</td>
-										  <td>Accepting Applications</td>
-										</tr>
-										<tr>
-										  <td><span><a href="/course/node-react-bootcamp">React + Node</a></span></td>
-										  <td>August 22nd - September 30th</td>
-										  <td>Accepting Applications</td>
-										</tr>
-									  </tbody>
-									</table>
-								</div>
-
-								<a onClick={this.openModal} id="bootcamp" href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
-									Request Information
-								</a>
-							</div>
-						</div>
-					</div>
 
 					<div className="section">
 						<div className="container clearfix">

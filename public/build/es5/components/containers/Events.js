@@ -472,7 +472,7 @@ var Events = (function (Component) {
 					),
 					React.createElement(
 						"section",
-						{ id: "section-team", className: "page-section", style: { background: "#f9f9f9", paddingTop: 48, borderTop: "1px solid #ddd" } },
+						{ id: "section-team", className: "page-section", style: { background: "#fff", paddingTop: 48 } },
 						React.createElement(
 							"div",
 							{ className: "heading-block center" },
@@ -490,48 +490,6 @@ var Events = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "container clearfix" },
-							React.createElement(
-								"div",
-								{ className: "col-md-6 bottommargin" },
-								React.createElement(
-									"div",
-									{ className: "team team-list clearfix" },
-									React.createElement(
-										"div",
-										{ className: "team-image" },
-										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "Velocity" })
-									),
-									React.createElement(
-										"div",
-										{ className: "team-desc" },
-										React.createElement(
-											"div",
-											{ className: "team-title" },
-											React.createElement(
-												"h4",
-												null,
-												"iOS & Node High School Course"
-											),
-											React.createElement(
-												"span",
-												null,
-												"Jul 5 to Jul 15 | Mon - Fri | 9am - 5pm"
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "team-content" },
-											"The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"a",
-											{ href: "/course/ios-high-school-course", className: "btn btn-success" },
-											"Learn More"
-										)
-									)
-								)
-							),
 							React.createElement(
 								"div",
 								{ className: "col-md-6 bottommargin" },
@@ -574,49 +532,6 @@ var Events = (function (Component) {
 									)
 								)
 							),
-							React.createElement("div", { className: "clear" }),
-							React.createElement(
-								"div",
-								{ className: "col-md-6 bottommargin" },
-								React.createElement(
-									"div",
-									{ className: "team team-list clearfix" },
-									React.createElement(
-										"div",
-										{ className: "team-image" },
-										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "Velocity" })
-									),
-									React.createElement(
-										"div",
-										{ className: "team-desc" },
-										React.createElement(
-											"div",
-											{ className: "team-title" },
-											React.createElement(
-												"h4",
-												null,
-												"iOS & Node High School Course"
-											),
-											React.createElement(
-												"span",
-												null,
-												"Jul 18 to Jul 29 | Mon - Fri | 9am - 5pm"
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "team-content" },
-											"The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"a",
-											{ href: "/course/ios-high-school-course", className: "btn btn-success" },
-											"Learn More"
-										)
-									)
-								)
-							),
 							React.createElement(
 								"div",
 								{ className: "col-md-6 bottommargin" },
@@ -648,12 +563,107 @@ var Events = (function (Component) {
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The Node & React Development Intensive is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
+											"React and NodeThe Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"a",
 											{ href: "/course/node-react-evening-course", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								)
+							),
+							React.createElement("div", { className: "clear" }),
+							React.createElement(
+								"div",
+								{ className: "col-md-6 bottommargin" },
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/ios.jpg", alt: "Velocity" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"6-Week Node & iOS Bootcamp"
+											),
+											React.createElement(
+												"span",
+												null,
+												"July 11th to August 19th"
+											),
+											React.createElement(
+												"span",
+												null,
+												"Mon - Fri | 9am - 6pm"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS development for beginners. Students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data. This course is designed for beginners with little to no programming experience and all development is done with Swift. By the end of the course, students will have submitted at least one app to the App Store and gained the skills necessary to begin working as junior iOS developers."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ href: "/course/ios-node-bootcamp", className: "btn btn-success" },
+											"Learn More"
+										)
+									)
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "col-md-6 bottommargin" },
+								React.createElement(
+									"div",
+									{ className: "team team-list clearfix" },
+									React.createElement(
+										"div",
+										{ className: "team-image" },
+										React.createElement("img", { src: "/images/node.jpg", alt: "Velocity" })
+									),
+									React.createElement(
+										"div",
+										{ className: "team-desc" },
+										React.createElement(
+											"div",
+											{ className: "team-title" },
+											React.createElement(
+												"h4",
+												null,
+												"6-Week Node & React Bootcamp"
+											),
+											React.createElement(
+												"span",
+												null,
+												"August 22nd to September 30th"
+											),
+											React.createElement(
+												"span",
+												null,
+												"Mon - Fri | 9am - 6pm"
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "team-content" },
+											"The Node & React Bootcamp is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"a",
+											{ href: "/course/node-react-bootcamp", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -665,142 +675,6 @@ var Events = (function (Component) {
 								React.createElement("i", { className: "icon-circle" })
 							),
 							React.createElement("div", { className: "clear" })
-						),
-						React.createElement(
-							"div",
-							{ className: "row clearfix common-height", style: { borderTop: "1px solid #ddd" } },
-							React.createElement(
-								"div",
-								{ className: "col-md-6 center col-padding", style: { background: "url(\"/images/hacking.jpg\") center center no-repeat", backgroundSize: "cover" } },
-								React.createElement(
-									"div",
-									null,
-									" "
-								)
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-6 center col-padding", style: { backgroundColor: "#fff" } },
-								React.createElement(
-									"div",
-									null,
-									React.createElement(
-										"div",
-										{ className: "heading-block nobottomborder" },
-										React.createElement(
-											"h3",
-											null,
-											"Bootcamps"
-										)
-									),
-									React.createElement(
-										"p",
-										{ className: "lead" },
-										"Velocity operates 6-week bootcamps that run Monday through Friday. Designed for career changers, our bootcamps train students to enter the field as junior developers and start contributing right away."
-									),
-									React.createElement(
-										"div",
-										{ className: "table-responsive" },
-										React.createElement(
-											"table",
-											{ className: "table table-bordered table-striped", style: { background: "#fff", textAlign: "left" } },
-											React.createElement(
-												"colgroup",
-												null,
-												React.createElement("col", { className: "col-xs-2" }),
-												React.createElement("col", { className: "col-xs-4" }),
-												React.createElement("col", { className: "col-xs-4" })
-											),
-											React.createElement(
-												"thead",
-												null,
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"th",
-														null,
-														"Class"
-													),
-													React.createElement(
-														"th",
-														null,
-														"Dates"
-													),
-													React.createElement(
-														"th",
-														null,
-														"Status"
-													)
-												)
-											),
-											React.createElement(
-												"tbody",
-												null,
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															React.createElement(
-																"a",
-																{ href: "/course/ios-node-bootcamp" },
-																"iOS + Node"
-															)
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"July 11th - August 19th"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Accepting Applications"
-													)
-												),
-												React.createElement(
-													"tr",
-													null,
-													React.createElement(
-														"td",
-														null,
-														React.createElement(
-															"span",
-															null,
-															React.createElement(
-																"a",
-																{ href: "/course/node-react-bootcamp" },
-																"React + Node"
-															)
-														)
-													),
-													React.createElement(
-														"td",
-														null,
-														"August 22nd - September 30th"
-													),
-													React.createElement(
-														"td",
-														null,
-														"Accepting Applications"
-													)
-												)
-											)
-										)
-									),
-									React.createElement(
-										"a",
-										{ onClick: this.openModal, id: "bootcamp", href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-										"Request Information"
-									)
-								)
-							)
 						),
 						React.createElement(
 							"div",

@@ -22001,7 +22001,10 @@
 	var constants = __webpack_require__(188);
 	
 	var initialState = {
-		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Intensive', quote: "On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects.  I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer." }, { name: 'Jeff Abraham', image: 'jeffabraham.jpg', course: 'iOS Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }, { name: 'Mike Maloney', image: 'mikemaloney.jpg', course: 'Web Development', quote: "After 20 years on Broadway, I was skeptical if the Velocity class would work for me. However I quickly realized that Velocity was exactly what I needed. We spent practically the entire day coding from the minute I walked into class every morning.  I started with the full-time Web intensive class and I am now in the middle of taking an iOS class. What separates Velocity is that I learn only very relevant technologies that will be useful in the near future.  When you stumble down the rabbit hole, the instructor guides you but does not hold your hand.  Lastly, the culture at Velocity is hard to match, with its offices being centrally located at WeWork, and the great collaborative environment between both the students and instructors." }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }],
+		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Intensive', quote: "On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects.  I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer." },
+		// {name:'Jeff Abraham', image:'jeffabraham.jpg', course:'iOS Intensive', quote:"I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team"}
+		// {name:'Mike Maloney', image:'mikemaloney.jpg', course:'Web Development', quote:"After 20 years on Broadway, I was skeptical if the Velocity class would work for me. However I quickly realized that Velocity was exactly what I needed. We spent practically the entire day coding from the minute I walked into class every morning.  I started with the full-time Web intensive class and I am now in the middle of taking an iOS class. What separates Velocity is that I learn only very relevant technologies that will be useful in the near future.  When you stumble down the rabbit hole, the instructor guides you but does not hold your hand.  Lastly, the culture at Velocity is hard to match, with its offices being centrally located at WeWork, and the great collaborative environment between both the students and instructors."},
+		{ name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }],
 		banners: ['hackathon.jpg', 'hacking-2.jpg', 'girl.jpg'],
 		faq: {
 			highschool: [{ question: 'Will I Have Fun?', answer: 'Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.' }, { question: 'I don’t have a lot of experience coding - can I still take your summer class?', answer: 'Of course!  Velocity High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.' }, { question: 'Is there a screening process?', answer: 'We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.' }, { question: 'Who are the instructors for the summer classes?', answer: 'All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!' }, { question: 'Will this class help me get into college?  What about an internship in the future?', answer: 'Yes, I am glad you asked.  Velocity Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites. If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at Velocity is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at Velocity you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.' }, { question: 'Where is the Summer Program for Velocity?', answer: 'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at Velocity you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.' }],
@@ -46614,7 +46617,7 @@
 					),
 					_react2.default.createElement(
 						'section',
-						{ id: 'section-team', className: 'page-section', style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
+						{ id: 'section-team', className: 'page-section', style: { background: '#fff', paddingTop: 48 } },
 						_react2.default.createElement(
 							'div',
 							{ className: 'heading-block center' },
@@ -46632,48 +46635,6 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 bottommargin' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'iOS & Node High School Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Jul 5 to Jul 15 | Mon - Fri | 9am - 5pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/ios-high-school-course', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
-							),
 							_react2.default.createElement(
 								'div',
 								{ className: 'col-md-6 bottommargin' },
@@ -46716,49 +46677,6 @@
 									)
 								)
 							),
-							_react2.default.createElement('div', { className: 'clear' }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 bottommargin' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'iOS & Node High School Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Jul 18 to Jul 29 | Mon - Fri | 9am - 5pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The iOS High School Course takes students through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/ios-high-school-course', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
-							),
 							_react2.default.createElement(
 								'div',
 								{ className: 'col-md-6 bottommargin' },
@@ -46790,12 +46708,107 @@
 										_react2.default.createElement(
 											'div',
 											{ className: 'team-content' },
-											'The Node & React Development Intensive is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
+											'React and NodeThe Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
 										),
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
 											{ href: '/course/node-react-evening-course', className: 'btn btn-success' },
+											'Learn More'
+										)
+									)
+								)
+							),
+							_react2.default.createElement('div', { className: 'clear' }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-6 bottommargin' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'team team-list clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'team-image' },
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'team-desc' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'team-title' },
+											_react2.default.createElement(
+												'h4',
+												null,
+												'6-Week Node & iOS Bootcamp'
+											),
+											_react2.default.createElement(
+												'span',
+												null,
+												'July 11th to August 19th'
+											),
+											_react2.default.createElement(
+												'span',
+												null,
+												'Mon - Fri | 9am - 6pm'
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'team-content' },
+											'The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS development for beginners. Students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data. This course is designed for beginners with little to no programming experience and all development is done with Swift. By the end of the course, students will have submitted at least one app to the App Store and gained the skills necessary to begin working as junior iOS developers.'
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'a',
+											{ href: '/course/ios-node-bootcamp', className: 'btn btn-success' },
+											'Learn More'
+										)
+									)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-6 bottommargin' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'team team-list clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'team-image' },
+										_react2.default.createElement('img', { src: '/images/node.jpg', alt: 'Velocity' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'team-desc' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'team-title' },
+											_react2.default.createElement(
+												'h4',
+												null,
+												'6-Week Node & React Bootcamp'
+											),
+											_react2.default.createElement(
+												'span',
+												null,
+												'August 22nd to September 30th'
+											),
+											_react2.default.createElement(
+												'span',
+												null,
+												'Mon - Fri | 9am - 6pm'
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'team-content' },
+											'The Node & React Bootcamp is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'a',
+											{ href: '/course/node-react-bootcamp', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -46807,142 +46820,6 @@
 								_react2.default.createElement('i', { className: 'icon-circle' })
 							),
 							_react2.default.createElement('div', { className: 'clear' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'row clearfix common-height', style: { borderTop: '1px solid #ddd' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 center col-padding', style: { background: 'url("/images/hacking.jpg") center center no-repeat', backgroundSize: 'cover' } },
-								_react2.default.createElement(
-									'div',
-									null,
-									' '
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 center col-padding', style: { backgroundColor: '#fff' } },
-								_react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block nobottomborder' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Bootcamps'
-										)
-									),
-									_react2.default.createElement(
-										'p',
-										{ className: 'lead' },
-										'Velocity operates 6-week bootcamps that run Monday through Friday. Designed for career changers, our bootcamps train students to enter the field as junior developers and start contributing right away.'
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'table-responsive' },
-										_react2.default.createElement(
-											'table',
-											{ className: 'table table-bordered table-striped', style: { background: '#fff', textAlign: 'left' } },
-											_react2.default.createElement(
-												'colgroup',
-												null,
-												_react2.default.createElement('col', { className: 'col-xs-2' }),
-												_react2.default.createElement('col', { className: 'col-xs-4' }),
-												_react2.default.createElement('col', { className: 'col-xs-4' })
-											),
-											_react2.default.createElement(
-												'thead',
-												null,
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'th',
-														null,
-														'Class'
-													),
-													_react2.default.createElement(
-														'th',
-														null,
-														'Dates'
-													),
-													_react2.default.createElement(
-														'th',
-														null,
-														'Status'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'tbody',
-												null,
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															_react2.default.createElement(
-																'a',
-																{ href: '/course/ios-node-bootcamp' },
-																'iOS + Node'
-															)
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'July 11th - August 19th'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Accepting Applications'
-													)
-												),
-												_react2.default.createElement(
-													'tr',
-													null,
-													_react2.default.createElement(
-														'td',
-														null,
-														_react2.default.createElement(
-															'span',
-															null,
-															_react2.default.createElement(
-																'a',
-																{ href: '/course/node-react-bootcamp' },
-																'React + Node'
-															)
-														)
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'August 22nd - September 30th'
-													),
-													_react2.default.createElement(
-														'td',
-														null,
-														'Accepting Applications'
-													)
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.openModal, id: 'bootcamp', href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-										'Request Information'
-									)
-								)
-							)
 						),
 						_react2.default.createElement(
 							'div',
