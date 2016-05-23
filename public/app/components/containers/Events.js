@@ -488,12 +488,12 @@ class Events extends Component {
 									  </thead>
 									  <tbody>
 										<tr>
-										  <td><span><a href="/course/node-react-bootcamp">iOS + Node</a></span></td>
+										  <td><span><a href="/course/ios-node-bootcamp">iOS + Node</a></span></td>
 										  <td>July 11th - August 19th</td>
 										  <td>Accepting Applications</td>
 										</tr>
 										<tr>
-										  <td><span><a href="/course/ios-node-bootcamp">React + Node</a></span></td>
+										  <td><span><a href="/course/node-react-bootcamp">React + Node</a></span></td>
 										  <td>August 22nd - September 30th</td>
 										  <td>Accepting Applications</td>
 										</tr>

@@ -46890,7 +46890,7 @@
 															null,
 															_react2.default.createElement(
 																'a',
-																{ href: '/course/node-react-bootcamp' },
+																{ href: '/course/ios-node-bootcamp' },
 																'iOS + Node'
 															)
 														)
@@ -46917,7 +46917,7 @@
 															null,
 															_react2.default.createElement(
 																'a',
-																{ href: '/course/ios-node-bootcamp' },
+																{ href: '/course/node-react-bootcamp' },
 																'React + Node'
 															)
 														)
