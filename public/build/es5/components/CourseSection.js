@@ -32,7 +32,7 @@ var CourseSection = (function (Component) {
 				event.preventDefault();
 				console.log("LOGIN");
 
-				this.props.loginAction();
+				this.props.loginAction(event);
 			},
 			writable: true,
 			configurable: true

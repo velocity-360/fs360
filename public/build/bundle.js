@@ -62889,7 +62889,7 @@
 				event.preventDefault();
 				console.log('LOGIN');
 	
-				this.props.loginAction();
+				this.props.loginAction(event);
 			}
 		}, {
 			key: 'subscribe',

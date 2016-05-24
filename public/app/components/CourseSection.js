@@ -12,7 +12,7 @@ class CourseSection extends Component {
 		event.preventDefault()
 		console.log('LOGIN')
 
-		this.props.loginAction()
+		this.props.loginAction(event)
 	}
 
 	subscribe(event){
