@@ -72,7 +72,7 @@ router.get('/:resource', function(req, res, next) {
 		if (email == null)
 			return;
 		
-		EmailManager.sendEmail('info@fullstack360.com', 'dkwon@fullstack360.com', 'unsubscribe', email);
+		EmailManager.sendEmail('info@fullstack360.com', 'dkwon@velocity360.io', 'unsubscribe', email);
 		res.send('You have been unsubscribed. Thank you');
 	}
 
@@ -122,7 +122,7 @@ router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
 	if (resource == 'application'){
-		var emailList = ['dkwon@fullstack360.com', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		var emailList = ['dkwon@velocity360.io', 'katrina@fullstack360.com', 'brian@fullstack360.com']
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
 		res.json({
 			confirmation:'success', 
@@ -141,7 +141,7 @@ router.post('/:resource', function(req, res, next) {
 		}
 
 		subscriberController.post(subscriber, null);
-		var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
+		var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
 
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
@@ -159,7 +159,7 @@ router.post('/:resource', function(req, res, next) {
 
 		subscriberController.post(subscriber, null);
 
-		var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
+		var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
 		return
@@ -171,7 +171,7 @@ router.post('/:resource', function(req, res, next) {
 		var json = JSON.stringify(infoRequest);
 		
 		// send email to yourself for notification:
-		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'Seminar', json)
+		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'Seminar', json)
 		.then(function(){
 			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.title+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="http://www.fullstack360.com">The Full Stack</a>. The Full Stack offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="http://www.fullstack360.com">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="http://www.fullstack360.com">FullStack 360</a><br />';
 			var subscriber = {
@@ -181,7 +181,7 @@ router.post('/:resource', function(req, res, next) {
 			};
 
 			subscriberController.post(subscriber, null);
-			return EmailManager.sendHtmlEmail('dkwon@fullstack360.com', infoRequest.visitor.email, infoRequest.event.title, confirmationMsg);
+			return EmailManager.sendHtmlEmail('dkwon@velocity360.io', infoRequest.visitor.email, infoRequest.event.title, confirmationMsg);
 		})
 		.then(function(){
 //			var msg = 'Thanks for your interest in the '+infoRequest.event.subject+'. Please check your email for a confirmation. Looking forward to seeing you there!';
@@ -265,7 +265,7 @@ router.post('/:resource', function(req, res, next) {
 
 		if (resource == 'profile') { // profile registration, install session cookie
 			req.session.user = result.id;
-			EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'New Subscriber', JSON.stringify(req.body));
+			EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Subscriber', JSON.stringify(req.body));
 		}
 		
 		var data = {confirmation:'success'}

@@ -168,7 +168,7 @@ router.post('/:resource', function(req, res, next) {
 				}
 
 				var text = customerEmail+' submitted a depost for '+course.title
-				var emailList = ['dkwon@fullstack360.com', 'katrina@velocity360.io', 'brian@velocity360.io']
+				var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
 				EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Deposit', text)
 				
 				// for (var i=0; i<emailList.length; i++){
@@ -309,7 +309,7 @@ router.post('/:resource', function(req, res, next) {
 				profile['stripeId'] = customer.id;
 				profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand};
 
-				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@fullstack360.com', 'New Premium Subscriber', JSON.stringify(profile.summary()));
+				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Premium Subscriber', JSON.stringify(profile.summary()));
 				profile.save();
 				return;
 			});
