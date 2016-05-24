@@ -62495,7 +62495,6 @@
 			key: 'showLogin',
 			value: function showLogin(event) {
 				event.preventDefault();
-				console.log('Show Login');
 				this.setState({ showLogin: true });
 			}
 		}, {
@@ -62887,8 +62886,6 @@
 			key: 'login',
 			value: function login(event) {
 				event.preventDefault();
-				console.log('LOGIN');
-	
 				this.props.loginAction(event);
 			}
 		}, {

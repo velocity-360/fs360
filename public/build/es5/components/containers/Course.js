@@ -177,7 +177,6 @@ var Course = (function (Component) {
 		showLogin: {
 			value: function showLogin(event) {
 				event.preventDefault();
-				console.log("Show Login");
 				this.setState({ showLogin: true });
 			},
 			writable: true,

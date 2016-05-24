@@ -131,7 +131,6 @@ class Course extends Component {
 
 	showLogin(event){
 		event.preventDefault()
-		console.log('Show Login')
 		this.setState({showLogin: true})
 	}
 

@@ -30,8 +30,6 @@ var CourseSection = (function (Component) {
 		login: {
 			value: function login(event) {
 				event.preventDefault();
-				console.log("LOGIN");
-
 				this.props.loginAction(event);
 			},
 			writable: true,
