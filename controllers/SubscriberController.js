@@ -74,10 +74,11 @@ module.exports = {
 				var list = [];
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
-					if (list.indexOf(subscriber.email) != -1)
+					var email = subscriber.email.toLowerCase()
+					if (list.indexOf(email) != -1)
 						continue;
 					
-					list.push(subscriber.email)
+					list.push(email)
 				}
 
 				completion(null, list);
