@@ -9,7 +9,7 @@ var CourseSchema = new mongoose.Schema({
 	status: {type:String, trim:true, default:'active'}, // active or inactive
 	level: {type:String, trim:true, default:''},
 	slug: {type:String, trim:true, lowercase:true, default:''},
-	type: {type:String, trim:true, default:'live'}, // live or online
+	type: {type:String, trim:true, default:'live'}, // live, immersive, project
 	description: {type:String, default:''},
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
 	tags: {type:Array, default:[]},
