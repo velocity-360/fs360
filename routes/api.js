@@ -122,7 +122,7 @@ router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
 	if (resource == 'application'){
-		var emailList = ['dkwon@velocity360.io', 'katrina@fullstack360.com', 'brian@fullstack360.com']
+		var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
 		res.json({
 			confirmation:'success', 
@@ -173,7 +173,7 @@ router.post('/:resource', function(req, res, next) {
 		// send email to yourself for notification:
 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'Seminar', json)
 		.then(function(){
-			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.title+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="http://www.fullstack360.com">The Full Stack</a>. The Full Stack offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="http://www.fullstack360.com">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="http://www.fullstack360.com">FullStack 360</a><br />';
+			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.title+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="https://www.velocity360.io">Velocity 360</a><br />';
 			var subscriber = {
 				name: infoRequest.visitor.firstName+infoRequest.visitor.lastName,
 				email: infoRequest.visitor.email,
