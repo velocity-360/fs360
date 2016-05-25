@@ -4,8 +4,7 @@ var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["defau
 
 var superagent = _interopRequire(require("superagent"));
 
-var fetch = _interopRequire(require("isomorphic-fetch"));
-
+//import fetch from 'isomorphic-fetch'
 var actions = _interopRequire(require("../actions/actions"));
 
 var store = _interopRequire(require("../stores/store"));

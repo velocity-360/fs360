@@ -1,5 +1,5 @@
 import superagent from 'superagent'
-import fetch from 'isomorphic-fetch'
+//import fetch from 'isomorphic-fetch'
 import actions from '../actions/actions'
 import store from '../stores/store'
 
