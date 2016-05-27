@@ -200,20 +200,20 @@ var Application = (function (Component) {
 												{ className: "col_full" },
 												React.createElement(
 													"label",
-													{ "for": "template-contactform-phone" },
+													null,
 													"GitHub"
 												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "github", value: this.state.application.github, name: "template-contactform-phone", className: "sm-form-control" })
+												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "github", value: this.state.application.github, className: "sm-form-control" })
 											),
 											React.createElement(
 												"div",
 												{ className: "col_full" },
 												React.createElement(
 													"label",
-													{ "for": "template-contactform-phone" },
+													null,
 													"LinkedIn"
 												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "linkedin", value: this.state.application.linkedin, name: "template-contactform-phone", className: "sm-form-control" })
+												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "linkedin", value: this.state.application.linkedin, className: "sm-form-control" })
 											),
 											React.createElement(
 												"div",
@@ -258,20 +258,20 @@ var Application = (function (Component) {
 												{ className: "col_full" },
 												React.createElement(
 													"label",
-													{ "for": "template-contactform-phone" },
+													null,
 													"Undergraduate College"
 												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "college", value: this.state.application.college, name: "template-contactform-phone", className: "sm-form-control" })
+												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "college", value: this.state.application.college, className: "sm-form-control" })
 											),
 											React.createElement(
 												"div",
 												{ className: "col_full" },
 												React.createElement(
 													"label",
-													{ "for": "template-contactform-phone" },
+													null,
 													"Undergraduate Major"
 												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "major", value: this.state.application.major, name: "template-contactform-phone", className: "sm-form-control" })
+												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "major", value: this.state.application.major, className: "sm-form-control" })
 											),
 											React.createElement(
 												"div",

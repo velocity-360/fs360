@@ -64532,20 +64532,20 @@
 												{ className: 'col_full' },
 												_react2.default.createElement(
 													'label',
-													{ 'for': 'template-contactform-phone' },
+													null,
 													'GitHub'
 												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, name: 'template-contactform-phone', className: 'sm-form-control' })
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, className: 'sm-form-control' })
 											),
 											_react2.default.createElement(
 												'div',
 												{ className: 'col_full' },
 												_react2.default.createElement(
 													'label',
-													{ 'for': 'template-contactform-phone' },
+													null,
 													'LinkedIn'
 												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, name: 'template-contactform-phone', className: 'sm-form-control' })
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, className: 'sm-form-control' })
 											),
 											_react2.default.createElement(
 												'div',
@@ -64590,20 +64590,20 @@
 												{ className: 'col_full' },
 												_react2.default.createElement(
 													'label',
-													{ 'for': 'template-contactform-phone' },
+													null,
 													'Undergraduate College'
 												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, name: 'template-contactform-phone', className: 'sm-form-control' })
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, className: 'sm-form-control' })
 											),
 											_react2.default.createElement(
 												'div',
 												{ className: 'col_full' },
 												_react2.default.createElement(
 													'label',
-													{ 'for': 'template-contactform-phone' },
+													null,
 													'Undergraduate Major'
 												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, name: 'template-contactform-phone', className: 'sm-form-control' })
+												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, className: 'sm-form-control' })
 											),
 											_react2.default.createElement(
 												'div',

@@ -122,13 +122,13 @@ class Application extends Component {
 										</div>
 
 										<div className="col_full">
-											<label for="template-contactform-phone">GitHub</label>
-											<input type="text" onChange={this.updateApplication} id="github" value={this.state.application.github} name="template-contactform-phone" className="sm-form-control" />
+											<label>GitHub</label>
+											<input type="text" onChange={this.updateApplication} id="github" value={this.state.application.github} className="sm-form-control" />
 										</div>
 
 										<div className="col_full">
-											<label for="template-contactform-phone">LinkedIn</label>
-											<input type="text" onChange={this.updateApplication} id="linkedin" value={this.state.application.linkedin} name="template-contactform-phone" className="sm-form-control" />
+											<label>LinkedIn</label>
+											<input type="text" onChange={this.updateApplication} id="linkedin" value={this.state.application.linkedin} className="sm-form-control" />
 										</div>
 
 										<div className="col_full hidden">
@@ -146,13 +146,13 @@ class Application extends Component {
 										</div>
 
 										<div className="col_full">
-											<label for="template-contactform-phone">Undergraduate College</label>
-											<input type="text" onChange={this.updateApplication} id="college" value={this.state.application.college} name="template-contactform-phone" className="sm-form-control" />
+											<label>Undergraduate College</label>
+											<input type="text" onChange={this.updateApplication} id="college" value={this.state.application.college} className="sm-form-control" />
 										</div>
 
 										<div className="col_full">
-											<label for="template-contactform-phone">Undergraduate Major</label>
-											<input type="text" onChange={this.updateApplication} id="major" value={this.state.application.major} name="template-contactform-phone" className="sm-form-control" />
+											<label>Undergraduate Major</label>
+											<input type="text" onChange={this.updateApplication} id="major" value={this.state.application.major} className="sm-form-control" />
 										</div>
 
 
