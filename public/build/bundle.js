@@ -64562,7 +64562,7 @@
 												),
 												_react2.default.createElement(
 													'select',
-													{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: 'course', className: 'form-control input-lg not-dark' },
+													{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: 'currentLevel', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
 														{ value: 'total beginner' },

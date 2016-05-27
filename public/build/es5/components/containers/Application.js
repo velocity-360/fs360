@@ -230,7 +230,7 @@ var Application = (function (Component) {
 												),
 												React.createElement(
 													"select",
-													{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: "course", className: "form-control input-lg not-dark" },
+													{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: "currentLevel", className: "form-control input-lg not-dark" },
 													React.createElement(
 														"option",
 														{ value: "total beginner" },

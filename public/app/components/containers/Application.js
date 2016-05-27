@@ -137,7 +137,7 @@ class Application extends Component {
 
 										<div className="col_full">
 											<label for="template-contactform-subject">Current Level</label>
-											<select onChange={this.updateApplication} value={this.state.application.currentLevel} id="course" className="form-control input-lg not-dark">
+											<select onChange={this.updateApplication} value={this.state.application.currentLevel} id="currentLevel" className="form-control input-lg not-dark">
 												<option value="total beginner">Total beginner - Never coded before</option>
 												<option value="getting there">Getting There - A couple online tutorials</option>
 												<option value="intermediate">Intermediate - Can build a few projects on my own</option>
