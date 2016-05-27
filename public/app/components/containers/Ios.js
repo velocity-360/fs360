@@ -281,7 +281,7 @@ class Ios extends Component {
 								<label for="template-contactform-subject">How did you hear of us?</label>
 								<select onChange={this.updateVisitor} value={this.state.visitor.referral} id="referral" className="form-control input-lg not-dark">
 									<option value="google">Google</option>
-									<option value="youtubd">YouTube</option>
+									<option value="youtube">YouTube</option>
 									<option value="friend">Friend</option>
 									<option value="meetup">Meetup.com</option>
 									<option value="other">Other</option>

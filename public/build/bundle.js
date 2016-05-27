@@ -44514,7 +44514,7 @@
 										),
 										_react2.default.createElement(
 											'option',
-											{ value: 'youtubd' },
+											{ value: 'youtube' },
 											'YouTube'
 										),
 										_react2.default.createElement(

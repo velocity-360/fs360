@@ -363,7 +363,7 @@ var Ios = (function (Component) {
 										),
 										React.createElement(
 											"option",
-											{ value: "youtubd" },
+											{ value: "youtube" },
 											"YouTube"
 										),
 										React.createElement(
