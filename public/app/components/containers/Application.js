@@ -19,14 +19,14 @@ class Application extends Component {
 				name: '',
 				email: '',
 				phone: '',
-				course: 'ios-bootcamp',
+				course: 'ios and node bootcamp',
 				goal: '',
 				history: '',
 				linkedin: '',
 				github:'',
 				college:'',
 				major:'',
-				currentLevel:''
+				currentLevel:'total beginner'
 			}
 		}
 	}
