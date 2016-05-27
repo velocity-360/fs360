@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Loader from 'react-loader'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
+import ProjectView from '../../components/ProjectView'
+import EditProject from '../../components/EditProject'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -13,13 +15,11 @@ import TextUtils from '../../utils/TextUtils'
 class Project extends Component {
 	constructor(props, context){
 		super(props, context)
+		this.toggleEditing = this.toggleEditing.bind(this)
 		this.state = {
 			showLoader: false,
+			isEditing: false,
 		}
-	}
-
-	componentWillMount(){
-
 	}
 
 	componentDidMount(){
@@ -35,7 +35,18 @@ class Project extends Component {
 		})
 	}
 
+	toggleEditing(event){
+		event.preventDefault()
+		console.log('toggleEditing: '+this.state.isEditing)
+		var isEditing = !this.state.isEditing
+		this.setState({
+			isEditing: isEditing
+		})
+
+	}
+
 	render(){
+		var content = (this.props.project == null) ? '' : <ProjectView project={this.props.project} />
 
 		return (
 
@@ -46,9 +57,8 @@ class Project extends Component {
 				<section id="content">
 					<div className="content-wrap" style={{background:'#f5f5f5'}}>
 
-						<div className="entry clearfix">
-							<div className="container clearfix">
-								<div className="postcontent nobottommargin col_last clearfix">
+						<div className="container clearfix">
+							<div className="postcontent nobottommargin col_last clearfix">
 
 								<div id="posts" className="post-timeline clearfix">
 									<div className="timeline-border"></div>
@@ -58,23 +68,9 @@ class Project extends Component {
 											Intro<span></span>
 											<div className="timeline-divider"></div>
 										</div>
-										<div className="entry-image">
-											<div className="panel panel-default">
-												<div className="panel-body" style={{padding:36}}>
-													<div className="row">
-														<div className="col-md-3">
-															<img style={{width:'100%', marginBottom:16}} src={'https://media-service.appspot.com/site/images/'+this.props.project.image+'?crop=420'} />
-														</div>
-														<div className="col-md-9">
-															<h2>{this.props.project.title}</h2>
-															<hr />
-															{this.props.project.description}<br />
-														</div>
 
-													</div>
-												</div>
-											</div>
-										</div>
+										{content}
+
 									</div>
 
 
@@ -83,24 +79,15 @@ class Project extends Component {
 											Intro<span></span>
 											<div className="timeline-divider"></div>
 										</div>
-										<div className="entry-image">
-											<div className="panel panel-default">
-												<div className="panel-body" style={{padding:36}}>
-													<h3>Comments</h3>
-													<hr />
-													{this.props.project.description}<br />
-												</div>
-											</div>
+										<div className="panel panel-default" style={{padding:36}}>
+											<h3>Comments</h3>
+											<hr />
+											{this.props.project.description}<br />
 										</div>
 									</div>
-
-
-
 								</div>
 
 
-
-								</div>
 							</div>
 						</div>
 

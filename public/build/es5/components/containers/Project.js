@@ -21,6 +21,10 @@ var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
+var ProjectView = _interopRequire(require("../../components/ProjectView"));
+
+var EditProject = _interopRequire(require("../../components/EditProject"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -37,18 +41,15 @@ var Project = (function (Component) {
 		_classCallCheck(this, Project);
 
 		_get(Object.getPrototypeOf(Project.prototype), "constructor", this).call(this, props, context);
+		this.toggleEditing = this.toggleEditing.bind(this);
 		this.state = {
-			showLoader: false };
+			showLoader: false,
+			isEditing: false };
 	}
 
 	_inherits(Project, Component);
 
 	_prototypeProperties(Project, null, {
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
 		componentDidMount: {
 			value: function componentDidMount() {
 				var url = "/api/project?slug=" + this.props.slug;
@@ -65,8 +66,22 @@ var Project = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		toggleEditing: {
+			value: function toggleEditing(event) {
+				event.preventDefault();
+				console.log("toggleEditing: " + this.state.isEditing);
+				var isEditing = !this.state.isEditing;
+				this.setState({
+					isEditing: isEditing
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
+				var content = this.props.project == null ? "" : React.createElement(ProjectView, { project: this.props.project });
+
 				return React.createElement(
 					"div",
 					{ style: { background: "#f5f5f5" } },
@@ -80,91 +95,47 @@ var Project = (function (Component) {
 							{ className: "content-wrap", style: { background: "#f5f5f5" } },
 							React.createElement(
 								"div",
-								{ className: "entry clearfix" },
+								{ className: "container clearfix" },
 								React.createElement(
 									"div",
-									{ className: "container clearfix" },
+									{ className: "postcontent nobottommargin col_last clearfix" },
 									React.createElement(
 										"div",
-										{ className: "postcontent nobottommargin col_last clearfix" },
+										{ id: "posts", className: "post-timeline clearfix" },
+										React.createElement("div", { className: "timeline-border" }),
 										React.createElement(
 											"div",
-											{ id: "posts", className: "post-timeline clearfix" },
-											React.createElement("div", { className: "timeline-border" }),
+											{ className: "entry clearfix" },
 											React.createElement(
 												"div",
-												{ className: "entry clearfix" },
-												React.createElement(
-													"div",
-													{ className: "entry-timeline" },
-													"Intro",
-													React.createElement("span", null),
-													React.createElement("div", { className: "timeline-divider" })
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-image" },
-													React.createElement(
-														"div",
-														{ className: "panel panel-default" },
-														React.createElement(
-															"div",
-															{ className: "panel-body", style: { padding: 36 } },
-															React.createElement(
-																"div",
-																{ className: "row" },
-																React.createElement(
-																	"div",
-																	{ className: "col-md-3" },
-																	React.createElement("img", { style: { width: "100%", marginBottom: 16 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=420" })
-																),
-																React.createElement(
-																	"div",
-																	{ className: "col-md-9" },
-																	React.createElement(
-																		"h2",
-																		null,
-																		this.props.project.title
-																	),
-																	React.createElement("hr", null),
-																	this.props.project.description,
-																	React.createElement("br", null)
-																)
-															)
-														)
-													)
-												)
+												{ className: "entry-timeline" },
+												"Intro",
+												React.createElement("span", null),
+												React.createElement("div", { className: "timeline-divider" })
+											),
+											content
+										),
+										React.createElement(
+											"div",
+											{ className: "entry clearfix" },
+											React.createElement(
+												"div",
+												{ className: "entry-timeline" },
+												"Intro",
+												React.createElement("span", null),
+												React.createElement("div", { className: "timeline-divider" })
 											),
 											React.createElement(
 												"div",
-												{ className: "entry clearfix" },
+												{ className: "panel panel-default", style: { padding: 36 } },
 												React.createElement(
-													"div",
-													{ className: "entry-timeline" },
-													"Intro",
-													React.createElement("span", null),
-													React.createElement("div", { className: "timeline-divider" })
+													"h3",
+													null,
+													"Comments"
 												),
-												React.createElement(
-													"div",
-													{ className: "entry-image" },
-													React.createElement(
-														"div",
-														{ className: "panel panel-default" },
-														React.createElement(
-															"div",
-															{ className: "panel-body", style: { padding: 36 } },
-															React.createElement(
-																"h3",
-																null,
-																"Comments"
-															),
-															React.createElement("hr", null),
-															this.props.project.description,
-															React.createElement("br", null)
-														)
-													)
-												)
+												React.createElement("hr", null),
+												this.props.project.description,
+												React.createElement("br", null)
 											)
 										)
 									)

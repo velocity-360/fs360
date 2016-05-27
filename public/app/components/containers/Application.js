@@ -19,9 +19,14 @@ class Application extends Component {
 				name: '',
 				email: '',
 				phone: '',
-				course: 'ios intensive',
+				course: 'ios-bootcamp',
 				goal: '',
-				history: ''
+				history: '',
+				linkedin: '',
+				github:'',
+				college:'',
+				major:'',
+				currentLevel:''
 			}
 		}
 	}
@@ -104,8 +109,6 @@ class Application extends Component {
 										<div className="col_full">
 											<label for="template-contactform-subject">Course</label>
 											<select onChange={this.updateApplication} value={this.state.application.course} id="course" className="form-control input-lg not-dark">
-												<option value="ios + node evening course">iOS & Node Evening Course</option>
-												<option value="node + react evening course">Node & React Evening Course</option>
 												<option value="ios and node bootcamp">iOS & Node 6-Week Bootcamp</option>
 												<option value="node and react bootcamp">Node & React 6-Week Bootcamp</option>
 											</select>
@@ -119,8 +122,13 @@ class Application extends Component {
 										</div>
 
 										<div className="col_full">
-											<label for="template-contactform-message">What have your worked on so far? (GitHub, side projects, etc.)</label>
-											<textarea onChange={this.updateApplication} value={this.state.application.history} className="required sm-form-control" id="history" name="template-contactform-message" rows="6" cols="30"></textarea>
+											<label for="template-contactform-phone">GitHub</label>
+											<input type="text" onChange={this.updateApplication} id="github" value={this.state.application.github} name="template-contactform-phone" className="sm-form-control" />
+										</div>
+
+										<div className="col_full">
+											<label for="template-contactform-phone">LinkedIn</label>
+											<input type="text" onChange={this.updateApplication} id="linkedin" value={this.state.application.linkedin} name="template-contactform-phone" className="sm-form-control" />
 										</div>
 
 										<div className="col_full hidden">
@@ -128,7 +136,28 @@ class Application extends Component {
 										</div>
 
 										<div className="col_full">
-											<a onClick={this.submitApplication} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+											<label for="template-contactform-subject">Current Level</label>
+											<select onChange={this.updateApplication} value={this.state.application.currentLevel} id="course" className="form-control input-lg not-dark">
+												<option value="total beginner">Total beginner - Never coded before</option>
+												<option value="getting there">Getting There - A couple online tutorials</option>
+												<option value="intermediate">Intermediate - Can build a few projects on my own</option>
+												<option value="advanced">Advanced - Professional, looking to learn new skills</option>
+											</select>
+										</div>
+
+										<div className="col_full">
+											<label for="template-contactform-phone">Undergraduate College</label>
+											<input type="text" onChange={this.updateApplication} id="college" value={this.state.application.college} name="template-contactform-phone" className="sm-form-control" />
+										</div>
+
+										<div className="col_full">
+											<label for="template-contactform-phone">Undergraduate Major</label>
+											<input type="text" onChange={this.updateApplication} id="major" value={this.state.application.major} name="template-contactform-phone" className="sm-form-control" />
+										</div>
+
+
+										<div className="col_full">
+											<a onClick={this.submitApplication} href="#" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
 										</div>
 									</form>
 

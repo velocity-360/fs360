@@ -5,6 +5,7 @@ var ProjectSchema = new mongoose.Schema({
 	title: {type:String, trim:true, default: ''},
 	description: {type:String, trim:true, default: ''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
+	images: {type: Array, default:[]},
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	repo: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''},
@@ -20,6 +21,7 @@ ProjectSchema.methods.summary = function() {
 		'title':this.title,
 		'description':this.description,
 		'image':this.image,
+		'images':this.images,
 		'profile':this.profile,
 		'slug':this.slug,
 		'repo':this.repo,
