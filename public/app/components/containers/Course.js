@@ -21,7 +21,6 @@ class Course extends Component {
 		this.login = this.login.bind(this)
 		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
-//		this.submitDeposit = this.submitDeposit.bind(this)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
@@ -349,7 +348,6 @@ class Course extends Component {
 			        <Modal.Footer style={{textAlign:'center'}}>
 						<a onClick={this.closeModal} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">OK</a>
 			        </Modal.Footer>
-
 		        </Modal>
 
 				<Footer />

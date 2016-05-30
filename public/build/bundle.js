@@ -44103,6 +44103,7 @@
 			this.handler = StripeCheckout.configure({
 				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
 				image: '/images/logo_round_blue_260.png',
+				address: true,
 				locale: 'auto',
 				panelLabel: 'Premium: $19.99/month',
 				token: function token(_token) {
@@ -44118,6 +44119,7 @@
 			this.handler = StripeCheckout.configure({
 				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
 				image: '/images/logo_round_blue_260.png',
+				address: true,
 				locale: 'auto',
 				panelLabel: text,
 				token: function token(_token2) {
@@ -62259,7 +62261,6 @@
 			_this2.login = _this2.login.bind(_this2);
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
-			//		this.submitDeposit = this.submitDeposit.bind(this)
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {

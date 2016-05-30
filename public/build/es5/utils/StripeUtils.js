@@ -11,6 +11,7 @@ module.exports = {
 		this.handler = StripeCheckout.configure({
 			key: "pk_live_yKFwKJsJXwOxC0yZob29rIN5",
 			image: "/images/logo_round_blue_260.png",
+			address: true,
 			locale: "auto",
 			panelLabel: "Premium: $19.99/month",
 			token: function (token) {
@@ -26,6 +27,7 @@ module.exports = {
 		this.handler = StripeCheckout.configure({
 			key: "pk_live_yKFwKJsJXwOxC0yZob29rIN5",
 			image: "/images/logo_round_blue_260.png",
+			address: true,
 			locale: "auto",
 			panelLabel: text,
 			token: function (token) {
