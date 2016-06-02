@@ -121,7 +121,8 @@ router.get('/:resource/:id', function(req, res, next) {
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 //	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io', 'mdlugy.ventures@gmail.com']
-	var emailList = ['dkwon@velocity360.io', 'mdlugy.ventures@gmail.com']
+//	var emailList = ['dkwon@velocity360.io', 'mdlugy.ventures@gmail.com']
+	var emailList = ['dkwon@velocity360.io']
 
 	if (resource == 'application'){
 		// var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io', 'mdlugy.ventures@gmail.com']
@@ -144,11 +145,9 @@ router.post('/:resource', function(req, res, next) {
 
 		subscriberController.post(subscriber, null);
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
-
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
 		return
 	}
-
 
 	if (resource == 'syllabus'){
 		var body = req.body
@@ -159,7 +158,6 @@ router.post('/:resource', function(req, res, next) {
 		}
 
 		subscriberController.post(subscriber, null);
-
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
 		return
