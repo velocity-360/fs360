@@ -29,8 +29,7 @@ class Ios extends Component {
 			showLoader: false,
 			showModal: false,
 			visitor: {
-				firstName: '',
-				lastName: '',
+				name: '',
 				email: '',
 				phone: '',
 				course: 'ios-node-bootcamp',
@@ -168,11 +167,11 @@ class Ios extends Component {
 	validate(profile, withPassword){
 //		var visitor = this.state.visitor
 		console.log('VALIDATE: '+JSON.stringify(profile))
-		if (profile.firstName.length == 0)
-			return 'First Name'
+		if (profile.name.length == 0)
+			return 'Name'
 
-		if (profile.lastName.length == 0)
-			return 'Last Name'
+		// if (profile.lastName.length == 0)
+		// 	return 'Last Name'
 
 		if (profile.email.length == 0)
 			return 'Email'
@@ -269,13 +268,13 @@ class Ios extends Component {
 		                    </div>
 		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 		                    <div className="col_full">
-		                        <input onChange={this.updateVisitor} id="firstName" type="text" className="form-control input-lg not-dark" placeholder="First Name" />
-		                    </div>
-		                    <div className="col_full">
-		                        <input onChange={this.updateVisitor} id="lastName" type="text" className="form-control input-lg not-dark" placeholder="Last Name" />
+		                        <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Name" />
 		                    </div>
 		                    <div className="col_full">
 		                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
+		                    </div>
+		                    <div className="col_full">
+		                        <input onChange={this.updateVisitor} id="phone" type="text" className="form-control input-lg not-dark" placeholder="Phone" />
 		                    </div>
 		                    <div className="col_full">
 								<label for="template-contactform-subject">How did you hear of us?</label>
@@ -332,7 +331,7 @@ class Ios extends Component {
 									<div className="col-md-4 col-sm-6 bottommargin">
 										<div className="ipost clearfix">
 											<div className="entry-image">
-												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="FullStack 360" />
+												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
 											</div>
 											<div className="entry-title">
 												<h3>Small Classes</h3>
@@ -349,7 +348,7 @@ class Ios extends Component {
 									<div className="col-md-4 col-sm-6 bottommargin">
 										<div className="ipost clearfix">
 											<div className="entry-image">
-												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="FullStack 360" />
+												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="Velocity 360" />
 											</div>
 											<div className="entry-title">
 												<h3>Cutting Edge Curriculum</h3>
@@ -366,7 +365,7 @@ class Ios extends Component {
 									<div className="col-md-4 col-sm-6 bottommargin">
 										<div className="ipost clearfix">
 											<div className="entry-image">
-												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="FullStack 360" />
+												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="Velocity 360" />
 											</div>
 											<div className="entry-title">
 												<h3>Realistic Projects</h3>
@@ -385,7 +384,7 @@ class Ios extends Component {
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{background:'#f9f9f9'}}>
 								<div className="widget clearfix" style={{padding:24}}>
 									<h4>Spotlight</h4>
-									<img style={{width:128, borderRadius:64}} src="/images/briancorrea.jpg" alt="FullStaack 360" />
+									<img style={{width:128, borderRadius:64}} src="/images/briancorrea.jpg" alt="Velocity 360" />
 									<hr />
 									<h3 style={{marginBottom:6}}>Brian Correa</h3>
 									<strong style={{color:'#1ABC9C'}}>iOS &amp; Node Course</strong>
@@ -423,7 +422,7 @@ class Ios extends Component {
 
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/xcode.jpg" alt="FullStack 360" />
+									<img style={{border:'1px solid #ddd'}} src="/images/xcode.jpg" alt="Velocity 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -452,7 +451,7 @@ class Ios extends Component {
 
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="FullStack 360" />
+									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -478,7 +477,7 @@ class Ios extends Component {
 
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/react.jpg" alt="FullStack 360" />
+									<img style={{border:'1px solid #ddd'}} src="/images/react.jpg" alt="Velocity 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
@@ -556,9 +555,9 @@ class Ios extends Component {
 			        	<div style={{textAlign:'center'}}>
 				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', marginBottom:24}} src="/images/logo_round_green_260.png" />
 			        	</div>
-			        	<input onChange={this.updateVisitor} value={this.state.visitor.firstName} id="firstName" className="form-control" type="text" placeholder="First Name" /><br />
-			        	<input onChange={this.updateVisitor} value={this.state.visitor.lastName} id="lastName" className="form-control" type="text" placeholder="Last Name" /><br />
+			        	<input onChange={this.updateVisitor} value={this.state.visitor.name} id="name" className="form-control" type="text" placeholder="Name" /><br />
 			        	<input onChange={this.updateVisitor} value={this.state.visitor.email} id="email" className="form-control" type="text" placeholder="Email" /><br />
+			        	<input onChange={this.updateVisitor} value={this.state.visitor.phone} id="phone" className="form-control" type="text" placeholder="Phone" /><br />
 						<label for="template-contactform-subject">How did you hear of us?</label>
 						<select onChange={this.updateVisitor} value={this.state.visitor.referral} id="referral" className="form-control input-lg not-dark">
 							<option value="google">Google</option>

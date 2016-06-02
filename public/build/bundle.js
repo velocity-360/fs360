@@ -44233,8 +44233,7 @@
 				showLoader: false,
 				showModal: false,
 				visitor: {
-					firstName: '',
-					lastName: '',
+					name: '',
 					email: '',
 					phone: '',
 					course: 'ios-node-bootcamp',
@@ -44374,9 +44373,10 @@
 			value: function validate(profile, withPassword) {
 				//		var visitor = this.state.visitor
 				console.log('VALIDATE: ' + JSON.stringify(profile));
-				if (profile.firstName.length == 0) return 'First Name';
+				if (profile.name.length == 0) return 'Name';
 	
-				if (profile.lastName.length == 0) return 'Last Name';
+				// if (profile.lastName.length == 0)
+				// 	return 'Last Name'
 	
 				if (profile.email.length == 0) return 'Email';
 	
@@ -44486,17 +44486,17 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'First Name' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name' })
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
 									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'phone', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Phone' })
 								),
 								_react2.default.createElement(
 									'div',
@@ -44610,7 +44610,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'entry-image' },
-													_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/class.jpg', alt: 'FullStack 360' })
+													_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/class.jpg', alt: 'Velocity 360' })
 												),
 												_react2.default.createElement(
 													'div',
@@ -44642,7 +44642,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'entry-image' },
-													_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/joe.jpg', alt: 'FullStack 360' })
+													_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/joe.jpg', alt: 'Velocity 360' })
 												),
 												_react2.default.createElement(
 													'div',
@@ -44674,7 +44674,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'entry-image' },
-													_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/phone.jpg', alt: 'FullStack 360' })
+													_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/phone.jpg', alt: 'Velocity 360' })
 												),
 												_react2.default.createElement(
 													'div',
@@ -44710,7 +44710,7 @@
 											null,
 											'Spotlight'
 										),
-										_react2.default.createElement('img', { style: { width: 128, borderRadius: 64 }, src: '/images/briancorrea.jpg', alt: 'FullStaack 360' }),
+										_react2.default.createElement('img', { style: { width: 128, borderRadius: 64 }, src: '/images/briancorrea.jpg', alt: 'Velocity 360' }),
 										_react2.default.createElement('hr', null),
 										_react2.default.createElement(
 											'h3',
@@ -44786,7 +44786,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/xcode.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/xcode.jpg', alt: 'Velocity 360' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -44830,7 +44830,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity 360' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -44874,7 +44874,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/react.jpg', alt: 'FullStack 360' })
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/react.jpg', alt: 'Velocity 360' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -45061,11 +45061,11 @@
 								{ style: { textAlign: 'center' } },
 								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
 							),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.firstName, id: 'firstName', className: 'form-control', type: 'text', placeholder: 'First Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.lastName, id: 'lastName', className: 'form-control', type: 'text', placeholder: 'Last Name' }),
+							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.phone, id: 'phone', className: 'form-control', type: 'text', placeholder: 'Phone' }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'label',
