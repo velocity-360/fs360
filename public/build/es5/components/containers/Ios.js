@@ -343,43 +343,33 @@ var Ios = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col_full" },
-									React.createElement("input", { onChange: this.updateVisitor, id: "phone", type: "text", className: "form-control input-lg not-dark", placeholder: "Phone" })
-								),
-								React.createElement(
-									"div",
-									{ className: "col_full" },
 									React.createElement(
 										"label",
 										{ "for": "template-contactform-subject" },
-										"How did you hear of us?"
+										"I am interested in"
 									),
 									React.createElement(
 										"select",
-										{ onChange: this.updateVisitor, value: this.state.visitor.referral, id: "referral", className: "form-control input-lg not-dark" },
+										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: "referral", className: "form-control input-lg not-dark" },
 										React.createElement(
 											"option",
-											{ value: "google" },
-											"Google"
+											{ value: "ios-node-bootcamp" },
+											"iOS & Node Bootcamp"
 										),
 										React.createElement(
 											"option",
-											{ value: "youtube" },
-											"YouTube"
+											{ value: "node-react-bootcamp" },
+											"React & Node Bootcamp"
 										),
 										React.createElement(
 											"option",
-											{ value: "friend" },
-											"Friend"
+											{ value: "ios-node-evening" },
+											"iOS & Node Evening Course"
 										),
 										React.createElement(
 											"option",
-											{ value: "meetup" },
-											"Meetup.com"
-										),
-										React.createElement(
-											"option",
-											{ value: "other" },
-											"Other"
+											{ value: "node-react-evening" },
+											"React & Node Evening Course"
 										)
 									)
 								),
@@ -911,43 +901,7 @@ var Ios = (function (Component) {
 							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", className: "form-control", type: "text", placeholder: "Name" }),
 							React.createElement("br", null),
 							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.phone, id: "phone", className: "form-control", type: "text", placeholder: "Phone" }),
-							React.createElement("br", null),
-							React.createElement(
-								"label",
-								{ "for": "template-contactform-subject" },
-								"How did you hear of us?"
-							),
-							React.createElement(
-								"select",
-								{ onChange: this.updateVisitor, value: this.state.visitor.referral, id: "referral", className: "form-control input-lg not-dark" },
-								React.createElement(
-									"option",
-									{ value: "google" },
-									"Google"
-								),
-								React.createElement(
-									"option",
-									{ value: "youtubd" },
-									"YouTube"
-								),
-								React.createElement(
-									"option",
-									{ value: "friend" },
-									"Friend"
-								),
-								React.createElement(
-									"option",
-									{ value: "meetup" },
-									"Meetup.com"
-								),
-								React.createElement(
-									"option",
-									{ value: "other" },
-									"Other"
-								)
-							)
+							React.createElement("br", null)
 						),
 						React.createElement(
 							Modal.Footer,

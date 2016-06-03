@@ -44496,43 +44496,33 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'phone', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Phone' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
 									_react2.default.createElement(
 										'label',
 										{ 'for': 'template-contactform-subject' },
-										'How did you hear of us?'
+										'I am interested in'
 									),
 									_react2.default.createElement(
 										'select',
-										{ onChange: this.updateVisitor, value: this.state.visitor.referral, id: 'referral', className: 'form-control input-lg not-dark' },
+										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'referral', className: 'form-control input-lg not-dark' },
 										_react2.default.createElement(
 											'option',
-											{ value: 'google' },
-											'Google'
+											{ value: 'ios-node-bootcamp' },
+											'iOS & Node Bootcamp'
 										),
 										_react2.default.createElement(
 											'option',
-											{ value: 'youtube' },
-											'YouTube'
+											{ value: 'node-react-bootcamp' },
+											'React & Node Bootcamp'
 										),
 										_react2.default.createElement(
 											'option',
-											{ value: 'friend' },
-											'Friend'
+											{ value: 'ios-node-evening' },
+											'iOS & Node Evening Course'
 										),
 										_react2.default.createElement(
 											'option',
-											{ value: 'meetup' },
-											'Meetup.com'
-										),
-										_react2.default.createElement(
-											'option',
-											{ value: 'other' },
-											'Other'
+											{ value: 'node-react-evening' },
+											'React & Node Evening Course'
 										)
 									)
 								),
@@ -45064,43 +45054,7 @@
 							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.phone, id: 'phone', className: 'form-control', type: 'text', placeholder: 'Phone' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'label',
-								{ 'for': 'template-contactform-subject' },
-								'How did you hear of us?'
-							),
-							_react2.default.createElement(
-								'select',
-								{ onChange: this.updateVisitor, value: this.state.visitor.referral, id: 'referral', className: 'form-control input-lg not-dark' },
-								_react2.default.createElement(
-									'option',
-									{ value: 'google' },
-									'Google'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'youtubd' },
-									'YouTube'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'friend' },
-									'Friend'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'meetup' },
-									'Meetup.com'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'other' },
-									'Other'
-								)
-							)
+							_react2.default.createElement('br', null)
 						),
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Footer,

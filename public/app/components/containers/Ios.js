@@ -274,16 +274,12 @@ class Ios extends Component {
 		                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
 		                    </div>
 		                    <div className="col_full">
-		                        <input onChange={this.updateVisitor} id="phone" type="text" className="form-control input-lg not-dark" placeholder="Phone" />
-		                    </div>
-		                    <div className="col_full">
-								<label for="template-contactform-subject">How did you hear of us?</label>
-								<select onChange={this.updateVisitor} value={this.state.visitor.referral} id="referral" className="form-control input-lg not-dark">
-									<option value="google">Google</option>
-									<option value="youtube">YouTube</option>
-									<option value="friend">Friend</option>
-									<option value="meetup">Meetup.com</option>
-									<option value="other">Other</option>
+								<label for="template-contactform-subject">I am interested in</label>
+								<select onChange={this.updateVisitor} value={this.state.visitor.course} id="referral" className="form-control input-lg not-dark">
+									<option value="ios-node-bootcamp">iOS & Node Bootcamp</option>
+									<option value="node-react-bootcamp">React & Node Bootcamp</option>
+									<option value="ios-node-evening">iOS & Node Evening Course</option>
+									<option value="node-react-evening">React & Node Evening Course</option>
 								</select>
 		                    </div>
 
@@ -557,16 +553,6 @@ class Ios extends Component {
 			        	</div>
 			        	<input onChange={this.updateVisitor} value={this.state.visitor.name} id="name" className="form-control" type="text" placeholder="Name" /><br />
 			        	<input onChange={this.updateVisitor} value={this.state.visitor.email} id="email" className="form-control" type="text" placeholder="Email" /><br />
-			        	<input onChange={this.updateVisitor} value={this.state.visitor.phone} id="phone" className="form-control" type="text" placeholder="Phone" /><br />
-						<label for="template-contactform-subject">How did you hear of us?</label>
-						<select onChange={this.updateVisitor} value={this.state.visitor.referral} id="referral" className="form-control input-lg not-dark">
-							<option value="google">Google</option>
-							<option value="youtubd">YouTube</option>
-							<option value="friend">Friend</option>
-							<option value="meetup">Meetup.com</option>
-							<option value="other">Other</option>
-						</select>
-
 			        </Modal.Body>
 
 			        <Modal.Footer style={{textAlign:'center'}}>
