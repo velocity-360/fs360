@@ -44503,7 +44503,7 @@
 									),
 									_react2.default.createElement(
 										'select',
-										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'referral', className: 'form-control input-lg not-dark' },
+										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
 										_react2.default.createElement(
 											'option',
 											{ value: 'ios-node-bootcamp' },

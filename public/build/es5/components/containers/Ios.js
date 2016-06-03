@@ -350,7 +350,7 @@ var Ios = (function (Component) {
 									),
 									React.createElement(
 										"select",
-										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: "referral", className: "form-control input-lg not-dark" },
+										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: "course", className: "form-control input-lg not-dark" },
 										React.createElement(
 											"option",
 											{ value: "ios-node-bootcamp" },

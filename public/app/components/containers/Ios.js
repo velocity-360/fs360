@@ -275,7 +275,7 @@ class Ios extends Component {
 		                    </div>
 		                    <div className="col_full">
 								<label for="template-contactform-subject">I am interested in</label>
-								<select onChange={this.updateVisitor} value={this.state.visitor.course} id="referral" className="form-control input-lg not-dark">
+								<select onChange={this.updateVisitor} value={this.state.visitor.course} id="course" className="form-control input-lg not-dark">
 									<option value="ios-node-bootcamp">iOS & Node Bootcamp</option>
 									<option value="node-react-bootcamp">React & Node Bootcamp</option>
 									<option value="ios-node-evening">iOS & Node Evening Course</option>
