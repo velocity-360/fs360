@@ -655,7 +655,7 @@ var Ios = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ onClick: this.openModal, id: "ios-node-bootcamp", href: "#", className: "btn btn-success" },
+											{ id: "ios-node-bootcamp", href: "/course/ios-node-bootcamp", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -699,7 +699,7 @@ var Ios = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ onClick: this.openModal, id: "ios-node-evening", href: "#", className: "btn btn-success" },
+											{ id: "ios-node-evening", href: "/course/ios-development", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -743,7 +743,7 @@ var Ios = (function (Component) {
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ onClick: this.openModal, id: "node-react-evening", href: "#", className: "btn btn-success" },
+											{ id: "node-react-evening", href: "/course/react-with-node-js", className: "btn btn-success" },
 											"Learn More"
 										)
 									)

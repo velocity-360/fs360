@@ -437,7 +437,7 @@ class Ios extends Component {
 										junior iOS developers.
 									</div>
 									<br />
-									<a onClick={this.openModal} id="ios-node-bootcamp" href="#" className="btn btn-success">
+									<a id="ios-node-bootcamp" href="/course/ios-node-bootcamp" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -463,7 +463,7 @@ class Ios extends Component {
 										Maps and Foursquare.
 									</div>
 									<br />
-									<a onClick={this.openModal} id="ios-node-evening" href="#" className="btn btn-success">
+									<a id="ios-node-evening" href="/course/ios-development" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -489,7 +489,7 @@ class Ios extends Component {
 										uploading, email notification functionality.
 									</div>
 									<br />
-									<a onClick={this.openModal} id="node-react-evening" href="#" className="btn btn-success">
+									<a id="node-react-evening" href="/course/react-with-node-js" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
