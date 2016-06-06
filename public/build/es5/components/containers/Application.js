@@ -174,12 +174,12 @@ var Application = (function (Component) {
 													{ onChange: this.updateApplication, value: this.state.application.course, id: "course", className: "form-control input-lg not-dark" },
 													React.createElement(
 														"option",
-														{ value: "ios and node bootcamp" },
+														{ value: "ios & node bootcamp" },
 														"iOS & Node 6-Week Bootcamp"
 													),
 													React.createElement(
 														"option",
-														{ value: "node and react bootcamp" },
+														{ value: "node & react bootcamp" },
 														"Node & React 6-Week Bootcamp"
 													)
 												)

@@ -44477,9 +44477,9 @@
 									'div',
 									{ className: 'heading-block nobottommargin nobottomborder' },
 									_react2.default.createElement(
-										'h3',
+										'h4',
 										null,
-										'Learn iOS Development'
+										'Learn iOS or Web Development'
 									)
 								),
 								_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
@@ -44513,16 +44513,6 @@
 											'option',
 											{ value: 'node-react-bootcamp' },
 											'React & Node Bootcamp'
-										),
-										_react2.default.createElement(
-											'option',
-											{ value: 'ios-node-evening' },
-											'iOS & Node Evening Course'
-										),
-										_react2.default.createElement(
-											'option',
-											{ value: 'node-react-evening' },
-											'React & Node Evening Course'
 										)
 									)
 								),
@@ -44553,7 +44543,7 @@
 									_react2.default.createElement(
 										'h3',
 										null,
-										'Become a Professional iOS Developer in 6 Weeks'
+										'Become a Professional Developer in 6 Weeks'
 									),
 									_react2.default.createElement(
 										'span',
@@ -44571,7 +44561,7 @@
 									_react2.default.createElement(
 										'h3',
 										null,
-										'Learn to Build Real iPhone Apps'
+										'Build Real Projects'
 									),
 									_react2.default.createElement(
 										'p',
@@ -44820,50 +44810,6 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'iOS & Node Evening Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'June 6 to July 27'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Mon/Wed, 6pm - 9pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The 8-week iOS Evening Course takes beginners through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ id: 'ios-node-evening', href: '/course/ios-development', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								),
-								_react2.default.createElement('div', { style: { margin: 36 } }),
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
 										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/react.jpg', alt: 'Velocity 360' })
 									),
 									_react2.default.createElement(
@@ -44875,28 +44821,28 @@
 											_react2.default.createElement(
 												'h4',
 												null,
-												'Node & React Evening Course'
+												'Node & React 6-Week Bootcamp'
 											),
 											_react2.default.createElement(
 												'span',
 												null,
-												'June 7th to July 28th'
+												'August 22nd - September 30th'
 											),
 											_react2.default.createElement(
 												'span',
 												null,
-												'Tue/Thu, 6pm - 9pm'
+												'Mon - Fri, 9am - 5pm'
 											)
 										),
 										_react2.default.createElement(
 											'div',
 											{ className: 'team-content' },
-											'The Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
+											'The Node React Development Evening bootcamp is an 6-week course that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.'
 										),
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ id: 'node-react-evening', href: '/course/react-with-node-js', className: 'btn btn-success' },
+											{ id: 'node-react-evening', href: '/course/node-react-bootcamp', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -64535,12 +64481,12 @@
 													{ onChange: this.updateApplication, value: this.state.application.course, id: 'course', className: 'form-control input-lg not-dark' },
 													_react2.default.createElement(
 														'option',
-														{ value: 'ios and node bootcamp' },
+														{ value: 'ios & node bootcamp' },
 														'iOS & Node 6-Week Bootcamp'
 													),
 													_react2.default.createElement(
 														'option',
-														{ value: 'node and react bootcamp' },
+														{ value: 'node & react bootcamp' },
 														'Node & React 6-Week Bootcamp'
 													)
 												)

@@ -109,8 +109,8 @@ class Application extends Component {
 										<div className="col_full">
 											<label for="template-contactform-subject">Course</label>
 											<select onChange={this.updateApplication} value={this.state.application.course} id="course" className="form-control input-lg not-dark">
-												<option value="ios and node bootcamp">iOS & Node 6-Week Bootcamp</option>
-												<option value="node and react bootcamp">Node & React 6-Week Bootcamp</option>
+												<option value="ios & node bootcamp">iOS & Node 6-Week Bootcamp</option>
+												<option value="node & react bootcamp">Node & React 6-Week Bootcamp</option>
 											</select>
 										</div>
 

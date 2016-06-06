@@ -264,7 +264,7 @@ class Ios extends Component {
 		            <div className="container clearfix">
 		                <form action="#" method="post" role="form" className="landing-wide-form landing-form-overlay dark clearfix">
 		                    <div className="heading-block nobottommargin nobottomborder">
-		                        <h3>Learn iOS Development</h3>
+		                        <h4>Learn iOS or Web Development</h4>
 		                    </div>
 		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 		                    <div className="col_full">
@@ -278,8 +278,6 @@ class Ios extends Component {
 								<select onChange={this.updateVisitor} value={this.state.visitor.course} id="course" className="form-control input-lg not-dark">
 									<option value="ios-node-bootcamp">iOS & Node Bootcamp</option>
 									<option value="node-react-bootcamp">React & Node Bootcamp</option>
-									<option value="ios-node-evening">iOS & Node Evening Course</option>
-									<option value="node-react-evening">React & Node Evening Course</option>
 								</select>
 		                    </div>
 
@@ -296,7 +294,7 @@ class Ios extends Component {
 					<div className="content-wrap">
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
-		                        <h3>Become a Professional iOS Developer in 6 Weeks</h3>
+		                        <h3>Become a Professional Developer in 6 Weeks</h3>
 		                        <span>
 		                        	Learn iOS and Web development in our accelerated 6-week Bootcamp.
 		                        </span>
@@ -306,7 +304,7 @@ class Ios extends Component {
 						<div className="container clearfix" style={{paddingTop:64}}>
 
 							<div className="col_two_third bottommargin-sm">
-								<h3>Learn to Build Real iPhone Apps</h3>
+								<h3>Build Real Projects</h3>
 								<p>
 									Velocity is designed for part-time students who want to accelerate their learning through a
 									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
@@ -447,49 +445,24 @@ class Ios extends Component {
 
 							<div className="team team-list clearfix">
 								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/ios.jpg" alt="Velocity 360" />
-								</div>
-								<div className="team-desc">
-									<div className="team-title">
-										<h4>iOS &amp; Node Evening Course</h4>
-										<span>June 6 to July 27</span>
-										<span>Mon/Wed, 6pm - 9pm</span>
-									</div>
-									<div className="team-content">
-										The 8-week iOS Evening Course takes beginners through the process of designing 
-										and programming a basic iOS app from start. Students will create a simple app 
-										that utilizes key platform tools including the GPS locator, accelerator, and 
-										camera. In addition, the course will explore third party APIs such as Google 
-										Maps and Foursquare.
-									</div>
-									<br />
-									<a id="ios-node-evening" href="/course/ios-development" className="btn btn-success">
-										Learn More
-									</a>
-								</div>
-							</div>
-
-							<div style={{margin:36}}></div>
-
-							<div className="team team-list clearfix">
-								<div className="team-image">
 									<img style={{border:'1px solid #ddd'}} src="/images/react.jpg" alt="Velocity 360" />
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>Node &amp; React Evening Course</h4>
-										<span>June 7th to July 28th</span>
-										<span>Tue/Thu, 6pm - 9pm</span>
+										<h4>Node &amp; React 6-Week Bootcamp</h4>
+										<span>August 22nd - September 30th</span>
+										<span>Mon - Fri, 9am - 5pm</span>
 									</div>
 									<div className="team-content">
-										The Node & React Development Evening course is an 8-week class that 
+										The Node React Development Evening bootcamp is an 6-week course that 
 										covers backend and frontend development using the most up-to-date 
 										technologies. Using Node JS, Mongo, Express and React (with ES6), we 
 										will create a fully functional website with user registration, image 
-										uploading, email notification functionality.
+										uploading, email notification functionality. We also touch on React Native 
+										which leverages the powerful library to build native iOS apps in JavaScript.
 									</div>
 									<br />
-									<a id="node-react-evening" href="/course/react-with-node-js" className="btn btn-success">
+									<a id="node-react-evening" href="/course/node-react-bootcamp" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
