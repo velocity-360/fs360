@@ -120,8 +120,8 @@ router.get('/:resource/:id', function(req, res, next) {
 
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
-	var emailList = ['dkwon@velocity360.io', 'mdlugy.ventures@gmail.com']
-//	var emailList = ['dkwon@velocity360.io']
+//	var emailList = ['dkwon@velocity360.io', 'mdlugy.ventures@gmail.com']
+	var emailList = ['dkwon@velocity360.io']
 
 	if (resource == 'application'){
 		// var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io', 'mdlugy.ventures@gmail.com']
