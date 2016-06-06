@@ -171,33 +171,25 @@ class Course extends Component {
 		else 
 			stripe.showModalWithText(this.props.course.title)
 	}
-
-	// submitDeposit(event){
-	// 	event.preventDefault()
-	// 	console.log('submitDeposit')
-
-	// 	this.setState({
-	// 		showLoader: false
-	// 	});
-
-	// 	var _this = this
-	// 	var pkg = {amount:5}
-	// 	api.handlePost('/stripe/charge', pkg, function(err, response){
-	// 		_this.setState({
-	// 			showLoader: false
-	// 		});
-
-	// 		if (err){
-	// 			alert(err.message)
-	// 			return
-	// 		}
-
-	// 		alert(response.message)
-	// 	});
-	// }
 	
 
 	render(){
+		var bannerIndex = 0;
+		var btnRegister = null
+		if (this.props.course.type == 'online'){
+			bannerIndex = 1;
+			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		}
+		else if (this.props.course.type == 'immersive'){
+			bannerIndex = 2;
+			btnRegister = <a style={{marginRight:12}} href="/application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+		}
+		else {
+			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+		}
+
+		var banner = this.props.banners[bannerIndex]
+
 		var startDate = (this.props.course.dates == null) ? '' : this.props.course.dates.split('-')[0].trim()
 		var detailBox = null
 		if (this.props.course.type != 'online'){
@@ -209,7 +201,7 @@ class Course extends Component {
 								Tuition: ${this.props.course.tuition}<br />
 								Deposit: ${this.props.course.deposit}
 								<hr />
-								<a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+								{ btnRegister }
 								<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 							</div>
 						</div>
@@ -223,15 +215,6 @@ class Course extends Component {
 		var units = this.props.course.units.map(function(unit, i){
 			return <CourseSection key={unit.index} subscribeAction={_openStripeModal} loginAction={_showLogin} unit={unit} course={_course} accountType={_accountType} />
 		})
-
-
-		var bannerIndex = 0;
-		if (this.props.course.type == 'online')
-			bannerIndex = 1;
-		if (this.props.course.type == 'immersive')
-			bannerIndex = 2;
-
-		var banner = this.props.banners[bannerIndex];
 
 		return (
 			<div>
@@ -282,7 +265,7 @@ class Course extends Component {
 															<hr />
 															Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
 															<br /><br />
-															<a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+															{ btnRegister }
 															<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 														</div>
 													</div>

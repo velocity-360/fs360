@@ -62317,34 +62317,35 @@
 				event.preventDefault();
 				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
-	
-			// submitDeposit(event){
-			// 	event.preventDefault()
-			// 	console.log('submitDeposit')
-	
-			// 	this.setState({
-			// 		showLoader: false
-			// 	});
-	
-			// 	var _this = this
-			// 	var pkg = {amount:5}
-			// 	api.handlePost('/stripe/charge', pkg, function(err, response){
-			// 		_this.setState({
-			// 			showLoader: false
-			// 		});
-	
-			// 		if (err){
-			// 			alert(err.message)
-			// 			return
-			// 		}
-	
-			// 		alert(response.message)
-			// 	});
-			// }
-	
 		}, {
 			key: 'render',
 			value: function render() {
+				var bannerIndex = 0;
+				var btnRegister = null;
+				if (this.props.course.type == 'online') {
+					bannerIndex = 1;
+					btnRegister = _react2.default.createElement(
+						'a',
+						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+						'Register'
+					);
+				} else if (this.props.course.type == 'immersive') {
+					bannerIndex = 2;
+					btnRegister = _react2.default.createElement(
+						'a',
+						{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
+						'Apply'
+					);
+				} else {
+					btnRegister = _react2.default.createElement(
+						'a',
+						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+						'Register'
+					);
+				}
+	
+				var banner = this.props.banners[bannerIndex];
+	
 				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
 				var detailBox = null;
 				if (this.props.course.type != 'online') {
@@ -62369,11 +62370,7 @@
 							'Deposit: $',
 							this.props.course.deposit,
 							_react2.default.createElement('hr', null),
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-								'Register'
-							),
+							btnRegister,
 							_react2.default.createElement(
 								'a',
 								{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
@@ -62390,12 +62387,6 @@
 				var units = this.props.course.units.map(function (unit, i) {
 					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
-	
-				var bannerIndex = 0;
-				if (this.props.course.type == 'online') bannerIndex = 1;
-				if (this.props.course.type == 'immersive') bannerIndex = 2;
-	
-				var banner = this.props.banners[bannerIndex];
 	
 				return _react2.default.createElement(
 					'div',
@@ -62486,11 +62477,7 @@
 														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
 														_react2.default.createElement('br', null),
 														_react2.default.createElement('br', null),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Register'
-														),
+														btnRegister,
 														_react2.default.createElement(
 															'a',
 															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },

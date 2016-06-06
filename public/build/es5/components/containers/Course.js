@@ -227,33 +227,33 @@ var Course = (function (Component) {
 			configurable: true
 		},
 		render: {
-
-			// submitDeposit(event){
-			// 	event.preventDefault()
-			// 	console.log('submitDeposit')
-
-			// 	this.setState({
-			// 		showLoader: false
-			// 	});
-
-			// 	var _this = this
-			// 	var pkg = {amount:5}
-			// 	api.handlePost('/stripe/charge', pkg, function(err, response){
-			// 		_this.setState({
-			// 			showLoader: false
-			// 		});
-
-			// 		if (err){
-			// 			alert(err.message)
-			// 			return
-			// 		}
-
-			// 		alert(response.message)
-			// 	});
-			// }
-
-
 			value: function render() {
+				var bannerIndex = 0;
+				var btnRegister = null;
+				if (this.props.course.type == "online") {
+					bannerIndex = 1;
+					btnRegister = React.createElement(
+						"a",
+						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+						"Register"
+					);
+				} else if (this.props.course.type == "immersive") {
+					bannerIndex = 2;
+					btnRegister = React.createElement(
+						"a",
+						{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
+						"Apply"
+					);
+				} else {
+					btnRegister = React.createElement(
+						"a",
+						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+						"Register"
+					);
+				}
+
+				var banner = this.props.banners[bannerIndex];
+
 				var startDate = this.props.course.dates == null ? "" : this.props.course.dates.split("-")[0].trim();
 				var detailBox = null;
 				if (this.props.course.type != "online") {
@@ -278,11 +278,7 @@ var Course = (function (Component) {
 							"Deposit: $",
 							this.props.course.deposit,
 							React.createElement("hr", null),
-							React.createElement(
-								"a",
-								{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-								"Register"
-							),
+							btnRegister,
 							React.createElement(
 								"a",
 								{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
@@ -300,13 +296,6 @@ var Course = (function (Component) {
 				var units = this.props.course.units.map(function (unit, i) {
 					return React.createElement(CourseSection, { key: unit.index, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
-
-
-				var bannerIndex = 0;
-				if (this.props.course.type == "online") bannerIndex = 1;
-				if (this.props.course.type == "immersive") bannerIndex = 2;
-
-				var banner = this.props.banners[bannerIndex];
 
 				return React.createElement(
 					"div",
@@ -397,11 +386,7 @@ var Course = (function (Component) {
 														"Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.",
 														React.createElement("br", null),
 														React.createElement("br", null),
-														React.createElement(
-															"a",
-															{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-															"Register"
-														),
+														btnRegister,
 														React.createElement(
 															"a",
 															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
