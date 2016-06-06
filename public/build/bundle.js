@@ -44566,7 +44566,7 @@
 									_react2.default.createElement(
 										'p',
 										null,
-										'Velocity is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.',
+										'Velocity is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our project-based curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App or publish a database-driven website.',
 										_react2.default.createElement('br', null),
 										_react2.default.createElement('br', null),
 										'Whether you are looking for a job as a software developer or starting your own company, Velocity will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,',

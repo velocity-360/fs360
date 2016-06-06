@@ -307,8 +307,9 @@ class Ios extends Component {
 								<h3>Build Real Projects</h3>
 								<p>
 									Velocity is designed for part-time students who want to accelerate their learning through a
-									flexible night and weekend schedule. Our iOS-focused curriculum will teach you the fundamentals
-									of programming, how to solve problems like an engineer, and launch your own iPhone App to the App Store.
+									flexible night and weekend schedule. Our project-based curriculum will teach you the fundamentals
+									of programming, how to solve problems like an engineer, and launch your own iPhone App or publish 
+									a database-driven website.
 									<br /><br />
 									Whether you are looking for a job as a software developer or starting your own company, 
 									Velocity will help the transition. We provide students with interview preparation, practice, 
