@@ -53,9 +53,6 @@ router.get('/:resource', function(req, res, next) {
 			return;
 		}
 
-
-
-
 		var accountController = require('../controllers/AccountController');
 		accountController.checkCurrentUser(req, function(err, results){
 			if (err){
