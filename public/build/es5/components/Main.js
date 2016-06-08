@@ -40,6 +40,8 @@ var Account = _interopRequire(require("./containers/Account"));
 
 var Application = _interopRequire(require("./containers/Application"));
 
+var Unit = _interopRequire(require("./containers/Unit"));
+
 var Main = (function (Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -89,6 +91,9 @@ var Main = (function (Component) {
 
 					case "project":
 						return page = React.createElement(Project, { slug: this.props.slug });
+
+					case "unit":
+						return page = React.createElement(Unit, { slug: this.props.slug });
 
 					case "account":
 						return page = React.createElement(Account, null);

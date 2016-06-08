@@ -12,6 +12,7 @@ import Vault from './containers/Vault'
 import Videos from './containers/Videos'
 import Account from './containers/Account'
 import Application from './containers/Application'
+import Unit from './containers/Unit'
 
 class Main extends Component {
 
@@ -59,6 +60,9 @@ class Main extends Component {
 
 			case 'project':
 				return page = <Project slug={this.props.slug} />
+
+			case 'unit':
+				return page = <Unit slug={this.props.slug} />
 
 			case 'account':
 				return page = <Account />
