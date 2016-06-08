@@ -92,6 +92,13 @@ module.exports = {
 			type: constants.SAMPLE_CREATED,
 			sample: sample
 		};
+	},
+
+	unitReceived: function (unit) {
+		return {
+			type: constants.UNIT_RECEIVED,
+			unit: unit
+		};
 	} };
 
 

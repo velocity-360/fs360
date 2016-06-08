@@ -91,6 +91,13 @@ module.exports = {
 		};
 	},
 
+	unitReceived: function(unit){
+		return {
+			type: constants.UNIT_RECEIVED,
+			unit: unit
+		};
+	},
+
 
 	// duckDown: function(who){
 	// 	// here we take advantage of Redux-thunk; instead of returning an object describing an action,

@@ -21645,7 +21645,9 @@
 		PROJECTS_RECIEVED: 'PROJECTS_RECIEVED',
 	
 		SAMPLE_CREATED: 'SAMPLE_CREATED',
-		SAMPLES_RECIEVED: 'SAMPLES_RECIEVED'
+		SAMPLES_RECIEVED: 'SAMPLES_RECIEVED',
+	
+		UNIT_RECEIVED: 'UNIT_RECEIVED'
 	
 		// ACTION TYPES
 		// AIM_AT: "AIM_AT",
@@ -42100,6 +42102,13 @@
 			return {
 				type: constants.SAMPLE_CREATED,
 				sample: sample
+			};
+		},
+	
+		unitReceived: function unitReceived(unit) {
+			return {
+				type: constants.UNIT_RECEIVED,
+				unit: unit
 			};
 		}
 	
