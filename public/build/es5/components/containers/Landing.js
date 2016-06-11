@@ -311,7 +311,7 @@ var Landing = (function (Component) {
 					React.createElement(Nav, null),
 					React.createElement(
 						"section",
-						{ id: "slider", style: { background: "url(\"/images/ios-banner.jpg\") center", overflow: "visible" }, "data-height-lg": "450", "data-height-md": "450", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
+						{ id: "slider", style: { background: "url(\"/images/joe_light_blue.png\") center", overflow: "visible" }, "data-height-lg": "450", "data-height-md": "450", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
 						React.createElement("br", null),
 						React.createElement(
 							"div",

@@ -43838,13 +43838,13 @@
 									{ className: "fright clearfix" },
 									_react2.default.createElement(
 										"a",
-										{ target: "_blank", href: "https://www.facebook.com/FullStack-360-1631852427085987/", className: "social-icon si-small si-borderless si-facebook" },
+										{ target: "_blank", href: "https://www.facebook.com/Velocity-360-1631852427085987/", className: "social-icon si-small si-borderless si-facebook" },
 										_react2.default.createElement("i", { className: "icon-facebook" }),
 										_react2.default.createElement("i", { className: "icon-facebook" })
 									),
 									_react2.default.createElement(
 										"a",
-										{ target: "_blank", href: "https://twitter.com/fullstack360", className: "social-icon si-small si-borderless si-twitter" },
+										{ target: "_blank", href: "https://twitter.com/velocity360_io", className: "social-icon si-small si-borderless si-twitter" },
 										_react2.default.createElement("i", { className: "icon-twitter" }),
 										_react2.default.createElement("i", { className: "icon-twitter" })
 									),
@@ -43857,13 +43857,13 @@
 								),
 								_react2.default.createElement("div", { className: "clear" }),
 								_react2.default.createElement("i", { className: "icon-envelope2" }),
-								" dkwon@velocity360.io ",
+								" katrina@velocity360.io",
 								_react2.default.createElement(
 									"span",
 									{ className: "middot" },
 									"·"
 								),
-								" Velocity"
+								" Velocity 360"
 							)
 						)
 					)
@@ -44480,7 +44480,7 @@
 					_react2.default.createElement(_Nav2.default, null),
 					_react2.default.createElement(
 						'section',
-						{ id: 'slider', style: { background: 'url("/images/ios-banner.jpg") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
+						{ id: 'slider', style: { background: 'url("/images/joe_light_blue.png") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'div',

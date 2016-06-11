@@ -20,12 +20,12 @@ class Footer extends React.Component {
 
 						<div className="col_half col_last tright">
 							<div className="fright clearfix">
-								<a target="_blank" href="https://www.facebook.com/FullStack-360-1631852427085987/" className="social-icon si-small si-borderless si-facebook">
+								<a target="_blank" href="https://www.facebook.com/Velocity-360-1631852427085987/" className="social-icon si-small si-borderless si-facebook">
 									<i className="icon-facebook"></i>
 									<i className="icon-facebook"></i>
 								</a>
 
-								<a target="_blank" href="https://twitter.com/fullstack360" className="social-icon si-small si-borderless si-twitter">
+								<a target="_blank" href="https://twitter.com/velocity360_io" className="social-icon si-small si-borderless si-twitter">
 									<i className="icon-twitter"></i>
 									<i className="icon-twitter"></i>
 								</a>
@@ -39,7 +39,8 @@ class Footer extends React.Component {
 
 							<div className="clear"></div>
 
-							<i className="icon-envelope2"></i> dkwon@velocity360.io <span className="middot">&middot;</span> Velocity
+							<i className="icon-envelope2"></i> katrina@velocity360.io 
+							<span className="middot">&middot;</span> Velocity 360
 						</div>
 
 					</div>
