@@ -184,7 +184,7 @@ var Nav = (function (Component) {
 											React.createElement(
 												"div",
 												{ style: { padding: 4 } },
-												"Code"
+												"Courses"
 											)
 										),
 										React.createElement(
@@ -195,7 +195,7 @@ var Nav = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "/videos" },
+													{ href: "/courses?type=online" },
 													React.createElement(
 														"div",
 														{ style: { padding: 4 } },
@@ -203,36 +203,6 @@ var Nav = (function (Component) {
 													)
 												)
 											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "/vault" },
-													React.createElement(
-														"div",
-														{ style: { padding: 4 } },
-														"Code Vault"
-													)
-												)
-											)
-										)
-									),
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ href: "#" },
-											React.createElement(
-												"div",
-												{ style: { padding: 4 } },
-												"Courses"
-											)
-										),
-										React.createElement(
-											"ul",
-											null,
 											React.createElement(
 												"li",
 												null,

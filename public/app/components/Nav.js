@@ -79,14 +79,9 @@ class Nav extends Component {
 	                    <nav id="primary-menu">
 	                        <ul className="one-page-menu">
 	                            <li className="current"><a href="/"><div style={{padding:4}}>Home</div></a></li>
-								<li><a href="#"><div style={{padding:4}}>Code</div></a>
-									<ul>
-										<li><a href="/videos"><div style={{padding:4}}>Videos</div></a></li>
-										<li><a href="/vault"><div style={{padding:4}}>Code Vault</div></a></li>
-									</ul>
-								</li>
 								<li><a href="#"><div style={{padding:4}}>Courses</div></a>
 									<ul>
+										<li><a href="/courses?type=online"><div style={{padding:4}}>Videos</div></a></li>
 										<li><a href="/courses?type=live"><div style={{padding:4}}>Part Time</div></a></li>
 										<li><a href="/courses?type=immersive"><div style={{padding:4}}>Bootcamp</div></a></li>
 									</ul>

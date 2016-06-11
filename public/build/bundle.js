@@ -41852,7 +41852,7 @@
 											_react2.default.createElement(
 												'div',
 												{ style: { padding: 4 } },
-												'Code'
+												'Courses'
 											)
 										),
 										_react2.default.createElement(
@@ -41863,7 +41863,7 @@
 												null,
 												_react2.default.createElement(
 													'a',
-													{ href: '/videos' },
+													{ href: '/courses?type=online' },
 													_react2.default.createElement(
 														'div',
 														{ style: { padding: 4 } },
@@ -41871,36 +41871,6 @@
 													)
 												)
 											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '/vault' },
-													_react2.default.createElement(
-														'div',
-														{ style: { padding: 4 } },
-														'Code Vault'
-													)
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											_react2.default.createElement(
-												'div',
-												{ style: { padding: 4 } },
-												'Courses'
-											)
-										),
-										_react2.default.createElement(
-											'ul',
-											null,
 											_react2.default.createElement(
 												'li',
 												null,
