@@ -11,7 +11,7 @@ import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
 import api from '../../api/api'
 
-class Ios extends Component {
+class Landing extends Component {
 
 	constructor(props, context){
 		super(props, context)
@@ -88,11 +88,8 @@ class Ios extends Component {
 			if (parts.length > 1)
 				updatedUser['lastName'] = parts[parts.length-1]
 		}
-		else {
-			updatedUser[event.target.id] = event.target.value
 
-		}
-
+		updatedUser[event.target.id] = event.target.value
 		store.dispatch(actions.updateCurrentUser(updatedUser));
 	}
 
@@ -574,4 +571,4 @@ const stateToProps = function(state) {
 }
 
 
-export default connect(stateToProps)(Ios)
+export default connect(stateToProps)(Landing)

@@ -39,11 +39,11 @@ var stripe = _interopRequire(require("../../utils/StripeUtils"));
 
 var api = _interopRequire(require("../../api/api"));
 
-var Ios = (function (Component) {
-	function Ios(props, context) {
-		_classCallCheck(this, Ios);
+var Landing = (function (Component) {
+	function Landing(props, context) {
+		_classCallCheck(this, Landing);
 
-		_get(Object.getPrototypeOf(Ios.prototype), "constructor", this).call(this, props, context);
+		_get(Object.getPrototypeOf(Landing.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
 		this.submitInfoRequest = this.submitInfoRequest.bind(this);
@@ -67,9 +67,9 @@ var Ios = (function (Component) {
 		};
 	}
 
-	_inherits(Ios, Component);
+	_inherits(Landing, Component);
 
-	_prototypeProperties(Ios, null, {
+	_prototypeProperties(Landing, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
 				var _this = this;
@@ -919,7 +919,7 @@ var Ios = (function (Component) {
 		}
 	});
 
-	return Ios;
+	return Landing;
 })(Component);
 
 var stateToProps = function (state) {
@@ -932,4 +932,4 @@ var stateToProps = function (state) {
 };
 
 
-module.exports = connect(stateToProps)(Ios);
+module.exports = connect(stateToProps)(Landing);

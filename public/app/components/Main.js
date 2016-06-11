@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Home from './containers/Home'
-import Ios from './containers/Ios'
+import Landing from './containers/Landing'
 import Courses from './containers/Courses'
 import Events from './containers/Events'
 import Feed from './containers/Feed'
@@ -29,10 +29,10 @@ class Main extends Component {
 		var page = null
 		switch (this.props.page){
 			case 'home':
-				return page = <Ios headers={this.props.headers} />
+				return page = <Landing headers={this.props.headers} />
 
 			case 'ios':
-				return page = <Ios headers={this.props.headers} />
+				return page = <Landing headers={this.props.headers} />
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />

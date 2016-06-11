@@ -22061,9 +22061,9 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Ios = __webpack_require__(465);
+	var _Landing = __webpack_require__(465);
 	
-	var _Ios2 = _interopRequireDefault(_Ios);
+	var _Landing2 = _interopRequireDefault(_Landing);
 	
 	var _Courses = __webpack_require__(466);
 	
@@ -22137,10 +22137,10 @@
 				var page = null;
 				switch (this.props.page) {
 					case 'home':
-						return page = _react2.default.createElement(_Ios2.default, { headers: this.props.headers });
+						return page = _react2.default.createElement(_Landing2.default, { headers: this.props.headers });
 	
 					case 'ios':
-						return page = _react2.default.createElement(_Ios2.default, { headers: this.props.headers });
+						return page = _react2.default.createElement(_Landing2.default, { headers: this.props.headers });
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
@@ -44227,13 +44227,13 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Ios = function (_Component) {
-		_inherits(Ios, _Component);
+	var Landing = function (_Component) {
+		_inherits(Landing, _Component);
 	
-		function Ios(props, context) {
-			_classCallCheck(this, Ios);
+		function Landing(props, context) {
+			_classCallCheck(this, Landing);
 	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Ios).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Landing).call(this, props, context));
 	
 			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
 			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
@@ -44259,7 +44259,7 @@
 			return _this2;
 		}
 	
-		_createClass(Ios, [{
+		_createClass(Landing, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				var _this = this;
@@ -44309,10 +44309,9 @@
 					var parts = event.target.value.split(' ');
 					updatedUser['firstName'] = parts[0];
 					if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
-				} else {
-					updatedUser[event.target.id] = event.target.value;
 				}
 	
+				updatedUser[event.target.id] = event.target.value;
 				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
 			}
 		}, {
@@ -45086,7 +45085,7 @@
 			}
 		}]);
 	
-		return Ios;
+		return Landing;
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
@@ -45098,7 +45097,7 @@
 		};
 	};
 	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Ios);
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Landing);
 
 /***/ },
 /* 466 */
