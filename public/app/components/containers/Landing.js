@@ -303,10 +303,10 @@ class Landing extends Component {
 							<div className="col_two_third bottommargin-sm">
 								<h3>Build Real Projects</h3>
 								<p>
-									Velocity is designed for part-time students who want to accelerate their learning through a
-									flexible night and weekend schedule. Our project-based curriculum will teach you the fundamentals
-									of programming, how to solve problems like an engineer, and launch your own iPhone App or publish 
-									a database-driven website.
+									Velocity conducts development courses that are relevant in the startup and tech world today. We 
+									focus on the most up-to-date frameworks and libraries such as React, Angular, iOS, and Node JS. 
+									Our students are always prepared for rapid changes in the industry and are ready to work in tech 
+									after a course.
 									<br /><br />
 									Whether you are looking for a job as a software developer or starting your own company, 
 									Velocity will help the transition. We provide students with interview preparation, practice, 

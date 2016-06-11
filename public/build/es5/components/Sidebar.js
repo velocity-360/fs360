@@ -130,7 +130,7 @@ var Sidebar = (function (Component) {
 											React.createElement(
 												"div",
 												null,
-												"Code"
+												"Courses"
 											)
 										),
 										React.createElement(
@@ -141,7 +141,7 @@ var Sidebar = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "/videos" },
+													{ href: "/courses?type=online" },
 													React.createElement(
 														"div",
 														null,
@@ -149,36 +149,6 @@ var Sidebar = (function (Component) {
 													)
 												)
 											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "/vault" },
-													React.createElement(
-														"div",
-														null,
-														"Code Vault"
-													)
-												)
-											)
-										)
-									),
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ href: "#" },
-											React.createElement(
-												"div",
-												null,
-												"Courses"
-											)
-										),
-										React.createElement(
-											"ul",
-											null,
 											React.createElement(
 												"li",
 												null,

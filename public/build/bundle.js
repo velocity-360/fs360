@@ -44551,7 +44551,7 @@
 									_react2.default.createElement(
 										'p',
 										null,
-										'Velocity is designed for part-time students who want to accelerate their learning through a flexible night and weekend schedule. Our project-based curriculum will teach you the fundamentals of programming, how to solve problems like an engineer, and launch your own iPhone App or publish a database-driven website.',
+										'Velocity conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, iOS, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.',
 										_react2.default.createElement('br', null),
 										_react2.default.createElement('br', null),
 										'Whether you are looking for a job as a software developer or starting your own company, Velocity will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,',
@@ -45382,7 +45382,7 @@
 											_react2.default.createElement(
 												'div',
 												null,
-												'Code'
+												'Courses'
 											)
 										),
 										_react2.default.createElement(
@@ -45393,7 +45393,7 @@
 												null,
 												_react2.default.createElement(
 													'a',
-													{ href: '/videos' },
+													{ href: '/courses?type=online' },
 													_react2.default.createElement(
 														'div',
 														null,
@@ -45401,36 +45401,6 @@
 													)
 												)
 											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '/vault' },
-													_react2.default.createElement(
-														'div',
-														null,
-														'Code Vault'
-													)
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											_react2.default.createElement(
-												'div',
-												null,
-												'Courses'
-											)
-										),
-										_react2.default.createElement(
-											'ul',
-											null,
 											_react2.default.createElement(
 												'li',
 												null,
