@@ -261,7 +261,7 @@ class Landing extends Component {
 		            <div className="container clearfix">
 		                <form action="#" method="post" role="form" className="landing-wide-form landing-form-overlay dark clearfix">
 		                    <div className="heading-block nobottommargin nobottomborder">
-		                        <h4>Learn iOS or Web Development</h4>
+		                        <h4>Start your Programming Career</h4>
 		                    </div>
 		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 		                    <div className="col_full">
@@ -291,113 +291,136 @@ class Landing extends Component {
 					<div className="content-wrap">
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
-		                        <h3>Become a Professional Developer in 6 Weeks</h3>
+		                        <h3>Build Real Projects</h3>
 		                        <span>
-		                        	Learn iOS and Web development in our accelerated 6-week Bootcamp.
+		                        	Learn iOS and Web development by building actual projects.
 		                        </span>
 		                    </div>
 		                </div>
 
 						<div className="container clearfix" style={{paddingTop:64}}>
-
 							<div className="col_two_third bottommargin-sm">
-								<h3>Build Real Projects</h3>
+			                    <div className="fancy-title title-bottom-border">
+			                        <h3>The True Experience</h3>
+			                    </div>
 								<p>
-									Velocity conducts development courses that are relevant in the startup and tech world today. We 
-									focus on the most up-to-date frameworks and libraries such as React, Angular, iOS, and Node JS. 
-									Our students are always prepared for rapid changes in the industry and are ready to work in tech 
-									after a course.
+									<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
+									The Velocity 360 program provides real development experience by partnering with local 
+									startups to build their prototypes (often referred to as 'MVP' - Minimal Viable Product). 
+									After a 6-week period covering programming fundamentals, students work in groups of 2-4 
+									on an actual project that was pre-vetted by the Velocity 360 team.
 									<br /><br />
-									Whether you are looking for a job as a software developer or starting your own company, 
-									Velocity will help the transition. We provide students with interview preparation, practice, 
-									and assigments gathered from previous students who have gone through many interview 
-									processes. Our former students have gone on to work at companies like the New York Times, 
-									<a target="_blank" href="http://eranyc.com/"> ERA Accelerator</a>, and several NYC based 
-									startups.
+									By the end of the program, students will have published a real, live product that will be 
+									promoted by the startup team. As such, students will already have a professional project on 
+									their portfolio immediately upon completion and may even continue with the project beyond 
+									the course.
 								</p>
 
-								<hr />
+			                    <div className="fancy-title title-bottom-border">
+			                        <h3>How It Works</h3>
+			                    </div>
+								<p>
+									The Velocity Bootcamp Program is divided into two parts.<br />
+			                        <div className="col_half panel panel-default">
+			                            <div className="panel-heading">
+			                                <h2 className="panel-title">6-Week Fundamentals Course</h2>
+			                            </div>
+			                            <div className="panel-body">
+											The Fundamentals Course covers backend and frontend development using the 
+											most up-to-date technologies. Using Node JS, Mongo, Express and React 
+											(with ES6), we will create a fully functional website with user registration, 
+											image uploading, email notification functionality. We also touch on React 
+											Native which leverages the powerful library to build native iOS apps in 
+											JavaScript.			                            
+				                            <br /><br />
+				                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
+					                            <li>Jul 11th - Aug 19th</li>
+					                            <li>Mon - Fri</li>
+					                            <li>9am - 5pm</li>
+				                            </ul>
+											<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
+												<i className="icon-signal"></i>
+												<span>Apply</span>
+											</a>				                            
+			                            </div>
+			                        </div>
 
-								<div className="row">
+			                        <div className="col_half panel panel-default col_last">
+			                            <div className="panel-heading">
+			                                <h2 className="panel-title">6-Week MVP Bootcamp</h2>
+			                            </div>
+			                            <div className="panel-body">
+				                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, 
+				                            veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam 
+				                            suscipit inventore neque. Distinctio, impedit.
+				                            <br /><br />
+				                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
+					                            <li>Aug 22nd - Sep 30th</li>
+					                            <li>Mon - Fri</li>
+					                            <li>9am - 5pm</li>
+				                            </ul>
+											<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
+												<i className="icon-signal"></i>
+												<span>Apply</span>
+											</a>				                            
 
-									<div className="col-md-4 col-sm-6 bottommargin">
-										<div className="ipost clearfix">
-											<div className="entry-image">
-												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
-											</div>
-											<div className="entry-title">
-												<h3>Small Classes</h3>
-												<hr />
-											</div>
-											<div className="entry-content">
-												<p>
-													Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind.
-												</p>
-											</div>
-										</div>
-									</div>
+			                            </div>
+			                        </div>
 
-									<div className="col-md-4 col-sm-6 bottommargin">
-										<div className="ipost clearfix">
-											<div className="entry-image">
-												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/joe.jpg" alt="Velocity 360" />
-											</div>
-											<div className="entry-title">
-												<h3>Cutting Edge Curriculum</h3>
-												<hr />
-											</div>
-											<div className="entry-content">
-												<p>
-													Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that.
-												</p>
-											</div>
-										</div>
-									</div>
-
-									<div className="col-md-4 col-sm-6 bottommargin">
-										<div className="ipost clearfix">
-											<div className="entry-image">
-												<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src="/images/phone.jpg" alt="Velocity 360" />
-											</div>
-											<div className="entry-title">
-												<h3>Realistic Projects</h3>
-												<hr />
-											</div>
-											<div className="entry-content">
-												<p>
-													All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face.
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
+			                        <div className="clearfix"></div>
+									Each section is a stand-alone course meaning students can enroll in just one and not the other. 
+									However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals 
+									Course so students should not be complete beginners for this sequence. The tuition for each course 
+									is $6,500 but when taken together, the combined tuition is $11,500.
+								</p>
 							</div>
 
-							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{background:'#f9f9f9'}}>
-								<div className="widget clearfix" style={{padding:24}}>
-									<h4>Spotlight</h4>
-									<img style={{width:128, borderRadius:64}} src="/images/briancorrea.jpg" alt="Velocity 360" />
+							<div className="col_one_third bottommargin-sm hidden-xs col_last">
+								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
+									<h4>Featured App</h4>
+									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
+									<h3 style={{marginBottom:6, marginTop:9}}>
+										<a target="_blank" href="https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8">Radius</a>
+									</h3>
 									<hr />
-									<h3 style={{marginBottom:6}}>Brian Correa</h3>
-									<strong style={{color:'#1ABC9C'}}>iOS &amp; Node Course</strong>
+									<strong>iOS App</strong>
 									<br />
 									<p>
-										On the first day of class my instructor taught me more than I taught myself in 
-										the three weeks. I immediately knew I made the right choice to learn iOS with 
-										Velocity. The hands-on structure of the class is the best use of my time and 
-										prevents me from wasting time trying to get one thing off the ground. Instead, 
-										I was immediately building projects. I am confident that after the Velocity class, 
-										my skill-set will be appealing to companies looking to hire a junior developer.
+										Radius is a job-searching app aimed at part time workers, students, and 
+										short term service providers like dog-walkers or furniture movers. It utilizes 
+										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
+										in the area.
+										<br /><br />
+										Radius was built using Node JS & Express for the backend, Mongo DB for database, and 
+										Heroku for deployment. 
+
 									</p>
 
 									<div className="tagcloud">
 										<a href="#">iOS</a>
 										<a href="#">Node JS</a>
-										<a href="#">Swift</a>
 										<a href="#">REST API</a>
 										<a href="#">JavaScript</a>
 									</div>
 								</div>
+
+								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#f9f9f9'}}>
+									<h4>Featured App</h4>
+									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
+									<h3 style={{marginBottom:6, marginTop:9}}>
+										<a target="_blank" href="https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8">Radius</a>
+									</h3>
+									<hr />
+									<strong>iOS App</strong>
+									<br />
+									<p>
+										Radius is a job-searching app aimed at part time workers, students, and 
+										short term service providers like dog-walkers or furniture movers. It utilizes 
+										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
+										in the area.
+									</p>
+								</div>
+
 							</div>							
 
 						</div>
@@ -406,7 +429,7 @@ class Landing extends Component {
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
-						<h2>Courses</h2>
+						<h2>Part Time Courses</h2>
 					</div>
 
 					<div className="content-wrap" style={{paddingTop:0}}>
@@ -465,7 +488,6 @@ class Landing extends Component {
 									</a>
 								</div>
 							</div>
-
 
 						</div>
 
@@ -562,13 +584,10 @@ class Landing extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
-
     return {
         currentUser: state.profileReducer.currentUser,
         loaderOptions: state.staticReducer.loaderConfig
     }
 }
-
 
 export default connect(stateToProps)(Landing)

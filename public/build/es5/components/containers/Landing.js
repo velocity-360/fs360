@@ -325,7 +325,7 @@ var Landing = (function (Component) {
 									React.createElement(
 										"h4",
 										null,
-										"Learn iOS or Web Development"
+										"Start your Programming Career"
 									)
 								),
 								React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
@@ -389,12 +389,12 @@ var Landing = (function (Component) {
 									React.createElement(
 										"h3",
 										null,
-										"Become a Professional Developer in 6 Weeks"
+										"Build Real Projects"
 									),
 									React.createElement(
 										"span",
 										null,
-										"Learn iOS and Web development in our accelerated 6-week Bootcamp."
+										"Learn iOS and Web development by building actual projects."
 									)
 								)
 							),
@@ -405,154 +405,174 @@ var Landing = (function (Component) {
 									"div",
 									{ className: "col_two_third bottommargin-sm" },
 									React.createElement(
-										"h3",
-										null,
-										"Build Real Projects"
+										"div",
+										{ className: "fancy-title title-bottom-border" },
+										React.createElement(
+											"h3",
+											null,
+											"The True Experience"
+										)
 									),
 									React.createElement(
 										"p",
 										null,
-										"Velocity conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, iOS, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.",
+										React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "/images/class.jpg", alt: "Velocity 360" }),
+										"The Velocity 360 program provides real development experience by partnering with local startups to build their prototypes (often referred to as 'MVP' - Minimal Viable Product). After a 6-week period covering programming fundamentals, students work in groups of 2-4 on an actual project that was pre-vetted by the Velocity 360 team.",
 										React.createElement("br", null),
 										React.createElement("br", null),
-										"Whether you are looking for a job as a software developer or starting your own company, Velocity will help the transition. We provide students with interview preparation, practice, and assigments gathered from previous students who have gone through many interview processes. Our former students have gone on to work at companies like the New York Times,",
-										React.createElement(
-											"a",
-											{ target: "_blank", href: "http://eranyc.com/" },
-											" ERA Accelerator"
-										),
-										", and several NYC based startups."
+										"By the end of the program, students will have published a real, live product that will be promoted by the startup team. As such, students will already have a professional project on their portfolio immediately upon completion and may even continue with the project beyond the course."
 									),
-									React.createElement("hr", null),
 									React.createElement(
 										"div",
-										{ className: "row" },
+										{ className: "fancy-title title-bottom-border" },
 										React.createElement(
-											"div",
-											{ className: "col-md-4 col-sm-6 bottommargin" },
-											React.createElement(
-												"div",
-												{ className: "ipost clearfix" },
-												React.createElement(
-													"div",
-													{ className: "entry-image" },
-													React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/class.jpg", alt: "Velocity 360" })
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-title" },
-													React.createElement(
-														"h3",
-														null,
-														"Small Classes"
-													),
-													React.createElement("hr", null)
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-content" },
-													React.createElement(
-														"p",
-														null,
-														"Our average class size is six students and the maximum per class is ten. Every student recieves individual attenttion and no one falls far behind."
-													)
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "col-md-4 col-sm-6 bottommargin" },
-											React.createElement(
-												"div",
-												{ className: "ipost clearfix" },
-												React.createElement(
-													"div",
-													{ className: "entry-image" },
-													React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/joe.jpg", alt: "Velocity 360" })
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-title" },
-													React.createElement(
-														"h3",
-														null,
-														"Cutting Edge Curriculum"
-													),
-													React.createElement("hr", null)
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-content" },
-													React.createElement(
-														"p",
-														null,
-														"Ruby on Rails? Django? Ember? Backbone? PHP? Angular? Swift? Objective C? Node? JavaScript? React? To beginners, the tech landscape is overwhelming and the wrong choice can waste a lot of time and money. We make the right choices for you. Simple as that."
-													)
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "col-md-4 col-sm-6 bottommargin" },
-											React.createElement(
-												"div",
-												{ className: "ipost clearfix" },
-												React.createElement(
-													"div",
-													{ className: "entry-image" },
-													React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/phone.jpg", alt: "Velocity 360" })
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-title" },
-													React.createElement(
-														"h3",
-														null,
-														"Realistic Projects"
-													),
-													React.createElement("hr", null)
-												),
-												React.createElement(
-													"div",
-													{ className: "entry-content" },
-													React.createElement(
-														"p",
-														null,
-														"All courses are taught by current professionals who work on real projects. As such, our curriculum is heavily driven by the skills required in the tech industry and prepares our students for the challenges they will face."
-													)
-												)
-											)
+											"h3",
+											null,
+											"How It Works"
 										)
+									),
+									React.createElement(
+										"p",
+										null,
+										"The Velocity Bootcamp Program is divided into two parts.",
+										React.createElement("br", null),
+										React.createElement(
+											"div",
+											{ className: "col_half panel panel-default" },
+											React.createElement(
+												"div",
+												{ className: "panel-heading" },
+												React.createElement(
+													"h2",
+													{ className: "panel-title" },
+													"6-Week Fundamentals Course"
+												)
+											),
+											React.createElement(
+												"div",
+												{ className: "panel-body" },
+												"The Fundamentals Course covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.",
+												React.createElement("br", null),
+												React.createElement("br", null),
+												React.createElement(
+													"ul",
+													{ style: { listStyle: "none", fontWeight: "600" } },
+													React.createElement(
+														"li",
+														null,
+														"Jul 11th - Aug 19th"
+													),
+													React.createElement(
+														"li",
+														null,
+														"Mon - Fri"
+													),
+													React.createElement(
+														"li",
+														null,
+														"9am - 5pm"
+													)
+												),
+												React.createElement(
+													"a",
+													{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
+													React.createElement("i", { className: "icon-signal" }),
+													React.createElement(
+														"span",
+														null,
+														"Apply"
+													)
+												)
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "col_half panel panel-default col_last" },
+											React.createElement(
+												"div",
+												{ className: "panel-heading" },
+												React.createElement(
+													"h2",
+													{ className: "panel-title" },
+													"6-Week MVP Bootcamp"
+												)
+											),
+											React.createElement(
+												"div",
+												{ className: "panel-body" },
+												"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam suscipit inventore neque. Distinctio, impedit.",
+												React.createElement("br", null),
+												React.createElement("br", null),
+												React.createElement(
+													"ul",
+													{ style: { listStyle: "none", fontWeight: "600" } },
+													React.createElement(
+														"li",
+														null,
+														"Aug 22nd - Sep 30th"
+													),
+													React.createElement(
+														"li",
+														null,
+														"Mon - Fri"
+													),
+													React.createElement(
+														"li",
+														null,
+														"9am - 5pm"
+													)
+												),
+												React.createElement(
+													"a",
+													{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
+													React.createElement("i", { className: "icon-signal" }),
+													React.createElement(
+														"span",
+														null,
+														"Apply"
+													)
+												)
+											)
+										),
+										React.createElement("div", { className: "clearfix" }),
+										"Each section is a stand-alone course meaning students can enroll in just one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500."
 									)
 								),
 								React.createElement(
 									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { background: "#f9f9f9" } },
+									{ className: "col_one_third bottommargin-sm hidden-xs col_last" },
 									React.createElement(
 										"div",
-										{ className: "widget clearfix", style: { padding: 24 } },
+										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#F9FCFF" } },
 										React.createElement(
 											"h4",
 											null,
-											"Spotlight"
+											"Featured App"
 										),
-										React.createElement("img", { style: { width: 128, borderRadius: 64 }, src: "/images/briancorrea.jpg", alt: "Velocity 360" }),
-										React.createElement("hr", null),
+										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
 										React.createElement(
 											"h3",
-											{ style: { marginBottom: 6 } },
-											"Brian Correa"
+											{ style: { marginBottom: 6, marginTop: 9 } },
+											React.createElement(
+												"a",
+												{ target: "_blank", href: "https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8" },
+												"Radius"
+											)
 										),
+										React.createElement("hr", null),
 										React.createElement(
 											"strong",
-											{ style: { color: "#1ABC9C" } },
-											"iOS & Node Course"
+											null,
+											"iOS App"
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"p",
 											null,
-											"On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects. I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer."
+											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.",
+											React.createElement("br", null),
+											React.createElement("br", null),
+											"Radius was built using Node JS & Express for the backend, Mongo DB for database, and Heroku for deployment."
 										),
 										React.createElement(
 											"div",
@@ -570,11 +590,6 @@ var Landing = (function (Component) {
 											React.createElement(
 												"a",
 												{ href: "#" },
-												"Swift"
-											),
-											React.createElement(
-												"a",
-												{ href: "#" },
 												"REST API"
 											),
 											React.createElement(
@@ -582,6 +597,37 @@ var Landing = (function (Component) {
 												{ href: "#" },
 												"JavaScript"
 											)
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#f9f9f9" } },
+										React.createElement(
+											"h4",
+											null,
+											"Featured App"
+										),
+										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
+										React.createElement(
+											"h3",
+											{ style: { marginBottom: 6, marginTop: 9 } },
+											React.createElement(
+												"a",
+												{ target: "_blank", href: "https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8" },
+												"Radius"
+											)
+										),
+										React.createElement("hr", null),
+										React.createElement(
+											"strong",
+											null,
+											"iOS App"
+										),
+										React.createElement("br", null),
+										React.createElement(
+											"p",
+											null,
+											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area."
 										)
 									)
 								)
@@ -597,7 +643,7 @@ var Landing = (function (Component) {
 							React.createElement(
 								"h2",
 								null,
-								"Courses"
+								"Part Time Courses"
 							)
 						),
 						React.createElement(
@@ -923,13 +969,10 @@ var Landing = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser));
-
 	return {
 		currentUser: state.profileReducer.currentUser,
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };
-
 
 module.exports = connect(stateToProps)(Landing);
