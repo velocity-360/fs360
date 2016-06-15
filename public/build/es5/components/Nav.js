@@ -199,7 +199,7 @@ var Nav = (function (Component) {
 													React.createElement(
 														"div",
 														{ style: { padding: 4 } },
-														"Videos"
+														"Online"
 													)
 												)
 											),

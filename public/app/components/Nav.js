@@ -81,7 +81,7 @@ class Nav extends Component {
 	                            <li className="current"><a href="/"><div style={{padding:4}}>Home</div></a></li>
 								<li><a href="#"><div style={{padding:4}}>Courses</div></a>
 									<ul>
-										<li><a href="/courses?type=online"><div style={{padding:4}}>Videos</div></a></li>
+										<li><a href="/courses?type=online"><div style={{padding:4}}>Online</div></a></li>
 										<li><a href="/courses?type=live"><div style={{padding:4}}>Part Time</div></a></li>
 										<li><a href="/courses?type=immersive"><div style={{padding:4}}>Bootcamp</div></a></li>
 									</ul>

@@ -145,7 +145,7 @@ var Sidebar = (function (Component) {
 													React.createElement(
 														"div",
 														null,
-														"Videos"
+														"Online"
 													)
 												)
 											),
