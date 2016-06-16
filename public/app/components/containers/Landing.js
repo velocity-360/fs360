@@ -32,7 +32,7 @@ class Landing extends Component {
 				name: '',
 				email: '',
 				phone: '',
-				course: 'ios-node-bootcamp',
+				course: 'Fundamentals Bootcamp',
 				referral: ''
 			}
 		}
@@ -273,13 +273,13 @@ class Landing extends Component {
 		                    <div className="col_full">
 								<label for="template-contactform-subject">I am interested in</label>
 								<select onChange={this.updateVisitor} value={this.state.visitor.course} id="course" className="form-control input-lg not-dark">
-									<option value="ios-node-bootcamp">iOS & Node Bootcamp</option>
-									<option value="node-react-bootcamp">React & Node Bootcamp</option>
+									<option value="fundamentals-bootcamp">Fundamentals Bootcamp</option>
+									<option value="mvp-bootcamp">MVP Bootcamp</option>
 								</select>
 		                    </div>
 
 		                    <div className="col_full nobottommargin">
-		                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Info</button>
+		                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
 		                    </div>
 		                </form>
 
@@ -319,63 +319,79 @@ class Landing extends Component {
 			                    <div className="fancy-title title-bottom-border">
 			                        <h3>How It Works</h3>
 			                    </div>
-								<p>
-									The Velocity Bootcamp Program is divided into two parts.<br />
-			                        <div className="col_half panel panel-default">
-			                            <div className="panel-heading">
-			                                <h2 className="panel-title">6-Week Fundamentals Bootcamp</h2>
-			                            </div>
-			                            <div className="panel-body">
-											The Fundamentals Bootcamp covers backend and frontend development using the 
-											most up-to-date technologies. Using Node JS, Mongo, Express and React 
-											(with ES6), we create a fully functional website with user registration, 
-											image uploading, email notification functionality. We also touch on React 
-											Native which leverages the powerful library to build native iOS apps in 
-											JavaScript.			                            
-				                            <br /><br />
-				                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
-					                            <li>Jul 11th - Aug 19th</li>
-					                            <li>Mon - Fri</li>
-					                            <li>9am - 5pm</li>
-				                            </ul>
-											<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
-												<i className="icon-signal"></i>
-												<span>Apply</span>
-											</a>				                            
-			                            </div>
-			                        </div>
+								The Velocity Bootcamp Program is divided into two parts.
+								<br /><br />
+		                        <div className="col_half panel panel-default">
+		                            <div className="panel-heading">
+		                                <h2 className="panel-title">
+		                                	<a style={{color:'#1ABC9C'}} href="#">6-Week Fundamentals Bootcamp</a>
+		                                	</h2>
+		                            </div>
+		                            <div className="panel-body">
+										The Fundamentals Bootcamp covers backend and frontend development using the 
+										most up-to-date technologies. Using Node JS, Mongo, Express and React 
+										(with ES6), we create a fully functional website with user registration, 
+										image uploading, email notification functionality. We also touch on React 
+										Native which leverages the powerful library to build native iOS apps in 
+										JavaScript.			                            
+			                            <br /><br />
+			                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
+				                            <li>Jul 11th - Aug 19th</li>
+				                            <li>Mon - Fri</li>
+				                            <li>9am - 5pm</li>
+			                            </ul>
+										<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
+											<i className="icon-signal"></i>
+											<span>Apply</span>
+										</a>				                            
+		                            </div>
+		                        </div>
 
-			                        <div className="col_half panel panel-default col_last">
-			                            <div className="panel-heading">
-			                                <h2 className="panel-title">6-Week MVP Bootcamp</h2>
-			                            </div>
-			                            <div className="panel-body">
-			                            	The MVP Bootcamp builds real web or mobile projects with local startups. All 
-			                            	projects are carefully vetted by our staff for feasibility, strength of idea, and 
-			                            	founding team. 
-				                            <br /><br />
-				                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
-					                            <li>Aug 22nd - Sep 30th</li>
-					                            <li>Mon - Fri</li>
-					                            <li>9am - 5pm</li>
-				                            </ul>
-											<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
-												<i className="icon-signal"></i>
-												<span>Apply</span>
-											</a>				                            
+		                        <div className="col_half panel panel-default col_last">
+		                            <div className="panel-heading">
+		                                <h2 className="panel-title">
+		                                	<a style={{color:'#1ABC9C'}} href="#">6-Week MVP Bootcamp</a>
+		                                </h2>
+		                            </div>
+		                            <div className="panel-body">
+		                            	The MVP Bootcamp builds real web or mobile projects with local startups. All 
+		                            	projects are carefully vetted by our staff for feasibility, strength of idea, and 
+		                            	founding team. 
+			                            <br /><br />
+			                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
+				                            <li>Aug 22nd - Sep 30th</li>
+				                            <li>Mon - Fri</li>
+				                            <li>9am - 5pm</li>
+			                            </ul>
+										<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
+											<i className="icon-signal"></i>
+											<span>Apply</span>
+										</a>				                            
 
-			                            </div>
-			                        </div>
+		                            </div>
+		                        </div>
 
-			                        <div className="clearfix"></div>
-									Each section is a stand-alone course meaning students can enroll in just one and not the other. 
-									However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals 
-									Course so students should not be complete beginners for this sequence. The tuition for each course 
-									is $6,500 but when taken together, the combined tuition is $11,500.
-								</p>
+		                        <div className="clearfix"></div>
+								Each section is a stand-alone course meaning students can enroll in one and not the other. 
+								However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals 
+								Course so students should not be complete beginners for this sequence. The tuition for each course 
+								is $6,500 but when taken together, the combined tuition is $11,500.
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last">
+
+								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#f9f9f9'}}>
+									<h4>Featured Tutorial</h4>
+									<div className={'wistia_embed wistia_async_ehbr4b234p videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
+									<hr />
+									<strong>Setting Up a Node JS Project</strong>
+									<br /><br />
+									<p>
+										Set up a basic project using Express and use request details from the browser 
+										to generate dynamic responses. 
+									</p>
+								</div>
+
 								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
 									<h4>Featured App</h4>
 									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
@@ -390,10 +406,6 @@ class Landing extends Component {
 										short term service providers like dog-walkers or furniture movers. It utilizes 
 										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
 										in the area.
-										<br /><br />
-										Radius was built using Node JS & Express for the backend, Mongo DB for database, and 
-										Heroku for deployment. 
-
 									</p>
 
 									<div className="tagcloud">
@@ -404,22 +416,6 @@ class Landing extends Component {
 									</div>
 								</div>
 
-								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#f9f9f9'}}>
-									<h4>Featured Tutorial</h4>
-									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
-									<h3 style={{marginBottom:6, marginTop:9}}>
-										<a target="_blank" href="https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8">Radius</a>
-									</h3>
-									<hr />
-									<strong>iOS App</strong>
-									<br />
-									<p>
-										Radius is a job-searching app aimed at part time workers, students, and 
-										short term service providers like dog-walkers or furniture movers. It utilizes 
-										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
-										in the area.
-									</p>
-								</div>
 
 							</div>							
 

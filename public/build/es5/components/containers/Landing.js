@@ -61,7 +61,7 @@ var Landing = (function (Component) {
 				name: "",
 				email: "",
 				phone: "",
-				course: "ios-node-bootcamp",
+				course: "Fundamentals Bootcamp",
 				referral: ""
 			}
 		};
@@ -352,13 +352,13 @@ var Landing = (function (Component) {
 										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: "course", className: "form-control input-lg not-dark" },
 										React.createElement(
 											"option",
-											{ value: "ios-node-bootcamp" },
-											"iOS & Node Bootcamp"
+											{ value: "fundamentals-bootcamp" },
+											"Fundamentals Bootcamp"
 										),
 										React.createElement(
 											"option",
-											{ value: "node-react-bootcamp" },
-											"React & Node Bootcamp"
+											{ value: "mvp-bootcamp" },
+											"MVP Bootcamp"
 										)
 									)
 								),
@@ -368,7 +368,7 @@ var Landing = (function (Component) {
 									React.createElement(
 										"button",
 										{ onClick: this.submitInfoRequest, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
-										"Request Info"
+										"Request Syllabus"
 									)
 								)
 							)
@@ -431,116 +431,148 @@ var Landing = (function (Component) {
 											"How It Works"
 										)
 									),
+									"The Velocity Bootcamp Program is divided into two parts.",
+									React.createElement("br", null),
+									React.createElement("br", null),
 									React.createElement(
-										"p",
-										null,
-										"The Velocity Bootcamp Program is divided into two parts.",
-										React.createElement("br", null),
+										"div",
+										{ className: "col_half panel panel-default" },
 										React.createElement(
 											"div",
-											{ className: "col_half panel panel-default" },
+											{ className: "panel-heading" },
 											React.createElement(
-												"div",
-												{ className: "panel-heading" },
+												"h2",
+												{ className: "panel-title" },
 												React.createElement(
-													"h2",
-													{ className: "panel-title" },
+													"a",
+													{ style: { color: "#1ABC9C" }, href: "#" },
 													"6-Week Fundamentals Bootcamp"
 												)
-											),
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "panel-body" },
+											"The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.",
+											React.createElement("br", null),
+											React.createElement("br", null),
 											React.createElement(
-												"div",
-												{ className: "panel-body" },
-												"The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.",
-												React.createElement("br", null),
-												React.createElement("br", null),
+												"ul",
+												{ style: { listStyle: "none", fontWeight: "600" } },
 												React.createElement(
-													"ul",
-													{ style: { listStyle: "none", fontWeight: "600" } },
-													React.createElement(
-														"li",
-														null,
-														"Jul 11th - Aug 19th"
-													),
-													React.createElement(
-														"li",
-														null,
-														"Mon - Fri"
-													),
-													React.createElement(
-														"li",
-														null,
-														"9am - 5pm"
-													)
+													"li",
+													null,
+													"Jul 11th - Aug 19th"
 												),
 												React.createElement(
+													"li",
+													null,
+													"Mon - Fri"
+												),
+												React.createElement(
+													"li",
+													null,
+													"9am - 5pm"
+												)
+											),
+											React.createElement(
+												"a",
+												{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
+												React.createElement("i", { className: "icon-signal" }),
+												React.createElement(
+													"span",
+													null,
+													"Apply"
+												)
+											)
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "col_half panel panel-default col_last" },
+										React.createElement(
+											"div",
+											{ className: "panel-heading" },
+											React.createElement(
+												"h2",
+												{ className: "panel-title" },
+												React.createElement(
 													"a",
-													{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
-													React.createElement("i", { className: "icon-signal" }),
-													React.createElement(
-														"span",
-														null,
-														"Apply"
-													)
+													{ style: { color: "#1ABC9C" }, href: "#" },
+													"6-Week MVP Bootcamp"
 												)
 											)
 										),
 										React.createElement(
 											"div",
-											{ className: "col_half panel panel-default col_last" },
+											{ className: "panel-body" },
+											"The MVP Bootcamp builds real web or mobile projects with local startups. All projects are carefully vetted by our staff for feasibility, strength of idea, and founding team.",
+											React.createElement("br", null),
+											React.createElement("br", null),
 											React.createElement(
-												"div",
-												{ className: "panel-heading" },
+												"ul",
+												{ style: { listStyle: "none", fontWeight: "600" } },
 												React.createElement(
-													"h2",
-													{ className: "panel-title" },
-													"6-Week MVP Bootcamp"
+													"li",
+													null,
+													"Aug 22nd - Sep 30th"
+												),
+												React.createElement(
+													"li",
+													null,
+													"Mon - Fri"
+												),
+												React.createElement(
+													"li",
+													null,
+													"9am - 5pm"
 												)
 											),
 											React.createElement(
-												"div",
-												{ className: "panel-body" },
-												"The MVP Bootcamp builds real web or mobile projects with local startups. All projects are carefully vetted by our staff for feasibility, strength of idea, and founding team.",
-												React.createElement("br", null),
-												React.createElement("br", null),
+												"a",
+												{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
+												React.createElement("i", { className: "icon-signal" }),
 												React.createElement(
-													"ul",
-													{ style: { listStyle: "none", fontWeight: "600" } },
-													React.createElement(
-														"li",
-														null,
-														"Aug 22nd - Sep 30th"
-													),
-													React.createElement(
-														"li",
-														null,
-														"Mon - Fri"
-													),
-													React.createElement(
-														"li",
-														null,
-														"9am - 5pm"
-													)
-												),
-												React.createElement(
-													"a",
-													{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
-													React.createElement("i", { className: "icon-signal" }),
-													React.createElement(
-														"span",
-														null,
-														"Apply"
-													)
+													"span",
+													null,
+													"Apply"
 												)
 											)
-										),
-										React.createElement("div", { className: "clearfix" }),
-										"Each section is a stand-alone course meaning students can enroll in just one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500."
-									)
+										)
+									),
+									React.createElement("div", { className: "clearfix" }),
+									"Each section is a stand-alone course meaning students can enroll in one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500."
 								),
 								React.createElement(
 									"div",
 									{ className: "col_one_third bottommargin-sm hidden-xs col_last" },
+									React.createElement(
+										"div",
+										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#f9f9f9" } },
+										React.createElement(
+											"h4",
+											null,
+											"Featured Tutorial"
+										),
+										React.createElement(
+											"div",
+											{ className: "wistia_embed wistia_async_ehbr4b234p videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
+											" "
+										),
+										React.createElement("hr", null),
+										React.createElement(
+											"strong",
+											null,
+											"Setting Up a Node JS Project"
+										),
+										React.createElement("br", null),
+										React.createElement("br", null),
+										React.createElement(
+											"p",
+											null,
+											"Set up a basic project using Express and use request details from the browser to generate dynamic responses."
+										)
+									),
 									React.createElement(
 										"div",
 										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#F9FCFF" } },
@@ -569,10 +601,7 @@ var Landing = (function (Component) {
 										React.createElement(
 											"p",
 											null,
-											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.",
-											React.createElement("br", null),
-											React.createElement("br", null),
-											"Radius was built using Node JS & Express for the backend, Mongo DB for database, and Heroku for deployment."
+											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area."
 										),
 										React.createElement(
 											"div",
@@ -597,37 +626,6 @@ var Landing = (function (Component) {
 												{ href: "#" },
 												"JavaScript"
 											)
-										)
-									),
-									React.createElement(
-										"div",
-										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#f9f9f9" } },
-										React.createElement(
-											"h4",
-											null,
-											"Featured Tutorial"
-										),
-										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
-										React.createElement(
-											"h3",
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											React.createElement(
-												"a",
-												{ target: "_blank", href: "https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8" },
-												"Radius"
-											)
-										),
-										React.createElement("hr", null),
-										React.createElement(
-											"strong",
-											null,
-											"iOS App"
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"p",
-											null,
-											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area."
 										)
 									)
 								)

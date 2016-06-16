@@ -44215,7 +44215,7 @@
 					name: '',
 					email: '',
 					phone: '',
-					course: 'ios-node-bootcamp',
+					course: 'Fundamentals Bootcamp',
 					referral: ''
 				}
 			};
@@ -44484,13 +44484,13 @@
 										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
 										_react2.default.createElement(
 											'option',
-											{ value: 'ios-node-bootcamp' },
-											'iOS & Node Bootcamp'
+											{ value: 'fundamentals-bootcamp' },
+											'Fundamentals Bootcamp'
 										),
 										_react2.default.createElement(
 											'option',
-											{ value: 'node-react-bootcamp' },
-											'React & Node Bootcamp'
+											{ value: 'mvp-bootcamp' },
+											'MVP Bootcamp'
 										)
 									)
 								),
@@ -44500,7 +44500,7 @@
 									_react2.default.createElement(
 										'button',
 										{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-										'Request Info'
+										'Request Syllabus'
 									)
 								)
 							)
@@ -44563,116 +44563,148 @@
 											'How It Works'
 										)
 									),
+									'The Velocity Bootcamp Program is divided into two parts.',
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('br', null),
 									_react2.default.createElement(
-										'p',
-										null,
-										'The Velocity Bootcamp Program is divided into two parts.',
-										_react2.default.createElement('br', null),
+										'div',
+										{ className: 'col_half panel panel-default' },
 										_react2.default.createElement(
 											'div',
-											{ className: 'col_half panel panel-default' },
+											{ className: 'panel-heading' },
 											_react2.default.createElement(
-												'div',
-												{ className: 'panel-heading' },
+												'h2',
+												{ className: 'panel-title' },
 												_react2.default.createElement(
-													'h2',
-													{ className: 'panel-title' },
+													'a',
+													{ style: { color: '#1ABC9C' }, href: '#' },
 													'6-Week Fundamentals Bootcamp'
 												)
-											),
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body' },
+											'The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.',
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('br', null),
 											_react2.default.createElement(
-												'div',
-												{ className: 'panel-body' },
-												'The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.',
-												_react2.default.createElement('br', null),
-												_react2.default.createElement('br', null),
+												'ul',
+												{ style: { listStyle: 'none', fontWeight: '600' } },
 												_react2.default.createElement(
-													'ul',
-													{ style: { listStyle: 'none', fontWeight: '600' } },
-													_react2.default.createElement(
-														'li',
-														null,
-														'Jul 11th - Aug 19th'
-													),
-													_react2.default.createElement(
-														'li',
-														null,
-														'Mon - Fri'
-													),
-													_react2.default.createElement(
-														'li',
-														null,
-														'9am - 5pm'
-													)
+													'li',
+													null,
+													'Jul 11th - Aug 19th'
 												),
 												_react2.default.createElement(
+													'li',
+													null,
+													'Mon - Fri'
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													'9am - 5pm'
+												)
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '/application', className: 'button button-rounded button-reveal button-large button-border tright' },
+												_react2.default.createElement('i', { className: 'icon-signal' }),
+												_react2.default.createElement(
+													'span',
+													null,
+													'Apply'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_half panel panel-default col_last' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-heading' },
+											_react2.default.createElement(
+												'h2',
+												{ className: 'panel-title' },
+												_react2.default.createElement(
 													'a',
-													{ href: '/application', className: 'button button-rounded button-reveal button-large button-border tright' },
-													_react2.default.createElement('i', { className: 'icon-signal' }),
-													_react2.default.createElement(
-														'span',
-														null,
-														'Apply'
-													)
+													{ style: { color: '#1ABC9C' }, href: '#' },
+													'6-Week MVP Bootcamp'
 												)
 											)
 										),
 										_react2.default.createElement(
 											'div',
-											{ className: 'col_half panel panel-default col_last' },
+											{ className: 'panel-body' },
+											'The MVP Bootcamp builds real web or mobile projects with local startups. All projects are carefully vetted by our staff for feasibility, strength of idea, and founding team.',
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('br', null),
 											_react2.default.createElement(
-												'div',
-												{ className: 'panel-heading' },
+												'ul',
+												{ style: { listStyle: 'none', fontWeight: '600' } },
 												_react2.default.createElement(
-													'h2',
-													{ className: 'panel-title' },
-													'6-Week MVP Bootcamp'
+													'li',
+													null,
+													'Aug 22nd - Sep 30th'
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													'Mon - Fri'
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													'9am - 5pm'
 												)
 											),
 											_react2.default.createElement(
-												'div',
-												{ className: 'panel-body' },
-												'The MVP Bootcamp builds real web or mobile projects with local startups. All projects are carefully vetted by our staff for feasibility, strength of idea, and founding team.',
-												_react2.default.createElement('br', null),
-												_react2.default.createElement('br', null),
+												'a',
+												{ href: '/application', className: 'button button-rounded button-reveal button-large button-border tright' },
+												_react2.default.createElement('i', { className: 'icon-signal' }),
 												_react2.default.createElement(
-													'ul',
-													{ style: { listStyle: 'none', fontWeight: '600' } },
-													_react2.default.createElement(
-														'li',
-														null,
-														'Aug 22nd - Sep 30th'
-													),
-													_react2.default.createElement(
-														'li',
-														null,
-														'Mon - Fri'
-													),
-													_react2.default.createElement(
-														'li',
-														null,
-														'9am - 5pm'
-													)
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '/application', className: 'button button-rounded button-reveal button-large button-border tright' },
-													_react2.default.createElement('i', { className: 'icon-signal' }),
-													_react2.default.createElement(
-														'span',
-														null,
-														'Apply'
-													)
+													'span',
+													null,
+													'Apply'
 												)
 											)
-										),
-										_react2.default.createElement('div', { className: 'clearfix' }),
-										'Each section is a stand-alone course meaning students can enroll in just one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500.'
-									)
+										)
+									),
+									_react2.default.createElement('div', { className: 'clearfix' }),
+									'Each section is a stand-alone course meaning students can enroll in one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500.'
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_one_third bottommargin-sm hidden-xs col_last' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'widget clearfix', style: { padding: 24, textAlign: 'center', border: '1px solid #ddd', background: '#f9f9f9' } },
+										_react2.default.createElement(
+											'h4',
+											null,
+											'Featured Tutorial'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'wistia_embed wistia_async_ehbr4b234p videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+											' '
+										),
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'strong',
+											null,
+											'Setting Up a Node JS Project'
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'p',
+											null,
+											'Set up a basic project using Express and use request details from the browser to generate dynamic responses.'
+										)
+									),
 									_react2.default.createElement(
 										'div',
 										{ className: 'widget clearfix', style: { padding: 24, textAlign: 'center', border: '1px solid #ddd', background: '#F9FCFF' } },
@@ -44701,10 +44733,7 @@
 										_react2.default.createElement(
 											'p',
 											null,
-											'Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('br', null),
-											'Radius was built using Node JS & Express for the backend, Mongo DB for database, and Heroku for deployment.'
+											'Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.'
 										),
 										_react2.default.createElement(
 											'div',
@@ -44729,37 +44758,6 @@
 												{ href: '#' },
 												'JavaScript'
 											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'widget clearfix', style: { padding: 24, textAlign: 'center', border: '1px solid #ddd', background: '#f9f9f9' } },
-										_react2.default.createElement(
-											'h4',
-											null,
-											'Featured Tutorial'
-										),
-										_react2.default.createElement('img', { style: { width: 128, border: '1px solid #ddd' }, src: '/images/radius.png', alt: 'Velocity 360' }),
-										_react2.default.createElement(
-											'h3',
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8' },
-												'Radius'
-											)
-										),
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'strong',
-											null,
-											'iOS App'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'p',
-											null,
-											'Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.'
 										)
 									)
 								)
