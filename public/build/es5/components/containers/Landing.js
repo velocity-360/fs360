@@ -394,7 +394,7 @@ var Landing = (function (Component) {
 									React.createElement(
 										"span",
 										null,
-										"Learn iOS and Web development by building actual projects."
+										"Jumpstart your programming career by building actual projects."
 									)
 								)
 							),
@@ -445,13 +445,13 @@ var Landing = (function (Component) {
 												React.createElement(
 													"h2",
 													{ className: "panel-title" },
-													"6-Week Fundamentals Course"
+													"6-Week Fundamentals Bootcamp"
 												)
 											),
 											React.createElement(
 												"div",
 												{ className: "panel-body" },
-												"The Fundamentals Course covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.",
+												"The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.",
 												React.createElement("br", null),
 												React.createElement("br", null),
 												React.createElement(
@@ -500,7 +500,7 @@ var Landing = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "panel-body" },
-												"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam suscipit inventore neque. Distinctio, impedit.",
+												"The MVP Bootcamp builds real web or mobile projects with local startups. All projects are carefully vetted by our staff for feasibility, strength of idea, and founding team.",
 												React.createElement("br", null),
 												React.createElement("br", null),
 												React.createElement(
@@ -605,7 +605,7 @@ var Landing = (function (Component) {
 										React.createElement(
 											"h4",
 											null,
-											"Featured App"
+											"Featured Tutorial"
 										),
 										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
 										React.createElement(

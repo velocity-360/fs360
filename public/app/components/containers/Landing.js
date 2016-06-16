@@ -293,7 +293,7 @@ class Landing extends Component {
 		                    <div className="container clearfix">
 		                        <h3>Build Real Projects</h3>
 		                        <span>
-		                        	Learn iOS and Web development by building actual projects.
+		                        	Jumpstart your programming career by building actual projects.
 		                        </span>
 		                    </div>
 		                </div>
@@ -323,12 +323,12 @@ class Landing extends Component {
 									The Velocity Bootcamp Program is divided into two parts.<br />
 			                        <div className="col_half panel panel-default">
 			                            <div className="panel-heading">
-			                                <h2 className="panel-title">6-Week Fundamentals Course</h2>
+			                                <h2 className="panel-title">6-Week Fundamentals Bootcamp</h2>
 			                            </div>
 			                            <div className="panel-body">
-											The Fundamentals Course covers backend and frontend development using the 
+											The Fundamentals Bootcamp covers backend and frontend development using the 
 											most up-to-date technologies. Using Node JS, Mongo, Express and React 
-											(with ES6), we will create a fully functional website with user registration, 
+											(with ES6), we create a fully functional website with user registration, 
 											image uploading, email notification functionality. We also touch on React 
 											Native which leverages the powerful library to build native iOS apps in 
 											JavaScript.			                            
@@ -350,9 +350,9 @@ class Landing extends Component {
 			                                <h2 className="panel-title">6-Week MVP Bootcamp</h2>
 			                            </div>
 			                            <div className="panel-body">
-				                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at, vitae, 
-				                            veritatis, temporibus soluta accusamus eum accusantium incidunt eius quisquam 
-				                            suscipit inventore neque. Distinctio, impedit.
+			                            	The MVP Bootcamp builds real web or mobile projects with local startups. All 
+			                            	projects are carefully vetted by our staff for feasibility, strength of idea, and 
+			                            	founding team. 
 				                            <br /><br />
 				                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
 					                            <li>Aug 22nd - Sep 30th</li>
@@ -405,7 +405,7 @@ class Landing extends Component {
 								</div>
 
 								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#f9f9f9'}}>
-									<h4>Featured App</h4>
+									<h4>Featured Tutorial</h4>
 									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
 									<h3 style={{marginBottom:6, marginTop:9}}>
 										<a target="_blank" href="https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8">Radius</a>
