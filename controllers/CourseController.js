@@ -62,15 +62,6 @@ module.exports = {
 	},
 
 	post: function(courseInfo, completion){
-		// var parts = courseinfo.title.split(' ');
-		// var slug = '';
-		// for (var i=0; i<parts.length; i++){
-		// 	var word = parts[i];
-		// 	slug += word;
-		// 	if (i != parts.length-1)
-		// 		slug += '-';
-		// }
-
 		courseInfo['slug'] = Helpers.slugString(courseInfo.title)
 		Course.create(courseInfo, function(err, course){
 			if (err){
