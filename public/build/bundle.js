@@ -44544,7 +44544,7 @@
 										_react2.default.createElement(
 											'h3',
 											null,
-											'The True Experience'
+											'Real World Experience'
 										)
 									),
 									_react2.default.createElement(

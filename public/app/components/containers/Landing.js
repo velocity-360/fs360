@@ -303,7 +303,7 @@ class Landing extends Component {
 						<div className="container clearfix" style={{paddingTop:64}}>
 							<div className="col_two_third bottommargin-sm">
 			                    <div className="fancy-title title-bottom-border">
-			                        <h3>The True Experience</h3>
+			                        <h3>Real World Experience</h3>
 			                    </div>
 								<p>
 									<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />

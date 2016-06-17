@@ -412,7 +412,7 @@ var Landing = (function (Component) {
 										React.createElement(
 											"h3",
 											null,
-											"The True Experience"
+											"Real World Experience"
 										)
 									),
 									React.createElement(

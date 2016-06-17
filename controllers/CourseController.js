@@ -1,4 +1,5 @@
-var Course = require('../models/Course.js');
+var Course = require('../models/Course');
+var Helpers = require('../managers/Helpers');
 var mongoose = require('mongoose');
 
 
@@ -14,15 +15,6 @@ function convertToJson(courses){
 	return results;
 }
 
-function randomString(limit){
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i=0; i <limit; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}
 
 module.exports = {
 
@@ -70,18 +62,16 @@ module.exports = {
 	},
 
 	post: function(courseinfo, completion){
-		var parts = courseinfo.title.split(' ');
+		// var parts = courseinfo.title.split(' ');
+		// var slug = '';
+		// for (var i=0; i<parts.length; i++){
+		// 	var word = parts[i];
+		// 	slug += word;
+		// 	if (i != parts.length-1)
+		// 		slug += '-';
+		// }
 
-		var slug = '';
-		for (var i=0; i<parts.length; i++){
-			var word = parts[i];
-			slug += word;
-			if (i != parts.length-1)
-				slug += '-';
-		}
-
-		courseinfo['slug'] = slug;
-
+		courseinfo['slug'] = Helpers.slugString(courseinfo.title)
 		Course.create(courseinfo, function(err, course){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
@@ -96,6 +86,7 @@ module.exports = {
 
 
 	put: function(courseId, courseInfo, completion){
+		courseinfo['slug'] = Helpers.slugString(courseinfo.title)
 		Course.findByIdAndUpdate(courseId, courseInfo, {new:true}, function(err, course){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);

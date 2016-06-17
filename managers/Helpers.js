@@ -1,5 +1,15 @@
 module.exports = {
 
+	randomString: function(limit){
+	    var text = ""
+	    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+	    for (var i=0; i <limit; i++)
+	        text += possible.charAt(Math.floor(Math.random() * possible.length))
+
+	    return text
+	},
+
 	capitalize: function(string){
 	    if (string == null)
 	        return;
@@ -20,6 +30,20 @@ module.exports = {
 	    
 	    capitalizedString = capitalizedString.trim();
 	    return capitalizedString;
+	},
+
+	slugString: function(string){
+		var parts = string.split(' ')
+
+		var slug = ''
+		for (var i=0; i<parts.length; i++){
+			var word = parts[i]
+			slug += word.toLowerCase()
+			if (i != parts.length-1)
+				slug += '-'
+		}
+
+		return slug
 	}
 
 }
