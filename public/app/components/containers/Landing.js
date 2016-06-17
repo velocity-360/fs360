@@ -58,7 +58,6 @@ class Landing extends Component {
 
 
 	updateVisitor(event){
-		console.log('updateVisitor: '+event.target.id)
 		event.preventDefault()
 
 		var visitor = Object.assign({}, this.state.visitor)
@@ -69,7 +68,6 @@ class Landing extends Component {
 	}
 
 	updateUserRegistration(event){
-//		console.log('updateUserRegistration: '+event.target.id)
 		event.preventDefault()
 
 		if (event.target.id == 'membershiptype'){
@@ -130,7 +128,6 @@ class Landing extends Component {
 
 	submitInfoRequest(event){
 		event.preventDefault()
-//		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
 
 		var missingField = this.validate(this.state.visitor, false);
 		if (missingField != null){
@@ -162,8 +159,6 @@ class Landing extends Component {
 
 
 	validate(profile, withPassword){
-//		var visitor = this.state.visitor
-		console.log('VALIDATE: '+JSON.stringify(profile))
 		if (profile.name.length == 0)
 			return 'Name'
 
@@ -185,7 +180,6 @@ class Landing extends Component {
 
 	syllabusRequest(event){
 		event.preventDefault()
-//		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 
 		var missingField = this.validate(false);
 		if (missingField != null){
@@ -221,7 +215,6 @@ class Landing extends Component {
 
 
 	openModal(event){
-		console.log('OPEN MODAL: '+event.target.id)
 		event.preventDefault()
 
 		var visitor = Object.assign({}, this.state.visitor)
@@ -342,7 +335,7 @@ class Landing extends Component {
 				                            <li>Mon - Fri</li>
 				                            <li>9am - 5pm</li>
 			                            </ul>
-										<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
+										<a href="/course/fundamentals-bootcamp" className="button button-rounded button-reveal button-large button-border tright">
 											<i className="icon-signal"></i>
 											<span>Apply</span>
 										</a>				                            
@@ -367,7 +360,7 @@ class Landing extends Component {
 				                            <li>Mon - Fri</li>
 				                            <li>9am - 5pm</li>
 			                            </ul>
-										<a href="/application" className="button button-rounded button-reveal button-large button-border tright">
+										<a href="/course/mvp-bootcamp" className="button button-rounded button-reveal button-large button-border tright">
 											<i className="icon-signal"></i>
 											<span>Apply</span>
 										</a>				                            
@@ -394,6 +387,13 @@ class Landing extends Component {
 										Set up a basic project using Express and use http request details from the 
 										browser to generate dynamic responses. 
 									</p>
+									<div className="tagcloud">
+										<a href="#">JavaScript</a>
+										<a href="#">Node JS</a>
+										<a href="#">Express</a>
+										<a href="#">Mongo DB</a>
+									</div>
+
 								</div>
 
 								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>

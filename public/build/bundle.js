@@ -44244,7 +44244,6 @@
 		}, {
 			key: 'updateVisitor',
 			value: function updateVisitor(event) {
-				console.log('updateVisitor: ' + event.target.id);
 				event.preventDefault();
 	
 				var visitor = Object.assign({}, this.state.visitor);
@@ -44256,7 +44255,6 @@
 		}, {
 			key: 'updateUserRegistration',
 			value: function updateUserRegistration(event) {
-				//		console.log('updateUserRegistration: '+event.target.id)
 				event.preventDefault();
 	
 				if (event.target.id == 'membershiptype') {
@@ -44317,7 +44315,6 @@
 			key: 'submitInfoRequest',
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
-				//		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
 	
 				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
@@ -44349,8 +44346,6 @@
 		}, {
 			key: 'validate',
 			value: function validate(profile, withPassword) {
-				//		var visitor = this.state.visitor
-				console.log('VALIDATE: ' + JSON.stringify(profile));
 				if (profile.name.length == 0) return 'Name';
 	
 				// if (profile.lastName.length == 0)
@@ -44368,7 +44363,6 @@
 			key: 'syllabusRequest',
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				//		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 	
 				var missingField = this.validate(false);
 				if (missingField != null) {
@@ -44404,7 +44398,6 @@
 		}, {
 			key: 'openModal',
 			value: function openModal(event) {
-				console.log('OPEN MODAL: ' + event.target.id);
 				event.preventDefault();
 	
 				var visitor = Object.assign({}, this.state.visitor);
@@ -44611,7 +44604,7 @@
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '/application', className: 'button button-rounded button-reveal button-large button-border tright' },
+												{ href: '/course/fundamentals-bootcamp', className: 'button button-rounded button-reveal button-large button-border tright' },
 												_react2.default.createElement('i', { className: 'icon-signal' }),
 												_react2.default.createElement(
 													'span',
@@ -44664,7 +44657,7 @@
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '/application', className: 'button button-rounded button-reveal button-large button-border tright' },
+												{ href: '/course/mvp-bootcamp', className: 'button button-rounded button-reveal button-large button-border tright' },
 												_react2.default.createElement('i', { className: 'icon-signal' }),
 												_react2.default.createElement(
 													'span',
@@ -44705,6 +44698,30 @@
 											'p',
 											null,
 											'Set up a basic project using Express and use http request details from the browser to generate dynamic responses.'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'tagcloud' },
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'JavaScript'
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'Node JS'
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'Express'
+											),
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												'Mongo DB'
+											)
 										)
 									),
 									_react2.default.createElement(

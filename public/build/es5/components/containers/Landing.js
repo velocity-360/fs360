@@ -93,7 +93,6 @@ var Landing = (function (Component) {
 		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
-				console.log("updateVisitor: " + event.target.id);
 				event.preventDefault();
 
 				var visitor = Object.assign({}, this.state.visitor);
@@ -107,7 +106,6 @@ var Landing = (function (Component) {
 		},
 		updateUserRegistration: {
 			value: function updateUserRegistration(event) {
-				//		console.log('updateUserRegistration: '+event.target.id)
 				event.preventDefault();
 
 				if (event.target.id == "membershiptype") {
@@ -173,7 +171,6 @@ var Landing = (function (Component) {
 		submitInfoRequest: {
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
-				//		console.log('submitInfoRequest: '+JSON.stringify(this.state.visitor))
 
 				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
@@ -207,8 +204,6 @@ var Landing = (function (Component) {
 		},
 		validate: {
 			value: function validate(profile, withPassword) {
-				//		var visitor = this.state.visitor
-				console.log("VALIDATE: " + JSON.stringify(profile));
 				if (profile.name.length == 0) {
 					return "Name";
 				} // if (profile.lastName.length == 0)
@@ -229,7 +224,6 @@ var Landing = (function (Component) {
 		syllabusRequest: {
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				//		console.log('SYLLABUS REQUEST: '+this.state.selectedCourse)
 
 				var missingField = this.validate(false);
 				if (missingField != null) {
@@ -267,7 +261,6 @@ var Landing = (function (Component) {
 		},
 		openModal: {
 			value: function openModal(event) {
-				console.log("OPEN MODAL: " + event.target.id);
 				event.preventDefault();
 
 				var visitor = Object.assign({}, this.state.visitor);
@@ -479,7 +472,7 @@ var Landing = (function (Component) {
 											),
 											React.createElement(
 												"a",
-												{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
+												{ href: "/course/fundamentals-bootcamp", className: "button button-rounded button-reveal button-large button-border tright" },
 												React.createElement("i", { className: "icon-signal" }),
 												React.createElement(
 													"span",
@@ -532,7 +525,7 @@ var Landing = (function (Component) {
 											),
 											React.createElement(
 												"a",
-												{ href: "/application", className: "button button-rounded button-reveal button-large button-border tright" },
+												{ href: "/course/mvp-bootcamp", className: "button button-rounded button-reveal button-large button-border tright" },
 												React.createElement("i", { className: "icon-signal" }),
 												React.createElement(
 													"span",
@@ -573,6 +566,30 @@ var Landing = (function (Component) {
 											"p",
 											null,
 											"Set up a basic project using Express and use http request details from the browser to generate dynamic responses."
+										),
+										React.createElement(
+											"div",
+											{ className: "tagcloud" },
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"JavaScript"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"Node JS"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"Express"
+											),
+											React.createElement(
+												"a",
+												{ href: "#" },
+												"Mongo DB"
+											)
 										)
 									),
 									React.createElement(
