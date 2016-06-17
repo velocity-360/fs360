@@ -389,12 +389,14 @@ var Landing = (function (Component) {
 									React.createElement(
 										"h3",
 										null,
-										"Build Real Projects"
+										"Build Real Products"
 									),
 									React.createElement(
 										"span",
 										null,
-										"Jumpstart your programming career by building actual projects."
+										"Velocity 360 is the only coding bootcamp that uses real projects from",
+										React.createElement("br", null),
+										"local startups to teach students."
 									)
 								)
 							),
@@ -420,7 +422,7 @@ var Landing = (function (Component) {
 										"The Velocity 360 program provides real development experience by partnering with local startups to build their prototypes (often referred to as 'MVP' - Minimal Viable Product). After a 6-week period covering programming fundamentals, students work in groups of 2-4 on an actual project that was pre-vetted by the Velocity 360 team.",
 										React.createElement("br", null),
 										React.createElement("br", null),
-										"By the end of the program, students will have published a real, live product that will be promoted by the startup team. As such, students will already have a professional project on their portfolio immediately upon completion and may even continue with the project beyond the course."
+										"At the end of the program, students will publish a real, live product that will be further supported by the startup team. As such, students will already have a professional project on their portfolio immediately upon completion and may even continue with the project beyond the course."
 									),
 									React.createElement(
 										"div",
@@ -506,7 +508,7 @@ var Landing = (function (Component) {
 										React.createElement(
 											"div",
 											{ className: "panel-body" },
-											"The MVP Bootcamp builds real web or mobile projects with local startups. All projects are carefully vetted by our staff for feasibility, strength of idea, and founding team.",
+											"The MVP Bootcamp builds real projects with local startups. All projects are carefully vetted by our staff for feasibility, originality of idea, and strength founding team. The startups are from incubators, accelerators and nearby universities. By the end of the bootcamp, all students will have a professional project on their resumes and may even continue with the startup beyond the course.",
 											React.createElement("br", null),
 											React.createElement("br", null),
 											React.createElement(
@@ -570,7 +572,7 @@ var Landing = (function (Component) {
 										React.createElement(
 											"p",
 											null,
-											"Set up a basic project using Express and use request details from the browser to generate dynamic responses."
+											"Set up a basic project using Express and use http request details from the browser to generate dynamic responses."
 										)
 									),
 									React.createElement(
@@ -667,7 +669,7 @@ var Landing = (function (Component) {
 											React.createElement(
 												"h4",
 												null,
-												"iOS & Node 6-Week Bootcamp"
+												"iOS & Node Evening Course"
 											),
 											React.createElement(
 												"span",
@@ -677,18 +679,18 @@ var Landing = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"Mon - Fri, 9am - 5pm"
+												"Mon/Weds 6pm - 9pm"
 											)
 										),
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS development for beginners. 5 days a week, 8 hours a day, students cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data, and publishing. This course is designed for beginners with little to no programming experience and all development is done with Swift. By the end of the course, students will have published at least one app to the App Store and gained the skills neccessary to begin working as junior iOS developers."
+											"The 8-week iOS & Node Evening Course takes beginners through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare."
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ id: "ios-node-bootcamp", href: "/course/ios-node-bootcamp", className: "btn btn-success" },
+											{ href: "/course/ios-development", className: "btn btn-success" },
 											"Learn More"
 										)
 									)
@@ -711,7 +713,7 @@ var Landing = (function (Component) {
 											React.createElement(
 												"h4",
 												null,
-												"Node & React 6-Week Bootcamp"
+												"Node & React Evening Course"
 											),
 											React.createElement(
 												"span",
@@ -721,18 +723,18 @@ var Landing = (function (Component) {
 											React.createElement(
 												"span",
 												null,
-												"Mon - Fri, 9am - 5pm"
+												"Tues/Thurs 6pm - 9pm"
 											)
 										),
 										React.createElement(
 											"div",
 											{ className: "team-content" },
-											"The Node React Development Evening bootcamp is an 6-week course that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript."
+											"React and NodeThe Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality."
 										),
 										React.createElement("br", null),
 										React.createElement(
 											"a",
-											{ id: "node-react-evening", href: "/course/node-react-bootcamp", className: "btn btn-success" },
+											{ href: "/course/react-with-node-js", className: "btn btn-success" },
 											"Learn More"
 										)
 									)

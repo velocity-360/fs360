@@ -291,9 +291,11 @@ class Landing extends Component {
 					<div className="content-wrap">
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
-		                        <h3>Build Real Projects</h3>
+		                        <h3>Build Real Products</h3>
 		                        <span>
-		                        	Jumpstart your programming career by building actual projects.
+		                        	Velocity 360 is the only coding bootcamp that uses real projects from<br />
+		                        	local startups to teach students.
+		                        	
 		                        </span>
 		                    </div>
 		                </div>
@@ -310,8 +312,8 @@ class Landing extends Component {
 									After a 6-week period covering programming fundamentals, students work in groups of 2-4 
 									on an actual project that was pre-vetted by the Velocity 360 team.
 									<br /><br />
-									By the end of the program, students will have published a real, live product that will be 
-									promoted by the startup team. As such, students will already have a professional project on 
+									At the end of the program, students will publish a real, live product that will be 
+									further supported by the startup team. As such, students will already have a professional project on 
 									their portfolio immediately upon completion and may even continue with the project beyond 
 									the course.
 								</p>
@@ -354,9 +356,11 @@ class Landing extends Component {
 		                                </h2>
 		                            </div>
 		                            <div className="panel-body">
-		                            	The MVP Bootcamp builds real web or mobile projects with local startups. All 
-		                            	projects are carefully vetted by our staff for feasibility, strength of idea, and 
-		                            	founding team. 
+		                            	The MVP Bootcamp builds real projects with local startups. All 
+		                            	projects are carefully vetted by our staff for feasibility, originality of idea, and 
+		                            	strength founding team. The startups are from incubators, accelerators and nearby 
+		                            	universities. By the end of the bootcamp, all students will have a professional 
+		                            	project on their resumes and may even continue with the startup beyond the course.
 			                            <br /><br />
 			                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
 				                            <li>Aug 22nd - Sep 30th</li>
@@ -387,8 +391,8 @@ class Landing extends Component {
 									<strong>Setting Up a Node JS Project</strong>
 									<br /><br />
 									<p>
-										Set up a basic project using Express and use request details from the browser 
-										to generate dynamic responses. 
+										Set up a basic project using Express and use http request details from the 
+										browser to generate dynamic responses. 
 									</p>
 								</div>
 
@@ -437,22 +441,19 @@ class Landing extends Component {
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>iOS &amp; Node 6-Week Bootcamp</h4>
+										<h4>iOS &amp; Node Evening Course</h4>
 										<span>July 11th - August 19th</span>
-										<span>Mon - Fri, 9am - 5pm</span>
+										<span>Mon/Weds 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
-										The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS 
-										development for beginners. 5 days a week, 8 hours a day, students cover the key aspects 
-										of iOS development from creating sleek UI’s, animations, GPS locator, 
-										integrating 3rd party data, and publishing. This course is designed for 
-										beginners with little to no programming experience and all development is 
-										done with Swift. By the end of the course, students will have published at least 
-										one app to the App Store and gained the skills neccessary to begin working as 
-										junior iOS developers.
+										The 8-week iOS & Node Evening Course takes beginners through the process of 
+										designing and programming a basic iOS app from start. Students will create a 
+										simple app that utilizes key platform tools including the GPS locator, 
+										accelerator, and camera. In addition, the course will explore third party APIs 
+										such as Google Maps and Foursquare.
 									</div>
 									<br />
-									<a id="ios-node-bootcamp" href="/course/ios-node-bootcamp" className="btn btn-success">
+									<a href="/course/ios-development" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -466,20 +467,19 @@ class Landing extends Component {
 								</div>
 								<div className="team-desc">
 									<div className="team-title">
-										<h4>Node &amp; React 6-Week Bootcamp</h4>
+										<h4>Node &amp; React Evening Course</h4>
 										<span>August 22nd - September 30th</span>
-										<span>Mon - Fri, 9am - 5pm</span>
+										<span>Tues/Thurs 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
-										The Node React Development Evening bootcamp is an 6-week course that 
-										covers backend and frontend development using the most up-to-date 
-										technologies. Using Node JS, Mongo, Express and React (with ES6), we 
-										will create a fully functional website with user registration, image 
-										uploading, email notification functionality. We also touch on React Native 
-										which leverages the powerful library to build native iOS apps in JavaScript.
+										React and NodeThe Node & React Development Evening course is an 8-week class 
+										that covers backend and frontend development using the most up-to-date 
+										technologies. Using Node JS, Mongo, Express and React (with ES6), we will 
+										create a fully functional website with user registration, image uploading, 
+										email notification functionality.
 									</div>
 									<br />
-									<a id="node-react-evening" href="/course/node-react-bootcamp" className="btn btn-success">
+									<a href="/course/react-with-node-js" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
