@@ -44579,7 +44579,7 @@
 										),
 										_react2.default.createElement(
 											'div',
-											{ className: 'panel-body' },
+											{ className: 'panel-body', style: { background: '#FEFEFA' } },
 											'The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.',
 											_react2.default.createElement('br', null),
 											_react2.default.createElement('br', null),
@@ -44632,7 +44632,7 @@
 										),
 										_react2.default.createElement(
 											'div',
-											{ className: 'panel-body' },
+											{ className: 'panel-body', style: { background: '#FFFDFD' } },
 											'The MVP Bootcamp builds real projects with local startups. All projects are carefully vetted by our staff for feasibility, originality of idea, and strength founding team. The startups are from incubators, accelerators and nearby universities. By the end of the bootcamp, all students will have a professional project on their resumes and may even continue with the startup beyond the course.',
 											_react2.default.createElement('br', null),
 											_react2.default.createElement('br', null),
@@ -44704,22 +44704,22 @@
 											{ className: 'tagcloud' },
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'JavaScript'
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'Node JS'
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'Express'
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'Mongo DB'
 											)
 										)
@@ -44759,22 +44759,22 @@
 											{ className: 'tagcloud' },
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'iOS'
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'Node JS'
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'REST API'
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: '#' },
+												{ style: { background: '#fff' }, href: '#' },
 												'JavaScript'
 											)
 										)
@@ -44918,7 +44918,7 @@
 								{ className: 'pricing pricing--jinpa' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'pricing--item' },
+									{ className: 'pricing--item', style: { marginRight: 24 } },
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },
@@ -44960,7 +44960,7 @@
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'pricing--item', style: { marginLeft: 24, border: '1px solid #eee' } },
+									{ className: 'pricing--item', style: { marginRight: 24, border: '1px solid #eee' } },
 									_react2.default.createElement(
 										'h3',
 										{ className: 'pricing--title' },

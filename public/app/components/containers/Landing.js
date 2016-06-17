@@ -322,7 +322,7 @@ class Landing extends Component {
 		                                	<a style={{color:'#1ABC9C'}} href="#">6-Week Fundamentals Bootcamp</a>
 		                                	</h2>
 		                            </div>
-		                            <div className="panel-body">
+		                            <div className="panel-body" style={{background:'#FEFEFA'}}>
 										The Fundamentals Bootcamp covers backend and frontend development using the 
 										most up-to-date technologies. Using Node JS, Mongo, Express and React 
 										(with ES6), we create a fully functional website with user registration, 
@@ -348,7 +348,7 @@ class Landing extends Component {
 		                                	<a style={{color:'#1ABC9C'}} href="#">6-Week MVP Bootcamp</a>
 		                                </h2>
 		                            </div>
-		                            <div className="panel-body">
+		                            <div className="panel-body" style={{background:'#FFFDFD'}}>
 		                            	The MVP Bootcamp builds real projects with local startups. All 
 		                            	projects are carefully vetted by our staff for feasibility, originality of idea, and 
 		                            	strength founding team. The startups are from incubators, accelerators and nearby 
@@ -388,10 +388,10 @@ class Landing extends Component {
 										browser to generate dynamic responses. 
 									</p>
 									<div className="tagcloud">
-										<a href="#">JavaScript</a>
-										<a href="#">Node JS</a>
-										<a href="#">Express</a>
-										<a href="#">Mongo DB</a>
+										<a style={{background:'#fff'}} href="#">JavaScript</a>
+										<a style={{background:'#fff'}} href="#">Node JS</a>
+										<a style={{background:'#fff'}} href="#">Express</a>
+										<a style={{background:'#fff'}} href="#">Mongo DB</a>
 									</div>
 
 								</div>
@@ -413,10 +413,10 @@ class Landing extends Component {
 									</p>
 
 									<div className="tagcloud">
-										<a href="#">iOS</a>
-										<a href="#">Node JS</a>
-										<a href="#">REST API</a>
-										<a href="#">JavaScript</a>
+										<a style={{background:'#fff'}} href="#">iOS</a>
+										<a style={{background:'#fff'}} href="#">Node JS</a>
+										<a style={{background:'#fff'}} href="#">REST API</a>
+										<a style={{background:'#fff'}} href="#">JavaScript</a>
 									</div>
 								</div>
 
@@ -501,7 +501,7 @@ class Landing extends Component {
 
 						</div>
 						<div className="pricing pricing--jinpa">
-							<div className="pricing--item">
+							<div className="pricing--item" style={{marginRight:24}}>
 								<h3 className="pricing--title">Basic</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
 								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
@@ -513,7 +513,7 @@ class Landing extends Component {
 								</div>
 								<button onClick={this.showRegistrationForm} id="basic" className="pricing--action">Join</button>
 							</div>
-							<div className="pricing--item" style={{marginLeft:24, border:'1px solid #eee'}}>
+							<div className="pricing--item" style={{marginRight:24, border:'1px solid #eee'}}>
 								<h3 className="pricing--title">Premium</h3>
 								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
 								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
