@@ -14,22 +14,22 @@ module.exports = {
 	    if (string == null)
 	        return;
 	    
-	    var parts = string.split(' ');
-	    var capitalizedString = '';
+	    var parts = string.split(' ')
+	    var capitalizedString = ''
 	    
 	    for (var i=0; i<parts.length; i++){
-	        var s = parts[i];
+	        var s = parts[i]
 	        if (s.length <= 1){
-	            capitalizedString = capitalizedString+' '+s.toUpperCase();
-	            continue;
+	            capitalizedString = capitalizedString+' '+s.toUpperCase()
+	            continue
 	        }
 	        
-	        s = s.charAt(0).toUpperCase() + s.slice(1);
-	        capitalizedString = capitalizedString+' '+s;
+	        s = s.charAt(0).toUpperCase() + s.slice(1)
+	        capitalizedString = capitalizedString+' '+s
 	    }
 	    
-	    capitalizedString = capitalizedString.trim();
-	    return capitalizedString;
+	    capitalizedString = capitalizedString.trim()
+	    return capitalizedString
 	},
 
 	slugString: function(string){
@@ -38,6 +38,8 @@ module.exports = {
 		var slug = ''
 		for (var i=0; i<parts.length; i++){
 			var word = parts[i]
+			word = word.replace('?', '')
+			word = word.replace(':', '')
 			slug += word.toLowerCase()
 			if (i != parts.length-1)
 				slug += '-'
