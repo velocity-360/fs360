@@ -61,7 +61,7 @@ module.exports = {
 		});
 	},
 
-	post: function(courseinfo, completion){
+	post: function(courseInfo, completion){
 		// var parts = courseinfo.title.split(' ');
 		// var slug = '';
 		// for (var i=0; i<parts.length; i++){
@@ -71,8 +71,8 @@ module.exports = {
 		// 		slug += '-';
 		// }
 
-		courseinfo['slug'] = Helpers.slugString(courseinfo.title)
-		Course.create(courseinfo, function(err, course){
+		courseInfo['slug'] = Helpers.slugString(courseInfo.title)
+		Course.create(courseInfo, function(err, course){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
 				return;
@@ -86,7 +86,7 @@ module.exports = {
 
 
 	put: function(courseId, courseInfo, completion){
-		courseinfo['slug'] = Helpers.slugString(courseinfo.title)
+		courseInfo['slug'] = Helpers.slugString(courseInfo.title)
 		Course.findByIdAndUpdate(courseId, courseInfo, {new:true}, function(err, course){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
