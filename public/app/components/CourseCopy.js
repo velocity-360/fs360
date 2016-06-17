@@ -5,18 +5,9 @@ import TextUtils from '../utils/TextUtils'
 class CourseCopy extends Component {
 
 	render(){
-		var faq = this.props.questions.map(function(qa, i){
-			return (
-				<div key={i}>
-					<h4><strong>Q.</strong> {qa.question}</h4>
-					<p dangerouslySetInnerHTML={{__html: qa.answer}}></p>
-					<div className="line"></div>
-				</div>
-			)
-		});
 
 		return (
-			<section id="content" style={{backgroundColor: '#fff', paddingBottom:48}}>
+			<section id="content" style={{backgroundColor: '#fff', paddingBottom:0}}>
 				<div className="row common-height clearfix" style={{background:'#fff', border:'1px solid #ddd'}}>
 					<div className="col-sm-8 col-padding">
 						<div>
@@ -48,7 +39,7 @@ class CourseCopy extends Component {
 					<div className="col-sm-4 col-padding" style={{background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover'}}></div>
 				</div>
 
-				<div className="content-wrap" style={{background:'#f9f9f9', borderBottom:'1px solid #ddd'}}>
+				<div className="content-wrap" style={{background:'#f9f9f9'}}>
 
 					<div className="container clear-bottommargin clearfix">
 						<div className="row">
@@ -108,16 +99,6 @@ class CourseCopy extends Component {
 					</div>
 				</div>
 
-				<div className="container clearfix">
-					<div id="faqs" className="faqs">
-						<h3 style={{marginTop:48}}>Frequently Asked Questions:</h3>
-						<div className="divider"><i className="icon-circle"></i></div>
-
-						<div className="col_full nobottommargin">
-							{faq}
-						</div>
-					</div>
-				</div>
 
 			</section>
 

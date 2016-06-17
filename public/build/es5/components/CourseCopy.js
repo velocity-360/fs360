@@ -29,29 +29,9 @@ var CourseCopy = (function (Component) {
 	_prototypeProperties(CourseCopy, null, {
 		render: {
 			value: function render() {
-				var faq = this.props.questions.map(function (qa, i) {
-					return React.createElement(
-						"div",
-						{ key: i },
-						React.createElement(
-							"h4",
-							null,
-							React.createElement(
-								"strong",
-								null,
-								"Q."
-							),
-							" ",
-							qa.question
-						),
-						React.createElement("p", { dangerouslySetInnerHTML: { __html: qa.answer } }),
-						React.createElement("div", { className: "line" })
-					);
-				});
-
 				return React.createElement(
 					"section",
-					{ id: "content", style: { backgroundColor: "#fff", paddingBottom: 48 } },
+					{ id: "content", style: { backgroundColor: "#fff", paddingBottom: 0 } },
 					React.createElement(
 						"div",
 						{ className: "row common-height clearfix", style: { background: "#fff", border: "1px solid #ddd" } },
@@ -106,7 +86,7 @@ var CourseCopy = (function (Component) {
 					),
 					React.createElement(
 						"div",
-						{ className: "content-wrap", style: { background: "#f9f9f9", borderBottom: "1px solid #ddd" } },
+						{ className: "content-wrap", style: { background: "#f9f9f9" } },
 						React.createElement(
 							"div",
 							{ className: "container clear-bottommargin clearfix" },
@@ -209,29 +189,6 @@ var CourseCopy = (function (Component) {
 										)
 									)
 								)
-							)
-						)
-					),
-					React.createElement(
-						"div",
-						{ className: "container clearfix" },
-						React.createElement(
-							"div",
-							{ id: "faqs", className: "faqs" },
-							React.createElement(
-								"h3",
-								{ style: { marginTop: 48 } },
-								"Frequently Asked Questions:"
-							),
-							React.createElement(
-								"div",
-								{ className: "divider" },
-								React.createElement("i", { className: "icon-circle" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col_full nobottommargin" },
-								faq
 							)
 						)
 					)

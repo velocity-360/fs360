@@ -557,10 +557,17 @@ class Landing extends Component {
 			        	<div style={{textAlign:'center'}}>
 				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_green_260.png' />
 			        	</div>
-			        	<input onChange={this.updateUserRegistration} id="name" className="form-control" type="text" placeholder="Name" /><br />
-			        	<input onChange={this.updateUserRegistration} id="email" className="form-control" type="text" placeholder="Email" /><br />
-			        	<input onChange={this.updateUserRegistration} id="password" className="form-control" type="password" placeholder="Password" /><br />
-			        	<input onChange={this.updateUserRegistration} id="promoCode" className="form-control" type="text" placeholder="Promo Code" /><br />
+			        	<div className="row">
+			        		<div className="col-md-6">
+					        	<input onChange={this.updateUserRegistration} id="name" className="form-control" style={{marginBottom:12}} type="text" placeholder="Name" />
+					        	<input onChange={this.updateUserRegistration} id="email" className="form-control" style={{marginBottom:12}} type="text" placeholder="Email" />
+			        		</div>
+
+			        		<div className="col-md-6">
+					        	<input onChange={this.updateUserRegistration} id="password" className="form-control" style={{marginBottom:12}} type="password" placeholder="Password" />
+					        	<input onChange={this.updateUserRegistration} id="promoCode" className="form-control" style={{marginBottom:12}} type="text" placeholder="Promo Code" />
+			        		</div>
+			        	</div>
 						<select onChange={this.updateUserRegistration} id="membershiptype" value={this.state.membershiptype} className="form-control input-md not-dark">
 							<option value="basic">Basic</option>
 							<option value="premium">Premium</option>

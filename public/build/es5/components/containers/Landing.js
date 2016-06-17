@@ -941,14 +941,22 @@ var Landing = (function (Component) {
 								{ style: { textAlign: "center" } },
 								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
 							),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", type: "text", placeholder: "Name" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", type: "password", placeholder: "Password" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", type: "text", placeholder: "Promo Code" }),
-							React.createElement("br", null),
+							React.createElement(
+								"div",
+								{ className: "row" },
+								React.createElement(
+									"div",
+									{ className: "col-md-6" },
+									React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Name" }),
+									React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Email" })
+								),
+								React.createElement(
+									"div",
+									{ className: "col-md-6" },
+									React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", style: { marginBottom: 12 }, type: "password", placeholder: "Password" }),
+									React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Promo Code" })
+								)
+							),
 							React.createElement(
 								"select",
 								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },

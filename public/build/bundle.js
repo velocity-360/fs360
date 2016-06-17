@@ -45073,14 +45073,22 @@
 								{ style: { textAlign: 'center' } },
 								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
 							),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', type: 'password', placeholder: 'Password' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', type: 'text', placeholder: 'Promo Code' }),
-							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Name' }),
+									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Email' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', style: { marginBottom: 12 }, type: 'password', placeholder: 'Password' }),
+									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Promo Code' })
+								)
+							),
 							_react2.default.createElement(
 								'select',
 								{ onChange: this.updateUserRegistration, id: 'membershiptype', value: this.state.membershiptype, className: 'form-control input-md not-dark' },
@@ -62808,29 +62816,10 @@
 		_createClass(CourseCopy, [{
 			key: 'render',
 			value: function render() {
-				var faq = this.props.questions.map(function (qa, i) {
-					return _react2.default.createElement(
-						'div',
-						{ key: i },
-						_react2.default.createElement(
-							'h4',
-							null,
-							_react2.default.createElement(
-								'strong',
-								null,
-								'Q.'
-							),
-							' ',
-							qa.question
-						),
-						_react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: qa.answer } }),
-						_react2.default.createElement('div', { className: 'line' })
-					);
-				});
 	
 				return _react2.default.createElement(
 					'section',
-					{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 48 } },
+					{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 0 } },
 					_react2.default.createElement(
 						'div',
 						{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
@@ -62885,7 +62874,7 @@
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'content-wrap', style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
+						{ className: 'content-wrap', style: { background: '#f9f9f9' } },
 						_react2.default.createElement(
 							'div',
 							{ className: 'container clear-bottommargin clearfix' },
@@ -62988,29 +62977,6 @@
 										)
 									)
 								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'container clearfix' },
-						_react2.default.createElement(
-							'div',
-							{ id: 'faqs', className: 'faqs' },
-							_react2.default.createElement(
-								'h3',
-								{ style: { marginTop: 48 } },
-								'Frequently Asked Questions:'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'divider' },
-								_react2.default.createElement('i', { className: 'icon-circle' })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col_full nobottommargin' },
-								faq
 							)
 						)
 					)
