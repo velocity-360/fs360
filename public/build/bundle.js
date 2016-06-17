@@ -62461,49 +62461,7 @@
 												detailBox
 											)
 										),
-										units,
-										this.props.course.type == 'online' ? null : _react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Unit',
-												_react2.default.createElement(
-													'span',
-													null,
-													'!'
-												),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
-														_react2.default.createElement(
-															'h2',
-															null,
-															'Sign Up'
-														),
-														_react2.default.createElement('hr', null),
-														'Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.',
-														_react2.default.createElement('br', null),
-														_react2.default.createElement('br', null),
-														btnRegister,
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-															'Request Syllabus'
-														)
-													)
-												)
-											)
-										)
+										units
 									)
 								)
 							)

@@ -250,29 +250,6 @@ class Course extends Component {
 
 									{units}
 
-
-									{
-										(this.props.course.type == 'online') ? null :
-											<div className="entry clearfix">
-												<div className="entry-timeline">
-													Unit<span>!</span>
-													<div className="timeline-divider"></div>
-												</div>
-												<div className="entry-image">
-													<div className="panel panel-default">
-														<div className="panel-body" style={{padding:36}}>
-															<h2>Sign Up</h2>
-															<hr />
-															Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.
-															<br /><br />
-															{ btnRegister }
-															<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
-														</div>
-													</div>
-												</div>
-											</div>										
-									}
-
 								</div>
 							</div>
 

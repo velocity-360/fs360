@@ -353,49 +353,7 @@ var Course = (function (Component) {
 												detailBox
 											)
 										),
-										units,
-										this.props.course.type == "online" ? null : React.createElement(
-											"div",
-											{ className: "entry clearfix" },
-											React.createElement(
-												"div",
-												{ className: "entry-timeline" },
-												"Unit",
-												React.createElement(
-													"span",
-													null,
-													"!"
-												),
-												React.createElement("div", { className: "timeline-divider" })
-											),
-											React.createElement(
-												"div",
-												{ className: "entry-image" },
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: { padding: 36 } },
-														React.createElement(
-															"h2",
-															null,
-															"Sign Up"
-														),
-														React.createElement("hr", null),
-														"Ready to take the plunge? Need more information? Request a syllabus below or begin the application process.",
-														React.createElement("br", null),
-														React.createElement("br", null),
-														btnRegister,
-														React.createElement(
-															"a",
-															{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-															"Request Syllabus"
-														)
-													)
-												)
-											)
-										)
+										units
 									)
 								)
 							)
