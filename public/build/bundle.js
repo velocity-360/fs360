@@ -22089,11 +22089,11 @@
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Vault = __webpack_require__(586);
+	var _Vault = __webpack_require__(587);
 	
 	var _Vault2 = _interopRequireDefault(_Vault);
 	
-	var _Account = __webpack_require__(588);
+	var _Account = __webpack_require__(589);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
@@ -62116,6 +62116,10 @@
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
+	var _Application = __webpack_require__(586);
+	
+	var _Application2 = _interopRequireDefault(_Application);
+	
 	var _store = __webpack_require__(185);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -62155,7 +62159,6 @@
 			_this2.updateLogin = _this2.updateLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
-			_this2.updateApplication = _this2.updateApplication.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
@@ -62167,20 +62170,20 @@
 					name: '',
 					email: '',
 					course: ''
-				},
-				application: {
-					name: '',
-					email: '',
-					phone: '',
-					course: 'ios and node bootcamp',
-					goal: '',
-					history: '',
-					linkedin: '',
-					github: '',
-					college: '',
-					major: '',
-					currentLevel: 'total beginner'
 				}
+				// application: {
+				// 	name: '',
+				// 	email: '',
+				// 	phone: '',
+				// 	course: '',
+				// 	goal: '',
+				// 	history: '',
+				// 	linkedin: '',
+				// 	github:'',
+				// 	college:'',
+				// 	major:'',
+				// 	currentLevel:'total beginner'
+				// }			
 			};
 			return _this2;
 		}
@@ -62326,37 +62329,27 @@
 				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
 		}, {
-			key: 'updateApplication',
-			value: function updateApplication(event) {
-				console.log('updateUserApplication: ' + event.target.id);
-				event.preventDefault();
-	
-				var updatedApplication = Object.assign({}, this.state.application);
-				updatedApplication[event.target.id] = event.target.value;
-				this.setState({
-					application: updatedApplication
-				});
-			}
-		}, {
 			key: 'submitApplication',
-			value: function submitApplication(event) {
-				event.preventDefault();
-				var application = Object.assign({}, this.state.application);
-				application['course'] = this.props.course.title;
+			value: function submitApplication(application) {
+				console.log('submitApplication: ' + JSON.stringify(application));
 	
-				this.setState({ showLoader: true });
+				// event.preventDefault()
+				// var application = Object.assign({}, this.state.application)
+				// application['course'] = this.props.course.title
 	
-				var _this = this;
-				_api2.default.handlePost('/api/application', application, function (err, response) {
-					_this.setState({ showLoader: false });
+				// this.setState({showLoader: true})
 	
-					if (err) {
-						alert(err.message);
-						return;
-					}
+				// var _this = this
+				// api.handlePost('/api/application', application, function(err, response){
+				// 	_this.setState({showLoader: false})
 	
-					alert(response.message);
-				});
+				// 	if (err){
+				// 		alert(err.message)
+				// 		return
+				// 	}
+	
+				// 	alert(response.message)
+				// })
 			}
 		}, {
 			key: 'render',
@@ -62374,7 +62367,7 @@
 					bannerIndex = 2;
 					btnRegister = _react2.default.createElement(
 						'a',
-						{ style: { marginRight: 12 }, href: '/application', className: 'button button-border button-dark button-rounded noleftmargin' },
+						{ style: { marginRight: 12 }, href: '#application', className: 'button button-border button-dark button-rounded noleftmargin' },
 						'Apply'
 					);
 				} else {
@@ -62547,166 +62540,7 @@
 							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
 						)
 					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { background: '#f9f9f9' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent bothsidebar nobottommargin' },
-									_react2.default.createElement(
-										'h3',
-										null,
-										'Apply'
-									),
-									_react2.default.createElement('hr', null),
-									_react2.default.createElement(
-										'div',
-										{ className: 'contact-widget' },
-										_react2.default.createElement('div', { className: 'contact-form-result' }),
-										_react2.default.createElement(
-											'form',
-											{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
-											_react2.default.createElement('div', { className: 'form-process' }),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-name' },
-													'Name'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', className: 'sm-form-control required' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-email' },
-													'Email'
-												),
-												_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', className: 'required email sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-phone' },
-													'Phone'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', className: 'sm-form-control' })
-											),
-											_react2.default.createElement('div', { className: 'clear' }),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-message' },
-													'What is your goal in technology for the next 6 to 12 months?'
-												),
-												_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'required sm-form-control', id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													null,
-													'GitHub'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, className: 'sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													null,
-													'LinkedIn'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, className: 'sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full hidden' },
-												_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', className: 'sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													{ 'for': 'template-contactform-subject' },
-													'Current Level'
-												),
-												_react2.default.createElement(
-													'select',
-													{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: 'currentLevel', className: 'form-control input-lg not-dark' },
-													_react2.default.createElement(
-														'option',
-														{ value: 'total beginner' },
-														'Total beginner - Never coded before'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'getting there' },
-														'Getting There - A couple online tutorials'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'intermediate' },
-														'Intermediate - Can build a few projects on my own'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'advanced' },
-														'Advanced - Professional, looking to learn new skills'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													null,
-													'Undergraduate College'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, className: 'sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'label',
-													null,
-													'Undergraduate Major'
-												),
-												_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, className: 'sm-form-control' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_full' },
-												_react2.default.createElement(
-													'a',
-													{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-													'Apply'
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
+					_react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication, course: this.props.course.title }),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },
@@ -62813,13 +62647,11 @@
 	
 	var stateToProps = function stateToProps(state) {
 		var keys = Object.keys(state.courseReducer.courses);
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
 			course: state.courseReducer.courses[keys[0]],
 			testimonials: state.staticReducer.testimonials,
-			//        faq: state.staticReducer.faq,
 			loaderOptions: state.staticReducer.loaderConfig,
 			banners: state.staticReducer.banners
 		};
@@ -62989,6 +62821,253 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Application = function (_Component) {
+		_inherits(Application, _Component);
+	
+		function Application(props, context) {
+			_classCallCheck(this, Application);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Application).call(this, props, context));
+	
+			_this.updateApplication = _this.updateApplication.bind(_this);
+			_this.submitApplication = _this.submitApplication.bind(_this);
+			_this.state = {
+				application: {
+					name: '',
+					email: '',
+					phone: '',
+					course: '',
+					goal: '',
+					history: '',
+					linkedin: '',
+					github: '',
+					college: '',
+					major: '',
+					currentLevel: 'total beginner'
+				}
+			};
+			return _this;
+		}
+	
+		_createClass(Application, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'updateApplication',
+			value: function updateApplication(event) {
+				console.log('updateUserApplication: ' + event.target.id);
+				event.preventDefault();
+	
+				var updatedApplication = Object.assign({}, this.state.application);
+				updatedApplication[event.target.id] = event.target.value;
+				this.setState({
+					application: updatedApplication
+				});
+			}
+		}, {
+			key: 'submitApplication',
+			value: function submitApplication(event) {
+				event.preventDefault();
+				var application = Object.assign({}, this.state.application);
+				application['course'] = this.props.course.title;
+				this.props.onSubmit(application);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'section',
+					{ id: 'content', style: { background: '#f9f9f9' } },
+					_react2.default.createElement(
+						'div',
+						{ id: 'application', className: 'content-wrap' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'postcontent bothsidebar nobottommargin' },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Apply'
+								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement(
+									'div',
+									{ className: 'contact-widget' },
+									_react2.default.createElement('div', { className: 'contact-form-result' }),
+									_react2.default.createElement(
+										'form',
+										{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
+										_react2.default.createElement('div', { className: 'form-process' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-name' },
+												'Name'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', className: 'sm-form-control required' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-email' },
+												'Email'
+											),
+											_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', className: 'required email sm-form-control' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-phone' },
+												'Phone'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', className: 'sm-form-control' })
+										),
+										_react2.default.createElement('div', { className: 'clear' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-message' },
+												'What is your goal in technology for the next 6 to 12 months?'
+											),
+											_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'required sm-form-control', id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'GitHub'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, className: 'sm-form-control' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'LinkedIn'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, className: 'sm-form-control' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full hidden' },
+											_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', className: 'sm-form-control' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-subject' },
+												'Current Level'
+											),
+											_react2.default.createElement(
+												'select',
+												{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: 'currentLevel', className: 'form-control input-lg not-dark' },
+												_react2.default.createElement(
+													'option',
+													{ value: 'total beginner' },
+													'Total beginner - Never coded before'
+												),
+												_react2.default.createElement(
+													'option',
+													{ value: 'getting there' },
+													'Getting There - A couple online tutorials'
+												),
+												_react2.default.createElement(
+													'option',
+													{ value: 'intermediate' },
+													'Intermediate - Can build a few projects on my own'
+												),
+												_react2.default.createElement(
+													'option',
+													{ value: 'advanced' },
+													'Advanced - Professional, looking to learn new skills'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'Undergraduate College'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, className: 'sm-form-control' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'Undergraduate Major'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, className: 'sm-form-control' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'a',
+												{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+												'Apply'
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Application;
+	}(_react.Component);
+	
+	exports.default = Application;
+
+/***/ },
+/* 587 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _reactBootstrap = __webpack_require__(197);
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
@@ -63009,7 +63088,7 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _CodeSample = __webpack_require__(587);
+	var _CodeSample = __webpack_require__(588);
 	
 	var _CodeSample2 = _interopRequireDefault(_CodeSample);
 	
@@ -63354,7 +63433,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Vault);
 
 /***/ },
-/* 587 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63514,7 +63593,7 @@
 	exports.default = CodeSample;
 
 /***/ },
-/* 588 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63563,7 +63642,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _ProjectCard = __webpack_require__(589);
+	var _ProjectCard = __webpack_require__(590);
 	
 	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
 	
@@ -64010,7 +64089,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 589 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64091,7 +64170,6 @@
 	exports.default = ProjectCard;
 
 /***/ },
-/* 590 */,
 /* 591 */
 /***/ function(module, exports, __webpack_require__) {
 

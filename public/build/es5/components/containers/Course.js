@@ -29,6 +29,8 @@ var Footer = _interopRequire(require("../../components/Footer"));
 
 var CourseSection = _interopRequire(require("../../components/CourseSection"));
 
+var Application = _interopRequire(require("../../components/Application"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -49,7 +51,6 @@ var Course = (function (Component) {
 		this.updateLogin = this.updateLogin.bind(this);
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
-		this.updateApplication = this.updateApplication.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
@@ -61,20 +62,20 @@ var Course = (function (Component) {
 				name: "",
 				email: "",
 				course: ""
-			},
-			application: {
-				name: "",
-				email: "",
-				phone: "",
-				course: "ios and node bootcamp",
-				goal: "",
-				history: "",
-				linkedin: "",
-				github: "",
-				college: "",
-				major: "",
-				currentLevel: "total beginner"
 			}
+			// application: {
+			// 	name: '',
+			// 	email: '',
+			// 	phone: '',
+			// 	course: '',
+			// 	goal: '',
+			// 	history: '',
+			// 	linkedin: '',
+			// 	github:'',
+			// 	college:'',
+			// 	major:'',
+			// 	currentLevel:'total beginner'
+			// }			
 		};
 	}
 
@@ -239,40 +240,9 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		updateApplication: {
-			value: function updateApplication(event) {
-				console.log("updateUserApplication: " + event.target.id);
-				event.preventDefault();
-
-
-				var updatedApplication = Object.assign({}, this.state.application);
-				updatedApplication[event.target.id] = event.target.value;
-				this.setState({
-					application: updatedApplication
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		submitApplication: {
-			value: function submitApplication(event) {
-				event.preventDefault();
-				var application = Object.assign({}, this.state.application);
-				application.course = this.props.course.title;
-
-				this.setState({ showLoader: true });
-
-				var _this = this;
-				api.handlePost("/api/application", application, function (err, response) {
-					_this.setState({ showLoader: false });
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
+			value: function submitApplication(application) {
+				console.log("submitApplication: " + JSON.stringify(application));
 			},
 			writable: true,
 			configurable: true
@@ -292,7 +262,7 @@ var Course = (function (Component) {
 					bannerIndex = 2;
 					btnRegister = React.createElement(
 						"a",
-						{ style: { marginRight: 12 }, href: "/application", className: "button button-border button-dark button-rounded noleftmargin" },
+						{ style: { marginRight: 12 }, href: "#application", className: "button button-border button-dark button-rounded noleftmargin" },
 						"Apply"
 					);
 				} else {
@@ -466,166 +436,7 @@ var Course = (function (Component) {
 							React.createElement("div", { className: "col-sm-4 col-padding", style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: "cover" } })
 						)
 					),
-					React.createElement(
-						"section",
-						{ id: "content", style: { background: "#f9f9f9" } },
-						React.createElement(
-							"div",
-							{ className: "content-wrap" },
-							React.createElement(
-								"div",
-								{ className: "container clearfix" },
-								React.createElement(
-									"div",
-									{ className: "postcontent bothsidebar nobottommargin" },
-									React.createElement(
-										"h3",
-										null,
-										"Apply"
-									),
-									React.createElement("hr", null),
-									React.createElement(
-										"div",
-										{ className: "contact-widget" },
-										React.createElement("div", { className: "contact-form-result" }),
-										React.createElement(
-											"form",
-											{ className: "nobottommargin", id: "template-contactform", name: "template-contactform", action: "", method: "post" },
-											React.createElement("div", { className: "form-process" }),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													{ "for": "template-contactform-name" },
-													"Name"
-												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "name", value: this.state.application.name, name: "template-contactform-name", className: "sm-form-control required" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													{ "for": "template-contactform-email" },
-													"Email"
-												),
-												React.createElement("input", { type: "email", onChange: this.updateApplication, id: "email", value: this.state.application.email, name: "template-contactform-email", className: "required email sm-form-control" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													{ "for": "template-contactform-phone" },
-													"Phone"
-												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "phone", value: this.state.application.phone, name: "template-contactform-phone", className: "sm-form-control" })
-											),
-											React.createElement("div", { className: "clear" }),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													{ "for": "template-contactform-message" },
-													"What is your goal in technology for the next 6 to 12 months?"
-												),
-												React.createElement("textarea", { onChange: this.updateApplication, value: this.state.application.goal, className: "required sm-form-control", id: "goal", name: "template-contactform-message", rows: "6", cols: "30" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													null,
-													"GitHub"
-												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "github", value: this.state.application.github, className: "sm-form-control" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													null,
-													"LinkedIn"
-												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "linkedin", value: this.state.application.linkedin, className: "sm-form-control" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full hidden" },
-												React.createElement("input", { type: "text", id: "template-contactform-botcheck", name: "template-contactform-botcheck", value: "", className: "sm-form-control" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													{ "for": "template-contactform-subject" },
-													"Current Level"
-												),
-												React.createElement(
-													"select",
-													{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: "currentLevel", className: "form-control input-lg not-dark" },
-													React.createElement(
-														"option",
-														{ value: "total beginner" },
-														"Total beginner - Never coded before"
-													),
-													React.createElement(
-														"option",
-														{ value: "getting there" },
-														"Getting There - A couple online tutorials"
-													),
-													React.createElement(
-														"option",
-														{ value: "intermediate" },
-														"Intermediate - Can build a few projects on my own"
-													),
-													React.createElement(
-														"option",
-														{ value: "advanced" },
-														"Advanced - Professional, looking to learn new skills"
-													)
-												)
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													null,
-													"Undergraduate College"
-												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "college", value: this.state.application.college, className: "sm-form-control" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"label",
-													null,
-													"Undergraduate Major"
-												),
-												React.createElement("input", { type: "text", onChange: this.updateApplication, id: "major", value: this.state.application.major, className: "sm-form-control" })
-											),
-											React.createElement(
-												"div",
-												{ className: "col_full" },
-												React.createElement(
-													"a",
-													{ onClick: this.submitApplication, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-													"Apply"
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
+					React.createElement(Application, { onSubmit: this.submitApplication, course: this.props.course.title }),
 					React.createElement(
 						Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },
@@ -735,13 +546,11 @@ var Course = (function (Component) {
 
 var stateToProps = function (state) {
 	var keys = Object.keys(state.courseReducer.courses);
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 
 	return {
 		currentUser: state.profileReducer.currentUser,
 		course: state.courseReducer.courses[keys[0]],
 		testimonials: state.staticReducer.testimonials,
-		//        faq: state.staticReducer.faq,
 		loaderOptions: state.staticReducer.loaderConfig,
 		banners: state.staticReducer.banners
 	};
@@ -749,3 +558,20 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
+// event.preventDefault()
+// var application = Object.assign({}, this.state.application)
+// application['course'] = this.props.course.title
+
+// this.setState({showLoader: true})
+
+// var _this = this
+// api.handlePost('/api/application', application, function(err, response){
+// 	_this.setState({showLoader: false})
+
+// 	if (err){
+// 		alert(err.message)
+// 		return
+// 	}
+
+// 	alert(response.message)
+// })
