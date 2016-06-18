@@ -49,14 +49,14 @@ class Application extends Component {
 
 		this.setState({
 			showLoader: true
-		});
+		})
 
 		var _this = this
 		api.handlePost('/api/application', this.state.application, function(err, response){
 //			console.log('RESPONSE: '+JSON.stringify(response));
 			_this.setState({
 				showLoader: false
-			});
+			})
 
 			if (err){
 				alert(err.message)
@@ -64,9 +64,7 @@ class Application extends Component {
 			}
 
 			alert(response.message)
-		});
-
-
+		})
 	}
 
 	render (){

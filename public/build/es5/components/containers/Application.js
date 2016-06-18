@@ -92,7 +92,6 @@ var Application = (function (Component) {
 
 					alert(response.message);
 				});
-
 			},
 			writable: true,
 			configurable: true
