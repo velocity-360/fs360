@@ -62341,18 +62341,14 @@
 			key: 'submitApplication',
 			value: function submitApplication(event) {
 				event.preventDefault();
-				console.log('submitApplication: ' + JSON.stringify(this.state.application));
+				var application = Object.assign({}, this.state.application);
+				application['course'] = this.props.course.title;
 	
-				this.setState({
-					showLoader: true
-				});
+				this.setState({ showLoader: true });
 	
 				var _this = this;
-				_api2.default.handlePost('/api/application', this.state.application, function (err, response) {
-					//			console.log('RESPONSE: '+JSON.stringify(response));
-					_this.setState({
-						showLoader: false
-					});
+				_api2.default.handlePost('/api/application', application, function (err, response) {
+					_this.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);

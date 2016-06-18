@@ -117,7 +117,7 @@ class Course extends Component {
 		this.setState({
 			showModal: false,
 			showLoader: true
-		});
+		})
 
 		var _this = this
 		api.handlePost('/api/syllabus', _this.state.syllabusRequest, function(err, response){
@@ -131,7 +131,7 @@ class Course extends Component {
 			}
 
 			alert(response.message)
-		});
+		})
 	}	
 
 	closeModal(){
@@ -150,9 +150,9 @@ class Course extends Component {
 	updateLogin(event){
 		event.preventDefault()
 
-		var updatedUser = Object.assign({}, this.props.currentUser);
+		var updatedUser = Object.assign({}, this.props.currentUser)
 		updatedUser[event.target.id] = event.target.value
-		store.dispatch(actions.updateCurrentUser(updatedUser));
+		store.dispatch(actions.updateCurrentUser(updatedUser))
 	}
 
 	login(event){
@@ -201,18 +201,14 @@ class Course extends Component {
 
 	submitApplication(event){
 		event.preventDefault()
-		console.log('submitApplication: '+JSON.stringify(this.state.application))
+		var application = Object.assign({}, this.state.application)
+		application['course'] = this.props.course.title
 
-		this.setState({
-			showLoader: true
-		})
+		this.setState({showLoader: true})
 
 		var _this = this
-		api.handlePost('/api/application', this.state.application, function(err, response){
-//			console.log('RESPONSE: '+JSON.stringify(response));
-			_this.setState({
-				showLoader: false
-			})
+		api.handlePost('/api/application', application, function(err, response){
+			_this.setState({showLoader: false})
 
 			if (err){
 				alert(err.message)
