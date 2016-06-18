@@ -43,7 +43,6 @@ class Application extends Component {
 	submitApplication(event){
 		event.preventDefault()
 		var application = Object.assign({}, this.state.application)
-		application['course'] = this.props.course.title
 		this.props.onSubmit(application)
 	}
 

@@ -178,6 +178,7 @@ class Course extends Component {
 //		console.log('submitApplication: '+JSON.stringify(application))
 
 		this.setState({showLoader: true})
+		application['course'] = this.props.course.title
 		var _this = this
 		api.handlePost('/api/application', application, function(err, response){
 			_this.setState({showLoader: false})
@@ -308,7 +309,7 @@ class Course extends Component {
 					</div>
 				</section>
 
-				<Application onSubmit={this.submitApplication} course={this.props.course.title} />
+				<Application onSubmit={this.submitApplication} />
 				
 
 		        <Modal show={this.state.showLogin} onHide={this.closeModal}>

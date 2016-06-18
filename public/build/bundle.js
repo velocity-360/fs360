@@ -62321,6 +62321,7 @@
 				//		console.log('submitApplication: '+JSON.stringify(application))
 	
 				this.setState({ showLoader: true });
+				application['course'] = this.props.course.title;
 				var _this = this;
 				_api2.default.handlePost('/api/application', application, function (err, response) {
 					_this.setState({ showLoader: false });
@@ -62522,7 +62523,7 @@
 							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
 						)
 					),
-					_react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication, course: this.props.course.title }),
+					_react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },
@@ -62859,7 +62860,6 @@
 			value: function submitApplication(event) {
 				event.preventDefault();
 				var application = Object.assign({}, this.state.application);
-				application['course'] = this.props.course.title;
 				this.props.onSubmit(application);
 			}
 		}, {

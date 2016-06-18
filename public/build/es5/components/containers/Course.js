@@ -232,6 +232,7 @@ var Course = (function (Component) {
 				//		console.log('submitApplication: '+JSON.stringify(application))
 
 				this.setState({ showLoader: true });
+				application.course = this.props.course.title;
 				var _this = this;
 				api.handlePost("/api/application", application, function (err, response) {
 					_this.setState({ showLoader: false });
@@ -436,7 +437,7 @@ var Course = (function (Component) {
 							React.createElement("div", { className: "col-sm-4 col-padding", style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: "cover" } })
 						)
 					),
-					React.createElement(Application, { onSubmit: this.submitApplication, course: this.props.course.title }),
+					React.createElement(Application, { onSubmit: this.submitApplication }),
 					React.createElement(
 						Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },
