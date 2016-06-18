@@ -244,20 +244,7 @@ var Nav = (function (Component) {
 											)
 										)
 									),
-									login,
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ href: "/application" },
-											React.createElement(
-												"div",
-												{ style: { background: "#5cb85c", padding: 4, borderRadius: 2, paddingRight: 8, paddingLeft: 8 } },
-												"Apply"
-											)
-										)
-									)
+									login
 								)
 							)
 						)

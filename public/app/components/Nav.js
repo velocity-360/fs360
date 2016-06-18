@@ -88,12 +88,6 @@ class Nav extends Component {
 								</li>
 								<li><a href="/feed"><div style={{padding:4}}>Blog</div></a></li>
 								{login}
-
-	                            <li>
-	                            	<a href="/application">
-	                            		<div style={{background:'#5cb85c', padding:4, borderRadius:2, paddingRight:8, paddingLeft:8}}>Apply</div>
-	                            	</a>
-	                            </li>
 	                        </ul>
 	                    </nav>
 	                </div>

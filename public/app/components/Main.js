@@ -10,7 +10,6 @@ import Project from './containers/Project'
 import Course from './containers/Course'
 import Vault from './containers/Vault'
 import Account from './containers/Account'
-import Application from './containers/Application'
 import Unit from './containers/Unit'
 
 class Main extends Component {
@@ -41,9 +40,6 @@ class Main extends Component {
 
 			case 'vault':
 				return page = <Vault params={this.props.params} />
-
-			case 'application':
-				return page = <Application params={this.props.params} />
 
 			case 'events':
 				return page = <Events />

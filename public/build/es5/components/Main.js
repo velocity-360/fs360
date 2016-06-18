@@ -36,8 +36,6 @@ var Vault = _interopRequire(require("./containers/Vault"));
 
 var Account = _interopRequire(require("./containers/Account"));
 
-var Application = _interopRequire(require("./containers/Application"));
-
 var Unit = _interopRequire(require("./containers/Unit"));
 
 var Main = (function (Component) {
@@ -71,9 +69,6 @@ var Main = (function (Component) {
 
 					case "vault":
 						return page = React.createElement(Vault, { params: this.props.params });
-
-					case "application":
-						return page = React.createElement(Application, { params: this.props.params });
 
 					case "events":
 						return page = React.createElement(Events, null);
