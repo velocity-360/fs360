@@ -63,19 +63,6 @@ var Course = (function (Component) {
 				email: "",
 				course: ""
 			}
-			// application: {
-			// 	name: '',
-			// 	email: '',
-			// 	phone: '',
-			// 	course: '',
-			// 	goal: '',
-			// 	history: '',
-			// 	linkedin: '',
-			// 	github:'',
-			// 	college:'',
-			// 	major:'',
-			// 	currentLevel:'total beginner'
-			// }			
 		};
 	}
 
@@ -242,7 +229,20 @@ var Course = (function (Component) {
 		},
 		submitApplication: {
 			value: function submitApplication(application) {
-				console.log("submitApplication: " + JSON.stringify(application));
+				//		console.log('submitApplication: '+JSON.stringify(application))
+
+				this.setState({ showLoader: true });
+				var _this = this;
+				api.handlePost("/api/application", application, function (err, response) {
+					_this.setState({ showLoader: false });
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
 			},
 			writable: true,
 			configurable: true
@@ -558,20 +558,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
-// event.preventDefault()
-// var application = Object.assign({}, this.state.application)
-// application['course'] = this.props.course.title
-
-// this.setState({showLoader: true})
-
-// var _this = this
-// api.handlePost('/api/application', application, function(err, response){
-// 	_this.setState({showLoader: false})
-
-// 	if (err){
-// 		alert(err.message)
-// 		return
-// 	}
-
-// 	alert(response.message)
-// })

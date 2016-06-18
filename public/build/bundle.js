@@ -62171,19 +62171,6 @@
 					email: '',
 					course: ''
 				}
-				// application: {
-				// 	name: '',
-				// 	email: '',
-				// 	phone: '',
-				// 	course: '',
-				// 	goal: '',
-				// 	history: '',
-				// 	linkedin: '',
-				// 	github:'',
-				// 	college:'',
-				// 	major:'',
-				// 	currentLevel:'total beginner'
-				// }			
 			};
 			return _this2;
 		}
@@ -62331,25 +62318,20 @@
 		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
-				console.log('submitApplication: ' + JSON.stringify(application));
+				//		console.log('submitApplication: '+JSON.stringify(application))
 	
-				// event.preventDefault()
-				// var application = Object.assign({}, this.state.application)
-				// application['course'] = this.props.course.title
+				this.setState({ showLoader: true });
+				var _this = this;
+				_api2.default.handlePost('/api/application', application, function (err, response) {
+					_this.setState({ showLoader: false });
 	
-				// this.setState({showLoader: true})
+					if (err) {
+						alert(err.message);
+						return;
+					}
 	
-				// var _this = this
-				// api.handlePost('/api/application', application, function(err, response){
-				// 	_this.setState({showLoader: false})
-	
-				// 	if (err){
-				// 		alert(err.message)
-				// 		return
-				// 	}
-	
-				// 	alert(response.message)
-				// })
+					alert(response.message);
+				});
 			}
 		}, {
 			key: 'render',
