@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseSection from '../../components/CourseSection'
-import CourseCopy from '../../components/CourseCopy'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
@@ -257,11 +256,40 @@ class Course extends Component {
 					</div>
 				</section>
 
-				{ (this.props.course.type == 'online') ? 
-					null 
-					: 
-					<CourseCopy questions={this.props.faq.general} />
-				}
+				<section id="content" style={{backgroundColor: '#fff', paddingBottom:0}}>
+					<div className="row common-height clearfix" style={{background:'#fff', border:'1px solid #ddd'}}>
+						<div className="col-sm-8 col-padding">
+							<div>
+								<div className="heading-block">
+									<h3>Prepare for Tomorrow</h3>
+								</div>
+
+								<div className="row clearfix">
+									<div className="col-md-10">
+										<p>
+											Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, our classes will put you on the right track to achieve these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.
+										</p>
+										<p>
+											Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.
+										</p>
+										<a target="_blank" href="https://www.facebook.com/FullStack-360-1631852427085987/" className="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i className="icon-facebook"></i>
+											<i className="icon-facebook"></i>
+										</a>
+										<a target="_blank" href="https://twitter.com/fullstack360" className="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i className="icon-twitter"></i>
+											<i className="icon-twitter"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div className="col-sm-4 col-padding" style={{background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover'}}></div>
+					</div>
+
+				</section>
+
 
 		        <Modal show={this.state.showLogin} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
@@ -324,7 +352,7 @@ const stateToProps = function(state) {
         currentUser: state.profileReducer.currentUser,
         course: state.courseReducer.courses[keys[0]],
         testimonials: state.staticReducer.testimonials,
-        faq: state.staticReducer.faq,
+//        faq: state.staticReducer.faq,
         loaderOptions: state.staticReducer.loaderConfig,
         banners: state.staticReducer.banners
     }
