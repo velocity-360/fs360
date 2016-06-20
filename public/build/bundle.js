@@ -62348,11 +62348,6 @@
 					);
 				} else if (this.props.course.type == 'immersive') {
 					bannerIndex = 2;
-					btnRegister = _react2.default.createElement(
-						'a',
-						{ style: { marginRight: 12 }, href: '#application', className: 'button button-border button-dark button-rounded noleftmargin' },
-						'Apply'
-					);
 				} else {
 					btnRegister = _react2.default.createElement(
 						'a',
@@ -62506,13 +62501,13 @@
 											),
 											_react2.default.createElement(
 												'a',
-												{ target: '_blank', href: 'https://www.facebook.com/FullStack-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
+												{ target: '_blank', href: 'https://www.facebook.com/Velocity-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
 												_react2.default.createElement('i', { className: 'icon-facebook' }),
 												_react2.default.createElement('i', { className: 'icon-facebook' })
 											),
 											_react2.default.createElement(
 												'a',
-												{ target: '_blank', href: 'https://twitter.com/fullstack360', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
+												{ target: '_blank', href: 'https://twitter.com/velocity360_io', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
 												_react2.default.createElement('i', { className: 'icon-twitter' }),
 												_react2.default.createElement('i', { className: 'icon-twitter' })
 											)

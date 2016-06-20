@@ -261,11 +261,6 @@ var Course = (function (Component) {
 					);
 				} else if (this.props.course.type == "immersive") {
 					bannerIndex = 2;
-					btnRegister = React.createElement(
-						"a",
-						{ style: { marginRight: 12 }, href: "#application", className: "button button-border button-dark button-rounded noleftmargin" },
-						"Apply"
-					);
 				} else {
 					btnRegister = React.createElement(
 						"a",
@@ -420,13 +415,13 @@ var Course = (function (Component) {
 											),
 											React.createElement(
 												"a",
-												{ target: "_blank", href: "https://www.facebook.com/FullStack-360-1631852427085987/", className: "social-icon inline-block si-small si-light si-rounded si-facebook" },
+												{ target: "_blank", href: "https://www.facebook.com/Velocity-360-1631852427085987/", className: "social-icon inline-block si-small si-light si-rounded si-facebook" },
 												React.createElement("i", { className: "icon-facebook" }),
 												React.createElement("i", { className: "icon-facebook" })
 											),
 											React.createElement(
 												"a",
-												{ target: "_blank", href: "https://twitter.com/fullstack360", className: "social-icon inline-block si-small si-light si-rounded si-twitter" },
+												{ target: "_blank", href: "https://twitter.com/velocity360_io", className: "social-icon inline-block si-small si-light si-rounded si-twitter" },
 												React.createElement("i", { className: "icon-twitter" }),
 												React.createElement("i", { className: "icon-twitter" })
 											)

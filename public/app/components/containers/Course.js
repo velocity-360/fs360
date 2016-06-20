@@ -193,15 +193,14 @@ class Course extends Component {
 	}	
 
 	render(){
-		var bannerIndex = 0;
+		var bannerIndex = 0
 		var btnRegister = null
 		if (this.props.course.type == 'online'){
-			bannerIndex = 1;
+			bannerIndex = 1
 			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
 		}
 		else if (this.props.course.type == 'immersive'){
-			bannerIndex = 2;
-			btnRegister = <a style={{marginRight:12}} href="#application" className="button button-border button-dark button-rounded noleftmargin">Apply</a>
+			bannerIndex = 2
 		}
 		else {
 			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
@@ -306,11 +305,11 @@ class Course extends Component {
 											you would have to rely on someone else to build, it could be a project that 
 											you start building right away.
 										</p>
-										<a target="_blank" href="https://www.facebook.com/FullStack-360-1631852427085987/" className="social-icon inline-block si-small si-light si-rounded si-facebook">
+										<a target="_blank" href="https://www.facebook.com/Velocity-360-1631852427085987/" className="social-icon inline-block si-small si-light si-rounded si-facebook">
 											<i className="icon-facebook"></i>
 											<i className="icon-facebook"></i>
 										</a>
-										<a target="_blank" href="https://twitter.com/fullstack360" className="social-icon inline-block si-small si-light si-rounded si-twitter">
+										<a target="_blank" href="https://twitter.com/velocity360_io" className="social-icon inline-block si-small si-light si-rounded si-twitter">
 											<i className="icon-twitter"></i>
 											<i className="icon-twitter"></i>
 										</a>
