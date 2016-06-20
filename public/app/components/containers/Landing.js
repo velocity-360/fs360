@@ -442,7 +442,7 @@ class Landing extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>iOS &amp; Node Evening Course</h4>
-										<span>July 11th - August 19th</span>
+										<span>August 8th - September 28th</span>
 										<span>Mon/Weds 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
@@ -453,7 +453,7 @@ class Landing extends Component {
 										such as Google Maps and Foursquare.
 									</div>
 									<br />
-									<a href="/course/ios-development" className="btn btn-success">
+									<a href="/course/ios-node-evening-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>
@@ -468,7 +468,7 @@ class Landing extends Component {
 								<div className="team-desc">
 									<div className="team-title">
 										<h4>Node &amp; React Evening Course</h4>
-										<span>August 22nd - September 30th</span>
+										<span>August 9th - September 29th</span>
 										<span>Tues/Thurs 6pm - 9pm</span>
 									</div>
 									<div className="team-content">
@@ -479,7 +479,7 @@ class Landing extends Component {
 										email notification functionality.
 									</div>
 									<br />
-									<a href="/course/react-with-node-js" className="btn btn-success">
+									<a href="/course/node-react-evening-course" className="btn btn-success">
 										Learn More
 									</a>
 								</div>

@@ -44803,7 +44803,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'July 11th - August 19th'
+												'August 8th - September 28th'
 											),
 											_react2.default.createElement(
 												'span',
@@ -44819,7 +44819,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/ios-development', className: 'btn btn-success' },
+											{ href: '/course/ios-node-evening-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
@@ -44847,7 +44847,7 @@
 											_react2.default.createElement(
 												'span',
 												null,
-												'August 22nd - September 30th'
+												'August 9th - September 29th'
 											),
 											_react2.default.createElement(
 												'span',
@@ -44863,7 +44863,7 @@
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'a',
-											{ href: '/course/react-with-node-js', className: 'btn btn-success' },
+											{ href: '/course/node-react-evening-course', className: 'btn btn-success' },
 											'Learn More'
 										)
 									)
