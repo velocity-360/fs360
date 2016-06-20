@@ -287,10 +287,24 @@ class Course extends Component {
 								<div className="row clearfix">
 									<div className="col-md-10">
 										<p>
-											Our Mission is to teach you tomorrow’s technology, today.  If you want to work for a leading tech firm, for a technology startup, or become an entrepreneur, our classes will put you on the right track to achieve these goals.  This iOS class is based entirely on Swift language, which is the main language you will need to know while developing the majority of iOS app.  In our iOS class you will not be learning how to program games, however you will be able to learn how to develop social media applications similar to Snapchat and Instagram.
+											Our Mission is to teach you tomorrow’s technology, today.  If you want 
+											to work for a leading tech firm, for a technology startup, or become an 
+											entrepreneur, our classes will put you on the right track to achieve 
+											these goals.  This iOS class is based entirely on Swift language, which 
+											is the main language you will need to know while developing the majority 
+											of iOS app.  In our iOS class you will not be learning how to program 
+											games, however you will be able to learn how to develop social media 
+											applications similar to Snapchat and Instagram.
 										</p>
 										<p>
-											Even if you do not want to become a professional developer and have it become your lifelong career, learning how an iOS app developed will give you the edge both in the immediate and distant future.  It might be a cliché, but learning how to code will empower you to act on future ideas.  For example if you are sitting in class one day and think of the next great social media app, it doesn’t have to just be a pipe dream or something that you would have to rely on someone else to build, it could be a project that you start building right away.
+											Even if you do not want to become a professional developer and have it 
+											become your lifelong career, learning how an iOS app developed will give 
+											you the edge both in the immediate and distant future.  It might be a 
+											cliché, but learning how to code will empower you to act on future ideas. 
+											For example if you are sitting in class one day and think of the next great 
+											social media app, it doesn’t have to just be a pipe dream or something that 
+											you would have to rely on someone else to build, it could be a project that 
+											you start building right away.
 										</p>
 										<a target="_blank" href="https://www.facebook.com/FullStack-360-1631852427085987/" className="social-icon inline-block si-small si-light si-rounded si-facebook">
 											<i className="icon-facebook"></i>

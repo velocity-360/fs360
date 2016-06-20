@@ -39,7 +39,11 @@ module.exports = {
 		for (var i=0; i<parts.length; i++){
 			var word = parts[i]
 			word = word.replace('?', '')
+			word = word.replace('&', '')
 			word = word.replace(':', '')
+			if (word.length < 1)
+				continue
+			
 			slug += word.toLowerCase()
 			if (i != parts.length-1)
 				slug += '-'
