@@ -323,8 +323,7 @@ class Course extends Component {
 					</div>
 				</section>
 
-				<Application onSubmit={this.submitApplication} />
-				
+				{ (this.props.course.type == 'immersive') ? <Application onSubmit={this.submitApplication} /> : null }
 
 		        <Modal show={this.state.showLogin} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

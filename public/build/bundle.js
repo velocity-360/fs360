@@ -62523,7 +62523,7 @@
 							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
 						)
 					),
-					_react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }),
+					this.props.course.type == 'immersive' ? _react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }) : null,
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },

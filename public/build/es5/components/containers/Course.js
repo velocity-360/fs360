@@ -437,7 +437,7 @@ var Course = (function (Component) {
 							React.createElement("div", { className: "col-sm-4 col-padding", style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: "cover" } })
 						)
 					),
-					React.createElement(Application, { onSubmit: this.submitApplication }),
+					this.props.course.type == "immersive" ? React.createElement(Application, { onSubmit: this.submitApplication }) : null,
 					React.createElement(
 						Modal,
 						{ show: this.state.showLogin, onHide: this.closeModal },
