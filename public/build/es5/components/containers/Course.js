@@ -44,7 +44,6 @@ var Course = (function (Component) {
 		_classCallCheck(this, Course);
 
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
-		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.showLogin = this.showLogin.bind(this);
 		this.login = this.login.bind(this);
@@ -55,7 +54,6 @@ var Course = (function (Component) {
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
 			showLoader: false,
-			showModal: false,
 			showLogin: false,
 			showConfirmation: false,
 			syllabusRequest: {
@@ -116,15 +114,6 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		openModal: {
-			value: function openModal(event) {
-				//		console.log('OPEN MODAL')
-				event.preventDefault();
-				this.setState({ showModal: true });
-			},
-			writable: true,
-			configurable: true
-		},
 		updateSyllabusRequest: {
 			value: function updateSyllabusRequest(event) {
 				var s = Object.assign({}, this.state.syllabusRequest);
@@ -142,7 +131,6 @@ var Course = (function (Component) {
 				event.preventDefault();
 
 				this.setState({
-					showModal: false,
 					showLoader: true
 				});
 
@@ -166,7 +154,6 @@ var Course = (function (Component) {
 		closeModal: {
 			value: function closeModal() {
 				this.setState({
-					showModal: false,
 					showLogin: false,
 					showConfirmation: false
 				});
@@ -197,7 +184,6 @@ var Course = (function (Component) {
 			value: function login(event) {
 				event.preventDefault();
 				this.setState({
-					showModal: false,
 					showLogin: false,
 					showLoader: true
 				});
@@ -368,13 +354,13 @@ var Course = (function (Component) {
 														"p",
 														null,
 														this.props.course.description
-													)
+													),
+													btnRegister
 												),
 												detailBox
 											)
 										),
-										units,
-										btnRegister
+										units
 									)
 								)
 							)

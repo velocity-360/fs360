@@ -62152,7 +62152,6 @@
 	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 	
-			_this2.openModal = _this2.openModal.bind(_this2);
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
@@ -62163,7 +62162,6 @@
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
 				showLoader: false,
-				showModal: false,
 				showLogin: false,
 				showConfirmation: false,
 				syllabusRequest: {
@@ -62221,13 +62219,6 @@
 				});
 			}
 		}, {
-			key: 'openModal',
-			value: function openModal(event) {
-				//		console.log('OPEN MODAL')
-				event.preventDefault();
-				this.setState({ showModal: true });
-			}
-		}, {
 			key: 'updateSyllabusRequest',
 			value: function updateSyllabusRequest(event) {
 				var s = Object.assign({}, this.state.syllabusRequest);
@@ -62243,7 +62234,6 @@
 				event.preventDefault();
 	
 				this.setState({
-					showModal: false,
 					showLoader: true
 				});
 	
@@ -62265,7 +62255,6 @@
 			key: 'closeModal',
 			value: function closeModal() {
 				this.setState({
-					showModal: false,
 					showLogin: false,
 					showConfirmation: false
 				});
@@ -62290,7 +62279,6 @@
 			value: function login(event) {
 				event.preventDefault();
 				this.setState({
-					showModal: false,
 					showLogin: false,
 					showLoader: true
 				});
@@ -62454,13 +62442,13 @@
 														'p',
 														null,
 														this.props.course.description
-													)
+													),
+													btnRegister
 												),
 												detailBox
 											)
 										),
-										units,
-										btnRegister
+										units
 									)
 								)
 							)

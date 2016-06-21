@@ -15,7 +15,6 @@ class Course extends Component {
 
 	constructor(props, context){
 		super(props, context)
-		this.openModal = this.openModal.bind(this)
 		this.closeModal = this.closeModal.bind(this)
 		this.showLogin = this.showLogin.bind(this)
 		this.login = this.login.bind(this)
@@ -26,7 +25,6 @@ class Course extends Component {
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
 			showLoader: false,
-			showModal: false,
 			showLogin: false,
 			showConfirmation: false,
 			syllabusRequest: {
@@ -82,12 +80,6 @@ class Course extends Component {
 		})
 	}
 
-	openModal(event){
-//		console.log('OPEN MODAL')
-		event.preventDefault()
-		this.setState({showModal: true})
-	}
-
 	updateSyllabusRequest(event){
 		var s = Object.assign({}, this.state.syllabusRequest)
 		s[event.target.id] = event.target.value
@@ -95,14 +87,12 @@ class Course extends Component {
 		this.setState({
 			syllabusRequest: s
 		})
-
 	}
 
 	syllabusRequest(event){
 		event.preventDefault()
 
 		this.setState({
-			showModal: false,
 			showLoader: true
 		})
 
@@ -123,7 +113,6 @@ class Course extends Component {
 
 	closeModal(){
 		this.setState({
-			showModal: false,
 			showLogin: false,
 			showConfirmation: false
 		})
@@ -145,7 +134,6 @@ class Course extends Component {
 	login(event){
 		event.preventDefault()
 		this.setState({
-			showModal: false,
 			showLogin: false,
 			showLoader: true
 		})
@@ -162,7 +150,7 @@ class Course extends Component {
 			}
 
 			store.dispatch(actions.currentUserRecieved(response.profile))
-		});
+		})
 	}
 
 	openStripeModal(event){
@@ -260,6 +248,7 @@ class Course extends Component {
 											<div className="col_half">
 												<h2 style={{marginBottom:0}}>{this.props.course.title}</h2>
 												<p>{this.props.course.description}</p>
+												{ btnRegister }
 											</div>
 
 											{ detailBox }
@@ -268,8 +257,6 @@ class Course extends Component {
 									</div>
 
 									{ units }
-									{ btnRegister }
-
 								</div>
 							</div>
 
