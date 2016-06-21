@@ -129,6 +129,15 @@ var Course = (function (Component) {
 		syllabusRequest: {
 			value: function syllabusRequest(event) {
 				event.preventDefault();
+				if (this.state.syllabusRequest.name.length == 0) {
+					alert("Please enter your name.");
+					return;
+				}
+
+				if (this.state.syllabusRequest.email.length == 0) {
+					alert("Please enter your email.");
+					return;
+				}
 
 				this.setState({
 					showLoader: true
@@ -242,16 +251,18 @@ var Course = (function (Component) {
 					bannerIndex = 1;
 					btnRegister = React.createElement(
 						"a",
-						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-						"Register"
+						{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+						"Register",
+						React.createElement("i", { "class": "icon-circle-arrow-right" })
 					);
 				} else if (this.props.course.type == "immersive") {
 					bannerIndex = 2;
 				} else {
 					btnRegister = React.createElement(
 						"a",
-						{ onClick: this.openStripeModal, style: { marginRight: 12 }, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-						"Register"
+						{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+						"Register",
+						React.createElement("i", { "class": "icon-circle-arrow-right" })
 					);
 				}
 

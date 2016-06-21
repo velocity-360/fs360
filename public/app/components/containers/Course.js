@@ -91,6 +91,15 @@ class Course extends Component {
 
 	syllabusRequest(event){
 		event.preventDefault()
+		if (this.state.syllabusRequest.name.length == 0){
+			alert('Please enter your name.')
+			return
+		}
+
+		if (this.state.syllabusRequest.email.length == 0){
+			alert('Please enter your email.')
+			return
+		}
 
 		this.setState({
 			showLoader: true
@@ -185,13 +194,13 @@ class Course extends Component {
 		var btnRegister = null
 		if (this.props.course.type == 'online'){
 			bannerIndex = 1
-			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
 		}
 		else if (this.props.course.type == 'immersive'){
 			bannerIndex = 2
 		}
 		else {
-			btnRegister = <a onClick={this.openStripeModal} style={{marginRight:12}} href="#" className="button button-border button-dark button-rounded noleftmargin">Register</a>
+			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
 		}
 
 		var banner = this.props.banners[bannerIndex]
