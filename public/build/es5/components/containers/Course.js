@@ -296,9 +296,13 @@ var Course = (function (Component) {
 							this.props.course.deposit,
 							React.createElement("hr", null),
 							btnRegister,
+							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", className: "form-control", style: { background: "#f9f9f9" } }),
+							React.createElement("br", null),
+							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", className: "form-control", style: { background: "#f9f9f9" } }),
+							React.createElement("br", null),
 							React.createElement(
 								"a",
-								{ onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+								{ onClick: this.syllabusRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
 								"Request Syllabus"
 							)
 						)

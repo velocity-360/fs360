@@ -220,7 +220,9 @@ class Course extends Component {
 								Deposit: ${this.props.course.deposit}
 								<hr />
 								{ btnRegister }
-								<a onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
+								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 							</div>
 						</div>
 		}

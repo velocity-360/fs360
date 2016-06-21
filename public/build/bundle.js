@@ -62383,9 +62383,13 @@
 							this.props.course.deposit,
 							_react2.default.createElement('hr', null),
 							btnRegister,
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'a',
-								{ onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+								{ onClick: this.syllabusRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
 								'Request Syllabus'
 							)
 						)
