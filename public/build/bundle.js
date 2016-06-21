@@ -62382,10 +62382,9 @@
 							'Deposit: $',
 							this.props.course.deposit,
 							_react2.default.createElement('hr', null),
-							btnRegister,
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
 							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'a',
@@ -62460,7 +62459,8 @@
 												detailBox
 											)
 										),
-										units
+										units,
+										btnRegister
 									)
 								)
 							)
@@ -62550,36 +62550,6 @@
 								'a',
 								{ onClick: this.login, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
 								'Log In'
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Request Syllabus'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: 'form-control', type: 'text', id: 'name', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.syllabusRequest, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
 							)
 						)
 					),

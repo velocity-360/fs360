@@ -219,9 +219,8 @@ class Course extends Component {
 								Tuition: ${this.props.course.tuition}<br />
 								Deposit: ${this.props.course.deposit}
 								<hr />
-								{ btnRegister }
-								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
 								<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 							</div>
 						</div>
@@ -268,7 +267,8 @@ class Course extends Component {
 										</div>
 									</div>
 
-									{units}
+									{ units }
+									{ btnRegister }
 
 								</div>
 							</div>
@@ -337,22 +337,6 @@ class Course extends Component {
 
 			        <Modal.Footer style={{textAlign:'center'}}>
 						<a onClick={this.login} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
-			        </Modal.Footer>
-		        </Modal>
-
-
-		        <Modal show={this.state.showModal} onHide={this.closeModal}>
-			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>Request Syllabus</h2>
-			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} className="form-control" type="text" id="name" placeholder="Name" /><br />
-			        	<input onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
-
-			        </Modal.Body>
-
-			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.syllabusRequest} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 			        </Modal.Footer>
 		        </Modal>
 

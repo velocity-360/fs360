@@ -295,10 +295,9 @@ var Course = (function (Component) {
 							"Deposit: $",
 							this.props.course.deposit,
 							React.createElement("hr", null),
-							btnRegister,
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", className: "form-control", style: { background: "#f9f9f9" } }),
+							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
 							React.createElement("br", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", className: "form-control", style: { background: "#f9f9f9" } }),
+							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
@@ -374,7 +373,8 @@ var Course = (function (Component) {
 												detailBox
 											)
 										),
-										units
+										units,
+										btnRegister
 									)
 								)
 							)
@@ -464,36 +464,6 @@ var Course = (function (Component) {
 								"a",
 								{ onClick: this.login, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 								"Log In"
-							)
-						)
-					),
-					React.createElement(
-						Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h2",
-								null,
-								"Request Syllabus"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, className: "form-control", type: "text", id: "name", placeholder: "Name" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
-							React.createElement("br", null)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.syllabusRequest, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Submit"
 							)
 						)
 					),
