@@ -5,6 +5,7 @@ var modules = [
     'ScrapeModule', 
     'CourseModule',
     'CoursesModule',
+    'ProjectModule',
     'EventsModule',
     'SeriesModule',
     'GeneralServiceModule',

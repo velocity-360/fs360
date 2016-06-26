@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="FullStack360Admin">
     <head>
         <meta charset="utf-8">
         <title>The Full Stack</title>
@@ -11,7 +11,7 @@
         <link href="/admin/css/ytplayer.css" rel="stylesheet" type="text/css" media="all" />
         <link href="/admin/css/theme.css" rel="stylesheet" type="text/css" media="all" />
         <link href="/admin/css/custom.css" rel="stylesheet" type="text/css" media="all" />
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
 
 
@@ -34,26 +34,29 @@
         <script src='/admin/angular/controllers/duplicates.js'></script>
         <script src='/admin/angular/controllers/email.js'></script>
         <script src='/admin/angular/controllers/course.js'></script>
-        <script src='/admin/angular/controllers/eventlist.js'></script>
         <script src='/admin/angular/controllers/courselist.js'></script>
+        <script src='/admin/angular/controllers/eventlist.js'></script>
         <script src='/admin/angular/controllers/scrape.js'></script>
         <script src='/admin/angular/controllers/series.js'></script>
         <script src='/admin/angular/controllers/project.js'></script>
+        
     </head>
-	
-    <body ng-app="FullStack360Admin" ng-controller="EmailController" ng-init="init()">
-		{{>login}}
-		
-	    {{>nav}}
-		
-		
+    
+    <body ng-controller="ProjectController" ng-init="init()">
+        {{>login}}
+        {{>nav}}
+        
+        
         <div class="main-container">
-		
-		  <section class="page-title page-title-4 image-bg overlay parallax">
+        
+          <section class="page-title page-title-4 image-bg overlay parallax">
+                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); top: -100px; background: url('/site/img/cover12.jpg');">
+                    <img alt="Background Image" class="background-image" src="/site/img/cover12.jpg" style="display: none;">
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="uppercase mb0">Email</h3>
+                            <h3 class="uppercase mb0">Projects</h3>
                         </div>
                         <div class="col-md-6 text-right">
                             <ol class="breadcrumb breadcrumb-2">
@@ -67,76 +70,59 @@
                 </div>
                 <!--end of container-->
             </section>
-					
-			
+                    
+            
             <section style="border-top:1px solid #ddd">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-9 mb-xs-24">
-                            <textarea ng-model="recipientsString" rows="3" placeholder="Emails"></textarea>
-                            <select ng-model="emailTemplate">
-                                <option value="workshop">Workshop</option>
-                                <option value="summer">Summer</option>
-                                <option value="video">Video</option>
-                                <option value="general">General</option>
+
+                        <div class="col-md-4 mb-xs-24">
+                            <h3>Projects</h3>
+                            
+                        </div>
+
+
+
+
+                        <div class="col-md-8 mb-xs-24">
+                            <h3>Create Project</h3>
+
+                            <input ng-model="project.title" type="text" placeholder="Title" class="form-control" />
+                            <input ng-model="project.price" type="text" placeholder="Price" class="form-control mt24" />
+                            <input ng-model="project.tagString" type="text" placeholder="Tags" class="form-control mt24" />
+                            <input ng-model="project.link" type="text" placeholder="Link" class="form-control mt24" />
+                            <select ng-model="project.level">
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
                             </select>
-                            <button ng-click="sendEmail()" style="background:#fff;border-radius:22px" class="btn btn-large">Send Email</button>
-							<br /><br />
-                            <hr>
-							
-                        </div>
-                        <!--end of nine col-->
-						
-                        <div class="col-md-3 hidden-sm">
-							
-                            <div class="widget">
-                                <h6 class="title">Workshops</h6>
-                                <hr>
-                                <ul class="link-list recent-posts">
-                                    <li>
-                                        <a href="/#workshops">MEAN Stack Demo</a>
-                                        <span class="date">Sept 12, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="/#workshops">iOS Demo</a>
-                                        <span class="date">Sept 19, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="/#workshops">Node JS Crashcourse</a>
-                                        <span class="date">Sept 26-27, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="/#workshops">iOS Crashcourse</a>
-                                        <span class="date">Sept 26-27, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="/#workshops">8-Week Node JS Course</a>
-                                        <span class="date">Oct 06, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="/#workshops">8-Week iOS Course</a>
-                                        <span class="date">Oct 05, 2015</span>
-                                    </li>
-									
-                                </ul>
+                            <textarea ng-model="project.description" rows="6" placeholder="Description"></textarea>
+
+                            <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadImage($files)">
+                                <img style="width:72px;border:1px solid #ddd" ng-show="project.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
+                                Drag &amp; drop image
                             </div>
-                            <!--end of widget-->
-							
-							
+
+                            <br />
+                            <h4>Units</h4>
+
+
+                            <button ng-click="createProject()" style="background:#fff;border-radius:22px" class="btn btn-large">Create Project</button>
+                            
+
                         </div>
-                        <!--end of sidebar-->
+
+                        
                     </div>
                     <!--end of container row-->
                 </div>
                 <!--end of container-->
             </section>
-			
-			{{>footer}}
+            
+            {{>footer}}
 
 
         </div>
-		
-		{{>scripts}}
-		
+        
+        
     </body>
 </html>
