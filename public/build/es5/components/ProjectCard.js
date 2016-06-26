@@ -36,7 +36,7 @@ var ProjectCard = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "entry-image" },
-							React.createElement("img", { style: { background: "#fff", border: "1px solid #ddd" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=460", alt: "FullStack 360" })
+							React.createElement("img", { style: { background: "#fff", border: "1px solid #ddd" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=460", alt: "Velocity 360" })
 						),
 						React.createElement(
 							"div",

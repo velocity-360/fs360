@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Home from './containers/Home'
 import Landing from './containers/Landing'
+import ProjectLanding from './containers/ProjectLanding'
 import Courses from './containers/Courses'
 import Events from './containers/Events'
 import Feed from './containers/Feed'
@@ -29,8 +30,8 @@ class Main extends Component {
 			case 'home':
 				return page = <Landing headers={this.props.headers} />
 
-			case 'ios':
-				return page = <Landing headers={this.props.headers} />
+			case 'landing':
+				return page = <ProjectLanding />
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />

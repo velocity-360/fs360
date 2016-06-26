@@ -11,7 +11,7 @@ class ProjectCard extends Component {
 			<div className="col-md-4 col-sm-6 bottommargin">
 				<div className="ipost clearfix" style={{background:'#f9f9f9', border:'1px solid #ddd', padding:16}}>
 					<div className="entry-image">
-						<img style={{background:'#fff', border:'1px solid #ddd'}} className="image_fade" src={ 'https://media-service.appspot.com/site/images/'+this.props.project.image+'?crop=460' } alt="FullStack 360" />
+						<img style={{background:'#fff', border:'1px solid #ddd'}} className="image_fade" src={ 'https://media-service.appspot.com/site/images/'+this.props.project.image+'?crop=460' } alt="Velocity 360" />
 					</div>
 					<div className="entry-title">
 						<h3>{ this.props.project.title }</h3>

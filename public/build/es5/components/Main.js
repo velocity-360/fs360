@@ -20,6 +20,8 @@ var Home = _interopRequire(require("./containers/Home"));
 
 var Landing = _interopRequire(require("./containers/Landing"));
 
+var ProjectLanding = _interopRequire(require("./containers/ProjectLanding"));
+
 var Courses = _interopRequire(require("./containers/Courses"));
 
 var Events = _interopRequire(require("./containers/Events"));
@@ -58,8 +60,8 @@ var Main = (function (Component) {
 					case "home":
 						return page = React.createElement(Landing, { headers: this.props.headers });
 
-					case "ios":
-						return page = React.createElement(Landing, { headers: this.props.headers });
+					case "landing":
+						return page = React.createElement(ProjectLanding, null);
 
 					case "course":
 						return page = React.createElement(Course, { slug: this.props.slug });
