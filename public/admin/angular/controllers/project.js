@@ -1,13 +1,14 @@
 var app = angular.module('ProjectModule', ['ngSanitize']);
 
 app.controller('ProjectController', ['$scope', 'generalService', 'accountService', 'uploadService', 'RestService', function($scope, generalService, accountService, uploadService, RestService) {
-	$scope['generalService'] = generalService;
-	$scope.profile = null;
-	$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0};
+	$scope['generalService'] = generalService
+	$scope.profile = null
+	$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0}
+	$scope.projects = null
 	$scope.project = {
 		id: null,
 		image: ''
-	};
+	}
 
 	
 	$scope.init = function(){
@@ -15,12 +16,12 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 		RestService.query({resource:'project', id:null}, function(response){
 			if (response.confirmation != 'success'){
 				alert(response.message)
-				return;
+				return
 			}
 
 			console.log('ProjectController: '+JSON.stringify(response))
+			$scope.projects = response.projects
 		})
-
 
 		// RestService.query({resource:'course', id:request.identifier}, function(response){
 		// 	if (response.confirmation != 'success'){
@@ -32,6 +33,10 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 		// 	$scope.course = response.course;
 		// 	$scope.course['tagString'] = $scope.course.tags.toString();
 		// });
+	}
+
+	$scope.selectProject = function(project){
+		$scope.project = project
 	}
 
 	$scope.uploadImage = function(files){
@@ -132,8 +137,20 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			// if (completion != null)
 			// 	completion()
 		})
-
 	}
+
+	$scope.updateProject = function(){
+		processTagString()
+		RestService.put({resource:'project', id:$scope.project.id}, $scope.project, function(response){
+			if (response.confirmation != 'success'){
+				alert(response.message)
+				return
+			}
+
+			console.log('UPDATE Project: '+JSON.stringify(response))
+		})
+	}
+	
 
 	$scope.updateCourse = function(completion){
 		if ($scope.course.id == null)

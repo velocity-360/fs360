@@ -78,14 +78,31 @@
 
                         <div class="col-md-4 mb-xs-24">
                             <h3>Projects</h3>
-                            
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>Title</td>
+                                        <td>Price</td>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat="project in projects track by $index">
+                                        <td><a ng-click="selectProject(project)" href=""><% project.title %></a></td>
+                                        <td><% project.price %></td>
+                                    </tr>
+                                </tbody>
+
+                            </table>                            
                         </div>
 
 
 
 
                         <div class="col-md-8 mb-xs-24">
-                            <h3>Create Project</h3>
+                            <h3 ng-show="project.id == null">Create Project</h3>
+                            <h3 ng-show="project.id != null">Update Project</h3>
 
                             <input ng-model="project.title" type="text" placeholder="Title" class="form-control" />
                             <input ng-model="project.price" type="text" placeholder="Price" class="form-control mt24" />
@@ -106,8 +123,8 @@
                             <h4>Units</h4>
 
 
-                            <button ng-click="createProject()" style="background:#fff;border-radius:22px" class="btn btn-large">Create Project</button>
-                            
+                            <button ng-show="project.id == null" ng-click="createProject()" style="background:#fff;border-radius:22px" class="btn btn-large">Create Project</button>
+                            <button ng-show="project.id != null" ng-click="updateProject()" style="background:#fff;border-radius:22px" class="btn btn-large">Update Project</button>                            
 
                         </div>
 
