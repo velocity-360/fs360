@@ -52,7 +52,7 @@ var ProjectCard = (function (Component) {
 							{ style: { marginBottom: 6, marginTop: 9 } },
 							React.createElement(
 								"a",
-								{ id: "title", href: "/project/123" },
+								{ id: "title", href: "/project/" + this.props.project.slug },
 								this.props.project.title
 							)
 						),

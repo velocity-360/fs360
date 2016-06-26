@@ -46437,15 +46437,15 @@
 						_react2.default.createElement(
 							'h4',
 							null,
-							'Featured App'
+							'Featured'
 						),
-						_react2.default.createElement('img', { style: { width: 128, border: '1px solid #ddd' }, src: '/images/radius.png', alt: 'Velocity 360' }),
+						_react2.default.createElement('img', { style: { width: 128, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=260', alt: 'Velocity 360' }),
 						_react2.default.createElement(
 							'h3',
 							{ style: { marginBottom: 6, marginTop: 9 } },
 							_react2.default.createElement(
 								'a',
-								{ id: 'title', href: '/project/123' },
+								{ id: 'title', href: '/project/' + this.props.project.slug },
 								this.props.project.title
 							)
 						),
