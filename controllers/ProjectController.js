@@ -1,4 +1,5 @@
 var Project = require('../models/Project');
+var Helpers = require('../managers/Helpers');
 var mongoose = require('mongoose');
 
 
@@ -12,16 +13,6 @@ function convertToJson(projects){
     }
 	
 	return results;
-}
-
-function randomString(limit){
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i=0; i <limit; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
 }
 
 module.exports = {
@@ -68,18 +59,7 @@ module.exports = {
 	},
 
 	post: function(projectInfo, completion){
-		var parts = projectInfo.title.split(' ');
-
-		var slug = '';
-		for (var i=0; i<parts.length; i++){
-			var word = parts[i];
-			slug += word;
-			if (i != parts.length-1)
-				slug += '-';
-		}
-
-		slug = slug.replace('?', '');
-		projectInfo['slug'] = slug;
+		projectInfo['slug'] = Helpers.slugString(projectInfo.title)
 		Project.create(projectInfo, function(err, project){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
