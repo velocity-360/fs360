@@ -20,7 +20,7 @@ describe("ProjectCard", function () {
 						description: "Project description",
 						tags: ["tag 1", "tag 2"],
 						slug: "first-project",
-						img: "1234"
+						image: "1234"
 			};
 
 			var component = mount(React.createElement(ProjectCard, { project: project }));
@@ -43,6 +43,6 @@ describe("ProjectCard", function () {
 
 			it("shows image of project", function () {
 						expect(component.find("img")).to.have.length(1);
-						expect(component.find("img")).to.have.attr("src").equal("/project/first-project");
+						expect(component.find("img")).to.have.attr("src").equal("https://media-service.appspot.com/site/images/1234?crop=260");
 			});
 });
