@@ -45801,6 +45801,10 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
+	var _ProjectCard = __webpack_require__(600);
+	
+	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
+	
 	var _Nav = __webpack_require__(461);
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -46098,124 +46102,7 @@
 							_react2.default.createElement(
 								'div',
 								{ className: 'container clearfix', style: { paddingTop: 64 } },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'widget clearfix', style: { borderRadius: 2, padding: 24, textAlign: 'center', border: '1px solid #ddd', background: '#F9FCFF' } },
-										_react2.default.createElement(
-											'h4',
-											null,
-											'Featured App'
-										),
-										_react2.default.createElement('img', { style: { width: 128, border: '1px solid #ddd' }, src: '/images/radius.png', alt: 'Velocity 360' }),
-										_react2.default.createElement(
-											'h3',
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											_react2.default.createElement(
-												'a',
-												{ href: '/project/123' },
-												'Radius'
-											)
-										),
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'strong',
-											null,
-											'iOS App'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'p',
-											null,
-											'Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'tagcloud' },
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'iOS'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'Node JS'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'REST API'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'JavaScript'
-											)
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'widget clearfix', style: { borderRadius: 2, padding: 24, textAlign: 'center', border: '1px solid #ddd', background: '#F9FCFF' } },
-										_react2.default.createElement(
-											'h4',
-											null,
-											'Featured App'
-										),
-										_react2.default.createElement('img', { style: { width: 128, border: '1px solid #ddd' }, src: '/images/radius.png', alt: 'Velocity 360' }),
-										_react2.default.createElement(
-											'h3',
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											_react2.default.createElement(
-												'a',
-												{ href: '/project/123' },
-												'Radius'
-											)
-										),
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'strong',
-											null,
-											'iOS App'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'p',
-											null,
-											'Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area.'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'tagcloud' },
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'iOS'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'Node JS'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'REST API'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'JavaScript'
-											)
-										)
-									)
-								),
+								_react2.default.createElement(_ProjectCard2.default, null),
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_one_third bottommargin-sm col_last' },
@@ -65414,7 +65301,7 @@
 /* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -65444,42 +65331,53 @@
 		}
 	
 		_createClass(ProjectCard, [{
-			key: "render",
+			key: 'render',
 			value: function render() {
+				var tags = this.props.project.tags.map(function (tag, i) {
+					return _react2.default.createElement(
+						'a',
+						{ key: tag, style: { background: '#fff' }, href: '#' },
+						tag
+					);
+				});
+	
 				return _react2.default.createElement(
-					"div",
-					{ className: "col-md-4 col-sm-6 bottommargin" },
+					'div',
+					{ className: 'col_one_third bottommargin-sm' },
 					_react2.default.createElement(
-						"div",
-						{ className: "ipost clearfix", style: { background: '#f9f9f9', border: '1px solid #ddd', padding: 16 } },
+						'div',
+						{ className: 'widget clearfix', style: { borderRadius: 2, padding: 24, textAlign: 'center', border: '1px solid #ddd', background: '#F9FCFF' } },
 						_react2.default.createElement(
-							"div",
-							{ className: "entry-image" },
-							_react2.default.createElement("img", { style: { background: '#fff', border: '1px solid #ddd' }, className: "image_fade", src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=460', alt: "Velocity 360" })
+							'h4',
+							null,
+							'Featured App'
 						),
+						_react2.default.createElement('img', { style: { width: 128, border: '1px solid #ddd' }, src: '/images/radius.png', alt: 'Velocity 360' }),
 						_react2.default.createElement(
-							"div",
-							{ className: "entry-title" },
+							'h3',
+							{ style: { marginBottom: 6, marginTop: 9 } },
 							_react2.default.createElement(
-								"h3",
-								null,
+								'a',
+								{ id: 'title', href: '/project/123' },
 								this.props.project.title
-							),
-							_react2.default.createElement("hr", null)
-						),
-						_react2.default.createElement(
-							"div",
-							{ className: "entry-content" },
-							_react2.default.createElement(
-								"p",
-								null,
-								this.props.project.description
 							)
 						),
+						_react2.default.createElement('hr', null),
 						_react2.default.createElement(
-							"a",
-							{ style: { marginTop: 16, marginBottom: 12 }, href: '/project/' + this.props.project.slug, className: "button button-border button-dark button-rounded noleftmargin" },
-							"View"
+							'strong',
+							null,
+							'iOS App'
+						),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'p',
+							{ id: 'description' },
+							this.props.project.description
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'tagcloud' },
+							tags
 						)
 					)
 				);

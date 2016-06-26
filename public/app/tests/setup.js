@@ -1,6 +1,12 @@
+// https://github.com/producthunt/chai-enzyme
+
 import React from 'react'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
 import jsdom from 'jsdom'
+import chaiEnzyme from 'chai-enzyme'
+
+chai.use(chaiEnzyme()) // Note the invocation at the end
+
 
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
 const win = doc.defaultView

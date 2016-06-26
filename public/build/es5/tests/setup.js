@@ -2,10 +2,21 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+// https://github.com/producthunt/chai-enzyme
+
 var React = _interopRequire(require("react"));
 
-var expect = require("chai").expect;
+var _chai = require("chai");
+
+var chai = _interopRequire(_chai);
+
+var expect = _chai.expect;
 var jsdom = _interopRequire(require("jsdom"));
+
+var chaiEnzyme = _interopRequire(require("chai-enzyme"));
+
+chai.use(chaiEnzyme()); // Note the invocation at the end
+
 
 var doc = jsdom.jsdom("<!doctype html><html><body></body></html>");
 var win = doc.defaultView;

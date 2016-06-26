@@ -23,6 +23,8 @@ var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
 var connect = require("react-redux").connect;
+var ProjectCard = _interopRequire(require("../../components/ProjectCard"));
+
 var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -315,124 +317,7 @@ var Landing = (function (Component) {
 							React.createElement(
 								"div",
 								{ className: "container clearfix", style: { paddingTop: 64 } },
-								React.createElement(
-									"div",
-									{ className: "col_one_third bottommargin-sm" },
-									React.createElement(
-										"div",
-										{ className: "widget clearfix", style: { borderRadius: 2, padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#F9FCFF" } },
-										React.createElement(
-											"h4",
-											null,
-											"Featured App"
-										),
-										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
-										React.createElement(
-											"h3",
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											React.createElement(
-												"a",
-												{ href: "/project/123" },
-												"Radius"
-											)
-										),
-										React.createElement("hr", null),
-										React.createElement(
-											"strong",
-											null,
-											"iOS App"
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"p",
-											null,
-											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area."
-										),
-										React.createElement(
-											"div",
-											{ className: "tagcloud" },
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"iOS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"Node JS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"REST API"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"JavaScript"
-											)
-										)
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "col_one_third bottommargin-sm" },
-									React.createElement(
-										"div",
-										{ className: "widget clearfix", style: { borderRadius: 2, padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#F9FCFF" } },
-										React.createElement(
-											"h4",
-											null,
-											"Featured App"
-										),
-										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
-										React.createElement(
-											"h3",
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											React.createElement(
-												"a",
-												{ href: "/project/123" },
-												"Radius"
-											)
-										),
-										React.createElement("hr", null),
-										React.createElement(
-											"strong",
-											null,
-											"iOS App"
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"p",
-											null,
-											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area."
-										),
-										React.createElement(
-											"div",
-											{ className: "tagcloud" },
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"iOS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"Node JS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"REST API"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"JavaScript"
-											)
-										)
-									)
-								),
+								React.createElement(ProjectCard, null),
 								React.createElement(
 									"div",
 									{ className: "col_one_third bottommargin-sm col_last" },

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
+import ProjectCard from '../../components/ProjectCard'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import store from '../../stores/store'
@@ -218,57 +219,7 @@ class Landing extends Component {
 		                </div>
 
 						<div className="container clearfix" style={{paddingTop:64}}>
-							<div className="col_one_third bottommargin-sm">
-								<div className="widget clearfix" style={{borderRadius:2, padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
-									<h4>Featured App</h4>
-									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
-									<h3 style={{marginBottom:6, marginTop:9}}>
-										<a href="/project/123">Radius</a>
-									</h3>
-									<hr />
-									<strong>iOS App</strong>
-									<br />
-									<p>
-										Radius is a job-searching app aimed at part time workers, students, and 
-										short term service providers like dog-walkers or furniture movers. It utilizes 
-										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
-										in the area.
-									</p>
-
-									<div className="tagcloud">
-										<a style={{background:'#fff'}} href="#">iOS</a>
-										<a style={{background:'#fff'}} href="#">Node JS</a>
-										<a style={{background:'#fff'}} href="#">REST API</a>
-										<a style={{background:'#fff'}} href="#">JavaScript</a>
-									</div>
-								</div>
-							</div>
-
-							<div className="col_one_third bottommargin-sm">
-								<div className="widget clearfix" style={{borderRadius:2, padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
-									<h4>Featured App</h4>
-									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
-									<h3 style={{marginBottom:6, marginTop:9}}>
-										<a href="/project/123">Radius</a>
-									</h3>
-									<hr />
-									<strong>iOS App</strong>
-									<br />
-									<p>
-										Radius is a job-searching app aimed at part time workers, students, and 
-										short term service providers like dog-walkers or furniture movers. It utilizes 
-										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
-										in the area.
-									</p>
-
-									<div className="tagcloud">
-										<a style={{background:'#fff'}} href="#">iOS</a>
-										<a style={{background:'#fff'}} href="#">Node JS</a>
-										<a style={{background:'#fff'}} href="#">REST API</a>
-										<a style={{background:'#fff'}} href="#">JavaScript</a>
-									</div>
-								</div>
-							</div>
+							<ProjectCard />
 
 							<div className="col_one_third bottommargin-sm col_last">
 								<div className="widget clearfix" style={{borderRadius:2, padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>

@@ -7,20 +7,27 @@ class ProjectCard extends Component {
 	}
 
 	render(){
+		var tags = this.props.project.tags.map(function(tag, i){
+			return <a key={tag} style={{background:'#fff'}} href="#">{tag}</a>
+
+		})
+
 		return (
-			<div className="col-md-4 col-sm-6 bottommargin">
-				<div className="ipost clearfix" style={{background:'#f9f9f9', border:'1px solid #ddd', padding:16}}>
-					<div className="entry-image">
-						<img style={{background:'#fff', border:'1px solid #ddd'}} className="image_fade" src={ 'https://media-service.appspot.com/site/images/'+this.props.project.image+'?crop=460' } alt="Velocity 360" />
+			<div className="col_one_third bottommargin-sm">
+				<div className="widget clearfix" style={{borderRadius:2, padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
+					<h4>Featured App</h4>
+					<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
+					<h3 style={{marginBottom:6, marginTop:9}}>
+						<a id="title" href="/project/123">{this.props.project.title}</a>
+					</h3>
+					<hr />
+					<strong>iOS App</strong>
+					<br />
+					<p id="description">{this.props.project.description}</p>
+
+					<div className="tagcloud">
+						{tags}
 					</div>
-					<div className="entry-title">
-						<h3>{ this.props.project.title }</h3>
-						<hr />
-					</div>
-					<div className="entry-content">
-						<p>{ this.props.project.description }</p>
-					</div>
-					<a style={{marginTop:16, marginBottom:12}} href={'/project/'+this.props.project.slug} className="button button-border button-dark button-rounded noleftmargin">View</a>												
 				</div>
 			</div>
 

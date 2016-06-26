@@ -27,40 +27,51 @@ var ProjectCard = (function (Component) {
 	_prototypeProperties(ProjectCard, null, {
 		render: {
 			value: function render() {
+				var tags = this.props.project.tags.map(function (tag, i) {
+					return React.createElement(
+						"a",
+						{ key: tag, style: { background: "#fff" }, href: "#" },
+						tag
+					);
+				});
+
 				return React.createElement(
 					"div",
-					{ className: "col-md-4 col-sm-6 bottommargin" },
+					{ className: "col_one_third bottommargin-sm" },
 					React.createElement(
 						"div",
-						{ className: "ipost clearfix", style: { background: "#f9f9f9", border: "1px solid #ddd", padding: 16 } },
+						{ className: "widget clearfix", style: { borderRadius: 2, padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#F9FCFF" } },
 						React.createElement(
-							"div",
-							{ className: "entry-image" },
-							React.createElement("img", { style: { background: "#fff", border: "1px solid #ddd" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=460", alt: "Velocity 360" })
+							"h4",
+							null,
+							"Featured App"
 						),
+						React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
 						React.createElement(
-							"div",
-							{ className: "entry-title" },
+							"h3",
+							{ style: { marginBottom: 6, marginTop: 9 } },
 							React.createElement(
-								"h3",
-								null,
+								"a",
+								{ id: "title", href: "/project/123" },
 								this.props.project.title
-							),
-							React.createElement("hr", null)
-						),
-						React.createElement(
-							"div",
-							{ className: "entry-content" },
-							React.createElement(
-								"p",
-								null,
-								this.props.project.description
 							)
 						),
+						React.createElement("hr", null),
 						React.createElement(
-							"a",
-							{ style: { marginTop: 16, marginBottom: 12 }, href: "/project/" + this.props.project.slug, className: "button button-border button-dark button-rounded noleftmargin" },
-							"View"
+							"strong",
+							null,
+							"iOS App"
+						),
+						React.createElement("br", null),
+						React.createElement(
+							"p",
+							{ id: "description" },
+							this.props.project.description
+						),
+						React.createElement(
+							"div",
+							{ className: "tagcloud" },
+							tags
 						)
 					)
 				);

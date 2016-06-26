@@ -52,6 +52,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.0",
     "enzyme": "^2.3.0",
     "gulp": "^3.9.1",
     "gulp-6to5": "^3.0.0",
