@@ -45809,14 +45809,6 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _EventCard = __webpack_require__(471);
-	
-	var _EventCard2 = _interopRequireDefault(_EventCard);
-	
-	var _Testimonial = __webpack_require__(472);
-	
-	var _Testimonial2 = _interopRequireDefault(_Testimonial);
-	
 	var _store = __webpack_require__(194);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -45851,11 +45843,9 @@
 	
 			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
 			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
-			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
 			_this2.openModal = _this2.openModal.bind(_this2);
 			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
 			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.register = _this2.register.bind(_this2);
 			_this2.validate = _this2.validate.bind(_this2);
 			_this2.state = {
@@ -45866,7 +45856,7 @@
 					name: '',
 					email: '',
 					phone: '',
-					course: 'Fundamentals Bootcamp',
+					course: '',
 					referral: ''
 				}
 			};
@@ -45963,38 +45953,6 @@
 				});
 			}
 		}, {
-			key: 'submitInfoRequest',
-			value: function submitInfoRequest(event) {
-				event.preventDefault();
-	
-				var missingField = this.validate(this.state.visitor, false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var pkg = Object.assign({}, this.state.visitor);
-				pkg['headers'] = this.props.headers;
-				var _this = this;
-				_api2.default.handlePost('/api/info', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
 			key: 'validate',
 			value: function validate(profile, withPassword) {
 				if (profile.name.length == 0) return 'Name';
@@ -46006,42 +45964,6 @@
 				if (profile.password.length == 0) return 'Password';
 	
 				return null; // this is successful
-			}
-		}, {
-			key: 'syllabusRequest',
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-	
-				var missingField = this.validate(false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				var pkg = {
-					course: this.state.selectedCourse,
-					visitor: this.props.currentUser,
-					headers: this.props.headers
-				};
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/api/syllabus', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
 			}
 		}, {
 			key: 'openModal',
@@ -46480,41 +46402,6 @@
 										'Join'
 									)
 								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Request Info'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
-							),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.submitInfoRequest, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
 							)
 						)
 					),

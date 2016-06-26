@@ -4,8 +4,6 @@ import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
-import EventCard from '../../components/EventCard'
-import Testimonial from '../../components/Testimonial'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
@@ -17,11 +15,9 @@ class Landing extends Component {
 		super(props, context)
 		this.updateVisitor = this.updateVisitor.bind(this)
 		this.updateUserRegistration = this.updateUserRegistration.bind(this)
-		this.submitInfoRequest = this.submitInfoRequest.bind(this)
 		this.openModal = this.openModal.bind(this)
 		this.showRegistrationForm = this.showRegistrationForm.bind(this)
 		this.closeModal = this.closeModal.bind(this)
-		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.register = this.register.bind(this)
 		this.validate = this.validate.bind(this)
 		this.state = {
@@ -32,7 +28,7 @@ class Landing extends Component {
 				name: '',
 				email: '',
 				phone: '',
-				course: 'Fundamentals Bootcamp',
+				course: '',
 				referral: ''
 			}
 		}
@@ -126,37 +122,6 @@ class Landing extends Component {
 		});
 	}
 
-	submitInfoRequest(event){
-		event.preventDefault()
-
-		var missingField = this.validate(this.state.visitor, false);
-		if (missingField != null){
-			alert('Please enter your '+missingField);
-			return
-		}
-
-		this.setState({
-			showModal: false,
-			showLoader: true
-		});
-
-		var pkg = Object.assign({}, this.state.visitor)
-		pkg['headers'] = this.props.headers
-		var _this = this
-		api.handlePost('/api/info', pkg, function(err, response){
-			_this.setState({
-				showLoader: false
-			});
-
-			if (err){
-				alert(err.message)
-				return
-			}
-
-			alert(response.message)
-		});
-	}
-
 
 	validate(profile, withPassword){
 		if (profile.name.length == 0)
@@ -173,43 +138,6 @@ class Landing extends Component {
 
 		return null // this is successful
 	}
-
-
-	syllabusRequest(event){
-		event.preventDefault()
-
-		var missingField = this.validate(false);
-		if (missingField != null){
-			alert('Please enter your '+missingField);
-			return
-		}
-
-		var pkg = {
-			course: this.state.selectedCourse,
-			visitor: this.props.currentUser,
-			headers: this.props.headers
-		}
-
-		this.setState({
-			showModal: false,
-			showLoader: true
-		});
-
-		var _this = this
-		api.handlePost('/api/syllabus', pkg, function(err, response){
-			_this.setState({
-				showLoader: false
-			});
-
-			if (err){
-				alert(err.message)
-				return
-			}
-
-			alert(response.message)
-		})
-	}
-
 
 	openModal(event){
 		event.preventDefault()
@@ -414,23 +342,6 @@ class Landing extends Component {
 						</div>
 					</div>
 				</section>				
-
-		        <Modal show={this.state.showModal} onHide={this.closeModal}>
-			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>Request Info</h2>
-			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<div style={{textAlign:'center'}}>
-				        	<img style={{width:128, borderRadius:64, border:'1px solid #ddd', marginBottom:24}} src="/images/logo_round_green_260.png" />
-			        	</div>
-			        	<input onChange={this.updateVisitor} value={this.state.visitor.name} id="name" className="form-control" type="text" placeholder="Name" /><br />
-			        	<input onChange={this.updateVisitor} value={this.state.visitor.email} id="email" className="form-control" type="text" placeholder="Email" /><br />
-			        </Modal.Body>
-
-			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.submitInfoRequest} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
-			        </Modal.Footer>
-		        </Modal>
 
 		        <Modal show={this.state.showRegistration} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

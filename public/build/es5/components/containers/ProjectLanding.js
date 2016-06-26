@@ -27,10 +27,6 @@ var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var EventCard = _interopRequire(require("../../components/EventCard"));
-
-var Testimonial = _interopRequire(require("../../components/Testimonial"));
-
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -46,11 +42,9 @@ var Landing = (function (Component) {
 		_get(Object.getPrototypeOf(Landing.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
-		this.submitInfoRequest = this.submitInfoRequest.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.showRegistrationForm = this.showRegistrationForm.bind(this);
 		this.closeModal = this.closeModal.bind(this);
-		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.register = this.register.bind(this);
 		this.validate = this.validate.bind(this);
 		this.state = {
@@ -61,7 +55,7 @@ var Landing = (function (Component) {
 				name: "",
 				email: "",
 				phone: "",
-				course: "Fundamentals Bootcamp",
+				course: "",
 				referral: ""
 			}
 		};
@@ -168,40 +162,6 @@ var Landing = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		submitInfoRequest: {
-			value: function submitInfoRequest(event) {
-				event.preventDefault();
-
-				var missingField = this.validate(this.state.visitor, false);
-				if (missingField != null) {
-					alert("Please enter your " + missingField);
-					return;
-				}
-
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-
-				var pkg = Object.assign({}, this.state.visitor);
-				pkg.headers = this.props.headers;
-				var _this = this;
-				api.handlePost("/api/info", pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		validate: {
 			value: function validate(profile, withPassword) {
 				if (profile.name.length == 0) {
@@ -214,44 +174,6 @@ var Landing = (function (Component) {
 					return "Password";
 				}return null // this is successful
 				;
-			},
-			writable: true,
-			configurable: true
-		},
-		syllabusRequest: {
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-
-				var missingField = this.validate(false);
-				if (missingField != null) {
-					alert("Please enter your " + missingField);
-					return;
-				}
-
-				var pkg = {
-					course: this.state.selectedCourse,
-					visitor: this.props.currentUser,
-					headers: this.props.headers
-				};
-
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-
-				var _this = this;
-				api.handlePost("/api/syllabus", pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
 			},
 			writable: true,
 			configurable: true
@@ -697,41 +619,6 @@ var Landing = (function (Component) {
 										"Join"
 									)
 								)
-							)
-						)
-					),
-					React.createElement(
-						Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h2",
-								null,
-								"Request Info"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement(
-								"div",
-								{ style: { textAlign: "center" } },
-								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
-							),
-							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", className: "form-control", type: "text", placeholder: "Name" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
-							React.createElement("br", null)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.submitInfoRequest, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Submit"
 							)
 						)
 					),
