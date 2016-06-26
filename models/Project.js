@@ -8,10 +8,9 @@ var ProjectSchema = new mongoose.Schema({
 	images: {type: Array, default:[]},
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	repo: {type:String, lowercase:true, trim:true, default:''},
-	link: {type:String, trim:true, lowercase:true, default:''},
+	link: {type:String, trim:true, lowercase:true, default:''}, // app store, website, etc
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	tags: {type: Array, default:[]}, // tech used
-	milestones: {type: Array, default:[]},
 	timestamp: {type:Date, default:Date.now},
 });
 
@@ -27,7 +26,6 @@ ProjectSchema.methods.summary = function() {
 		'repo':this.repo,
 		'link':this.link,
 		'tags':this.tags,
-		'milestones':this.milestones,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
