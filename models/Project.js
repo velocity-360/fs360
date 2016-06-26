@@ -12,6 +12,7 @@ var ProjectSchema = new mongoose.Schema({
 	images: {type: Array, default:[]},
 	tags: {type: Array, default:[]}, // tech used
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
+	price: {type: Number, default: 0}, // price in usd
 	timestamp: {type:Date, default:Date.now},
 })
 
@@ -28,6 +29,7 @@ ProjectSchema.methods.summary = function() {
 		'link':this.link,
 		'tags':this.tags,
 		'units':this.units,
+		'price':this.price,
 		'timestamp':this.timestamp,
 		'id':this._id
 	}
