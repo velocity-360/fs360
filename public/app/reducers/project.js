@@ -1,10 +1,10 @@
-var constants = require('../constants/constants');
+var constants = require('../constants/constants')
 
 var initialState = {
 	projects: {
 
 	},
-	projectsArray: null,
+	projectsArray: [],
 	emptyProject: {
 		title: '',
 		image: '',
@@ -14,7 +14,7 @@ var initialState = {
 			name: ''
 		}		
 	}
-};
+}
 
 
 /* A reducer is a function that takes the current state and an action, and 
@@ -30,25 +30,25 @@ export default function(state = initialState, action){
 			var project = action.project
 			newState.projects[project.id] = project
 			newState.projectsArray.unshift(project)
-			return newState;
+			return newState
 
 		case constants.PROJECTS_RECIEVED:
-			var newState = Object.assign({}, state);
+			var newState = Object.assign({}, state)
 
 			var c = action.projects
-			newState['projectsArray'] = c;
+			newState['projectsArray'] = c
 			var projectsMap = {}
 			for (var i=0; i<c.length; i++){
-				var project = c[i];
-				projectsMap[project.id] = project;
+				var project = c[i]
+				projectsMap[project.id] = project
 			}
 
-			newState['projects'] = projectsMap;
-//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
-			return newState;
+			newState['projects'] = projectsMap
+//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState))
+			return newState
 
 		default:
-			return state;
+			return state
 	}
 
 }

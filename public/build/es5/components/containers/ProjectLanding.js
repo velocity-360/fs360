@@ -69,6 +69,15 @@ var Landing = (function (Component) {
 		componentDidMount: {
 			value: function componentDidMount() {
 				var _this = this;
+				api.handleGet("/api/project", null, function (err, response) {
+					if (err) {
+						return;
+					}
+
+					//			console.log(JSON.stringify(response))
+					store.dispatch(actions.projectsRecieved(response.projects));
+				});
+
 				stripe.initialize(function (token) {
 					_this.setState({ showLoader: true });
 					api.submitStripeToken(token, function () {
@@ -218,6 +227,10 @@ var Landing = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var projectList = this.props.projects.map(function (project, i) {
+					return React.createElement(ProjectCard, { key: project.id, project: project });
+				});
+
 				return React.createElement(
 					"div",
 					null,
@@ -317,7 +330,7 @@ var Landing = (function (Component) {
 							React.createElement(
 								"div",
 								{ className: "container clearfix", style: { paddingTop: 64 } },
-								React.createElement(ProjectCard, null),
+								projectList,
 								React.createElement(
 									"div",
 									{ className: "col_one_third bottommargin-sm col_last" },
@@ -582,6 +595,7 @@ var Landing = (function (Component) {
 var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
+		projects: state.projectReducer.projectsArray,
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };

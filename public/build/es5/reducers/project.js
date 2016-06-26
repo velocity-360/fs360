@@ -4,7 +4,7 @@ var constants = require("../constants/constants");
 
 var initialState = {
 	projects: {},
-	projectsArray: null,
+	projectsArray: [],
 	emptyProject: {
 		title: "",
 		image: "",
@@ -45,7 +45,7 @@ module.exports = function (_x, action) {
 			}
 
 			newState.projects = projectsMap;
-			//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+			//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState))
 			return newState;
 
 		default:

@@ -37,6 +37,15 @@ class Landing extends Component {
 
 	componentDidMount(){
 		var _this = this
+		api.handleGet('/api/project', null, function(err, response){
+			if (err){
+				return
+			}
+
+//			console.log(JSON.stringify(response))
+			store.dispatch(actions.projectsRecieved(response.projects))
+		})
+
 		stripe.initialize(function(token){
 			_this.setState({showLoader: true})
 			api.submitStripeToken(token, function(){
@@ -170,6 +179,11 @@ class Landing extends Component {
 
 	render(){
 
+		var projectList = this.props.projects.map(function(project, i){
+			return <ProjectCard key={project.id} project={project} />
+
+		})
+
 		return (
 			<div>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
@@ -219,7 +233,8 @@ class Landing extends Component {
 		                </div>
 
 						<div className="container clearfix" style={{paddingTop:64}}>
-							<ProjectCard />
+
+							{ projectList }
 
 							<div className="col_one_third bottommargin-sm col_last">
 								<div className="widget clearfix" style={{borderRadius:2, padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
@@ -334,6 +349,7 @@ class Landing extends Component {
 const stateToProps = function(state) {
     return {
         currentUser: state.profileReducer.currentUser,
+        projects: state.projectReducer.projectsArray,
         loaderOptions: state.staticReducer.loaderConfig
     }
 }
