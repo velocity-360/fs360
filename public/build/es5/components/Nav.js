@@ -110,7 +110,7 @@ var Nav = (function (Component) {
 						{ onClick: this.openModal, href: "#" },
 						React.createElement(
 							"div",
-							{ style: { padding: 4 } },
+							{ className: "login", style: { padding: 4 } },
 							"Login"
 						)
 					)
@@ -122,7 +122,7 @@ var Nav = (function (Component) {
 						{ href: "/account" },
 						React.createElement(
 							"div",
-							{ style: { padding: 4 } },
+							{ className: "user", style: { padding: 4 } },
 							this.props.currentUser.firstName
 						)
 					)
@@ -290,7 +290,7 @@ var Nav = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
 
 	return {
 		currentUser: state.profileReducer.currentUser

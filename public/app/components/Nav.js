@@ -62,7 +62,7 @@ class Nav extends Component {
 
 	render(){
 
-		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
+		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
 
 		return (
 
@@ -114,7 +114,7 @@ class Nav extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
 
     return {
         currentUser: state.profileReducer.currentUser
