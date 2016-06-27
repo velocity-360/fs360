@@ -1,7 +1,7 @@
 import superagent from 'superagent'
-//import fetch from 'isomorphic-fetch'
 import actions from '../actions/actions'
 import store from '../stores/store'
+//import fetch from 'isomorphic-fetch'
 
 export default {
 
@@ -11,21 +11,19 @@ export default {
 		.query(params)
 		.set('Accept', 'application/json')
 		.end(function(err, res){
+			if (completion == null)
+				return
+
 			if (err){ 
-				if (completion != null)
-					completion(err, null)
+				completion(err, null)
 				return
 			}
 
-			if (completion != null){
-				if (res.body.confirmation == 'success'){
-		    		completion(null, res.body)
-				}
-				else {
-		    		completion({message:res.body.message}, null)
-				}
-			}
-		});
+			if (res.body.confirmation == 'success')
+	    		completion(null, res.body)
+			else 
+	    		completion({message:res.body.message}, null)
+		})
 
 		// fetch(endpoint, {
 		//     method: 'GET',
@@ -57,15 +55,19 @@ export default {
 		.send(body)
 		.set('Accept', 'application/json')
 		.end(function(err, res){
+			if (completion == null)
+				return
+
 			if (err){ 
-				if (completion != null)
-					completion(err, null)
+				completion(err, null)
+				return
 			}
-			else { 
-				if (completion != null)
-		    		completion(null, res.body)
-			}
-		});
+			
+			if (res.body.confirmation == 'success')
+	    		completion(null, res.body)
+			else 
+	    		completion({message:res.body.message}, null)
+		})
 	},
 
 	handlePut: function(endpoint, body, completion){
@@ -74,15 +76,19 @@ export default {
 		.send(body)
 		.set('Accept', 'application/json')
 		.end(function(err, res){
+			if (completion == null)
+				return
+
 			if (err){ 
-				if (completion != null)
-					completion(err, null)
+				completion(err, null)
+				return
 			}
-			else { 
-				if (completion != null)
-		    		completion(null, res.body)
-			}
-		});
+			
+			if (res.body.confirmation == 'success')
+	    		completion(null, res.body)
+			else 
+	    		completion({message:res.body.message}, null)
+		})
 	},
 
 
