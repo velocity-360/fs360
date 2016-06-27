@@ -37,8 +37,6 @@ class Login extends Component {
 		event.preventDefault()
 //		console.log('LOGIN: '+JSON.stringify(this.state.credentials))
 
-//		this.props.hide()
-
 		this.setState({showLoader: true})
 		var _this = this
 		api.handlePost('/account/login', this.state.credentials, function(err, response){

@@ -22841,7 +22841,7 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+		//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 	
 		return {};
 	};
@@ -65633,8 +65633,6 @@
 			value: function login(event) {
 				event.preventDefault();
 				//		console.log('LOGIN: '+JSON.stringify(this.state.credentials))
-	
-				//		this.props.hide()
 	
 				this.setState({ showLoader: true });
 				var _this = this;

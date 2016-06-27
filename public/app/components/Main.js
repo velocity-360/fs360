@@ -65,7 +65,6 @@ class Main extends Component {
 		}
 
 		return (
-
 			<div>
 				{page}
 			</div>
@@ -75,7 +74,7 @@ class Main extends Component {
 } 
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
+//	console.log('STATE TO PROPS: '+JSON.stringify(state))
 
     return {
 
