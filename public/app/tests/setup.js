@@ -8,7 +8,7 @@ import chaiEnzyme from 'chai-enzyme'
 chai.use(chaiEnzyme()) // Note the invocation at the end
 
 
-const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
+const doc = jsdom.jsdom('<!doctype html><html><head></head><body></body></html>')
 const win = doc.defaultView
 
 global.document = doc

@@ -8,6 +8,13 @@ module.exports = {
 		return str.substring(0, limit) + "...";
 	},
 
+	capitalize: function (str) {
+		if (str.length == 1) return str.toUpperCase();
+
+		var firstLetter = str.substring(0, 1);
+		return firstLetter.toUpperCase() + str.substring(1);
+	},
+
 	convertToHtml: function (str) {
 		var find = "\n";
 		var re = new RegExp(find, "g");

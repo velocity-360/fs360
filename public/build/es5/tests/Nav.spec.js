@@ -2,6 +2,8 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+// https://github.com/producthunt/chai-enzyme
+
 var Nav = _interopRequire(require("../components/Nav"));
 
 var _enzyme = require("enzyme");

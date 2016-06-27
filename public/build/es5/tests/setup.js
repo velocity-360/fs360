@@ -18,7 +18,7 @@ var chaiEnzyme = _interopRequire(require("chai-enzyme"));
 chai.use(chaiEnzyme()); // Note the invocation at the end
 
 
-var doc = jsdom.jsdom("<!doctype html><html><body></body></html>");
+var doc = jsdom.jsdom("<!doctype html><html><head></head><body></body></html>");
 var win = doc.defaultView;
 
 global.document = doc;

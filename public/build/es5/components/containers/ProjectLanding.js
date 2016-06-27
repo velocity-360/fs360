@@ -20,10 +20,10 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
-var Loader = _interopRequire(require("react-loader"));
-
 var connect = require("react-redux").connect;
 var ProjectCard = _interopRequire(require("../../components/ProjectCard"));
+
+var Register = _interopRequire(require("../../components/Register"));
 
 var Nav = _interopRequire(require("../../components/Nav"));
 
@@ -43,16 +43,11 @@ var Landing = (function (Component) {
 
 		_get(Object.getPrototypeOf(Landing.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
-		this.updateUserRegistration = this.updateUserRegistration.bind(this);
-		this.openModal = this.openModal.bind(this);
 		this.showRegistrationForm = this.showRegistrationForm.bind(this);
 		this.closeModal = this.closeModal.bind(this);
-		this.register = this.register.bind(this);
-		this.validate = this.validate.bind(this);
 		this.state = {
+			membershiptype: "Basic",
 			showRegistration: false,
-			showLoader: false,
-			showModal: false,
 			visitor: {
 				name: "",
 				email: "",
@@ -74,23 +69,7 @@ var Landing = (function (Component) {
 						return;
 					}
 
-					//			console.log(JSON.stringify(response))
 					store.dispatch(actions.projectsRecieved(response.projects));
-				});
-
-				stripe.initialize(function (token) {
-					_this.setState({ showLoader: true });
-					api.submitStripeToken(token, function () {
-						api.handleGet("/account/currentuser", {}, function (err, response) {
-							_this.setState({ showLoader: false });
-							if (err) {
-								alert(response.message);
-								return;
-							}
-
-							window.location.href = "/account";
-						});
-					});
 				});
 			},
 			writable: true,
@@ -109,86 +88,6 @@ var Landing = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		updateUserRegistration: {
-			value: function updateUserRegistration(event) {
-				event.preventDefault();
-
-				if (event.target.id == "membershiptype") {
-					this.setState({
-						membershiptype: event.target.value
-					});
-
-					return;
-				}
-
-
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				if (event.target.id == "name") {
-					var parts = event.target.value.split(" ");
-					updatedUser.firstName = parts[0];
-					if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
-				}
-
-				updatedUser[event.target.id] = event.target.value;
-				store.dispatch(actions.updateCurrentUser(updatedUser));
-			},
-			writable: true,
-			configurable: true
-		},
-		register: {
-			value: function register(event) {
-				event.preventDefault();
-				var missingField = this.validate(this.props.currentUser, true);
-				if (missingField != null) {
-					alert("Please enter your " + missingField);
-					return;
-				}
-
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-
-				var _this = this;
-				api.handlePost("/api/profile", this.props.currentUser, function (err, response) {
-					_this.setState({
-						showRegistration: false,
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					if (_this.state.membershiptype == "basic") {
-						window.location.href = "/account";
-						return;
-					}
-
-					// premium registration, show stripe modal
-					stripe.showModal();
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		validate: {
-			value: function validate(profile, withPassword) {
-				if (profile.name.length == 0) {
-					return "Name";
-				}if (profile.email.length == 0) {
-					return "Email";
-				}if (withPassword == false) {
-					return null;
-				}if (profile.password.length == 0) {
-					return "Password";
-				}return null // this is successful
-				;
-			},
-			writable: true,
-			configurable: true
-		},
 		openModal: {
 			value: function openModal(event) {
 				event.preventDefault();
@@ -197,7 +96,6 @@ var Landing = (function (Component) {
 				visitor.course = event.target.id;
 
 				this.setState({
-					showModal: true,
 					visitor: visitor
 				});
 			},
@@ -218,8 +116,7 @@ var Landing = (function (Component) {
 		closeModal: {
 			value: function closeModal() {
 				this.setState({
-					showRegistration: false,
-					showModal: false
+					showRegistration: false
 				});
 			},
 			writable: true,
@@ -234,7 +131,6 @@ var Landing = (function (Component) {
 				return React.createElement(
 					"div",
 					null,
-					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(Nav, null),
 					React.createElement(
 						"section",
@@ -520,46 +416,7 @@ var Landing = (function (Component) {
 							)
 						)
 					),
-					React.createElement(
-						Modal,
-						{ bsSize: "sm", show: this.state.showRegistration, onHide: this.closeModal },
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24, borderRadius: 3 } },
-							React.createElement(
-								"div",
-								{ style: { textAlign: "center" } },
-								React.createElement("img", { style: { width: 96, borderRadius: 48, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
-							),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Name" }),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Email" }),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", style: { marginBottom: 12 }, type: "password", placeholder: "Password" }),
-							React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Promo Code" }),
-							React.createElement(
-								"select",
-								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },
-								React.createElement(
-									"option",
-									{ value: "basic" },
-									"Basic"
-								),
-								React.createElement(
-									"option",
-									{ value: "premium" },
-									"Premium"
-								)
-							),
-							React.createElement(
-								"div",
-								{ style: { textAlign: "center", marginTop: 24 } },
-								React.createElement(
-									"a",
-									{ onClick: this.register, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin" },
-									"Join"
-								)
-							)
-						)
-					),
+					React.createElement(Register, { membershipType: this.state.membershiptype, hide: this.closeModal, isVisible: this.state.showRegistration }),
 					React.createElement(Footer, null)
 				);
 			},
@@ -574,8 +431,7 @@ var Landing = (function (Component) {
 var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
-		projects: state.projectReducer.projectsArray,
-		loaderOptions: state.staticReducer.loaderConfig
+		projects: state.projectReducer.projectsArray
 	};
 };
 
