@@ -7,7 +7,8 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 	$scope.projects = null
 	$scope.project = {
 		id: null,
-		image: ''
+		image: '',
+		pdf: ''
 	}
 
 	
@@ -23,16 +24,6 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			$scope.projects = response.projects
 		})
 
-		// RestService.query({resource:'course', id:request.identifier}, function(response){
-		// 	if (response.confirmation != 'success'){
-		// 		alert(response.message);
-		// 		return;
-		// 	}
-
-		// 	console.log('CourseController: '+JSON.stringify(response));
-		// 	$scope.course = response.course;
-		// 	$scope.course['tagString'] = $scope.course.tags.toString();
-		// });
 	}
 
 	$scope.selectProject = function(project){
@@ -40,33 +31,33 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 	}
 
 	$scope.uploadImage = function(files){
-		var pkg = {'files':files, 'media':'images'};
-		uploadPackage(pkg);
+		var pkg = {'files':files, 'media':'images'}
+		uploadPackage(pkg)
 	}
 
-	$scope.uploadSyllabus = function(files){
-		var pkg = {'files':files, 'media':'pdf'};
-		uploadPackage(pkg);
+	$scope.uploadPDF = function(files){
+		var pkg = {'files':files, 'media':'pdf'}
+		uploadPackage(pkg)
 	}
 
 	function uploadPackage(pkg){
 		uploadService.uploadFiles(pkg, function(response, error){
 			if (error){
-				alert(error.message);
-				return;
+				alert(error.message)
+				return
 			}
 
-			console.log('UPLOAD: '+JSON.stringify(response));
+			console.log('UPLOAD: '+JSON.stringify(response))
 			if (pkg.media == 'images'){
-				var image = response.image;
-				$scope.course['image'] = image.id;
+				var image = response.image
+				$scope.project['image'] = image.id
 			}
 			else {
-				var pdf = response.pdf;
-				$scope.course['syllabus'] = pdf.id;
+				var pdf = response.pdf
+				$scope.project['pdf'] = pdf.id
 			}
 
-			$scope.updateCourse(null);
+			$scope.updateProject(null)
 		});
 
 	}
@@ -140,6 +131,9 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 	}
 
 	$scope.updateProject = function(){
+		if ($scope.project.id == null)
+			return
+
 		processTagString()
 		RestService.put({resource:'project', id:$scope.project.id}, $scope.project, function(response){
 			if (response.confirmation != 'success'){
@@ -149,24 +143,6 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 
 			console.log('UPDATE Project: '+JSON.stringify(response))
 		})
-	}
-	
-
-	$scope.updateCourse = function(completion){
-		if ($scope.course.id == null)
-			return;
-
-		processTagString()
-		RestService.put({resource:'course', id:$scope.course.id}, $scope.course, function(response){
-			if (response.confirmation != 'success'){
-				alert(response.message);
-				return;
-			}
-
-			console.log('Update Course: '+JSON.stringify(response));
-			if (completion != null)
-				completion();
-		});
 	}
 
 	

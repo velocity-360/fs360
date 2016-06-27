@@ -65,7 +65,7 @@ var ProjectCard = (function (Component) {
 						React.createElement("br", null),
 						React.createElement(
 							"p",
-							{ id: "description" },
+							{ style: { height: 150 }, id: "description" },
 							this.props.project.description
 						),
 						React.createElement(

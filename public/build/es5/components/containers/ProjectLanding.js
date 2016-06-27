@@ -522,40 +522,19 @@ var Landing = (function (Component) {
 					),
 					React.createElement(
 						Modal,
-						{ show: this.state.showRegistration, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h3",
-								null,
-								"Join"
-							)
-						),
+						{ bsSize: "sm", show: this.state.showRegistration, onHide: this.closeModal },
 						React.createElement(
 							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
+							{ style: { background: "#f9f9f9", padding: 24, borderRadius: 3 } },
 							React.createElement(
 								"div",
 								{ style: { textAlign: "center" } },
-								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
+								React.createElement("img", { style: { width: 96, borderRadius: 48, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
 							),
-							React.createElement(
-								"div",
-								{ className: "row" },
-								React.createElement(
-									"div",
-									{ className: "col-md-6" },
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Name" }),
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Email" })
-								),
-								React.createElement(
-									"div",
-									{ className: "col-md-6" },
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", style: { marginBottom: 12 }, type: "password", placeholder: "Password" }),
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Promo Code" })
-								)
-							),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Name" }),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Email" }),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", style: { marginBottom: 12 }, type: "password", placeholder: "Password" }),
+							React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Promo Code" }),
 							React.createElement(
 								"select",
 								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },
@@ -569,15 +548,15 @@ var Landing = (function (Component) {
 									{ value: "premium" },
 									"Premium"
 								)
-							)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
+							),
 							React.createElement(
-								"a",
-								{ onClick: this.register, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Register"
+								"div",
+								{ style: { textAlign: "center", marginTop: 24 } },
+								React.createElement(
+									"a",
+									{ onClick: this.register, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin" },
+									"Join"
+								)
 							)
 						)
 					),

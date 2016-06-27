@@ -46307,40 +46307,19 @@
 					),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
-						{ show: this.state.showRegistration, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h3',
-								null,
-								'Join'
-							)
-						),
+						{ bsSize: 'sm', show: this.state.showRegistration, onHide: this.closeModal },
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
+							{ style: { background: '#f9f9f9', padding: 24, borderRadius: 3 } },
 							_react2.default.createElement(
 								'div',
 								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
+								_react2.default.createElement('img', { style: { width: 96, borderRadius: 48, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
 							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'row' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-6' },
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Name' }),
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Email' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-6' },
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', style: { marginBottom: 12 }, type: 'password', placeholder: 'Password' }),
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Promo Code' })
-								)
-							),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Name' }),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Email' }),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', style: { marginBottom: 12 }, type: 'password', placeholder: 'Password' }),
+							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Promo Code' }),
 							_react2.default.createElement(
 								'select',
 								{ onChange: this.updateUserRegistration, id: 'membershiptype', value: this.state.membershiptype, className: 'form-control input-md not-dark' },
@@ -46354,15 +46333,15 @@
 									{ value: 'premium' },
 									'Premium'
 								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
+							),
 							_react2.default.createElement(
-								'a',
-								{ onClick: this.register, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Register'
+								'div',
+								{ style: { textAlign: 'center', marginTop: 24 } },
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.register, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+									'Join'
+								)
 							)
 						)
 					),
@@ -46458,7 +46437,7 @@
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'p',
-							{ id: 'description' },
+							{ style: { height: 150 }, id: 'description' },
 							this.props.project.description
 						),
 						_react2.default.createElement(

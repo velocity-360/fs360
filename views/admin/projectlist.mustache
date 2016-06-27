@@ -114,9 +114,22 @@
                             </select>
                             <textarea ng-model="project.description" rows="6" placeholder="Description"></textarea>
 
-                            <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadImage($files)">
-                                <img style="width:72px;border:1px solid #ddd" ng-show="project.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
-                                Drag &amp; drop image
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadImage($files)">
+                                        <img style="width:72px;border:1px solid #ddd" ng-show="project.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
+                                        Drag &amp; drop image
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadPDF($files)">
+                                        <img style="width:72px;border:1px solid #ddd" ng-show="project.pdf.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
+                                        Drag &amp; drop PDF
+                                    </div>
+
+                                </div>
+
                             </div>
 
                             <br />

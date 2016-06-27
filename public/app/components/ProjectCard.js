@@ -23,7 +23,7 @@ class ProjectCard extends Component {
 					<hr />
 					<strong>iOS App</strong>
 					<br />
-					<p id="description">{this.props.project.description}</p>
+					<p style={{height:150}} id="description">{this.props.project.description}</p>
 
 					<div className="tagcloud">
 						{tags}
