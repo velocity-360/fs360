@@ -372,7 +372,11 @@ class Landing extends Component {
 								Each section is a stand-alone course meaning students can enroll in one and not the other. 
 								However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals 
 								Course so students should not be complete beginners for this sequence. The tuition for each course 
-								is $6,500 but when taken together, the combined tuition is $11,500.
+								is $6,500 but when taken together, the combined tuition is $11,500.<br />
+								All live classes take place in our NYC location:<br /><br />
+								<strong>Velocity 360</strong><br />
+								<strong>27 East 28th Street</strong><br />
+								<strong>New York, NY, 10016</strong>
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last">

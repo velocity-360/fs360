@@ -37,7 +37,8 @@ var Footer = (function (_React$Component) {
 								"div",
 								{ className: "col_half" },
 								"Copyright © 2016 All Rights Reserved by The Grid Media, LLC.",
-								React.createElement("br", null)
+								React.createElement("br", null),
+								"27 East 28th Street, New York, NY 10016"
 							),
 							React.createElement(
 								"div",

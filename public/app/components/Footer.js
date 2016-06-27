@@ -16,6 +16,7 @@ class Footer extends React.Component {
 
 						<div className="col_half">
 							Copyright &copy; 2016 All Rights Reserved by The Grid Media, LLC.<br />
+							27 East 28th Street, New York, NY 10016
 						</div>
 
 						<div className="col_half col_last tright">
