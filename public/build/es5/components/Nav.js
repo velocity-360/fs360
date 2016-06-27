@@ -19,6 +19,8 @@ var store = _interopRequire(require("../stores/store"));
 
 var actions = _interopRequire(require("../actions/actions"));
 
+var Login = _interopRequire(require("../components/Login"));
+
 var connect = require("react-redux").connect;
 var api = _interopRequire(require("../api/api"));
 
@@ -33,11 +35,10 @@ var Nav = (function (Component) {
 
 		_get(Object.getPrototypeOf(Nav.prototype), "constructor", this).call(this, props, context);
 		this.openModal = this.openModal.bind(this);
-		this.closeModal = this.closeModal.bind(this);
-		this.login = this.login.bind(this);
-		this.updateLogin = this.updateLogin.bind(this);
+		this.closeLogin = this.closeLogin.bind(this);
 		this.state = {
-			showModal: false
+			showModal: false,
+			showLogin: false
 		};
 	}
 
@@ -60,42 +61,14 @@ var Nav = (function (Component) {
 		openModal: {
 			value: function openModal(event) {
 				event.preventDefault();
-				this.setState({ showModal: true });
+				this.setState({ showLogin: true });
 			},
 			writable: true,
 			configurable: true
 		},
-		closeModal: {
-			value: function closeModal() {
-				this.setState({ showModal: false });
-			},
-			writable: true,
-			configurable: true
-		},
-		login: {
-			value: function login(event) {
-				event.preventDefault();
-				console.log("LOGIN: " + JSON.stringify(this.props.currentUser));
-				this.setState({ showModal: false });
-				api.handlePost("/account/login", this.props.currentUser, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					window.location.href = "/account";
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		updateLogin: {
-			value: function updateLogin(event) {
-				event.preventDefault();
-
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
-				store.dispatch(actions.updateCurrentUser(updatedUser));
+		closeLogin: {
+			value: function closeLogin() {
+				this.setState({ showLogin: false });
 			},
 			writable: true,
 			configurable: true
@@ -249,36 +222,7 @@ var Nav = (function (Component) {
 							)
 						)
 					),
-					React.createElement(
-						Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h2",
-								null,
-								"Log In"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.password, className: "form-control", type: "password", id: "password", placeholder: "Password" }),
-							React.createElement("br", null)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.login, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Log In"
-							)
-						)
-					)
+					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin })
 				);
 			},
 			writable: true,
@@ -290,8 +234,6 @@ var Nav = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
-
 	return {
 		currentUser: state.profileReducer.currentUser
 	};

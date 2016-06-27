@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import store from '../stores/store'
 import actions from '../actions/actions'
+import Login from '../components/Login'
 import { connect } from 'react-redux'
 import api from '../api/api'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
@@ -11,11 +12,10 @@ class Nav extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.openModal = this.openModal.bind(this)
-		this.closeModal = this.closeModal.bind(this)
-		this.login = this.login.bind(this)
-		this.updateLogin = this.updateLogin.bind(this)
+		this.closeLogin = this.closeLogin.bind(this)
 		this.state = {
-			showModal: false
+			showModal: false,
+			showLogin: false
 		}
 	}
 
@@ -31,37 +31,14 @@ class Nav extends Component {
 
 	openModal(event){
 		event.preventDefault()
-		this.setState({showModal: true})
+		this.setState({showLogin: true})
 	}
 
-	closeModal(){
-		this.setState({showModal: false})
-	}
-
-	login(event){
-		event.preventDefault()
-		console.log('LOGIN: '+JSON.stringify(this.props.currentUser))
-		this.setState({showModal: false})
-		api.handlePost('/account/login', this.props.currentUser, function(err, response){
-			if (err){
-				alert(err.message)
-				return
-			}
-
-			window.location.href = '/account'
-		});
-	}
-
-	updateLogin(event){
-		event.preventDefault()
-
-		var updatedUser = Object.assign({}, this.props.currentUser);
-		updatedUser[event.target.id] = event.target.value
-		store.dispatch(actions.updateCurrentUser(updatedUser));
+	closeLogin(){
+		this.setState({showLogin: false})
 	}
 
 	render(){
-
 		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
 
 		return (
@@ -92,20 +69,8 @@ class Nav extends Component {
 	                    </nav>
 	                </div>
 	            </div>
-
-		        <Modal show={this.state.showModal} onHide={this.closeModal}>
-			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>Log In</h2>
-			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<input onChange={this.updateLogin} value={this.props.currentUser.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
-			        	<input onChange={this.updateLogin} value={this.props.currentUser.password} className="form-control" type="password" id="password" placeholder="Password" /><br />
-			        </Modal.Body>
-
-			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.login} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
-			        </Modal.Footer>
-		        </Modal>	            
+	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} />
+            
 	        </header>
 
 		)
@@ -114,8 +79,6 @@ class Nav extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
-
     return {
         currentUser: state.profileReducer.currentUser
     }

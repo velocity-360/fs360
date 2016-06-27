@@ -22729,7 +22729,7 @@
 	
 	var _ProjectLanding2 = _interopRequireDefault(_ProjectLanding);
 	
-	var _Courses = __webpack_require__(478);
+	var _Courses = __webpack_require__(479);
 	
 	var _Courses2 = _interopRequireDefault(_Courses);
 	
@@ -42334,6 +42334,10 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
+	var _Login = __webpack_require__(603);
+	
+	var _Login2 = _interopRequireDefault(_Login);
+	
 	var _reactRedux = __webpack_require__(168);
 	
 	var _api = __webpack_require__(463);
@@ -42361,11 +42365,10 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props, context));
 	
 			_this.openModal = _this.openModal.bind(_this);
-			_this.closeModal = _this.closeModal.bind(_this);
-			_this.login = _this.login.bind(_this);
-			_this.updateLogin = _this.updateLogin.bind(_this);
+			_this.closeLogin = _this.closeLogin.bind(_this);
 			_this.state = {
-				showModal: false
+				showModal: false,
+				showLogin: false
 			};
 			return _this;
 		}
@@ -42385,41 +42388,16 @@
 			key: 'openModal',
 			value: function openModal(event) {
 				event.preventDefault();
-				this.setState({ showModal: true });
+				this.setState({ showLogin: true });
 			}
 		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({ showModal: false });
-			}
-		}, {
-			key: 'login',
-			value: function login(event) {
-				event.preventDefault();
-				console.log('LOGIN: ' + JSON.stringify(this.props.currentUser));
-				this.setState({ showModal: false });
-				_api2.default.handlePost('/account/login', this.props.currentUser, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					window.location.href = '/account';
-				});
-			}
-		}, {
-			key: 'updateLogin',
-			value: function updateLogin(event) {
-				event.preventDefault();
-	
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
-				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+			key: 'closeLogin',
+			value: function closeLogin() {
+				this.setState({ showLogin: false });
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-	
 				var login = this.props.currentUser.id == null ? _react2.default.createElement(
 					'li',
 					null,
@@ -42567,36 +42545,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Log In'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.password, className: 'form-control', type: 'password', id: 'password', placeholder: 'Password' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.login, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Log In'
-							)
-						)
-					)
+					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin })
 				);
 			}
 		}]);
@@ -42605,8 +42554,6 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer.currentUser))
-	
 		return {
 			currentUser: state.profileReducer.currentUser
 		};
@@ -42746,22 +42693,19 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//import fetch from 'isomorphic-fetch'
+	
 	exports.default = {
 	
 		handleGet: function handleGet(endpoint, params, completion) {
 			_superagent2.default.get(endpoint).query(params).set('Accept', 'application/json').end(function (err, res) {
+				if (completion == null) return;
+	
 				if (err) {
-					if (completion != null) completion(err, null);
+					completion(err, null);
 					return;
 				}
 	
-				if (completion != null) {
-					if (res.body.confirmation == 'success') {
-						completion(null, res.body);
-					} else {
-						completion({ message: res.body.message }, null);
-					}
-				}
+				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
 			});
 	
 			// fetch(endpoint, {
@@ -42790,21 +42734,27 @@
 		// using superagent here because for some reason, cookies don't get installed using fetch (wtf)
 		handlePost: function handlePost(endpoint, body, completion) {
 			_superagent2.default.post(endpoint).send(body).set('Accept', 'application/json').end(function (err, res) {
+				if (completion == null) return;
+	
 				if (err) {
-					if (completion != null) completion(err, null);
-				} else {
-					if (completion != null) completion(null, res.body);
+					completion(err, null);
+					return;
 				}
+	
+				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
 			});
 		},
 	
 		handlePut: function handlePut(endpoint, body, completion) {
 			_superagent2.default.put(endpoint).send(body).set('Accept', 'application/json').end(function (err, res) {
+				if (completion == null) return;
+	
 				if (err) {
-					if (completion != null) completion(err, null);
-				} else {
-					if (completion != null) completion(null, res.body);
+					completion(err, null);
+					return;
 				}
+	
+				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
 			});
 		},
 	
@@ -46346,7 +46296,7 @@
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -46540,6 +46490,52 @@
 
 /***/ },
 /* 478 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+	
+		truncateText: function truncateText(str, limit) {
+			if (str.length < limit) return str;
+	
+			return str.substring(0, limit) + '...';
+		},
+	
+		capitalize: function capitalize(str) {
+			if (str.length == 1) return str.toUpperCase();
+	
+			var firstLetter = str.substring(0, 1);
+			return firstLetter.toUpperCase() + str.substring(1);
+		},
+	
+		convertToHtml: function convertToHtml(str) {
+			var find = '\n';
+			var re = new RegExp(find, 'g');
+			var html = str.replace(re, '<br />');
+			return html;
+		},
+	
+		stringToArray: function stringToArray(str, separator) {
+			var t = str.split(separator);
+			var array = [];
+			for (var i = 0; i < t.length; i++) {
+				var tag = t[i];
+				if (tag.length == 0) continue;
+	
+				array.push(tag.trim());
+			}
+	
+			return array;
+		}
+	
+	};
+
+/***/ },
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46558,7 +46554,7 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -46566,7 +46562,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CourseCard = __webpack_require__(480);
+	var _CourseCard = __webpack_require__(481);
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
@@ -46708,7 +46704,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Courses);
 
 /***/ },
-/* 479 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46920,7 +46916,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Sidebar);
 
 /***/ },
-/* 480 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46935,7 +46931,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -47044,52 +47040,6 @@
 	}(_react.Component);
 	
 	exports.default = CourseCard;
-
-/***/ },
-/* 481 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-	
-		truncateText: function truncateText(str, limit) {
-			if (str.length < limit) return str;
-	
-			return str.substring(0, limit) + '...';
-		},
-	
-		capitalize: function capitalize(str) {
-			if (str.length == 1) return str.toUpperCase();
-	
-			var firstLetter = str.substring(0, 1);
-			return firstLetter.toUpperCase() + str.substring(1);
-		},
-	
-		convertToHtml: function convertToHtml(str) {
-			var find = '\n';
-			var re = new RegExp(find, 'g');
-			var html = str.replace(re, '<br />');
-			return html;
-		},
-	
-		stringToArray: function stringToArray(str, separator) {
-			var t = str.split(separator);
-			var array = [];
-			for (var i = 0; i < t.length; i++) {
-				var tag = t[i];
-				if (tag.length == 0) continue;
-	
-				array.push(tag.trim());
-			}
-	
-			return array;
-		}
-	
-	};
 
 /***/ },
 /* 482 */
@@ -48076,7 +48026,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -48740,7 +48690,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -62866,7 +62816,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -62892,7 +62842,7 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -63053,7 +63003,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -63087,7 +63037,7 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -63538,7 +63488,7 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -64460,7 +64410,7 @@
 	
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -64468,7 +64418,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CourseCard = __webpack_require__(480);
+	var _CourseCard = __webpack_require__(481);
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
@@ -65006,7 +64956,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -65018,7 +64968,7 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -65492,7 +65442,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _Sidebar = __webpack_require__(479);
+	var _Sidebar = __webpack_require__(480);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -65518,7 +65468,7 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _TextUtils = __webpack_require__(481);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -65604,6 +65554,163 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
+
+/***/ },
+/* 603 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(206);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(459);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _api = __webpack_require__(463);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Login = function (_Component) {
+		_inherits(Login, _Component);
+	
+		function Login(props, context) {
+			_classCallCheck(this, Login);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Login).call(this, props, context));
+	
+			_this2.hide = _this2.hide.bind(_this2);
+			_this2.login = _this2.login.bind(_this2);
+			_this2.updateCredentials = _this2.updateCredentials.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				credentials: {
+					email: '',
+					password: ''
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(Login, [{
+			key: 'hide',
+			value: function hide() {
+				this.props.hide();
+			}
+		}, {
+			key: 'updateCredentials',
+			value: function updateCredentials(event) {
+				event.preventDefault();
+	
+				var updatedCredentials = Object.assign({}, this.state.credentials);
+				updatedCredentials[event.target.id] = event.target.value;
+				this.setState({
+					credentials: updatedCredentials
+				});
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				//		console.log('LOGIN: '+JSON.stringify(this.state.credentials))
+	
+				//		this.props.hide()
+	
+				this.setState({ showLoader: true });
+				var _this = this;
+				_api2.default.handlePost('/account/login', this.state.credentials, function (err, response) {
+					if (err) {
+						alert(err.message);
+						_this.setState({ showLoader: false });
+						return;
+					}
+	
+					window.location.href = '/account';
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var loaderConfig = {
+					lines: 13,
+					length: 20,
+					width: 10,
+					radius: 30,
+					corners: 1,
+					rotate: 0,
+					direction: 1,
+					color: '#fff',
+					speed: 1,
+					trail: 60,
+					shadow: false,
+					hwaccel: false,
+					zIndex: 2e9,
+					top: '50%',
+					left: '50%',
+					scale: 1.00
+				};
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactLoader2.default, { options: loaderConfig, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ bsSize: 'sm', show: this.props.isVisible, onHide: this.hide },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24, borderRadius: 3 } },
+							_react2.default.createElement(
+								'div',
+								{ style: { textAlign: 'center' } },
+								_react2.default.createElement('img', { style: { width: 96, borderRadius: 48, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_blue_260.png' }),
+								_react2.default.createElement(
+									'h4',
+									null,
+									'Log In'
+								)
+							),
+							_react2.default.createElement('input', { onChange: this.updateCredentials, id: 'email', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Email' }),
+							_react2.default.createElement('input', { onChange: this.updateCredentials, id: 'password', className: 'form-control', style: { marginBottom: 12 }, type: 'password', placeholder: 'Password' }),
+							_react2.default.createElement(
+								'div',
+								{ style: { textAlign: 'center', marginTop: 24 } },
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.login, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+									'Log In'
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Login;
+	}(_react.Component);
+	
+	exports.default = Login;
 
 /***/ }
 /******/ ]);
