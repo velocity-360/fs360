@@ -30,7 +30,7 @@ class Project extends Component {
 				return
 			}
 
-			console.log(JSON.stringify(response));
+			console.log(JSON.stringify(response))
 			store.dispatch(actions.projectsRecieved(response.projects))
 		})
 	}
@@ -111,7 +111,7 @@ const stateToProps = function(state) {
 
     return {
         currentUser: state.profileReducer.currentUser,
-        project: (projects==null) ? state.projectReducer.emptyProject : projects[0],
+        project: (projects.length == 0) ? state.projectReducer.emptyProject : projects[0],
         loaderOptions: state.staticReducer.loaderConfig
     }
 }

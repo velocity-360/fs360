@@ -63169,7 +63169,7 @@
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			project: projects == null ? state.projectReducer.emptyProject : projects[0],
+			project: projects.length == 0 ? state.projectReducer.emptyProject : projects[0],
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
