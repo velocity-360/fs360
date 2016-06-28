@@ -47,17 +47,17 @@ module.exports = {
 		/* Query by filters passed into parameter string: */
 		var limit = params.limit;
 		if (limit == null)
-			limit = 0;
+			limit = 0
 		
-		delete params['limit'];
+		delete params['limit']
 		
-		Course.find(params, null, {limit:limit, sort:{priority: -1}}, function(err, courses) {
+		Course.find(params, null, {limit:limit, sort:{priority: 1}}, function(err, courses) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				return
 			}
 			
-			completion(null, convertToJson(courses));
+			completion(null, convertToJson(courses))
 		});
 	},
 
@@ -65,12 +65,12 @@ module.exports = {
 		courseInfo['slug'] = Helpers.slugString(courseInfo.title)
 		Course.create(courseInfo, function(err, course){
 			if (err){
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 			
-			completion(null, course.summary());
-			return;
+			completion(null, course.summary())
+			return
 		});
 	},
 
