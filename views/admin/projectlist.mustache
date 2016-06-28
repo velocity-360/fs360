@@ -135,6 +135,25 @@
                             <br />
                             <h4>Units</h4>
 
+                            <ol style="padding-left:24px">
+                                <li ng-repeat="unit in project.units track by $index">
+                                    <span><a ng-click="selectUnit(unit)" style="color:red" href=""><% unit.topic %></a></span>
+                                    <p style="color:#777">
+                                        <% unit.description %>
+                                        <br />
+                                        <a ng-click="removeUnit(unit)" href="">Remove</a>
+                                    </p>
+                                </li>
+                            </ol>
+
+                            <input ng-model="unit.topic" type="text" placeholder="Topic" class="form-control" />
+                            <input ng-model="unit.wistia" type="text" placeholder="Wistia ID" class="form-control" />
+                            <input ng-model="unit.package" type="text" placeholder="Package" class="form-control" />
+                            <textarea ng-model="unit.description" rows="3" placeholder="Description"></textarea>
+
+                            <a style="float:right" class="btn btn-rounded btn-sm" ng-click="addUnit()" href="">+ Add Unit</a>
+                            <br />
+
 
                             <button ng-show="project.id == null" ng-click="createProject()" style="background:#fff;border-radius:22px" class="btn btn-large">Create Project</button>
                             <button ng-show="project.id != null" ng-click="updateProject()" style="background:#fff;border-radius:22px" class="btn btn-large">Update Project</button>                            

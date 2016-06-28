@@ -8,7 +8,8 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 	$scope.project = {
 		id: null,
 		image: '',
-		pdf: ''
+		pdf: '',
+		units: []
 	}
 
 	
@@ -23,7 +24,6 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			console.log('ProjectController: '+JSON.stringify(response))
 			$scope.projects = response.projects
 		})
-
 	}
 
 	$scope.selectProject = function(project){
@@ -58,14 +58,12 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			}
 
 			$scope.updateProject(null)
-		});
-
+		})
 	}
 
 
 	$scope.selectUnit = function(unit){
-		$scope.unit = unit;
-
+		$scope.unit = unit
 	}
 
 	$scope.addUnit = function(){
@@ -80,22 +78,22 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			return;
 		}
 
-		$scope.unit['index'] = $scope.course.units.length;
-		$scope.course.units.push($scope.unit);
-		$scope.updateCourse(function(){
+		$scope.unit['index'] = $scope.project.units.length
+		$scope.project.units.push($scope.unit);
+		$scope.updateProject(function(){
 			$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0};
 
 		});
 	}
 
 	$scope.removeUnit = function(unit){
-		var index = $scope.course.units.indexOf(unit);
+		var index = $scope.project.units.indexOf(unit);
 		if (index == -1)
-			return;
+			return
 
-		$scope.course.units.splice(index, 1);
+		$scope.project.units.splice(index, 1)
 //		console.log('REMOVE UNIT: '+JSON.stringify($scope.course));
-		$scope.updateCourse(null);
+		$scope.updateCourse(null)
 	}
 
 	function processTagString(){
