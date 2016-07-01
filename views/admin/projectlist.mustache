@@ -127,7 +127,6 @@
                                         <img style="width:72px;border:1px solid #ddd" ng-show="project.pdf.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
                                         Drag &amp; drop PDF
                                     </div>
-
                                 </div>
 
                             </div>
@@ -149,6 +148,13 @@
                             <input ng-model="unit.topic" type="text" placeholder="Topic" class="form-control" />
                             <input ng-model="unit.wistia" type="text" placeholder="Wistia ID" class="form-control" />
                             <input ng-model="unit.package" type="text" placeholder="Package" class="form-control" />
+
+                            <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadUnitIcon($files)">
+                                <img style="width:72px;border:1px solid #ddd" ng-show="unit.icon.length > 0" ng-src="https://media-service.appspot.com/site/images/<% unit.icon %>?crop=360" />
+                                Drag &amp; drop Image
+                            </div>
+                            <br />
+
                             <textarea ng-model="unit.description" rows="3" placeholder="Description"></textarea>
 
                             <a style="float:right" class="btn btn-rounded btn-sm" ng-click="addUnit()" href="">+ Add Unit</a>

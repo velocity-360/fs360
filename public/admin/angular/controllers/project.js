@@ -3,7 +3,7 @@ var app = angular.module('ProjectModule', ['ngSanitize']);
 app.controller('ProjectController', ['$scope', 'generalService', 'accountService', 'uploadService', 'RestService', function($scope, generalService, accountService, uploadService, RestService) {
 	$scope['generalService'] = generalService
 	$scope.profile = null
-	$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0}
+	$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0, 'icon':''}
 	$scope.projects = null
 	$scope.project = {
 		id: null,
@@ -31,12 +31,17 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 	}
 
 	$scope.uploadImage = function(files){
-		var pkg = {'files':files, 'media':'images'}
+		var pkg = {'files':files, 'media':'images', 'property':'image'}
+		uploadPackage(pkg)
+	}
+
+	$scope.uploadUnitIcon = function(files){
+		var pkg = {'files':files, 'media':'images', 'property':'icon'}
 		uploadPackage(pkg)
 	}
 
 	$scope.uploadPDF = function(files){
-		var pkg = {'files':files, 'media':'pdf'}
+		var pkg = {'files':files, 'media':'pdf', 'property':'pdf'}
 		uploadPackage(pkg)
 	}
 
@@ -48,11 +53,15 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			}
 
 			console.log('UPLOAD: '+JSON.stringify(response))
-			if (pkg.media == 'images'){
+			if (pkg.property == 'image'){
 				var image = response.image
 				$scope.project['image'] = image.id
 			}
-			else {
+			else if (pkg.property == 'icon'){
+				var image = response.image
+				$scope.unit['icon'] = image.id
+			}
+			else if (pkg.property == 'pdf'){
 				var pdf = response.pdf
 				$scope.project['pdf'] = pdf.id
 			}
@@ -81,9 +90,8 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 		$scope.unit['index'] = $scope.project.units.length
 		$scope.project.units.push($scope.unit);
 		$scope.updateProject(function(){
-			$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0};
-
-		});
+			$scope.unit = {'topic':'', 'description':'', 'wistia':'', 'index':0, 'icon':''}
+		})
 	}
 
 	$scope.removeUnit = function(unit){
