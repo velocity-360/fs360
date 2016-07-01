@@ -21,8 +21,6 @@ var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var EditProject = _interopRequire(require("../../components/EditProject"));
-
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
