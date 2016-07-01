@@ -21,8 +21,6 @@ var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var ProjectView = _interopRequire(require("../../components/ProjectView"));
-
 var EditProject = _interopRequire(require("../../components/EditProject"));
 
 var store = _interopRequire(require("../../stores/store"));
@@ -80,7 +78,13 @@ var Project = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var content = this.props.project == null ? "" : React.createElement(ProjectView, { project: this.props.project });
+				var tags = this.props.project.tags.map(function (tag, i) {
+					return React.createElement(
+						"a",
+						{ key: i, href: "#" },
+						tag
+					);
+				});
 
 				return React.createElement(
 					"div",
@@ -113,7 +117,97 @@ var Project = (function (Component) {
 												React.createElement("span", null),
 												React.createElement("div", { className: "timeline-divider" })
 											),
-											content
+											React.createElement(
+												"div",
+												{ className: "panel panel-default", style: { padding: 36 } },
+												React.createElement("img", { style: { width: 120, marginBottom: 16, float: "left", marginRight: 24 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=420" }),
+												React.createElement("i", { onClick: this.toggleEditing, className: "i-plain icon-edit" }),
+												React.createElement(
+													"h2",
+													null,
+													this.props.project.title
+												),
+												React.createElement("hr", null),
+												React.createElement(
+													"div",
+													{ className: "tagcloud clearfix" },
+													tags
+												),
+												React.createElement(
+													"div",
+													{ style: { marginTop: 36, padding: 16, border: "1px solid #ddd", textAlign: "center", background: "#f9f9f9" } },
+													React.createElement(
+														"div",
+														{ className: "masonry-thumbs col-4" },
+														React.createElement(
+															"a",
+															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
+															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
+															React.createElement(
+																"div",
+																{ style: { width: 96 }, className: "overlay" },
+																React.createElement(
+																	"div",
+																	{ className: "overlay-wrap" },
+																	React.createElement("i", { className: "icon-line-plus" })
+																)
+															)
+														),
+														React.createElement(
+															"a",
+															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
+															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
+															React.createElement(
+																"div",
+																{ style: { width: 96 }, className: "overlay" },
+																React.createElement(
+																	"div",
+																	{ className: "overlay-wrap" },
+																	React.createElement("i", { className: "icon-line-plus" })
+																)
+															)
+														),
+														React.createElement(
+															"a",
+															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
+															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
+															React.createElement(
+																"div",
+																{ style: { width: 96 }, className: "overlay" },
+																React.createElement(
+																	"div",
+																	{ className: "overlay-wrap" },
+																	React.createElement("i", { className: "icon-line-plus" })
+																)
+															)
+														),
+														React.createElement(
+															"a",
+															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
+															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
+															React.createElement(
+																"div",
+																{ style: { width: 96 }, className: "overlay" },
+																React.createElement(
+																	"div",
+																	{ className: "overlay-wrap" },
+																	React.createElement("i", { className: "icon-line-plus" })
+																)
+															)
+														)
+													)
+												),
+												React.createElement(
+													"h3",
+													{ style: { marginTop: 36, marginBottom: 0 } },
+													"Summary"
+												),
+												React.createElement(
+													"p",
+													null,
+													this.props.project.description
+												)
+											)
 										),
 										React.createElement(
 											"div",
@@ -121,8 +215,35 @@ var Project = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "entry-timeline" },
-												"Intro",
+												"Unit",
 												React.createElement("span", null),
+												React.createElement("div", { className: "timeline-divider" })
+											),
+											React.createElement(
+												"div",
+												{ className: "panel panel-default", style: { padding: 36 } },
+												React.createElement(
+													"h3",
+													null,
+													"Comments"
+												),
+												React.createElement("hr", null),
+												this.props.project.description,
+												React.createElement("br", null)
+											)
+										),
+										React.createElement(
+											"div",
+											{ className: "entry clearfix" },
+											React.createElement(
+												"div",
+												{ className: "entry-timeline" },
+												"Unit",
+												React.createElement(
+													"span",
+													null,
+													"1"
+												),
 												React.createElement("div", { className: "timeline-divider" })
 											),
 											React.createElement(

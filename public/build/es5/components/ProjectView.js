@@ -30,7 +30,7 @@ var ProjectView = (function (Component) {
 				var tags = this.props.project.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
-						{ href: "#" },
+						{ key: i, href: "#" },
 						tag
 					);
 				});
@@ -38,7 +38,7 @@ var ProjectView = (function (Component) {
 				return React.createElement(
 					"div",
 					{ className: "panel panel-default", style: { padding: 36 } },
-					React.createElement("img", { style: { width: "120", marginBottom: 16, float: "left", marginRight: 24 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=420" }),
+					React.createElement("img", { style: { width: 120, marginBottom: 16, float: "left", marginRight: 24 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=420" }),
 					React.createElement("i", { onClick: this.toggleEditing, className: "i-plain icon-edit" }),
 					React.createElement(
 						"h2",

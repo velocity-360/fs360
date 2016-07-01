@@ -63188,10 +63188,6 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _ProjectView = __webpack_require__(595);
-	
-	var _ProjectView2 = _interopRequireDefault(_ProjectView);
-	
 	var _EditProject = __webpack_require__(596);
 	
 	var _EditProject2 = _interopRequireDefault(_EditProject);
@@ -63269,7 +63265,13 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var content = this.props.project == null ? '' : _react2.default.createElement(_ProjectView2.default, { project: this.props.project });
+				var tags = this.props.project.tags.map(function (tag, i) {
+					return _react2.default.createElement(
+						'a',
+						{ key: i, href: '#' },
+						tag
+					);
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -63302,7 +63304,97 @@
 												_react2.default.createElement('span', null),
 												_react2.default.createElement('div', { className: 'timeline-divider' })
 											),
-											content
+											_react2.default.createElement(
+												'div',
+												{ className: 'panel panel-default', style: { padding: 36 } },
+												_react2.default.createElement('img', { style: { width: 120, marginBottom: 16, float: 'left', marginRight: 24 }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=420' }),
+												_react2.default.createElement('i', { onClick: this.toggleEditing, className: 'i-plain icon-edit' }),
+												_react2.default.createElement(
+													'h2',
+													null,
+													this.props.project.title
+												),
+												_react2.default.createElement('hr', null),
+												_react2.default.createElement(
+													'div',
+													{ className: 'tagcloud clearfix' },
+													tags
+												),
+												_react2.default.createElement(
+													'div',
+													{ style: { marginTop: 36, padding: 16, border: '1px solid #ddd', textAlign: 'center', background: '#f9f9f9' } },
+													_react2.default.createElement(
+														'div',
+														{ className: 'masonry-thumbs col-4' },
+														_react2.default.createElement(
+															'a',
+															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
+															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
+															_react2.default.createElement(
+																'div',
+																{ style: { width: 96 }, className: 'overlay' },
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'overlay-wrap' },
+																	_react2.default.createElement('i', { className: 'icon-line-plus' })
+																)
+															)
+														),
+														_react2.default.createElement(
+															'a',
+															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
+															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
+															_react2.default.createElement(
+																'div',
+																{ style: { width: 96 }, className: 'overlay' },
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'overlay-wrap' },
+																	_react2.default.createElement('i', { className: 'icon-line-plus' })
+																)
+															)
+														),
+														_react2.default.createElement(
+															'a',
+															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
+															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
+															_react2.default.createElement(
+																'div',
+																{ style: { width: 96 }, className: 'overlay' },
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'overlay-wrap' },
+																	_react2.default.createElement('i', { className: 'icon-line-plus' })
+																)
+															)
+														),
+														_react2.default.createElement(
+															'a',
+															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
+															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
+															_react2.default.createElement(
+																'div',
+																{ style: { width: 96 }, className: 'overlay' },
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'overlay-wrap' },
+																	_react2.default.createElement('i', { className: 'icon-line-plus' })
+																)
+															)
+														)
+													)
+												),
+												_react2.default.createElement(
+													'h3',
+													{ style: { marginTop: 36, marginBottom: 0 } },
+													'Summary'
+												),
+												_react2.default.createElement(
+													'p',
+													null,
+													this.props.project.description
+												)
+											)
 										),
 										_react2.default.createElement(
 											'div',
@@ -63310,8 +63402,35 @@
 											_react2.default.createElement(
 												'div',
 												{ className: 'entry-timeline' },
-												'Intro',
+												'Unit',
 												_react2.default.createElement('span', null),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'panel panel-default', style: { padding: 36 } },
+												_react2.default.createElement(
+													'h3',
+													null,
+													'Comments'
+												),
+												_react2.default.createElement('hr', null),
+												this.props.project.description,
+												_react2.default.createElement('br', null)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Unit',
+												_react2.default.createElement(
+													'span',
+													null,
+													'1'
+												),
 												_react2.default.createElement('div', { className: 'timeline-divider' })
 											),
 											_react2.default.createElement(
@@ -63354,149 +63473,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 595 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var ProjectView = function (_Component) {
-		_inherits(ProjectView, _Component);
-	
-		function ProjectView(props, context) {
-			_classCallCheck(this, ProjectView);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(ProjectView).call(this, props, context));
-		}
-	
-		_createClass(ProjectView, [{
-			key: "render",
-			value: function render() {
-				var tags = this.props.project.tags.map(function (tag, i) {
-					return _react2.default.createElement(
-						"a",
-						{ href: "#" },
-						tag
-					);
-				});
-	
-				return _react2.default.createElement(
-					"div",
-					{ className: "panel panel-default", style: { padding: 36 } },
-					_react2.default.createElement("img", { style: { width: '120', marginBottom: 16, float: 'left', marginRight: 24 }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=420' }),
-					_react2.default.createElement("i", { onClick: this.toggleEditing, className: "i-plain icon-edit" }),
-					_react2.default.createElement(
-						"h2",
-						null,
-						this.props.project.title
-					),
-					_react2.default.createElement("hr", null),
-					_react2.default.createElement(
-						"div",
-						{ className: "tagcloud clearfix" },
-						tags
-					),
-					_react2.default.createElement(
-						"div",
-						{ style: { marginTop: 36, padding: 16, border: '1px solid #ddd', textAlign: 'center', background: '#f9f9f9' } },
-						_react2.default.createElement(
-							"div",
-							{ className: "masonry-thumbs col-4" },
-							_react2.default.createElement(
-								"a",
-								{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-								_react2.default.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-								_react2.default.createElement(
-									"div",
-									{ style: { width: 96 }, className: "overlay" },
-									_react2.default.createElement(
-										"div",
-										{ className: "overlay-wrap" },
-										_react2.default.createElement("i", { className: "icon-line-plus" })
-									)
-								)
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-								_react2.default.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-								_react2.default.createElement(
-									"div",
-									{ style: { width: 96 }, className: "overlay" },
-									_react2.default.createElement(
-										"div",
-										{ className: "overlay-wrap" },
-										_react2.default.createElement("i", { className: "icon-line-plus" })
-									)
-								)
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-								_react2.default.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-								_react2.default.createElement(
-									"div",
-									{ style: { width: 96 }, className: "overlay" },
-									_react2.default.createElement(
-										"div",
-										{ className: "overlay-wrap" },
-										_react2.default.createElement("i", { className: "icon-line-plus" })
-									)
-								)
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-								_react2.default.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-								_react2.default.createElement(
-									"div",
-									{ style: { width: 96 }, className: "overlay" },
-									_react2.default.createElement(
-										"div",
-										{ className: "overlay-wrap" },
-										_react2.default.createElement("i", { className: "icon-line-plus" })
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						"h3",
-						{ style: { marginTop: 36, marginBottom: 0 } },
-						"Summary"
-					),
-					_react2.default.createElement(
-						"p",
-						null,
-						this.props.project.description
-					)
-				);
-			}
-		}]);
-	
-		return ProjectView;
-	}(_react.Component);
-	
-	exports.default = ProjectView;
-
-/***/ },
+/* 595 */,
 /* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
