@@ -5154,7 +5154,7 @@ body:not(.device-touch) .entry-link {
 	right: auto;
 	width: 64px;
 	height: 64px;
-	font-size: 24px;
+	font-size: 14px;
 }
 
 .postcontent .post-timeline .entry-timeline div.timeline-divider {
