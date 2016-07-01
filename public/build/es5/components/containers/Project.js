@@ -37,10 +37,8 @@ var Project = (function (Component) {
 		_classCallCheck(this, Project);
 
 		_get(Object.getPrototypeOf(Project.prototype), "constructor", this).call(this, props, context);
-		this.toggleEditing = this.toggleEditing.bind(this);
 		this.state = {
-			showLoader: false,
-			isEditing: false };
+			showLoader: false };
 	}
 
 	_inherits(Project, Component);
@@ -62,18 +60,6 @@ var Project = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		toggleEditing: {
-			value: function toggleEditing(event) {
-				event.preventDefault();
-				console.log("toggleEditing: " + this.state.isEditing);
-				var isEditing = !this.state.isEditing;
-				this.setState({
-					isEditing: isEditing
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		render: {
 			value: function render() {
 				var tags = this.props.project.tags.map(function (tag, i) {
@@ -81,6 +67,38 @@ var Project = (function (Component) {
 						"a",
 						{ key: i, href: "#" },
 						tag
+					);
+				});
+
+				var units = this.props.project.units.map(function (unit, i) {
+					return React.createElement(
+						"div",
+						{ className: "entry clearfix" },
+						React.createElement(
+							"div",
+							{ className: "entry-timeline" },
+							"Unit",
+							React.createElement(
+								"span",
+								null,
+								i + 1
+							),
+							React.createElement("div", { className: "timeline-divider" })
+						),
+						React.createElement(
+							"div",
+							{ className: "panel panel-default", style: { padding: 36 } },
+							React.createElement("img", { style: { float: "right", marginRight: 12, width: 72 }, src: "https://media-service.appspot.com/site/images/" + unit.icon + "?crop=260" }),
+							React.createElement(
+								"h3",
+								{ style: { marginBottom: 6 } },
+								unit.topic
+							),
+							React.createElement("br", null),
+							React.createElement("hr", null),
+							unit.description,
+							React.createElement("br", null)
+						)
 					);
 				});
 
@@ -119,7 +137,6 @@ var Project = (function (Component) {
 												"div",
 												{ className: "panel panel-default", style: { padding: 36 } },
 												React.createElement("img", { style: { width: 120, marginBottom: 16, float: "left", marginRight: 24 }, src: "https://media-service.appspot.com/site/images/" + this.props.project.image + "?crop=420" }),
-												React.createElement("i", { onClick: this.toggleEditing, className: "i-plain icon-edit" }),
 												React.createElement(
 													"h2",
 													null,
@@ -131,75 +148,7 @@ var Project = (function (Component) {
 													{ className: "tagcloud clearfix" },
 													tags
 												),
-												React.createElement(
-													"div",
-													{ style: { marginTop: 36, padding: 16, border: "1px solid #ddd", textAlign: "center", background: "#f9f9f9" } },
-													React.createElement(
-														"div",
-														{ className: "masonry-thumbs col-4" },
-														React.createElement(
-															"a",
-															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-															React.createElement(
-																"div",
-																{ style: { width: 96 }, className: "overlay" },
-																React.createElement(
-																	"div",
-																	{ className: "overlay-wrap" },
-																	React.createElement("i", { className: "icon-line-plus" })
-																)
-															)
-														),
-														React.createElement(
-															"a",
-															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-															React.createElement(
-																"div",
-																{ style: { width: 96 }, className: "overlay" },
-																React.createElement(
-																	"div",
-																	{ className: "overlay-wrap" },
-																	React.createElement("i", { className: "icon-line-plus" })
-																)
-															)
-														),
-														React.createElement(
-															"a",
-															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-															React.createElement(
-																"div",
-																{ style: { width: 96 }, className: "overlay" },
-																React.createElement(
-																	"div",
-																	{ className: "overlay-wrap" },
-																	React.createElement("i", { className: "icon-line-plus" })
-																)
-															)
-														),
-														React.createElement(
-															"a",
-															{ href: "/images/logo_round_blue_260.png", "data-lightbox": "image" },
-															React.createElement("img", { style: { width: 96 }, src: "/images/logo_round_blue_260.png", alt: "Single Image" }),
-															React.createElement(
-																"div",
-																{ style: { width: 96 }, className: "overlay" },
-																React.createElement(
-																	"div",
-																	{ className: "overlay-wrap" },
-																	React.createElement("i", { className: "icon-line-plus" })
-																)
-															)
-														)
-													)
-												),
-												React.createElement(
-													"h3",
-													{ style: { marginTop: 36, marginBottom: 0 } },
-													"Summary"
-												),
+												React.createElement("div", { className: "clearfix" }),
 												React.createElement(
 													"p",
 													null,
@@ -207,56 +156,7 @@ var Project = (function (Component) {
 												)
 											)
 										),
-										React.createElement(
-											"div",
-											{ className: "entry clearfix" },
-											React.createElement(
-												"div",
-												{ className: "entry-timeline" },
-												"Unit",
-												React.createElement("span", null),
-												React.createElement("div", { className: "timeline-divider" })
-											),
-											React.createElement(
-												"div",
-												{ className: "panel panel-default", style: { padding: 36 } },
-												React.createElement(
-													"h3",
-													null,
-													"Comments"
-												),
-												React.createElement("hr", null),
-												this.props.project.description,
-												React.createElement("br", null)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "entry clearfix" },
-											React.createElement(
-												"div",
-												{ className: "entry-timeline" },
-												"Unit",
-												React.createElement(
-													"span",
-													null,
-													"1"
-												),
-												React.createElement("div", { className: "timeline-divider" })
-											),
-											React.createElement(
-												"div",
-												{ className: "panel panel-default", style: { padding: 36 } },
-												React.createElement(
-													"h3",
-													null,
-													"Comments"
-												),
-												React.createElement("hr", null),
-												this.props.project.description,
-												React.createElement("br", null)
-											)
-										)
+										units
 									)
 								)
 							)

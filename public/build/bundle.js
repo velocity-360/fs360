@@ -22549,6 +22549,7 @@
 			image: '',
 			description: '',
 			tags: [],
+			units: [],
 			profile: {
 				name: ''
 			}
@@ -63226,10 +63227,8 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props, context));
 	
-			_this.toggleEditing = _this.toggleEditing.bind(_this);
 			_this.state = {
-				showLoader: false,
-				isEditing: false
+				showLoader: false
 			};
 			return _this;
 		}
@@ -63249,16 +63248,6 @@
 				});
 			}
 		}, {
-			key: 'toggleEditing',
-			value: function toggleEditing(event) {
-				event.preventDefault();
-				console.log('toggleEditing: ' + this.state.isEditing);
-				var isEditing = !this.state.isEditing;
-				this.setState({
-					isEditing: isEditing
-				});
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				var tags = this.props.project.tags.map(function (tag, i) {
@@ -63266,6 +63255,38 @@
 						'a',
 						{ key: i, href: '#' },
 						tag
+					);
+				});
+	
+				var units = this.props.project.units.map(function (unit, i) {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'entry clearfix' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-timeline' },
+							'Unit',
+							_react2.default.createElement(
+								'span',
+								null,
+								i + 1
+							),
+							_react2.default.createElement('div', { className: 'timeline-divider' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default', style: { padding: 36 } },
+							_react2.default.createElement('img', { style: { float: 'right', marginRight: 12, width: 72 }, src: 'https://media-service.appspot.com/site/images/' + unit.icon + '?crop=260' }),
+							_react2.default.createElement(
+								'h3',
+								{ style: { marginBottom: 6 } },
+								unit.topic
+							),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('hr', null),
+							unit.description,
+							_react2.default.createElement('br', null)
+						)
 					);
 				});
 	
@@ -63304,7 +63325,6 @@
 												'div',
 												{ className: 'panel panel-default', style: { padding: 36 } },
 												_react2.default.createElement('img', { style: { width: 120, marginBottom: 16, float: 'left', marginRight: 24 }, src: 'https://media-service.appspot.com/site/images/' + this.props.project.image + '?crop=420' }),
-												_react2.default.createElement('i', { onClick: this.toggleEditing, className: 'i-plain icon-edit' }),
 												_react2.default.createElement(
 													'h2',
 													null,
@@ -63316,75 +63336,7 @@
 													{ className: 'tagcloud clearfix' },
 													tags
 												),
-												_react2.default.createElement(
-													'div',
-													{ style: { marginTop: 36, padding: 16, border: '1px solid #ddd', textAlign: 'center', background: '#f9f9f9' } },
-													_react2.default.createElement(
-														'div',
-														{ className: 'masonry-thumbs col-4' },
-														_react2.default.createElement(
-															'a',
-															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
-															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 96 }, className: 'overlay' },
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'overlay-wrap' },
-																	_react2.default.createElement('i', { className: 'icon-line-plus' })
-																)
-															)
-														),
-														_react2.default.createElement(
-															'a',
-															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
-															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 96 }, className: 'overlay' },
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'overlay-wrap' },
-																	_react2.default.createElement('i', { className: 'icon-line-plus' })
-																)
-															)
-														),
-														_react2.default.createElement(
-															'a',
-															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
-															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 96 }, className: 'overlay' },
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'overlay-wrap' },
-																	_react2.default.createElement('i', { className: 'icon-line-plus' })
-																)
-															)
-														),
-														_react2.default.createElement(
-															'a',
-															{ href: '/images/logo_round_blue_260.png', 'data-lightbox': 'image' },
-															_react2.default.createElement('img', { style: { width: 96 }, src: '/images/logo_round_blue_260.png', alt: 'Single Image' }),
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 96 }, className: 'overlay' },
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'overlay-wrap' },
-																	_react2.default.createElement('i', { className: 'icon-line-plus' })
-																)
-															)
-														)
-													)
-												),
-												_react2.default.createElement(
-													'h3',
-													{ style: { marginTop: 36, marginBottom: 0 } },
-													'Summary'
-												),
+												_react2.default.createElement('div', { className: 'clearfix' }),
 												_react2.default.createElement(
 													'p',
 													null,
@@ -63392,56 +63344,7 @@
 												)
 											)
 										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Unit',
-												_react2.default.createElement('span', null),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'panel panel-default', style: { padding: 36 } },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Comments'
-												),
-												_react2.default.createElement('hr', null),
-												this.props.project.description,
-												_react2.default.createElement('br', null)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Unit',
-												_react2.default.createElement(
-													'span',
-													null,
-													'1'
-												),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'panel panel-default', style: { padding: 36 } },
-												_react2.default.createElement(
-													'h3',
-													null,
-													'Comments'
-												),
-												_react2.default.createElement('hr', null),
-												this.props.project.description,
-												_react2.default.createElement('br', null)
-											)
-										)
+										units
 									)
 								)
 							)

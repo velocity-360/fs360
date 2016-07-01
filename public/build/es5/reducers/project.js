@@ -10,6 +10,7 @@ var initialState = {
 		image: "",
 		description: "",
 		tags: [],
+		units: [],
 		profile: {
 			name: ""
 		}
