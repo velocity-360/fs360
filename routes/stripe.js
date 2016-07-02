@@ -148,16 +148,16 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'charge') {
 //		console.log('CHARGE: '+JSON.stringify(req.body))
-		var customerEmail = ''
+		var customerName = ''
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
 		.then(function(charge){
 			var projectId = req.body.project
-			customerEmail = charge.source.name // this comes from Stripe
+			customerName = charge.source.name // this comes from Stripe
 			return findProject(projectId)
 		})
 		.then(function(project){
-			var text = customerEmail+' purchased '+project.title
+			var text = customerName+' purchased '+project.title
 			var emailList = ['dkwon@velocity360.io']
 			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Purchase', text)
 			res.send({'confirmation':'success', 'project':project.summary()})
