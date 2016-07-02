@@ -40,7 +40,7 @@ class Footer extends React.Component {
 
 							<div className="clear"></div>
 
-							<i className="icon-envelope2"></i> katrina@velocity360.io 
+							<a style={{color:'rgba(255, 255, 255, 0.247059)'}} href="mailto:katrina@velocity360.io">katrina@velocity360.io </a>
 							<span className="middot">&middot;</span> Velocity 360
 						</div>
 
