@@ -185,6 +185,7 @@ router.post('/:resource', function(req, res, next) {
             return
 		})
 		.catch(function(err){
+			console.log('CHARGE ERROR: '+JSON.stringify(err))
 			res.send({'confirmation':'fail', 'message':err.message})
 			return
 		})
