@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Profile = require('../models/Profile');
 var Course = require('../models/Course');
+var Project = require('../models/Project');
 var Promise = require('bluebird');
 var EmailManager = require('../managers/EmailManager');
 
@@ -170,7 +171,6 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'charge') {
 //		console.log('CHARGE: '+JSON.stringify(req.body))
-
 		var customerEmail = ''
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
@@ -196,66 +196,6 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 
-	// if (resource == 'charge') {
-	// 	if (!req.session){
-	// 		res.send({'confirmation':'fail', 'message':'User not logged in.'});
-	// 		return;
-	// 	}
-
-	// 	if (!req.session.user){
-	// 		res.send({'confirmation':'fail', 'message':'User not logged in.'});
-	// 		return;
-	// 	}
-
-
-	// 	var userId = req.session.user; // this is the currently logged in user
-
-	// 	findProfile(userId)
-	// 	.then(function(profile){
-	// 		var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
-	// 		// already has a stripe account:
-	// 		if (profile.stripeId.length == 0)
-	// 			return createStripeAccount(stripe, profile, req.body.stripeToken, req.body.amount);
-	// 		else 
-	// 			return createStripeCharge(stripe, req.body.amount, profile.stripeId, 'TEST STRIPE CHARGE 1');
-	// 	})
-	// 	.then(function(charge){
-	// 		var courseId = req.body.course;
-
-	// 		// find course and add profile to subscribers array.
-	// 		Course.findById(courseId, function(err, course){
-	// 			if (err){
-	// 				res.send({'confirmation':'fail', 'message':err.message});
-	// 	            return; 
-	// 			}
-			
-	// 			if (course == null){
-	// 				res.send({'confirmation':'fail', 'message':'Course '+courseId+' not found.'});
-	// 	            return; 
-	// 			}
-
-	// 			if (course.subscribers.indexOf(userId) == -1){
-	// 				course.subscribers.push(userId);
-	// 				course.save();
-	// 			}
-
-	// 			res.send({'confirmation':'success', 'course':course.summary()});
-	//             return;
-	// 		});
-	// 		return;
-	// 	})
-	// 	.catch(function(err){
-	// 		res.send({'confirmation':'fail', 'message':err.message});
-	// 		return;
-	// 	});
-		
-	// 	return;
-	// }
-
-	
-	
-	
 	// Apply a credit card to a profile:
 	if (resource == 'card') {
 		var stripeToken = req.body.stripeToken;
