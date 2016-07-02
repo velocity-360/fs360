@@ -79,14 +79,15 @@ var Project = (function (Component) {
 		configureStripe: {
 			value: function configureStripe(project) {
 				var _this = this;
-				stripe.initialize(function (token) {
+				var text = "$" + project.price + ".00";
+				stripe.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 
 					api.submitStripeCharge(token, project.id, project.price, function () {
 						api.handleGet("/account/currentuser", {}, function (err, response) {
 							_this.setState({ showLoader: false });
 							if (err) {
-								alert(response.message);
+								alert(err.message);
 								return;
 							}
 

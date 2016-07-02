@@ -63289,7 +63289,8 @@
 			key: 'configureStripe',
 			value: function configureStripe(project) {
 				var _this = this;
-				_StripeUtils2.default.initialize(function (token) {
+				var text = '$' + project.price + '.00';
+				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	
 					_api2.default.submitStripeCharge(token, project.id, project.price, function () {
@@ -63297,7 +63298,7 @@
 						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 							_this.setState({ showLoader: false });
 							if (err) {
-								alert(response.message);
+								alert(err.message);
 								return;
 							}
 	

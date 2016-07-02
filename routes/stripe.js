@@ -169,34 +169,13 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'charge') {
+		console.log('CHARGE: '+JSON.stringify(req.body))
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-//		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360 Course Deposit')
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
 		.then(function(charge){
 			var projectId = req.body.project
 			var customerEmail = charge.source.name // this comes from Stripe
 			return findProject(projectId)
-
-			// Course.findById(courseId, function(err, course){
-			// 	if (err){
-			// 		res.send({'confirmation':'fail', 'message':err.message})
-		 //            return
-			// 	}
-			
-			// 	if (course == null){
-			// 		res.send({'confirmation':'fail', 'message':'Course '+courseId+' not found.'})
-		 //            return
-			// 	}
-
-				// var text = customerEmail+' submitted a depost for '+course.title
-				// var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
-				// EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Deposit', text)
-				
-			// 	res.send({'confirmation':'success', 'course':course.summary()})
-	  //           return
-			// })
-
-			// return
 		})
 		.then(function(project){
 			var text = customerEmail+' purchased '+project.title
