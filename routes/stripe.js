@@ -308,24 +308,21 @@ router.post('/:resource', function(req, res, next) {
 
 				res.json({'confirmation':'success', 'profile':profile.summary()});
 				
-				var card = customer.sources.data[0];
-				profile['stripeId'] = customer.id;
-				profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand};
+				var card = customer.sources.data[0]
+				profile['stripeId'] = customer.id
+				profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand}
 
-				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Premium Subscriber', JSON.stringify(profile.summary()));
-				profile.save();
-				return;
-			});
-			
-		});
+				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Premium Subscriber', JSON.stringify(profile.summary()))
+				profile.save()
+				return
+			})
+		})
 		
-		return;
+		return
 	}
 	
 	
-});
+})
 
 
-
-
-module.exports = router;
+module.exports = router

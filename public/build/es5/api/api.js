@@ -105,7 +105,7 @@ module.exports = {
 			amount: amt
 		};
 
-		superagent.post("/stripe/charge").send(body).set("Accept", "application/json").set("Content-type", "application/x-www-form-urlencoded").end(function (err, res) {
+		superagent.post("/stripe/charge").type("form").send(body).set("Accept", "application/json").end(function (err, res) {
 			if (completion == null) return;
 
 			if (err) {
@@ -113,7 +113,12 @@ module.exports = {
 				return;
 			}
 
-			if (res.body.confirmation == "success") completion(null, res.body);else completion({ message: res.body.message }, null);
+			if (res.body.confirmation != "success") {
+				completion({ message: res.body.message }, null);
+				return;
+			}
+
+			completion(null, res.body);
 		});
 	}
 

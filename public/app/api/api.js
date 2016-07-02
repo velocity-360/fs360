@@ -148,9 +148,9 @@ export default {
 
 		superagent
 		.post('/stripe/charge')
+		.type('form')
 		.send(body)
 		.set('Accept', 'application/json')
-		.set('Content-type', 'application/x-www-form-urlencoded')
 		.end(function(err, res){
 			if (completion == null)
 				return
@@ -160,10 +160,12 @@ export default {
 				return
 			}
 			
-			if (res.body.confirmation == 'success')
-	    		completion(null, res.body)
-			else 
+			if (res.body.confirmation != 'success'){
 	    		completion({message:res.body.message}, null)
+	    		return
+			}
+
+	    	completion(null, res.body)
 		})
 	}
 

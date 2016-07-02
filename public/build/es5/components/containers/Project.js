@@ -83,17 +83,7 @@ var Project = (function (Component) {
 				stripe.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 
-					api.submitStripeCharge(token, project.id, project.price, function () {
-						api.handleGet("/account/currentuser", {}, function (err, response) {
-							_this.setState({ showLoader: false });
-							if (err) {
-								alert(err.message);
-								return;
-							}
-
-							window.location.href = "/account";
-						});
-					});
+					api.submitStripeCharge(token, project.id, project.price, function () {});
 				});
 			},
 			writable: true,
@@ -309,3 +299,14 @@ var stateToProps = function (state) {
 };
 
 module.exports = connect(stateToProps)(Project);
+
+
+// api.handleGet('/account/currentuser', {}, function(err, response){
+// 	_this.setState({showLoader: false})
+// 	if (err){
+// 		alert(err.message)
+// 		return
+// 	}
+
+// 	window.location.href = '/account'
+// })

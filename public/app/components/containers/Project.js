@@ -53,15 +53,15 @@ class Project extends Component {
 
 			api.submitStripeCharge(token, project.id, project.price, function(){
 
-				api.handleGet('/account/currentuser', {}, function(err, response){
-					_this.setState({showLoader: false})
-					if (err){
-						alert(err.message)
-						return
-					}
+				// api.handleGet('/account/currentuser', {}, function(err, response){
+				// 	_this.setState({showLoader: false})
+				// 	if (err){
+				// 		alert(err.message)
+				// 		return
+				// 	}
 
-					window.location.href = '/account'
-				})
+				// 	window.location.href = '/account'
+				// })
 
 			})			
 		})

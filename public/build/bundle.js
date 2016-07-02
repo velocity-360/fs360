@@ -42965,7 +42965,7 @@
 				amount: amt
 			};
 	
-			_superagent2.default.post('/stripe/charge').send(body).set('Accept', 'application/json').set('Content-type', 'application/x-www-form-urlencoded').end(function (err, res) {
+			_superagent2.default.post('/stripe/charge').type('form').send(body).set('Accept', 'application/json').end(function (err, res) {
 				if (completion == null) return;
 	
 				if (err) {
@@ -42973,7 +42973,12 @@
 					return;
 				}
 	
-				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
+				if (res.body.confirmation != 'success') {
+					completion({ message: res.body.message }, null);
+					return;
+				}
+	
+				completion(null, res.body);
 			});
 		}
 	
@@ -63295,15 +63300,16 @@
 	
 					_api2.default.submitStripeCharge(token, project.id, project.price, function () {
 	
-						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
-							_this.setState({ showLoader: false });
-							if (err) {
-								alert(err.message);
-								return;
-							}
+						// api.handleGet('/account/currentuser', {}, function(err, response){
+						// 	_this.setState({showLoader: false})
+						// 	if (err){
+						// 		alert(err.message)
+						// 		return
+						// 	}
 	
-							window.location.href = '/account';
-						});
+						// 	window.location.href = '/account'
+						// })
+	
 					});
 				});
 			}
