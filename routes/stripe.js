@@ -169,12 +169,14 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'charge') {
-		console.log('CHARGE: '+JSON.stringify(req.body))
+//		console.log('CHARGE: '+JSON.stringify(req.body))
+
+		var customerEmail = ''
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
 		.then(function(charge){
 			var projectId = req.body.project
-			var customerEmail = charge.source.name // this comes from Stripe
+			customerEmail = charge.source.name // this comes from Stripe
 			return findProject(projectId)
 		})
 		.then(function(project){

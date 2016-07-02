@@ -42863,28 +42863,6 @@
 	
 				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
 			});
-	
-			// fetch(endpoint, {
-			//     method: 'GET',
-			//     headers: {
-			//         'Accept': 'application/json',
-			//         'Content-Type': 'application/json'
-			//     },
-			// })
-			// .then(response => response.json())
-			// .then(function(json){
-			//    	if (completion != null){
-			//    		if (json.confirmation == 'success')
-			//     		completion(null, json)
-			//    		else
-			//     		completion({message: json.message}, null)
-			//    	}
-			// })
-			// .catch(function(err){
-			//    	if (completion != null)
-			//    		completion(err, null)
-	
-			// })
 		},
 	
 		// using superagent here because for some reason, cookies don't get installed using fetch (wtf)
@@ -42897,7 +42875,12 @@
 					return;
 				}
 	
-				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
+				if (res.body.confirmation != 'success') {
+					completion({ message: res.body.message }, null);
+					return;
+				}
+	
+				completion(null, res.body);
 			});
 		},
 	
@@ -42910,7 +42893,12 @@
 					return;
 				}
 	
-				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
+				if (res.body.confirmation != 'success') {
+					completion({ message: res.body.message }, null);
+					return;
+				}
+	
+				completion(null, res.body);
 			});
 		},
 	
@@ -42981,27 +42969,6 @@
 				completion(null, res.body);
 			});
 		}
-	
-		// submitStripeCharge: function(token, projectId, amt, completion){
-		//        var http = new XMLHttpRequest()
-		//        var url = '/stripe/charge'
-		//        var params = "stripeToken="+token.id+"&project="+projectId+"&amount="+amt
-		//        http.open("POST", url, true)
-	
-		//        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	
-		//        // notice that the event handler is on xhr and not xhr.upload
-		//        http.addEventListener('readystatechange', function(e) {
-		//            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
-		//                console.log('UPLOAD COMPLETE: ')
-	
-		//                if (completion != null)
-		//                 completion()
-		//            }
-		//        })
-	
-		//        var response = http.send(params)
-		// }
 	
 	};
 
@@ -63298,18 +63265,23 @@
 				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	
-					_api2.default.submitStripeCharge(token, project.id, project.price, function () {
+					_api2.default.submitStripeCharge(token, project.id, project.price, function (err, response) {
+						if (err) {
+							alert(err.message);
+							return;
+						}
+	
+						console.log(JSON.stringify(response));
 	
 						// api.handleGet('/account/currentuser', {}, function(err, response){
 						// 	_this.setState({showLoader: false})
-						// 	if (err){
-						// 		alert(err.message)
-						// 		return
-						// 	}
+						// if (err){
+						// 	alert(err.message)
+						// 	return
+						// }
 	
 						// 	window.location.href = '/account'
 						// })
-	
 					});
 				});
 			}

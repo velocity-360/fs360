@@ -24,28 +24,6 @@ export default {
 			else 
 	    		completion({message:res.body.message}, null)
 		})
-
-		// fetch(endpoint, {
-		//     method: 'GET',
-		//     headers: {
-		//         'Accept': 'application/json',
-		//         'Content-Type': 'application/json'
-		//     },
-		// })
-		// .then(response => response.json())
-		// .then(function(json){
-	 //    	if (completion != null){
-	 //    		if (json.confirmation == 'success')
-		//     		completion(null, json)
-	 //    		else
-		//     		completion({message: json.message}, null)
-	 //    	}
-		// })
-		// .catch(function(err){
-	 //    	if (completion != null)
-	 //    		completion(err, null)
-
-		// })
 	},
 
 	// using superagent here because for some reason, cookies don't get installed using fetch (wtf)
@@ -63,10 +41,12 @@ export default {
 				return
 			}
 			
-			if (res.body.confirmation == 'success')
-	    		completion(null, res.body)
-			else 
+			if (res.body.confirmation != 'success'){
 	    		completion({message:res.body.message}, null)
+	    		return
+			}
+
+	    	completion(null, res.body)
 		})
 	},
 
@@ -84,10 +64,12 @@ export default {
 				return
 			}
 			
-			if (res.body.confirmation == 'success')
-	    		completion(null, res.body)
-			else 
+			if (res.body.confirmation != 'success'){
 	    		completion({message:res.body.message}, null)
+	    		return
+			}
+
+	    	completion(null, res.body)
 		})
 	},
 
@@ -110,9 +92,7 @@ export default {
 
 		      	var image = resp.body.image;
 				completion(null, image)
-	        });
-
-
+	        })
 		})
 	},
 
@@ -168,28 +148,5 @@ export default {
 	    	completion(null, res.body)
 		})
 	}
-
-	// submitStripeCharge: function(token, projectId, amt, completion){
- //        var http = new XMLHttpRequest()
- //        var url = '/stripe/charge'
- //        var params = "stripeToken="+token.id+"&project="+projectId+"&amount="+amt
- //        http.open("POST", url, true)
-        
- //        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        
- //        // notice that the event handler is on xhr and not xhr.upload
- //        http.addEventListener('readystatechange', function(e) {
- //            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
- //                console.log('UPLOAD COMPLETE: ')
-
- //                if (completion != null)
-	//                 completion()
- //            }
- //        })
-  
- //        var response = http.send(params)
-	// }
-
-
 
 }
