@@ -27,23 +27,42 @@ function createProfile(profileInfo){
     });
 }
 
-function findProfile(profileId){
+// function findProfile(profileId){
+//     return new Promise(function (resolve, reject){
+
+// 		Profile.findById(profileId, function(err, profile){
+// 			if (err){
+// 	            reject(err);
+// 	            return; 
+// 			}
+		
+// 			if (profile == null){
+// 	            reject(null);
+// 	            return; 
+// 			}
+
+// 	        resolve(profile);
+// 		});
+//     });
+// }
+
+function findProject(projectId){
     return new Promise(function (resolve, reject){
 
-		Profile.findById(profileId, function(err, profile){
+		Project.findById(projectId, function(err, project){
 			if (err){
-	            reject(err);
-	            return; 
+	            reject(err)
+	            return
 			}
 		
-			if (profile == null){
-	            reject(null);
-	            return; 
+			if (project == null){
+	            reject(null)
+	            return;
 			}
 
-	        resolve(profile);
-		});
-    });
+	        resolve(project)
+		})
+    })
 }
 
 function createStripeAccount(stripe, profile, stripeToken, amount){ // amount can be null
@@ -122,13 +141,13 @@ function createNonregisteredStripeCharge(stripe, stripeToken, amount, descriptio
 				description: description,
 			}, function(err, charge) {
 				if (err){ // check for `err`
-		            reject(err);
+		            reject(err)
 		            return
 				}
 
-		    	resolve(charge);
-		});
-    });
+		    	resolve(charge)
+		})
+    })
 }
 
 
@@ -150,44 +169,48 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'charge') {
-		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360 Course Deposit')
+		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+//		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360 Course Deposit')
+		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
 		.then(function(charge){
-			var courseId = req.body.course;
-			var customerEmail = charge.source.name
+			var projectId = req.body.project
+			var customerEmail = charge.source.name // this comes from Stripe
+			return findProject(projectId)
 
-			Course.findById(courseId, function(err, course){
-				if (err){
-					res.send({'confirmation':'fail', 'message':err.message});
-		            return; 
-				}
+			// Course.findById(courseId, function(err, course){
+			// 	if (err){
+			// 		res.send({'confirmation':'fail', 'message':err.message})
+		 //            return
+			// 	}
 			
-				if (course == null){
-					res.send({'confirmation':'fail', 'message':'Course '+courseId+' not found.'});
-		            return; 
-				}
+			// 	if (course == null){
+			// 		res.send({'confirmation':'fail', 'message':'Course '+courseId+' not found.'})
+		 //            return
+			// 	}
 
-				var text = customerEmail+' submitted a depost for '+course.title
-				var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
-				EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Deposit', text)
+				// var text = customerEmail+' submitted a depost for '+course.title
+				// var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io']
+				// EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Deposit', text)
 				
-				// for (var i=0; i<emailList.length; i++){
-				// 	var email = emailList[i]
-				// 	EmailManager.sendEmail('info@thegridmedia.com', email, 'Course Deposit', text)
-				// }
+			// 	res.send({'confirmation':'success', 'course':course.summary()})
+	  //           return
+			// })
 
-				res.send({'confirmation':'success', 'course':course.summary()});
-	            return;
-			});
-
-			return;
+			// return
+		})
+		.then(function(project){
+			var text = customerEmail+' purchased '+project.title
+			var emailList = ['dkwon@velocity360.io']
+			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Purchase', text)
+			res.send({'confirmation':'success', 'project':project.summary()})
+            return
 		})
 		.catch(function(err){
-			res.send({'confirmation':'fail', 'message':err.message});
-			return;
-		});
+			res.send({'confirmation':'fail', 'message':err.message})
+			return
+		})
 		
-		return;
+		return
 	}
 
 

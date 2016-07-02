@@ -28,6 +28,8 @@ var actions = _interopRequire(require("../../actions/actions"));
 var connect = require("react-redux").connect;
 var api = _interopRequire(require("../../api/api"));
 
+var stripe = _interopRequire(require("../../utils/StripeUtils"));
+
 var DateUtils = _interopRequire(require("../../utils/DateUtils"));
 
 var TextUtils = _interopRequire(require("../../utils/TextUtils"));
@@ -37,8 +39,16 @@ var Project = (function (Component) {
 		_classCallCheck(this, Project);
 
 		_get(Object.getPrototypeOf(Project.prototype), "constructor", this).call(this, props, context);
+		this.updateUser = this.updateUser.bind(this);
+		this.purchase = this.purchase.bind(this);
+		this.configureStripe = this.configureStripe.bind(this);
 		this.state = {
-			showLoader: false };
+			showLoader: false,
+			user: {
+				name: "",
+				email: ""
+			}
+		};
 	}
 
 	_inherits(Project, Component);
@@ -46,6 +56,7 @@ var Project = (function (Component) {
 	_prototypeProperties(Project, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
+				var _this = this;
 				var url = "/api/project?slug=" + this.props.slug;
 				api.handleGet(url, {}, function (err, response) {
 					if (err) {
@@ -54,8 +65,73 @@ var Project = (function (Component) {
 					}
 
 					console.log(JSON.stringify(response));
+					if (response.projects.length > 0) {
+						var project = response.projects[0];
+						_this.configureStripe(project);
+					}
+
 					store.dispatch(actions.projectsRecieved(response.projects));
 				});
+			},
+			writable: true,
+			configurable: true
+		},
+		configureStripe: {
+			value: function configureStripe(project) {
+				var _this = this;
+				stripe.initialize(function (token) {
+					_this.setState({ showLoader: true });
+
+					api.submitStripeCharge(token, this.props.project.id, this.props.project.price, function () {
+						api.handleGet("/account/currentuser", {}, function (err, response) {
+							_this.setState({ showLoader: false });
+							if (err) {
+								alert(response.message);
+								return;
+							}
+
+							window.location.href = "/account";
+						});
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateUser: {
+			value: function updateUser(event) {
+				//		console.log(event.target.id+' == '+event.target.value)
+				var updatedUser = Object.assign({}, this.state.user);
+				updatedUser[event.target.id] = event.target.value;
+				this.setState({
+					user: updatedUser
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		purchase: {
+			value: function purchase(event) {
+				event.preventDefault();
+				if (this.state.user.name.length == 0) {
+					alert("Please Enter Your Name");
+					return;
+				}
+
+				if (this.state.user.email.length == 0) {
+					alert("Please Enter Your Email");
+					return;
+				}
+
+				var parts = this.state.user.name.split(" ");
+				var updatedUser = Object.assign({}, this.state.user);
+				updatedUser.firstName = parts[0];
+				if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
+
+				//		console.log(JSON.stringify(updatedUser))
+
+				var text = this.props.project.title + ", $" + this.props.project.price;
+				stripe.showModalWithText(text);
 			},
 			writable: true,
 			configurable: true
@@ -73,7 +149,7 @@ var Project = (function (Component) {
 				var units = this.props.project.units.map(function (unit, i) {
 					return React.createElement(
 						"div",
-						{ className: "entry clearfix" },
+						{ key: i, className: "entry clearfix" },
 						React.createElement(
 							"div",
 							{ className: "entry-timeline" },
@@ -156,7 +232,54 @@ var Project = (function (Component) {
 												)
 											)
 										),
-										units
+										units,
+										React.createElement(
+											"div",
+											{ className: "entry clearfix" },
+											React.createElement(
+												"div",
+												{ className: "entry-timeline" },
+												React.createElement(
+													"span",
+													null,
+													"Purchase"
+												),
+												React.createElement("div", { className: "timeline-divider" })
+											),
+											React.createElement(
+												"div",
+												{ className: "panel panel-default", style: { padding: 36 } },
+												React.createElement(
+													"h2",
+													null,
+													"Purchase"
+												),
+												React.createElement("hr", null),
+												React.createElement("div", { className: "clearfix" }),
+												React.createElement(
+													"div",
+													{ className: "row" },
+													React.createElement(
+														"div",
+														{ className: "col-md-8" },
+														React.createElement("input", { id: "name", onChange: this.updateUser, type: "text", placeholder: "Name", className: "form-control" }),
+														React.createElement("br", null),
+														React.createElement("input", { id: "email", onChange: this.updateUser, type: "text", placeholder: "Email", className: "form-control" }),
+														React.createElement(
+															"a",
+															{ onClick: this.purchase, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+															"Purchase"
+														),
+														React.createElement("br", null)
+													),
+													React.createElement(
+														"div",
+														{ className: "col-md-4" },
+														React.createElement("div", { style: { background: "#f9f9f9", padding: 12, border: "1px solid #ddd" } })
+													)
+												)
+											)
+										)
 									)
 								)
 							)

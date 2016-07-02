@@ -6,6 +6,7 @@ import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
 import api from '../../api/api'
+import stripe from '../../utils/StripeUtils'
 import DateUtils from '../../utils/DateUtils'
 import TextUtils from '../../utils/TextUtils'
 
@@ -13,12 +14,20 @@ import TextUtils from '../../utils/TextUtils'
 class Project extends Component {
 	constructor(props, context){
 		super(props, context)
+		this.updateUser = this.updateUser.bind(this)
+		this.purchase = this.purchase.bind(this)
+		this.configureStripe = this.configureStripe.bind(this)
 		this.state = {
 			showLoader: false,
+			user: {
+				name: '',
+				email: ''
+			}
 		}
 	}
 
 	componentDidMount(){
+		var _this = this
 		var url = '/api/project?slug='+this.props.slug
 		api.handleGet(url, {}, function(err, response){
 			if (err){
@@ -27,8 +36,67 @@ class Project extends Component {
 			}
 
 			console.log(JSON.stringify(response))
+			if (response.projects.length > 0){
+				var project = response.projects[0]
+				_this.configureStripe(project)
+			}
+
 			store.dispatch(actions.projectsRecieved(response.projects))
 		})
+	}
+
+	configureStripe(project){
+		var _this = this
+		stripe.initialize(function(token){
+			_this.setState({showLoader: true})
+
+			api.submitStripeCharge(token, this.props.project.id, this.props.project.price, function(){
+
+				api.handleGet('/account/currentuser', {}, function(err, response){
+					_this.setState({showLoader: false})
+					if (err){
+						alert(response.message)
+						return
+					}
+
+					window.location.href = '/account'
+				})
+
+			})			
+		})
+	}
+
+	updateUser(event){
+//		console.log(event.target.id+' == '+event.target.value)
+		var updatedUser = Object.assign({}, this.state.user)
+		updatedUser[event.target.id] = event.target.value
+		this.setState({
+			user: updatedUser
+		})
+	}
+
+	purchase(event){
+		event.preventDefault()
+		if (this.state.user.name.length == 0){
+			alert('Please Enter Your Name')
+			return
+		}
+
+		if (this.state.user.email.length == 0){
+			alert('Please Enter Your Email')
+			return
+		}
+
+		var parts = this.state.user.name.split(' ')
+		var updatedUser = Object.assign({}, this.state.user)
+		updatedUser['firstName'] = parts[0]
+		if (parts.length > 1)
+			updatedUser['lastName'] = parts[parts.length-1]
+
+//		console.log(JSON.stringify(updatedUser))
+
+		var text = this.props.project.title+', $'+this.props.project.price
+		stripe.showModalWithText(text)
 	}
 
 	render(){
@@ -38,7 +106,7 @@ class Project extends Component {
 
 		var units = this.props.project.units.map(function(unit, i){
 			return (
-				<div className="entry clearfix">
+				<div key={i} className="entry clearfix">
 					<div className="entry-timeline">
 						Unit<span>{i+1}</span>
 						<div className="timeline-divider"></div>
@@ -55,7 +123,6 @@ class Project extends Component {
 		})
 
 		return (
-
 			<div style={{background:'#f5f5f5'}}>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Sidebar />
@@ -90,6 +157,37 @@ class Project extends Component {
 
 
 									{units}
+
+
+									<div className="entry clearfix">
+										<div className="entry-timeline">
+											<span>Purchase</span>
+											<div className="timeline-divider"></div>
+										</div>
+
+										<div className="panel panel-default" style={{padding:36}}>
+											<h2>Purchase</h2>
+											<hr />
+
+											<div className="clearfix"></div>
+											<div className="row">
+												<div className="col-md-8">
+													<input id="name" onChange={this.updateUser} type="text" placeholder="Name" className="form-control" /><br />
+													<input id="email" onChange={this.updateUser} type="text" placeholder="Email" className="form-control" />
+													<a onClick={this.purchase} href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Purchase</a>
+													<br />
+												</div>
+
+												<div className="col-md-4">
+													<div style={{background:'#f9f9f9', padding:12, border:'1px solid #ddd'}}>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+
 
 								</div>
 

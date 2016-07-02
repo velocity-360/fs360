@@ -98,27 +98,45 @@ module.exports = {
 		//        console.log('RESPONSE: '+response);
 	},
 
-	submitStripeCharge: function (token, courseId, amt, completion) {
-		var http = new XMLHttpRequest();
-		var url = "/stripe/charge";
-		var params = "stripeToken=" + token.id + "&course=" + courseId + "&amount=" + amt;
-		http.open("POST", url, true);
+	submitStripeCharge: function (token, projectId, amt, completion) {
+		var body = {
+			stripeToken: token.id,
+			project: projectId,
+			amount: amt
+		};
 
-		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		superagent.post("/stripe/charge").send(body).set("Accept", "application/json").set("Content-type", "application/x-www-form-urlencoded").end(function (err, res) {
+			if (completion == null) return;
 
-		// notice that the event handler is on xhr and not xhr.upload
-		http.addEventListener("readystatechange", function (e) {
-			if (this.readyState === 4) {
-				// the transfer has completed and the server closed the connection.
-				console.log("UPLOAD COMPLETE: ");
-
-				if (completion != null) completion();
+			if (err) {
+				completion(err, null);
+				return;
 			}
-		});
 
-		var response = http.send(params);
-		//        console.log('RESPONSE: '+response);
+			if (res.body.confirmation == "success") completion(null, res.body);else completion({ message: res.body.message }, null);
+		});
 	}
+
+	// submitStripeCharge: function(token, projectId, amt, completion){
+	//        var http = new XMLHttpRequest()
+	//        var url = '/stripe/charge'
+	//        var params = "stripeToken="+token.id+"&project="+projectId+"&amount="+amt
+	//        http.open("POST", url, true)
+
+	//        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+
+	//        // notice that the event handler is on xhr and not xhr.upload
+	//        http.addEventListener('readystatechange', function(e) {
+	//            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
+	//                console.log('UPLOAD COMPLETE: ')
+
+	//                if (completion != null)
+	//                 completion()
+	//            }
+	//        })
+
+	//        var response = http.send(params)
+	// }
 
 
 

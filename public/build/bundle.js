@@ -22750,19 +22750,19 @@
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(597);
+	var _Course = __webpack_require__(595);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Vault = __webpack_require__(600);
+	var _Vault = __webpack_require__(598);
 	
 	var _Vault2 = _interopRequireDefault(_Vault);
 	
-	var _Account = __webpack_require__(602);
+	var _Account = __webpack_require__(600);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(603);
+	var _Unit = __webpack_require__(601);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
@@ -42958,27 +42958,45 @@
 			//        console.log('RESPONSE: '+response);
 		},
 	
-		submitStripeCharge: function submitStripeCharge(token, courseId, amt, completion) {
-			var http = new XMLHttpRequest();
-			var url = '/stripe/charge';
-			var params = "stripeToken=" + token.id + "&course=" + courseId + "&amount=" + amt;
-			http.open("POST", url, true);
+		submitStripeCharge: function submitStripeCharge(token, projectId, amt, completion) {
+			var body = {
+				stripeToken: token.id,
+				project: projectId,
+				amount: amt
+			};
 	
-			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			_superagent2.default.post('/stripe/charge').send(body).set('Accept', 'application/json').set('Content-type', 'application/x-www-form-urlencoded').end(function (err, res) {
+				if (completion == null) return;
 	
-			// notice that the event handler is on xhr and not xhr.upload
-			http.addEventListener('readystatechange', function (e) {
-				if (this.readyState === 4) {
-					// the transfer has completed and the server closed the connection.
-					console.log('UPLOAD COMPLETE: ');
-	
-					if (completion != null) completion();
+				if (err) {
+					completion(err, null);
+					return;
 				}
-			});
 	
-			var response = http.send(params);
-			//        console.log('RESPONSE: '+response);
+				if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
+			});
 		}
+	
+		// submitStripeCharge: function(token, projectId, amt, completion){
+		//        var http = new XMLHttpRequest()
+		//        var url = '/stripe/charge'
+		//        var params = "stripeToken="+token.id+"&project="+projectId+"&amount="+amt
+		//        http.open("POST", url, true)
+	
+		//        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	
+		//        // notice that the event handler is on xhr and not xhr.upload
+		//        http.addEventListener('readystatechange', function(e) {
+		//            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
+		//                console.log('UPLOAD COMPLETE: ')
+	
+		//                if (completion != null)
+		//                 completion()
+		//            }
+		//        })
+	
+		//        var response = http.send(params)
+		// }
 	
 	};
 
@@ -44570,8 +44588,11 @@
 									)
 								),
 								_react2.default.createElement("div", { className: "clear" }),
-								_react2.default.createElement("i", { className: "icon-envelope2" }),
-								" katrina@velocity360.io",
+								_react2.default.createElement(
+									"a",
+									{ style: { color: 'rgba(255, 255, 255, 0.247059)' }, href: "mailto:katrina@velocity360.io" },
+									"katrina@velocity360.io "
+								),
 								_react2.default.createElement(
 									"span",
 									{ className: "middot" },
@@ -63203,6 +63224,10 @@
 	
 	var _api2 = _interopRequireDefault(_api);
 	
+	var _StripeUtils = __webpack_require__(474);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
+	
 	var _DateUtils = __webpack_require__(487);
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
@@ -63225,17 +63250,25 @@
 		function Project(props, context) {
 			_classCallCheck(this, Project);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props, context));
 	
-			_this.state = {
-				showLoader: false
+			_this2.updateUser = _this2.updateUser.bind(_this2);
+			_this2.purchase = _this2.purchase.bind(_this2);
+			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				user: {
+					name: '',
+					email: ''
+				}
 			};
-			return _this;
+			return _this2;
 		}
 	
 		_createClass(Project, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				var _this = this;
 				var url = '/api/project?slug=' + this.props.slug;
 				_api2.default.handleGet(url, {}, function (err, response) {
 					if (err) {
@@ -63244,8 +63277,68 @@
 					}
 	
 					console.log(JSON.stringify(response));
+					if (response.projects.length > 0) {
+						var project = response.projects[0];
+						_this.configureStripe(project);
+					}
+	
 					_store2.default.dispatch(_actions2.default.projectsRecieved(response.projects));
 				});
+			}
+		}, {
+			key: 'configureStripe',
+			value: function configureStripe(project) {
+				var _this = this;
+				_StripeUtils2.default.initialize(function (token) {
+					_this.setState({ showLoader: true });
+	
+					_api2.default.submitStripeCharge(token, this.props.project.id, this.props.project.price, function () {
+	
+						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+							_this.setState({ showLoader: false });
+							if (err) {
+								alert(response.message);
+								return;
+							}
+	
+							window.location.href = '/account';
+						});
+					});
+				});
+			}
+		}, {
+			key: 'updateUser',
+			value: function updateUser(event) {
+				//		console.log(event.target.id+' == '+event.target.value)
+				var updatedUser = Object.assign({}, this.state.user);
+				updatedUser[event.target.id] = event.target.value;
+				this.setState({
+					user: updatedUser
+				});
+			}
+		}, {
+			key: 'purchase',
+			value: function purchase(event) {
+				event.preventDefault();
+				if (this.state.user.name.length == 0) {
+					alert('Please Enter Your Name');
+					return;
+				}
+	
+				if (this.state.user.email.length == 0) {
+					alert('Please Enter Your Email');
+					return;
+				}
+	
+				var parts = this.state.user.name.split(' ');
+				var updatedUser = Object.assign({}, this.state.user);
+				updatedUser['firstName'] = parts[0];
+				if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
+	
+				//		console.log(JSON.stringify(updatedUser))
+	
+				var text = this.props.project.title + ', $' + this.props.project.price;
+				_StripeUtils2.default.showModalWithText(text);
 			}
 		}, {
 			key: 'render',
@@ -63261,7 +63354,7 @@
 				var units = this.props.project.units.map(function (unit, i) {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'entry clearfix' },
+						{ key: i, className: 'entry clearfix' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'entry-timeline' },
@@ -63344,7 +63437,54 @@
 												)
 											)
 										),
-										units
+										units,
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												_react2.default.createElement(
+													'span',
+													null,
+													'Purchase'
+												),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'panel panel-default', style: { padding: 36 } },
+												_react2.default.createElement(
+													'h2',
+													null,
+													'Purchase'
+												),
+												_react2.default.createElement('hr', null),
+												_react2.default.createElement('div', { className: 'clearfix' }),
+												_react2.default.createElement(
+													'div',
+													{ className: 'row' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'col-md-8' },
+														_react2.default.createElement('input', { id: 'name', onChange: this.updateUser, type: 'text', placeholder: 'Name', className: 'form-control' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement('input', { id: 'email', onChange: this.updateUser, type: 'text', placeholder: 'Email', className: 'form-control' }),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.purchase, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+															'Purchase'
+														),
+														_react2.default.createElement('br', null)
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'col-md-4' },
+														_react2.default.createElement('div', { style: { background: '#f9f9f9', padding: 12, border: '1px solid #ddd' } })
+													)
+												)
+											)
+										)
 									)
 								)
 							)
@@ -63372,9 +63512,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 595 */,
-/* 596 */,
-/* 597 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63407,11 +63545,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CourseSection = __webpack_require__(598);
+	var _CourseSection = __webpack_require__(596);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
-	var _Application = __webpack_require__(599);
+	var _Application = __webpack_require__(597);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -63906,7 +64044,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 598 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64052,7 +64190,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 599 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64298,7 +64436,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 600 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64333,7 +64471,7 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _CodeSample = __webpack_require__(601);
+	var _CodeSample = __webpack_require__(599);
 	
 	var _CodeSample2 = _interopRequireDefault(_CodeSample);
 	
@@ -64678,7 +64816,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Vault);
 
 /***/ },
-/* 601 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64838,7 +64976,7 @@
 	exports.default = CodeSample;
 
 /***/ },
-/* 602 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65334,7 +65472,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 603 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

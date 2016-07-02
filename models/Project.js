@@ -10,6 +10,7 @@ var ProjectSchema = new mongoose.Schema({
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	pdf: {type:String, lowercase:true, default:''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
+	subscribers: {type: Array, default:[]},
 	tags: {type: Array, default:[]}, // tech used
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
 	price: {type: Number, default: 0}, // price in usd
@@ -28,6 +29,7 @@ ProjectSchema.methods.summary = function() {
 		'repo':this.repo,
 		'link':this.link,
 		'tags':this.tags,
+		'subscribers':this.subscribers,
 		'units':this.units,
 		'price':this.price,
 		'timestamp':this.timestamp,
