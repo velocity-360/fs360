@@ -63292,7 +63292,7 @@
 				_StripeUtils2.default.initialize(function (token) {
 					_this.setState({ showLoader: true });
 	
-					_api2.default.submitStripeCharge(token, this.props.project.id, this.props.project.price, function () {
+					_api2.default.submitStripeCharge(token, project.id, project.price, function () {
 	
 						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
 							_this.setState({ showLoader: false });

@@ -82,7 +82,7 @@ var Project = (function (Component) {
 				stripe.initialize(function (token) {
 					_this.setState({ showLoader: true });
 
-					api.submitStripeCharge(token, this.props.project.id, this.props.project.price, function () {
+					api.submitStripeCharge(token, project.id, project.price, function () {
 						api.handleGet("/account/currentuser", {}, function (err, response) {
 							_this.setState({ showLoader: false });
 							if (err) {
