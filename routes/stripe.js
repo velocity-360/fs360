@@ -12,40 +12,19 @@ function createProfile(profileInfo){
 
 		Profile.create(profileInfo, function(err, profile){
 			if (err){
-	            reject(err);
-	            return; 
+	            reject(err)
+	            return
 			}
 		
 			if (profile == null){
-	            reject(null);
-	            return; 
+	            reject(null)
+	            return
 			}
 
-	        resolve(profile);
-		});
-
-
-    });
+	        resolve(profile)
+		})
+    })
 }
-
-// function findProfile(profileId){
-//     return new Promise(function (resolve, reject){
-
-// 		Profile.findById(profileId, function(err, profile){
-// 			if (err){
-// 	            reject(err);
-// 	            return; 
-// 			}
-		
-// 			if (profile == null){
-// 	            reject(null);
-// 	            return; 
-// 			}
-
-// 	        resolve(profile);
-// 		});
-//     });
-// }
 
 function findProject(projectId){
     return new Promise(function (resolve, reject){
@@ -124,13 +103,13 @@ function createStripeCharge(stripe, amount, customerId, description){
 				description: description,
 			}, function(err, charge) {
 				if (err){ // check for `err`
-		            reject(err);
-		            return; 
+		            reject(err)
+		            return
 				}
 
-		    	resolve(charge);
-		});
-    });
+		    	resolve(charge)
+		})
+    })
 }
 
 function createNonregisteredStripeCharge(stripe, stripeToken, amount, description){
@@ -150,8 +129,6 @@ function createNonregisteredStripeCharge(stripe, stripeToken, amount, descriptio
 		})
     })
 }
-
-
 
 
 router.post('/:resource', function(req, res, next) {
