@@ -22277,12 +22277,6 @@
 			accountType: 'basic'
 		}
 	};
-	
-	/*
-	A reducer is a function that takes the current state and an action, and then returns a
-	new state. This reducer is responsible for appState.heroes data.
-	See `initialstate.js` for a clear view of what it looks like!
-	*/
 
 /***/ },
 /* 197 */
@@ -63258,12 +63252,10 @@
 		}, {
 			key: 'configureStripe',
 			value: function configureStripe(project) {
-				var _this = this;
-	
-				var price = project.price;
-				if (this.props.currentUser.accountType == 'premium') price = project.premiumPrice;
-	
+				console.log('configureStripe: ' + this.props.currentUser.accountType);
+				var price = this.props.currentUser.accountType == 'premium' ? project.premiumPrice : project.price;
 				var text = '$' + price + '.00';
+				var _this = this;
 				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	

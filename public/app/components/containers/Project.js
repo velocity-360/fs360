@@ -41,14 +41,10 @@ class Project extends Component {
 	}
 
 	configureStripe(project){
-		var _this = this
-
-
-		var price = project.price
-		if (this.props.currentUser.accountType == 'premium')
-				price = project.premiumPrice
-		
+		console.log('configureStripe: '+this.props.currentUser.accountType)
+		var price = (this.props.currentUser.accountType == 'premium') ? project.premiumPrice : project.price
 		var text = '$'+price+'.00'
+		var _this = this
 		stripe.initializeWithText(text, function(token){
 			_this.setState({showLoader: true})
 
