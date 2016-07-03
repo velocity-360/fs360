@@ -112,33 +112,29 @@ router.post('/:resource', function(req, res, next) {
 			workshop: body.course
 		}
 
-		subscriberController.post(subscriber, null);
+		subscriberController.post(subscriber, null)
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
-		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'});
+		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
 		return
 	}
 
 	if (resource == 'syllabus'){
 		var body = req.body
 		var course = body.course
-		var c = {
-			template: 'node-react-evening.html',
-			pdf: 'NodeReactEvening.pdf'
-		}
+		// var c = {
+		// 	template: 'node-react-evening.html'
+		// }
 
-//		var template = 'node-react-evening.html'
-		if (course == 'Node & React Evening Course'){
-			c['template'] = 'node-react-evening.html'
-			c['pdf'] = 'NodeReactEvening.pdf'
-		}
-		if (course == 'Fundamentals Bootcamp'){
-			c['template'] = 'fundamentals-bootcamp.html'
-			c['pdf'] = 'FundamentalsBootcamp.pdf'
-		}
+		var template = 'node-react-evening.html'
+		if (course == 'Node & React Evening Course')
+			template = 'node-react-evening.html'
 		
-		fetchFile('public/email/syllabus/'+c.template)
+		if (course == 'Fundamentals Bootcamp')
+			template = 'fundamentals-bootcamp.html'
+		
+		fetchFile('public/email/syllabus/'+template)
 		.then(function(html){
-			var url = 'https://www.velocity360.io/syllabus/'+c.pdf
+			var url = 'https://www.velocity360.io/syllabus/'+body.pdf
 			html = html.replace('{{link}}', url)
 
 			var subscriber = {
