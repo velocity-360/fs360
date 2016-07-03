@@ -78,7 +78,7 @@ var Project = (function (Component) {
 				stripe.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 
-					api.submitStripeCharge(token, project.id, project.price, function (err, response) {
+					api.submitStripeCharge(token, project, project.price, function (err, response) {
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });

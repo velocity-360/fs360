@@ -166,9 +166,9 @@ router.post('/:resource', function(req, res, next) {
 		var proj = null
 
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
+		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360: '+req.body.description)
 		.then(function(charge){
-			console.log('CHARGE: '+JSON.stringify(charge))
+//			console.log('CHARGE: '+JSON.stringify(charge))
 			var projectId = req.body.project
 			customerName = charge.source.name // this comes from Stripe
 			return findProject(projectId)
@@ -223,7 +223,6 @@ router.post('/:resource', function(req, res, next) {
 				}
 
 				// send new profile a welcome email
-
 				req.session.user = profile.id // login as user
 				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
 				return

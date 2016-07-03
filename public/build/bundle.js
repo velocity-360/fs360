@@ -42946,11 +42946,13 @@
 			//        console.log('RESPONSE: '+response);
 		},
 	
-		submitStripeCharge: function submitStripeCharge(token, projectId, amt, completion) {
+		//	submitStripeCharge: function(token, projectId, amt, completion){
+		submitStripeCharge: function submitStripeCharge(token, project, amt, completion) {
 			var body = {
 				stripeToken: token.id,
 				email: token.email,
-				project: projectId,
+				project: project.id,
+				description: project.title,
 				amount: amt
 			};
 	
@@ -63262,7 +63264,7 @@
 				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	
-					_api2.default.submitStripeCharge(token, project.id, project.price, function (err, response) {
+					_api2.default.submitStripeCharge(token, project, project.price, function (err, response) {
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
