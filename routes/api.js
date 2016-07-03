@@ -120,13 +120,19 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'syllabus'){
 		var body = req.body
-
-		fetchFile('public/email/workshop/email.html')
+		var course = body.course
+		var template = 'node-react-evening.html'
+		if (course == 'Node & React Evening Course')
+			template = 'node-react-evening.html'
+		if (course == 'Fundamentals Bootcamp')
+			template = 'fundamentals-bootcamp.html'
+		
+		fetchFile('public/email/syllabus/'+template)
 		.then(function(html){
 			var subscriber = {
 				name: body.firstName+body.lastName,
 				email: body.email,
-				workshop: body.course
+				workshop: course
 			}
 
 			subscriberController.post(subscriber, function(err, result){
@@ -149,34 +155,34 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'rsvp') {
 		var infoRequest = req.body;
-		console.log('RSVP: '+JSON.stringify(infoRequest));
-		var json = JSON.stringify(infoRequest);
+		console.log('RSVP: '+JSON.stringify(infoRequest))
+		var json = JSON.stringify(infoRequest)
 		
 		// send email to yourself for notification:
 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'Seminar', json)
 		.then(function(){
-			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.title+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="https://www.velocity360.io">Velocity 360</a><br />';
+			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.visitor.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event.title+' on '+infoRequest.event.date+'! My name is Dan Kwon and I am the founder of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="https://www.velocity360.io">Velocity 360</a><br />'
 			var subscriber = {
 				name: infoRequest.visitor.firstName+infoRequest.visitor.lastName,
 				email: infoRequest.visitor.email,
 				workshop: infoRequest.event.title
 			};
 
-			subscriberController.post(subscriber, null);
-			return EmailManager.sendHtmlEmail('dkwon@velocity360.io', infoRequest.visitor.email, infoRequest.event.title, confirmationMsg);
+			subscriberController.post(subscriber, null)
+			return EmailManager.sendHtmlEmail('dkwon@velocity360.io', infoRequest.visitor.email, infoRequest.event.title, confirmationMsg)
 		})
 		.then(function(){
-//			var msg = 'Thanks for your interest in the '+infoRequest.event.subject+'. Please check your email for a confirmation. Looking forward to seeing you there!';
-			var msg = 'Thanks for your interest in the '+infoRequest.event.title+'. Please check your email for a confirmation. Looking forward to seeing you there!';
-			res.json({'confirmation':'success', 'message':msg});
-			return;
+//			var msg = 'Thanks for your interest in the '+infoRequest.event.subject+'. Please check your email for a confirmation. Looking forward to seeing you there!'
+			var msg = 'Thanks for your interest in the '+infoRequest.event.title+'. Please check your email for a confirmation. Looking forward to seeing you there!'
+			res.json({'confirmation':'success', 'message':msg})
+			return
 		})
 		.catch(function(err){
-			res.json({'confirmation':'fail', 'message':err.message});
-			return;
-		});
+			res.json({'confirmation':'fail', 'message':err.message})
+			return
+		})
 
-		return;
+		return
 	}
 
 	
