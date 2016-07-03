@@ -31,10 +31,10 @@ var fetchFile = function(path){
 	return new Promise(function (resolve, reject){
 
 		fs.readFile(path, 'utf8', function (err, data) {
-			if (err) {reject(err); }
-			else { resolve(data); }
-		});
-	});
+			if (err) {reject(err) }
+			else { resolve(data) }
+		})
+	})
 }
 
 
@@ -80,24 +80,21 @@ router.get('/:resource/:id', function(req, res, next) {
 
 	controller.get({id:resourceId}, function(err, result){
 		if (err){
-			res.json({confirmation:'fail', message:err.message});
+			res.json({confirmation:'fail', message:err.message})
 			return;
 		}
 
 		var data = {confirmation:'success'}
-		data[resource] = result;
-		res.json(data);
-	});
-
-});
+		data[resource] = result
+		res.json(data)
+	})
+})
 
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
-//	var emailList = ['dkwon@velocity360.io', 'mdlugy.ventures@gmail.com']
 	var emailList = ['dkwon@velocity360.io']
 
 	if (resource == 'application'){
-		// var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io', 'brian@velocity360.io', 'mdlugy.ventures@gmail.com']
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
 		res.json({
 			confirmation:'success', 
@@ -141,6 +138,8 @@ router.post('/:resource', function(req, res, next) {
 			res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
 			return
 		})
+
+		return
 	}
 
 	if (resource == 'rsvp') {
@@ -179,13 +178,13 @@ router.post('/:resource', function(req, res, next) {
 	if (req.params.resource == 'email'){
 		var recipients = req.body.recipients;
 		if (recipients == null){
-			res.json({'confirmation':'fail','message':'Missing recipients parameter.'});
-			return;
+			res.json({'confirmation':'fail','message':'Missing recipients parameter.'})
+			return
 		}
 
 		if (recipients.length == 0){
-			res.json({'confirmation':'fail','message':'There are no recipients.'});
-			return;
+			res.json({'confirmation':'fail','message':'There are no recipients.'})
+			return
 		}
 		
 		recipients.push('dennykwon2@gmail.com');
@@ -215,30 +214,30 @@ router.post('/:resource', function(req, res, next) {
 					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, nextEvent.title, formatted)
 				}
 			
-				res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
-				return;
+				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
+				return
 			})
 
 		})
 		.catch(function(err){
-			res.json({'confirmation':'fail','message':err.message});
-			return;
-		});
+			res.json({'confirmation':'fail','message':err.message})
+			return
+		})
 		
-		return;
+		return
 	}
 
 
 	var controller = controllers[resource];
 	if (controller == null){
-		res.json({confirmation:'fail', message:'Invalid Resource'});
-		return;
+		res.json({confirmation:'fail', message:'Invalid Resource'})
+		return
 	}
 
 	controller.post(req.body, function(err, result){
 		if (err){
-			res.json({confirmation:'fail', message:err.message});
-			return;
+			res.json({confirmation:'fail', message:err.message})
+			return
 		}
 
 		if (resource == 'profile') { // profile registration, install session cookie
@@ -247,10 +246,10 @@ router.post('/:resource', function(req, res, next) {
 		}
 		
 		var data = {confirmation:'success'}
-		data[resource] = result;
-		res.json(data);
-		return;
-	});
+		data[resource] = result
+		res.json(data)
+		return
+	})
 
 
 });
