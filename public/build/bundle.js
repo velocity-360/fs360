@@ -63252,8 +63252,8 @@
 		}, {
 			key: 'configureStripe',
 			value: function configureStripe(project) {
-				console.log('configureStripe: ' + this.props.currentUser.accountType);
 				var price = this.props.currentUser.accountType == 'premium' ? project.premiumPrice : project.price;
+				console.log('configureStripe: ' + this.props.currentUser.accountType + ', $' + price);
 				var text = '$' + price + '.00';
 				var _this = this;
 				_StripeUtils2.default.initializeWithText(text, function (token) {
