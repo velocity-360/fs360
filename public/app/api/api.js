@@ -1,7 +1,6 @@
 import superagent from 'superagent'
 import actions from '../actions/actions'
 import store from '../stores/store'
-//import fetch from 'isomorphic-fetch'
 
 export default {
 

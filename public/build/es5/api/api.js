@@ -8,8 +8,6 @@ var actions = _interopRequire(require("../actions/actions"));
 
 var store = _interopRequire(require("../stores/store"));
 
-//import fetch from 'isomorphic-fetch'
-
 module.exports = {
 
 	handleGet: function (endpoint, params, completion) {

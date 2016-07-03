@@ -42843,8 +42843,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	//import fetch from 'isomorphic-fetch'
-	
 	exports.default = {
 	
 		handleGet: function handleGet(endpoint, params, completion) {

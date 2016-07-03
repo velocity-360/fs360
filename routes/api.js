@@ -40,68 +40,42 @@ var fetchFile = function(path){
 
 router.get('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
-
-	// if (resource == 'currentuser') {
-	// 	if (req.session == null){
-	// 		res.json({'message':'User not logged in.'});
-	// 		return;
-	// 	}
-
-	// 	if (req.session.user == null){
-	// 		console.log('TEST 2');
-	// 		res.json({'message':'User not logged in.'});
-	// 		return;
-	// 	}
-
-	// 	var accountController = require('../controllers/AccountController');
-	// 	accountController.checkCurrentUser(req, function(err, results){
-	// 		if (err){
-	// 			res.json({confirmation:'fail', message:err.message});
-	// 			return;
-	// 		}
-
-	// 		res.json({confirmation:'success', profile:results});
-	// 	});
-	// 	return;
-	// }
-
-
 	if (resource == 'unsubscribe') {
-		var email = req.query.email;
+		var email = req.query.email
 		if (email == null)
-			return;
+			return
 		
-		EmailManager.sendEmail('info@fullstack360.com', 'dkwon@velocity360.io', 'unsubscribe', email);
-		res.send('You have been unsubscribed. Thank you');
+		EmailManager.sendEmail('info@fullstack360.com', 'dkwon@velocity360.io', 'unsubscribe', email)
+		res.send('You have been unsubscribed. Thank you')
 	}
 
-	var controller = controllers[resource];
+	var controller = controllers[resource]
 	if (controller == null){
-		res.json({confirmation:'fail', message:'Invalid Resource'});
-		return;
+		res.json({confirmation:'fail', message:'Invalid Resource'})
+		return
 	}
 
 	controller.get(req.query, function(err, results){
 		if (err){
-			res.json({confirmation:'fail', message:err.message});
-			return;
+			res.json({confirmation:'fail', message:err.message})
+			return
 		}
 
 		var data = {confirmation:'success'}
-		data[controller.pluralKey()] = results;
-		res.json(data);
-	});
+		data[controller.pluralKey()] = results
+		res.json(data)
+	})
+})
 
-});
 
 router.get('/:resource/:id', function(req, res, next) {
-	var resource = req.params.resource;
-	var resourceId = req.params.id;
+	var resource = req.params.resource
+	var resourceId = req.params.id
 
-	var controller = controllers[resource];
+	var controller = controllers[resource]
 	if (controller == null){
-		res.json({confirmation:'fail', message:'Invalid Resource'});
-		return;
+		res.json({confirmation:'fail', message:'Invalid Resource'})
+		return
 	}
 
 	controller.get({id:resourceId}, function(err, result){
