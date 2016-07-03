@@ -63240,7 +63240,7 @@
 						return;
 					}
 	
-					console.log(JSON.stringify(response));
+					//			console.log(JSON.stringify(response))
 					// if (response.projects.length > 0){
 					// 	var project = response.projects[0]
 					// 	_this.configureStripe(project)
@@ -63253,7 +63253,7 @@
 			key: 'configureStripe',
 			value: function configureStripe(project) {
 				var price = this.props.currentUser.accountType == 'premium' ? project.premiumPrice : project.price;
-				console.log('configureStripe: ' + this.props.currentUser.accountType + ', $' + price);
+				//		console.log('configureStripe: '+this.props.currentUser.accountType+', $'+price)
 				var text = '$' + price + '.00';
 				var _this = this;
 				_StripeUtils2.default.initializeWithText(text, function (token) {
@@ -63276,7 +63276,8 @@
 				event.preventDefault();
 	
 				// TODO: check if user logged in, if so check if premium
-				var text = this.props.project.title + ', $' + this.props.project.price;
+				var price = this.props.currentUser.accountType == 'premium' ? project.premiumPrice : project.price;
+				var text = this.props.project.title + ', $' + price;
 				_StripeUtils2.default.showModalWithText(text);
 			}
 		}, {
