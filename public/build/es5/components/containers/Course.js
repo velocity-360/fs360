@@ -143,8 +143,11 @@ var Course = (function (Component) {
 					showLoader: true
 				});
 
+				var s = Object.assign({}, this.state.syllabusRequest);
+				s.pdf = this.props.course.syllabus;
+
 				var _this = this;
-				api.handlePost("/api/syllabus", _this.state.syllabusRequest, function (err, response) {
+				api.handlePost("/api/syllabus", s, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
