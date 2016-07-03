@@ -58,12 +58,6 @@ var Project = (function (Component) {
 						return;
 					}
 
-					//			console.log(JSON.stringify(response))
-					// if (response.projects.length > 0){
-					// 	var project = response.projects[0]
-					// 	_this.configureStripe(project)
-					// }
-
 					store.dispatch(actions.projectsRecieved(response.projects));
 				});
 			},
@@ -73,7 +67,6 @@ var Project = (function (Component) {
 		configureStripe: {
 			value: function configureStripe(project) {
 				var price = this.props.currentUser.accountType == "premium" ? project.premiumPrice : project.price;
-				//		console.log('configureStripe: '+this.props.currentUser.accountType+', $'+price)
 				var text = "$" + price + ".00";
 				var _this = this;
 				stripe.initializeWithText(text, function (token) {
@@ -98,7 +91,7 @@ var Project = (function (Component) {
 				event.preventDefault();
 
 				// TODO: check if user logged in, if so check if premium
-				var price = this.props.currentUser.accountType == "premium" ? project.premiumPrice : project.price;
+				var price = this.props.currentUser.accountType == "premium" ? this.props.project.premiumPrice : this.props.project.price;
 				var text = this.props.project.title + ", $" + price;
 				stripe.showModalWithText(text);
 			},
