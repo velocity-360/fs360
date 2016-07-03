@@ -145,6 +145,9 @@ var Course = (function (Component) {
 
 				var s = Object.assign({}, this.state.syllabusRequest);
 				s.pdf = this.props.course.syllabus;
+				var parts = s.name.split(" ");
+				s.firstName = parts[0];
+				if (parts.length > 1) s.lastName = parts[parts.length - 1];
 
 				var _this = this;
 				api.handlePost("/api/syllabus", s, function (err, response) {
