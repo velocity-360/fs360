@@ -74,6 +74,7 @@ module.exports = {
 
 
 	put: function(projectId, projectInfo, completion){
+		projectInfo['slug'] = Helpers.slugString(projectInfo.title)
 		Project.findByIdAndUpdate(projectId, projectInfo, {new:true}, function(err, project){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
