@@ -10,7 +10,8 @@ var initialState = {
 		lastName: "",
 		email: "",
 		password: "",
-		tagString: ""
+		tagString: "",
+		accountType: "basic"
 	}
 };
 

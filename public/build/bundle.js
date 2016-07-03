@@ -22273,7 +22273,8 @@
 			lastName: '',
 			email: '',
 			password: '',
-			tagString: ''
+			tagString: '',
+			accountType: 'basic'
 		}
 	};
 	
@@ -42946,7 +42947,6 @@
 			//        console.log('RESPONSE: '+response);
 		},
 	
-		//	submitStripeCharge: function(token, projectId, amt, completion){
 		submitStripeCharge: function submitStripeCharge(token, project, amt, completion) {
 			var body = {
 				stripeToken: token.id,
@@ -63247,10 +63247,10 @@
 					}
 	
 					console.log(JSON.stringify(response));
-					if (response.projects.length > 0) {
-						var project = response.projects[0];
-						_this.configureStripe(project);
-					}
+					// if (response.projects.length > 0){
+					// 	var project = response.projects[0]
+					// 	_this.configureStripe(project)
+					// }
 	
 					_store2.default.dispatch(_actions2.default.projectsRecieved(response.projects));
 				});
@@ -63259,12 +63259,15 @@
 			key: 'configureStripe',
 			value: function configureStripe(project) {
 				var _this = this;
-				var text = '$' + project.price + '.00';
 	
+				var price = project.price;
+				if (this.props.currentUser.accountType == 'premium') price = project.premiumPrice;
+	
+				var text = '$' + price + '.00';
 				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	
-					_api2.default.submitStripeCharge(token, project, project.price, function (err, response) {
+					_api2.default.submitStripeCharge(token, project, price, function (err, response) {
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -63287,6 +63290,8 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				if (this.props.project.id != null) _this.configureStripe(this.props.project);
+	
 				var tags = this.props.project.tags.map(function (tag, i) {
 					return _react2.default.createElement(
 						'a',

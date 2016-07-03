@@ -107,7 +107,6 @@ module.exports = {
 		//        console.log('RESPONSE: '+response);
 	},
 
-	//	submitStripeCharge: function(token, projectId, amt, completion){
 	submitStripeCharge: function (token, project, amt, completion) {
 		var body = {
 			stripeToken: token.id,

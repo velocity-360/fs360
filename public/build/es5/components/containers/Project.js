@@ -59,10 +59,10 @@ var Project = (function (Component) {
 					}
 
 					console.log(JSON.stringify(response));
-					if (response.projects.length > 0) {
-						var project = response.projects[0];
-						_this.configureStripe(project);
-					}
+					// if (response.projects.length > 0){
+					// 	var project = response.projects[0]
+					// 	_this.configureStripe(project)
+					// }
 
 					store.dispatch(actions.projectsRecieved(response.projects));
 				});
@@ -73,12 +73,16 @@ var Project = (function (Component) {
 		configureStripe: {
 			value: function configureStripe(project) {
 				var _this = this;
-				var text = "$" + project.price + ".00";
 
+
+				var price = project.price;
+				if (this.props.currentUser.accountType == "premium") price = project.premiumPrice;
+
+				var text = "$" + price + ".00";
 				stripe.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 
-					api.submitStripeCharge(token, project, project.price, function (err, response) {
+					api.submitStripeCharge(token, project, price, function (err, response) {
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -105,6 +109,9 @@ var Project = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				if (this.props.project.id != null) _this.configureStripe(this.props.project);
+
+
 				var tags = this.props.project.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
