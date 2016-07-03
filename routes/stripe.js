@@ -26,10 +26,10 @@ function createProfile(profileInfo){
     })
 }
 
-function findProfile(profileEmail){
+function findProfile(params){
     return new Promise(function (resolve, reject){
 
-		Profile.find(profileEmail, function(err, profiles){
+		Profile.find(params, function(err, profiles){
 			if (err){
 		        resolve(null)
 	            return null
@@ -176,7 +176,7 @@ router.post('/:resource', function(req, res, next) {
 		})
 		.then(function(project){
 			proj = project
-			return findProfile(customerEmail)
+			return findProfile({email:customerEmail})
 		})
 		.then(function(profiles){
 			var text = customerName+' purchased '+proj.title
