@@ -121,14 +121,26 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'syllabus'){
 		var body = req.body
 		var course = body.course
-		var template = 'node-react-evening.html'
-		if (course == 'Node & React Evening Course')
-			template = 'node-react-evening.html'
-		if (course == 'Fundamentals Bootcamp')
-			template = 'fundamentals-bootcamp.html'
+		var c = {
+			template: 'node-react-evening.html',
+			pdf: 'NodeReactEvening.pdf'
+		}
+
+//		var template = 'node-react-evening.html'
+		if (course == 'Node & React Evening Course'){
+			c['template'] = 'node-react-evening.html'
+			c['pdf'] = 'NodeReactEvening.pdf'
+		}
+		if (course == 'Fundamentals Bootcamp'){
+			c['template'] = 'fundamentals-bootcamp.html'
+			c['pdf'] = 'FundamentalsBootcamp.pdf'
+		}
 		
-		fetchFile('public/email/syllabus/'+template)
+		fetchFile('public/email/syllabus/'+c.template)
 		.then(function(html){
+			var url = 'https://www.velocity360.io/syllabus/'+c.pdf
+			html = html.replace('{{link}}', url)
+
 			var subscriber = {
 				name: body.firstName+body.lastName,
 				email: body.email,
