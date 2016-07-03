@@ -134,9 +134,8 @@ router.post('/:resource', function(req, res, next) {
 					return
 				}
 
-//				var html = '<html><body><a href="https://www.velocity360.io/syllabus/FundamentalsBootcamp.pdf">Download Syllabus</a></body></html>'
 				EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
-				res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
+				res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'})
 				return
 			})
 		})
