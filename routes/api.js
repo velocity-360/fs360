@@ -121,9 +121,6 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'syllabus'){
 		var body = req.body
 		var course = body.course
-		// var c = {
-		// 	template: 'node-react-evening.html'
-		// }
 
 		var template = 'node-react-evening.html'
 		if (course == 'Node & React Evening Course')
@@ -148,7 +145,7 @@ router.post('/:resource', function(req, res, next) {
 					return
 				}
 
-				EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
+//				EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
 				res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'})
 				return
 			})
