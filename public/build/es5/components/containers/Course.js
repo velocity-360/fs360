@@ -39,6 +39,8 @@ var stripe = _interopRequire(require("../../utils/StripeUtils"));
 
 var api = _interopRequire(require("../../api/api"));
 
+var Helpers = _interopRequire(require("../../managers/Helpers"));
+
 var Course = (function (Component) {
 	function Course(props, context) {
 		_classCallCheck(this, Course);

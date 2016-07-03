@@ -133,7 +133,8 @@ router.post('/:resource', function(req, res, next) {
 		.then(function(html){
 			var url = 'https://www.velocity360.io/syllabus/'+body.pdf
 			html = html.replace('{{link}}', url)
-			html = html.replace('{{name}}', body.firstName)
+			html = html.replace('{{name}}', Helpers.capitalize(body.firstName))
+			html = html.replace('{{link}}', url)
 
 			var subscriber = {
 				name: body.firstName+body.lastName,

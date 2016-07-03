@@ -12,7 +12,7 @@ module.exports = {
 
 	capitalize: function(string){
 	    if (string == null)
-	        return;
+	        return
 	    
 	    var parts = string.split(' ')
 	    var capitalizedString = ''
