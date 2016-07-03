@@ -8,7 +8,8 @@ var ProjectSchema = new mongoose.Schema({
 	repo: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''}, // app store, website, etc
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
-	pdf: {type:String, lowercase:true, default:''},
+	pdf: {type:String, default:''},
+	preview: {type:String, default:''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
 	subscribers: {type: Array, default:[]},
 	tags: {type: Array, default:[]}, // tech used
@@ -24,6 +25,7 @@ ProjectSchema.methods.summary = function() {
 		'title':this.title,
 		'description':this.description,
 		'pdf':this.pdf,
+		'preview':this.preview,
 		'image':this.image,
 		'profile':this.profile,
 		'slug':this.slug,
