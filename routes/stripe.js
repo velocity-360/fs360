@@ -151,13 +151,13 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'register') { // new user signing up as premium subscriber
 		createProfile(req.body)
 		.then(function(profile){
-			var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-			return createStripeAccount(stripe, profile, req.body.stripeToken, null);
+			var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+			return createStripeAccount(stripe, profile, req.body.stripeToken, null)
 		})
 		.catch(function(err){
 			res.send({'confirmation':'fail', 'message':err.message})
-			return;
-		});
+			return
+		})
 	}
 
 	if (resource == 'charge') {
@@ -171,7 +171,6 @@ router.post('/:resource', function(req, res, next) {
 			console.log('CHARGE: '+JSON.stringify(charge))
 			var projectId = req.body.project
 			customerName = charge.source.name // this comes from Stripe
-//			customerEmail = charge.source.email
 			return findProject(projectId)
 		})
 		.then(function(project){
@@ -186,14 +185,15 @@ router.post('/:resource', function(req, res, next) {
 				var profile = profiles[0]
 				req.session.user = profile.id // login as user
 				var subscribers = proj.subscribers
-				subscribers.push(profile.id)
-				proj['subscribers'] = subscribers
-				proj.save()
+				if (subscribers.indexOf(profile.id) == -1){
+					subscribers.push(profile.id)
+					proj['subscribers'] = subscribers
+					proj.save()
+				}
 
 				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
 				return
 			}
-
 
 			// unregistered user, create account
 			var parts = customerName.split(' ')
@@ -215,19 +215,19 @@ router.post('/:resource', function(req, res, next) {
 					return
 				}
 
-				req.session.user = profile.id // login as user
 				var subscribers = proj.subscribers
-				subscribers.push(profile.id)
-				proj['subscribers'] = subscribers
-				proj.save()
+				if (subscribers.indexOf(profile.id) == -1){
+					subscribers.push(profile.id)
+					proj['subscribers'] = subscribers
+					proj.save()
+				}
 
+				// send new profile a welcome email
+
+				req.session.user = profile.id // login as user
 				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
 				return
 			})
-
-			// var subscribers = project.subscribers
-			// subscribers.push(customerEmail)
-			// project['subscribers'] = subscribers
 		})
 		.catch(function(err){
 			console.log('CHARGE ERROR: '+JSON.stringify(err))

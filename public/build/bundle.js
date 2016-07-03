@@ -63225,15 +63225,10 @@
 	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props, context));
 	
-			_this2.updateUser = _this2.updateUser.bind(_this2);
 			_this2.purchase = _this2.purchase.bind(_this2);
 			_this2.configureStripe = _this2.configureStripe.bind(_this2);
 			_this2.state = {
-				showLoader: false,
-				user: {
-					name: '',
-					email: ''
-				}
+				showLoader: false
 			};
 			return _this2;
 		}
@@ -63274,53 +63269,16 @@
 							return;
 						}
 	
-						console.log(JSON.stringify(response));
-	
-						// api.handleGet('/account/currentuser', {}, function(err, response){
-						// 	_this.setState({showLoader: false})
-						// if (err){
-						// 	alert(err.message)
-						// 	return
-						// }
-	
-						// 	window.location.href = '/account'
-						// })
+						window.location.href = '/account';
 					});
-				});
-			}
-		}, {
-			key: 'updateUser',
-			value: function updateUser(event) {
-				//		console.log(event.target.id+' == '+event.target.value)
-				var updatedUser = Object.assign({}, this.state.user);
-				updatedUser[event.target.id] = event.target.value;
-				this.setState({
-					user: updatedUser
 				});
 			}
 		}, {
 			key: 'purchase',
 			value: function purchase(event) {
 				event.preventDefault();
-				if (this.state.user.name.length == 0) {
-					alert('Please Enter Your Name');
-					return;
-				}
 	
-				if (this.state.user.email.length == 0) {
-					alert('Please Enter Your Email');
-					return;
-				}
-	
-				var parts = this.state.user.name.split(' ');
-				var updatedUser = Object.assign({}, this.state.user);
-				updatedUser['firstName'] = parts[0];
-				if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
-	
-				this.setState({
-					user: updatedUser
-				});
-	
+				// TODO: check if user logged in, if so check if premium
 				var text = this.props.project.title + ', $' + this.props.project.price;
 				_StripeUtils2.default.showModalWithText(text);
 			}
@@ -63451,9 +63409,6 @@
 													_react2.default.createElement(
 														'div',
 														{ className: 'col-md-8' },
-														_react2.default.createElement('input', { id: 'name', onChange: this.updateUser, type: 'text', placeholder: 'Name', className: 'form-control' }),
-														_react2.default.createElement('br', null),
-														_react2.default.createElement('input', { id: 'email', onChange: this.updateUser, type: 'text', placeholder: 'Email', className: 'form-control' }),
 														_react2.default.createElement(
 															'a',
 															{ onClick: this.purchase, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },

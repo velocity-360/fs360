@@ -14,15 +14,10 @@ import TextUtils from '../../utils/TextUtils'
 class Project extends Component {
 	constructor(props, context){
 		super(props, context)
-		this.updateUser = this.updateUser.bind(this)
 		this.purchase = this.purchase.bind(this)
 		this.configureStripe = this.configureStripe.bind(this)
 		this.state = {
 			showLoader: false,
-			user: {
-				name: '',
-				email: ''
-			}
 		}
 	}
 
@@ -59,53 +54,15 @@ class Project extends Component {
 					return
 				}
 				
-				console.log(JSON.stringify(response))
-
-				// api.handleGet('/account/currentuser', {}, function(err, response){
-				// 	_this.setState({showLoader: false})
-					// if (err){
-					// 	alert(err.message)
-					// 	return
-					// }
-
-				// 	window.location.href = '/account'
-				// })
-
-			})			
-		})
-	}
-
-	updateUser(event){
-//		console.log(event.target.id+' == '+event.target.value)
-		var updatedUser = Object.assign({}, this.state.user)
-		updatedUser[event.target.id] = event.target.value
-		this.setState({
-			user: updatedUser
+				window.location.href = '/account'
+			})
 		})
 	}
 
 	purchase(event){
 		event.preventDefault()
-		if (this.state.user.name.length == 0){
-			alert('Please Enter Your Name')
-			return
-		}
 
-		if (this.state.user.email.length == 0){
-			alert('Please Enter Your Email')
-			return
-		}
-
-		var parts = this.state.user.name.split(' ')
-		var updatedUser = Object.assign({}, this.state.user)
-		updatedUser['firstName'] = parts[0]
-		if (parts.length > 1)
-			updatedUser['lastName'] = parts[parts.length-1]
-
-		this.setState({
-			user: updatedUser
-		})
-
+		// TODO: check if user logged in, if so check if premium
 		var text = this.props.project.title+', $'+this.props.project.price
 		stripe.showModalWithText(text)
 	}
@@ -183,8 +140,6 @@ class Project extends Component {
 											<div className="clearfix"></div>
 											<div className="row">
 												<div className="col-md-8">
-													<input id="name" onChange={this.updateUser} type="text" placeholder="Name" className="form-control" /><br />
-													<input id="email" onChange={this.updateUser} type="text" placeholder="Email" className="form-control" />
 													<a onClick={this.purchase} href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Purchase</a>
 													<br />
 												</div>

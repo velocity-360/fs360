@@ -39,16 +39,10 @@ var Project = (function (Component) {
 		_classCallCheck(this, Project);
 
 		_get(Object.getPrototypeOf(Project.prototype), "constructor", this).call(this, props, context);
-		this.updateUser = this.updateUser.bind(this);
 		this.purchase = this.purchase.bind(this);
 		this.configureStripe = this.configureStripe.bind(this);
 		this.state = {
-			showLoader: false,
-			user: {
-				name: "",
-				email: ""
-			}
-		};
+			showLoader: false };
 	}
 
 	_inherits(Project, Component);
@@ -91,20 +85,8 @@ var Project = (function (Component) {
 							return;
 						}
 
-						console.log(JSON.stringify(response));
+						window.location.href = "/account";
 					});
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		updateUser: {
-			value: function updateUser(event) {
-				//		console.log(event.target.id+' == '+event.target.value)
-				var updatedUser = Object.assign({}, this.state.user);
-				updatedUser[event.target.id] = event.target.value;
-				this.setState({
-					user: updatedUser
 				});
 			},
 			writable: true,
@@ -113,25 +95,8 @@ var Project = (function (Component) {
 		purchase: {
 			value: function purchase(event) {
 				event.preventDefault();
-				if (this.state.user.name.length == 0) {
-					alert("Please Enter Your Name");
-					return;
-				}
 
-				if (this.state.user.email.length == 0) {
-					alert("Please Enter Your Email");
-					return;
-				}
-
-				var parts = this.state.user.name.split(" ");
-				var updatedUser = Object.assign({}, this.state.user);
-				updatedUser.firstName = parts[0];
-				if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
-
-				this.setState({
-					user: updatedUser
-				});
-
+				// TODO: check if user logged in, if so check if premium
 				var text = this.props.project.title + ", $" + this.props.project.price;
 				stripe.showModalWithText(text);
 			},
@@ -264,9 +229,6 @@ var Project = (function (Component) {
 													React.createElement(
 														"div",
 														{ className: "col-md-8" },
-														React.createElement("input", { id: "name", onChange: this.updateUser, type: "text", placeholder: "Name", className: "form-control" }),
-														React.createElement("br", null),
-														React.createElement("input", { id: "email", onChange: this.updateUser, type: "text", placeholder: "Email", className: "form-control" }),
 														React.createElement(
 															"a",
 															{ onClick: this.purchase, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
@@ -310,12 +272,3 @@ var stateToProps = function (state) {
 };
 
 module.exports = connect(stateToProps)(Project);
-// api.handleGet('/account/currentuser', {}, function(err, response){
-// 	_this.setState({showLoader: false})
-// if (err){
-// 	alert(err.message)
-// 	return
-// }
-
-// 	window.location.href = '/account'
-// })
