@@ -63262,12 +63262,14 @@
 			value: function configureStripe(project) {
 				var _this = this;
 				var text = '$' + project.price + '.00';
+	
 				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	
 					_api2.default.submitStripeCharge(token, project.id, project.price, function (err, response) {
 						if (err) {
 							alert(err.message);
+							_this.setState({ showLoader: false });
 							return;
 						}
 	

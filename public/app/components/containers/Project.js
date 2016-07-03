@@ -48,12 +48,14 @@ class Project extends Component {
 	configureStripe(project){
 		var _this = this
 		var text = '$'+project.price+'.00'
+
 		stripe.initializeWithText(text, function(token){
 			_this.setState({showLoader: true})
 
 			api.submitStripeCharge(token, project.id, project.price, function(err, response){
 				if (err){
 					alert(err.message)
+					_this.setState({showLoader: false})
 					return
 				}
 				

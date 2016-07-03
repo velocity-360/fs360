@@ -26,6 +26,20 @@ function createProfile(profileInfo){
     })
 }
 
+function findProfile(profileEmail){
+    return new Promise(function (resolve, reject){
+
+		Profile.find(profileEmail, function(err, profiles){
+			if (err){
+		        resolve(null)
+	            return null
+			}
+		
+	        resolve(profiles)
+		})
+    })
+}
+
 function findProject(projectId){
     return new Promise(function (resolve, reject){
 
@@ -141,27 +155,54 @@ router.post('/:resource', function(req, res, next) {
 			return createStripeAccount(stripe, profile, req.body.stripeToken, null);
 		})
 		.catch(function(err){
-			res.send({'confirmation':'fail', 'message':err.message});
+			res.send({'confirmation':'fail', 'message':err.message})
 			return;
 		});
 	}
 
 	if (resource == 'charge') {
-//		console.log('CHARGE: '+JSON.stringify(req.body))
 		var customerName = ''
+		var customerEmail = ''
+		var proj = null
+
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360')
 		.then(function(charge){
+			console.log('CHARGE: '+JSON.stringify(charge))
 			var projectId = req.body.project
 			customerName = charge.source.name // this comes from Stripe
+			customerEmail = charge.source.email
 			return findProject(projectId)
 		})
 		.then(function(project){
-			var text = customerName+' purchased '+project.title
-			var emailList = ['dkwon@velocity360.io']
-			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Purchase', text)
-			res.send({'confirmation':'success', 'project':project.summary()})
-            return
+			proj = project
+			return findProfile(customerEmail)
+		})
+		.then(function(profiles){
+			var text = customerName+' purchased '+proj.title
+			EmailManager.sendEmails('info@thegridmedia.com', ['dkwon@velocity360.io'], 'Project Purchase', text)
+
+			if (profiles.length > 0){ // registered user
+				var profile = profiles[0]
+				req.session.user = profile.id // login as user
+				var subscribers = proj.subscribers
+				subscribers.push(profile.id)
+				proj['subscribers'] = subscribers
+				proj.save()
+
+				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
+				return
+			}
+
+
+			// unregistered user
+
+			// var subscribers = project.subscribers
+			// subscribers.push(customerEmail)
+			// project['subscribers'] = subscribers
+
+			res.send({'confirmation':'success', 'project':proj.summary()})
+			return
 		})
 		.catch(function(err){
 			console.log('CHARGE ERROR: '+JSON.stringify(err))
