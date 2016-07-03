@@ -42949,6 +42949,7 @@
 		submitStripeCharge: function submitStripeCharge(token, projectId, amt, completion) {
 			var body = {
 				stripeToken: token.id,
+				email: token.email,
 				project: projectId,
 				amount: amt
 			};
@@ -63316,7 +63317,9 @@
 				updatedUser['firstName'] = parts[0];
 				if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
 	
-				//		console.log(JSON.stringify(updatedUser))
+				this.setState({
+					user: updatedUser
+				});
 	
 				var text = this.props.project.title + ', $' + this.props.project.price;
 				_StripeUtils2.default.showModalWithText(text);

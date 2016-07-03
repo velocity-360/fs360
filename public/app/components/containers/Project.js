@@ -102,7 +102,9 @@ class Project extends Component {
 		if (parts.length > 1)
 			updatedUser['lastName'] = parts[parts.length-1]
 
-//		console.log(JSON.stringify(updatedUser))
+		this.setState({
+			user: updatedUser
+		})
 
 		var text = this.props.project.title+', $'+this.props.project.price
 		stripe.showModalWithText(text)

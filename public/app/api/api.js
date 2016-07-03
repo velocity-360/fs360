@@ -122,6 +122,7 @@ export default {
 	submitStripeCharge: function(token, projectId, amt, completion){
 		var body = {
 			stripeToken: token.id,
+			email: token.email,
 			project: projectId,
 			amount: amt
 		}

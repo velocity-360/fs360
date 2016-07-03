@@ -162,7 +162,7 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'charge') {
 		var customerName = ''
-		var customerEmail = ''
+		var customerEmail = req.body.email
 		var proj = null
 
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -171,7 +171,7 @@ router.post('/:resource', function(req, res, next) {
 			console.log('CHARGE: '+JSON.stringify(charge))
 			var projectId = req.body.project
 			customerName = charge.source.name // this comes from Stripe
-			customerEmail = charge.source.email
+//			customerEmail = charge.source.email
 			return findProject(projectId)
 		})
 		.then(function(project){
@@ -195,14 +195,39 @@ router.post('/:resource', function(req, res, next) {
 			}
 
 
-			// unregistered user
+			// unregistered user, create account
+			var parts = customerName.split(' ')
+			var firstName = parts[0]
+			var lastName = ''
+			if (parts.length > 1)
+				lastName = parts[parts.length-1]
+
+			var profileInfo = {
+				email: customerEmail,
+				firstName: firstName,
+				lastName: lastName,
+				password: 'abcd'
+			}
+
+			Profile.create(profileInfo, function(err, profile){
+				if (err){
+					res.send({'confirmation':'success', 'project':proj.summary()})
+					return
+				}
+
+				req.session.user = profile.id // login as user
+				var subscribers = proj.subscribers
+				subscribers.push(profile.id)
+				proj['subscribers'] = subscribers
+				proj.save()
+
+				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
+				return
+			})
 
 			// var subscribers = project.subscribers
 			// subscribers.push(customerEmail)
 			// project['subscribers'] = subscribers
-
-			res.send({'confirmation':'success', 'project':proj.summary()})
-			return
 		})
 		.catch(function(err){
 			console.log('CHARGE ERROR: '+JSON.stringify(err))
