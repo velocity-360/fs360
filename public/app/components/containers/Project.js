@@ -74,7 +74,7 @@ class Project extends Component {
 
 	render(){
 		if (this.props.project.id != null)
-			_this.configureStripe(this.props.project)
+			this.configureStripe(this.props.project)
 
 		
 		var tags = this.props.project.tags.map(function(tag, i){

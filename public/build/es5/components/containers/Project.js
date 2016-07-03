@@ -109,7 +109,7 @@ var Project = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				if (this.props.project.id != null) _this.configureStripe(this.props.project);
+				if (this.props.project.id != null) this.configureStripe(this.props.project);
 
 
 				var tags = this.props.project.tags.map(function (tag, i) {
