@@ -14,16 +14,6 @@ function convertToJson(subscribers){
 	return results;
 }
 
-function randomString(limit){
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i=0; i <limit; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}
-
 module.exports = {
 	pluralKey: function(){
 		return 'subscribers';
@@ -92,14 +82,14 @@ module.exports = {
 	post: function(subscriberInfo, completion){
 		Subscriber.create(subscriberInfo, function(err, subscriber){
 			if (err){
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 
 			if (completion != null)
-				completion(null, subscriber.summary());
+				completion(null, subscriber.summary())
 			
-			return;
+			return
 		});
 	},
 

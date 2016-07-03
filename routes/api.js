@@ -123,16 +123,24 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'syllabus'){
 		var body = req.body
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
+
 		var subscriber = {
 			name: body.firstName+body.lastName,
 			email: body.email,
 			workshop: body.course
 		}
 
-		subscriberController.post(subscriber, null);
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
-		res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
-		return
+		subscriberController.post(subscriber, function(err, result){
+			if (err){
+				return
+			}
+
+			var html = '<html><body><a href="https://www.velocity360.io/syllabus/FundamentalsBootcamp.pdf">Download Syllabus</a></body></html>'
+			EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
+			res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'});
+			return
+		})
 	}
 
 	if (resource == 'rsvp') {
