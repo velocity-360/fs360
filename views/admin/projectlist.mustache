@@ -116,18 +116,26 @@
                             <textarea ng-model="project.description" rows="6" placeholder="Description"></textarea>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadImage($files)">
-                                        <img style="width:72px;border:1px solid #ddd" ng-show="project.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
+                                        <img align="left" style="width:72px;border:1px solid #ddd;margin-right:6px" ng-show="project.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
                                         Drag &amp; drop image
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadPDF($files)">
-                                        <img style="width:72px;border:1px solid #ddd" ng-show="project.pdf.length > 0" ng-src="https://media-service.appspot.com/site/images/<% project.image %>?crop=360" />
-                                        Drag &amp; drop PDF
+                                        Drag &amp; drop PDF<br />
+                                        <a target="_blank" ng-show="project.pdf.length > 0" href="https://media-service.appspot.com/site/pdf/<% project.pdf %>">PDF</a>
                                     </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadPreview($files)">
+                                        Drag &amp; drop Preview<br />
+                                        <a target="_blank" ng-show="project.preview.length > 0" href="https://media-service.appspot.com/site/pdf/<% project.preview %>">Preview</a>
+                                    </div>
+
                                 </div>
 
                             </div>

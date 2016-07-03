@@ -35,6 +35,11 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 		uploadPackage(pkg)
 	}
 
+	$scope.uploadPreview = function(files){
+		var pkg = {'files':files, 'media':'pdf', 'property':'preview'}
+		uploadPackage(pkg)
+	}
+
 	$scope.uploadUnitIcon = function(files){
 		var pkg = {'files':files, 'media':'images', 'property':'icon'}
 		uploadPackage(pkg)
@@ -60,6 +65,10 @@ app.controller('ProjectController', ['$scope', 'generalService', 'accountService
 			else if (pkg.property == 'icon'){
 				var image = response.image
 				$scope.unit['icon'] = image.id
+			}
+			else if (pkg.property == 'preview'){
+				var preview = response.pdf
+				$scope.project['preview'] = preview.id
 			}
 			else if (pkg.property == 'pdf'){
 				var pdf = response.pdf
