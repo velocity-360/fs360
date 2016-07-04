@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var ProjectSchema = new mongoose.Schema({
 	title: {type:String, trim:true, default: ''},
 	description: {type:String, trim:true, default: ''},
+	level: {type:String, default:'beginner'},
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	repo: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''}, // app store, website, etc
@@ -24,6 +25,7 @@ ProjectSchema.methods.summary = function() {
 	var summary = {
 		'title':this.title,
 		'description':this.description,
+		'level':this.level,
 		'pdf':this.pdf,
 		'preview':this.preview,
 		'image':this.image,
