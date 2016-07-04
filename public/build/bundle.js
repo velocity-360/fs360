@@ -46418,7 +46418,7 @@
 						_react2.default.createElement(
 							'p',
 							{ style: { height: 150 }, id: 'description' },
-							_TextUtils2.default.truncateText(this.props.project.description, 324)
+							_TextUtils2.default.truncateText(this.props.project.description, 287)
 						),
 						_react2.default.createElement(
 							'div',

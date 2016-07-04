@@ -24,7 +24,7 @@ class ProjectCard extends Component {
 					<hr />
 					<strong>iOS App</strong>
 					<br />
-					<p style={{height:150}} id="description">{TextUtils.truncateText(this.props.project.description, 324)}</p>
+					<p style={{height:150}} id="description">{TextUtils.truncateText(this.props.project.description, 287)}</p>
 
 					<div className="tagcloud">
 						{tags}

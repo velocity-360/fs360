@@ -68,7 +68,7 @@ var ProjectCard = (function (Component) {
 						React.createElement(
 							"p",
 							{ style: { height: 150 }, id: "description" },
-							TextUtils.truncateText(this.props.project.description, 324)
+							TextUtils.truncateText(this.props.project.description, 287)
 						),
 						React.createElement(
 							"div",
