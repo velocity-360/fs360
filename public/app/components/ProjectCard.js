@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TextUtils from '../utils/TextUtils'
 
 class ProjectCard extends Component {
 
@@ -23,7 +24,7 @@ class ProjectCard extends Component {
 					<hr />
 					<strong>iOS App</strong>
 					<br />
-					<p style={{height:150}} id="description">{this.props.project.description}</p>
+					<p style={{height:150}} id="description">{TextUtils.truncateText(this.props.project.description, 324)}</p>
 
 					<div className="tagcloud">
 						{tags}

@@ -46355,6 +46355,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _TextUtils = __webpack_require__(479);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46414,7 +46418,7 @@
 						_react2.default.createElement(
 							'p',
 							{ style: { height: 150 }, id: 'description' },
-							this.props.project.description
+							_TextUtils2.default.truncateText(this.props.project.description, 324)
 						),
 						_react2.default.createElement(
 							'div',
@@ -63307,7 +63311,7 @@
 							),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('hr', null),
-							_TextUtils2.default.truncateText(unit.description, 324),
+							unit.description,
 							_react2.default.createElement('br', null)
 						)
 					);

@@ -82,7 +82,7 @@ class Project extends Component {
 						<img style={{float:'right', marginRight:12, width:72}} src={'https://media-service.appspot.com/site/images/'+unit.icon+'?crop=260'} />
 						<h3 style={{marginBottom:6}}>{unit.topic}</h3>
 						<br /><hr />
-						{TextUtils.truncateText(unit.description, 324)}
+						{unit.description}
 						<br />
 					</div>
 				</div>				

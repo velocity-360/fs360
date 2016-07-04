@@ -15,6 +15,8 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var TextUtils = _interopRequire(require("../utils/TextUtils"));
+
 var ProjectCard = (function (Component) {
 	function ProjectCard(props, context) {
 		_classCallCheck(this, ProjectCard);
@@ -66,7 +68,7 @@ var ProjectCard = (function (Component) {
 						React.createElement(
 							"p",
 							{ style: { height: 150 }, id: "description" },
-							this.props.project.description
+							TextUtils.truncateText(this.props.project.description, 324)
 						),
 						React.createElement(
 							"div",
