@@ -45087,9 +45087,6 @@
 			value: function validate(profile, withPassword) {
 				if (profile.name.length == 0) return 'Name';
 	
-				// if (profile.lastName.length == 0)
-				// 	return 'Last Name'
-	
 				if (profile.email.length == 0) return 'Email';
 	
 				if (withPassword == false) return null;
@@ -63310,7 +63307,7 @@
 							),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('hr', null),
-							unit.description,
+							_TextUtils2.default.truncateText(unit.description, 324),
 							_react2.default.createElement('br', null)
 						)
 					);

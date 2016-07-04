@@ -162,9 +162,6 @@ class Landing extends Component {
 		if (profile.name.length == 0)
 			return 'Name'
 
-		// if (profile.lastName.length == 0)
-		// 	return 'Last Name'
-
 		if (profile.email.length == 0)
 			return 'Email'
 
@@ -288,7 +285,6 @@ class Landing extends Component {
 		                        <span>
 		                        	Velocity 360 is the only coding bootcamp that uses real projects from<br />
 		                        	local startups to teach students.
-		                        	
 		                        </span>
 		                    </div>
 		                </div>

@@ -137,7 +137,7 @@ var Project = (function (Component) {
 							),
 							React.createElement("br", null),
 							React.createElement("hr", null),
-							unit.description,
+							TextUtils.truncateText(unit.description, 324),
 							React.createElement("br", null)
 						)
 					);

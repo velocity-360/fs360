@@ -206,10 +206,7 @@ var Landing = (function (Component) {
 			value: function validate(profile, withPassword) {
 				if (profile.name.length == 0) {
 					return "Name";
-				} // if (profile.lastName.length == 0)
-				// 	return 'Last Name'
-
-				if (profile.email.length == 0) {
+				}if (profile.email.length == 0) {
 					return "Email";
 				}if (withPassword == false) {
 					return null;
