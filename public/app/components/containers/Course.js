@@ -262,7 +262,7 @@ class Course extends Component {
 								<div className="row clearfix">
 									<div className="col-md-10">
 										<p>
-											Our Mission is to teach you tomorrow’s technology, today.  If you want 
+											Our Mission is to teach tomorrow’s technology, today.  If you want 
 											to work for a leading tech firm, for a technology startup, or become an 
 											entrepreneur, our classes will put you on the right track to achieve 
 											these goals.  This iOS class is based entirely on Swift language, which 
