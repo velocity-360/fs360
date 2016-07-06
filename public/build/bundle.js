@@ -44883,10 +44883,6 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _reactLoader = __webpack_require__(459);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
 	var _reactRedux = __webpack_require__(168);
 	
 	var _Nav = __webpack_require__(461);
@@ -44896,6 +44892,10 @@
 	var _Register = __webpack_require__(479);
 	
 	var _Register2 = _interopRequireDefault(_Register);
+	
+	var _Header = __webpack_require__(602);
+	
+	var _Header2 = _interopRequireDefault(_Header);
 	
 	var _Footer = __webpack_require__(471);
 	
@@ -44908,10 +44908,6 @@
 	var _actions = __webpack_require__(462);
 	
 	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _StripeUtils = __webpack_require__(474);
-	
-	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
 	var _api = __webpack_require__(464);
 	
@@ -44931,97 +44927,15 @@
 		function Landing(props, context) {
 			_classCallCheck(this, Landing);
 	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Landing).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Landing).call(this, props, context));
 	
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
-			_this2.validate = _this2.validate.bind(_this2);
-			_this2.state = {
-				showLoader: false,
-				visitor: {
-					name: '',
-					email: '',
-					phone: '',
-					course: 'Fundamentals Bootcamp',
-					referral: ''
-				}
-			};
-			return _this2;
+			_this.state = {};
+			return _this;
 		}
 	
 		_createClass(Landing, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _this = this;
-				_StripeUtils2.default.initialize(function (token) {
-					_this.setState({ showLoader: true });
-					_api2.default.submitStripeToken(token, function () {
-						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
-							_this.setState({ showLoader: false });
-							if (err) {
-								alert(response.message);
-								return;
-							}
-	
-							window.location.href = '/account';
-						});
-					});
-				});
-			}
-		}, {
-			key: 'updateVisitor',
-			value: function updateVisitor(event) {
-				event.preventDefault();
-	
-				var visitor = Object.assign({}, this.state.visitor);
-				visitor[event.target.id] = event.target.value;
-				this.setState({
-					visitor: visitor
-				});
-			}
-		}, {
-			key: 'submitInfoRequest',
-			value: function submitInfoRequest(event) {
-				event.preventDefault();
-	
-				var missingField = this.validate(this.state.visitor, false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				this.setState({
-					showLoader: true
-				});
-	
-				var pkg = Object.assign({}, this.state.visitor);
-				var _this = this;
-				_api2.default.handlePost('/api/info', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'validate',
-			value: function validate(profile, withPassword) {
-				if (profile.name.length == 0) return 'Name';
-	
-				if (profile.email.length == 0) return 'Email';
-	
-				if (withPassword == false) return null;
-	
-				if (profile.password.length == 0) return 'Password';
-	
-				return null; // this is successful
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'render',
 			value: function render() {
@@ -45029,73 +44943,8 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(_Nav2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'slider', style: { background: 'url("/images/joe_light_blue.png") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
-						_react2.default.createElement('br', null),
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'form',
-								{ action: '#', method: 'post', role: 'form', className: 'landing-wide-form landing-form-overlay dark clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'heading-block nobottommargin nobottomborder' },
-									_react2.default.createElement(
-										'h4',
-										null,
-										'Start your Programming Career'
-									)
-								),
-								_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement(
-										'label',
-										{ 'for': 'template-contactform-subject' },
-										'I am interested in'
-									),
-									_react2.default.createElement(
-										'select',
-										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
-										_react2.default.createElement(
-											'option',
-											{ value: 'fundamentals-bootcamp' },
-											'Fundamentals Bootcamp'
-										),
-										_react2.default.createElement(
-											'option',
-											{ value: 'mvp-bootcamp' },
-											'MVP Bootcamp'
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full nobottommargin' },
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-										'Request Syllabus'
-									)
-								)
-							)
-						)
-					),
+					_react2.default.createElement(_Header2.default, null),
 					_react2.default.createElement(
 						'section',
 						null,
@@ -45520,8 +45369,7 @@
 	
 	var stateToProps = function stateToProps(state) {
 		return {
-			currentUser: state.profileReducer.currentUser,
-			loaderOptions: state.staticReducer.loaderConfig
+			currentUser: state.profileReducer.currentUser
 		};
 	};
 	
@@ -45552,6 +45400,10 @@
 	var _ProjectCard = __webpack_require__(477);
 	
 	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
+	
+	var _Header = __webpack_require__(602);
+	
+	var _Header2 = _interopRequireDefault(_Header);
 	
 	var _Register = __webpack_require__(479);
 	
@@ -45597,17 +45449,7 @@
 	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Landing).call(this, props, context));
 	
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.state = {
-				membershiptype: 'Basic',
-				visitor: {
-					name: '',
-					email: '',
-					phone: '',
-					course: '',
-					referral: ''
-				}
-			};
+			_this2.state = {};
 			return _this2;
 		}
 	
@@ -45624,17 +45466,6 @@
 				});
 			}
 		}, {
-			key: 'updateVisitor',
-			value: function updateVisitor(event) {
-				event.preventDefault();
-	
-				var visitor = Object.assign({}, this.state.visitor);
-				visitor[event.target.id] = event.target.value;
-				this.setState({
-					visitor: visitor
-				});
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				var projectList = this.props.projects.map(function (project, i) {
@@ -45645,74 +45476,10 @@
 					'div',
 					null,
 					_react2.default.createElement(_Nav2.default, null),
+					_react2.default.createElement(_Header2.default, null),
 					_react2.default.createElement(
 						'section',
-						{ id: 'slider', style: { background: 'url("/images/joe_light_blue.png") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
-						_react2.default.createElement('br', null),
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'form',
-								{ action: '#', method: 'post', role: 'form', className: 'landing-wide-form landing-form-overlay dark clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'heading-block nobottommargin nobottomborder' },
-									_react2.default.createElement(
-										'h4',
-										null,
-										'Start your Programming Career'
-									)
-								),
-								_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement(
-										'label',
-										{ 'for': 'template-contactform-subject' },
-										'I am interested in'
-									),
-									_react2.default.createElement(
-										'select',
-										{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
-										_react2.default.createElement(
-											'option',
-											{ value: 'fundamentals-bootcamp' },
-											'Fundamentals Bootcamp'
-										),
-										_react2.default.createElement(
-											'option',
-											{ value: 'mvp-bootcamp' },
-											'MVP Bootcamp'
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full nobottommargin' },
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-										'Request Syllabus'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						null,
+						{ style: { background: '#f9f9f9', borderBottom: '1px solid #ddd' } },
 						_react2.default.createElement(
 							'div',
 							{ className: 'content-wrap' },
@@ -65163,6 +64930,217 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
+
+/***/ },
+/* 602 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(462);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactLoader = __webpack_require__(459);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _api = __webpack_require__(464);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	var _reactBootstrap = __webpack_require__(206);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = function (_Component) {
+		_inherits(Header, _Component);
+	
+		function Header(props, context) {
+			_classCallCheck(this, Header);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props, context));
+	
+			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
+			_this2.validate = _this2.validate.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				visitor: {
+					name: '',
+					email: '',
+					phone: '',
+					course: 'Fundamentals Bootcamp',
+					referral: ''
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(Header, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				event.preventDefault();
+	
+				var visitor = Object.assign({}, this.state.visitor);
+				visitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: visitor
+				});
+			}
+		}, {
+			key: 'submitInfoRequest',
+			value: function submitInfoRequest(event) {
+				event.preventDefault();
+	
+				var missingField = this.validate(this.state.visitor, false);
+				if (missingField != null) {
+					alert('Please enter your ' + missingField);
+					return;
+				}
+	
+				this.setState({
+					showLoader: true
+				});
+	
+				var pkg = Object.assign({}, this.state.visitor);
+				var _this = this;
+				_api2.default.handlePost('/api/info', pkg, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'validate',
+			value: function validate(profile, withPassword) {
+				if (profile.name.length == 0) return 'Name';
+	
+				if (profile.email.length == 0) return 'Email';
+	
+				if (withPassword == false) return null;
+	
+				if (profile.password.length == 0) return 'Password';
+	
+				return null; // this is successful
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'section',
+					{ id: 'slider', style: { background: 'url("/images/joe_light_blue.png") center', overflow: 'visible' }, 'data-height-lg': '450', 'data-height-md': '450', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'div',
+						{ className: 'container clearfix' },
+						_react2.default.createElement(
+							'form',
+							{ action: '#', method: 'post', role: 'form', className: 'landing-wide-form landing-form-overlay dark clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'heading-block nobottommargin nobottomborder' },
+								_react2.default.createElement(
+									'h4',
+									null,
+									'Start your Programming Career'
+								)
+							),
+							_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_full' },
+								_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_full' },
+								_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_full' },
+								_react2.default.createElement(
+									'label',
+									{ 'for': 'template-contactform-subject' },
+									'I am interested in'
+								),
+								_react2.default.createElement(
+									'select',
+									{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
+									_react2.default.createElement(
+										'option',
+										{ value: 'fundamentals-bootcamp' },
+										'Fundamentals Bootcamp'
+									),
+									_react2.default.createElement(
+										'option',
+										{ value: 'mvp-bootcamp' },
+										'MVP Bootcamp'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_full nobottommargin' },
+								_react2.default.createElement(
+									'button',
+									{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
+									'Request Syllabus'
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Header;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		return {
+			loaderOptions: state.staticReducer.loaderConfig
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Header);
 
 /***/ }
 /******/ ]);

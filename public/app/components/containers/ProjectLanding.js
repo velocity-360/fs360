@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import ProjectCard from '../../components/ProjectCard'
+import Header from '../../components/Header'
 import Register from '../../components/Register'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
@@ -14,16 +15,8 @@ class Landing extends Component {
 
 	constructor(props, context){
 		super(props, context)
-		this.updateVisitor = this.updateVisitor.bind(this)
 		this.state = {
-			membershiptype: 'Basic',
-			visitor: {
-				name: '',
-				email: '',
-				phone: '',
-				course: '',
-				referral: ''
-			}
+
 		}
 	}
 
@@ -38,17 +31,6 @@ class Landing extends Component {
 		})
 	}
 
-	updateVisitor(event){
-		event.preventDefault()
-
-		var visitor = Object.assign({}, this.state.visitor)
-		visitor[event.target.id] = event.target.value
-		this.setState({
-			visitor: visitor
-		})
-	}
-
-	
 	render(){
 		var projectList = this.props.projects.map(function(project, i){
 			return <ProjectCard key={project.id} project={project} />
@@ -57,39 +39,9 @@ class Landing extends Component {
 		return (
 			<div>
 				<Nav />
+				<Header />
 
-		        <section id="slider" style={{background: 'url("/images/joe_light_blue.png") center', overflow:'visible'}} data-height-lg="450" data-height-md="450" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
-		            <br />
-		            <div className="container clearfix">
-		                <form action="#" method="post" role="form" className="landing-wide-form landing-form-overlay dark clearfix">
-		                    <div className="heading-block nobottommargin nobottomborder">
-		                        <h4>Start your Programming Career</h4>
-		                    </div>
-		                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
-		                    <div className="col_full">
-		                        <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Name" />
-		                    </div>
-		                    <div className="col_full">
-		                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
-		                    </div>
-		                    <div className="col_full">
-								<label for="template-contactform-subject">I am interested in</label>
-								<select onChange={this.updateVisitor} value={this.state.visitor.course} id="course" className="form-control input-lg not-dark">
-									<option value="fundamentals-bootcamp">Fundamentals Bootcamp</option>
-									<option value="mvp-bootcamp">MVP Bootcamp</option>
-								</select>
-		                    </div>
-
-		                    <div className="col_full nobottommargin">
-		                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
-		                    </div>
-		                </form>
-
-		            </div>
-		        </section>
-
-
-				<section>
+				<section style={{background:'#f9f9f9', borderBottom:'1px solid #ddd'}}>
 					<div className="content-wrap">
 		                <div className="promo promo-dark promo-full landing-promo header-stick">
 		                    <div className="container clearfix">
@@ -102,7 +54,6 @@ class Landing extends Component {
 		                </div>
 
 						<div className="container clearfix" style={{paddingTop:64}}>
-
 							{ projectList }
 
 							<div className="col_one_third bottommargin-sm col_last">
