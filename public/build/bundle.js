@@ -42780,7 +42780,7 @@
 						return;
 					}
 	
-					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.currentUser));
+					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
 				});
 			}
 		}, {

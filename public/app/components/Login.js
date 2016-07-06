@@ -69,7 +69,7 @@ class Login extends Component {
 				return
 			}
 
-			store.dispatch(actions.currentUserRecieved(response.currentUser))
+			store.dispatch(actions.currentUserRecieved(response.profile))
 		})
 	}
 
