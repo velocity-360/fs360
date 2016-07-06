@@ -9,12 +9,11 @@ import api from '../api/api'
 class Register extends Component {
 	constructor(props, context){
 		super(props, context)
-		this.hide = this.hide.bind(this)
 		this.updateUserRegistration = this.updateUserRegistration.bind(this)
 		this.showRegistrationForm = this.showRegistrationForm.bind(this)
 		this.hideRegistrationForm = this.hideRegistrationForm.bind(this)
-		this.register = this.register.bind(this)
 		this.validate = this.validate.bind(this)
+		this.register = this.register.bind(this)
 		this.state = {
 			showLoader: false,
 			showRegistration: false,
@@ -103,7 +102,10 @@ class Register extends Component {
 
 			// premium registration, show stripe modal
 			stripe.showModal()
-			_this.setState({showLoader: false})
+			_this.setState({
+				showLoader: false,
+				showRegistration: false
+			})
 		})
 	}
 
@@ -122,12 +124,6 @@ class Register extends Component {
 
 		return null // this is successful
 	}
-
-
-	hide(){
-		this.props.hide()
-	}
-
 
 	render(){
 		var loaderConfig = {

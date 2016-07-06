@@ -45781,12 +45781,11 @@
 	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Register).call(this, props, context));
 	
-			_this2.hide = _this2.hide.bind(_this2);
 			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
 			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
 			_this2.hideRegistrationForm = _this2.hideRegistrationForm.bind(_this2);
-			_this2.register = _this2.register.bind(_this2);
 			_this2.validate = _this2.validate.bind(_this2);
+			_this2.register = _this2.register.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showRegistration: false,
@@ -45880,7 +45879,10 @@
 	
 					// premium registration, show stripe modal
 					_StripeUtils2.default.showModal();
-					_this.setState({ showLoader: false });
+					_this.setState({
+						showLoader: false,
+						showRegistration: false
+					});
 				});
 			}
 		}, {
@@ -45895,11 +45897,6 @@
 				if (profile.password.length == 0) return 'Password';
 	
 				return null; // this is successful
-			}
-		}, {
-			key: 'hide',
-			value: function hide() {
-				this.props.hide();
 			}
 		}, {
 			key: 'render',

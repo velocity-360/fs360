@@ -33,12 +33,11 @@ var Register = (function (Component) {
 		_classCallCheck(this, Register);
 
 		_get(Object.getPrototypeOf(Register.prototype), "constructor", this).call(this, props, context);
-		this.hide = this.hide.bind(this);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
 		this.showRegistrationForm = this.showRegistrationForm.bind(this);
 		this.hideRegistrationForm = this.hideRegistrationForm.bind(this);
-		this.register = this.register.bind(this);
 		this.validate = this.validate.bind(this);
+		this.register = this.register.bind(this);
 		this.state = {
 			showLoader: false,
 			showRegistration: false,
@@ -141,7 +140,10 @@ var Register = (function (Component) {
 
 					// premium registration, show stripe modal
 					stripe.showModal();
-					_this.setState({ showLoader: false });
+					_this.setState({
+						showLoader: false,
+						showRegistration: false
+					});
 				});
 			},
 			writable: true,
@@ -159,13 +161,6 @@ var Register = (function (Component) {
 					return "Password";
 				}return null // this is successful
 				;
-			},
-			writable: true,
-			configurable: true
-		},
-		hide: {
-			value: function hide() {
-				this.props.hide();
 			},
 			writable: true,
 			configurable: true
