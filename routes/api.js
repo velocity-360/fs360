@@ -106,13 +106,14 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'info'){
 		var body = req.body
-		var subscriber = {
-			name: body.firstName+body.lastName,
-			email: body.email,
-			workshop: body.course
-		}
+		
+		// var subscriber = {
+		// 	name: body.firstName+body.lastName,
+		// 	email: body.email,
+		// 	workshop: body.course
+		// }
 
-		subscriberController.post(subscriber, null)
+		subscriberController.post(body, null)
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
 		return
