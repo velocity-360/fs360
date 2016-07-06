@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import api from '../api/api'
+import store from '../stores/store'
+import actions from '../actions/actions'
+
 
 class Login extends Component {
 	constructor(props, context){
@@ -61,7 +64,12 @@ class Login extends Component {
 				return
 			}
 
-			window.location.href = '/account'
+			if (this.props.redirect != null){
+				window.location.href = '/account'
+				return
+			}
+
+			store.dispatch(actions.currentUserRecieved(response.currentUser))
 		})
 	}
 

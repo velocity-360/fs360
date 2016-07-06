@@ -19,7 +19,6 @@ class Course extends Component {
 		this.closeModal = this.closeModal.bind(this)
 		this.showLogin = this.showLogin.bind(this)
 		this.closeLogin = this.closeLogin.bind(this)
-//		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
@@ -300,7 +299,7 @@ class Course extends Component {
 				</section>
 
 				{ (this.props.course.type == 'immersive') ? <Application onSubmit={this.submitApplication} /> : null }
-	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} />
+	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} redirect={null} />
 
 		        <Modal show={this.state.showConfirmation} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

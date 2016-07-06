@@ -69,7 +69,7 @@ class Nav extends Component {
 	                    </nav>
 	                </div>
 	            </div>
-	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} />
+	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} redirect={'/account'} />
             
 	        </header>
 

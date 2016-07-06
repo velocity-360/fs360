@@ -222,7 +222,7 @@ var Nav = (function (Component) {
 							)
 						)
 					),
-					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin })
+					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: "/account" })
 				);
 			},
 			writable: true,

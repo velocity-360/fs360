@@ -42541,7 +42541,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin })
+					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: '/account' })
 				);
 			}
 		}]);
@@ -42692,6 +42692,14 @@
 	
 	var _api2 = _interopRequireDefault(_api);
 	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(462);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42767,7 +42775,12 @@
 						return;
 					}
 	
-					window.location.href = '/account';
+					if (this.props.redirect != null) {
+						window.location.href = '/account';
+						return;
+					}
+	
+					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.currentUser));
 				});
 			}
 		}, {
@@ -62954,7 +62967,6 @@
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.closeLogin = _this2.closeLogin.bind(_this2);
-			//		this.updateLogin = this.updateLogin.bind(this)
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
@@ -63297,7 +63309,7 @@
 						)
 					),
 					this.props.course.type == 'immersive' ? _react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }) : null,
-					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin }),
+					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: null }),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showConfirmation, onHide: this.closeModal },

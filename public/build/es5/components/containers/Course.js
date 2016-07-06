@@ -49,7 +49,6 @@ var Course = (function (Component) {
 		this.closeModal = this.closeModal.bind(this);
 		this.showLogin = this.showLogin.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
-		//		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
@@ -410,7 +409,7 @@ var Course = (function (Component) {
 						)
 					),
 					this.props.course.type == "immersive" ? React.createElement(Application, { onSubmit: this.submitApplication }) : null,
-					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin }),
+					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: null }),
 					React.createElement(
 						Modal,
 						{ show: this.state.showConfirmation, onHide: this.closeModal },
