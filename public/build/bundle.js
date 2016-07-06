@@ -42775,7 +42775,7 @@
 						return;
 					}
 	
-					if (this.props.redirect != null) {
+					if (_this.props.redirect != null) {
 						window.location.href = '/account';
 						return;
 					}
