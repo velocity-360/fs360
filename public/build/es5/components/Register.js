@@ -134,7 +134,7 @@ var Register = (function (Component) {
 						return;
 					}
 
-					if (_this.props.membershipType == "basic") {
+					if (_this.state.membershipType == "basic") {
 						window.location.href = "/account";
 						return;
 					}
