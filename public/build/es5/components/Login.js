@@ -24,6 +24,10 @@ var Loader = _interopRequire(require("react-loader"));
 
 var api = _interopRequire(require("../api/api"));
 
+var store = _interopRequire(require("../stores/store"));
+
+var actions = _interopRequire(require("../actions/actions"));
+
 var Login = (function (Component) {
 	function Login(props, context) {
 		_classCallCheck(this, Login);
@@ -96,7 +100,14 @@ var Login = (function (Component) {
 						return;
 					}
 
-					window.location.href = "/account";
+					if (_this.props.redirect != null) {
+						window.location.href = "/account";
+						return;
+					}
+
+					store.dispatch(actions.currentUserRecieved(response.profile));
+					_this.props.hide();
+					_this.setState({ showLoader: false });
 				});
 			},
 			writable: true,
