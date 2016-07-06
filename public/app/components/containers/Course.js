@@ -17,6 +17,7 @@ class Course extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.closeModal = this.closeModal.bind(this)
+		this.showLogin = this.showLogin.bind(this)
 		this.closeLogin = this.closeLogin.bind(this)
 //		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
@@ -134,6 +135,7 @@ class Course extends Component {
 		})
 	}
 
+
 	// updateLogin(event){
 	// 	event.preventDefault()
 
@@ -167,6 +169,10 @@ class Course extends Component {
 	closeLogin(){
 		this.setState({showLogin: false})
 	}
+
+	showLogin(){
+		this.setState({showLogin: true})
+	}	
 
 	openStripeModal(event){
 		event.preventDefault()

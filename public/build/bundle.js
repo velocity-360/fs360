@@ -62937,6 +62937,7 @@
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 	
 			_this2.closeModal = _this2.closeModal.bind(_this2);
+			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.closeLogin = _this2.closeLogin.bind(_this2);
 			//		this.updateLogin = this.updateLogin.bind(this)
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
@@ -63092,6 +63093,11 @@
 			key: 'closeLogin',
 			value: function closeLogin() {
 				this.setState({ showLogin: false });
+			}
+		}, {
+			key: 'showLogin',
+			value: function showLogin() {
+				this.setState({ showLogin: true });
 			}
 		}, {
 			key: 'openStripeModal',

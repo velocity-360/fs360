@@ -47,6 +47,7 @@ var Course = (function (Component) {
 
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
 		this.closeModal = this.closeModal.bind(this);
+		this.showLogin = this.showLogin.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
 		//		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this);
@@ -179,6 +180,7 @@ var Course = (function (Component) {
 		},
 		closeLogin: {
 
+
 			// updateLogin(event){
 			// 	event.preventDefault()
 
@@ -211,6 +213,13 @@ var Course = (function (Component) {
 
 			value: function closeLogin() {
 				this.setState({ showLogin: false });
+			},
+			writable: true,
+			configurable: true
+		},
+		showLogin: {
+			value: function showLogin() {
+				this.setState({ showLogin: true });
 			},
 			writable: true,
 			configurable: true
