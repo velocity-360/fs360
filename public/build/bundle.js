@@ -63181,7 +63181,7 @@
 				}
 	
 				var _course = this.props.course;
-				var _accountType = this.props.currentUser.accountType;
+				var _accountType = this.props.currentUser.id == null ? 'notLoggedIn' : this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
 				var _openStripeModal = this.openStripeModal;
 				var units = this.props.course.units.map(function (unit, i) {
