@@ -45846,16 +45846,27 @@
 				var _this = this;
 				_StripeUtils2.default.initialize(function (token) {
 					_this.setState({ showLoader: true });
-					_api2.default.submitStripeToken(token, function () {
-						_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
-							_this.setState({ showLoader: false });
-							if (err) {
-								alert(response.message);
-								return;
-							}
 	
-							window.location.href = '/account';
-						});
+					// api.submitStripeToken(token, function(){
+					// 	api.handleGet('/account/currentuser', {}, function(err, response){
+					// 		_this.setState({showLoader: false})
+					// 		if (err){
+					// 			alert(response.message)
+					// 			return
+					// 		}
+	
+					// 		window.location.href = '/account'
+					// 	})
+					// })
+	
+					_api2.default.submitStripeToken(token, function (err, response) {
+						_this.setState({ showLoader: false });
+						if (err) {
+							alert(response.message);
+							return;
+						}
+	
+						window.location.href = '/account';
 					});
 				});
 			}

@@ -80,16 +80,27 @@ var Register = (function (Component) {
 				var _this = this;
 				stripe.initialize(function (token) {
 					_this.setState({ showLoader: true });
-					api.submitStripeToken(token, function () {
-						api.handleGet("/account/currentuser", {}, function (err, response) {
-							_this.setState({ showLoader: false });
-							if (err) {
-								alert(response.message);
-								return;
-							}
 
-							window.location.href = "/account";
-						});
+					// api.submitStripeToken(token, function(){
+					// 	api.handleGet('/account/currentuser', {}, function(err, response){
+					// 		_this.setState({showLoader: false})
+					// 		if (err){
+					// 			alert(response.message)
+					// 			return
+					// 		}
+
+					// 		window.location.href = '/account'
+					// 	})
+					// })
+
+					api.submitStripeToken(token, function (err, response) {
+						_this.setState({ showLoader: false });
+						if (err) {
+							alert(response.message);
+							return;
+						}
+
+						window.location.href = "/account";
 					});
 				});
 			},
