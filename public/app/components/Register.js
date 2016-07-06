@@ -175,10 +175,9 @@ class Register extends Component {
 							<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
 							<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
 								<ul className="pricing--feature-list">
+									<li className="pricing--feature">20% Off ALL Live Courses</li>
 									<li className="pricing--feature">Full Video Access</li>
 									<li className="pricing--feature">Downloadable Code Samples</li>
-									<li className="pricing--feature">Customized Job Listings</li>
-									<li className="pricing--feature">Forum Access</li>
 									<li className="pricing--feature">Discounts to Live Events</li>
 								</ul>
 

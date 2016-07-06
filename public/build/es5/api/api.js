@@ -83,26 +83,49 @@ module.exports = {
 		});
 	},
 
+	// submitStripeToken: function(token, completion){
+	//        var http = new XMLHttpRequest();
+	//        var url = "/stripe/card";
+	//        var params = "stripeToken="+token.id;
+	//        http.open("POST", url, true);
+
+	//        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	//        // notice that the event handler is on xhr and not xhr.upload
+	//        http.addEventListener('readystatechange', function(e) {
+	//            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
+	//                console.log('UPLOAD COMPLETE: ');
+
+	//                if (completion != null)
+	//                 completion()
+
+	//            }
+	//        });
+
+	//        var response = http.send(params)
+	// },
+
 	submitStripeToken: function (token, completion) {
-		var http = new XMLHttpRequest();
-		var url = "/stripe/card";
-		var params = "stripeToken=" + token.id;
-		http.open("POST", url, true);
+		var body = {
+			stripeToken: token.id,
+			email: token.email
+		};
 
-		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		superagent.post("/stripe/card").type("form").send(body).set("Accept", "application/json").end(function (err, res) {
+			if (completion == null) return;
 
-		// notice that the event handler is on xhr and not xhr.upload
-		http.addEventListener("readystatechange", function (e) {
-			if (this.readyState === 4) {
-				// the transfer has completed and the server closed the connection.
-				console.log("UPLOAD COMPLETE: ");
-
-				if (completion != null) completion();
+			if (err) {
+				completion(err, null);
+				return;
 			}
-		});
 
-		var response = http.send(params);
-		//        console.log('RESPONSE: '+response);
+			if (res.body.confirmation != "success") {
+				completion({ message: res.body.message }, null);
+				return;
+			}
+
+			completion(null, res.body);
+		});
 	},
 
 	submitStripeCharge: function (token, project, amt, completion) {

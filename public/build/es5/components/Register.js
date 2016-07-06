@@ -281,22 +281,17 @@ var Register = (function (Component) {
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
+											"20% Off ALL Live Courses"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
 											"Full Video Access"
 										),
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
 											"Downloadable Code Samples"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Customized Job Listings"
-										),
-										React.createElement(
-											"li",
-											{ className: "pricing--feature" },
-											"Forum Access"
 										),
 										React.createElement(
 											"li",
