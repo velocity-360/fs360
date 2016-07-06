@@ -6,6 +6,7 @@ import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseSection from '../../components/CourseSection'
 import Application from '../../components/Application'
+import Login from '../../components/Login'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
@@ -16,9 +17,8 @@ class Course extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.closeModal = this.closeModal.bind(this)
-		this.showLogin = this.showLogin.bind(this)
-		this.login = this.login.bind(this)
-		this.updateLogin = this.updateLogin.bind(this)
+		this.closeLogin = this.closeLogin.bind(this)
+//		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
@@ -134,39 +134,38 @@ class Course extends Component {
 		})
 	}
 
-	showLogin(event){
-		event.preventDefault()
-		this.setState({showLogin: true})
-	}
+	// updateLogin(event){
+	// 	event.preventDefault()
 
-	updateLogin(event){
-		event.preventDefault()
+	// 	var updatedUser = Object.assign({}, this.props.currentUser)
+	// 	updatedUser[event.target.id] = event.target.value
+	// 	store.dispatch(actions.updateCurrentUser(updatedUser))
+	// }
 
-		var updatedUser = Object.assign({}, this.props.currentUser)
-		updatedUser[event.target.id] = event.target.value
-		store.dispatch(actions.updateCurrentUser(updatedUser))
-	}
+	// login(event){
+	// 	event.preventDefault()
+	// 	this.setState({
+	// 		showLogin: false,
+	// 		showLoader: true
+	// 	})
 
-	login(event){
-		event.preventDefault()
-		this.setState({
-			showLogin: false,
-			showLoader: true
-		})
+	// 	var _this = this
+	// 	api.handlePost('/account/login', this.props.currentUser, function(err, response){
+	// 		_this.setState({
+	// 			showLoader: false
+	// 		})
 
-		var _this = this
-		api.handlePost('/account/login', this.props.currentUser, function(err, response){
-			_this.setState({
-				showLoader: false
-			})
+	// 		if (err){
+	// 			alert(err.message)
+	// 			return
+	// 		}
 
-			if (err){
-				alert(err.message)
-				return
-			}
+	// 		store.dispatch(actions.currentUserRecieved(response.profile))
+	// 	})
+	// }
 
-			store.dispatch(actions.currentUserRecieved(response.profile))
-		})
+	closeLogin(){
+		this.setState({showLogin: false})
 	}
 
 	openStripeModal(event){
@@ -328,20 +327,7 @@ class Course extends Component {
 				</section>
 
 				{ (this.props.course.type == 'immersive') ? <Application onSubmit={this.submitApplication} /> : null }
-
-		        <Modal show={this.state.showLogin} onHide={this.closeModal}>
-			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h2>Login</h2>
-			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<input onChange={this.updateLogin} value={this.props.currentUser.email} className="form-control" type="text" id="email" placeholder="Email" /><br />
-			        	<input onChange={this.updateLogin} value={this.props.currentUser.password} className="form-control" type="password" id="password" placeholder="Password" /><br />
-			        </Modal.Body>
-
-			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.login} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Log In</a>
-			        </Modal.Footer>
-		        </Modal>
+	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} />
 
 		        <Modal show={this.state.showConfirmation} onHide={this.closeModal}>
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>

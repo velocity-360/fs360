@@ -31,6 +31,8 @@ var CourseSection = _interopRequire(require("../../components/CourseSection"));
 
 var Application = _interopRequire(require("../../components/Application"));
 
+var Login = _interopRequire(require("../../components/Login"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -45,9 +47,8 @@ var Course = (function (Component) {
 
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
 		this.closeModal = this.closeModal.bind(this);
-		this.showLogin = this.showLogin.bind(this);
-		this.login = this.login.bind(this);
-		this.updateLogin = this.updateLogin.bind(this);
+		this.closeLogin = this.closeLogin.bind(this);
+		//		this.updateLogin = this.updateLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
@@ -176,46 +177,40 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		showLogin: {
-			value: function showLogin(event) {
-				event.preventDefault();
-				this.setState({ showLogin: true });
-			},
-			writable: true,
-			configurable: true
-		},
-		updateLogin: {
-			value: function updateLogin(event) {
-				event.preventDefault();
+		closeLogin: {
 
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
-				store.dispatch(actions.updateCurrentUser(updatedUser));
-			},
-			writable: true,
-			configurable: true
-		},
-		login: {
-			value: function login(event) {
-				event.preventDefault();
-				this.setState({
-					showLogin: false,
-					showLoader: true
-				});
+			// updateLogin(event){
+			// 	event.preventDefault()
 
-				var _this = this;
-				api.handlePost("/account/login", this.props.currentUser, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
+			// 	var updatedUser = Object.assign({}, this.props.currentUser)
+			// 	updatedUser[event.target.id] = event.target.value
+			// 	store.dispatch(actions.updateCurrentUser(updatedUser))
+			// }
 
-					if (err) {
-						alert(err.message);
-						return;
-					}
+			// login(event){
+			// 	event.preventDefault()
+			// 	this.setState({
+			// 		showLogin: false,
+			// 		showLoader: true
+			// 	})
 
-					store.dispatch(actions.currentUserRecieved(response.profile));
-				});
+			// 	var _this = this
+			// 	api.handlePost('/account/login', this.props.currentUser, function(err, response){
+			// 		_this.setState({
+			// 			showLoader: false
+			// 		})
+
+			// 		if (err){
+			// 			alert(err.message)
+			// 			return
+			// 		}
+
+			// 		store.dispatch(actions.currentUserRecieved(response.profile))
+			// 	})
+			// }
+
+			value: function closeLogin() {
+				this.setState({ showLogin: false });
 			},
 			writable: true,
 			configurable: true
@@ -440,36 +435,7 @@ var Course = (function (Component) {
 						)
 					),
 					this.props.course.type == "immersive" ? React.createElement(Application, { onSubmit: this.submitApplication }) : null,
-					React.createElement(
-						Modal,
-						{ show: this.state.showLogin, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h2",
-								null,
-								"Login"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.email, className: "form-control", type: "text", id: "email", placeholder: "Email" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateLogin, value: this.props.currentUser.password, className: "form-control", type: "password", id: "password", placeholder: "Password" }),
-							React.createElement("br", null)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.login, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Log In"
-							)
-						)
-					),
+					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin }),
 					React.createElement(
 						Modal,
 						{ show: this.state.showConfirmation, onHide: this.closeModal },

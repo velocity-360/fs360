@@ -26,7 +26,7 @@ class Nav extends Component {
 			}
 
 			store.dispatch(actions.currentUserRecieved(response.profile));
-		});
+		})
 	}
 
 	openModal(event){

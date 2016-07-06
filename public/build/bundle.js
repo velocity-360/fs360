@@ -62900,6 +62900,10 @@
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
+	var _Login = __webpack_require__(463);
+	
+	var _Login2 = _interopRequireDefault(_Login);
+	
 	var _store = __webpack_require__(194);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -62933,9 +62937,8 @@
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 	
 			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.showLogin = _this2.showLogin.bind(_this2);
-			_this2.login = _this2.login.bind(_this2);
-			_this2.updateLogin = _this2.updateLogin.bind(_this2);
+			_this2.closeLogin = _this2.closeLogin.bind(_this2);
+			//		this.updateLogin = this.updateLogin.bind(this)
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
@@ -63054,43 +63057,41 @@
 					showConfirmation: false
 				});
 			}
+	
+			// updateLogin(event){
+			// 	event.preventDefault()
+	
+			// 	var updatedUser = Object.assign({}, this.props.currentUser)
+			// 	updatedUser[event.target.id] = event.target.value
+			// 	store.dispatch(actions.updateCurrentUser(updatedUser))
+			// }
+	
+			// login(event){
+			// 	event.preventDefault()
+			// 	this.setState({
+			// 		showLogin: false,
+			// 		showLoader: true
+			// 	})
+	
+			// 	var _this = this
+			// 	api.handlePost('/account/login', this.props.currentUser, function(err, response){
+			// 		_this.setState({
+			// 			showLoader: false
+			// 		})
+	
+			// 		if (err){
+			// 			alert(err.message)
+			// 			return
+			// 		}
+	
+			// 		store.dispatch(actions.currentUserRecieved(response.profile))
+			// 	})
+			// }
+	
 		}, {
-			key: 'showLogin',
-			value: function showLogin(event) {
-				event.preventDefault();
-				this.setState({ showLogin: true });
-			}
-		}, {
-			key: 'updateLogin',
-			value: function updateLogin(event) {
-				event.preventDefault();
-	
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
-				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
-			}
-		}, {
-			key: 'login',
-			value: function login(event) {
-				event.preventDefault();
-				this.setState({
-					showLogin: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/account/login', this.props.currentUser, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
-				});
+			key: 'closeLogin',
+			value: function closeLogin() {
+				this.setState({ showLogin: false });
 			}
 		}, {
 			key: 'openStripeModal',
@@ -63308,36 +63309,7 @@
 						)
 					),
 					this.props.course.type == 'immersive' ? _react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }) : null,
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showLogin, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Login'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.email, className: 'form-control', type: 'text', id: 'email', placeholder: 'Email' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateLogin, value: this.props.currentUser.password, className: 'form-control', type: 'password', id: 'password', placeholder: 'Password' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.login, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Log In'
-							)
-						)
-					),
+					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin }),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ show: this.state.showConfirmation, onHide: this.closeModal },
