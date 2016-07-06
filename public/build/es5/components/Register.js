@@ -35,10 +35,14 @@ var Register = (function (Component) {
 		_get(Object.getPrototypeOf(Register.prototype), "constructor", this).call(this, props, context);
 		this.hide = this.hide.bind(this);
 		this.updateUserRegistration = this.updateUserRegistration.bind(this);
+		this.showRegistrationForm = this.showRegistrationForm.bind(this);
+		this.hideRegistrationForm = this.hideRegistrationForm.bind(this);
 		this.register = this.register.bind(this);
 		this.validate = this.validate.bind(this);
 		this.state = {
 			showLoader: false,
+			showRegistration: false,
+			membershipType: "Basic",
 			visitor: {
 				name: "",
 				email: "",
@@ -52,6 +56,26 @@ var Register = (function (Component) {
 	_inherits(Register, Component);
 
 	_prototypeProperties(Register, null, {
+		showRegistrationForm: {
+			value: function showRegistrationForm(event) {
+				event.preventDefault();
+				this.setState({
+					membershipType: event.target.id,
+					showRegistration: true
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		hideRegistrationForm: {
+			value: function hideRegistrationForm() {
+				this.setState({
+					showRegistration: false
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		componentDidMount: {
 			value: function componentDidMount() {
 				var _this = this;
@@ -168,12 +192,135 @@ var Register = (function (Component) {
 				};
 
 				return React.createElement(
-					"div",
-					null,
+					"section",
+					{ id: "register", className: "section pricing-section nomargin", style: { backgroundColor: "#FFF" } },
 					React.createElement(Loader, { options: loaderConfig, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
+						"div",
+						{ className: "container clearfix" },
+						React.createElement(
+							"h2",
+							{ className: "pricing-section--title center" },
+							"Cant make it to our live courses?"
+						),
+						React.createElement(
+							"div",
+							{ style: { textAlign: "center" } },
+							React.createElement(
+								"p",
+								{ style: { fontSize: 16 } },
+								"Join our online service. ",
+								React.createElement("br", null),
+								"Online members have access to videos, code samples, the forum and more."
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "pricing pricing--jinpa" },
+							React.createElement(
+								"div",
+								{ className: "pricing--item", style: { marginRight: 24 } },
+								React.createElement(
+									"h3",
+									{ className: "pricing--title" },
+									"Basic"
+								),
+								React.createElement(
+									"div",
+									{ style: { fontSize: "1.15em" }, className: "pricing--price" },
+									"FREE"
+								),
+								React.createElement(
+									"div",
+									{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
+									React.createElement(
+										"ul",
+										{ className: "pricing--feature-list" },
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Limited Video Access"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Forum Access"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Discounts to Live Events"
+										)
+									)
+								),
+								React.createElement(
+									"button",
+									{ onClick: this.showRegistrationForm, id: "basic", className: "pricing--action" },
+									"Join"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "pricing--item", style: { marginRight: 24, border: "1px solid #eee" } },
+								React.createElement(
+									"h3",
+									{ className: "pricing--title" },
+									"Premium"
+								),
+								React.createElement(
+									"div",
+									{ style: { fontSize: "1.15em" }, className: "pricing--price" },
+									React.createElement(
+										"span",
+										{ className: "pricing--currency" },
+										"$"
+									),
+									"19.99/mo"
+								),
+								React.createElement(
+									"div",
+									{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
+									React.createElement(
+										"ul",
+										{ className: "pricing--feature-list" },
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Full Video Access"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Downloadable Code Samples"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Customized Job Listings"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Forum Access"
+										),
+										React.createElement(
+											"li",
+											{ className: "pricing--feature" },
+											"Discounts to Live Events"
+										)
+									)
+								),
+								React.createElement(
+									"button",
+									{ onClick: this.showRegistrationForm, id: "premium", className: "pricing--action" },
+									"Join"
+								)
+							)
+						)
+					),
+					React.createElement(
 						Modal,
-						{ bsSize: "sm", show: this.props.isVisible, onHide: this.hide },
+						{ bsSize: "sm", show: this.state.showRegistration, onHide: this.hideRegistrationForm },
 						React.createElement(
 							Modal.Body,
 							{ style: { background: "#f9f9f9", padding: 24, borderRadius: 3 } },
@@ -184,7 +331,7 @@ var Register = (function (Component) {
 								React.createElement(
 									"h4",
 									null,
-									textUtils.capitalize(this.props.membershipType),
+									textUtils.capitalize(this.state.membershipType),
 									" Membership"
 								)
 							),

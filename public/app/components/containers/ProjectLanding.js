@@ -15,11 +15,8 @@ class Landing extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.updateVisitor = this.updateVisitor.bind(this)
-		this.showRegistrationForm = this.showRegistrationForm.bind(this)
-		this.closeModal = this.closeModal.bind(this)
 		this.state = {
 			membershiptype: 'Basic',
-			showRegistration: false,
 			visitor: {
 				name: '',
 				email: '',
@@ -51,32 +48,7 @@ class Landing extends Component {
 		})
 	}
 
-	openModal(event){
-		event.preventDefault()
-
-		var visitor = Object.assign({}, this.state.visitor)
-		visitor['course'] = event.target.id
-
-		this.setState({
-			visitor: visitor
-		})
-	}
-
-	showRegistrationForm(event){
-		event.preventDefault()
-		this.setState({
-			membershiptype: event.target.id,
-			showRegistration: true
-		})
-	}
-
-	closeModal(){
-		this.setState({
-			showRegistration: false
-		})
-	}
-
-
+	
 	render(){
 		var projectList = this.props.projects.map(function(project, i){
 			return <ProjectCard key={project.id} project={project} />
@@ -164,49 +136,7 @@ class Landing extends Component {
 					</div>
 				</section>
 
-				<section id="register" className="section pricing-section nomargin" style={{backgroundColor: '#FFF'}}>
-					<div className="container clearfix">
-						<h2 className="pricing-section--title center">Cant make it to our live courses?</h2>
-						<div style={{textAlign:'center'}}>
-							<p style={{fontSize:16}}>
-								Join our online service. <br />Online members 
-								have access to videos, code samples, the forum and more.
-							</p>
-
-						</div>
-						<div className="pricing pricing--jinpa">
-							<div className="pricing--item" style={{marginRight:24}}>
-								<h3 className="pricing--title">Basic</h3>
-								<div style={{fontSize: '1.15em'}} className="pricing--price">FREE</div>
-								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
-									<ul className="pricing--feature-list">
-										<li className="pricing--feature">Limited Video Access</li>
-										<li className="pricing--feature">Forum Access</li>
-										<li className="pricing--feature">Discounts to Live Events</li>
-									</ul>
-								</div>
-								<button onClick={this.showRegistrationForm} id="basic" className="pricing--action">Join</button>
-							</div>
-							<div className="pricing--item" style={{marginRight:24, border:'1px solid #eee'}}>
-								<h3 className="pricing--title">Premium</h3>
-								<div style={{fontSize: '1.15em'}} className="pricing--price"><span className="pricing--currency">$</span>19.99/mo</div>
-								<div style={{ borderTop:'1px solid #eee', marginTop:24, paddingTop:24}}>
-									<ul className="pricing--feature-list">
-										<li className="pricing--feature">Full Video Access</li>
-										<li className="pricing--feature">Downloadable Code Samples</li>
-										<li className="pricing--feature">Customized Job Listings</li>
-										<li className="pricing--feature">Forum Access</li>
-										<li className="pricing--feature">Discounts to Live Events</li>
-									</ul>
-
-								</div>
-								<button onClick={this.showRegistrationForm} id="premium" className="pricing--action">Join</button>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<Register membershipType={this.state.membershiptype} hide={this.closeModal} isVisible={this.state.showRegistration} />
+				<Register />
 				<Footer />
 			</div>
 		)

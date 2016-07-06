@@ -25,11 +25,9 @@ var Loader = _interopRequire(require("react-loader"));
 var connect = require("react-redux").connect;
 var Nav = _interopRequire(require("../../components/Nav"));
 
+var Register = _interopRequire(require("../../components/Register"));
+
 var Footer = _interopRequire(require("../../components/Footer"));
-
-var EventCard = _interopRequire(require("../../components/EventCard"));
-
-var Testimonial = _interopRequire(require("../../components/Testimonial"));
 
 var store = _interopRequire(require("../../stores/store"));
 
@@ -45,18 +43,10 @@ var Landing = (function (Component) {
 
 		_get(Object.getPrototypeOf(Landing.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
-		this.updateUserRegistration = this.updateUserRegistration.bind(this);
 		this.submitInfoRequest = this.submitInfoRequest.bind(this);
-		this.openModal = this.openModal.bind(this);
-		this.showRegistrationForm = this.showRegistrationForm.bind(this);
-		this.closeModal = this.closeModal.bind(this);
-		this.syllabusRequest = this.syllabusRequest.bind(this);
-		this.register = this.register.bind(this);
 		this.validate = this.validate.bind(this);
 		this.state = {
-			showRegistration: false,
 			showLoader: false,
-			showModal: false,
 			visitor: {
 				name: "",
 				email: "",
@@ -104,70 +94,6 @@ var Landing = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		updateUserRegistration: {
-			value: function updateUserRegistration(event) {
-				event.preventDefault();
-
-				if (event.target.id == "membershiptype") {
-					this.setState({
-						membershiptype: event.target.value
-					});
-
-					return;
-				}
-
-
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				if (event.target.id == "name") {
-					var parts = event.target.value.split(" ");
-					updatedUser.firstName = parts[0];
-					if (parts.length > 1) updatedUser.lastName = parts[parts.length - 1];
-				}
-
-				updatedUser[event.target.id] = event.target.value;
-				store.dispatch(actions.updateCurrentUser(updatedUser));
-			},
-			writable: true,
-			configurable: true
-		},
-		register: {
-			value: function register(event) {
-				event.preventDefault();
-				var missingField = this.validate(this.props.currentUser, true);
-				if (missingField != null) {
-					alert("Please enter your " + missingField);
-					return;
-				}
-
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-
-				var _this = this;
-				api.handlePost("/api/profile", this.props.currentUser, function (err, response) {
-					_this.setState({
-						showRegistration: false,
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					if (_this.state.membershiptype == "basic") {
-						window.location.href = "/account";
-						return;
-					}
-
-					// premium registration, show stripe modal
-					stripe.showModal();
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		submitInfoRequest: {
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
@@ -179,12 +105,10 @@ var Landing = (function (Component) {
 				}
 
 				this.setState({
-					showModal: false,
 					showLoader: true
 				});
 
 				var pkg = Object.assign({}, this.state.visitor);
-				pkg.headers = this.props.headers;
 				var _this = this;
 				api.handlePost("/api/info", pkg, function (err, response) {
 					_this.setState({
@@ -214,80 +138,6 @@ var Landing = (function (Component) {
 					return "Password";
 				}return null // this is successful
 				;
-			},
-			writable: true,
-			configurable: true
-		},
-		syllabusRequest: {
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-
-				var missingField = this.validate(false);
-				if (missingField != null) {
-					alert("Please enter your " + missingField);
-					return;
-				}
-
-				var pkg = {
-					course: this.state.selectedCourse,
-					visitor: this.props.currentUser,
-					headers: this.props.headers
-				};
-
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-
-				var _this = this;
-				api.handlePost("/api/syllabus", pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		openModal: {
-			value: function openModal(event) {
-				event.preventDefault();
-
-				var visitor = Object.assign({}, this.state.visitor);
-				visitor.course = event.target.id;
-
-				this.setState({
-					showModal: true,
-					visitor: visitor
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		showRegistrationForm: {
-			value: function showRegistrationForm(event) {
-				event.preventDefault();
-				this.setState({
-					membershiptype: event.target.id,
-					showRegistration: true
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		closeModal: {
-			value: function closeModal() {
-				this.setState({
-					showRegistration: false,
-					showModal: false
-				});
 			},
 			writable: true,
 			configurable: true
@@ -777,229 +627,7 @@ var Landing = (function (Component) {
 							)
 						)
 					),
-					React.createElement(
-						"section",
-						{ id: "register", className: "section pricing-section nomargin", style: { backgroundColor: "#FFF" } },
-						React.createElement(
-							"div",
-							{ className: "container clearfix" },
-							React.createElement(
-								"h2",
-								{ className: "pricing-section--title center" },
-								"Cant make it to our live courses?"
-							),
-							React.createElement(
-								"div",
-								{ style: { textAlign: "center" } },
-								React.createElement(
-									"p",
-									{ style: { fontSize: 16 } },
-									"Join our online service. ",
-									React.createElement("br", null),
-									"Online members have access to videos, code samples, the forum and more."
-								)
-							),
-							React.createElement(
-								"div",
-								{ className: "pricing pricing--jinpa" },
-								React.createElement(
-									"div",
-									{ className: "pricing--item", style: { marginRight: 24 } },
-									React.createElement(
-										"h3",
-										{ className: "pricing--title" },
-										"Basic"
-									),
-									React.createElement(
-										"div",
-										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
-										"FREE"
-									),
-									React.createElement(
-										"div",
-										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
-										React.createElement(
-											"ul",
-											{ className: "pricing--feature-list" },
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Limited Video Access"
-											),
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Forum Access"
-											),
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Discounts to Live Events"
-											)
-										)
-									),
-									React.createElement(
-										"button",
-										{ onClick: this.showRegistrationForm, id: "basic", className: "pricing--action" },
-										"Join"
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "pricing--item", style: { marginRight: 24, border: "1px solid #eee" } },
-									React.createElement(
-										"h3",
-										{ className: "pricing--title" },
-										"Premium"
-									),
-									React.createElement(
-										"div",
-										{ style: { fontSize: "1.15em" }, className: "pricing--price" },
-										React.createElement(
-											"span",
-											{ className: "pricing--currency" },
-											"$"
-										),
-										"19.99/mo"
-									),
-									React.createElement(
-										"div",
-										{ style: { borderTop: "1px solid #eee", marginTop: 24, paddingTop: 24 } },
-										React.createElement(
-											"ul",
-											{ className: "pricing--feature-list" },
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Full Video Access"
-											),
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Downloadable Code Samples"
-											),
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Customized Job Listings"
-											),
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Forum Access"
-											),
-											React.createElement(
-												"li",
-												{ className: "pricing--feature" },
-												"Discounts to Live Events"
-											)
-										)
-									),
-									React.createElement(
-										"button",
-										{ onClick: this.showRegistrationForm, id: "premium", className: "pricing--action" },
-										"Join"
-									)
-								)
-							)
-						)
-					),
-					React.createElement(
-						Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h2",
-								null,
-								"Request Info"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement(
-								"div",
-								{ style: { textAlign: "center" } },
-								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
-							),
-							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", className: "form-control", type: "text", placeholder: "Name" }),
-							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", className: "form-control", type: "text", placeholder: "Email" }),
-							React.createElement("br", null)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.submitInfoRequest, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Submit"
-							)
-						)
-					),
-					React.createElement(
-						Modal,
-						{ show: this.state.showRegistration, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h3",
-								null,
-								"Join"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement(
-								"div",
-								{ style: { textAlign: "center" } },
-								React.createElement("img", { style: { width: 128, borderRadius: 64, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_green_260.png" })
-							),
-							React.createElement(
-								"div",
-								{ className: "row" },
-								React.createElement(
-									"div",
-									{ className: "col-md-6" },
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "name", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Name" }),
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "email", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Email" })
-								),
-								React.createElement(
-									"div",
-									{ className: "col-md-6" },
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "password", className: "form-control", style: { marginBottom: 12 }, type: "password", placeholder: "Password" }),
-									React.createElement("input", { onChange: this.updateUserRegistration, id: "promoCode", className: "form-control", style: { marginBottom: 12 }, type: "text", placeholder: "Promo Code" })
-								)
-							),
-							React.createElement(
-								"select",
-								{ onChange: this.updateUserRegistration, id: "membershiptype", value: this.state.membershiptype, className: "form-control input-md not-dark" },
-								React.createElement(
-									"option",
-									{ value: "basic" },
-									"Basic"
-								),
-								React.createElement(
-									"option",
-									{ value: "premium" },
-									"Premium"
-								)
-							)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.register, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Register"
-							)
-						)
-					),
+					React.createElement(Register, null),
 					React.createElement(Footer, null)
 				);
 			},

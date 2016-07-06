@@ -44893,17 +44893,13 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
+	var _Register = __webpack_require__(479);
+	
+	var _Register2 = _interopRequireDefault(_Register);
+	
 	var _Footer = __webpack_require__(471);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _EventCard = __webpack_require__(472);
-	
-	var _EventCard2 = _interopRequireDefault(_EventCard);
-	
-	var _Testimonial = __webpack_require__(473);
-	
-	var _Testimonial2 = _interopRequireDefault(_Testimonial);
 	
 	var _store = __webpack_require__(194);
 	
@@ -44938,18 +44934,10 @@
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Landing).call(this, props, context));
 	
 			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
 			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
-			_this2.openModal = _this2.openModal.bind(_this2);
-			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
-			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
-			_this2.register = _this2.register.bind(_this2);
 			_this2.validate = _this2.validate.bind(_this2);
 			_this2.state = {
-				showRegistration: false,
 				showLoader: false,
-				showModal: false,
 				visitor: {
 					name: '',
 					email: '',
@@ -44992,65 +44980,6 @@
 				});
 			}
 		}, {
-			key: 'updateUserRegistration',
-			value: function updateUserRegistration(event) {
-				event.preventDefault();
-	
-				if (event.target.id == 'membershiptype') {
-					this.setState({
-						membershiptype: event.target.value
-					});
-	
-					return;
-				}
-	
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				if (event.target.id == 'name') {
-					var parts = event.target.value.split(' ');
-					updatedUser['firstName'] = parts[0];
-					if (parts.length > 1) updatedUser['lastName'] = parts[parts.length - 1];
-				}
-	
-				updatedUser[event.target.id] = event.target.value;
-				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
-			}
-		}, {
-			key: 'register',
-			value: function register(event) {
-				event.preventDefault();
-				var missingField = this.validate(this.props.currentUser, true);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/api/profile', this.props.currentUser, function (err, response) {
-					_this.setState({
-						showRegistration: false,
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					if (_this.state.membershiptype == 'basic') {
-						window.location.href = '/account';
-						return;
-					}
-	
-					// premium registration, show stripe modal
-					_StripeUtils2.default.showModal();
-				});
-			}
-		}, {
 			key: 'submitInfoRequest',
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
@@ -45062,12 +44991,10 @@
 				}
 	
 				this.setState({
-					showModal: false,
 					showLoader: true
 				});
 	
 				var pkg = Object.assign({}, this.state.visitor);
-				pkg['headers'] = this.props.headers;
 				var _this = this;
 				_api2.default.handlePost('/api/info', pkg, function (err, response) {
 					_this.setState({
@@ -45094,72 +45021,6 @@
 				if (profile.password.length == 0) return 'Password';
 	
 				return null; // this is successful
-			}
-		}, {
-			key: 'syllabusRequest',
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-	
-				var missingField = this.validate(false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				var pkg = {
-					course: this.state.selectedCourse,
-					visitor: this.props.currentUser,
-					headers: this.props.headers
-				};
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/api/syllabus', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'openModal',
-			value: function openModal(event) {
-				event.preventDefault();
-	
-				var visitor = Object.assign({}, this.state.visitor);
-				visitor['course'] = event.target.id;
-	
-				this.setState({
-					showModal: true,
-					visitor: visitor
-				});
-			}
-		}, {
-			key: 'showRegistrationForm',
-			value: function showRegistrationForm(event) {
-				event.preventDefault();
-				this.setState({
-					membershiptype: event.target.id,
-					showRegistration: true
-				});
-			}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({
-					showRegistration: false,
-					showModal: false
-				});
 			}
 		}, {
 			key: 'render',
@@ -45648,229 +45509,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'register', className: 'section pricing-section nomargin', style: { backgroundColor: '#FFF' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'h2',
-								{ className: 'pricing-section--title center' },
-								'Cant make it to our live courses?'
-							),
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement(
-									'p',
-									{ style: { fontSize: 16 } },
-									'Join our online service. ',
-									_react2.default.createElement('br', null),
-									'Online members have access to videos, code samples, the forum and more.'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'pricing pricing--jinpa' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item', style: { marginRight: 24 } },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Basic'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										'FREE'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'pricing--feature-list' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Limited Video Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Forum Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Discounts to Live Events'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'basic', className: 'pricing--action' },
-										'Join'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item', style: { marginRight: 24, border: '1px solid #eee' } },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Premium'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										_react2.default.createElement(
-											'span',
-											{ className: 'pricing--currency' },
-											'$'
-										),
-										'19.99/mo'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'pricing--feature-list' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Full Video Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Downloadable Code Samples'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Customized Job Listings'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Forum Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Discounts to Live Events'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'premium', className: 'pricing--action' },
-										'Join'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Request Info'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
-							),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', className: 'form-control', type: 'text', placeholder: 'Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.submitInfoRequest, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showRegistration, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h3',
-								null,
-								'Join'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'row' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-6' },
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'name', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Name' }),
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Email' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-6' },
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', style: { marginBottom: 12 }, type: 'password', placeholder: 'Password' }),
-									_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'promoCode', className: 'form-control', style: { marginBottom: 12 }, type: 'text', placeholder: 'Promo Code' })
-								)
-							),
-							_react2.default.createElement(
-								'select',
-								{ onChange: this.updateUserRegistration, id: 'membershiptype', value: this.state.membershiptype, className: 'form-control input-md not-dark' },
-								_react2.default.createElement(
-									'option',
-									{ value: 'basic' },
-									'Basic'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'premium' },
-									'Premium'
-								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.register, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Register'
-							)
-						)
-					),
+					_react2.default.createElement(_Register2.default, null),
 					_react2.default.createElement(_Footer2.default, null)
 				);
 			}
@@ -45914,7 +45553,7 @@
 	
 	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
 	
-	var _Register = __webpack_require__(478);
+	var _Register = __webpack_require__(479);
 	
 	var _Register2 = _interopRequireDefault(_Register);
 	
@@ -45959,11 +45598,8 @@
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Landing).call(this, props, context));
 	
 			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
-			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.state = {
 				membershiptype: 'Basic',
-				showRegistration: false,
 				visitor: {
 					name: '',
 					email: '',
@@ -45996,34 +45632,6 @@
 				visitor[event.target.id] = event.target.value;
 				this.setState({
 					visitor: visitor
-				});
-			}
-		}, {
-			key: 'openModal',
-			value: function openModal(event) {
-				event.preventDefault();
-	
-				var visitor = Object.assign({}, this.state.visitor);
-				visitor['course'] = event.target.id;
-	
-				this.setState({
-					visitor: visitor
-				});
-			}
-		}, {
-			key: 'showRegistrationForm',
-			value: function showRegistrationForm(event) {
-				event.preventDefault();
-				this.setState({
-					membershiptype: event.target.id,
-					showRegistration: true
-				});
-			}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({
-					showRegistration: false
 				});
 			}
 		}, {
@@ -46194,134 +45802,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'register', className: 'section pricing-section nomargin', style: { backgroundColor: '#FFF' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'h2',
-								{ className: 'pricing-section--title center' },
-								'Cant make it to our live courses?'
-							),
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement(
-									'p',
-									{ style: { fontSize: 16 } },
-									'Join our online service. ',
-									_react2.default.createElement('br', null),
-									'Online members have access to videos, code samples, the forum and more.'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'pricing pricing--jinpa' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item', style: { marginRight: 24 } },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Basic'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										'FREE'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'pricing--feature-list' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Limited Video Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Forum Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Discounts to Live Events'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'basic', className: 'pricing--action' },
-										'Join'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item', style: { marginRight: 24, border: '1px solid #eee' } },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Premium'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										_react2.default.createElement(
-											'span',
-											{ className: 'pricing--currency' },
-											'$'
-										),
-										'19.99/mo'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'pricing--feature-list' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Full Video Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Downloadable Code Samples'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Customized Job Listings'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Forum Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Discounts to Live Events'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'premium', className: 'pricing--action' },
-										'Join'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Register2.default, { membershipType: this.state.membershiptype, hide: this.closeModal, isVisible: this.state.showRegistration }),
+					_react2.default.createElement(_Register2.default, null),
 					_react2.default.createElement(_Footer2.default, null)
 				);
 			}
@@ -46355,7 +45836,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -46437,6 +45918,52 @@
 
 /***/ },
 /* 478 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+	
+		truncateText: function truncateText(str, limit) {
+			if (str.length < limit) return str;
+	
+			return str.substring(0, limit) + '...';
+		},
+	
+		capitalize: function capitalize(str) {
+			if (str.length == 1) return str.toUpperCase();
+	
+			var firstLetter = str.substring(0, 1);
+			return firstLetter.toUpperCase() + str.substring(1);
+		},
+	
+		convertToHtml: function convertToHtml(str) {
+			var find = '\n';
+			var re = new RegExp(find, 'g');
+			var html = str.replace(re, '<br />');
+			return html;
+		},
+	
+		stringToArray: function stringToArray(str, separator) {
+			var t = str.split(separator);
+			var array = [];
+			for (var i = 0; i < t.length; i++) {
+				var tag = t[i];
+				if (tag.length == 0) continue;
+	
+				array.push(tag.trim());
+			}
+	
+			return array;
+		}
+	
+	};
+
+/***/ },
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46463,7 +45990,7 @@
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -46489,10 +46016,14 @@
 	
 			_this2.hide = _this2.hide.bind(_this2);
 			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
+			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
+			_this2.hideRegistrationForm = _this2.hideRegistrationForm.bind(_this2);
 			_this2.register = _this2.register.bind(_this2);
 			_this2.validate = _this2.validate.bind(_this2);
 			_this2.state = {
 				showLoader: false,
+				showRegistration: false,
+				membershipType: 'Basic',
 				visitor: {
 					name: '',
 					email: '',
@@ -46505,9 +46036,24 @@
 		}
 	
 		_createClass(Register, [{
+			key: 'showRegistrationForm',
+			value: function showRegistrationForm(event) {
+				event.preventDefault();
+				this.setState({
+					membershipType: event.target.id,
+					showRegistration: true
+				});
+			}
+		}, {
+			key: 'hideRegistrationForm',
+			value: function hideRegistrationForm() {
+				this.setState({
+					showRegistration: false
+				});
+			}
+		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-	
 				var _this = this;
 				_StripeUtils2.default.initialize(function (token) {
 					_this.setState({ showLoader: true });
@@ -46611,12 +46157,135 @@
 				};
 	
 				return _react2.default.createElement(
-					'div',
-					null,
+					'section',
+					{ id: 'register', className: 'section pricing-section nomargin', style: { backgroundColor: '#FFF' } },
 					_react2.default.createElement(_reactLoader2.default, { options: loaderConfig, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
+						'div',
+						{ className: 'container clearfix' },
+						_react2.default.createElement(
+							'h2',
+							{ className: 'pricing-section--title center' },
+							'Cant make it to our live courses?'
+						),
+						_react2.default.createElement(
+							'div',
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'p',
+								{ style: { fontSize: 16 } },
+								'Join our online service. ',
+								_react2.default.createElement('br', null),
+								'Online members have access to videos, code samples, the forum and more.'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'pricing pricing--jinpa' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'pricing--item', style: { marginRight: 24 } },
+								_react2.default.createElement(
+									'h3',
+									{ className: 'pricing--title' },
+									'Basic'
+								),
+								_react2.default.createElement(
+									'div',
+									{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
+									'FREE'
+								),
+								_react2.default.createElement(
+									'div',
+									{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
+									_react2.default.createElement(
+										'ul',
+										{ className: 'pricing--feature-list' },
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Limited Video Access'
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Forum Access'
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Discounts to Live Events'
+										)
+									)
+								),
+								_react2.default.createElement(
+									'button',
+									{ onClick: this.showRegistrationForm, id: 'basic', className: 'pricing--action' },
+									'Join'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'pricing--item', style: { marginRight: 24, border: '1px solid #eee' } },
+								_react2.default.createElement(
+									'h3',
+									{ className: 'pricing--title' },
+									'Premium'
+								),
+								_react2.default.createElement(
+									'div',
+									{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
+									_react2.default.createElement(
+										'span',
+										{ className: 'pricing--currency' },
+										'$'
+									),
+									'19.99/mo'
+								),
+								_react2.default.createElement(
+									'div',
+									{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
+									_react2.default.createElement(
+										'ul',
+										{ className: 'pricing--feature-list' },
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Full Video Access'
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Downloadable Code Samples'
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Customized Job Listings'
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Forum Access'
+										),
+										_react2.default.createElement(
+											'li',
+											{ className: 'pricing--feature' },
+											'Discounts to Live Events'
+										)
+									)
+								),
+								_react2.default.createElement(
+									'button',
+									{ onClick: this.showRegistrationForm, id: 'premium', className: 'pricing--action' },
+									'Join'
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
 						_reactBootstrap.Modal,
-						{ bsSize: 'sm', show: this.props.isVisible, onHide: this.hide },
+						{ bsSize: 'sm', show: this.state.showRegistration, onHide: this.hideRegistrationForm },
 						_react2.default.createElement(
 							_reactBootstrap.Modal.Body,
 							{ style: { background: '#f9f9f9', padding: 24, borderRadius: 3 } },
@@ -46627,7 +46296,7 @@
 								_react2.default.createElement(
 									'h4',
 									null,
-									_TextUtils2.default.capitalize(this.props.membershipType),
+									_TextUtils2.default.capitalize(this.state.membershipType),
 									' Membership'
 								)
 							),
@@ -46654,52 +46323,6 @@
 	}(_react.Component);
 	
 	exports.default = Register;
-
-/***/ },
-/* 479 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-	
-		truncateText: function truncateText(str, limit) {
-			if (str.length < limit) return str;
-	
-			return str.substring(0, limit) + '...';
-		},
-	
-		capitalize: function capitalize(str) {
-			if (str.length == 1) return str.toUpperCase();
-	
-			var firstLetter = str.substring(0, 1);
-			return firstLetter.toUpperCase() + str.substring(1);
-		},
-	
-		convertToHtml: function convertToHtml(str) {
-			var find = '\n';
-			var re = new RegExp(find, 'g');
-			var html = str.replace(re, '<br />');
-			return html;
-		},
-	
-		stringToArray: function stringToArray(str, separator) {
-			var t = str.split(separator);
-			var array = [];
-			for (var i = 0; i < t.length; i++) {
-				var tag = t[i];
-				if (tag.length == 0) continue;
-	
-				array.push(tag.trim());
-			}
-	
-			return array;
-		}
-	
-	};
 
 /***/ },
 /* 480 */
@@ -47098,7 +46721,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -48857,7 +48480,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -63009,7 +62632,7 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -63200,7 +62823,7 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -64942,7 +64565,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
@@ -65454,7 +65077,7 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _TextUtils = __webpack_require__(479);
+	var _TextUtils = __webpack_require__(478);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
