@@ -135,44 +135,13 @@ class Course extends Component {
 		})
 	}
 
-
-	// updateLogin(event){
-	// 	event.preventDefault()
-
-	// 	var updatedUser = Object.assign({}, this.props.currentUser)
-	// 	updatedUser[event.target.id] = event.target.value
-	// 	store.dispatch(actions.updateCurrentUser(updatedUser))
-	// }
-
-	// login(event){
-	// 	event.preventDefault()
-	// 	this.setState({
-	// 		showLogin: false,
-	// 		showLoader: true
-	// 	})
-
-	// 	var _this = this
-	// 	api.handlePost('/account/login', this.props.currentUser, function(err, response){
-	// 		_this.setState({
-	// 			showLoader: false
-	// 		})
-
-	// 		if (err){
-	// 			alert(err.message)
-	// 			return
-	// 		}
-
-	// 		store.dispatch(actions.currentUserRecieved(response.profile))
-	// 	})
-	// }
-
 	closeLogin(){
 		this.setState({showLogin: false})
 	}
 
 	showLogin(){
 		this.setState({showLogin: true})
-	}	
+	}
 
 	openStripeModal(event){
 		event.preventDefault()
@@ -184,8 +153,6 @@ class Course extends Component {
 
 
 	submitApplication(application){
-//		console.log('submitApplication: '+JSON.stringify(application))
-
 		this.setState({showLoader: true})
 		application['course'] = this.props.course.title
 		var _this = this
@@ -241,7 +208,7 @@ class Course extends Component {
 		var _showLogin = this.showLogin
 		var _openStripeModal = this.openStripeModal
 		var units = this.props.course.units.map(function(unit, i){
-			return <CourseSection key={unit.index} subscribeAction={_openStripeModal} loginAction={_showLogin} unit={unit} course={_course} accountType={_accountType} />
+			return <CourseSection key={i} subscribeAction={_openStripeModal} loginAction={_showLogin} unit={unit} course={_course} accountType={_accountType} />
 		})
 
 		return (

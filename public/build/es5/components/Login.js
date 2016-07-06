@@ -31,6 +31,7 @@ var Login = (function (Component) {
 		_get(Object.getPrototypeOf(Login.prototype), "constructor", this).call(this, props, context);
 		this.hide = this.hide.bind(this);
 		this.login = this.login.bind(this);
+		this.validate = this.validate.bind(this);
 		this.updateCredentials = this.updateCredentials.bind(this);
 		this.state = {
 			showLoader: false,
@@ -64,10 +65,27 @@ var Login = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		validate: {
+			value: function validate(profile) {
+				if (profile.email.length == 0) {
+					return "Email";
+				}if (profile.password.length == 0) {
+					return "Password";
+				}return null // this is successful
+				;
+			},
+			writable: true,
+			configurable: true
+		},
 		login: {
 			value: function login(event) {
 				event.preventDefault();
-				//		console.log('LOGIN: '+JSON.stringify(this.state.credentials))
+
+				var missingValue = this.validate(this.state.credentials);
+				if (missingValue != null) {
+					alert("Please enter your " + missingValue);
+					return;
+				}
 
 				this.setState({ showLoader: true });
 				var _this = this;

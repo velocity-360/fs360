@@ -42710,6 +42710,7 @@
 	
 			_this2.hide = _this2.hide.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
+			_this2.validate = _this2.validate.bind(_this2);
 			_this2.updateCredentials = _this2.updateCredentials.bind(_this2);
 			_this2.state = {
 				showLoader: false,
@@ -42738,10 +42739,24 @@
 				});
 			}
 		}, {
+			key: 'validate',
+			value: function validate(profile) {
+				if (profile.email.length == 0) return 'Email';
+	
+				if (profile.password.length == 0) return 'Password';
+	
+				return null; // this is successful
+			}
+		}, {
 			key: 'login',
 			value: function login(event) {
 				event.preventDefault();
-				//		console.log('LOGIN: '+JSON.stringify(this.state.credentials))
+	
+				var missingValue = this.validate(this.state.credentials);
+				if (missingValue != null) {
+					alert('Please enter your ' + missingValue);
+					return;
+				}
 	
 				this.setState({ showLoader: true });
 				var _this = this;
@@ -63058,37 +63073,6 @@
 					showConfirmation: false
 				});
 			}
-	
-			// updateLogin(event){
-			// 	event.preventDefault()
-	
-			// 	var updatedUser = Object.assign({}, this.props.currentUser)
-			// 	updatedUser[event.target.id] = event.target.value
-			// 	store.dispatch(actions.updateCurrentUser(updatedUser))
-			// }
-	
-			// login(event){
-			// 	event.preventDefault()
-			// 	this.setState({
-			// 		showLogin: false,
-			// 		showLoader: true
-			// 	})
-	
-			// 	var _this = this
-			// 	api.handlePost('/account/login', this.props.currentUser, function(err, response){
-			// 		_this.setState({
-			// 			showLoader: false
-			// 		})
-	
-			// 		if (err){
-			// 			alert(err.message)
-			// 			return
-			// 		}
-	
-			// 		store.dispatch(actions.currentUserRecieved(response.profile))
-			// 	})
-			// }
-	
 		}, {
 			key: 'closeLogin',
 			value: function closeLogin() {
@@ -63108,8 +63092,6 @@
 		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
-				//		console.log('submitApplication: '+JSON.stringify(application))
-	
 				this.setState({ showLoader: true });
 				application['course'] = this.props.course.title;
 				var _this = this;
@@ -63192,7 +63174,7 @@
 				var _showLogin = this.showLogin;
 				var _openStripeModal = this.openStripeModal;
 				var units = this.props.course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: unit.index, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
+					return _react2.default.createElement(_CourseSection2.default, { key: i, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
 				});
 	
 				return _react2.default.createElement(
