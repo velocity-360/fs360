@@ -29,14 +29,32 @@ function createProfile(profileInfo){
 function findProfile(params){
     return new Promise(function (resolve, reject){
 
-		Profile.find(params, function(err, profiles){
+    	if (params.id == null){
+			Profile.find(params, function(err, profiles){
+				if (err){
+			        resolve(null)
+		            return null
+				}
+			
+		        resolve(profiles)
+			})
+
+			return
+    	}
+
+    	Profile.findById(params.id, function(err, profile){
 			if (err){
-		        resolve(null)
+		        reject({message:'Profile not found'})
 	            return null
 			}
+
+			if (profile){
+		        reject({message:'Profile not found'})
+	            return null				
+			}
 		
-	        resolve(profiles)
-		})
+	        resolve(profile)
+    	})
     })
 }
 
@@ -51,7 +69,7 @@ function findProject(projectId){
 		
 			if (project == null){
 	            reject(null)
-	            return;
+	            return
 			}
 
 	        resolve(project)
@@ -240,57 +258,47 @@ router.post('/:resource', function(req, res, next) {
 
 	// Apply a credit card to a profile:
 	if (resource == 'card') {
-		var stripeToken = req.body.stripeToken;
+		var stripeToken = req.body.stripeToken
 		if (stripeToken == null){
-			res.json({'confirmation':'fail', 'message':'Missing stripeToken parameter'});
-			return;
+			res.json({'confirmation':'fail', 'message':'Missing stripeToken parameter'})
+			return
 		}
 		
-		if (!req.session){
-			res.send({'confirmation':'fail', 'message':'User not logged in.'});
-			return;
+		if (req.session == null){
+			res.send({'confirmation':'fail', 'message':'User not logged in.'})
+			return
 		}
 
-		if (!req.session.user){
-			res.send({'confirmation':'fail', 'message':'User not logged in.'});
-			return;
+		if (req.session.user  == null){
+			res.send({'confirmation':'fail', 'message':'User not logged in.'})
+			return
 		}
 		
-		var userId = req.session.user;
-		Profile.findById(userId, function(err, profile){
-			if (err){
-				req.session.reset();
-				res.send({'confirmation':'fail', 'message':'Profile '+userId+' not found'});
-				return;
-			}
-		
-			if (profile == null){
-				res.send({'confirmation':'fail', 'message':'Profile '+userId+' not found'});
-				return;
-			}
-			
-			var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+		var userId = req.session.user
+		findProfile({id:userId})
+		.then(function(profile){
+			var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 			stripe.customers.create({
 				description: profile.id,
 				source: stripeToken
 			}, function(err, customer) {
 				if (err){
-					res.json({'confirmation':'fail', 'message':err.message});
+					res.json({'confirmation':'fail', 'message':err.message})
 					return;
 				}
 				
-				profile['accountType'] = 'premium';
-				profile['monthlyRate'] = 19.99;
-				var promoCode = req.body.promoCode;
+				profile['accountType'] = 'premium'
+				profile['monthlyRate'] = 19.99
+				var promoCode = req.body.promoCode
 
 				if (promoCode != null){ // check promo code
-					profile['promoCode'] = promoCode;
+					profile['promoCode'] = promoCode
 					if (promoCode == 'nyu'){
-						profile['monthlyRate'] = 9.99;
+						profile['monthlyRate'] = 9.99
 					}
 				}
 
-				res.json({'confirmation':'success', 'profile':profile.summary()});
+				res.json({'confirmation':'success', 'profile':profile.summary()})
 				
 				var card = customer.sources.data[0]
 				profile['stripeId'] = customer.id
@@ -301,6 +309,54 @@ router.post('/:resource', function(req, res, next) {
 				return
 			})
 		})
+		.catch(function(err){
+			res.send({'confirmation':'fail', 'message':err.message})
+		})
+
+		// Profile.findById(userId, function(err, profile){
+		// 	if (err){
+		// 		req.session.reset()
+		// 		res.send({'confirmation':'fail', 'message':'Profile '+userId+' not found'})
+		// 		return
+		// 	}
+		
+		// 	if (profile == null){
+		// 		res.send({'confirmation':'fail', 'message':'Profile '+userId+' not found'})
+		// 		return
+		// 	}
+			
+		// 	var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+		// 	stripe.customers.create({
+		// 		description: profile.id,
+		// 		source: stripeToken
+		// 	}, function(err, customer) {
+		// 		if (err){
+		// 			res.json({'confirmation':'fail', 'message':err.message})
+		// 			return;
+		// 		}
+				
+		// 		profile['accountType'] = 'premium'
+		// 		profile['monthlyRate'] = 19.99
+		// 		var promoCode = req.body.promoCode
+
+		// 		if (promoCode != null){ // check promo code
+		// 			profile['promoCode'] = promoCode
+		// 			if (promoCode == 'nyu'){
+		// 				profile['monthlyRate'] = 9.99
+		// 			}
+		// 		}
+
+		// 		res.json({'confirmation':'success', 'profile':profile.summary()})
+				
+		// 		var card = customer.sources.data[0]
+		// 		profile['stripeId'] = customer.id
+		// 		profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand}
+
+		// 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Premium Subscriber', JSON.stringify(profile.summary()))
+		// 		profile.save()
+		// 		return
+		// 	})
+		// })
 		
 		return
 	}
