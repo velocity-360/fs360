@@ -42781,7 +42781,7 @@
 					}
 	
 					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
-					this.props.hide();
+					_this.props.hide();
 					_this.setState({ showLoader: false });
 				});
 			}
