@@ -42996,7 +42996,7 @@
 			var body = {
 				stripeToken: token.id,
 				email: token.email,
-				project: product.id,
+				product: product.id,
 				description: product.title,
 				amount: amt
 			};
