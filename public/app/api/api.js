@@ -152,7 +152,8 @@ export default {
 			email: token.email,
 			product: product.id,
 			description: product.title,
-			amount: amt
+			amount: amt,
+			type: type
 		}
 
 		superagent

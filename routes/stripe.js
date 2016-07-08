@@ -183,7 +183,7 @@ function createNonregisteredStripeCharge(stripe, stripeToken, amount, descriptio
 
 
 router.post('/:resource', function(req, res, next) {
-	var resource = req.params.resource;
+	var resource = req.params.resource
 
 	if (resource == 'register') { // new user signing up as premium subscriber
 		createProfile(req.body)
@@ -255,7 +255,7 @@ router.post('/:resource', function(req, res, next) {
 				lastName: lastName,
 				password: 'abcd'
 			}
-			
+
 			Profile.create(profileInfo, function(err, profile){
 				if (err){
 					var response = {
@@ -289,7 +289,7 @@ router.post('/:resource', function(req, res, next) {
 			})
 		})
 		.catch(function(err){
-			console.log('CHARGE ERROR: '+JSON.stringify(err))
+			console.log('CHARGE ERROR: '+err.message)
 			res.send({'confirmation':'fail', 'message':err.message})
 			return
 		})

@@ -42998,7 +42998,8 @@
 				email: token.email,
 				product: product.id,
 				description: product.title,
-				amount: amt
+				amount: amt,
+				type: type
 			};
 	
 			_superagent2.default.post('/stripe/charge').type('form').send(body).set('Accept', 'application/json').end(function (err, res) {
