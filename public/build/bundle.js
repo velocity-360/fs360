@@ -63225,7 +63225,7 @@
 	
 					_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
 						_this.setState({ showLoader: true });
-						_api2.default.submitStripeCharge(token, course.id, course.deposit, 'course', function (err, response) {
+						_api2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
 							if (err) {
 								alert(err.message);
 								_this.setState({ showLoader: false });

@@ -96,7 +96,7 @@ var Course = (function (Component) {
 
 					stripe.initializeWithText("Submit Deposit", function (token) {
 						_this.setState({ showLoader: true });
-						api.submitStripeCharge(token, course.id, course.deposit, "course", function (err, response) {
+						api.submitStripeCharge(token, course, course.deposit, "course", function (err, response) {
 							if (err) {
 								alert(err.message);
 								_this.setState({ showLoader: false });
