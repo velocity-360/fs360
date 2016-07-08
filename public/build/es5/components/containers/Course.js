@@ -52,9 +52,7 @@ var Course = (function (Component) {
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
-		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
-			showLoader: false,
 			showLogin: false,
 			showConfirmation: false,
 			syllabusRequest: {
@@ -77,39 +75,40 @@ var Course = (function (Component) {
 						return;
 					}
 
+					store.dispatch(actions.coursesRecieved(response.courses));
+
 					var course = response.courses[0];
 					if (course.type == "online") {
 						// for videos, show subscription prompt:
 						stripe.initialize(function (token) {
 							_this.setState({ showLoader: true });
-							api.submitStripeToken(token, function () {
-								api.handleGet("/account/currentuser", {}, function (err, response) {
-									_this.setState({ showLoader: false });
-									if (err) {
-										alert(response.message);
-										return;
-									}
+							api.submitStripeToken(token, function (err, response) {
+								if (err) {
+									alert(err.message);
+									return;
+								}
 
-									store.dispatch(actions.currentUserRecieved(response.profile));
-								});
+								window.location.href = "/account";
 							});
 						});
-					} else {
-						stripe.initializeWithText("Submit Deposit", function (token) {
-							_this.setState({ showLoader: true });
-
-							api.submitStripeCharge(token, _this.props.course.id, _this.props.course.deposit, function () {
-								api.handleGet("/account/currentuser", {}, function (err, response) {
-									_this.setState({
-										showConfirmation: true,
-										showLoader: false
-									});
-								});
-							});
-						});
+						return;
 					}
 
-					store.dispatch(actions.coursesRecieved(response.courses));
+					stripe.initializeWithText("Submit Deposit", function (token) {
+						_this.setState({ showLoader: true });
+						api.submitStripeCharge(token, course.id, course.deposit, "course", function (err, response) {
+							if (err) {
+								alert(err.message);
+								_this.setState({ showLoader: false });
+								return;
+							}
+
+							_this.setState({
+								showConfirmation: true,
+								showLoader: false
+							});
+						});
+					});
 				});
 			},
 			writable: true,

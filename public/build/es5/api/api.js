@@ -128,12 +128,12 @@ module.exports = {
 		});
 	},
 
-	submitStripeCharge: function (token, project, amt, completion) {
+	submitStripeCharge: function (token, product, amt, type, completion) {
 		var body = {
 			stripeToken: token.id,
 			email: token.email,
-			project: project.id,
-			description: project.title,
+			project: product.id,
+			description: product.title,
 			amount: amt
 		};
 
@@ -153,5 +153,4 @@ module.exports = {
 			completion(null, res.body);
 		});
 	}
-
 };

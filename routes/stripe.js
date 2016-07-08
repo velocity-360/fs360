@@ -77,6 +77,25 @@ function findProject(projectId){
     })
 }
 
+function findCourse(courseId){
+    return new Promise(function (resolve, reject){
+
+		Course.findById(courseId, function(err, course){
+			if (err){
+	            reject(err)
+	            return
+			}
+		
+			if (course == null){
+	            reject(null)
+	            return
+			}
+
+	        resolve(course)
+		})
+    })
+}
+
 function createStripeAccount(stripe, profile, stripeToken, amount){ // amount can be null
     return new Promise(function (resolve, reject){
 
@@ -181,35 +200,45 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'charge') {
 		var customerName = ''
 		var customerEmail = req.body.email
-		var proj = null
+		var prod = null
 
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 		createNonregisteredStripeCharge(stripe, req.body.stripeToken, req.body.amount, 'Velocity 360: '+req.body.description)
 		.then(function(charge){
 //			console.log('CHARGE: '+JSON.stringify(charge))
-			var projectId = req.body.project
+			var productId = req.body.product
 			customerName = charge.source.name // this comes from Stripe
-			return findProject(projectId)
+			if (req.body.type == 'project')
+				return findProject(productId)
+			
+			if (req.body.type == 'course')
+				return findCourse(productId)
 		})
-		.then(function(project){
-			proj = project
+		.then(function(product){
+			prod = product
 			return findProfile({email:customerEmail})
 		})
 		.then(function(profiles){
-			var text = customerName+' purchased '+proj.title
+			var text = customerName+' purchased '+prod.title
 			EmailManager.sendEmails('info@thegridmedia.com', ['dkwon@velocity360.io'], 'Project Purchase', text)
 
 			if (profiles.length > 0){ // registered user
 				var profile = profiles[0]
 				req.session.user = profile.id // login as user
-				var subscribers = proj.subscribers
+				var subscribers = prod.subscribers
 				if (subscribers.indexOf(profile.id) == -1){
 					subscribers.push(profile.id)
-					proj['subscribers'] = subscribers
-					proj.save()
+					prod['subscribers'] = subscribers
+					prod.save()
 				}
 
-				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
+				var response = {
+					confirmation:'success',
+					profile:profile.summary()
+				}
+
+				response[req.body.type] = prod.summary()
+				res.send(response)
 				return
 			}
 
@@ -226,23 +255,36 @@ router.post('/:resource', function(req, res, next) {
 				lastName: lastName,
 				password: 'abcd'
 			}
-
+			
 			Profile.create(profileInfo, function(err, profile){
 				if (err){
-					res.send({'confirmation':'success', 'project':proj.summary()})
+					var response = {
+						confirmation:'success',
+						profile:profile.summary()
+					}
+
+					response[req.body.type] = prod.summary()
+					res.send(response)
 					return
 				}
 
-				var subscribers = proj.subscribers
+				var subscribers = prod.subscribers
 				if (subscribers.indexOf(profile.id) == -1){
 					subscribers.push(profile.id)
-					proj['subscribers'] = subscribers
-					proj.save()
+					prod['subscribers'] = subscribers
+					prod.save()
 				}
 
 				// send new profile a welcome email
 				req.session.user = profile.id // login as user
-				res.send({'confirmation':'success', 'project':proj.summary(), profile:profile.summary()})
+
+				var response = {
+					confirmation:'success',
+					profile:profile.summary()
+				}
+
+				response[req.body.type] = prod.summary()
+				res.send(response)
 				return
 			})
 		})
@@ -313,51 +355,6 @@ router.post('/:resource', function(req, res, next) {
 			res.send({'confirmation':'fail', 'message':err.message})
 		})
 
-		// Profile.findById(userId, function(err, profile){
-		// 	if (err){
-		// 		req.session.reset()
-		// 		res.send({'confirmation':'fail', 'message':'Profile '+userId+' not found'})
-		// 		return
-		// 	}
-		
-		// 	if (profile == null){
-		// 		res.send({'confirmation':'fail', 'message':'Profile '+userId+' not found'})
-		// 		return
-		// 	}
-			
-		// 	var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-		// 	stripe.customers.create({
-		// 		description: profile.id,
-		// 		source: stripeToken
-		// 	}, function(err, customer) {
-		// 		if (err){
-		// 			res.json({'confirmation':'fail', 'message':err.message})
-		// 			return;
-		// 		}
-				
-		// 		profile['accountType'] = 'premium'
-		// 		profile['monthlyRate'] = 19.99
-		// 		var promoCode = req.body.promoCode
-
-		// 		if (promoCode != null){ // check promo code
-		// 			profile['promoCode'] = promoCode
-		// 			if (promoCode == 'nyu'){
-		// 				profile['monthlyRate'] = 9.99
-		// 			}
-		// 		}
-
-		// 		res.json({'confirmation':'success', 'profile':profile.summary()})
-				
-		// 		var card = customer.sources.data[0]
-		// 		profile['stripeId'] = customer.id
-		// 		profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand}
-
-		// 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Premium Subscriber', JSON.stringify(profile.summary()))
-		// 		profile.save()
-		// 		return
-		// 	})
-		// })
-		
 		return
 	}
 	
