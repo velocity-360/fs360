@@ -200,6 +200,7 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'charge') {
 		var customerName = ''
 		var customerEmail = req.body.email
+		var type = req.body.type
 		var prod = null
 
 		var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -208,10 +209,10 @@ router.post('/:resource', function(req, res, next) {
 //			console.log('CHARGE: '+JSON.stringify(charge))
 			var productId = req.body.product
 			customerName = charge.source.name // this comes from Stripe
-			if (req.body.type == 'project')
+			if (type == 'project')
 				return findProject(productId)
 			
-			if (req.body.type == 'course')
+			if (type == 'course')
 				return findCourse(productId)
 		})
 		.then(function(product){
@@ -220,7 +221,7 @@ router.post('/:resource', function(req, res, next) {
 		})
 		.then(function(profiles){
 			var text = customerName+' purchased '+prod.title
-			EmailManager.sendEmails('info@thegridmedia.com', ['dkwon@velocity360.io'], 'Project Purchase', text)
+			EmailManager.sendEmails('info@thegridmedia.com', ['dkwon@velocity360.io'], type.toUpperCase()+' Purchase', text)
 
 			if (profiles.length > 0){ // registered user
 				var profile = profiles[0]

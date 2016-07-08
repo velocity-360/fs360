@@ -22,6 +22,7 @@ class Course extends Component {
 		this.openStripeModal = this.openStripeModal.bind(this)
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
+		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -200,7 +201,7 @@ class Course extends Component {
 						</div>
 		}
 
-
+		var colClass = (detailBox == null) ? 'col_full' : 'col_half'
 		var _course = this.props.course
 		var _accountType = (this.props.currentUser.id == null) ? 'notLoggedIn' : this.props.currentUser.accountType
 		var _showLogin = this.showLogin
@@ -231,7 +232,7 @@ class Course extends Component {
 											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src={'/images/'+banner} alt="FullStack 360" />
 										</div>
 										<div className="entry-content">
-											<div className="col_half">
+											<div className={colClass}>
 												<h2 style={{marginBottom:0}}>{this.props.course.title}</h2>
 												<p>{this.props.course.description}</p>
 												{ btnRegister }

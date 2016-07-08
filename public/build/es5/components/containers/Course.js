@@ -52,6 +52,7 @@ var Course = (function (Component) {
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
+		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -279,7 +280,7 @@ var Course = (function (Component) {
 					);
 				}
 
-
+				var colClass = detailBox == null ? "col_full" : "col_half";
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.id == null ? "notLoggedIn" : this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
@@ -329,7 +330,7 @@ var Course = (function (Component) {
 												{ className: "entry-content" },
 												React.createElement(
 													"div",
-													{ className: "col_half" },
+													{ className: colClass },
 													React.createElement(
 														"h2",
 														{ style: { marginBottom: 0 } },

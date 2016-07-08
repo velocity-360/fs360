@@ -63183,6 +63183,7 @@
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
+			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -63393,6 +63394,7 @@
 					);
 				}
 	
+				var colClass = detailBox == null ? 'col_full' : 'col_half';
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.id == null ? 'notLoggedIn' : this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
@@ -63442,7 +63444,7 @@
 												{ className: 'entry-content' },
 												_react2.default.createElement(
 													'div',
-													{ className: 'col_half' },
+													{ className: colClass },
 													_react2.default.createElement(
 														'h2',
 														{ style: { marginBottom: 0 } },
