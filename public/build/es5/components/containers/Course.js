@@ -223,13 +223,9 @@ var Course = (function (Component) {
 				var bannerIndex = 0;
 				var btnRegister = null;
 				if (this.props.course.type == "online") {
-					bannerIndex = 1;
-					btnRegister = React.createElement(
-						"a",
-						{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-						"Register",
-						React.createElement("i", { "class": "icon-circle-arrow-right" })
-					);
+					bannerIndex = 1
+					//			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
+					;
 				} else if (this.props.course.type == "immersive") {
 					bannerIndex = 2;
 				} else {

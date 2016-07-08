@@ -63338,22 +63338,17 @@
 				var btnRegister = null;
 				if (this.props.course.type == 'online') {
 					bannerIndex = 1;
-					btnRegister = _react2.default.createElement(
-						'a',
-						{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-						'Register',
-						_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-					);
+					//			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
 				} else if (this.props.course.type == 'immersive') {
-					bannerIndex = 2;
-				} else {
-					btnRegister = _react2.default.createElement(
-						'a',
-						{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-						'Register',
-						_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-					);
-				}
+						bannerIndex = 2;
+					} else {
+						btnRegister = _react2.default.createElement(
+							'a',
+							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+							'Register',
+							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+						);
+					}
 	
 				var banner = this.props.banners[bannerIndex];
 	

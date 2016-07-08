@@ -172,7 +172,7 @@ class Course extends Component {
 		var btnRegister = null
 		if (this.props.course.type == 'online'){
 			bannerIndex = 1
-			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
+//			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
 		}
 		else if (this.props.course.type == 'immersive'){
 			bannerIndex = 2
