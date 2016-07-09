@@ -106,16 +106,16 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'info'){
 		var body = req.body
-		
-		// var subscriber = {
-		// 	name: body.firstName+body.lastName,
-		// 	email: body.email,
-		// 	workshop: body.course
-		// }
-
 		subscriberController.post(body, null)
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
+		return
+	}
+
+	if (resource == 'subscribe'){
+		subscriberController.post(req.body, null)
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
+		res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
 		return
 	}
 

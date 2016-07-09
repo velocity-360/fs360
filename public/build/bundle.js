@@ -63185,6 +63185,7 @@
 			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
+			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -63292,6 +63293,44 @@
 				});
 			}
 		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				if (this.state.syllabusRequest.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.syllabusRequest.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				this.setState({
+					showLoader: true
+				});
+	
+				var s = Object.assign({}, this.state.syllabusRequest);
+				s['pdf'] = this.props.course.syllabus;
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var _this = this;
+				_api2.default.handlePost('/api/subscribe', s, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
 			key: 'closeModal',
 			value: function closeModal() {
 				this.setState({
@@ -63355,71 +63394,70 @@
 	
 				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
 				var detailBox = null;
-				if (this.props.course.type != 'online') {
-					if (this.props.course.syllabus.length == 0) {
-						detailBox = _react2.default.createElement(
+	
+				if (this.props.course.syllabus.length == 0) {
+					detailBox = _react2.default.createElement(
+						'div',
+						{ className: 'col_half panel panel-default col_last' },
+						_react2.default.createElement(
 							'div',
-							{ className: 'col_half panel panel-default col_last' },
-							_react2.default.createElement(
-								'div',
-								{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
-								'Newsletter'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
-								_react2.default.createElement(
-									'p',
-									null,
-									'Join our newsletter for notifications on upcoming courses, events and tutorials.'
-								),
-								_react2.default.createElement('hr', null),
-								_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(
-									'a',
-									{ onClick: this.syllabusRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-									'Submit'
-								)
-							)
-						);
-					} else {
-						detailBox = _react2.default.createElement(
+							{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
+							'Newsletter'
+						),
+						_react2.default.createElement(
 							'div',
-							{ className: 'col_half panel panel-default col_last' },
+							{ className: 'panel-body', style: { textAlign: 'center' } },
+							_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
 							_react2.default.createElement(
-								'div',
-								{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-								'Details'
+								'p',
+								null,
+								'Join our newsletter for notifications on upcoming courses, events and tutorials.'
 							),
+							_react2.default.createElement('hr', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
 							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body' },
-								this.props.course.dates,
-								_react2.default.createElement('br', null),
-								this.props.course.schedule,
-								_react2.default.createElement('br', null),
-								'Tuition: $',
-								this.props.course.tuition,
-								_react2.default.createElement('br', null),
-								'Deposit: $',
-								this.props.course.deposit,
-								_react2.default.createElement('hr', null),
-								_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(
-									'a',
-									{ onClick: this.syllabusRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-									'Request Syllabus'
-								)
+								'a',
+								{ onClick: this.syllabusRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+								'Submit'
 							)
-						);
-					}
+						)
+					);
+				} else {
+					detailBox = _react2.default.createElement(
+						'div',
+						{ className: 'col_half panel panel-default col_last' },
+						_react2.default.createElement(
+							'div',
+							{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
+							'Details'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body' },
+							this.props.course.dates,
+							_react2.default.createElement('br', null),
+							this.props.course.schedule,
+							_react2.default.createElement('br', null),
+							'Tuition: $',
+							this.props.course.tuition,
+							_react2.default.createElement('br', null),
+							'Deposit: $',
+							this.props.course.deposit,
+							_react2.default.createElement('hr', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.syllabusRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+								'Request Syllabus'
+							)
+						)
+					);
 				}
 	
 				var colClass = detailBox == null ? 'col_full' : 'col_half';
