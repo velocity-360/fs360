@@ -221,6 +221,7 @@ class Course extends Component {
 					Deposit: ${this.props.course.deposit}<br />
 					Premium Member Tuition: ${this.props.course.tuition}<br />
 					Regular Tuition: ${this.props.course.tuition}<br />
+					<br />
 					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>				
 				</div>
 			)

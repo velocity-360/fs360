@@ -63395,6 +63395,7 @@
 						'Regular Tuition: $',
 						this.props.course.tuition,
 						_react2.default.createElement('br', null),
+						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'a',
 							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },

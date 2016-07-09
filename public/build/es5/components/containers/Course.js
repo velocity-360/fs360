@@ -280,6 +280,7 @@ var Course = (function (Component) {
 						"Regular Tuition: $",
 						this.props.course.tuition,
 						React.createElement("br", null),
+						React.createElement("br", null),
 						React.createElement(
 							"a",
 							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
