@@ -24,6 +24,7 @@ class Course extends Component {
 		this.submitApplication = this.submitApplication.bind(this)
 		this.syllabusRequest = this.syllabusRequest.bind(this)
 		this.subscribe = this.subscribe.bind(this)
+		this.sendRequest = this.sendRequest.bind(this)
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -102,30 +103,32 @@ class Course extends Component {
 			return
 		}
 
-		this.setState({
-			showLoader: true
-		})
+		this.sendRequest('syllabus')
 
-		var s = Object.assign({}, this.state.syllabusRequest)
-		s['pdf'] = this.props.course.syllabus
-		var parts = s.name.split(' ')
-		s['firstName'] = parts[0]
-		if (parts.length > 1)
-			s['lastName'] = parts[parts.length-1]
+		// this.setState({
+		// 	showLoader: true
+		// })
 
-		var _this = this
-		api.handlePost('/api/syllabus', s, function(err, response){
-			_this.setState({
-				showLoader: false
-			})
+		// var s = Object.assign({}, this.state.syllabusRequest)
+		// s['pdf'] = this.props.course.syllabus
+		// var parts = s.name.split(' ')
+		// s['firstName'] = parts[0]
+		// if (parts.length > 1)
+		// 	s['lastName'] = parts[parts.length-1]
 
-			if (err){
-				alert(err.message)
-				return
-			}
+		// var _this = this
+		// api.handlePost('/api/syllabus', s, function(err, response){
+		// 	_this.setState({
+		// 		showLoader: false
+		// 	})
 
-			alert(response.message)
-		})
+		// 	if (err){
+		// 		alert(err.message)
+		// 		return
+		// 	}
+
+		// 	alert(response.message)
+		// })
 	}	
 
 	subscribe(event){
@@ -140,6 +143,35 @@ class Course extends Component {
 			return
 		}
 
+		this.sendRequest('subscribe')
+
+		// this.setState({
+		// 	showLoader: true
+		// })
+
+		// var s = Object.assign({}, this.state.syllabusRequest)
+		// s['pdf'] = this.props.course.syllabus
+		// var parts = s.name.split(' ')
+		// s['firstName'] = parts[0]
+		// if (parts.length > 1)
+		// 	s['lastName'] = parts[parts.length-1]
+
+		// var _this = this
+		// api.handlePost('/api/subscribe', s, function(err, response){
+		// 	_this.setState({
+		// 		showLoader: false
+		// 	})
+
+		// 	if (err){
+		// 		alert(err.message)
+		// 		return
+		// 	}
+
+		// 	alert(response.message)
+		// })
+	}
+
+	sendRequest(path){
 		this.setState({
 			showLoader: true
 		})
@@ -152,7 +184,8 @@ class Course extends Component {
 			s['lastName'] = parts[parts.length-1]
 
 		var _this = this
-		api.handlePost('/api/subscribe', s, function(err, response){
+		var url = '/api/'+path
+		api.handlePost(url, s, function(err, response){
 			_this.setState({
 				showLoader: false
 			})
@@ -163,8 +196,10 @@ class Course extends Component {
 			}
 
 			alert(response.message)
-		})
+		})	
 	}
+
+
 
 	closeModal(){
 		this.setState({

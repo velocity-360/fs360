@@ -63189,6 +63189,7 @@
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.sendRequest = _this2.sendRequest.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -63271,29 +63272,32 @@
 					return;
 				}
 	
-				this.setState({
-					showLoader: true
-				});
+				this.sendRequest('syllabus');
 	
-				var s = Object.assign({}, this.state.syllabusRequest);
-				s['pdf'] = this.props.course.syllabus;
-				var parts = s.name.split(' ');
-				s['firstName'] = parts[0];
-				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+				// this.setState({
+				// 	showLoader: true
+				// })
 	
-				var _this = this;
-				_api2.default.handlePost('/api/syllabus', s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
+				// var s = Object.assign({}, this.state.syllabusRequest)
+				// s['pdf'] = this.props.course.syllabus
+				// var parts = s.name.split(' ')
+				// s['firstName'] = parts[0]
+				// if (parts.length > 1)
+				// 	s['lastName'] = parts[parts.length-1]
 	
-					if (err) {
-						alert(err.message);
-						return;
-					}
+				// var _this = this
+				// api.handlePost('/api/syllabus', s, function(err, response){
+				// 	_this.setState({
+				// 		showLoader: false
+				// 	})
 	
-					alert(response.message);
-				});
+				// 	if (err){
+				// 		alert(err.message)
+				// 		return
+				// 	}
+	
+				// 	alert(response.message)
+				// })
 			}
 		}, {
 			key: 'subscribe',
@@ -63309,6 +63313,36 @@
 					return;
 				}
 	
+				this.sendRequest('subscribe');
+	
+				// this.setState({
+				// 	showLoader: true
+				// })
+	
+				// var s = Object.assign({}, this.state.syllabusRequest)
+				// s['pdf'] = this.props.course.syllabus
+				// var parts = s.name.split(' ')
+				// s['firstName'] = parts[0]
+				// if (parts.length > 1)
+				// 	s['lastName'] = parts[parts.length-1]
+	
+				// var _this = this
+				// api.handlePost('/api/subscribe', s, function(err, response){
+				// 	_this.setState({
+				// 		showLoader: false
+				// 	})
+	
+				// 	if (err){
+				// 		alert(err.message)
+				// 		return
+				// 	}
+	
+				// 	alert(response.message)
+				// })
+			}
+		}, {
+			key: 'sendRequest',
+			value: function sendRequest(path) {
 				this.setState({
 					showLoader: true
 				});
@@ -63320,7 +63354,8 @@
 				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
 	
 				var _this = this;
-				_api2.default.handlePost('/api/subscribe', s, function (err, response) {
+				var url = '/api/' + path;
+				_api2.default.handlePost(url, s, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});

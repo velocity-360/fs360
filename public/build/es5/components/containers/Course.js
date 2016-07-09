@@ -54,6 +54,7 @@ var Course = (function (Component) {
 		this.submitApplication = this.submitApplication.bind(this);
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.subscribe = this.subscribe.bind(this);
+		this.sendRequest = this.sendRequest.bind(this);
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -141,29 +142,7 @@ var Course = (function (Component) {
 					return;
 				}
 
-				this.setState({
-					showLoader: true
-				});
-
-				var s = Object.assign({}, this.state.syllabusRequest);
-				s.pdf = this.props.course.syllabus;
-				var parts = s.name.split(" ");
-				s.firstName = parts[0];
-				if (parts.length > 1) s.lastName = parts[parts.length - 1];
-
-				var _this = this;
-				api.handlePost("/api/syllabus", s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
+				this.sendRequest("syllabus");
 			},
 			writable: true,
 			configurable: true
@@ -181,6 +160,13 @@ var Course = (function (Component) {
 					return;
 				}
 
+				this.sendRequest("subscribe");
+			},
+			writable: true,
+			configurable: true
+		},
+		sendRequest: {
+			value: function sendRequest(path) {
 				this.setState({
 					showLoader: true
 				});
@@ -192,7 +178,8 @@ var Course = (function (Component) {
 				if (parts.length > 1) s.lastName = parts[parts.length - 1];
 
 				var _this = this;
-				api.handlePost("/api/subscribe", s, function (err, response) {
+				var url = "/api/" + path;
+				api.handlePost(url, s, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -552,3 +539,51 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
+// this.setState({
+// 	showLoader: true
+// })
+
+// var s = Object.assign({}, this.state.syllabusRequest)
+// s['pdf'] = this.props.course.syllabus
+// var parts = s.name.split(' ')
+// s['firstName'] = parts[0]
+// if (parts.length > 1)
+// 	s['lastName'] = parts[parts.length-1]
+
+// var _this = this
+// api.handlePost('/api/syllabus', s, function(err, response){
+// 	_this.setState({
+// 		showLoader: false
+// 	})
+
+// 	if (err){
+// 		alert(err.message)
+// 		return
+// 	}
+
+// 	alert(response.message)
+// })
+// this.setState({
+// 	showLoader: true
+// })
+
+// var s = Object.assign({}, this.state.syllabusRequest)
+// s['pdf'] = this.props.course.syllabus
+// var parts = s.name.split(' ')
+// s['firstName'] = parts[0]
+// if (parts.length > 1)
+// 	s['lastName'] = parts[parts.length-1]
+
+// var _this = this
+// api.handlePost('/api/subscribe', s, function(err, response){
+// 	_this.setState({
+// 		showLoader: false
+// 	})
+
+// 	if (err){
+// 		alert(err.message)
+// 		return
+// 	}
+
+// 	alert(response.message)
+// })
