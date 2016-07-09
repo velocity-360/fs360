@@ -132,16 +132,6 @@ var Course = (function (Component) {
 		syllabusRequest: {
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				if (this.state.syllabusRequest.name.length == 0) {
-					alert("Please enter your name.");
-					return;
-				}
-
-				if (this.state.syllabusRequest.email.length == 0) {
-					alert("Please enter your email.");
-					return;
-				}
-
 				this.sendRequest("syllabus");
 			},
 			writable: true,
@@ -150,6 +140,13 @@ var Course = (function (Component) {
 		subscribe: {
 			value: function subscribe(event) {
 				event.preventDefault();
+				this.sendRequest("subscribe");
+			},
+			writable: true,
+			configurable: true
+		},
+		sendRequest: {
+			value: function sendRequest(path) {
 				if (this.state.syllabusRequest.name.length == 0) {
 					alert("Please enter your name.");
 					return;
@@ -160,13 +157,6 @@ var Course = (function (Component) {
 					return;
 				}
 
-				this.sendRequest("subscribe");
-			},
-			writable: true,
-			configurable: true
-		},
-		sendRequest: {
-			value: function sendRequest(path) {
 				this.setState({
 					showLoader: true
 				});
@@ -539,51 +529,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
-// this.setState({
-// 	showLoader: true
-// })
-
-// var s = Object.assign({}, this.state.syllabusRequest)
-// s['pdf'] = this.props.course.syllabus
-// var parts = s.name.split(' ')
-// s['firstName'] = parts[0]
-// if (parts.length > 1)
-// 	s['lastName'] = parts[parts.length-1]
-
-// var _this = this
-// api.handlePost('/api/syllabus', s, function(err, response){
-// 	_this.setState({
-// 		showLoader: false
-// 	})
-
-// 	if (err){
-// 		alert(err.message)
-// 		return
-// 	}
-
-// 	alert(response.message)
-// })
-// this.setState({
-// 	showLoader: true
-// })
-
-// var s = Object.assign({}, this.state.syllabusRequest)
-// s['pdf'] = this.props.course.syllabus
-// var parts = s.name.split(' ')
-// s['firstName'] = parts[0]
-// if (parts.length > 1)
-// 	s['lastName'] = parts[parts.length-1]
-
-// var _this = this
-// api.handlePost('/api/subscribe', s, function(err, response){
-// 	_this.setState({
-// 		showLoader: false
-// 	})
-
-// 	if (err){
-// 		alert(err.message)
-// 		return
-// 	}
-
-// 	alert(response.message)
-// })

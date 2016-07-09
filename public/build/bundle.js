@@ -63262,47 +63262,17 @@
 			key: 'syllabusRequest',
 			value: function syllabusRequest(event) {
 				event.preventDefault();
-				if (this.state.syllabusRequest.name.length == 0) {
-					alert('Please enter your name.');
-					return;
-				}
-	
-				if (this.state.syllabusRequest.email.length == 0) {
-					alert('Please enter your email.');
-					return;
-				}
-	
 				this.sendRequest('syllabus');
-	
-				// this.setState({
-				// 	showLoader: true
-				// })
-	
-				// var s = Object.assign({}, this.state.syllabusRequest)
-				// s['pdf'] = this.props.course.syllabus
-				// var parts = s.name.split(' ')
-				// s['firstName'] = parts[0]
-				// if (parts.length > 1)
-				// 	s['lastName'] = parts[parts.length-1]
-	
-				// var _this = this
-				// api.handlePost('/api/syllabus', s, function(err, response){
-				// 	_this.setState({
-				// 		showLoader: false
-				// 	})
-	
-				// 	if (err){
-				// 		alert(err.message)
-				// 		return
-				// 	}
-	
-				// 	alert(response.message)
-				// })
 			}
 		}, {
 			key: 'subscribe',
 			value: function subscribe(event) {
 				event.preventDefault();
+				this.sendRequest('subscribe');
+			}
+		}, {
+			key: 'sendRequest',
+			value: function sendRequest(path) {
 				if (this.state.syllabusRequest.name.length == 0) {
 					alert('Please enter your name.');
 					return;
@@ -63313,36 +63283,6 @@
 					return;
 				}
 	
-				this.sendRequest('subscribe');
-	
-				// this.setState({
-				// 	showLoader: true
-				// })
-	
-				// var s = Object.assign({}, this.state.syllabusRequest)
-				// s['pdf'] = this.props.course.syllabus
-				// var parts = s.name.split(' ')
-				// s['firstName'] = parts[0]
-				// if (parts.length > 1)
-				// 	s['lastName'] = parts[parts.length-1]
-	
-				// var _this = this
-				// api.handlePost('/api/subscribe', s, function(err, response){
-				// 	_this.setState({
-				// 		showLoader: false
-				// 	})
-	
-				// 	if (err){
-				// 		alert(err.message)
-				// 		return
-				// 	}
-	
-				// 	alert(response.message)
-				// })
-			}
-		}, {
-			key: 'sendRequest',
-			value: function sendRequest(path) {
 				this.setState({
 					showLoader: true
 				});
