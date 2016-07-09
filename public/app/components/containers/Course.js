@@ -237,7 +237,7 @@ class Course extends Component {
 								<hr />
 								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
 								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+								<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
 							</div>
 						</div>
 		}
@@ -252,7 +252,7 @@ class Course extends Component {
 								<hr />
 								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
 								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
+								<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
 							</div>
 						</div>
 		}
