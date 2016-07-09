@@ -341,7 +341,7 @@ var Course = (function (Component) {
 							React.createElement("br", null),
 							React.createElement(
 								"a",
-								{ onClick: this.syllabusRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+								{ onClick: this.subscribe, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
 								"Request Syllabus"
 							)
 						)
