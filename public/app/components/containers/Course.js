@@ -193,13 +193,13 @@ class Course extends Component {
 		else {
 			btnRegister = (
 				<div>
-					{this.props.course.dates}<br />
-					{this.props.course.schedule}<br />
+					Date: {this.props.course.dates}<br />
+					Time: {this.props.course.schedule}<br />
 					Deposit: ${this.props.course.deposit}<br />
 					Regular Tuition: ${this.props.course.tuition}<br />
 					Premium Member Tuition: ${this.props.course.premiumTuition}<br />
 					<br />
-					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>				
+					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
 				</div>
 			)
 		}
@@ -285,6 +285,32 @@ class Course extends Component {
 									</div>
 
 									{ units }
+
+									<div className="entry clearfix">
+										<div className="entry-timeline">
+											Join<span></span>
+											<div className="timeline-divider"></div>
+										</div>
+										<div className="entry-image">
+											<div className="panel panel-default">
+												<div className="panel-body" style={{padding:36}}>
+													<h2>Register</h2>
+													<hr />
+
+													Date: {this.props.course.dates}<br />
+													Time: {this.props.course.schedule}<br />
+													Deposit: ${this.props.course.deposit}<br />
+													Regular Tuition: ${this.props.course.tuition}<br />
+													Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+													<br />
+													<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+
+													<br />
+												</div>
+											</div>
+										</div>
+									</div>
+
 								</div>
 							</div>
 

@@ -63362,8 +63362,10 @@
 					btnRegister = _react2.default.createElement(
 						'div',
 						null,
+						'Date: ',
 						this.props.course.dates,
 						_react2.default.createElement('br', null),
+						'Time: ',
 						this.props.course.schedule,
 						_react2.default.createElement('br', null),
 						'Deposit: $',
@@ -63379,7 +63381,7 @@
 						_react2.default.createElement(
 							'a',
 							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-							'Register',
+							'Submit Deposit',
 							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
 						)
 					);
@@ -63521,7 +63523,59 @@
 												detailBox
 											)
 										),
-										units
+										units,
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Join',
+												_react2.default.createElement('span', null),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-image' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h2',
+															null,
+															'Register'
+														),
+														_react2.default.createElement('hr', null),
+														'Date: ',
+														this.props.course.dates,
+														_react2.default.createElement('br', null),
+														'Time: ',
+														this.props.course.schedule,
+														_react2.default.createElement('br', null),
+														'Deposit: $',
+														this.props.course.deposit,
+														_react2.default.createElement('br', null),
+														'Regular Tuition: $',
+														this.props.course.tuition,
+														_react2.default.createElement('br', null),
+														'Premium Member Tuition: $',
+														this.props.course.premiumTuition,
+														_react2.default.createElement('br', null),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+															'Submit Deposit',
+															_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+														),
+														_react2.default.createElement('br', null)
+													)
+												)
+											)
+										)
 									)
 								)
 							)

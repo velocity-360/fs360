@@ -248,8 +248,10 @@ var Course = (function (Component) {
 					btnRegister = React.createElement(
 						"div",
 						null,
+						"Date: ",
 						this.props.course.dates,
 						React.createElement("br", null),
+						"Time: ",
 						this.props.course.schedule,
 						React.createElement("br", null),
 						"Deposit: $",
@@ -265,7 +267,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"a",
 							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-							"Register",
+							"Submit Deposit",
 							React.createElement("i", { "class": "icon-circle-arrow-right" })
 						)
 					);
@@ -408,7 +410,59 @@ var Course = (function (Component) {
 												detailBox
 											)
 										),
-										units
+										units,
+										React.createElement(
+											"div",
+											{ className: "entry clearfix" },
+											React.createElement(
+												"div",
+												{ className: "entry-timeline" },
+												"Join",
+												React.createElement("span", null),
+												React.createElement("div", { className: "timeline-divider" })
+											),
+											React.createElement(
+												"div",
+												{ className: "entry-image" },
+												React.createElement(
+													"div",
+													{ className: "panel panel-default" },
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: { padding: 36 } },
+														React.createElement(
+															"h2",
+															null,
+															"Register"
+														),
+														React.createElement("hr", null),
+														"Date: ",
+														this.props.course.dates,
+														React.createElement("br", null),
+														"Time: ",
+														this.props.course.schedule,
+														React.createElement("br", null),
+														"Deposit: $",
+														this.props.course.deposit,
+														React.createElement("br", null),
+														"Regular Tuition: $",
+														this.props.course.tuition,
+														React.createElement("br", null),
+														"Premium Member Tuition: $",
+														this.props.course.premiumTuition,
+														React.createElement("br", null),
+														React.createElement("br", null),
+														React.createElement(
+															"a",
+															{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+															"Submit Deposit",
+															React.createElement("i", { "class": "icon-circle-arrow-right" })
+														),
+														React.createElement("br", null)
+													)
+												)
+											)
+										)
 									)
 								)
 							)
