@@ -48,7 +48,7 @@ function findProfile(params){
 	            return null
 			}
 
-			if (profile){
+			if (profile == null){
 		        reject({message:'Profile not found'})
 	            return null				
 			}
