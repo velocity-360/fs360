@@ -7,6 +7,7 @@ var initialState = {
 		0: {
 			title: "",
 			description: "",
+			syllabus: "",
 			units: []
 		}
 	},

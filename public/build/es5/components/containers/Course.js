@@ -242,38 +242,70 @@ var Course = (function (Component) {
 				var startDate = this.props.course.dates == null ? "" : this.props.course.dates.split("-")[0].trim();
 				var detailBox = null;
 				if (this.props.course.type != "online") {
-					detailBox = React.createElement(
-						"div",
-						{ className: "col_half panel panel-default col_last" },
-						React.createElement(
+					if (this.props.course.syllabus.length == 0) {
+						detailBox = React.createElement(
 							"div",
-							{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
-							"Details"
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-body" },
-							this.props.course.dates,
-							React.createElement("br", null),
-							this.props.course.schedule,
-							React.createElement("br", null),
-							"Tuition: $",
-							this.props.course.tuition,
-							React.createElement("br", null),
-							"Deposit: $",
-							this.props.course.deposit,
-							React.createElement("hr", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
+							{ className: "col_half panel panel-default col_last" },
 							React.createElement(
-								"a",
-								{ onClick: this.syllabusRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-								"Request Syllabus"
+								"div",
+								{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
+								"Newsletter"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel-body", style: { textAlign: "center" } },
+								React.createElement("img", { style: { width: 96, marginBottom: 12 }, src: "/images/logo_round_blue_260.png" }),
+								React.createElement(
+									"p",
+									null,
+									"Join our newsletter for notifications on upcoming courses, events and tutorials."
+								),
+								React.createElement("hr", null),
+								React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
+								React.createElement("br", null),
+								React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
+								React.createElement("br", null),
+								React.createElement(
+									"a",
+									{ onClick: this.syllabusRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+									"Submit"
+								)
 							)
-						)
-					);
+						);
+					} else {
+						detailBox = React.createElement(
+							"div",
+							{ className: "col_half panel panel-default col_last" },
+							React.createElement(
+								"div",
+								{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
+								"Details"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel-body" },
+								this.props.course.dates,
+								React.createElement("br", null),
+								this.props.course.schedule,
+								React.createElement("br", null),
+								"Tuition: $",
+								this.props.course.tuition,
+								React.createElement("br", null),
+								"Deposit: $",
+								this.props.course.deposit,
+								React.createElement("hr", null),
+								React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
+								React.createElement("br", null),
+								React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
+								React.createElement("br", null),
+								React.createElement(
+									"a",
+									{ onClick: this.syllabusRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+									"Request Syllabus"
+								)
+							)
+						);
+					}
 				}
 
 				var colClass = detailBox == null ? "col_full" : "col_half";
