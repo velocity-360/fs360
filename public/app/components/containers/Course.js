@@ -193,9 +193,11 @@ class Course extends Component {
 		else {
 			btnRegister = (
 				<div>
+					{this.props.course.dates}<br />
+					{this.props.course.schedule}<br />
 					Deposit: ${this.props.course.deposit}<br />
-					Premium Member Tuition: ${this.props.course.premiumTuition}<br />
 					Regular Tuition: ${this.props.course.tuition}<br />
+					Premium Member Tuition: ${this.props.course.premiumTuition}<br />
 					<br />
 					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>				
 				</div>
