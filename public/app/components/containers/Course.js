@@ -297,15 +297,19 @@ class Course extends Component {
 													<h2>Register</h2>
 													<hr />
 
-													Date: {this.props.course.dates}<br />
-													Time: {this.props.course.schedule}<br />
-													Deposit: ${this.props.course.deposit}<br />
-													Regular Tuition: ${this.props.course.tuition}<br />
-													Premium Member Tuition: ${this.props.course.premiumTuition}<br />
-													<br />
-													<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+													<div className='col_half'>
+														Date: {this.props.course.dates}<br />
+														Time: {this.props.course.schedule}<br />
+														Deposit: ${this.props.course.deposit}<br />
+														Regular Tuition: ${this.props.course.tuition}<br />
+														Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+														<br />
+														<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+													</div>
 
-													<br />
+													<div className="col_half col_last">
+														<img style={{width:200}} src={'https://media-service.appspot.com/site/images/'+this.props.course.image+'?crop=360'} />
+													</div>
 												</div>
 											</div>
 										</div>

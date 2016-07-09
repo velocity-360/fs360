@@ -436,29 +436,37 @@ var Course = (function (Component) {
 															"Register"
 														),
 														React.createElement("hr", null),
-														"Date: ",
-														this.props.course.dates,
-														React.createElement("br", null),
-														"Time: ",
-														this.props.course.schedule,
-														React.createElement("br", null),
-														"Deposit: $",
-														this.props.course.deposit,
-														React.createElement("br", null),
-														"Regular Tuition: $",
-														this.props.course.tuition,
-														React.createElement("br", null),
-														"Premium Member Tuition: $",
-														this.props.course.premiumTuition,
-														React.createElement("br", null),
-														React.createElement("br", null),
 														React.createElement(
-															"a",
-															{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-															"Submit Deposit",
-															React.createElement("i", { "class": "icon-circle-arrow-right" })
+															"div",
+															{ className: "col_half" },
+															"Date: ",
+															this.props.course.dates,
+															React.createElement("br", null),
+															"Time: ",
+															this.props.course.schedule,
+															React.createElement("br", null),
+															"Deposit: $",
+															this.props.course.deposit,
+															React.createElement("br", null),
+															"Regular Tuition: $",
+															this.props.course.tuition,
+															React.createElement("br", null),
+															"Premium Member Tuition: $",
+															this.props.course.premiumTuition,
+															React.createElement("br", null),
+															React.createElement("br", null),
+															React.createElement(
+																"a",
+																{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+																"Submit Deposit",
+																React.createElement("i", { "class": "icon-circle-arrow-right" })
+															)
 														),
-														React.createElement("br", null)
+														React.createElement(
+															"div",
+															{ className: "col_half col_last" },
+															React.createElement("img", { style: { width: 200 }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=360" })
+														)
 													)
 												)
 											)

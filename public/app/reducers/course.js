@@ -6,6 +6,7 @@ var initialState = {
 			title:'',
 			description:'',
 			syllabus: '',
+			image: '',
 			units:[],
 			tuition: 0,
 			deposit: 0,
