@@ -275,7 +275,7 @@ var Course = (function (Component) {
 						this.props.course.deposit,
 						React.createElement("br", null),
 						"Premium Member Tuition: $",
-						this.props.course.tuition,
+						this.props.course.premiumTuition,
 						React.createElement("br", null),
 						"Regular Tuition: $",
 						this.props.course.tuition,

@@ -22363,7 +22363,8 @@
 				syllabus: '',
 				units: [],
 				tuition: 0,
-				deposit: 0
+				deposit: 0,
+				premiumTuition: 0
 			}
 		},
 		courseArray: []
@@ -63390,7 +63391,7 @@
 						this.props.course.deposit,
 						_react2.default.createElement('br', null),
 						'Premium Member Tuition: $',
-						this.props.course.tuition,
+						this.props.course.premiumTuition,
 						_react2.default.createElement('br', null),
 						'Regular Tuition: $',
 						this.props.course.tuition,

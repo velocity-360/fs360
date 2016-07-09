@@ -10,7 +10,8 @@ var initialState = {
 			syllabus: "",
 			units: [],
 			tuition: 0,
-			deposit: 0
+			deposit: 0,
+			premiumTuition: 0
 		}
 	},
 	courseArray: []
