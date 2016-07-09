@@ -6,7 +6,9 @@ var initialState = {
 			title:'',
 			description:'',
 			syllabus: '',
-			units:[]
+			units:[],
+			tuition: 0,
+			deposit: 0
 		}
 	},
 	courseArray: []

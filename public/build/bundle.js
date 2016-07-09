@@ -22361,7 +22361,9 @@
 				title: '',
 				description: '',
 				syllabus: '',
-				units: []
+				units: [],
+				tuition: 0,
+				deposit: 0
 			}
 		},
 		courseArray: []
@@ -63378,17 +63380,29 @@
 				var btnRegister = null;
 				if (this.props.course.type == 'online') {
 					bannerIndex = 1;
-					//			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
 				} else if (this.props.course.type == 'immersive') {
-						bannerIndex = 2;
-					} else {
-						btnRegister = _react2.default.createElement(
+					bannerIndex = 2;
+				} else {
+					btnRegister = _react2.default.createElement(
+						'div',
+						null,
+						'Deposit: $',
+						this.props.course.deposit,
+						_react2.default.createElement('br', null),
+						'Premium Member Tuition: $',
+						this.props.course.tuition,
+						_react2.default.createElement('br', null),
+						'Regular Tuition: $',
+						this.props.course.tuition,
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
 							'a',
 							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
 							'Register',
 							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-						);
-					}
+						)
+					);
+				}
 	
 				var banner = this.props.banners[bannerIndex];
 	

@@ -264,17 +264,28 @@ var Course = (function (Component) {
 				var bannerIndex = 0;
 				var btnRegister = null;
 				if (this.props.course.type == "online") {
-					bannerIndex = 1
-					//			btnRegister = <a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Register<i class="icon-circle-arrow-right"></i></a>
-					;
+					bannerIndex = 1;
 				} else if (this.props.course.type == "immersive") {
 					bannerIndex = 2;
 				} else {
 					btnRegister = React.createElement(
-						"a",
-						{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-						"Register",
-						React.createElement("i", { "class": "icon-circle-arrow-right" })
+						"div",
+						null,
+						"Deposit: $",
+						this.props.course.deposit,
+						React.createElement("br", null),
+						"Premium Member Tuition: $",
+						this.props.course.tuition,
+						React.createElement("br", null),
+						"Regular Tuition: $",
+						this.props.course.tuition,
+						React.createElement("br", null),
+						React.createElement(
+							"a",
+							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+							"Register",
+							React.createElement("i", { "class": "icon-circle-arrow-right" })
+						)
 					);
 				}
 
