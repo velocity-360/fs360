@@ -16,7 +16,7 @@ function convertToJson(subscribers){
 
 module.exports = {
 	pluralKey: function(){
-		return 'subscribers';
+		return 'subscribers'
 	},
 
 	get: function(params, completion){
@@ -26,38 +26,38 @@ module.exports = {
 		if (params.id != null){ 
 			Subscriber.findById(params.id, function(err, subscriber){
 				if (err){
-					completion({message:'Subscriber '+params.id+' not found'}, null);
-					return;
+					completion({message:'Subscriber '+params.id+' not found'}, null)
+					return
 				}
 				
 				if (subscriber == null){
-					completion({message:'Subscriber '+params.id+' not found'}, null);
-					return;
+					completion({message:'Subscriber '+params.id+' not found'}, null)
+					return
 				}
 
-				completion(null, subscriber.summary());
-			});
-			return;
+				completion(null, subscriber.summary())
+			})
+			return
 		}
 		
 		
 		/* Query by filters passed into parameter string: */
-		var limit = params.limit;
+		var limit = params.limit
 		if (limit == null)
-			limit = '0';
+			limit = '0'
 		
-		delete params['limit'];
+		delete params['limit']
 
-		var format = 'json';
+		var format = 'json'
 		if (params['format'] != null){
-			format = 'list';
-			delete params['format'];
+			format = 'list'
+			delete params['format']
 		}
 		
 		Subscriber.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, subscribers) {
 			if (err) {
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 			
 			if (format == 'list'){
@@ -66,17 +66,17 @@ module.exports = {
 					var subscriber = subscribers[i]
 					var email = subscriber.email.toLowerCase()
 					if (list.indexOf(email) != -1)
-						continue;
+						continue
 					
 					list.push(email)
 				}
 
-				completion(null, list);
-				return;
+				completion(null, list)
+				return
 			}
 
-			completion(null, convertToJson(subscribers));
-		});
+			completion(null, convertToJson(subscribers))
+		})
 	},
 
 	post: function(subscriberInfo, completion){
@@ -90,20 +90,20 @@ module.exports = {
 				completion(null, subscriber.summary())
 			
 			return
-		});
+		})
 	},
 
 
 	put: function(subscriberId, subscriberInfo, completion){
 		Subscriber.findByIdAndUpdate(subscriberId, subscriberInfo, {new:true}, function(err, subscriber){
 			if (err){
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 			
-			completion(null, subscriber.summary());
-			return;
-		});		
+			completion(null, subscriber.summary())
+			return
+		})
 	},
 
 	delete: function(){
