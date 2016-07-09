@@ -63525,7 +63525,7 @@
 											)
 										),
 										units,
-										_react2.default.createElement(
+										this.props.course.type == 'live' ? _react2.default.createElement(
 											'div',
 											{ className: 'entry clearfix' },
 											_react2.default.createElement(
@@ -63543,7 +63543,7 @@
 													{ className: 'panel panel-default' },
 													_react2.default.createElement(
 														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
+														{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
 														_react2.default.createElement(
 															'h2',
 															null,
@@ -63579,12 +63579,12 @@
 														_react2.default.createElement(
 															'div',
 															{ className: 'col_half col_last' },
-															_react2.default.createElement('img', { style: { width: 200 }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=360' })
+															_react2.default.createElement('img', { style: { width: 200, float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=360' })
 														)
 													)
 												)
 											)
-										)
+										) : null
 									)
 								)
 							)

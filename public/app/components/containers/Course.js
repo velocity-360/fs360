@@ -286,34 +286,40 @@ class Course extends Component {
 
 									{ units }
 
-									<div className="entry clearfix">
-										<div className="entry-timeline">
-											Join<span></span>
-											<div className="timeline-divider"></div>
-										</div>
-										<div className="entry-image">
-											<div className="panel panel-default">
-												<div className="panel-body" style={{padding:36}}>
-													<h2>Register</h2>
-													<hr />
+									{ 
+										(this.props.course.type == 'live') ? 
 
-													<div className='col_half'>
-														Date: {this.props.course.dates}<br />
-														Time: {this.props.course.schedule}<br />
-														Deposit: ${this.props.course.deposit}<br />
-														Regular Tuition: ${this.props.course.tuition}<br />
-														Premium Member Tuition: ${this.props.course.premiumTuition}<br />
-														<br />
-														<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
-													</div>
+										<div className="entry clearfix">
+											<div className="entry-timeline">
+												Join<span></span>
+												<div className="timeline-divider"></div>
+											</div>
+											<div className="entry-image">
+												<div className="panel panel-default">
+													<div className="panel-body" style={{padding:36, paddingBottom:0}}>
+														<h2>Register</h2>
+														<hr />
 
-													<div className="col_half col_last">
-														<img style={{width:200}} src={'https://media-service.appspot.com/site/images/'+this.props.course.image+'?crop=360'} />
+														<div className='col_half'>
+															Date: {this.props.course.dates}<br />
+															Time: {this.props.course.schedule}<br />
+															Deposit: ${this.props.course.deposit}<br />
+															Regular Tuition: ${this.props.course.tuition}<br />
+															Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+															<br />
+															<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+														</div>
+
+														<div className="col_half col_last">
+															<img style={{width:200, float:'right'}} src={'https://media-service.appspot.com/site/images/'+this.props.course.image+'?crop=360'} />
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+										: 
+										null
+									}
 
 								</div>
 							</div>

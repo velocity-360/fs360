@@ -411,7 +411,7 @@ var Course = (function (Component) {
 											)
 										),
 										units,
-										React.createElement(
+										this.props.course.type == "live" ? React.createElement(
 											"div",
 											{ className: "entry clearfix" },
 											React.createElement(
@@ -429,7 +429,7 @@ var Course = (function (Component) {
 													{ className: "panel panel-default" },
 													React.createElement(
 														"div",
-														{ className: "panel-body", style: { padding: 36 } },
+														{ className: "panel-body", style: { padding: 36, paddingBottom: 0 } },
 														React.createElement(
 															"h2",
 															null,
@@ -465,12 +465,12 @@ var Course = (function (Component) {
 														React.createElement(
 															"div",
 															{ className: "col_half col_last" },
-															React.createElement("img", { style: { width: 200 }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=360" })
+															React.createElement("img", { style: { width: 200, float: "right" }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=360" })
 														)
 													)
 												)
 											)
-										)
+										) : null
 									)
 								)
 							)
