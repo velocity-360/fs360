@@ -51,7 +51,6 @@ var DetailBox = (function (Component) {
 		submitRequest: {
 			value: function submitRequest(event) {
 				event.preventDefault();
-				//		console.log('submitRequest: '+JSON.stringify(this.props.content.path))
 
 				if (this.state.visitor.name.length == 0) {
 					alert("Please enter your name.");
@@ -63,9 +62,7 @@ var DetailBox = (function (Component) {
 					return;
 				}
 
-				// this.setState({
-				// 	showLoader: true
-				// })
+				this.props.showLoader();
 
 				var s = Object.assign({}, this.state.visitor);
 				var parts = s.name.split(" ");
@@ -89,9 +86,7 @@ var DetailBox = (function (Component) {
 
 
 				api.handlePost(url, s, function (err, response) {
-					// _this.setState({
-					// 	showLoader: false
-					// })
+					_this.props.hideLoader();
 
 					if (err) {
 						alert(err.message);

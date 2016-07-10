@@ -61997,6 +61997,8 @@
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.showLoader = _this2.showLoader.bind(_this2);
+			_this2.hideLoader = _this2.hideLoader.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -62082,6 +62084,16 @@
 			key: 'showLogin',
 			value: function showLogin() {
 				this.setState({ showLogin: true });
+			}
+		}, {
+			key: 'showLoader',
+			value: function showLoader() {
+				this.setState({ showLoader: true });
+			}
+		}, {
+			key: 'hideLoader',
+			value: function hideLoader() {
+				this.setState({ showLoader: false });
 			}
 		}, {
 			key: 'openStripeModal',
@@ -62205,7 +62217,7 @@
 													),
 													btnRegister
 												),
-												_react2.default.createElement(_DetailBox2.default, { course: this.props.course })
+												_react2.default.createElement(_DetailBox2.default, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: this.props.course })
 											)
 										),
 										units,
@@ -62842,7 +62854,6 @@
 			key: 'submitRequest',
 			value: function submitRequest(event) {
 				event.preventDefault();
-				//		console.log('submitRequest: '+JSON.stringify(this.props.content.path))
 	
 				if (this.state.visitor.name.length == 0) {
 					alert('Please enter your name.');
@@ -62854,9 +62865,7 @@
 					return;
 				}
 	
-				// this.setState({
-				// 	showLoader: true
-				// })
+				this.props.showLoader();
 	
 				var s = Object.assign({}, this.state.visitor);
 				var parts = s.name.split(' ');
@@ -62879,9 +62888,7 @@
 				}
 	
 				_api2.default.handlePost(url, s, function (err, response) {
-					// _this.setState({
-					// 	showLoader: false
-					// })
+					_this.props.hideLoader();
 	
 					if (err) {
 						alert(err.message);

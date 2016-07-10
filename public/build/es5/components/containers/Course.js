@@ -54,6 +54,8 @@ var Course = (function (Component) {
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
 		this.configureStripe = this.configureStripe.bind(this);
+		this.showLoader = this.showLoader.bind(this);
+		this.hideLoader = this.hideLoader.bind(this);
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -148,6 +150,20 @@ var Course = (function (Component) {
 		showLogin: {
 			value: function showLogin() {
 				this.setState({ showLogin: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		showLoader: {
+			value: function showLoader() {
+				this.setState({ showLoader: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		hideLoader: {
+			value: function hideLoader() {
+				this.setState({ showLoader: false });
 			},
 			writable: true,
 			configurable: true
@@ -277,7 +293,7 @@ var Course = (function (Component) {
 													),
 													btnRegister
 												),
-												React.createElement(DetailBox, { course: this.props.course })
+												React.createElement(DetailBox, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: this.props.course })
 											)
 										),
 										units,

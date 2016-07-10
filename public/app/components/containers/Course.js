@@ -23,6 +23,8 @@ class Course extends Component {
 		this.openStripeModal = this.openStripeModal.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
 		this.configureStripe = this.configureStripe.bind(this)
+		this.showLoader = this.showLoader.bind(this)
+		this.hideLoader = this.hideLoader.bind(this)
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -101,6 +103,17 @@ class Course extends Component {
 	showLogin(){
 		this.setState({showLogin: true})
 	}
+
+	showLoader(){
+		this.setState({showLoader: true})
+
+	}
+
+	hideLoader(){
+		this.setState({showLoader: false})
+
+	}
+
 
 	openStripeModal(event){
 		event.preventDefault()
@@ -187,7 +200,7 @@ class Course extends Component {
 												<p>{this.props.course.description}</p>
 												{ btnRegister }
 											</div>
-											<DetailBox course={this.props.course} />
+											<DetailBox showLoader={this.showLoader} hideLoader={this.hideLoader} course={this.props.course} />
 
 										</div>
 									</div>
