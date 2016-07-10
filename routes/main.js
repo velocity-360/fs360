@@ -132,11 +132,14 @@ router.get('/:page/:slug', function(req, res, next) {
 
 		// Facebook tags:
 		var description = (entity.description == null) ? entity.text : entity.description
+		if (description.length > 200)
+			description = description.substring(0, 200)+'...'
+
 		var tags = {
 			title: entity.title,
 			url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
-			description: entity.description
+			description: description
 		}
 
 		var initialState = store.configureStore(initialData).getState()
@@ -178,8 +181,8 @@ router.get('/:page/:slug', function(req, res, next) {
 
 // 		var entity = results[0]
 // 		var desc = (entity.description == null) ? entity.text : entity.description
-// 		if (desc.length > 200)
-// 			desc = desc.substring(0, 200)+'...'
+		// if (desc.length > 200)
+		// 	desc = desc.substring(0, 200)+'...'
 		
 // 		var fbTags = {
 // 			title: entity.title,
