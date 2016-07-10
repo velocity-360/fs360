@@ -74,6 +74,9 @@ router.get('/:page', function(req, res, next) {
 
 				if (page == 'feed')
 					initialData.postReducer.postsArray = results
+
+				if (page == 'landing')
+					initialData.projectReducer.projects = results
 			}
 
 			var initialState = store.configureStore(initialData).getState()

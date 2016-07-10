@@ -31,7 +31,8 @@ var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var currentStore = require("../../stores/store").currentStore;
+var store = _interopRequire(require("../../stores/store"));
+
 var actions = _interopRequire(require("../../actions/actions"));
 
 var stripe = _interopRequire(require("../../utils/StripeUtils"));
@@ -51,13 +52,16 @@ var Landing = (function (Component) {
 	_prototypeProperties(Landing, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				var _this = this;
+				if (this.props.projects.length > 0) {
+					return;
+
+				}var _this = this;
 				api.handleGet("/api/project", null, function (err, response) {
 					if (err) {
 						return;
 					}
 
-					currentStore().dispatch(actions.projectsRecieved(response.projects));
+					store.currentStore().dispatch(actions.projectsRecieved(response.projects));
 				});
 			},
 			writable: true,

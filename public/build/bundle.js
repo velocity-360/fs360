@@ -44668,6 +44668,8 @@
 	
 	var _store = __webpack_require__(194);
 	
+	var _store2 = _interopRequireDefault(_store);
+	
 	var _actions = __webpack_require__(459);
 	
 	var _actions2 = _interopRequireDefault(_actions);
@@ -44703,13 +44705,15 @@
 		_createClass(Landing, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				if (this.props.projects.length > 0) return;
+	
 				var _this = this;
 				_api2.default.handleGet('/api/project', null, function (err, response) {
 					if (err) {
 						return;
 					}
 	
-					(0, _store.currentStore)().dispatch(_actions2.default.projectsRecieved(response.projects));
+					_store2.default.currentStore().dispatch(_actions2.default.projectsRecieved(response.projects));
 				});
 			}
 		}, {

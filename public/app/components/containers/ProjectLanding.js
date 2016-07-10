@@ -6,7 +6,7 @@ import Header from '../../components/Header'
 import Register from '../../components/Register'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
-import { currentStore } from '../../stores/store'
+import store from '../../stores/store'
 import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
 import api from '../../api/api'
@@ -21,13 +21,17 @@ class Landing extends Component {
 	}
 
 	componentDidMount(){
+		if (this.props.projects.length > 0)
+			return
+		
+
 		var _this = this
 		api.handleGet('/api/project', null, function(err, response){
 			if (err){
 				return
 			}
 
-			currentStore().dispatch(actions.projectsRecieved(response.projects))
+			store.currentStore().dispatch(actions.projectsRecieved(response.projects))
 		})
 	}
 

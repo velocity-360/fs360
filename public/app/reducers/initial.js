@@ -52,6 +52,22 @@ export default function() {
 				}
 			}
 		},
+		projectReducer: {
+			projects: {
+
+			},
+			projectsArray: [],
+			emptyProject: {
+				title: '',
+				image: '',
+				description: '',
+				tags: [],
+				units: [],
+				profile: {
+					name: ''
+				}		
+			}			
+		},
 		staticReducer: {
 			loaderConfig: {
 			    lines: 13,
