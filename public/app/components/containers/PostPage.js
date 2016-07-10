@@ -23,6 +23,9 @@ class PostPage extends Component {
 	}
 
 	componentDidMount(){
+		if (this.props.post != null)
+			return
+		
 		var url = '/api/post?slug='+this.props.slug
 		api.handleGet(url, {}, function(err, response){
 			if (err){

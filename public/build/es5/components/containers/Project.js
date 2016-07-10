@@ -50,12 +50,23 @@ var Project = (function (Component) {
 	_prototypeProperties(Project, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
+				if (this.props.project != null) {
+					this.configureStripe(this.props.project);
+					return;
+				}
+
+
 				var _this = this;
 				var url = "/api/project?slug=" + this.props.slug;
 				api.handleGet(url, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
+					}
+
+					if (response.projects.length > 0) {
+						var proj = response.projects[0];
+						this.configureStripe(this.props.project);
 					}
 
 					store.currentStore().dispatch(actions.projectsRecieved(response.projects));
@@ -100,9 +111,6 @@ var Project = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				if (this.props.project.id != null) this.configureStripe(this.props.project);
-
-
 				var tags = this.props.project.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
@@ -259,12 +267,11 @@ var Project = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	var projects = state.projectReducer.projectsArray;
 	//	console.log('STATE TO PROPS: '+JSON.stringify(projects))
 
 	return {
 		currentUser: state.profileReducer.currentUser,
-		project: projects.length == 0 ? state.projectReducer.emptyProject : projects[0],
+		project: state.projectReducer.projectsArray[0],
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };

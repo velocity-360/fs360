@@ -51,7 +51,9 @@ var PostPage = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				var url = "/api/post?slug=" + this.props.slug;
+				if (this.props.post != null) {
+					return;
+				}var url = "/api/post?slug=" + this.props.slug;
 				api.handleGet(url, {}, function (err, response) {
 					if (err) {
 						alert(response.message);

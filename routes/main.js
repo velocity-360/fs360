@@ -10,8 +10,10 @@ var controllers = {
 	courses: courseController,
 	course: courseController,
 	feed: postController,
+	post: postController,
 	events: eventController,
-	landing: projectController
+	landing: projectController,
+	project: projectController
 }
 
 require('node-jsx').install({ extension: ".js" })
@@ -46,11 +48,8 @@ router.get('/:page', function(req, res, next) {
 	var initialData = initial()
 	var page = req.params.page // 'courses', 'feed', 'account'
 
-	accountController.checkCurrentUser(req, function(err, currentUser){
-		if (err){
-
-		}
-
+	accountController.currentUser(req)
+	.then(function(currentUser){
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 		
@@ -83,33 +82,105 @@ router.get('/:page', function(req, res, next) {
 			var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 		})
+	})
+	.catch(function(err){
 
 	})
 
+	// accountController.checkCurrentUser(req, function(err, currentUser){
+	// 	if (err){
+
+	// 	}
+
+	// })
 })
 
-// router.get('/:page', function(req, res, next) {
-// 	var page = req.params.page
+router.get('/:page/:slug', function(req, res, next) {
+	var initialData = initial()
+	var page = req.params.page
+	if (page == 'api' || page == 'admin' || page == 'account'){
+		next()
+		return
+	}
 
-// 	var controller = controllers[page]
-// 	if (controller == null){
-// 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}))
-// 	    res.render(page, {react:html})
+	var user = null
+	accountController.currentUser(req)
+	.then(function(currentUser){ // can be null
+		if (currentUser != null)
+			initialData.profileReducer.currentUser = currentUser
+
+		var slug = req.params.slug
+		var controller = controllers[page]
+		if (controller == null){
+			var initialState = store.configureStore(initialData).getState()
+			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
+			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+			return
+		}
+
+		controller.get({slug: slug}, function(err, results){
+			if (err){
+
+			}
+
+			if (results.length == 0){
+				var initialState = store.configureStore(initialData).getState()
+				var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
+				res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+				return
+			}
+
+			if (results){
+				var entity = results[0]
+				if (page == 'course')
+					initialData.courseReducer.courseArray = [entity]
+
+				if (page == 'post')
+					initialData.postReducer.postsArray = [entity]
+
+				if (page == 'project')
+					initialData.projectReducer.projectsArray = [entity]
+			}
+
+			var initialState = store.configureStore(initialData).getState()
+			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
+			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+			return
+		})
+	})
+	.catch(function(err){
+
+	})
+})
+
+
+// router.get('/:page/:slug', function(req, res, next) {
+// 	var page = req.params.page
+// 	if (page == 'api' || page == 'admin' || page == 'account'){
+// 		next()
 // 		return
 // 	}
 
-// 	controller.get({}, function(err, results){
+// 	var slug = req.params.slug
+// 	var controller = controllers[page]
+// 	if (controller == null){
+// 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug}))
+// 	    res.render(page, {react: html})
+// 		return
+// 	}
+
+// 	controller.get({slug: slug}, function(err, results){
 // 		if (err){
 
 // 		}
 
 // 		if (results.length == 0){
-// 		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug, headers:req.headers}));
-// 		    res.render(page, {react:html, tags:{}});
+// 		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}))
+// 		    res.render(page, {react:html, tags:{}})
 // 			return
 // 		}
 
-// 		var entity = results[results.length-1]
+// 		var entity = results[0]
 // 		var desc = (entity.description == null) ? entity.text : entity.description
 // 		if (desc.length > 200)
 // 			desc = desc.substring(0, 200)+'...'
@@ -117,59 +188,14 @@ router.get('/:page', function(req, res, next) {
 // 		var fbTags = {
 // 			title: entity.title,
 // 			description: desc,
-// 			url: 'https://www.velocity360.io/'+page,
+// 			url: 'https://www.velocity360.io/'+page+'/'+slug,
 // 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 // 		}
 
-// 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}));
-// 	    res.render(page, {react:html, tags:fbTags});
+// 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+// 	    res.render(page, {react:html, tags:fbTags})
 // 		return
 // 	})
 // })
-
-router.get('/:page/:slug', function(req, res, next) {
-	var page = req.params.page
-	if (page == 'api' || page == 'admin' || page == 'account'){
-		next()
-		return
-	}
-
-	var slug = req.params.slug
-	var controller = controllers[page]
-	if (controller == null){
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug}))
-	    res.render(page, {react: html})
-		return
-	}
-
-	controller.get({slug: slug}, function(err, results){
-		if (err){
-
-		}
-
-		if (results.length == 0){
-		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}))
-		    res.render(page, {react:html, tags:{}})
-			return
-		}
-
-		var entity = results[0]
-		var desc = (entity.description == null) ? entity.text : entity.description
-		if (desc.length > 200)
-			desc = desc.substring(0, 200)+'...'
-		
-		var fbTags = {
-			title: entity.title,
-			description: desc,
-			url: 'https://www.velocity360.io/'+page+'/'+slug,
-			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
-		}
-
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
-	    res.render(page, {react:html, tags:fbTags})
-		return
-	})
-
-})
 
 module.exports = router

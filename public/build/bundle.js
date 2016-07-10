@@ -61499,6 +61499,8 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				if (this.props.post != null) return;
+	
 				var url = '/api/post?slug=' + this.props.slug;
 				_api2.default.handleGet(url, {}, function (err, response) {
 					if (err) {
@@ -61689,12 +61691,22 @@
 		_createClass(Project, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				if (this.props.project != null) {
+					this.configureStripe(this.props.project);
+					return;
+				}
+	
 				var _this = this;
 				var url = '/api/project?slug=' + this.props.slug;
 				_api2.default.handleGet(url, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
+					}
+	
+					if (response.projects.length > 0) {
+						var proj = response.projects[0];
+						this.configureStripe(this.props.project);
 					}
 	
 					_store2.default.currentStore().dispatch(_actions2.default.projectsRecieved(response.projects));
@@ -61733,8 +61745,6 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				if (this.props.project.id != null) this.configureStripe(this.props.project);
-	
 				var tags = this.props.project.tags.map(function (tag, i) {
 					return _react2.default.createElement(
 						'a',
@@ -61888,12 +61898,11 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		var projects = state.projectReducer.projectsArray;
 		//	console.log('STATE TO PROPS: '+JSON.stringify(projects))
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			project: projects.length == 0 ? state.projectReducer.emptyProject : projects[0],
+			project: state.projectReducer.projectsArray[0],
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
@@ -61987,6 +61996,7 @@
 			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.sendRequest = _this2.sendRequest.bind(_this2);
+			_this2.configureStripe = _this2.configureStripe.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -62002,6 +62012,11 @@
 		_createClass(Course, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				if (this.props.course != null) {
+					this.configureStripe(this.props.course);
+					return;
+				}
+	
 				var _this = this;
 				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
 					if (err) {
@@ -62012,35 +62027,40 @@
 					_store2.default.currentStore().dispatch(_actions2.default.coursesRecieved(response.courses));
 	
 					var course = response.courses[0];
-					if (course.type == 'online') {
-						// for videos, show subscription prompt:
-						_StripeUtils2.default.initialize(function (token) {
-							_this.setState({ showLoader: true });
-							_api2.default.submitStripeToken(token, function (err, response) {
-								if (err) {
-									alert(err.message);
-									return;
-								}
-	
-								window.location.href = '/account';
-							});
-						});
-						return;
-					}
-	
-					_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+					this.configureStripe(course);
+				});
+			}
+		}, {
+			key: 'configureStripe',
+			value: function configureStripe(course) {
+				if (course.type == 'online') {
+					// for videos, show subscription prompt:
+					_StripeUtils2.default.initialize(function (token) {
 						_this.setState({ showLoader: true });
-						_api2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						_api2.default.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
-								_this.setState({ showLoader: false });
 								return;
 							}
 	
-							_this.setState({
-								showConfirmation: true,
-								showLoader: false
-							});
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+					_this.setState({ showLoader: true });
+					_api2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						if (err) {
+							alert(err.message);
+							_this.setState({ showLoader: false });
+							return;
+						}
+	
+						_this.setState({
+							showConfirmation: true,
+							showLoader: false
 						});
 					});
 				});
@@ -62489,12 +62509,10 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		var keys = Object.keys(state.courseReducer.courses);
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			course: state.courseReducer.courses[keys[0]],
-			testimonials: state.staticReducer.testimonials,
+			course: state.courseReducer.courseArray[0],
 			loaderOptions: state.staticReducer.loaderConfig,
 			banners: state.staticReducer.banners
 		};

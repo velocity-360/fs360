@@ -55,6 +55,7 @@ var Course = (function (Component) {
 		this.syllabusRequest = this.syllabusRequest.bind(this);
 		this.subscribe = this.subscribe.bind(this);
 		this.sendRequest = this.sendRequest.bind(this);
+		this.configureStripe = this.configureStripe.bind(this);
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -71,6 +72,11 @@ var Course = (function (Component) {
 	_prototypeProperties(Course, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
+				if (this.props.course != null) {
+					this.configureStripe(this.props.course);
+					return;
+				}
+
 				var _this = this;
 				api.handleGet("/api/course?slug=" + this.props.slug, {}, function (err, response) {
 					if (err) {
@@ -81,35 +87,42 @@ var Course = (function (Component) {
 					store.currentStore().dispatch(actions.coursesRecieved(response.courses));
 
 					var course = response.courses[0];
-					if (course.type == "online") {
-						// for videos, show subscription prompt:
-						stripe.initialize(function (token) {
-							_this.setState({ showLoader: true });
-							api.submitStripeToken(token, function (err, response) {
-								if (err) {
-									alert(err.message);
-									return;
-								}
-
-								window.location.href = "/account";
-							});
-						});
-						return;
-					}
-
-					stripe.initializeWithText("Submit Deposit", function (token) {
+					this.configureStripe(course);
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		configureStripe: {
+			value: function configureStripe(course) {
+				if (course.type == "online") {
+					// for videos, show subscription prompt:
+					stripe.initialize(function (token) {
 						_this.setState({ showLoader: true });
-						api.submitStripeCharge(token, course, course.deposit, "course", function (err, response) {
+						api.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
-								_this.setState({ showLoader: false });
 								return;
 							}
 
-							_this.setState({
-								showConfirmation: true,
-								showLoader: false
-							});
+							window.location.href = "/account";
+						});
+					});
+					return;
+				}
+
+				stripe.initializeWithText("Submit Deposit", function (token) {
+					_this.setState({ showLoader: true });
+					api.submitStripeCharge(token, course, course.deposit, "course", function (err, response) {
+						if (err) {
+							alert(err.message);
+							_this.setState({ showLoader: false });
+							return;
+						}
+
+						_this.setState({
+							showConfirmation: true,
+							showLoader: false
 						});
 					});
 				});
@@ -582,12 +595,9 @@ var Course = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	var keys = Object.keys(state.courseReducer.courses);
-
 	return {
 		currentUser: state.profileReducer.currentUser,
-		course: state.courseReducer.courses[keys[0]],
-		testimonials: state.staticReducer.testimonials,
+		course: state.courseReducer.courseArray[0],
 		loaderOptions: state.staticReducer.loaderConfig,
 		banners: state.staticReducer.banners
 	};

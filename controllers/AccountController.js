@@ -1,16 +1,6 @@
 var Profile = require('../models/Profile')
 var mongoose = require('mongoose')
-
-
-function convertToJson(profiles){
-	var results = new Array()
-    for (var i=0; i<profiles.length; i++){
-  	  var p = profiles[i]
-  	  results.push(p.summary())
-    }
-	
-	return results
-}
+var Promise = require('bluebird')
 
 module.exports = {
 	login: function(params, completion){
@@ -62,6 +52,38 @@ module.exports = {
 
 			completion(null, profile.summary())
 		})
+	}, 
+
+	currentUser: function(req){
+	    return new Promise(function (resolve, reject){
+			if (req.session == null){
+				resolve(null)
+//				reject({'message':'User not logged in.'})
+				return
+			}
+
+			if (req.session.user == null){
+				resolve(null)
+//				reject({'message':'User not logged in.'})
+				return
+			}
+
+			var userId = req.session.user
+			Profile.findById(userId, function(err, profile){
+				if (err){
+					reject(err)
+					return
+				}
+				
+				if (profile == null){
+					resolve(null)
+//					reject({'message':'Profile '+userId+' not found'})
+					return
+				}
+
+				resolve(profile.summary())
+			})
+	    })
 	}
 
 }

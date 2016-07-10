@@ -69,6 +69,11 @@ export default function() {
 			}			
 		},
 		staticReducer: {
+			banners:[
+				'hackathon.jpg',
+				'hacking-2.jpg',
+				'girl.jpg'
+			],			
 			loaderConfig: {
 			    lines: 13,
 			    length: 20,
