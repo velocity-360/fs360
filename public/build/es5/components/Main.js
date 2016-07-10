@@ -54,7 +54,7 @@ var Main = (function (Component) {
 				var page = null;
 				switch (this.props.page) {
 					case "home":
-						return page = React.createElement(Landing, { headers: this.props.headers });
+						return page = React.createElement(Landing, null);
 
 					case "landing":
 						return page = React.createElement(ProjectLanding, null);

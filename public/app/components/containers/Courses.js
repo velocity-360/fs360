@@ -3,8 +3,8 @@ import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseCard from '../../components/CourseCard'
-import store from '../../stores/store'
 import actions from '../../actions/actions'
+import store from '../../stores/store'
 import { connect } from 'react-redux'
 import api from '../../api/api'
 
@@ -15,6 +15,9 @@ class Courses extends Component {
 	}
 
 	componentDidMount(){
+		if (this.props.courses.length > 0)
+			return
+
 		var endpoint = '/api/course'
 		if (this.props.params == null){
 			api.handleGet(endpoint+'?isFeatured=yes', {}, function(err, response){
@@ -23,9 +26,9 @@ class Courses extends Component {
 					return
 				}
 
-				store.dispatch(actions.coursesRecieved(response.courses))
+				store.currentStore().dispatch(actions.coursesRecieved(response.courses))
 			})
-			return;
+			return
 		}
 
 		// TODO: move this to api.js soon
@@ -46,7 +49,7 @@ class Courses extends Component {
 				return
 			}
 
-			store.dispatch(actions.coursesRecieved(response.courses))
+			store.currentStore().dispatch(actions.coursesRecieved(response.courses))
 		})
 	}
 

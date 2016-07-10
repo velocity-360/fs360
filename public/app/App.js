@@ -9,7 +9,6 @@ class App extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
-		this.refreshData = this.refreshData.bind(this);
 		this.state = {
 			page: null,
 			slug: null
@@ -25,8 +24,7 @@ class App extends React.Component {
 	}
 
 	componentWillMount(){
-		var path = window.location.pathname.replace('/', ''); // http://localhost:3000/
-//		console.log('PATH = ' + path);
+		var path = window.location.pathname.replace('/', '') // http://localhost:3000/
 
 		var page = 'home'
 		var slug = null
@@ -56,22 +54,14 @@ class App extends React.Component {
 			}
 		}
 
-//		console.log('PARAMS: '+JSON.stringify(params));
-
-
 		this.setState({
 			page: page,
 			slug: slug,
 			params: params
-		});
+		})
 	}
 
 	componentDidMount(){
-
-	}
-
-
-	refreshData(){
 
 	}
 
@@ -82,11 +72,15 @@ class App extends React.Component {
 	}
 }
 
+const preloadedState = window.__PRELOADED_STATE__
+const currentStore = store.configureStore(preloadedState)
+
+
 ReactDOM.render((
-	<Provider store={store}>
+	<Provider store={currentStore}>
 		<App />
 	</Provider>	
-), document.getElementById('app'));
+), document.getElementById('app'))
 
 
 

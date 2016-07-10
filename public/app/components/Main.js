@@ -26,7 +26,7 @@ class Main extends Component {
 		var page = null
 		switch (this.props.page){
 			case 'home':
-				return page = <Landing headers={this.props.headers} />
+				return page = <Landing />
 
 			case 'landing':
 				return page = <ProjectLanding />

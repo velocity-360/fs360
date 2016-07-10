@@ -31,8 +31,7 @@ var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var store = _interopRequire(require("../../stores/store"));
-
+var currentStore = require("../../stores/store").currentStore;
 var actions = _interopRequire(require("../../actions/actions"));
 
 var stripe = _interopRequire(require("../../utils/StripeUtils"));
@@ -58,7 +57,7 @@ var Landing = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.projectsRecieved(response.projects));
+					currentStore().dispatch(actions.projectsRecieved(response.projects));
 				});
 			},
 			writable: true,

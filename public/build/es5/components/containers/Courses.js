@@ -26,9 +26,9 @@ var Footer = _interopRequire(require("../../components/Footer"));
 
 var CourseCard = _interopRequire(require("../../components/CourseCard"));
 
-var store = _interopRequire(require("../../stores/store"));
-
 var actions = _interopRequire(require("../../actions/actions"));
+
+var store = _interopRequire(require("../../stores/store"));
 
 var connect = require("react-redux").connect;
 var api = _interopRequire(require("../../api/api"));
@@ -45,7 +45,9 @@ var Courses = (function (Component) {
 	_prototypeProperties(Courses, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				var endpoint = "/api/course";
+				if (this.props.courses.length > 0) {
+					return;
+				}var endpoint = "/api/course";
 				if (this.props.params == null) {
 					api.handleGet(endpoint + "?isFeatured=yes", {}, function (err, response) {
 						if (err) {
@@ -53,7 +55,7 @@ var Courses = (function (Component) {
 							return;
 						}
 
-						store.dispatch(actions.coursesRecieved(response.courses));
+						store.currentStore().dispatch(actions.coursesRecieved(response.courses));
 					});
 					return;
 				}
@@ -76,7 +78,7 @@ var Courses = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.coursesRecieved(response.courses));
+					store.currentStore().dispatch(actions.coursesRecieved(response.courses));
 				});
 			},
 			writable: true,

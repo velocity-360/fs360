@@ -9,21 +9,40 @@ import eventReducer from '../reducers/event'
 import projectReducer from '../reducers/project'
 import staticReducer from '../reducers/static'
 
-// Combine Reducers
-var reducers = combineReducers({
-    profileReducer: profileReducer,
-    courseReducer: courseReducer,
-    postReducer: postReducer,
-    eventReducer: eventReducer,
-    staticReducer: staticReducer,
-    projectReducer: projectReducer
-})
 
-// Create Store
-var store = createStore(
-    reducers,
-    applyMiddleware(thunk) // Add middleware to createStore
-)
+var store
+export default {
+
+	configureStore: function(initialState){
+		// Combine Reducers
+		var reducers = combineReducers({
+		    profileReducer: profileReducer,
+		    courseReducer: courseReducer,
+		    postReducer: postReducer,
+		    eventReducer: eventReducer,
+		    staticReducer: staticReducer,
+		    projectReducer: projectReducer
+		})
+
+		// Create Store
+		store = createStore(
+		    reducers,
+		    initialState,
+		    applyMiddleware(thunk) // Add middleware to createStore
+		)
+
+		return store
+	},
+
+	currentStore: function(){
+		return store
+	}
+
+}
 
 
-export default store
+
+
+
+
+

@@ -42,7 +42,7 @@ class Feed extends Component {
 				return
 			}
 
-			store.dispatch(actions.postsRecieved(response.posts))
+			store.currentStore().dispatch(actions.postsRecieved(response.posts))
 		})
 	}
 
@@ -81,7 +81,6 @@ class Feed extends Component {
 				post: post
 			})
 
-//			console.log('UPLOAD COMPLETE: '+JSON.stringify(response))
 		})
 	}
 
@@ -107,13 +106,11 @@ class Feed extends Component {
 				return
 			}
 
-			store.dispatch(actions.postCreated(response.post))
+			store.currentStore().dispatch(actions.postCreated(response.post))
 			_this.setState({
 				showModal: false,
 			})
-
 		})
-
 	}
 
 	render(){

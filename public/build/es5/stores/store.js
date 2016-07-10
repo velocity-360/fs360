@@ -22,19 +22,32 @@ var projectReducer = _interopRequire(require("../reducers/project"));
 
 var staticReducer = _interopRequire(require("../reducers/static"));
 
-// Combine Reducers
-var reducers = combineReducers({
-    profileReducer: profileReducer,
-    courseReducer: courseReducer,
-    postReducer: postReducer,
-    eventReducer: eventReducer,
-    staticReducer: staticReducer,
-    projectReducer: projectReducer
-});
-
-// Create Store
-var store = createStore(reducers, applyMiddleware(thunk) // Add middleware to createStore
-);
 
 
-module.exports = store;
+
+var store;
+module.exports = {
+
+	configureStore: function (initialState) {
+		// Combine Reducers
+		var reducers = combineReducers({
+			profileReducer: profileReducer,
+			courseReducer: courseReducer,
+			postReducer: postReducer,
+			eventReducer: eventReducer,
+			staticReducer: staticReducer,
+			projectReducer: projectReducer
+		});
+
+		// Create Store
+		store = createStore(reducers, initialState, applyMiddleware(thunk) // Add middleware to createStore
+		);
+
+		return store;
+	},
+
+	currentStore: function () {
+		return store;
+	}
+
+};

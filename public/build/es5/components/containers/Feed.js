@@ -75,7 +75,7 @@ var Feed = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.postsRecieved(response.posts));
+					store.currentStore().dispatch(actions.postsRecieved(response.posts));
 				});
 			},
 			writable: true,
@@ -152,7 +152,7 @@ var Feed = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.postCreated(response.post));
+					store.currentStore().dispatch(actions.postCreated(response.post));
 					_this.setState({
 						showModal: false });
 				});
@@ -283,5 +283,4 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Feed);
-//			console.log('UPLOAD COMPLETE: '+JSON.stringify(response))
 // console.log('updatePost: ')

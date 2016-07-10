@@ -3,6 +3,7 @@ import store from '../stores/store'
 import actions from '../actions/actions'
 import Login from '../components/Login'
 import { connect } from 'react-redux'
+import { currentStore } from '../stores/store'
 import api from '../api/api'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 
@@ -20,12 +21,16 @@ class Nav extends Component {
 	}
 
 	componentDidMount(){
+		if (this.props.currentUser.id != null)
+			return
+
 		api.handleGet('/account/currentuser', {}, function(err, response){
+//			console.log('CURRENT USER: '+JSON.stringify(response))
 			if (err){
 				return
 			}
 
-			store.dispatch(actions.currentUserRecieved(response.profile));
+			currentStore().dispatch(actions.currentUserRecieved(response.profile))
 		})
 	}
 
@@ -79,6 +84,7 @@ class Nav extends Component {
 }
 
 const stateToProps = function(state) {
+//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer))
     return {
         currentUser: state.profileReducer.currentUser
     }

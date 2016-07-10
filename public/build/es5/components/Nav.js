@@ -15,13 +15,16 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
-var store = _interopRequire(require("../stores/store"));
+var _storesStore = require("../stores/store");
+
+var store = _interopRequire(_storesStore);
 
 var actions = _interopRequire(require("../actions/actions"));
 
 var Login = _interopRequire(require("../components/Login"));
 
 var connect = require("react-redux").connect;
+var currentStore = _storesStore.currentStore;
 var api = _interopRequire(require("../api/api"));
 
 var _reactBootstrap = require("react-bootstrap");
@@ -47,12 +50,15 @@ var Nav = (function (Component) {
 	_prototypeProperties(Nav, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				api.handleGet("/account/currentuser", {}, function (err, response) {
+				if (this.props.currentUser.id != null) {
+					return;
+				}api.handleGet("/account/currentuser", {}, function (err, response) {
+					//			console.log('CURRENT USER: '+JSON.stringify(response))
 					if (err) {
 						return;
 					}
 
-					store.dispatch(actions.currentUserRecieved(response.profile));
+					currentStore().dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
 			writable: true,
@@ -234,6 +240,7 @@ var Nav = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
+	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer))
 	return {
 		currentUser: state.profileReducer.currentUser
 	};

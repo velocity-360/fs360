@@ -6,7 +6,7 @@ import Header from '../../components/Header'
 import Register from '../../components/Register'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
-import store from '../../stores/store'
+import { currentStore } from '../../stores/store'
 import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
 import api from '../../api/api'
@@ -27,7 +27,7 @@ class Landing extends Component {
 				return
 			}
 
-			store.dispatch(actions.projectsRecieved(response.projects))
+			currentStore().dispatch(actions.projectsRecieved(response.projects))
 		})
 	}
 

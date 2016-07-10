@@ -27,7 +27,6 @@ var App = (function (Component) {
 		_classCallCheck(this, App);
 
 		_get(Object.getPrototypeOf(App.prototype), "constructor", this).call(this, props, context);
-		this.refreshData = this.refreshData.bind(this);
 		this.state = {
 			page: null,
 			slug: null
@@ -47,26 +46,13 @@ var App = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
-		componentDidMount: {
-			value: function componentDidMount() {},
-			writable: true,
-			configurable: true
-		},
-		refreshData: {
-			value: function refreshData() {},
-			writable: true,
-			configurable: true
-		},
 		render: {
 			value: function render() {
+				var currentStore = store.configureStore(this.props.initial);
+
 				return React.createElement(
 					Provider,
-					{ store: store },
+					{ store: currentStore },
 					React.createElement(Main, { page: this.props.page, slug: this.props.slug, params: this.props.params })
 				);
 			},

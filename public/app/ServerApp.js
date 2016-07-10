@@ -8,12 +8,11 @@ import Main from './components/Main'
 class App extends Component {
 
 	constructor(props, context) {
-		super(props, context);
-		this.refreshData = this.refreshData.bind(this);
+		super(props, context)
 		this.state = {
 			page: null,
 			slug: null
-		};
+		}
 	}
 
 	initialState(){
@@ -24,22 +23,11 @@ class App extends Component {
 
 	}
 
-	componentWillMount(){
-
-	}
-
-	componentDidMount(){
-
-	}
-
-
-	refreshData(){
-
-	}
-
 	render(){
+		const currentStore = store.configureStore(this.props.initial)
+
 		return (
-			<Provider store={store}>
+			<Provider store={currentStore}>
 				<Main page={this.props.page} slug={this.props.slug} params={this.props.params} />
 			</Provider>				
 		)
