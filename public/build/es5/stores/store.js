@@ -23,8 +23,6 @@ var eventReducer = _interopRequire(require("../reducers/event"));
 
 var projectReducer = _interopRequire(require("../reducers/project"));
 
-var sampleReducer = _interopRequire(require("../reducers/sample"));
-
 var staticReducer = _interopRequire(require("../reducers/static"));
 
 // Combine Reducers
@@ -34,8 +32,7 @@ var reducers = combineReducers({
     postReducer: postReducer,
     eventReducer: eventReducer,
     staticReducer: staticReducer,
-    projectReducer: projectReducer,
-    sampleReducer: sampleReducer
+    projectReducer: projectReducer
 });
 
 // Create Store

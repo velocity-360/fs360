@@ -10,7 +10,6 @@ import courseReducer from '../reducers/course'
 import postReducer from '../reducers/post'
 import eventReducer from '../reducers/event'
 import projectReducer from '../reducers/project'
-import sampleReducer from '../reducers/sample'
 import staticReducer from '../reducers/static'
 
 // Combine Reducers
@@ -20,15 +19,14 @@ var reducers = combineReducers({
     postReducer: postReducer,
     eventReducer: eventReducer,
     staticReducer: staticReducer,
-    projectReducer: projectReducer,
-    sampleReducer: sampleReducer
-});
+    projectReducer: projectReducer
+})
 
 // Create Store
 var store = createStore(
     reducers,
     applyMiddleware(thunk) // Add middleware to createStore
-);
+)
 
 
-export default store;
+export default store
