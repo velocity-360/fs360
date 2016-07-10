@@ -44144,7 +44144,7 @@
 										_react2.default.createElement(
 											'li',
 											{ className: 'pricing--feature' },
-											'20% Off ALL Live Courses'
+											'Discounts on ALL Live Courses'
 										),
 										_react2.default.createElement(
 											'li',

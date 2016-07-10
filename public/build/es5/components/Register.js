@@ -279,7 +279,7 @@ var Register = (function (Component) {
 										React.createElement(
 											"li",
 											{ className: "pricing--feature" },
-											"20% Off ALL Live Courses"
+											"Discounts on ALL Live Courses"
 										),
 										React.createElement(
 											"li",
