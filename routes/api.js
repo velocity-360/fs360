@@ -214,18 +214,6 @@ router.post('/:resource', function(req, res, next) {
 		var template = req.body.template
 		var path = 'public/email/'+template+'/email.html'
 
-		// fetchFile(path)
-		// .then(function(html){
-		// 	return Scraper.scrapeRawHtml(html)
-		// })
-		// .then(function(results){
-		// 	res.json({confirmation:'success', results:results})
-		// 	return
-		// })
-		// .catch(function(err){
-		// 	res.json({confirmation:'fail', message:err})
-		// })
-
 		var data = ''
 		fetchFile(path)
 		.then(function(html){
@@ -234,7 +222,6 @@ router.post('/:resource', function(req, res, next) {
 		})
 		.then(function(results){
 			if (template != 'workshop'){
-//				var subject = 'Learn React, Redux in 8 Weeks'
 				var subject = results['title']
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i]
