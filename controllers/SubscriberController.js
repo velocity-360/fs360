@@ -1,5 +1,6 @@
-var Subscriber = require('../models/Subscriber.js');
-var mongoose = require('mongoose');
+var Subscriber = require('../models/Subscriber.js')
+var mongoose = require('mongoose')
+var Promise = require('bluebird')
 
 
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

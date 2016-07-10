@@ -1,5 +1,6 @@
-var Sample = require('../models/Sample');
-var mongoose = require('mongoose');
+var Sample = require('../models/Sample')
+var mongoose = require('mongoose')
+var Promise = require('bluebird')
 
 
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -12,16 +13,6 @@ function convertToJson(samples){
     }
 	
 	return results;
-}
-
-function randomString(limit){
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i=0; i <limit; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
 }
 
 module.exports = {

@@ -1,6 +1,7 @@
-var Project = require('../models/Project');
-var Helpers = require('../managers/Helpers');
-var mongoose = require('mongoose');
+var Project = require('../models/Project')
+var Helpers = require('../managers/Helpers')
+var mongoose = require('mongoose')
+var Promise = require('bluebird')
 
 
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

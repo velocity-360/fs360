@@ -1,5 +1,6 @@
 var Post = require('../models/Post.js');
 var mongoose = require('mongoose');
+var Promise = require('bluebird')
 
 
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -12,16 +13,6 @@ function convertToJson(posts){
     }
 	
 	return results;
-}
-
-function randomString(limit){
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i=0; i <limit; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
 }
 
 module.exports = {

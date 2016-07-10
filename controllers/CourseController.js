@@ -1,6 +1,7 @@
 var Course = require('../models/Course');
 var Helpers = require('../managers/Helpers');
 var mongoose = require('mongoose');
+var Promise = require('bluebird')
 
 
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
