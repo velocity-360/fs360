@@ -5,9 +5,7 @@ import Nav from '../../components/Nav'
 import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import store from '../../stores/store'
-import actions from '../../actions/actions'
-import api from '../../api/api'
+
 
 class Landing extends Component {
 

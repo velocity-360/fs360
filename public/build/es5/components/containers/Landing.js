@@ -29,12 +29,6 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var store = _interopRequire(require("../../stores/store"));
-
-var actions = _interopRequire(require("../../actions/actions"));
-
-var api = _interopRequire(require("../../api/api"));
-
 var Landing = (function (Component) {
 	function Landing(props, context) {
 		_classCallCheck(this, Landing);

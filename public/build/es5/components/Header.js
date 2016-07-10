@@ -15,10 +15,6 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
-var store = _interopRequire(require("../stores/store"));
-
-var actions = _interopRequire(require("../actions/actions"));
-
 var Loader = _interopRequire(require("react-loader"));
 
 var connect = require("react-redux").connect;

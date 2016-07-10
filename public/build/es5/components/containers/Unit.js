@@ -26,8 +26,6 @@ var store = _interopRequire(require("../../stores/store"));
 var actions = _interopRequire(require("../../actions/actions"));
 
 var connect = require("react-redux").connect;
-var api = _interopRequire(require("../../api/api"));
-
 var DateUtils = _interopRequire(require("../../utils/DateUtils"));
 
 var TextUtils = _interopRequire(require("../../utils/TextUtils"));

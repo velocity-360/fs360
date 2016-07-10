@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import store from '../stores/store'
-import actions from '../actions/actions'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import api from '../api/api'

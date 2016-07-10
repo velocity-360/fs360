@@ -22170,9 +22170,6 @@
 	// Combine Reducers
 	
 	
-	// Add middleware to createStore
-	//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
-	
 	// App Reducers
 	var reducers = (0, _redux.combineReducers)({
 	    profileReducer: _profile2.default,
@@ -44875,18 +44872,6 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(462);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _api = __webpack_require__(464);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45762,14 +45747,6 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(462);
-	
-	var _actions2 = _interopRequireDefault(_actions);
 	
 	var _reactLoader = __webpack_require__(459);
 	
@@ -64536,10 +64513,6 @@
 	var _actions2 = _interopRequireDefault(_actions);
 	
 	var _reactRedux = __webpack_require__(168);
-	
-	var _api = __webpack_require__(464);
-	
-	var _api2 = _interopRequireDefault(_api);
 	
 	var _DateUtils = __webpack_require__(488);
 	

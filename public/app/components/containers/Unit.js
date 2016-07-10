@@ -5,7 +5,6 @@ import Footer from '../../components/Footer'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
-import api from '../../api/api'
 import DateUtils from '../../utils/DateUtils'
 import TextUtils from '../../utils/TextUtils'
 

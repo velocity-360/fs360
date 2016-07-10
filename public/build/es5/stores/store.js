@@ -9,9 +9,6 @@ var applyMiddleware = _redux.applyMiddleware;
 var combineReducers = _redux.combineReducers;
 var thunk = _interopRequire(require("redux-thunk"));
 
-// Add middleware to createStore
-//var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
-
 // App Reducers
 var profileReducer = _interopRequire(require("../reducers/profile"));
 
