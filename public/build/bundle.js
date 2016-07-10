@@ -41196,7 +41196,7 @@
 						return;
 					}
 	
-					(0, _store.currentStore)().dispatch(_actions2.default.currentUserRecieved(response.profile));
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
 				});
 			}
 		}, {
@@ -41600,7 +41600,7 @@
 						return;
 					}
 	
-					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
 					_this.props.hide();
 					_this.setState({ showLoader: false });
 				});
@@ -45157,7 +45157,7 @@
 					}
 	
 					//			console.log('TEST 2: '+JSON.stringify(response))
-					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
 				});
 			}
 		}, {
@@ -45550,7 +45550,7 @@
 						return;
 					}
 	
-					_store2.default.dispatch(_actions2.default.eventsRecieved(response.events));
+					_store2.default.currentStore().dispatch(_actions2.default.eventsRecieved(response.events));
 				});
 			}
 		}, {
@@ -45574,7 +45574,7 @@
 	
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				updatedUser[event.target.id] = event.target.value;
-				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+				_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
 			}
 		}, {
 			key: 'validate',
@@ -46713,6 +46713,8 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				if (this.props.posts.length > 0) return;
+	
 				_api2.default.handleGet('/api/post', {}, function (err, response) {
 					if (err) {
 						alert(response.message);
@@ -61501,7 +61503,7 @@
 					}
 	
 					console.log(JSON.stringify(response));
-					_store2.default.dispatch(_actions2.default.postsRecieved(response.posts));
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(response.posts));
 				});
 			}
 		}, {
@@ -61691,7 +61693,7 @@
 						return;
 					}
 	
-					_store2.default.dispatch(_actions2.default.projectsRecieved(response.projects));
+					_store2.default.currentStore().dispatch(_actions2.default.projectsRecieved(response.projects));
 				});
 			}
 		}, {
@@ -62003,7 +62005,7 @@
 						return;
 					}
 	
-					_store2.default.dispatch(_actions2.default.coursesRecieved(response.courses));
+					_store2.default.currentStore().dispatch(_actions2.default.coursesRecieved(response.courses));
 	
 					var course = response.courses[0];
 					if (course.type == 'online') {
@@ -63045,7 +63047,7 @@
 	
 					var updatedUser = Object.assign({}, _this.props.profile);
 					updatedUser['image'] = response.id;
-					_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+					_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
 				});
 			}
 		}, {
@@ -63091,7 +63093,7 @@
 				event.preventDefault();
 				var updatedUser = Object.assign({}, this.props.profile);
 				updatedUser[event.target.id] = event.target.value;
-				_store2.default.dispatch(_actions2.default.updateCurrentUser(updatedUser));
+				_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
 			}
 		}, {
 			key: 'updateProfile',
@@ -63108,7 +63110,7 @@
 						return;
 					}
 	
-					_store2.default.dispatch(_actions2.default.currentUserRecieved(response.profile));
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
 					alert('Profile Updated');
 				});
 			}
@@ -63411,14 +63413,6 @@
 	var _Footer = __webpack_require__(474);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
 	
 	var _reactRedux = __webpack_require__(168);
 	

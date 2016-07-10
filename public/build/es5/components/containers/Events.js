@@ -84,7 +84,7 @@ var Events = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.eventsRecieved(response.events));
+					store.currentStore().dispatch(actions.eventsRecieved(response.events));
 				});
 			},
 			writable: true,
@@ -110,7 +110,7 @@ var Events = (function (Component) {
 
 				var updatedUser = Object.assign({}, this.props.currentUser);
 				updatedUser[event.target.id] = event.target.value;
-				store.dispatch(actions.updateCurrentUser(updatedUser));
+				store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
 			},
 			writable: true,
 			configurable: true

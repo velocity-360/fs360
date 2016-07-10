@@ -44,7 +44,7 @@ class Course extends Component {
 				return
 			}
 
-			store.dispatch(actions.coursesRecieved(response.courses))
+			store.currentStore().dispatch(actions.coursesRecieved(response.courses))
 
 			var course = response.courses[0]
 			if (course.type == 'online'){ // for videos, show subscription prompt:

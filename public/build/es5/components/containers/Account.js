@@ -134,7 +134,7 @@ var Account = (function (Component) {
 
 					var updatedUser = Object.assign({}, _this.props.profile);
 					updatedUser.image = response.id;
-					store.dispatch(actions.updateCurrentUser(updatedUser));
+					store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
 				});
 			},
 			writable: true,
@@ -186,7 +186,7 @@ var Account = (function (Component) {
 				event.preventDefault();
 				var updatedUser = Object.assign({}, this.props.profile);
 				updatedUser[event.target.id] = event.target.value;
-				store.dispatch(actions.updateCurrentUser(updatedUser));
+				store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
 			},
 			writable: true,
 			configurable: true
@@ -205,7 +205,7 @@ var Account = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.currentUserRecieved(response.profile));
+					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 					alert("Profile Updated");
 				});
 			},

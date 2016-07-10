@@ -69,7 +69,9 @@ var Feed = (function (Component) {
 		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				api.handleGet("/api/post", {}, function (err, response) {
+				if (this.props.posts.length > 0) {
+					return;
+				}api.handleGet("/api/post", {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;

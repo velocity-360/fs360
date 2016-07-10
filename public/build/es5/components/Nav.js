@@ -15,16 +15,13 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
-var _storesStore = require("../stores/store");
-
-var store = _interopRequire(_storesStore);
+var store = _interopRequire(require("../stores/store"));
 
 var actions = _interopRequire(require("../actions/actions"));
 
 var Login = _interopRequire(require("../components/Login"));
 
 var connect = require("react-redux").connect;
-var currentStore = _storesStore.currentStore;
 var api = _interopRequire(require("../api/api"));
 
 var _reactBootstrap = require("react-bootstrap");
@@ -58,7 +55,7 @@ var Nav = (function (Component) {
 						return;
 					}
 
-					currentStore().dispatch(actions.currentUserRecieved(response.profile));
+					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
 			writable: true,

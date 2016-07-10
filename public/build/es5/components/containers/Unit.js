@@ -21,10 +21,6 @@ var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var store = _interopRequire(require("../../stores/store"));
-
-var actions = _interopRequire(require("../../actions/actions"));
-
 var connect = require("react-redux").connect;
 var DateUtils = _interopRequire(require("../../utils/DateUtils"));
 

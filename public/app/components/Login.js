@@ -69,7 +69,7 @@ class Login extends Component {
 				return
 			}
 
-			store.dispatch(actions.currentUserRecieved(response.profile))
+			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
 			_this.props.hide()
 			_this.setState({showLoader: false})
 		})

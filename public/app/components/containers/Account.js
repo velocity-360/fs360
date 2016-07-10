@@ -94,7 +94,7 @@ class Account extends Component {
 
 			var updatedUser = Object.assign({}, _this.props.profile);
 			updatedUser['image'] = response.id
-			store.dispatch(actions.updateCurrentUser(updatedUser));
+			store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
 		})
 
 	}
@@ -139,7 +139,7 @@ class Account extends Component {
 		event.preventDefault()
 		var updatedUser = Object.assign({}, this.props.profile);
 		updatedUser[event.target.id] = event.target.value
-		store.dispatch(actions.updateCurrentUser(updatedUser));
+		store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
 	}
 
 
@@ -156,7 +156,7 @@ class Account extends Component {
 				return
 			}
 			
-			store.dispatch(actions.currentUserRecieved(response.profile));
+			store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 			alert('Profile Updated')
 		})
 	}

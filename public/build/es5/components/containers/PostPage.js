@@ -59,7 +59,7 @@ var PostPage = (function (Component) {
 					}
 
 					console.log(JSON.stringify(response));
-					store.dispatch(actions.postsRecieved(response.posts));
+					store.currentStore().dispatch(actions.postsRecieved(response.posts));
 				});
 			},
 			writable: true,

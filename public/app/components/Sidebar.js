@@ -17,7 +17,7 @@ class Sidebar extends Component {
 			}
 
 //			console.log('TEST 2: '+JSON.stringify(response))
-			store.dispatch(actions.currentUserRecieved(response.profile));
+			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
 		})
 	}
 

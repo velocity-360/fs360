@@ -36,6 +36,9 @@ class Feed extends Component {
 	}
 
 	componentDidMount(){
+		if (this.props.posts.length > 0)
+			return
+
 		api.handleGet('/api/post', {}, function(err, response){
 			if (err){
 				alert(response.message)

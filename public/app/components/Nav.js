@@ -3,7 +3,6 @@ import store from '../stores/store'
 import actions from '../actions/actions'
 import Login from '../components/Login'
 import { connect } from 'react-redux'
-import { currentStore } from '../stores/store'
 import api from '../api/api'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 
@@ -30,7 +29,7 @@ class Nav extends Component {
 				return
 			}
 
-			currentStore().dispatch(actions.currentUserRecieved(response.profile))
+			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
 		})
 	}
 

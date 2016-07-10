@@ -40,7 +40,7 @@ var Sidebar = (function (Component) {
 					}
 
 					//			console.log('TEST 2: '+JSON.stringify(response))
-					store.dispatch(actions.currentUserRecieved(response.profile));
+					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
 			writable: true,

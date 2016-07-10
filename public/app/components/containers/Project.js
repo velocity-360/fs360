@@ -30,7 +30,7 @@ class Project extends Component {
 				return
 			}
 
-			store.dispatch(actions.projectsRecieved(response.projects))
+			store.currentStore().dispatch(actions.projectsRecieved(response.projects))
 		})
 	}
 

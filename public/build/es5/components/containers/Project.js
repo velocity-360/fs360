@@ -58,7 +58,7 @@ var Project = (function (Component) {
 						return;
 					}
 
-					store.dispatch(actions.projectsRecieved(response.projects));
+					store.currentStore().dispatch(actions.projectsRecieved(response.projects));
 				});
 			},
 			writable: true,

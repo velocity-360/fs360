@@ -6,10 +6,10 @@ var courseController = require('../controllers/CourseController')
 var postController = require('../controllers/PostController')
 var eventController = require('../controllers/EventController')
 var controllers = {
-	'courses': courseController,
-	'course': courseController,
-	'feed': postController,
-	'events': eventController
+	courses: courseController,
+	course: courseController,
+	feed: postController,
+	events: eventController,
 }
 
 require('node-jsx').install({ extension: ".js" })
@@ -42,15 +42,23 @@ router.get('/', function(req, res, next) {
 
 router.get('/:page', function(req, res, next) {
 	var initialData = initial()
+	var page = req.params.page // 'courses', 'feed', 'account'
+
 	accountController.checkCurrentUser(req, function(err, currentUser){
 		if (err){
 
 		}
 
-		if (currentUser != null)
+		if (currentUser != null){
 			initialData.profileReducer.currentUser = currentUser
+			if (page == 'account'){ // special route - go to account page
+				var initialState = store.configureStore(initialData).getState()
+				var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
+				res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+				return
+			}
+		}
 
-		var page = req.params.page // 'courses', 'feed', 'account'
 		var controller = controllers[page]
 		if (controller == null){
 			// TODO: handle error
