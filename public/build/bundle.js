@@ -62171,45 +62171,10 @@
 			value: function render() {
 				var bannerIndex = 0;
 				var btnRegister = null;
-				if (this.props.course.type == 'online') {
-					bannerIndex = 1;
-				} else if (this.props.course.type == 'immersive') {
-					bannerIndex = 2;
-				} else {
-					btnRegister = _react2.default.createElement(
-						'div',
-						null,
-						'Date: ',
-						this.props.course.dates,
-						_react2.default.createElement('br', null),
-						'Time: ',
-						this.props.course.schedule,
-						_react2.default.createElement('br', null),
-						'Deposit: $',
-						this.props.course.deposit,
-						_react2.default.createElement('br', null),
-						'Regular Tuition: $',
-						this.props.course.tuition,
-						_react2.default.createElement('br', null),
-						'Premium Member Tuition: $',
-						this.props.course.premiumTuition,
-						_react2.default.createElement('br', null),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement(
-							'a',
-							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-							'Submit Deposit',
-							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-						)
-					);
-				}
-	
-				var banner = this.props.banners[bannerIndex];
-	
-				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
 				var detailBox = null;
 	
-				if (this.props.course.syllabus.length == 0) {
+				if (this.props.course.type == 'online') {
+					bannerIndex = 1;
 					detailBox = _react2.default.createElement(
 						'div',
 						{ className: 'col_half panel panel-default col_last' },
@@ -62239,14 +62204,15 @@
 							)
 						)
 					);
-				} else {
+				} else if (this.props.course.type == 'immersive') {
+					bannerIndex = 2;
 					detailBox = _react2.default.createElement(
 						'div',
 						{ className: 'col_half panel panel-default col_last' },
 						_react2.default.createElement(
 							'div',
 							{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-							'Details'
+							'Request Syllabus'
 						),
 						_react2.default.createElement(
 							'div',
@@ -62272,9 +62238,66 @@
 							)
 						)
 					);
+				} else {
+					btnRegister = _react2.default.createElement(
+						'div',
+						null,
+						'Date: ',
+						this.props.course.dates,
+						_react2.default.createElement('br', null),
+						'Time: ',
+						this.props.course.schedule,
+						_react2.default.createElement('br', null),
+						'Deposit: $',
+						this.props.course.deposit,
+						_react2.default.createElement('br', null),
+						'Regular Tuition: $',
+						this.props.course.tuition,
+						_react2.default.createElement('br', null),
+						'Premium Member Tuition: $',
+						this.props.course.premiumTuition,
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+							'Submit Deposit',
+							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+						)
+					);
+					detailBox = _react2.default.createElement(
+						'div',
+						{ className: 'col_half panel panel-default col_last' },
+						_react2.default.createElement(
+							'div',
+							{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
+							'Attend Free Session'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: { textAlign: 'center' } },
+							_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Join our newsletter for notifications on upcoming courses, events and tutorials.'
+							),
+							_react2.default.createElement('hr', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.subscribe, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+								'Submit'
+							)
+						)
+					);
 				}
 	
-				var colClass = detailBox == null ? 'col_full' : 'col_half';
+				var banner = this.props.banners[bannerIndex];
+				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.id == null ? 'notLoggedIn' : this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
@@ -62324,7 +62347,7 @@
 												{ className: 'entry-content' },
 												_react2.default.createElement(
 													'div',
-													{ className: colClass },
+													{ className: 'col_half' },
 													_react2.default.createElement(
 														'h2',
 														{ style: { marginBottom: 0 } },

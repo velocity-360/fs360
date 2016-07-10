@@ -253,45 +253,10 @@ var Course = (function (Component) {
 			value: function render() {
 				var bannerIndex = 0;
 				var btnRegister = null;
-				if (this.props.course.type == "online") {
-					bannerIndex = 1;
-				} else if (this.props.course.type == "immersive") {
-					bannerIndex = 2;
-				} else {
-					btnRegister = React.createElement(
-						"div",
-						null,
-						"Date: ",
-						this.props.course.dates,
-						React.createElement("br", null),
-						"Time: ",
-						this.props.course.schedule,
-						React.createElement("br", null),
-						"Deposit: $",
-						this.props.course.deposit,
-						React.createElement("br", null),
-						"Regular Tuition: $",
-						this.props.course.tuition,
-						React.createElement("br", null),
-						"Premium Member Tuition: $",
-						this.props.course.premiumTuition,
-						React.createElement("br", null),
-						React.createElement("br", null),
-						React.createElement(
-							"a",
-							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-							"Submit Deposit",
-							React.createElement("i", { "class": "icon-circle-arrow-right" })
-						)
-					);
-				}
-
-				var banner = this.props.banners[bannerIndex];
-
-				var startDate = this.props.course.dates == null ? "" : this.props.course.dates.split("-")[0].trim();
 				var detailBox = null;
 
-				if (this.props.course.syllabus.length == 0) {
+				if (this.props.course.type == "online") {
+					bannerIndex = 1;
 					detailBox = React.createElement(
 						"div",
 						{ className: "col_half panel panel-default col_last" },
@@ -321,14 +286,15 @@ var Course = (function (Component) {
 							)
 						)
 					);
-				} else {
+				} else if (this.props.course.type == "immersive") {
+					bannerIndex = 2;
 					detailBox = React.createElement(
 						"div",
 						{ className: "col_half panel panel-default col_last" },
 						React.createElement(
 							"div",
 							{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
-							"Details"
+							"Request Syllabus"
 						),
 						React.createElement(
 							"div",
@@ -354,10 +320,66 @@ var Course = (function (Component) {
 							)
 						)
 					);
+				} else {
+					btnRegister = React.createElement(
+						"div",
+						null,
+						"Date: ",
+						this.props.course.dates,
+						React.createElement("br", null),
+						"Time: ",
+						this.props.course.schedule,
+						React.createElement("br", null),
+						"Deposit: $",
+						this.props.course.deposit,
+						React.createElement("br", null),
+						"Regular Tuition: $",
+						this.props.course.tuition,
+						React.createElement("br", null),
+						"Premium Member Tuition: $",
+						this.props.course.premiumTuition,
+						React.createElement("br", null),
+						React.createElement("br", null),
+						React.createElement(
+							"a",
+							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+							"Submit Deposit",
+							React.createElement("i", { "class": "icon-circle-arrow-right" })
+						)
+					);
+					detailBox = React.createElement(
+						"div",
+						{ className: "col_half panel panel-default col_last" },
+						React.createElement(
+							"div",
+							{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
+							"Attend Free Session"
+						),
+						React.createElement(
+							"div",
+							{ className: "panel-body", style: { textAlign: "center" } },
+							React.createElement("img", { style: { width: 96, marginBottom: 12 }, src: "/images/logo_round_blue_260.png" }),
+							React.createElement(
+								"p",
+								null,
+								"Join our newsletter for notifications on upcoming courses, events and tutorials."
+							),
+							React.createElement("hr", null),
+							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
+							React.createElement("br", null),
+							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ onClick: this.subscribe, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+								"Submit"
+							)
+						)
+					);
 				}
 
-
-				var colClass = detailBox == null ? "col_full" : "col_half";
+				var banner = this.props.banners[bannerIndex];
+				var startDate = this.props.course.dates == null ? "" : this.props.course.dates.split("-")[0].trim();
 				var _course = this.props.course;
 				var _accountType = this.props.currentUser.id == null ? "notLoggedIn" : this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
@@ -407,7 +429,7 @@ var Course = (function (Component) {
 												{ className: "entry-content" },
 												React.createElement(
 													"div",
-													{ className: colClass },
+													{ className: "col_half" },
 													React.createElement(
 														"h2",
 														{ style: { marginBottom: 0 } },

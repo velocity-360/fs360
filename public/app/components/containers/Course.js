@@ -191,11 +191,44 @@ class Course extends Component {
 	render(){
 		var bannerIndex = 0
 		var btnRegister = null
+		var detailBox = null
+
 		if (this.props.course.type == 'online'){
 			bannerIndex = 1
+			detailBox =	(
+					<div className="col_half panel panel-default col_last">
+						<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Newsletter</div>
+						<div className="panel-body" style={{textAlign:'center'}}>
+							<img style={{width:96, marginBottom:12}} src="/images/logo_round_blue_260.png" />
+							<p>
+								Join our newsletter for notifications on upcoming courses,
+								events and tutorials.
+							</p>
+							<hr />
+							<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+							<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+							<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+						</div>
+					</div>
+			)			
 		}
 		else if (this.props.course.type == 'immersive'){
 			bannerIndex = 2
+			detailBox =	(
+				<div className="col_half panel panel-default col_last">
+					<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Request Syllabus</div>
+					<div className="panel-body">
+						{this.props.course.dates}<br />
+						{this.props.course.schedule}<br />
+						Tuition: ${this.props.course.tuition}<br />
+						Deposit: ${this.props.course.deposit}
+						<hr />
+						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+						<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
+					</div>
+				</div>
+			)
 		}
 		else {
 			btnRegister = (
@@ -209,47 +242,26 @@ class Course extends Component {
 					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
 				</div>
 			)
+			detailBox =	(
+				<div className="col_half panel panel-default col_last">
+					<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Attend Free Session</div>
+					<div className="panel-body" style={{textAlign:'center'}}>
+						<img style={{width:96, marginBottom:12}} src="/images/logo_round_blue_260.png" />
+						<p>
+							Join our newsletter for notifications on upcoming courses,
+							events and tutorials.
+						</p>
+						<hr />
+						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+						<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+					</div>
+				</div>
+			)
 		}
 
 		var banner = this.props.banners[bannerIndex]
-
 		var startDate = (this.props.course.dates == null) ? '' : this.props.course.dates.split('-')[0].trim()
-		var detailBox = null
-
-		if (this.props.course.syllabus.length == 0){
-			detailBox =	<div className="col_half panel panel-default col_last">
-							<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Newsletter</div>
-							<div className="panel-body" style={{textAlign:'center'}}>
-								<img style={{width:96, marginBottom:12}} src="/images/logo_round_blue_260.png" />
-								<p>
-									Join our newsletter for notifications on upcoming courses,
-									events and tutorials.
-								</p>
-								<hr />
-								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
-							</div>
-						</div>
-		}
-		else {
-			detailBox =	<div className="col_half panel panel-default col_last">
-							<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Details</div>
-							<div className="panel-body">
-								{this.props.course.dates}<br />
-								{this.props.course.schedule}<br />
-								Tuition: ${this.props.course.tuition}<br />
-								Deposit: ${this.props.course.deposit}
-								<hr />
-								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
-							</div>
-						</div>
-		}
-
-
-		var colClass = (detailBox == null) ? 'col_full' : 'col_half'
 		var _course = this.props.course
 		var _accountType = (this.props.currentUser.id == null) ? 'notLoggedIn' : this.props.currentUser.accountType
 		var _showLogin = this.showLogin
@@ -280,7 +292,7 @@ class Course extends Component {
 											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src={'/images/'+banner} alt="FullStack 360" />
 										</div>
 										<div className="entry-content">
-											<div className={colClass}>
+											<div className='col_half'>
 												<h2 style={{marginBottom:0}}>{this.props.course.title}</h2>
 												<p>{this.props.course.description}</p>
 												{ btnRegister }
