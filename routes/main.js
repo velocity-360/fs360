@@ -4,12 +4,14 @@ var router = express.Router()
 var accountController = require('../controllers/AccountController')
 var courseController = require('../controllers/CourseController')
 var postController = require('../controllers/PostController')
+var projectController = require('../controllers/ProjectController')
 var eventController = require('../controllers/EventController')
 var controllers = {
 	courses: courseController,
 	course: courseController,
 	feed: postController,
 	events: eventController,
+	landing: projectController
 }
 
 require('node-jsx').install({ extension: ".js" })
@@ -49,19 +51,15 @@ router.get('/:page', function(req, res, next) {
 
 		}
 
-		if (currentUser != null){
+		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
-			if (page == 'account'){ // special route - go to account page
-				var initialState = store.configureStore(initialData).getState()
-				var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
-				res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-				return
-			}
-		}
+		
 
 		var controller = controllers[page]
-		if (controller == null){
-			// TODO: handle error
+		if (controller == null){ // special pages, like account page:
+			var initialState = store.configureStore(initialData).getState()
+			var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
+			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 			return
 		}
 
