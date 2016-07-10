@@ -40,7 +40,7 @@ var DetailBox = (function (Component) {
 				event.preventDefault();
 				var s = Object.assign({}, this.state.visitor);
 				s[event.target.id] = event.target.value;
-				s.course = this.props.content.title;
+				s.course = this.props.course.title;
 				this.setState({
 					visitor: s
 				});
