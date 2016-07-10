@@ -208,11 +208,24 @@ router.post('/:resource', function(req, res, next) {
 		
 		recipients.push('dennykwon2@gmail.com');
 
-		var template = req.body.template;
-		var path = 'public/email/'+template+'/email.html';
+		var template = req.body.template
+		var path = 'public/email/'+template+'/email.html'
 
 		fetchFile(path)
 		.then(function(data){
+			if (template != 'workshop'){
+
+//				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
+				for (var i=0; i<recipients.length; i++){
+					var address = recipients[i]
+					var formatted = data.replace('{{email}}', address) // for unsubscribe link
+					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, 'TEST', formatted)
+				}
+			
+				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
+				return				
+			}
+
 			eventController.get({}, function(err, events){
 				if (err){
 					res.json({'confirmation':'fail','message':err.message});
