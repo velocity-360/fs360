@@ -58,13 +58,11 @@ module.exports = {
 	    return new Promise(function (resolve, reject){
 			if (req.session == null){
 				resolve(null)
-//				reject({'message':'User not logged in.'})
 				return
 			}
 
 			if (req.session.user == null){
 				resolve(null)
-//				reject({'message':'User not logged in.'})
 				return
 			}
 
@@ -77,7 +75,6 @@ module.exports = {
 				
 				if (profile == null){
 					resolve(null)
-//					reject({'message':'Profile '+userId+' not found'})
 					return
 				}
 
