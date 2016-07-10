@@ -214,12 +214,11 @@ router.post('/:resource', function(req, res, next) {
 		fetchFile(path)
 		.then(function(data){
 			if (template != 'workshop'){
-
-//				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
+				var subject = 'Learn React, Redux in 8 Weeks'
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i]
 					var formatted = data.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, 'TEST', formatted)
+					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, subject, formatted)
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
