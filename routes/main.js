@@ -20,21 +20,18 @@ var ServerApp = require('../public/build/es5/ServerApp');
 
 
 router.get('/', function(req, res, next) {
-//	console.log('HEADERS: '+JSON.stringify(req.headers))
-    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:'home', headers:req.headers}));
-    res.render('index', {react: html});
-
-//    res.render('index', { title: 'Express' });
-});
+    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:'home', headers:req.headers}))
+    res.render('index', {react: html})
+})
 
 router.get('/:page', function(req, res, next) {
-	var page = req.params.page;
+	var page = req.params.page
 
-	var controller = controllers[page];
+	var controller = controllers[page]
 	if (controller == null){
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}));
-	    res.render(page, {react:html});
-		return;
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}))
+	    res.render(page, {react:html})
+		return
 	}
 
 	controller.get({}, function(err, results){
@@ -62,23 +59,23 @@ router.get('/:page', function(req, res, next) {
 
 	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, params:req.query, headers:req.headers}));
 	    res.render(page, {react:html, tags:fbTags});
-		return;
-	});
-});
+		return
+	})
+})
 
 router.get('/:page/:slug', function(req, res, next) {
-	var page = req.params.page;
+	var page = req.params.page
 	if (page == 'api' || page == 'admin' || page == 'account'){
-		next();
-		return;
+		next()
+		return
 	}
 
-	var slug = req.params.slug;
-	var controller = controllers[page];
+	var slug = req.params.slug
+	var controller = controllers[page]
 	if (controller == null){
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug, headers:req.headers}));
-	    res.render(page, {react: html});
-		return;
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page: page, slug:slug}))
+	    res.render(page, {react: html})
+		return
 	}
 
 	controller.get({slug: slug}, function(err, results){
@@ -87,9 +84,9 @@ router.get('/:page/:slug', function(req, res, next) {
 		}
 
 		if (results.length == 0){
-		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug, headers:req.headers}));
-		    res.render(page, {react:html, tags:{}});
-			return;
+		    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}))
+		    res.render(page, {react:html, tags:{}})
+			return
 		}
 
 		var entity = results[0]
@@ -104,11 +101,11 @@ router.get('/:page/:slug', function(req, res, next) {
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
-	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug, headers:req.headers}));
-	    res.render(page, {react:html, tags:fbTags});
-		return;
-	});
+	    var html = ReactDOMServer.renderToString(React.createElement(ServerApp, {page:page, slug:slug}));
+	    res.render(page, {react:html, tags:fbTags})
+		return
+	})
 
-});
+})
 
-module.exports = router;
+module.exports = router
