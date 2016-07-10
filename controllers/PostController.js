@@ -17,7 +17,7 @@ function convertToJson(posts){
 
 module.exports = {
 	pluralKey: function(){
-		return 'posts';
+		return 'posts'
 	},
 
 	get: function(params, completion){
@@ -26,37 +26,76 @@ module.exports = {
 		if (params.id != null){ 
 			Post.findById(params.id, function(err, post){
 				if (err){
-					completion({message:'Post '+params.id+' not found'}, null);
-					return;
+					completion({message:'Post '+params.id+' not found'}, null)
+					return
 				}
 				
 				if (post == null){
-					completion({message:'Post '+params.id+' not found'}, null);
-					return;
+					completion({message:'Post '+params.id+' not found'}, null)
+					return
 				}
 
-				completion(null, post.summary());
-			});
-			return;
+				completion(null, post.summary())
+			})
+			return
 		}
 		
 		
 		/* Query by filters passed into parameter string: */
-		var limit = params.limit;
+		var limit = params.limit
 		if (limit == null)
-			limit = 0;
+			limit = 0
 		
-		delete params['limit'];
-		
+		delete params['limit']
 		Post.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, posts) {
 			if (err) {
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 			
-			completion(null, convertToJson(posts));
-		});
+			completion(null, convertToJson(posts))
+		})
 	},
+
+	find: function(params){ // Promise version
+		return new Promise(function(resolve, reject){
+
+			// fetch specific Course by ID:
+			if (params.id != null){ 
+				Post.findById(params.id, function(err, post){
+					if (err){
+						resolve(null)
+						return
+					}
+					
+					if (post == null){
+						resolve(null)
+						return
+					}
+
+					resolve(post)
+				})
+				return
+			}
+			
+			
+			/* Query by filters passed into parameter string: */
+			var limit = params.limit
+			if (limit == null)
+				limit = 0
+			
+			delete params['limit']
+			
+			Post.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, posts) {
+				if (err) {
+					reject(err)
+					return
+				}
+				
+				resolve(convertToJson(posts))
+			})
+		})
+	},	
 
 	post: function(postInfo, completion){
 		var parts = postInfo.title.split(' ');

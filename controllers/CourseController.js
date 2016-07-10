@@ -62,6 +62,46 @@ module.exports = {
 		});
 	},
 
+	find: function(params){ // Promise version
+		return new Promise(function(resolve, reject){
+
+			// fetch specific Course by ID:
+			if (params.id != null){ 
+				Course.findById(params.id, function(err, course){
+					if (err){
+						resolve(null)
+						return
+					}
+					
+					if (course == null){
+						resolve(null)
+						return
+					}
+
+					resolve(course)
+				})
+				return
+			}
+			
+			
+			/* Query by filters passed into parameter string: */
+			var limit = params.limit
+			if (limit == null)
+				limit = 0
+			
+			delete params['limit']
+			
+			Course.find(params, null, {limit:limit, sort:{priority: 1}}, function(err, courses) {
+				if (err) {
+					reject(err)
+					return
+				}
+				
+				resolve(convertToJson(courses))
+			})
+		})
+	},
+
 	post: function(courseInfo, completion){
 		courseInfo['slug'] = Helpers.slugString(courseInfo.title)
 		Course.create(courseInfo, function(err, course){

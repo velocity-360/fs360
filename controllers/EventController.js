@@ -59,6 +59,45 @@ module.exports = {
 		});
 	},
 
+	find: function(params){ // Promise version
+		return new Promise(function(resolve, reject){
+
+			// fetch specific Course by ID:
+			if (params.id != null){ 
+				Event.findById(params.id, function(err, event){
+					if (err){
+						resolve(null)
+						return
+					}
+					
+					if (event == null){
+						resolve(null)
+						return
+					}
+
+					resolve(event)
+				})
+				return
+			}
+			
+			
+			/* Query by filters passed into parameter string: */
+			var limit = params.limit
+			if (limit == null)
+				limit = 0
+			
+			delete params['limit']
+			
+			Event.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, events) {
+				if (err) {
+					reject(err)
+					return
+				}
+				
+				resolve(convertToJson(events))
+			})
+		})
+	},	
 	post: function(eventInfo, completion){
 		var parts = eventInfo.title.split(' ');
 
