@@ -16,8 +16,6 @@ var React = _interopRequire(_react);
 
 var Component = _react.Component;
 var connect = require("react-redux").connect;
-var Home = _interopRequire(require("./containers/Home"));
-
 var Landing = _interopRequire(require("./containers/Landing"));
 
 var ProjectLanding = _interopRequire(require("./containers/ProjectLanding"));

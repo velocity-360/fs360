@@ -249,8 +249,8 @@ var Account = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "#tabs-2" },
-													"Account"
+													{ href: "#tabs-4" },
+													"Courses"
 												)
 											),
 											React.createElement(
@@ -258,8 +258,8 @@ var Account = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "#tabs-4" },
-													"Portfolio"
+													{ href: "#tabs-2" },
+													"Profile"
 												)
 											)
 										),

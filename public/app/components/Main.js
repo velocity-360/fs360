@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Home from './containers/Home'
 import Landing from './containers/Landing'
 import ProjectLanding from './containers/ProjectLanding'
 import Courses from './containers/Courses'

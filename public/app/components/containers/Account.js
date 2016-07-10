@@ -184,8 +184,8 @@ class Account extends Component {
 								<div className="tabs clearfix" id="tab-1">
 
 									<ul className="tab-nav clearfix">
-										<li><a href="#tabs-2">Account</a></li>
-										<li><a href="#tabs-4">Portfolio</a></li>
+										<li><a href="#tabs-4">Courses</a></li>
+										<li><a href="#tabs-2">Profile</a></li>
 									</ul>
 
 									<div className="tab-container">
@@ -249,8 +249,9 @@ class Account extends Component {
 							                    </form>
 
 							                </div>
-
 										</div>
+
+
 										<div className="tab-content clearfix" id="tabs-4">
 											{ (this.props.profile.id == null) ? 
 												null : <a style={{marginRight:12, marginBottom:24}} onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Add Project</a>												
@@ -260,6 +261,9 @@ class Account extends Component {
 												{ projectList }
 											</div>
 										</div>
+
+
+
 									</div>
 								</div>
 							</div>
