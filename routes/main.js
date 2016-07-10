@@ -62,36 +62,35 @@ router.get('/:page', function(req, res, next) {
 			return
 		}
 
-		controller.get(req.query, function(err, results){
-			if (err){
-
-			}
-
-			if (results){
-				if (page == 'courses')
-					initialData.courseReducer.courseArray = results
-
-				if (page == 'feed')
-					initialData.postReducer.postsArray = results
-
-				if (page == 'landing')
-					initialData.projectReducer.projects = results
-			}
-
-			var initialState = store.configureStore(initialData).getState()
-			var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
-			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-		})
+		return controller.find(req.query)
 	})
-	.catch(function(err){
+	.then(function(results){
+		if (results){
+			if (page == 'courses')
+				initialData.courseReducer.courseArray = results
+
+			if (page == 'feed')
+				initialData.postReducer.postsArray = results
+
+			if (page == 'landing')
+				initialData.projectReducer.projects = results
+		}
+
+		var initialState = store.configureStore(initialData).getState()
+		var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
+		res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+		return
+	})
+	.catch(function(err){ // TODO: Handle Error
 
 	})
-
 })
 
 router.get('/:page/:slug', function(req, res, next) {
 	var initialData = initial()
 	var page = req.params.page
+	var slug = req.params.slug
+
 	if (page == 'api' || page == 'admin' || page == 'account'){
 		next()
 		return
@@ -103,7 +102,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
-		var slug = req.params.slug
 		var controller = controllers[page]
 		if (controller == null){
 			var initialState = store.configureStore(initialData).getState()
@@ -112,35 +110,30 @@ router.get('/:page/:slug', function(req, res, next) {
 			return
 		}
 
-		controller.get({slug: slug}, function(err, results){
-			if (err){
-
-			}
-
-			if (results.length == 0){
-				var initialState = store.configureStore(initialData).getState()
-				var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
-				res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-				return
-			}
-
-			if (results){
-				var entity = results[0]
-				if (page == 'course')
-					initialData.courseReducer.courseArray = [entity]
-
-				if (page == 'post')
-					initialData.postReducer.postsArray = [entity]
-
-				if (page == 'project')
-					initialData.projectReducer.projectsArray = [entity]
-			}
-
+		return controller.find({slug: slug})
+	})
+	.then(function(results){
+		if (results.length == 0){
 			var initialState = store.configureStore(initialData).getState()
 			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 			return
-		})
+		}
+
+		var entity = results[0]
+		if (page == 'course')
+			initialData.courseReducer.courseArray = [entity]
+
+		if (page == 'post')
+			initialData.postReducer.postsArray = [entity]
+
+		if (page == 'project')
+			initialData.projectReducer.projectsArray = [entity]
+
+		var initialState = store.configureStore(initialData).getState()
+		var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
+		res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+		return
 	})
 	.catch(function(err){
 
