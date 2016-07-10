@@ -51,7 +51,7 @@ var DetailBox = (function (Component) {
 		submitRequest: {
 			value: function submitRequest(event) {
 				event.preventDefault();
-				console.log("submitRequest: " + JSON.stringify(this.props.content.path));
+				//		console.log('submitRequest: '+JSON.stringify(this.props.content.path))
 
 				if (this.state.visitor.name.length == 0) {
 					alert("Please enter your name.");
@@ -89,9 +89,9 @@ var DetailBox = (function (Component) {
 
 
 				api.handlePost(url, s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
+					// _this.setState({
+					// 	showLoader: false
+					// })
 
 					if (err) {
 						alert(err.message);
