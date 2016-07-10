@@ -29,17 +29,18 @@ var initial = require('../public/build/es5/reducers/initial') // default values 
 router.get('/', function(req, res, next) {
 	var initialData = initial()
 
-	accountController.checkCurrentUser(req, function(err, currentUser){
-		if (err){
-
-		}
-
+	accountController.currentUser(req)
+	.then(function(currentUser){
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:'home', initial:initialState})
-		res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})		
+		res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+		return
+	})
+	.catch(function(err){
+
 	})
 })
 
@@ -53,7 +54,6 @@ router.get('/:page', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 		
-
 		var controller = controllers[page]
 		if (controller == null){ // special pages, like account page:
 			var initialState = store.configureStore(initialData).getState()
@@ -87,12 +87,6 @@ router.get('/:page', function(req, res, next) {
 
 	})
 
-	// accountController.checkCurrentUser(req, function(err, currentUser){
-	// 	if (err){
-
-	// 	}
-
-	// })
 })
 
 router.get('/:page/:slug', function(req, res, next) {
