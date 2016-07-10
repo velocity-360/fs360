@@ -53,7 +53,7 @@ router.get('/:page', function(req, res, next) {
 		var fbTags = {
 			title: entity.title,
 			description: desc,
-			url: 'http://www.velocity360.io/'+page,
+			url: 'https://www.velocity360.io/'+page,
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
@@ -97,7 +97,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		var fbTags = {
 			title: entity.title,
 			description: desc,
-			url: 'http://www.velocity360.io/'+page+'/'+slug,
+			url: 'https://www.velocity360.io/'+page+'/'+slug,
 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260'
 		}
 
