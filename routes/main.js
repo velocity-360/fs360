@@ -130,9 +130,18 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (page == 'project')
 			initialData.projectReducer.projectsArray = [entity]
 
+		// Facebook tags:
+		var description = (entity.description == null) ? entity.text : entity.description
+		var tags = {
+			title: entity.title,
+			url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
+			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
+			description: entity.description
+		}
+
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
-		res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+		res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState), tags:tags})
 		return
 	})
 	.catch(function(err){
