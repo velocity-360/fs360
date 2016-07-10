@@ -1,22 +1,25 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 
 // These are the pages which have FB tags:
-var courseController = require('../controllers/CourseController');
-var postController = require('../controllers/PostController');
-var eventController = require('../controllers/EventController');
+var courseController = require('../controllers/CourseController')
+var postController = require('../controllers/PostController')
+var eventController = require('../controllers/EventController')
 var controllers = {
 	'course': courseController,
 	'post': postController,
 	'events': eventController
-};
+}
 
 
-require('node-jsx').install({ extension: ".js" });
-var React = require('react');
-var ReactDOMServer = require('react-dom/server');
+require('node-jsx').install({ extension: ".js" })
+var React = require('react')
+var ReactDOMServer = require('react-dom/server')
 
-var ServerApp = require('../public/build/es5/ServerApp');
+
+// Components:
+var ServerApp = require('../public/build/es5/ServerApp')
+var store = require('../public/build/es5/stores/store')
 
 
 router.get('/', function(req, res, next) {
