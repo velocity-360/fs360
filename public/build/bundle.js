@@ -22676,11 +22676,11 @@
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Account = __webpack_require__(597);
+	var _Account = __webpack_require__(598);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(598);
+	var _Unit = __webpack_require__(599);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
@@ -61951,6 +61951,10 @@
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
+	var _DetailBox = __webpack_require__(597);
+	
+	var _DetailBox2 = _interopRequireDefault(_DetailBox);
+	
 	var _Login = __webpack_require__(460);
 	
 	var _Login2 = _interopRequireDefault(_Login);
@@ -61991,11 +61995,7 @@
 			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.closeLogin = _this2.closeLogin.bind(_this2);
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
-			_this2.updateSyllabusRequest = _this2.updateSyllabusRequest.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
-			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
-			_this2.subscribe = _this2.subscribe.bind(_this2);
-			_this2.sendRequest = _this2.sendRequest.bind(_this2);
 			_this2.configureStripe = _this2.configureStripe.bind(_this2);
 			_this2.state = {
 				showLogin: false,
@@ -62066,66 +62066,6 @@
 				});
 			}
 		}, {
-			key: 'updateSyllabusRequest',
-			value: function updateSyllabusRequest(event) {
-				var s = Object.assign({}, this.state.syllabusRequest);
-				s[event.target.id] = event.target.value;
-				s['course'] = this.props.course.title;
-				this.setState({
-					syllabusRequest: s
-				});
-			}
-		}, {
-			key: 'syllabusRequest',
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-				this.sendRequest('syllabus');
-			}
-		}, {
-			key: 'subscribe',
-			value: function subscribe(event) {
-				event.preventDefault();
-				this.sendRequest('subscribe');
-			}
-		}, {
-			key: 'sendRequest',
-			value: function sendRequest(path) {
-				if (this.state.syllabusRequest.name.length == 0) {
-					alert('Please enter your name.');
-					return;
-				}
-	
-				if (this.state.syllabusRequest.email.length == 0) {
-					alert('Please enter your email.');
-					return;
-				}
-	
-				this.setState({
-					showLoader: true
-				});
-	
-				var s = Object.assign({}, this.state.syllabusRequest);
-				s['pdf'] = this.props.course.syllabus;
-				var parts = s.name.split(' ');
-				s['firstName'] = parts[0];
-				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
-	
-				var _this = this;
-				var url = '/api/' + path;
-				_api2.default.handlePost(url, s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
 			key: 'closeModal',
 			value: function closeModal() {
 				this.setState({
@@ -62171,74 +62111,8 @@
 			value: function render() {
 				var bannerIndex = 0;
 				var btnRegister = null;
-				var detailBox = null;
 	
-				if (this.props.course.type == 'online') {
-					bannerIndex = 1;
-					detailBox = _react2.default.createElement(
-						'div',
-						{ className: 'col_half panel panel-default col_last' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
-							'Newsletter'
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body', style: { textAlign: 'center' } },
-							_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
-							_react2.default.createElement(
-								'p',
-								null,
-								'Join our newsletter for notifications on upcoming courses, events and tutorials.'
-							),
-							_react2.default.createElement('hr', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.subscribe, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-								'Submit'
-							)
-						)
-					);
-				} else if (this.props.course.type == 'immersive') {
-					bannerIndex = 2;
-					detailBox = _react2.default.createElement(
-						'div',
-						{ className: 'col_half panel panel-default col_last' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: '#f1f9f5' }, className: 'panel-heading' },
-							'Request Syllabus'
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body' },
-							this.props.course.dates,
-							_react2.default.createElement('br', null),
-							this.props.course.schedule,
-							_react2.default.createElement('br', null),
-							'Tuition: $',
-							this.props.course.tuition,
-							_react2.default.createElement('br', null),
-							'Deposit: $',
-							this.props.course.deposit,
-							_react2.default.createElement('hr', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.syllabusRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-								'Request Syllabus'
-							)
-						)
-					);
-				} else {
+				if (this.props.course.type == 'online') bannerIndex = 1;else if (this.props.course.type == 'immersive') bannerIndex = 2;else {
 					btnRegister = _react2.default.createElement(
 						'div',
 						null,
@@ -62263,35 +62137,6 @@
 							{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
 							'Submit Deposit',
 							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-						)
-					);
-					detailBox = _react2.default.createElement(
-						'div',
-						{ className: 'col_half panel panel-default col_last' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
-							'Attend Free Session'
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body', style: { textAlign: 'center' } },
-							_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
-							_react2.default.createElement(
-								'p',
-								null,
-								'Join our newsletter for notifications on upcoming courses, events and tutorials.'
-							),
-							_react2.default.createElement('hr', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { type: 'text', onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.subscribe, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-								'Submit'
-							)
 						)
 					);
 				}
@@ -62360,7 +62205,7 @@
 													),
 													btnRegister
 												),
-												detailBox
+												_react2.default.createElement(_DetailBox2.default, { course: this.props.course })
 											)
 										),
 										units,
@@ -62951,6 +62796,178 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _api = __webpack_require__(463);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DetailBox = function (_Component) {
+		_inherits(DetailBox, _Component);
+	
+		function DetailBox(props, context) {
+			_classCallCheck(this, DetailBox);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailBox).call(this, props, context));
+	
+			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.submitRequest = _this2.submitRequest.bind(_this2);
+			_this2.state = {
+				visitor: {
+					name: '',
+					email: ''
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(DetailBox, [{
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				event.preventDefault();
+				var s = Object.assign({}, this.state.visitor);
+				s[event.target.id] = event.target.value;
+				s['course'] = this.props.content.title;
+				this.setState({
+					visitor: s
+				});
+			}
+		}, {
+			key: 'submitRequest',
+			value: function submitRequest(event) {
+				event.preventDefault();
+				console.log('submitRequest: ' + JSON.stringify(this.props.content.path));
+	
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				// this.setState({
+				// 	showLoader: true
+				// })
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var _this = this;
+				var url = '';
+	
+				if (this.props.course.type == 'immersive') {
+					// syllabus request
+					s['pdf'] = this.props.course.syllabus;
+					url = '/api/syllabus';
+				}
+				if (this.props.course.type == 'online') {
+					url = '/api/subscribe';
+				}
+				if (this.props.course.type == 'live') {
+					url = '/api/subscribe';
+				}
+	
+				_api2.default.handlePost(url, s, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var detailContent = null;
+				if (this.props.course.type == 'online') {
+					detailContent = {
+						title: 'Newsletter',
+						text: 'Join our newsletter for notifications on upcoming courses, events and tutorials.',
+						path: '/api/subscribe'
+					};
+				} else if (this.props.course.type == 'immersive') {
+					detailContent = {
+						title: 'Request Syllabus',
+						text: 'Complete the form below to receive a syllabus for ' + this.props.course.title,
+						path: '/api/syllabus'
+					};
+				} else {
+					detailContent = {
+						title: 'Attend Free Session',
+						text: 'Complete the form below to attend the next session of ' + this.props.course.title + ' for free.',
+						path: '/api/subscribe'
+					};
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'col_half panel panel-default col_last' },
+					_react2.default.createElement(
+						'div',
+						{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
+						detailContent.title
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'panel-body', style: { textAlign: 'center' } },
+						_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
+						_react2.default.createElement(
+							'p',
+							null,
+							detailContent.text
+						),
+						_react2.default.createElement('hr', null),
+						_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+							'Submit'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return DetailBox;
+	}(_react.Component);
+	
+	exports.default = DetailBox;
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _reactRedux = __webpack_require__(168);
 	
 	var _reactBootstrap = __webpack_require__(205);
@@ -63432,7 +63449,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 598 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

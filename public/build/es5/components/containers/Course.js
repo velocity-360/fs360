@@ -31,6 +31,8 @@ var CourseSection = _interopRequire(require("../../components/CourseSection"));
 
 var Application = _interopRequire(require("../../components/Application"));
 
+var DetailBox = _interopRequire(require("../../components/DetailBox"));
+
 var Login = _interopRequire(require("../../components/Login"));
 
 var store = _interopRequire(require("../../stores/store"));
@@ -50,11 +52,7 @@ var Course = (function (Component) {
 		this.showLogin = this.showLogin.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
 		this.openStripeModal = this.openStripeModal.bind(this);
-		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
-		this.syllabusRequest = this.syllabusRequest.bind(this);
-		this.subscribe = this.subscribe.bind(this);
-		this.sendRequest = this.sendRequest.bind(this);
 		this.configureStripe = this.configureStripe.bind(this);
 		this.state = {
 			showLogin: false,
@@ -130,74 +128,6 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		updateSyllabusRequest: {
-			value: function updateSyllabusRequest(event) {
-				var s = Object.assign({}, this.state.syllabusRequest);
-				s[event.target.id] = event.target.value;
-				s.course = this.props.course.title;
-				this.setState({
-					syllabusRequest: s
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		syllabusRequest: {
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-				this.sendRequest("syllabus");
-			},
-			writable: true,
-			configurable: true
-		},
-		subscribe: {
-			value: function subscribe(event) {
-				event.preventDefault();
-				this.sendRequest("subscribe");
-			},
-			writable: true,
-			configurable: true
-		},
-		sendRequest: {
-			value: function sendRequest(path) {
-				if (this.state.syllabusRequest.name.length == 0) {
-					alert("Please enter your name.");
-					return;
-				}
-
-				if (this.state.syllabusRequest.email.length == 0) {
-					alert("Please enter your email.");
-					return;
-				}
-
-				this.setState({
-					showLoader: true
-				});
-
-				var s = Object.assign({}, this.state.syllabusRequest);
-				s.pdf = this.props.course.syllabus;
-				var parts = s.name.split(" ");
-				s.firstName = parts[0];
-				if (parts.length > 1) s.lastName = parts[parts.length - 1];
-
-				var _this = this;
-				var url = "/api/" + path;
-				api.handlePost(url, s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		closeModal: {
 			value: function closeModal() {
 				this.setState({
@@ -253,74 +183,8 @@ var Course = (function (Component) {
 			value: function render() {
 				var bannerIndex = 0;
 				var btnRegister = null;
-				var detailBox = null;
 
-				if (this.props.course.type == "online") {
-					bannerIndex = 1;
-					detailBox = React.createElement(
-						"div",
-						{ className: "col_half panel panel-default col_last" },
-						React.createElement(
-							"div",
-							{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
-							"Newsletter"
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-body", style: { textAlign: "center" } },
-							React.createElement("img", { style: { width: 96, marginBottom: 12 }, src: "/images/logo_round_blue_260.png" }),
-							React.createElement(
-								"p",
-								null,
-								"Join our newsletter for notifications on upcoming courses, events and tutorials."
-							),
-							React.createElement("hr", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ onClick: this.subscribe, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-								"Submit"
-							)
-						)
-					);
-				} else if (this.props.course.type == "immersive") {
-					bannerIndex = 2;
-					detailBox = React.createElement(
-						"div",
-						{ className: "col_half panel panel-default col_last" },
-						React.createElement(
-							"div",
-							{ style: { backgroundColor: "#f1f9f5" }, className: "panel-heading" },
-							"Request Syllabus"
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-body" },
-							this.props.course.dates,
-							React.createElement("br", null),
-							this.props.course.schedule,
-							React.createElement("br", null),
-							"Tuition: $",
-							this.props.course.tuition,
-							React.createElement("br", null),
-							"Deposit: $",
-							this.props.course.deposit,
-							React.createElement("hr", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ onClick: this.syllabusRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-								"Request Syllabus"
-							)
-						)
-					);
-				} else {
+				if (this.props.course.type == "online") bannerIndex = 1;else if (this.props.course.type == "immersive") bannerIndex = 2;else {
 					btnRegister = React.createElement(
 						"div",
 						null,
@@ -345,35 +209,6 @@ var Course = (function (Component) {
 							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
 							"Submit Deposit",
 							React.createElement("i", { "class": "icon-circle-arrow-right" })
-						)
-					);
-					detailBox = React.createElement(
-						"div",
-						{ className: "col_half panel panel-default col_last" },
-						React.createElement(
-							"div",
-							{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
-							"Attend Free Session"
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-body", style: { textAlign: "center" } },
-							React.createElement("img", { style: { width: 96, marginBottom: 12 }, src: "/images/logo_round_blue_260.png" }),
-							React.createElement(
-								"p",
-								null,
-								"Join our newsletter for notifications on upcoming courses, events and tutorials."
-							),
-							React.createElement("hr", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement("input", { type: "text", onChange: this.updateSyllabusRequest, value: this.state.syllabusRequest.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ onClick: this.subscribe, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-								"Submit"
-							)
 						)
 					);
 				}
@@ -442,7 +277,7 @@ var Course = (function (Component) {
 													),
 													btnRegister
 												),
-												detailBox
+												React.createElement(DetailBox, { course: this.props.course })
 											)
 										),
 										units,

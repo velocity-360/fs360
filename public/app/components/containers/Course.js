@@ -6,6 +6,7 @@ import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import CourseSection from '../../components/CourseSection'
 import Application from '../../components/Application'
+import DetailBox from '../../components/DetailBox'
 import Login from '../../components/Login'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
@@ -20,11 +21,7 @@ class Course extends Component {
 		this.showLogin = this.showLogin.bind(this)
 		this.closeLogin = this.closeLogin.bind(this)
 		this.openStripeModal = this.openStripeModal.bind(this)
-		this.updateSyllabusRequest = this.updateSyllabusRequest.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
-		this.syllabusRequest = this.syllabusRequest.bind(this)
-		this.subscribe = this.subscribe.bind(this)
-		this.sendRequest = this.sendRequest.bind(this)
 		this.configureStripe = this.configureStripe.bind(this)
 		this.state = {
 			showLogin: false,
@@ -90,64 +87,6 @@ class Course extends Component {
 		})
 	}
 
-
-	updateSyllabusRequest(event){
-		var s = Object.assign({}, this.state.syllabusRequest)
-		s[event.target.id] = event.target.value
-		s['course'] = this.props.course.title
-		this.setState({
-			syllabusRequest: s
-		})
-	}
-
-	syllabusRequest(event){
-		event.preventDefault()
-		this.sendRequest('syllabus')
-	}	
-
-	subscribe(event){
-		event.preventDefault()
-		this.sendRequest('subscribe')
-	}
-
-	sendRequest(path){
-		if (this.state.syllabusRequest.name.length == 0){
-			alert('Please enter your name.')
-			return
-		}
-
-		if (this.state.syllabusRequest.email.length == 0){
-			alert('Please enter your email.')
-			return
-		}
-
-		this.setState({
-			showLoader: true
-		})
-
-		var s = Object.assign({}, this.state.syllabusRequest)
-		s['pdf'] = this.props.course.syllabus
-		var parts = s.name.split(' ')
-		s['firstName'] = parts[0]
-		if (parts.length > 1)
-			s['lastName'] = parts[parts.length-1]
-
-		var _this = this
-		var url = '/api/'+path
-		api.handlePost(url, s, function(err, response){
-			_this.setState({
-				showLoader: false
-			})
-
-			if (err){
-				alert(err.message)
-				return
-			}
-
-			alert(response.message)
-		})	
-	}
-
 	closeModal(){
 		this.setState({
 			showLogin: false,
@@ -191,45 +130,11 @@ class Course extends Component {
 	render(){
 		var bannerIndex = 0
 		var btnRegister = null
-		var detailBox = null
 
-		if (this.props.course.type == 'online'){
+		if (this.props.course.type == 'online')
 			bannerIndex = 1
-			detailBox =	(
-					<div className="col_half panel panel-default col_last">
-						<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Newsletter</div>
-						<div className="panel-body" style={{textAlign:'center'}}>
-							<img style={{width:96, marginBottom:12}} src="/images/logo_round_blue_260.png" />
-							<p>
-								Join our newsletter for notifications on upcoming courses,
-								events and tutorials.
-							</p>
-							<hr />
-							<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-							<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-							<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
-						</div>
-					</div>
-			)			
-		}
-		else if (this.props.course.type == 'immersive'){
+		else if (this.props.course.type == 'immersive')
 			bannerIndex = 2
-			detailBox =	(
-				<div className="col_half panel panel-default col_last">
-					<div style={{backgroundColor:'#f1f9f5'}} className="panel-heading">Request Syllabus</div>
-					<div className="panel-body">
-						{this.props.course.dates}<br />
-						{this.props.course.schedule}<br />
-						Tuition: ${this.props.course.tuition}<br />
-						Deposit: ${this.props.course.deposit}
-						<hr />
-						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-						<a onClick={this.syllabusRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Request Syllabus</a>
-					</div>
-				</div>
-			)
-		}
 		else {
 			btnRegister = (
 				<div>
@@ -242,22 +147,7 @@ class Course extends Component {
 					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
 				</div>
 			)
-			detailBox =	(
-				<div className="col_half panel panel-default col_last">
-					<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Attend Free Session</div>
-					<div className="panel-body" style={{textAlign:'center'}}>
-						<img style={{width:96, marginBottom:12}} src="/images/logo_round_blue_260.png" />
-						<p>
-							Join our newsletter for notifications on upcoming courses,
-							events and tutorials.
-						</p>
-						<hr />
-						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-						<input type="text" onChange={this.updateSyllabusRequest} value={this.state.syllabusRequest.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-						<a onClick={this.subscribe} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
-					</div>
-				</div>
-			)
+
 		}
 
 		var banner = this.props.banners[bannerIndex]
@@ -297,8 +187,7 @@ class Course extends Component {
 												<p>{this.props.course.description}</p>
 												{ btnRegister }
 											</div>
-
-											{ detailBox }
+											<DetailBox course={this.props.course} />
 
 										</div>
 									</div>
