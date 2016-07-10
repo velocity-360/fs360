@@ -1,20 +1,22 @@
-var express = require('express');
-var Promise = require('bluebird');
-var fs = require('fs');
-var router = express.Router();
-var EmailManager = require('../managers/EmailManager');
-var Helpers = require('../managers/Helpers');
+var express = require('express')
+var Promise = require('bluebird')
+var fs = require('fs')
+var router = express.Router()
+var EmailManager = require('../managers/EmailManager')
+var Helpers = require('../managers/Helpers')
+var Scraper = require('../managers/Scraper')
+
 
 // controllers:
-var courseController = require('../controllers/CourseController');
-var profileController = require('../controllers/ProfileController');
-var subscriberController = require('../controllers/SubscriberController');
-var postController = require('../controllers/PostController');
-var commentController = require('../controllers/CommentController');
-var eventController = require('../controllers/EventController');
-var projectController = require('../controllers/ProjectController');
-var sampleController = require('../controllers/SampleController');
-var unitController = require('../controllers/UnitController');
+var courseController = require('../controllers/CourseController')
+var profileController = require('../controllers/ProfileController')
+var subscriberController = require('../controllers/SubscriberController')
+var postController = require('../controllers/PostController')
+var commentController = require('../controllers/CommentController')
+var eventController = require('../controllers/EventController')
+var projectController = require('../controllers/ProjectController')
+var sampleController = require('../controllers/SampleController')
+var unitController = require('../controllers/UnitController')
 var controllers = {
 	course: courseController,
 	profile: profileController,
@@ -39,7 +41,8 @@ var fetchFile = function(path){
 
 
 router.get('/:resource', function(req, res, next) {
-	var resource = req.params.resource;
+	var resource = req.params.resource
+
 	if (resource == 'unsubscribe') {
 		var email = req.query.email
 		if (email == null)
@@ -211,10 +214,28 @@ router.post('/:resource', function(req, res, next) {
 		var template = req.body.template
 		var path = 'public/email/'+template+'/email.html'
 
+		// fetchFile(path)
+		// .then(function(html){
+		// 	return Scraper.scrapeRawHtml(html)
+		// })
+		// .then(function(results){
+		// 	res.json({confirmation:'success', results:results})
+		// 	return
+		// })
+		// .catch(function(err){
+		// 	res.json({confirmation:'fail', message:err})
+		// })
+
+		var data = ''
 		fetchFile(path)
-		.then(function(data){
+		.then(function(html){
+			data = html
+			return Scraper.scrapeRawHtml(data)
+		})
+		.then(function(results){
 			if (template != 'workshop'){
-				var subject = 'Learn React, Redux in 8 Weeks'
+//				var subject = 'Learn React, Redux in 8 Weeks'
+				var subject = results['title']
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i]
 					var formatted = data.replace('{{email}}', address) // for unsubscribe link
