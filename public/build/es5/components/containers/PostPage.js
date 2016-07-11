@@ -108,7 +108,35 @@ var PostPage = (function (Component) {
 		render: {
 			value: function render() {
 				var post = this.props.posts[this.props.slug];
-				var btnEditText = this.state.isEditing == true ? "Done" : "Edit";
+				var btnEdit = null;
+				if (this.state.isEditing == true) {
+					btnEdit = React.createElement(
+						"div",
+						null,
+						React.createElement(
+							"button",
+							{ onClick: this.toggleEditing, className: "button button-border button-dark button-rounded noleftmargin" },
+							"Done"
+						)
+					);
+				} else {
+					if (this.props.currentUser.id != null) {
+						if (post.profile.id != null) {
+							if (this.props.currentUser.id == post.profile.id) {
+								// author of post
+								btnEdit = React.createElement(
+									"div",
+									null,
+									React.createElement(
+										"button",
+										{ onClick: this.toggleEditing, className: "button button-border button-dark button-rounded noleftmargin" },
+										"Edit"
+									)
+								);
+							}
+						}
+					}
+				}
 
 				var title = null;
 				var content = null;
@@ -160,12 +188,7 @@ var PostPage = (function (Component) {
 										"div",
 										{ className: "heading-block center" },
 										title,
-										React.createElement(
-											"button",
-											{ onClick: this.toggleEditing, className: "button button-border button-dark button-rounded noleftmargin" },
-											btnEditText
-										),
-										React.createElement("br", null),
+										btnEdit,
 										React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + post.image + "?crop=260", alt: "Velocity 360" })
 									),
 									React.createElement(

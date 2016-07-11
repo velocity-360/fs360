@@ -61570,7 +61570,35 @@
 			key: 'render',
 			value: function render() {
 				var post = this.props.posts[this.props.slug];
-				var btnEditText = this.state.isEditing == true ? 'Done' : 'Edit';
+				var btnEdit = null;
+				if (this.state.isEditing == true) {
+					btnEdit = _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'button',
+							{ onClick: this.toggleEditing, className: 'button button-border button-dark button-rounded noleftmargin' },
+							'Done'
+						)
+					);
+				} else {
+					if (this.props.currentUser.id != null) {
+						if (post.profile.id != null) {
+							if (this.props.currentUser.id == post.profile.id) {
+								// author of post
+								btnEdit = _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'button',
+										{ onClick: this.toggleEditing, className: 'button button-border button-dark button-rounded noleftmargin' },
+										'Edit'
+									)
+								);
+							}
+						}
+					}
+				}
 	
 				var title = null;
 				var content = null;
@@ -61621,12 +61649,7 @@
 										'div',
 										{ className: 'heading-block center' },
 										title,
-										_react2.default.createElement(
-											'button',
-											{ onClick: this.toggleEditing, className: 'button button-border button-dark button-rounded noleftmargin' },
-											btnEditText
-										),
-										_react2.default.createElement('br', null),
+										btnEdit,
 										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' })
 									),
 									_react2.default.createElement(
