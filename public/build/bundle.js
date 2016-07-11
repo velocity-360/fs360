@@ -61711,7 +61711,6 @@
 		return {
 			currentUser: state.profileReducer.currentUser,
 			posts: state.postReducer.posts,
-			//        post: state.postReducer.postsArray[0],
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};
