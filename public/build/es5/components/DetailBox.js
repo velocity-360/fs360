@@ -81,7 +81,7 @@ var DetailBox = (function (Component) {
 					url = "/api/subscribe";
 				}
 				if (this.props.course.type == "live") {
-					url = "/api/subscribe";
+					url = "/api/freesession";
 				}
 
 

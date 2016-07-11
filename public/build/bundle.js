@@ -62884,7 +62884,7 @@
 					url = '/api/subscribe';
 				}
 				if (this.props.course.type == 'live') {
-					url = '/api/subscribe';
+					url = '/api/freesession';
 				}
 	
 				_api2.default.handlePost(url, s, function (err, response) {

@@ -115,6 +115,14 @@ router.post('/:resource', function(req, res, next) {
 		return
 	}
 
+	if (resource == 'freesession'){
+		var body = req.body
+		subscriberController.post(body, null)
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
+		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
+		return
+	}
+
 	if (resource == 'subscribe'){
 		subscriberController.post(req.body, null)
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
