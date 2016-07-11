@@ -62253,75 +62253,7 @@
 			key: 'render',
 			value: function render() {
 				var bannerIndex = 0;
-				var btnRegister = null;
-	
-				if (this.props.course.type == 'online') bannerIndex = 1;else if (this.props.course.type == 'immersive') {
-					bannerIndex = 2;
-					btnRegister = _react2.default.createElement(
-						'div',
-						{ style: { background: '#fff', border: '1px solid #ddd' } },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
-							'Details'
-						),
-						_react2.default.createElement(
-							'div',
-							{ style: { padding: 12 } },
-							'Date: ',
-							this.props.course.dates,
-							_react2.default.createElement('br', null),
-							'Time: ',
-							this.props.course.schedule,
-							_react2.default.createElement('br', null),
-							'Deposit: $',
-							this.props.course.deposit,
-							_react2.default.createElement('br', null),
-							'Regular Tuition: $',
-							this.props.course.tuition,
-							_react2.default.createElement('br', null),
-							'Premium Member Tuition: $',
-							this.props.course.premiumTuition,
-							_react2.default.createElement('br', null)
-						)
-					);
-				} else {
-					btnRegister = _react2.default.createElement(
-						'div',
-						{ style: { background: '#fff', border: '1px solid #ddd' } },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
-							'Details'
-						),
-						_react2.default.createElement(
-							'div',
-							{ style: { padding: 12 } },
-							'Date: ',
-							this.props.course.dates,
-							_react2.default.createElement('br', null),
-							'Time: ',
-							this.props.course.schedule,
-							_react2.default.createElement('br', null),
-							'Deposit: $',
-							this.props.course.deposit,
-							_react2.default.createElement('br', null),
-							'Regular Tuition: $',
-							this.props.course.tuition,
-							_react2.default.createElement('br', null),
-							'Premium Member Tuition: $',
-							this.props.course.premiumTuition,
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-								'Submit Deposit',
-								_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-							)
-						)
-					);
-				}
+				if (this.props.course.type == 'online') bannerIndex = 1;else if (this.props.course.type == 'immersive') bannerIndex = 2;
 	
 				var banner = this.props.banners[bannerIndex];
 				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
@@ -62384,8 +62316,7 @@
 														'p',
 														null,
 														this.props.course.description
-													),
-													btnRegister
+													)
 												),
 												_react2.default.createElement(_DetailBox2.default, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: this.props.course })
 											)

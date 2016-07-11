@@ -143,42 +143,11 @@ class Course extends Component {
 
 	render(){
 		var bannerIndex = 0
-		var btnRegister = null
-
 		if (this.props.course.type == 'online')
 			bannerIndex = 1
-		else if (this.props.course.type == 'immersive'){
+		else if (this.props.course.type == 'immersive')
 			bannerIndex = 2
-			btnRegister = (
-				<div style={{background:'#fff', border:'1px solid #ddd'}}>
-					<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Details</div>
-					<div style={{padding:12}}>
-						Date: {this.props.course.dates}<br />
-						Time: {this.props.course.schedule}<br />
-						Deposit: ${this.props.course.deposit}<br />
-						Regular Tuition: ${this.props.course.tuition}<br />
-						Premium Member Tuition: ${this.props.course.premiumTuition}<br />
-					</div>
-				</div>
-			)
-		}
-		else {
-			btnRegister = (
-				<div style={{background:'#fff', border:'1px solid #ddd'}}>
-					<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Details</div>
-					<div style={{padding:12}}>
-						Date: {this.props.course.dates}<br />
-						Time: {this.props.course.schedule}<br />
-						Deposit: ${this.props.course.deposit}<br />
-						Regular Tuition: ${this.props.course.tuition}<br />
-						Premium Member Tuition: ${this.props.course.premiumTuition}<br />
-						<br />
-						<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
-					</div>
-				</div>
-			)
-		}
-
+		
 		var banner = this.props.banners[bannerIndex]
 		var startDate = (this.props.course.dates == null) ? '' : this.props.course.dates.split('-')[0].trim()
 		var _course = this.props.course
@@ -214,7 +183,6 @@ class Course extends Component {
 											<div className='col_half'>
 												<h2 style={{marginBottom:0}}>{this.props.course.title}</h2>
 												<p>{this.props.course.description}</p>
-												{ btnRegister }
 											</div>
 											<DetailBox showLoader={this.showLoader} hideLoader={this.hideLoader} course={this.props.course} />
 
