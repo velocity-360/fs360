@@ -91,8 +91,8 @@ class DetailBox extends Component {
 		}
 		else {
 			detailContent = {
-				title: 'Attend Free Session',
-				text: 'Complete the form below to attend the next session of '+this.props.course.title+' for free.',
+				title: 'Preview Free Session',
+				text: 'Complete the form below to preview the next session of '+this.props.course.title+' for free.',
 				path: '/api/subscribe'
 			}
 		}
