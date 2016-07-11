@@ -65,6 +65,13 @@ module.exports = {
 		};
 	},
 
+	postEdited: function (editedPost) {
+		return {
+			type: constants.POST_EDITED,
+			post: editedPost
+		};
+	},
+
 	projectsRecieved: function (projects) {
 		return {
 			type: constants.PROJECTS_RECIEVED,

@@ -22292,6 +22292,7 @@
 	
 		POSTS_RECIEVED: 'POSTS_RECIEVED',
 		POST_CREATED: 'POST_CREATED',
+		POST_EDITED: 'POST_EDITED',
 	
 		EVENTS_RECIEVED: 'EVENTS_RECIEVED',
 	
@@ -22407,11 +22408,22 @@
 				var postsMap = {};
 				for (var i = 0; i < c.length; i++) {
 					var post = c[i];
-					postsMap[post.id] = post;
+					postsMap[post.slug] = post; // key posts by slug
 				}
 	
 				newState['posts'] = postsMap;
 				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				return newState;
+	
+			case constants.POST_EDITED:
+				var post = action.post;
+				console.log('POST_EDITED: ' + JSON.stringify(post));
+				var newState = Object.assign({}, state);
+	
+				var postsMap = Object.assign({}, newState.posts);
+				postsMap[post.slug] = post; // key posts by slug
+				newState['posts'] = postsMap;
+	
 				return newState;
 	
 			default:
@@ -41447,6 +41459,13 @@
 			};
 		},
 	
+		postEdited: function postEdited(editedPost) {
+			return {
+				type: constants.POST_EDITED,
+				post: editedPost
+			};
+		},
+	
 		projectsRecieved: function projectsRecieved(projects) {
 			return {
 				type: constants.PROJECTS_RECIEVED,
@@ -47352,7 +47371,7 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'entry-image' },
-						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.post.image + '?crop=260', alt: 'FullStack 360' })
+						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.post.image + '?crop=260', alt: 'Velocity 360' })
 					),
 					_react2.default.createElement(
 						'div',
@@ -61485,21 +61504,21 @@
 		function PostPage(props, context) {
 			_classCallCheck(this, PostPage);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PostPage).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(PostPage).call(this, props, context));
 	
-			_this.state = {
-				showLoader: false
+			_this2.toggleEditing = _this2.toggleEditing.bind(_this2);
+			_this2.editPost = _this2.editPost.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				isEditing: false
 			};
-			return _this;
+			return _this2;
 		}
 	
 		_createClass(PostPage, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				if (this.props.post != null) return;
+				if (this.props.posts[this.props.slug] != null) return;
 	
 				var url = '/api/post?slug=' + this.props.slug;
 				_api2.default.handleGet(url, {}, function (err, response) {
@@ -61508,13 +61527,78 @@
 						return;
 					}
 	
-					console.log(JSON.stringify(response));
 					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(response.posts));
+				});
+			}
+		}, {
+			key: 'editPost',
+			value: function editPost(event) {
+				event.preventDefault();
+				var post = this.props.posts[this.props.slug];
+				if (post == null) return;
+	
+				var updatedPost = Object.assign({}, post);
+				updatedPost[event.target.id] = event.target.value;
+				_store2.default.currentStore().dispatch(_actions2.default.postEdited(updatedPost));
+			}
+		}, {
+			key: 'toggleEditing',
+			value: function toggleEditing(event) {
+				event.preventDefault();
+				if (this.state.isEditing == false) {
+					this.setState({ isEditing: true });
+					return;
+				}
+	
+				// commit changes
+				var post = this.props.posts[this.props.slug];
+				if (post == null) return;
+	
+				var url = '/api/post/' + post.id;
+				var _this = this;
+				_api2.default.handlePut(url, post, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved([response.post]));
+					_this.setState({ isEditing: false });
 				});
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+				var post = this.props.posts[this.props.slug];
+				var btnEditText = this.state.isEditing == true ? 'Done' : 'Edit';
+	
+				var title = null;
+				var content = null;
+				if (this.state.isEditing == true) {
+					title = _react2.default.createElement(
+						'div',
+						{ style: { padding: 10.5 } },
+						_react2.default.createElement('input', { style: { border: 'none', borderBottom: '1px solid #777', background: '#f5f5f5' }, type: 'text', id: 'title', onChange: this.editPost, placeholder: 'Title', value: post.title }),
+						_react2.default.createElement('br', null)
+					);
+	
+					content = _react2.default.createElement(
+						'div',
+						{ style: { background: '#fff', padding: 24 }, className: 'panel-body' },
+						_react2.default.createElement(
+							'textarea',
+							{ id: 'text', onChange: this.editPost, placeholder: 'Text', style: { padding: 0, width: '100%', border: '1px solid #ddd', background: '#f9f9f9' }, className: 'panel-body' },
+							post.text
+						)
+					);
+				} else {
+					title = _react2.default.createElement(
+						'h1',
+						null,
+						post.title
+					);
+					content = _react2.default.createElement('div', { style: { background: '#fff', padding: 24 }, dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(post.text) }, className: 'panel-body' });
+				}
 	
 				return _react2.default.createElement(
 					'div',
@@ -61536,12 +61620,14 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'heading-block center' },
+										title,
 										_react2.default.createElement(
-											'h1',
-											null,
-											this.props.post.title
+											'button',
+											{ onClick: this.toggleEditing, className: 'button button-border button-dark button-rounded noleftmargin' },
+											btnEditText
 										),
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.props.post.image + '?crop=260', alt: 'FullStack 360' })
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' })
 									),
 									_react2.default.createElement(
 										'div',
@@ -61560,7 +61646,7 @@
 														null,
 														_react2.default.createElement('i', { className: 'icon-calendar3' }),
 														' ',
-														_DateUtils2.default.formattedDate(this.props.post.timestamp)
+														_DateUtils2.default.formattedDate(post.timestamp)
 													),
 													_react2.default.createElement(
 														'li',
@@ -61570,7 +61656,7 @@
 															{ href: '#' },
 															_react2.default.createElement('i', { className: 'icon-user' }),
 															' ',
-															this.props.post.profile.name
+															post.profile.name
 														)
 													),
 													_react2.default.createElement(
@@ -61578,11 +61664,11 @@
 														null,
 														_react2.default.createElement('i', { className: 'icon-comments' }),
 														' ',
-														this.props.post.numReplies,
+														post.numReplies,
 														' comments'
 													)
 												),
-												_react2.default.createElement('div', { style: { background: '#fff', padding: 24 }, dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.post.text) }, className: 'panel-body' })
+												content
 											)
 										)
 									)
@@ -61599,11 +61685,10 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		var posts = state.postReducer.postsArray;
-	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			post: posts.length == 0 ? state.postReducer.emptyPost : posts[0],
+			posts: state.postReducer.posts,
+			//        post: state.postReducer.postsArray[0],
 			loaderOptions: state.staticReducer.loaderConfig
 		};
 	};

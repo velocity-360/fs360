@@ -1,9 +1,7 @@
 var constants = require('../constants/constants');
 
 var initialState = {
-	posts: {
-
-	},
+	posts: { },
 	postsArray: [],
 	emptyPost: {
 		text: '',
@@ -31,22 +29,33 @@ export default function(state = initialState, action){
 			var post = action.post
 			newState.posts[post.id] = post
 			newState.postsArray.unshift(post)
-			return newState;
+			return newState
 
 		case constants.POSTS_RECIEVED:
-			var newState = Object.assign({}, state);
+			var newState = Object.assign({}, state)
 
-			var c = action.posts;
-			newState['postsArray'] = c;
+			var c = action.posts
+			newState['postsArray'] = c
 			var postsMap = {}
 			for (var i=0; i<c.length; i++){
-				var post = c[i];
-				postsMap[post.id] = post;
+				var post = c[i]
+				postsMap[post.slug] = post // key posts by slug
 			}
 
-			newState['posts'] = postsMap;
+			newState['posts'] = postsMap
 //			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
-			return newState;
+			return newState
+
+		case constants.POST_EDITED:
+			var post = action.post
+			console.log('POST_EDITED: '+JSON.stringify(post))
+			var newState = Object.assign({}, state)
+			
+			var postsMap = Object.assign({}, newState.posts)
+			postsMap[post.slug] = post // key posts by slug
+			newState['posts'] = postsMap
+
+			return newState
 
 		default:
 			return state;

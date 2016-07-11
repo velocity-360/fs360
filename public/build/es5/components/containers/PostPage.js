@@ -37,21 +37,20 @@ var PostPage = (function (Component) {
 		_classCallCheck(this, PostPage);
 
 		_get(Object.getPrototypeOf(PostPage.prototype), "constructor", this).call(this, props, context);
+		this.toggleEditing = this.toggleEditing.bind(this);
+		this.editPost = this.editPost.bind(this);
 		this.state = {
-			showLoader: false };
+			showLoader: false,
+			isEditing: false
+		};
 	}
 
 	_inherits(PostPage, Component);
 
 	_prototypeProperties(PostPage, null, {
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
 		componentDidMount: {
 			value: function componentDidMount() {
-				if (this.props.post != null) {
+				if (this.props.posts[this.props.slug] != null) {
 					return;
 				}var url = "/api/post?slug=" + this.props.slug;
 				api.handleGet(url, {}, function (err, response) {
@@ -60,8 +59,47 @@ var PostPage = (function (Component) {
 						return;
 					}
 
-					console.log(JSON.stringify(response));
 					store.currentStore().dispatch(actions.postsRecieved(response.posts));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		editPost: {
+			value: function editPost(event) {
+				event.preventDefault();
+				var post = this.props.posts[this.props.slug];
+				if (post == null) {
+					return;
+				}var updatedPost = Object.assign({}, post);
+				updatedPost[event.target.id] = event.target.value;
+				store.currentStore().dispatch(actions.postEdited(updatedPost));
+			},
+			writable: true,
+			configurable: true
+		},
+		toggleEditing: {
+			value: function toggleEditing(event) {
+				event.preventDefault();
+				if (this.state.isEditing == false) {
+					this.setState({ isEditing: true });
+					return;
+				}
+
+				// commit changes
+				var post = this.props.posts[this.props.slug];
+				if (post == null) {
+					return;
+				}var url = "/api/post/" + post.id;
+				var _this = this;
+				api.handlePut(url, post, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					store.currentStore().dispatch(actions.postsRecieved([response.post]));
+					_this.setState({ isEditing: false });
 				});
 			},
 			writable: true,
@@ -69,6 +107,38 @@ var PostPage = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var post = this.props.posts[this.props.slug];
+				var btnEditText = this.state.isEditing == true ? "Done" : "Edit";
+
+				var title = null;
+				var content = null;
+				if (this.state.isEditing == true) {
+					title = React.createElement(
+						"div",
+						{ style: { padding: 10.5 } },
+						React.createElement("input", { style: { border: "none", borderBottom: "1px solid #777", background: "#f5f5f5" }, type: "text", id: "title", onChange: this.editPost, placeholder: "Title", value: post.title }),
+						React.createElement("br", null)
+					);
+
+					content = React.createElement(
+						"div",
+						{ style: { background: "#fff", padding: 24 }, className: "panel-body" },
+						React.createElement(
+							"textarea",
+							{ id: "text", onChange: this.editPost, placeholder: "Text", style: { padding: 0, width: "100%", border: "1px solid #ddd", background: "#f9f9f9" }, className: "panel-body" },
+							post.text
+						)
+					);
+				} else {
+					title = React.createElement(
+						"h1",
+						null,
+						post.title
+					);
+					content = React.createElement("div", { style: { background: "#fff", padding: 24 }, dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(post.text) }, className: "panel-body" });
+				}
+
+
 				return React.createElement(
 					"div",
 					{ style: { background: "#f5f5f5" } },
@@ -89,12 +159,14 @@ var PostPage = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "heading-block center" },
+										title,
 										React.createElement(
-											"h1",
-											null,
-											this.props.post.title
+											"button",
+											{ onClick: this.toggleEditing, className: "button button-border button-dark button-rounded noleftmargin" },
+											btnEditText
 										),
-										React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + this.props.post.image + "?crop=260", alt: "FullStack 360" })
+										React.createElement("br", null),
+										React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + post.image + "?crop=260", alt: "Velocity 360" })
 									),
 									React.createElement(
 										"div",
@@ -113,7 +185,7 @@ var PostPage = (function (Component) {
 														null,
 														React.createElement("i", { className: "icon-calendar3" }),
 														" ",
-														DateUtils.formattedDate(this.props.post.timestamp)
+														DateUtils.formattedDate(post.timestamp)
 													),
 													React.createElement(
 														"li",
@@ -123,7 +195,7 @@ var PostPage = (function (Component) {
 															{ href: "#" },
 															React.createElement("i", { className: "icon-user" }),
 															" ",
-															this.props.post.profile.name
+															post.profile.name
 														)
 													),
 													React.createElement(
@@ -131,11 +203,11 @@ var PostPage = (function (Component) {
 														null,
 														React.createElement("i", { className: "icon-comments" }),
 														" ",
-														this.props.post.numReplies,
+														post.numReplies,
 														" comments"
 													)
 												),
-												React.createElement("div", { style: { background: "#fff", padding: 24 }, dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(this.props.post.text) }, className: "panel-body" })
+												content
 											)
 										)
 									)
@@ -155,11 +227,10 @@ var PostPage = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	var posts = state.postReducer.postsArray;
-
 	return {
 		currentUser: state.profileReducer.currentUser,
-		post: posts.length == 0 ? state.postReducer.emptyPost : posts[0],
+		posts: state.postReducer.posts,
+		//        post: state.postReducer.postsArray[0],
 		loaderOptions: state.staticReducer.loaderConfig
 	};
 };

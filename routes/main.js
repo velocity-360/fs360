@@ -129,8 +129,16 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (page == 'course')
 			initialData.courseReducer.courseArray = [entity]
 
-		if (page == 'post')
+		if (page == 'post'){
 			initialData.postReducer.postsArray = [entity]
+			var posts = {}
+			for (var i=0; i<results.length; i++){
+				var post = results[i]
+				posts[post.slug] = post
+			}
+
+			initialData.postReducer.posts = posts
+		}
 
 		if (page == 'project')
 			initialData.projectReducer.projectsArray = [entity]

@@ -40,7 +40,7 @@ var Post = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.post.image + "?crop=260", alt: "FullStack 360" })
+						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.post.image + "?crop=260", alt: "Velocity 360" })
 					),
 					React.createElement(
 						"div",

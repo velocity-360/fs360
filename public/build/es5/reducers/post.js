@@ -42,11 +42,23 @@ module.exports = function (_x, action) {
 			var postsMap = {};
 			for (var i = 0; i < c.length; i++) {
 				var post = c[i];
-				postsMap[post.id] = post;
+				postsMap[post.slug] = post // key posts by slug
+				;
 			}
 
 			newState.posts = postsMap;
 			//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+			return newState;
+
+		case constants.POST_EDITED:
+			var post = action.post;
+			console.log("POST_EDITED: " + JSON.stringify(post));
+			var newState = Object.assign({}, state);
+
+			var postsMap = Object.assign({}, newState.posts);
+			postsMap[post.slug] = post; // key posts by slug
+			newState.posts = postsMap;
+
 			return newState;
 
 		default:

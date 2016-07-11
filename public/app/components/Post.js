@@ -8,13 +8,13 @@ class Post extends Component {
 	}
 
 	render(){
-        var timestamp = new Date(this.props.post.timestamp);
+        var timestamp = new Date(this.props.post.timestamp)
         var date = DateUtils.formattedDate(timestamp)
 
 		return (
 			<div className="entry clearfix">
 				<div className="entry-image">
-					<img style={{border:'1px solid #ddd', background:'#fff'}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+this.props.post.image+'?crop=260'} alt="FullStack 360" />
+					<img style={{border:'1px solid #ddd', background:'#fff'}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+this.props.post.image+'?crop=260'} alt="Velocity 360" />
 				</div>
 				<div className="entry-c">
 					<div className="entry-title">
@@ -39,7 +39,6 @@ class Post extends Component {
 				<hr style={{padding:12}} />
 
 			</div>
-
 		)
 
 	}

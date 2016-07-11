@@ -59,7 +59,14 @@ module.exports = {
 		return {
 			type: constants.POST_CREATED,
 			post: post
-		};
+		}
+	},
+
+	postEdited: function(editedPost){
+		return {
+			type: constants.POST_EDITED,
+			post: editedPost
+		}
 	},
 
 	projectsRecieved: function(projects){

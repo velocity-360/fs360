@@ -13,17 +13,16 @@ import TextUtils from '../../utils/TextUtils'
 class PostPage extends Component {
 	constructor(props, context){
 		super(props, context)
+		this.toggleEditing = this.toggleEditing.bind(this)
+		this.editPost = this.editPost.bind(this)
 		this.state = {
 			showLoader: false,
+			isEditing: false
 		}
 	}
 
-	componentWillMount(){
-
-	}
-
 	componentDidMount(){
-		if (this.props.post != null)
+		if (this.props.posts[this.props.slug] != null)
 			return
 		
 		var url = '/api/post?slug='+this.props.slug
@@ -33,13 +32,73 @@ class PostPage extends Component {
 				return
 			}
 
-			console.log(JSON.stringify(response));
 			store.currentStore().dispatch(actions.postsRecieved(response.posts))
 		})
+	}
 
+	editPost(event){
+		event.preventDefault()
+		var post = this.props.posts[this.props.slug]
+		if (post == null)
+			return
+
+		var updatedPost = Object.assign({}, post)
+		updatedPost[event.target.id] = event.target.value
+		store.currentStore().dispatch(actions.postEdited(updatedPost))
+	}
+
+	toggleEditing(event){
+		event.preventDefault()
+		if (this.state.isEditing == false){ 
+			this.setState({isEditing: true})
+			return
+		}
+
+		// commit changes
+		var post = this.props.posts[this.props.slug]
+		if (post == null)
+			return
+
+		var url = '/api/post/'+post.id
+		var _this = this
+		api.handlePut(url, post, function(err, response){
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			store.currentStore().dispatch(actions.postsRecieved([response.post]))
+			_this.setState({isEditing: false})
+		})
 	}
 
 	render(){
+		var post = this.props.posts[this.props.slug]
+		var btnEditText = (this.state.isEditing == true) ? 'Done' : 'Edit'
+
+		var title = null
+		var content = null
+		if (this.state.isEditing == true) {
+			title = (
+				<div style={{padding:10.5}}>
+					<input style={{border:'none', borderBottom:'1px solid #777', background:'#f5f5f5'}} type="text" id="title" onChange={this.editPost} placeholder="Title" value={post.title} />
+					<br />
+				</div>
+			)
+
+			content = (
+				<div style={{background:'#fff', padding: 24}} className="panel-body">
+					<textarea id="text" onChange={this.editPost} placeholder="Text" style={{padding:0, width:'100%', border:'1px solid #ddd', background:'#f9f9f9'}} className="panel-body">{post.text}</textarea>
+				</div>
+			)
+		}
+		else {
+			title = <h1>{post.title}</h1>
+			content = (
+				<div style={{background:'#fff', padding: 24}} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body"></div>
+			)
+		}
+
 
 		return (
 			<div style={{background:'#f5f5f5'}}>
@@ -52,8 +111,9 @@ class PostPage extends Component {
 						<div className="entry clearfix">
 							<div className="container clearfix">
 								<div className="heading-block center">
-									<h1>{this.props.post.title}</h1>
-									<img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+this.props.post.image+'?crop=260'} alt="FullStack 360" />
+									{title}
+									<button onClick={this.toggleEditing} className="button button-border button-dark button-rounded noleftmargin">{btnEditText}</button><br /> 
+									<img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
 								</div>
 
 								<div className="entry-c">
@@ -61,13 +121,13 @@ class PostPage extends Component {
 										<div className="panel panel-default" style={{background:'#f1f9f5'}}>
 
 											<ul className="entry-meta clearfix" style={{paddingLeft:24, paddingTop:10, paddingBottom:16, borderBottom:'1px solid #eee'}}>
-												<li><i className="icon-calendar3"></i> { DateUtils.formattedDate(this.props.post.timestamp) }</li>
-												<li><a href="#"><i className="icon-user"></i> {this.props.post.profile.name}</a></li>
-												<li><i className="icon-comments"></i> {this.props.post.numReplies} comments</li>
+												<li><i className="icon-calendar3"></i> { DateUtils.formattedDate(post.timestamp) }</li>
+												<li><a href="#"><i className="icon-user"></i> {post.profile.name}</a></li>
+												<li><i className="icon-comments"></i> {post.numReplies} comments</li>
 											</ul>
 
-											<div style={{background:'#fff', padding: 24}} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.post.text) }} className="panel-body">
-											</div>
+											{content}
+
 										</div>
 									</div>
 								</div>
@@ -87,11 +147,10 @@ class PostPage extends Component {
 }
 
 const stateToProps = function(state) {
-	var posts = state.postReducer.postsArray
-
     return {
         currentUser: state.profileReducer.currentUser,
-        post: (posts.length == 0) ? state.postReducer.emptyPost : posts[0],
+        posts: state.postReducer.posts,
+//        post: state.postReducer.postsArray[0],
         loaderOptions: state.staticReducer.loaderConfig
     }
 }
