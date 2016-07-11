@@ -269,7 +269,7 @@ var Course = (function (Component) {
 											)
 										),
 										units,
-										this.props.course.type == "live" ? React.createElement(
+										this.props.course.type != "online" ? React.createElement(
 											"div",
 											{ className: "entry clearfix" },
 											React.createElement(
@@ -288,10 +288,14 @@ var Course = (function (Component) {
 													React.createElement(
 														"div",
 														{ className: "panel-body", style: { padding: 36, paddingBottom: 0 } },
-														React.createElement(
+														this.props.course.type == "live" ? React.createElement(
 															"h2",
 															null,
 															"Register"
+														) : React.createElement(
+															"h2",
+															null,
+															"Details"
 														),
 														React.createElement("hr", null),
 														React.createElement(
@@ -313,10 +317,15 @@ var Course = (function (Component) {
 															this.props.course.premiumTuition,
 															React.createElement("br", null),
 															React.createElement("br", null),
-															React.createElement(
+															this.props.course.type == "live" ? React.createElement(
 																"a",
 																{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
 																"Submit Deposit",
+																React.createElement("i", { "class": "icon-circle-arrow-right" })
+															) : React.createElement(
+																"a",
+																{ href: "#application", className: "button button-xlarge tright" },
+																"Apply",
 																React.createElement("i", { "class": "icon-circle-arrow-right" })
 															)
 														),

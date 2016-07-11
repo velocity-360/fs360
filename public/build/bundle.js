@@ -62322,7 +62322,7 @@
 											)
 										),
 										units,
-										this.props.course.type == 'live' ? _react2.default.createElement(
+										this.props.course.type != 'online' ? _react2.default.createElement(
 											'div',
 											{ className: 'entry clearfix' },
 											_react2.default.createElement(
@@ -62341,10 +62341,14 @@
 													_react2.default.createElement(
 														'div',
 														{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
-														_react2.default.createElement(
+														this.props.course.type == 'live' ? _react2.default.createElement(
 															'h2',
 															null,
 															'Register'
+														) : _react2.default.createElement(
+															'h2',
+															null,
+															'Details'
 														),
 														_react2.default.createElement('hr', null),
 														_react2.default.createElement(
@@ -62366,10 +62370,15 @@
 															this.props.course.premiumTuition,
 															_react2.default.createElement('br', null),
 															_react2.default.createElement('br', null),
-															_react2.default.createElement(
+															this.props.course.type == 'live' ? _react2.default.createElement(
 																'a',
 																{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
 																'Submit Deposit',
+																_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+															) : _react2.default.createElement(
+																'a',
+																{ href: '#application', className: 'button button-xlarge tright' },
+																'Apply',
 																_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
 															)
 														),

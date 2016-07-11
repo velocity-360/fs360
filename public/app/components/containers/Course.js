@@ -192,7 +192,7 @@ class Course extends Component {
 									{ units }
 
 									{ 
-										(this.props.course.type == 'live') ? 
+										(this.props.course.type != 'online') ? 
 
 										<div className="entry clearfix">
 											<div className="entry-timeline">
@@ -202,7 +202,7 @@ class Course extends Component {
 											<div className="entry-image">
 												<div className="panel panel-default">
 													<div className="panel-body" style={{padding:36, paddingBottom:0}}>
-														<h2>Register</h2>
+														{ (this.props.course.type == 'live') ? <h2>Register</h2> : <h2>Details</h2> }
 														<hr />
 
 														<div className='col_half'>
@@ -212,7 +212,14 @@ class Course extends Component {
 															Regular Tuition: ${this.props.course.tuition}<br />
 															Premium Member Tuition: ${this.props.course.premiumTuition}<br />
 															<br />
-															<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+															{ 
+																(this.props.course.type == 'live') ? 
+																<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>
+																:
+																<a href="#application" className="button button-xlarge tright">Apply<i class="icon-circle-arrow-right"></i></a>
+															}
+
+															
 														</div>
 
 														<div className="col_half col_last">
