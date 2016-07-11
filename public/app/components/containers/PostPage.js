@@ -91,6 +91,8 @@ class PostPage extends Component {
 
 		var title = null
 		var content = null
+		var image = (post.image.length == 0) ? null : <img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
+
 		if (this.state.isEditing == true) {
 			title = (
 				<div style={{padding:10.5}}>
@@ -126,7 +128,7 @@ class PostPage extends Component {
 								<div className="heading-block center">
 									{title}
 									{btnEdit}
-									<img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
+									{image}
 								</div>
 
 								<div className="entry-c">

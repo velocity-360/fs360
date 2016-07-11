@@ -61602,6 +61602,8 @@
 	
 				var title = null;
 				var content = null;
+				var image = post.image.length == 0 ? null : _react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' });
+	
 				if (this.state.isEditing == true) {
 					title = _react2.default.createElement(
 						'div',
@@ -61650,7 +61652,7 @@
 										{ className: 'heading-block center' },
 										title,
 										btnEdit,
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' })
+										image
 									),
 									_react2.default.createElement(
 										'div',

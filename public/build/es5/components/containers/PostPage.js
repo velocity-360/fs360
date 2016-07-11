@@ -140,6 +140,8 @@ var PostPage = (function (Component) {
 
 				var title = null;
 				var content = null;
+				var image = post.image.length == 0 ? null : React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + post.image + "?crop=260", alt: "Velocity 360" });
+
 				if (this.state.isEditing == true) {
 					title = React.createElement(
 						"div",
@@ -189,7 +191,7 @@ var PostPage = (function (Component) {
 										{ className: "heading-block center" },
 										title,
 										btnEdit,
-										React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + post.image + "?crop=260", alt: "Velocity 360" })
+										image
 									),
 									React.createElement(
 										"div",
