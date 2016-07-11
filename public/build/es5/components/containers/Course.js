@@ -202,7 +202,28 @@ var Course = (function (Component) {
 				var bannerIndex = 0;
 				var btnRegister = null;
 
-				if (this.props.course.type == "online") bannerIndex = 1;else if (this.props.course.type == "immersive") bannerIndex = 2;else {
+				if (this.props.course.type == "online") bannerIndex = 1;else if (this.props.course.type == "immersive") {
+					bannerIndex = 2;
+					btnRegister = React.createElement(
+						"div",
+						null,
+						"Date: ",
+						this.props.course.dates,
+						React.createElement("br", null),
+						"Time: ",
+						this.props.course.schedule,
+						React.createElement("br", null),
+						"Deposit: $",
+						this.props.course.deposit,
+						React.createElement("br", null),
+						"Regular Tuition: $",
+						this.props.course.tuition,
+						React.createElement("br", null),
+						"Premium Member Tuition: $",
+						this.props.course.premiumTuition,
+						React.createElement("br", null)
+					);
+				} else {
 					btnRegister = React.createElement(
 						"div",
 						null,

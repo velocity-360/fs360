@@ -147,8 +147,18 @@ class Course extends Component {
 
 		if (this.props.course.type == 'online')
 			bannerIndex = 1
-		else if (this.props.course.type == 'immersive')
+		else if (this.props.course.type == 'immersive'){
 			bannerIndex = 2
+			btnRegister = (
+				<div>
+					Date: {this.props.course.dates}<br />
+					Time: {this.props.course.schedule}<br />
+					Deposit: ${this.props.course.deposit}<br />
+					Regular Tuition: ${this.props.course.tuition}<br />
+					Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+				</div>
+			)
+		}
 		else {
 			btnRegister = (
 				<div>
@@ -161,7 +171,6 @@ class Course extends Component {
 					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
 				</div>
 			)
-
 		}
 
 		var banner = this.props.banners[bannerIndex]

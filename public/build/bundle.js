@@ -62255,7 +62255,28 @@
 				var bannerIndex = 0;
 				var btnRegister = null;
 	
-				if (this.props.course.type == 'online') bannerIndex = 1;else if (this.props.course.type == 'immersive') bannerIndex = 2;else {
+				if (this.props.course.type == 'online') bannerIndex = 1;else if (this.props.course.type == 'immersive') {
+					bannerIndex = 2;
+					btnRegister = _react2.default.createElement(
+						'div',
+						null,
+						'Date: ',
+						this.props.course.dates,
+						_react2.default.createElement('br', null),
+						'Time: ',
+						this.props.course.schedule,
+						_react2.default.createElement('br', null),
+						'Deposit: $',
+						this.props.course.deposit,
+						_react2.default.createElement('br', null),
+						'Regular Tuition: $',
+						this.props.course.tuition,
+						_react2.default.createElement('br', null),
+						'Premium Member Tuition: $',
+						this.props.course.premiumTuition,
+						_react2.default.createElement('br', null)
+					);
+				} else {
 					btnRegister = _react2.default.createElement(
 						'div',
 						null,
