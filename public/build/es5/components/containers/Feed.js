@@ -55,7 +55,7 @@ var Feed = (function (Component) {
 				link: "",
 				text: "",
 				wistia: "",
-				image: ""
+				image: "y_I3PXcQ"
 			}
 		};
 	}

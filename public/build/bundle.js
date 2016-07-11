@@ -46725,7 +46725,7 @@
 					link: '',
 					text: '',
 					wistia: '',
-					image: ''
+					image: 'y_I3PXcQ'
 				}
 			};
 			return _this2;

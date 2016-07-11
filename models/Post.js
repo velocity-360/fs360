@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
 	text: {type:String, trim:true, default: ''},
 	title: {type:String, trim:true, default: ''},
-	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
+	image: {type:String, trim:true, default: 'y_I3PXcQ'}, // green logo
 	wistia: {type:String, trim:true, default: ''},
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''},

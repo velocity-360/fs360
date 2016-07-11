@@ -27,7 +27,7 @@ class Feed extends Component {
 				link: '',
 				text: '',
 				wistia: '',
-				image: ''
+				image: 'y_I3PXcQ'
 			}
 		}
 	}
