@@ -69,6 +69,9 @@ module.exports = {
 					if (list.indexOf(email) != -1)
 						continue
 					
+					if (email.length == 0)
+						continue
+					
 					list.push(email)
 				}
 
