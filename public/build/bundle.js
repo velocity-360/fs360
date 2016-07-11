@@ -63050,7 +63050,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 	
-				_api2.default.handleGet('/api/course', { subscribders: this.props.profile.id }, function (err, response) {
+				_api2.default.handleGet('/api/course', { subscribers: this.props.profile.id }, function (err, response) {
 					console.log('Fetch Courses: ' + JSON.stringify(response));
 					if (err) {
 						return;
