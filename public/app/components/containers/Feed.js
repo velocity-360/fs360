@@ -26,6 +26,7 @@ class Feed extends Component {
 				title: '',
 				link: '',
 				text: '',
+				wistia: '',
 				image: ''
 			}
 		}
@@ -121,6 +122,8 @@ class Feed extends Component {
 			return <Post key={post.id} post={post} />
 		})
 
+		var btnSubmit = (this.props.currentUser.id == null) ? null : <a onClick={this.openModal} id="bootcamp" href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Submit Post</a>
+
 		return (
 			<div style={{background:'#f5f5f5'}}>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
@@ -132,9 +135,7 @@ class Feed extends Component {
 						<div className="container clearfix">
 							<div className="heading-block center">
 								<h1>Blog</h1>
-								<a onClick={this.openModal} id="bootcamp" href="#" className="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
-									Submit Post
-								</a>
+								{btnSubmit}
 							</div>
 
 							<div className="postcontent nobottommargin clearfix">
@@ -144,7 +145,6 @@ class Feed extends Component {
 								</div>
 							</div>
 						</div>
-
 
 					</div>
 				</section>
@@ -157,6 +157,7 @@ class Feed extends Component {
 				        	<div className="col-md-6">
 					        	<input onChange={this.updatePost} value={this.state.post.title} id="title" className="form-control" type="text" placeholder="Title" /><br />
 					        	<input onChange={this.updatePost} value={this.state.post.link} id="link" className="form-control" type="text" placeholder="http://" /><br />
+					        	<input onChange={this.updatePost} value={this.state.post.wistia} id="wistia" className="form-control" type="text" placeholder="Video" /><br />
 					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
 					              <div style={{padding:24}}>
 					              	{
@@ -188,7 +189,6 @@ class Feed extends Component {
 }
 
 const stateToProps = function(state) {
-//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 
     return {
         currentUser: state.profileReducer.currentUser,

@@ -54,6 +54,7 @@ var Feed = (function (Component) {
 				title: "",
 				link: "",
 				text: "",
+				wistia: "",
 				image: ""
 			}
 		};
@@ -168,6 +169,12 @@ var Feed = (function (Component) {
 					return React.createElement(Post, { key: post.id, post: post });
 				});
 
+				var btnSubmit = this.props.currentUser.id == null ? null : React.createElement(
+					"a",
+					{ onClick: this.openModal, id: "bootcamp", href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
+					"Submit Post"
+				);
+
 				return React.createElement(
 					"div",
 					{ style: { background: "#f5f5f5" } },
@@ -190,11 +197,7 @@ var Feed = (function (Component) {
 										null,
 										"Blog"
 									),
-									React.createElement(
-										"a",
-										{ onClick: this.openModal, id: "bootcamp", href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin topmargin-sm" },
-										"Submit Post"
-									)
+									btnSubmit
 								),
 								React.createElement(
 									"div",
@@ -232,6 +235,8 @@ var Feed = (function (Component) {
 									React.createElement("input", { onChange: this.updatePost, value: this.state.post.title, id: "title", className: "form-control", type: "text", placeholder: "Title" }),
 									React.createElement("br", null),
 									React.createElement("input", { onChange: this.updatePost, value: this.state.post.link, id: "link", className: "form-control", type: "text", placeholder: "http://" }),
+									React.createElement("br", null),
+									React.createElement("input", { onChange: this.updatePost, value: this.state.post.wistia, id: "wistia", className: "form-control", type: "text", placeholder: "Video" }),
 									React.createElement("br", null),
 									React.createElement(
 										Dropzone,
@@ -274,8 +279,6 @@ var Feed = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-
 	return {
 		currentUser: state.profileReducer.currentUser,
 		posts: state.postReducer.postsArray,

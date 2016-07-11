@@ -46724,6 +46724,7 @@
 					title: '',
 					link: '',
 					text: '',
+					wistia: '',
 					image: ''
 				}
 			};
@@ -46825,6 +46826,12 @@
 					return _react2.default.createElement(_Post2.default, { key: post.id, post: post });
 				});
 	
+				var btnSubmit = this.props.currentUser.id == null ? null : _react2.default.createElement(
+					'a',
+					{ onClick: this.openModal, id: 'bootcamp', href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
+					'Submit Post'
+				);
+	
 				return _react2.default.createElement(
 					'div',
 					{ style: { background: '#f5f5f5' } },
@@ -46847,11 +46854,7 @@
 										null,
 										'Blog'
 									),
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.openModal, id: 'bootcamp', href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-										'Submit Post'
-									)
+									btnSubmit
 								),
 								_react2.default.createElement(
 									'div',
@@ -46889,6 +46892,8 @@
 									_react2.default.createElement('input', { onChange: this.updatePost, value: this.state.post.title, id: 'title', className: 'form-control', type: 'text', placeholder: 'Title' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement('input', { onChange: this.updatePost, value: this.state.post.link, id: 'link', className: 'form-control', type: 'text', placeholder: 'http://' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { onChange: this.updatePost, value: this.state.post.wistia, id: 'wistia', className: 'form-control', type: 'text', placeholder: 'Video' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
 										_reactDropzone2.default,
@@ -46928,7 +46933,6 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
