@@ -29,6 +29,8 @@ var Footer = _interopRequire(require("../../components/Footer"));
 
 var CourseSection = _interopRequire(require("../../components/CourseSection"));
 
+var CourseCard = _interopRequire(require("../../components/CourseCard"));
+
 var Application = _interopRequire(require("../../components/Application"));
 
 var DetailBox = _interopRequire(require("../../components/DetailBox"));

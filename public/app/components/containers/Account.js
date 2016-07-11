@@ -4,75 +4,34 @@ import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Dropzone from 'react-dropzone'
 import Loader from 'react-loader'
 import TextUtils from '../../utils/TextUtils'
-import store from '../../stores/store'
-import actions from '../../actions/actions'
+import CourseCard from '../../components/CourseCard'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
-import ProjectCard from '../../components/ProjectCard'
+import store from '../../stores/store'
+import actions from '../../actions/actions'
 import api from '../../api/api'
 
 
 class Account extends Component {
-
 	constructor(props, context){
 		super(props, context)
-		this.openModal = this.openModal.bind(this)
-		this.closeModal = this.closeModal.bind(this)
-		this.updateProject = this.updateProject.bind(this)
-		this.uploadImage = this.uploadImage.bind(this)
 		this.uploadProfileImage = this.uploadProfileImage.bind(this)
-		this.submitProject = this.submitProject.bind(this)
 		this.updateProfile = this.updateProfile.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.state = {
-			showLoader: false,
-			showModal: false,
-			selectedProject: null,
-			project: {
-				title: '',
-				description: '',
-				image: 'tHyPScSk', // blue logo
-				link: '',
-				tagString: ''
-			}
+			showLoader: false
 		}
 	}
 
-	openModal(event){
-		event.preventDefault()
-		this.setState({
-			showModal: true
-		})
-	}
+	componentDidMount(){
 
-	closeModal(){
-		this.setState({
-			showModal: false
-		})
-	}
-
-	uploadImage(files){
-		this.setState({
-			showLoader: true
-		})
-
-		var _this = this
-		api.upload(files[0], function(err, response){
-			_this.setState({
-				showLoader: false
-			})
-
+		api.handleGet('/api/course', {subscribders:this.props.profile.id}, function(err, response){
+			console.log('Fetch Courses: '+JSON.stringify(response))
 			if (err){
-				alert(response.message)
 				return
 			}
 
-			var project = Object.assign({}, _this.state.project)
-			project['image'] = response.id
-			_this.setState({
-				project: project
-			})
-
+			store.currentStore().dispatch(actions.coursesRecieved(response.courses))
 		})
 	}
 
@@ -96,46 +55,10 @@ class Account extends Component {
 			updatedUser['image'] = response.id
 			store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
 		})
-
-	}
-
-	updateProject(event){
-		event.preventDefault()
-		var proj = Object.assign({}, this.state.project)
-		proj[event.target.id] = event.target.value
-		this.setState({
-			project: proj
-		})
 	}
 	
 
-	submitProject(event){
-		event.preventDefault()
-		var proj = Object.assign({}, this.state.project)
-		proj['tags'] = TextUtils.stringToArray(this.state.project.tagString, ',')
-		proj['profile'] = {
-			id: this.props.profile.id,
-			image: this.props.profile.image,
-			name: this.props.profile.username
-		}
-
-		this.setState({
-			showLoader: true
-		})
-
-		api.handlePost('/api/project', proj, function(err, response){
-			if (err){
-				alert(response.message)
-				return
-			}
-
-//			console.log('PROJECT CREATED: '+JSON.stringify(response))
-			window.location.href = '/project/'+response.project.slug
-		})
-	}
-
 	updateCurrentUser(event){
-//		console.log('updateCurrentUser: '+event.target.id)
 		event.preventDefault()
 		var updatedUser = Object.assign({}, this.props.profile);
 		updatedUser[event.target.id] = event.target.value
@@ -162,16 +85,11 @@ class Account extends Component {
 	}
 
 	render(){
-
-		var projectList = null
-		if (this.props.projects != null){
-			projectList = this.props.projects.map(function(project, i){
-				return <ProjectCard key={project.id} project={project} />
-			})
-		}
+		var courseList = this.props.courses.map(function(course){
+			return <CourseCard key={course.id} course={course} />
+		})
 
 		return (
-
 			<div>
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Sidebar />
@@ -189,6 +107,13 @@ class Account extends Component {
 									</ul>
 
 									<div className="tab-container">
+										<div className="tab-content clearfix" id="tabs-4">
+											<div id="posts" className="events small-thumbs">
+												{courseList}
+											</div>
+										</div>
+
+
 										<div className="tab-content clearfix" id="tabs-2">
 
 											 <div id="contact-form-overlay" className="clearfix">
@@ -222,7 +147,7 @@ class Account extends Component {
 							                            <label for="template-contactform-message">Profile Image</label>
 											            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px solid #ddd'}} onDrop={this.uploadProfileImage}>
 											              <div style={{padding:24}}>
-											              	{ (this.state.project.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.props.profile.image+'?crop=120'} /> }
+											              	{ (this.props.profile.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.props.profile.image+'?crop=120'} /> }
 											              	Drop file here, or click to select image to upload.
 											              </div>
 											            </Dropzone>
@@ -252,18 +177,6 @@ class Account extends Component {
 										</div>
 
 
-										<div className="tab-content clearfix" id="tabs-4">
-											{ (this.props.profile.id == null) ? 
-												null : <a style={{marginRight:12, marginBottom:24}} onClick={this.openModal} href="#" className="button button-border button-dark button-rounded noleftmargin">Add Project</a>												
-											}
-
-											<div className="row">
-												{ projectList }
-											</div>
-										</div>
-
-
-
 									</div>
 								</div>
 							</div>
@@ -271,38 +184,6 @@ class Account extends Component {
 					</div>
 
 				</section>
-
-
-		        <Modal show={this.state.showModal} onHide={this.closeModal} bsSize="large" >
-			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
-			        	<h3>Project</h3>
-			        </Modal.Header>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24}}>
-			        	<div className="row">
-				        	<div className="col-md-6">
-					        	<input onChange={this.updateProject} id="title" value={this.state.project.title} className="form-control" type="text" placeholder="Title" /><br />
-					        	<input onChange={this.updateProject} id="link" value={this.state.project.link} className="form-control" type="text" placeholder="http://" /><br />
-					        	<input onChange={this.updateProject} id="tagString" value={this.state.project.tagString} className="form-control" type="text" placeholder="Python, iOS, JavaScript, etc." /><br />
-					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
-					              <div style={{padding:24}}>
-					              	{ (this.state.project.image.length == 0) ? null : <img style={{width:64, border:'1px solid #ddd', marginRight:6}} src={'https://media-service.appspot.com/site/images/'+this.state.project.image+'?crop=120'} /> }
-					              	Drop file here, or click to select image to upload.
-					              </div>
-					            </Dropzone>
-				        	</div>
-
-				        	<div className="col-md-6">
-					        	<textarea onChange={this.updateProject} id="description" value={this.state.project.description} className="form-control" placeholder="Text" style={{minHeight:260}}></textarea><br />
-				        	</div>
-			        	</div>
-
-			        </Modal.Body>
-
-			        <Modal.Footer style={{textAlign:'center'}}>
-						<a onClick={this.submitProject} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
-			        </Modal.Footer>
-		        </Modal>
-
 				<Footer />
 			</div>
 		)
@@ -311,25 +192,13 @@ class Account extends Component {
 }
 
 const stateToProps = function(state){
-	var currentUser = state.profileReducer.currentUser
-	var projectsArray = state.projectReducer.projectsArray
-
-	if (projectsArray==null && currentUser.id!=null){
-		api.handleGet('/api/project?profile.id='+currentUser.id, {}, function(err, response){
-			if (err){
-				return
-			}
-
-//			console.log('FETCH PROJECTS: '+JSON.stringify(response))
-			store.dispatch(actions.projectsRecieved(response.projects))
-		})
-	}
-
 	return {
-		profile: currentUser,
-		projects: projectsArray,
-        loaderOptions: state.staticReducer.loaderConfig
+		profile: state.profileReducer.currentUser,
+        loaderOptions: state.staticReducer.loaderConfig,
+        courses: state.courseReducer.courseArray
 	}
 }
 
 export default connect(stateToProps)(Account)
+
+

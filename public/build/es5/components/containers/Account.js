@@ -27,15 +27,15 @@ var Loader = _interopRequire(require("react-loader"));
 
 var TextUtils = _interopRequire(require("../../utils/TextUtils"));
 
-var store = _interopRequire(require("../../stores/store"));
-
-var actions = _interopRequire(require("../../actions/actions"));
+var CourseCard = _interopRequire(require("../../components/CourseCard"));
 
 var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var ProjectCard = _interopRequire(require("../../components/ProjectCard"));
+var store = _interopRequire(require("../../stores/store"));
+
+var actions = _interopRequire(require("../../actions/actions"));
 
 var api = _interopRequire(require("../../api/api"));
 
@@ -44,72 +44,26 @@ var Account = (function (Component) {
 		_classCallCheck(this, Account);
 
 		_get(Object.getPrototypeOf(Account.prototype), "constructor", this).call(this, props, context);
-		this.openModal = this.openModal.bind(this);
-		this.closeModal = this.closeModal.bind(this);
-		this.updateProject = this.updateProject.bind(this);
-		this.uploadImage = this.uploadImage.bind(this);
 		this.uploadProfileImage = this.uploadProfileImage.bind(this);
-		this.submitProject = this.submitProject.bind(this);
 		this.updateProfile = this.updateProfile.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
 		this.state = {
-			showLoader: false,
-			showModal: false,
-			selectedProject: null,
-			project: {
-				title: "",
-				description: "",
-				image: "tHyPScSk", // blue logo
-				link: "",
-				tagString: ""
-			}
+			showLoader: false
 		};
 	}
 
 	_inherits(Account, Component);
 
 	_prototypeProperties(Account, null, {
-		openModal: {
-			value: function openModal(event) {
-				event.preventDefault();
-				this.setState({
-					showModal: true
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		closeModal: {
-			value: function closeModal() {
-				this.setState({
-					showModal: false
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		uploadImage: {
-			value: function uploadImage(files) {
-				this.setState({
-					showLoader: true
-				});
-
-				var _this = this;
-				api.upload(files[0], function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
+		componentDidMount: {
+			value: function componentDidMount() {
+				api.handleGet("/api/course", { subscribders: this.props.profile.id }, function (err, response) {
+					console.log("Fetch Courses: " + JSON.stringify(response));
 					if (err) {
-						alert(response.message);
 						return;
 					}
 
-					var project = Object.assign({}, _this.state.project);
-					project.image = response.id;
-					_this.setState({
-						project: project
-					});
+					store.currentStore().dispatch(actions.coursesRecieved(response.courses));
 				});
 			},
 			writable: true,
@@ -140,49 +94,8 @@ var Account = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		updateProject: {
-			value: function updateProject(event) {
-				event.preventDefault();
-				var proj = Object.assign({}, this.state.project);
-				proj[event.target.id] = event.target.value;
-				this.setState({
-					project: proj
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		submitProject: {
-			value: function submitProject(event) {
-				event.preventDefault();
-				var proj = Object.assign({}, this.state.project);
-				proj.tags = TextUtils.stringToArray(this.state.project.tagString, ",");
-				proj.profile = {
-					id: this.props.profile.id,
-					image: this.props.profile.image,
-					name: this.props.profile.username
-				};
-
-				this.setState({
-					showLoader: true
-				});
-
-				api.handlePost("/api/project", proj, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-
-					//			console.log('PROJECT CREATED: '+JSON.stringify(response))
-					window.location.href = "/project/" + response.project.slug;
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		updateCurrentUser: {
 			value: function updateCurrentUser(event) {
-				//		console.log('updateCurrentUser: '+event.target.id)
 				event.preventDefault();
 				var updatedUser = Object.assign({}, this.props.profile);
 				updatedUser[event.target.id] = event.target.value;
@@ -214,12 +127,9 @@ var Account = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var projectList = null;
-				if (this.props.projects != null) {
-					projectList = this.props.projects.map(function (project, i) {
-						return React.createElement(ProjectCard, { key: project.id, project: project });
-					});
-				}
+				var courseList = this.props.courses.map(function (course) {
+					return React.createElement(CourseCard, { key: course.id, course: course });
+				});
 
 				return React.createElement(
 					"div",
@@ -266,6 +176,15 @@ var Account = (function (Component) {
 										React.createElement(
 											"div",
 											{ className: "tab-container" },
+											React.createElement(
+												"div",
+												{ className: "tab-content clearfix", id: "tabs-4" },
+												React.createElement(
+													"div",
+													{ id: "posts", className: "events small-thumbs" },
+													courseList
+												)
+											),
 											React.createElement(
 												"div",
 												{ className: "tab-content clearfix", id: "tabs-2" },
@@ -331,7 +250,7 @@ var Account = (function (Component) {
 																React.createElement(
 																	"div",
 																	{ style: { padding: 24 } },
-																	this.state.project.image.length == 0 ? null : React.createElement("img", { style: { width: 64, border: "1px solid #ddd", marginRight: 6 }, src: "https://media-service.appspot.com/site/images/" + this.props.profile.image + "?crop=120" }),
+																	this.props.profile.image.length == 0 ? null : React.createElement("img", { style: { width: 64, border: "1px solid #ddd", marginRight: 6 }, src: "https://media-service.appspot.com/site/images/" + this.props.profile.image + "?crop=120" }),
 																	"Drop file here, or click to select image to upload."
 																)
 															)
@@ -373,80 +292,10 @@ var Account = (function (Component) {
 														)
 													)
 												)
-											),
-											React.createElement(
-												"div",
-												{ className: "tab-content clearfix", id: "tabs-4" },
-												this.props.profile.id == null ? null : React.createElement(
-													"a",
-													{ style: { marginRight: 12, marginBottom: 24 }, onClick: this.openModal, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-													"Add Project"
-												),
-												React.createElement(
-													"div",
-													{ className: "row" },
-													projectList
-												)
 											)
 										)
 									)
 								)
-							)
-						)
-					),
-					React.createElement(
-						Modal,
-						{ show: this.state.showModal, onHide: this.closeModal, bsSize: "large" },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h3",
-								null,
-								"Project"
-							)
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24 } },
-							React.createElement(
-								"div",
-								{ className: "row" },
-								React.createElement(
-									"div",
-									{ className: "col-md-6" },
-									React.createElement("input", { onChange: this.updateProject, id: "title", value: this.state.project.title, className: "form-control", type: "text", placeholder: "Title" }),
-									React.createElement("br", null),
-									React.createElement("input", { onChange: this.updateProject, id: "link", value: this.state.project.link, className: "form-control", type: "text", placeholder: "http://" }),
-									React.createElement("br", null),
-									React.createElement("input", { onChange: this.updateProject, id: "tagString", value: this.state.project.tagString, className: "form-control", type: "text", placeholder: "Python, iOS, JavaScript, etc." }),
-									React.createElement("br", null),
-									React.createElement(
-										Dropzone,
-										{ style: { width: 100 + "%", marginBottom: 24, background: "#fff", border: "1px dotted #ddd" }, onDrop: this.uploadImage },
-										React.createElement(
-											"div",
-											{ style: { padding: 24 } },
-											this.state.project.image.length == 0 ? null : React.createElement("img", { style: { width: 64, border: "1px solid #ddd", marginRight: 6 }, src: "https://media-service.appspot.com/site/images/" + this.state.project.image + "?crop=120" }),
-											"Drop file here, or click to select image to upload."
-										)
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "col-md-6" },
-									React.createElement("textarea", { onChange: this.updateProject, id: "description", value: this.state.project.description, className: "form-control", placeholder: "Text", style: { minHeight: 260 } }),
-									React.createElement("br", null)
-								)
-							)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.submitProject, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"Submit"
 							)
 						)
 					),
@@ -462,24 +311,10 @@ var Account = (function (Component) {
 })(Component);
 
 var stateToProps = function (state) {
-	var currentUser = state.profileReducer.currentUser;
-	var projectsArray = state.projectReducer.projectsArray;
-
-	if (projectsArray == null && currentUser.id != null) {
-		api.handleGet("/api/project?profile.id=" + currentUser.id, {}, function (err, response) {
-			if (err) {
-				return;
-			}
-
-			//			console.log('FETCH PROJECTS: '+JSON.stringify(response))
-			store.dispatch(actions.projectsRecieved(response.projects));
-		});
-	}
-
 	return {
-		profile: currentUser,
-		projects: projectsArray,
-		loaderOptions: state.staticReducer.loaderConfig
+		profile: state.profileReducer.currentUser,
+		loaderOptions: state.staticReducer.loaderConfig,
+		courses: state.courseReducer.courseArray
 	};
 };
 

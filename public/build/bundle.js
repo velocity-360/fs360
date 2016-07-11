@@ -61947,6 +61947,10 @@
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
+	var _CourseCard = __webpack_require__(479);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
 	var _Application = __webpack_require__(596);
 	
 	var _Application2 = _interopRequireDefault(_Application);
@@ -62993,13 +62997,9 @@
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
-	var _store = __webpack_require__(194);
+	var _CourseCard = __webpack_require__(479);
 	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
 	var _Sidebar = __webpack_require__(478);
 	
@@ -63009,9 +63009,13 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _ProjectCard = __webpack_require__(476);
+	var _store = __webpack_require__(194);
 	
-	var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
 	
 	var _api = __webpack_require__(463);
 	
@@ -63033,67 +63037,26 @@
 	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Account).call(this, props, context));
 	
-			_this2.openModal = _this2.openModal.bind(_this2);
-			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.updateProject = _this2.updateProject.bind(_this2);
-			_this2.uploadImage = _this2.uploadImage.bind(_this2);
 			_this2.uploadProfileImage = _this2.uploadProfileImage.bind(_this2);
-			_this2.submitProject = _this2.submitProject.bind(_this2);
 			_this2.updateProfile = _this2.updateProfile.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
 			_this2.state = {
-				showLoader: false,
-				showModal: false,
-				selectedProject: null,
-				project: {
-					title: '',
-					description: '',
-					image: 'tHyPScSk', // blue logo
-					link: '',
-					tagString: ''
-				}
+				showLoader: false
 			};
 			return _this2;
 		}
 	
 		_createClass(Account, [{
-			key: 'openModal',
-			value: function openModal(event) {
-				event.preventDefault();
-				this.setState({
-					showModal: true
-				});
-			}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({
-					showModal: false
-				});
-			}
-		}, {
-			key: 'uploadImage',
-			value: function uploadImage(files) {
-				this.setState({
-					showLoader: true
-				});
+			key: 'componentDidMount',
+			value: function componentDidMount() {
 	
-				var _this = this;
-				_api2.default.upload(files[0], function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
+				_api2.default.handleGet('/api/course', { subscribders: this.props.profile.id }, function (err, response) {
+					console.log('Fetch Courses: ' + JSON.stringify(response));
 					if (err) {
-						alert(response.message);
 						return;
 					}
 	
-					var project = Object.assign({}, _this.state.project);
-					project['image'] = response.id;
-					_this.setState({
-						project: project
-					});
+					_store2.default.currentStore().dispatch(_actions2.default.coursesRecieved(response.courses));
 				});
 			}
 		}, {
@@ -63120,45 +63083,8 @@
 				});
 			}
 		}, {
-			key: 'updateProject',
-			value: function updateProject(event) {
-				event.preventDefault();
-				var proj = Object.assign({}, this.state.project);
-				proj[event.target.id] = event.target.value;
-				this.setState({
-					project: proj
-				});
-			}
-		}, {
-			key: 'submitProject',
-			value: function submitProject(event) {
-				event.preventDefault();
-				var proj = Object.assign({}, this.state.project);
-				proj['tags'] = _TextUtils2.default.stringToArray(this.state.project.tagString, ',');
-				proj['profile'] = {
-					id: this.props.profile.id,
-					image: this.props.profile.image,
-					name: this.props.profile.username
-				};
-	
-				this.setState({
-					showLoader: true
-				});
-	
-				_api2.default.handlePost('/api/project', proj, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					//			console.log('PROJECT CREATED: '+JSON.stringify(response))
-					window.location.href = '/project/' + response.project.slug;
-				});
-			}
-		}, {
 			key: 'updateCurrentUser',
 			value: function updateCurrentUser(event) {
-				//		console.log('updateCurrentUser: '+event.target.id)
 				event.preventDefault();
 				var updatedUser = Object.assign({}, this.props.profile);
 				updatedUser[event.target.id] = event.target.value;
@@ -63186,13 +63112,9 @@
 		}, {
 			key: 'render',
 			value: function render() {
-	
-				var projectList = null;
-				if (this.props.projects != null) {
-					projectList = this.props.projects.map(function (project, i) {
-						return _react2.default.createElement(_ProjectCard2.default, { key: project.id, project: project });
-					});
-				}
+				var courseList = this.props.courses.map(function (course) {
+					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -63239,6 +63161,15 @@
 										_react2.default.createElement(
 											'div',
 											{ className: 'tab-container' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'tab-content clearfix', id: 'tabs-4' },
+												_react2.default.createElement(
+													'div',
+													{ id: 'posts', className: 'events small-thumbs' },
+													courseList
+												)
+											),
 											_react2.default.createElement(
 												'div',
 												{ className: 'tab-content clearfix', id: 'tabs-2' },
@@ -63304,7 +63235,7 @@
 																_react2.default.createElement(
 																	'div',
 																	{ style: { padding: 24 } },
-																	this.state.project.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.props.profile.image + '?crop=120' }),
+																	this.props.profile.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.props.profile.image + '?crop=120' }),
 																	'Drop file here, or click to select image to upload.'
 																)
 															)
@@ -63346,80 +63277,10 @@
 														)
 													)
 												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'tab-content clearfix', id: 'tabs-4' },
-												this.props.profile.id == null ? null : _react2.default.createElement(
-													'a',
-													{ style: { marginRight: 12, marginBottom: 24 }, onClick: this.openModal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-													'Add Project'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'row' },
-													projectList
-												)
 											)
 										)
 									)
 								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal, bsSize: 'large' },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h3',
-								null,
-								'Project'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'row' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-6' },
-									_react2.default.createElement('input', { onChange: this.updateProject, id: 'title', value: this.state.project.title, className: 'form-control', type: 'text', placeholder: 'Title' }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('input', { onChange: this.updateProject, id: 'link', value: this.state.project.link, className: 'form-control', type: 'text', placeholder: 'http://' }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('input', { onChange: this.updateProject, id: 'tagString', value: this.state.project.tagString, className: 'form-control', type: 'text', placeholder: 'Python, iOS, JavaScript, etc.' }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										_reactDropzone2.default,
-										{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px dotted #ddd' }, onDrop: this.uploadImage },
-										_react2.default.createElement(
-											'div',
-											{ style: { padding: 24 } },
-											this.state.project.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.state.project.image + '?crop=120' }),
-											'Drop file here, or click to select image to upload.'
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-6' },
-									_react2.default.createElement('textarea', { onChange: this.updateProject, id: 'description', value: this.state.project.description, className: 'form-control', placeholder: 'Text', style: { minHeight: 260 } }),
-									_react2.default.createElement('br', null)
-								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.submitProject, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
 							)
 						)
 					),
@@ -63432,24 +63293,10 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		var currentUser = state.profileReducer.currentUser;
-		var projectsArray = state.projectReducer.projectsArray;
-	
-		if (projectsArray == null && currentUser.id != null) {
-			_api2.default.handleGet('/api/project?profile.id=' + currentUser.id, {}, function (err, response) {
-				if (err) {
-					return;
-				}
-	
-				//			console.log('FETCH PROJECTS: '+JSON.stringify(response))
-				_store2.default.dispatch(_actions2.default.projectsRecieved(response.projects));
-			});
-		}
-	
 		return {
-			profile: currentUser,
-			projects: projectsArray,
-			loaderOptions: state.staticReducer.loaderConfig
+			profile: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig,
+			courses: state.courseReducer.courseArray
 		};
 	};
 	

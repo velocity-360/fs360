@@ -59,12 +59,14 @@ router.get('/:page', function(req, res, next) {
 			var initialState = store.configureStore(initialData).getState()
 			var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-			return
+			return null
 		}
-
 		return controller.find(req.query)
 	})
 	.then(function(results){
+		if (results == null)
+			return
+
 		if (results){
 			if (page == 'courses')
 				initialData.courseReducer.courseArray = results
@@ -107,12 +109,15 @@ router.get('/:page/:slug', function(req, res, next) {
 			var initialState = store.configureStore(initialData).getState()
 			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-			return
+			return null
 		}
 
 		return controller.find({slug: slug})
 	})
 	.then(function(results){
+		if (results == null)
+			return
+		
 		if (results.length == 0){
 			var initialState = store.configureStore(initialData).getState()
 			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
