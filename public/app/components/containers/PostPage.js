@@ -88,7 +88,7 @@ class PostPage extends Component {
 
 			content = (
 				<div style={{background:'#fff', padding: 24}} className="panel-body">
-					<textarea id="text" onChange={this.editPost} placeholder="Text" style={{padding:0, width:'100%', border:'1px solid #ddd', background:'#f9f9f9'}} className="panel-body">{post.text}</textarea>
+					<textarea id="text" onChange={this.editPost} placeholder="Text" style={{padding:0, width:'100%', border:'1px solid #ddd', background:'#f9f9f9', minHeight:360}} className="panel-body">{post.text}</textarea>
 				</div>
 			)
 		}
