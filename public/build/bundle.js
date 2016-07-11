@@ -61607,6 +61607,11 @@
 				var title = null;
 				var content = null;
 				var image = post.image.length == 0 ? null : _react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' });
+				var video = post.wistia.length == 0 ? null : _react2.default.createElement(
+					'div',
+					{ className: 'wistia_embed wistia_async_' + post.wistia + ' videoFoam=true', style: { height: 100, width: 178, marginTop: 12 } },
+					' '
+				);
 	
 				if (this.state.isEditing == true) {
 					title = _react2.default.createElement(
@@ -61631,7 +61636,16 @@
 						null,
 						post.title
 					);
-					content = _react2.default.createElement('div', { style: { background: '#fff', padding: 24 }, dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(post.text) }, className: 'panel-body' });
+					content = _react2.default.createElement(
+						'div',
+						{ style: { background: '#fff', padding: 24 } },
+						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(post.text) }, className: 'panel-body' }),
+						_react2.default.createElement(
+							'div',
+							{ style: { width: '50%', minWidth: 240 } },
+							video
+						)
+					);
 				}
 	
 				return _react2.default.createElement(

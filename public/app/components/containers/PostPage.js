@@ -92,6 +92,7 @@ class PostPage extends Component {
 		var title = null
 		var content = null
 		var image = (post.image.length == 0) ? null : <img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
+		var video = (post.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:100, width:178, marginTop:12}}>&nbsp;</div>
 
 		if (this.state.isEditing == true) {
 			title = (
@@ -110,7 +111,10 @@ class PostPage extends Component {
 		else {
 			title = <h1>{post.title}</h1>
 			content = (
-				<div style={{background:'#fff', padding: 24}} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body"></div>
+				<div style={{background:'#fff', padding: 24}}>
+					<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body"></div>
+					<div style={{width:'50%', minWidth:240}}>{video}</div>
+				</div>
 			)
 		}
 
