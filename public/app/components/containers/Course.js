@@ -150,25 +150,31 @@ class Course extends Component {
 		else if (this.props.course.type == 'immersive'){
 			bannerIndex = 2
 			btnRegister = (
-				<div>
-					Date: {this.props.course.dates}<br />
-					Time: {this.props.course.schedule}<br />
-					Deposit: ${this.props.course.deposit}<br />
-					Regular Tuition: ${this.props.course.tuition}<br />
-					Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+				<div style={{background:'#fff', border:'1px solid #ddd'}}>
+					<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Details</div>
+					<div style={{padding:12}}>
+						Date: {this.props.course.dates}<br />
+						Time: {this.props.course.schedule}<br />
+						Deposit: ${this.props.course.deposit}<br />
+						Regular Tuition: ${this.props.course.tuition}<br />
+						Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+					</div>
 				</div>
 			)
 		}
 		else {
 			btnRegister = (
-				<div>
-					Date: {this.props.course.dates}<br />
-					Time: {this.props.course.schedule}<br />
-					Deposit: ${this.props.course.deposit}<br />
-					Regular Tuition: ${this.props.course.tuition}<br />
-					Premium Member Tuition: ${this.props.course.premiumTuition}<br />
-					<br />
-					<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+				<div style={{background:'#fff', border:'1px solid #ddd'}}>
+					<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">Details</div>
+					<div style={{padding:12}}>
+						Date: {this.props.course.dates}<br />
+						Time: {this.props.course.schedule}<br />
+						Deposit: ${this.props.course.deposit}<br />
+						Regular Tuition: ${this.props.course.tuition}<br />
+						Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+						<br />
+						<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>				
+					</div>
 				</div>
 			)
 		}

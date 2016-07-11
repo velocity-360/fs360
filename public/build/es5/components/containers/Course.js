@@ -206,48 +206,66 @@ var Course = (function (Component) {
 					bannerIndex = 2;
 					btnRegister = React.createElement(
 						"div",
-						null,
-						"Date: ",
-						this.props.course.dates,
-						React.createElement("br", null),
-						"Time: ",
-						this.props.course.schedule,
-						React.createElement("br", null),
-						"Deposit: $",
-						this.props.course.deposit,
-						React.createElement("br", null),
-						"Regular Tuition: $",
-						this.props.course.tuition,
-						React.createElement("br", null),
-						"Premium Member Tuition: $",
-						this.props.course.premiumTuition,
-						React.createElement("br", null)
+						{ style: { background: "#fff", border: "1px solid #ddd" } },
+						React.createElement(
+							"div",
+							{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
+							"Details"
+						),
+						React.createElement(
+							"div",
+							{ style: { padding: 12 } },
+							"Date: ",
+							this.props.course.dates,
+							React.createElement("br", null),
+							"Time: ",
+							this.props.course.schedule,
+							React.createElement("br", null),
+							"Deposit: $",
+							this.props.course.deposit,
+							React.createElement("br", null),
+							"Regular Tuition: $",
+							this.props.course.tuition,
+							React.createElement("br", null),
+							"Premium Member Tuition: $",
+							this.props.course.premiumTuition,
+							React.createElement("br", null)
+						)
 					);
 				} else {
 					btnRegister = React.createElement(
 						"div",
-						null,
-						"Date: ",
-						this.props.course.dates,
-						React.createElement("br", null),
-						"Time: ",
-						this.props.course.schedule,
-						React.createElement("br", null),
-						"Deposit: $",
-						this.props.course.deposit,
-						React.createElement("br", null),
-						"Regular Tuition: $",
-						this.props.course.tuition,
-						React.createElement("br", null),
-						"Premium Member Tuition: $",
-						this.props.course.premiumTuition,
-						React.createElement("br", null),
-						React.createElement("br", null),
+						{ style: { background: "#fff", border: "1px solid #ddd" } },
 						React.createElement(
-							"a",
-							{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-							"Submit Deposit",
-							React.createElement("i", { "class": "icon-circle-arrow-right" })
+							"div",
+							{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
+							"Details"
+						),
+						React.createElement(
+							"div",
+							{ style: { padding: 12 } },
+							"Date: ",
+							this.props.course.dates,
+							React.createElement("br", null),
+							"Time: ",
+							this.props.course.schedule,
+							React.createElement("br", null),
+							"Deposit: $",
+							this.props.course.deposit,
+							React.createElement("br", null),
+							"Regular Tuition: $",
+							this.props.course.tuition,
+							React.createElement("br", null),
+							"Premium Member Tuition: $",
+							this.props.course.premiumTuition,
+							React.createElement("br", null),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+								"Submit Deposit",
+								React.createElement("i", { "class": "icon-circle-arrow-right" })
+							)
 						)
 					);
 				}
