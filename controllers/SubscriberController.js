@@ -66,12 +66,15 @@ module.exports = {
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
 					var email = subscriber.email.toLowerCase()
-					if (list.indexOf(email) != -1)
+					if (list.indexOf(email) != -1) // already there, duplicate
 						continue
 					
-					if (email.length == 0)
+					if (email.length == 0) // empty string
 						continue
-					
+
+					if (email.indexOf('@') == -1) // invalid email
+						continue
+
 					list.push(email)
 				}
 
