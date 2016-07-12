@@ -37,7 +37,7 @@ class Landing extends Component {
                             <li>{course.dates}</li>
                             <li>{course.schedule}</li>
                         </ul>
-						<a href="/course/mvp-bootcamp" className="button button-rounded button-reveal button-large button-border tright">
+						<a href={'/course/'+course.slug} className="button button-rounded button-reveal button-large button-border tright">
 							<i className="icon-signal"></i>
 							<span>Apply</span>
 						</a>

@@ -22880,7 +22880,7 @@
 							),
 							_react2.default.createElement(
 								'a',
-								{ href: '/course/mvp-bootcamp', className: 'button button-rounded button-reveal button-large button-border tright' },
+								{ href: '/course/' + course.slug, className: 'button button-rounded button-reveal button-large button-border tright' },
 								_react2.default.createElement('i', { className: 'icon-signal' }),
 								_react2.default.createElement(
 									'span',

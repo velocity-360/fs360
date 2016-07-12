@@ -87,7 +87,7 @@ var Landing = (function (Component) {
 							),
 							React.createElement(
 								"a",
-								{ href: "/course/mvp-bootcamp", className: "button button-rounded button-reveal button-large button-border tright" },
+								{ href: "/course/" + course.slug, className: "button button-rounded button-reveal button-large button-border tright" },
 								React.createElement("i", { className: "icon-signal" }),
 								React.createElement(
 									"span",
