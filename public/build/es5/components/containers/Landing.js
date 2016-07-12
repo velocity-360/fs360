@@ -51,7 +51,7 @@ var Landing = (function (Component) {
 					var cls = i == 0 ? "col_half panel panel-default" : "col_half panel panel-default col_last";
 					return React.createElement(
 						"div",
-						{ className: cls },
+						{ key: course.id, className: cls },
 						React.createElement(
 							"div",
 							{ className: "panel-heading" },

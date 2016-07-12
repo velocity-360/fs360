@@ -22844,7 +22844,7 @@
 					var cls = i == 0 ? 'col_half panel panel-default' : 'col_half panel panel-default col_last';
 					return _react2.default.createElement(
 						'div',
-						{ className: cls },
+						{ key: course.id, className: cls },
 						_react2.default.createElement(
 							'div',
 							{ className: 'panel-heading' },

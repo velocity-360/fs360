@@ -24,7 +24,7 @@ class Landing extends Component {
 		var courses = this.props.courses.map(function(course, i){
 			var cls = (i==0) ? 'col_half panel panel-default' : 'col_half panel panel-default col_last'
 			return (
-                <div className={cls}>
+                <div key={course.id} className={cls}>
                     <div className="panel-heading">
                         <h2 className="panel-title">
                         	<a style={{color:'#1ABC9C'}} href="#">{course.title}</a>
