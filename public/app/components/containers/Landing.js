@@ -21,6 +21,31 @@ class Landing extends Component {
 	}
 
 	render(){
+		var courses = this.props.courses.map(function(course, i){
+			var cls = (i==0) ? 'col_half panel panel-default' : 'col_half panel panel-default col_last'
+			return (
+                <div className={cls}>
+                    <div className="panel-heading">
+                        <h2 className="panel-title">
+                        	<a style={{color:'#1ABC9C'}} href="#">{course.title}</a>
+                        </h2>
+                    </div>
+                    <div className="panel-body" style={{background:'#FFFDFD'}}>
+                    	{course.description}
+                        <br /><br />
+                        <ul style={{listStyle: 'none', fontWeight:'600'}}>
+                            <li>{course.dates}</li>
+                            <li>{course.schedule}</li>
+                        </ul>
+						<a href="/course/mvp-bootcamp" className="button button-rounded button-reveal button-large button-border tright">
+							<i className="icon-signal"></i>
+							<span>Apply</span>
+						</a>
+                    </div>
+                </div>
+			)
+
+		})
 
 		return (
 			<div>
@@ -62,57 +87,8 @@ class Landing extends Component {
 			                    </div>
 								The Velocity Bootcamp Program is divided into two parts.
 								<br /><br />
-		                        <div className="col_half panel panel-default">
-		                            <div className="panel-heading">
-		                                <h2 className="panel-title">
-		                                	<a style={{color:'#1ABC9C'}} href="#">6-Week Fundamentals Bootcamp</a>
-		                                	</h2>
-		                            </div>
-		                            <div className="panel-body" style={{background:'#FEFEFA'}}>
-										The Fundamentals Bootcamp covers backend and frontend development using the 
-										most up-to-date technologies. Using Node JS, Mongo, Express and React 
-										(with ES6), we create a fully functional website with user registration, 
-										image uploading, email notification functionality. We also touch on React 
-										Native which leverages the powerful library to build native iOS apps in 
-										JavaScript.			                            
-			                            <br /><br />
-			                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
-				                            <li>Jul 11th - Aug 19th</li>
-				                            <li>Mon - Fri</li>
-				                            <li>9am - 5pm</li>
-			                            </ul>
-										<a href="/course/fundamentals-bootcamp" className="button button-rounded button-reveal button-large button-border tright">
-											<i className="icon-signal"></i>
-											<span>Apply</span>
-										</a>				                            
-		                            </div>
-		                        </div>
 
-		                        <div className="col_half panel panel-default col_last">
-		                            <div className="panel-heading">
-		                                <h2 className="panel-title">
-		                                	<a style={{color:'#1ABC9C'}} href="#">6-Week MVP Bootcamp</a>
-		                                </h2>
-		                            </div>
-		                            <div className="panel-body" style={{background:'#FFFDFD'}}>
-		                            	The MVP Bootcamp builds real projects with local startups. All 
-		                            	projects are carefully vetted by our staff for feasibility, originality of idea, and 
-		                            	strength founding team. The startups are from incubators, accelerators and nearby 
-		                            	universities. By the end of the bootcamp, all students will have a professional 
-		                            	project on their resumes and may even continue with the startup beyond the course.
-			                            <br /><br />
-			                            <ul style={{listStyle: 'none', fontWeight:'600'}}>
-				                            <li>Aug 22nd - Sep 30th</li>
-				                            <li>Mon - Fri</li>
-				                            <li>9am - 5pm</li>
-			                            </ul>
-										<a href="/course/mvp-bootcamp" className="button button-rounded button-reveal button-large button-border tright">
-											<i className="icon-signal"></i>
-											<span>Apply</span>
-										</a>				                            
-
-		                            </div>
-		                        </div>
+								{courses}
 
 		                        <div className="clearfix"></div>
 								Each section is a stand-alone course meaning students can enroll in one and not the other. 
@@ -248,7 +224,8 @@ class Landing extends Component {
 
 const stateToProps = function(state) {
     return {
-        currentUser: state.profileReducer.currentUser
+        currentUser: state.profileReducer.currentUser,
+        courses: state.courseReducer.courseArray
     }
 }
 

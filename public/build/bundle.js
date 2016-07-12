@@ -22840,6 +22840,57 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var courses = this.props.courses.map(function (course, i) {
+					var cls = i == 0 ? 'col_half panel panel-default' : 'col_half panel panel-default col_last';
+					return _react2.default.createElement(
+						'div',
+						{ className: cls },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-heading' },
+							_react2.default.createElement(
+								'h2',
+								{ className: 'panel-title' },
+								_react2.default.createElement(
+									'a',
+									{ style: { color: '#1ABC9C' }, href: '#' },
+									course.title
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: { background: '#FFFDFD' } },
+							course.description,
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'ul',
+								{ style: { listStyle: 'none', fontWeight: '600' } },
+								_react2.default.createElement(
+									'li',
+									null,
+									course.dates
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									course.schedule
+								)
+							),
+							_react2.default.createElement(
+								'a',
+								{ href: '/course/mvp-bootcamp', className: 'button button-rounded button-reveal button-large button-border tright' },
+								_react2.default.createElement('i', { className: 'icon-signal' }),
+								_react2.default.createElement(
+									'span',
+									null,
+									'Apply'
+								)
+							)
+						)
+					);
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -22908,112 +22959,7 @@
 									'The Velocity Bootcamp Program is divided into two parts.',
 									_react2.default.createElement('br', null),
 									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_half panel panel-default' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-heading' },
-											_react2.default.createElement(
-												'h2',
-												{ className: 'panel-title' },
-												_react2.default.createElement(
-													'a',
-													{ style: { color: '#1ABC9C' }, href: '#' },
-													'6-Week Fundamentals Bootcamp'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body', style: { background: '#FEFEFA' } },
-											'The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement(
-												'ul',
-												{ style: { listStyle: 'none', fontWeight: '600' } },
-												_react2.default.createElement(
-													'li',
-													null,
-													'Jul 11th - Aug 19th'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													'Mon - Fri'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													'9am - 5pm'
-												)
-											),
-											_react2.default.createElement(
-												'a',
-												{ href: '/course/fundamentals-bootcamp', className: 'button button-rounded button-reveal button-large button-border tright' },
-												_react2.default.createElement('i', { className: 'icon-signal' }),
-												_react2.default.createElement(
-													'span',
-													null,
-													'Apply'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_half panel panel-default col_last' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-heading' },
-											_react2.default.createElement(
-												'h2',
-												{ className: 'panel-title' },
-												_react2.default.createElement(
-													'a',
-													{ style: { color: '#1ABC9C' }, href: '#' },
-													'6-Week MVP Bootcamp'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body', style: { background: '#FFFDFD' } },
-											'The MVP Bootcamp builds real projects with local startups. All projects are carefully vetted by our staff for feasibility, originality of idea, and strength founding team. The startups are from incubators, accelerators and nearby universities. By the end of the bootcamp, all students will have a professional project on their resumes and may even continue with the startup beyond the course.',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement(
-												'ul',
-												{ style: { listStyle: 'none', fontWeight: '600' } },
-												_react2.default.createElement(
-													'li',
-													null,
-													'Aug 22nd - Sep 30th'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													'Mon - Fri'
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													'9am - 5pm'
-												)
-											),
-											_react2.default.createElement(
-												'a',
-												{ href: '/course/mvp-bootcamp', className: 'button button-rounded button-reveal button-large button-border tright' },
-												_react2.default.createElement('i', { className: 'icon-signal' }),
-												_react2.default.createElement(
-													'span',
-													null,
-													'Apply'
-												)
-											)
-										)
-									),
+									courses,
 									_react2.default.createElement('div', { className: 'clearfix' }),
 									'Each section is a stand-alone course meaning students can enroll in one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500.',
 									_react2.default.createElement('br', null),
@@ -23270,7 +23216,8 @@
 	
 	var stateToProps = function stateToProps(state) {
 		return {
-			currentUser: state.profileReducer.currentUser
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray
 		};
 	};
 	

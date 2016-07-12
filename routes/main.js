@@ -34,6 +34,13 @@ router.get('/', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
+		// var initialState = store.configureStore(initialData).getState()
+		// var element = React.createElement(ServerApp, {page:'home', initial:initialState})
+		// res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+		return courseController.find({type:'immersive'})
+	})
+	.then(function(courses){
+		initialData.courseReducer.courseArray = courses
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:'home', initial:initialState})
 		res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
@@ -61,6 +68,7 @@ router.get('/:page', function(req, res, next) {
 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 			return null
 		}
+		
 		return controller.find(req.query)
 	})
 	.then(function(results){

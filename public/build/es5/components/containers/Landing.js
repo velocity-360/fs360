@@ -47,6 +47,58 @@ var Landing = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var courses = this.props.courses.map(function (course, i) {
+					var cls = i == 0 ? "col_half panel panel-default" : "col_half panel panel-default col_last";
+					return React.createElement(
+						"div",
+						{ className: cls },
+						React.createElement(
+							"div",
+							{ className: "panel-heading" },
+							React.createElement(
+								"h2",
+								{ className: "panel-title" },
+								React.createElement(
+									"a",
+									{ style: { color: "#1ABC9C" }, href: "#" },
+									course.title
+								)
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "panel-body", style: { background: "#FFFDFD" } },
+							course.description,
+							React.createElement("br", null),
+							React.createElement("br", null),
+							React.createElement(
+								"ul",
+								{ style: { listStyle: "none", fontWeight: "600" } },
+								React.createElement(
+									"li",
+									null,
+									course.dates
+								),
+								React.createElement(
+									"li",
+									null,
+									course.schedule
+								)
+							),
+							React.createElement(
+								"a",
+								{ href: "/course/mvp-bootcamp", className: "button button-rounded button-reveal button-large button-border tright" },
+								React.createElement("i", { className: "icon-signal" }),
+								React.createElement(
+									"span",
+									null,
+									"Apply"
+								)
+							)
+						)
+					);
+				});
+
 				return React.createElement(
 					"div",
 					null,
@@ -114,112 +166,7 @@ var Landing = (function (Component) {
 									"The Velocity Bootcamp Program is divided into two parts.",
 									React.createElement("br", null),
 									React.createElement("br", null),
-									React.createElement(
-										"div",
-										{ className: "col_half panel panel-default" },
-										React.createElement(
-											"div",
-											{ className: "panel-heading" },
-											React.createElement(
-												"h2",
-												{ className: "panel-title" },
-												React.createElement(
-													"a",
-													{ style: { color: "#1ABC9C" }, href: "#" },
-													"6-Week Fundamentals Bootcamp"
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "panel-body", style: { background: "#FEFEFA" } },
-											"The Fundamentals Bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create a fully functional website with user registration, image uploading, email notification functionality. We also touch on React Native which leverages the powerful library to build native iOS apps in JavaScript.",
-											React.createElement("br", null),
-											React.createElement("br", null),
-											React.createElement(
-												"ul",
-												{ style: { listStyle: "none", fontWeight: "600" } },
-												React.createElement(
-													"li",
-													null,
-													"Jul 11th - Aug 19th"
-												),
-												React.createElement(
-													"li",
-													null,
-													"Mon - Fri"
-												),
-												React.createElement(
-													"li",
-													null,
-													"9am - 5pm"
-												)
-											),
-											React.createElement(
-												"a",
-												{ href: "/course/fundamentals-bootcamp", className: "button button-rounded button-reveal button-large button-border tright" },
-												React.createElement("i", { className: "icon-signal" }),
-												React.createElement(
-													"span",
-													null,
-													"Apply"
-												)
-											)
-										)
-									),
-									React.createElement(
-										"div",
-										{ className: "col_half panel panel-default col_last" },
-										React.createElement(
-											"div",
-											{ className: "panel-heading" },
-											React.createElement(
-												"h2",
-												{ className: "panel-title" },
-												React.createElement(
-													"a",
-													{ style: { color: "#1ABC9C" }, href: "#" },
-													"6-Week MVP Bootcamp"
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "panel-body", style: { background: "#FFFDFD" } },
-											"The MVP Bootcamp builds real projects with local startups. All projects are carefully vetted by our staff for feasibility, originality of idea, and strength founding team. The startups are from incubators, accelerators and nearby universities. By the end of the bootcamp, all students will have a professional project on their resumes and may even continue with the startup beyond the course.",
-											React.createElement("br", null),
-											React.createElement("br", null),
-											React.createElement(
-												"ul",
-												{ style: { listStyle: "none", fontWeight: "600" } },
-												React.createElement(
-													"li",
-													null,
-													"Aug 22nd - Sep 30th"
-												),
-												React.createElement(
-													"li",
-													null,
-													"Mon - Fri"
-												),
-												React.createElement(
-													"li",
-													null,
-													"9am - 5pm"
-												)
-											),
-											React.createElement(
-												"a",
-												{ href: "/course/mvp-bootcamp", className: "button button-rounded button-reveal button-large button-border tright" },
-												React.createElement("i", { className: "icon-signal" }),
-												React.createElement(
-													"span",
-													null,
-													"Apply"
-												)
-											)
-										)
-									),
+									courses,
 									React.createElement("div", { className: "clearfix" }),
 									"Each section is a stand-alone course meaning students can enroll in one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500.",
 									React.createElement("br", null),
@@ -479,7 +426,8 @@ var Landing = (function (Component) {
 
 var stateToProps = function (state) {
 	return {
-		currentUser: state.profileReducer.currentUser
+		currentUser: state.profileReducer.currentUser,
+		courses: state.courseReducer.courseArray
 	};
 };
 
