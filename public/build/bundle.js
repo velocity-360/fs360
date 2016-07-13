@@ -46754,6 +46754,14 @@
 				var _this = this;
 				var post = Object.assign({}, this.state.post);
 	
+				if (this.props.currentUser.id != null) {
+					post['profile'] = {
+						id: this.props.currentUser.id,
+						image: this.props.currentUser.image,
+						name: this.props.currentUser.username
+					};
+				}
+	
 				_api2.default.handlePost('/api/post', post, function (err, response) {
 					if (err) {
 						alert(response.message);
