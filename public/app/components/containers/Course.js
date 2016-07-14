@@ -214,7 +214,15 @@ class Course extends Component {
 															<br />
 															{ 
 																(this.props.course.type == 'live') ? 
-																<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Submit Deposit<i class="icon-circle-arrow-right"></i></a>
+																(
+																	<div className="col_full panel panel-default">
+																		<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
+																		<div className="panel-body" style={{textAlign:'left'}}>
+																			<a href={this.props.course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
+																			<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
+																		</div>
+																	</div>
+																)
 																:
 																<a href="#application" className="button button-xlarge tright">Apply<i class="icon-circle-arrow-right"></i></a>
 															}
@@ -223,7 +231,7 @@ class Course extends Component {
 														</div>
 
 														<div className="col_half col_last">
-															<img style={{width:200, float:'right'}} src={'https://media-service.appspot.com/site/images/'+this.props.course.image+'?crop=360'} />
+															<img style={{width:'80%', float:'right'}} src={'https://media-service.appspot.com/site/images/'+this.props.course.image+'?crop=460'} />
 														</div>
 													</div>
 												</div>

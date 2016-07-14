@@ -318,10 +318,30 @@ var Course = (function (Component) {
 															React.createElement("br", null),
 															React.createElement("br", null),
 															this.props.course.type == "live" ? React.createElement(
-																"a",
-																{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-																"Submit Deposit",
-																React.createElement("i", { "class": "icon-circle-arrow-right" })
+																"div",
+																{ className: "col_full panel panel-default" },
+																React.createElement(
+																	"div",
+																	{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
+																	"Submit Deposit"
+																),
+																React.createElement(
+																	"div",
+																	{ className: "panel-body", style: { textAlign: "left" } },
+																	React.createElement(
+																		"a",
+																		{ href: this.props.course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+																		"PayPal",
+																		React.createElement("i", { "class": "icon-circle-arrow-right" })
+																	),
+																	React.createElement("br", null),
+																	React.createElement(
+																		"a",
+																		{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+																		"Credit Card",
+																		React.createElement("i", { "class": "icon-circle-arrow-right" })
+																	)
+																)
 															) : React.createElement(
 																"a",
 																{ href: "#application", className: "button button-xlarge tright" },
@@ -332,7 +352,7 @@ var Course = (function (Component) {
 														React.createElement(
 															"div",
 															{ className: "col_half col_last" },
-															React.createElement("img", { style: { width: 200, float: "right" }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=360" })
+															React.createElement("img", { style: { width: "80%", float: "right" }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=460" })
 														)
 													)
 												)

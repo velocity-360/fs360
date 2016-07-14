@@ -62330,10 +62330,30 @@
 															_react2.default.createElement('br', null),
 															_react2.default.createElement('br', null),
 															this.props.course.type == 'live' ? _react2.default.createElement(
-																'a',
-																{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-																'Submit Deposit',
-																_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+																'div',
+																{ className: 'col_full panel panel-default' },
+																_react2.default.createElement(
+																	'div',
+																	{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+																	'Submit Deposit'
+																),
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'panel-body', style: { textAlign: 'left' } },
+																	_react2.default.createElement(
+																		'a',
+																		{ href: this.props.course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+																		'PayPal',
+																		_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+																	),
+																	_react2.default.createElement('br', null),
+																	_react2.default.createElement(
+																		'a',
+																		{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+																		'Credit Card',
+																		_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+																	)
+																)
 															) : _react2.default.createElement(
 																'a',
 																{ href: '#application', className: 'button button-xlarge tright' },
@@ -62344,7 +62364,7 @@
 														_react2.default.createElement(
 															'div',
 															{ className: 'col_half col_last' },
-															_react2.default.createElement('img', { style: { width: 200, float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=360' })
+															_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=460' })
 														)
 													)
 												)
