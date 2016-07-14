@@ -17,6 +17,7 @@ var ProjectSchema = new mongoose.Schema({
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
 	price: {type: Number, default: 0}, // price in usd
 	premiumPrice: {type: Number, default: 0}, // price for premium subscribers
+	paypalLink: {type:String, trim:true, default:''},
 	timestamp: {type:Date, default:Date.now},
 })
 
@@ -38,6 +39,7 @@ ProjectSchema.methods.summary = function() {
 		'units':this.units,
 		'price':this.price,
 		'premiumPrice':this.premiumPrice,
+		'paypalLink':this.paypalLink,
 		'timestamp':this.timestamp,
 		'id':this._id
 	}

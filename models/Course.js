@@ -13,8 +13,10 @@ var CourseSchema = new mongoose.Schema({
 	description: {type:String, default:''},
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
 	tags: {type:Array, default:[]},
+	paypalLink: {type:String, trim:true, default:''},
 	tuition: {type:Number, default: 0},
 	premiumTuition: {type: Number, default: 0}, // price for premium subscribers
+	remoteTuition: {type: Number, default: 0}, // price for online
 	deposit: {type:Number, default: 0},
 	priority: {type:Number, default: 100},
 	image: {type:String, trim:true, default:''},
@@ -37,8 +39,10 @@ CourseSchema.methods.summary = function() {
 		'type':this.type,
 		'units':this.units,
 		'tags':this.tags,
+		'paypalLink':this.paypalLink,
 		'tuition':this.tuition,
 		'premiumTuition':this.premiumTuition,
+		'remoteTuition':this.remoteTuition,
 		'deposit':this.deposit,
 		'priority':this.priority,
 		'description':this.description,
