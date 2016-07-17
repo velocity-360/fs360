@@ -160,36 +160,11 @@ var Landing = (function (Component) {
 										React.createElement(
 											"h3",
 											null,
-											"How It Works"
+											"Bootcamps"
 										)
 									),
-									"The Velocity Bootcamp Program is divided into two parts.",
-									React.createElement("br", null),
-									React.createElement("br", null),
 									courses,
-									React.createElement("div", { className: "clearfix" }),
-									"Each section is a stand-alone course meaning students can enroll in one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500.",
-									React.createElement("br", null),
-									"All live classes take place in our NYC location:",
-									React.createElement("br", null),
-									React.createElement("br", null),
-									React.createElement(
-										"strong",
-										null,
-										"Velocity 360"
-									),
-									React.createElement("br", null),
-									React.createElement(
-										"strong",
-										null,
-										"27 East 28th Street"
-									),
-									React.createElement("br", null),
-									React.createElement(
-										"strong",
-										null,
-										"New York, NY, 10016"
-									)
+									React.createElement("div", { className: "clearfix" })
 								),
 								React.createElement(
 									"div",

@@ -22953,36 +22953,11 @@
 										_react2.default.createElement(
 											'h3',
 											null,
-											'How It Works'
+											'Bootcamps'
 										)
 									),
-									'The Velocity Bootcamp Program is divided into two parts.',
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('br', null),
 									courses,
-									_react2.default.createElement('div', { className: 'clearfix' }),
-									'Each section is a stand-alone course meaning students can enroll in one and not the other. However, the MVP Bootcamp requires working knowledge of the material covered in the Fundamentals Course so students should not be complete beginners for this sequence. The tuition for each course is $6,500 but when taken together, the combined tuition is $11,500.',
-									_react2.default.createElement('br', null),
-									'All live classes take place in our NYC location:',
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'Velocity 360'
-									),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'27 East 28th Street'
-									),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'New York, NY, 10016'
-									)
+									_react2.default.createElement('div', { className: 'clearfix' })
 								),
 								_react2.default.createElement(
 									'div',
