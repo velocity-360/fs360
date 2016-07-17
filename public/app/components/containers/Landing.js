@@ -46,7 +46,7 @@ class Landing extends Component {
 	        var timestamp = new Date(post.timestamp)
 	        var date = DateUtils.formattedDate(timestamp)			
 			return (
-				<div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
+				<div key={post.id} style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
 					<span style={{fontWeight:100, fontSize:14}}>{date}</span>
 					<h5 style={{fontWeight:400}}><a href={'/post/'+post.slug}>{post.title}</a></h5>
 				</div>

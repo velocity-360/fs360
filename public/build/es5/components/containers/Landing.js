@@ -102,7 +102,7 @@ var Landing = (function (Component) {
 					var date = DateUtils.formattedDate(timestamp);
 					return React.createElement(
 						"div",
-						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
+						{ key: post.id, style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
 						React.createElement(
 							"span",
 							{ style: { fontWeight: 100, fontSize: 14 } },

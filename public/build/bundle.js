@@ -22897,7 +22897,7 @@
 					var date = _DateUtils2.default.formattedDate(timestamp);
 					return _react2.default.createElement(
 						'div',
-						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginBottom: 16 } },
+						{ key: post.id, style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginBottom: 16 } },
 						_react2.default.createElement(
 							'span',
 							{ style: { fontWeight: 100, fontSize: 14 } },
