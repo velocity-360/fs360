@@ -23,7 +23,7 @@ class Landing extends Component {
 	render(){
 		var courses = this.props.courses.map(function(course, i){
 			return (
-                <div className="col-md-6 bottommargin">
+                <div className="col-md-12 bottommargin">
                     <div className="team team-list clearfix">
                         <div className="team-image" style={{width: 150}}>
                             <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />

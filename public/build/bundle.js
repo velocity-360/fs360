@@ -22843,7 +22843,7 @@
 				var courses = this.props.courses.map(function (course, i) {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'col-md-6 bottommargin' },
+						{ className: 'col-md-12 bottommargin' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'team team-list clearfix' },
