@@ -106,8 +106,8 @@ class Header extends Component {
 	                    <div className="col_full">
 							<label for="template-contactform-subject">I am interested in</label>
 							<select onChange={this.updateVisitor} value={this.state.visitor.course} id="course" className="form-control input-lg not-dark">
-								<option value="fundamentals-bootcamp">Fundamentals Bootcamp</option>
-								<option value="mvp-bootcamp">MVP Bootcamp</option>
+								<option value="8-week-fundamentals-bootcamp">8-Week Fundamentals Bootcamp</option>
+								<option value="24-week-evening-bootcamp">24-Week Evening Bootcamp</option>
 							</select>
 	                    </div>
 

@@ -44432,13 +44432,13 @@
 									{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
 									_react2.default.createElement(
 										'option',
-										{ value: 'fundamentals-bootcamp' },
-										'Fundamentals Bootcamp'
+										{ value: '8-week-fundamentals-bootcamp' },
+										'8-Week Fundamentals Bootcamp'
 									),
 									_react2.default.createElement(
 										'option',
-										{ value: 'mvp-bootcamp' },
-										'MVP Bootcamp'
+										{ value: '24-week-evening-bootcamp' },
+										'24-Week Evening Bootcamp'
 									)
 								)
 							),
