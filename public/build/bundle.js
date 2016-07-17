@@ -22892,6 +22892,8 @@
 					);
 				});
 	
+				var headerString = 'Learn Tomorrow\'s Technology Today';
+	
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -22912,14 +22914,14 @@
 									_react2.default.createElement(
 										'h3',
 										null,
-										'Build Real Products'
+										headerString
 									),
 									_react2.default.createElement(
 										'span',
 										null,
-										'Velocity 360 is the only coding bootcamp that uses real projects from',
+										'Velocity 360 is the only coding bootcamp that delivers a full stack education ',
 										_react2.default.createElement('br', null),
-										'local startups to teach students.'
+										'with the most cutting edge tech: Node, React, and React Native.'
 									)
 								)
 							),
@@ -22933,26 +22935,38 @@
 										'div',
 										{ className: 'fancy-title title-bottom-border' },
 										_react2.default.createElement(
-											'h3',
-											null,
-											'Real World Experience'
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'In Demand Technology'
 										)
+									),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: '/images/class.jpg', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'h3',
+										{ style: { marginBottom: 6, fontWeight: 400 } },
+										'Industry Driven'
 									),
 									_react2.default.createElement(
 										'p',
 										null,
-										_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: '/images/class.jpg', alt: 'Velocity 360' }),
-										'The Velocity 360 program provides real development experience by partnering with local startups to build their prototypes (often referred to as \'MVP\' - Minimal Viable Product). After a 6-week period covering programming fundamentals, students work in groups of 2-4 on an actual project that was pre-vetted by the Velocity 360 team.',
-										_react2.default.createElement('br', null),
-										_react2.default.createElement('br', null),
-										'At the end of the program, students will publish a real, live product that will be further supported by the startup team. As such, students will already have a professional project on their portfolio immediately upon completion and may even continue with the project beyond the course.'
+										'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
+									),
+									_react2.default.createElement(
+										'h3',
+										{ style: { marginBottom: 6, fontWeight: 400 } },
+										'Modern Curriculum'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
 									),
 									_react2.default.createElement(
 										'div',
 										{ className: 'fancy-title title-bottom-border' },
 										_react2.default.createElement(
-											'h3',
-											null,
+											'h2',
+											{ style: { fontWeight: 400 } },
 											'Bootcamps'
 										)
 									),
