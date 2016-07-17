@@ -22871,6 +22871,12 @@
 										'span',
 										{ style: { color: '#444' } },
 										course.dates
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										course.schedule
 									)
 								),
 								_react2.default.createElement(
@@ -22912,7 +22918,7 @@
 										null,
 										'Velocity 360 is the only coding bootcamp that delivers a full stack education ',
 										_react2.default.createElement('br', null),
-										'with the most cutting edge tech: Node, React, and React Native.'
+										'with the most cutting edge tech: Node, React, Redux, and React Native.'
 									)
 								)
 							),
@@ -22940,7 +22946,7 @@
 									_react2.default.createElement(
 										'p',
 										null,
-										'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
+										'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, Redux, and React Native.'
 									),
 									_react2.default.createElement(
 										'h3',

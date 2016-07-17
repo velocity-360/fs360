@@ -31,7 +31,8 @@ class Landing extends Component {
                         <div className="team-desc">
                             <div className="team-title">
 	                            <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
-	                            <span style={{color:'#444'}}>{course.dates}</span>
+	                            <span style={{color:'#444'}}>{course.dates}</span><br />
+	                            <span style={{color:'#444'}}>{course.schedule}</span>
                             </div>
                             <div className="team-content">{course.description}</div>
                         </div>
@@ -54,7 +55,7 @@ class Landing extends Component {
 		                        <h3>{headerString}</h3>
 		                        <span>
 		                        	Velocity 360 is the only coding bootcamp that delivers a full stack education <br />
-		                        	with the most cutting edge tech: Node, React, and React Native.
+		                        	with the most cutting edge tech: Node, React, Redux, and React Native.
 		                        </span>
 		                    </div>
 		                </div>
@@ -71,7 +72,7 @@ class Landing extends Component {
 									newcomer to tech, it is imperative to understand the trends and develop the skills
 									that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares 
 									students under that guiding principle. Our curriculum is highly focused on the bleeding 
-									edge of tech evolution: Node JS, React, and React Native. 
+									edge of tech evolution: Node JS, React, Redux, and React Native. 
 								</p>
 
 								<h3 style={{marginBottom:6, fontWeight:400}}>Modern Curriculum</h3>
