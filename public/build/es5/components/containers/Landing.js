@@ -48,51 +48,38 @@ var Landing = (function (Component) {
 		render: {
 			value: function render() {
 				var courses = this.props.courses.map(function (course, i) {
-					var cls = i == 0 ? "col_half panel panel-default" : "col_half panel panel-default col_last";
 					return React.createElement(
 						"div",
-						{ key: course.id, className: cls },
+						{ className: "col-md-6 bottommargin" },
 						React.createElement(
 							"div",
-							{ className: "panel-heading" },
+							{ className: "team team-list clearfix" },
 							React.createElement(
-								"h2",
-								{ className: "panel-title" },
-								React.createElement(
-									"a",
-									{ style: { color: "#1ABC9C" }, href: "#" },
-									course.title
-								)
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-body", style: { background: "#FFFDFD" } },
-							course.description,
-							React.createElement("br", null),
-							React.createElement("br", null),
-							React.createElement(
-								"ul",
-								{ style: { listStyle: "none", fontWeight: "600" } },
-								React.createElement(
-									"li",
-									null,
-									course.dates
-								),
-								React.createElement(
-									"li",
-									null,
-									course.schedule
-								)
+								"div",
+								{ className: "team-image", style: { width: 150 } },
+								React.createElement("img", { className: "img-circle", src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=260", alt: "Velocity 360" })
 							),
 							React.createElement(
-								"a",
-								{ href: "/course/" + course.slug, className: "button button-rounded button-reveal button-large button-border tright" },
-								React.createElement("i", { className: "icon-signal" }),
+								"div",
+								{ className: "team-desc" },
 								React.createElement(
-									"span",
-									null,
-									"Apply"
+									"div",
+									{ className: "team-title" },
+									React.createElement(
+										"h4",
+										null,
+										course.title
+									),
+									React.createElement(
+										"span",
+										null,
+										course.dates
+									)
+								),
+								React.createElement(
+									"div",
+									{ className: "team-content" },
+									course.description
 								)
 							)
 						)
@@ -168,9 +155,15 @@ var Landing = (function (Component) {
 										null,
 										"While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world."
 									),
+									React.createElement("img", { src: "/images/wework.jpg" }),
+									React.createElement(
+										"i",
+										{ style: { fontWeight: 100 } },
+										"* Courses are held at our WeWork Location on 28th Street."
+									),
 									React.createElement(
 										"div",
-										{ className: "fancy-title title-bottom-border" },
+										{ className: "fancy-title title-bottom-border", style: { marginTop: 24 } },
 										React.createElement(
 											"h2",
 											{ style: { fontWeight: 400 } },
@@ -182,10 +175,10 @@ var Landing = (function (Component) {
 								),
 								React.createElement(
 									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs col_last" },
+									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
 									React.createElement(
 										"div",
-										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#f9f9f9" } },
+										{ className: "widget clearfix" },
 										React.createElement(
 											"h4",
 											null,
@@ -231,61 +224,6 @@ var Landing = (function (Component) {
 												"a",
 												{ style: { background: "#fff" }, href: "#" },
 												"Mongo DB"
-											)
-										)
-									),
-									React.createElement(
-										"div",
-										{ className: "widget clearfix", style: { padding: 24, textAlign: "center", border: "1px solid #ddd", background: "#F9FCFF" } },
-										React.createElement(
-											"h4",
-											null,
-											"Featured App"
-										),
-										React.createElement("img", { style: { width: 128, border: "1px solid #ddd" }, src: "/images/radius.png", alt: "Velocity 360" }),
-										React.createElement(
-											"h3",
-											{ style: { marginBottom: 6, marginTop: 9 } },
-											React.createElement(
-												"a",
-												{ target: "_blank", href: "https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8" },
-												"Radius"
-											)
-										),
-										React.createElement("hr", null),
-										React.createElement(
-											"strong",
-											null,
-											"iOS App"
-										),
-										React.createElement("br", null),
-										React.createElement(
-											"p",
-											null,
-											"Radius is a job-searching app aimed at part time workers, students, and short term service providers like dog-walkers or furniture movers. It utilizes the GPS functionality on the iPhone to find jobs nearby and also to find workers in the area."
-										),
-										React.createElement(
-											"div",
-											{ className: "tagcloud" },
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"iOS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"Node JS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"REST API"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"JavaScript"
 											)
 										)
 									)

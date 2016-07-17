@@ -22,25 +22,16 @@ class Landing extends Component {
 
 	render(){
 		var courses = this.props.courses.map(function(course, i){
-			var cls = (i==0) ? 'col_half panel panel-default' : 'col_half panel panel-default col_last'
 			return (
-                <div key={course.id} className={cls}>
-                    <div className="panel-heading">
-                        <h2 className="panel-title">
-                        	<a style={{color:'#1ABC9C'}} href="#">{course.title}</a>
-                        </h2>
-                    </div>
-                    <div className="panel-body" style={{background:'#FFFDFD'}}>
-                    	{course.description}
-                        <br /><br />
-                        <ul style={{listStyle: 'none', fontWeight:'600'}}>
-                            <li>{course.dates}</li>
-                            <li>{course.schedule}</li>
-                        </ul>
-						<a href={'/course/'+course.slug} className="button button-rounded button-reveal button-large button-border tright">
-							<i className="icon-signal"></i>
-							<span>Apply</span>
-						</a>
+                <div className="col-md-6 bottommargin">
+                    <div className="team team-list clearfix">
+                        <div className="team-image" style={{width: 150}}>
+                            <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
+                        </div>
+                        <div className="team-desc">
+                            <div className="team-title"><h4>{course.title}</h4><span>{course.dates}</span></div>
+                            <div className="team-content">{course.description}</div>
+                        </div>
                     </div>
                 </div>
 			)
@@ -90,18 +81,22 @@ class Landing extends Component {
 									the skills highly in demand yet hard to find in the tech world. 
 								</p>
 
-			                    <div className="fancy-title title-bottom-border">
+			                    <img src="/images/wework.jpg" />
+			                    <i style={{fontWeight:100}}>* Courses are held at our WeWork Location on 28th Street.</i>
+
+			                    <div className="fancy-title title-bottom-border" style={{marginTop:24}}>
 			                        <h2 style={{fontWeight:400}}>Bootcamps</h2>
 			                    </div>
 
-								{courses}
+			                    {courses}
+
 
 		                        <div className="clearfix"></div>
 							</div>
 
-							<div className="col_one_third bottommargin-sm hidden-xs col_last">
+							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
 
-								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#f9f9f9'}}>
+								<div className="widget clearfix">
 									<h4>Featured Tutorial</h4>
 									<div className={'wistia_embed wistia_async_ehbr4b234p videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 									<hr />
@@ -120,29 +115,7 @@ class Landing extends Component {
 
 								</div>
 
-								<div className="widget clearfix" style={{padding:24, textAlign:'center', border:'1px solid #ddd', background:'#F9FCFF'}}>
-									<h4>Featured App</h4>
-									<img style={{width:128, border:'1px solid #ddd'}} src="/images/radius.png" alt="Velocity 360" />
-									<h3 style={{marginBottom:6, marginTop:9}}>
-										<a target="_blank" href="https://itunes.apple.com/us/app/mercurymq-radius/id926659377?mt=8">Radius</a>
-									</h3>
-									<hr />
-									<strong>iOS App</strong>
-									<br />
-									<p>
-										Radius is a job-searching app aimed at part time workers, students, and 
-										short term service providers like dog-walkers or furniture movers. It utilizes 
-										the GPS functionality on the iPhone to find jobs nearby and also to find workers 
-										in the area.
-									</p>
 
-									<div className="tagcloud">
-										<a style={{background:'#fff'}} href="#">iOS</a>
-										<a style={{background:'#fff'}} href="#">Node JS</a>
-										<a style={{background:'#fff'}} href="#">REST API</a>
-										<a style={{background:'#fff'}} href="#">JavaScript</a>
-									</div>
-								</div>
 
 							</div>							
 
