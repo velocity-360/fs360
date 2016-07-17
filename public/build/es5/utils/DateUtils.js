@@ -14,7 +14,7 @@ module.exports = {
               var diff = now - timestamp;
 
               var date = null;
-              if (diff > 24 * 60 * 1000) return React.createElement(Time, { value: timestamp, format: "MMM DD, YYYY" });
+              if (diff > 24 * 60 * 1000) return React.createElement(Time, { value: timestamp, format: "MMM DD, YYYY", utc: true });
 
               return React.createElement(Time, { value: timestamp, titleFormat: "YYYY/MM/DD HH:mm", relative: true });
        }
