@@ -38,10 +38,6 @@ router.get('/', function(req, res, next) {
 	})
 	.then(function(courses){
 		initialData.courseReducer.courseArray = courses
-		// var initialState = store.configureStore(initialData).getState()
-		// var element = React.createElement(ServerApp, {page:'home', initial:initialState})
-		// res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-
 		return postController.find({limit: 3}) // three most recent blog posts
 	})
 	.then(function(posts){
