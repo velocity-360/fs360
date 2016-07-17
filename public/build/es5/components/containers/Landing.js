@@ -50,7 +50,7 @@ var Landing = (function (Component) {
 				var courses = this.props.courses.map(function (course, i) {
 					return React.createElement(
 						"div",
-						{ className: "col-md-12 bottommargin" },
+						{ key: course.id, className: "col-md-12 bottommargin" },
 						React.createElement(
 							"div",
 							{ className: "team team-list clearfix" },
@@ -70,7 +70,7 @@ var Landing = (function (Component) {
 										{ style: { fontWeight: 400 } },
 										React.createElement(
 											"a",
-											{ href: "/site/course/" + course.slug },
+											{ href: "/course/" + course.slug },
 											course.title
 										)
 									),

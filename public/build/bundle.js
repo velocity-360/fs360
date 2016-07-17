@@ -22843,7 +22843,7 @@
 				var courses = this.props.courses.map(function (course, i) {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'col-md-12 bottommargin' },
+						{ key: course.id, className: 'col-md-12 bottommargin' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'team team-list clearfix' },
@@ -22863,7 +22863,7 @@
 										{ style: { fontWeight: 400 } },
 										_react2.default.createElement(
 											'a',
-											{ href: '/site/course/' + course.slug },
+											{ href: '/course/' + course.slug },
 											course.title
 										)
 									),
