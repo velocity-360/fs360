@@ -34,17 +34,22 @@ router.get('/', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
-		// var initialState = store.configureStore(initialData).getState()
-		// var element = React.createElement(ServerApp, {page:'home', initial:initialState})
-		// res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 		return courseController.find({type:'immersive'})
 	})
 	.then(function(courses){
 		initialData.courseReducer.courseArray = courses
+		// var initialState = store.configureStore(initialData).getState()
+		// var element = React.createElement(ServerApp, {page:'home', initial:initialState})
+		// res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
+
+		return postController.find({limit: 3}) // three most recent blog posts
+	})
+	.then(function(posts){
+		initialData.postReducer.postsArray = posts
+
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:'home', initial:initialState})
 		res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-		return
 	})
 	.catch(function(err){
 

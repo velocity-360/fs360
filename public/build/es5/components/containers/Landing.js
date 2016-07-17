@@ -29,6 +29,8 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
+var DateUtils = _interopRequire(require("../../utils/DateUtils"));
+
 var Landing = (function (Component) {
 	function Landing(props, context) {
 		_classCallCheck(this, Landing);
@@ -95,6 +97,29 @@ var Landing = (function (Component) {
 					);
 				});
 
+				var posts = this.props.posts.map(function (post, i) {
+					var timestamp = new Date(post.timestamp);
+					var date = DateUtils.formattedDate(timestamp);
+					return React.createElement(
+						"div",
+						{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
+						React.createElement(
+							"span",
+							{ style: { fontWeight: 100, fontSize: 14 } },
+							date
+						),
+						React.createElement(
+							"h5",
+							{ style: { fontWeight: 400 } },
+							React.createElement(
+								"a",
+								{ href: "/post/" + post.slug },
+								post.title
+							)
+						)
+					);
+				});
+
 				var headerString = "Learn Tomorrow's Technology Today";
 
 				return React.createElement(
@@ -140,7 +165,7 @@ var Landing = (function (Component) {
 										React.createElement(
 											"h2",
 											{ style: { fontWeight: 400 } },
-											"In Demand Technology"
+											"Highly Demanded Skills"
 										)
 									),
 									React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "/images/class.jpg", alt: "Velocity 360" }),
@@ -174,6 +199,17 @@ var Landing = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
+									React.createElement(
+										"div",
+										{ className: "widget clearfix" },
+										React.createElement(
+											"h4",
+											null,
+											"Recent Posts"
+										),
+										React.createElement("hr", null),
+										posts
+									),
 									React.createElement(
 										"div",
 										{ className: "widget clearfix" },
@@ -266,7 +302,8 @@ var Landing = (function (Component) {
 var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
-		courses: state.courseReducer.courseArray
+		courses: state.courseReducer.courseArray,
+		posts: state.postReducer.postsArray
 	};
 };
 

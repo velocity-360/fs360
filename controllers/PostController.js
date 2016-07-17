@@ -85,7 +85,6 @@ module.exports = {
 				limit = 0
 			
 			delete params['limit']
-			
 			Post.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, posts) {
 				if (err) {
 					reject(err)

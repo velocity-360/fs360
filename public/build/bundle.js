@@ -22814,6 +22814,10 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
+	var _DateUtils = __webpack_require__(486);
+	
+	var _DateUtils2 = _interopRequireDefault(_DateUtils);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22888,6 +22892,29 @@
 					);
 				});
 	
+				var posts = this.props.posts.map(function (post, i) {
+					var timestamp = new Date(post.timestamp);
+					var date = _DateUtils2.default.formattedDate(timestamp);
+					return _react2.default.createElement(
+						'div',
+						{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginBottom: 16 } },
+						_react2.default.createElement(
+							'span',
+							{ style: { fontWeight: 100, fontSize: 14 } },
+							date
+						),
+						_react2.default.createElement(
+							'h5',
+							{ style: { fontWeight: 400 } },
+							_react2.default.createElement(
+								'a',
+								{ href: '/post/' + post.slug },
+								post.title
+							)
+						)
+					);
+				});
+	
 				var headerString = 'Learn Tomorrow\'s Technology Today';
 	
 				return _react2.default.createElement(
@@ -22933,7 +22960,7 @@
 										_react2.default.createElement(
 											'h2',
 											{ style: { fontWeight: 400 } },
-											'In Demand Technology'
+											'Highly Demanded Skills'
 										)
 									),
 									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: '/images/class.jpg', alt: 'Velocity 360' }),
@@ -22967,6 +22994,17 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
+									_react2.default.createElement(
+										'div',
+										{ className: 'widget clearfix' },
+										_react2.default.createElement(
+											'h4',
+											null,
+											'Recent Posts'
+										),
+										_react2.default.createElement('hr', null),
+										posts
+									),
 									_react2.default.createElement(
 										'div',
 										{ className: 'widget clearfix' },
@@ -23056,7 +23094,8 @@
 	var stateToProps = function stateToProps(state) {
 		return {
 			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courseArray
+			courses: state.courseReducer.courseArray,
+			posts: state.postReducer.postsArray
 		};
 	};
 	

@@ -5,6 +5,7 @@ import Nav from '../../components/Nav'
 import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import DateUtils from '../../utils/DateUtils'
 
 
 class Landing extends Component {
@@ -41,6 +42,18 @@ class Landing extends Component {
 			)
 		})
 
+		var posts = this.props.posts.map(function(post, i){
+	        var timestamp = new Date(post.timestamp)
+	        var date = DateUtils.formattedDate(timestamp)			
+			return (
+				<div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
+					<span style={{fontWeight:100, fontSize:14}}>{date}</span>
+					<h5 style={{fontWeight:400}}><a href={'/post/'+post.slug}>{post.title}</a></h5>
+				</div>
+			)
+
+		})
+
 		var headerString = 'Learn Tomorrow\'s Technology Today'
 
 		return (
@@ -63,7 +76,7 @@ class Landing extends Component {
 						<div className="container clearfix" style={{paddingTop:64}}>
 							<div className="col_two_third bottommargin-sm">
 			                    <div className="fancy-title title-bottom-border">
-			                        <h2 style={{fontWeight:400}}>In Demand Technology</h2>
+			                        <h2 style={{fontWeight:400}}>Highly Demanded Skills</h2>
 			                    </div>
 								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
 								<h3 style={{marginBottom:6, fontWeight:400}}>Industry Driven</h3>
@@ -92,6 +105,14 @@ class Landing extends Component {
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
 
 								<div className="widget clearfix">
+									<h4>Recent Posts</h4>
+									<hr />
+									{posts}
+
+								</div>
+
+
+								<div className="widget clearfix">
 									<h4>Featured Tutorial</h4>
 									<div className={'wistia_embed wistia_async_ehbr4b234p videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 									<hr />
@@ -107,7 +128,6 @@ class Landing extends Component {
 										<a style={{background:'#fff'}} href="#">Express</a>
 										<a style={{background:'#fff'}} href="#">Mongo DB</a>
 									</div>
-
 								</div>
 							</div>							
 
@@ -122,12 +142,10 @@ class Landing extends Component {
 
 					<div className="content-wrap" style={{paddingTop:0}}>
 						<div className="container clearfix">
-
-			                    {courses}
-
+			               	{courses}
 						</div>
-
 					</div>
+
 				</section>
 
 				<Register />
@@ -140,7 +158,8 @@ class Landing extends Component {
 const stateToProps = function(state) {
     return {
         currentUser: state.profileReducer.currentUser,
-        courses: state.courseReducer.courseArray
+        courses: state.courseReducer.courseArray,
+        posts: state.postReducer.postsArray
     }
 }
 
