@@ -29,7 +29,10 @@ class Landing extends Component {
                             <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
                         </div>
                         <div className="team-desc">
-                            <div className="team-title"><h4>{course.title}</h4><span>{course.dates}</span></div>
+                            <div className="team-title">
+	                            <h4 style={{fontWeight:400}}><a href={'/site/course/'+course.slug}>{course.title}</a></h4>
+	                            <span style={{color:'#444'}}>{course.dates}</span>
+                            </div>
                             <div className="team-content">{course.description}</div>
                         </div>
                     </div>
@@ -83,15 +86,6 @@ class Landing extends Component {
 
 			                    <img src="/images/wework.jpg" />
 			                    <i style={{fontWeight:100}}>* Courses are held at our WeWork Location on 28th Street.</i>
-
-			                    <div className="fancy-title title-bottom-border" style={{marginTop:24}}>
-			                        <h2 style={{fontWeight:400}}>Bootcamps</h2>
-			                    </div>
-
-			                    {courses}
-
-
-		                        <div className="clearfix"></div>
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
@@ -114,9 +108,6 @@ class Landing extends Component {
 									</div>
 
 								</div>
-
-
-
 							</div>							
 
 						</div>
@@ -125,61 +116,13 @@ class Landing extends Component {
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
-						<h2>Part Time Courses</h2>
+						<h2 style={{fontWeight:400}}>Bootcamps</h2>
 					</div>
 
 					<div className="content-wrap" style={{paddingTop:0}}>
 						<div className="container clearfix">
 
-							<div className="team team-list clearfix">
-								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/xcode.jpg" alt="Velocity 360" />
-								</div>
-								<div className="team-desc">
-									<div className="team-title">
-										<h4>iOS &amp; Node Evening Course</h4>
-										<span>August 8th - September 28th</span>
-										<span>Mon/Weds 6pm - 9pm</span>
-									</div>
-									<div className="team-content">
-										The 8-week iOS & Node Evening Course takes beginners through the process of 
-										designing and programming a basic iOS app from start. Students will create a 
-										simple app that utilizes key platform tools including the GPS locator, 
-										accelerator, and camera. In addition, the course will explore third party APIs 
-										such as Google Maps and Foursquare.
-									</div>
-									<br />
-									<a href="/course/ios-node-evening-course" className="btn btn-success">
-										Learn More
-									</a>
-								</div>
-							</div>
-
-							<div style={{margin:36}}></div>
-
-							<div className="team team-list clearfix">
-								<div className="team-image">
-									<img style={{border:'1px solid #ddd'}} src="/images/react.jpg" alt="Velocity 360" />
-								</div>
-								<div className="team-desc">
-									<div className="team-title">
-										<h4>Node &amp; React Evening Course</h4>
-										<span>August 9th - September 29th</span>
-										<span>Tues/Thurs 6pm - 9pm</span>
-									</div>
-									<div className="team-content">
-										React and NodeThe Node & React Development Evening course is an 8-week class 
-										that covers backend and frontend development using the most up-to-date 
-										technologies. Using Node JS, Mongo, Express and React (with ES6), we will 
-										create a fully functional website with user registration, image uploading, 
-										email notification functionality.
-									</div>
-									<br />
-									<a href="/course/node-react-evening-course" className="btn btn-success">
-										Learn More
-									</a>
-								</div>
-							</div>
+			                    {courses}
 
 						</div>
 

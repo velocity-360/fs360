@@ -22860,12 +22860,16 @@
 									{ className: 'team-title' },
 									_react2.default.createElement(
 										'h4',
-										null,
-										course.title
+										{ style: { fontWeight: 400 } },
+										_react2.default.createElement(
+											'a',
+											{ href: '/site/course/' + course.slug },
+											course.title
+										)
 									),
 									_react2.default.createElement(
 										'span',
-										null,
+										{ style: { color: '#444' } },
 										course.dates
 									)
 								),
@@ -22953,18 +22957,7 @@
 										'i',
 										{ style: { fontWeight: 100 } },
 										'* Courses are held at our WeWork Location on 28th Street.'
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'fancy-title title-bottom-border', style: { marginTop: 24 } },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Bootcamps'
-										)
-									),
-									courses,
-									_react2.default.createElement('div', { className: 'clearfix' })
+									)
 								),
 								_react2.default.createElement(
 									'div',
@@ -23032,8 +23025,8 @@
 							{ className: 'heading-block center' },
 							_react2.default.createElement(
 								'h2',
-								null,
-								'Part Time Courses'
+								{ style: { fontWeight: 400 } },
+								'Bootcamps'
 							)
 						),
 						_react2.default.createElement(
@@ -23042,93 +23035,7 @@
 							_react2.default.createElement(
 								'div',
 								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/xcode.jpg', alt: 'Velocity 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'iOS & Node Evening Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'August 8th - September 28th'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Mon/Weds 6pm - 9pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The 8-week iOS & Node Evening Course takes beginners through the process of designing and programming a basic iOS app from start. Students will create a simple app that utilizes key platform tools including the GPS locator, accelerator, and camera. In addition, the course will explore third party APIs such as Google Maps and Foursquare.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/ios-node-evening-course', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								),
-								_react2.default.createElement('div', { style: { margin: 36 } }),
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/react.jpg', alt: 'Velocity 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'Node & React Evening Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'August 9th - September 29th'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Tues/Thurs 6pm - 9pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'React and NodeThe Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/node-react-evening-course', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
+								courses
 							)
 						)
 					),
