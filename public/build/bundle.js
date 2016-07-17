@@ -22872,7 +22872,6 @@
 										{ style: { color: '#444' } },
 										course.dates
 									),
-									_react2.default.createElement('br', null),
 									_react2.default.createElement(
 										'span',
 										{ style: { color: '#444' } },

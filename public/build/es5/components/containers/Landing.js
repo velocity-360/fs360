@@ -79,7 +79,6 @@ var Landing = (function (Component) {
 										{ style: { color: "#444" } },
 										course.dates
 									),
-									React.createElement("br", null),
 									React.createElement(
 										"span",
 										{ style: { color: "#444" } },

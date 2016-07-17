@@ -31,7 +31,7 @@ class Landing extends Component {
                         <div className="team-desc">
                             <div className="team-title">
 	                            <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
-	                            <span style={{color:'#444'}}>{course.dates}</span><br />
+	                            <span style={{color:'#444'}}>{course.dates}</span>
 	                            <span style={{color:'#444'}}>{course.schedule}</span>
                             </div>
                             <div className="team-content">{course.description}</div>
