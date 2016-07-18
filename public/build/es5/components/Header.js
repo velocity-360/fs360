@@ -39,8 +39,7 @@ var Header = (function (Component) {
 				name: "",
 				email: "",
 				phone: "",
-				course: "Fundamentals Bootcamp",
-				referral: ""
+				referral: "Landing Page"
 			}
 		};
 	}
@@ -81,8 +80,14 @@ var Header = (function (Component) {
 				});
 
 				var pkg = Object.assign({}, this.state.visitor);
+				var parts = pkg.name.split(" ");
+				pkg.firstName = parts[0];
+				if (parts.length > 1) pkg.lastName = parts[parts.length - 1];
+
+				pkg.date = "July 24th";
+
 				var _this = this;
-				api.handlePost("/api/info", pkg, function (err, response) {
+				api.handlePost("/api/rsvp", pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -133,7 +138,36 @@ var Header = (function (Component) {
 								React.createElement(
 									"h4",
 									null,
-									"Start your Programming Career"
+									"Attend Next Workshop"
+								)
+							),
+							React.createElement(
+								"div",
+								{ style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16, marginTop: 16 } },
+								React.createElement("img", { style: { width: 104, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/n1zs8EP4?crop=260", alt: "Velocity 360" }),
+								React.createElement(
+									"div",
+									{ style: { padding: 12, height: 104, textAlign: "right" } },
+									React.createElement(
+										"h5",
+										{ style: { fontWeight: 200, marginBottom: 0 } },
+										React.createElement(
+											"a",
+											{ href: "/event/react-with-firebase" },
+											"React With Firebase"
+										)
+									),
+									React.createElement(
+										"span",
+										{ style: { fontWeight: 100, fontSize: 14, color: "#444" } },
+										"July 24, 12pm"
+									),
+									React.createElement("br", null),
+									React.createElement(
+										"a",
+										{ href: "/event/react-with-firebase", style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
+										"Details"
+									)
 								)
 							),
 							React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
@@ -149,34 +183,11 @@ var Header = (function (Component) {
 							),
 							React.createElement(
 								"div",
-								{ className: "col_full" },
-								React.createElement(
-									"label",
-									{ "for": "template-contactform-subject" },
-									"I am interested in"
-								),
-								React.createElement(
-									"select",
-									{ onChange: this.updateVisitor, value: this.state.visitor.course, id: "course", className: "form-control input-lg not-dark" },
-									React.createElement(
-										"option",
-										{ value: "8-week-fundamentals-bootcamp" },
-										"8-Week Fundamentals Bootcamp"
-									),
-									React.createElement(
-										"option",
-										{ value: "24-week-evening-bootcamp" },
-										"24-Week Evening Bootcamp"
-									)
-								)
-							),
-							React.createElement(
-								"div",
 								{ className: "col_full nobottommargin" },
 								React.createElement(
 									"button",
 									{ onClick: this.submitInfoRequest, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
-									"Request Syllabus"
+									"RSVP"
 								)
 							)
 						)

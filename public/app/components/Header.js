@@ -18,8 +18,7 @@ class Header extends Component {
 				name: '',
 				email: '',
 				phone: '',
-				course: 'Fundamentals Bootcamp',
-				referral: ''
+				referral: 'Landing Page'
 			}
 		}
 	}
@@ -52,8 +51,15 @@ class Header extends Component {
 		})
 
 		var pkg = Object.assign({}, this.state.visitor)
+		var parts = pkg.name.split(' ')
+		pkg['firstName'] = parts[0]
+		if (parts.length > 1)
+			pkg['lastName'] = parts[parts.length-1]
+
+		pkg['date'] = 'July 24th'
+
 		var _this = this
-		api.handlePost('/api/info', pkg, function(err, response){
+		api.handlePost('/api/rsvp', pkg, function(err, response){
 			_this.setState({
 				showLoader: false
 			})
@@ -94,8 +100,19 @@ class Header extends Component {
 	            <div className="container clearfix">
 	                <form action="#" method="post" role="form" className="landing-wide-form landing-form-overlay dark clearfix">
 	                    <div className="heading-block nobottommargin nobottomborder">
-	                        <h4>Start your Programming Career</h4>
+	                        <h4>Attend Next Workshop</h4>
 	                    </div>
+
+						<div style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16, marginTop:16}}>
+							<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/n1zs8EP4?crop=260'} alt="Velocity 360" />
+							<div style={{padding:12, height:104, textAlign:'right'}}>
+								<h5 style={{fontWeight:200, marginBottom:0}}><a href={'/event/react-with-firebase'}>React With Firebase</a></h5>
+								<span style={{fontWeight:100, fontSize:14, color:'#444'}}>July 24, 12pm</span><br />
+								<a href='/event/react-with-firebase' style={{marginRight:0}} className="button button-3d button-mini button-rounded button-teal">Details</a>
+							</div>
+						</div>
+
+
 	                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 	                    <div className="col_full">
 	                        <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Name" />
@@ -103,16 +120,9 @@ class Header extends Component {
 	                    <div className="col_full">
 	                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
 	                    </div>
-	                    <div className="col_full">
-							<label for="template-contactform-subject">I am interested in</label>
-							<select onChange={this.updateVisitor} value={this.state.visitor.course} id="course" className="form-control input-lg not-dark">
-								<option value="8-week-fundamentals-bootcamp">8-Week Fundamentals Bootcamp</option>
-								<option value="24-week-evening-bootcamp">24-Week Evening Bootcamp</option>
-							</select>
-	                    </div>
 
 	                    <div className="col_full nobottommargin">
-	                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">Request Syllabus</button>
+	                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">RSVP</button>
 	                    </div>
 	                </form>
 

@@ -44119,8 +44119,7 @@
 					name: '',
 					email: '',
 					phone: '',
-					course: 'Fundamentals Bootcamp',
-					referral: ''
+					referral: 'Landing Page'
 				}
 			};
 			return _this2;
@@ -44156,8 +44155,14 @@
 				});
 	
 				var pkg = Object.assign({}, this.state.visitor);
+				var parts = pkg.name.split(' ');
+				pkg['firstName'] = parts[0];
+				if (parts.length > 1) pkg['lastName'] = parts[parts.length - 1];
+	
+				pkg['date'] = 'July 24th';
+	
 				var _this = this;
-				_api2.default.handlePost('/api/info', pkg, function (err, response) {
+				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -44204,7 +44209,36 @@
 								_react2.default.createElement(
 									'h4',
 									null,
-									'Start your Programming Career'
+									'Attend Next Workshop'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ style: { border: '1px solid #ddd', background: '#f9f9f9', marginBottom: 16, marginTop: 16 } },
+								_react2.default.createElement('img', { style: { width: 104, float: 'left', marginRight: 12 }, src: 'https://media-service.appspot.com/site/images/n1zs8EP4?crop=260', alt: 'Velocity 360' }),
+								_react2.default.createElement(
+									'div',
+									{ style: { padding: 12, height: 104, textAlign: 'right' } },
+									_react2.default.createElement(
+										'h5',
+										{ style: { fontWeight: 200, marginBottom: 0 } },
+										_react2.default.createElement(
+											'a',
+											{ href: '/event/react-with-firebase' },
+											'React With Firebase'
+										)
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { fontWeight: 100, fontSize: 14, color: '#444' } },
+										'July 24, 12pm'
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'a',
+										{ href: '/event/react-with-firebase', style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
+										'Details'
+									)
 								)
 							),
 							_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
@@ -44220,34 +44254,11 @@
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'col_full' },
-								_react2.default.createElement(
-									'label',
-									{ 'for': 'template-contactform-subject' },
-									'I am interested in'
-								),
-								_react2.default.createElement(
-									'select',
-									{ onChange: this.updateVisitor, value: this.state.visitor.course, id: 'course', className: 'form-control input-lg not-dark' },
-									_react2.default.createElement(
-										'option',
-										{ value: '8-week-fundamentals-bootcamp' },
-										'8-Week Fundamentals Bootcamp'
-									),
-									_react2.default.createElement(
-										'option',
-										{ value: '24-week-evening-bootcamp' },
-										'24-Week Evening Bootcamp'
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
 								{ className: 'col_full nobottommargin' },
 								_react2.default.createElement(
 									'button',
 									{ onClick: this.submitInfoRequest, className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-									'Request Syllabus'
+									'RSVP'
 								)
 							)
 						)
