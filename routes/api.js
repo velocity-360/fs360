@@ -174,25 +174,24 @@ router.post('/:resource', function(req, res, next) {
 
 	if (resource == 'rsvp') {
 		var infoRequest = req.body;
-//		console.log('RSVP: '+JSON.stringify(infoRequest))
 		var json = JSON.stringify(infoRequest)
 		
 		// send email to yourself for notification:
 		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'Event RSVP', json)
 		.then(function(){
-			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event+' on '+infoRequest.date+'! My name is Dan Kwon and I am the founder of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, Angular, iOS, and React JS.<br /><br />If you are interested in learning about our part-time development course, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Dan Kwon<br />Founder<br /><a href="https://www.velocity360.io">Velocity 360</a><br />'
+
+			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event+' workshop on '+infoRequest.date+'! My name is Katrina Murphy and I am the community manager of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, React, React Native, Angular, and iOS.<br /><br />If you are interested in learning about our full or part-time development courses, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Katrina Murphy<br />Community Manager<br /><a href="https://www.velocity360.io">Velocity 360</a><br /><a style="background:#f1f9f5;border: 1px solid #ddd; padding:16px; text-decoration:none;margin-top:12px" href="https://www.velocity360.io/syllabus/FundamentalsBootcamp.pdf">Download Syllabus</a>'
 			var subscriber = {
 				name: infoRequest.firstName+infoRequest.lastName,
 				email: infoRequest.email,
 				workshop: infoRequest.event
-			};
+			}
 
 			subscriberController.post(subscriber, null)
-			return EmailManager.sendHtmlEmail('dkwon@velocity360.io', infoRequest.email, infoRequest.event, confirmationMsg)
+			return EmailManager.sendHtmlEmail('katrina@velocity360.io', infoRequest.email, infoRequest.event, confirmationMsg)
 		})
 		.then(function(){
-//			var msg = 'Thanks for your interest in the '+infoRequest.event.subject+'. Please check your email for a confirmation. Looking forward to seeing you there!'
-			var msg = 'Thanks for your interest in the '+infoRequest.event+'. Please check your email for a confirmation. Looking forward to seeing you there!'
+			var msg = 'Thanks for your interest in the '+infoRequest.event+' workshop. Please check your email for a confirmation. Looking forward to seeing you there!'
 			res.json({'confirmation':'success', 'message':msg})
 			return
 		})
