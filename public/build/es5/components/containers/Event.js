@@ -28,6 +28,8 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
+var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -163,21 +165,7 @@ var Event = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
-									React.createElement(
-										"div",
-										{ className: "widget clearfix" },
-										React.createElement(
-											"h4",
-											null,
-											"Recent Posts"
-										),
-										React.createElement("hr", null),
-										React.createElement(
-											"a",
-											{ href: "/feed" },
-											"View All"
-										)
-									)
+									React.createElement(RightSidebar, null)
 								)
 							)
 						)

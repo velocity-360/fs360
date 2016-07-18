@@ -5,6 +5,7 @@ import Nav from '../../components/Nav'
 import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import RightSidebar from '../../components/RightSidebar'
 
 
 class Landing extends Component {
@@ -40,30 +41,6 @@ class Landing extends Component {
                 </div>
 			)
 		})
-
-		var posts = this.props.posts.map(function(post, i){
-			var name = (post.profile.name == null ) ? 'anon' : post.profile.name
-			return (
-				<div key={post.id} style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
-					<h5 style={{fontWeight:400, marginBottom:0}}><a href={'/post/'+post.slug}>{post.title}</a></h5>
-					<span style={{fontWeight:100, fontSize:14}}>{name}</span>
-				</div>
-			)
-		})
-
-		var events = this.props.events.map(function(event, i){
-			return (
-				<div key={event.id} style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16}}>
-					<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />
-					<div style={{padding:12, height:104, textAlign:'right'}}>
-						<h5 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+event.slug}>{event.title}</a></h5>
-						<span style={{fontWeight:100, fontSize:14}}>{event.date}, {event.time}</span><br />
-						<a href={'/event/'+event.slug} style={{marginRight:0}} className="button button-3d button-mini button-rounded button-teal">Attend</a>
-					</div>
-				</div>
-			)
-		})
-
 
 		var headerString = 'Learn Tomorrow\'s Technology Today'
 
@@ -114,21 +91,7 @@ class Landing extends Component {
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
-
-								<div className="widget clearfix">
-									<h4>Recent Posts</h4>
-									<hr />
-									{posts}
-									<a href="/feed">View All</a>
-								</div>
-
-								<div className="widget clearfix">
-									<h4>Events</h4>
-									<hr />
-
-									{events}
-
-								</div>
+								<RightSidebar />
 							</div>			
 
 						</div>
@@ -157,9 +120,7 @@ class Landing extends Component {
 const stateToProps = function(state) {
     return {
         currentUser: state.profileReducer.currentUser,
-        courses: state.courseReducer.courseArray,
-        posts: state.postReducer.postsArray,
-        events: state.eventReducer.eventArray
+        courses: state.courseReducer.courseArray
     }
 }
 

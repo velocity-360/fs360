@@ -4,6 +4,7 @@ import Loader from 'react-loader'
 import Nav from '../../components/Nav'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import RightSidebar from '../../components/RightSidebar'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -80,11 +81,7 @@ class Event extends Component {
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
-								<div className="widget clearfix">
-									<h4>Recent Posts</h4>
-									<hr />
-									<a href="/feed">View All</a>
-								</div>
+								<RightSidebar />
 							</div>			
 
 						</div>
