@@ -45480,10 +45480,11 @@
 		}, {
 			key: 'updateVisitor',
 			value: function updateVisitor(event) {
+				var currentEvent = this.props.events[this.props.slug];
 				event.preventDefault();
 				var s = Object.assign({}, this.state.visitor);
 				s[event.target.id] = event.target.value;
-				s['event'] = this.props.event.title;
+				s['event'] = currentEvent.title;
 				this.setState({
 					visitor: s
 				});
@@ -45508,7 +45509,8 @@
 				s['firstName'] = parts[0];
 				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
 	
-				s['date'] = this.props.event.date;
+				var currentEvent = this.props.events[this.props.slug];
+				s['date'] = currentEvent.date;
 				console.log('SubmitRequest: ' + JSON.stringify(s));
 	
 				var _this = this;
@@ -45579,6 +45581,7 @@
 					);
 				});
 	
+				var event = this.props.events[this.props.slug];
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -45598,15 +45601,15 @@
 									_react2.default.createElement(
 										'h1',
 										{ 'data-animate': 'fadeInUp' },
-										this.props.event.title
+										event.title
 									),
-									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
+									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: 'https://media-service.appspot.com/site/images/' + event.image + '?crop=260', alt: 'Velocity 360' }),
 									_react2.default.createElement(
 										'span',
 										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
-										this.props.event.date,
+										event.date,
 										' | ',
-										this.props.event.time
+										event.time
 									)
 								)
 							)
@@ -45634,8 +45637,8 @@
 											'Details'
 										)
 									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
-									_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.event.description) } }),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + event.image + '?crop=260', alt: 'Velocity 360' }),
+									_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(event.description) } }),
 									_react2.default.createElement(
 										'div',
 										{ style: { marginTop: 64 }, className: 'fancy-title title-bottom-border' },
@@ -45657,13 +45660,13 @@
 											'div',
 											{ className: 'panel-body', style: { textAlign: 'left' } },
 											'Date: ',
-											this.props.event.date,
+											event.date,
 											_react2.default.createElement('br', null),
 											'Time: ',
-											this.props.event.time,
+											event.time,
 											_react2.default.createElement('br', null),
 											'Location: ',
-											this.props.event.address,
+											event.address,
 											_react2.default.createElement('br', null),
 											_react2.default.createElement('hr', null),
 											_react2.default.createElement('input', { type: 'text', id: 'name', onChange: this.updateVisitor, placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
@@ -45732,7 +45735,7 @@
 			currentUser: state.profileReducer.currentUser,
 			courses: state.courseReducer.courseArray,
 			posts: state.postReducer.postsArray,
-			event: state.eventReducer.eventArray[0]
+			events: state.eventReducer.events
 		};
 	};
 	

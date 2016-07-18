@@ -78,10 +78,11 @@ var Event = (function (Component) {
 		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
+				var currentEvent = this.props.events[this.props.slug];
 				event.preventDefault();
 				var s = Object.assign({}, this.state.visitor);
 				s[event.target.id] = event.target.value;
-				s.event = this.props.event.title;
+				s.event = currentEvent.title;
 				this.setState({
 					visitor: s
 				});
@@ -108,7 +109,8 @@ var Event = (function (Component) {
 				s.firstName = parts[0];
 				if (parts.length > 1) s.lastName = parts[parts.length - 1];
 
-				s.date = this.props.event.date;
+				var currentEvent = this.props.events[this.props.slug];
+				s.date = currentEvent.date;
 				console.log("SubmitRequest: " + JSON.stringify(s));
 
 				var _this = this;
@@ -181,6 +183,7 @@ var Event = (function (Component) {
 					);
 				});
 
+				var event = this.props.events[this.props.slug];
 				return React.createElement(
 					"div",
 					null,
@@ -200,15 +203,15 @@ var Event = (function (Component) {
 									React.createElement(
 										"h1",
 										{ "data-animate": "fadeInUp" },
-										this.props.event.title
+										event.title
 									),
-									React.createElement("img", { style: { width: 124, borderRadius: 62 }, src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=260", alt: "Velocity 360" }),
+									React.createElement("img", { style: { width: 124, borderRadius: 62 }, src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260", alt: "Velocity 360" }),
 									React.createElement(
 										"span",
 										{ "data-animate": "fadeInUp", "data-delay": "300" },
-										this.props.event.date,
+										event.date,
 										" | ",
-										this.props.event.time
+										event.time
 									)
 								)
 							)
@@ -236,8 +239,8 @@ var Event = (function (Component) {
 											"Details"
 										)
 									),
-									React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=260", alt: "Velocity 360" }),
-									React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(this.props.event.description) } }),
+									React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260", alt: "Velocity 360" }),
+									React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(event.description) } }),
 									React.createElement(
 										"div",
 										{ style: { marginTop: 64 }, className: "fancy-title title-bottom-border" },
@@ -259,13 +262,13 @@ var Event = (function (Component) {
 											"div",
 											{ className: "panel-body", style: { textAlign: "left" } },
 											"Date: ",
-											this.props.event.date,
+											event.date,
 											React.createElement("br", null),
 											"Time: ",
-											this.props.event.time,
+											event.time,
 											React.createElement("br", null),
 											"Location: ",
-											this.props.event.address,
+											event.address,
 											React.createElement("br", null),
 											React.createElement("hr", null),
 											React.createElement("input", { type: "text", id: "name", onChange: this.updateVisitor, placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
@@ -340,7 +343,7 @@ var stateToProps = function (state) {
 		currentUser: state.profileReducer.currentUser,
 		courses: state.courseReducer.courseArray,
 		posts: state.postReducer.postsArray,
-		event: state.eventReducer.eventArray[0]
+		events: state.eventReducer.events
 	};
 };
 

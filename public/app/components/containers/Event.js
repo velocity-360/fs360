@@ -44,10 +44,11 @@ class Event extends Component {
 	}
 
 	updateVisitor(event){
+		const currentEvent = this.props.events[this.props.slug]
 		event.preventDefault()
 		var s = Object.assign({}, this.state.visitor)
 		s[event.target.id] = event.target.value
-		s['event'] = this.props.event.title
+		s['event'] = currentEvent.title
 		this.setState({
 			visitor: s
 		})
@@ -72,7 +73,8 @@ class Event extends Component {
 		if (parts.length > 1)
 			s['lastName'] = parts[parts.length-1]
 
-		s['date'] = this.props.event.date
+		const currentEvent = this.props.events[this.props.slug]
+		s['date'] = currentEvent.date
 		console.log('SubmitRequest: '+JSON.stringify(s))
 
 		var _this = this
@@ -115,6 +117,7 @@ class Event extends Component {
 			)
 		})
 
+		const event = this.props.events[this.props.slug]
 		return (
 			<div>
 				<Nav />
@@ -125,10 +128,10 @@ class Event extends Component {
 		                <div className="vertical-middle">
 
 		                    <div className="heading-block center nobottomborder">
-		                        <h1 data-animate="fadeInUp">{this.props.event.title}</h1>
-								<img style={{width:124, borderRadius:62}} src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
+		                        <h1 data-animate="fadeInUp">{event.title}</h1>
+								<img style={{width:124, borderRadius:62}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />
 		                        <span data-animate="fadeInUp" data-delay="300">
-		                        	{this.props.event.date} | {this.props.event.time}
+		                        	{event.date} | {event.time}
 		                        </span>
 		                    </div>
 
@@ -145,8 +148,8 @@ class Event extends Component {
 			                    <div className="fancy-title title-bottom-border">
 			                        <h2 style={{fontWeight:400}}>Details</h2>
 			                    </div>
-								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
-								<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.event.description) }}></div>
+								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />
+								<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(event.description) }}></div>
 
 			                    <div style={{marginTop:64}} className="fancy-title title-bottom-border">
 			                        <h2 style={{fontWeight:400}}>Register</h2>
@@ -154,9 +157,9 @@ class Event extends Component {
 								<div className='col_half panel panel-default'>
 									<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">RSVP</div>
 									<div className="panel-body" style={{textAlign:'left'}}>
-										Date: {this.props.event.date}<br />
-										Time: {this.props.event.time}<br />
-										Location: {this.props.event.address}<br />
+										Date: {event.date}<br />
+										Time: {event.time}<br />
+										Location: {event.address}<br />
 										<hr />
 										<input type="text" id="name" onChange={this.updateVisitor} placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
 										<input type="text" id="email" onChange={this.updateVisitor} placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
@@ -204,7 +207,7 @@ const stateToProps = function(state) {
         currentUser: state.profileReducer.currentUser,
         courses: state.courseReducer.courseArray,
         posts: state.postReducer.postsArray,
-        event: state.eventReducer.eventArray[0]
+        events: state.eventReducer.events
     }
 }
 
