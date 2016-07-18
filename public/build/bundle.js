@@ -44160,6 +44160,7 @@
 				if (parts.length > 1) pkg['lastName'] = parts[parts.length - 1];
 	
 				pkg['date'] = 'July 24th';
+				pkg['event'] = 'React With Firebase';
 	
 				var _this = this;
 				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {

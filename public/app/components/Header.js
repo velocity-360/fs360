@@ -57,6 +57,7 @@ class Header extends Component {
 			pkg['lastName'] = parts[parts.length-1]
 
 		pkg['date'] = 'July 24th'
+		pkg['event'] = 'React With Firebase'
 
 		var _this = this
 		api.handlePost('/api/rsvp', pkg, function(err, response){
