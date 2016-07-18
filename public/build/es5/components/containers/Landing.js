@@ -126,7 +126,7 @@ var Landing = (function (Component) {
 							"div",
 							{ style: { padding: 12, height: 96, textAlign: "right" } },
 							React.createElement(
-								"h4",
+								"h5",
 								{ style: { fontWeight: 200, marginBottom: 0 } },
 								React.createElement(
 									"a",

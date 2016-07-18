@@ -56,7 +56,7 @@ class Landing extends Component {
 				<div key={event.id} style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16}}>
 					<img style={{width:96, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} />
 					<div style={{padding:12, height:96, textAlign:'right'}}>
-						<h4 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+event.slug}>{event.title}</a></h4>
+						<h5 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+event.slug}>{event.title}</a></h5>
 						<span style={{fontWeight:100, fontSize:14}}>{event.date}, {event.time}</span>
 					</div>
 				</div>
