@@ -22477,7 +22477,7 @@
 				var eventMap = {};
 				for (var i = 0; i < c.length; i++) {
 					var event = c[i];
-					eventMap[event.id] = event;
+					eventMap[event.slug] = event;
 				}
 	
 				newState['events'] = eventMap;
@@ -22492,12 +22492,7 @@
 	var constants = __webpack_require__(197);
 	
 	var initialState = {
-		events: {
-			0: {
-				title: '',
-				description: ''
-			}
-		},
+		events: {},
 		eventArray: []
 	};
 

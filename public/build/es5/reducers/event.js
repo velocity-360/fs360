@@ -3,11 +3,7 @@
 var constants = require("../constants/constants");
 
 var initialState = {
-	events: {
-		0: {
-			title: "",
-			description: "" }
-	},
+	events: {},
 	eventArray: []
 };
 
@@ -23,7 +19,7 @@ module.exports = function (_x, action) {
 			var eventMap = {};
 			for (var i = 0; i < c.length; i++) {
 				var event = c[i];
-				eventMap[event.id] = event;
+				eventMap[event.slug] = event;
 			}
 
 			newState.events = eventMap;

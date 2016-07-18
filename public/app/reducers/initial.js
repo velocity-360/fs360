@@ -69,12 +69,7 @@ export default function() {
 			}			
 		},
 		eventReducer:{
-			events: {
-				0:{
-					title:'',
-					description:'',
-				}
-			},
+			events: { },
 			eventArray: []
 		},
 		staticReducer: {

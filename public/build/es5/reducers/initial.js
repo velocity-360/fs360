@@ -73,11 +73,7 @@ module.exports = function () {
 			}
 		},
 		eventReducer: {
-			events: {
-				0: {
-					title: "",
-					description: "" }
-			},
+			events: {},
 			eventArray: []
 		},
 		staticReducer: {
