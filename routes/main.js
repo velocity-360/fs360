@@ -135,11 +135,19 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (page == 'course')
 			initialData.courseReducer.courseArray = [entity]
 
-		if (page == 'event')
-			initialData.eventReducer.eventArray = [entity]
-
 		if (page == 'project')
 			initialData.projectReducer.projectsArray = [entity]
+
+		if (page == 'event'){
+			initialData.eventReducer.eventArray = [entity]
+			var eventsMap = {}
+			for (var i=0; i<results.length; i++){
+				var event = results[i]
+				eventsMap[event.slug] = event
+			}
+
+			initialData.eventReducer.events = eventsMap
+		}
 
 		if (page == 'post'){
 			initialData.postReducer.postsArray = [entity]
