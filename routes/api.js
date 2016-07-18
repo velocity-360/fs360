@@ -244,7 +244,7 @@ router.post('/:resource', function(req, res, next) {
 			eventController.get({}, function(err, events){
 				if (err){
 					res.json({'confirmation':'fail','message':err.message})
-					return;
+					return
 				}
 
 				var nextEvent = events[0]
@@ -259,13 +259,12 @@ router.post('/:resource', function(req, res, next) {
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i];
 					var formatted = template.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, nextEvent.title, formatted)
+					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, 'Workshop:'+nextEvent.title, formatted)
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
 				return
 			})
-
 		})
 		.catch(function(err){
 			res.json({'confirmation':'fail','message':err.message})
