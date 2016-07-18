@@ -10,7 +10,7 @@ export default {
 
         var date = null;
         if (diff > 24*60*1000) 
-            return <Time value={timestamp} format="MMM DD, YYYY" utc /> 
+            return <Time value={timestamp} format="MMM DD, YYYY" /> 
         
         return <Time value={timestamp} titleFormat="YYYY/MM/DD HH:mm" relative />
 	}

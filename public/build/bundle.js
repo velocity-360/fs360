@@ -44500,7 +44500,7 @@
 	              var diff = now - timestamp;
 	
 	              var date = null;
-	              if (diff > 24 * 60 * 1000) return _react2.default.createElement(_reactTime2.default, { value: timestamp, format: 'MMM DD, YYYY', utc: true });
+	              if (diff > 24 * 60 * 1000) return _react2.default.createElement(_reactTime2.default, { value: timestamp, format: 'MMM DD, YYYY' });
 	
 	              return _react2.default.createElement(_reactTime2.default, { value: timestamp, titleFormat: 'YYYY/MM/DD HH:mm', relative: true });
 	       }
