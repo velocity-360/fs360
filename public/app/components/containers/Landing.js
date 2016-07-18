@@ -54,7 +54,7 @@ class Landing extends Component {
 		var events = this.props.events.map(function(event, i){
 			return (
 				<div key={event.id} style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16}}>
-					<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} />
+					<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />
 					<div style={{padding:12, height:104, textAlign:'right'}}>
 						<h5 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+event.slug}>{event.title}</a></h5>
 						<span style={{fontWeight:100, fontSize:14}}>{event.date}, {event.time}</span><br />

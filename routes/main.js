@@ -12,6 +12,7 @@ var controllers = {
 	feed: postController,
 	post: postController,
 	events: eventController,
+	event: eventController,
 	landing: projectController,
 	project: projectController
 }
@@ -141,6 +142,9 @@ router.get('/:page/:slug', function(req, res, next) {
 		var entity = results[0]
 		if (page == 'course')
 			initialData.courseReducer.courseArray = [entity]
+
+		if (page == 'event')
+			initialData.eventReducer.eventArray = [entity]
 
 		if (page == 'post'){
 			initialData.postReducer.postsArray = [entity]

@@ -121,7 +121,7 @@ var Landing = (function (Component) {
 					return React.createElement(
 						"div",
 						{ key: event.id, style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16 } },
-						React.createElement("img", { style: { width: 104, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260" }),
+						React.createElement("img", { style: { width: 104, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260", alt: "Velocity 360" }),
 						React.createElement(
 							"div",
 							{ style: { padding: 12, height: 104, textAlign: "right" } },
