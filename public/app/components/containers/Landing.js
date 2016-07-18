@@ -51,6 +51,19 @@ class Landing extends Component {
 			)
 		})
 
+		var events = this.props.events.map(function(event, i){
+			return (
+				<div key={event.id} style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16}}>
+					<img style={{width:96, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} />
+					<div style={{padding:12, height:96, textAlign:'right'}}>
+						<h4 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+event.slug}>{event.title}</a></h4>
+						<span style={{fontWeight:100, fontSize:14}}>{event.date}, {event.time}</span>
+					</div>
+				</div>
+			)
+		})
+
+
 		var headerString = 'Learn Tomorrow\'s Technology Today'
 
 		return (
@@ -109,23 +122,13 @@ class Landing extends Component {
 								</div>
 
 								<div className="widget clearfix">
-									<h4>Featured Tutorial</h4>
-									<div className={'wistia_embed wistia_async_ehbr4b234p videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
+									<h4>Events</h4>
 									<hr />
-									<strong>Setting Up a Node JS Project</strong>
-									<br /><br />
-									<p>
-										Set up a basic project using Express and use http request details from the 
-										browser to generate dynamic responses. 
-									</p>
-									<div className="tagcloud">
-										<a style={{background:'#fff'}} href="#">JavaScript</a>
-										<a style={{background:'#fff'}} href="#">Node JS</a>
-										<a style={{background:'#fff'}} href="#">Express</a>
-										<a style={{background:'#fff'}} href="#">Mongo DB</a>
-									</div>
+
+									{events}
+
 								</div>
-							</div>							
+							</div>			
 
 						</div>
 					</div>
@@ -141,7 +144,6 @@ class Landing extends Component {
 			               	{courses}
 						</div>
 					</div>
-
 				</section>
 
 				<Register />
@@ -155,7 +157,8 @@ const stateToProps = function(state) {
     return {
         currentUser: state.profileReducer.currentUser,
         courses: state.courseReducer.courseArray,
-        posts: state.postReducer.postsArray
+        posts: state.postReducer.postsArray,
+        events: state.eventReducer.eventArray
     }
 }
 

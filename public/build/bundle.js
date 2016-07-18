@@ -22910,6 +22910,34 @@
 					);
 				});
 	
+				var events = this.props.events.map(function (event, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: event.id, style: { border: '1px solid #ddd', background: '#f9f9f9', marginBottom: 16 } },
+						_react2.default.createElement('img', { style: { width: 96, float: 'left', marginRight: 12 }, src: 'https://media-service.appspot.com/site/images/' + event.image + '?crop=260' }),
+						_react2.default.createElement(
+							'div',
+							{ style: { padding: 12, height: 96, textAlign: 'right' } },
+							_react2.default.createElement(
+								'h4',
+								{ style: { fontWeight: 200, marginBottom: 0 } },
+								_react2.default.createElement(
+									'a',
+									{ href: '/event/' + event.slug },
+									event.title
+								)
+							),
+							_react2.default.createElement(
+								'span',
+								{ style: { fontWeight: 100, fontSize: 14 } },
+								event.date,
+								', ',
+								event.time
+							)
+						)
+					);
+				});
+	
 				var headerString = 'Learn Tomorrow\'s Technology Today';
 	
 				return _react2.default.createElement(
@@ -23011,50 +23039,10 @@
 										_react2.default.createElement(
 											'h4',
 											null,
-											'Featured Tutorial'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'wistia_embed wistia_async_ehbr4b234p videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-											' '
+											'Events'
 										),
 										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'strong',
-											null,
-											'Setting Up a Node JS Project'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'p',
-											null,
-											'Set up a basic project using Express and use http request details from the browser to generate dynamic responses.'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'tagcloud' },
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'JavaScript'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'Node JS'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'Express'
-											),
-											_react2.default.createElement(
-												'a',
-												{ style: { background: '#fff' }, href: '#' },
-												'Mongo DB'
-											)
-										)
+										events
 									)
 								)
 							)
@@ -23095,7 +23083,8 @@
 		return {
 			currentUser: state.profileReducer.currentUser,
 			courses: state.courseReducer.courseArray,
-			posts: state.postReducer.postsArray
+			posts: state.postReducer.postsArray,
+			events: state.eventReducer.eventArray
 		};
 	};
 	

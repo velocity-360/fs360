@@ -45,9 +45,7 @@ router.get('/', function(req, res, next) {
 		return eventController.find({limit: 3})
 	})
 	.then(function(events){
-		console.log('EVENTS: '+JSON.stringify(events))
 		initialData.eventReducer.eventArray = events
-		console.log('TEST')
 
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:'home', initial:initialState})

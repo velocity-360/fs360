@@ -117,6 +117,35 @@ var Landing = (function (Component) {
 					);
 				});
 
+				var events = this.props.events.map(function (event, i) {
+					return React.createElement(
+						"div",
+						{ key: event.id, style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16 } },
+						React.createElement("img", { style: { width: 96, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260" }),
+						React.createElement(
+							"div",
+							{ style: { padding: 12, height: 96, textAlign: "right" } },
+							React.createElement(
+								"h4",
+								{ style: { fontWeight: 200, marginBottom: 0 } },
+								React.createElement(
+									"a",
+									{ href: "/event/" + event.slug },
+									event.title
+								)
+							),
+							React.createElement(
+								"span",
+								{ style: { fontWeight: 100, fontSize: 14 } },
+								event.date,
+								", ",
+								event.time
+							)
+						)
+					);
+				});
+
+
 				var headerString = "Learn Tomorrow's Technology Today";
 
 				return React.createElement(
@@ -218,50 +247,10 @@ var Landing = (function (Component) {
 										React.createElement(
 											"h4",
 											null,
-											"Featured Tutorial"
-										),
-										React.createElement(
-											"div",
-											{ className: "wistia_embed wistia_async_ehbr4b234p videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
-											" "
+											"Events"
 										),
 										React.createElement("hr", null),
-										React.createElement(
-											"strong",
-											null,
-											"Setting Up a Node JS Project"
-										),
-										React.createElement("br", null),
-										React.createElement("br", null),
-										React.createElement(
-											"p",
-											null,
-											"Set up a basic project using Express and use http request details from the browser to generate dynamic responses."
-										),
-										React.createElement(
-											"div",
-											{ className: "tagcloud" },
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"JavaScript"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"Node JS"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"Express"
-											),
-											React.createElement(
-												"a",
-												{ style: { background: "#fff" }, href: "#" },
-												"Mongo DB"
-											)
-										)
+										events
 									)
 								)
 							)
@@ -305,7 +294,8 @@ var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
 		courses: state.courseReducer.courseArray,
-		posts: state.postReducer.postsArray
+		posts: state.postReducer.postsArray,
+		events: state.eventReducer.eventArray
 	};
 };
 
