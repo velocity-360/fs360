@@ -156,6 +156,7 @@ class Event extends Component {
 									<div className="panel-body" style={{textAlign:'left'}}>
 										Date: {this.props.event.date}<br />
 										Time: {this.props.event.time}<br />
+										Location: {this.props.event.address}<br />
 										<hr />
 										<input type="text" id="name" onChange={this.updateVisitor} placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
 										<input type="text" id="email" onChange={this.updateVisitor} placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
