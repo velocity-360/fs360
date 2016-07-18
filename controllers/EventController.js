@@ -1,5 +1,6 @@
-var Event = require('../models/Event');
-var mongoose = require('mongoose');
+var Event = require('../models/Event')
+var Helpers = require('../managers/Helpers')
+var mongoose = require('mongoose')
 var Promise = require('bluebird')
 
 
@@ -100,18 +101,20 @@ module.exports = {
 	},
 	
 	post: function(eventInfo, completion){
-		var parts = eventInfo.title.split(' ');
+		// var parts = eventInfo.title.split(' ');
 
-		var slug = '';
-		for (var i=0; i<parts.length; i++){
-			var word = parts[i];
-			slug += word;
-			if (i != parts.length-1)
-				slug += '-';
-		}
+		// var slug = '';
+		// for (var i=0; i<parts.length; i++){
+		// 	var word = parts[i];
+		// 	slug += word;
+		// 	if (i != parts.length-1)
+		// 		slug += '-';
+		// }
 
-		slug = slug.replace('?', '');
-		eventInfo['slug'] = slug;
+		// slug = slug.replace('?', '');
+		// eventInfo['slug'] = slug;
+		
+		eventInfo['slug'] = Helpers.slugString(eventInfo.title)
 		Event.create(eventInfo, function(err, event){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
@@ -125,6 +128,7 @@ module.exports = {
 
 
 	put: function(eventId, eventInfo, completion){
+		eventInfo['slug'] = Helpers.slugString(eventInfo.title)
 		Event.findByIdAndUpdate(eventId, eventInfo, {new:true}, function(err, event){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);
