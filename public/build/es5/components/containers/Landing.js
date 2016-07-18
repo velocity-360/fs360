@@ -96,14 +96,14 @@ var Landing = (function (Component) {
 				});
 
 				var posts = this.props.posts.map(function (post, i) {
-					var username = post.profile.username == null ? "anon" : post.profile.username;
+					var name = post.profile.name == null ? "anon" : post.profile.name;
 					return React.createElement(
 						"div",
 						{ key: post.id, style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
 						React.createElement(
 							"span",
 							{ style: { fontWeight: 100, fontSize: 14 } },
-							username
+							name
 						),
 						React.createElement(
 							"h5",

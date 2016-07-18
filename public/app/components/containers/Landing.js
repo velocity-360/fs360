@@ -42,10 +42,10 @@ class Landing extends Component {
 		})
 
 		var posts = this.props.posts.map(function(post, i){
-			var username = (post.profile.username == null ) ? 'anon' : post.profile.username
+			var name = (post.profile.name == null ) ? 'anon' : post.profile.name
 			return (
 				<div key={post.id} style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
-					<span style={{fontWeight:100, fontSize:14}}>{username}</span>
+					<span style={{fontWeight:100, fontSize:14}}>{name}</span>
 					<h5 style={{fontWeight:400}}><a href={'/post/'+post.slug}>{post.title}</a></h5>
 				</div>
 			)
