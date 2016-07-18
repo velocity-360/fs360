@@ -101,18 +101,18 @@ var Landing = (function (Component) {
 						"div",
 						{ key: post.id, style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
 						React.createElement(
-							"span",
-							{ style: { fontWeight: 100, fontSize: 14 } },
-							name
-						),
-						React.createElement(
 							"h5",
-							{ style: { fontWeight: 400 } },
+							{ style: { fontWeight: 400, marginBottom: 0 } },
 							React.createElement(
 								"a",
 								{ href: "/post/" + post.slug },
 								post.title
 							)
+						),
+						React.createElement(
+							"span",
+							{ style: { fontWeight: 100, fontSize: 14 } },
+							name
 						)
 					);
 				});

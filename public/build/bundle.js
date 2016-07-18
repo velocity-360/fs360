@@ -22894,18 +22894,18 @@
 						'div',
 						{ key: post.id, style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginBottom: 16 } },
 						_react2.default.createElement(
-							'span',
-							{ style: { fontWeight: 100, fontSize: 14 } },
-							name
-						),
-						_react2.default.createElement(
 							'h5',
-							{ style: { fontWeight: 400 } },
+							{ style: { fontWeight: 400, marginBottom: 0 } },
 							_react2.default.createElement(
 								'a',
 								{ href: '/post/' + post.slug },
 								post.title
 							)
+						),
+						_react2.default.createElement(
+							'span',
+							{ style: { fontWeight: 100, fontSize: 14 } },
+							name
 						)
 					);
 				});
