@@ -138,6 +138,9 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (page == 'event')
 			initialData.eventReducer.eventArray = [entity]
 
+		if (page == 'project')
+			initialData.projectReducer.projectsArray = [entity]
+
 		if (page == 'post'){
 			initialData.postReducer.postsArray = [entity]
 			var posts = {}
@@ -149,8 +152,6 @@ router.get('/:page/:slug', function(req, res, next) {
 			initialData.postReducer.posts = posts
 		}
 
-		if (page == 'project')
-			initialData.projectReducer.projectsArray = [entity]
 
 		// Facebook tags:
 		var description = (entity.description == null) ? entity.text : entity.description
