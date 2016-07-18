@@ -39,7 +39,6 @@ var Sidebar = (function (Component) {
 						return;
 					}
 
-					//			console.log('TEST 2: '+JSON.stringify(response))
 					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
@@ -105,19 +104,6 @@ var Sidebar = (function (Component) {
 												"div",
 												null,
 												"Home"
-											)
-										)
-									),
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ href: "/feed" },
-											React.createElement(
-												"div",
-												null,
-												"Blog"
 											)
 										)
 									),

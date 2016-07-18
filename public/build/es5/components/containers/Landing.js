@@ -205,7 +205,12 @@ var Landing = (function (Component) {
 											"Recent Posts"
 										),
 										React.createElement("hr", null),
-										posts
+										posts,
+										React.createElement(
+											"a",
+											{ href: "/feed" },
+											"View All"
+										)
 									),
 									React.createElement(
 										"div",

@@ -49,7 +49,6 @@ class Landing extends Component {
 					<span style={{fontWeight:100, fontSize:14}}>{name}</span>
 				</div>
 			)
-
 		})
 
 		var headerString = 'Learn Tomorrow\'s Technology Today'
@@ -106,9 +105,8 @@ class Landing extends Component {
 									<h4>Recent Posts</h4>
 									<hr />
 									{posts}
-
+									<a href="/feed">View All</a>
 								</div>
-
 
 								<div className="widget clearfix">
 									<h4>Featured Tutorial</h4>

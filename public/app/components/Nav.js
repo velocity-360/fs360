@@ -67,7 +67,6 @@ class Nav extends Component {
 										<li><a href="/courses?type=immersive"><div style={{padding:4}}>Bootcamp</div></a></li>
 									</ul>
 								</li>
-								<li><a href="/feed"><div style={{padding:4}}>Blog</div></a></li>
 								{login}
 	                        </ul>
 	                    </nav>

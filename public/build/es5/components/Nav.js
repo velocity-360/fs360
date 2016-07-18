@@ -207,19 +207,6 @@ var Nav = (function (Component) {
 											)
 										)
 									),
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ href: "/feed" },
-											React.createElement(
-												"div",
-												{ style: { padding: 4 } },
-												"Blog"
-											)
-										)
-									),
 									login
 								)
 							)

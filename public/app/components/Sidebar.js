@@ -16,11 +16,9 @@ class Sidebar extends Component {
 				return
 			}
 
-//			console.log('TEST 2: '+JSON.stringify(response))
 			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
 		})
 	}
-
 
 	render(){
 		return (
@@ -46,15 +44,10 @@ class Sidebar extends Component {
 		                        		: 
 		                        		<a href="/account"><div>{ this.props.currentUser.firstName }</div></a>
 		                        	}
-	                            </li>
-	                            
+	                            </li>	                            
 	                            <li>
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
-	                            <li>
-	                                <a href="/feed"><div>Blog</div></a>
-	                            </li>
-
 	                            <li><a href="#"><div>Courses</div></a>
 	                                <ul>
 	                                    <li><a href="/courses?type=online"><div>Online</div></a></li>
