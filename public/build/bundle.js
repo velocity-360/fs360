@@ -22914,10 +22914,10 @@
 					return _react2.default.createElement(
 						'div',
 						{ key: event.id, style: { border: '1px solid #ddd', background: '#f9f9f9', marginBottom: 16 } },
-						_react2.default.createElement('img', { style: { width: 96, float: 'left', marginRight: 12 }, src: 'https://media-service.appspot.com/site/images/' + event.image + '?crop=260' }),
+						_react2.default.createElement('img', { style: { width: 104, float: 'left', marginRight: 12 }, src: 'https://media-service.appspot.com/site/images/' + event.image + '?crop=260' }),
 						_react2.default.createElement(
 							'div',
-							{ style: { padding: 12, height: 96, textAlign: 'right' } },
+							{ style: { padding: 12, height: 104, textAlign: 'right' } },
 							_react2.default.createElement(
 								'h5',
 								{ style: { fontWeight: 200, marginBottom: 0 } },
@@ -22933,6 +22933,12 @@
 								event.date,
 								', ',
 								event.time
+							),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'a',
+								{ href: '/event/' + event.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
+								'Attend'
 							)
 						)
 					);

@@ -121,10 +121,10 @@ var Landing = (function (Component) {
 					return React.createElement(
 						"div",
 						{ key: event.id, style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16 } },
-						React.createElement("img", { style: { width: 96, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260" }),
+						React.createElement("img", { style: { width: 104, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/" + event.image + "?crop=260" }),
 						React.createElement(
 							"div",
-							{ style: { padding: 12, height: 96, textAlign: "right" } },
+							{ style: { padding: 12, height: 104, textAlign: "right" } },
 							React.createElement(
 								"h5",
 								{ style: { fontWeight: 200, marginBottom: 0 } },
@@ -140,6 +140,12 @@ var Landing = (function (Component) {
 								event.date,
 								", ",
 								event.time
+							),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ href: "/event/" + event.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
+								"Attend"
 							)
 						)
 					);
