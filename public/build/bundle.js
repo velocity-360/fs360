@@ -45579,7 +45579,6 @@
 					_react2.default.createElement(
 						'section',
 						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/lounge.jpg") center' } },
-						_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'container clearfix' },
@@ -45612,6 +45611,7 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'content-wrap' },
+							_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 							_react2.default.createElement(
 								'div',
 								{ className: 'container clearfix' },
@@ -45655,8 +45655,6 @@
 											'Time: ',
 											this.props.event.time,
 											_react2.default.createElement('br', null),
-											'Fee: $',
-											this.props.event.fee,
 											_react2.default.createElement('hr', null),
 											_react2.default.createElement('input', { type: 'text', id: 'name', onChange: this.updateVisitor, placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
 											_react2.default.createElement('br', null),

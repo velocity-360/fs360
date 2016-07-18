@@ -188,7 +188,6 @@ var Event = (function (Component) {
 					React.createElement(
 						"section",
 						{ id: "slider", className: "slider-parallax dark full-screen", style: { background: "url(\"/images/lounge.jpg\") center" } },
-						React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 						React.createElement(
 							"div",
 							{ className: "container clearfix" },
@@ -221,6 +220,7 @@ var Event = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },
+							React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 							React.createElement(
 								"div",
 								{ className: "container clearfix" },
@@ -264,8 +264,6 @@ var Event = (function (Component) {
 											"Time: ",
 											this.props.event.time,
 											React.createElement("br", null),
-											"Fee: $",
-											this.props.event.fee,
 											React.createElement("hr", null),
 											React.createElement("input", { type: "text", id: "name", onChange: this.updateVisitor, placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
 											React.createElement("br", null),

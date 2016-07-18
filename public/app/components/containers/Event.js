@@ -120,7 +120,6 @@ class Event extends Component {
 				<Nav />
 
 		        <section id="slider" className="slider-parallax dark full-screen" style={{background:'url("/images/lounge.jpg") center'}}>
-					<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 		            <div className="container clearfix">
 
 		                <div className="vertical-middle">
@@ -140,6 +139,7 @@ class Event extends Component {
 
 				<section id="content">
 					<div className="content-wrap">
+					<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 
 						<div className="container clearfix">
 							<div className="col_two_third bottommargin-sm">
@@ -157,7 +157,6 @@ class Event extends Component {
 									<div className="panel-body" style={{textAlign:'left'}}>
 										Date: {this.props.event.date}<br />
 										Time: {this.props.event.time}<br />
-										Fee: ${this.props.event.fee}
 										<hr />
 										<input type="text" id="name" onChange={this.updateVisitor} placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
 										<input type="text" id="email" onChange={this.updateVisitor} placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
