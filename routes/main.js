@@ -42,6 +42,10 @@ router.get('/', function(req, res, next) {
 	})
 	.then(function(posts){
 		initialData.postReducer.postsArray = posts
+		return eventController.find({limit: 3}) // three most recent blog posts
+	})
+	.then(function(events){
+		initialData.eventReducer.eventArray = events
 
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:'home', initial:initialState})

@@ -97,7 +97,8 @@ module.exports = {
 				resolve(convertToJson(events))
 			})
 		})
-	},	
+	},
+	
 	post: function(eventInfo, completion){
 		var parts = eventInfo.title.split(' ');
 
