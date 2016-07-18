@@ -11,6 +11,7 @@ var EventSchema = new mongoose.Schema({
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''},
 	priority: {type:Number, default:0},
+	fee: {type:Number, default:0},
 	timestamp: {type:Date, default:Date.now},
 });
 
@@ -26,6 +27,7 @@ EventSchema.methods.summary = function(type) {
 		'slug':this.slug,
 		'link':this.link,
 		'priority':this.priority,
+		'fee':this.fee,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};

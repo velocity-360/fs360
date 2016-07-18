@@ -68,6 +68,7 @@
                             <input ng-model="event.title" class="form-control" type="text" placeholder="Title" />
                             <input ng-model="event.date" class="form-control" type="text" placeholder="Date" />
                             <input ng-model="event.time" class="form-control" type="text" placeholder="Time" />
+                            <input ng-model="event.fee" class="form-control" type="text" placeholder="Fee" />
                             <input ng-model="event.address" class="form-control" type="text" placeholder="Address" />
                             <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777;margin-bottom:24px" ng-file-drop="uploadImage($files)">
                                 <img style="width:72px;border:1px solid #ddd" ng-show="event.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% event.image %>?crop=360" />
