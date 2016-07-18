@@ -71,7 +71,7 @@ var RightSidebar = (function (Component) {
 						return;
 					}
 
-					console.log(JSON.stringify(response));
+					//			console.log(JSON.stringify(response))
 					var events = response.events;
 					_this.setState({
 						events: events

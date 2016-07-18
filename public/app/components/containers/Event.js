@@ -16,10 +16,58 @@ class Event extends Component {
 
 	constructor(props, context){
 		super(props, context)
+		this.updateVisitor = this.updateVisitor.bind(this)
+		this.submitRequest = this.submitRequest.bind(this)
 		this.state = {
-			showLoader: false
+			showLoader: false,
+			visitor: {
+				name: '',
+				email: ''
+			}
 		}
 	}
+
+	updateVisitor(event){
+		event.preventDefault()
+		var s = Object.assign({}, this.state.visitor)
+		s[event.target.id] = event.target.value
+		s['event'] = this.props.event.title
+		this.setState({
+			visitor: s
+		})
+	}
+
+	submitRequest(event){
+		event.preventDefault()
+
+		if (this.state.visitor.name.length == 0){
+			alert('Please enter your name.')
+			return
+		}
+
+		if (this.state.visitor.email.length == 0){
+			alert('Please enter your email.')
+			return
+		}
+
+		var s = Object.assign({}, this.state.visitor)
+		var parts = s.name.split(' ')
+		s['firstName'] = parts[0]
+		if (parts.length > 1)
+			s['lastName'] = parts[parts.length-1]
+
+		var _this = this
+		api.handlePost('/api/rsvp', s, function(err, response){
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		})
+	}
+
 
 	render(){
 
@@ -67,9 +115,9 @@ class Event extends Component {
 										Time: {this.props.event.time}<br />
 										Fee: ${this.props.event.fee}
 										<hr />
-										<input type="text" id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-										<input type="text" id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-										<a href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+										<input type="text" id="name" onChange={this.updateVisitor} placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+										<input type="text" id="email" onChange={this.updateVisitor} placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+										<a onClick={this.submitRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
 									</div>
 
 								</div>

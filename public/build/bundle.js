@@ -45245,15 +45245,63 @@
 		function Event(props, context) {
 			_classCallCheck(this, Event);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props, context));
 	
-			_this.state = {
-				showLoader: false
+			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.submitRequest = _this2.submitRequest.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				visitor: {
+					name: '',
+					email: ''
+				}
 			};
-			return _this;
+			return _this2;
 		}
 	
 		_createClass(Event, [{
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				event.preventDefault();
+				var s = Object.assign({}, this.state.visitor);
+				s[event.target.id] = event.target.value;
+				s['event'] = this.props.event.title;
+				this.setState({
+					visitor: s
+				});
+			}
+		}, {
+			key: 'submitRequest',
+			value: function submitRequest(event) {
+				event.preventDefault();
+	
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var _this = this;
+				_api2.default.handlePost('/api/rsvp', s, function (err, response) {
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 	
@@ -45343,13 +45391,13 @@
 											'Fee: $',
 											this.props.event.fee,
 											_react2.default.createElement('hr', null),
-											_react2.default.createElement('input', { type: 'text', id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+											_react2.default.createElement('input', { type: 'text', id: 'name', onChange: this.updateVisitor, placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
 											_react2.default.createElement('br', null),
-											_react2.default.createElement('input', { type: 'text', id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+											_react2.default.createElement('input', { type: 'text', id: 'email', onChange: this.updateVisitor, placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
 											_react2.default.createElement('br', null),
 											_react2.default.createElement(
 												'a',
-												{ href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+												{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
 												'Submit'
 											)
 										)
@@ -45483,7 +45531,7 @@
 						return;
 					}
 	
-					console.log(JSON.stringify(response));
+					//			console.log(JSON.stringify(response))
 					var events = response.events;
 					_this.setState({
 						events: events
