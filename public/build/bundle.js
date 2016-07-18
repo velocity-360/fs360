@@ -22814,10 +22814,6 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _DateUtils = __webpack_require__(475);
-	
-	var _DateUtils2 = _interopRequireDefault(_DateUtils);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22893,15 +22889,14 @@
 				});
 	
 				var posts = this.props.posts.map(function (post, i) {
-					var timestamp = new Date(post.timestamp);
-					var date = _DateUtils2.default.formattedDate(timestamp);
+					var username = post.profile.username == null ? 'anon' : post.profile.username;
 					return _react2.default.createElement(
 						'div',
 						{ key: post.id, style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginBottom: 16 } },
 						_react2.default.createElement(
 							'span',
 							{ style: { fontWeight: 100, fontSize: 14 } },
-							date
+							username
 						),
 						_react2.default.createElement(
 							'h5',

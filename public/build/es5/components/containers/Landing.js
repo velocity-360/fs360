@@ -29,8 +29,6 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var DateUtils = _interopRequire(require("../../utils/DateUtils"));
-
 var Landing = (function (Component) {
 	function Landing(props, context) {
 		_classCallCheck(this, Landing);
@@ -98,15 +96,14 @@ var Landing = (function (Component) {
 				});
 
 				var posts = this.props.posts.map(function (post, i) {
-					var timestamp = new Date(post.timestamp);
-					var date = DateUtils.formattedDate(timestamp);
+					var username = post.profile.username == null ? "anon" : post.profile.username;
 					return React.createElement(
 						"div",
 						{ key: post.id, style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
 						React.createElement(
 							"span",
 							{ style: { fontWeight: 100, fontSize: 14 } },
-							date
+							username
 						),
 						React.createElement(
 							"h5",

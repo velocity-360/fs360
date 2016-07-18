@@ -5,7 +5,6 @@ import Nav from '../../components/Nav'
 import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import DateUtils from '../../utils/DateUtils'
 
 
 class Landing extends Component {
@@ -43,11 +42,10 @@ class Landing extends Component {
 		})
 
 		var posts = this.props.posts.map(function(post, i){
-	        var timestamp = new Date(post.timestamp)
-	        var date = DateUtils.formattedDate(timestamp)			
+			var username = (post.profile.username == null ) ? 'anon' : post.profile.username
 			return (
 				<div key={post.id} style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
-					<span style={{fontWeight:100, fontSize:14}}>{date}</span>
+					<span style={{fontWeight:100, fontSize:14}}>{username}</span>
 					<h5 style={{fontWeight:400}}><a href={'/post/'+post.slug}>{post.title}</a></h5>
 				</div>
 			)
