@@ -45290,6 +45290,9 @@
 				s['firstName'] = parts[0];
 				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
 	
+				s['date'] = this.props.event.date;
+				console.log('SubmitRequest: ' + JSON > stringify(s));
+	
 				var _this = this;
 				_api2.default.handlePost('/api/rsvp', s, function (err, response) {
 	
