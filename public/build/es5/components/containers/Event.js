@@ -30,8 +30,6 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var EventCard = _interopRequire(require("../../components/EventCard"));
-
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -76,7 +74,7 @@ var Event = (function (Component) {
 										{ "data-animate": "fadeInUp" },
 										this.props.event.title
 									),
-									React.createElement("img", { style: { width: 104, borderRadius: 52 }, src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=260", alt: "Velocity 360" }),
+									React.createElement("img", { style: { width: 124, borderRadius: 62 }, src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=260", alt: "Velocity 360" }),
 									React.createElement(
 										"span",
 										{ "data-animate": "fadeInUp", "data-delay": "300" },

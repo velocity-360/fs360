@@ -45293,10 +45293,6 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _EventCard = __webpack_require__(598);
-	
-	var _EventCard2 = _interopRequireDefault(_EventCard);
-	
 	var _store = __webpack_require__(194);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -45359,7 +45355,7 @@
 										{ 'data-animate': 'fadeInUp' },
 										this.props.event.title
 									),
-									_react2.default.createElement('img', { style: { width: 104, borderRadius: 52 }, src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
+									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
 									_react2.default.createElement(
 										'span',
 										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
@@ -62376,136 +62372,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
-
-/***/ },
-/* 598 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var EventCard = function (_Component) {
-		_inherits(EventCard, _Component);
-	
-		function EventCard(props, context) {
-			_classCallCheck(this, EventCard);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(EventCard).call(this, props, context));
-	
-			_this.selectEvent = _this.selectEvent.bind(_this);
-			return _this;
-		}
-	
-		_createClass(EventCard, [{
-			key: 'selectEvent',
-			value: function selectEvent(event) {
-				event.preventDefault();
-				var cbk = this.props.click;
-				cbk(event);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix', style: { marginBottom: 24, border: '1px solid #ddd' } },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', width: 360 }, src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=400', alt: this.props.event.title })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-c' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-title' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									this.props.event.title
-								)
-							)
-						),
-						_react2.default.createElement(
-							'ul',
-							{ className: 'entry-meta clearfix' },
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-calendar' }),
-									' ',
-									this.props.event.date
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-time' }),
-									' ',
-									this.props.event.time
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'icon-map-marker2' }),
-									' ',
-									this.props.event.address,
-									', NYC'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-content' },
-							this.props.event.description,
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ id: this.props.index, onClick: this.selectEvent, href: '#', className: 'btn btn-success' },
-								'RSVP'
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return EventCard;
-	}(_react.Component);
-	
-	exports.default = EventCard;
 
 /***/ }
 /******/ ]);

@@ -5,7 +5,6 @@ import Nav from '../../components/Nav'
 import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import EventCard from '../../components/EventCard'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -35,7 +34,7 @@ class Event extends Component {
 
 		                    <div className="heading-block center nobottomborder">
 		                        <h1 data-animate="fadeInUp">{this.props.event.title}</h1>
-								<img style={{width:104, borderRadius:52}} src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
+								<img style={{width:124, borderRadius:62}} src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
 		                        <span data-animate="fadeInUp" data-delay="300">
 		                        	{this.props.event.date} | {this.props.event.time}
 		                        </span>
