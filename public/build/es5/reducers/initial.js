@@ -72,6 +72,14 @@ module.exports = function () {
 				}
 			}
 		},
+		eventReducer: {
+			events: {
+				0: {
+					title: "",
+					description: "" }
+			},
+			eventArray: []
+		},
 		staticReducer: {
 			banners: ["hackathon.jpg", "hacking-2.jpg", "girl.jpg"],
 			loaderConfig: {

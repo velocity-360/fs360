@@ -68,6 +68,15 @@ export default function() {
 				}		
 			}			
 		},
+		eventReducer:{
+			events: {
+				0:{
+					title:'',
+					description:'',
+				}
+			},
+			eventArray: []
+		},
 		staticReducer: {
 			banners:[
 				'hackathon.jpg',
