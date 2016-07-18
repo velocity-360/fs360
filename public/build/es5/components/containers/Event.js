@@ -152,10 +152,10 @@ var Event = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "col_half col_last" },
-										React.createElement("img", { src: "/images/wework.jpg" }),
+										React.createElement("img", { style: { marginBottom: 6 }, src: "/images/wework.jpg" }),
 										React.createElement(
 											"i",
-											{ style: { fontWeight: 100, marginTop: 6 } },
+											{ style: { fontWeight: 100 } },
 											"* All events are held at our WeWork Location on 28th Street."
 										)
 									)
