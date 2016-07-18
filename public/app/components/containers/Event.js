@@ -56,11 +56,7 @@ class Event extends Component {
 								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
 								<h3 style={{marginBottom:6, fontWeight:400}}>Industry Driven</h3>
 								<p>
-									Technology, more than any other industry, changes rapidly and many fall behind. As a 
-									newcomer to tech, it is imperative to understand the trends and develop the skills
-									that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares 
-									students under that guiding principle. Our curriculum is highly focused on the bleeding 
-									edge of tech evolution: Node JS, React, Redux, and React Native. 
+									{this.props.event.description}
 								</p>
 
 								<h3 style={{marginBottom:6, fontWeight:400}}>Modern Curriculum</h3>
