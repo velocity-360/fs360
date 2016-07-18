@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Landing from './containers/Landing'
 import ProjectLanding from './containers/ProjectLanding'
 import Courses from './containers/Courses'
-import Events from './containers/Events'
+import Event from './containers/Event'
 import Feed from './containers/Feed'
 import PostPage from './containers/PostPage'
 import Project from './containers/Project'
@@ -37,8 +37,8 @@ class Main extends Component {
 			case 'courses':
 				return page = <Courses params={this.props.params} />
 
-			case 'events':
-				return page = <Events />
+			case 'event':
+				return page = <Event slug={this.props.slug} />
 
 			case 'feed':
 				return page = <Feed />

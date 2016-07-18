@@ -22668,9 +22668,9 @@
 	
 	var _Courses2 = _interopRequireDefault(_Courses);
 	
-	var _Events = __webpack_require__(480);
+	var _Event = __webpack_require__(600);
 	
-	var _Events2 = _interopRequireDefault(_Events);
+	var _Event2 = _interopRequireDefault(_Event);
 	
 	var _Feed = __webpack_require__(483);
 	
@@ -22735,8 +22735,8 @@
 					case 'courses':
 						return page = _react2.default.createElement(_Courses2.default, { params: this.props.params });
 	
-					case 'events':
-						return page = _react2.default.createElement(_Events2.default, null);
+					case 'event':
+						return page = _react2.default.createElement(_Event2.default, { slug: this.props.slug });
 	
 					case 'feed':
 						return page = _react2.default.createElement(_Feed2.default, null);
@@ -45260,963 +45260,7 @@
 	exports.default = CourseCard;
 
 /***/ },
-/* 480 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(205);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Footer = __webpack_require__(474);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _EventCard = __webpack_require__(481);
-	
-	var _EventCard2 = _interopRequireDefault(_EventCard);
-	
-	var _Testimonial = __webpack_require__(482);
-	
-	var _Testimonial2 = _interopRequireDefault(_Testimonial);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(168);
-	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Events = function (_Component) {
-		_inherits(Events, _Component);
-	
-		function Events(props, context) {
-			_classCallCheck(this, Events);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Events).call(this, props, context));
-	
-			_this2.updateUserRegistration = _this2.updateUserRegistration.bind(_this2);
-			_this2.register = _this2.register.bind(_this2);
-			_this2.openModal = _this2.openModal.bind(_this2);
-			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.rsvp = _this2.rsvp.bind(_this2);
-			_this2.syllabusRequest = _this2.syllabusRequest.bind(_this2);
-			_this2.validate = _this2.validate.bind(_this2);
-			_this2.showRegistrationForm = _this2.showRegistrationForm.bind(_this2);
-			_this2.state = {
-				showRegistration: false,
-				showLoader: false,
-				showModal: false,
-				bootcamp: {
-					subject: 'Bootcamp',
-					image: 'logo_round_green_260.png',
-					button: 'Request Info'
-				},
-				selectedEvent: {
-					id: null,
-					title: '',
-					image: ''
-				},
-				membershiptype: 'premium',
-				selectedCourse: 'ios bootcamp' // for syllabus requests
-			};
-			return _this2;
-		}
-	
-		_createClass(Events, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				//		getCurrentUser()
-			}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				_api2.default.handleGet('/api/event', {}, function (err, response) {
-					if (err) {
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.eventsRecieved(response.events));
-				});
-			}
-		}, {
-			key: 'updateUserRegistration',
-			value: function updateUserRegistration(event) {
-				console.log('updateUserRegistration: ' + event.target.id);
-				event.preventDefault();
-	
-				if (event.target.id == 'course') {
-					this.setState({
-						selectedCourse: event.target.value
-					});
-					return;
-				}
-	
-				if (event.target.id == 'membershiptype') {
-					this.setState({
-						membershiptype: event.target.value
-					});
-				}
-	
-				var updatedUser = Object.assign({}, this.props.currentUser);
-				updatedUser[event.target.id] = event.target.value;
-				_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
-			}
-		}, {
-			key: 'validate',
-			value: function validate(withPassword) {
-				console.log('VALIDATE: ' + JSON.stringify(this.props.currentUser));
-				if (this.props.currentUser.firstName.length == 0) return 'First Name';
-	
-				if (this.props.currentUser.lastName.length == 0) return 'Last Name';
-	
-				if (this.props.currentUser.email.length == 0) return 'Email';
-	
-				if (withPassword == false) return null;
-	
-				if (this.props.currentUser.password.length == 0) return 'Password';
-	
-				return null; // this is successful
-			}
-		}, {
-			key: 'register',
-			value: function register(event) {
-				event.preventDefault();
-				var missingField = this.validate(true);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/api/profile', this.props.currentUser, function (err, response) {
-					console.log('REGISTER RESPONSE: ' + JSON.stringify(response));
-	
-					if (err) {
-						_this.setState({
-							showLoader: false
-						});
-						alert(err.message);
-						return;
-					}
-	
-					//			alert(response.message)
-					window.location.href = '/courses';
-				});
-			}
-		}, {
-			key: 'rsvp',
-			value: function rsvp(event) {
-				event.preventDefault();
-				var missingField = this.validate(false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				var pkg = {
-					visitor: this.props.currentUser,
-					event: this.state.selectedEvent
-				};
-	
-				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {
-					console.log('RSVP REQUEST RESPONSE: ' + JSON.stringify(response));
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'syllabusRequest',
-			value: function syllabusRequest(event) {
-				event.preventDefault();
-				console.log('SYLLABUS REQUEST: ' + this.state.selectedCourse);
-	
-				var missingField = this.validate(false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				var pkg = {
-					course: this.state.selectedCourse,
-					visitor: this.props.currentUser
-				};
-	
-				this.setState({
-					showModal: false,
-					showLoader: true
-				});
-	
-				var _this = this;
-				_api2.default.handlePost('/api/syllabus', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'openModal',
-			value: function openModal(event) {
-				console.log('OPEN MODAL: ' + event.target.id);
-				event.preventDefault();
-	
-				this.setState({
-					showModal: true,
-					selectedEvent: event.target.id == 'bootcamp' ? this.state.bootcamp : this.props.events[event.target.id]
-				});
-			}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({
-					showRegistration: false,
-					showModal: false
-				});
-			}
-		}, {
-			key: 'showRegistrationForm',
-			value: function showRegistrationForm(event) {
-				event.preventDefault();
-				this.setState({
-					membershiptype: event.target.id,
-					showRegistration: true
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var testimonialList = this.props.testimonials.map(function (testimonial, i) {
-					return _react2.default.createElement(_Testimonial2.default, { key: i, testimonial: testimonial });
-				});
-	
-				var _openModal = this.openModal;
-				var events = this.props.events.map(function (e, i) {
-					return _react2.default.createElement(_EventCard2.default, { key: e.id, index: i, event: e, click: _openModal });
-				});
-	
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Nav2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: "url(images/programming.jpg) center" } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'slider-parallax-inner' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'vertical-middle' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block center nobottomborder' },
-										_react2.default.createElement(
-											'h1',
-											{ 'data-animate': 'fadeInUp' },
-											'Become a ',
-											_react2.default.createElement(
-												'strong',
-												null,
-												'Professional'
-											),
-											' Software Developer'
-										),
-										_react2.default.createElement(
-											'span',
-											{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
-											'Learn to code in our part time or full time classes for Web and iOS'
-										)
-									),
-									_react2.default.createElement(
-										'form',
-										{ action: '#', method: 'post', role: 'form', className: 'landing-wide-form clearfix' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_four_fifth nobottommargin' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_fourth nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.firstName, onChange: this.updateUserRegistration, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'First Name*' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_fourth nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.lastName, onChange: this.updateUserRegistration, id: 'lastName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Last Name*' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_fourth nobottommargin' },
-												_react2.default.createElement('input', { value: this.props.currentUser.email, onChange: this.updateUserRegistration, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email*' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'col_one_fourth col_last nobottommargin' },
-												_react2.default.createElement(
-													'select',
-													{ onChange: this.updateUserRegistration, id: 'course', className: 'form-control input-lg not-dark' },
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios bootcamp' },
-														'iOS Bootcamp'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'web bootcamp' },
-														'Web Bootcamp'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios hs course' },
-														'iOS & Node HS Course'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'ios+node evening' },
-														'iOS & Node Evening Course'
-													),
-													_react2.default.createElement(
-														'option',
-														{ value: 'react+node evening' },
-														'React & Node Evening Course'
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_one_fifth col_last nobottommargin' },
-											_react2.default.createElement(
-												'button',
-												{ onClick: this.syllabusRequest, id: 'bootcamp', className: 'btn btn-lg btn-danger btn-block nomargin', value: 'submit' },
-												'Request Syllabus'
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm center' },
-									_react2.default.createElement('img', { 'data-animate': 'fadeInLeft', src: '/images/swift-react.png', alt: 'Iphone' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_two_third bottommargin-sm col_last' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block topmargin-sm' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Coding Education for Tomorrow'
-										)
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Velocity conducts development courses that are relevant in the startup and tech world today. We focus on the most up-to-date frameworks and libraries such as React, Angular, and Node JS. Our students are always prepared for rapid changes in the industry and are ready to work in tech after a course.'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'The only constant in the software industry is change. One day, PHP is the king, the next day Ruby on Rails is highest in demand. The major bootcamps in NYC focus on today. Flatiron School, General Assebmbly, Dev Bootcamp all teach Rails while we focus on tomorrow. Our stack is Node JS with React on the front end and ES2015. Will you be among the flood of Rails devs saturating the NYC market or will you be ready for the tech stack of tomorrow?'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '/courses?type=live', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-										'View Courses'
-									),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'a',
-										{ href: '/courses?type=immersive', className: 'button button-border button-dark button-rounded button-large noleftmargin topmargin-sm' },
-										'View Bootcamps'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ id: 'events', className: 'divider divider-short divider-center' },
-									_react2.default.createElement('i', { className: 'icon-circle' })
-								),
-								_react2.default.createElement(
-									'div',
-									{ id: 'posts', className: 'events small-thumbs' },
-									_react2.default.createElement(
-										'div',
-										{ style: { textAlign: 'center', paddingTop: 64 } },
-										_react2.default.createElement(
-											'h2',
-											null,
-											'Events'
-										)
-									),
-									events
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'divider divider-short divider-center' },
-									_react2.default.createElement('i', { className: 'icon-circle' })
-								),
-								_react2.default.createElement('div', { className: 'clear' })
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'section-team', className: 'page-section', style: { background: '#fff', paddingTop: 48 } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'heading-block center' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Summer 2016'
-							),
-							_react2.default.createElement(
-								'span',
-								null,
-								'The following courses will run in Spring and Summer'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 bottommargin' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { src: '/images/xcode.jpg', alt: 'Velocity' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'iOS & Node Evening Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'8 Weeks | Mon, Wed | 6pm - 9pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The iOS Intensive covers all aspects of iOS development for beginners. Students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data, and publishing. This course is designed for beginners with little to no programming experience and all development will be done using Swift.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/ios-development', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 bottommargin' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { src: '/images/react.jpg', alt: 'Velocity' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'Node & React Evening Course'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'8 Weeks | Tues, Thurs | 6pm - 9pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'React and NodeThe Node & React Development Evening course is an 8-week class that covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/node-react-evening-course', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
-							),
-							_react2.default.createElement('div', { className: 'clear' }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 bottommargin' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/ios.jpg', alt: 'Velocity' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'6-Week Node & iOS Bootcamp'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'July 11th to August 19th'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Mon - Fri | 9am - 6pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The 6-Week iOS Intensive is a comprehensive course in all aspects of iOS development for beginners. Students will cover the key aspects of iOS development from creating sleek UI’s, animations, GPS locator, integrating 3rd party data. This course is designed for beginners with little to no programming experience and all development is done with Swift. By the end of the course, students will have submitted at least one app to the App Store and gained the skills necessary to begin working as junior iOS developers.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/ios-node-bootcamp', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6 bottommargin' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team team-list clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-image' },
-										_react2.default.createElement('img', { src: '/images/node.jpg', alt: 'Velocity' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-desc' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-title' },
-											_react2.default.createElement(
-												'h4',
-												null,
-												'6-Week Node & React Bootcamp'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'August 22nd to September 30th'
-											),
-											_react2.default.createElement(
-												'span',
-												null,
-												'Mon - Fri | 9am - 6pm'
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'team-content' },
-											'The Node & React Bootcamp is a 6-week crash course on backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we will create a fully functional website with user registration, image uploading, email notification functionality.'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/node-react-bootcamp', className: 'btn btn-success' },
-											'Learn More'
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'divider divider-short divider-center' },
-								_react2.default.createElement('i', { className: 'icon-circle' })
-							),
-							_react2.default.createElement('div', { className: 'clear' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'section' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ id: 'section-couple', className: 'heading-block title-center page-section' },
-									_react2.default.createElement(
-										'h2',
-										null,
-										'Meet Our Students'
-									),
-									_react2.default.createElement(
-										'span',
-										null,
-										'Current & Former Students'
-									)
-								),
-								testimonialList
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'register', className: 'section pricing-section nomargin', style: { backgroundColor: '#FFF' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'h2',
-								{ className: 'pricing-section--title center' },
-								'Cant make it to our live courses?'
-							),
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement(
-									'p',
-									{ style: { fontSize: 16 } },
-									'Join our online service. ',
-									_react2.default.createElement('br', null),
-									'Online members have access to videos, code samples, the forum and more.'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'pricing pricing--jinpa' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item' },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Basic'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										'FREE'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'pricing--feature-list' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Limited Video Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Forum Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Discounts to Live Events'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'basic', className: 'pricing--action' },
-										'Join'
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'pricing--item', style: { marginLeft: 24, border: '1px solid #eee' } },
-									_react2.default.createElement(
-										'h3',
-										{ className: 'pricing--title' },
-										'Premium'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { fontSize: '1.15em' }, className: 'pricing--price' },
-										_react2.default.createElement(
-											'span',
-											{ className: 'pricing--currency' },
-											'$'
-										),
-										'19.99/mo'
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { borderTop: '1px solid #eee', marginTop: 24, paddingTop: 24 } },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'pricing--feature-list' },
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Full Video Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Downloadable Code Samples'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Customized Job Listings'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Forum Access'
-											),
-											_react2.default.createElement(
-												'li',
-												{ className: 'pricing--feature' },
-												'Discounts to Live Events'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'button',
-										{ onClick: this.showRegistrationForm, id: 'premium', className: 'pricing--action' },
-										'Join'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showModal, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h2',
-								null,
-								this.state.selectedEvent.title
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24, padding: 12 }, src: 'https://media-service.appspot.com/site/images/' + this.state.selectedEvent.image + '?crop=360' })
-							),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'firstName', className: 'form-control', type: 'text', placeholder: 'First Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'lastName', className: 'form-control', type: 'text', placeholder: 'Last Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
-							_react2.default.createElement('br', null)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.rsvp, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Submit'
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Modal,
-						{ show: this.state.showRegistration, onHide: this.closeModal },
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Header,
-							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
-							_react2.default.createElement(
-								'h3',
-								null,
-								'Join'
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Body,
-							{ style: { background: '#f9f9f9', padding: 24 } },
-							_react2.default.createElement(
-								'div',
-								{ style: { textAlign: 'center' } },
-								_react2.default.createElement('img', { style: { width: 128, borderRadius: 64, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_green_260.png' })
-							),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'firstName', className: 'form-control', type: 'text', placeholder: 'First Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'lastName', className: 'form-control', type: 'text', placeholder: 'Last Name' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'email', className: 'form-control', type: 'text', placeholder: 'Email' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateUserRegistration, id: 'password', className: 'form-control', type: 'password', placeholder: 'Password' }),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'select',
-								{ onChange: this.updateUserRegistration, id: 'membershiptype', value: this.state.membershiptype, className: 'form-control input-md not-dark' },
-								_react2.default.createElement(
-									'option',
-									{ value: 'basic' },
-									'Basic'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'starter' },
-									'Starter'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'premium' },
-									'Premium'
-								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Modal.Footer,
-							{ style: { textAlign: 'center' } },
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.register, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
-								'Register'
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Events;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(state));
-		var courseList = [];
-		var keys = Object.keys(state.courseReducer.courses);
-		for (var i = 0; i < keys.length; i++) {
-			var key = keys[i];
-			courseList.push(state.courseReducer.courses[key]);
-		}
-	
-		return {
-			events: state.eventReducer.eventArray,
-			currentUser: state.profileReducer.currentUser,
-			courses: courseList,
-			testimonials: state.staticReducer.testimonials,
-			loaderOptions: state.staticReducer.loaderConfig
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Events);
-
-/***/ },
+/* 480 */,
 /* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -46347,99 +45391,7 @@
 	exports.default = EventCard;
 
 /***/ },
-/* 482 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Testimonial = function (_Component) {
-		_inherits(Testimonial, _Component);
-	
-		function Testimonial() {
-			_classCallCheck(this, Testimonial);
-	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Testimonial).apply(this, arguments));
-		}
-	
-		_createClass(Testimonial, [{
-			key: "render",
-			value: function render() {
-				return _react2.default.createElement(
-					"div",
-					{ className: "col-md-6 bottommargin" },
-					_react2.default.createElement(
-						"div",
-						{ className: "team team-list clearfix" },
-						_react2.default.createElement(
-							"div",
-							{ className: "team-image", style: { width: 150 } },
-							_react2.default.createElement("img", { className: "img-circle", src: '/images/' + this.props.testimonial.image, alt: "FullStaack 360" })
-						),
-						_react2.default.createElement(
-							"div",
-							{ className: "team-desc" },
-							_react2.default.createElement(
-								"div",
-								{ className: "team-title" },
-								_react2.default.createElement(
-									"h4",
-									null,
-									this.props.testimonial.name
-								),
-								_react2.default.createElement(
-									"span",
-									null,
-									this.props.testimonial.course
-								)
-							),
-							_react2.default.createElement(
-								"div",
-								{ className: "team-content" },
-								this.props.testimonial.quote
-							),
-							_react2.default.createElement("div", { className: "line topmargin-sm nobottommargin" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-small si-borderless si-github" },
-								_react2.default.createElement("i", { className: "icon-github" }),
-								_react2.default.createElement("i", { className: "icon-github" })
-							),
-							_react2.default.createElement(
-								"a",
-								{ href: "#", className: "social-icon si-borderless si-small si-twitter", title: "Twitter" },
-								_react2.default.createElement("i", { className: "icon-twitter" }),
-								_react2.default.createElement("i", { className: "icon-twitter" })
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Testimonial;
-	}(_react.Component);
-	
-	exports.default = Testimonial;
-
-/***/ },
+/* 482 */,
 /* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -63353,6 +62305,91 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
+
+/***/ },
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(205);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Footer = __webpack_require__(474);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _EventCard = __webpack_require__(481);
+	
+	var _EventCard2 = _interopRequireDefault(_EventCard);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _api = __webpack_require__(463);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Event = function (_Component) {
+		_inherits(Event, _Component);
+	
+		function Event() {
+			_classCallCheck(this, Event);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Event).apply(this, arguments));
+		}
+	
+		_createClass(Event, [{
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Nav2.default, null),
+					'Event Page'
+				);
+			}
+		}]);
+	
+		return Event;
+	}(_react.Component);
+	
+	exports.default = Event;
 
 /***/ }
 /******/ ]);

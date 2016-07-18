@@ -22,7 +22,7 @@ var ProjectLanding = _interopRequire(require("./containers/ProjectLanding"));
 
 var Courses = _interopRequire(require("./containers/Courses"));
 
-var Events = _interopRequire(require("./containers/Events"));
+var Event = _interopRequire(require("./containers/Event"));
 
 var Feed = _interopRequire(require("./containers/Feed"));
 
@@ -65,8 +65,8 @@ var Main = (function (Component) {
 					case "courses":
 						return page = React.createElement(Courses, { params: this.props.params });
 
-					case "events":
-						return page = React.createElement(Events, null);
+					case "event":
+						return page = React.createElement(Event, { slug: this.props.slug });
 
 					case "feed":
 						return page = React.createElement(Feed, null);
