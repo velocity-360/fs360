@@ -48,6 +48,7 @@ var Event = (function (Component) {
 		this.submitRequest = this.submitRequest.bind(this);
 		this.state = {
 			showLoader: false,
+			courses: [],
 			visitor: {
 				name: "",
 				email: ""
@@ -58,6 +59,23 @@ var Event = (function (Component) {
 	_inherits(Event, Component);
 
 	_prototypeProperties(Event, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				var _this = this;
+				api.handleGet("/api/course", { type: "immersive" }, function (err, response) {
+					if (err) {
+						return;
+					}
+
+					var courses = response.courses;
+					_this.setState({
+						courses: courses
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
 				event.preventDefault();
@@ -115,6 +133,54 @@ var Event = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var courses = this.state.courses.map(function (course, i) {
+					return React.createElement(
+						"div",
+						{ key: course.id, className: "col-md-12 bottommargin" },
+						React.createElement(
+							"div",
+							{ className: "team team-list clearfix" },
+							React.createElement(
+								"div",
+								{ className: "team-image", style: { width: 150 } },
+								React.createElement("img", { className: "img-circle", src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=260", alt: "Velocity 360" })
+							),
+							React.createElement(
+								"div",
+								{ className: "team-desc" },
+								React.createElement(
+									"div",
+									{ className: "team-title" },
+									React.createElement(
+										"h4",
+										{ style: { fontWeight: 400 } },
+										React.createElement(
+											"a",
+											{ href: "/course/" + course.slug },
+											course.title
+										)
+									),
+									React.createElement(
+										"span",
+										{ style: { color: "#444" } },
+										course.dates
+									),
+									React.createElement(
+										"span",
+										{ style: { color: "#444" } },
+										course.schedule
+									)
+								),
+								React.createElement(
+									"div",
+									{ className: "team-content" },
+									course.description
+								)
+							)
+						)
+					);
+				});
+
 				return React.createElement(
 					"div",
 					null,
@@ -228,6 +294,28 @@ var Event = (function (Component) {
 									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
 									React.createElement(RightSidebar, null)
 								)
+							)
+						)
+					),
+					React.createElement(
+						"section",
+						{ style: { background: "#f9f9f9", paddingTop: 48, borderTop: "1px solid #ddd" } },
+						React.createElement(
+							"div",
+							{ className: "heading-block center" },
+							React.createElement(
+								"h2",
+								{ style: { fontWeight: 400 } },
+								"Bootcamps"
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "content-wrap", style: { paddingTop: 0 } },
+							React.createElement(
+								"div",
+								{ className: "container clearfix" },
+								courses
 							)
 						)
 					),
