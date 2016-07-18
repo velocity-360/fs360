@@ -243,21 +243,22 @@ router.post('/:resource', function(req, res, next) {
 
 			eventController.get({}, function(err, events){
 				if (err){
-					res.json({'confirmation':'fail','message':err.message});
+					res.json({'confirmation':'fail','message':err.message})
 					return;
 				}
 
 				var nextEvent = events[0]
-				var template = data.replace('{{title}}', nextEvent.title);
-				template = template.replace('{{description}}', nextEvent.description);
-				template = template.replace('{{image}}', nextEvent.image);
+				var template = data.replace('{{title}}', nextEvent.title)
+				template = template.replace('{{description}}', nextEvent.description)
+				template = template.replace('{{image}}', nextEvent.image)
+				template = template.replace('{{slug}}', nextEvent.slug)
 				var time = nextEvent.date+', '+nextEvent.time
-				template = template.replace('{{time}}', time);
+				template = template.replace('{{time}}', time)
 
-				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i];
-					var formatted = template.replace('{{email}}', address); // for unsubscribe link
+					var formatted = template.replace('{{email}}', address) // for unsubscribe link
 					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, nextEvent.title, formatted)
 				}
 			

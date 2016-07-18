@@ -136,7 +136,6 @@ class Event extends Component {
 		            </div>
 		        </section>
 
-
 				<section id="content">
 					<div className="content-wrap">
 					<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
