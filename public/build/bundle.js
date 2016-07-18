@@ -45294,7 +45294,13 @@
 				console.log('SubmitRequest: ' + JSON.stringify(s));
 	
 				var _this = this;
+				_this.setState({
+					showLoader: true
+				});
 				_api2.default.handlePost('/api/rsvp', s, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
 	
 					if (err) {
 						alert(err.message);

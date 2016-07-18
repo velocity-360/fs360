@@ -94,7 +94,14 @@ var Event = (function (Component) {
 				console.log("SubmitRequest: " + JSON.stringify(s));
 
 				var _this = this;
+				_this.setState({
+					showLoader: true
+				});
 				api.handlePost("/api/rsvp", s, function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
 					if (err) {
 						alert(err.message);
 						return;
