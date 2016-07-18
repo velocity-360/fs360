@@ -35,6 +35,8 @@ var store = _interopRequire(require("../../stores/store"));
 var actions = _interopRequire(require("../../actions/actions"));
 
 var connect = require("react-redux").connect;
+var TextUtils = _interopRequire(require("../../utils/TextUtils"));
+
 var api = _interopRequire(require("../../api/api"));
 
 var Event = (function (Component) {
@@ -107,17 +109,8 @@ var Event = (function (Component) {
 											"Highly Demanded Skills"
 										)
 									),
-									React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "/images/class.jpg", alt: "Velocity 360" }),
-									React.createElement(
-										"h3",
-										{ style: { marginBottom: 6, fontWeight: 400 } },
-										"Industry Driven"
-									),
-									React.createElement(
-										"p",
-										null,
-										this.props.event.description
-									),
+									React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=260", alt: "Velocity 360" }),
+									React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(this.props.event.description) } }),
 									React.createElement(
 										"h3",
 										{ style: { marginBottom: 6, fontWeight: 400 } },

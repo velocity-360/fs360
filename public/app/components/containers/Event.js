@@ -8,6 +8,7 @@ import Footer from '../../components/Footer'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
+import TextUtils from '../../utils/TextUtils'
 import api from '../../api/api'
 
 
@@ -53,11 +54,8 @@ class Event extends Component {
 			                    <div className="fancy-title title-bottom-border">
 			                        <h2 style={{fontWeight:400}}>Highly Demanded Skills</h2>
 			                    </div>
-								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
-								<h3 style={{marginBottom:6, fontWeight:400}}>Industry Driven</h3>
-								<p>
-									{this.props.event.description}
-								</p>
+								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
+								<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.event.description) }}></div>
 
 								<h3 style={{marginBottom:6, fontWeight:400}}>Modern Curriculum</h3>
 								<p>

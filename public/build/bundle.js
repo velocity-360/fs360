@@ -45303,6 +45303,10 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
+	var _TextUtils = __webpack_require__(472);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
 	var _api = __webpack_require__(463);
 	
 	var _api2 = _interopRequireDefault(_api);
@@ -45388,17 +45392,8 @@
 											'Highly Demanded Skills'
 										)
 									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: '/images/class.jpg', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'h3',
-										{ style: { marginBottom: 6, fontWeight: 400 } },
-										'Industry Driven'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										this.props.event.description
-									),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
+									_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.event.description) } }),
 									_react2.default.createElement(
 										'h3',
 										{ style: { marginBottom: 6, fontWeight: 400 } },
