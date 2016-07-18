@@ -56,23 +56,12 @@ class Event extends Component {
 			                    </div>
 								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
 								<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.event.description) }}></div>
-
-								<h3 style={{marginBottom:6, fontWeight:400}}>Modern Curriculum</h3>
-								<p>
-									While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, 
-									General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, 
-									Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing 
-									Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails 
-									devs that graduate from bootcamps every three months, you will leave Velocity 360 with 
-									the skills highly in demand yet hard to find in the tech world. 
-								</p>
-
+								<br />
 			                    <img src="/images/wework.jpg" />
-			                    <i style={{fontWeight:100}}>* Courses are held at our WeWork Location on 28th Street.</i>
+			                    <i style={{fontWeight:100}}>* All events are held at our WeWork Location on 28th Street.</i>
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
-
 								<div className="widget clearfix">
 									<h4>Recent Posts</h4>
 									<hr />

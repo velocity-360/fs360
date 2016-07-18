@@ -45394,21 +45394,12 @@
 									),
 									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
 									_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.event.description) } }),
-									_react2.default.createElement(
-										'h3',
-										{ style: { marginBottom: 6, fontWeight: 400 } },
-										'Modern Curriculum'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
-									),
+									_react2.default.createElement('br', null),
 									_react2.default.createElement('img', { src: '/images/wework.jpg' }),
 									_react2.default.createElement(
 										'i',
 										{ style: { fontWeight: 100 } },
-										'* Courses are held at our WeWork Location on 28th Street.'
+										'* All events are held at our WeWork Location on 28th Street.'
 									)
 								),
 								_react2.default.createElement(
