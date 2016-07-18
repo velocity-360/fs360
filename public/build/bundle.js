@@ -23007,7 +23007,7 @@
 										null,
 										'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
 									),
-									_react2.default.createElement('img', { src: '/images/wework.jpg' }),
+									_react2.default.createElement('img', { style: { marginBottom: 6 }, src: '/images/wework.jpg' }),
 									_react2.default.createElement(
 										'i',
 										{ style: { fontWeight: 100 } },
@@ -45281,10 +45281,6 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
-	var _Register = __webpack_require__(470);
-	
-	var _Register2 = _interopRequireDefault(_Register);
-	
 	var _Header = __webpack_require__(473);
 	
 	var _Header2 = _interopRequireDefault(_Header);
@@ -45389,17 +45385,60 @@
 										_react2.default.createElement(
 											'h2',
 											{ style: { fontWeight: 400 } },
-											'Highly Demanded Skills'
+											'Details'
 										)
 									),
 									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.event.image + '?crop=260', alt: 'Velocity 360' }),
 									_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(this.props.event.description) } }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('img', { src: '/images/wework.jpg' }),
 									_react2.default.createElement(
-										'i',
-										{ style: { fontWeight: 100 } },
-										'* All events are held at our WeWork Location on 28th Street.'
+										'div',
+										{ style: { marginTop: 64 }, className: 'fancy-title title-bottom-border' },
+										_react2.default.createElement(
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'Register'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_half panel panel-default' },
+										_react2.default.createElement(
+											'div',
+											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+											'RSVP'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body', style: { textAlign: 'left' } },
+											'Date: ',
+											this.props.event.date,
+											_react2.default.createElement('br', null),
+											'Time: ',
+											this.props.event.time,
+											_react2.default.createElement('br', null),
+											'Fee: $',
+											this.props.event.fee,
+											_react2.default.createElement('hr', null),
+											_react2.default.createElement('input', { type: 'text', id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('input', { type: 'text', id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement(
+												'a',
+												{ href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+												'Submit'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_half col_last' },
+										_react2.default.createElement('img', { style: { marginBottom: 6 }, src: '/images/wework.jpg' }),
+										_react2.default.createElement(
+											'i',
+											{ style: { fontWeight: 100 } },
+											'* All events are held at our WeWork Location on 28th Street.'
+										)
 									)
 								),
 								_react2.default.createElement(
@@ -45424,7 +45463,6 @@
 							)
 						)
 					),
-					_react2.default.createElement(_Register2.default, null),
 					_react2.default.createElement(_Footer2.default, null)
 				);
 			}
@@ -45438,6 +45476,7 @@
 			loaderOptions: state.staticReducer.loaderConfig,
 			currentUser: state.profileReducer.currentUser,
 			courses: state.courseReducer.courseArray,
+			posts: state.postReducer.postsArray,
 			event: state.eventReducer.eventArray[0]
 		};
 	};

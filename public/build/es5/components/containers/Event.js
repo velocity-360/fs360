@@ -24,8 +24,6 @@ var Loader = _interopRequire(require("react-loader"));
 
 var Nav = _interopRequire(require("../../components/Nav"));
 
-var Register = _interopRequire(require("../../components/Register"));
-
 var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
@@ -106,17 +104,60 @@ var Event = (function (Component) {
 										React.createElement(
 											"h2",
 											{ style: { fontWeight: 400 } },
-											"Highly Demanded Skills"
+											"Details"
 										)
 									),
 									React.createElement("img", { style: { background: "#fff", float: "left", border: "1px solid #ddd", maxWidth: 260, padding: 6, marginRight: 12 }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=260", alt: "Velocity 360" }),
 									React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(this.props.event.description) } }),
-									React.createElement("br", null),
-									React.createElement("img", { src: "/images/wework.jpg" }),
 									React.createElement(
-										"i",
-										{ style: { fontWeight: 100 } },
-										"* All events are held at our WeWork Location on 28th Street."
+										"div",
+										{ style: { marginTop: 64 }, className: "fancy-title title-bottom-border" },
+										React.createElement(
+											"h2",
+											{ style: { fontWeight: 400 } },
+											"Register"
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "col_half panel panel-default" },
+										React.createElement(
+											"div",
+											{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
+											"RSVP"
+										),
+										React.createElement(
+											"div",
+											{ className: "panel-body", style: { textAlign: "left" } },
+											"Date: ",
+											this.props.event.date,
+											React.createElement("br", null),
+											"Time: ",
+											this.props.event.time,
+											React.createElement("br", null),
+											"Fee: $",
+											this.props.event.fee,
+											React.createElement("hr", null),
+											React.createElement("input", { type: "text", id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
+											React.createElement("br", null),
+											React.createElement("input", { type: "text", id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
+											React.createElement("br", null),
+											React.createElement(
+												"a",
+												{ href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+												"Submit"
+											)
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "col_half col_last" },
+										React.createElement("img", { src: "/images/wework.jpg" }),
+										React.createElement(
+											"i",
+											{ style: { fontWeight: 100, marginTop: 6 } },
+											"* All events are held at our WeWork Location on 28th Street."
+										)
 									)
 								),
 								React.createElement(
@@ -141,7 +182,6 @@ var Event = (function (Component) {
 							)
 						)
 					),
-					React.createElement(Register, null),
 					React.createElement(Footer, null)
 				);
 			},
@@ -161,6 +201,7 @@ var stateToProps = function (state) {
 		loaderOptions: state.staticReducer.loaderConfig,
 		currentUser: state.profileReducer.currentUser,
 		courses: state.courseReducer.courseArray,
+		posts: state.postReducer.postsArray,
 		event: state.eventReducer.eventArray[0]
 	};
 };

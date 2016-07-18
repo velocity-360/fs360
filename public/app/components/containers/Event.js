@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import Nav from '../../components/Nav'
-import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import store from '../../stores/store'
@@ -52,13 +51,32 @@ class Event extends Component {
 						<div className="container clearfix">
 							<div className="col_two_third bottommargin-sm">
 			                    <div className="fancy-title title-bottom-border">
-			                        <h2 style={{fontWeight:400}}>Highly Demanded Skills</h2>
+			                        <h2 style={{fontWeight:400}}>Details</h2>
 			                    </div>
 								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src={'https://media-service.appspot.com/site/images/'+this.props.event.image+'?crop=260'} alt="Velocity 360" />
 								<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(this.props.event.description) }}></div>
-								<br />
-			                    <img src="/images/wework.jpg" />
-			                    <i style={{fontWeight:100}}>* All events are held at our WeWork Location on 28th Street.</i>
+
+			                    <div style={{marginTop:64}} className="fancy-title title-bottom-border">
+			                        <h2 style={{fontWeight:400}}>Register</h2>
+			                    </div>
+								<div className='col_half panel panel-default'>
+									<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">RSVP</div>
+									<div className="panel-body" style={{textAlign:'left'}}>
+										Date: {this.props.event.date}<br />
+										Time: {this.props.event.time}<br />
+										Fee: ${this.props.event.fee}
+										<hr />
+										<input type="text" id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+										<input type="text" id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+										<a href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+									</div>
+
+								</div>
+								<div className='col_half col_last'>
+				                    <img style={{marginBottom:6}} src="/images/wework.jpg" />
+				                    <i style={{fontWeight:100}}>* All events are held at our WeWork Location on 28th Street.</i>
+								</div>
+
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
@@ -73,12 +91,9 @@ class Event extends Component {
 					</div>
 				</section>
 
-				<Register />
 				<Footer />
 			</div>
-
 		)
-
 	}
 }
 
@@ -88,6 +103,7 @@ const stateToProps = function(state) {
         loaderOptions: state.staticReducer.loaderConfig,
         currentUser: state.profileReducer.currentUser,
         courses: state.courseReducer.courseArray,
+        posts: state.postReducer.postsArray,
         event: state.eventReducer.eventArray[0]
     }
 }

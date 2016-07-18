@@ -109,7 +109,7 @@ class Landing extends Component {
 									the skills highly in demand yet hard to find in the tech world. 
 								</p>
 
-			                    <img src="/images/wework.jpg" />
+			                    <img style={{marginBottom:6}} src="/images/wework.jpg" />
 			                    <i style={{fontWeight:100}}>* Courses are held at our WeWork Location on 28th Street.</i>
 							</div>
 
