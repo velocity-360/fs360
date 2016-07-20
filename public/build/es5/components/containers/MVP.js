@@ -89,7 +89,7 @@ var MVP = (function (Component) {
 
 				var _this = this;
 				_this.setState({ showLoader: true });
-				api.handlePost("/api/proposal", s, function (err, response) {
+				api.handlePost("/api/proposal", this.state.proposal, function (err, response) {
 					_this.setState({ showLoader: false });
 
 					if (err) {

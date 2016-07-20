@@ -62774,7 +62774,7 @@
 	
 				var _this = this;
 				_this.setState({ showLoader: true });
-				_api2.default.handlePost('/api/proposal', s, function (err, response) {
+				_api2.default.handlePost('/api/proposal', this.state.proposal, function (err, response) {
 					_this.setState({ showLoader: false });
 	
 					if (err) {
