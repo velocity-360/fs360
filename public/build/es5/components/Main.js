@@ -28,6 +28,8 @@ var Feed = _interopRequire(require("./containers/Feed"));
 
 var PostPage = _interopRequire(require("./containers/PostPage"));
 
+var MVP = _interopRequire(require("./containers/MVP"));
+
 var Project = _interopRequire(require("./containers/Project"));
 
 var Course = _interopRequire(require("./containers/Course"));
@@ -70,6 +72,9 @@ var Main = (function (Component) {
 
 					case "feed":
 						return page = React.createElement(Feed, null);
+
+					case "mvp":
+						return page = React.createElement(MVP, null);
 
 					case "post":
 						return page = React.createElement(PostPage, { slug: this.props.slug });

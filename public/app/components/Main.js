@@ -6,6 +6,7 @@ import Courses from './containers/Courses'
 import Event from './containers/Event'
 import Feed from './containers/Feed'
 import PostPage from './containers/PostPage'
+import MVP from './containers/MVP'
 import Project from './containers/Project'
 import Course from './containers/Course'
 import Account from './containers/Account'
@@ -42,6 +43,9 @@ class Main extends Component {
 
 			case 'feed':
 				return page = <Feed />
+
+			case 'mvp':
+				return page = <MVP />
 
 			case 'post':
 				return page = <PostPage slug={this.props.slug} />

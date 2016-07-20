@@ -115,6 +115,14 @@ router.post('/:resource', function(req, res, next) {
 		return
 	}
 
+	if (resource == 'proposal'){
+		var body = req.body
+		subscriberController.post(body, null)
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
+		res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
+		return
+	}
+
 	if (resource == 'freesession'){
 		var body = req.body
 		subscriberController.post(body, null)
