@@ -95,7 +95,7 @@ router.get('/:resource/:id', function(req, res, next) {
 
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
-	var emailList = ['dkwon@velocity360.io']
+	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
 
 	if (resource == 'application'){
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
