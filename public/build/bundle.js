@@ -60753,6 +60753,11 @@
 					content = _react2.default.createElement(
 						'div',
 						{ style: { background: '#fff', padding: 24 } },
+						_react2.default.createElement(
+							'div',
+							{ style: { textAlign: 'center' } },
+							image
+						),
 						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(post.text) }, className: 'panel-body' }),
 						_react2.default.createElement(
 							'div',
@@ -60820,7 +60825,7 @@
 						{ id: 'content' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							{ className: 'content-wrap', style: { backgroundColor: '#f5f5f5' } },
 							_react2.default.createElement(
 								'div',
 								{ className: 'entry clearfix' },
@@ -60831,8 +60836,7 @@
 										'div',
 										{ className: 'heading-block center' },
 										title,
-										btnEdit,
-										image
+										btnEdit
 									),
 									_react2.default.createElement(
 										'div',

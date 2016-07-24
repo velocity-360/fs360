@@ -173,6 +173,11 @@ var PostPage = (function (Component) {
 					content = React.createElement(
 						"div",
 						{ style: { background: "#fff", padding: 24 } },
+						React.createElement(
+							"div",
+							{ style: { textAlign: "center" } },
+							image
+						),
 						React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(post.text) }, className: "panel-body" }),
 						React.createElement(
 							"div",
@@ -240,7 +245,7 @@ var PostPage = (function (Component) {
 						{ id: "content" },
 						React.createElement(
 							"div",
-							{ className: "content-wrap", style: { background: "#f5f5f5" } },
+							{ className: "content-wrap", style: { backgroundColor: "#f5f5f5" } },
 							React.createElement(
 								"div",
 								{ className: "entry clearfix" },
@@ -251,8 +256,7 @@ var PostPage = (function (Component) {
 										"div",
 										{ className: "heading-block center" },
 										title,
-										btnEdit,
-										image
+										btnEdit
 									),
 									React.createElement(
 										"div",

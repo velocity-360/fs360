@@ -112,6 +112,10 @@ class PostPage extends Component {
 			title = <h1>{post.title}</h1>
 			content = (
 				<div style={{background:'#fff', padding: 24}}>
+					<div style={{textAlign:'center'}}>
+						{image}
+					</div>
+
 					<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body"></div>
 					<div style={{width:'50%', minWidth:240}}>{video}</div>
 				</div>
@@ -144,14 +148,13 @@ class PostPage extends Component {
 				<Sidebar />
 
 				<section id="content">
-					<div className="content-wrap" style={{background:'#f5f5f5'}}>
+					<div className="content-wrap" style={{backgroundColor:'#f5f5f5'}}>
 
 						<div className="entry clearfix">
 							<div className="container clearfix">
 								<div className="heading-block center">
 									{title}
 									{btnEdit}
-									{image}
 								</div>
 
 								<div className="entry-c">
