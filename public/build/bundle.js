@@ -22669,23 +22669,23 @@
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
-	var _MVP = __webpack_require__(599);
+	var _MVP = __webpack_require__(592);
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Project = __webpack_require__(592);
+	var _Project = __webpack_require__(593);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(593);
+	var _Course = __webpack_require__(594);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Account = __webpack_require__(597);
+	var _Account = __webpack_require__(598);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(598);
+	var _Unit = __webpack_require__(599);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
@@ -60762,6 +60762,54 @@
 					);
 				}
 	
+				var courses = this.props.courses.map(function (course, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: course.id, className: 'col-md-12 bottommargin' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'team team-list clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'team-image', style: { width: 150 } },
+								_react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=260', alt: 'Velocity 360' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'team-desc' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'team-title' },
+									_react2.default.createElement(
+										'h4',
+										{ style: { fontWeight: 400 } },
+										_react2.default.createElement(
+											'a',
+											{ href: '/course/' + course.slug },
+											course.title
+										)
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										course.dates
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										course.schedule
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'team-content' },
+									course.description
+								)
+							)
+						)
+					);
+				});
+	
 				return _react2.default.createElement(
 					'div',
 					{ style: { background: '#f5f5f5' } },
@@ -60833,6 +60881,28 @@
 							)
 						)
 					),
+					_react2.default.createElement(
+						'section',
+						{ style: { background: '#fff', paddingTop: 48, borderTop: '1px solid #ddd' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'heading-block center' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { fontWeight: 400 } },
+								'Bootcamps'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { paddingTop: 0 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								courses
+							)
+						)
+					),
 					_react2.default.createElement(_Footer2.default, null)
 				);
 			}
@@ -60844,8 +60914,9 @@
 	var stateToProps = function stateToProps(state) {
 		return {
 			currentUser: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig,
 			posts: state.postReducer.posts,
-			loaderOptions: state.staticReducer.loaderConfig
+			courses: state.courseReducer.courseArray
 		};
 	};
 	
@@ -60853,6 +60924,304 @@
 
 /***/ },
 /* 592 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(205);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Register = __webpack_require__(470);
+	
+	var _Register2 = _interopRequireDefault(_Register);
+	
+	var _Header = __webpack_require__(473);
+	
+	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _Footer = __webpack_require__(474);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(475);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	var _api = __webpack_require__(463);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var MVP = function (_Component) {
+		_inherits(MVP, _Component);
+	
+		function MVP(props, context) {
+			_classCallCheck(this, MVP);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(MVP).call(this, props, context));
+	
+			_this2.updateProposal = _this2.updateProposal.bind(_this2);
+			_this2.submitProposal = _this2.submitProposal.bind(_this2);
+			_this2.state = {
+				showLoader: false,
+				proposal: {
+					name: '',
+					email: '',
+					summary: ''
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(MVP, [{
+			key: 'updateProposal',
+			value: function updateProposal(event) {
+				var proposal = Object.assign({}, this.state.proposal);
+				proposal[event.target.id] = event.target.value;
+				this.setState({
+					proposal: proposal
+				});
+			}
+		}, {
+			key: 'submitProposal',
+			value: function submitProposal(event) {
+				event.preventDefault();
+				console.log('submitProposal: ' + JSON.stringify(this.state.proposal));
+	
+				if (this.state.proposal.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.proposal.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				if (this.state.proposal.summary.length == 0) {
+					alert('Please enter the summary for your project.');
+					return;
+				}
+	
+				var _this = this;
+				_this.setState({ showLoader: true });
+				_api2.default.handlePost('/api/proposal', this.state.proposal, function (err, response) {
+					_this.setState({ showLoader: false });
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Nav2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/lounge.jpg") center' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'vertical-middle' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'heading-block center nobottomborder' },
+									_react2.default.createElement(
+										'h1',
+										{ 'data-animate': 'fadeInUp' },
+										'8-Week MVP Program'
+									),
+									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: '/images/logo_round_green_260.png', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'span',
+										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
+										'Oct 31st - Jan 6th',
+										_react2.default.createElement('br', null),
+										'27 East 28th Street',
+										_react2.default.createElement('br', null),
+										'NYC'
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_two_third bottommargin-sm' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'fancy-title title-bottom-border' },
+										_react2.default.createElement(
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'Overview'
+										)
+									),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginLeft: 12 }, className: 'image_fade', src: '/images/group.JPG', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(
+											'p',
+											null,
+											'The Velocity 360 MVP Program brings together local startups in need of software development for an initial prototype - often referred to as a "minimal viable product" or MVP. Over a period of eight weeks, our cohort will work with a handful of startups from NYC to build a fully functional product through our full time 8-week bootcamp program. The tech stack will be very modern and scalable: Node JS, React, and React Native for mobile development.'
+										),
+										_react2.default.createElement(
+											'h3',
+											{ style: { fontWeight: 400, marginBottom: 0 } },
+											'Cohort Students'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											'The students in the cohort are aspiring software developers mostly from the area. As a result, startup founders and students can continue working beyond the timeframe of the bootcamp. Students are generally professionals 5-10 years out of college and in the process of changing careers. All students are vetted for educational background, aptitude, and interpersonal dynamic.'
+										),
+										_react2.default.createElement(
+											'h3',
+											{ style: { fontWeight: 400, marginBottom: 0 } },
+											'Startups'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											'Velocity 360 works with startups in need of technical development for their MVP. This means there should be no technical co-founder on the team and development should not have begun. The MVP program is not a good fit if the following applies your team:',
+											_react2.default.createElement('br', null),
+											'1) At least one technical member',
+											_react2.default.createElement('br', null),
+											'2) Outsourced development to a third-party development shop, domestic or overseas'
+										),
+										_react2.default.createElement(
+											'h3',
+											{ style: { fontWeight: 400, marginBottom: 0 } },
+											'Terms'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											'The 8-Week MVP Program will run from October 31st through January 6th (two weeks scheduled off for Thanksgiving and Christmas/New Years). Velocity 360 will not have an equity position in any of the projects and will not own the intellectual property rights of the software developed. These matters will be coordinated between the students and the founders on an individual basis. However, Velocity 360 will secure a $1,000 deposit from the startups to ensure continued interest to completing the project.'
+										),
+										_react2.default.createElement('img', { style: { marginBottom: 6, maxWidth: 400 }, src: '/images/wework-2.jpg' }),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'i',
+											{ style: { fontWeight: 100 } },
+											'* All courses and events are held at our WeWork Location on 28th Street.'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ style: { marginTop: 64 }, className: 'fancy-title title-bottom-border' },
+										_react2.default.createElement(
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'Submit Project Proposal'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_full panel panel-default' },
+										_react2.default.createElement(
+											'div',
+											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+											'Proposal'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body', style: { textAlign: 'left' } },
+											'Date: Oct 31 - Jan 6th',
+											_react2.default.createElement('br', null),
+											'Deposit: $1,000 (refunded upon completion)',
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('hr', null),
+											_react2.default.createElement('input', { onChange: this.updateProposal, type: 'text', id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('input', { onChange: this.updateProposal, type: 'text', id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('textarea', { onChange: this.updateProposal, id: 'summary', className: 'form-control', style: { background: '#f9f9f9', height: 120 }, placeholder: 'Please describe your project, team members, and current progress.' }),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement(
+												'a',
+												{ onClick: this.submitProposal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+												'Submit'
+											)
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
+									_react2.default.createElement(_RightSidebar2.default, null)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return MVP;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		return {
+			loaderOptions: state.staticReducer.loaderConfig,
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray,
+			events: state.eventReducer.events
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
+
+/***/ },
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61151,7 +61520,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 593 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61184,7 +61553,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CourseSection = __webpack_require__(594);
+	var _CourseSection = __webpack_require__(595);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -61192,11 +61561,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(595);
+	var _Application = __webpack_require__(596);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(596);
+	var _DetailBox = __webpack_require__(597);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -61645,7 +62014,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61791,7 +62160,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 595 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62037,7 +62406,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 596 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62204,7 +62573,7 @@
 	exports.default = DetailBox;
 
 /***/ },
-/* 597 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62543,7 +62912,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 598 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62662,304 +63031,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
-
-/***/ },
-/* 599 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(205);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _reactRedux = __webpack_require__(168);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Register = __webpack_require__(470);
-	
-	var _Register2 = _interopRequireDefault(_Register);
-	
-	var _Header = __webpack_require__(473);
-	
-	var _Header2 = _interopRequireDefault(_Header);
-	
-	var _Footer = __webpack_require__(474);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(475);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
-	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var MVP = function (_Component) {
-		_inherits(MVP, _Component);
-	
-		function MVP(props, context) {
-			_classCallCheck(this, MVP);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(MVP).call(this, props, context));
-	
-			_this2.updateProposal = _this2.updateProposal.bind(_this2);
-			_this2.submitProposal = _this2.submitProposal.bind(_this2);
-			_this2.state = {
-				showLoader: false,
-				proposal: {
-					name: '',
-					email: '',
-					summary: ''
-				}
-			};
-			return _this2;
-		}
-	
-		_createClass(MVP, [{
-			key: 'updateProposal',
-			value: function updateProposal(event) {
-				var proposal = Object.assign({}, this.state.proposal);
-				proposal[event.target.id] = event.target.value;
-				this.setState({
-					proposal: proposal
-				});
-			}
-		}, {
-			key: 'submitProposal',
-			value: function submitProposal(event) {
-				event.preventDefault();
-				console.log('submitProposal: ' + JSON.stringify(this.state.proposal));
-	
-				if (this.state.proposal.name.length == 0) {
-					alert('Please enter your name.');
-					return;
-				}
-	
-				if (this.state.proposal.email.length == 0) {
-					alert('Please enter your email.');
-					return;
-				}
-	
-				if (this.state.proposal.summary.length == 0) {
-					alert('Please enter the summary for your project.');
-					return;
-				}
-	
-				var _this = this;
-				_this.setState({ showLoader: true });
-				_api2.default.handlePost('/api/proposal', this.state.proposal, function (err, response) {
-					_this.setState({ showLoader: false });
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_Nav2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/lounge.jpg") center' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'vertical-middle' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'heading-block center nobottomborder' },
-									_react2.default.createElement(
-										'h1',
-										{ 'data-animate': 'fadeInUp' },
-										'8-Week MVP Program'
-									),
-									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: '/images/logo_round_green_260.png', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'span',
-										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
-										'Oct 31st - Jan 6th',
-										_react2.default.createElement('br', null),
-										'27 East 28th Street',
-										_react2.default.createElement('br', null),
-										'NYC'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_two_third bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'fancy-title title-bottom-border' },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Overview'
-										)
-									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginLeft: 12 }, className: 'image_fade', src: '/images/group.JPG', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'div',
-										null,
-										_react2.default.createElement(
-											'p',
-											null,
-											'The Velocity 360 MVP Program brings together local startups in need of software development for an initial prototype - often referred to as a "minimal viable product" or MVP. Over a period of eight weeks, our cohort will work with a handful of startups from NYC to build a fully functional product through our full time 8-week bootcamp program. The tech stack will be very modern and scalable: Node JS, React, and React Native for mobile development.'
-										),
-										_react2.default.createElement(
-											'h3',
-											{ style: { fontWeight: 400, marginBottom: 0 } },
-											'Cohort Students'
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											'The students in the cohort are aspiring software developers mostly from the area. As a result, startup founders and students can continue working beyond the timeframe of the bootcamp. Students are generally professionals 5-10 years out of college and in the process of changing careers. All students are vetted for educational background, aptitude, and interpersonal dynamic.'
-										),
-										_react2.default.createElement(
-											'h3',
-											{ style: { fontWeight: 400, marginBottom: 0 } },
-											'Startups'
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											'Velocity 360 works with startups in need of technical development for their MVP. This means there should be no technical co-founder on the team and development should not have begun. The MVP program is not a good fit if the following applies your team:',
-											_react2.default.createElement('br', null),
-											'1) At least one technical member',
-											_react2.default.createElement('br', null),
-											'2) Outsourced development to a third-party development shop, domestic or overseas'
-										),
-										_react2.default.createElement(
-											'h3',
-											{ style: { fontWeight: 400, marginBottom: 0 } },
-											'Terms'
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											'The 8-Week MVP Program will run from October 31st through January 6th (two weeks scheduled off for Thanksgiving and Christmas/New Years). Velocity 360 will not have an equity position in any of the projects and will not own the intellectual property rights of the software developed. These matters will be coordinated between the students and the founders on an individual basis. However, Velocity 360 will secure a $1,000 deposit from the startups to ensure continued interest to completing the project.'
-										),
-										_react2.default.createElement('img', { style: { marginBottom: 6, maxWidth: 400 }, src: '/images/wework-2.jpg' }),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'i',
-											{ style: { fontWeight: 100 } },
-											'* All courses and events are held at our WeWork Location on 28th Street.'
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ style: { marginTop: 64 }, className: 'fancy-title title-bottom-border' },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Submit Project Proposal'
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_full panel panel-default' },
-										_react2.default.createElement(
-											'div',
-											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-											'Proposal'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body', style: { textAlign: 'left' } },
-											'Date: Oct 31 - Jan 6th',
-											_react2.default.createElement('br', null),
-											'Deposit: $1,000 (refunded upon completion)',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('hr', null),
-											_react2.default.createElement('input', { onChange: this.updateProposal, type: 'text', id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('input', { onChange: this.updateProposal, type: 'text', id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('textarea', { onChange: this.updateProposal, id: 'summary', className: 'form-control', style: { background: '#f9f9f9', height: 120 }, placeholder: 'Please describe your project, team members, and current progress.' }),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement(
-												'a',
-												{ onClick: this.submitProposal, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-												'Submit'
-											)
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
-									_react2.default.createElement(_RightSidebar2.default, null)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return MVP;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		return {
-			loaderOptions: state.staticReducer.loaderConfig,
-			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courseArray,
-			events: state.eventReducer.events
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
 
 /***/ }
 /******/ ]);

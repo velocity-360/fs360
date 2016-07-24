@@ -110,6 +110,13 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
+		return courseController.find({type:'immersive'})
+	})	
+	.then(function(courses){ 
+		initialData.courseReducer.courseArray = courses
+		// if (currentUser != null)
+		// 	initialData.profileReducer.currentUser = currentUser
+
 		var controller = controllers[page]
 		if (controller == null){
 			var initialState = store.configureStore(initialData).getState()
