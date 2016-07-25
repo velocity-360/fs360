@@ -61557,6 +61557,10 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
+	var _CTA = __webpack_require__(600);
+	
+	var _CTA2 = _interopRequireDefault(_CTA);
+	
 	var _CourseSection = __webpack_require__(595);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
@@ -61585,10 +61589,6 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _StripeUtils = __webpack_require__(471);
-	
-	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
-	
 	var _api = __webpack_require__(463);
 	
 	var _api2 = _interopRequireDefault(_api);
@@ -61612,9 +61612,7 @@
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.closeLogin = _this2.closeLogin.bind(_this2);
-			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
-			_this2.configureStripe = _this2.configureStripe.bind(_this2);
 			_this2.showLoader = _this2.showLoader.bind(_this2);
 			_this2.hideLoader = _this2.hideLoader.bind(_this2);
 			_this2.state = {
@@ -61631,61 +61629,7 @@
 	
 		_createClass(Course, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var course = this.props.courses[this.props.slug];
-				if (course != null) {
-					this.configureStripe(course);
-					return;
-				}
-	
-				var _this = this;
-				_api2.default.handleGet('/api/course?slug=' + this.props.slug, {}, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.coursesRecieved(response.courses));
-	
-					var course = response.courses[0];
-					this.configureStripe(course);
-				});
-			}
-		}, {
-			key: 'configureStripe',
-			value: function configureStripe(course) {
-				if (course.type == 'online') {
-					// for videos, show subscription prompt:
-					_StripeUtils2.default.initialize(function (token) {
-						_this.setState({ showLoader: true });
-						_api2.default.submitStripeToken(token, function (err, response) {
-							if (err) {
-								alert(err.message);
-								return;
-							}
-	
-							window.location.href = '/account';
-						});
-					});
-					return;
-				}
-	
-				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
-					_this.setState({ showLoader: true });
-					_api2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
-						if (err) {
-							alert(err.message);
-							_this.setState({ showLoader: false });
-							return;
-						}
-	
-						_this.setState({
-							showConfirmation: true,
-							showLoader: false
-						});
-					});
-				});
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'closeModal',
 			value: function closeModal() {
@@ -61713,13 +61657,6 @@
 			key: 'hideLoader',
 			value: function hideLoader() {
 				this.setState({ showLoader: false });
-			}
-		}, {
-			key: 'openStripeModal',
-			value: function openStripeModal(event) {
-				var course = this.props.courses[this.props.slug];
-				event.preventDefault();
-				if (course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(course.title);
 			}
 		}, {
 			key: 'submitApplication',
@@ -61862,95 +61799,7 @@
 											)
 										),
 										units,
-										course.type != 'online' ? _react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Join',
-												_react2.default.createElement('span', null),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
-														course.type == 'live' ? _react2.default.createElement(
-															'h2',
-															null,
-															'Register'
-														) : _react2.default.createElement(
-															'h2',
-															null,
-															'Details'
-														),
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half' },
-															'Date: ',
-															course.dates,
-															_react2.default.createElement('br', null),
-															'Time: ',
-															course.schedule,
-															_react2.default.createElement('br', null),
-															'Deposit: $',
-															course.deposit,
-															_react2.default.createElement('br', null),
-															'Regular Tuition: $',
-															course.tuition,
-															_react2.default.createElement('br', null),
-															'Premium Member Tuition: $',
-															course.premiumTuition,
-															_react2.default.createElement('br', null),
-															_react2.default.createElement('br', null),
-															course.type == 'live' ? _react2.default.createElement(
-																'div',
-																{ className: 'col_full panel panel-default' },
-																_react2.default.createElement(
-																	'div',
-																	{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-																	'Submit Deposit'
-																),
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'panel-body', style: { textAlign: 'left' } },
-																	_react2.default.createElement(
-																		'a',
-																		{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
-																		'PayPal',
-																		_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-																	),
-																	_react2.default.createElement('br', null),
-																	_react2.default.createElement(
-																		'a',
-																		{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-																		'Credit Card',
-																		_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-																	)
-																)
-															) : _react2.default.createElement(
-																'a',
-																{ href: '#application', className: 'button button-xlarge tright' },
-																'Apply',
-																_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half col_last' },
-															_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' })
-														)
-													)
-												)
-											)
-										) : null
+										_react2.default.createElement(_CTA2.default, { course: course })
 									)
 								)
 							)
@@ -63099,6 +62948,203 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
+
+/***/ },
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _StripeUtils = __webpack_require__(471);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
+	
+	var _api = __webpack_require__(463);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CTA = function (_Component) {
+		_inherits(CTA, _Component);
+	
+		function CTA(props, context) {
+			_classCallCheck(this, CTA);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(CTA).call(this, props, context));
+	
+			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
+			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.state = {};
+			return _this2;
+		}
+	
+		_createClass(CTA, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.configureStripe(this.props.course);
+			}
+		}, {
+			key: 'configureStripe',
+			value: function configureStripe(course) {
+				var course = this.props.course;
+				if (course.type == 'online') {
+					// for videos, show subscription prompt:
+					_StripeUtils2.default.initialize(function (token) {
+						_this.setState({ showLoader: true });
+						_api2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+					_this.setState({ showLoader: true });
+					_api2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						if (err) {
+							alert(err.message);
+							_this.setState({ showLoader: false });
+							return;
+						}
+	
+						_this.setState({
+							showConfirmation: true,
+							showLoader: false
+						});
+					});
+				});
+			}
+		}, {
+			key: 'openStripeModal',
+			value: function openStripeModal(event) {
+				event.preventDefault();
+				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var course = this.props.course;
+				var cta = 'Register';
+				if (course.type == 'online') {
+					cta = 'Subscribe';
+				} else if (course.type == 'immersive') {
+					cta = 'Details';
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-timeline' },
+						'Join',
+						_react2.default.createElement('span', null),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									cta
+								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_half' },
+									'Date: ',
+									course.dates,
+									_react2.default.createElement('br', null),
+									'Time: ',
+									course.schedule,
+									_react2.default.createElement('br', null),
+									'Deposit: $',
+									course.deposit,
+									_react2.default.createElement('br', null),
+									'Regular Tuition: $',
+									course.tuition,
+									_react2.default.createElement('br', null),
+									'Premium Member Tuition: $',
+									course.premiumTuition,
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('br', null),
+									this.props.course.type == 'live' ? _react2.default.createElement(
+										'div',
+										{ className: 'col_full panel panel-default' },
+										_react2.default.createElement(
+											'div',
+											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+											'Submit Deposit'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body', style: { textAlign: 'left' } },
+											_react2.default.createElement(
+												'a',
+												{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+												'PayPal',
+												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+											),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement(
+												'a',
+												{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+												'Credit Card',
+												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+											)
+										)
+									) : _react2.default.createElement(
+										'a',
+										{ href: '#application', className: 'button button-xlarge tright' },
+										'Apply',
+										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_half col_last' },
+									_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' })
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CTA;
+	}(_react.Component);
+	
+	exports.default = CTA;
 
 /***/ }
 /******/ ]);

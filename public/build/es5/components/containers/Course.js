@@ -27,6 +27,8 @@ var Sidebar = _interopRequire(require("../../components/Sidebar"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
+var CTA = _interopRequire(require("../../components/CTA"));
+
 var CourseSection = _interopRequire(require("../../components/CourseSection"));
 
 var CourseCard = _interopRequire(require("../../components/CourseCard"));
@@ -41,8 +43,6 @@ var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var stripe = _interopRequire(require("../../utils/StripeUtils"));
-
 var api = _interopRequire(require("../../api/api"));
 
 var Course = (function (Component) {
@@ -53,9 +53,7 @@ var Course = (function (Component) {
 		this.closeModal = this.closeModal.bind(this);
 		this.showLogin = this.showLogin.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
-		this.openStripeModal = this.openStripeModal.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
-		this.configureStripe = this.configureStripe.bind(this);
 		this.showLoader = this.showLoader.bind(this);
 		this.hideLoader = this.hideLoader.bind(this);
 		this.state = {
@@ -73,63 +71,7 @@ var Course = (function (Component) {
 
 	_prototypeProperties(Course, null, {
 		componentDidMount: {
-			value: function componentDidMount() {
-				var course = this.props.courses[this.props.slug];
-				if (course != null) {
-					this.configureStripe(course);
-					return;
-				}
-
-				var _this = this;
-				api.handleGet("/api/course?slug=" + this.props.slug, {}, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-
-					store.currentStore().dispatch(actions.coursesRecieved(response.courses));
-
-					var course = response.courses[0];
-					this.configureStripe(course);
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		configureStripe: {
-			value: function configureStripe(course) {
-				if (course.type == "online") {
-					// for videos, show subscription prompt:
-					stripe.initialize(function (token) {
-						_this.setState({ showLoader: true });
-						api.submitStripeToken(token, function (err, response) {
-							if (err) {
-								alert(err.message);
-								return;
-							}
-
-							window.location.href = "/account";
-						});
-					});
-					return;
-				}
-
-				stripe.initializeWithText("Submit Deposit", function (token) {
-					_this.setState({ showLoader: true });
-					api.submitStripeCharge(token, course, course.deposit, "course", function (err, response) {
-						if (err) {
-							alert(err.message);
-							_this.setState({ showLoader: false });
-							return;
-						}
-
-						_this.setState({
-							showConfirmation: true,
-							showLoader: false
-						});
-					});
-				});
-			},
+			value: function componentDidMount() {},
 			writable: true,
 			configurable: true
 		},
@@ -171,15 +113,6 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		openStripeModal: {
-			value: function openStripeModal(event) {
-				var course = this.props.courses[this.props.slug];
-				event.preventDefault();
-				if (course.type == "online") stripe.showModal();else stripe.showModalWithText(course.title);
-			},
-			writable: true,
-			configurable: true
-		},
 		submitApplication: {
 			value: function submitApplication(application) {
 				var course = this.props.courses[this.props.slug];
@@ -206,6 +139,7 @@ var Course = (function (Component) {
 
 				var bannerIndex = 0;
 				if (course.type == "online") bannerIndex = 1;else if (course.type == "immersive") bannerIndex = 2;
+
 
 				var banner = this.props.banners[bannerIndex];
 				var startDate = course.dates == null ? "" : course.dates.split("-")[0].trim();
@@ -322,95 +256,7 @@ var Course = (function (Component) {
 											)
 										),
 										units,
-										course.type != "online" ? React.createElement(
-											"div",
-											{ className: "entry clearfix" },
-											React.createElement(
-												"div",
-												{ className: "entry-timeline" },
-												"Join",
-												React.createElement("span", null),
-												React.createElement("div", { className: "timeline-divider" })
-											),
-											React.createElement(
-												"div",
-												{ className: "entry-image" },
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: { padding: 36, paddingBottom: 0 } },
-														course.type == "live" ? React.createElement(
-															"h2",
-															null,
-															"Register"
-														) : React.createElement(
-															"h2",
-															null,
-															"Details"
-														),
-														React.createElement("hr", null),
-														React.createElement(
-															"div",
-															{ className: "col_half" },
-															"Date: ",
-															course.dates,
-															React.createElement("br", null),
-															"Time: ",
-															course.schedule,
-															React.createElement("br", null),
-															"Deposit: $",
-															course.deposit,
-															React.createElement("br", null),
-															"Regular Tuition: $",
-															course.tuition,
-															React.createElement("br", null),
-															"Premium Member Tuition: $",
-															course.premiumTuition,
-															React.createElement("br", null),
-															React.createElement("br", null),
-															course.type == "live" ? React.createElement(
-																"div",
-																{ className: "col_full panel panel-default" },
-																React.createElement(
-																	"div",
-																	{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
-																	"Submit Deposit"
-																),
-																React.createElement(
-																	"div",
-																	{ className: "panel-body", style: { textAlign: "left" } },
-																	React.createElement(
-																		"a",
-																		{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
-																		"PayPal",
-																		React.createElement("i", { "class": "icon-circle-arrow-right" })
-																	),
-																	React.createElement("br", null),
-																	React.createElement(
-																		"a",
-																		{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-																		"Credit Card",
-																		React.createElement("i", { "class": "icon-circle-arrow-right" })
-																	)
-																)
-															) : React.createElement(
-																"a",
-																{ href: "#application", className: "button button-xlarge tright" },
-																"Apply",
-																React.createElement("i", { "class": "icon-circle-arrow-right" })
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col_half col_last" },
-															React.createElement("img", { style: { width: "80%", float: "right" }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" })
-														)
-													)
-												)
-											)
-										) : null
+										React.createElement(CTA, { course: course })
 									)
 								)
 							)

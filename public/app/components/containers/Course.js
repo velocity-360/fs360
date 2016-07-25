@@ -4,6 +4,7 @@ import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
+import CTA from '../../components/CTA'
 import CourseSection from '../../components/CourseSection'
 import CourseCard from '../../components/CourseCard'
 import Application from '../../components/Application'
@@ -11,7 +12,6 @@ import DetailBox from '../../components/DetailBox'
 import Login from '../../components/Login'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import stripe from '../../utils/StripeUtils'
 import api from '../../api/api'
 
 class Course extends Component {
@@ -21,9 +21,7 @@ class Course extends Component {
 		this.closeModal = this.closeModal.bind(this)
 		this.showLogin = this.showLogin.bind(this)
 		this.closeLogin = this.closeLogin.bind(this)
-		this.openStripeModal = this.openStripeModal.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
-		this.configureStripe = this.configureStripe.bind(this)
 		this.showLoader = this.showLoader.bind(this)
 		this.hideLoader = this.hideLoader.bind(this)
 		this.state = {
@@ -38,57 +36,7 @@ class Course extends Component {
 	}
 
 	componentDidMount(){
-		const course = this.props.courses[this.props.slug]
-		if (course != null){
-			this.configureStripe(course)
-			return
-		}
-
-		var _this = this
-		api.handleGet('/api/course?slug='+this.props.slug, {}, function(err, response){
-			if (err){
-				alert(response.message)
-				return
-			}
-
-			store.currentStore().dispatch(actions.coursesRecieved(response.courses))
-
-			var course = response.courses[0]
-			this.configureStripe(course)
-		})
-	}
-
-	configureStripe(course){
-		if (course.type == 'online'){ // for videos, show subscription prompt:
-			stripe.initialize(function(token){
-				_this.setState({showLoader: true})
-				api.submitStripeToken(token, function(err, response){
-					if (err){
-						alert(err.message)
-						return
-					}
-
-					window.location.href = '/account'
-				})
-			})
-			return
-		}
-
-		stripe.initializeWithText('Submit Deposit', function(token){
-			_this.setState({showLoader: true})
-			api.submitStripeCharge(token, course, course.deposit, 'course', function(err, response){
-				if (err){
-					alert(err.message)
-					_this.setState({showLoader: false})
-					return
-				}
-
-				_this.setState({
-					showConfirmation: true,
-					showLoader: false
-				})
-			})					
-		})
+		
 	}
 
 	closeModal(){
@@ -116,17 +64,6 @@ class Course extends Component {
 
 	}
 
-
-	openStripeModal(event){
-		const course = this.props.courses[this.props.slug]
-		event.preventDefault()
-		if (course.type == 'online')
-			stripe.showModal()
-		else 
-			stripe.showModalWithText(course.title)
-	}
-
-
 	submitApplication(application){
 		const course = this.props.courses[this.props.slug]
 		this.setState({showLoader: true})
@@ -152,6 +89,7 @@ class Course extends Component {
 			bannerIndex = 1
 		else if (course.type == 'immersive')
 			bannerIndex = 2
+		
 		
 		var banner = this.props.banners[bannerIndex]
 		var startDate = (course.dates == null) ? '' : course.dates.split('-')[0].trim()
@@ -216,55 +154,7 @@ class Course extends Component {
 
 									{ units }
 
-									{ 
-										(course.type != 'online') ? 
-
-										<div className="entry clearfix">
-											<div className="entry-timeline">
-												Join<span></span>
-												<div className="timeline-divider"></div>
-											</div>
-											<div className="entry-image">
-												<div className="panel panel-default">
-													<div className="panel-body" style={{padding:36, paddingBottom:0}}>
-														{ (course.type == 'live') ? <h2>Register</h2> : <h2>Details</h2> }
-														<hr />
-
-														<div className='col_half'>
-															Date: {course.dates}<br />
-															Time: {course.schedule}<br />
-															Deposit: ${course.deposit}<br />
-															Regular Tuition: ${course.tuition}<br />
-															Premium Member Tuition: ${course.premiumTuition}<br />
-															<br />
-															{ 
-																(course.type == 'live') ? 
-																(
-																	<div className="col_full panel panel-default">
-																		<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
-																		<div className="panel-body" style={{textAlign:'left'}}>
-																			<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
-																			<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
-																		</div>
-																	</div>
-																)
-																:
-																<a href="#application" className="button button-xlarge tright">Apply<i class="icon-circle-arrow-right"></i></a>
-															}
-
-															
-														</div>
-
-														<div className="col_half col_last">
-															<img style={{width:'80%', float:'right'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										: 
-										null
-									}
+									<CTA course={course} />
 
 								</div>
 							</div>
