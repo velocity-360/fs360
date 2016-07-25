@@ -146,7 +146,10 @@ router.post('/:resource', function(req, res, next) {
 		if (course == 'Node & React Evening Course')
 			template = 'node-react-evening.html'
 		
-		if (course == 'Fundamentals Bootcamp')
+		if (course == '8-Week Fundamentals Bootcamp')
+			template = 'fundamentals-bootcamp.html'
+
+		if (course == '24-Week Evening Bootcamp')
 			template = 'fundamentals-bootcamp.html'
 		
 		fetchFile('public/email/syllabus/'+template)
