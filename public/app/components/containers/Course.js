@@ -38,8 +38,9 @@ class Course extends Component {
 	}
 
 	componentDidMount(){
-		if (this.props.course != null){
-			this.configureStripe(this.props.course)
+		const course = this.props.courses[this.props.slug]
+		if (course != null){
+			this.configureStripe(course)
 			return
 		}
 
@@ -117,17 +118,19 @@ class Course extends Component {
 
 
 	openStripeModal(event){
+		const course = this.props.courses[this.props.slug]
 		event.preventDefault()
-		if (this.props.course.type == 'online')
+		if (course.type == 'online')
 			stripe.showModal()
 		else 
-			stripe.showModalWithText(this.props.course.title)
+			stripe.showModalWithText(course.title)
 	}
 
 
 	submitApplication(application){
+		const course = this.props.courses[this.props.slug]
 		this.setState({showLoader: true})
-		application['course'] = this.props.course.title
+		application['course'] = course.title
 		var _this = this
 		api.handlePost('/api/application', application, function(err, response){
 			_this.setState({showLoader: false})
@@ -142,21 +145,43 @@ class Course extends Component {
 	}	
 
 	render(){
+		const course = this.props.courses[this.props.slug]
+
 		var bannerIndex = 0
-		if (this.props.course.type == 'online')
+		if (course.type == 'online')
 			bannerIndex = 1
-		else if (this.props.course.type == 'immersive')
+		else if (course.type == 'immersive')
 			bannerIndex = 2
 		
 		var banner = this.props.banners[bannerIndex]
-		var startDate = (this.props.course.dates == null) ? '' : this.props.course.dates.split('-')[0].trim()
-		var _course = this.props.course
+		var startDate = (course.dates == null) ? '' : course.dates.split('-')[0].trim()
+		var _course = course
 		var _accountType = (this.props.currentUser.id == null) ? 'notLoggedIn' : this.props.currentUser.accountType
 		var _showLogin = this.showLogin
 		var _openStripeModal = this.openStripeModal
-		var units = this.props.course.units.map(function(unit, i){
+		var units = course.units.map(function(unit, i){
 			return <CourseSection key={i} subscribeAction={_openStripeModal} loginAction={_showLogin} unit={unit} course={_course} accountType={_accountType} />
 		})
+
+		var bootcamps = this.props.bootcamps.map(function(bootcamp, i){
+			return (
+                <div key={bootcamp.id} className="col-md-12 bottommargin">
+                    <div className="team team-list clearfix">
+                        <div className="team-image" style={{width: 150}}>
+                            <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+bootcamp.image+'?crop=260'} alt="Velocity 360" />
+                        </div>
+                        <div className="team-desc">
+                            <div className="team-title">
+	                            <h4 style={{fontWeight:400}}><a href={'/course/'+bootcamp.slug}>{bootcamp.title}</a></h4>
+	                            <span style={{color:'#444'}}>{bootcamp.dates}</span>
+	                            <span style={{color:'#444'}}>{bootcamp.schedule}</span>
+                            </div>
+                            <div className="team-content">{bootcamp.description}</div>
+                        </div>
+                    </div>
+                </div>
+			)
+		})		
 
 		return (
 			<div>
@@ -181,10 +206,10 @@ class Course extends Component {
 										</div>
 										<div className="entry-content">
 											<div className='col_half'>
-												<h2 style={{marginBottom:0}}>{this.props.course.title}</h2>
-												<p>{this.props.course.description}</p>
+												<h2 style={{marginBottom:0}}>{course.title}</h2>
+												<p>{course.description}</p>
 											</div>
-											<DetailBox showLoader={this.showLoader} hideLoader={this.hideLoader} course={this.props.course} />
+											<DetailBox showLoader={this.showLoader} hideLoader={this.hideLoader} course={course} />
 
 										</div>
 									</div>
@@ -192,7 +217,7 @@ class Course extends Component {
 									{ units }
 
 									{ 
-										(this.props.course.type != 'online') ? 
+										(course.type != 'online') ? 
 
 										<div className="entry clearfix">
 											<div className="entry-timeline">
@@ -202,23 +227,23 @@ class Course extends Component {
 											<div className="entry-image">
 												<div className="panel panel-default">
 													<div className="panel-body" style={{padding:36, paddingBottom:0}}>
-														{ (this.props.course.type == 'live') ? <h2>Register</h2> : <h2>Details</h2> }
+														{ (course.type == 'live') ? <h2>Register</h2> : <h2>Details</h2> }
 														<hr />
 
 														<div className='col_half'>
-															Date: {this.props.course.dates}<br />
-															Time: {this.props.course.schedule}<br />
-															Deposit: ${this.props.course.deposit}<br />
-															Regular Tuition: ${this.props.course.tuition}<br />
-															Premium Member Tuition: ${this.props.course.premiumTuition}<br />
+															Date: {course.dates}<br />
+															Time: {course.schedule}<br />
+															Deposit: ${course.deposit}<br />
+															Regular Tuition: ${course.tuition}<br />
+															Premium Member Tuition: ${course.premiumTuition}<br />
 															<br />
 															{ 
-																(this.props.course.type == 'live') ? 
+																(course.type == 'live') ? 
 																(
 																	<div className="col_full panel panel-default">
 																		<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
 																		<div className="panel-body" style={{textAlign:'left'}}>
-																			<a href={this.props.course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
+																			<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
 																			<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
 																		</div>
 																	</div>
@@ -231,7 +256,7 @@ class Course extends Component {
 														</div>
 
 														<div className="col_half col_last">
-															<img style={{width:'80%', float:'right'}} src={'https://media-service.appspot.com/site/images/'+this.props.course.image+'?crop=460'} />
+															<img style={{width:'80%', float:'right'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
 														</div>
 													</div>
 												</div>
@@ -248,8 +273,20 @@ class Course extends Component {
 					</div>
 				</section>
 
+				<section style={{background:'#fff', paddingTop:48, borderTop:'1px solid #ddd'}}>
+					<div className="heading-block center">
+						<h2 style={{fontWeight:400}}>Bootcamps</h2>
+					</div>
+
+					<div className="content-wrap" style={{paddingTop:0}}>
+						<div className="container clearfix">
+							{bootcamps}
+						</div>
+					</div>
+				</section>				
+
 				<section id="content" style={{backgroundColor: '#fff', paddingBottom:0}}>
-					<div className="row common-height clearfix" style={{background:'#fff', border:'1px solid #ddd'}}>
+					<div className="row common-height clearfix" style={{background:'#f9f9f9', border:'1px solid #ddd'}}>
 						<div className="col-sm-8 col-padding">
 							<div>
 								<div className="heading-block">
@@ -273,14 +310,8 @@ class Course extends Component {
 											devs that graduate from bootcamps every three months, you will leave Velocity 360 with 
 											the skills highly in demand yet hard to find in the tech world. 
 										</p>
-										<a target="_blank" href="https://www.facebook.com/Velocity-360-1631852427085987/" className="social-icon inline-block si-small si-light si-rounded si-facebook">
-											<i className="icon-facebook"></i>
-											<i className="icon-facebook"></i>
-										</a>
-										<a target="_blank" href="https://twitter.com/velocity360_io" className="social-icon inline-block si-small si-light si-rounded si-twitter">
-											<i className="icon-twitter"></i>
-											<i className="icon-twitter"></i>
-										</a>
+
+
 									</div>
 								</div>
 							</div>
@@ -290,7 +321,7 @@ class Course extends Component {
 					</div>
 				</section>
 
-				{ (this.props.course.type == 'immersive') ? <Application onSubmit={this.submitApplication} /> : null }
+				{ (course.type == 'immersive') ? <Application onSubmit={this.submitApplication} /> : null }
 	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} redirect={null} />
 
 		        <Modal show={this.state.showConfirmation} onHide={this.closeModal}>
@@ -300,7 +331,7 @@ class Course extends Component {
 			        </Modal.Header>
 			        <Modal.Body style={{background:'#f9f9f9', padding:24, textAlign:'center'}}>
 			        	<p>
-			        		Thank you for submitting a deposit to the {this.props.course.title}. We look forward
+			        		Thank you for submitting a deposit to the {course.title}. We look forward
 			        		to meeting you on {startDate}. If you have any questions or concerns, feel
 			        		free to contact us at katrina@velocity360.io. Thank you.
 			        	</p>
@@ -320,7 +351,8 @@ const stateToProps = function(state) {
 
     return {
         currentUser: state.profileReducer.currentUser,
-        course: state.courseReducer.courseArray[0],
+        courses: state.courseReducer.courses,
+        bootcamps: state.courseReducer.courseArray,
         loaderOptions: state.staticReducer.loaderConfig,
         banners: state.staticReducer.banners
     }

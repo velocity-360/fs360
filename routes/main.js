@@ -137,21 +137,24 @@ router.get('/:page/:slug', function(req, res, next) {
 		}
 
 		var entity = results[0]
-		if (page == 'course')
-			initialData.courseReducer.courseArray = [entity]
+		if (page == 'course'){
+			initialData.courseReducer.courses[entity.slug] = entity
+		}
 
 		if (page == 'project')
 			initialData.projectReducer.projectsArray = [entity]
 
 		if (page == 'event'){
 			initialData.eventReducer.eventArray = [entity]
-			var eventsMap = {}
-			for (var i=0; i<results.length; i++){
-				var event = results[i]
-				eventsMap[event.slug] = event
-			}
+			initialData.eventReducer[event.slug] = event
 
-			initialData.eventReducer.events = eventsMap
+			// var eventsMap = {}
+			// for (var i=0; i<results.length; i++){
+			// 	var event = results[i]
+			// 	eventsMap[event.slug] = event
+			// }
+
+			// initialData.eventReducer.events = eventsMap
 		}
 
 		if (page == 'post'){

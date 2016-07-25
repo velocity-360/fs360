@@ -61632,8 +61632,9 @@
 		_createClass(Course, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				if (this.props.course != null) {
-					this.configureStripe(this.props.course);
+				var course = this.props.courses[this.props.slug];
+				if (course != null) {
+					this.configureStripe(course);
 					return;
 				}
 	
@@ -61716,14 +61717,16 @@
 		}, {
 			key: 'openStripeModal',
 			value: function openStripeModal(event) {
+				var course = this.props.courses[this.props.slug];
 				event.preventDefault();
-				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
+				if (course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(course.title);
 			}
 		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
+				var course = this.props.courses[this.props.slug];
 				this.setState({ showLoader: true });
-				application['course'] = this.props.course.title;
+				application['course'] = course.title;
 				var _this = this;
 				_api2.default.handlePost('/api/application', application, function (err, response) {
 					_this.setState({ showLoader: false });
@@ -61739,17 +61742,67 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var course = this.props.courses[this.props.slug];
+	
 				var bannerIndex = 0;
-				if (this.props.course.type == 'online') bannerIndex = 1;else if (this.props.course.type == 'immersive') bannerIndex = 2;
+				if (course.type == 'online') bannerIndex = 1;else if (course.type == 'immersive') bannerIndex = 2;
 	
 				var banner = this.props.banners[bannerIndex];
-				var startDate = this.props.course.dates == null ? '' : this.props.course.dates.split('-')[0].trim();
-				var _course = this.props.course;
+				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
+				var _course = course;
 				var _accountType = this.props.currentUser.id == null ? 'notLoggedIn' : this.props.currentUser.accountType;
 				var _showLogin = this.showLogin;
 				var _openStripeModal = this.openStripeModal;
-				var units = this.props.course.units.map(function (unit, i) {
+				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(_CourseSection2.default, { key: i, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
+				});
+	
+				var bootcamps = this.props.bootcamps.map(function (bootcamp, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: bootcamp.id, className: 'col-md-12 bottommargin' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'team team-list clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'team-image', style: { width: 150 } },
+								_react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + bootcamp.image + '?crop=260', alt: 'Velocity 360' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'team-desc' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'team-title' },
+									_react2.default.createElement(
+										'h4',
+										{ style: { fontWeight: 400 } },
+										_react2.default.createElement(
+											'a',
+											{ href: '/course/' + bootcamp.slug },
+											bootcamp.title
+										)
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										bootcamp.dates
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										bootcamp.schedule
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'team-content' },
+									bootcamp.description
+								)
+							)
+						)
+					);
 				});
 	
 				return _react2.default.createElement(
@@ -61797,19 +61850,19 @@
 													_react2.default.createElement(
 														'h2',
 														{ style: { marginBottom: 0 } },
-														this.props.course.title
+														course.title
 													),
 													_react2.default.createElement(
 														'p',
 														null,
-														this.props.course.description
+														course.description
 													)
 												),
-												_react2.default.createElement(_DetailBox2.default, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: this.props.course })
+												_react2.default.createElement(_DetailBox2.default, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: course })
 											)
 										),
 										units,
-										this.props.course.type != 'online' ? _react2.default.createElement(
+										course.type != 'online' ? _react2.default.createElement(
 											'div',
 											{ className: 'entry clearfix' },
 											_react2.default.createElement(
@@ -61828,7 +61881,7 @@
 													_react2.default.createElement(
 														'div',
 														{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
-														this.props.course.type == 'live' ? _react2.default.createElement(
+														course.type == 'live' ? _react2.default.createElement(
 															'h2',
 															null,
 															'Register'
@@ -61842,22 +61895,22 @@
 															'div',
 															{ className: 'col_half' },
 															'Date: ',
-															this.props.course.dates,
+															course.dates,
 															_react2.default.createElement('br', null),
 															'Time: ',
-															this.props.course.schedule,
+															course.schedule,
 															_react2.default.createElement('br', null),
 															'Deposit: $',
-															this.props.course.deposit,
+															course.deposit,
 															_react2.default.createElement('br', null),
 															'Regular Tuition: $',
-															this.props.course.tuition,
+															course.tuition,
 															_react2.default.createElement('br', null),
 															'Premium Member Tuition: $',
-															this.props.course.premiumTuition,
+															course.premiumTuition,
 															_react2.default.createElement('br', null),
 															_react2.default.createElement('br', null),
-															this.props.course.type == 'live' ? _react2.default.createElement(
+															course.type == 'live' ? _react2.default.createElement(
 																'div',
 																{ className: 'col_full panel panel-default' },
 																_react2.default.createElement(
@@ -61870,7 +61923,7 @@
 																	{ className: 'panel-body', style: { textAlign: 'left' } },
 																	_react2.default.createElement(
 																		'a',
-																		{ href: this.props.course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+																		{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
 																		'PayPal',
 																		_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
 																	),
@@ -61892,7 +61945,7 @@
 														_react2.default.createElement(
 															'div',
 															{ className: 'col_half col_last' },
-															_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + this.props.course.image + '?crop=460' })
+															_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' })
 														)
 													)
 												)
@@ -61905,10 +61958,32 @@
 					),
 					_react2.default.createElement(
 						'section',
+						{ style: { background: '#fff', paddingTop: 48, borderTop: '1px solid #ddd' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'heading-block center' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { fontWeight: 400 } },
+								'Bootcamps'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { paddingTop: 0 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								bootcamps
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
 						{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 0 } },
 						_react2.default.createElement(
 							'div',
-							{ className: 'row common-height clearfix', style: { background: '#fff', border: '1px solid #ddd' } },
+							{ className: 'row common-height clearfix', style: { background: '#f9f9f9', border: '1px solid #ddd' } },
 							_react2.default.createElement(
 								'div',
 								{ className: 'col-sm-8 col-padding' },
@@ -61939,18 +62014,6 @@
 												'p',
 												null,
 												'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
-											),
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://www.facebook.com/Velocity-360-1631852427085987/', className: 'social-icon inline-block si-small si-light si-rounded si-facebook' },
-												_react2.default.createElement('i', { className: 'icon-facebook' }),
-												_react2.default.createElement('i', { className: 'icon-facebook' })
-											),
-											_react2.default.createElement(
-												'a',
-												{ target: '_blank', href: 'https://twitter.com/velocity360_io', className: 'social-icon inline-block si-small si-light si-rounded si-twitter' },
-												_react2.default.createElement('i', { className: 'icon-twitter' }),
-												_react2.default.createElement('i', { className: 'icon-twitter' })
 											)
 										)
 									)
@@ -61959,7 +62022,7 @@
 							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
 						)
 					),
-					this.props.course.type == 'immersive' ? _react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }) : null,
+					course.type == 'immersive' ? _react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }) : null,
 					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: null }),
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
@@ -61981,7 +62044,7 @@
 								'p',
 								null,
 								'Thank you for submitting a deposit to the ',
-								this.props.course.title,
+								course.title,
 								'. We look forward to meeting you on ',
 								startDate,
 								'. If you have any questions or concerns, feel free to contact us at katrina@velocity360.io. Thank you.'
@@ -62009,7 +62072,8 @@
 	
 		return {
 			currentUser: state.profileReducer.currentUser,
-			course: state.courseReducer.courseArray[0],
+			courses: state.courseReducer.courses,
+			bootcamps: state.courseReducer.courseArray,
 			loaderOptions: state.staticReducer.loaderConfig,
 			banners: state.staticReducer.banners
 		};
