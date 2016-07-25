@@ -16,6 +16,7 @@ var ProfileSchema = new mongoose.Schema({
 	password: {type:String, default:''},
 	bio: {type:String, default:''},
 	username: {type:String, trim:true, default:''},
+	credits: {type: Number, default: 0},
 	monthlyRate: {type: Number, default: 0},
 	image: {type:String, trim:true, default:'qeodpw-g'}, // default profile icon
 	isAdmin: {type:String, trim:true, lowercase:true, default:'no'},
@@ -38,6 +39,7 @@ ProfileSchema.methods.summary = function() {
 		'resume':this.resume,
 		'bio':this.bio,
 		'username':this.username,
+		'credits':this.credits,
 		'monthlyRate':this.monthlyRate,
 		'image':this.image,
 		'timestamp':this.timestamp,
