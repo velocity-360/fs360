@@ -297,8 +297,8 @@ router.post('/:resource', function(req, res, next) {
 		}
 
 		if (resource == 'profile') { // profile registration, install session cookie
-			req.session.user = result.id;
-			EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Subscriber', JSON.stringify(req.body));
+			req.session.user = result.id
+			EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Profile', JSON.stringify(req.body))
 		}
 		
 		var data = {confirmation:'success'}
