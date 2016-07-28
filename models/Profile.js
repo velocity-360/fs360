@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 var ProfileSchema = new mongoose.Schema({
 	firstName: {type:String, trim:true, lowercase:true, default:''},
@@ -21,7 +21,7 @@ var ProfileSchema = new mongoose.Schema({
 	image: {type:String, trim:true, default:'qeodpw-g'}, // default profile icon
 	isAdmin: {type:String, trim:true, lowercase:true, default:'no'},
 	timestamp: {type:Date, default:Date.now},
-});
+})
 
 ProfileSchema.methods.summary = function() {
 	var summary = {
@@ -45,9 +45,9 @@ ProfileSchema.methods.summary = function() {
 		'timestamp':this.timestamp,
 		'isAdmin':this.isAdmin,
 		'id':this._id
-	};
+	}
 	
-	return summary;
-};
+	return summary
+}
 
-module.exports = mongoose.model('ProfileSchema', ProfileSchema);
+module.exports = mongoose.model('ProfileSchema', ProfileSchema)
