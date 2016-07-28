@@ -99,28 +99,67 @@ var CTA = (function (Component) {
 				switch (course.type) {
 					case "online":
 						cta = "Subscribe";
+						premiumTuition = React.createElement(
+							"p",
+							{ style: { marginBottom: 0 } },
+							"Subscribe to this course to receive email notifications when new videos are published. If you are a ",
+							React.createElement(
+								"a",
+								{ href: "/#register" },
+								"premium"
+							),
+							" member, all online video courses are included in membership."
+						);
+
+						var isSubscriber = course.subscribers.indexOf(this.props.currentUser.id) > -1;
 						register = React.createElement(
 							"div",
 							{ className: "col_full panel panel-default" },
 							React.createElement(
 								"div",
 								{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
-								"Submit Deposit"
+								"Details"
 							),
 							React.createElement(
 								"div",
 								{ className: "panel-body", style: { textAlign: "left" } },
-								course.tuition,
+								"Fee: ",
+								course.credits,
 								" credits",
 								React.createElement("br", null),
-								React.createElement("br", null),
-								React.createElement(
-									"a",
-									{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
-									"Subcscribe",
-									React.createElement("i", { "class": "icon-circle-arrow-right" })
+								this.props.currentUser.id == null ? React.createElement(
+									"span",
+									null,
+									"Login"
+								) : React.createElement(
+									"span",
+									null,
+									"You have ",
+									this.props.currentUser.credits,
+									" credits remaining"
 								),
-								React.createElement("br", null)
+								React.createElement("br", null),
+								React.createElement("br", null),
+								isSubscriber ? React.createElement(
+									"div",
+									null,
+									React.createElement("hr", null),
+									React.createElement(
+										"span",
+										null,
+										"You are subscribed to this series"
+									)
+								) : React.createElement(
+									"div",
+									null,
+									React.createElement(
+										"a",
+										{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+										"Subscribe",
+										React.createElement("i", { "class": "icon-circle-arrow-right" })
+									),
+									React.createElement("br", null)
+								)
 							)
 						);
 						break;

@@ -61782,7 +61782,7 @@
 											)
 										),
 										units,
-										_react2.default.createElement(_CTA2.default, { course: course })
+										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser })
 									)
 								)
 							)
@@ -62021,28 +62021,67 @@
 				switch (course.type) {
 					case 'online':
 						cta = 'Subscribe';
+						premiumTuition = _react2.default.createElement(
+							'p',
+							{ style: { marginBottom: 0 } },
+							'Subscribe to this course to receive email notifications when new videos are published. If you are a ',
+							_react2.default.createElement(
+								'a',
+								{ href: '/#register' },
+								'premium'
+							),
+							' member, all online video courses are included in membership.'
+						);
+	
+						var isSubscriber = course.subscribers.indexOf(this.props.currentUser.id) > -1;
 						register = _react2.default.createElement(
 							'div',
 							{ className: 'col_full panel panel-default' },
 							_react2.default.createElement(
 								'div',
 								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-								'Submit Deposit'
+								'Details'
 							),
 							_react2.default.createElement(
 								'div',
 								{ className: 'panel-body', style: { textAlign: 'left' } },
-								course.tuition,
+								'Fee: ',
+								course.credits,
 								' credits',
 								_react2.default.createElement('br', null),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(
-									'a',
-									{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
-									'Subcscribe',
-									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+								this.props.currentUser.id == null ? _react2.default.createElement(
+									'span',
+									null,
+									'Login'
+								) : _react2.default.createElement(
+									'span',
+									null,
+									'You have ',
+									this.props.currentUser.credits,
+									' credits remaining'
 								),
-								_react2.default.createElement('br', null)
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
+								isSubscriber ? _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement(
+										'span',
+										null,
+										'You are subscribed to this series'
+									)
+								) : _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+										'Subscribe',
+										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+									),
+									_react2.default.createElement('br', null)
+								)
 							)
 						);
 						break;

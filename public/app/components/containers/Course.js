@@ -154,7 +154,7 @@ class Course extends Component {
 
 									{ units }
 
-									<CTA course={course} />
+									<CTA course={course} currentUser={this.props.currentUser} />
 
 								</div>
 							</div>

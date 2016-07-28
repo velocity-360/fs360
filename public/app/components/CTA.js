@@ -74,13 +74,39 @@ class CTA extends Component {
 		switch (course.type){
 			case 'online':
 				cta = 'Subscribe'
-				register = (
+				premiumTuition = (
+					<p style={{marginBottom:0}}>
+						Subscribe to this course to receive email notifications when new videos 
+						are published. If you are a <a href="/#register">premium</a> member, all online video courses 
+						are included in membership.
+					</p>					
+				)
 
+				var isSubscriber = (course.subscribers.indexOf(this.props.currentUser.id) > -1)
+				register = (
 					<div className="col_full panel panel-default">
-						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
+						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Details</div>
 						<div className="panel-body" style={{textAlign:'left'}}>
-							{course.tuition} credits<br /><br />
-							<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">Subcscribe<i class="icon-circle-arrow-right"></i></a><br />
+							Fee: {course.credits} credits<br />
+							{
+								(this.props.currentUser.id == null) ?
+								<span>Login</span>
+								:
+								<span>You have {this.props.currentUser.credits} credits remaining</span>
+							}
+
+							<br /><br />
+							{
+								(isSubscriber) ? 
+								<div>
+									<hr />
+									<span>You are subscribed to this series</span>
+								</div>
+								:
+								<div>
+									<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">Subscribe<i class="icon-circle-arrow-right"></i></a><br />
+								</div>
+							}
 						</div>
 					</div>
 				)
