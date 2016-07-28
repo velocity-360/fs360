@@ -88,13 +88,156 @@ var CTA = (function (Component) {
 		render: {
 			value: function render() {
 				var course = this.props.course;
-				var cta = "Register";
-				if (course.type == "online") {
-					cta = "Subscribe";
-				} else if (course.type == "immersive") {
-					cta = "Details";
-				}
+				var cta = null;
+				var date = null;
+				var schedule = null;
+				var deposit = null;
+				var tuition = null;
+				var premiumTuition = null;
+				var register = null;
 
+				switch (course.type) {
+					case "online":
+						cta = "Subscribe";
+						register = React.createElement(
+							"div",
+							{ className: "col_full panel panel-default" },
+							React.createElement(
+								"div",
+								{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
+								"Submit Deposit"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel-body", style: { textAlign: "left" } },
+								course.tuition,
+								" credits",
+								React.createElement("br", null),
+								React.createElement("br", null),
+								React.createElement(
+									"a",
+									{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+									"Subcscribe",
+									React.createElement("i", { "class": "icon-circle-arrow-right" })
+								),
+								React.createElement("br", null)
+							)
+						);
+						break;
+
+					case "immersive":
+						cta = "Details";
+						date = React.createElement(
+							"span",
+							null,
+							"Date: ",
+							course.dates,
+							React.createElement("br", null)
+						);
+						schedule = React.createElement(
+							"span",
+							null,
+							"Time: ",
+							course.schedule,
+							React.createElement("br", null)
+						);
+						deposit = React.createElement(
+							"span",
+							null,
+							"Deposit: $",
+							course.deposit,
+							React.createElement("br", null)
+						);
+						tuition = React.createElement(
+							"span",
+							null,
+							"Regular Tuition: $",
+							course.tuition,
+							React.createElement("br", null)
+						);
+						premiumTuition = React.createElement(
+							"span",
+							null,
+							"Premium Member Tuition: $",
+							course.premiumTuition,
+							React.createElement("br", null)
+						);
+						register = React.createElement(
+							"a",
+							{ href: "#application", className: "button button-xlarge tright" },
+							"Apply",
+							React.createElement("i", { "class": "icon-circle-arrow-right" })
+						);
+						break;
+
+					case "live":
+						cta = "Register";
+						date = React.createElement(
+							"span",
+							null,
+							"Date: ",
+							course.dates,
+							React.createElement("br", null)
+						);
+						schedule = React.createElement(
+							"span",
+							null,
+							"Time: ",
+							course.schedule,
+							React.createElement("br", null)
+						);
+						deposit = React.createElement(
+							"span",
+							null,
+							"Deposit: $",
+							course.deposit,
+							React.createElement("br", null)
+						);
+						tuition = React.createElement(
+							"span",
+							null,
+							"Regular Tuition: $",
+							course.tuition,
+							React.createElement("br", null)
+						);
+						premiumTuition = React.createElement(
+							"span",
+							null,
+							"Premium Member Tuition: $",
+							course.premiumTuition,
+							React.createElement("br", null)
+						);
+						register = React.createElement(
+							"div",
+							{ className: "col_full panel panel-default" },
+							React.createElement(
+								"div",
+								{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
+								"Submit Deposit"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel-body", style: { textAlign: "left" } },
+								React.createElement(
+									"a",
+									{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+									"PayPal",
+									React.createElement("i", { "class": "icon-circle-arrow-right" })
+								),
+								React.createElement("br", null),
+								React.createElement(
+									"a",
+									{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
+									"Credit Card",
+									React.createElement("i", { "class": "icon-circle-arrow-right" })
+								)
+							)
+						);
+						break;
+
+					default:
+						break;
+				}
 
 				return React.createElement(
 					"div",
@@ -124,53 +267,13 @@ var CTA = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col_half" },
-									"Date: ",
-									course.dates,
+									date,
+									schedule,
+									deposit,
+									tuition,
+									premiumTuition,
 									React.createElement("br", null),
-									"Time: ",
-									course.schedule,
-									React.createElement("br", null),
-									"Deposit: $",
-									course.deposit,
-									React.createElement("br", null),
-									"Regular Tuition: $",
-									course.tuition,
-									React.createElement("br", null),
-									"Premium Member Tuition: $",
-									course.premiumTuition,
-									React.createElement("br", null),
-									React.createElement("br", null),
-									this.props.course.type == "live" ? React.createElement(
-										"div",
-										{ className: "col_full panel panel-default" },
-										React.createElement(
-											"div",
-											{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
-											"Submit Deposit"
-										),
-										React.createElement(
-											"div",
-											{ className: "panel-body", style: { textAlign: "left" } },
-											React.createElement(
-												"a",
-												{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
-												"PayPal",
-												React.createElement("i", { "class": "icon-circle-arrow-right" })
-											),
-											React.createElement("br", null),
-											React.createElement(
-												"a",
-												{ onClick: this.openStripeModal, href: "#", className: "button button-xlarge tright" },
-												"Credit Card",
-												React.createElement("i", { "class": "icon-circle-arrow-right" })
-											)
-										)
-									) : React.createElement(
-										"a",
-										{ href: "#application", className: "button button-xlarge tright" },
-										"Apply",
-										React.createElement("i", { "class": "icon-circle-arrow-right" })
-									)
+									register
 								),
 								React.createElement(
 									"div",

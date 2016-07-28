@@ -22356,26 +22356,9 @@
 	var constants = __webpack_require__(197);
 	
 	var initialState = {
-		courses: {
-			0: {
-				title: '',
-				description: '',
-				syllabus: '',
-				image: '',
-				units: [],
-				tuition: 0,
-				deposit: 0,
-				premiumTuition: 0
-			}
-		},
+		courses: {},
 		courseArray: []
 	};
-	
-	/*
-	A reducer is a function that takes the current state and an action, and then returns a
-	new state. This reducer is responsible for appState.heroes data.
-	See `initialstate.js` for a clear view of what it looks like!
-	*/
 
 /***/ },
 /* 199 */
@@ -62027,11 +62010,155 @@
 			key: 'render',
 			value: function render() {
 				var course = this.props.course;
-				var cta = 'Register';
-				if (course.type == 'online') {
-					cta = 'Subscribe';
-				} else if (course.type == 'immersive') {
-					cta = 'Details';
+				var cta = null;
+				var date = null;
+				var schedule = null;
+				var deposit = null;
+				var tuition = null;
+				var premiumTuition = null;
+				var register = null;
+	
+				switch (course.type) {
+					case 'online':
+						cta = 'Subscribe';
+						register = _react2.default.createElement(
+							'div',
+							{ className: 'col_full panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+								'Submit Deposit'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { textAlign: 'left' } },
+								course.tuition,
+								' credits',
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'a',
+									{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+									'Subcscribe',
+									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+								),
+								_react2.default.createElement('br', null)
+							)
+						);
+						break;
+	
+					case 'immersive':
+						cta = 'Details';
+						date = _react2.default.createElement(
+							'span',
+							null,
+							'Date: ',
+							course.dates,
+							_react2.default.createElement('br', null)
+						);
+						schedule = _react2.default.createElement(
+							'span',
+							null,
+							'Time: ',
+							course.schedule,
+							_react2.default.createElement('br', null)
+						);
+						deposit = _react2.default.createElement(
+							'span',
+							null,
+							'Deposit: $',
+							course.deposit,
+							_react2.default.createElement('br', null)
+						);
+						tuition = _react2.default.createElement(
+							'span',
+							null,
+							'Regular Tuition: $',
+							course.tuition,
+							_react2.default.createElement('br', null)
+						);
+						premiumTuition = _react2.default.createElement(
+							'span',
+							null,
+							'Premium Member Tuition: $',
+							course.premiumTuition,
+							_react2.default.createElement('br', null)
+						);
+						register = _react2.default.createElement(
+							'a',
+							{ href: '#application', className: 'button button-xlarge tright' },
+							'Apply',
+							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+						);
+						break;
+	
+					case 'live':
+						cta = 'Register';
+						date = _react2.default.createElement(
+							'span',
+							null,
+							'Date: ',
+							course.dates,
+							_react2.default.createElement('br', null)
+						);
+						schedule = _react2.default.createElement(
+							'span',
+							null,
+							'Time: ',
+							course.schedule,
+							_react2.default.createElement('br', null)
+						);
+						deposit = _react2.default.createElement(
+							'span',
+							null,
+							'Deposit: $',
+							course.deposit,
+							_react2.default.createElement('br', null)
+						);
+						tuition = _react2.default.createElement(
+							'span',
+							null,
+							'Regular Tuition: $',
+							course.tuition,
+							_react2.default.createElement('br', null)
+						);
+						premiumTuition = _react2.default.createElement(
+							'span',
+							null,
+							'Premium Member Tuition: $',
+							course.premiumTuition,
+							_react2.default.createElement('br', null)
+						);
+						register = _react2.default.createElement(
+							'div',
+							{ className: 'col_full panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+								'Submit Deposit'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { textAlign: 'left' } },
+								_react2.default.createElement(
+									'a',
+									{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+									'PayPal',
+									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+								),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+									'Credit Card',
+									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+								)
+							)
+						);
+						break;
+	
+					default:
+						break;
 				}
 	
 				return _react2.default.createElement(
@@ -62062,53 +62189,13 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_half' },
-									'Date: ',
-									course.dates,
+									date,
+									schedule,
+									deposit,
+									tuition,
+									premiumTuition,
 									_react2.default.createElement('br', null),
-									'Time: ',
-									course.schedule,
-									_react2.default.createElement('br', null),
-									'Deposit: $',
-									course.deposit,
-									_react2.default.createElement('br', null),
-									'Regular Tuition: $',
-									course.tuition,
-									_react2.default.createElement('br', null),
-									'Premium Member Tuition: $',
-									course.premiumTuition,
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('br', null),
-									this.props.course.type == 'live' ? _react2.default.createElement(
-										'div',
-										{ className: 'col_full panel panel-default' },
-										_react2.default.createElement(
-											'div',
-											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-											'Submit Deposit'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body', style: { textAlign: 'left' } },
-											_react2.default.createElement(
-												'a',
-												{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
-												'PayPal',
-												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-											),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement(
-												'a',
-												{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-												'Credit Card',
-												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-											)
-										)
-									) : _react2.default.createElement(
-										'a',
-										{ href: '#application', className: 'button button-xlarge tright' },
-										'Apply',
-										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-									)
+									register
 								),
 								_react2.default.createElement(
 									'div',

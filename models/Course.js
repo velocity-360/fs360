@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 
 var CourseSchema = new mongoose.Schema({
@@ -14,6 +14,7 @@ var CourseSchema = new mongoose.Schema({
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
 	tags: {type:Array, default:[]},
 	paypalLink: {type:String, trim:true, default:''},
+	credits: {type:Number, default: 10},
 	tuition: {type:Number, default: 0},
 	premiumTuition: {type: Number, default: 0}, // price for premium subscribers
 	remoteTuition: {type: Number, default: 0}, // price for online
@@ -24,7 +25,7 @@ var CourseSchema = new mongoose.Schema({
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}}, // instructor
 	subscribers: {type:Array, default:[]},
 	timestamp: {type:Date, default:Date.now},
-});
+})
 
 
 CourseSchema.methods.summary = function() {
@@ -40,6 +41,7 @@ CourseSchema.methods.summary = function() {
 		'units':this.units,
 		'tags':this.tags,
 		'paypalLink':this.paypalLink,
+		'credits':this.credits,
 		'tuition':this.tuition,
 		'premiumTuition':this.premiumTuition,
 		'remoteTuition':this.remoteTuition,
@@ -53,8 +55,8 @@ CourseSchema.methods.summary = function() {
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
-	return summary;
-};
+	return summary
+}
 
 
-module.exports = mongoose.model('CourseSchema', CourseSchema);
+module.exports = mongoose.model('CourseSchema', CourseSchema)

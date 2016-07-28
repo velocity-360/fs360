@@ -63,14 +63,63 @@ class CTA extends Component {
 
 	render(){
 		const course = this.props.course
-		var cta = 'Register'
-		if (course.type == 'online'){
-			cta = 'Subscribe'
-		}
-		else if (course.type == 'immersive'){
-			cta = 'Details'
-		}
+		var cta = null
+		var date = null
+		var schedule = null
+		var deposit = null
+		var tuition = null
+		var premiumTuition = null
+		var register = null
 
+		switch (course.type){
+			case 'online':
+				cta = 'Subscribe'
+				register = (
+
+					<div className="col_full panel panel-default">
+						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
+						<div className="panel-body" style={{textAlign:'left'}}>
+							{course.tuition} credits<br /><br />
+							<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">Subcscribe<i class="icon-circle-arrow-right"></i></a><br />
+						</div>
+					</div>
+				)
+				break
+
+			case 'immersive':
+				cta = 'Details'
+				date = <span>Date: {course.dates}<br /></span>			
+				schedule = <span>Time: {course.schedule}<br /></span>
+				deposit = <span>Deposit: ${course.deposit}<br /></span>
+				tuition = <span>Regular Tuition: ${course.tuition}<br /></span>
+				premiumTuition = <span>Premium Member Tuition: ${course.premiumTuition}<br /></span>
+				register = (
+					<a href="#application" className="button button-xlarge tright">Apply<i class="icon-circle-arrow-right"></i></a>
+
+				)
+				break
+
+			case 'live':
+				cta = 'Register'
+				date = <span>Date: {course.dates}<br /></span>			
+				schedule = <span>Time: {course.schedule}<br /></span>			
+				deposit = <span>Deposit: ${course.deposit}<br /></span>
+				tuition = <span>Regular Tuition: ${course.tuition}<br /></span>
+				premiumTuition = <span>Premium Member Tuition: ${course.premiumTuition}<br /></span>
+				register = (
+					<div className="col_full panel panel-default">
+						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
+						<div className="panel-body" style={{textAlign:'left'}}>
+							<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
+							<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
+						</div>
+					</div>
+				)
+				break
+
+			default:
+				break
+		}
 
 		return (
 
@@ -86,26 +135,13 @@ class CTA extends Component {
 							<hr />
 
 							<div className='col_half'>
-								Date: {course.dates}<br />
-								Time: {course.schedule}<br />
-								Deposit: ${course.deposit}<br />
-								Regular Tuition: ${course.tuition}<br />
-								Premium Member Tuition: ${course.premiumTuition}<br />
+								{date}
+								{schedule}
+								{deposit}
+								{tuition}
+								{premiumTuition}
 								<br />
-								{ 
-									(this.props.course.type == 'live') ? 
-									(
-										<div className="col_full panel panel-default">
-											<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
-											<div className="panel-body" style={{textAlign:'left'}}>
-												<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
-												<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
-											</div>
-										</div>
-									)
-									:
-									<a href="#application" className="button button-xlarge tright">Apply<i class="icon-circle-arrow-right"></i></a>
-								}
+								{register}
 
 							</div>
 
