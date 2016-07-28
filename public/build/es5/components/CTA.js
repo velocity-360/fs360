@@ -87,10 +87,11 @@ var CTA = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var course = this.props.course;
 				var cta = "Register";
-				if (this.props.course.type == "online") {
+				if (course.type == "online") {
 					cta = "Subscribe";
-				} else if (this.props.course.type == "immersive") {
+				} else if (course.type == "immersive") {
 					cta = "Details";
 				}
 
@@ -124,19 +125,19 @@ var CTA = (function (Component) {
 									"div",
 									{ className: "col_half" },
 									"Date: ",
-									this.props.course.dates,
+									course.dates,
 									React.createElement("br", null),
 									"Time: ",
-									this.props.course.schedule,
+									course.schedule,
 									React.createElement("br", null),
 									"Deposit: $",
-									this.props.course.deposit,
+									course.deposit,
 									React.createElement("br", null),
 									"Regular Tuition: $",
-									this.props.course.tuition,
+									course.tuition,
 									React.createElement("br", null),
 									"Premium Member Tuition: $",
-									this.props.course.premiumTuition,
+									course.premiumTuition,
 									React.createElement("br", null),
 									React.createElement("br", null),
 									this.props.course.type == "live" ? React.createElement(
@@ -152,7 +153,7 @@ var CTA = (function (Component) {
 											{ className: "panel-body", style: { textAlign: "left" } },
 											React.createElement(
 												"a",
-												{ href: this.props.course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+												{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
 												"PayPal",
 												React.createElement("i", { "class": "icon-circle-arrow-right" })
 											),
@@ -174,7 +175,7 @@ var CTA = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "col_half col_last" },
-									React.createElement("img", { style: { width: "80%", float: "right" }, src: "https://media-service.appspot.com/site/images/" + this.props.course.image + "?crop=460" })
+									React.createElement("img", { style: { width: "80%", float: "right" }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" })
 								)
 							)
 						)
