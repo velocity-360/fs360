@@ -26,6 +26,8 @@ var CTA = (function (Component) {
 		_get(Object.getPrototypeOf(CTA.prototype), "constructor", this).call(this, props, context);
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.configureStripe = this.configureStripe.bind(this);
+		this.subscribe = this.subscribe.bind(this);
+		this.login = this.login.bind(this);
 		this.state = {};
 	}
 
@@ -35,6 +37,27 @@ var CTA = (function (Component) {
 		componentDidMount: {
 			value: function componentDidMount() {
 				this.configureStripe(this.props.course);
+			},
+			writable: true,
+			configurable: true
+		},
+		login: {
+			value: function login(event) {
+				event.preventDefault();
+				this.props.loginAction(event);
+			},
+			writable: true,
+			configurable: true
+		},
+		subscribe: {
+			value: function subscribe(event) {
+				event.preventDefault();
+				// console.log('subscribe')
+				if (this.props.currentUser.id == null) {
+					// not logged in
+					this.props.loginAction(event);
+					return;
+				}
 			},
 			writable: true,
 			configurable: true
@@ -130,7 +153,18 @@ var CTA = (function (Component) {
 								this.props.currentUser.id == null ? React.createElement(
 									"span",
 									null,
-									"Login"
+									React.createElement(
+										"a",
+										{ onClick: this.login, href: "#" },
+										"Login"
+									),
+									" or ",
+									React.createElement(
+										"a",
+										{ href: "/#register" },
+										"register"
+									),
+									" to subscribe."
 								) : React.createElement(
 									"span",
 									null,
@@ -154,7 +188,7 @@ var CTA = (function (Component) {
 									null,
 									React.createElement(
 										"a",
-										{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+										{ onClick: this.subscribe, href: "#", target: "_blank", className: "button button-xlarge tright" },
 										"Subscribe",
 										React.createElement("i", { "class": "icon-circle-arrow-right" })
 									),

@@ -256,7 +256,7 @@ var Course = (function (Component) {
 											)
 										),
 										units,
-										React.createElement(CTA, { course: course, currentUser: this.props.currentUser })
+										React.createElement(CTA, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin })
 									)
 								)
 							)

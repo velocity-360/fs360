@@ -20,8 +20,8 @@ module.exports = {
 		var re = new RegExp(find, "g");
 		var html = str.replace(re, "<br />");
 
-		var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
-		html = html.replace(exp, "<a href='$1' target='_blank'>$1</a>");
+		//    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
+		// html = html.replace(exp, "<a href='$1' target='_blank'>$1</a>")
 
 		return html;
 	},

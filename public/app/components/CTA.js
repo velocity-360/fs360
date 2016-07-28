@@ -8,6 +8,8 @@ class CTA extends Component {
 		super(props, context)
 		this.openStripeModal = this.openStripeModal.bind(this)
 		this.configureStripe = this.configureStripe.bind(this)
+		this.subscribe = this.subscribe.bind(this)
+		this.login = this.login.bind(this)
 		this.state = {
 
 		}
@@ -17,6 +19,21 @@ class CTA extends Component {
 		this.configureStripe(this.props.course)
 
 	}
+
+	login(event){
+		event.preventDefault()
+		this.props.loginAction(event)
+	}
+
+	subscribe(event){
+		event.preventDefault()
+		// console.log('subscribe')
+		if (this.props.currentUser.id == null){ // not logged in
+			this.props.loginAction(event)
+			return
+		}
+	}
+
 
 	configureStripe(course){
 		var course = this.props.course
@@ -90,12 +107,13 @@ class CTA extends Component {
 							Fee: {course.credits} credits<br />
 							{
 								(this.props.currentUser.id == null) ?
-								<span>Login</span>
+								<span><a onClick={this.login} href="#">Login</a> or <a href="/#register">register</a> to subscribe.</span>
 								:
 								<span>You have {this.props.currentUser.credits} credits remaining</span>
 							}
 
 							<br /><br />
+							
 							{
 								(isSubscriber) ? 
 								<div>
@@ -104,7 +122,7 @@ class CTA extends Component {
 								</div>
 								:
 								<div>
-									<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">Subscribe<i class="icon-circle-arrow-right"></i></a><br />
+									<a onClick={this.subscribe} href="#" target="_blank" className="button button-xlarge tright">Subscribe<i class="icon-circle-arrow-right"></i></a><br />
 								</div>
 							}
 						</div>

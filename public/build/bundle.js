@@ -44028,8 +44028,8 @@
 			var re = new RegExp(find, 'g');
 			var html = str.replace(re, '<br />');
 	
-			var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
-			html = html.replace(exp, "<a href='$1' target='_blank'>$1</a>");
+			//    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
+			// html = html.replace(exp, "<a href='$1' target='_blank'>$1</a>")
 	
 			return html;
 		},
@@ -61782,7 +61782,7 @@
 											)
 										),
 										units,
-										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser })
+										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin })
 									)
 								)
 							)
@@ -61955,6 +61955,8 @@
 	
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.login = _this2.login.bind(_this2);
 			_this2.state = {};
 			return _this2;
 		}
@@ -61963,6 +61965,23 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				this.configureStripe(this.props.course);
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				this.props.loginAction(event);
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				// console.log('subscribe')
+				if (this.props.currentUser.id == null) {
+					// not logged in
+					this.props.loginAction(event);
+					return;
+				}
 			}
 		}, {
 			key: 'configureStripe',
@@ -62052,7 +62071,18 @@
 								this.props.currentUser.id == null ? _react2.default.createElement(
 									'span',
 									null,
-									'Login'
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.login, href: '#' },
+										'Login'
+									),
+									' or ',
+									_react2.default.createElement(
+										'a',
+										{ href: '/#register' },
+										'register'
+									),
+									' to subscribe.'
 								) : _react2.default.createElement(
 									'span',
 									null,
@@ -62076,7 +62106,7 @@
 									null,
 									_react2.default.createElement(
 										'a',
-										{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+										{ onClick: this.subscribe, href: '#', target: '_blank', className: 'button button-xlarge tright' },
 										'Subscribe',
 										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
 									),
