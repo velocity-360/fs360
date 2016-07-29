@@ -75,6 +75,9 @@ class CTA extends Component {
 			const course = response.course
 			store.currentStore().dispatch(actions.courseRecieved(course))
 
+			if (_this.props.currentUser.accountType == 'premium')
+				return
+			
 			const credits = _this.props.currentUser.credits-course.credits
 			_this.updateCurrentUser({
 				credits: credits

@@ -62053,6 +62053,8 @@
 					var course = response.course;
 					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(course));
 	
+					if (_this.props.currentUser.accountType == 'premium') return;
+	
 					var credits = _this.props.currentUser.credits - course.credits;
 					_this.updateCurrentUser({
 						credits: credits
