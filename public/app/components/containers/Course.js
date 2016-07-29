@@ -98,6 +98,7 @@ class Course extends Component {
 		var _currentUser = this.props.currentUser
 		var _showLogin = this.showLogin
 //		var _openStripeModal = this.openStripeModal
+
 		var units = course.units.map(function(unit, i){
 			return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} currentUser={_currentUser} />
 		})

@@ -61694,6 +61694,7 @@
 				var _currentUser = this.props.currentUser;
 				var _showLogin = this.showLogin;
 				//		var _openStripeModal = this.openStripeModal
+	
 				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, currentUser: _currentUser });
 				});
@@ -62439,7 +62440,8 @@
 			value: function render() {
 				var accountType = this.props.currentUser.accountType;
 				var videoThumb = null;
-				if (this.props.course.type == 'online') {
+				var course = this.props.course;
+				if (course.type == 'online') {
 					if (this.props.unit.index < 1) {
 						// always show first video
 						videoThumb = _react2.default.createElement(
@@ -62454,7 +62456,7 @@
 							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
 							' '
 						);
-					} else if (this.props.course.indexOf(this.props.currentUser.id) != -1) {
+					} else if (course.subscribers.indexOf(this.props.currentUser.id) > -1) {
 						// regular subscriber
 						videoThumb = _react2.default.createElement(
 							'div',

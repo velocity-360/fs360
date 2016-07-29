@@ -47,7 +47,8 @@ var CourseSection = (function (Component) {
 			value: function render() {
 				var accountType = this.props.currentUser.accountType;
 				var videoThumb = null;
-				if (this.props.course.type == "online") {
+				var course = this.props.course;
+				if (course.type == "online") {
 					if (this.props.unit.index < 1) {
 						// always show first video
 						videoThumb = React.createElement(
@@ -62,7 +63,7 @@ var CourseSection = (function (Component) {
 							{ className: "wistia_embed wistia_async_" + this.props.unit.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
 							" "
 						);
-					} else if (this.props.course.indexOf(this.props.currentUser.id) != -1) {
+					} else if (course.subscribers.indexOf(this.props.currentUser.id) > -1) {
 						// regular subscriber
 						videoThumb = React.createElement(
 							"div",

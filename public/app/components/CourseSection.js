@@ -21,14 +21,15 @@ class CourseSection extends Component {
 	render(){
 		var accountType = this.props.currentUser.accountType
 		var videoThumb = null
-		if (this.props.course.type == 'online'){
+		var course = this.props.course
+		if (course.type == 'online'){
 			if (this.props.unit.index < 1){ // always show first video
 				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			}
 			else if (accountType == 'premium'){ // premium subscriber
 				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			}
-			else if (this.props.course.indexOf(this.props.currentUser.id) != -1){ // regular subscriber
+			else if (course.subscribers.indexOf(this.props.currentUser.id) > -1){ // regular subscriber
 				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			}
 			else if (accountType == 'basic' || accountType == ''){
