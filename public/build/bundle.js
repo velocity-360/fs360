@@ -62145,7 +62145,7 @@
 						);
 	
 						var creditsRemaining = null;
-						if (this.props.currentUser.accountType == 'basic') creditsRemaining = _react2.default.createElement(
+						if (user.accountType == 'basic') creditsRemaining = _react2.default.createElement(
 							'span',
 							null,
 							'Hello ',
@@ -62168,16 +62168,14 @@
 							_react2.default.createElement(
 								'div',
 								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-								'Details'
+								'Fee: ',
+								course.credits,
+								' credits'
 							),
 							_react2.default.createElement(
 								'div',
 								{ className: 'panel-body', style: { textAlign: 'left' } },
-								'Fee: ',
-								course.credits,
-								' credits',
-								_react2.default.createElement('br', null),
-								this.props.currentUser.id == null ? _react2.default.createElement(
+								user.id == null ? _react2.default.createElement(
 									'span',
 									null,
 									_react2.default.createElement(

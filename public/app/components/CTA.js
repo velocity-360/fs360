@@ -163,7 +163,7 @@ class CTA extends Component {
 				)
 
 				var creditsRemaining = null				
-				if (this.props.currentUser.accountType == 'basic')
+				if (user.accountType == 'basic')
 					creditsRemaining = <span>Hello {user.firstName}! You have {user.credits} credits remaining</span>
 				else 
 					creditsRemaining = <span>Hello {user.firstName}. You are a premium member, feel free to subscribe to this series for free!</span>
@@ -172,11 +172,10 @@ class CTA extends Component {
 				var isSubscriber = (course.subscribers.indexOf(user.id) > -1)
 				register = (
 					<div className="col_full panel panel-default">
-						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Details</div>
+						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Fee: {course.credits} credits</div>
 						<div className="panel-body" style={{textAlign:'left'}}>
-							Fee: {course.credits} credits<br />
 							{
-								(this.props.currentUser.id == null) ?
+								(user.id == null) ?
 								<span><a onClick={this.login} href="#">Login</a> or <a href="/#register">register</a> to subscribe.</span>
 								:
 								creditsRemaining

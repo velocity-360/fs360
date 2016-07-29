@@ -207,7 +207,7 @@ var CTA = (function (Component) {
 						);
 
 						var creditsRemaining = null;
-						if (this.props.currentUser.accountType == "basic") creditsRemaining = React.createElement(
+						if (user.accountType == "basic") creditsRemaining = React.createElement(
 							"span",
 							null,
 							"Hello ",
@@ -231,16 +231,14 @@ var CTA = (function (Component) {
 							React.createElement(
 								"div",
 								{ style: { backgroundColor: "#f1f9f5", textAlign: "left" }, className: "panel-heading" },
-								"Details"
+								"Fee: ",
+								course.credits,
+								" credits"
 							),
 							React.createElement(
 								"div",
 								{ className: "panel-body", style: { textAlign: "left" } },
-								"Fee: ",
-								course.credits,
-								" credits",
-								React.createElement("br", null),
-								this.props.currentUser.id == null ? React.createElement(
+								user.id == null ? React.createElement(
 									"span",
 									null,
 									React.createElement(
