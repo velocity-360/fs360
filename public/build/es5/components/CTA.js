@@ -182,6 +182,7 @@ var CTA = (function (Component) {
 		render: {
 			value: function render() {
 				var course = this.props.course;
+				var user = this.props.currentUser;
 				var cta = null;
 				var date = null;
 				var schedule = null;
@@ -205,7 +206,25 @@ var CTA = (function (Component) {
 							" member, all online video courses are included in membership."
 						);
 
-						var isSubscriber = course.subscribers.indexOf(this.props.currentUser.id) > -1;
+						var creditsRemaining = null;
+						if (this.props.currentUser.accountType == "basic") creditsRemaining = React.createElement(
+							"span",
+							null,
+							"Hello ",
+							user.firstName,
+							"! You have ",
+							user.credits,
+							" credits remaining"
+						);else creditsRemaining = React.createElement(
+							"span",
+							null,
+							"Hello ",
+							user.firstName,
+							". You are a premium member, feel free to subscribe to this series for free!"
+						);
+
+
+						var isSubscriber = course.subscribers.indexOf(user.id) > -1;
 						register = React.createElement(
 							"div",
 							{ className: "col_full panel panel-default" },
@@ -236,15 +255,7 @@ var CTA = (function (Component) {
 										"register"
 									),
 									" to subscribe."
-								) : React.createElement(
-									"span",
-									null,
-									"Hello ",
-									this.props.currentUser.firstName,
-									"! You have ",
-									this.props.currentUser.credits,
-									" credits remaining"
-								),
+								) : creditsRemaining,
 								React.createElement("br", null),
 								React.createElement("br", null),
 								isSubscriber ? React.createElement(

@@ -142,6 +142,7 @@ class CTA extends Component {
 
 	render(){
 		const course = this.props.course
+		const user = this.props.currentUser
 		var cta = null
 		var date = null
 		var schedule = null
@@ -161,7 +162,14 @@ class CTA extends Component {
 					</p>					
 				)
 
-				var isSubscriber = (course.subscribers.indexOf(this.props.currentUser.id) > -1)
+				var creditsRemaining = null				
+				if (this.props.currentUser.accountType == 'basic')
+					creditsRemaining = <span>Hello {user.firstName}! You have {user.credits} credits remaining</span>
+				else 
+					creditsRemaining = <span>Hello {user.firstName}. You are a premium member, feel free to subscribe to this series for free!</span>
+				
+
+				var isSubscriber = (course.subscribers.indexOf(user.id) > -1)
 				register = (
 					<div className="col_full panel panel-default">
 						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Details</div>
@@ -171,7 +179,7 @@ class CTA extends Component {
 								(this.props.currentUser.id == null) ?
 								<span><a onClick={this.login} href="#">Login</a> or <a href="/#register">register</a> to subscribe.</span>
 								:
-								<span>Hello {this.props.currentUser.firstName}! You have {this.props.currentUser.credits} credits remaining</span>
+								creditsRemaining
 							}
 
 							<br /><br />
@@ -228,7 +236,6 @@ class CTA extends Component {
 		}
 
 		return (
-
 			<div className="entry clearfix">
 				<div className="entry-timeline">
 					Join<span></span>
@@ -258,7 +265,6 @@ class CTA extends Component {
 					</div>
 				</div>
 			</div>
-
 		)
 
 	}

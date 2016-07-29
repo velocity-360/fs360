@@ -62120,6 +62120,7 @@
 			key: 'render',
 			value: function render() {
 				var course = this.props.course;
+				var user = this.props.currentUser;
 				var cta = null;
 				var date = null;
 				var schedule = null;
@@ -62143,7 +62144,24 @@
 							' member, all online video courses are included in membership.'
 						);
 	
-						var isSubscriber = course.subscribers.indexOf(this.props.currentUser.id) > -1;
+						var creditsRemaining = null;
+						if (this.props.currentUser.accountType == 'basic') creditsRemaining = _react2.default.createElement(
+							'span',
+							null,
+							'Hello ',
+							user.firstName,
+							'! You have ',
+							user.credits,
+							' credits remaining'
+						);else creditsRemaining = _react2.default.createElement(
+							'span',
+							null,
+							'Hello ',
+							user.firstName,
+							'. You are a premium member, feel free to subscribe to this series for free!'
+						);
+	
+						var isSubscriber = course.subscribers.indexOf(user.id) > -1;
 						register = _react2.default.createElement(
 							'div',
 							{ className: 'col_full panel panel-default' },
@@ -62174,15 +62192,7 @@
 										'register'
 									),
 									' to subscribe.'
-								) : _react2.default.createElement(
-									'span',
-									null,
-									'Hello ',
-									this.props.currentUser.firstName,
-									'! You have ',
-									this.props.currentUser.credits,
-									' credits remaining'
-								),
+								) : creditsRemaining,
 								_react2.default.createElement('br', null),
 								_react2.default.createElement('br', null),
 								isSubscriber ? _react2.default.createElement(
