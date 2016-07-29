@@ -62138,10 +62138,10 @@
 							'Subscribe to this course to receive email notifications when new videos are published. If you are a ',
 							_react2.default.createElement(
 								'a',
-								{ href: '/#register' },
+								{ onClick: this.openStripeModal, href: '#' },
 								'premium'
 							),
-							' member, all online video courses are included in membership.'
+							'member, all online video courses are included in membership.'
 						);
 	
 						var creditsRemaining = null;

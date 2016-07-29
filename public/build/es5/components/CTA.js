@@ -200,10 +200,10 @@ var CTA = (function (Component) {
 							"Subscribe to this course to receive email notifications when new videos are published. If you are a ",
 							React.createElement(
 								"a",
-								{ href: "/#register" },
+								{ onClick: this.openStripeModal, href: "#" },
 								"premium"
 							),
-							" member, all online video courses are included in membership."
+							"member, all online video courses are included in membership."
 						);
 
 						var creditsRemaining = null;
