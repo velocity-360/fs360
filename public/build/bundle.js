@@ -61690,11 +61690,12 @@
 				var banner = this.props.banners[bannerIndex];
 				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
 				var _course = course;
-				var _accountType = this.props.currentUser.id == null ? 'notLoggedIn' : this.props.currentUser.accountType;
+				//		var _accountType = (this.props.currentUser.id == null) ? 'notLoggedIn' : this.props.currentUser.accountType
+				var _currentUser = this.props.currentUser;
 				var _showLogin = this.showLogin;
-				var _openStripeModal = this.openStripeModal;
+				//		var _openStripeModal = this.openStripeModal
 				var units = course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: i, subscribeAction: _openStripeModal, loginAction: _showLogin, unit: unit, course: _course, accountType: _accountType });
+					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, currentUser: _currentUser });
 				});
 	
 				var bootcamps = this.props.bootcamps.map(function (bootcamp, i) {
@@ -62141,7 +62142,7 @@
 								{ onClick: this.openStripeModal, href: '#' },
 								'premium'
 							),
-							'member, all online video courses are included in membership.'
+							' member, all online video courses are included in membership.'
 						);
 	
 						var creditsRemaining = null;
@@ -62436,6 +62437,7 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var accountType = this.props.currentUser.accountType;
 				var videoThumb = null;
 				if (this.props.course.type == 'online') {
 					if (this.props.unit.index < 1) {
@@ -62445,14 +62447,21 @@
 							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
 							' '
 						);
-					} else if (this.props.accountType == 'premium') {
+					} else if (accountType == 'premium') {
 						// premium subscriber
 						videoThumb = _react2.default.createElement(
 							'div',
 							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
 							' '
 						);
-					} else if (this.props.accountType == 'basic' || this.props.accountType == '') {
+					} else if (this.props.course.indexOf(this.props.currentUser.id) != -1) {
+						// regular subscriber
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+							' '
+						);
+					} else if (accountType == 'basic' || accountType == '') {
 						videoThumb = _react2.default.createElement(
 							'div',
 							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },

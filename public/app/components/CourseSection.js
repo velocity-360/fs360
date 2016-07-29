@@ -16,19 +16,22 @@ class CourseSection extends Component {
 	subscribe(event){
 		event.preventDefault()
 		this.props.subscribeAction(event)
-
 	}
 
 	render(){
-		var videoThumb = null;
+		var accountType = this.props.currentUser.accountType
+		var videoThumb = null
 		if (this.props.course.type == 'online'){
 			if (this.props.unit.index < 1){ // always show first video
 				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			}
-			else if (this.props.accountType == 'premium'){ // premium subscriber
+			else if (accountType == 'premium'){ // premium subscriber
 				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			}
-			else if (this.props.accountType == 'basic' || this.props.accountType == ''){
+			else if (this.props.course.indexOf(this.props.currentUser.id) != -1){ // regular subscriber
+				videoThumb = <div className={'wistia_embed wistia_async_'+this.props.unit.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
+			}
+			else if (accountType == 'basic' || accountType == ''){
 				videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>To view this video, please <a style={{color:'red'}} onClick={ this.subscribe } href="#">upgrade</a> your account to Premium</div>
 			}
 			else { // not logged in

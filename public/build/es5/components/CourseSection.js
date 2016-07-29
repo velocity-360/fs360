@@ -45,6 +45,7 @@ var CourseSection = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var accountType = this.props.currentUser.accountType;
 				var videoThumb = null;
 				if (this.props.course.type == "online") {
 					if (this.props.unit.index < 1) {
@@ -54,14 +55,21 @@ var CourseSection = (function (Component) {
 							{ className: "wistia_embed wistia_async_" + this.props.unit.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
 							" "
 						);
-					} else if (this.props.accountType == "premium") {
+					} else if (accountType == "premium") {
 						// premium subscriber
 						videoThumb = React.createElement(
 							"div",
 							{ className: "wistia_embed wistia_async_" + this.props.unit.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
 							" "
 						);
-					} else if (this.props.accountType == "basic" || this.props.accountType == "") {
+					} else if (this.props.course.indexOf(this.props.currentUser.id) != -1) {
+						// regular subscriber
+						videoThumb = React.createElement(
+							"div",
+							{ className: "wistia_embed wistia_async_" + this.props.unit.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
+							" "
+						);
+					} else if (accountType == "basic" || accountType == "") {
 						videoThumb = React.createElement(
 							"div",
 							{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },

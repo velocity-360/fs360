@@ -203,7 +203,7 @@ var CTA = (function (Component) {
 								{ onClick: this.openStripeModal, href: "#" },
 								"premium"
 							),
-							"member, all online video courses are included in membership."
+							" member, all online video courses are included in membership."
 						);
 
 						var creditsRemaining = null;
