@@ -66,7 +66,7 @@ var CTA = (function (Component) {
 				}
 
 				// check credits first:
-				if (this.props.currentUser.credits < this.props.course.credits) {
+				if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType == "basic") {
 					alert("Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.");
 					return;
 				}
