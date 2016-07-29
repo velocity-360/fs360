@@ -7,7 +7,7 @@ import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RightSidebar from '../../components/RightSidebar'
-import api from '../../api/api'
+import api from '../../utils/APIManager'
 
 
 class MVP extends Component {

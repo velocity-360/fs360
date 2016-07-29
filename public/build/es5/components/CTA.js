@@ -17,11 +17,11 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 var stripe = _interopRequire(require("../utils/StripeUtils"));
 
-var api = _interopRequire(require("../api/api"));
-
 var store = _interopRequire(require("../stores/store"));
 
 var actions = _interopRequire(require("../actions/actions"));
+
+var api = _interopRequire(require("../utils/APIManager"));
 
 var CTA = (function (Component) {
 	function CTA(props, context) {

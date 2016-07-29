@@ -9,7 +9,7 @@ import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import api from '../../api/api'
+import api from '../../utils/APIManager'
 
 
 class Account extends Component {

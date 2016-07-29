@@ -40896,13 +40896,13 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
 	var _reactBootstrap = __webpack_require__(205);
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -40934,7 +40934,7 @@
 			value: function componentDidMount() {
 				if (this.props.currentUser.id != null) return;
 	
-				_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+				_APIManager2.default.handleGet('/account/currentuser', {}, function (err, response) {
 					//			console.log('CURRENT USER: '+JSON.stringify(response))
 					if (err) {
 						return;
@@ -41253,10 +41253,6 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
 	var _store = __webpack_require__(194);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -41264,6 +41260,10 @@
 	var _actions = __webpack_require__(459);
 	
 	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -41333,7 +41333,7 @@
 	
 				this.setState({ showLoader: true });
 				var _this = this;
-				_api2.default.handlePost('/account/login', this.state.credentials, function (err, response) {
+				_APIManager2.default.handlePost('/account/login', this.state.credentials, function (err, response) {
 					if (err) {
 						alert(err.message);
 						_this.setState({ showLoader: false });
@@ -43637,9 +43637,9 @@
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -43699,7 +43699,7 @@
 				var _this = this;
 				_StripeUtils2.default.initialize(function (token) {
 					_this.setState({ showLoader: true });
-					_api2.default.submitStripeToken(token, function (err, response) {
+					_APIManager2.default.submitStripeToken(token, function (err, response) {
 						_this.setState({ showLoader: false });
 						if (err) {
 							alert(response.message);
@@ -43739,7 +43739,7 @@
 				});
 	
 				var _this = this;
-				_api2.default.handlePost('/api/profile', registrant, function (err, response) {
+				_APIManager2.default.handlePost('/api/profile', registrant, function (err, response) {
 					if (err) {
 						alert(err.message);
 						_this.setState({ showLoader: false });
@@ -44091,9 +44091,9 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	var _reactBootstrap = __webpack_require__(205);
 	
@@ -44168,7 +44168,7 @@
 				pkg['event'] = 'React With Firebase';
 	
 				var _this = this;
-				_api2.default.handlePost('/api/rsvp', pkg, function (err, response) {
+				_APIManager2.default.handlePost('/api/rsvp', pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -44419,9 +44419,9 @@
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44451,7 +44451,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				var _this = this;
-				_api2.default.handleGet('/api/post', { limit: '3' }, function (err, response) {
+				_APIManager2.default.handleGet('/api/post', { limit: '3' }, function (err, response) {
 	
 					if (err) {
 						return;
@@ -44469,7 +44469,7 @@
 			key: 'fetchEvents',
 			value: function fetchEvents() {
 				var _this = this;
-				_api2.default.handleGet('/api/event', { limit: '3' }, function (err, response) {
+				_APIManager2.default.handleGet('/api/event', { limit: '3' }, function (err, response) {
 	
 					if (err) {
 						return;
@@ -44633,9 +44633,9 @@
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44663,7 +44663,7 @@
 				if (this.props.projects.length > 0) return;
 	
 				var _this = this;
-				_api2.default.handleGet('/api/project', null, function (err, response) {
+				_APIManager2.default.handleGet('/api/project', null, function (err, response) {
 					if (err) {
 						return;
 					}
@@ -44931,9 +44931,9 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44959,7 +44959,7 @@
 	
 				var endpoint = '/api/course';
 				if (this.props.params == null) {
-					_api2.default.handleGet(endpoint + '?isFeatured=yes', {}, function (err, response) {
+					_APIManager2.default.handleGet(endpoint + '?isFeatured=yes', {}, function (err, response) {
 						if (err) {
 							alert(response.message);
 							return;
@@ -44982,7 +44982,7 @@
 	
 				endpoint = endpoint + '&isFeatured=yes';
 				console.log('ENDPOINT == ' + endpoint);
-				_api2.default.handleGet(endpoint, {}, function (err, response) {
+				_APIManager2.default.handleGet(endpoint, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -45084,9 +45084,9 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	var _reactRedux = __webpack_require__(168);
 	
@@ -45110,7 +45110,7 @@
 		_createClass(Sidebar, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				_api2.default.handleGet('/account/currentuser', {}, function (err, response) {
+				_APIManager2.default.handleGet('/account/currentuser', {}, function (err, response) {
 					if (err) {
 						return;
 					}
@@ -45438,9 +45438,9 @@
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -45475,7 +45475,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				var _this = this;
-				_api2.default.handleGet('/api/course', { type: 'immersive' }, function (err, response) {
+				_APIManager2.default.handleGet('/api/course', { type: 'immersive' }, function (err, response) {
 	
 					if (err) {
 						return;
@@ -45527,7 +45527,7 @@
 				_this.setState({
 					showLoader: true
 				});
-				_api2.default.handlePost('/api/rsvp', s, function (err, response) {
+				_APIManager2.default.handlePost('/api/rsvp', s, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -45801,9 +45801,9 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -45848,7 +45848,7 @@
 			value: function componentDidMount() {
 				if (this.props.posts.length > 0) return;
 	
-				_api2.default.handleGet('/api/post', {}, function (err, response) {
+				_APIManager2.default.handleGet('/api/post', {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -45880,7 +45880,7 @@
 				});
 	
 				var _this = this;
-				_api2.default.upload(files[0], function (err, response) {
+				_APIManager2.default.upload(files[0], function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -45924,7 +45924,7 @@
 					};
 				}
 	
-				_api2.default.handlePost('/api/post', post, function (err, response) {
+				_APIManager2.default.handlePost('/api/post', post, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -60599,10 +60599,6 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
 	var _DateUtils = __webpack_require__(485);
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
@@ -60610,6 +60606,10 @@
 	var _TextUtils = __webpack_require__(472);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -60642,7 +60642,7 @@
 				if (this.props.posts[this.props.slug] != null) return;
 	
 				var url = '/api/post?slug=' + this.props.slug;
-				_api2.default.handleGet(url, {}, function (err, response) {
+				_APIManager2.default.handleGet(url, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -60677,7 +60677,7 @@
 	
 				var url = '/api/post/' + post.id;
 				var _this = this;
-				_api2.default.handlePut(url, post, function (err, response) {
+				_APIManager2.default.handlePut(url, post, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -60975,9 +60975,9 @@
 	
 	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -61040,7 +61040,7 @@
 	
 				var _this = this;
 				_this.setState({ showLoader: true });
-				_api2.default.handlePost('/api/proposal', this.state.proposal, function (err, response) {
+				_APIManager2.default.handlePost('/api/proposal', this.state.proposal, function (err, response) {
 					_this.setState({ showLoader: false });
 	
 					if (err) {
@@ -61265,10 +61265,6 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
 	var _StripeUtils = __webpack_require__(471);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
@@ -61280,6 +61276,10 @@
 	var _TextUtils = __webpack_require__(472);
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -61315,7 +61315,7 @@
 	
 				var _this = this;
 				var url = '/api/project?slug=' + this.props.slug;
-				_api2.default.handleGet(url, {}, function (err, response) {
+				_APIManager2.default.handleGet(url, {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -61338,7 +61338,7 @@
 				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 	
-					_api2.default.submitStripeCharge(token, project, price, 'project', function (err, response) {
+					_APIManager2.default.submitStripeCharge(token, project, price, 'project', function (err, response) {
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -61592,9 +61592,9 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -61668,7 +61668,7 @@
 				this.setState({ showLoader: true });
 				application['course'] = course.title;
 				var _this = this;
-				_api2.default.handlePost('/api/application', application, function (err, response) {
+				_APIManager2.default.handlePost('/api/application', application, function (err, response) {
 					_this.setState({ showLoader: false });
 	
 					if (err) {
@@ -61953,10 +61953,6 @@
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
-	var _api = __webpack_require__(463);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
 	var _store = __webpack_require__(194);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -61964,6 +61960,10 @@
 	var _actions = __webpack_require__(459);
 	
 	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -62022,7 +62022,7 @@
 				// Fetch course first to get most updated subscriber list:
 				var _this = this;
 				var endpoint = '/api/course/' + this.props.course.id;
-				_api2.default.handleGet(endpoint, null, function (err, response) {
+				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
 					if (err) {
 						alert(err.message);
 						return;
@@ -62044,7 +62044,7 @@
 			value: function updateCourse(pkg) {
 				var _this = this;
 				var endpoint = '/api/course/' + this.props.course.id;
-				_api2.default.handlePut(endpoint, pkg, function (err, response) {
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
 					if (err) {
 						alert(err.message);
 						return;
@@ -62065,7 +62065,7 @@
 			key: 'updateCurrentUser',
 			value: function updateCurrentUser(pkg) {
 				var endpoint = '/api/profile/' + this.props.currentUser.id;
-				_api2.default.handlePut(endpoint, pkg, function (err, response) {
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
 					if (err) {
 						alert(err.message);
 						return;
@@ -62082,7 +62082,7 @@
 					// for videos, show subscription prompt:
 					_StripeUtils2.default.initialize(function (token) {
 						_this.setState({ showLoader: true });
-						_api2.default.submitStripeToken(token, function (err, response) {
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
 								return;
@@ -62096,7 +62096,7 @@
 	
 				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
 					_this.setState({ showLoader: true });
-					_api2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -62792,9 +62792,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -62871,7 +62871,7 @@
 					url = '/api/freesession';
 				}
 	
-				_api2.default.handlePost(url, s, function (err, response) {
+				_APIManager2.default.handlePost(url, s, function (err, response) {
 					_this.props.hideLoader();
 	
 					if (err) {
@@ -62997,9 +62997,9 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _api = __webpack_require__(463);
+	var _APIManager = __webpack_require__(463);
 	
-	var _api2 = _interopRequireDefault(_api);
+	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -63030,7 +63030,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 	
-				_api2.default.handleGet('/api/course', { subscribers: this.props.profile.id }, function (err, response) {
+				_APIManager2.default.handleGet('/api/course', { subscribers: this.props.profile.id }, function (err, response) {
 					console.log('Fetch Courses: ' + JSON.stringify(response));
 					if (err) {
 						return;
@@ -63047,7 +63047,7 @@
 				});
 	
 				var _this = this;
-				_api2.default.upload(files[0], function (err, response) {
+				_APIManager2.default.upload(files[0], function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
@@ -63079,7 +63079,7 @@
 				profile['tags'] = _TextUtils2.default.stringToArray(profile.tagString, ',');
 	
 				var endpoint = '/api/profile/' + profile.id;
-				_api2.default.handlePut(endpoint, profile, function (err, response) {
+				_APIManager2.default.handlePut(endpoint, profile, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;

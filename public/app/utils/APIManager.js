@@ -4,12 +4,12 @@ import store from '../stores/store'
 
 export default {
 
-	handleGet: function(endpoint, params, completion){
+	handleGet: (endpoint, params, completion) => {
 		superagent
 		.get(endpoint)
 		.query(params)
 		.set('Accept', 'application/json')
-		.end(function(err, res){
+		.end((err, res) => {
 			if (completion == null)
 				return
 
@@ -26,12 +26,12 @@ export default {
 	},
 
 	// using superagent here because for some reason, cookies don't get installed using fetch (wtf)
-	handlePost: function(endpoint, body, completion){
+	handlePost: (endpoint, body, completion) => {
 		superagent
 		.post(endpoint)
 		.send(body)
 		.set('Accept', 'application/json')
-		.end(function(err, res){
+		.end((err, res) => {
 			if (completion == null)
 				return
 
@@ -49,12 +49,12 @@ export default {
 		})
 	},
 
-	handlePut: function(endpoint, body, completion){
+	handlePut: (endpoint, body, completion) => {
 		superagent
 		.put(endpoint)
 		.send(body)
 		.set('Accept', 'application/json')
-		.end(function(err, res){
+		.end((err, res) => {
 			if (completion == null)
 				return
 

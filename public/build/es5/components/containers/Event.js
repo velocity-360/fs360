@@ -37,7 +37,7 @@ var actions = _interopRequire(require("../../actions/actions"));
 var connect = require("react-redux").connect;
 var TextUtils = _interopRequire(require("../../utils/TextUtils"));
 
-var api = _interopRequire(require("../../api/api"));
+var api = _interopRequire(require("../../utils/APIManager"));
 
 var Event = (function (Component) {
 	function Event(props, context) {

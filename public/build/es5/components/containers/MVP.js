@@ -33,7 +33,7 @@ var Footer = _interopRequire(require("../../components/Footer"));
 
 var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
 
-var api = _interopRequire(require("../../api/api"));
+var api = _interopRequire(require("../../utils/APIManager"));
 
 var MVP = (function (Component) {
 	function MVP(props, context) {

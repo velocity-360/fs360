@@ -26,7 +26,7 @@ var stripe = _interopRequire(require("../utils/StripeUtils"));
 
 var textUtils = _interopRequire(require("../utils/TextUtils"));
 
-var api = _interopRequire(require("../api/api"));
+var api = _interopRequire(require("../utils/APIManager"));
 
 var Register = (function (Component) {
 	function Register(props, context) {

@@ -31,7 +31,7 @@ var actions = _interopRequire(require("../../actions/actions"));
 var store = _interopRequire(require("../../stores/store"));
 
 var connect = require("react-redux").connect;
-var api = _interopRequire(require("../../api/api"));
+var api = _interopRequire(require("../../utils/APIManager"));
 
 var Courses = (function (Component) {
 	function Courses(props, context) {

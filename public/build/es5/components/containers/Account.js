@@ -37,7 +37,7 @@ var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var api = _interopRequire(require("../../api/api"));
+var api = _interopRequire(require("../../utils/APIManager"));
 
 var Account = (function (Component) {
 	function Account(props, context) {

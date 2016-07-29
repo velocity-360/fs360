@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
-import api from '../api/api'
 import store from '../stores/store'
 import actions from '../actions/actions'
+import api from '../utils/APIManager'
 
 
 class Login extends Component {

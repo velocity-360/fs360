@@ -15,7 +15,7 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
-var api = _interopRequire(require("../api/api"));
+var api = _interopRequire(require("../utils/APIManager"));
 
 var DetailBox = (function (Component) {
 	function DetailBox(props, context) {

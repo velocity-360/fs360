@@ -22,13 +22,13 @@ var actions = _interopRequire(require("../actions/actions"));
 var Login = _interopRequire(require("../components/Login"));
 
 var connect = require("react-redux").connect;
-var api = _interopRequire(require("../api/api"));
-
 var _reactBootstrap = require("react-bootstrap");
 
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
+var api = _interopRequire(require("../utils/APIManager"));
+
 var Nav = (function (Component) {
 	function Nav(props, context) {
 		_classCallCheck(this, Nav);

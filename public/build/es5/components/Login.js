@@ -22,11 +22,11 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
-var api = _interopRequire(require("../api/api"));
-
 var store = _interopRequire(require("../stores/store"));
 
 var actions = _interopRequire(require("../actions/actions"));
+
+var api = _interopRequire(require("../utils/APIManager"));
 
 var Login = (function (Component) {
 	function Login(props, context) {

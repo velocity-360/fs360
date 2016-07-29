@@ -27,7 +27,7 @@ var actions = _interopRequire(require("../actions/actions"));
 
 var TextUtils = _interopRequire(require("../utils/TextUtils"));
 
-var api = _interopRequire(require("../api/api"));
+var api = _interopRequire(require("../utils/APIManager"));
 
 var RightSidebar = (function (Component) {
 	function RightSidebar(props, context) {

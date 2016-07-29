@@ -9,7 +9,7 @@ import Footer from '../../components/Footer'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import stripe from '../../utils/StripeUtils'
-import api from '../../api/api'
+import api from '../../utils/APIManager'
 
 class Landing extends Component {
 

@@ -26,13 +26,13 @@ var store = _interopRequire(require("../../stores/store"));
 var actions = _interopRequire(require("../../actions/actions"));
 
 var connect = require("react-redux").connect;
-var api = _interopRequire(require("../../api/api"));
-
 var stripe = _interopRequire(require("../../utils/StripeUtils"));
 
 var DateUtils = _interopRequire(require("../../utils/DateUtils"));
 
 var TextUtils = _interopRequire(require("../../utils/TextUtils"));
+
+var api = _interopRequire(require("../../utils/APIManager"));
 
 var Project = (function (Component) {
 	function Project(props, context) {

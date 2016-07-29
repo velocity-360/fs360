@@ -8,7 +8,7 @@ import Post from '../../components/Post'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
-import api from '../../api/api'
+import api from '../../utils/APIManager'
 
 class Feed extends Component {
 

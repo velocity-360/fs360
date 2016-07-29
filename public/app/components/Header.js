@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
-import api from '../api/api'
+import api from '../utils/APIManager'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 
 

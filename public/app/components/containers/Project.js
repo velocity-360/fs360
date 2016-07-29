@@ -5,10 +5,10 @@ import Footer from '../../components/Footer'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
-import api from '../../api/api'
 import stripe from '../../utils/StripeUtils'
 import DateUtils from '../../utils/DateUtils'
 import TextUtils from '../../utils/TextUtils'
+import api from '../../utils/APIManager'
 
 
 class Project extends Component {

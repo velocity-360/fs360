@@ -3,8 +3,8 @@ import store from '../stores/store'
 import actions from '../actions/actions'
 import Login from '../components/Login'
 import { connect } from 'react-redux'
-import api from '../api/api'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import api from '../utils/APIManager'
 
 
 class Nav extends Component {

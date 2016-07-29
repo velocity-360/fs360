@@ -3,7 +3,7 @@ import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import stripe from '../utils/StripeUtils'
 import textUtils from '../utils/TextUtils'
-import api from '../api/api'
+import api from '../utils/APIManager'
 
 
 class Register extends Component {

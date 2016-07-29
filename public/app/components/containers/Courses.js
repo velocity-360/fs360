@@ -6,7 +6,7 @@ import CourseCard from '../../components/CourseCard'
 import actions from '../../actions/actions'
 import store from '../../stores/store'
 import { connect } from 'react-redux'
-import api from '../../api/api'
+import api from '../../utils/APIManager'
 
 class Courses extends Component {
 

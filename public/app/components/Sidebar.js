@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import store from '../stores/store'
 import actions from '../actions/actions'
-import api from '../api/api'
+import api from '../utils/APIManager'
 import { connect } from 'react-redux'
 
 

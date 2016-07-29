@@ -37,7 +37,7 @@ var actions = _interopRequire(require("../../actions/actions"));
 
 var stripe = _interopRequire(require("../../utils/StripeUtils"));
 
-var api = _interopRequire(require("../../api/api"));
+var api = _interopRequire(require("../../utils/APIManager"));
 
 var Landing = (function (Component) {
 	function Landing(props, context) {

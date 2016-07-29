@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import api from '../api/api'
+import api from '../utils/APIManager'
 
 class DetailBox extends Component {
 
