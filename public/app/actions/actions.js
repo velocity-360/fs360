@@ -45,14 +45,21 @@ module.exports = {
 		return {
 			type: constants.COURSES_RECIEVED,
 			courses: courses
-		};
+		}
+	},
+
+	courseRecieved: function(course){
+		return {
+			type: constants.COURSE_RECIEVED,
+			course: course
+		}
 	},
 
 	postsRecieved: function(posts){
 		return {
 			type: constants.POSTS_RECIEVED,
 			posts: posts
-		};
+		}
 	},
 
 	postCreated: function(post){

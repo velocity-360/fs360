@@ -22289,6 +22289,7 @@
 		CURRENT_USER_RECIEVED: 'CURRENT_USER_RECIEVED',
 	
 		COURSES_RECIEVED: 'COURSES_RECIEVED',
+		COURSE_RECIEVED: 'COURSE_RECIEVED',
 	
 		POSTS_RECIEVED: 'POSTS_RECIEVED',
 		POST_CREATED: 'POST_CREATED',
@@ -22341,8 +22342,20 @@
 				var courseMap = {};
 				for (var i = 0; i < c.length; i++) {
 					var course = c[i];
-					courseMap[course.id] = course;
+					courseMap[course.slug] = course;
 				}
+	
+				newState['courses'] = courseMap;
+				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				return newState;
+	
+			case constants.COURSE_RECIEVED:
+				var newState = Object.assign({}, state);
+	
+				// newState['courseArray'] = c
+				var courseMap = Object.assign({}, newState.courses);
+				var course = action.course;
+				courseMap[course.slug] = course;
 	
 				newState['courses'] = courseMap;
 				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
@@ -41148,6 +41161,13 @@
 			return {
 				type: constants.COURSES_RECIEVED,
 				courses: courses
+			};
+		},
+	
+		courseRecieved: function courseRecieved(course) {
+			return {
+				type: constants.COURSE_RECIEVED,
+				course: course
 			};
 		},
 	
@@ -61937,6 +61957,14 @@
 	
 	var _api2 = _interopRequireDefault(_api);
 	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61956,6 +61984,7 @@
 			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
 			_this2.configureStripe = _this2.configureStripe.bind(_this2);
 			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
 			_this2.state = {};
 			return _this2;
@@ -61982,6 +62011,40 @@
 					this.props.loginAction(event);
 					return;
 				}
+	
+				// Fetch course first to get most updated subscriber list:
+				var _this = this;
+				var endpoint = '/api/course/' + this.props.course.id;
+				_api2.default.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var course = response.course;
+					var subscribers = course.subscribers;
+					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+						return;
+	
+					subscribers.push(_this.props.currentUser.id);
+					_this.updateCourse({
+						subscribers: subscribers
+					});
+				});
+			}
+		}, {
+			key: 'updateCourse',
+			value: function updateCourse(pkg) {
+				var endpoint = '/api/course/' + this.props.course.id;
+				_api2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					//			console.log('UpdateCourse: '+JSON.stringify(response))
+					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(response.course));
+				});
 			}
 		}, {
 			key: 'configureStripe',
@@ -62086,7 +62149,9 @@
 								) : _react2.default.createElement(
 									'span',
 									null,
-									'You have ',
+									'Hello ',
+									this.props.currentUser.firstName,
+									'! You have ',
 									this.props.currentUser.credits,
 									' credits remaining'
 								),

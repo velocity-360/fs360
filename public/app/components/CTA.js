@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import stripe from '../utils/StripeUtils'
 import api from '../api/api'
+import store from '../stores/store'
+import actions from '../actions/actions'
 
 class CTA extends Component {
 
@@ -9,6 +11,7 @@ class CTA extends Component {
 		this.openStripeModal = this.openStripeModal.bind(this)
 		this.configureStripe = this.configureStripe.bind(this)
 		this.subscribe = this.subscribe.bind(this)
+		this.updateCourse = this.updateCourse.bind(this)
 		this.login = this.login.bind(this)
 		this.state = {
 
@@ -32,8 +35,40 @@ class CTA extends Component {
 			this.props.loginAction(event)
 			return
 		}
+
+		// Fetch course first to get most updated subscriber list:
+		const _this = this
+		const endpoint = '/api/course/'+this.props.course.id
+		api.handleGet(endpoint, null, (err, response) => {
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			const course = response.course
+			var subscribers = course.subscribers
+			if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+				return
+
+			subscribers.push(_this.props.currentUser.id)
+			_this.updateCourse({
+				subscribers: subscribers
+			})
+		})
 	}
 
+	updateCourse(pkg){
+		const endpoint = '/api/course/'+this.props.course.id
+		api.handlePut(endpoint, pkg, (err, response) => {
+			if (err){
+				alert(err.message)
+				return
+			}
+
+//			console.log('UpdateCourse: '+JSON.stringify(response))
+			store.currentStore().dispatch(actions.courseRecieved(response.course))
+		})
+	}
 
 	configureStripe(course){
 		var course = this.props.course
@@ -109,7 +144,7 @@ class CTA extends Component {
 								(this.props.currentUser.id == null) ?
 								<span><a onClick={this.login} href="#">Login</a> or <a href="/#register">register</a> to subscribe.</span>
 								:
-								<span>You have {this.props.currentUser.credits} credits remaining</span>
+								<span>Hello {this.props.currentUser.firstName}! You have {this.props.currentUser.credits} credits remaining</span>
 							}
 
 							<br /><br />

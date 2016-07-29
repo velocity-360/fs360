@@ -19,6 +19,10 @@ var stripe = _interopRequire(require("../utils/StripeUtils"));
 
 var api = _interopRequire(require("../api/api"));
 
+var store = _interopRequire(require("../stores/store"));
+
+var actions = _interopRequire(require("../actions/actions"));
+
 var CTA = (function (Component) {
 	function CTA(props, context) {
 		_classCallCheck(this, CTA);
@@ -27,6 +31,7 @@ var CTA = (function (Component) {
 		this.openStripeModal = this.openStripeModal.bind(this);
 		this.configureStripe = this.configureStripe.bind(this);
 		this.subscribe = this.subscribe.bind(this);
+		this.updateCourse = this.updateCourse.bind(this);
 		this.login = this.login.bind(this);
 		this.state = {};
 	}
@@ -58,6 +63,42 @@ var CTA = (function (Component) {
 					this.props.loginAction(event);
 					return;
 				}
+
+				// Fetch course first to get most updated subscriber list:
+				var _this = this;
+				var endpoint = "/api/course/" + this.props.course.id;
+				api.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					var course = response.course;
+					var subscribers = course.subscribers;
+					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+						return;
+
+					subscribers.push(_this.props.currentUser.id);
+					_this.updateCourse({
+						subscribers: subscribers
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateCourse: {
+			value: function updateCourse(pkg) {
+				var endpoint = "/api/course/" + this.props.course.id;
+				api.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					//			console.log('UpdateCourse: '+JSON.stringify(response))
+					store.currentStore().dispatch(actions.courseRecieved(response.course));
+				});
 			},
 			writable: true,
 			configurable: true
@@ -168,7 +209,9 @@ var CTA = (function (Component) {
 								) : React.createElement(
 									"span",
 									null,
-									"You have ",
+									"Hello ",
+									this.props.currentUser.firstName,
+									"! You have ",
 									this.props.currentUser.credits,
 									" credits remaining"
 								),

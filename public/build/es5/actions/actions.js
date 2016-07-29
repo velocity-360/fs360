@@ -51,6 +51,13 @@ module.exports = {
 		};
 	},
 
+	courseRecieved: function (course) {
+		return {
+			type: constants.COURSE_RECIEVED,
+			course: course
+		};
+	},
+
 	postsRecieved: function (posts) {
 		return {
 			type: constants.POSTS_RECIEVED,

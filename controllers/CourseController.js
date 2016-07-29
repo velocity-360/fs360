@@ -118,7 +118,9 @@ module.exports = {
 
 
 	put: function(courseId, courseInfo, completion){
-		courseInfo['slug'] = Helpers.slugString(courseInfo.title)
+		if (courseInfo.title != null)
+			courseInfo['slug'] = Helpers.slugString(courseInfo.title)
+		
 		Course.findByIdAndUpdate(courseId, courseInfo, {new:true}, function(err, course){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null);

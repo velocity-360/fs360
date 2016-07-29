@@ -18,12 +18,25 @@ module.exports = function (_x, action) {
 			var courseMap = {};
 			for (var i = 0; i < c.length; i++) {
 				var course = c[i];
-				courseMap[course.id] = course;
+				courseMap[course.slug] = course;
 			}
 
 			newState.courses = courseMap;
 			//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
 			return newState;
+
+		case constants.COURSE_RECIEVED:
+			var newState = Object.assign({}, state);
+
+			// newState['courseArray'] = c
+			var courseMap = Object.assign({}, newState.courses);
+			var course = action.course;
+			courseMap[course.slug] = course;
+
+			newState.courses = courseMap;
+			//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+			return newState;
+
 
 		default:
 			return state;
