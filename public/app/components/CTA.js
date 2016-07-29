@@ -12,6 +12,7 @@ class CTA extends Component {
 		this.configureStripe = this.configureStripe.bind(this)
 		this.subscribe = this.subscribe.bind(this)
 		this.updateCourse = this.updateCourse.bind(this)
+		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.login = this.login.bind(this)
 		this.state = {
 
@@ -20,7 +21,6 @@ class CTA extends Component {
 
 	componentDidMount(){
 		this.configureStripe(this.props.course)
-
 	}
 
 	login(event){
@@ -30,9 +30,15 @@ class CTA extends Component {
 
 	subscribe(event){
 		event.preventDefault()
-		// console.log('subscribe')
+
 		if (this.props.currentUser.id == null){ // not logged in
 			this.props.loginAction(event)
+			return
+		}
+
+		// check credits first:
+		if (this.props.currentUser.credits < this.props.course.credits){
+			alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.')
 			return
 		}
 
@@ -58,6 +64,7 @@ class CTA extends Component {
 	}
 
 	updateCourse(pkg){
+		var _this = this
 		const endpoint = '/api/course/'+this.props.course.id
 		api.handlePut(endpoint, pkg, (err, response) => {
 			if (err){
@@ -65,8 +72,25 @@ class CTA extends Component {
 				return
 			}
 
-//			console.log('UpdateCourse: '+JSON.stringify(response))
-			store.currentStore().dispatch(actions.courseRecieved(response.course))
+			const course = response.course
+			store.currentStore().dispatch(actions.courseRecieved(course))
+
+			const credits = _this.props.currentUser.credits-course.credits
+			_this.updateCurrentUser({
+				credits: credits
+			})
+		})
+	}
+
+	updateCurrentUser(pkg){
+		const endpoint = '/api/profile/'+this.props.currentUser.id
+		api.handlePut(endpoint, pkg, (err, response) => {
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
 		})
 	}
 

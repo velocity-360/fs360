@@ -32,6 +32,7 @@ var CTA = (function (Component) {
 		this.configureStripe = this.configureStripe.bind(this);
 		this.subscribe = this.subscribe.bind(this);
 		this.updateCourse = this.updateCourse.bind(this);
+		this.updateCurrentUser = this.updateCurrentUser.bind(this);
 		this.login = this.login.bind(this);
 		this.state = {};
 	}
@@ -57,10 +58,16 @@ var CTA = (function (Component) {
 		subscribe: {
 			value: function subscribe(event) {
 				event.preventDefault();
-				// console.log('subscribe')
+
 				if (this.props.currentUser.id == null) {
 					// not logged in
 					this.props.loginAction(event);
+					return;
+				}
+
+				// check credits first:
+				if (this.props.currentUser.credits < this.props.course.credits) {
+					alert("Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.");
 					return;
 				}
 
@@ -89,6 +96,7 @@ var CTA = (function (Component) {
 		},
 		updateCourse: {
 			value: function updateCourse(pkg) {
+				var _this = this;
 				var endpoint = "/api/course/" + this.props.course.id;
 				api.handlePut(endpoint, pkg, function (err, response) {
 					if (err) {
@@ -96,8 +104,28 @@ var CTA = (function (Component) {
 						return;
 					}
 
-					//			console.log('UpdateCourse: '+JSON.stringify(response))
-					store.currentStore().dispatch(actions.courseRecieved(response.course));
+					var course = response.course;
+					store.currentStore().dispatch(actions.courseRecieved(course));
+
+					var credits = _this.props.currentUser.credits - course.credits;
+					_this.updateCurrentUser({
+						credits: credits
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateCurrentUser: {
+			value: function updateCurrentUser(pkg) {
+				var endpoint = "/api/profile/" + this.props.currentUser.id;
+				api.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
 			writable: true,

@@ -61985,6 +61985,7 @@
 			_this2.configureStripe = _this2.configureStripe.bind(_this2);
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
+			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
 			_this2.state = {};
 			return _this2;
@@ -62005,10 +62006,16 @@
 			key: 'subscribe',
 			value: function subscribe(event) {
 				event.preventDefault();
-				// console.log('subscribe')
+	
 				if (this.props.currentUser.id == null) {
 					// not logged in
 					this.props.loginAction(event);
+					return;
+				}
+	
+				// check credits first:
+				if (this.props.currentUser.credits < this.props.course.credits) {
+					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
 					return;
 				}
 	
@@ -62035,6 +62042,7 @@
 		}, {
 			key: 'updateCourse',
 			value: function updateCourse(pkg) {
+				var _this = this;
 				var endpoint = '/api/course/' + this.props.course.id;
 				_api2.default.handlePut(endpoint, pkg, function (err, response) {
 					if (err) {
@@ -62042,8 +62050,26 @@
 						return;
 					}
 	
-					//			console.log('UpdateCourse: '+JSON.stringify(response))
-					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(response.course));
+					var course = response.course;
+					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(course));
+	
+					var credits = _this.props.currentUser.credits - course.credits;
+					_this.updateCurrentUser({
+						credits: credits
+					});
+				});
+			}
+		}, {
+			key: 'updateCurrentUser',
+			value: function updateCurrentUser(pkg) {
+				var endpoint = '/api/profile/' + this.props.currentUser.id;
+				_api2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
 				});
 			}
 		}, {
