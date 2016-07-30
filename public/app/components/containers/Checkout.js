@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loader from 'react-loader'
 import stripe from '../../utils/StripeUtils'
 import api from '../../utils/APIManager'
 import { connect } from 'react-redux'
@@ -24,10 +25,7 @@ class Checkout extends Component {
 		if (this.props.params == null){ // premium membership registration
 			var _this = this
 			stripe.initialize(function(token){
-				_this.setState({
-					showLoader: true
-				})
-				
+				_this.setState({showLoader: true})
 				api.submitStripeToken(token, (err, response) => {
 					if (err){
 						alert(err.message)
@@ -79,6 +77,7 @@ class Checkout extends Component {
 
 		if (course.type == 'online'){ // for videos, show subscription prompt:
 			stripe.initialize(function(token){
+				_this.setState({showLoader: true})
 				api.submitStripeToken(token, (err, response) => {
 					if (err){
 						alert(err.message)
@@ -117,16 +116,37 @@ class Checkout extends Component {
 			return
 		}
 
-		// course deposite:
+		// course deposit:
 		stripe.showModalWithText(this.props.course.title)
 	}
 
 	render(){
+		const loaderConfig = {
+		    lines: 13,
+		    length: 20,
+		    width: 10,
+		    radius: 30,
+		    corners: 1,
+		    rotate: 0,
+		    direction: 1,
+		    color: '#fff',
+		    speed: 1,
+		    trail: 60,
+		    shadow: false,
+		    hwaccel: false,
+		    zIndex: 2e9,
+		    top: '50%',
+		    left: '50%',
+		    scale: 1.00
+		}
+
+
 		return (
 			<div>
 				<Nav headerStyle='dark' />
 
 				<section>
+					<Loader options={loaderConfig} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 					<div className="content-wrap">
 
 						<div className="container clearfix" style={{paddingTop:64}}>

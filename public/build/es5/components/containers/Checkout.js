@@ -15,6 +15,8 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var Loader = _interopRequire(require("react-loader"));
+
 var stripe = _interopRequire(require("../../utils/StripeUtils"));
 
 var api = _interopRequire(require("../../utils/APIManager"));
@@ -50,10 +52,7 @@ var Checkout = (function (Component) {
 					// premium membership registration
 					var _this = this;
 					stripe.initialize(function (token) {
-						_this.setState({
-							showLoader: true
-						});
-
+						_this.setState({ showLoader: true });
 						api.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
@@ -109,6 +108,7 @@ var Checkout = (function (Component) {
 				if (course.type == "online") {
 					// for videos, show subscription prompt:
 					stripe.initialize(function (token) {
+						_this.setState({ showLoader: true });
 						api.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
@@ -151,7 +151,7 @@ var Checkout = (function (Component) {
 					return;
 				}
 
-				// course deposite:
+				// course deposit:
 				stripe.showModalWithText(this.props.course.title);
 			},
 			writable: true,
@@ -159,6 +159,26 @@ var Checkout = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var loaderConfig = {
+					lines: 13,
+					length: 20,
+					width: 10,
+					radius: 30,
+					corners: 1,
+					rotate: 0,
+					direction: 1,
+					color: "#fff",
+					speed: 1,
+					trail: 60,
+					shadow: false,
+					hwaccel: false,
+					zIndex: 2000000000,
+					top: "50%",
+					left: "50%",
+					scale: 1
+				};
+
+
 				return React.createElement(
 					"div",
 					null,
@@ -166,6 +186,7 @@ var Checkout = (function (Component) {
 					React.createElement(
 						"section",
 						null,
+						React.createElement(Loader, { options: loaderConfig, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },

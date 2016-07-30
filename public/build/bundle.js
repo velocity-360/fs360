@@ -63436,6 +63436,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
 	var _StripeUtils = __webpack_require__(471);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
@@ -63494,10 +63498,7 @@
 					// premium membership registration
 					var _this = this;
 					_StripeUtils2.default.initialize(function (token) {
-						_this.setState({
-							showLoader: true
-						});
-	
+						_this.setState({ showLoader: true });
 						_APIManager2.default.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
@@ -63551,6 +63552,7 @@
 				if (course.type == 'online') {
 					// for videos, show subscription prompt:
 					_StripeUtils2.default.initialize(function (token) {
+						_this.setState({ showLoader: true });
 						_APIManager2.default.submitStripeToken(token, function (err, response) {
 							if (err) {
 								alert(err.message);
@@ -63591,12 +63593,31 @@
 					return;
 				}
 	
-				// course deposite:
+				// course deposit:
 				_StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+				var loaderConfig = {
+					lines: 13,
+					length: 20,
+					width: 10,
+					radius: 30,
+					corners: 1,
+					rotate: 0,
+					direction: 1,
+					color: '#fff',
+					speed: 1,
+					trail: 60,
+					shadow: false,
+					hwaccel: false,
+					zIndex: 2e9,
+					top: '50%',
+					left: '50%',
+					scale: 1.00
+				};
+	
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -63604,6 +63625,7 @@
 					_react2.default.createElement(
 						'section',
 						null,
+						_react2.default.createElement(_reactLoader2.default, { options: loaderConfig, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'content-wrap' },
