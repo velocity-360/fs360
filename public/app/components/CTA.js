@@ -157,7 +157,7 @@ class CTA extends Component {
 				premiumTuition = (
 					<p style={{marginBottom:0}}>
 						Subscribe to this course to receive email notifications when new videos 
-						are published. If you are a <a onClick={this.openStripeModal} href={(user.id==null) ? '/#register' : '/checkout'}>premium</a> member, 
+						are published. If you are a <a href={(user.id==null) ? '/#register' : '/checkout'}>premium</a> member, 
 						all online video courses are included in membership.
 					</p>
 				)
