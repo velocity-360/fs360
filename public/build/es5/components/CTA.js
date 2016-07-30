@@ -198,7 +198,7 @@ var CTA = (function (Component) {
 							"Subscribe to this course to receive email notifications when new videos are published. If you are a ",
 							React.createElement(
 								"a",
-								{ onClick: this.openStripeModal, href: "#" },
+								{ onClick: this.openStripeModal, href: user.id == null ? "/#register" : "/checkout" },
 								"premium"
 							),
 							" member, all online video courses are included in membership."
