@@ -38,6 +38,8 @@ var Account = _interopRequire(require("./containers/Account"));
 
 var Unit = _interopRequire(require("./containers/Unit"));
 
+var Checkout = _interopRequire(require("./containers/Checkout"));
+
 var Main = (function (Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -75,6 +77,9 @@ var Main = (function (Component) {
 
 					case "mvp":
 						return page = React.createElement(MVP, null);
+
+					case "checkout":
+						return page = React.createElement(Checkout, { params: this.props.params });
 
 					case "post":
 						return page = React.createElement(PostPage, { slug: this.props.slug });

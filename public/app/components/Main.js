@@ -11,6 +11,7 @@ import Project from './containers/Project'
 import Course from './containers/Course'
 import Account from './containers/Account'
 import Unit from './containers/Unit'
+import Checkout from './containers/Checkout'
 
 class Main extends Component {
 
@@ -46,6 +47,9 @@ class Main extends Component {
 
 			case 'mvp':
 				return page = <MVP />
+
+			case 'checkout':
+				return page = <Checkout params={this.props.params} />
 
 			case 'post':
 				return page = <PostPage slug={this.props.slug} />

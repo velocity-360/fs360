@@ -103,10 +103,11 @@ var Nav = (function (Component) {
 						)
 					)
 				);
+				var headerStyle = this.props.headerStyle == "dark" ? "full-header dark" : "transparent-header page-section dark";
 
 				return React.createElement(
 					"header",
-					{ id: "header", className: "transparent-header page-section dark" },
+					{ id: "header", className: headerStyle },
 					React.createElement(
 						"div",
 						{ id: "header-wrap" },
@@ -175,7 +176,7 @@ var Nav = (function (Component) {
 													React.createElement(
 														"div",
 														{ style: { padding: 4 } },
-														"Online"
+														"Videos"
 													)
 												)
 											),

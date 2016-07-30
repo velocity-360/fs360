@@ -33,14 +33,14 @@ export default {
 	    });
 	},
 
-	showModal: function(){
+	showModal: function() {
 	    this.handler.open({
 		    name: 'Velocity 360',
 		    description: 'Premium Subscription'
 	    });		
 	},
 
-	showModalWithText: function(text){
+	showModalWithText: function(text) {
 	    this.handler.open({
 		    name: 'Velocity 360',
 		    description: text

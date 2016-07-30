@@ -22685,6 +22685,10 @@
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
+	var _Checkout = __webpack_require__(601);
+	
+	var _Checkout2 = _interopRequireDefault(_Checkout);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22732,6 +22736,9 @@
 	
 					case 'mvp':
 						return page = _react2.default.createElement(_MVP2.default, null);
+	
+					case 'checkout':
+						return page = _react2.default.createElement(_Checkout2.default, { params: this.props.params });
 	
 					case 'post':
 						return page = _react2.default.createElement(_PostPage2.default, { slug: this.props.slug });
@@ -40982,10 +40989,11 @@
 						)
 					)
 				);
+				var headerStyle = this.props.headerStyle == 'dark' ? 'full-header dark' : 'transparent-header page-section dark';
 	
 				return _react2.default.createElement(
 					'header',
-					{ id: 'header', className: 'transparent-header page-section dark' },
+					{ id: 'header', className: headerStyle },
 					_react2.default.createElement(
 						'div',
 						{ id: 'header-wrap' },
@@ -41054,7 +41062,7 @@
 													_react2.default.createElement(
 														'div',
 														{ style: { padding: 4 } },
-														'Online'
+														'Videos'
 													)
 												)
 											),
@@ -45205,7 +45213,7 @@
 													_react2.default.createElement(
 														'div',
 														null,
-														'Online'
+														'Videos'
 													)
 												)
 											),
@@ -61690,10 +61698,8 @@
 				var banner = this.props.banners[bannerIndex];
 				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
 				var _course = course;
-				//		var _accountType = (this.props.currentUser.id == null) ? 'notLoggedIn' : this.props.currentUser.accountType
 				var _currentUser = this.props.currentUser;
 				var _showLogin = this.showLogin;
-				//		var _openStripeModal = this.openStripeModal
 	
 				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, currentUser: _currentUser });
@@ -61996,7 +62002,7 @@
 		_createClass(CTA, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				this.configureStripe(this.props.course);
+				//		this.configureStripe(this.props.course)
 			}
 		}, {
 			key: 'login',
@@ -62470,7 +62476,7 @@
 							'To view this video, please ',
 							_react2.default.createElement(
 								'a',
-								{ style: { color: 'red' }, onClick: this.subscribe, href: '#' },
+								{ style: { color: 'red' }, href: '/checkout' },
 								'upgrade'
 							),
 							' your account to Premium'
@@ -63413,6 +63419,239 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
+
+/***/ },
+/* 601 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _StripeUtils = __webpack_require__(471);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Header = __webpack_require__(473);
+	
+	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _Footer = __webpack_require__(474);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(475);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Checkout = function (_Component) {
+		_inherits(Checkout, _Component);
+	
+		function Checkout(props, context) {
+			_classCallCheck(this, Checkout);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Checkout).call(this, props, context));
+	
+			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
+			_this2.state = {
+				showLoader: false
+			};
+			return _this2;
+		}
+	
+		_createClass(Checkout, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//		console.log('CHECKOUT: componentDidMount = '+JSON.stringify(this.props.params))
+				if (this.props.params == null) {
+					// premium membership registration
+					var _this = this;
+					_StripeUtils2.default.initialize(function (token) {
+						_this.setState({
+							showLoader: true
+						});
+	
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				var path = '';
+				var keys = Object.keys(this.props.params);
+				for (var i = 0; i < keys.length; i++) {
+					var key = keys[i];
+					var value = this.props.params[key];
+					path += key + '/' + value;
+				}
+	
+				var endpoint = '/api/' + path;
+				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+				});
+			}
+		}, {
+			key: 'configureStripe',
+			value: function configureStripe() {
+				var course = this.props.course;
+				if (course == null) {
+					// premium registration
+					_StripeUtils2.default.initialize(function (token) {
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							console.log(JSON.stringify(response));
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				if (course.type == 'online') {
+					// for videos, show subscription prompt:
+					_StripeUtils2.default.initialize(function (token) {
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							console.log(JSON.stringify(response));
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						if (err) {
+							alert(err.message);
+							return;
+						}
+	
+						console.log(JSON.stringify(response));
+					});
+				});
+			}
+		}, {
+			key: 'openStripeModal',
+			value: function openStripeModal(event) {
+				event.preventDefault();
+				var course = this.props.course;
+				if (course == null) {
+					// premium registration
+					_StripeUtils2.default.showModal();
+					return;
+				}
+	
+				if (this.props.course.type == 'online') {
+					_StripeUtils2.default.showModal();
+					return;
+				}
+	
+				// course deposite:
+				_StripeUtils2.default.showModalWithText(this.props.course.title);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
+					_react2.default.createElement(
+						'section',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix', style: { paddingTop: 64 } },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_two_third bottommargin-sm' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'fancy-title title-bottom-border' },
+										_react2.default.createElement(
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'Premium Membership'
+										)
+									),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', maxWidth: 220, marginLeft: 16 }, className: 'image_fade', src: '/images/logo_round_blue_260.png', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Premium Membership includes access to ALL videos, downloadable source code, and PDF tutorials.'
+									),
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+										'Checkout',
+										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
+									_react2.default.createElement(_RightSidebar2.default, null)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Checkout;
+	}(_react.Component);
+	
+	exports.default = Checkout;
 
 /***/ }
 /******/ ]);

@@ -144,10 +144,8 @@ var Course = (function (Component) {
 				var banner = this.props.banners[bannerIndex];
 				var startDate = course.dates == null ? "" : course.dates.split("-")[0].trim();
 				var _course = course;
-				//		var _accountType = (this.props.currentUser.id == null) ? 'notLoggedIn' : this.props.currentUser.accountType
 				var _currentUser = this.props.currentUser;
 				var _showLogin = this.showLogin;
-				//		var _openStripeModal = this.openStripeModal
 
 				var units = course.units.map(function (unit, i) {
 					return React.createElement(CourseSection, { key: i, loginAction: _showLogin, unit: unit, course: _course, currentUser: _currentUser });

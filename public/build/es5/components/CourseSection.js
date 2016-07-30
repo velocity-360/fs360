@@ -77,7 +77,7 @@ var CourseSection = (function (Component) {
 							"To view this video, please ",
 							React.createElement(
 								"a",
-								{ style: { color: "red" }, onClick: this.subscribe, href: "#" },
+								{ style: { color: "red" }, href: "/checkout" },
 								"upgrade"
 							),
 							" your account to Premium"
