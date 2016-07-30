@@ -31,7 +31,6 @@ ProfileSchema.methods.summary = function() {
 		'githubId':this.githubId,
 		'accountType':this.accountType,
 		'stripeId':this.stripeId,
-		'creditCard':this.creditCard,
 		'email':this.email,
 		'city':this.city,
 		'about':this.about,
