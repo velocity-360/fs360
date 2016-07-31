@@ -63644,17 +63644,43 @@
 											'Premium Membership'
 										)
 									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', maxWidth: 220, marginLeft: 16 }, className: 'image_fade', src: '/images/logo_round_blue_260.png', alt: 'Velocity 360' }),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', maxWidth: 200, marginLeft: 16, marginBottom: 16 }, className: 'image_fade hidden-xs', src: '/images/logo_round_blue_260.png', alt: 'Velocity 360' }),
 									_react2.default.createElement(
 										'p',
 										null,
-										'Premium Membership includes access to ALL videos, downloadable source code, and PDF tutorials.'
+										'Premium Membership includes:',
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('br', null),
+										'✓ Access to ALL videos',
+										_react2.default.createElement('br', null),
+										'✓ Downloadable code samples, and PDF tutorials',
+										_react2.default.createElement('br', null),
+										'✓ Discounts and exclusive access to live events',
+										_react2.default.createElement('br', null),
+										'✓ Discounts to all live courses',
+										_react2.default.createElement('br', null)
 									),
 									_react2.default.createElement(
-										'a',
-										{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-										'Checkout',
-										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+										'div',
+										{ className: 'col_full panel panel-default' },
+										_react2.default.createElement(
+											'div',
+											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+											'Upgrade to Premium - $19.99/month'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body', style: { textAlign: 'left' } },
+											'Your account will be charged $19.99 on the first of each month. You card will NOT be charged upon registration.',
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement(
+												'a',
+												{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+												'Checkout',
+												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+											)
+										)
 									)
 								),
 								_react2.default.createElement(

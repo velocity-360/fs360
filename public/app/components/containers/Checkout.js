@@ -154,13 +154,23 @@ class Checkout extends Component {
 			                    <div className="fancy-title title-bottom-border">
 			                        <h2 style={{fontWeight:400}}>Premium Membership</h2>
 			                    </div>
-								<img style={{background:'#fff', float:'right', maxWidth: 220, marginLeft:16}} className="image_fade" src="/images/logo_round_blue_260.png" alt="Velocity 360" />
+								<img style={{background:'#fff', float:'right', maxWidth:200, marginLeft:16, marginBottom:16}} className="image_fade hidden-xs" src="/images/logo_round_blue_260.png" alt="Velocity 360" />
 								<p>
-									Premium Membership includes access to ALL videos, downloadable source code,
-									and PDF tutorials.  
+									Premium Membership includes:<br /><br />
+									&#10003; Access to ALL videos<br />
+									&#10003; Downloadable code samples, and PDF tutorials<br />
+									&#10003; Discounts and exclusive access to live events<br />
+									&#10003; Discounts to all live courses<br />
 								</p>
 
-								<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Checkout<i class="icon-circle-arrow-right"></i></a>
+								<div className="col_full panel panel-default">
+									<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Upgrade to Premium - $19.99/month</div>
+									<div className="panel-body" style={{textAlign:'left'}}>
+										Your account will be charged $19.99 on the first of each month. You card will NOT be charged
+										upon registration.<br /><br />
+										<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Checkout<i class="icon-circle-arrow-right"></i></a>
+									</div>
+								</div>
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
