@@ -20,6 +20,7 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
+var connect = require("react-redux").connect;
 var Loader = _interopRequire(require("react-loader"));
 
 var Nav = _interopRequire(require("../../components/Nav"));
@@ -34,7 +35,6 @@ var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var connect = require("react-redux").connect;
 var TextUtils = _interopRequire(require("../../utils/TextUtils"));
 
 var api = _interopRequire(require("../../utils/APIManager"));

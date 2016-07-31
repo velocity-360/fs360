@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import Loader from 'react-loader'
 import Nav from '../../components/Nav'
 import Header from '../../components/Header'
@@ -7,7 +8,6 @@ import Footer from '../../components/Footer'
 import RightSidebar from '../../components/RightSidebar'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import { connect } from 'react-redux'
 import TextUtils from '../../utils/TextUtils'
 import api from '../../utils/APIManager'
 
@@ -126,7 +126,6 @@ class Event extends Component {
 		            <div className="container clearfix">
 
 		                <div className="vertical-middle">
-
 		                    <div className="heading-block center nobottomborder">
 		                        <h1 data-animate="fadeInUp">{event.title}</h1>
 								<img style={{width:124, borderRadius:62}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />

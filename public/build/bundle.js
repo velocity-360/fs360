@@ -45412,6 +45412,8 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
+	var _reactRedux = __webpack_require__(168);
+	
 	var _reactLoader = __webpack_require__(461);
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
@@ -45439,8 +45441,6 @@
 	var _actions = __webpack_require__(459);
 	
 	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _reactRedux = __webpack_require__(168);
 	
 	var _TextUtils = __webpack_require__(472);
 	

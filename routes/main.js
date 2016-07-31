@@ -137,6 +137,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		}
 
 		var entity = results[0]
+//		console.log('ENTITY = '+JSON.stringify(entity))
 		if (page == 'course'){
 			initialData.courseReducer.courses[entity.slug] = entity
 		}
@@ -146,28 +147,20 @@ router.get('/:page/:slug', function(req, res, next) {
 
 		if (page == 'event'){
 			initialData.eventReducer.eventArray = [entity]
-			initialData.eventReducer[event.slug] = event
-
-			// var eventsMap = {}
-			// for (var i=0; i<results.length; i++){
-			// 	var event = results[i]
-			// 	eventsMap[event.slug] = event
-			// }
-
-			// initialData.eventReducer.events = eventsMap
+			initialData.eventReducer.events[entity.slug] = entity
 		}
 
 		if (page == 'post'){
 			initialData.postReducer.postsArray = [entity]
-			var posts = {}
-			for (var i=0; i<results.length; i++){
-				var post = results[i]
-				posts[post.slug] = post
-			}
+			initialData.postReducer.posts[entity.slug] = entity
+			// var posts = {}
+			// for (var i=0; i<results.length; i++){
+			// 	var post = results[i]
+			// 	posts[post.slug] = post
+			// }
 
-			initialData.postReducer.posts = posts
+			// initialData.postReducer.posts = posts
 		}
-
 
 		// Facebook tags:
 		var description = (entity.description == null) ? entity.text : entity.description
@@ -187,7 +180,7 @@ router.get('/:page/:slug', function(req, res, next) {
 		return
 	})
 	.catch(function(err){
-
+		console.log('ERROR: '+err)
 	})
 })
 
