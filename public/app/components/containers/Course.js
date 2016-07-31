@@ -24,6 +24,7 @@ class Course extends Component {
 		this.submitApplication = this.submitApplication.bind(this)
 		this.showLoader = this.showLoader.bind(this)
 		this.hideLoader = this.hideLoader.bind(this)
+		this.subscribe = this.subscribe.bind(this)
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -64,6 +65,12 @@ class Course extends Component {
 
 	}
 
+	subscribe(event){
+		event.preventDefault()
+		console.log('Subscribe')
+
+	}
+
 	submitApplication(application){
 		const course = this.props.courses[this.props.slug]
 		this.setState({showLoader: true})
@@ -96,9 +103,10 @@ class Course extends Component {
 		var _course = course
 		var _currentUser = this.props.currentUser
 		var _showLogin = this.showLogin
+		var _subscribe = this.subscribe
 
 		var units = course.units.map(function(unit, i){
-			return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} currentUser={_currentUser} />
+			return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
 		})
 
 		var bootcamps = this.props.bootcamps.map(function(bootcamp, i){

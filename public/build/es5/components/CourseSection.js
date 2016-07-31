@@ -96,6 +96,12 @@ var CourseSection = (function (Component) {
 							"To view this video, please ",
 							React.createElement(
 								"a",
+								{ href: "#" },
+								"subscribe"
+							),
+							" or ",
+							React.createElement(
+								"a",
 								{ style: { color: "red" }, href: "/checkout" },
 								"upgrade"
 							),

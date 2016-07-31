@@ -61632,6 +61632,7 @@
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.showLoader = _this2.showLoader.bind(_this2);
 			_this2.hideLoader = _this2.hideLoader.bind(_this2);
+			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -61676,6 +61677,12 @@
 				this.setState({ showLoader: false });
 			}
 		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				console.log('Subscribe');
+			}
+		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
 				var course = this.props.courses[this.props.slug];
@@ -61706,9 +61713,10 @@
 				var _course = course;
 				var _currentUser = this.props.currentUser;
 				var _showLogin = this.showLogin;
+				var _subscribe = this.subscribe;
 	
 				var units = course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, currentUser: _currentUser });
+					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, subscribeAction: _subscribe, currentUser: _currentUser });
 				});
 	
 				var bootcamps = this.props.bootcamps.map(function (bootcamp, i) {
@@ -62499,6 +62507,12 @@
 							'div',
 							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
 							'To view this video, please ',
+							_react2.default.createElement(
+								'a',
+								{ href: '#' },
+								'subscribe'
+							),
+							' or ',
 							_react2.default.createElement(
 								'a',
 								{ style: { color: 'red' }, href: '/checkout' },

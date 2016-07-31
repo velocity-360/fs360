@@ -115,7 +115,6 @@ class Header extends Component {
 							</div>
 						</div>
 
-
 	                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
 	                    <div className="col_full">
 	                        <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Name" />

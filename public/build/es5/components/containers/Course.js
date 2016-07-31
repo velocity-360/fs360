@@ -56,6 +56,7 @@ var Course = (function (Component) {
 		this.submitApplication = this.submitApplication.bind(this);
 		this.showLoader = this.showLoader.bind(this);
 		this.hideLoader = this.hideLoader.bind(this);
+		this.subscribe = this.subscribe.bind(this);
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -113,6 +114,14 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		subscribe: {
+			value: function subscribe(event) {
+				event.preventDefault();
+				console.log("Subscribe");
+			},
+			writable: true,
+			configurable: true
+		},
 		submitApplication: {
 			value: function submitApplication(application) {
 				var course = this.props.courses[this.props.slug];
@@ -146,9 +155,10 @@ var Course = (function (Component) {
 				var _course = course;
 				var _currentUser = this.props.currentUser;
 				var _showLogin = this.showLogin;
+				var _subscribe = this.subscribe;
 
 				var units = course.units.map(function (unit, i) {
-					return React.createElement(CourseSection, { key: i, loginAction: _showLogin, unit: unit, course: _course, currentUser: _currentUser });
+					return React.createElement(CourseSection, { key: i, loginAction: _showLogin, unit: unit, course: _course, subscribeAction: _subscribe, currentUser: _currentUser });
 				});
 
 				var bootcamps = this.props.bootcamps.map(function (bootcamp, i) {
