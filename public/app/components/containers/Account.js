@@ -24,9 +24,8 @@ class Account extends Component {
 	}
 
 	componentDidMount(){
-
 		api.handleGet('/api/course', {subscribers:this.props.profile.id}, function(err, response){
-			console.log('Fetch Courses: '+JSON.stringify(response))
+//			console.log('Fetch Courses: '+JSON.stringify(response))
 			if (err){
 				return
 			}
@@ -51,18 +50,18 @@ class Account extends Component {
 				return
 			}
 
-			var updatedUser = Object.assign({}, _this.props.profile);
+			var updatedUser = Object.assign({}, _this.props.profile)
 			updatedUser['image'] = response.id
-			store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
+			store.currentStore().dispatch(actions.updateCurrentUser(updatedUser))
 		})
 	}
 	
 
 	updateCurrentUser(event){
 		event.preventDefault()
-		var updatedUser = Object.assign({}, this.props.profile);
+		var updatedUser = Object.assign({}, this.props.profile)
 		updatedUser[event.target.id] = event.target.value
-		store.currentStore().dispatch(actions.updateCurrentUser(updatedUser));
+		store.currentStore().dispatch(actions.updateCurrentUser(updatedUser))
 	}
 
 
@@ -79,15 +78,21 @@ class Account extends Component {
 				return
 			}
 			
-			store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
+			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
 			alert('Profile Updated')
 		})
 	}
 
 	render(){
-		var courseList = this.props.courses.map(function(course){
-			return <CourseCard key={course.id} course={course} />
-		})
+		var courseList = null
+		if (this.props.courses.length == 0){
+			courseList = <p>Subscribe to video courses <a href="/courses?type=online">HERE</a></p>
+		}
+		else {
+			courseList = this.props.courses.map(function(course){
+				return <CourseCard key={course.id} course={course} />
+			})
+		}
 
 		return (
 			<div>

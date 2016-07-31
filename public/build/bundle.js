@@ -63050,9 +63050,8 @@
 		_createClass(Account, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-	
 				_APIManager2.default.handleGet('/api/course', { subscribers: this.props.profile.id }, function (err, response) {
-					console.log('Fetch Courses: ' + JSON.stringify(response));
+					//			console.log('Fetch Courses: '+JSON.stringify(response))
 					if (err) {
 						return;
 					}
@@ -63113,9 +63112,23 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var courseList = this.props.courses.map(function (course) {
-					return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
-				});
+				var courseList = null;
+				if (this.props.courses.length == 0) {
+					courseList = _react2.default.createElement(
+						'p',
+						null,
+						'Subscribe to video courses ',
+						_react2.default.createElement(
+							'a',
+							{ href: '/courses?type=online' },
+							'HERE'
+						)
+					);
+				} else {
+					courseList = this.props.courses.map(function (course) {
+						return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+					});
+				}
 	
 				return _react2.default.createElement(
 					'div',

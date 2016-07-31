@@ -58,7 +58,7 @@ var Account = (function (Component) {
 		componentDidMount: {
 			value: function componentDidMount() {
 				api.handleGet("/api/course", { subscribers: this.props.profile.id }, function (err, response) {
-					console.log("Fetch Courses: " + JSON.stringify(response));
+					//			console.log('Fetch Courses: '+JSON.stringify(response))
 					if (err) {
 						return;
 					}
@@ -127,9 +127,23 @@ var Account = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var courseList = this.props.courses.map(function (course) {
-					return React.createElement(CourseCard, { key: course.id, course: course });
-				});
+				var courseList = null;
+				if (this.props.courses.length == 0) {
+					courseList = React.createElement(
+						"p",
+						null,
+						"Subscribe to video courses ",
+						React.createElement(
+							"a",
+							{ href: "/courses?type=online" },
+							"HERE"
+						)
+					);
+				} else {
+					courseList = this.props.courses.map(function (course) {
+						return React.createElement(CourseCard, { key: course.id, course: course });
+					});
+				}
 
 				return React.createElement(
 					"div",
