@@ -178,7 +178,6 @@ var Checkout = (function (Component) {
 					scale: 1
 				};
 
-
 				return React.createElement(
 					"div",
 					null,

@@ -140,7 +140,6 @@ class Checkout extends Component {
 		    scale: 1.00
 		}
 
-
 		return (
 			<div>
 				<Nav headerStyle='dark' />
