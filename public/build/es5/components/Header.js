@@ -154,7 +154,7 @@ var Header = (function (Component) {
 									{ style: { padding: 12, height: 104, textAlign: "right" } },
 									React.createElement(
 										"h5",
-										{ style: { fontWeight: 200, marginBottom: 0 } },
+										{ style: { fontWeight: 200, marginBottom: 0, fontSize: 12 } },
 										React.createElement(
 											"a",
 											{ href: "/event/" + nextEvent.slug },
@@ -163,7 +163,7 @@ var Header = (function (Component) {
 									),
 									React.createElement(
 										"span",
-										{ style: { fontWeight: 100, fontSize: 14, color: "#444" } },
+										{ style: { fontWeight: 100, fontSize: 12, color: "#444" } },
 										nextEvent.date
 									),
 									React.createElement("br", null),

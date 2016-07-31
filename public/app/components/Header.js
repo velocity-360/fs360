@@ -109,8 +109,8 @@ class Header extends Component {
 						<div style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16, marginTop:16}}>
 							<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+nextEvent.image+'?crop=260'} alt="Velocity 360" />
 							<div style={{padding:12, height:104, textAlign:'right'}}>
-								<h5 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+nextEvent.slug}>{nextEvent.title}</a></h5>
-								<span style={{fontWeight:100, fontSize:14, color:'#444'}}>{nextEvent.date}</span><br />
+								<h5 style={{fontWeight:200, marginBottom:0, fontSize:12}}><a href={'/event/'+nextEvent.slug}>{nextEvent.title}</a></h5>
+								<span style={{fontWeight:100, fontSize:12, color:'#444'}}>{nextEvent.date}</span><br />
 								<a href={'/event/'+nextEvent.slug} style={{marginRight:0}} className="button button-3d button-mini button-rounded button-teal">Details</a>
 							</div>
 						</div>

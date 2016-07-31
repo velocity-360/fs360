@@ -44237,7 +44237,7 @@
 									{ style: { padding: 12, height: 104, textAlign: 'right' } },
 									_react2.default.createElement(
 										'h5',
-										{ style: { fontWeight: 200, marginBottom: 0 } },
+										{ style: { fontWeight: 200, marginBottom: 0, fontSize: 12 } },
 										_react2.default.createElement(
 											'a',
 											{ href: '/event/' + nextEvent.slug },
@@ -44246,7 +44246,7 @@
 									),
 									_react2.default.createElement(
 										'span',
-										{ style: { fontWeight: 100, fontSize: 14, color: '#444' } },
+										{ style: { fontWeight: 100, fontSize: 12, color: '#444' } },
 										nextEvent.date
 									),
 									_react2.default.createElement('br', null),
@@ -44523,7 +44523,7 @@
 							{ style: { padding: 12, height: 104, textAlign: 'right' } },
 							_react2.default.createElement(
 								'h5',
-								{ style: { fontWeight: 200, marginBottom: 0 } },
+								{ style: { fontWeight: 200, marginBottom: 0, fontSize: 12 } },
 								_react2.default.createElement(
 									'a',
 									{ href: '/event/' + event.slug },
@@ -44532,7 +44532,7 @@
 							),
 							_react2.default.createElement(
 								'span',
-								{ style: { fontWeight: 100, fontSize: 14 } },
+								{ style: { fontWeight: 100, fontSize: 12 } },
 								event.date,
 								', ',
 								event.time

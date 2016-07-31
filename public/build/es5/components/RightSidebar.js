@@ -111,7 +111,7 @@ var RightSidebar = (function (Component) {
 							{ style: { padding: 12, height: 104, textAlign: "right" } },
 							React.createElement(
 								"h5",
-								{ style: { fontWeight: 200, marginBottom: 0 } },
+								{ style: { fontWeight: 200, marginBottom: 0, fontSize: 12 } },
 								React.createElement(
 									"a",
 									{ href: "/event/" + event.slug },
@@ -120,7 +120,7 @@ var RightSidebar = (function (Component) {
 							),
 							React.createElement(
 								"span",
-								{ style: { fontWeight: 100, fontSize: 14 } },
+								{ style: { fontWeight: 100, fontSize: 12 } },
 								event.date,
 								", ",
 								event.time

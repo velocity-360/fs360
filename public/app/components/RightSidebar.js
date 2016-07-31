@@ -60,8 +60,8 @@ class RightSidebar extends Component {
 				<div key={event.id} style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16}}>
 					<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />
 					<div style={{padding:12, height:104, textAlign:'right'}}>
-						<h5 style={{fontWeight:200, marginBottom:0}}><a href={'/event/'+event.slug}>{event.title}</a></h5>
-						<span style={{fontWeight:100, fontSize:14}}>{event.date}, {event.time}</span><br />
+						<h5 style={{fontWeight:200, marginBottom:0, fontSize:12}}><a href={'/event/'+event.slug}>{event.title}</a></h5>
+						<span style={{fontWeight:100, fontSize:12}}>{event.date}, {event.time}</span><br />
 						<a href={'/event/'+event.slug} style={{marginRight:0}} className="button button-3d button-mini button-rounded button-teal">Attend</a>
 					</div>
 				</div>
