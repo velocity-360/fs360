@@ -137,7 +137,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		}
 
 		var entity = results[0]
-//		console.log('ENTITY = '+JSON.stringify(entity))
 		if (page == 'course'){
 			initialData.courseReducer.courses[entity.slug] = entity
 		}
@@ -153,13 +152,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (page == 'post'){
 			initialData.postReducer.postsArray = [entity]
 			initialData.postReducer.posts[entity.slug] = entity
-			// var posts = {}
-			// for (var i=0; i<results.length; i++){
-			// 	var post = results[i]
-			// 	posts[post.slug] = post
-			// }
-
-			// initialData.postReducer.posts = posts
 		}
 
 		// Facebook tags:
