@@ -77,22 +77,23 @@ class Course extends Component {
 		}
 
 		// check credits first:
-		if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType=='basic'){
+		const course = this.props.courses[this.props.slug]
+		if (this.props.currentUser.credits < course.credits && this.props.currentUser.accountType=='basic'){
 			alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.')
 			return
 		}
 
 		// Fetch course first to get most updated subscriber list:
 		const _this = this
-		const endpoint = '/api/course/'+this.props.course.id
+		const endpoint = '/api/course/'+course.id
 		api.handleGet(endpoint, null, (err, response) => {
 			if (err){
 				alert(err.message)
 				return
 			}
 
-			const course = response.course
-			var subscribers = course.subscribers
+			const updatedCourse = response.course
+			var subscribers = updatedCourse.subscribers
 			if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
 				return
 
@@ -105,21 +106,22 @@ class Course extends Component {
 
 
 	updateCourse(pkg){
+		const course = this.props.courses[this.props.slug]
 		var _this = this
-		const endpoint = '/api/course/'+this.props.course.id
+		const endpoint = '/api/course/'+course.id
 		api.handlePut(endpoint, pkg, (err, response) => {
 			if (err){
 				alert(err.message)
 				return
 			}
 
-			const course = response.course
-			store.currentStore().dispatch(actions.courseRecieved(course))
+			const updatedCourse = response.course
+			store.currentStore().dispatch(actions.courseRecieved(updatedCourse))
 
 			if (_this.props.currentUser.accountType == 'premium')
 				return
 			
-			const credits = _this.props.currentUser.credits-course.credits
+			const credits = _this.props.currentUser.credits-updatedCourse.credits
 			_this.updateCurrentUser({
 				credits: credits
 			})

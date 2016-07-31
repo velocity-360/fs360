@@ -61691,22 +61691,23 @@
 				}
 	
 				// check credits first:
-				if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType == 'basic') {
+				var course = this.props.courses[this.props.slug];
+				if (this.props.currentUser.credits < course.credits && this.props.currentUser.accountType == 'basic') {
 					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
 					return;
 				}
 	
 				// Fetch course first to get most updated subscriber list:
 				var _this = this;
-				var endpoint = '/api/course/' + this.props.course.id;
+				var endpoint = '/api/course/' + course.id;
 				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
 					if (err) {
 						alert(err.message);
 						return;
 					}
 	
-					var course = response.course;
-					var subscribers = course.subscribers;
+					var updatedCourse = response.course;
+					var subscribers = updatedCourse.subscribers;
 					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
 						return;
 	
@@ -61719,20 +61720,21 @@
 		}, {
 			key: 'updateCourse',
 			value: function updateCourse(pkg) {
+				var course = this.props.courses[this.props.slug];
 				var _this = this;
-				var endpoint = '/api/course/' + this.props.course.id;
+				var endpoint = '/api/course/' + course.id;
 				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
 					if (err) {
 						alert(err.message);
 						return;
 					}
 	
-					var course = response.course;
-					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(course));
+					var updatedCourse = response.course;
+					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(updatedCourse));
 	
 					if (_this.props.currentUser.accountType == 'premium') return;
 	
-					var credits = _this.props.currentUser.credits - course.credits;
+					var credits = _this.props.currentUser.credits - updatedCourse.credits;
 					_this.updateCurrentUser({
 						credits: credits
 					});
