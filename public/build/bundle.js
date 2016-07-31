@@ -61633,6 +61633,8 @@
 			_this2.showLoader = _this2.showLoader.bind(_this2);
 			_this2.hideLoader = _this2.hideLoader.bind(_this2);
 			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.updateCourse = _this2.updateCourse.bind(_this2);
+			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
 			_this2.state = {
 				showLogin: false,
 				showConfirmation: false,
@@ -61681,6 +61683,73 @@
 			value: function subscribe(event) {
 				event.preventDefault();
 				console.log('Subscribe');
+	
+				if (this.props.currentUser.id == null) {
+					// not logged in
+					this.showLogin();
+					return;
+				}
+	
+				// check credits first:
+				if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType == 'basic') {
+					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
+					return;
+				}
+	
+				// Fetch course first to get most updated subscriber list:
+				var _this = this;
+				var endpoint = '/api/course/' + this.props.course.id;
+				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var course = response.course;
+					var subscribers = course.subscribers;
+					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+						return;
+	
+					subscribers.push(_this.props.currentUser.id);
+					_this.updateCourse({
+						subscribers: subscribers
+					});
+				});
+			}
+		}, {
+			key: 'updateCourse',
+			value: function updateCourse(pkg) {
+				var _this = this;
+				var endpoint = '/api/course/' + this.props.course.id;
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var course = response.course;
+					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(course));
+	
+					if (_this.props.currentUser.accountType == 'premium') return;
+	
+					var credits = _this.props.currentUser.credits - course.credits;
+					_this.updateCurrentUser({
+						credits: credits
+					});
+				});
+			}
+		}, {
+			key: 'updateCurrentUser',
+			value: function updateCurrentUser(pkg) {
+				var endpoint = '/api/profile/' + this.props.currentUser.id;
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
+				});
 			}
 		}, {
 			key: 'submitApplication',

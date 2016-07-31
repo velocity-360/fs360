@@ -57,6 +57,8 @@ var Course = (function (Component) {
 		this.showLoader = this.showLoader.bind(this);
 		this.hideLoader = this.hideLoader.bind(this);
 		this.subscribe = this.subscribe.bind(this);
+		this.updateCourse = this.updateCourse.bind(this);
+		this.updateCurrentUser = this.updateCurrentUser.bind(this);
 		this.state = {
 			showLogin: false,
 			showConfirmation: false,
@@ -118,6 +120,77 @@ var Course = (function (Component) {
 			value: function subscribe(event) {
 				event.preventDefault();
 				console.log("Subscribe");
+
+				if (this.props.currentUser.id == null) {
+					// not logged in
+					this.showLogin();
+					return;
+				}
+
+				// check credits first:
+				if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType == "basic") {
+					alert("Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.");
+					return;
+				}
+
+				// Fetch course first to get most updated subscriber list:
+				var _this = this;
+				var endpoint = "/api/course/" + this.props.course.id;
+				api.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					var course = response.course;
+					var subscribers = course.subscribers;
+					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+						return;
+
+					subscribers.push(_this.props.currentUser.id);
+					_this.updateCourse({
+						subscribers: subscribers
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateCourse: {
+			value: function updateCourse(pkg) {
+				var _this = this;
+				var endpoint = "/api/course/" + this.props.course.id;
+				api.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					var course = response.course;
+					store.currentStore().dispatch(actions.courseRecieved(course));
+
+					if (_this.props.currentUser.accountType == "premium") return;
+
+					var credits = _this.props.currentUser.credits - course.credits;
+					_this.updateCurrentUser({
+						credits: credits
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		updateCurrentUser: {
+			value: function updateCurrentUser(pkg) {
+				var endpoint = "/api/profile/" + this.props.currentUser.id;
+				api.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
+				});
 			},
 			writable: true,
 			configurable: true
