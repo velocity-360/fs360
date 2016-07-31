@@ -157,10 +157,10 @@ class Checkout extends Component {
 								<img style={{background:'#fff', float:'right', maxWidth:200, marginLeft:16, marginBottom:16}} className="image_fade hidden-xs" src="/images/logo_round_blue_260.png" alt="Velocity 360" />
 								<p>
 									Premium Membership includes:<br /><br />
-									&#10003; Access to ALL videos<br />
+									&#10003; Unlimited access to ALL videos<br />
 									&#10003; Downloadable code samples, and PDF tutorials<br />
 									&#10003; Discounts and exclusive access to live events<br />
-									&#10003; Discounts to all live courses<br />
+									&#10003; Discounts to live courses<br />
 								</p>
 
 								<div className="col_full panel panel-default">

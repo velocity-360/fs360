@@ -63759,13 +63759,13 @@
 										'Premium Membership includes:',
 										_react2.default.createElement('br', null),
 										_react2.default.createElement('br', null),
-										'✓ Access to ALL videos',
+										'✓ Unlimited access to ALL videos',
 										_react2.default.createElement('br', null),
 										'✓ Downloadable code samples, and PDF tutorials',
 										_react2.default.createElement('br', null),
 										'✓ Discounts and exclusive access to live events',
 										_react2.default.createElement('br', null),
-										'✓ Discounts to all live courses',
+										'✓ Discounts to live courses',
 										_react2.default.createElement('br', null)
 									),
 									_react2.default.createElement(

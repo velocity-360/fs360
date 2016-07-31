@@ -212,13 +212,13 @@ var Checkout = (function (Component) {
 										"Premium Membership includes:",
 										React.createElement("br", null),
 										React.createElement("br", null),
-										"✓ Access to ALL videos",
+										"✓ Unlimited access to ALL videos",
 										React.createElement("br", null),
 										"✓ Downloadable code samples, and PDF tutorials",
 										React.createElement("br", null),
 										"✓ Discounts and exclusive access to live events",
 										React.createElement("br", null),
-										"✓ Discounts to all live courses",
+										"✓ Discounts to live courses",
 										React.createElement("br", null)
 									),
 									React.createElement(
