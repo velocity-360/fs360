@@ -62509,7 +62509,7 @@
 							'To view this video, please ',
 							_react2.default.createElement(
 								'a',
-								{ href: '#' },
+								{ onClick: this.subscribe, style: { color: 'red' }, href: '#' },
 								'subscribe'
 							),
 							' or ',

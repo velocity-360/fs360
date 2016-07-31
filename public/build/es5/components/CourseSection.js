@@ -96,7 +96,7 @@ var CourseSection = (function (Component) {
 							"To view this video, please ",
 							React.createElement(
 								"a",
-								{ href: "#" },
+								{ onClick: this.subscribe, style: { color: "red" }, href: "#" },
 								"subscribe"
 							),
 							" or ",
