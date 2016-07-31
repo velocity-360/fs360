@@ -166,7 +166,7 @@ var Header = (function (Component) {
 										{ style: { fontWeight: 100, fontSize: 12, color: "#444" } },
 										nextEvent.date,
 										", ",
-										event.time
+										nextEvent.time
 									),
 									React.createElement("br", null),
 									React.createElement(
