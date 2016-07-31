@@ -36,16 +36,11 @@ class RightSidebar extends Component {
 	fetchEvents(){
 		var _this = this
 		api.handleGet('/api/event', {limit:'3'}, function(err, response){
-
 			if (err){
 				return
 			}
 
-//			console.log(JSON.stringify(response))
-			var events = response.events
-			_this.setState({
-				events: events
-			})
+			store.currentStore().dispatch(actions.eventsRecieved(response.events))
 		})
 	}
 
@@ -60,7 +55,7 @@ class RightSidebar extends Component {
 			)
 		})
 
-		var events = this.state.events.map(function(event, i){
+		var events = this.props.events.map(function(event, i){
 			return (
 				<div key={event.id} style={{border:'1px solid #ddd', background:'#f9f9f9', marginBottom:16}}>
 					<img style={{width:104, float:'left', marginRight:12}} src={'https://media-service.appspot.com/site/images/'+event.image+'?crop=260'} alt="Velocity 360" />
@@ -86,13 +81,18 @@ class RightSidebar extends Component {
 					<hr />
 
 					{events}
-
 				</div>
-
 			</div>
-
 		)
 	}
 }
 
-export default RightSidebar
+const stateToProps = function(state){
+	return {
+		events: state.eventReducer.eventArray
+	}
+}
+
+export default connect(stateToProps)(RightSidebar)
+
+

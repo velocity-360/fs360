@@ -39,13 +39,17 @@ router.get('/', function(req, res, next) {
 	})
 	.then(function(courses){
 		initialData.courseReducer.courseArray = courses
-//		return postController.find({limit: 3}) // three most recent blog posts
+		return eventController.find({limit:3})
+	})
+	.then(function(events){
+		initialData.eventReducer.eventArray = events
+
 		var initialState = store.configureStore(initialData).getState()
 		var element = React.createElement(ServerApp, {page:'home', initial:initialState})
 		res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 	})
 	.catch(function(err){
-
+		console.log('ERROR: '+err)
 	})
 })
 
@@ -90,6 +94,7 @@ router.get('/:page', function(req, res, next) {
 		return
 	})
 	.catch(function(err){ // TODO: Handle Error
+		console.log('ERROR: '+err)
 
 	})
 })

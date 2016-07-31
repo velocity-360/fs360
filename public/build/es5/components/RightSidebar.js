@@ -71,11 +71,7 @@ var RightSidebar = (function (Component) {
 						return;
 					}
 
-					//			console.log(JSON.stringify(response))
-					var events = response.events;
-					_this.setState({
-						events: events
-					});
+					store.currentStore().dispatch(actions.eventsRecieved(response.events));
 				});
 			},
 			writable: true,
@@ -105,7 +101,7 @@ var RightSidebar = (function (Component) {
 					);
 				});
 
-				var events = this.state.events.map(function (event, i) {
+				var events = this.props.events.map(function (event, i) {
 					return React.createElement(
 						"div",
 						{ key: event.id, style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16 } },
@@ -178,4 +174,10 @@ var RightSidebar = (function (Component) {
 	return RightSidebar;
 })(Component);
 
-module.exports = RightSidebar;
+var stateToProps = function (state) {
+	return {
+		events: state.eventReducer.eventArray
+	};
+};
+
+module.exports = connect(stateToProps)(RightSidebar);

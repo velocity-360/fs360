@@ -44172,8 +44172,9 @@
 				pkg['firstName'] = parts[0];
 				if (parts.length > 1) pkg['lastName'] = parts[parts.length - 1];
 	
-				pkg['date'] = 'July 24th';
-				pkg['event'] = 'React With Firebase';
+				var nextEvent = this.props.events[0];
+				pkg['date'] = nextEvent.date;
+				pkg['event'] = nextEvent.title;
 	
 				var _this = this;
 				_APIManager2.default.handlePost('/api/rsvp', pkg, function (err, response) {
@@ -44205,6 +44206,7 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var nextEvent = this.props.events[0];
 	
 				return _react2.default.createElement(
 					'section',
@@ -44229,7 +44231,7 @@
 							_react2.default.createElement(
 								'div',
 								{ style: { border: '1px solid #ddd', background: '#f9f9f9', marginBottom: 16, marginTop: 16 } },
-								_react2.default.createElement('img', { style: { width: 104, float: 'left', marginRight: 12 }, src: 'https://media-service.appspot.com/site/images/n1zs8EP4?crop=260', alt: 'Velocity 360' }),
+								_react2.default.createElement('img', { style: { width: 104, float: 'left', marginRight: 12 }, src: 'https://media-service.appspot.com/site/images/' + nextEvent.image + '?crop=260', alt: 'Velocity 360' }),
 								_react2.default.createElement(
 									'div',
 									{ style: { padding: 12, height: 104, textAlign: 'right' } },
@@ -44238,19 +44240,19 @@
 										{ style: { fontWeight: 200, marginBottom: 0 } },
 										_react2.default.createElement(
 											'a',
-											{ href: '/event/react-with-firebase' },
-											'React With Firebase'
+											{ href: '/event/' + nextEvent.slug },
+											nextEvent.title
 										)
 									),
 									_react2.default.createElement(
 										'span',
 										{ style: { fontWeight: 100, fontSize: 14, color: '#444' } },
-										'July 24, 12pm'
+										nextEvent.date
 									),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
 										'a',
-										{ href: '/event/react-with-firebase', style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
+										{ href: '/event/' + nextEvent.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
 										'Details'
 									)
 								)
@@ -44286,7 +44288,8 @@
 	
 	var stateToProps = function stateToProps(state) {
 		return {
-			loaderOptions: state.staticReducer.loaderConfig
+			loaderOptions: state.staticReducer.loaderConfig,
+			events: state.eventReducer.eventArray
 		};
 	};
 	
@@ -44478,16 +44481,11 @@
 			value: function fetchEvents() {
 				var _this = this;
 				_APIManager2.default.handleGet('/api/event', { limit: '3' }, function (err, response) {
-	
 					if (err) {
 						return;
 					}
 	
-					//			console.log(JSON.stringify(response))
-					var events = response.events;
-					_this.setState({
-						events: events
-					});
+					_store2.default.currentStore().dispatch(_actions2.default.eventsRecieved(response.events));
 				});
 			}
 		}, {
@@ -44515,7 +44513,7 @@
 					);
 				});
 	
-				var events = this.state.events.map(function (event, i) {
+				var events = this.props.events.map(function (event, i) {
 					return _react2.default.createElement(
 						'div',
 						{ key: event.id, style: { border: '1px solid #ddd', background: '#f9f9f9', marginBottom: 16 } },
@@ -44585,7 +44583,13 @@
 		return RightSidebar;
 	}(_react.Component);
 	
-	exports.default = RightSidebar;
+	var stateToProps = function stateToProps(state) {
+		return {
+			events: state.eventReducer.eventArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(RightSidebar);
 
 /***/ },
 /* 476 */
