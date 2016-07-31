@@ -63,6 +63,25 @@ var CourseSection = (function (Component) {
 							{ className: "wistia_embed wistia_async_" + this.props.unit.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
 							" "
 						);
+					} else if (this.props.currentUser.id == null) {
+						// not logged in
+						videoThumb = React.createElement(
+							"div",
+							{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },
+							"Please ",
+							React.createElement(
+								"a",
+								{ onClick: this.login, style: { color: "red" }, href: "#" },
+								"log in"
+							),
+							" or ",
+							React.createElement(
+								"a",
+								{ style: { color: "red" }, href: "/#register" },
+								"register"
+							),
+							" to view this video."
+						);
 					} else if (course.subscribers.indexOf(this.props.currentUser.id) > -1) {
 						// regular subscriber
 						videoThumb = React.createElement(
@@ -82,26 +101,11 @@ var CourseSection = (function (Component) {
 							),
 							" your account to Premium"
 						);
-					} else {
-						// not logged in
-						videoThumb = React.createElement(
-							"div",
-							{ style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginTop: 12, marginBottom: 12 } },
-							"Please ",
-							React.createElement(
-								"a",
-								{ onClick: this.login, style: { color: "red" }, href: "#" },
-								"log in"
-							),
-							" or ",
-							React.createElement(
-								"a",
-								{ style: { color: "red" }, href: "/#register" },
-								"register"
-							),
-							" to view this video."
-						);
 					}
+
+					// else { // not logged in
+					// 	videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to view this video.</div>
+					// }
 				}
 
 				return React.createElement(
