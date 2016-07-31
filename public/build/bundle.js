@@ -44247,7 +44247,9 @@
 									_react2.default.createElement(
 										'span',
 										{ style: { fontWeight: 100, fontSize: 12, color: '#444' } },
-										nextEvent.date
+										nextEvent.date,
+										', ',
+										nextEvent.time
 									),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
