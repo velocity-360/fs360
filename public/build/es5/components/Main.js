@@ -30,6 +30,8 @@ var PostPage = _interopRequire(require("./containers/PostPage"));
 
 var MVP = _interopRequire(require("./containers/MVP"));
 
+var Peaks = _interopRequire(require("./containers/Peaks"));
+
 var Project = _interopRequire(require("./containers/Project"));
 
 var Course = _interopRequire(require("./containers/Course"));
@@ -77,6 +79,9 @@ var Main = (function (Component) {
 
 					case "mvp":
 						return page = React.createElement(MVP, null);
+
+					case "peaks":
+						return page = React.createElement(Peaks, null);
 
 					case "checkout":
 						return page = React.createElement(Checkout, { params: this.props.params });

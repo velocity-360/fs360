@@ -66,6 +66,7 @@ class Nav extends Component {
 										<li><a href="/courses?type=online"><div style={{padding:4}}>Videos</div></a></li>
 										<li><a href="/courses?type=live"><div style={{padding:4}}>Part Time</div></a></li>
 										<li><a href="/courses?type=immersive"><div style={{padding:4}}>Bootcamp</div></a></li>
+										<li><a href="/peaks"><div style={{padding:4}}>Data Science</div></a></li>
 									</ul>
 								</li>
 								{login}
