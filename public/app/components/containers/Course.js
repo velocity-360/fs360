@@ -19,11 +19,12 @@ class Course extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.closeModal = this.closeModal.bind(this)
-		this.showLogin = this.showLogin.bind(this)
 		this.closeLogin = this.closeLogin.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
 		this.showLoader = this.showLoader.bind(this)
 		this.hideLoader = this.hideLoader.bind(this)
+		this.showLogin = this.showLogin.bind(this)
+		this.showConfirmation = this.showConfirmation.bind(this)
 		this.subscribe = this.subscribe.bind(this)
 		this.updateCourse = this.updateCourse.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
@@ -55,6 +56,10 @@ class Course extends Component {
 
 	showLogin(){
 		this.setState({showLogin: true})
+	}
+
+	showConfirmation(){
+		this.setState({showConfirmation: true})
 	}
 
 	showLoader(){
@@ -228,7 +233,7 @@ class Course extends Component {
 
 									{ units }
 
-									<CTA course={course} currentUser={this.props.currentUser} loginAction={_showLogin} showLoader={this.showLoader} hideLoader={this.hideLoader} />
+									<CTA course={course} currentUser={this.props.currentUser} loginAction={_showLogin} showLoader={this.showLoader} hideLoader={this.hideLoader} showConfirmation={this.showConfirmation} />
 
 								</div>
 							</div>

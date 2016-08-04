@@ -61816,11 +61816,12 @@
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 	
 			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.showLogin = _this2.showLogin.bind(_this2);
 			_this2.closeLogin = _this2.closeLogin.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.showLoader = _this2.showLoader.bind(_this2);
 			_this2.hideLoader = _this2.hideLoader.bind(_this2);
+			_this2.showLogin = _this2.showLogin.bind(_this2);
+			_this2.showConfirmation = _this2.showConfirmation.bind(_this2);
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
@@ -61856,6 +61857,11 @@
 			key: 'showLogin',
 			value: function showLogin() {
 				this.setState({ showLogin: true });
+			}
+		}, {
+			key: 'showConfirmation',
+			value: function showConfirmation() {
+				this.setState({ showConfirmation: true });
 			}
 		}, {
 			key: 'showLoader',
@@ -62084,7 +62090,7 @@
 											)
 										),
 										units,
-										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader })
+										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
 									)
 								)
 							)
@@ -62388,9 +62394,7 @@
 							return;
 						}
 	
-						_this.setState({
-							showConfirmation: true
-						});
+						_this.props.showConfirmation();
 					});
 				});
 			}

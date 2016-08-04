@@ -51,11 +51,12 @@ var Course = (function (Component) {
 
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
 		this.closeModal = this.closeModal.bind(this);
-		this.showLogin = this.showLogin.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
 		this.showLoader = this.showLoader.bind(this);
 		this.hideLoader = this.hideLoader.bind(this);
+		this.showLogin = this.showLogin.bind(this);
+		this.showConfirmation = this.showConfirmation.bind(this);
 		this.subscribe = this.subscribe.bind(this);
 		this.updateCourse = this.updateCourse.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
@@ -98,6 +99,13 @@ var Course = (function (Component) {
 		showLogin: {
 			value: function showLogin() {
 				this.setState({ showLogin: true });
+			},
+			writable: true,
+			configurable: true
+		},
+		showConfirmation: {
+			value: function showConfirmation() {
+				this.setState({ showConfirmation: true });
 			},
 			writable: true,
 			configurable: true
@@ -341,7 +349,7 @@ var Course = (function (Component) {
 											)
 										),
 										units,
-										React.createElement(CTA, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader })
+										React.createElement(CTA, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
 									)
 								)
 							)

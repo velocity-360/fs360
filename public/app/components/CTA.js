@@ -125,10 +125,8 @@ class CTA extends Component {
 					_this.setState({showLoader: false})
 					return
 				}
-
-				_this.setState({
-					showConfirmation: true
-				})
+				
+				_this.props.showConfirmation()
 			})					
 		})
 	}

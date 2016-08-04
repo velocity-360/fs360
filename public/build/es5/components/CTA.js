@@ -164,9 +164,7 @@ var CTA = (function (Component) {
 							return;
 						}
 
-						_this.setState({
-							showConfirmation: true
-						});
+						_this.props.showConfirmation();
 					});
 				});
 			},
