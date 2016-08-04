@@ -136,11 +136,13 @@ var CTA = (function (Component) {
 		configureStripe: {
 			value: function configureStripe(course) {
 				var course = this.props.course;
+				var _this = this;
 				if (course.type == "online") {
 					// for videos, show subscription prompt:
 					stripe.initialize(function (token) {
-						_this.setState({ showLoader: true });
+						_this.props.showLoader();
 						api.submitStripeToken(token, function (err, response) {
+							_this.props.hideLoader();
 							if (err) {
 								alert(err.message);
 								return;
@@ -153,8 +155,9 @@ var CTA = (function (Component) {
 				}
 
 				stripe.initializeWithText("Submit Deposit", function (token) {
-					_this.setState({ showLoader: true });
+					_this.props.showLoader();
 					api.submitStripeCharge(token, course, course.deposit, "course", function (err, response) {
+						_this.props.hideLoader();
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -162,8 +165,7 @@ var CTA = (function (Component) {
 						}
 
 						_this.setState({
-							showConfirmation: true,
-							showLoader: false
+							showConfirmation: true
 						});
 					});
 				});

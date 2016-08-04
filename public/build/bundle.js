@@ -62084,7 +62084,7 @@
 											)
 										),
 										units,
-										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin })
+										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader })
 									)
 								)
 							)
@@ -62360,11 +62360,13 @@
 			key: 'configureStripe',
 			value: function configureStripe(course) {
 				var course = this.props.course;
+				var _this = this;
 				if (course.type == 'online') {
 					// for videos, show subscription prompt:
 					_StripeUtils2.default.initialize(function (token) {
-						_this.setState({ showLoader: true });
+						_this.props.showLoader();
 						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							_this.props.hideLoader();
 							if (err) {
 								alert(err.message);
 								return;
@@ -62377,8 +62379,9 @@
 				}
 	
 				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
-					_this.setState({ showLoader: true });
+					_this.props.showLoader();
 					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						_this.props.hideLoader();
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -62386,8 +62389,7 @@
 						}
 	
 						_this.setState({
-							showConfirmation: true,
-							showLoader: false
+							showConfirmation: true
 						});
 					});
 				});

@@ -59,12 +59,10 @@ class Course extends Component {
 
 	showLoader(){
 		this.setState({showLoader: true})
-
 	}
 
 	hideLoader(){
 		this.setState({showLoader: false})
-
 	}
 
 	subscribe(event){
@@ -230,7 +228,7 @@ class Course extends Component {
 
 									{ units }
 
-									<CTA course={course} currentUser={this.props.currentUser} loginAction={_showLogin} />
+									<CTA course={course} currentUser={this.props.currentUser} loginAction={_showLogin} showLoader={this.showLoader} hideLoader={this.hideLoader} />
 
 								</div>
 							</div>
