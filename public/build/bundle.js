@@ -62187,7 +62187,13 @@
 								course.title,
 								'. We look forward to meeting you on ',
 								startDate,
-								'. If you have any questions or concerns, feel free to contact us at katrina@velocity360.io. Thank you.'
+								'. If you have any questions or concerns, feel free to contact us at ',
+								_react2.default.createElement(
+									'a',
+									{ href: 'mailto:katrina@velocity360.io' },
+									'katrina@velocity360.io'
+								),
+								'. Thank you.'
 							)
 						),
 						_react2.default.createElement(

@@ -446,7 +446,13 @@ var Course = (function (Component) {
 								course.title,
 								". We look forward to meeting you on ",
 								startDate,
-								". If you have any questions or concerns, feel free to contact us at katrina@velocity360.io. Thank you."
+								". If you have any questions or concerns, feel free to contact us at ",
+								React.createElement(
+									"a",
+									{ href: "mailto:katrina@velocity360.io" },
+									"katrina@velocity360.io"
+								),
+								". Thank you."
 							)
 						),
 						React.createElement(

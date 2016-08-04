@@ -302,7 +302,7 @@ class Course extends Component {
 			        	<p>
 			        		Thank you for submitting a deposit to the {course.title}. We look forward
 			        		to meeting you on {startDate}. If you have any questions or concerns, feel
-			        		free to contact us at katrina@velocity360.io. Thank you.
+			        		free to contact us at <a href="mailto:katrina@velocity360.io">katrina@velocity360.io</a>. Thank you.
 			        	</p>
 			        </Modal.Body>
 			        <Modal.Footer style={{textAlign:'center'}}>
