@@ -41,7 +41,9 @@ var CTA = (function (Component) {
 
 	_prototypeProperties(CTA, null, {
 		componentDidMount: {
-			value: function componentDidMount() {},
+			value: function componentDidMount() {
+				this.configureStripe(this.props.course);
+			},
 			writable: true,
 			configurable: true
 		},
@@ -447,4 +449,3 @@ var CTA = (function (Component) {
 })(Component);
 
 module.exports = CTA;
-//		this.configureStripe(this.props.course)

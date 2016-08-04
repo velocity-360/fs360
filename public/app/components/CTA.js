@@ -20,7 +20,7 @@ class CTA extends Component {
 	}
 
 	componentDidMount(){
-//		this.configureStripe(this.props.course)
+		this.configureStripe(this.props.course)
 	}
 
 	login(event){

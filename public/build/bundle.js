@@ -62276,7 +62276,7 @@
 		_createClass(CTA, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		this.configureStripe(this.props.course)
+				this.configureStripe(this.props.course);
 			}
 		}, {
 			key: 'login',
