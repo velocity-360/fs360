@@ -22669,27 +22669,27 @@
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Peaks = __webpack_require__(602);
+	var _Peaks = __webpack_require__(593);
 	
 	var _Peaks2 = _interopRequireDefault(_Peaks);
 	
-	var _Project = __webpack_require__(593);
+	var _Project = __webpack_require__(594);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(594);
+	var _Course = __webpack_require__(595);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Account = __webpack_require__(599);
+	var _Account = __webpack_require__(600);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(600);
+	var _Unit = __webpack_require__(601);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
-	var _Checkout = __webpack_require__(601);
+	var _Checkout = __webpack_require__(602);
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
@@ -61294,6 +61294,162 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Register = __webpack_require__(470);
+	
+	var _Register2 = _interopRequireDefault(_Register);
+	
+	var _Header = __webpack_require__(473);
+	
+	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _Footer = __webpack_require__(474);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(475);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Peaks = function (_Component) {
+		_inherits(Peaks, _Component);
+	
+		function Peaks(props, context) {
+			_classCallCheck(this, Peaks);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Peaks).call(this, props, context));
+	
+			_this.state = {};
+			return _this;
+		}
+	
+		_createClass(Peaks, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Nav2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/mountains.jpg") center' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'vertical-middle' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'heading-block center nobottomborder' },
+									_react2.default.createElement(
+										'h1',
+										{ 'data-animate': 'fadeInUp' },
+										'Introducing Peaks Academy'
+									),
+									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: '/images/peaks.png', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'span',
+										{ style: { fontSize: 18 }, 'data-animate': 'fadeInUp', 'data-delay': '300' },
+										'Data Science Bootcamp',
+										_react2.default.createElement('br', null),
+										'Learn data science from anywhere in the world,',
+										_react2.default.createElement('br', null),
+										'without quitting your job',
+										_react2.default.createElement('br', null)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_two_third bottommargin-sm' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'fancy-title title-bottom-border' },
+										_react2.default.createElement(
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'Overview'
+										)
+									),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginLeft: 12 }, className: 'image_fade', src: '/images/group.JPG', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(
+											'p',
+											null,
+											'Through an advanced curriculum and project based structure, students learn today’s cutting edge analytic technologies. The program is designed for students who prefer not to leave their day jobs and are ready to take on an extra educational challenge during their evenings and weekends.',
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('br', null),
+											'The program features a Python-driven curriculum, and immerses you in the world of data science and machine learning algorithms. The course is well suited for professionals who have a strong technical background.'
+										),
+										_react2.default.createElement(
+											'a',
+											{ target: '_blank', href: 'http://www.peaksacademy.com/', className: 'button button-border button-dark button-rounded noleftmargin' },
+											'Learn More'
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
+									_react2.default.createElement(_RightSidebar2.default, null)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Peaks;
+	}(_react.Component);
+	
+	exports.default = Peaks;
+
+/***/ },
+/* 594 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
 	var _Sidebar = __webpack_require__(479);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
@@ -61574,7 +61730,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61607,11 +61763,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CTA = __webpack_require__(595);
+	var _CTA = __webpack_require__(596);
 	
 	var _CTA2 = _interopRequireDefault(_CTA);
 	
-	var _CourseSection = __webpack_require__(596);
+	var _CourseSection = __webpack_require__(597);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -61619,11 +61775,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(597);
+	var _Application = __webpack_require__(598);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(598);
+	var _DetailBox = __webpack_require__(599);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -62060,7 +62216,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 595 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62511,7 +62667,7 @@
 	exports.default = CTA;
 
 /***/ },
-/* 596 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62676,7 +62832,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 597 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62922,7 +63078,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 598 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63089,7 +63245,7 @@
 	exports.default = DetailBox;
 
 /***/ },
-/* 599 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63441,7 +63597,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 600 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63562,7 +63718,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
 
 /***/ },
-/* 601 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63841,162 +63997,6 @@
 	}(_react.Component);
 	
 	exports.default = Checkout;
-
-/***/ },
-/* 602 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Register = __webpack_require__(470);
-	
-	var _Register2 = _interopRequireDefault(_Register);
-	
-	var _Header = __webpack_require__(473);
-	
-	var _Header2 = _interopRequireDefault(_Header);
-	
-	var _Footer = __webpack_require__(474);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(475);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Peaks = function (_Component) {
-		_inherits(Peaks, _Component);
-	
-		function Peaks(props, context) {
-			_classCallCheck(this, Peaks);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Peaks).call(this, props, context));
-	
-			_this.state = {};
-			return _this;
-		}
-	
-		_createClass(Peaks, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_Nav2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/mountains.jpg") center' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'vertical-middle' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'heading-block center nobottomborder' },
-									_react2.default.createElement(
-										'h1',
-										{ 'data-animate': 'fadeInUp' },
-										'Introducing Peaks Academy'
-									),
-									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: '/images/peaks.png', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'span',
-										{ style: { fontSize: 18 }, 'data-animate': 'fadeInUp', 'data-delay': '300' },
-										'Data Science Bootcamp',
-										_react2.default.createElement('br', null),
-										'Learn data science from anywhere in the world,',
-										_react2.default.createElement('br', null),
-										'without quitting your job',
-										_react2.default.createElement('br', null)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_two_third bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'fancy-title title-bottom-border' },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Overview'
-										)
-									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginLeft: 12 }, className: 'image_fade', src: '/images/group.JPG', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'div',
-										null,
-										_react2.default.createElement(
-											'p',
-											null,
-											'Through an advanced curriculum and project based structure, students learn today’s cutting edge analytic technologies. The program is designed for students who prefer not to leave their day jobs and are ready to take on an extra educational challenge during their evenings and weekends.',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('br', null),
-											'The program features a Python-driven curriculum, and immerses you in the world of data science and machine learning algorithms. The course is well suited for professionals who have a strong technical background.'
-										),
-										_react2.default.createElement(
-											'a',
-											{ target: '_blank', href: 'http://www.peaksacademy.com/', className: 'button button-border button-dark button-rounded noleftmargin' },
-											'Learn More'
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
-									_react2.default.createElement(_RightSidebar2.default, null)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Peaks;
-	}(_react.Component);
-	
-	exports.default = Peaks;
 
 /***/ }
 /******/ ]);
