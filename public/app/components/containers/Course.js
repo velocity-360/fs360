@@ -279,8 +279,6 @@ class Course extends Component {
 											devs that graduate from bootcamps every three months, you will leave Velocity 360 with 
 											the skills highly in demand yet hard to find in the tech world. 
 										</p>
-
-
 									</div>
 								</div>
 							</div>

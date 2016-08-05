@@ -13,10 +13,11 @@ class CTA extends Component {
 		this.subscribe = this.subscribe.bind(this)
 		this.updateCourse = this.updateCourse.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
+		this.updatePromoCode = this.updatePromoCode.bind(this)
 		this.showPaypal = this.showPaypal.bind(this)
 		this.login = this.login.bind(this)
 		this.state = {
-
+			promoCode: ''
 		}
 	}
 
@@ -140,9 +141,34 @@ class CTA extends Component {
 			stripe.showModalWithText(this.props.course.title)
 	}
 
+	updatePromoCode(event){
+		event.preventDefault()
+		this.setState({
+			promoCode: event.target.value
+		})
+
+	}
+
 	showPaypal(event){
 		event.preventDefault()
-		window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900')
+		if (this.props.course.discountPaypalLink.length == 0){ // no discount code
+			window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900')
+			return
+		}
+
+		const promoCode = this.state.promoCode.trim()
+		if (promoCode.length == 0){
+			window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900')
+			return
+		}
+
+		if (this.props.course.promoCodes.indexOf(promoCode) == -1){
+			window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900')
+			return
+		}
+
+		// successful promo code
+		window.open(this.props.course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
 
 
 	}
@@ -229,9 +255,10 @@ class CTA extends Component {
 				register = (
 					<div className="col_full panel panel-default">
 						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
-						<div className="panel-body" style={{textAlign:'left'}}>
-							<a onClick={this.showPaypal} href={course.paypalLink} className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
-							<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
+						<div className="panel-body" style={{textAlign:'left', paddingRight:24}}>
+							<input type="text" onChange={this.updatePromoCode} id="promo" placeholder="Promo Code" className="form-control" style={{background:'#f9f9f9'}} /><br />
+							<a onClick={this.showPaypal} href={course.paypalLink} style={{width:'100%', textAlign:'center'}} className="button button-xlarge">PayPal</a><br />
+							<a onClick={this.openStripeModal} href="#" style={{width:'100%', textAlign:'center'}} className="button button-xlarge">Credit Card</a><br />
 						</div>
 					</div>
 				)

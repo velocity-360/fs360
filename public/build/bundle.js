@@ -62280,9 +62280,12 @@
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.updatePromoCode = _this2.updatePromoCode.bind(_this2);
 			_this2.showPaypal = _this2.showPaypal.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
-			_this2.state = {};
+			_this2.state = {
+				promoCode: ''
+			};
 			return _this2;
 		}
 	
@@ -62412,10 +62415,36 @@
 				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
 			}
 		}, {
+			key: 'updatePromoCode',
+			value: function updatePromoCode(event) {
+				event.preventDefault();
+				this.setState({
+					promoCode: event.target.value
+				});
+			}
+		}, {
 			key: 'showPaypal',
 			value: function showPaypal(event) {
 				event.preventDefault();
-				window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+				if (this.props.course.discountPaypalLink.length == 0) {
+					// no discount code
+					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				var promoCode = this.state.promoCode.trim();
+				if (promoCode.length == 0) {
+					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				if (this.props.course.promoCodes.indexOf(promoCode) == -1) {
+					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				// successful promo code
+				window.open(this.props.course.discountPaypalLink, 'Velocity 360', 'width=650,height=900');
 			}
 		}, {
 			key: 'render',
@@ -62610,20 +62639,21 @@
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'panel-body', style: { textAlign: 'left' } },
+								{ className: 'panel-body', style: { textAlign: 'left', paddingRight: 24 } },
+								_react2.default.createElement('input', { type: 'text', onChange: this.updatePromoCode, id: 'promo', placeholder: 'Promo Code', className: 'form-control', style: { background: '#f9f9f9' } }),
+								_react2.default.createElement('br', null),
 								_react2.default.createElement(
 									'a',
-									{ onClick: this.showPaypal, href: course.paypalLink, className: 'button button-xlarge tright' },
-									'PayPal',
-									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+									{ onClick: this.showPaypal, href: course.paypalLink, style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
+									'PayPal'
 								),
 								_react2.default.createElement('br', null),
 								_react2.default.createElement(
 									'a',
-									{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-									'Credit Card',
-									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-								)
+									{ onClick: this.openStripeModal, href: '#', style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
+									'Credit Card'
+								),
+								_react2.default.createElement('br', null)
 							)
 						);
 						break;
