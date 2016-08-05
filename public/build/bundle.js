@@ -62280,6 +62280,7 @@
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.showPaypal = _this2.showPaypal.bind(_this2);
 			_this2.login = _this2.login.bind(_this2);
 			_this2.state = {};
 			return _this2;
@@ -62409,6 +62410,12 @@
 			value: function openStripeModal(event) {
 				event.preventDefault();
 				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
+			}
+		}, {
+			key: 'showPaypal',
+			value: function showPaypal(event) {
+				event.preventDefault();
+				window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
 			}
 		}, {
 			key: 'render',
@@ -62606,7 +62613,7 @@
 								{ className: 'panel-body', style: { textAlign: 'left' } },
 								_react2.default.createElement(
 									'a',
-									{ href: course.paypalLink, target: '_blank', className: 'button button-xlarge tright' },
+									{ onClick: this.showPaypal, href: course.paypalLink, className: 'button button-xlarge tright' },
 									'PayPal',
 									_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
 								),

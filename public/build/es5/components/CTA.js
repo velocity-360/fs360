@@ -33,6 +33,7 @@ var CTA = (function (Component) {
 		this.subscribe = this.subscribe.bind(this);
 		this.updateCourse = this.updateCourse.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
+		this.showPaypal = this.showPaypal.bind(this);
 		this.login = this.login.bind(this);
 		this.state = {};
 	}
@@ -175,6 +176,15 @@ var CTA = (function (Component) {
 			value: function openStripeModal(event) {
 				event.preventDefault();
 				if (this.props.course.type == "online") stripe.showModal();else stripe.showModalWithText(this.props.course.title);
+			},
+			writable: true,
+			configurable: true
+		},
+		showPaypal: {
+			value: function showPaypal(event) {
+				event.preventDefault();
+				window.open(this.props.course.paypalLink, "Velocity 360", "width=650,height=900");
+
 			},
 			writable: true,
 			configurable: true
@@ -375,7 +385,7 @@ var CTA = (function (Component) {
 								{ className: "panel-body", style: { textAlign: "left" } },
 								React.createElement(
 									"a",
-									{ href: course.paypalLink, target: "_blank", className: "button button-xlarge tright" },
+									{ onClick: this.showPaypal, href: course.paypalLink, className: "button button-xlarge tright" },
 									"PayPal",
 									React.createElement("i", { "class": "icon-circle-arrow-right" })
 								),

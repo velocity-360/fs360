@@ -13,6 +13,7 @@ class CTA extends Component {
 		this.subscribe = this.subscribe.bind(this)
 		this.updateCourse = this.updateCourse.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
+		this.showPaypal = this.showPaypal.bind(this)
 		this.login = this.login.bind(this)
 		this.state = {
 
@@ -139,6 +140,12 @@ class CTA extends Component {
 			stripe.showModalWithText(this.props.course.title)
 	}
 
+	showPaypal(event){
+		event.preventDefault()
+		window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900')
+
+
+	}
 
 	render(){
 		const course = this.props.course
@@ -223,7 +230,7 @@ class CTA extends Component {
 					<div className="col_full panel panel-default">
 						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
 						<div className="panel-body" style={{textAlign:'left'}}>
-							<a href={course.paypalLink} target="_blank" className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
+							<a onClick={this.showPaypal} href={course.paypalLink} className="button button-xlarge tright">PayPal<i class="icon-circle-arrow-right"></i></a><br />
 							<a onClick={this.openStripeModal} href="#" className="button button-xlarge tright">Credit Card<i class="icon-circle-arrow-right"></i></a>
 						</div>
 					</div>
