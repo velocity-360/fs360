@@ -20,9 +20,10 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 				return;
 			}
 
-			console.log('CourseController: '+JSON.stringify(response));
-			$scope.course = response.course;
-			$scope.course['tagString'] = $scope.course.tags.toString();
+			console.log('CourseController: '+JSON.stringify(response))
+			$scope.course = response.course
+			$scope.course['tagString'] = $scope.course.tags.toString()
+			$scope.course['promoCodesString'] = $scope.course.promoCodes.toString()
 		});
 	}
 
@@ -95,26 +96,50 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 	}
 
 	function processTagString(){
-		var tagString = $scope.course.tagString;
+		var tagString = $scope.course.tagString
 		if (tagString == null)
-			return;
+			return
 
-		var tags = [];
-		var t = tagString.split(',');
+		$scope.course['tags'] = convertStringToArray(tagString)
+
+		// var tags = [];
+		// var t = tagString.split(',');
+		// for (var i=0; i<t.length; i++){
+		// 	var tag = t[i];
+		// 	if (tag.length == 0)
+		// 		continue;
+
+		// 	tags.push(tag.trim())
+		// }
+
+		// $scope.course['tags'] = tags;
+	}
+
+	function processPromoString(){
+		var promoCodesString = $scope.course.promoCodesString
+		if (promoCodesString == null)
+			return
+
+		$scope.course['promoCodes'] = convertStringToArray(promoCodesString)
+	}
+
+	function convertStringToArray(string){
+		var array = [];
+		var t = string.split(',');
 		for (var i=0; i<t.length; i++){
-			var tag = t[i];
-			if (tag.length == 0)
-				continue;
+			var word = t[i];
+			if (word.length == 0)
+				continue
 
-			tags.push(tag.trim())
+			array.push(word.trim())
 		}
 
-		$scope.course['tags'] = tags;
-
+		return array
 	}
 
 	$scope.createCourse = function(completion){
 		processTagString();
+		processPromoString();
 		RestService.post({resource:'course', id:null}, $scope.course, function(response){
 			if (response.confirmation != 'success'){
 				alert(response.message);
@@ -133,6 +158,7 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 			return;
 
 		processTagString();
+		processPromoString();
 		RestService.put({resource:'course', id:$scope.course.id}, $scope.course, function(response){
 			if (response.confirmation != 'success'){
 				alert(response.message);
@@ -143,10 +169,7 @@ app.controller('CourseController', ['$scope', 'generalService', 'accountService'
 			if (completion != null)
 				completion();
 		});
-	}
-
-	
-	
+	}	
 	
 
 }]);

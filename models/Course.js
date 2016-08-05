@@ -13,7 +13,9 @@ var CourseSchema = new mongoose.Schema({
 	description: {type:String, default:''},
 	units: {type:Array, default:[]}, // array of json objects {'unit':'unit one', 'description':'fawe awef fawef f'}
 	tags: {type:Array, default:[]},
+	promoCodes: {type:Array, default:[]},
 	paypalLink: {type:String, trim:true, default:''},
+	discountPaypalLink: {type:String, trim:true, default:''},
 	credits: {type:Number, default: 10},
 	tuition: {type:Number, default: 0},
 	premiumTuition: {type: Number, default: 0}, // price for premium subscribers
@@ -40,7 +42,9 @@ CourseSchema.methods.summary = function() {
 		'type':this.type,
 		'units':this.units,
 		'tags':this.tags,
+		'promoCodes':this.promoCodes,
 		'paypalLink':this.paypalLink,
+		'discountPaypalLink':this.discountPaypalLink,
 		'credits':this.credits,
 		'tuition':this.tuition,
 		'premiumTuition':this.premiumTuition,

@@ -112,9 +112,11 @@
                             <div class="row">
                                 <input ng-model="course.syllabus" type="text" placeholder="Syllabus" class="form-control" />
                                 <input ng-model="course.tagString" type="text" placeholder="Tags" class="form-control" />
+                                <input ng-model="course.promoCodesString" type="text" placeholder="Promo Codes" class="form-control" />
                                 <input ng-model="course.dates" type="text" placeholder="Dates" class="form-control" />
                                 <input ng-model="course.schedule" type="text" placeholder="Schedule" class="form-control mt24" />
                                 <input ng-model="course.paypalLink" type="text" placeholder="PayPal Link" class="form-control mt24" />
+                                <input ng-model="course.discountPaypalLink" type="text" placeholder="Discount PayPal Link" class="form-control mt24" />
                                 <div class="col-md-6 mb-xs-24">
                                     <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777" ng-file-drop="uploadImage($files)">
                                         <img style="width:72px;border:1px solid #ddd" ng-show="course.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% course.image %>?crop=360" />
