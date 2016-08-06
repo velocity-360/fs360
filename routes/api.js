@@ -117,8 +117,8 @@ router.post('/:resource', function(req, res, next) {
 
 			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
 			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
-			return			
 		})
+		return
 	}
 
 	if (resource == 'proposal'){
@@ -128,8 +128,8 @@ router.post('/:resource', function(req, res, next) {
 
 			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
 			res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
-			return		
 		})
+		return
 	}
 
 	if (resource == 'freesession'){
@@ -139,8 +139,8 @@ router.post('/:resource', function(req, res, next) {
 
 			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
 			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
-			return
 		})
+		return
 	}
 
 	if (resource == 'subscribe'){
@@ -150,8 +150,8 @@ router.post('/:resource', function(req, res, next) {
 
 			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
 			res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
-			return
 		})
+		return
 	}
 
 	if (resource == 'syllabus'){
@@ -326,9 +326,7 @@ router.post('/:resource', function(req, res, next) {
 		res.json(data)
 		return
 	})
-
-
-});
+})
 
 router.put('/:resource/:id', function(req, res, next) {
 	var resource = req.params.resource
