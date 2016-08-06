@@ -86,7 +86,7 @@ module.exports = {
 	},
 
 	post: function(subscriberInfo, completion){
-		Subscriber.find({email:params.email}, function(err, subscribers){
+		Subscriber.find({email:subscriberInfo.email}, function(err, subscribers){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null)
 				return
