@@ -122,7 +122,10 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'proposal'){
-		subscriberController.post(body, null)
+		subscriberController.post(body, function(err, subscriber){
+			if (err == null)
+				req.session.visitor = subscriber.id
+		})
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
 		return
@@ -207,9 +210,9 @@ router.post('/:resource', function(req, res, next) {
 				workshop: infoRequest.event
 			}
 
-			subscriberController.post(subscriber, function(err, subscriber){
+			subscriberController.post(subscriber, function(err, result){
 				if (err == null)
-					req.session.visitor = subscriber.id
+					req.session.visitor = result.id
 			})
 
 			return EmailManager.sendHtmlEmail('katrina@velocity360.io', infoRequest.email, infoRequest.event, confirmationMsg)
