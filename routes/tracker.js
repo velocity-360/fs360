@@ -5,24 +5,10 @@ var subscriberController = require('../controllers/SubscriberController')
 var trackController = require('../controllers/TrackController')
 
 
-router.post('/', function(req, res, next) {
+function updateTracking(req, res, visitor){
 	var page = req.body.page
 	var slug = req.body.slug
 	var params = req.body.params
-
-//	console.log('TRACKER = '+page)
-	var visitor = {}
-	subscriberController.currentVisitor(req)
-	.then(function(subscriber){
-		if (subscriber != null){
-			visitor['id'] = subscriber.id
-			visitor['email'] = subscriber.email
-			visitor['name'] = subscriber.name
-		}
-	})
-	.catch(function(err){
-
-	})
 
 	var trackingId = req.session.track
 	console.log('TRACKING ID: '+trackingId)
@@ -149,7 +135,26 @@ router.post('/', function(req, res, next) {
 		return
 	})
 
+}
 
+
+router.post('/', function(req, res, next) {
+
+//	console.log('TRACKER = '+page)
+	var visitor = {}
+	subscriberController.currentVisitor(req)
+	.then(function(subscriber){
+		if (subscriber != null){
+			visitor['id'] = subscriber.id
+			visitor['email'] = subscriber.email
+			visitor['name'] = subscriber.name
+		}
+
+		updateTracking(req, res, visitor)
+	})
+	.catch(function(err){
+		updateTracking(req, res, visitor)
+	})
 })
 
 
