@@ -117,20 +117,25 @@ module.exports = {
 
 	currentVisitor: function(req){
 	    return new Promise(function (resolve, reject){
+			console.log('TEST 1')
 			if (req.session == null){
 				resolve(null)
 				return
 			}
 
+			console.log('TEST 2')
 			if (req.session.visitor == null){
+				console.log('TEST 2A')
 				resolve(null)
 				return
 			}
 
+			console.log('TEST 3')
 			var subscriberId = req.session.visitor
+			console.log('TEST 4: '+subscriberId)
 			Subscriber.findById(subscriberId, function(err, subscriber){
 				if (err){
-					reject(err)
+					resolve(null)
 					return
 				}
 				
