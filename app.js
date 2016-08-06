@@ -44,7 +44,7 @@ app.use(cookieParser());
 app.use(sessions({
   cookieName: 'session',
   secret: 'ajajfjwfajwef',
-  duration: 180*24*60*60*1000, // 180 days
+  duration: 60*24*60*60*1000, // 60 days
   activeDuration:30*60*1000,
 }));
 app.use(express.static(path.join(__dirname, 'public')));
