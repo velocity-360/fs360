@@ -123,7 +123,6 @@ module.exports = {
 				return
 			}
 
-			console.log('TEST 2')
 			if (req.session.visitor == null){
 				console.log('TEST 2A')
 				resolve(null)

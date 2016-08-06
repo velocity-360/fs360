@@ -11,7 +11,7 @@ function updateTracking(req, res, visitor){
 	var params = req.body.params
 
 	var trackingId = req.session.track
-	console.log('TRACKING ID: '+trackingId)
+//	console.log('TRACKING ID: '+trackingId)
 //	var user = req.session.user
 	if (trackingId == null){
 		var pageMap = {}

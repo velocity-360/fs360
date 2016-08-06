@@ -105,50 +105,53 @@ router.post('/:resource', function(req, res, next) {
 		res.json({
 			confirmation:'success', 
 			message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
-		});
+		})
 
-		return;
+		return
 	}
 
 	if (resource == 'info'){
 		subscriberController.post(body, function(err, subscriber){
 			if (err == null)
 				req.session.visitor = subscriber.id
-		})
 
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
-		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
-		return
+			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
+			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
+			return			
+		})
 	}
 
 	if (resource == 'proposal'){
 		subscriberController.post(body, function(err, subscriber){
 			if (err == null)
 				req.session.visitor = subscriber.id
+
+			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
+			res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
+			return		
 		})
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
-		res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
-		return
 	}
 
 	if (resource == 'freesession'){
 		subscriberController.post(body, function(err, subscriber){
 			if (err == null)
 				req.session.visitor = subscriber.id
+
+			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
+			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
+			return
 		})
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
-		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
-		return
 	}
 
 	if (resource == 'subscribe'){
 		subscriberController.post(body, function(err, subscriber){
 			if (err == null)
 				req.session.visitor = subscriber.id
+
+			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
+			res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
+			return
 		})
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
-		res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
-		return
 	}
 
 	if (resource == 'syllabus'){
