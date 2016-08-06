@@ -4,8 +4,10 @@ var Track = require('../models/Track')
 var accountController = require('../controllers/AccountController')
 
 
-router.get('/', function(req, res, next) {
-	var page = req.query.page
+router.post('/', function(req, res, next) {
+	var page = req.body.page
+	var slug = req.body.slug
+	var params = req.body.params
 
 //	console.log('TRACKER = '+page)
 	var profile = {}
@@ -27,13 +29,13 @@ router.get('/', function(req, res, next) {
 	if (trackingId == null){
 		var pageMap = {}
 		pageMap[page] = 1
-		var params = {
-			history: [{page:page, timestamp: Date.now()}],
+		var info = {
+			history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 			pageMap: pageMap,
 			profile: profile
 		}
 
-		Track.create(params, function(err, track){
+		Track.create(info, function(err, track){
 			if (err){
 				res.json({
 					confirmation:'fail',
@@ -77,6 +79,8 @@ router.get('/', function(req, res, next) {
 
 		history.push({
 			page: page,
+			slug: slug,
+			params: params,
 			timestamp: Date.now()
 		})
 
