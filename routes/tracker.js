@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
 			profile['firstName'] = currentUser.firstName
 			profile['lastName'] = currentUser.lastName
 		}
-
 	})
 	.catch(function(err){
 
