@@ -17,6 +17,7 @@ var eventController = require('../controllers/EventController')
 var projectController = require('../controllers/ProjectController')
 var sampleController = require('../controllers/SampleController')
 var unitController = require('../controllers/UnitController')
+var trackController = require('../controllers/TrackController')
 var controllers = {
 	course: courseController,
 	profile: profileController,
@@ -26,7 +27,8 @@ var controllers = {
 	event: eventController,
 	project: projectController,
 	sample: sampleController,
-	unit: unitController
+	unit: unitController,
+	track: trackController
 };
 
 var fetchFile = function(path){

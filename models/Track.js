@@ -11,7 +11,7 @@ TrackSchema.methods.summary = function() {
 	var summary = {
 		'profile':this.profile,
 		'pageMap':this.pageMap,
-		'history':this.hisotry,
+		'history':this.history,
 		'timestamp':this.timestamp,
 		'id':this._id
 	}
