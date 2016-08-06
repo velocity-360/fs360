@@ -49,17 +49,20 @@ class DetailBox extends Component {
 		var _this = this
 		var url = ''
 
-		if (this.props.course.type == 'immersive'){ // syllabus request
-			s['pdf'] = this.props.course.syllabus
-			url = '/api/syllabus'
+		const course = this.props.course
+		if (course.type == 'immersive'){ // syllabus request
+			s['pdf'] = course.syllabus
+			s['subject'] = 'Syllabus Request'
+			url = '/account/syllabus'
 		}
-		if (this.props.course.type == 'online'){ 
-			url = '/api/subscribe'
+		if (course.type == 'online'){ 
+			s['subject'] = 'New Subscriber'
+			url = '/account/subscribe'
 		}
-		if (this.props.course.type == 'live'){ 
-			url = '/api/freesession'
+		if (course.type == 'live'){ 
+			s['subject'] = 'Free Session Request'
+			url = '/account/freesession'
 		}
-
 
 		api.handlePost(url, s, function(err, response){
 			_this.props.hideLoader()
@@ -75,25 +78,26 @@ class DetailBox extends Component {
 
 	render(){
 		var detailContent = null
-		if (this.props.course.type == 'online'){
+		const course = this.props.course
+		if (course.type == 'online'){
 			detailContent = {
 				title: 'Newsletter',
 				text: 'Join our newsletter for notifications on upcoming courses, events and tutorials.',
-				path: '/api/subscribe'
+				path: '/account/subscribe'
 			}
 		}
-		else if (this.props.course.type == 'immersive'){
+		else if (course.type == 'immersive'){
 			detailContent = {
 				title: 'Request Syllabus',
-				text: 'Complete the form below to receive a syllabus for '+this.props.course.title,
-				path: '/api/syllabus'
+				text: 'Complete the form below to receive a syllabus for '+course.title,
+				path: '/account/syllabus'
 			}
 		}
 		else {
 			detailContent = {
 				title: 'Preview Free Session',
-				text: 'Complete the form below to preview the next session of '+this.props.course.title+' for free.',
-				path: '/api/subscribe'
+				text: 'Complete the form below to preview the next session of '+course.title+' for free.',
+				path: '/account/subscribe'
 			}
 		}
 

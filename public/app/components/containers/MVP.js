@@ -21,7 +21,8 @@ class MVP extends Component {
 			proposal: {
 				name: '',
 				email: '',
-				summary: ''
+				summary: '',
+				subject: 'MVP Proposal'
 			}
 		}
 	}
@@ -38,17 +39,18 @@ class MVP extends Component {
 		event.preventDefault()
 		console.log('submitProposal: '+JSON.stringify(this.state.proposal))
 
-		if (this.state.proposal.name.length == 0){
+		const proposal = this.state.proposal
+		if (proposal.name.length == 0){
 			alert('Please enter your name.')
 			return
 		}
 
-		if (this.state.proposal.email.length == 0){
+		if (proposal.email.length == 0){
 			alert('Please enter your email.')
 			return
 		}
 
-		if (this.state.proposal.summary.length == 0){
+		if (proposal.summary.length == 0){
 			alert('Please enter the summary for your project.')
 			return
 		}
@@ -56,7 +58,7 @@ class MVP extends Component {
 
 		var _this = this
 		_this.setState({showLoader: true})
-		api.handlePost('/api/proposal', this.state.proposal, function(err, response){
+		api.handlePost('/account/proposal', proposal, function(err, response){
 			_this.setState({showLoader: false})
 
 			if (err){

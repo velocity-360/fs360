@@ -61070,7 +61070,8 @@
 				proposal: {
 					name: '',
 					email: '',
-					summary: ''
+					summary: '',
+					subject: 'MVP Proposal'
 				}
 			};
 			return _this2;
@@ -61091,24 +61092,25 @@
 				event.preventDefault();
 				console.log('submitProposal: ' + JSON.stringify(this.state.proposal));
 	
-				if (this.state.proposal.name.length == 0) {
+				var proposal = this.state.proposal;
+				if (proposal.name.length == 0) {
 					alert('Please enter your name.');
 					return;
 				}
 	
-				if (this.state.proposal.email.length == 0) {
+				if (proposal.email.length == 0) {
 					alert('Please enter your email.');
 					return;
 				}
 	
-				if (this.state.proposal.summary.length == 0) {
+				if (proposal.summary.length == 0) {
 					alert('Please enter the summary for your project.');
 					return;
 				}
 	
 				var _this = this;
 				_this.setState({ showLoader: true });
-				_APIManager2.default.handlePost('/api/proposal', this.state.proposal, function (err, response) {
+				_APIManager2.default.handlePost('/account/proposal', proposal, function (err, response) {
 					_this.setState({ showLoader: false });
 	
 					if (err) {
@@ -61852,7 +61854,8 @@
 				syllabusRequest: {
 					name: '',
 					email: '',
-					course: ''
+					course: '',
+					subject: 'Syllabus Request'
 				}
 			};
 			return _this2;
@@ -61976,7 +61979,7 @@
 				this.setState({ showLoader: true });
 				application['course'] = course.title;
 				var _this = this;
-				_APIManager2.default.handlePost('/api/application', application, function (err, response) {
+				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
 					_this.setState({ showLoader: false });
 	
 					if (err) {
@@ -62948,7 +62951,8 @@
 					github: '',
 					college: '',
 					major: '',
-					currentLevel: 'total beginner'
+					currentLevel: 'total beginner',
+					subject: 'Course Application'
 				}
 			};
 			return _this;
@@ -63231,16 +63235,20 @@
 				var _this = this;
 				var url = '';
 	
-				if (this.props.course.type == 'immersive') {
+				var course = this.props.course;
+				if (course.type == 'immersive') {
 					// syllabus request
-					s['pdf'] = this.props.course.syllabus;
-					url = '/api/syllabus';
+					s['pdf'] = course.syllabus;
+					s['subject'] = 'Syllabus Request';
+					url = '/account/syllabus';
 				}
-				if (this.props.course.type == 'online') {
-					url = '/api/subscribe';
+				if (course.type == 'online') {
+					s['subject'] = 'New Subscriber';
+					url = '/account/subscribe';
 				}
-				if (this.props.course.type == 'live') {
-					url = '/api/freesession';
+				if (course.type == 'live') {
+					s['subject'] = 'Free Session Request';
+					url = '/account/freesession';
 				}
 	
 				_APIManager2.default.handlePost(url, s, function (err, response) {
@@ -63258,23 +63266,24 @@
 			key: 'render',
 			value: function render() {
 				var detailContent = null;
-				if (this.props.course.type == 'online') {
+				var course = this.props.course;
+				if (course.type == 'online') {
 					detailContent = {
 						title: 'Newsletter',
 						text: 'Join our newsletter for notifications on upcoming courses, events and tutorials.',
-						path: '/api/subscribe'
+						path: '/account/subscribe'
 					};
-				} else if (this.props.course.type == 'immersive') {
+				} else if (course.type == 'immersive') {
 					detailContent = {
 						title: 'Request Syllabus',
-						text: 'Complete the form below to receive a syllabus for ' + this.props.course.title,
-						path: '/api/syllabus'
+						text: 'Complete the form below to receive a syllabus for ' + course.title,
+						path: '/account/syllabus'
 					};
 				} else {
 					detailContent = {
 						title: 'Preview Free Session',
-						text: 'Complete the form below to preview the next session of ' + this.props.course.title + ' for free.',
-						path: '/api/subscribe'
+						text: 'Complete the form below to preview the next session of ' + course.title + ' for free.',
+						path: '/account/subscribe'
 					};
 				}
 	

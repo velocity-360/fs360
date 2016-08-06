@@ -34,7 +34,8 @@ var Application = (function (Component) {
 				github: "",
 				college: "",
 				major: "",
-				currentLevel: "total beginner"
+				currentLevel: "total beginner",
+				subject: "Course Application"
 			}
 		};
 	}

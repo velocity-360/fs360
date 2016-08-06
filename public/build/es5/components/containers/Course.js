@@ -66,7 +66,8 @@ var Course = (function (Component) {
 			syllabusRequest: {
 				name: "",
 				email: "",
-				course: ""
+				course: "",
+				subject: "Syllabus Request"
 			}
 		};
 	}
@@ -211,7 +212,7 @@ var Course = (function (Component) {
 				this.setState({ showLoader: true });
 				application.course = course.title;
 				var _this = this;
-				api.handlePost("/api/application", application, function (err, response) {
+				api.handlePost("/account/application", application, function (err, response) {
 					_this.setState({ showLoader: false });
 
 					if (err) {
