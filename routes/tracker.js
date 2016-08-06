@@ -63,6 +63,14 @@ router.get('/', function(req, res, next) {
 			return
 		}
 
+		if (track == null){
+			res.json({
+				confirmation:'fail',
+				message: 'Track '+trackingId+' not found'
+			})
+			return			
+		}
+
 		var history = track.history
 		if (history == null)
 			history = []
