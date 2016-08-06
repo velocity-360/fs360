@@ -14,6 +14,7 @@ var api = require('./routes/api');
 var admin = require('./routes/admin');
 var account = require('./routes/account');
 var stripe = require('./routes/stripe');
+var tracker = require('./routes/tracker');
 
 // Here we find an appropriate database to connect to, defaulting to localhost if we don't find one.  
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/'+appName;
@@ -48,7 +49,9 @@ app.use(sessions({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', main);
+app.use('/tracker', tracker);
 app.use('/api', api);
 app.use('/account', account);
 app.use('/admin', admin);

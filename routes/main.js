@@ -55,9 +55,13 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/:page', function(req, res, next) {
-	var initialData = initial()
 	var page = req.params.page // 'courses', 'feed', 'account'
+	if (page == 'tracker'){
+		next()
+		return
+	}
 
+	var initialData = initial()
 	accountController.currentUser(req)
 	.then(function(currentUser){
 		if (currentUser != null)

@@ -158,7 +158,8 @@ var CTA = (function (Component) {
 					return;
 				}
 
-				stripe.initializeWithText("Submit Deposit", function (token) {
+				var text = "Submit Deposit - $" + course.deposit;
+				stripe.initializeWithText(text, function (token) {
 					_this.props.showLoader();
 					api.submitStripeCharge(token, course, course.deposit, "course", function (err, response) {
 						_this.props.hideLoader();

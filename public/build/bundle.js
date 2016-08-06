@@ -62394,7 +62394,8 @@
 					return;
 				}
 	
-				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+				var text = 'Submit Deposit - $' + course.deposit;
+				_StripeUtils2.default.initializeWithText(text, function (token) {
 					_this.props.showLoader();
 					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
 						_this.props.hideLoader();
