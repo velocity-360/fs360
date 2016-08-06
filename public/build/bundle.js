@@ -22693,6 +22693,10 @@
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22714,6 +22718,20 @@
 		}
 	
 		_createClass(Main, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				console.log('componentDidMount: ' + this.props.page);
+	
+				_APIManager2.default.handleGet('/tracker', { page: this.props.page }, function (err, response) {
+					if (err) {
+						console.log(JSON.stringify(err));
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))

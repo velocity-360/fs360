@@ -13,6 +13,7 @@ import Course from './containers/Course'
 import Account from './containers/Account'
 import Unit from './containers/Unit'
 import Checkout from './containers/Checkout'
+import api from '../utils/APIManager'
 
 class Main extends Component {
 
@@ -21,6 +22,23 @@ class Main extends Component {
 		this.state = {
 			
 		}
+	}
+
+	componentDidMount(){
+		console.log('componentDidMount: '+this.props.page)
+
+		api.handleGet('/tracker', {page:this.props.page}, (err, response) => {
+			if (err){
+				console.log(JSON.stringify(err))
+				return
+			}
+
+			console.log(JSON.stringify(response))
+
+
+
+		})
+
 	}
 
 	render(){

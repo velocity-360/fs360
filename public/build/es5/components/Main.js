@@ -42,6 +42,8 @@ var Unit = _interopRequire(require("./containers/Unit"));
 
 var Checkout = _interopRequire(require("./containers/Checkout"));
 
+var api = _interopRequire(require("../utils/APIManager"));
+
 var Main = (function (Component) {
 	function Main(props, context) {
 		_classCallCheck(this, Main);
@@ -53,6 +55,24 @@ var Main = (function (Component) {
 	_inherits(Main, Component);
 
 	_prototypeProperties(Main, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				console.log("componentDidMount: " + this.props.page);
+
+				api.handleGet("/tracker", { page: this.props.page }, function (err, response) {
+					if (err) {
+						console.log(JSON.stringify(err));
+						return;
+					}
+
+					console.log(JSON.stringify(response));
+
+
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
