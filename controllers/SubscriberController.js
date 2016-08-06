@@ -86,17 +86,43 @@ module.exports = {
 	},
 
 	post: function(subscriberInfo, completion){
-		Subscriber.create(subscriberInfo, function(err, subscriber){
+		Subscriber.find({email:params.email}, function(err, subscribers){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null)
 				return
 			}
 
-			if (completion != null)
+			if (subscribers.length > 0){ // subscriber with email already exists - send it back
+				var subscriber = subscribers[0]
 				completion(null, subscriber.summary())
-			
-			return
+				return
+			}
+
+			// Create new subscriber. This is what should happen:
+			Subscriber.create(subscriberInfo, function(err, subscriber){
+				if (err){
+					completion({confirmation:'fail', message:err.message}, null)
+					return
+				}
+
+				if (completion != null)
+					completion(null, subscriber.summary())
+				
+				return
+			})
 		})
+
+		// Subscriber.create(subscriberInfo, function(err, subscriber){
+		// 	if (err){
+		// 		completion({confirmation:'fail', message:err.message}, null)
+		// 		return
+		// 	}
+
+		// 	if (completion != null)
+		// 		completion(null, subscriber.summary())
+			
+		// 	return
+		// })
 	},
 
 	put: function(subscriberId, subscriberInfo, completion){
