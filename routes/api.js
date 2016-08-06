@@ -96,7 +96,8 @@ router.get('/:resource/:id', function(req, res, next) {
 })
 
 router.post('/:resource', function(req, res, next) {
-	var resource = req.params.resource;
+	var resource = req.params.resource
+	var body = req.body
 	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
 
 	if (resource == 'application'){
@@ -110,15 +111,17 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'info'){
-		var body = req.body
-		subscriberController.post(body, null)
+		subscriberController.post(body, function(err, subscriber){
+			if (err == null)
+				req.session.visitor = subscriber.id
+		})
+
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
 		return
 	}
 
 	if (resource == 'proposal'){
-		var body = req.body
 		subscriberController.post(body, null)
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
@@ -126,22 +129,26 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 	if (resource == 'freesession'){
-		var body = req.body
-		subscriberController.post(body, null)
+		subscriberController.post(body, function(err, subscriber){
+			if (err == null)
+				req.session.visitor = subscriber.id
+		})
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
 		return
 	}
 
 	if (resource == 'subscribe'){
-		subscriberController.post(req.body, null)
+		subscriberController.post(body, function(err, subscriber){
+			if (err == null)
+				req.session.visitor = subscriber.id
+		})
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
 		res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
 		return
 	}
 
 	if (resource == 'syllabus'){
-		var body = req.body
 		var course = body.course
 
 		var template = 'node-react-evening.html'
@@ -172,6 +179,7 @@ router.post('/:resource', function(req, res, next) {
 					return
 				}
 
+				req.session.visitor = result.id
 				EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
 				res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'})
 				return
@@ -199,7 +207,11 @@ router.post('/:resource', function(req, res, next) {
 				workshop: infoRequest.event
 			}
 
-			subscriberController.post(subscriber, null)
+			subscriberController.post(subscriber, function(err, subscriber){
+				if (err == null)
+					req.session.visitor = subscriber.id
+			})
+
 			return EmailManager.sendHtmlEmail('katrina@velocity360.io', infoRequest.email, infoRequest.event, confirmationMsg)
 		})
 		.then(function(){
