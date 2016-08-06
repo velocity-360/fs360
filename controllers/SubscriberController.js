@@ -6,13 +6,13 @@ var Promise = require('bluebird')
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 function convertToJson(subscribers){
-	var results = new Array();
+	var results = new Array()
     for (var i=0; i<subscribers.length; i++){
-  	  var p = subscribers[i];
-  	  results.push(p.summary());
+  	  var p = subscribers[i]
+  	  results.push(p.summary())
     }
 	
-	return results;
+	return results
 }
 
 module.exports = {
@@ -21,7 +21,6 @@ module.exports = {
 	},
 
 	get: function(params, completion){
-		console.log('CourseController - GET: '+JSON.stringify(params));
 
 		// fetch specific Course by ID:
 		if (params.id != null){ 
@@ -100,7 +99,6 @@ module.exports = {
 		})
 	},
 
-
 	put: function(subscriberId, subscriberInfo, completion){
 		Subscriber.findByIdAndUpdate(subscriberId, subscriberInfo, {new:true}, function(err, subscriber){
 			if (err){
@@ -115,7 +113,36 @@ module.exports = {
 
 	delete: function(){
 
-	}
+	},
+
+	currentVisitor: function(req){
+	    return new Promise(function (resolve, reject){
+			if (req.session == null){
+				resolve(null)
+				return
+			}
+
+			if (req.session.visitor == null){
+				resolve(null)
+				return
+			}
+
+			var subscriberId = req.session.visitor
+			Subscriber.findById(subscriberId, function(err, subscriber){
+				if (err){
+					reject(err)
+					return
+				}
+				
+				if (subscriber == null){
+					resolve(null)
+					return
+				}
+
+				resolve(subscriber.summary())
+			})
+	    })
+	}	
 
 }
 

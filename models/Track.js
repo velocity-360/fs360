@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 var TrackSchema = new mongoose.Schema({
-	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
+	visitor: {type:mongoose.Schema.Types.Mixed, default:{}},
 	pageMap: {type:mongoose.Schema.Types.Mixed, default:{}},
 	history: {type:Array, default:[]},
 	timestamp: {type:Date, default:Date.now}
@@ -9,7 +9,7 @@ var TrackSchema = new mongoose.Schema({
 
 TrackSchema.methods.summary = function() {
 	var summary = {
-		'profile':this.profile,
+		'visitor':this.visitor,
 		'pageMap':this.pageMap,
 		'history':this.history,
 		'timestamp':this.timestamp,

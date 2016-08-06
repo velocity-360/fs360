@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var Track = require('../models/Track')
-var accountController = require('../controllers/AccountController')
+var subscriberController = require('../controllers/SubscriberController')
 
 
 router.post('/', function(req, res, next) {
@@ -10,14 +10,13 @@ router.post('/', function(req, res, next) {
 	var params = req.body.params
 
 //	console.log('TRACKER = '+page)
-	var profile = {}
-	accountController.currentUser(req)
-	.then(function(currentUser){
-		if (currentUser != null){
-			profile['id'] = currentUser.id
-			profile['email'] = currentUser.email
-			profile['firstName'] = currentUser.firstName
-			profile['lastName'] = currentUser.lastName
+	var visitor = {}
+	subscriberController.currentVisitor(req)
+	.then(function(subscriber){
+		if (subscriber != null){
+			visitor['id'] = subscriber.id
+			visitor['email'] = subscriber.email
+			visitor['name'] = subscriber.name
 		}
 	})
 	.catch(function(err){
@@ -32,7 +31,7 @@ router.post('/', function(req, res, next) {
 		var info = {
 			history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 			pageMap: pageMap,
-			profile: profile
+			visitor: visitor
 		}
 
 		Track.create(info, function(err, track){
@@ -97,8 +96,8 @@ router.post('/', function(req, res, next) {
 		track['pageMap'] = pageMap
 		track.markModified('pageMap')
 
-		track['profile'] = profile
-		track.markModified('profile')
+		track['visitor'] = visitor
+		track.markModified('visitor')
 
 		track.save()
 
