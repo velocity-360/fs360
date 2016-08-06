@@ -35,6 +35,10 @@ router.get('/', function(req, res, next) {
 
 		Track.create(params, function(err, track){
 			if (err){
+				res.json({
+					confirmation:'fail',
+					message: err
+				})
 
 				return
 			}
@@ -52,10 +56,17 @@ router.get('/', function(req, res, next) {
 
 	Track.findById(trackingId, function(err, track){
 		if (err){
+			res.json({
+				confirmation:'fail',
+				message: 'Track '+trackingId+' not found'
+			})
 			return
 		}
 
 		var history = track.history
+		if (history == null)
+			history = []
+
 		history.push({
 			page: page,
 			timestamp: Date.now()
