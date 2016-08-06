@@ -25,6 +25,7 @@ router.post('/', function(req, res, next) {
 	})
 
 	var trackingId = req.session.track
+	console.log('TRACKING ID: '+trackingId)
 //	var user = req.session.user
 	if (trackingId == null){
 		var pageMap = {}
@@ -58,6 +59,7 @@ router.post('/', function(req, res, next) {
 
 	Track.findById(trackingId, function(err, track){
 		if (err){
+			req.session.reset()
 			var pageMap = {}
 			pageMap[page] = 1
 			var info = {
@@ -66,19 +68,26 @@ router.post('/', function(req, res, next) {
 				visitor: visitor
 			}
 
-			trackController.post(params, function(err, result){
-				if (err != null){
-					req.session.track = result.id
+			trackController.post(info, function(err, result){
+				if (err){
 					res.json({
-						confirmation:'success'
+						confirmation:'fail',
+						message: err
 					})
+					return
 				}
+
+				req.session.track = result.id
+				res.json({
+					confirmation:'success'
+				})
 			})
 
 			return
 		}
 
 		if (track == null){
+			req.session.reset()
 			var pageMap = {}
 			pageMap[page] = 1
 			var info = {
@@ -87,13 +96,20 @@ router.post('/', function(req, res, next) {
 				visitor: visitor
 			}
 
-			trackController.post(params, function(err, result){
-				if (err != null){
-					req.session.track = result.id
+			trackController.post(info, function(err, result){
+				if (err){
 					res.json({
-						confirmation:'success'
+						confirmation:'fail',
+						message: err
 					})
+					return
 				}
+
+				req.session.track = result.id
+				res.json({
+					confirmation:'success'
+				})
+
 			})
 			return			
 		}
