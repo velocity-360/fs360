@@ -30,14 +30,6 @@ class Main extends Component {
 		var slug = (this.props.slug == null) ? '' : this.props.slug
 		var params = (this.props.params == null) ? '' : this.props.params
 
-		// if (this.props.slug != null)
-		// 	page = page+'/'+this.props.slug
-
-		// if (this.props.params != null){
-		// 	page = page+'/'+JSON.stringify(this.props.params)
-		// 	console.log('componentDidMount: '+page)
-		// }
-
 		api.handlePost('/tracker', {page:page, slug:slug, params:params}, (err, response) => {
 			if (err){
 				console.log(JSON.stringify(err))

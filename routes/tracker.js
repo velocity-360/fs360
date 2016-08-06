@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var Track = require('../models/Track')
 var subscriberController = require('../controllers/SubscriberController')
+var trackController = require('../controllers/TrackController')
 
 
 router.post('/', function(req, res, next) {
@@ -57,17 +58,42 @@ router.post('/', function(req, res, next) {
 
 	Track.findById(trackingId, function(err, track){
 		if (err){
-			res.json({
-				confirmation:'fail',
-				message: 'Track '+trackingId+' not found'
+			var pageMap = {}
+			pageMap[page] = 1
+			var info = {
+				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
+				pageMap: pageMap,
+				visitor: visitor
+			}
+
+			trackController.post(params, function(err, result){
+				if (err != null){
+					req.session.track = result.id
+					res.json({
+						confirmation:'success'
+					})
+				}
 			})
+
 			return
 		}
 
 		if (track == null){
-			res.json({
-				confirmation:'fail',
-				message: 'Track '+trackingId+' not found'
+			var pageMap = {}
+			pageMap[page] = 1
+			var info = {
+				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
+				pageMap: pageMap,
+				visitor: visitor
+			}
+
+			trackController.post(params, function(err, result){
+				if (err != null){
+					req.session.track = result.id
+					res.json({
+						confirmation:'success'
+					})
+				}
 			})
 			return			
 		}
