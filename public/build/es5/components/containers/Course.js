@@ -355,6 +355,7 @@ var Course = (function (Component) {
 												React.createElement(
 													"div",
 													{ className: "col_full" },
+													React.createElement("img", { className: "hidden-xs", style: { width: "160", float: "right", marginLeft: 16 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
 													React.createElement(
 														"h2",
 														{ style: { marginBottom: 0 } },

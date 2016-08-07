@@ -228,6 +228,7 @@ class Course extends Component {
 										</div>
 										<div className="entry-content">
 											<div className='col_full'>
+												<img className="hidden-xs" style={{width:'160', float:'right', marginLeft:16}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
 												<h2 style={{marginBottom:0}}>{course.title}</h2>
 												<p>{course.description}</p>
 											</div>

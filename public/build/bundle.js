@@ -62008,6 +62008,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'col_full' },
+													_react2.default.createElement('img', { className: 'hidden-xs', style: { width: '160', float: 'right', marginLeft: 16 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
 													_react2.default.createElement(
 														'h2',
 														{ style: { marginBottom: 0 } },
