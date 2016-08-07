@@ -22669,10 +22669,6 @@
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Peaks = __webpack_require__(594);
-	
-	var _Peaks2 = _interopRequireDefault(_Peaks);
-	
 	var _Project = __webpack_require__(595);
 	
 	var _Project2 = _interopRequireDefault(_Project);
@@ -22761,9 +22757,6 @@
 	
 					case 'mvp':
 						return page = _react2.default.createElement(_MVP2.default, null);
-	
-					case 'peaks':
-						return page = _react2.default.createElement(_Peaks2.default, null);
 	
 					case 'checkout':
 						return page = _react2.default.createElement(_Checkout2.default, { params: this.props.params });
@@ -41119,19 +41112,6 @@
 														'Bootcamp'
 													)
 												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '/peaks' },
-													_react2.default.createElement(
-														'div',
-														{ style: { padding: 4 } },
-														'Data Science'
-													)
-												)
 											)
 										)
 									),
@@ -45396,19 +45376,6 @@
 														'Bootcamp'
 													)
 												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '/peaks' },
-													_react2.default.createElement(
-														'div',
-														null,
-														'Data Science'
-													)
-												)
 											)
 										)
 									)
@@ -45635,8 +45602,6 @@
 		function Event(props, context) {
 			_classCallCheck(this, Event);
 	
-			//		this.updateVisitor = this.updateVisitor.bind(this)
-	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props, context));
 	
 			_this2.submitRequest = _this2.submitRequest.bind(_this2);
@@ -45679,62 +45644,12 @@
 					showForm: false
 				});
 			}
-	
-			// updateVisitor(event){
-			// 	const currentEvent = this.props.events[this.props.slug]
-			// 	event.preventDefault()
-			// 	var s = Object.assign({}, this.state.visitor)
-			// 	s[event.target.id] = event.target.value
-			// 	s['event'] = currentEvent.title
-			// 	this.setState({
-			// 		visitor: s
-			// 	})
-			// }
-	
 		}, {
 			key: 'submitRequest',
 			value: function submitRequest(event) {
 				event.preventDefault();
 				this.setState({
 					showForm: true
-				});
-	
-				return;
-	
-				if (this.state.visitor.name.length == 0) {
-					alert('Please enter your name.');
-					return;
-				}
-	
-				if (this.state.visitor.email.length == 0) {
-					alert('Please enter your email.');
-					return;
-				}
-	
-				var s = Object.assign({}, this.state.visitor);
-				var parts = s.name.split(' ');
-				s['firstName'] = parts[0];
-				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
-	
-				var currentEvent = this.props.events[this.props.slug];
-				s['date'] = currentEvent.date;
-				console.log('SubmitRequest: ' + JSON.stringify(s));
-	
-				var _this = this;
-				_this.setState({
-					showLoader: true
-				});
-				_APIManager2.default.handlePost('/account/rsvp', s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
 				});
 			}
 		}, {
@@ -61424,162 +61339,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
 
 /***/ },
-/* 594 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Register = __webpack_require__(470);
-	
-	var _Register2 = _interopRequireDefault(_Register);
-	
-	var _Header = __webpack_require__(473);
-	
-	var _Header2 = _interopRequireDefault(_Header);
-	
-	var _Footer = __webpack_require__(475);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(476);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Peaks = function (_Component) {
-		_inherits(Peaks, _Component);
-	
-		function Peaks(props, context) {
-			_classCallCheck(this, Peaks);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Peaks).call(this, props, context));
-	
-			_this.state = {};
-			return _this;
-		}
-	
-		_createClass(Peaks, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_Nav2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/mountains.jpg") center' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'vertical-middle' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'heading-block center nobottomborder' },
-									_react2.default.createElement(
-										'h1',
-										{ 'data-animate': 'fadeInUp' },
-										'Introducing Peaks Academy'
-									),
-									_react2.default.createElement('img', { style: { width: 124, borderRadius: 62 }, src: '/images/peaks.png', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'span',
-										{ style: { fontSize: 18 }, 'data-animate': 'fadeInUp', 'data-delay': '300' },
-										'Data Science Bootcamp',
-										_react2.default.createElement('br', null),
-										'Learn data science from anywhere in the world,',
-										_react2.default.createElement('br', null),
-										'without quitting your job',
-										_react2.default.createElement('br', null)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_two_third bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'fancy-title title-bottom-border' },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Overview'
-										)
-									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginLeft: 12 }, className: 'image_fade', src: '/images/group.JPG', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'div',
-										null,
-										_react2.default.createElement(
-											'p',
-											null,
-											'Through an advanced curriculum and project based structure, students learn today’s cutting edge analytic technologies. The program is designed for students who prefer not to leave their day jobs and are ready to take on an extra educational challenge during their evenings and weekends.',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('br', null),
-											'The program features a Python-driven curriculum, and immerses you in the world of data science and machine learning algorithms. The course is well suited for professionals who have a strong technical background.'
-										),
-										_react2.default.createElement(
-											'a',
-											{ target: '_blank', href: 'http://www.peaksacademy.com/', className: 'button button-border button-dark button-rounded noleftmargin' },
-											'Learn More'
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
-									_react2.default.createElement(_RightSidebar2.default, null)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Peaks;
-	}(_react.Component);
-	
-	exports.default = Peaks;
-
-/***/ },
+/* 594 */,
 /* 595 */
 /***/ function(module, exports, __webpack_require__) {
 

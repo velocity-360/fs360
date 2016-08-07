@@ -205,19 +205,6 @@ var Nav = (function (Component) {
 														"Bootcamp"
 													)
 												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "/peaks" },
-													React.createElement(
-														"div",
-														{ style: { padding: 4 } },
-														"Data Science"
-													)
-												)
 											)
 										)
 									),

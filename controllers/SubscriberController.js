@@ -111,18 +111,6 @@ module.exports = {
 				return
 			})
 		})
-
-		// Subscriber.create(subscriberInfo, function(err, subscriber){
-		// 	if (err){
-		// 		completion({confirmation:'fail', message:err.message}, null)
-		// 		return
-		// 	}
-
-		// 	if (completion != null)
-		// 		completion(null, subscriber.summary())
-			
-		// 	return
-		// })
 	},
 
 	put: function(subscriberId, subscriberInfo, completion){
@@ -143,21 +131,17 @@ module.exports = {
 
 	currentVisitor: function(req){
 	    return new Promise(function (resolve, reject){
-			console.log('TEST 1')
 			if (req.session == null){
 				resolve(null)
 				return
 			}
 
 			if (req.session.visitor == null){
-				console.log('TEST 2A')
 				resolve(null)
 				return
 			}
 
-			console.log('TEST 3')
 			var subscriberId = req.session.visitor
-			console.log('TEST 4: '+subscriberId)
 			Subscriber.findById(subscriberId, function(err, subscriber){
 				if (err){
 					resolve(null)

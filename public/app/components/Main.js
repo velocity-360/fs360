@@ -7,7 +7,6 @@ import Event from './containers/Event'
 import Feed from './containers/Feed'
 import PostPage from './containers/PostPage'
 import MVP from './containers/MVP'
-import Peaks from './containers/Peaks'
 import Project from './containers/Project'
 import Course from './containers/Course'
 import Account from './containers/Account'
@@ -65,9 +64,6 @@ class Main extends Component {
 
 			case 'mvp':
 				return page = <MVP />
-
-			case 'peaks':
-				return page = <Peaks />
 
 			case 'checkout':
 				return page = <Checkout params={this.props.params} />

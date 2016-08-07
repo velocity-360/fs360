@@ -46,7 +46,6 @@ var Event = (function (Component) {
 		_classCallCheck(this, Event);
 
 		_get(Object.getPrototypeOf(Event.prototype), "constructor", this).call(this, props, context);
-		//		this.updateVisitor = this.updateVisitor.bind(this)
 		this.submitRequest = this.submitRequest.bind(this);
 		this.toggleLoader = this.toggleLoader.bind(this);
 		this.hideForm = this.hideForm.bind(this);
@@ -96,60 +95,10 @@ var Event = (function (Component) {
 			configurable: true
 		},
 		submitRequest: {
-
-			// updateVisitor(event){
-			// 	const currentEvent = this.props.events[this.props.slug]
-			// 	event.preventDefault()
-			// 	var s = Object.assign({}, this.state.visitor)
-			// 	s[event.target.id] = event.target.value
-			// 	s['event'] = currentEvent.title
-			// 	this.setState({
-			// 		visitor: s
-			// 	})
-			// }
-
 			value: function submitRequest(event) {
 				event.preventDefault();
 				this.setState({
 					showForm: true
-				});
-
-				return;
-
-				if (this.state.visitor.name.length == 0) {
-					alert("Please enter your name.");
-					return;
-				}
-
-				if (this.state.visitor.email.length == 0) {
-					alert("Please enter your email.");
-					return;
-				}
-
-				var s = Object.assign({}, this.state.visitor);
-				var parts = s.name.split(" ");
-				s.firstName = parts[0];
-				if (parts.length > 1) s.lastName = parts[parts.length - 1];
-
-				var currentEvent = this.props.events[this.props.slug];
-				s.date = currentEvent.date;
-				console.log("SubmitRequest: " + JSON.stringify(s));
-
-				var _this = this;
-				_this.setState({
-					showLoader: true
-				});
-				api.handlePost("/account/rsvp", s, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					alert(response.message);
 				});
 			},
 			writable: true,

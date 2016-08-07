@@ -160,19 +160,6 @@ var Sidebar = (function (Component) {
 														"Bootcamp"
 													)
 												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "/peaks" },
-													React.createElement(
-														"div",
-														null,
-														"Data Science"
-													)
-												)
 											)
 										)
 									)
