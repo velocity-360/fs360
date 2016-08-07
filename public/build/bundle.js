@@ -44218,7 +44218,7 @@
 				pkg['event'] = nextEvent.title;
 	
 				var _this = this;
-				_APIManager2.default.handlePost('/api/rsvp', pkg, function (err, response) {
+				_APIManager2.default.handlePost('/account/rsvp', pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});

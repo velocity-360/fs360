@@ -89,7 +89,7 @@ var Header = (function (Component) {
 				pkg.event = nextEvent.title;
 
 				var _this = this;
-				api.handlePost("/api/rsvp", pkg, function (err, response) {
+				api.handlePost("/account/rsvp", pkg, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});
