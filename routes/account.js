@@ -2,8 +2,20 @@ var express = require('express')
 var router = express.Router()
 var accountController = require('../controllers/AccountController')
 var subscriberController = require('../controllers/SubscriberController')
+var Helpers = require('../managers/Helpers')
 var EmailManager = require('../managers/EmailManager')
+var fs = require('fs')
 
+
+var fetchFile = function(path){
+	return new Promise(function (resolve, reject){
+
+		fs.readFile(path, 'utf8', function (err, data) {
+			if (err) {reject(err) }
+			else { resolve(data) }
+		})
+	})
+}
 
 router.get('/:action', function(req, res, next) {
 	var action = req.params.action
@@ -70,72 +82,65 @@ router.post('/:action', function(req, res, next) {
 
 	var body = req.body
 	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
-	var actions = ['application', 'info', 'proposal', 'freesession', 'subscribe']
+	var actions = ['application', 'proposal', 'freesession', 'subscribe']
 
 	if (actions.indexOf(action) != -1){
 		EmailManager.sendEmails('info@thegridmedia.com', emailList, body.subject, JSON.stringify(body))
 		res.json({
 			confirmation:'success', 
-			message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
+			message: body.confirmation
 		})
 
 		return
 	}
 
-	// if (action == 'application'){
-	// 	EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
-	// 	res.json({
-	// 		confirmation:'success', 
-	// 		message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
-	// 	})
+	if (action == 'syllabus'){
+		var course = body.course
 
-	// 	return
-	// }
+		var template = 'node-react-evening.html'
+		if (course == 'Node & React Evening Course')
+			template = 'node-react-evening.html'
+		
+		if (course == '8-Week Fundamentals Bootcamp')
+			template = 'fundamentals-bootcamp.html'
 
-	// if (action == 'info'){
-	// 	subscriberController.post(body, function(err, subscriber){
-	// 		if (err == null)
-	// 			req.session.visitor = subscriber.id
+		if (course == '24-Week Evening Bootcamp')
+			template = 'fundamentals-bootcamp.html'
+		
+		fetchFile('public/email/syllabus/'+template)
+		.then(function(html){
+			var url = 'https://www.velocity360.io/syllabus/'+body.pdf
+			html = html.replace('{{link}}', url)
+			html = html.replace('{{name}}', Helpers.capitalize(body.firstName))
+			html = html.replace('{{link}}', url)
 
-	// 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
-	// 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
-	// 	})
-	// 	return
-	// }
+			var subscriber = {
+				name: body.firstName+body.lastName,
+				email: body.email,
+				workshop: course
+			}
 
-	// if (action == 'proposal'){
-	// 	subscriberController.post(body, function(err, subscriber){
-	// 		if (err == null)
-	// 			req.session.visitor = subscriber.id
+			subscriberController.post(subscriber, function(err, result){
+				if (err){
+					return
+				}
 
-	// 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
-	// 		res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
-	// 	})
-	// 	return
-	// }
+				req.session.visitor = result.id
+				EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
+				res.json({
+					confirmation: 'success',
+					message: body.confirmation
+				})
+				return
+			})
+		})
+		.catch(function(err){
 
-	// if (action == 'freesession'){
-	// 	subscriberController.post(body, function(err, subscriber){
-	// 		if (err == null)
-	// 			req.session.visitor = subscriber.id
+		})
 
-	// 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
-	// 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
-	// 	})
-	// 	return
-	// }
-
-	// if (resource == 'subscribe'){
-	// 	subscriberController.post(body, function(err, subscriber){
-	// 		if (err == null)
-	// 			req.session.visitor = subscriber.id
-
-	// 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
-	// 		res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
-	// 	})
-	// 	return
-	// }
-
+		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
+		return
+	}
 
 
 	res.json({

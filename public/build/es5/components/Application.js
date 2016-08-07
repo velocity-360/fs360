@@ -50,7 +50,7 @@ var Application = (function (Component) {
 		},
 		updateApplication: {
 			value: function updateApplication(event) {
-				console.log("updateUserApplication: " + event.target.id);
+				//		console.log('updateUserApplication: '+event.target.id)
 				event.preventDefault();
 
 

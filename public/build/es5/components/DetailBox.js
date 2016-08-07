@@ -77,14 +77,17 @@ var DetailBox = (function (Component) {
 					// syllabus request
 					s.pdf = course.syllabus;
 					s.subject = "Syllabus Request";
+					s.confirmation = "Thanks for your interest. Check your email shortly for a direct download link to the syllabus.";
 					url = "/account/syllabus";
 				}
 				if (course.type == "online") {
 					s.subject = "New Subscriber";
+					s.confirmation = "Thanks for subscribing! We will reach out to you shortly with more information!";
 					url = "/account/subscribe";
 				}
 				if (course.type == "live") {
 					s.subject = "Free Session Request";
+					s.confirmation = "Thanks for your interest. We will contact you shortly with more information about attending a free session!";
 					url = "/account/freesession";
 				}
 
