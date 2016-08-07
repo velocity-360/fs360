@@ -55,12 +55,6 @@ var Main = (function (Component) {
 	_prototypeProperties(Main, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				// TrackingManager.currentPage = {
-				// 	page: this.props.page,
-				// 	slug: (this.props.slug == null) ? '' : this.props.slug,
-				// 	params: (this.props.params == null) ? '' : this.props.params
-				// }
-
 				var tracker = new TrackingManager();
 
 				tracker.setCurrentPage({
@@ -147,12 +141,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Main);
-// TrackingManager.updateTracking((err, response) => {
-// 	if (err){
-// 		console.log('ERROR: '+JSON.stringify(err))
-// 		return
-// 	}
-
-// 	console.log(JSON.stringify(response))
-
-// })

@@ -31,7 +31,6 @@ var TrackingManager = (function () {
 	_prototypeProperties(TrackingManager, null, {
 		setCurrentPage: {
 			value: function setCurrentPage(pageInfo) {
-				//		console.log('SET CURRENT PAGE: '+JSON.stringify(pageInfo))
 				this.currentPage = pageInfo;
 			},
 			writable: true,
@@ -39,7 +38,7 @@ var TrackingManager = (function () {
 		},
 		updateTracking: {
 			value: function updateTracking(callback) {
-				console.log("UPDATE TRACKING: " + JSON.stringify(this.currentPage));
+				//		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
 				api.handlePost("/tracker", this.currentPage, function (err, response) {
 					if (err) {
 						callback(err, null);
@@ -57,25 +56,4 @@ var TrackingManager = (function () {
 	return TrackingManager;
 })();
 
-module.exports = TrackingManager
-
-// export default {
-// 	currentPage: {
-// 		page: '',
-// 		slug: '',
-// 		params: {}
-// 	},
-
-// 	updateTracking: (callback) => {
-// 		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
-// 		api.handlePost('/tracker', this.currentPage, (err, response) => {
-// 			if (err){
-// 				callback(err, null)
-// 				return
-// 			}
-
-// 			callback(null, response)
-// 		})
-// 	}
-// }
-;
+module.exports = TrackingManager;

@@ -69,7 +69,6 @@ class QualifyingForm extends Component {
 				}
 
 				console.log(JSON.stringify(response))
-
 			})
 		})
 	}

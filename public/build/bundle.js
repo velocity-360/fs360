@@ -22716,12 +22716,6 @@
 		_createClass(Main, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				// TrackingManager.currentPage = {
-				// 	page: this.props.page,
-				// 	slug: (this.props.slug == null) ? '' : this.props.slug,
-				// 	params: (this.props.params == null) ? '' : this.props.params
-				// }
-	
 				var tracker = new _TrackingManager2.default();
 	
 				tracker.setCurrentPage({
@@ -22738,16 +22732,6 @@
 	
 					console.log(JSON.stringify(response));
 				});
-	
-				// TrackingManager.updateTracking((err, response) => {
-				// 	if (err){
-				// 		console.log('ERROR: '+JSON.stringify(err))
-				// 		return
-				// 	}
-	
-				// 	console.log(JSON.stringify(response))
-	
-				// })
 			}
 		}, {
 			key: 'render',
@@ -64085,13 +64069,12 @@
 		_createClass(TrackingManager, [{
 			key: 'setCurrentPage',
 			value: function setCurrentPage(pageInfo) {
-				//		console.log('SET CURRENT PAGE: '+JSON.stringify(pageInfo))
 				this.currentPage = pageInfo;
 			}
 		}, {
 			key: 'updateTracking',
 			value: function updateTracking(callback) {
-				console.log('UPDATE TRACKING: ' + JSON.stringify(this.currentPage));
+				//		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
 				_APIManager2.default.handlePost('/tracker', this.currentPage, function (err, response) {
 					if (err) {
 						callback(err, null);
@@ -64107,26 +64090,6 @@
 	}();
 	
 	exports.default = TrackingManager;
-	
-	// export default {
-	// 	currentPage: {
-	// 		page: '',
-	// 		slug: '',
-	// 		params: {}
-	// 	},
-
-	// 	updateTracking: (callback) => {
-	// 		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
-	// 		api.handlePost('/tracker', this.currentPage, (err, response) => {
-	// 			if (err){
-	// 				callback(err, null)
-	// 				return
-	// 			}
-
-	// 			callback(null, response)
-	// 		})
-	// 	}
-	// }
 
 /***/ }
 /******/ ]);

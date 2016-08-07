@@ -24,12 +24,6 @@ class Main extends Component {
 	}
 
 	componentDidMount(){
-		// TrackingManager.currentPage = {
-		// 	page: this.props.page,
-		// 	slug: (this.props.slug == null) ? '' : this.props.slug,
-		// 	params: (this.props.params == null) ? '' : this.props.params
-		// }
-
 		var tracker = new TrackingManager()
 
 		tracker.setCurrentPage({
@@ -46,16 +40,6 @@ class Main extends Component {
 
 			console.log(JSON.stringify(response))
 		})
-
-		// TrackingManager.updateTracking((err, response) => {
-		// 	if (err){
-		// 		console.log('ERROR: '+JSON.stringify(err))
-		// 		return
-		// 	}
-
-		// 	console.log(JSON.stringify(response))
-
-		// })
 	}
 
 	render(){

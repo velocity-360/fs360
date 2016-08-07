@@ -19,12 +19,11 @@ class TrackingManager {
 	}
 
 	setCurrentPage(pageInfo){
-//		console.log('SET CURRENT PAGE: '+JSON.stringify(pageInfo))
 		this.currentPage = pageInfo
 	}
 
 	updateTracking(callback){
-		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
+//		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
 		api.handlePost('/tracker', this.currentPage, (err, response) => {
 			if (err){
 				callback(err, null)
@@ -38,22 +37,3 @@ class TrackingManager {
 
 export default TrackingManager
 
-// export default {
-// 	currentPage: {
-// 		page: '',
-// 		slug: '',
-// 		params: {}
-// 	},
-
-// 	updateTracking: (callback) => {
-// 		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
-// 		api.handlePost('/tracker', this.currentPage, (err, response) => {
-// 			if (err){
-// 				callback(err, null)
-// 				return
-// 			}
-
-// 			callback(null, response)
-// 		})
-// 	}
-// }
