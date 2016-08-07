@@ -102,6 +102,16 @@ var RightSidebar = (function (Component) {
 				});
 
 				var events = this.props.events.map(function (event, i) {
+					var rsvp = event.status == "open" ? React.createElement(
+						"a",
+						{ href: "/event/" + event.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
+						"Attend"
+					) : React.createElement(
+						"a",
+						{ href: "/event/" + event.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-red" },
+						"Sold Out"
+					);
+
 					return React.createElement(
 						"div",
 						{ key: event.id, style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16 } },
@@ -126,11 +136,7 @@ var RightSidebar = (function (Component) {
 								event.time
 							),
 							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ href: "/event/" + event.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
-								"Attend"
-							)
+							rsvp
 						)
 					);
 				});

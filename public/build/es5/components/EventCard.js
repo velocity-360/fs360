@@ -37,13 +37,23 @@ var EventCard = (function (Component) {
 		},
 		render: {
 			value: function render() {
+				var evt = this.props.event;
+				var rsvp = evt.status == "open" ? React.createElement(
+					"a",
+					{ id: this.props.index, onClick: this.selectEvent, href: "#", className: "btn btn-success" },
+					"RSVP"
+				) : React.createElement(
+					"a",
+					{ id: this.props.index, onClick: this.selectEvent, href: "#", className: "btn btn-alert" },
+					"Sold Out"
+				);
 				return React.createElement(
 					"div",
 					{ className: "entry clearfix", style: { marginBottom: 24, border: "1px solid #ddd" } },
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", width: 360 }, src: "https://media-service.appspot.com/site/images/" + this.props.event.image + "?crop=400", alt: this.props.event.title })
+						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", width: 360 }, src: "https://media-service.appspot.com/site/images/" + evt.image + "?crop=400", alt: evt.title })
 					),
 					React.createElement(
 						"div",
@@ -57,7 +67,7 @@ var EventCard = (function (Component) {
 								React.createElement(
 									"a",
 									{ href: "#" },
-									this.props.event.title
+									evt.title
 								)
 							)
 						),
@@ -72,7 +82,7 @@ var EventCard = (function (Component) {
 									{ href: "#" },
 									React.createElement("i", { className: "icon-calendar" }),
 									" ",
-									this.props.event.date
+									evt.date
 								)
 							),
 							React.createElement(
@@ -83,7 +93,7 @@ var EventCard = (function (Component) {
 									{ href: "#" },
 									React.createElement("i", { className: "icon-time" }),
 									" ",
-									this.props.event.time
+									evt.time
 								)
 							),
 							React.createElement(
@@ -94,7 +104,7 @@ var EventCard = (function (Component) {
 									{ href: "#" },
 									React.createElement("i", { className: "icon-map-marker2" }),
 									" ",
-									this.props.event.address,
+									evt.address,
 									", NYC"
 								)
 							)
@@ -102,14 +112,10 @@ var EventCard = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "entry-content" },
-							this.props.event.description,
+							evt.description,
 							React.createElement("br", null),
 							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ id: this.props.index, onClick: this.selectEvent, href: "#", className: "btn btn-success" },
-								"RSVP"
-							)
+							rsvp
 						)
 					)
 				);

@@ -44181,6 +44181,15 @@
 			key: 'render',
 			value: function render() {
 				var nextEvent = this.props.events[0];
+				var rsvp = nextEvent.status == 'open' ? _react2.default.createElement(
+					'a',
+					{ href: '/event/' + nextEvent.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
+					'Details'
+				) : _react2.default.createElement(
+					'a',
+					{ href: '/event/' + nextEvent.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-red' },
+					'Sold Out'
+				);
 	
 				return _react2.default.createElement(
 					'section',
@@ -44226,11 +44235,7 @@
 										nextEvent.time
 									),
 									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'a',
-										{ href: '/event/' + nextEvent.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
-										'Details'
-									)
+									rsvp
 								)
 							),
 							_react2.default.createElement('div', { className: 'line', style: { margin: '15px 0 30px' } }),
@@ -44725,6 +44730,16 @@
 				});
 	
 				var events = this.props.events.map(function (event, i) {
+					var rsvp = event.status == 'open' ? _react2.default.createElement(
+						'a',
+						{ href: '/event/' + event.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
+						'Attend'
+					) : _react2.default.createElement(
+						'a',
+						{ href: '/event/' + event.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-red' },
+						'Sold Out'
+					);
+	
 					return _react2.default.createElement(
 						'div',
 						{ key: event.id, style: { border: '1px solid #ddd', background: '#f9f9f9', marginBottom: 16 } },
@@ -44749,11 +44764,7 @@
 								event.time
 							),
 							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								'a',
-								{ href: '/event/' + event.slug, style: { marginRight: 0 }, className: 'button button-3d button-mini button-rounded button-teal' },
-								'Attend'
-							)
+							rsvp
 						)
 					);
 				});

@@ -39,6 +39,7 @@ class Header extends Component {
 
 	render(){
 		const nextEvent = this.props.events[0]
+		const rsvp = (nextEvent.status == 'open') ? <a href={'/event/'+nextEvent.slug} style={{marginRight:0}} className="button button-3d button-mini button-rounded button-teal">Details</a> : <a href={'/event/'+nextEvent.slug} style={{marginRight:0}} className="button button-3d button-mini button-rounded button-red">Sold Out</a>
 
 		return (
 	        <section id="slider" style={{background: 'url("/images/joe_light_blue.png") center', overflow:'visible'}} data-height-lg="450" data-height-md="450" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
@@ -55,7 +56,7 @@ class Header extends Component {
 							<div style={{padding:12, height:104, textAlign:'right'}}>
 								<h5 style={{fontWeight:200, marginBottom:0, fontSize:12}}><a href={'/event/'+nextEvent.slug}>{nextEvent.title}</a></h5>
 								<span style={{fontWeight:100, fontSize:12, color:'#444'}}>{nextEvent.date}, {nextEvent.time}</span><br />
-								<a href={'/event/'+nextEvent.slug} style={{marginRight:0}} className="button button-3d button-mini button-rounded button-teal">Details</a>
+								{rsvp}
 							</div>
 						</div>
 

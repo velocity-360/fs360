@@ -73,6 +73,15 @@ var Header = (function (Component) {
 		render: {
 			value: function render() {
 				var nextEvent = this.props.events[0];
+				var rsvp = nextEvent.status == "open" ? React.createElement(
+					"a",
+					{ href: "/event/" + nextEvent.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
+					"Details"
+				) : React.createElement(
+					"a",
+					{ href: "/event/" + nextEvent.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-red" },
+					"Sold Out"
+				);
 
 				return React.createElement(
 					"section",
@@ -118,11 +127,7 @@ var Header = (function (Component) {
 										nextEvent.time
 									),
 									React.createElement("br", null),
-									React.createElement(
-										"a",
-										{ href: "/event/" + nextEvent.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
-										"Details"
-									)
+									rsvp
 								)
 							),
 							React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
