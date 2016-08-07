@@ -134,13 +134,13 @@ var QualifyingForm = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "col_full", style: { marginBottom: 12 } },
-							React.createElement("input", { onChange: this.updateVisitor, id: "question_1", type: "text", className: "form-control input-lg not-dark", placeholder: "Are you changing career into software development?" }),
+							React.createElement("input", { onChange: this.updateVisitor, id: "goal", type: "text", className: "form-control input-lg not-dark", placeholder: "Are you changing career into software development?" }),
 							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateVisitor, id: "question_2", type: "text", className: "form-control input-lg not-dark", placeholder: "How have you tried to learn programming so far?" }),
+							React.createElement("input", { onChange: this.updateVisitor, id: "history", type: "text", className: "form-control input-lg not-dark", placeholder: "How have you tried to learn programming so far?" }),
 							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateVisitor, id: "question_3", type: "text", className: "form-control input-lg not-dark", placeholder: "Have you taken a course or completed a coding bootcamp?" }),
+							React.createElement("input", { onChange: this.updateVisitor, id: "previous courses", type: "text", className: "form-control input-lg not-dark", placeholder: "Have you taken a course or completed a coding bootcamp?" }),
 							React.createElement("br", null),
-							React.createElement("input", { onChange: this.updateVisitor, id: "question_4", type: "text", className: "form-control input-lg not-dark", placeholder: "Are you interested in taking a course with Velocity 360?" })
+							React.createElement("input", { onChange: this.updateVisitor, id: "interest in Velocity", type: "text", className: "form-control input-lg not-dark", placeholder: "Are you interested in taking a course with Velocity 360?" })
 						)
 					),
 					React.createElement(
