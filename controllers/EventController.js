@@ -28,36 +28,36 @@ module.exports = {
 		if (params.id != null){ 
 			Event.findById(params.id, function(err, event){
 				if (err){
-					completion({message:'Event '+params.id+' not found'}, null);
-					return;
+					completion({message:'Event '+params.id+' not found'}, null)
+					return
 				}
 				
 				if (event == null){
-					completion({message:'Event '+params.id+' not found'}, null);
-					return;
+					completion({message:'Event '+params.id+' not found'}, null)
+					return
 				}
 
-				completion(null, event.summary());
-			});
-			return;
+				completion(null, event.summary())
+			})
+			return
 		}
 		
 		
 		/* Query by filters passed into parameter string: */
-		var limit = params.limit;
+		var limit = params.limit
 		if (limit == null)
 			limit = 0;
 		
-		delete params['limit'];
+		delete params['limit']
 		
-		Event.find(params, null, {limit:limit, sort:{timestamp: 1}}, function(err, events) {
+		Event.find(params, null, {limit:limit, sort:{priority: 1}}, function(err, events) {
 			if (err) {
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 			
-			completion(null, convertToJson(events));
-		});
+			completion(null, convertToJson(events))
+		})
 	},
 
 	find: function(params){ // Promise version
