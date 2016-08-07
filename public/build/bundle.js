@@ -44443,6 +44443,7 @@
 				this.props.toggleLoader(true);
 				_APIManager2.default.handlePost(this.props.endpoint, pkg, function (err, response) {
 					_this.props.toggleLoader(false);
+					_this.props.closeModal();
 					if (err) {
 						alert(err.message);
 						return;

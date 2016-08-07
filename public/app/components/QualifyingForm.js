@@ -43,7 +43,7 @@ class QualifyingForm extends Component {
 		pkg['firstName'] = parts[0]
 		if (parts.length > 1)
 			pkg['lastName'] = parts[parts.length-1]
-		
+
 		if (this.props.subject != null)
 			pkg['subject'] = this.props.subject.title
 
@@ -51,6 +51,7 @@ class QualifyingForm extends Component {
 		this.props.toggleLoader(true)
 		api.handlePost(this.props.endpoint, pkg, function(err, response){
 			_this.props.toggleLoader(false)
+			_this.props.closeModal()
 			if (err){
 				alert(err.message)
 				return

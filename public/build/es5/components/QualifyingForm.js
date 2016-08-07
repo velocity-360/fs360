@@ -80,6 +80,7 @@ var QualifyingForm = (function (Component) {
 				this.props.toggleLoader(true);
 				api.handlePost(this.props.endpoint, pkg, function (err, response) {
 					_this.props.toggleLoader(false);
+					_this.props.closeModal();
 					if (err) {
 						alert(err.message);
 						return;
