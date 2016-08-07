@@ -44144,10 +44144,6 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
 	var _QualifyingForm = __webpack_require__(474);
 	
 	var _QualifyingForm2 = _interopRequireDefault(_QualifyingForm);
@@ -45621,6 +45617,10 @@
 	
 	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
+	var _QualifyingForm = __webpack_require__(474);
+	
+	var _QualifyingForm2 = _interopRequireDefault(_QualifyingForm);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45635,17 +45635,17 @@
 		function Event(props, context) {
 			_classCallCheck(this, Event);
 	
+			//		this.updateVisitor = this.updateVisitor.bind(this)
+	
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Event).call(this, props, context));
 	
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
 			_this2.submitRequest = _this2.submitRequest.bind(_this2);
+			_this2.toggleLoader = _this2.toggleLoader.bind(_this2);
+			_this2.hideForm = _this2.hideForm.bind(_this2);
 			_this2.state = {
 				showLoader: false,
-				courses: [],
-				visitor: {
-					name: '',
-					email: ''
-				}
+				showForm: false,
+				courses: []
 			};
 			return _this2;
 		}
@@ -45655,7 +45655,6 @@
 			value: function componentDidMount() {
 				var _this = this;
 				_APIManager2.default.handleGet('/api/course', { type: 'immersive' }, function (err, response) {
-	
 					if (err) {
 						return;
 					}
@@ -45667,21 +45666,40 @@
 				});
 			}
 		}, {
-			key: 'updateVisitor',
-			value: function updateVisitor(event) {
-				var currentEvent = this.props.events[this.props.slug];
-				event.preventDefault();
-				var s = Object.assign({}, this.state.visitor);
-				s[event.target.id] = event.target.value;
-				s['event'] = currentEvent.title;
+			key: 'toggleLoader',
+			value: function toggleLoader(show) {
 				this.setState({
-					visitor: s
+					showLoader: show
 				});
 			}
+		}, {
+			key: 'hideForm',
+			value: function hideForm() {
+				this.setState({
+					showForm: false
+				});
+			}
+	
+			// updateVisitor(event){
+			// 	const currentEvent = this.props.events[this.props.slug]
+			// 	event.preventDefault()
+			// 	var s = Object.assign({}, this.state.visitor)
+			// 	s[event.target.id] = event.target.value
+			// 	s['event'] = currentEvent.title
+			// 	this.setState({
+			// 		visitor: s
+			// 	})
+			// }
+	
 		}, {
 			key: 'submitRequest',
 			value: function submitRequest(event) {
 				event.preventDefault();
+				this.setState({
+					showForm: true
+				});
+	
+				return;
 	
 				if (this.state.visitor.name.length == 0) {
 					alert('Please enter your name.');
@@ -45858,14 +45876,10 @@
 											event.address,
 											_react2.default.createElement('br', null),
 											_react2.default.createElement('hr', null),
-											_react2.default.createElement('input', { type: 'text', id: 'name', onChange: this.updateVisitor, placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('input', { type: 'text', id: 'email', onChange: this.updateVisitor, placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-											_react2.default.createElement('br', null),
 											_react2.default.createElement(
 												'a',
-												{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-												'Submit'
+												{ onClick: this.submitRequest, href: '#', className: 'btn btn-lg btn-danger btn-block nomargin' },
+												'Attend'
 											)
 										)
 									),
@@ -45910,6 +45924,7 @@
 							)
 						)
 					),
+					_react2.default.createElement(_QualifyingForm2.default, { show: this.state.showForm, closeModal: this.hideForm, subject: event, toggleLoader: this.toggleLoader, endpoint: '/account/rsvp' }),
 					_react2.default.createElement(_Footer2.default, null)
 				);
 			}

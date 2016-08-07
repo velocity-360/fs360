@@ -10,28 +10,27 @@ import store from '../../stores/store'
 import actions from '../../actions/actions'
 import TextUtils from '../../utils/TextUtils'
 import api from '../../utils/APIManager'
+import QualifyingForm from '../../components/QualifyingForm'
 
 
 class Event extends Component {
 
 	constructor(props, context){
 		super(props, context)
-		this.updateVisitor = this.updateVisitor.bind(this)
+//		this.updateVisitor = this.updateVisitor.bind(this)
 		this.submitRequest = this.submitRequest.bind(this)
+		this.toggleLoader = this.toggleLoader.bind(this)
+		this.hideForm = this.hideForm.bind(this)
 		this.state = {
 			showLoader: false,
-			courses: [],
-			visitor: {
-				name: '',
-				email: ''
-			}
+			showForm: false,
+			courses: []
 		}
 	}
 
 	componentDidMount(){
 		var _this = this
 		api.handleGet('/api/course', {type:'immersive'}, function(err, response){
-
 			if (err){
 				return
 			}
@@ -43,19 +42,36 @@ class Event extends Component {
 		})
 	}
 
-	updateVisitor(event){
-		const currentEvent = this.props.events[this.props.slug]
-		event.preventDefault()
-		var s = Object.assign({}, this.state.visitor)
-		s[event.target.id] = event.target.value
-		s['event'] = currentEvent.title
+	toggleLoader(show){
 		this.setState({
-			visitor: s
+			showLoader: show
 		})
 	}
 
+	hideForm(){
+		this.setState({
+			showForm: false
+		})
+	}
+
+	// updateVisitor(event){
+	// 	const currentEvent = this.props.events[this.props.slug]
+	// 	event.preventDefault()
+	// 	var s = Object.assign({}, this.state.visitor)
+	// 	s[event.target.id] = event.target.value
+	// 	s['event'] = currentEvent.title
+	// 	this.setState({
+	// 		visitor: s
+	// 	})
+	// }
+
 	submitRequest(event){
 		event.preventDefault()
+		this.setState({
+			showForm: true
+		})
+
+		return
 
 		if (this.state.visitor.name.length == 0){
 			alert('Please enter your name.')
@@ -160,9 +176,7 @@ class Event extends Component {
 										Time: {event.time}<br />
 										Location: {event.address}<br />
 										<hr />
-										<input type="text" id="name" onChange={this.updateVisitor} placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-										<input type="text" id="email" onChange={this.updateVisitor} placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-										<a onClick={this.submitRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+										<a onClick={this.submitRequest} href="#" className="btn btn-lg btn-danger btn-block nomargin">Attend</a>
 									</div>
 
 								</div>
@@ -193,6 +207,7 @@ class Event extends Component {
 					</div>
 				</section>
 
+	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={event} toggleLoader={this.toggleLoader} endpoint='/account/rsvp' />
 				<Footer />
 			</div>
 		)

@@ -23,8 +23,6 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
-var api = _interopRequire(require("../utils/APIManager"));
-
 var QualifyingForm = _interopRequire(require("../components/QualifyingForm"));
 
 var Header = (function (Component) {

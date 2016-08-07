@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
-import api from '../utils/APIManager'
 import QualifyingForm from '../components/QualifyingForm'
 
 

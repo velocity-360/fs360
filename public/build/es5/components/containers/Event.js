@@ -39,20 +39,21 @@ var TextUtils = _interopRequire(require("../../utils/TextUtils"));
 
 var api = _interopRequire(require("../../utils/APIManager"));
 
+var QualifyingForm = _interopRequire(require("../../components/QualifyingForm"));
+
 var Event = (function (Component) {
 	function Event(props, context) {
 		_classCallCheck(this, Event);
 
 		_get(Object.getPrototypeOf(Event.prototype), "constructor", this).call(this, props, context);
-		this.updateVisitor = this.updateVisitor.bind(this);
+		//		this.updateVisitor = this.updateVisitor.bind(this)
 		this.submitRequest = this.submitRequest.bind(this);
+		this.toggleLoader = this.toggleLoader.bind(this);
+		this.hideForm = this.hideForm.bind(this);
 		this.state = {
 			showLoader: false,
-			courses: [],
-			visitor: {
-				name: "",
-				email: ""
-			}
+			showForm: false,
+			courses: []
 		};
 	}
 
@@ -76,23 +77,44 @@ var Event = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		updateVisitor: {
-			value: function updateVisitor(event) {
-				var currentEvent = this.props.events[this.props.slug];
-				event.preventDefault();
-				var s = Object.assign({}, this.state.visitor);
-				s[event.target.id] = event.target.value;
-				s.event = currentEvent.title;
+		toggleLoader: {
+			value: function toggleLoader(show) {
 				this.setState({
-					visitor: s
+					showLoader: show
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		hideForm: {
+			value: function hideForm() {
+				this.setState({
+					showForm: false
 				});
 			},
 			writable: true,
 			configurable: true
 		},
 		submitRequest: {
+
+			// updateVisitor(event){
+			// 	const currentEvent = this.props.events[this.props.slug]
+			// 	event.preventDefault()
+			// 	var s = Object.assign({}, this.state.visitor)
+			// 	s[event.target.id] = event.target.value
+			// 	s['event'] = currentEvent.title
+			// 	this.setState({
+			// 		visitor: s
+			// 	})
+			// }
+
 			value: function submitRequest(event) {
 				event.preventDefault();
+				this.setState({
+					showForm: true
+				});
+
+				return;
 
 				if (this.state.visitor.name.length == 0) {
 					alert("Please enter your name.");
@@ -271,14 +293,10 @@ var Event = (function (Component) {
 											event.address,
 											React.createElement("br", null),
 											React.createElement("hr", null),
-											React.createElement("input", { type: "text", id: "name", onChange: this.updateVisitor, placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
-											React.createElement("br", null),
-											React.createElement("input", { type: "text", id: "email", onChange: this.updateVisitor, placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
-											React.createElement("br", null),
 											React.createElement(
 												"a",
-												{ onClick: this.submitRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-												"Submit"
+												{ onClick: this.submitRequest, href: "#", className: "btn btn-lg btn-danger btn-block nomargin" },
+												"Attend"
 											)
 										)
 									),
@@ -323,6 +341,7 @@ var Event = (function (Component) {
 							)
 						)
 					),
+					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: event, toggleLoader: this.toggleLoader, endpoint: "/account/rsvp" }),
 					React.createElement(Footer, null)
 				);
 			},
