@@ -12,7 +12,7 @@ import Course from './containers/Course'
 import Account from './containers/Account'
 import Unit from './containers/Unit'
 import Checkout from './containers/Checkout'
-import api from '../utils/APIManager'
+import TrackingManager from '../utils/TrackingManager'
 
 class Main extends Component {
 
@@ -24,14 +24,20 @@ class Main extends Component {
 	}
 
 	componentDidMount(){
-		var page = this.props.page
-		var slug = (this.props.slug == null) ? '' : this.props.slug
-		var params = (this.props.params == null) ? '' : this.props.params
+		TrackingManager.currentPage = {
+			page: this.props.page,
+			slug: (this.props.slug == null) ? '' : this.props.slug,
+			params: (this.props.params == null) ? '' : this.props.params
+		}
 
-		api.handlePost('/tracker', {page:page, slug:slug, params:params}, (err, response) => {
+		TrackingManager.updateTracking((err, response) => {
 			if (err){
+				console.log('ERROR: '+JSON.stringify(err))
 				return
 			}
+
+			console.log(JSON.stringify(response))
+
 		})
 	}
 

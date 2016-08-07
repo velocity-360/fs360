@@ -40,7 +40,7 @@ var Unit = _interopRequire(require("./containers/Unit"));
 
 var Checkout = _interopRequire(require("./containers/Checkout"));
 
-var api = _interopRequire(require("../utils/APIManager"));
+var TrackingManager = _interopRequire(require("../utils/TrackingManager"));
 
 var Main = (function (Component) {
 	function Main(props, context) {
@@ -55,14 +55,19 @@ var Main = (function (Component) {
 	_prototypeProperties(Main, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				var page = this.props.page;
-				var slug = this.props.slug == null ? "" : this.props.slug;
-				var params = this.props.params == null ? "" : this.props.params;
+				TrackingManager.currentPage = {
+					page: this.props.page,
+					slug: this.props.slug == null ? "" : this.props.slug,
+					params: this.props.params == null ? "" : this.props.params
+				};
 
-				api.handlePost("/tracker", { page: page, slug: slug, params: params }, function (err, response) {
+				TrackingManager.updateTracking(function (err, response) {
 					if (err) {
+						console.log("ERROR: " + JSON.stringify(err));
 						return;
 					}
+
+					console.log(JSON.stringify(response));
 				});
 			},
 			writable: true,
@@ -134,3 +139,8 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Main);
+// api.handlePost('/tracker', {page:page, slug:slug, params:params}, (err, response) => {
+// 	if (err){
+// 		return
+// 	}
+// })

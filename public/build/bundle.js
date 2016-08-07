@@ -22689,9 +22689,9 @@
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
-	var _APIManager = __webpack_require__(463);
+	var _TrackingManager = __webpack_require__(603);
 	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
+	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22716,14 +22716,19 @@
 		_createClass(Main, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var page = this.props.page;
-				var slug = this.props.slug == null ? '' : this.props.slug;
-				var params = this.props.params == null ? '' : this.props.params;
+				_TrackingManager2.default.currentPage = {
+					page: this.props.page,
+					slug: this.props.slug == null ? '' : this.props.slug,
+					params: this.props.params == null ? '' : this.props.params
+				};
 	
-				_APIManager2.default.handlePost('/tracker', { page: page, slug: slug, params: params }, function (err, response) {
+				_TrackingManager2.default.updateTracking(function (err, response) {
 					if (err) {
+						console.log('ERROR: ' + JSON.stringify(err));
 						return;
 					}
+	
+					console.log(JSON.stringify(response));
 				});
 			}
 		}, {
@@ -64003,6 +64008,42 @@
 	}(_react.Component);
 	
 	exports.default = Checkout;
+
+/***/ },
+/* 603 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+		currentPage: {
+			page: '',
+			slug: '',
+			params: {}
+		},
+	
+		updateTracking: function updateTracking(callback) {
+			_APIManager2.default.handlePost('/tracker', this.currentPage, function (err, response) {
+				if (err) {
+					callback(err, null);
+					return;
+				}
+	
+				callback(null, response);
+			});
+		}
+	
+	};
 
 /***/ }
 /******/ ]);
