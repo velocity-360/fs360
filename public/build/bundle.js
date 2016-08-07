@@ -22716,13 +22716,21 @@
 		_createClass(Main, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				_TrackingManager2.default.currentPage = {
+				// TrackingManager.currentPage = {
+				// 	page: this.props.page,
+				// 	slug: (this.props.slug == null) ? '' : this.props.slug,
+				// 	params: (this.props.params == null) ? '' : this.props.params
+				// }
+	
+				var tracker = new _TrackingManager2.default();
+	
+				tracker.setCurrentPage({
 					page: this.props.page,
 					slug: this.props.slug == null ? '' : this.props.slug,
 					params: this.props.params == null ? '' : this.props.params
-				};
+				});
 	
-				_TrackingManager2.default.updateTracking(function (err, response) {
+				tracker.updateTracking(function (err, response) {
 					if (err) {
 						console.log('ERROR: ' + JSON.stringify(err));
 						return;
@@ -22730,6 +22738,16 @@
 	
 					console.log(JSON.stringify(response));
 				});
+	
+				// TrackingManager.updateTracking((err, response) => {
+				// 	if (err){
+				// 		console.log('ERROR: '+JSON.stringify(err))
+				// 		return
+				// 	}
+	
+				// 	console.log(JSON.stringify(response))
+	
+				// })
 			}
 		}, {
 			key: 'render',
@@ -44359,7 +44377,17 @@
 					}
 	
 					alert(response.message);
-					_TrackingManager2.default.updateTracking(function (err, response) {});
+	
+					var tracker = new _TrackingManager2.default(); // this is a singelton so no need to reset page info:
+					tracker.updateTracking(function (err, response) {
+	
+						if (err) {
+							console.log('ERROR: ' + JSON.stringify(err));
+							return;
+						}
+	
+						console.log(JSON.stringify(response));
+					});
 				});
 			}
 		}, {
@@ -64024,31 +64052,81 @@
 		value: true
 	});
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _APIManager = __webpack_require__(463);
 	
 	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = {
-		currentPage: {
-			page: '',
-			slug: '',
-			params: {}
-		},
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-		updateTracking: function updateTracking(callback) {
-			console.log('UPDATE TRACKING: ' + JSON.stringify(undefined.currentPage));
-			_APIManager2.default.handlePost('/tracker', undefined.currentPage, function (err, response) {
-				if (err) {
-					callback(err, null);
-					return;
-				}
+	var instance = null;
 	
-				callback(null, response);
-			});
+	var TrackingManager = function () {
+		function TrackingManager(props, context) {
+			_classCallCheck(this, TrackingManager);
+	
+			if (instance == null) // singelton
+				instance = this;
+	
+			this.updateTracking = this.updateTracking.bind(this);
+			this.setCurrentPage = this.setCurrentPage.bind(this);
+			this.currentPage = {
+				page: '',
+				slug: '',
+				params: {}
+			};
+	
+			return instance;
 		}
-	};
+	
+		_createClass(TrackingManager, [{
+			key: 'setCurrentPage',
+			value: function setCurrentPage(pageInfo) {
+				//		console.log('SET CURRENT PAGE: '+JSON.stringify(pageInfo))
+				this.currentPage = pageInfo;
+			}
+		}, {
+			key: 'updateTracking',
+			value: function updateTracking(callback) {
+				console.log('UPDATE TRACKING: ' + JSON.stringify(this.currentPage));
+				_APIManager2.default.handlePost('/tracker', this.currentPage, function (err, response) {
+					if (err) {
+						callback(err, null);
+						return;
+					}
+	
+					callback(null, response);
+				});
+			}
+		}]);
+	
+		return TrackingManager;
+	}();
+	
+	exports.default = TrackingManager;
+	
+	// export default {
+	// 	currentPage: {
+	// 		page: '',
+	// 		slug: '',
+	// 		params: {}
+	// 	},
+
+	// 	updateTracking: (callback) => {
+	// 		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
+	// 		api.handlePost('/tracker', this.currentPage, (err, response) => {
+	// 			if (err){
+	// 				callback(err, null)
+	// 				return
+	// 			}
+
+	// 			callback(null, response)
+	// 		})
+	// 	}
+	// }
 
 /***/ }
 /******/ ]);

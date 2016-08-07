@@ -89,7 +89,16 @@ var QualifyingForm = (function (Component) {
 					}
 
 					alert(response.message);
-					TrackingManager.updateTracking(function (err, response) {});
+
+					var tracker = new TrackingManager(); // this is a singelton so no need to reset page info:
+					tracker.updateTracking(function (err, response) {
+						if (err) {
+							console.log("ERROR: " + JSON.stringify(err));
+							return;
+						}
+
+						console.log(JSON.stringify(response));
+					});
 				});
 			},
 			writable: true,

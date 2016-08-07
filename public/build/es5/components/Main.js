@@ -55,13 +55,21 @@ var Main = (function (Component) {
 	_prototypeProperties(Main, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				TrackingManager.currentPage = {
+				// TrackingManager.currentPage = {
+				// 	page: this.props.page,
+				// 	slug: (this.props.slug == null) ? '' : this.props.slug,
+				// 	params: (this.props.params == null) ? '' : this.props.params
+				// }
+
+				var tracker = new TrackingManager();
+
+				tracker.setCurrentPage({
 					page: this.props.page,
 					slug: this.props.slug == null ? "" : this.props.slug,
 					params: this.props.params == null ? "" : this.props.params
-				};
+				});
 
-				TrackingManager.updateTracking(function (err, response) {
+				tracker.updateTracking(function (err, response) {
 					if (err) {
 						console.log("ERROR: " + JSON.stringify(err));
 						return;
@@ -139,3 +147,12 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Main);
+// TrackingManager.updateTracking((err, response) => {
+// 	if (err){
+// 		console.log('ERROR: '+JSON.stringify(err))
+// 		return
+// 	}
+
+// 	console.log(JSON.stringify(response))
+
+// })

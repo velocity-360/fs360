@@ -59,7 +59,16 @@ class QualifyingForm extends Component {
 			}
 
 			alert(response.message)
-			TrackingManager.updateTracking((err, response) => {
+
+			var tracker = new TrackingManager() // this is a singelton so no need to reset page info:
+			tracker.updateTracking((err, response) => {
+
+				if (err){
+					console.log('ERROR: '+JSON.stringify(err))
+					return
+				}
+
+				console.log(JSON.stringify(response))
 
 			})
 		})

@@ -24,21 +24,38 @@ class Main extends Component {
 	}
 
 	componentDidMount(){
-		TrackingManager.currentPage = {
+		// TrackingManager.currentPage = {
+		// 	page: this.props.page,
+		// 	slug: (this.props.slug == null) ? '' : this.props.slug,
+		// 	params: (this.props.params == null) ? '' : this.props.params
+		// }
+
+		var tracker = new TrackingManager()
+
+		tracker.setCurrentPage({
 			page: this.props.page,
 			slug: (this.props.slug == null) ? '' : this.props.slug,
 			params: (this.props.params == null) ? '' : this.props.params
-		}
+		})
 
-		TrackingManager.updateTracking((err, response) => {
+		tracker.updateTracking((err, response) => {
 			if (err){
 				console.log('ERROR: '+JSON.stringify(err))
 				return
 			}
 
 			console.log(JSON.stringify(response))
-
 		})
+
+		// TrackingManager.updateTracking((err, response) => {
+		// 	if (err){
+		// 		console.log('ERROR: '+JSON.stringify(err))
+		// 		return
+		// 	}
+
+		// 	console.log(JSON.stringify(response))
+
+		// })
 	}
 
 	render(){
