@@ -44397,6 +44397,7 @@
 	
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.submitForm = _this2.submitForm.bind(_this2);
 			_this2.state = {
 				visitor: {
 					name: '',
@@ -44422,8 +44423,8 @@
 				});
 			}
 		}, {
-			key: 'submitInfoRequest',
-			value: function submitInfoRequest(event) {
+			key: 'submitForm',
+			value: function submitForm(event) {
 				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
 					alert('Please enter your ' + missingField);
@@ -44509,7 +44510,7 @@
 						{ style: { textAlign: 'center' } },
 						_react2.default.createElement(
 							'a',
-							{ onClick: this.closeModal, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+							{ onClick: this.submitForm, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
 							'Submit'
 						)
 					)

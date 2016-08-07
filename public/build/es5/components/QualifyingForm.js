@@ -29,6 +29,7 @@ var QualifyingForm = (function (Component) {
 		_get(Object.getPrototypeOf(QualifyingForm.prototype), "constructor", this).call(this, props, context);
 		this.closeModal = this.closeModal.bind(this);
 		this.updateVisitor = this.updateVisitor.bind(this);
+		this.submitForm = this.submitForm.bind(this);
 		this.state = {
 			visitor: {
 				name: "",
@@ -59,8 +60,8 @@ var QualifyingForm = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		submitInfoRequest: {
-			value: function submitInfoRequest(event) {
+		submitForm: {
+			value: function submitForm(event) {
 				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
 					alert("Please enter your " + missingField);
@@ -151,7 +152,7 @@ var QualifyingForm = (function (Component) {
 						{ style: { textAlign: "center" } },
 						React.createElement(
 							"a",
-							{ onClick: this.closeModal, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
+							{ onClick: this.submitForm, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
 							"Submit"
 						)
 					)

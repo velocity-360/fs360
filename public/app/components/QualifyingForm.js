@@ -8,6 +8,7 @@ class QualifyingForm extends Component {
 		super(props, context)
 		this.closeModal = this.closeModal.bind(this)
 		this.updateVisitor = this.updateVisitor.bind(this)
+		this.submitForm = this.submitForm.bind(this)
 		this.state = {
 			visitor: {
 				name: '',
@@ -29,7 +30,7 @@ class QualifyingForm extends Component {
 		})
 	}
 
-	submitInfoRequest(event){
+	submitForm(event){
 		var missingField = this.validate(this.state.visitor, false)
 		if (missingField != null){
 			alert('Please enter your '+missingField)
@@ -100,7 +101,7 @@ class QualifyingForm extends Component {
                     </div>
 		        </Modal.Body>
 		        <Modal.Footer style={{textAlign:'center'}}>
-					<a onClick={this.closeModal} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+					<a onClick={this.submitForm} href="#" style={{marginRight:12}} className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 		        </Modal.Footer>
 	        </Modal>
 		)
