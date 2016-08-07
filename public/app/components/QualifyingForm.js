@@ -39,6 +39,11 @@ class QualifyingForm extends Component {
 		}
 
 		var pkg = Object.assign({}, this.state.visitor)
+		var parts = pkg.name.split(' ')
+		pkg['firstName'] = parts[0]
+		if (parts.length > 1)
+			pkg['lastName'] = parts[parts.length-1]
+		
 		if (this.props.subject != null)
 			pkg['subject'] = this.props.subject.title
 
