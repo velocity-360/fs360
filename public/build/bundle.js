@@ -45595,7 +45595,7 @@
 				_this.setState({
 					showLoader: true
 				});
-				_APIManager2.default.handlePost('/api/rsvp', s, function (err, response) {
+				_APIManager2.default.handlePost('/account/rsvp', s, function (err, response) {
 					_this.setState({
 						showLoader: false
 					});

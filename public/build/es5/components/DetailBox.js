@@ -77,7 +77,7 @@ var DetailBox = (function (Component) {
 					// syllabus request
 					s.pdf = course.syllabus;
 					s.subject = "Syllabus Request";
-					s.confirmation = "Thanks for your interest. Check your email shortly for a direct download link to the syllabus.";
+					s.confirmation = "Thanks for your interest! Check your email shortly for a direct download link to the syllabus.";
 					url = "/account/syllabus";
 				}
 				if (course.type == "online") {

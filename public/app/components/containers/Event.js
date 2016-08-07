@@ -81,7 +81,7 @@ class Event extends Component {
 		_this.setState({
 			showLoader: true
 		})
-		api.handlePost('/api/rsvp', s, function(err, response){
+		api.handlePost('/account/rsvp', s, function(err, response){
 			_this.setState({
 				showLoader: false
 			})

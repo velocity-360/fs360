@@ -100,138 +100,62 @@ router.post('/:resource', function(req, res, next) {
 	var body = req.body
 	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
 
-	if (resource == 'application'){
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Course Application', JSON.stringify(req.body))
-		res.json({
-			confirmation:'success', 
-			message:'Thanks for completing an application. We will be in touch shortly regarding a follow-up interview.'
-		})
+	// if (resource == 'freesession'){
+	// 	subscriberController.post(body, function(err, subscriber){
+	// 		if (err == null)
+	// 			req.session.visitor = subscriber.id
 
-		return
-	}
+	// 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
+	// 		res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
+	// 	})
+	// 	return
+	// }
 
-	if (resource == 'info'){
-		subscriberController.post(body, function(err, subscriber){
-			if (err == null)
-				req.session.visitor = subscriber.id
+	// if (resource == 'subscribe'){
+	// 	subscriberController.post(body, function(err, subscriber){
+	// 		if (err == null)
+	// 			req.session.visitor = subscriber.id
 
-			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'General Info Request', JSON.stringify(body))
-			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will reach out to you shortly with more information!'})
-		})
-		return
-	}
+	// 		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
+	// 		res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
+	// 	})
+	// 	return
+	// }
 
-	if (resource == 'proposal'){
-		subscriberController.post(body, function(err, subscriber){
-			if (err == null)
-				req.session.visitor = subscriber.id
 
-			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Project Proposal', JSON.stringify(body))
-			res.json({'confirmation':'success', 'message':'Thank you for submitting a project proposal. We will reach out to you shortly with more information!'})
-		})
-		return
-	}
-
-	if (resource == 'freesession'){
-		subscriberController.post(body, function(err, subscriber){
-			if (err == null)
-				req.session.visitor = subscriber.id
-
-			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Free Session Request', JSON.stringify(body))
-			res.json({'confirmation':'success', 'message':'Thanks for your interest. We will contact you shortly with more information about attending a free session!'})
-		})
-		return
-	}
-
-	if (resource == 'subscribe'){
-		subscriberController.post(body, function(err, subscriber){
-			if (err == null)
-				req.session.visitor = subscriber.id
-
-			EmailManager.sendEmails('info@thegridmedia.com', emailList, 'New Subscriber', JSON.stringify(req.body))
-			res.json({'confirmation':'success', 'message':'Thanks for subscribing! We will reach out to you shortly with more information!'})
-		})
-		return
-	}
-
-	if (resource == 'syllabus'){
-		var course = body.course
-
-		var template = 'node-react-evening.html'
-		if (course == 'Node & React Evening Course')
-			template = 'node-react-evening.html'
+	// if (resource == 'rsvp') {
+	// 	var infoRequest = req.body;
+	// 	var json = JSON.stringify(infoRequest)
 		
-		if (course == '8-Week Fundamentals Bootcamp')
-			template = 'fundamentals-bootcamp.html'
+	// 	// send email to yourself for notification:
+	// 	EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'Event RSVP', json)
+	// 	.then(function(){
+	// 		var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event+' workshop on '+infoRequest.date+'! My name is Katrina Murphy and I am the community manager of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, React, React Native, Angular, and iOS.<br /><br />If you are interested in learning about our full or part-time development courses, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Katrina Murphy<br />Community Manager<br /><a href="https://www.velocity360.io">Velocity 360</a><br /><br /><br /><a style="background:#f1f9f5;border: 1px solid #ddd; padding:16px; text-decoration:none;margin-top:12px" href="https://www.velocity360.io/syllabus/FundamentalsBootcamp.pdf">Download Syllabus</a>'
+	// 		var subscriber = {
+	// 			name: infoRequest.firstName+infoRequest.lastName,
+	// 			email: infoRequest.email,
+	// 			workshop: infoRequest.event
+	// 		}
 
-		if (course == '24-Week Evening Bootcamp')
-			template = 'fundamentals-bootcamp.html'
-		
-		fetchFile('public/email/syllabus/'+template)
-		.then(function(html){
-			var url = 'https://www.velocity360.io/syllabus/'+body.pdf
-			html = html.replace('{{link}}', url)
-			html = html.replace('{{name}}', Helpers.capitalize(body.firstName))
-			html = html.replace('{{link}}', url)
+	// 		subscriberController.post(subscriber, function(err, result){
+	// 			if (err == null)
+	// 				req.session.visitor = result.id
+	// 		})
 
-			var subscriber = {
-				name: body.firstName+body.lastName,
-				email: body.email,
-				workshop: course
-			}
+	// 		return EmailManager.sendHtmlEmail('katrina@velocity360.io', infoRequest.email, infoRequest.event, confirmationMsg)
+	// 	})
+	// 	.then(function(){
+	// 		var msg = 'Thanks for your interest in the '+infoRequest.event+' workshop. Please check your email for a confirmation. Looking forward to seeing you there!'
+	// 		res.json({'confirmation':'success', 'message':msg})
+	// 		return
+	// 	})
+	// 	.catch(function(err){
+	// 		res.json({'confirmation':'fail', 'message':err.message})
+	// 		return
+	// 	})
 
-			subscriberController.post(subscriber, function(err, result){
-				if (err){
-					return
-				}
-
-				req.session.visitor = result.id
-				EmailManager.sendHtmlEmail('katrina@velocity360.io', result.email, 'Velocity 360 - Syllabus Request', html)
-				res.json({'confirmation':'success', 'message':'Thanks for your syllabus request. Check your email shortly for a direct download link to the syllabus.'})
-				return
-			})
-		})
-		.catch(function(err){
-
-		})
-
-		EmailManager.sendEmails('info@thegridmedia.com', emailList, 'Syllabus Request', JSON.stringify(body))
-		return
-	}
-
-	if (resource == 'rsvp') {
-		var infoRequest = req.body;
-		var json = JSON.stringify(infoRequest)
-		
-		// send email to yourself for notification:
-		EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'Event RSVP', json)
-		.then(function(){
-			var confirmationMsg = 'Dear '+Helpers.capitalize(infoRequest.firstName)+',<br /><br />Thanks for registering to the '+infoRequest.event+' workshop on '+infoRequest.date+'! My name is Katrina Murphy and I am the community manager of <a href="https://www.velocity360.io">Velocity 360</a>. Velocity offers part-time and full-time instructional courses in software development. We specialize in the following areas: Node JS, React, React Native, Angular, and iOS.<br /><br />If you are interested in learning about our full or part-time development courses, check <a href="https://www.velocity360.io">HERE</a>. Thanks and see you at the workshop.<br /><br />Katrina Murphy<br />Community Manager<br /><a href="https://www.velocity360.io">Velocity 360</a><br /><br /><br /><a style="background:#f1f9f5;border: 1px solid #ddd; padding:16px; text-decoration:none;margin-top:12px" href="https://www.velocity360.io/syllabus/FundamentalsBootcamp.pdf">Download Syllabus</a>'
-			var subscriber = {
-				name: infoRequest.firstName+infoRequest.lastName,
-				email: infoRequest.email,
-				workshop: infoRequest.event
-			}
-
-			subscriberController.post(subscriber, function(err, result){
-				if (err == null)
-					req.session.visitor = result.id
-			})
-
-			return EmailManager.sendHtmlEmail('katrina@velocity360.io', infoRequest.email, infoRequest.event, confirmationMsg)
-		})
-		.then(function(){
-			var msg = 'Thanks for your interest in the '+infoRequest.event+' workshop. Please check your email for a confirmation. Looking forward to seeing you there!'
-			res.json({'confirmation':'success', 'message':msg})
-			return
-		})
-		.catch(function(err){
-			res.json({'confirmation':'fail', 'message':err.message})
-			return
-		})
-
-		return
-	}
+	// 	return
+	// }
 
 	
 	if (req.params.resource == 'email'){
