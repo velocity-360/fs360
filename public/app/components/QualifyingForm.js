@@ -31,6 +31,7 @@ class QualifyingForm extends Component {
 	}
 
 	submitForm(event){
+		event.preventDefault()
 		var missingField = this.validate(this.state.visitor, false)
 		if (missingField != null){
 			alert('Please enter your '+missingField)
@@ -38,23 +39,13 @@ class QualifyingForm extends Component {
 		}
 
 		var pkg = Object.assign({}, this.state.visitor)
-
-		// var parts = pkg.name.split(' ')
-		// pkg['firstName'] = parts[0]
-		// if (parts.length > 1)
-		// 	pkg['lastName'] = parts[parts.length-1]
-
-		// const nextEvent = this.props.events[0]
-		// pkg['date'] = nextEvent.date
-		// pkg['event'] = nextEvent.title
-
 		if (this.props.subject != null)
-			pkg['subject'] = this.props.subject
+			pkg['subject'] = this.props.subject.title
 
 		var _this = this
 		this.props.toggleLoader(true)
 		api.handlePost(this.props.endpoint, pkg, function(err, response){
-			this.props.toggleLoader(false)
+			_this.props.toggleLoader(false)
 			if (err){
 				alert(err.message)
 				return
