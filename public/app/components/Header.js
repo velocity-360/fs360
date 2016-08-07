@@ -1,19 +1,21 @@
 import React, {Component} from 'react'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
-import api from '../utils/APIManager'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import api from '../utils/APIManager'
+import QualifyingForm from '../components/QualifyingForm'
 
 
 class Header extends Component {
-
 	constructor(props, context){
 		super(props, context)
 		this.updateVisitor = this.updateVisitor.bind(this)
 		this.submitInfoRequest = this.submitInfoRequest.bind(this)
+		this.hideForm = this.hideForm.bind(this)
 		this.validate = this.validate.bind(this)
 		this.state = {
 			showLoader: false,
+			showForm: false,
 			visitor: {
 				name: '',
 				email: '',
@@ -37,8 +39,20 @@ class Header extends Component {
 		})
 	}
 
+	hideForm(){
+		this.setState({
+			showForm: false
+		})
+	}
+
 	submitInfoRequest(event){
 		event.preventDefault()
+		this.setState({
+			showForm: true
+		})
+
+		return
+
 
 		var missingField = this.validate(this.state.visitor, false)
 		if (missingField != null){
@@ -116,19 +130,13 @@ class Header extends Component {
 						</div>
 
 	                    <div className="line" style={{ margin: '15px 0 30px' }}></div>
-	                    <div className="col_full">
-	                        <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Name" />
-	                    </div>
-	                    <div className="col_full">
-	                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
-	                    </div>
-
 	                    <div className="col_full nobottommargin">
 	                        <button onClick={this.submitInfoRequest} className="btn btn-lg btn-danger btn-block nomargin" value="submit">RSVP</button>
 	                    </div>
 	                </form>
-
 	            </div>
+
+	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={nextEvent} />
 	        </section>
 		)
 	}

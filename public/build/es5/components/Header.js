@@ -18,13 +18,15 @@ var Component = _react.Component;
 var Loader = _interopRequire(require("react-loader"));
 
 var connect = require("react-redux").connect;
-var api = _interopRequire(require("../utils/APIManager"));
-
 var _reactBootstrap = require("react-bootstrap");
 
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
+var api = _interopRequire(require("../utils/APIManager"));
+
+var QualifyingForm = _interopRequire(require("../components/QualifyingForm"));
+
 var Header = (function (Component) {
 	function Header(props, context) {
 		_classCallCheck(this, Header);
@@ -32,9 +34,11 @@ var Header = (function (Component) {
 		_get(Object.getPrototypeOf(Header.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.submitInfoRequest = this.submitInfoRequest.bind(this);
+		this.hideForm = this.hideForm.bind(this);
 		this.validate = this.validate.bind(this);
 		this.state = {
 			showLoader: false,
+			showForm: false,
 			visitor: {
 				name: "",
 				email: "",
@@ -65,9 +69,24 @@ var Header = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		hideForm: {
+			value: function hideForm() {
+				this.setState({
+					showForm: false
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		submitInfoRequest: {
 			value: function submitInfoRequest(event) {
 				event.preventDefault();
+				this.setState({
+					showForm: true
+				});
+
+				return;
+
 
 				var missingField = this.validate(this.state.visitor, false);
 				if (missingField != null) {
@@ -179,16 +198,6 @@ var Header = (function (Component) {
 							React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
 							React.createElement(
 								"div",
-								{ className: "col_full" },
-								React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "text", className: "form-control input-lg not-dark", placeholder: "Name" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col_full" },
-								React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "text", className: "form-control input-lg not-dark", placeholder: "Email" })
-							),
-							React.createElement(
-								"div",
 								{ className: "col_full nobottommargin" },
 								React.createElement(
 									"button",
@@ -197,7 +206,8 @@ var Header = (function (Component) {
 								)
 							)
 						)
-					)
+					),
+					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent })
 				);
 			},
 			writable: true,
