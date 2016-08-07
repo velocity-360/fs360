@@ -203,6 +203,7 @@ class Course extends Component {
 		                <div className="vertical-middle">
 		                    <div className="heading-block center nobottomborder">
 		                        <h1 style={{textTransform:'none'}} data-animate="fadeInUp">{course.title}</h1>
+		                        <hr style={{maxWidth:120, borderTop:'2px solid #fff'}} />
 		                        <span data-animate="fadeInUp" data-delay="300">
 		                        	{course.dates}<br />{course.schedule}
 		                        </span>
@@ -228,7 +229,7 @@ class Course extends Component {
 										</div>
 										<div className="entry-content">
 											<div className='col_full'>
-												<img className="hidden-xs" style={{width:'160', float:'right', marginLeft:16}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
+												<img className="hidden-xs" style={{width:190, float:'right', marginLeft:16}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
 												<h2 style={{marginBottom:0}}>{course.title}</h2>
 												<p>{course.description}</p>
 											</div>

@@ -61964,6 +61964,7 @@
 										{ style: { textTransform: 'none' }, 'data-animate': 'fadeInUp' },
 										course.title
 									),
+									_react2.default.createElement('hr', { style: { maxWidth: 120, borderTop: '2px solid #fff' } }),
 									_react2.default.createElement(
 										'span',
 										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
@@ -62008,7 +62009,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'col_full' },
-													_react2.default.createElement('img', { className: 'hidden-xs', style: { width: '160', float: 'right', marginLeft: 16 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
+													_react2.default.createElement('img', { className: 'hidden-xs', style: { width: 190, float: 'right', marginLeft: 16 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
 													_react2.default.createElement(
 														'h2',
 														{ style: { marginBottom: 0 } },

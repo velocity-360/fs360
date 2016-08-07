@@ -311,6 +311,7 @@ var Course = (function (Component) {
 										{ style: { textTransform: "none" }, "data-animate": "fadeInUp" },
 										course.title
 									),
+									React.createElement("hr", { style: { maxWidth: 120, borderTop: "2px solid #fff" } }),
 									React.createElement(
 										"span",
 										{ "data-animate": "fadeInUp", "data-delay": "300" },
@@ -355,7 +356,7 @@ var Course = (function (Component) {
 												React.createElement(
 													"div",
 													{ className: "col_full" },
-													React.createElement("img", { className: "hidden-xs", style: { width: "160", float: "right", marginLeft: 16 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
+													React.createElement("img", { className: "hidden-xs", style: { width: 190, float: "right", marginLeft: 16 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
 													React.createElement(
 														"h2",
 														{ style: { marginBottom: 0 } },
