@@ -9,9 +9,6 @@ function updateTracking(req, res, visitor){
 	var page = req.body.page
 	var slug = req.body.slug
 	var params = req.body.params
-	var referer = req.headers.referer
-	if (referer == null)
-		referer = ''
 
 	var trackingId = req.session.track
 	if (trackingId == null){
@@ -20,8 +17,7 @@ function updateTracking(req, res, visitor){
 		var info = {
 			history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 			pageMap: pageMap,
-			visitor: visitor,
-			referer: referer
+			visitor: visitor
 		}
 
 		Track.create(info, function(err, track){
@@ -50,7 +46,7 @@ function updateTracking(req, res, visitor){
 			req.session.reset()
 			var pageMap = {}
 			pageMap[page] = 1
-			var info = { // don't update referrer here, only track original referring site
+			var info = { 
 				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 				pageMap: pageMap,
 				visitor: visitor
