@@ -61664,9 +61664,13 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _Sidebar = __webpack_require__(480);
+	var _Nav = __webpack_require__(458);
 	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Header = __webpack_require__(473);
+	
+	var _Header2 = _interopRequireDefault(_Header);
 	
 	var _Footer = __webpack_require__(475);
 	
@@ -61881,10 +61885,6 @@
 			value: function render() {
 				var course = this.props.courses[this.props.slug];
 	
-				var bannerIndex = 0;
-				if (course.type == 'online') bannerIndex = 1;else if (course.type == 'immersive') bannerIndex = 2;
-	
-				var banner = this.props.banners[bannerIndex];
 				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
 				var _course = course;
 				var _currentUser = this.props.currentUser;
@@ -61946,8 +61946,36 @@
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_Nav2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/joe_light_blue.png") center' }, 'data-height-lg': '400', 'data-height-md': '400', 'data-height-sm': '200', 'data-height-xs': '200', 'data-height-xxs': '200' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'vertical-middle' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'heading-block center nobottomborder' },
+									_react2.default.createElement(
+										'h1',
+										{ style: { textTransform: 'none' }, 'data-animate': 'fadeInUp' },
+										course.title
+									),
+									_react2.default.createElement(
+										'span',
+										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
+										course.dates,
+										_react2.default.createElement('br', null),
+										course.schedule
+									)
+								)
+							)
+						)
+					),
 					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
 					_react2.default.createElement(
 						'section',
 						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
@@ -61959,7 +61987,7 @@
 								{ className: 'container clearfix' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'postcontent nobottommargin col_last clearfix' },
+									{ className: 'postcontent nobottommargin clearfix' },
 									_react2.default.createElement(
 										'div',
 										{ id: 'posts', className: 'post-timeline clearfix' },
@@ -61976,15 +62004,10 @@
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'entry-image' },
-												_react2.default.createElement('img', { style: { background: '#fff', padding: 6, border: '1px solid #ddd' }, className: 'image_fade', src: '/images/' + banner, alt: 'FullStack 360' })
-											),
-											_react2.default.createElement(
-												'div',
 												{ className: 'entry-content' },
 												_react2.default.createElement(
 													'div',
-													{ className: 'col_half' },
+													{ className: 'col_full' },
 													_react2.default.createElement(
 														'h2',
 														{ style: { marginBottom: 0 } },
@@ -61995,11 +62018,11 @@
 														null,
 														course.description
 													)
-												),
-												_react2.default.createElement(_DetailBox2.default, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: course })
+												)
 											)
 										),
 										units,
+										_react2.default.createElement(_DetailBox2.default, { course: course }),
 										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
 									)
 								)
@@ -62881,7 +62904,7 @@
 							{ className: 'container clearfix' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'postcontent bothsidebar nobottommargin' },
+								{ className: 'postcontent nobottommargin' },
 								_react2.default.createElement(
 									'h3',
 									null,
@@ -63171,37 +63194,56 @@
 				} else {
 					detailContent = {
 						title: 'Preview Free Session',
-						text: 'Complete the form below to preview the next session of ' + course.title + ' for free.',
+						text: 'Complete the form below to attend a preview session of ' + course.title + ' for free.',
 						path: '/account/subscribe'
 					};
 				}
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'col_half panel panel-default col_last' },
+					{ className: 'entry clearfix' },
 					_react2.default.createElement(
 						'div',
-						{ style: { backgroundColor: '#f1f9f5', textAlign: 'center' }, className: 'panel-heading' },
-						detailContent.title
+						{ className: 'entry-timeline' },
+						'Preview',
+						_react2.default.createElement('span', null),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'panel-body', style: { textAlign: 'center' } },
-						_react2.default.createElement('img', { style: { width: 96, marginBottom: 12 }, src: '/images/logo_round_blue_260.png' }),
+						{ className: 'entry-image' },
 						_react2.default.createElement(
-							'p',
-							null,
-							detailContent.text
-						),
-						_react2.default.createElement('hr', null),
-						_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement(
-							'a',
-							{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-							'Submit'
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									detailContent.title
+								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement(
+										'p',
+										null,
+										detailContent.text
+									),
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+										'Submit'
+									)
+								)
+							)
 						)
 					)
 				);

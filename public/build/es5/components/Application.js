@@ -85,7 +85,7 @@ var Application = (function (Component) {
 							{ className: "container clearfix" },
 							React.createElement(
 								"div",
-								{ className: "postcontent bothsidebar nobottommargin" },
+								{ className: "postcontent nobottommargin" },
 								React.createElement(
 									"h3",
 									null,

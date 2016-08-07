@@ -99,24 +99,39 @@ class DetailBox extends Component {
 		else {
 			detailContent = {
 				title: 'Preview Free Session',
-				text: 'Complete the form below to preview the next session of '+course.title+' for free.',
+				text: 'Complete the form below to attend a preview session of '+course.title+' for free.',
 				path: '/account/subscribe'
 			}
 		}
 
 
 		return (
-			<div className="col_half panel panel-default col_last">
-				<div style={{backgroundColor:'#f1f9f5', textAlign:'center'}} className="panel-heading">{detailContent.title}</div>
-				<div className="panel-body" style={{textAlign:'center'}}>
-					<img style={{width:96, marginBottom:12}} src="/images/logo_round_blue_260.png" />
-					<p>{detailContent.text}</p>
-					<hr />
-					<input type="text" onChange={this.updateVisitor} value={this.state.visitor.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-					<input type="text" onChange={this.updateVisitor} value={this.state.visitor.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
-					<a onClick={this.submitRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+
+			<div className="entry clearfix">
+				<div className="entry-timeline">
+					Preview<span></span>
+					<div className="timeline-divider"></div>
+				</div>
+				<div className="entry-image">
+					<div className="panel panel-default">
+						<div className="panel-body" style={{padding:36, paddingBottom:0}}>
+							<h2>{detailContent.title}</h2>
+							<hr />
+
+							<div className='col_full'>
+								<p>{detailContent.text}</p>
+								<hr />
+								<input type="text" onChange={this.updateVisitor} value={this.state.visitor.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<input type="text" onChange={this.updateVisitor} value={this.state.visitor.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<a onClick={this.submitRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
+
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
+
 		)
 
 

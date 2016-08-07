@@ -55,7 +55,7 @@ class Application extends Component {
 				<div id="application" className="content-wrap">
 					<div className="container clearfix">
 
-						<div className="postcontent bothsidebar nobottommargin">
+						<div className="postcontent nobottommargin">
 							<h3>Apply</h3>
 							<hr />
 

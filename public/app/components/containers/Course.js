@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
-import Sidebar from '../../components/Sidebar'
+import Nav from '../../components/Nav'
+import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import CTA from '../../components/CTA'
 import CourseSection from '../../components/CourseSection'
@@ -164,14 +165,6 @@ class Course extends Component {
 	render(){
 		const course = this.props.courses[this.props.slug]
 
-		var bannerIndex = 0
-		if (course.type == 'online')
-			bannerIndex = 1
-		else if (course.type == 'immersive')
-			bannerIndex = 2
-		
-		
-		var banner = this.props.banners[bannerIndex]
 		var startDate = (course.dates == null) ? '' : course.dates.split('-')[0].trim()
 		var _course = course
 		var _currentUser = this.props.currentUser
@@ -204,13 +197,27 @@ class Course extends Component {
 
 		return (
 			<div>
+				<Nav />
+		        <section id="slider" className="slider-parallax dark full-screen" style={{background:'url("/images/joe_light_blue.png") center'}} data-height-lg="400" data-height-md="400" data-height-sm="200" data-height-xs="200" data-height-xxs="200">
+		            <div className="container clearfix">
+		                <div className="vertical-middle">
+		                    <div className="heading-block center nobottomborder">
+		                        <h1 style={{textTransform:'none'}} data-animate="fadeInUp">{course.title}</h1>
+		                        <span data-animate="fadeInUp" data-delay="300">
+		                        	{course.dates}<br />{course.schedule}
+		                        </span>
+		                    </div>
+		                </div>
+		            </div>
+		        </section>
+
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
-				<Sidebar />
 
 				<section id="content" style={{backgroundColor: '#F5F5F5'}}>
 					<div className="content-wrap">
 						<div className="container clearfix">
-							<div className="postcontent nobottommargin col_last clearfix">
+
+							<div className="postcontent nobottommargin clearfix">
 								<div id="posts" className="post-timeline clearfix">
 									<div className="timeline-border"></div>
 
@@ -219,23 +226,18 @@ class Course extends Component {
 											Intro<span></span>
 											<div className="timeline-divider"></div>
 										</div>
-										<div className="entry-image">
-											<img style={{background:'#fff', padding:6, border:'1px solid #ddd'}} className="image_fade" src={'/images/'+banner} alt="FullStack 360" />
-										</div>
 										<div className="entry-content">
-											<div className='col_half'>
+											<div className='col_full'>
 												<h2 style={{marginBottom:0}}>{course.title}</h2>
 												<p>{course.description}</p>
 											</div>
-											<DetailBox showLoader={this.showLoader} hideLoader={this.hideLoader} course={course} />
-
 										</div>
 									</div>
 
 									{ units }
 
+									<DetailBox course={course} />
 									<CTA course={course} currentUser={this.props.currentUser} loginAction={_showLogin} showLoader={this.showLoader} hideLoader={this.hideLoader} showConfirmation={this.showConfirmation} />
-
 								</div>
 							</div>
 

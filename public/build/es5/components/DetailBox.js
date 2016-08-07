@@ -124,7 +124,7 @@ var DetailBox = (function (Component) {
 				} else {
 					detailContent = {
 						title: "Preview Free Session",
-						text: "Complete the form below to preview the next session of " + course.title + " for free.",
+						text: "Complete the form below to attend a preview session of " + course.title + " for free.",
 						path: "/account/subscribe"
 					};
 				}
@@ -132,30 +132,49 @@ var DetailBox = (function (Component) {
 
 				return React.createElement(
 					"div",
-					{ className: "col_half panel panel-default col_last" },
+					{ className: "entry clearfix" },
 					React.createElement(
 						"div",
-						{ style: { backgroundColor: "#f1f9f5", textAlign: "center" }, className: "panel-heading" },
-						detailContent.title
+						{ className: "entry-timeline" },
+						"Preview",
+						React.createElement("span", null),
+						React.createElement("div", { className: "timeline-divider" })
 					),
 					React.createElement(
 						"div",
-						{ className: "panel-body", style: { textAlign: "center" } },
-						React.createElement("img", { style: { width: 96, marginBottom: 12 }, src: "/images/logo_round_blue_260.png" }),
+						{ className: "entry-image" },
 						React.createElement(
-							"p",
-							null,
-							detailContent.text
-						),
-						React.createElement("hr", null),
-						React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
-						React.createElement("br", null),
-						React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
-						React.createElement("br", null),
-						React.createElement(
-							"a",
-							{ onClick: this.submitRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
-							"Submit"
+							"div",
+							{ className: "panel panel-default" },
+							React.createElement(
+								"div",
+								{ className: "panel-body", style: { padding: 36, paddingBottom: 0 } },
+								React.createElement(
+									"h2",
+									null,
+									detailContent.title
+								),
+								React.createElement("hr", null),
+								React.createElement(
+									"div",
+									{ className: "col_full" },
+									React.createElement(
+										"p",
+										null,
+										detailContent.text
+									),
+									React.createElement("hr", null),
+									React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
+									React.createElement("br", null),
+									React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
+									React.createElement("br", null),
+									React.createElement(
+										"a",
+										{ onClick: this.submitRequest, href: "#", className: "button button-border button-dark button-rounded noleftmargin" },
+										"Submit"
+									)
+								)
+							)
 						)
 					)
 				);

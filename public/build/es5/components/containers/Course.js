@@ -23,7 +23,9 @@ var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
 var connect = require("react-redux").connect;
-var Sidebar = _interopRequire(require("../../components/Sidebar"));
+var Nav = _interopRequire(require("../../components/Nav"));
+
+var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
@@ -230,11 +232,6 @@ var Course = (function (Component) {
 			value: function render() {
 				var course = this.props.courses[this.props.slug];
 
-				var bannerIndex = 0;
-				if (course.type == "online") bannerIndex = 1;else if (course.type == "immersive") bannerIndex = 2;
-
-
-				var banner = this.props.banners[bannerIndex];
 				var startDate = course.dates == null ? "" : course.dates.split("-")[0].trim();
 				var _course = course;
 				var _currentUser = this.props.currentUser;
@@ -296,8 +293,36 @@ var Course = (function (Component) {
 				return React.createElement(
 					"div",
 					null,
+					React.createElement(Nav, null),
+					React.createElement(
+						"section",
+						{ id: "slider", className: "slider-parallax dark full-screen", style: { background: "url(\"/images/joe_light_blue.png\") center" }, "data-height-lg": "400", "data-height-md": "400", "data-height-sm": "200", "data-height-xs": "200", "data-height-xxs": "200" },
+						React.createElement(
+							"div",
+							{ className: "container clearfix" },
+							React.createElement(
+								"div",
+								{ className: "vertical-middle" },
+								React.createElement(
+									"div",
+									{ className: "heading-block center nobottomborder" },
+									React.createElement(
+										"h1",
+										{ style: { textTransform: "none" }, "data-animate": "fadeInUp" },
+										course.title
+									),
+									React.createElement(
+										"span",
+										{ "data-animate": "fadeInUp", "data-delay": "300" },
+										course.dates,
+										React.createElement("br", null),
+										course.schedule
+									)
+								)
+							)
+						)
+					),
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
-					React.createElement(Sidebar, null),
 					React.createElement(
 						"section",
 						{ id: "content", style: { backgroundColor: "#F5F5F5" } },
@@ -309,7 +334,7 @@ var Course = (function (Component) {
 								{ className: "container clearfix" },
 								React.createElement(
 									"div",
-									{ className: "postcontent nobottommargin col_last clearfix" },
+									{ className: "postcontent nobottommargin clearfix" },
 									React.createElement(
 										"div",
 										{ id: "posts", className: "post-timeline clearfix" },
@@ -326,15 +351,10 @@ var Course = (function (Component) {
 											),
 											React.createElement(
 												"div",
-												{ className: "entry-image" },
-												React.createElement("img", { style: { background: "#fff", padding: 6, border: "1px solid #ddd" }, className: "image_fade", src: "/images/" + banner, alt: "FullStack 360" })
-											),
-											React.createElement(
-												"div",
 												{ className: "entry-content" },
 												React.createElement(
 													"div",
-													{ className: "col_half" },
+													{ className: "col_full" },
 													React.createElement(
 														"h2",
 														{ style: { marginBottom: 0 } },
@@ -345,11 +365,11 @@ var Course = (function (Component) {
 														null,
 														course.description
 													)
-												),
-												React.createElement(DetailBox, { showLoader: this.showLoader, hideLoader: this.hideLoader, course: course })
+												)
 											)
 										),
 										units,
+										React.createElement(DetailBox, { course: course }),
 										React.createElement(CTA, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
 									)
 								)
