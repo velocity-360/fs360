@@ -50,11 +50,10 @@ function updateTracking(req, res, visitor){
 			req.session.reset()
 			var pageMap = {}
 			pageMap[page] = 1
-			var info = {
+			var info = { // don't update referrer here, only track original referring site
 				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 				pageMap: pageMap,
-				visitor: visitor,
-				referer: referer
+				visitor: visitor
 			}
 
 			trackController.post(info, function(err, result){
