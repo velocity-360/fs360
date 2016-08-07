@@ -81,7 +81,9 @@ var QualifyingForm = (function (Component) {
 				if (this.props.subject != null) pkg.subject = this.props.subject;
 
 				var _this = this;
+				this.props.toggleLoader(true);
 				api.handlePost(this.props.endpoint, pkg, function (err, response) {
+					this.props.toggleLoader(false);
 					if (err) {
 						alert(err.message);
 						return;

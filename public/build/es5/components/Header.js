@@ -36,6 +36,7 @@ var Header = (function (Component) {
 		this.submitInfoRequest = this.submitInfoRequest.bind(this);
 		this.hideForm = this.hideForm.bind(this);
 		this.validate = this.validate.bind(this);
+		this.toggleLoader = this.toggleLoader.bind(this);
 		this.state = {
 			showLoader: false,
 			showForm: false,
@@ -73,6 +74,15 @@ var Header = (function (Component) {
 			value: function hideForm() {
 				this.setState({
 					showForm: false
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		toggleLoader: {
+			value: function toggleLoader(show) {
+				this.setState({
+					showLoader: show
 				});
 			},
 			writable: true,
@@ -207,7 +217,7 @@ var Header = (function (Component) {
 							)
 						)
 					),
-					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent })
+					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader })
 				);
 			},
 			writable: true,

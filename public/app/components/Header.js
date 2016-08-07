@@ -13,6 +13,7 @@ class Header extends Component {
 		this.submitInfoRequest = this.submitInfoRequest.bind(this)
 		this.hideForm = this.hideForm.bind(this)
 		this.validate = this.validate.bind(this)
+		this.toggleLoader = this.toggleLoader.bind(this)
 		this.state = {
 			showLoader: false,
 			showForm: false,
@@ -42,6 +43,12 @@ class Header extends Component {
 	hideForm(){
 		this.setState({
 			showForm: false
+		})
+	}
+
+	toggleLoader(show){
+		this.setState({
+			showLoader: show
 		})
 	}
 
@@ -136,7 +143,7 @@ class Header extends Component {
 	                </form>
 	            </div>
 
-	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={nextEvent} />
+	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={nextEvent} toggleLoader={this.toggleLoader} />
 	        </section>
 		)
 	}

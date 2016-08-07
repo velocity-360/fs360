@@ -44172,6 +44172,7 @@
 			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
 			_this2.hideForm = _this2.hideForm.bind(_this2);
 			_this2.validate = _this2.validate.bind(_this2);
+			_this2.toggleLoader = _this2.toggleLoader.bind(_this2);
 			_this2.state = {
 				showLoader: false,
 				showForm: false,
@@ -44204,6 +44205,13 @@
 			value: function hideForm() {
 				this.setState({
 					showForm: false
+				});
+			}
+		}, {
+			key: 'toggleLoader',
+			value: function toggleLoader(show) {
+				this.setState({
+					showLoader: show
 				});
 			}
 		}, {
@@ -44330,7 +44338,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(_QualifyingForm2.default, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent })
+					_react2.default.createElement(_QualifyingForm2.default, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader })
 				);
 			}
 		}]);
@@ -44436,7 +44444,9 @@
 				if (this.props.subject != null) pkg['subject'] = this.props.subject;
 	
 				var _this = this;
+				this.props.toggleLoader(true);
 				_APIManager2.default.handlePost(this.props.endpoint, pkg, function (err, response) {
+					this.props.toggleLoader(false);
 					if (err) {
 						alert(err.message);
 						return;
