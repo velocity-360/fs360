@@ -44338,7 +44338,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(_QualifyingForm2.default, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader })
+					_react2.default.createElement(_QualifyingForm2.default, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader, endpoint: '/account/rsvp' })
 				);
 			}
 		}]);

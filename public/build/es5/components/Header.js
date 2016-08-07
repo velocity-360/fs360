@@ -217,7 +217,7 @@ var Header = (function (Component) {
 							)
 						)
 					),
-					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader })
+					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader, endpoint: "/account/rsvp" })
 				);
 			},
 			writable: true,

@@ -143,7 +143,7 @@ class Header extends Component {
 	                </form>
 	            </div>
 
-	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={nextEvent} toggleLoader={this.toggleLoader} />
+	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={nextEvent} toggleLoader={this.toggleLoader} endpoint='/account/rsvp' />
 	        </section>
 		)
 	}
