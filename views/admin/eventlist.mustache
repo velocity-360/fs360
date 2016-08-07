@@ -71,6 +71,7 @@
                             <input ng-model="event.fee" class="form-control" type="text" placeholder="Fee" />
                             <input ng-model="event.priority" class="form-control" type="text" placeholder="Priority" />
                             <input ng-model="event.address" class="form-control" type="text" placeholder="Address" />
+                            <input ng-model="event.status" class="form-control" type="text" placeholder="Status" />
                             <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777;margin-bottom:24px" ng-file-drop="uploadImage($files)">
                                 <img style="width:72px;border:1px solid #ddd" ng-show="event.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% event.image %>?crop=360" />
                                 Drag &amp; drop image

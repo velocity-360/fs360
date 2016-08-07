@@ -5,6 +5,7 @@ var EventSchema = new mongoose.Schema({
 	title: {type:String, trim:true, default: ''},
 	date: {type:String, trim:true, default: ''},
 	time: {type:String, trim:true, default: ''},
+	status: {type:String, trim:true, default: 'open'}, // open, closed
 	address: {type:String, trim:true, default: ''},
 	description: {type:String, trim:true, default: ''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
@@ -21,6 +22,7 @@ EventSchema.methods.summary = function(type) {
 		'title':this.title,
 		'date':this.date,
 		'time':this.time,
+		'status':this.status,
 		'address':this.address,
 		'description':this.description,
 		'image':this.image,
