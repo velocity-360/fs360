@@ -7,7 +7,8 @@ export default {
 		params: {}
 	},
 
-	updateTracking: function(callback){
+	updateTracking: (callback) => {
+		console.log('UPDATE TRACKING: '+JSON.stringify(this.currentPage))
 		api.handlePost('/tracker', this.currentPage, (err, response) => {
 			if (err){
 				callback(err, null)
@@ -17,7 +18,4 @@ export default {
 			callback(null, response)
 		})
 	}
-
-
-
 }

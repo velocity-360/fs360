@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import api from '../utils/APIManager'
+import TrackingManager from '../utils/TrackingManager'
 
 class QualifyingForm extends Component {
 
@@ -58,6 +59,9 @@ class QualifyingForm extends Component {
 			}
 
 			alert(response.message)
+			TrackingManager.updateTracking((err, response) => {
+
+			})
 		})
 	}
 

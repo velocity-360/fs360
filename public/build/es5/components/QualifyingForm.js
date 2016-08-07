@@ -22,6 +22,8 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 var Modal = _reactBootstrap.Modal;
 var api = _interopRequire(require("../utils/APIManager"));
 
+var TrackingManager = _interopRequire(require("../utils/TrackingManager"));
+
 var QualifyingForm = (function (Component) {
 	function QualifyingForm(props, context) {
 		_classCallCheck(this, QualifyingForm);
@@ -87,6 +89,7 @@ var QualifyingForm = (function (Component) {
 					}
 
 					alert(response.message);
+					TrackingManager.updateTracking(function (err, response) {});
 				});
 			},
 			writable: true,

@@ -12,7 +12,7 @@ module.exports = {
 	},
 
 	updateTracking: function (callback) {
-		api.handlePost("/tracker", this.currentPage, function (err, response) {
+		api.handlePost("/tracker", undefined.currentPage, function (err, response) {
 			if (err) {
 				callback(err, null);
 				return;
@@ -21,7 +21,4 @@ module.exports = {
 			callback(null, response);
 		});
 	}
-
-
-
 };

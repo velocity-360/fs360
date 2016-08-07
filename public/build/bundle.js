@@ -44284,6 +44284,10 @@
 	
 	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
+	var _TrackingManager = __webpack_require__(603);
+	
+	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44355,6 +44359,7 @@
 					}
 	
 					alert(response.message);
+					_TrackingManager2.default.updateTracking(function (err, response) {});
 				});
 			}
 		}, {
@@ -64033,7 +64038,8 @@
 		},
 	
 		updateTracking: function updateTracking(callback) {
-			_APIManager2.default.handlePost('/tracker', this.currentPage, function (err, response) {
+			console.log('UPDATE TRACKING: ' + JSON.stringify(undefined.currentPage));
+			_APIManager2.default.handlePost('/tracker', undefined.currentPage, function (err, response) {
 				if (err) {
 					callback(err, null);
 					return;
@@ -64042,7 +64048,6 @@
 				callback(null, response);
 			});
 		}
-	
 	};
 
 /***/ }

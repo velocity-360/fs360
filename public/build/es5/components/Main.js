@@ -139,8 +139,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Main);
-// api.handlePost('/tracker', {page:page, slug:slug, params:params}, (err, response) => {
-// 	if (err){
-// 		return
-// 	}
-// })
