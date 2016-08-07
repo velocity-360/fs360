@@ -22716,25 +22716,19 @@
 		_createClass(Main, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		console.log('componentDidMount: '+this.props.page)
 				var page = this.props.page;
 				var slug = this.props.slug == null ? '' : this.props.slug;
 				var params = this.props.params == null ? '' : this.props.params;
 	
 				_APIManager2.default.handlePost('/tracker', { page: page, slug: slug, params: params }, function (err, response) {
 					if (err) {
-						//				console.log(JSON.stringify(err))
 						return;
 					}
-	
-					//			console.log(JSON.stringify(response))
 				});
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
-	
 				var page = null;
 				switch (this.props.page) {
 					case 'home':

@@ -5,135 +5,134 @@ var subscriberController = require('../controllers/SubscriberController')
 var trackController = require('../controllers/TrackController')
 
 
-function updateTracking(req, res, visitor){
-	var page = req.body.page
-	var slug = req.body.slug
-	var params = req.body.params
+// function updateTracking(req, res, visitor){
+// 	var page = req.body.page
+// 	var slug = req.body.slug
+// 	var params = req.body.params
 
-	var trackingId = req.session.track
-	if (trackingId == null){
-		var pageMap = {}
-		pageMap[page] = 1
-		var info = {
-			history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
-			pageMap: pageMap,
-			visitor: visitor
-		}
+// 	var trackingId = req.session.track
+// 	if (trackingId == null){
+// 		var pageMap = {}
+// 		pageMap[page] = 1
+// 		var info = {
+// 			history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
+// 			pageMap: pageMap,
+// 			visitor: visitor
+// 		}
 
-		Track.create(info, function(err, track){
-			if (err){
-				res.json({
-					confirmation:'fail',
-					message: err
-				})
+// 		Track.create(info, function(err, track){
+// 			if (err){
+// 				res.json({
+// 					confirmation:'fail',
+// 					message: err
+// 				})
 
-				return
-			}
+// 				return
+// 			}
 
-			req.session.track = track._id
-			res.json({
-				confirmation:'success'
-			})
+// 			req.session.track = track._id
+// 			res.json({
+// 				confirmation:'success'
+// 			})
 
-			return			
-		})
+// 			return			
+// 		})
 
-		return			
-	}
+// 		return			
+// 	}
 
-	Track.findById(trackingId, function(err, track){
-		if (err){
-			req.session.reset()
-			var pageMap = {}
-			pageMap[page] = 1
-			var info = { 
-				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
-				pageMap: pageMap,
-				visitor: visitor
-			}
+// 	Track.findById(trackingId, function(err, track){
+// 		if (err){
+// 			req.session.reset()
+// 			var pageMap = {}
+// 			pageMap[page] = 1
+// 			var info = { 
+// 				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
+// 				pageMap: pageMap,
+// 				visitor: visitor
+// 			}
 
-			trackController.post(info, function(err, result){
-				if (err){
-					res.json({
-						confirmation:'fail',
-						message: err
-					})
-					return
-				}
+// 			trackController.post(info, function(err, result){
+// 				if (err){
+// 					res.json({
+// 						confirmation:'fail',
+// 						message: err
+// 					})
+// 					return
+// 				}
 
-				req.session.track = result.id
-				res.json({
-					confirmation:'success'
-				})
-			})
+// 				req.session.track = result.id
+// 				res.json({
+// 					confirmation:'success'
+// 				})
+// 			})
 
-			return
-		}
+// 			return
+// 		}
 
-		if (track == null){
-			req.session.reset()
-			var pageMap = {}
-			pageMap[page] = 1
-			var info = {
-				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
-				pageMap: pageMap,
-				visitor: visitor
-			}
+// 		if (track == null){
+// 			req.session.reset()
+// 			var pageMap = {}
+// 			pageMap[page] = 1
+// 			var info = {
+// 				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
+// 				pageMap: pageMap,
+// 				visitor: visitor
+// 			}
 
-			trackController.post(info, function(err, result){
-				if (err){
-					res.json({
-						confirmation:'fail',
-						message: err
-					})
-					return
-				}
+// 			trackController.post(info, function(err, result){
+// 				if (err){
+// 					res.json({
+// 						confirmation:'fail',
+// 						message: err
+// 					})
+// 					return
+// 				}
 
-				req.session.track = result.id
-				res.json({
-					confirmation:'success'
-				})
+// 				req.session.track = result.id
+// 				res.json({
+// 					confirmation:'success'
+// 				})
 
-			})
-			return			
-		}
+// 			})
+// 			return			
+// 		}
 
-		var history = track.history
-		if (history == null)
-			history = []
+// 		var history = track.history
+// 		if (history == null)
+// 			history = []
 
-		history.push({
-			page: page,
-			slug: slug,
-			params: params,
-			timestamp: Date.now()
-		})
+// 		history.push({
+// 			page: page,
+// 			slug: slug,
+// 			params: params,
+// 			timestamp: Date.now()
+// 		})
 
-		track['history'] = history
+// 		track['history'] = history
 
-		var pageMap = track.pageMap
-		var pageCount = pageMap[page]
-		if (pageCount == null)
-			pageCount = 1
-		else 
-			pageCount = pageCount+1
+// 		var pageMap = track.pageMap
+// 		var pageCount = pageMap[page]
+// 		if (pageCount == null)
+// 			pageCount = 1
+// 		else 
+// 			pageCount = pageCount+1
 
-		pageMap[page] = pageCount
-		track['pageMap'] = pageMap
-		track.markModified('pageMap')
+// 		pageMap[page] = pageCount
+// 		track['pageMap'] = pageMap
+// 		track.markModified('pageMap')
 
-		track['visitor'] = visitor
-		track.markModified('visitor')
+// 		track['visitor'] = visitor
+// 		track.markModified('visitor')
 
-		track.save()
+// 		track.save()
 
-		res.json({
-			confirmation:'success'
-		})
-		return
-	})
-
-}
+// 		res.json({
+// 			confirmation:'success'
+// 		})
+// 		return
+// 	})
+// }
 
 
 router.post('/', function(req, res, next) {
@@ -148,10 +147,38 @@ router.post('/', function(req, res, next) {
 			visitor['name'] = subscriber.name
 		}
 
-		updateTracking(req, res, visitor)
+		trackController.updateTracking(req, visitor, function(err, result){
+			if (err){
+				res.json({
+					confirmation: 'fail',
+					message: err
+				})
+			}
+
+			res.json({
+				confirmation:'success',
+				track: result
+			})
+
+			return
+		})
 	})
 	.catch(function(err){
-		updateTracking(req, res, visitor)
+		trackController.updateTracking(req, visitor, function(err, result){
+			if (err){
+				res.json({
+					confirmation: 'fail',
+					message: err
+				})
+			}
+
+			res.json({
+				confirmation:'success',
+				track: result
+			})
+
+			return
+		})
 	})
 })
 

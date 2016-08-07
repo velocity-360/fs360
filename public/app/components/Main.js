@@ -24,24 +24,18 @@ class Main extends Component {
 	}
 
 	componentDidMount(){
-//		console.log('componentDidMount: '+this.props.page)
 		var page = this.props.page
 		var slug = (this.props.slug == null) ? '' : this.props.slug
 		var params = (this.props.params == null) ? '' : this.props.params
 
 		api.handlePost('/tracker', {page:page, slug:slug, params:params}, (err, response) => {
 			if (err){
-//				console.log(JSON.stringify(err))
 				return
 			}
-
-//			console.log(JSON.stringify(response))
 		})
 	}
 
 	render(){
-//		console.log('RENDER MAIN: '+JSON.stringify(this.props.page)+', '+JSON.stringify(this.props.slug))
-
 		var page = null
 		switch (this.props.page){
 			case 'home':
