@@ -22669,23 +22669,23 @@
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Project = __webpack_require__(595);
+	var _Project = __webpack_require__(594);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(596);
+	var _Course = __webpack_require__(595);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Account = __webpack_require__(601);
+	var _Account = __webpack_require__(600);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(602);
+	var _Unit = __webpack_require__(601);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
-	var _Checkout = __webpack_require__(603);
+	var _Checkout = __webpack_require__(602);
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
@@ -61339,8 +61339,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
 
 /***/ },
-/* 594 */,
-/* 595 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61639,7 +61638,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 596 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61676,11 +61675,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CTA = __webpack_require__(597);
+	var _CTA = __webpack_require__(596);
 	
 	var _CTA2 = _interopRequireDefault(_CTA);
 	
-	var _CourseSection = __webpack_require__(598);
+	var _CourseSection = __webpack_require__(597);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -61688,11 +61687,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(599);
+	var _Application = __webpack_require__(598);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(600);
+	var _DetailBox = __webpack_require__(599);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -62163,7 +62162,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 597 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62652,7 +62651,7 @@
 	exports.default = CTA;
 
 /***/ },
-/* 598 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62817,7 +62816,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 599 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63064,7 +63063,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 600 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63258,7 +63257,7 @@
 	exports.default = DetailBox;
 
 /***/ },
-/* 601 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63610,7 +63609,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 602 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63731,7 +63730,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
 
 /***/ },
-/* 603 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

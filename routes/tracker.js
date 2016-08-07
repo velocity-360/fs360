@@ -9,17 +9,19 @@ function updateTracking(req, res, visitor){
 	var page = req.body.page
 	var slug = req.body.slug
 	var params = req.body.params
+	var referer = req.headers.referer
+	if (referer == null)
+		referer = ''
 
 	var trackingId = req.session.track
-//	console.log('TRACKING ID: '+trackingId)
-//	var user = req.session.user
 	if (trackingId == null){
 		var pageMap = {}
 		pageMap[page] = 1
 		var info = {
 			history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 			pageMap: pageMap,
-			visitor: visitor
+			visitor: visitor,
+			referer: referer
 		}
 
 		Track.create(info, function(err, track){
@@ -51,7 +53,8 @@ function updateTracking(req, res, visitor){
 			var info = {
 				history: [{page:page, slug:slug, params:params, timestamp: Date.now()}],
 				pageMap: pageMap,
-				visitor: visitor
+				visitor: visitor,
+				referer: referer
 			}
 
 			trackController.post(info, function(err, result){
