@@ -44166,41 +44166,19 @@
 		function Header(props, context) {
 			_classCallCheck(this, Header);
 	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props, context));
 	
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.submitInfoRequest = _this2.submitInfoRequest.bind(_this2);
-			_this2.hideForm = _this2.hideForm.bind(_this2);
-			_this2.validate = _this2.validate.bind(_this2);
-			_this2.toggleLoader = _this2.toggleLoader.bind(_this2);
-			_this2.state = {
+			_this.submitInfoRequest = _this.submitInfoRequest.bind(_this);
+			_this.hideForm = _this.hideForm.bind(_this);
+			_this.toggleLoader = _this.toggleLoader.bind(_this);
+			_this.state = {
 				showLoader: false,
-				showForm: false,
-				visitor: {
-					name: '',
-					email: '',
-					phone: '',
-					referral: 'Landing Page'
-				}
+				showForm: false
 			};
-			return _this2;
+			return _this;
 		}
 	
 		_createClass(Header, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
-			key: 'updateVisitor',
-			value: function updateVisitor(event) {
-				event.preventDefault();
-	
-				var visitor = Object.assign({}, this.state.visitor);
-				visitor[event.target.id] = event.target.value;
-				this.setState({
-					visitor: visitor
-				});
-			}
-		}, {
 			key: 'hideForm',
 			value: function hideForm() {
 				this.setState({
@@ -44221,54 +44199,6 @@
 				this.setState({
 					showForm: true
 				});
-	
-				return;
-	
-				var missingField = this.validate(this.state.visitor, false);
-				if (missingField != null) {
-					alert('Please enter your ' + missingField);
-					return;
-				}
-	
-				this.setState({
-					showLoader: true
-				});
-	
-				var pkg = Object.assign({}, this.state.visitor);
-				var parts = pkg.name.split(' ');
-				pkg['firstName'] = parts[0];
-				if (parts.length > 1) pkg['lastName'] = parts[parts.length - 1];
-	
-				var nextEvent = this.props.events[0];
-				pkg['date'] = nextEvent.date;
-				pkg['event'] = nextEvent.title;
-	
-				var _this = this;
-				_APIManager2.default.handlePost('/account/rsvp', pkg, function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'validate',
-			value: function validate(profile, withPassword) {
-				if (profile.name.length == 0) return 'Name';
-	
-				if (profile.email.length == 0) return 'Email';
-	
-				if (withPassword == false) return null;
-	
-				if (profile.password.length == 0) return 'Password';
-	
-				return null; // this is successful
 			}
 		}, {
 			key: 'render',

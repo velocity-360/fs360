@@ -9,35 +9,13 @@ import QualifyingForm from '../components/QualifyingForm'
 class Header extends Component {
 	constructor(props, context){
 		super(props, context)
-		this.updateVisitor = this.updateVisitor.bind(this)
 		this.submitInfoRequest = this.submitInfoRequest.bind(this)
 		this.hideForm = this.hideForm.bind(this)
-		this.validate = this.validate.bind(this)
 		this.toggleLoader = this.toggleLoader.bind(this)
 		this.state = {
 			showLoader: false,
-			showForm: false,
-			visitor: {
-				name: '',
-				email: '',
-				phone: '',
-				referral: 'Landing Page'
-			}
+			showForm: false
 		}
-	}
-
-	componentDidMount(){
-
-	}
-
-	updateVisitor(event){
-		event.preventDefault()
-
-		var visitor = Object.assign({}, this.state.visitor)
-		visitor[event.target.id] = event.target.value
-		this.setState({
-			visitor: visitor
-		})
 	}
 
 	hideForm(){
@@ -57,60 +35,6 @@ class Header extends Component {
 		this.setState({
 			showForm: true
 		})
-
-		return
-
-
-		var missingField = this.validate(this.state.visitor, false)
-		if (missingField != null){
-			alert('Please enter your '+missingField)
-			return
-		}
-
-		this.setState({
-			showLoader: true
-		})
-
-		var pkg = Object.assign({}, this.state.visitor)
-		var parts = pkg.name.split(' ')
-		pkg['firstName'] = parts[0]
-		if (parts.length > 1)
-			pkg['lastName'] = parts[parts.length-1]
-
-		const nextEvent = this.props.events[0]
-		pkg['date'] = nextEvent.date
-		pkg['event'] = nextEvent.title
-
-		var _this = this
-		api.handlePost('/account/rsvp', pkg, function(err, response){
-			_this.setState({
-				showLoader: false
-			})
-
-			if (err){
-				alert(err.message)
-				return
-			}
-
-			alert(response.message)
-		})
-	}
-
-
-	validate(profile, withPassword){
-		if (profile.name.length == 0)
-			return 'Name'
-
-		if (profile.email.length == 0)
-			return 'Email'
-
-		if (withPassword == false)
-			return null
-
-		if (profile.password.length == 0)
-			return 'Password'
-
-		return null // this is successful
 	}
 
 
