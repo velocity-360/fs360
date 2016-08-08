@@ -44356,7 +44356,7 @@
 				if (this.props.subject != null) pkg['subject'] = this.props.subject.title;
 	
 				var survey = [];
-				var questions = ['goal', 'history', 'previous', 'interest'];
+				var questions = ['goal', 'history', 'previous courses', 'interest in Velocity'];
 				for (var i = 0; i < questions.length; i++) {
 					var question = questions[i];
 					survey.push({
