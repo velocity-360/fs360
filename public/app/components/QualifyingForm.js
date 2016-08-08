@@ -80,7 +80,7 @@ class QualifyingForm extends Component {
 					return
 				}
 
-				console.log(JSON.stringify(response))
+//				console.log(JSON.stringify(response))
 			})
 		})
 	}

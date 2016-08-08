@@ -109,7 +109,7 @@ var QualifyingForm = (function (Component) {
 							return;
 						}
 
-						console.log(JSON.stringify(response));
+						//				console.log(JSON.stringify(response))
 					});
 				});
 			},
