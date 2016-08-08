@@ -44398,6 +44398,9 @@
 	
 				if (profile.email.length == 0) return 'Email';
 	
+				if (profile.email.indexOf('@') == -1) // invalid email
+					return 'valid email address';
+	
 				if (withPassword == false) return null;
 	
 				if (profile.password.length == 0) return 'Password';

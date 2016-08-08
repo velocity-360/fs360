@@ -122,6 +122,9 @@ var QualifyingForm = (function (Component) {
 					return "Name";
 				}if (profile.email.length == 0) {
 					return "Email";
+				}if (profile.email.indexOf("@") == -1) {
+					// invalid email
+					return "valid email";
 				}if (withPassword == false) {
 					return null;
 				}if (profile.password.length == 0) {
