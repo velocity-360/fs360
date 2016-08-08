@@ -153,7 +153,8 @@ router.post('/:action', function(req, res, next) {
 			var subscriber = {
 				name: infoRequest.firstName+infoRequest.lastName,
 				email: infoRequest.email,
-				workshop: infoRequest.subject
+				workshop: infoRequest.subject,
+				survery: infoRequest.survery
 			}
 
 			subscriberController.post(subscriber, function(err, result){
