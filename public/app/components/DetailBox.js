@@ -120,13 +120,10 @@ class DetailBox extends Component {
 
 							<div className='col_full'>
 								<p>{detailContent.text}</p>
-								<hr />
-								<input type="text" onChange={this.updateVisitor} value={this.state.visitor.name} id="name" placeholder="Name" className="form-control" style={{background:'#f9f9f9'}} /><br />
-								<input type="text" onChange={this.updateVisitor} value={this.state.visitor.email} id="email" placeholder="Email" className="form-control" style={{background:'#f9f9f9'}} /><br />
+								<input type="text" onChange={this.updateVisitor} value={this.state.visitor.name} id="name" placeholder="Name" className="custom-input" /><br />
+								<input type="text" onChange={this.updateVisitor} value={this.state.visitor.email} id="email" placeholder="Email" className="custom-input" /><br />
 								<a onClick={this.submitRequest} href="#" className="button button-border button-dark button-rounded noleftmargin">Submit</a>
-
 							</div>
-
 						</div>
 					</div>
 				</div>

@@ -415,7 +415,7 @@ var CTA = (function (Component) {
 							React.createElement(
 								"div",
 								{ className: "panel-body", style: { textAlign: "left", paddingRight: 24 } },
-								React.createElement("input", { type: "text", onChange: this.updatePromoCode, id: "promo", placeholder: "Promo Code", className: "form-control", style: { background: "#f9f9f9" } }),
+								React.createElement("input", { type: "text", onChange: this.updatePromoCode, id: "promo", placeholder: "Promo Code", className: "custom-input" }),
 								React.createElement("br", null),
 								React.createElement(
 									"a",

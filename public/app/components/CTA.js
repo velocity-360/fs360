@@ -257,7 +257,7 @@ class CTA extends Component {
 					<div className="col_full panel panel-default">
 						<div style={{backgroundColor:'#f1f9f5', textAlign:'left'}} className="panel-heading">Submit Deposit</div>
 						<div className="panel-body" style={{textAlign:'left', paddingRight:24}}>
-							<input type="text" onChange={this.updatePromoCode} id="promo" placeholder="Promo Code" className="form-control" style={{background:'#f9f9f9'}} /><br />
+							<input type="text" onChange={this.updatePromoCode} id="promo" placeholder="Promo Code" className="custom-input" /><br />
 							<a onClick={this.showPaypal} href={course.paypalLink} style={{width:'100%', textAlign:'center'}} className="button button-xlarge">PayPal</a><br />
 							<a onClick={this.openStripeModal} href="#" style={{width:'100%', textAlign:'center'}} className="button button-xlarge">Credit Card</a><br />
 						</div>

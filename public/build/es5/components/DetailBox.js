@@ -163,10 +163,9 @@ var DetailBox = (function (Component) {
 										null,
 										detailContent.text
 									),
-									React.createElement("hr", null),
-									React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", placeholder: "Name", className: "form-control", style: { background: "#f9f9f9" } }),
+									React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.name, id: "name", placeholder: "Name", className: "custom-input" }),
 									React.createElement("br", null),
-									React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", placeholder: "Email", className: "form-control", style: { background: "#f9f9f9" } }),
+									React.createElement("input", { type: "text", onChange: this.updateVisitor, value: this.state.visitor.email, id: "email", placeholder: "Email", className: "custom-input" }),
 									React.createElement("br", null),
 									React.createElement(
 										"a",

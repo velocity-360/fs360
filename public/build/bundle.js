@@ -62682,7 +62682,7 @@
 							_react2.default.createElement(
 								'div',
 								{ className: 'panel-body', style: { textAlign: 'left', paddingRight: 24 } },
-								_react2.default.createElement('input', { type: 'text', onChange: this.updatePromoCode, id: 'promo', placeholder: 'Promo Code', className: 'form-control', style: { background: '#f9f9f9' } }),
+								_react2.default.createElement('input', { type: 'text', onChange: this.updatePromoCode, id: 'promo', placeholder: 'Promo Code', className: 'custom-input' }),
 								_react2.default.createElement('br', null),
 								_react2.default.createElement(
 									'a',
@@ -63340,10 +63340,9 @@
 										null,
 										detailContent.text
 									),
-									_react2.default.createElement('hr', null),
-									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'form-control', style: { background: '#f9f9f9' } }),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'custom-input' }),
 									_react2.default.createElement('br', null),
-									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'form-control', style: { background: '#f9f9f9' } }),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'custom-input' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
 										'a',
