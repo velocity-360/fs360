@@ -48,6 +48,18 @@ class QualifyingForm extends Component {
 		if (this.props.subject != null)
 			pkg['subject'] = this.props.subject.title
 
+		var survey = []
+		var questions = ['goal', 'history', 'previous', 'interest']
+		for (var i=0; i<questions.length; i++){
+			var question = questions[i]
+			survey.push({
+				question: question,
+				response: pkg[question]
+			})
+		}
+
+		pkg['survey'] = survey
+
 		var _this = this
 		this.props.toggleLoader(true)
 		api.handlePost(this.props.endpoint, pkg, function(err, response){
