@@ -82,10 +82,10 @@ module.exports = {
 			}
 
 			if (format == 'csv'){
-				var csv = 'Name,Email,Workshop\n'
+				var csv = 'Name,Email,Workshop,Timestamp\n'
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
-					csv = csv+subscriber.name+','+subscriber.email+','+subscriber.workshop+'\n'
+					csv = csv+subscriber.name+','+subscriber.email+','+subscriber.workshop+','+subscriber.timestamp+'\n'
 				}
 
 				completion(null, csv)
