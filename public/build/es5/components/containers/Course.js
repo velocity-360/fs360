@@ -371,7 +371,7 @@ var Course = (function (Component) {
 											)
 										),
 										units,
-										React.createElement(DetailBox, { course: course }),
+										React.createElement(DetailBox, { hideLoader: this.hideLoader, showLoader: this.showLoader, course: course }),
 										React.createElement(CTA, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
 									)
 								)

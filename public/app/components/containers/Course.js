@@ -238,7 +238,7 @@ class Course extends Component {
 
 									{ units }
 
-									<DetailBox course={course} />
+									<DetailBox hideLoader={this.hideLoader} showLoader={this.showLoader} course={course} />
 									<CTA course={course} currentUser={this.props.currentUser} loginAction={_showLogin} showLoader={this.showLoader} hideLoader={this.hideLoader} showConfirmation={this.showConfirmation} />
 								</div>
 							</div>

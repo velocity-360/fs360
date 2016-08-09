@@ -62133,7 +62133,7 @@
 											)
 										),
 										units,
-										_react2.default.createElement(_DetailBox2.default, { course: course }),
+										_react2.default.createElement(_DetailBox2.default, { hideLoader: this.hideLoader, showLoader: this.showLoader, course: course }),
 										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
 									)
 								)
