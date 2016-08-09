@@ -62972,7 +62972,8 @@
 					college: '',
 					major: '',
 					currentLevel: 'total beginner',
-					subject: 'Course Application'
+					subject: 'Course Application',
+					confirmation: 'Thank you for completing an application. We will reach out to you shortly to schedule a phone call.'
 				}
 			};
 			return _this;
