@@ -85,7 +85,12 @@ module.exports = {
 				var csv = 'Name,Email,Workshop,Timestamp\n'
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
-					csv = csv+subscriber.name+','+subscriber.email+','+subscriber.workshop.replace(',', '/')+','+subscriber.timestamp+'\n'
+					var workshop = subscriber.workshop
+					if (workshop != null){
+						workshop = workshop.replace(', ', '+')
+						workshop = workshop.replace(', ', '+')
+					}
+					csv = csv+subscriber.name+','+subscriber.email+','+workshop+','+subscriber.timestamp+'\n'
 				}
 
 				completion(null, csv)
