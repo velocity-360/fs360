@@ -76,7 +76,11 @@ var QualifyingForm = (function (Component) {
 				pkg.firstName = parts[0];
 				if (parts.length > 1) pkg.lastName = parts[parts.length - 1];
 
-				if (this.props.subject != null) pkg.subject = this.props.subject.title;
+				if (this.props.subject != null) {
+					pkg.subject = this.props.subject.title;
+					if (this.props.subject.date != null) pkg.date = this.props.subject.date;
+				}
+
 
 				var survey = [];
 				var questions = ["goal", "history", "previous courses", "interest in Velocity"];

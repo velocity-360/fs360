@@ -50,7 +50,7 @@ module.exports = {
 
 		var format = 'json'
 		if (params['format'] != null){
-			format = 'list'
+			format = params['format'] // list or csv
 			delete params['format']
 		}
 		
@@ -61,7 +61,7 @@ module.exports = {
 			}
 			
 			if (format == 'list'){
-				var list = [];
+				var list = []
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
 					var email = subscriber.email.toLowerCase()
@@ -80,6 +80,18 @@ module.exports = {
 				completion(null, list)
 				return
 			}
+
+			if (format == 'csv'){
+				var csv = ''
+				for (var i=0; i<subscribers.length; i++){
+					var subscriber = subscribers[i]
+					csv = csv+subscriber.name+','+subscriber.email+'\n'
+				}
+
+				completion(null, csv)
+				return
+			}
+
 
 			completion(null, convertToJson(subscribers))
 		})
