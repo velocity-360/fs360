@@ -82,7 +82,7 @@ module.exports = {
 			}
 
 			if (format == 'csv'){
-				var csv = 'Name,Email,Workshop,Timestamp\n'
+				var csv = 'Name,Email,Workshop,Timestamp,Goal\n'
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
 					var workshop = subscriber.workshop
@@ -90,7 +90,16 @@ module.exports = {
 						workshop = workshop.replace(', ', '+')
 						workshop = workshop.replace(', ', '+')
 					}
-					csv = csv+subscriber.name+','+subscriber.email+','+workshop+','+subscriber.timestamp+'\n'
+					var goal = ''
+					var survey = subscriber.survey
+					for (var j=0; j<survey.length; j++){
+						var reply = survey[j]
+						if (reply.question == 'goal')
+							goal = reply.response
+
+					}
+
+					csv = csv+subscriber.name+','+subscriber.email+','+workshop+','+subscriber.timestamp+','+goal+'\n'
 				}
 
 				completion(null, csv)
