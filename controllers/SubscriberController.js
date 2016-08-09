@@ -82,7 +82,7 @@ module.exports = {
 			}
 
 			if (format == 'csv'){
-				var csv = ''
+				var csv = 'Name,Email,Workshop\n'
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
 					csv = csv+subscriber.name+','+subscriber.email+'\n'
