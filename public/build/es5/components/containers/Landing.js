@@ -201,6 +201,45 @@ var Landing = (function (Component) {
 								{ className: "container clearfix" },
 								courses
 							)
+						),
+						React.createElement(
+							"div",
+							{ className: "content-wrap", style: { paddingTop: 0 } },
+							React.createElement(
+								"div",
+								{ className: "container clearfix" },
+								React.createElement("div", { className: "clear" }),
+								React.createElement("div", { className: "line" }),
+								React.createElement(
+									"h4",
+									{ className: "center" },
+									"Our Students Currently Work At"
+								),
+								React.createElement(
+									"ul",
+									{ className: "clients-grid grid-4 bottommargin clearfix" },
+									React.createElement(
+										"li",
+										null,
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/crains.png", alt: "Velocity 360" })
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/bloomberg.png", alt: "Velocity 360" })
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/nytimes.png", alt: "Velocity 360" })
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/codeacademy.png", alt: "Velocity 360" })
+									)
+								)
+							)
 						)
 					),
 					React.createElement(Register, null),
