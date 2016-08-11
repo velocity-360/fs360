@@ -48,7 +48,7 @@ module.exports = {
 		
 		delete params['limit'];
 		
-		Track.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, tracks) {
+		Track.find(params, null, {limit:limit, sort:{score: -1}}, function(err, tracks) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null)
 				return
@@ -118,7 +118,7 @@ module.exports = {
 		}
 
 		Track.findById(trackingId, function(err, track){
-			if (err){
+			if (err){ // not found, create new one
 				req.session.reset()
 				var pageMap = {}
 				pageMap[page] = 1
@@ -142,7 +142,7 @@ module.exports = {
 				return
 			}
 
-			if (track == null){
+			if (track == null){ // not found, create new one
 				req.session.reset()
 				var pageMap = {}
 				pageMap[page] = 1

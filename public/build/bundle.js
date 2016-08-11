@@ -44360,7 +44360,7 @@
 		_createClass(QualifyingForm, [{
 			key: 'closeModal',
 			value: function closeModal() {
-				console.log('closeModal: ');
+				//		console.log('closeModal: ')
 				this.props.closeModal();
 			}
 		}, {
@@ -44396,9 +44396,10 @@
 				var questions = ['goal', 'history', 'previous courses', 'interest in Velocity'];
 				for (var i = 0; i < questions.length; i++) {
 					var question = questions[i];
+					var response = pkg[question].toLowerCase();
 					survey.push({
 						question: question,
-						response: pkg[question]
+						response: response
 					});
 				}
 	
@@ -44460,24 +44461,24 @@
 						{ style: { background: '#f9f9f9', padding: 24, textAlign: 'center' } },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col_half', style: { marginBottom: 24 } },
-							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' })
+							{ className: 'col_half', style: { marginBottom: 6 } },
+							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'custom-input not-dark', placeholder: 'Name' })
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col_half col_last', style: { marginBottom: 24 } },
-							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' })
+							{ className: 'col_half col_last', style: { marginBottom: 6 } },
+							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'text', className: 'custom-input not-dark', placeholder: 'Email' })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'col_full', style: { marginBottom: 12 } },
-							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'goal', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Are you changing career into software development?' }),
+							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'goal', type: 'text', className: 'custom-input not-dark', placeholder: 'Are you changing career into software development?' }),
 							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'history', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'How have you tried to learn programming so far?' }),
+							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'history', type: 'text', className: 'custom-input not-dark', placeholder: 'How have you tried to learn programming so far?' }),
 							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'previous courses', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Have you taken a course or completed a coding bootcamp?' }),
+							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'previous courses', type: 'text', className: 'custom-input not-dark', placeholder: 'Have you taken a course or completed a coding bootcamp?' }),
 							_react2.default.createElement('br', null),
-							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'interest in Velocity', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Are you interested in taking a course with Velocity 360?' })
+							_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'interest in Velocity', type: 'text', className: 'custom-input not-dark', placeholder: 'Are you interested in taking a course with Velocity 360?' })
 						)
 					),
 					_react2.default.createElement(

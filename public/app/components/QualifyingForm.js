@@ -19,7 +19,7 @@ class QualifyingForm extends Component {
 	}
 
 	closeModal(){
-		console.log('closeModal: ')
+//		console.log('closeModal: ')
 		this.props.closeModal()
 	}
 
@@ -56,9 +56,10 @@ class QualifyingForm extends Component {
 		var questions = ['goal', 'history', 'previous courses', 'interest in Velocity']
 		for (var i=0; i<questions.length; i++){
 			var question = questions[i]
+			var response = pkg[question].toLowerCase()
 			survey.push({
 				question: question,
-				response: pkg[question]
+				response: response
 			})
 		}
 
@@ -115,17 +116,17 @@ class QualifyingForm extends Component {
 		        	<img style={{width:96, borderRadius:48}} src="/images/logo_round_green_260.png" />
 		        </Modal.Header>
 		        <Modal.Body style={{background:'#f9f9f9', padding:24, textAlign:'center'}}>
-                    <div className="col_half" style={{marginBottom:24}}>
-                        <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Name" />
+                    <div className="col_half" style={{marginBottom:6}}>
+                        <input onChange={this.updateVisitor} id="name" type="text" className="custom-input not-dark" placeholder="Name" />
                     </div>
-                    <div className="col_half col_last" style={{marginBottom:24}}>
-                        <input onChange={this.updateVisitor} id="email" type="text" className="form-control input-lg not-dark" placeholder="Email" />
+                    <div className="col_half col_last" style={{marginBottom:6}}>
+                        <input onChange={this.updateVisitor} id="email" type="text" className="custom-input not-dark" placeholder="Email" />
                     </div>
                     <div className="col_full" style={{marginBottom:12}}>
-                        <input onChange={this.updateVisitor} id="goal" type="text" className="form-control input-lg not-dark" placeholder="Are you changing career into software development?" /><br />
-                        <input onChange={this.updateVisitor} id="history" type="text" className="form-control input-lg not-dark" placeholder="How have you tried to learn programming so far?" /><br />
-                        <input onChange={this.updateVisitor} id="previous courses" type="text" className="form-control input-lg not-dark" placeholder="Have you taken a course or completed a coding bootcamp?" /><br />
-                        <input onChange={this.updateVisitor} id="interest in Velocity" type="text" className="form-control input-lg not-dark" placeholder="Are you interested in taking a course with Velocity 360?" />
+                        <input onChange={this.updateVisitor} id="goal" type="text" className="custom-input not-dark" placeholder="Are you changing career into software development?" /><br />
+                        <input onChange={this.updateVisitor} id="history" type="text" className="custom-input not-dark" placeholder="How have you tried to learn programming so far?" /><br />
+                        <input onChange={this.updateVisitor} id="previous courses" type="text" className="custom-input not-dark" placeholder="Have you taken a course or completed a coding bootcamp?" /><br />
+                        <input onChange={this.updateVisitor} id="interest in Velocity" type="text" className="custom-input not-dark" placeholder="Are you interested in taking a course with Velocity 360?" />
                     </div>
 		        </Modal.Body>
 		        <Modal.Footer style={{textAlign:'center'}}>

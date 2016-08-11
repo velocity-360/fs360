@@ -108,7 +108,7 @@ router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page
 	var slug = req.params.slug
 
-	if (page == 'api' || page == 'admin' || page == 'account'){
+	if (page == 'api' || page == 'admin' || page == 'account' || page == 'tracker'){
 		next()
 		return
 	}
