@@ -108,6 +108,23 @@ class Landing extends Component {
 			               	{courses}
 						</div>
 					</div>
+
+					<div className="content-wrap" style={{paddingTop:0}}>
+						<div className="container clearfix">
+
+
+                    <div className="clear"></div><div className="line"></div>
+                    <h4 className="center">Our Students Currently Work At</h4>
+                    <ul className="clients-grid grid-4 bottommargin clearfix">
+                        <li><img style={{border:'1px solid #ddd'}} src="/images/crains.png" alt="Velocity 360" /></li>
+                        <li><img style={{border:'1px solid #ddd'}} src="/images/bloomberg.png" alt="Velocity 360" /></li>
+                        <li><img style={{border:'1px solid #ddd'}} src="/images/nytimes.png" alt="Velocity 360" /></li>
+                        <li><img style={{border:'1px solid #ddd'}} src="/images/codeacademy.png" alt="Velocity 360" /></li>
+                    </ul>
+
+						</div>
+					</div>
+
 				</section>
 
 				<Register />

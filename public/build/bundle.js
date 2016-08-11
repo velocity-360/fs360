@@ -23017,6 +23017,45 @@
 								{ className: 'container clearfix' },
 								courses
 							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { paddingTop: 0 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement('div', { className: 'clear' }),
+								_react2.default.createElement('div', { className: 'line' }),
+								_react2.default.createElement(
+									'h4',
+									{ className: 'center' },
+									'Our Students Currently Work At'
+								),
+								_react2.default.createElement(
+									'ul',
+									{ className: 'clients-grid grid-4 bottommargin clearfix' },
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/crains.png', alt: 'Velocity 360' })
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/bloomberg.png', alt: 'Velocity 360' })
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/nytimes.png', alt: 'Velocity 360' })
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/codeacademy.png', alt: 'Velocity 360' })
+									)
+								)
+							)
 						)
 					),
 					_react2.default.createElement(_Register2.default, null),
