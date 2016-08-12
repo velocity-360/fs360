@@ -175,20 +175,22 @@ class Test extends Component {
 		// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
 		// })
 
-		var units = course.units.map(function(unit, i){
-			<div className="entry clearfix">
-				<div className="entry-timeline">
-					Unit<span>{i+1}</span>
-					<div className="timeline-divider"></div>
-				</div>
-				<div className="panel panel-default" style={{maxWidth:600}}>
-					<div className="panel-body" style={{padding:36}}>
-						<h3>Unit Topic</h3>
-						<hr />
-						{unit.description}<br />
+		var units = course.units.map((unit, i) => {
+			return (
+				<div className="entry clearfix">
+					<div className="entry-timeline">
+						Unit<span>{i+1}</span>
+						<div className="timeline-divider"></div>
+					</div>
+					<div className="panel panel-default" style={{maxWidth:600}}>
+						<div className="panel-body" style={{padding:36}}>
+							<h3>{unit.topic}</h3>
+							<hr />
+							{unit.description}<br />
+						</div>
 					</div>
 				</div>
-			</div>
+			)
 		})
 
 

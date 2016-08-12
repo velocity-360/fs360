@@ -243,7 +243,7 @@ var Test = (function (Component) {
 				// })
 
 				var units = course.units.map(function (unit, i) {
-					React.createElement(
+					return React.createElement(
 						"div",
 						{ className: "entry clearfix" },
 						React.createElement(
@@ -266,7 +266,7 @@ var Test = (function (Component) {
 								React.createElement(
 									"h3",
 									null,
-									"Unit Topic"
+									unit.topic
 								),
 								React.createElement("hr", null),
 								unit.description,

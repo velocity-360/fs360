@@ -45936,7 +45936,7 @@
 				// })
 	
 				var units = course.units.map(function (unit, i) {
-					_react2.default.createElement(
+					return _react2.default.createElement(
 						'div',
 						{ className: 'entry clearfix' },
 						_react2.default.createElement(
@@ -45959,7 +45959,7 @@
 								_react2.default.createElement(
 									'h3',
 									null,
-									'Unit Topic'
+									unit.topic
 								),
 								_react2.default.createElement('hr', null),
 								unit.description,
