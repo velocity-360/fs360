@@ -236,7 +236,7 @@ class Test extends Component {
 										</p>
 										<div className="container">
 											<div className="image">
-												<img style={{width:320}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
+												<img style={{width:280, background:'#fff', padding:3, border:'1px solid #ddd'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
 											</div>
 
 											<div className="text">
