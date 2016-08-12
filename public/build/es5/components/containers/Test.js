@@ -457,10 +457,13 @@ var Test = (function (Component) {
 												null,
 												course.title
 											),
+											React.createElement("hr", null),
 											React.createElement(
 												"p",
 												{ className: "about" },
-												course.dates
+												course.dates,
+												React.createElement("br", null),
+												course.schedule
 											),
 											React.createElement(
 												"div",
@@ -468,7 +471,7 @@ var Test = (function (Component) {
 												React.createElement(
 													"div",
 													{ className: "image" },
-													React.createElement("img", { src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460", alt: "Velocity 360" })
+													React.createElement("img", { style: { width: 320 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460", alt: "Velocity 360" })
 												),
 												React.createElement(
 													"div",
@@ -481,7 +484,7 @@ var Test = (function (Component) {
 												)
 											)
 										),
-										React.createElement("hr", null),
+										React.createElement("hr", { style: { marginTop: 24 } }),
 										React.createElement(
 											"article",
 											{ id: "fullstack-experience", className: "overview" },

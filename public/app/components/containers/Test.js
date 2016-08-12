@@ -229,11 +229,14 @@ class Test extends Component {
 
 									<article id="overview" className="overview">
 										<h2>{course.title}</h2>
-										<p className="about">{course.dates}</p>
+										<hr />
+										<p className="about">
+											{course.dates}<br />
+											{course.schedule}
+										</p>
 										<div className="container">
-
 											<div className="image">
-												<img src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
+												<img style={{width:320}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
 											</div>
 
 											<div className="text">
@@ -242,7 +245,7 @@ class Test extends Component {
 										</div>
 									</article>
 
-									<hr />
+									<hr style={{marginTop:24}} />
 
 									<article id="fullstack-experience" className="overview">
 										<h2>Passionate Teachers + Cutting-Edge Curriculum. This is Fullstack.</h2>

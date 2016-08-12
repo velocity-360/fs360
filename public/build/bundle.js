@@ -46150,10 +46150,13 @@
 												null,
 												course.title
 											),
+											_react2.default.createElement('hr', null),
 											_react2.default.createElement(
 												'p',
 												{ className: 'about' },
-												course.dates
+												course.dates,
+												_react2.default.createElement('br', null),
+												course.schedule
 											),
 											_react2.default.createElement(
 												'div',
@@ -46161,7 +46164,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'image' },
-													_react2.default.createElement('img', { src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
+													_react2.default.createElement('img', { style: { width: 320 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
 												),
 												_react2.default.createElement(
 													'div',
@@ -46174,7 +46177,7 @@
 												)
 											)
 										),
-										_react2.default.createElement('hr', null),
+										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 										_react2.default.createElement(
 											'article',
 											{ id: 'fullstack-experience', className: 'overview' },
