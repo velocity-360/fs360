@@ -171,9 +171,26 @@ class Test extends Component {
 		var _showLogin = this.showLogin
 		var _subscribe = this.subscribe
 
+		// var units = course.units.map(function(unit, i){
+		// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
+		// })
+
 		var units = course.units.map(function(unit, i){
-			return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
+			<div className="entry clearfix">
+				<div className="entry-timeline">
+					Unit<span>{i+1}</span>
+					<div className="timeline-divider"></div>
+				</div>
+				<div className="panel panel-default" style={{maxWidth:600}}>
+					<div className="panel-body" style={{padding:36}}>
+						<h3>Unit Topic</h3>
+						<hr />
+						{unit.description}<br />
+					</div>
+				</div>
+			</div>
 		})
+
 
 		return (
 			<div id="wrapper" className="clearfix">
@@ -236,7 +253,7 @@ class Test extends Component {
 										</p>
 										<div className="container">
 											<div className="image">
-												<img style={{width:280, background:'#fff', padding:3, border:'1px solid #ddd'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
+												<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
 											</div>
 
 											<div className="text">
@@ -248,12 +265,13 @@ class Test extends Component {
 									<hr style={{marginTop:24}} />
 
 									<article id="fullstack-experience" className="overview">
-										<h2>Passionate Teachers + Cutting-Edge Curriculum. This is Fullstack.</h2>
-										<p className="about">Fullstack Academy’s flagship course, the Full-Time Software Engineering Immersive is a 13 week career accelerator.</p>
+										<h2>Who</h2>
+										<p className="about">
+											Are you right for this class?
+										</p>
 										<div className="container">
-
 											<div className="image">
-												<img src="/images/remote-immersive/article1-img.jpg" alt="" />
+												<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
 											</div>
 
 											<div className="text">
@@ -264,19 +282,18 @@ class Test extends Component {
 									</article>
 
 									<article id="fullstack-experience" className="overview">
-										<h2>This is Fullstack.</h2>
-										<p className="about">Fullstack Academy’s flagship course, the Full-Time Software Engineering Immersive is a 13 week career accelerator.</p>
-										<div className="container">
+										<h2>Curriculum</h2>
 
-											<div className="image">
-												<img src="/images/remote-immersive/article1-img.jpg" alt="" />
-											</div>
+										<div className="postcontent nobottommargin clearfix">
+											<div id="posts" className="post-timeline clearfix">
+												<div className="timeline-border"></div>
 
-											<div className="text">
-												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
-												<p>Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.</p>
+												{units}
+
 											</div>
 										</div>
+
+
 									</article>
 
 

@@ -45931,8 +45931,42 @@
 				var _showLogin = this.showLogin;
 				var _subscribe = this.subscribe;
 	
+				// var units = course.units.map(function(unit, i){
+				// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
+				// })
+	
 				var units = course.units.map(function (unit, i) {
-					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, subscribeAction: _subscribe, currentUser: _currentUser });
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry clearfix' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-timeline' },
+							'Unit',
+							_react2.default.createElement(
+								'span',
+								null,
+								i + 1
+							),
+							_react2.default.createElement('div', { className: 'timeline-divider' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default', style: { maxWidth: 600 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36 } },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Unit Topic'
+								),
+								_react2.default.createElement('hr', null),
+								unit.description,
+								_react2.default.createElement('br', null)
+							)
+						)
+					);
 				});
 	
 				return _react2.default.createElement(
@@ -46164,7 +46198,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'image' },
-													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 3, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
+													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
 												),
 												_react2.default.createElement(
 													'div',
@@ -46184,12 +46218,12 @@
 											_react2.default.createElement(
 												'h2',
 												null,
-												'Passionate Teachers + Cutting-Edge Curriculum. This is Fullstack.'
+												'Who'
 											),
 											_react2.default.createElement(
 												'p',
 												{ className: 'about' },
-												'Fullstack Academy’s flagship course, the Full-Time Software Engineering Immersive is a 13 week career accelerator.'
+												'Are you right for this class?'
 											),
 											_react2.default.createElement(
 												'div',
@@ -46197,7 +46231,7 @@
 												_react2.default.createElement(
 													'div',
 													{ className: 'image' },
-													_react2.default.createElement('img', { src: '/images/remote-immersive/article1-img.jpg', alt: '' })
+													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: '/images/group.JPG', alt: 'Velocity 360' })
 												),
 												_react2.default.createElement(
 													'div',
@@ -46221,34 +46255,16 @@
 											_react2.default.createElement(
 												'h2',
 												null,
-												'This is Fullstack.'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Fullstack Academy’s flagship course, the Full-Time Software Engineering Immersive is a 13 week career accelerator.'
+												'Curriculum'
 											),
 											_react2.default.createElement(
 												'div',
-												{ className: 'container' },
+												{ className: 'postcontent nobottommargin clearfix' },
 												_react2.default.createElement(
 													'div',
-													{ className: 'image' },
-													_react2.default.createElement('img', { src: '/images/remote-immersive/article1-img.jpg', alt: '' })
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'text' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
-													)
+													{ id: 'posts', className: 'post-timeline clearfix' },
+													_react2.default.createElement('div', { className: 'timeline-border' }),
+													units
 												)
 											)
 										)
