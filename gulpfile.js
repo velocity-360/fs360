@@ -22,7 +22,8 @@ gulp.task('build', function(){
     		[
 				'./public/js/jquery.js',
 				'./public/js/plugins.js',
-				'./public/js/functions.js'
+				'./public/js/functions.js',
+                './public/js/lpform.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))

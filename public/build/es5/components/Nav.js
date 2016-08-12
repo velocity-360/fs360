@@ -103,7 +103,7 @@ var Nav = (function (Component) {
 						)
 					)
 				);
-				var headerStyle = this.props.headerStyle == "dark" ? "full-header dark" : "transparent-header page-section dark";
+				var headerStyle = this.props.headerStyle == "dark" ? "full-header dark sticky-style-1" : "transparent-header page-section dark";
 
 				return React.createElement(
 					"header",
@@ -138,7 +138,7 @@ var Nav = (function (Component) {
 								{ id: "primary-menu" },
 								React.createElement(
 									"ul",
-									{ className: "one-page-menu" },
+									{ className: "one-page-menu", style: { border: "none" } },
 									React.createElement(
 										"li",
 										{ className: "current" },

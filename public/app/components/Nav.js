@@ -44,7 +44,7 @@ class Nav extends Component {
 
 	render(){
 		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
-		const headerStyle = (this.props.headerStyle == 'dark') ? 'full-header dark' : 'transparent-header page-section dark'
+		const headerStyle = (this.props.headerStyle == 'dark') ? 'full-header dark sticky-style-1' : 'transparent-header page-section dark'
 
 		return (
 
@@ -59,7 +59,7 @@ class Nav extends Component {
 	                    </div>
 
 	                    <nav id="primary-menu">
-	                        <ul className="one-page-menu">
+	                        <ul className="one-page-menu" style={{border:'none'}}>
 	                            <li className="current"><a href="/"><div style={{padding:4}}>Home</div></a></li>
 								<li><a href="#"><div style={{padding:4}}>Courses</div></a>
 									<ul>

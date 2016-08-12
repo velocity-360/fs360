@@ -47,11 +47,11 @@ var actions = _interopRequire(require("../../actions/actions"));
 
 var api = _interopRequire(require("../../utils/APIManager"));
 
-var Course = (function (Component) {
-	function Course(props, context) {
-		_classCallCheck(this, Course);
+var Test = (function (Component) {
+	function Test(props, context) {
+		_classCallCheck(this, Test);
 
-		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
+		_get(Object.getPrototypeOf(Test.prototype), "constructor", this).call(this, props, context);
 		this.closeModal = this.closeModal.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
@@ -74,9 +74,9 @@ var Course = (function (Component) {
 		};
 	}
 
-	_inherits(Course, Component);
+	_inherits(Test, Component);
 
-	_prototypeProperties(Course, null, {
+	_prototypeProperties(Test, null, {
 		componentDidMount: {
 			value: function componentDidMount() {},
 			writable: true,
@@ -242,126 +242,237 @@ var Course = (function (Component) {
 					return React.createElement(CourseSection, { key: i, loginAction: _showLogin, unit: unit, course: _course, subscribeAction: _subscribe, currentUser: _currentUser });
 				});
 
-				var bootcamps = this.props.bootcamps.map(function (bootcamp, i) {
-					return React.createElement(
-						"div",
-						{ key: bootcamp.id, className: "col-md-12 bottommargin" },
-						React.createElement(
-							"div",
-							{ className: "team team-list clearfix" },
-							React.createElement(
-								"div",
-								{ className: "team-image", style: { width: 150 } },
-								React.createElement("img", { className: "img-circle", src: "https://media-service.appspot.com/site/images/" + bootcamp.image + "?crop=260", alt: "Velocity 360" })
-							),
-							React.createElement(
-								"div",
-								{ className: "team-desc" },
-								React.createElement(
-									"div",
-									{ className: "team-title" },
-									React.createElement(
-										"h4",
-										{ style: { fontWeight: 400 } },
-										React.createElement(
-											"a",
-											{ href: "/course/" + bootcamp.slug },
-											bootcamp.title
-										)
-									),
-									React.createElement(
-										"span",
-										{ style: { color: "#444" } },
-										bootcamp.dates
-									),
-									React.createElement(
-										"span",
-										{ style: { color: "#444" } },
-										bootcamp.schedule
-									)
-								),
-								React.createElement(
-									"div",
-									{ className: "team-content" },
-									bootcamp.description
-								)
-							)
-						)
-					);
-				});
-
 				return React.createElement(
 					"div",
-					null,
+					{ id: "wrapper", className: "clearfix" },
 					React.createElement(Nav, { headerStyle: "dark" }),
 					React.createElement(
 						"section",
-						{ id: "slider", className: "slider-parallax dark full-screen", style: { background: "url(\"/images/joe_light_blue.png\") center" }, "data-height-lg": "400", "data-height-md": "400", "data-height-sm": "200", "data-height-xs": "200", "data-height-xxs": "200" },
+						{ id: "lpf-header", style: { backgroundImage: "url('/images/joe_light_blue.png')" } },
 						React.createElement(
-							"div",
-							{ className: "container clearfix" },
+							"header",
+							null,
 							React.createElement(
 								"div",
-								{ className: "vertical-middle" },
+								{ className: "content-wrapper dark" },
 								React.createElement(
 									"div",
-									{ className: "heading-block center nobottomborder" },
+									{ className: "content" },
 									React.createElement(
-										"h1",
-										{ style: { textTransform: "none" }, "data-animate": "fadeInUp" },
+										"h2",
+										null,
 										course.title
 									),
-									React.createElement("hr", { style: { maxWidth: 120, borderTop: "2px solid #fff" } }),
 									React.createElement(
-										"span",
-										{ "data-animate": "fadeInUp", "data-delay": "300" },
-										course.dates,
-										React.createElement("br", null),
-										course.schedule
+										"h4",
+										{ className: "muted" },
+										"Learn Software Development in 13 Weeks with Fullstack Academys Software Engineering Immersive"
+									),
+									React.createElement(
+										"a",
+										{ href: "http://www.fullstackacademy.com/apply", target: "_blank", className: "button button-glass" },
+										"Start your application"
 									)
 								)
 							)
 						)
 					),
-					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
 						"section",
-						{ id: "content", style: { backgroundColor: "#F5F5F5" } },
+						{ id: "content" },
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },
 							React.createElement(
 								"div",
-								{ className: "container clearfix" },
+								{ id: "lpf-content" },
 								React.createElement(
-									"div",
-									{ className: "postcontent nobottommargin clearfix" },
+									"main",
+									null,
 									React.createElement(
 										"div",
-										{ id: "posts", className: "post-timeline clearfix" },
-										React.createElement("div", { className: "timeline-border" }),
+										{ className: "aside-toggle" },
+										React.createElement("div", null)
+									),
+									React.createElement(
+										"aside",
+										null,
 										React.createElement(
-											"div",
-											{ className: "entry clearfix" },
+											"nav",
+											null,
 											React.createElement(
-												"div",
-												{ className: "entry-timeline" },
-												"Intro",
-												React.createElement("span", null),
-												React.createElement("div", { className: "timeline-divider" })
+												"ul",
+												null,
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#overview" },
+														"Overview"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#fullstack-experience" },
+														"The Fullstack Experience"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#syllabus" },
+														"Syllabus"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#projects" },
+														"Projects"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#schedule" },
+														"Daily Schedule"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#pair-programming" },
+														"Pair Programming"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#instructors" },
+														"Instructors"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#faq" },
+														"FAQ"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#next-steps" },
+														"Get More Info"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#overview" },
+														"Overview"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#fullstack-experience" },
+														"The Fullstack Experience"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#syllabus" },
+														"Syllabus"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#projects" },
+														"Projects"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#faq" },
+														"FAQ"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#next-steps" },
+														"Get More Info"
+													)
+												)
+											),
+											React.createElement(
+												"a",
+												{ href: "http://www.fullstackacademy.com/apply", className: "apply", target: "_blank" },
+												"Apply"
+											)
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "content", style: { background: "#f9f9f9", borderLeft: "1px solid #ddd" } },
+										React.createElement(
+											"article",
+											{ id: "overview", className: "overview" },
+											React.createElement(
+												"h2",
+												null,
+												course.title
+											),
+											React.createElement(
+												"p",
+												{ className: "about" },
+												course.dates
 											),
 											React.createElement(
 												"div",
-												{ className: "entry-content" },
+												{ className: "container" },
 												React.createElement(
 													"div",
-													{ className: "col_full" },
-													React.createElement("img", { className: "hidden-xs", style: { width: 190, float: "right", marginLeft: 16 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
-													React.createElement(
-														"h2",
-														{ style: { marginBottom: 0 } },
-														course.title
-													),
+													{ className: "image" },
+													React.createElement("img", { src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460", alt: "Velocity 360" })
+												),
+												React.createElement(
+													"div",
+													{ className: "text" },
 													React.createElement(
 														"p",
 														null,
@@ -370,125 +481,86 @@ var Course = (function (Component) {
 												)
 											)
 										),
-										units,
-										React.createElement(DetailBox, { hideLoader: this.hideLoader, showLoader: this.showLoader, course: course }),
-										React.createElement(CTA, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
-									)
-								)
-							)
-						)
-					),
-					React.createElement(
-						"section",
-						{ style: { background: "#fff", paddingTop: 48, borderTop: "1px solid #ddd" } },
-						React.createElement(
-							"div",
-							{ className: "heading-block center" },
-							React.createElement(
-								"h2",
-								{ style: { fontWeight: 400 } },
-								"Bootcamps"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "content-wrap", style: { paddingTop: 0 } },
-							React.createElement(
-								"div",
-								{ className: "container clearfix" },
-								bootcamps
-							)
-						)
-					),
-					React.createElement(
-						"section",
-						{ id: "content", style: { backgroundColor: "#fff", paddingBottom: 0 } },
-						React.createElement(
-							"div",
-							{ className: "row common-height clearfix", style: { background: "#f9f9f9", border: "1px solid #ddd" } },
-							React.createElement(
-								"div",
-								{ className: "col-sm-8 col-padding" },
-								React.createElement(
-									"div",
-									null,
-									React.createElement(
-										"div",
-										{ className: "heading-block" },
+										React.createElement("hr", null),
 										React.createElement(
-											"h3",
-											null,
-											"Prepare for Tomorrow"
-										)
-									),
-									React.createElement(
-										"div",
-										{ className: "row clearfix" },
-										React.createElement(
-											"div",
-											{ className: "col-md-10" },
+											"article",
+											{ id: "fullstack-experience", className: "overview" },
 											React.createElement(
-												"p",
+												"h2",
 												null,
-												"Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, Redux, and React Native."
+												"Passionate Teachers + Cutting-Edge Curriculum. This is Fullstack."
 											),
 											React.createElement(
 												"p",
+												{ className: "about" },
+												"Fullstack Academy’s flagship course, the Full-Time Software Engineering Immersive is a 13 week career accelerator."
+											),
+											React.createElement(
+												"div",
+												{ className: "container" },
+												React.createElement(
+													"div",
+													{ className: "image" },
+													React.createElement("img", { src: "/images/remote-immersive/article1-img.jpg", alt: "" })
+												),
+												React.createElement(
+													"div",
+													{ className: "text" },
+													React.createElement(
+														"p",
+														null,
+														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
+													),
+													React.createElement(
+														"p",
+														null,
+														"Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks."
+													)
+												)
+											)
+										),
+										React.createElement(
+											"article",
+											{ id: "fullstack-experience", className: "overview" },
+											React.createElement(
+												"h2",
 												null,
-												"While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world."
+												"This is Fullstack."
+											),
+											React.createElement(
+												"p",
+												{ className: "about" },
+												"Fullstack Academy’s flagship course, the Full-Time Software Engineering Immersive is a 13 week career accelerator."
+											),
+											React.createElement(
+												"div",
+												{ className: "container" },
+												React.createElement(
+													"div",
+													{ className: "image" },
+													React.createElement("img", { src: "/images/remote-immersive/article1-img.jpg", alt: "" })
+												),
+												React.createElement(
+													"div",
+													{ className: "text" },
+													React.createElement(
+														"p",
+														null,
+														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
+													),
+													React.createElement(
+														"p",
+														null,
+														"Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks."
+													)
+												)
 											)
 										)
 									)
 								)
-							),
-							React.createElement("div", { className: "col-sm-4 col-padding", style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: "cover" } })
-						)
-					),
-					course.type == "immersive" ? React.createElement(Application, { onSubmit: this.submitApplication }) : null,
-					React.createElement(Login, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: null }),
-					React.createElement(
-						Modal,
-						{ show: this.state.showConfirmation, onHide: this.closeModal },
-						React.createElement(
-							Modal.Header,
-							{ closeButton: true, style: { textAlign: "center", padding: 12 } },
-							React.createElement(
-								"h2",
-								null,
-								"Deposit Confirmed"
-							),
-							React.createElement("img", { style: { width: 120, borderRadius: 60 }, src: "/images/logo_round_blue_260.png" })
-						),
-						React.createElement(
-							Modal.Body,
-							{ style: { background: "#f9f9f9", padding: 24, textAlign: "center" } },
-							React.createElement(
-								"p",
-								null,
-								"Thank you for submitting a deposit to the ",
-								course.title,
-								". We look forward to meeting you on ",
-								startDate,
-								". If you have any questions or concerns, feel free to contact us at ",
-								React.createElement(
-									"a",
-									{ href: "mailto:katrina@velocity360.io" },
-									"katrina@velocity360.io"
-								),
-								". Thank you."
-							)
-						),
-						React.createElement(
-							Modal.Footer,
-							{ style: { textAlign: "center" } },
-							React.createElement(
-								"a",
-								{ onClick: this.closeModal, href: "#", style: { marginRight: 12 }, className: "button button-border button-dark button-rounded button-large noleftmargin" },
-								"OK"
 							)
 						)
-					),
-					React.createElement(Footer, null)
+					)
 				);
 			},
 			writable: true,
@@ -496,7 +568,7 @@ var Course = (function (Component) {
 		}
 	});
 
-	return Course;
+	return Test;
 })(Component);
 
 var stateToProps = function (state) {
@@ -510,4 +582,4 @@ var stateToProps = function (state) {
 };
 
 
-module.exports = connect(stateToProps)(Course);
+module.exports = connect(stateToProps)(Test);

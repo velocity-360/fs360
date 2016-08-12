@@ -197,7 +197,7 @@ class Course extends Component {
 
 		return (
 			<div>
-				<Nav />
+				<Nav headerStyle="dark" />
 		        <section id="slider" className="slider-parallax dark full-screen" style={{background:'url("/images/joe_light_blue.png") center'}} data-height-lg="400" data-height-md="400" data-height-sm="200" data-height-xs="200" data-height-xxs="200">
 		            <div className="container clearfix">
 		                <div className="vertical-middle">
@@ -216,6 +216,7 @@ class Course extends Component {
 
 				<section id="content" style={{backgroundColor: '#F5F5F5'}}>
 					<div className="content-wrap">
+
 						<div className="container clearfix">
 
 							<div className="postcontent nobottommargin clearfix">
