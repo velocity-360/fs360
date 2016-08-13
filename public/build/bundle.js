@@ -45938,7 +45938,7 @@
 				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'entry clearfix' },
+						{ key: i, className: 'entry clearfix' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'entry-timeline' },
@@ -46062,17 +46062,8 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#projects' },
-														'Projects'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#schedule' },
-														'Daily Schedule'
+														{ href: '#typicalday' },
+														'Typical Day'
 													)
 												),
 												_react2.default.createElement(
@@ -46136,24 +46127,6 @@
 														'a',
 														{ href: '#projects' },
 														'Projects'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#faq' },
-														'FAQ'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#next-steps' },
-														'Get More Info'
 													)
 												)
 											),
@@ -46240,6 +46213,7 @@
 												)
 											)
 										),
+										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 										_react2.default.createElement(
 											'article',
 											{ id: 'curriculum', className: 'overview' },
@@ -46258,6 +46232,16 @@
 													units
 												)
 											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'typicalday', className: 'overview' },
+											_react2.default.createElement(
+												'h2',
+												{ style: { marginTop: 24 } },
+												'Typical Day'
+											),
+											_react2.default.createElement('img', { style: { width: 100 + '%', border: '1px solid #ddd' }, src: '/images/typicalday.png', alt: 'Velocity 360' })
 										)
 									)
 								)

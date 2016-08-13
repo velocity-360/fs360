@@ -245,7 +245,7 @@ var Test = (function (Component) {
 				var units = course.units.map(function (unit, i) {
 					return React.createElement(
 						"div",
-						{ className: "entry clearfix" },
+						{ key: i, className: "entry clearfix" },
 						React.createElement(
 							"div",
 							{ className: "entry-timeline" },
@@ -370,17 +370,8 @@ var Test = (function (Component) {
 													null,
 													React.createElement(
 														"a",
-														{ href: "#projects" },
-														"Projects"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#schedule" },
-														"Daily Schedule"
+														{ href: "#typicalday" },
+														"Typical Day"
 													)
 												),
 												React.createElement(
@@ -444,24 +435,6 @@ var Test = (function (Component) {
 														"a",
 														{ href: "#projects" },
 														"Projects"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#faq" },
-														"FAQ"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#next-steps" },
-														"Get More Info"
 													)
 												)
 											),
@@ -548,6 +521,7 @@ var Test = (function (Component) {
 												)
 											)
 										),
+										React.createElement("hr", { style: { marginTop: 24 } }),
 										React.createElement(
 											"article",
 											{ id: "curriculum", className: "overview" },
@@ -566,6 +540,16 @@ var Test = (function (Component) {
 													units
 												)
 											)
+										),
+										React.createElement(
+											"article",
+											{ id: "typicalday", className: "overview" },
+											React.createElement(
+												"h2",
+												{ style: { marginTop: 24 } },
+												"Typical Day"
+											),
+											React.createElement("img", { style: { width: 100 + "%", border: "1px solid #ddd" }, src: "/images/typicalday.png", alt: "Velocity 360" })
 										)
 									)
 								)

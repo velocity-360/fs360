@@ -177,7 +177,7 @@ class Test extends Component {
 
 		var units = course.units.map((unit, i) => {
 			return (
-				<div className="entry clearfix">
+				<div key={i} className="entry clearfix">
 					<div className="entry-timeline">
 						Unit<span>{i+1}</span>
 						<div className="timeline-divider"></div>
@@ -226,8 +226,7 @@ class Test extends Component {
 											<li><a href="#overview">Overview</a></li>
 											<li><a href="#who">Who</a></li>
 											<li><a href="#curriculum">Curriculum</a></li>
-											<li><a href="#projects">Projects</a></li>
-											<li><a href="#schedule">Daily Schedule</a></li>
+											<li><a href="#typicalday">Typical Day</a></li>
 											<li><a href="#pair-programming">Pair Programming</a></li>
 											<li><a href="#instructors">Instructors</a></li>
 											<li><a href="#faq">FAQ</a></li>
@@ -235,8 +234,6 @@ class Test extends Component {
 											<li><a href="#fullstack-experience">The Fullstack Experience</a></li>
 											<li><a href="#syllabus">Syllabus</a></li>
 											<li><a href="#projects">Projects</a></li>
-											<li><a href="#faq">FAQ</a></li>
-											<li><a href="#next-steps">Get More Info</a></li>
 										</ul>
 
 										<a href="http://www.fullstackacademy.com/apply" className="apply" target="_blank">Apply</a>
@@ -282,6 +279,8 @@ class Test extends Component {
 										</div>
 									</article>
 
+									<hr style={{marginTop:24}} />
+
 									<article id="curriculum" className="overview">
 										<h2>Curriculum</h2>
 
@@ -293,10 +292,13 @@ class Test extends Component {
 
 											</div>
 										</div>
-
-
 									</article>
 
+
+									<article id="typicalday" className="overview">
+										<h2 style={{marginTop:24}}>Typical Day</h2>
+										<img style={{width:100+'%', border:'1px solid #ddd'}} src="/images/typicalday.png" alt="Velocity 360" />
+									</article>
 
 
 								</div>
@@ -304,10 +306,7 @@ class Test extends Component {
 							</main>
 						</div>
 					</div>
-
-
 				</section>
-
 
 			</div>
 		)
