@@ -227,13 +227,10 @@ class Test extends Component {
 											<li><a href="#who">Who</a></li>
 											<li><a href="#curriculum">Curriculum</a></li>
 											<li><a href="#typicalday">Typical Day</a></li>
-											<li><a href="#pair-programming">Pair Programming</a></li>
+											<li><a href="#tuition">Tuition, Scholarships</a></li>
 											<li><a href="#instructors">Instructors</a></li>
 											<li><a href="#faq">FAQ</a></li>
-											<li><a href="#next-steps">Get More Info</a></li>
-											<li><a href="#fullstack-experience">The Fullstack Experience</a></li>
-											<li><a href="#syllabus">Syllabus</a></li>
-											<li><a href="#projects">Projects</a></li>
+											<li><a href="#admissions">Admissions</a></li>
 										</ul>
 
 										<a href="http://www.fullstackacademy.com/apply" className="apply" target="_blank">Apply</a>
@@ -294,12 +291,57 @@ class Test extends Component {
 										</div>
 									</article>
 
-
 									<article id="typicalday" className="overview">
 										<h2 style={{marginTop:24}}>Typical Day</h2>
 										<img style={{width:100+'%', border:'1px solid #ddd'}} src="/images/typicalday.png" alt="Velocity 360" />
 									</article>
 
+									<article id="tuition" className="overview">
+										<h2 style={{marginTop:24}}>Tuition, Scholarships</h2>
+										<p className="about">
+											Are you right for this class?
+										</p>
+										<div className="container">
+											<div className="col_full nobottommargin">
+												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
+												<p>Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.</p>
+						                    </div>
+										</div>
+									</article>
+
+									<article id="faq" className="overview">
+										<h2 style={{marginTop:24}}>FAQ</h2>
+										<p className="about">
+											Are you right for this class?
+										</p>
+										<div className="container">
+
+											<div className="col_full nobottommargin">
+						                        <div className="accordion accordion-border clearfix" data-state="closed">
+						                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>How do I become an author?</div>
+						                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+						                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>Helpful Resources for Authors</div>
+						                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.</div>
+						                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>How much money can I make?</div>
+						                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!</div>
+						                        </div>
+						                    </div>
+
+										</div>
+									</article>
+
+									<article id="admissions" className="overview">
+										<h2 style={{marginTop:24}}>Admissions</h2>
+										<p className="about">
+											Are you right for this class?
+										</p>
+										<div className="container">
+											<div className="col_full nobottommargin">
+												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
+												<p>Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.</p>
+						                    </div>
+										</div>
+									</article>									
 
 								</div>
 

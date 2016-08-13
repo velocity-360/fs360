@@ -46071,8 +46071,8 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#pair-programming' },
-														'Pair Programming'
+														{ href: '#tuition' },
+														'Tuition, Scholarships'
 													)
 												),
 												_react2.default.createElement(
@@ -46098,35 +46098,8 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#next-steps' },
-														'Get More Info'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#fullstack-experience' },
-														'The Fullstack Experience'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#syllabus' },
-														'Syllabus'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#projects' },
-														'Projects'
+														{ href: '#admissions' },
+														'Admissions'
 													)
 												)
 											),
@@ -46242,6 +46215,132 @@
 												'Typical Day'
 											),
 											_react2.default.createElement('img', { style: { width: 100 + '%', border: '1px solid #ddd' }, src: '/images/typicalday.png', alt: 'Velocity 360' })
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'tuition', className: 'overview' },
+											_react2.default.createElement(
+												'h2',
+												{ style: { marginTop: 24 } },
+												'Tuition, Scholarships'
+											),
+											_react2.default.createElement(
+												'p',
+												{ className: 'about' },
+												'Are you right for this class?'
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_full nobottommargin' },
+													_react2.default.createElement(
+														'p',
+														null,
+														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
+													)
+												)
+											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'faq', className: 'overview' },
+											_react2.default.createElement(
+												'h2',
+												{ style: { marginTop: 24 } },
+												'FAQ'
+											),
+											_react2.default.createElement(
+												'p',
+												{ className: 'about' },
+												'Are you right for this class?'
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_full nobottommargin' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'accordion accordion-border clearfix', 'data-state': 'closed' },
+														_react2.default.createElement(
+															'div',
+															{ style: { background: '#fff' }, className: 'acctitle' },
+															_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
+															_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
+															'How do I become an author?'
+														),
+														_react2.default.createElement(
+															'div',
+															{ style: { background: '#fff' }, className: 'acc_content clearfix' },
+															'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
+														),
+														_react2.default.createElement(
+															'div',
+															{ style: { background: '#fff' }, className: 'acctitle' },
+															_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
+															_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
+															'Helpful Resources for Authors'
+														),
+														_react2.default.createElement(
+															'div',
+															{ style: { background: '#fff' }, className: 'acc_content clearfix' },
+															'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.'
+														),
+														_react2.default.createElement(
+															'div',
+															{ style: { background: '#fff' }, className: 'acctitle' },
+															_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
+															_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
+															'How much money can I make?'
+														),
+														_react2.default.createElement(
+															'div',
+															{ style: { background: '#fff' }, className: 'acc_content clearfix' },
+															'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!'
+														)
+													)
+												)
+											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'admissions', className: 'overview' },
+											_react2.default.createElement(
+												'h2',
+												{ style: { marginTop: 24 } },
+												'Admissions'
+											),
+											_react2.default.createElement(
+												'p',
+												{ className: 'about' },
+												'Are you right for this class?'
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_full nobottommargin' },
+													_react2.default.createElement(
+														'p',
+														null,
+														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
+													)
+												)
+											)
 										)
 									)
 								)
