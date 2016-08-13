@@ -212,7 +212,7 @@ class Test extends Component {
 					</header>
 				</section>
 
-				<section id="content">
+				<section id="content" style={{background:'#f9f9f9'}}>
 					<div className="content-wrap">
 						<div id="lpf-content">
 							<main>
@@ -221,18 +221,17 @@ class Test extends Component {
 								</div>
 
 								<aside>
-									<nav>
+									<nav style={{padding:16, background:'#fff', border:'1px solid #ddd'}}>
 										<ul>
 											<li><a href="#overview">Overview</a></li>
-											<li><a href="#fullstack-experience">The Fullstack Experience</a></li>
-											<li><a href="#syllabus">Syllabus</a></li>
+											<li><a href="#who">Who</a></li>
+											<li><a href="#curriculum">Curriculum</a></li>
 											<li><a href="#projects">Projects</a></li>
 											<li><a href="#schedule">Daily Schedule</a></li>
 											<li><a href="#pair-programming">Pair Programming</a></li>
 											<li><a href="#instructors">Instructors</a></li>
 											<li><a href="#faq">FAQ</a></li>
 											<li><a href="#next-steps">Get More Info</a></li>
-											<li><a href="#overview">Overview</a></li>
 											<li><a href="#fullstack-experience">The Fullstack Experience</a></li>
 											<li><a href="#syllabus">Syllabus</a></li>
 											<li><a href="#projects">Projects</a></li>
@@ -244,7 +243,7 @@ class Test extends Component {
 									</nav>
 								</aside>
 
-								<div className="content" style={{background:'#f9f9f9', borderLeft:'1px solid #ddd'}}>
+								<div className="content" style={{background:'#f9f9f9'}}>
 
 									<article id="overview" className="overview">
 										<h2>{course.title}</h2>
@@ -266,7 +265,7 @@ class Test extends Component {
 
 									<hr style={{marginTop:24}} />
 
-									<article id="fullstack-experience" className="overview">
+									<article id="who" className="overview">
 										<h2>Who</h2>
 										<p className="about">
 											Are you right for this class?
@@ -283,7 +282,7 @@ class Test extends Component {
 										</div>
 									</article>
 
-									<article id="fullstack-experience" className="overview">
+									<article id="curriculum" className="overview">
 										<h2>Curriculum</h2>
 
 										<div className="postcontent nobottommargin clearfix">

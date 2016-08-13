@@ -46006,7 +46006,7 @@
 					),
 					_react2.default.createElement(
 						'section',
-						{ id: 'content' },
+						{ id: 'content', style: { background: '#f9f9f9' } },
 						_react2.default.createElement(
 							'div',
 							{ className: 'content-wrap' },
@@ -46026,7 +46026,7 @@
 										null,
 										_react2.default.createElement(
 											'nav',
-											null,
+											{ style: { padding: 16, background: '#fff', border: '1px solid #ddd' } },
 											_react2.default.createElement(
 												'ul',
 												null,
@@ -46044,8 +46044,8 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#fullstack-experience' },
-														'The Fullstack Experience'
+														{ href: '#who' },
+														'Who'
 													)
 												),
 												_react2.default.createElement(
@@ -46053,8 +46053,8 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#syllabus' },
-														'Syllabus'
+														{ href: '#curriculum' },
+														'Curriculum'
 													)
 												),
 												_react2.default.createElement(
@@ -46116,15 +46116,6 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#overview' },
-														'Overview'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
 														{ href: '#fullstack-experience' },
 														'The Fullstack Experience'
 													)
@@ -46175,7 +46166,7 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'content', style: { background: '#f9f9f9', borderLeft: '1px solid #ddd' } },
+										{ className: 'content', style: { background: '#f9f9f9' } },
 										_react2.default.createElement(
 											'article',
 											{ id: 'overview', className: 'overview' },
@@ -46214,7 +46205,7 @@
 										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 										_react2.default.createElement(
 											'article',
-											{ id: 'fullstack-experience', className: 'overview' },
+											{ id: 'who', className: 'overview' },
 											_react2.default.createElement(
 												'h2',
 												null,
@@ -46251,7 +46242,7 @@
 										),
 										_react2.default.createElement(
 											'article',
-											{ id: 'fullstack-experience', className: 'overview' },
+											{ id: 'curriculum', className: 'overview' },
 											_react2.default.createElement(
 												'h2',
 												null,

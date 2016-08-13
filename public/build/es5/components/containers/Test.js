@@ -314,7 +314,7 @@ var Test = (function (Component) {
 					),
 					React.createElement(
 						"section",
-						{ id: "content" },
+						{ id: "content", style: { background: "#f9f9f9" } },
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },
@@ -334,7 +334,7 @@ var Test = (function (Component) {
 										null,
 										React.createElement(
 											"nav",
-											null,
+											{ style: { padding: 16, background: "#fff", border: "1px solid #ddd" } },
 											React.createElement(
 												"ul",
 												null,
@@ -352,8 +352,8 @@ var Test = (function (Component) {
 													null,
 													React.createElement(
 														"a",
-														{ href: "#fullstack-experience" },
-														"The Fullstack Experience"
+														{ href: "#who" },
+														"Who"
 													)
 												),
 												React.createElement(
@@ -361,8 +361,8 @@ var Test = (function (Component) {
 													null,
 													React.createElement(
 														"a",
-														{ href: "#syllabus" },
-														"Syllabus"
+														{ href: "#curriculum" },
+														"Curriculum"
 													)
 												),
 												React.createElement(
@@ -424,15 +424,6 @@ var Test = (function (Component) {
 													null,
 													React.createElement(
 														"a",
-														{ href: "#overview" },
-														"Overview"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
 														{ href: "#fullstack-experience" },
 														"The Fullstack Experience"
 													)
@@ -483,7 +474,7 @@ var Test = (function (Component) {
 									),
 									React.createElement(
 										"div",
-										{ className: "content", style: { background: "#f9f9f9", borderLeft: "1px solid #ddd" } },
+										{ className: "content", style: { background: "#f9f9f9" } },
 										React.createElement(
 											"article",
 											{ id: "overview", className: "overview" },
@@ -522,7 +513,7 @@ var Test = (function (Component) {
 										React.createElement("hr", { style: { marginTop: 24 } }),
 										React.createElement(
 											"article",
-											{ id: "fullstack-experience", className: "overview" },
+											{ id: "who", className: "overview" },
 											React.createElement(
 												"h2",
 												null,
@@ -559,7 +550,7 @@ var Test = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ id: "fullstack-experience", className: "overview" },
+											{ id: "curriculum", className: "overview" },
 											React.createElement(
 												"h2",
 												null,
