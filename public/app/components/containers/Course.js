@@ -226,7 +226,6 @@ class Course extends Component {
 											<li><a href="#introduction">Introduction</a></li>
 											<li><a href="#who">Who</a></li>
 											<li><a href="#curriculum">Curriculum</a></li>
-											<li><a href="#typicalday">Typical Day</a></li>
 											<li><a href="#tuition">Tuition, Scholarships</a></li>
 											<li><a href="#instructors">Instructors</a></li>
 											<li><a href="#faq">FAQ</a></li>
@@ -238,7 +237,6 @@ class Course extends Component {
 								</aside>
 
 								<div className="content" style={{background:'#f9f9f9'}}>
-
 									<article id="introduction" className="overview">
 										<h2>{course.title}</h2>
 										<hr />
@@ -281,31 +279,93 @@ class Course extends Component {
 									<article id="curriculum" className="overview">
 										<h2>Curriculum</h2>
 
-										<div className="postcontent nobottommargin clearfix">
+										<div className="postcontent clearfix" style={{paddingBottom:64}}>
 											<div id="posts" className="post-timeline clearfix">
 												<div className="timeline-border"></div>
-
 												{units}
-
 											</div>
 										</div>
 									</article>
 
-									<article id="typicalday" className="overview">
-										<h2 style={{marginTop:24}}>Typical Day</h2>
-										<img style={{width:100+'%', border:'1px solid #ddd'}} src="/images/typicalday.png" alt="Velocity 360" />
-									</article>
-
 									<article id="tuition" className="overview">
-										<h2 style={{marginTop:24}}>Tuition, Scholarships</h2>
-										<p className="about">
-											Are you right for this class?
-										</p>
+										<h2 style={{marginTop:24}}>Tuition & Scholarships</h2>
 										<div className="container">
 											<div className="col_full nobottommargin">
+												<p className="about" style={{marginBottom:6}}>Tuition</p>
 												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
-												<p>Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.</p>
 						                    </div>
+											<div style={{marginTop:24}} className="col_full nobottommargin">
+												<p className="about" style={{marginBottom:6}}>Scholarships</p>
+												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
+						                    </div>
+										</div>
+									</article>
+
+									<article id="instructors" className="overview">
+										<h2 style={{marginTop:24}}>Instructors</h2>
+										<p className="about">Are you right for this class?</p>
+										<div className="container">
+						                    <div className="col-md-12 bottommargin">
+						                        <div className="team team-list clearfix">
+						                            <div className="team-image" style={{width:150}}>
+						                                <img className="img-circle" src="/images/kwon.png" alt="Velocity 360" />
+						                            </div>
+						                            <div className="team-desc">
+						                                <div className="team-title">
+						                                	<h4 style={{marginBottom:12}}>Dan Kwon</h4>
+															<div className="tagcloud">
+							                                    <a style={{background:'#fff'}} href="#">Node JS</a>
+							                                    <a style={{background:'#fff'}} href="#">React</a>
+							                                    <a style={{background:'#fff'}} href="#">React Native</a>
+							                                    <a style={{background:'#fff'}} href="#">Angular JS</a>
+							                                    <a style={{background:'#fff'}} href="#">iOS</a>
+							                                    <a style={{background:'#fff'}} href="#">Swift</a>
+							                                    <a style={{background:'#fff'}} href="#">Objective C</a>
+							                                </div>                                	
+						                                </div>
+						                                <div className="clearfix"></div>
+						                                <div className="team-content">
+						                                	Dan is a full stack developer focusing on building MVPs for early stage 
+						                                	startups in New York. As a consultant, he has worked with several startups 
+						                                	and development agencies over a five year span. Dan specializes in iOS, 
+						                                	backend technologies such as Node JS, Google Compute Engine, Heroku, and 
+						                                	AWS as well as front end libraries such as React and Angular JS. Dan 
+						                                	graduated from Cornell University where he walked to class in the snow, 
+						                                	uphill both ways.
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>
+
+						                    <div className="col-md-12 bottommargin">
+						                        <div className="team team-list clearfix">
+						                            <div className="team-image" style={{width:150}}>
+						                                <img className="img-circle" src="/images/beaman.png" alt="Velocity 360" />
+						                            </div>
+						                            <div className="team-desc">
+						                                <div className="team-title">
+						                                	<h4 style={{marginBottom:12}}>Roger Beaman</h4>
+															<div className="tagcloud">
+							                                    <a style={{background:'#fff'}} href="#">Node JS</a>
+							                                    <a style={{background:'#fff'}} href="#">React</a>
+							                                    <a style={{background:'#fff'}} href="#">Angular JS</a>
+							                                    <a style={{background:'#fff'}} href="#">JQuery</a>
+							                                </div>                                	
+						                                </div>
+						                                <div className="clearfix"></div>
+						                                <div className="team-content">
+						                                	Roger Beaman is a passionate Fullstack JavaScript developer that took the 
+						                                	unusual route to software development which perhaps you are on right now. 
+						                                	He started work in finance and found that writing Excel formulas was by far 
+						                                	the most exciting part of his job. Thus began a journey to joining you in the 
+						                                	exciting career that is software development. In under a year he was able to 
+						                                	go from a bootcamp to a lead developer at Shutterstock and he is excited about 
+						                                	sharing the knowledge and advice he has to help you do the same.
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>
+
 										</div>
 									</article>
 

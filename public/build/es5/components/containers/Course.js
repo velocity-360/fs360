@@ -370,15 +370,6 @@ var Course = (function (Component) {
 													null,
 													React.createElement(
 														"a",
-														{ href: "#typicalday" },
-														"Typical Day"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
 														{ href: "#tuition" },
 														"Tuition, Scholarships"
 													)
@@ -505,7 +496,7 @@ var Course = (function (Component) {
 											),
 											React.createElement(
 												"div",
-												{ className: "postcontent nobottommargin clearfix" },
+												{ className: "postcontent clearfix", style: { paddingBottom: 64 } },
 												React.createElement(
 													"div",
 													{ id: "posts", className: "post-timeline clearfix" },
@@ -516,21 +507,52 @@ var Course = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ id: "typicalday", className: "overview" },
-											React.createElement(
-												"h2",
-												{ style: { marginTop: 24 } },
-												"Typical Day"
-											),
-											React.createElement("img", { style: { width: 100 + "%", border: "1px solid #ddd" }, src: "/images/typicalday.png", alt: "Velocity 360" })
-										),
-										React.createElement(
-											"article",
 											{ id: "tuition", className: "overview" },
 											React.createElement(
 												"h2",
 												{ style: { marginTop: 24 } },
-												"Tuition, Scholarships"
+												"Tuition & Scholarships"
+											),
+											React.createElement(
+												"div",
+												{ className: "container" },
+												React.createElement(
+													"div",
+													{ className: "col_full nobottommargin" },
+													React.createElement(
+														"p",
+														{ className: "about", style: { marginBottom: 6 } },
+														"Tuition"
+													),
+													React.createElement(
+														"p",
+														null,
+														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
+													)
+												),
+												React.createElement(
+													"div",
+													{ style: { marginTop: 24 }, className: "col_full nobottommargin" },
+													React.createElement(
+														"p",
+														{ className: "about", style: { marginBottom: 6 } },
+														"Scholarships"
+													),
+													React.createElement(
+														"p",
+														null,
+														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
+													)
+												)
+											)
+										),
+										React.createElement(
+											"article",
+											{ id: "instructors", className: "overview" },
+											React.createElement(
+												"h2",
+												{ style: { marginTop: 24 } },
+												"Instructors"
 											),
 											React.createElement(
 												"p",
@@ -542,16 +564,129 @@ var Course = (function (Component) {
 												{ className: "container" },
 												React.createElement(
 													"div",
-													{ className: "col_full nobottommargin" },
+													{ className: "col-md-12 bottommargin" },
 													React.createElement(
-														"p",
-														null,
-														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
-													),
+														"div",
+														{ className: "team team-list clearfix" },
+														React.createElement(
+															"div",
+															{ className: "team-image", style: { width: 150 } },
+															React.createElement("img", { className: "img-circle", src: "/images/kwon.png", alt: "Velocity 360" })
+														),
+														React.createElement(
+															"div",
+															{ className: "team-desc" },
+															React.createElement(
+																"div",
+																{ className: "team-title" },
+																React.createElement(
+																	"h4",
+																	{ style: { marginBottom: 12 } },
+																	"Dan Kwon"
+																),
+																React.createElement(
+																	"div",
+																	{ className: "tagcloud" },
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Node JS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"React"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"React Native"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Angular JS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"iOS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Swift"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Objective C"
+																	)
+																)
+															),
+															React.createElement("div", { className: "clearfix" }),
+															React.createElement(
+																"div",
+																{ className: "team-content" },
+																"Dan is a full stack developer focusing on building MVPs for early stage startups in New York. As a consultant, he has worked with several startups and development agencies over a five year span. Dan specializes in iOS, backend technologies such as Node JS, Google Compute Engine, Heroku, and AWS as well as front end libraries such as React and Angular JS. Dan graduated from Cornell University where he walked to class in the snow, uphill both ways."
+															)
+														)
+													)
+												),
+												React.createElement(
+													"div",
+													{ className: "col-md-12 bottommargin" },
 													React.createElement(
-														"p",
-														null,
-														"Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks."
+														"div",
+														{ className: "team team-list clearfix" },
+														React.createElement(
+															"div",
+															{ className: "team-image", style: { width: 150 } },
+															React.createElement("img", { className: "img-circle", src: "/images/beaman.png", alt: "Velocity 360" })
+														),
+														React.createElement(
+															"div",
+															{ className: "team-desc" },
+															React.createElement(
+																"div",
+																{ className: "team-title" },
+																React.createElement(
+																	"h4",
+																	{ style: { marginBottom: 12 } },
+																	"Roger Beaman"
+																),
+																React.createElement(
+																	"div",
+																	{ className: "tagcloud" },
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Node JS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"React"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Angular JS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"JQuery"
+																	)
+																)
+															),
+															React.createElement("div", { className: "clearfix" }),
+															React.createElement(
+																"div",
+																{ className: "team-content" },
+																"Roger Beaman is a passionate Fullstack JavaScript developer that took the unusual route to software development which perhaps you are on right now. He started work in finance and found that writing Excel formulas was by far the most exciting part of his job. Thus began a journey to joining you in the exciting career that is software development. In under a year he was able to go from a bootcamp to a lead developer at Shutterstock and he is excited about sharing the knowledge and advice he has to help you do the same."
+															)
+														)
 													)
 												)
 											)
