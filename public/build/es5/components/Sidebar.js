@@ -127,19 +127,6 @@ var Sidebar = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "/courses?type=online" },
-													React.createElement(
-														"div",
-														null,
-														"Videos"
-													)
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
 													{ href: "/courses?type=live" },
 													React.createElement(
 														"div",

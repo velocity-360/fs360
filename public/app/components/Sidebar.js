@@ -44,13 +44,12 @@ class Sidebar extends Component {
 		                        		: 
 		                        		<a href="/account"><div>{ this.props.currentUser.firstName }</div></a>
 		                        	}
-	                            </li>	                            
+	                            </li>
 	                            <li>
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li><a href="#"><div>Courses</div></a>
 	                                <ul>
-	                                    <li><a href="/courses?type=online"><div>Videos</div></a></li>
 	                                    <li><a href="/courses?type=live"><div>Part Time</div></a></li>
 	                                    <li><a href="/courses?type=immersive"><div>Bootcamp</div></a></li>
 	                                </ul>

@@ -204,8 +204,8 @@ class Test extends Component {
 							<div className="content">
 								<h2>{course.title}</h2>
 								<h4 className="muted">Learn Software Development in 13 Weeks with Fullstack Academys Software Engineering Immersive</h4>
-								<a href="http://www.fullstackacademy.com/apply" target="_blank" className="button button-glass">
-								Start your application
+								<a href="#" target="_blank" className="button button-glass">
+									Request Syllabus
 								</a>
 							</div>
 						</div>

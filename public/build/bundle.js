@@ -41121,19 +41121,6 @@
 												null,
 												_react2.default.createElement(
 													'a',
-													{ href: '/courses?type=online' },
-													_react2.default.createElement(
-														'div',
-														{ style: { padding: 4 } },
-														'Videos'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
 													{ href: '/courses?type=live' },
 													_react2.default.createElement(
 														'div',
@@ -45495,19 +45482,6 @@
 												null,
 												_react2.default.createElement(
 													'a',
-													{ href: '/courses?type=online' },
-													_react2.default.createElement(
-														'div',
-														null,
-														'Videos'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
 													{ href: '/courses?type=live' },
 													_react2.default.createElement(
 														'div',
@@ -45997,8 +45971,8 @@
 									),
 									_react2.default.createElement(
 										'a',
-										{ href: 'http://www.fullstackacademy.com/apply', target: '_blank', className: 'button button-glass' },
-										'Start your application'
+										{ href: '#', target: '_blank', className: 'button button-glass' },
+										'Request Syllabus'
 									)
 								)
 							)

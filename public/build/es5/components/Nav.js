@@ -172,19 +172,6 @@ var Nav = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "/courses?type=online" },
-													React.createElement(
-														"div",
-														{ style: { padding: 4 } },
-														"Videos"
-													)
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
 													{ href: "/courses?type=live" },
 													React.createElement(
 														"div",
