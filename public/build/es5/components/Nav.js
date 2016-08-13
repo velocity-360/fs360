@@ -171,11 +171,50 @@ var Nav = (function (Component) {
 												"li",
 												null,
 												React.createElement(
+													"div",
+													{ style: { padding: 8, background: "#444" } },
+													React.createElement(
+														"strong",
+														null,
+														"Bootcamp"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
 													"a",
-													{ href: "/courses?type=live" },
+													{ href: "https://www.velocity360.io/course/8-week-fundamentals-bootcamp" },
 													React.createElement(
 														"div",
-														{ style: { padding: 4 } },
+														{ className: "menu-item" },
+														"8-Week Fundamentals"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "https://www.velocity360.io/course/24-week-evening-bootcamp" },
+													React.createElement(
+														"div",
+														{ className: "menu-item" },
+														"24-Week Evening Fundamentals"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"div",
+													{ style: { padding: 8, background: "#444" } },
+													React.createElement(
+														"strong",
+														null,
 														"Part Time"
 													)
 												)
@@ -185,10 +224,23 @@ var Nav = (function (Component) {
 												null,
 												React.createElement(
 													"a",
-													{ href: "/courses?type=immersive" },
+													{ href: "https://www.velocity360.io/course/node-react-evening-course" },
 													React.createElement(
 														"div",
-														{ style: { padding: 4 } },
+														{ className: "menu-item" },
+														"Node & React"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
+													"a",
+													{ href: "https://www.velocity360.io/course/node-react-native-evening-course" },
+													React.createElement(
+														"div",
+														{ className: "menu-item" },
 														"Bootcamp"
 													)
 												)
