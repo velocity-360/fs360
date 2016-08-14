@@ -251,10 +251,6 @@ var Course = (function (Component) {
 				var _showLogin = this.showLogin;
 				var _subscribe = this.subscribe;
 
-				// var units = course.units.map(function(unit, i){
-				// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
-				// })
-
 				var units = course.units.map(function (unit, i) {
 					return React.createElement(
 						"div",
@@ -303,6 +299,353 @@ var Course = (function (Component) {
 						React.createElement("div", { style: { background: "#fff" }, className: "acc_content clearfix", dangerouslySetInnerHTML: { __html: question.answer } })
 					);
 				});
+
+				var sidemenu = null;
+				var btnApply = null;
+				var who = null;
+				var tuition = null;
+				var admissions = null;
+				if (course.type == "immersive") {
+					// bootcamp
+					sidemenu = React.createElement(
+						"ul",
+						null,
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#introduction" },
+								"Introduction"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#who" },
+								"Who"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#curriculum" },
+								"Curriculum"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#tuition" },
+								"Tuition, Scholarships"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#instructors" },
+								"Instructors"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#faq" },
+								"FAQ"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#admissions" },
+								"Admissions"
+							)
+						)
+					);
+
+					btnApply = React.createElement(
+						"a",
+						{ onClick: this.toggleApplication, href: "#", className: "apply" },
+						"Apply"
+					);
+
+					who = React.createElement(
+						"article",
+						{ id: "who", className: "overview" },
+						React.createElement(
+							"div",
+							{ className: "container" },
+							React.createElement(
+								"h2",
+								null,
+								"Who"
+							),
+							React.createElement(
+								"p",
+								{ className: "about" },
+								"Are you right for this class?"
+							),
+							React.createElement(
+								"div",
+								{ className: "image" },
+								React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd" }, src: "/images/group.JPG", alt: "Velocity 360" })
+							),
+							React.createElement(
+								"div",
+								{ className: "text" },
+								React.createElement(
+									"p",
+									null,
+									"The ",
+									course.title,
+									" is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you’re a beginner programming who is looking for the next step and is eager to learn, this course is for you."
+								)
+							)
+						)
+					);
+
+					tuition = React.createElement(
+						"article",
+						{ id: "tuition", className: "overview" },
+						React.createElement(
+							"div",
+							{ className: "container" },
+							React.createElement(
+								"h2",
+								{ style: { marginTop: 24 } },
+								"Tuition, Scholarships, Deadlines"
+							),
+							React.createElement(
+								"div",
+								{ className: "col_full nobottommargin" },
+								React.createElement(
+									"p",
+									{ className: "about", style: { marginBottom: 6 } },
+									"Tuition"
+								),
+								React.createElement(
+									"p",
+									null,
+									"Tuition is $",
+									course.tuition,
+									" with a $",
+									course.deposit,
+									" deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
+								)
+							),
+							React.createElement(
+								"div",
+								{ style: { marginTop: 24 }, className: "col_full nobottommargin" },
+								React.createElement(
+									"p",
+									{ className: "about", style: { marginBottom: 6 } },
+									"Scholarships"
+								),
+								React.createElement(
+									"p",
+									null,
+									"A $1,000 scholarship is available to any woman is admittted to the course. Further, two full scholarships are allocated in each class for highly qualified applicants."
+								)
+							),
+							React.createElement(
+								"div",
+								{ style: { marginTop: 24 }, className: "col_full nobottommargin" },
+								React.createElement(
+									"p",
+									{ className: "about", style: { marginBottom: 6 } },
+									"Deadline"
+								),
+								React.createElement(
+									"p",
+									null,
+									"The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd."
+								)
+							)
+						)
+					);
+
+					admissions = React.createElement(
+						"article",
+						{ id: "admissions", className: "overview" },
+						React.createElement(
+							"div",
+							{ className: "container" },
+							React.createElement(
+								"h2",
+								{ style: { marginTop: 24 } },
+								"Admissions"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel panel-default" },
+								React.createElement(
+									"div",
+									{ className: "panel-body", style: { padding: 36 } },
+									React.createElement(
+										"h3",
+										null,
+										"The Process"
+									),
+									React.createElement("hr", null),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Step 1"
+									),
+									React.createElement(
+										"strong",
+										null,
+										"Apply"
+									),
+									React.createElement(
+										"p",
+										{ style: { marginTop: 10 } },
+										"Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd."
+									),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Step 2"
+									),
+									React.createElement(
+										"strong",
+										null,
+										"Phone Interview"
+									),
+									React.createElement(
+										"p",
+										{ style: { marginTop: 10 } },
+										"All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience."
+									),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Step 3"
+									),
+									React.createElement(
+										"strong",
+										null,
+										"In-person code review"
+									),
+									React.createElement(
+										"p",
+										{ style: { marginTop: 10 } },
+										"After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course."
+									),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Step 4"
+									),
+									React.createElement(
+										"strong",
+										null,
+										"Decision"
+									),
+									React.createElement(
+										"p",
+										{ style: { marginTop: 10 } },
+										"You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited."
+									)
+								)
+							)
+						)
+					);
+				}
+
+				if (course.type == "live") {
+					// part time course
+					sidemenu = React.createElement(
+						"ul",
+						null,
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#introduction" },
+								"Introduction"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#curriculum" },
+								"Curriculum"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#tuition" },
+								"Tuition"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#instructors" },
+								"Instructors"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#faq" },
+								"FAQ"
+							)
+						)
+					);
+
+					btnApply = React.createElement(
+						"a",
+						{ href: "#", className: "apply" },
+						"Register"
+					);
+					tuition = React.createElement(
+						"article",
+						{ id: "tuition", className: "overview" },
+						React.createElement(
+							"div",
+							{ className: "container" },
+							React.createElement(
+								"h2",
+								{ style: { marginTop: 24 } },
+								"Tuition"
+							),
+							React.createElement(
+								"p",
+								null,
+								"Tuition is $",
+								course.tuition,
+								" with a $",
+								course.deposit,
+								" deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
+							)
+						)
+					);
+				}
+
 
 				return React.createElement(
 					"div",
@@ -363,78 +706,8 @@ var Course = (function (Component) {
 										React.createElement(
 											"nav",
 											{ style: { padding: 16, background: "#fff", border: "1px solid #ddd" } },
-											React.createElement(
-												"ul",
-												null,
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#introduction" },
-														"Introduction"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#who" },
-														"Who"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#curriculum" },
-														"Curriculum"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#tuition" },
-														"Tuition, Scholarships"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#instructors" },
-														"Instructors"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#faq" },
-														"FAQ"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#admissions" },
-														"Admissions"
-													)
-												)
-											),
-											React.createElement(
-												"a",
-												{ onClick: this.toggleApplication, href: "#", className: "apply" },
-												"Apply"
-											)
+											sidemenu,
+											btnApply
 										)
 									),
 									React.createElement(
@@ -480,40 +753,7 @@ var Course = (function (Component) {
 											)
 										),
 										React.createElement("hr", { style: { marginTop: 24 } }),
-										React.createElement(
-											"article",
-											{ id: "who", className: "overview" },
-											React.createElement(
-												"div",
-												{ className: "container" },
-												React.createElement(
-													"h2",
-													null,
-													"Who"
-												),
-												React.createElement(
-													"p",
-													{ className: "about" },
-													"Are you right for this class?"
-												),
-												React.createElement(
-													"div",
-													{ className: "image" },
-													React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd" }, src: "/images/group.JPG", alt: "Velocity 360" })
-												),
-												React.createElement(
-													"div",
-													{ className: "text" },
-													React.createElement(
-														"p",
-														null,
-														"The ",
-														course.title,
-														" is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you’re a beginner programming who is looking for the next step and is eager to learn, this course is for you."
-													)
-												)
-											)
-										),
+										who,
 										React.createElement("hr", { style: { marginTop: 24 } }),
 										React.createElement(
 											"article",
@@ -534,61 +774,7 @@ var Course = (function (Component) {
 												)
 											)
 										),
-										React.createElement(
-											"article",
-											{ id: "tuition", className: "overview" },
-											React.createElement(
-												"div",
-												{ className: "container" },
-												React.createElement(
-													"h2",
-													{ style: { marginTop: 24 } },
-													"Tuition, Scholarships, Deadlines"
-												),
-												React.createElement(
-													"div",
-													{ className: "col_full nobottommargin" },
-													React.createElement(
-														"p",
-														{ className: "about", style: { marginBottom: 6 } },
-														"Tuition"
-													),
-													React.createElement(
-														"p",
-														null,
-														"Tuition is $8,500 with a $2,000 deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
-													)
-												),
-												React.createElement(
-													"div",
-													{ style: { marginTop: 24 }, className: "col_full nobottommargin" },
-													React.createElement(
-														"p",
-														{ className: "about", style: { marginBottom: 6 } },
-														"Scholarships"
-													),
-													React.createElement(
-														"p",
-														null,
-														"A $1,000 scholarship is available to any woman is admittted to the course. Further, two full scholarships are allocated in each class for highly qualified applicants."
-													)
-												),
-												React.createElement(
-													"div",
-													{ style: { marginTop: 24 }, className: "col_full nobottommargin" },
-													React.createElement(
-														"p",
-														{ className: "about", style: { marginBottom: 6 } },
-														"Deadline"
-													),
-													React.createElement(
-														"p",
-														null,
-														"The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd."
-													)
-												)
-											)
-										),
+										tuition,
 										React.createElement(
 											"article",
 											{ id: "instructors", className: "overview" },
@@ -751,93 +937,7 @@ var Course = (function (Component) {
 												)
 											)
 										),
-										React.createElement(
-											"article",
-											{ id: "admissions", className: "overview" },
-											React.createElement(
-												"div",
-												{ className: "container" },
-												React.createElement(
-													"h2",
-													{ style: { marginTop: 24 } },
-													"Admissions"
-												),
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: { padding: 36 } },
-														React.createElement(
-															"h3",
-															null,
-															"The Process"
-														),
-														React.createElement("hr", null),
-														React.createElement(
-															"span",
-															{ className: "step" },
-															"Step 1"
-														),
-														React.createElement(
-															"strong",
-															null,
-															"Apply"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginTop: 10 } },
-															"Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd."
-														),
-														React.createElement(
-															"span",
-															{ className: "step" },
-															"Step 2"
-														),
-														React.createElement(
-															"strong",
-															null,
-															"Phone Interview"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginTop: 10 } },
-															"All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience."
-														),
-														React.createElement(
-															"span",
-															{ className: "step" },
-															"Step 3"
-														),
-														React.createElement(
-															"strong",
-															null,
-															"In-person code review"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginTop: 10 } },
-															"After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course."
-														),
-														React.createElement(
-															"span",
-															{ className: "step" },
-															"Step 4"
-														),
-														React.createElement(
-															"strong",
-															null,
-															"Decision"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginTop: 10 } },
-															"You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited."
-														)
-													)
-												)
-											)
-										)
+										admissions
 									)
 								)
 							)

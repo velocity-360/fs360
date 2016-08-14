@@ -22677,19 +22677,19 @@
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Video = __webpack_require__(604);
+	var _Video = __webpack_require__(601);
 	
 	var _Video2 = _interopRequireDefault(_Video);
 	
-	var _Account = __webpack_require__(601);
+	var _Account = __webpack_require__(602);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(602);
+	var _Unit = __webpack_require__(603);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
-	var _Checkout = __webpack_require__(603);
+	var _Checkout = __webpack_require__(604);
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
@@ -62112,10 +62112,6 @@
 				var _showLogin = this.showLogin;
 				var _subscribe = this.subscribe;
 	
-				// var units = course.units.map(function(unit, i){
-				// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
-				// })
-	
 				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(
 						'div',
@@ -62164,6 +62160,352 @@
 						_react2.default.createElement('div', { style: { background: '#fff' }, className: 'acc_content clearfix', dangerouslySetInnerHTML: { __html: question.answer } })
 					);
 				});
+	
+				var sidemenu = null;
+				var btnApply = null;
+				var who = null;
+				var tuition = null;
+				var admissions = null;
+				if (course.type == 'immersive') {
+					// bootcamp
+					sidemenu = _react2.default.createElement(
+						'ul',
+						null,
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#introduction' },
+								'Introduction'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#who' },
+								'Who'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#curriculum' },
+								'Curriculum'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#tuition' },
+								'Tuition, Scholarships'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#instructors' },
+								'Instructors'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#faq' },
+								'FAQ'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#admissions' },
+								'Admissions'
+							)
+						)
+					);
+	
+					btnApply = _react2.default.createElement(
+						'a',
+						{ onClick: this.toggleApplication, href: '#', className: 'apply' },
+						'Apply'
+					);
+	
+					who = _react2.default.createElement(
+						'article',
+						{ id: 'who', className: 'overview' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Who'
+							),
+							_react2.default.createElement(
+								'p',
+								{ className: 'about' },
+								'Are you right for this class?'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'image' },
+								_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: '/images/group.JPG', alt: 'Velocity 360' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'text' },
+								_react2.default.createElement(
+									'p',
+									null,
+									'The ',
+									course.title,
+									' is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you’re a beginner programming who is looking for the next step and is eager to learn, this course is for you.'
+								)
+							)
+						)
+					);
+	
+					tuition = _react2.default.createElement(
+						'article',
+						{ id: 'tuition', className: 'overview' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { marginTop: 24 } },
+								'Tuition, Scholarships, Deadlines'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_full nobottommargin' },
+								_react2.default.createElement(
+									'p',
+									{ className: 'about', style: { marginBottom: 6 } },
+									'Tuition'
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'Tuition is $',
+									course.tuition,
+									' with a $',
+									course.deposit,
+									' deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
+								_react2.default.createElement(
+									'p',
+									{ className: 'about', style: { marginBottom: 6 } },
+									'Scholarships'
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'A $1,000 scholarship is available to any woman is admittted to the course. Further, two full scholarships are allocated in each class for highly qualified applicants.'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
+								_react2.default.createElement(
+									'p',
+									{ className: 'about', style: { marginBottom: 6 } },
+									'Deadline'
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd.'
+								)
+							)
+						)
+					);
+	
+					admissions = _react2.default.createElement(
+						'article',
+						{ id: 'admissions', className: 'overview' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { marginTop: 24 } },
+								'Admissions'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel panel-default' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'panel-body', style: { padding: 36 } },
+									_react2.default.createElement(
+										'h3',
+										null,
+										'The Process'
+									),
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Step 1'
+									),
+									_react2.default.createElement(
+										'strong',
+										null,
+										'Apply'
+									),
+									_react2.default.createElement(
+										'p',
+										{ style: { marginTop: 10 } },
+										'Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd.'
+									),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Step 2'
+									),
+									_react2.default.createElement(
+										'strong',
+										null,
+										'Phone Interview'
+									),
+									_react2.default.createElement(
+										'p',
+										{ style: { marginTop: 10 } },
+										'All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
+									),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Step 3'
+									),
+									_react2.default.createElement(
+										'strong',
+										null,
+										'In-person code review'
+									),
+									_react2.default.createElement(
+										'p',
+										{ style: { marginTop: 10 } },
+										'After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course.'
+									),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Step 4'
+									),
+									_react2.default.createElement(
+										'strong',
+										null,
+										'Decision'
+									),
+									_react2.default.createElement(
+										'p',
+										{ style: { marginTop: 10 } },
+										'You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited.'
+									)
+								)
+							)
+						)
+					);
+				}
+	
+				if (course.type == 'live') {
+					// part time course
+					sidemenu = _react2.default.createElement(
+						'ul',
+						null,
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#introduction' },
+								'Introduction'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#curriculum' },
+								'Curriculum'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#tuition' },
+								'Tuition'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#instructors' },
+								'Instructors'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#faq' },
+								'FAQ'
+							)
+						)
+					);
+	
+					btnApply = _react2.default.createElement(
+						'a',
+						{ href: '#', className: 'apply' },
+						'Register'
+					);
+					tuition = _react2.default.createElement(
+						'article',
+						{ id: 'tuition', className: 'overview' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { marginTop: 24 } },
+								'Tuition'
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Tuition is $',
+								course.tuition,
+								' with a $',
+								course.deposit,
+								' deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
+							)
+						)
+					);
+				}
 	
 				return _react2.default.createElement(
 					'div',
@@ -62224,78 +62566,8 @@
 										_react2.default.createElement(
 											'nav',
 											{ style: { padding: 16, background: '#fff', border: '1px solid #ddd' } },
-											_react2.default.createElement(
-												'ul',
-												null,
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#introduction' },
-														'Introduction'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#who' },
-														'Who'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#curriculum' },
-														'Curriculum'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#tuition' },
-														'Tuition, Scholarships'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#instructors' },
-														'Instructors'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#faq' },
-														'FAQ'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#admissions' },
-														'Admissions'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'a',
-												{ onClick: this.toggleApplication, href: '#', className: 'apply' },
-												'Apply'
-											)
+											sidemenu,
+											btnApply
 										)
 									),
 									_react2.default.createElement(
@@ -62341,40 +62613,7 @@
 											)
 										),
 										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
-										_react2.default.createElement(
-											'article',
-											{ id: 'who', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													null,
-													'Who'
-												),
-												_react2.default.createElement(
-													'p',
-													{ className: 'about' },
-													'Are you right for this class?'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'image' },
-													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: '/images/group.JPG', alt: 'Velocity 360' })
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'text' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'The ',
-														course.title,
-														' is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you’re a beginner programming who is looking for the next step and is eager to learn, this course is for you.'
-													)
-												)
-											)
-										),
+										who,
 										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 										_react2.default.createElement(
 											'article',
@@ -62395,61 +62634,7 @@
 												)
 											)
 										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'tuition', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginTop: 24 } },
-													'Tuition, Scholarships, Deadlines'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_full nobottommargin' },
-													_react2.default.createElement(
-														'p',
-														{ className: 'about', style: { marginBottom: 6 } },
-														'Tuition'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Tuition is $8,500 with a $2,000 deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
-													_react2.default.createElement(
-														'p',
-														{ className: 'about', style: { marginBottom: 6 } },
-														'Scholarships'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'A $1,000 scholarship is available to any woman is admittted to the course. Further, two full scholarships are allocated in each class for highly qualified applicants.'
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
-													_react2.default.createElement(
-														'p',
-														{ className: 'about', style: { marginBottom: 6 } },
-														'Deadline'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd.'
-													)
-												)
-											)
-										),
+										tuition,
 										_react2.default.createElement(
 											'article',
 											{ id: 'instructors', className: 'overview' },
@@ -62612,93 +62797,7 @@
 												)
 											)
 										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'admissions', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginTop: 24 } },
-													'Admissions'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
-														_react2.default.createElement(
-															'h3',
-															null,
-															'The Process'
-														),
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'span',
-															{ className: 'step' },
-															'Step 1'
-														),
-														_react2.default.createElement(
-															'strong',
-															null,
-															'Apply'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginTop: 10 } },
-															'Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd.'
-														),
-														_react2.default.createElement(
-															'span',
-															{ className: 'step' },
-															'Step 2'
-														),
-														_react2.default.createElement(
-															'strong',
-															null,
-															'Phone Interview'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginTop: 10 } },
-															'All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
-														),
-														_react2.default.createElement(
-															'span',
-															{ className: 'step' },
-															'Step 3'
-														),
-														_react2.default.createElement(
-															'strong',
-															null,
-															'In-person code review'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginTop: 10 } },
-															'After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course.'
-														),
-														_react2.default.createElement(
-															'span',
-															{ className: 'step' },
-															'Step 4'
-														),
-														_react2.default.createElement(
-															'strong',
-															null,
-															'Decision'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginTop: 10 } },
-															'You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited.'
-														)
-													)
-												)
-											)
-										)
+										admissions
 									)
 								)
 							)
@@ -63836,760 +63935,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(168);
-	
-	var _reactBootstrap = __webpack_require__(205);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
-	var _reactDropzone = __webpack_require__(485);
-	
-	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _TextUtils = __webpack_require__(472);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
-	var _CourseCard = __webpack_require__(482);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _Sidebar = __webpack_require__(481);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Account = function (_Component) {
-		_inherits(Account, _Component);
-	
-		function Account(props, context) {
-			_classCallCheck(this, Account);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Account).call(this, props, context));
-	
-			_this2.uploadProfileImage = _this2.uploadProfileImage.bind(_this2);
-			_this2.updateProfile = _this2.updateProfile.bind(_this2);
-			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
-			_this2.state = {
-				showLoader: false
-			};
-			return _this2;
-		}
-	
-		_createClass(Account, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				_APIManager2.default.handleGet('/api/course', { subscribers: this.props.profile.id }, function (err, response) {
-					//			console.log('Fetch Courses: '+JSON.stringify(response))
-					if (err) {
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.coursesRecieved(response.courses));
-				});
-			}
-		}, {
-			key: 'uploadProfileImage',
-			value: function uploadProfileImage(files) {
-				this.setState({
-					showLoader: true
-				});
-	
-				var _this = this;
-				_APIManager2.default.upload(files[0], function (err, response) {
-					_this.setState({
-						showLoader: false
-					});
-	
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					var updatedUser = Object.assign({}, _this.props.profile);
-					updatedUser['image'] = response.id;
-					_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
-				});
-			}
-		}, {
-			key: 'updateCurrentUser',
-			value: function updateCurrentUser(event) {
-				event.preventDefault();
-				var updatedUser = Object.assign({}, this.props.profile);
-				updatedUser[event.target.id] = event.target.value;
-				_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
-			}
-		}, {
-			key: 'updateProfile',
-			value: function updateProfile(event) {
-				event.preventDefault();
-	
-				var profile = Object.assign({}, this.props.profile);
-				profile['tags'] = _TextUtils2.default.stringToArray(profile.tagString, ',');
-	
-				var endpoint = '/api/profile/' + profile.id;
-				_APIManager2.default.handlePut(endpoint, profile, function (err, response) {
-					if (err) {
-						alert(response.message);
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
-					alert('Profile Updated');
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var courseList = null;
-				if (this.props.courses.length == 0) {
-					courseList = _react2.default.createElement(
-						'p',
-						null,
-						'Subscribe to video courses ',
-						_react2.default.createElement(
-							'a',
-							{ href: '/courses?type=online' },
-							'HERE'
-						)
-					);
-				} else {
-					courseList = this.props.courses.map(function (course) {
-						return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
-					});
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'tabs clearfix', id: 'tab-1' },
-										_react2.default.createElement(
-											'ul',
-											{ className: 'tab-nav clearfix' },
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#tabs-4' },
-													'Courses'
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: '#tabs-2' },
-													'Profile'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'tab-container' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'tab-content clearfix', id: 'tabs-4' },
-												_react2.default.createElement(
-													'div',
-													{ id: 'posts', className: 'events small-thumbs' },
-													courseList
-												)
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'tab-content clearfix', id: 'tabs-2' },
-												_react2.default.createElement(
-													'div',
-													{ id: 'contact-form-overlay', className: 'clearfix' },
-													_react2.default.createElement('div', { id: 'contact-form-result', 'data-notify-type': 'success', 'data-notify-msg': '<i className=icon-ok-sign></i> Message Sent Successfully!' }),
-													_react2.default.createElement(
-														'form',
-														{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half' },
-															_react2.default.createElement(
-																'label',
-																null,
-																'First Name'
-															),
-															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'firstName', value: this.props.profile.firstName, className: 'form-control' })
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half col_last' },
-															_react2.default.createElement(
-																'label',
-																null,
-																'Last Name'
-															),
-															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'lastName', value: this.props.profile.lastName, className: 'form-control' })
-														),
-														_react2.default.createElement('div', { className: 'clear' }),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half' },
-															_react2.default.createElement(
-																'label',
-																null,
-																'Username'
-															),
-															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'username', value: this.props.profile.username, className: 'form-control' })
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half col_last' },
-															_react2.default.createElement(
-																'label',
-																null,
-																'GitHub'
-															),
-															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'githubId', value: this.props.profile.githubId, className: 'form-control', placeholder: 'e.g. https://github.com/fullstack360' })
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half' },
-															_react2.default.createElement(
-																'label',
-																{ 'for': 'template-contactform-message' },
-																'Profile Image'
-															),
-															_react2.default.createElement(
-																_reactDropzone2.default,
-																{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px solid #ddd' }, onDrop: this.uploadProfileImage },
-																_react2.default.createElement(
-																	'div',
-																	{ style: { padding: 24 } },
-																	this.props.profile.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.props.profile.image + '?crop=120' }),
-																	'Drop file here, or click to select image to upload.'
-																)
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_half col_last' },
-															_react2.default.createElement(
-																'label',
-																null,
-																'Skills'
-															),
-															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'tagString', value: this.props.profile.tagString, className: 'form-control', placeholder: 'iOS, Python, git...' })
-														),
-														_react2.default.createElement('div', { className: 'clear' }),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_full' },
-															_react2.default.createElement(
-																'label',
-																{ 'for': 'template-contactform-message' },
-																'Bio ',
-																_react2.default.createElement(
-																	'small',
-																	null,
-																	'*'
-																)
-															),
-															_react2.default.createElement('textarea', { className: 'form-control', onChange: this.updateCurrentUser, id: 'bio', value: this.props.profile.bio, rows: '6', cols: '30' })
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col_full' },
-															_react2.default.createElement(
-																'button',
-																{ onClick: this.updateProfile, className: 'button button-border button-dark button-rounded noleftmargin', type: 'submit' },
-																'Update'
-															)
-														)
-													)
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Account;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		return {
-			profile: state.profileReducer.currentUser,
-			loaderOptions: state.staticReducer.loaderConfig,
-			courses: state.courseReducer.courseArray
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
-
-/***/ },
-/* 602 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Sidebar = __webpack_require__(481);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _reactRedux = __webpack_require__(168);
-	
-	var _DateUtils = __webpack_require__(487);
-	
-	var _DateUtils2 = _interopRequireDefault(_DateUtils);
-	
-	var _TextUtils = __webpack_require__(472);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Unit = function (_Component) {
-		_inherits(Unit, _Component);
-	
-		function Unit(props, context) {
-			_classCallCheck(this, Unit);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Unit).call(this, props, context));
-	
-			_this.state = {};
-			return _this;
-		}
-	
-		_createClass(Unit, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
-			key: 'render',
-			value: function render() {
-	
-				return _react2.default.createElement(
-					'div',
-					{ style: { background: '#f5f5f5' } },
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'postcontent nobottommargin col_last clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ id: 'posts', className: 'post-timeline clearfix' },
-										_react2.default.createElement('div', { className: 'timeline-border' }),
-										_react2.default.createElement(
-											'div',
-											{ className: 'entry clearfix' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'entry-timeline' },
-												'Intro',
-												_react2.default.createElement('span', null),
-												_react2.default.createElement('div', { className: 'timeline-divider' })
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Unit;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-		//	console.log('STATE TO PROPS: '+JSON.stringify(projects))
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			loaderOptions: state.staticReducer.loaderConfig
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
-
-/***/ },
-/* 603 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _StripeUtils = __webpack_require__(471);
-	
-	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
-	var _reactRedux = __webpack_require__(168);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Header = __webpack_require__(473);
-	
-	var _Header2 = _interopRequireDefault(_Header);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(477);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Checkout = function (_Component) {
-		_inherits(Checkout, _Component);
-	
-		function Checkout(props, context) {
-			_classCallCheck(this, Checkout);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Checkout).call(this, props, context));
-	
-			_this2.configureStripe = _this2.configureStripe.bind(_this2);
-			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
-			_this2.state = {
-				showLoader: false
-			};
-			return _this2;
-		}
-	
-		_createClass(Checkout, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				//		console.log('CHECKOUT: componentDidMount = '+JSON.stringify(this.props.params))
-				if (this.props.params == null) {
-					// premium membership registration
-					var _this = this;
-					_StripeUtils2.default.initialize(function (token) {
-						_this.setState({ showLoader: true });
-						_APIManager2.default.submitStripeToken(token, function (err, response) {
-							if (err) {
-								alert(err.message);
-								return;
-							}
-	
-							window.location.href = '/account';
-						});
-					});
-					return;
-				}
-	
-				var path = '';
-				var keys = Object.keys(this.props.params);
-				for (var i = 0; i < keys.length; i++) {
-					var key = keys[i];
-					var value = this.props.params[key];
-					path += key + '/' + value;
-				}
-	
-				var endpoint = '/api/' + path;
-				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					console.log(JSON.stringify(response));
-				});
-			}
-		}, {
-			key: 'configureStripe',
-			value: function configureStripe() {
-				var course = this.props.course;
-				if (course == null) {
-					// premium registration
-					_StripeUtils2.default.initialize(function (token) {
-						_APIManager2.default.submitStripeToken(token, function (err, response) {
-							if (err) {
-								alert(err.message);
-								return;
-							}
-	
-							console.log(JSON.stringify(response));
-							window.location.href = '/account';
-						});
-					});
-					return;
-				}
-	
-				if (course.type == 'online') {
-					// for videos, show subscription prompt:
-					_StripeUtils2.default.initialize(function (token) {
-						_this.setState({ showLoader: true });
-						_APIManager2.default.submitStripeToken(token, function (err, response) {
-							if (err) {
-								alert(err.message);
-								return;
-							}
-	
-							console.log(JSON.stringify(response));
-							window.location.href = '/account';
-						});
-					});
-					return;
-				}
-	
-				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
-					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
-						if (err) {
-							alert(err.message);
-							return;
-						}
-	
-						console.log(JSON.stringify(response));
-					});
-				});
-			}
-		}, {
-			key: 'openStripeModal',
-			value: function openStripeModal(event) {
-				event.preventDefault();
-				var course = this.props.course;
-				if (course == null) {
-					// premium registration
-					_StripeUtils2.default.showModal();
-					return;
-				}
-	
-				if (this.props.course.type == 'online') {
-					_StripeUtils2.default.showModal();
-					return;
-				}
-	
-				// course deposit:
-				_StripeUtils2.default.showModalWithText(this.props.course.title);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var loaderConfig = {
-					lines: 13,
-					length: 20,
-					width: 10,
-					radius: 30,
-					corners: 1,
-					rotate: 0,
-					direction: 1,
-					color: '#fff',
-					speed: 1,
-					trail: 60,
-					shadow: false,
-					hwaccel: false,
-					zIndex: 2e9,
-					top: '50%',
-					left: '50%',
-					scale: 1.00
-				};
-	
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
-					_react2.default.createElement(
-						'section',
-						null,
-						_react2.default.createElement(_reactLoader2.default, { options: loaderConfig, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix', style: { paddingTop: 64 } },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_two_third bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'fancy-title title-bottom-border' },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Premium Membership'
-										)
-									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', maxWidth: 200, marginLeft: 16, marginBottom: 16 }, className: 'image_fade hidden-xs', src: '/images/logo_round_blue_260.png', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Premium Membership includes:',
-										_react2.default.createElement('br', null),
-										_react2.default.createElement('br', null),
-										'✓ Unlimited access to ALL videos',
-										_react2.default.createElement('br', null),
-										'✓ Downloadable code samples, and PDF tutorials',
-										_react2.default.createElement('br', null),
-										'✓ Discounts and exclusive access to live events',
-										_react2.default.createElement('br', null),
-										'✓ Discounts to live courses',
-										_react2.default.createElement('br', null)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col_full panel panel-default' },
-										_react2.default.createElement(
-											'div',
-											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-											'Upgrade to Premium - $19.99/month'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'panel-body', style: { textAlign: 'left' } },
-											'Your account will be charged $19.99 on the first of each month. You card will NOT be charged upon registration.',
-											_react2.default.createElement('br', null),
-											_react2.default.createElement('br', null),
-											_react2.default.createElement(
-												'a',
-												{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
-												'Checkout',
-												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-											)
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
-									_react2.default.createElement(_RightSidebar2.default, null)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				);
-			}
-		}]);
-	
-		return Checkout;
-	}(_react.Component);
-	
-	exports.default = Checkout;
-
-/***/ },
-/* 604 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
 	var _reactBootstrap = __webpack_require__(205);
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
@@ -65097,6 +64442,760 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Video);
+
+/***/ },
+/* 602 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _reactBootstrap = __webpack_require__(205);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactDropzone = __webpack_require__(485);
+	
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _TextUtils = __webpack_require__(472);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	var _CourseCard = __webpack_require__(482);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _Sidebar = __webpack_require__(481);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Account = function (_Component) {
+		_inherits(Account, _Component);
+	
+		function Account(props, context) {
+			_classCallCheck(this, Account);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Account).call(this, props, context));
+	
+			_this2.uploadProfileImage = _this2.uploadProfileImage.bind(_this2);
+			_this2.updateProfile = _this2.updateProfile.bind(_this2);
+			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.state = {
+				showLoader: false
+			};
+			return _this2;
+		}
+	
+		_createClass(Account, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				_APIManager2.default.handleGet('/api/course', { subscribers: this.props.profile.id }, function (err, response) {
+					//			console.log('Fetch Courses: '+JSON.stringify(response))
+					if (err) {
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.coursesRecieved(response.courses));
+				});
+			}
+		}, {
+			key: 'uploadProfileImage',
+			value: function uploadProfileImage(files) {
+				this.setState({
+					showLoader: true
+				});
+	
+				var _this = this;
+				_APIManager2.default.upload(files[0], function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					var updatedUser = Object.assign({}, _this.props.profile);
+					updatedUser['image'] = response.id;
+					_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
+				});
+			}
+		}, {
+			key: 'updateCurrentUser',
+			value: function updateCurrentUser(event) {
+				event.preventDefault();
+				var updatedUser = Object.assign({}, this.props.profile);
+				updatedUser[event.target.id] = event.target.value;
+				_store2.default.currentStore().dispatch(_actions2.default.updateCurrentUser(updatedUser));
+			}
+		}, {
+			key: 'updateProfile',
+			value: function updateProfile(event) {
+				event.preventDefault();
+	
+				var profile = Object.assign({}, this.props.profile);
+				profile['tags'] = _TextUtils2.default.stringToArray(profile.tagString, ',');
+	
+				var endpoint = '/api/profile/' + profile.id;
+				_APIManager2.default.handlePut(endpoint, profile, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
+					alert('Profile Updated');
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var courseList = null;
+				if (this.props.courses.length == 0) {
+					courseList = _react2.default.createElement(
+						'p',
+						null,
+						'Subscribe to video courses ',
+						_react2.default.createElement(
+							'a',
+							{ href: '/courses?type=online' },
+							'HERE'
+						)
+					);
+				} else {
+					courseList = this.props.courses.map(function (course) {
+						return _react2.default.createElement(_CourseCard2.default, { key: course.id, course: course });
+					});
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'tabs clearfix', id: 'tab-1' },
+										_react2.default.createElement(
+											'ul',
+											{ className: 'tab-nav clearfix' },
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '#tabs-4' },
+													'Courses'
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
+													'a',
+													{ href: '#tabs-2' },
+													'Profile'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'tab-container' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'tab-content clearfix', id: 'tabs-4' },
+												_react2.default.createElement(
+													'div',
+													{ id: 'posts', className: 'events small-thumbs' },
+													courseList
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'tab-content clearfix', id: 'tabs-2' },
+												_react2.default.createElement(
+													'div',
+													{ id: 'contact-form-overlay', className: 'clearfix' },
+													_react2.default.createElement('div', { id: 'contact-form-result', 'data-notify-type': 'success', 'data-notify-msg': '<i className=icon-ok-sign></i> Message Sent Successfully!' }),
+													_react2.default.createElement(
+														'form',
+														{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_half' },
+															_react2.default.createElement(
+																'label',
+																null,
+																'First Name'
+															),
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'firstName', value: this.props.profile.firstName, className: 'form-control' })
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_half col_last' },
+															_react2.default.createElement(
+																'label',
+																null,
+																'Last Name'
+															),
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'lastName', value: this.props.profile.lastName, className: 'form-control' })
+														),
+														_react2.default.createElement('div', { className: 'clear' }),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_half' },
+															_react2.default.createElement(
+																'label',
+																null,
+																'Username'
+															),
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'username', value: this.props.profile.username, className: 'form-control' })
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_half col_last' },
+															_react2.default.createElement(
+																'label',
+																null,
+																'GitHub'
+															),
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'githubId', value: this.props.profile.githubId, className: 'form-control', placeholder: 'e.g. https://github.com/fullstack360' })
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_half' },
+															_react2.default.createElement(
+																'label',
+																{ 'for': 'template-contactform-message' },
+																'Profile Image'
+															),
+															_react2.default.createElement(
+																_reactDropzone2.default,
+																{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px solid #ddd' }, onDrop: this.uploadProfileImage },
+																_react2.default.createElement(
+																	'div',
+																	{ style: { padding: 24 } },
+																	this.props.profile.image.length == 0 ? null : _react2.default.createElement('img', { style: { width: 64, border: '1px solid #ddd', marginRight: 6 }, src: 'https://media-service.appspot.com/site/images/' + this.props.profile.image + '?crop=120' }),
+																	'Drop file here, or click to select image to upload.'
+																)
+															)
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_half col_last' },
+															_react2.default.createElement(
+																'label',
+																null,
+																'Skills'
+															),
+															_react2.default.createElement('input', { type: 'text', onChange: this.updateCurrentUser, id: 'tagString', value: this.props.profile.tagString, className: 'form-control', placeholder: 'iOS, Python, git...' })
+														),
+														_react2.default.createElement('div', { className: 'clear' }),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_full' },
+															_react2.default.createElement(
+																'label',
+																{ 'for': 'template-contactform-message' },
+																'Bio ',
+																_react2.default.createElement(
+																	'small',
+																	null,
+																	'*'
+																)
+															),
+															_react2.default.createElement('textarea', { className: 'form-control', onChange: this.updateCurrentUser, id: 'bio', value: this.props.profile.bio, rows: '6', cols: '30' })
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_full' },
+															_react2.default.createElement(
+																'button',
+																{ onClick: this.updateProfile, className: 'button button-border button-dark button-rounded noleftmargin', type: 'submit' },
+																'Update'
+															)
+														)
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Account;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		return {
+			profile: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig,
+			courses: state.courseReducer.courseArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
+
+/***/ },
+/* 603 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _Sidebar = __webpack_require__(481);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _DateUtils = __webpack_require__(487);
+	
+	var _DateUtils2 = _interopRequireDefault(_DateUtils);
+	
+	var _TextUtils = __webpack_require__(472);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Unit = function (_Component) {
+		_inherits(Unit, _Component);
+	
+		function Unit(props, context) {
+			_classCallCheck(this, Unit);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Unit).call(this, props, context));
+	
+			_this.state = {};
+			return _this;
+		}
+	
+		_createClass(Unit, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					{ style: { background: '#f5f5f5' } },
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { background: '#f5f5f5' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin col_last clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'post-timeline clearfix' },
+										_react2.default.createElement('div', { className: 'timeline-border' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Intro',
+												_react2.default.createElement('span', null),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Unit;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+		//	console.log('STATE TO PROPS: '+JSON.stringify(projects))
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
+
+/***/ },
+/* 604 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _StripeUtils = __webpack_require__(471);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Header = __webpack_require__(473);
+	
+	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(477);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Checkout = function (_Component) {
+		_inherits(Checkout, _Component);
+	
+		function Checkout(props, context) {
+			_classCallCheck(this, Checkout);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Checkout).call(this, props, context));
+	
+			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
+			_this2.state = {
+				showLoader: false
+			};
+			return _this2;
+		}
+	
+		_createClass(Checkout, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//		console.log('CHECKOUT: componentDidMount = '+JSON.stringify(this.props.params))
+				if (this.props.params == null) {
+					// premium membership registration
+					var _this = this;
+					_StripeUtils2.default.initialize(function (token) {
+						_this.setState({ showLoader: true });
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				var path = '';
+				var keys = Object.keys(this.props.params);
+				for (var i = 0; i < keys.length; i++) {
+					var key = keys[i];
+					var value = this.props.params[key];
+					path += key + '/' + value;
+				}
+	
+				var endpoint = '/api/' + path;
+				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+				});
+			}
+		}, {
+			key: 'configureStripe',
+			value: function configureStripe() {
+				var course = this.props.course;
+				if (course == null) {
+					// premium registration
+					_StripeUtils2.default.initialize(function (token) {
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							console.log(JSON.stringify(response));
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				if (course.type == 'online') {
+					// for videos, show subscription prompt:
+					_StripeUtils2.default.initialize(function (token) {
+						_this.setState({ showLoader: true });
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							console.log(JSON.stringify(response));
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				_StripeUtils2.default.initializeWithText('Submit Deposit', function (token) {
+					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						if (err) {
+							alert(err.message);
+							return;
+						}
+	
+						console.log(JSON.stringify(response));
+					});
+				});
+			}
+		}, {
+			key: 'openStripeModal',
+			value: function openStripeModal(event) {
+				event.preventDefault();
+				var course = this.props.course;
+				if (course == null) {
+					// premium registration
+					_StripeUtils2.default.showModal();
+					return;
+				}
+	
+				if (this.props.course.type == 'online') {
+					_StripeUtils2.default.showModal();
+					return;
+				}
+	
+				// course deposit:
+				_StripeUtils2.default.showModalWithText(this.props.course.title);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var loaderConfig = {
+					lines: 13,
+					length: 20,
+					width: 10,
+					radius: 30,
+					corners: 1,
+					rotate: 0,
+					direction: 1,
+					color: '#fff',
+					speed: 1,
+					trail: 60,
+					shadow: false,
+					hwaccel: false,
+					zIndex: 2e9,
+					top: '50%',
+					left: '50%',
+					scale: 1.00
+				};
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
+					_react2.default.createElement(
+						'section',
+						null,
+						_react2.default.createElement(_reactLoader2.default, { options: loaderConfig, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix', style: { paddingTop: 64 } },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_two_third bottommargin-sm' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'fancy-title title-bottom-border' },
+										_react2.default.createElement(
+											'h2',
+											{ style: { fontWeight: 400 } },
+											'Premium Membership'
+										)
+									),
+									_react2.default.createElement('img', { style: { background: '#fff', float: 'right', maxWidth: 200, marginLeft: 16, marginBottom: 16 }, className: 'image_fade hidden-xs', src: '/images/logo_round_blue_260.png', alt: 'Velocity 360' }),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Premium Membership includes:',
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('br', null),
+										'✓ Unlimited access to ALL videos',
+										_react2.default.createElement('br', null),
+										'✓ Downloadable code samples, and PDF tutorials',
+										_react2.default.createElement('br', null),
+										'✓ Discounts and exclusive access to live events',
+										_react2.default.createElement('br', null),
+										'✓ Discounts to live courses',
+										_react2.default.createElement('br', null)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col_full panel panel-default' },
+										_react2.default.createElement(
+											'div',
+											{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+											'Upgrade to Premium - $19.99/month'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'panel-body', style: { textAlign: 'left' } },
+											'Your account will be charged $19.99 on the first of each month. You card will NOT be charged upon registration.',
+											_react2.default.createElement('br', null),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement(
+												'a',
+												{ onClick: this.openStripeModal, href: '#', className: 'button button-xlarge tright' },
+												'Checkout',
+												_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+											)
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
+									_react2.default.createElement(_RightSidebar2.default, null)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Checkout;
+	}(_react.Component);
+	
+	exports.default = Checkout;
 
 /***/ }
 /******/ ]);

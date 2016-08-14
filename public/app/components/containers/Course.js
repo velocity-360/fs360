@@ -182,11 +182,7 @@ class Course extends Component {
 		var _showLogin = this.showLogin
 		var _subscribe = this.subscribe
 
-		// var units = course.units.map(function(unit, i){
-		// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
-		// })
-
-		var units = course.units.map((unit, i) => {
+		const units = course.units.map((unit, i) => {
 			return (
 				<div key={i} className="entry clearfix">
 					<div className="entry-timeline">
@@ -212,6 +208,162 @@ class Course extends Component {
                	</div>
 			)
 		})
+
+		var sidemenu = null
+		var btnApply = null
+		var who = null
+		var tuition = null
+		var admissions = null
+		if (course.type == 'immersive'){ // bootcamp
+			sidemenu = (
+				<ul>
+					<li><a href="#introduction">Introduction</a></li>
+					<li><a href="#who">Who</a></li>
+					<li><a href="#curriculum">Curriculum</a></li>
+					<li><a href="#tuition">Tuition, Scholarships</a></li>
+					<li><a href="#instructors">Instructors</a></li>
+					<li><a href="#faq">FAQ</a></li>
+					<li><a href="#admissions">Admissions</a></li>
+				</ul>				
+			)
+
+			btnApply = <a onClick={this.toggleApplication} href="#" className="apply">Apply</a>
+
+			who = (
+				<article id="who" className="overview">
+					<div className="container">
+						<h2>Who</h2>
+						<p className="about">
+							Are you right for this class?
+						</p>
+						<div className="image">
+							<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
+						</div>
+
+						<div className="text">
+							<p>
+								The {course.title} is designed for beginner to intermediate programmers. 
+								A typical applicant has written basic code before, possibly 
+								tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. 
+								You should be comfortable writing  simple programs to perform string 
+								manipulation, arithmetic operations, etc. HTML should be 
+								familiar as well. This should not be your first time coding. 
+								If you’re a beginner programming who is looking for the next step and is 
+								eager to learn, this course is for you.
+							</p>
+						</div>
+					</div>
+				</article>				
+			)
+			
+			tuition = (
+				<article id="tuition" className="overview">
+					<div className="container">
+						<h2 style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
+						<div className="col_full nobottommargin">
+							<p className="about" style={{marginBottom:6}}>Tuition</p>
+							<p>
+								Tuition is ${course.tuition} with a ${course.deposit} deposit to reserve your spot. 
+								A $500 discount will be applied to those who pay in full 
+								at the start of the course. Otherwise, payments can be 
+								made in bi-weekly installments throughout the duration of 
+								the course.
+							</p>
+	                    </div>
+						<div style={{marginTop:24}} className="col_full nobottommargin">
+							<p className="about" style={{marginBottom:6}}>Scholarships</p>
+							<p>
+								A $1,000 scholarship is available to any woman is admittted to the 
+								course. Further, two full scholarships are allocated in each class
+								for highly qualified applicants.
+							</p>
+	                    </div>
+						<div style={{marginTop:24}} className="col_full nobottommargin">
+							<p className="about" style={{marginBottom:6}}>Deadline</p>
+							<p>
+								The deadline for application is August 29th for regular applicants. To 
+								be eligible for the full scholarship, the deadline is August 22nd.
+							</p>
+	                    </div>
+					</div>
+				</article>
+			)
+
+			admissions = (
+				<article id="admissions" className="overview">
+					<div className="container">
+
+						<h2 style={{marginTop:24}}>Admissions</h2>
+						<div className="panel panel-default">
+							<div className="panel-body" style={{padding:36}}>
+								<h3>The Process</h3>
+								<hr />
+								<span className="step">Step 1</span><strong>Apply</strong>
+								<p style={{marginTop:10}}>
+									Complete our online application by midnight August 29th to 
+									apply for the course. To be eligible for a scholarship you 
+									must apply by midnight August 22nd.
+								</p>
+
+								<span className="step">Step 2</span><strong>Phone Interview</strong>
+								<p style={{marginTop:10}}>
+									All applicants will undergo a 15-30 minute phone interview to as a first technical 
+									assessment. You should feel comfortable speaking about prior programming experience.
+								</p>
+
+								<span className="step">Step 3</span><strong>In-person code review</strong>
+								<p style={{marginTop:10}}>
+									After the phone screen, the next step is  
+									an in-person code review. Here you’ll sit down with one of 
+									our instructors and complete our day 1 coding assignment. 
+									Rather than an algorithms assignment, you will work with an 
+									instructor to spin up a simple Node server to render a page. 
+									This should take about an hour, and will determine your 
+									preparedness for the pace of the course.
+								</p>
+
+								<span className="step">Step 4</span><strong>Decision</strong>
+								<p style={{marginTop:10}}>
+									You will receive an email with your application decision. 
+									You will have 7 days from your acceptance letter to make your 
+									deposit. After 7 days, your spot will be forfeited.
+								</p>
+
+							</div>
+						</div>
+					</div>
+				</article>
+			)
+		}
+
+		if (course.type == 'live'){ // part time course
+			sidemenu = (
+				<ul>
+					<li><a href="#introduction">Introduction</a></li>
+					<li><a href="#curriculum">Curriculum</a></li>
+					<li><a href="#tuition">Tuition</a></li>
+					<li><a href="#instructors">Instructors</a></li>
+					<li><a href="#faq">FAQ</a></li>
+				</ul>				
+			)
+
+			btnApply = <a href="#" className="apply">Register</a>
+			tuition = (
+				<article id="tuition" className="overview">
+					<div className="container">
+						<h2 style={{marginTop:24}}>Tuition</h2>
+						<p>
+							Tuition is ${course.tuition} with a ${course.deposit} deposit to reserve your spot. 
+							A $200 discount will be applied to those who pay in full 
+							at the start of the course. Otherwise, payments can be 
+							made in bi-weekly installments throughout the duration of 
+							the course.
+						</p>
+					</div>
+				</article>
+			)			
+		}
+		
 
 		return (
 			<div id="wrapper" className="clearfix">
@@ -244,17 +396,8 @@ class Course extends Component {
 
 								<aside>
 									<nav style={{padding:16, background:'#fff', border:'1px solid #ddd'}}>
-										<ul>
-											<li><a href="#introduction">Introduction</a></li>
-											<li><a href="#who">Who</a></li>
-											<li><a href="#curriculum">Curriculum</a></li>
-											<li><a href="#tuition">Tuition, Scholarships</a></li>
-											<li><a href="#instructors">Instructors</a></li>
-											<li><a href="#faq">FAQ</a></li>
-											<li><a href="#admissions">Admissions</a></li>
-										</ul>
-
-										<a onClick={this.toggleApplication} href="#" className="apply">Apply</a>
+										{sidemenu}
+										{btnApply}
 									</nav>
 								</aside>
 
@@ -264,8 +407,7 @@ class Course extends Component {
 											<h2>{course.title}</h2>
 											<hr />
 											<p className="about">
-												{course.dates}<br />
-												{course.schedule}
+												{course.dates}<br />{course.schedule}
 											</p>
 											<div className="container">
 												<div className="image">
@@ -280,32 +422,7 @@ class Course extends Component {
 									</article>
 
 									<hr style={{marginTop:24}} />
-
-									<article id="who" className="overview">
-										<div className="container">
-											<h2>Who</h2>
-											<p className="about">
-												Are you right for this class?
-											</p>
-											<div className="image">
-												<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
-											</div>
-
-											<div className="text">
-												<p>
-													The {course.title} is designed for beginner to intermediate programmers. 
-													A typical applicant has written basic code before, possibly 
-													tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. 
-													You should be comfortable writing  simple programs to perform string 
-													manipulation, arithmetic operations, etc. HTML should be 
-													familiar as well. This should not be your first time coding. 
-													If you’re a beginner programming who is looking for the next step and is 
-													eager to learn, this course is for you.
-												</p>
-											</div>
-										</div>
-									</article>
-
+									{who}
 									<hr style={{marginTop:24}} />
 
 									<article id="curriculum" className="overview">
@@ -318,36 +435,7 @@ class Course extends Component {
 										</div>
 									</article>
 
-									<article id="tuition" className="overview">
-										<div className="container">
-											<h2 style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
-											<div className="col_full nobottommargin">
-												<p className="about" style={{marginBottom:6}}>Tuition</p>
-												<p>
-													Tuition is $8,500 with a $2,000 deposit to reserve your spot. 
-													A $500 discount will be applied to those who pay in full 
-													at the start of the course. Otherwise, payments can be 
-													made in bi-weekly installments throughout the duration of 
-													the course.
-												</p>
-						                    </div>
-											<div style={{marginTop:24}} className="col_full nobottommargin">
-												<p className="about" style={{marginBottom:6}}>Scholarships</p>
-												<p>
-													A $1,000 scholarship is available to any woman is admittted to the 
-													course. Further, two full scholarships are allocated in each class
-													for highly qualified applicants.
-												</p>
-						                    </div>
-											<div style={{marginTop:24}} className="col_full nobottommargin">
-												<p className="about" style={{marginBottom:6}}>Deadline</p>
-												<p>
-													The deadline for application is August 29th for regular applicants. To 
-													be eligible for the full scholarship, the deadline is August 22nd.
-												</p>
-						                    </div>
-										</div>
-									</article>
+									{tuition}
 
 									<article id="instructors" className="overview">
 										<div className="container">
@@ -412,7 +500,6 @@ class Course extends Component {
 						                            </div>
 						                        </div>
 						                    </div>
-
 										</div>
 									</article>
 
@@ -427,49 +514,7 @@ class Course extends Component {
 										</div>
 									</article>
 
-									<article id="admissions" className="overview">
-										<div className="container">
-
-											<h2 style={{marginTop:24}}>Admissions</h2>
-											<div className="panel panel-default">
-												<div className="panel-body" style={{padding:36}}>
-													<h3>The Process</h3>
-													<hr />
-													<span className="step">Step 1</span><strong>Apply</strong>
-													<p style={{marginTop:10}}>
-														Complete our online application by midnight August 29th to 
-														apply for the course. To be eligible for a scholarship you 
-														must apply by midnight August 22nd.
-													</p>
-
-													<span className="step">Step 2</span><strong>Phone Interview</strong>
-													<p style={{marginTop:10}}>
-														All applicants will undergo a 15-30 minute phone interview to as a first technical 
-														assessment. You should feel comfortable speaking about prior programming experience.
-													</p>
-
-													<span className="step">Step 3</span><strong>In-person code review</strong>
-													<p style={{marginTop:10}}>
-														After the phone screen, the next step is  
-														an in-person code review. Here you’ll sit down with one of 
-														our instructors and complete our day 1 coding assignment. 
-														Rather than an algorithms assignment, you will work with an 
-														instructor to spin up a simple Node server to render a page. 
-														This should take about an hour, and will determine your 
-														preparedness for the pace of the course.
-													</p>
-
-													<span className="step">Step 4</span><strong>Decision</strong>
-													<p style={{marginTop:10}}>
-														You will receive an email with your application decision. 
-														You will have 7 days from your acceptance letter to make your 
-														deposit. After 7 days, your spot will be forfeited.
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</article>									
+									{admissions}
 
 								</div>
 
