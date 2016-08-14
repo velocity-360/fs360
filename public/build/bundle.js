@@ -22677,6 +22677,10 @@
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
+	var _Video = __webpack_require__(604);
+	
+	var _Video2 = _interopRequireDefault(_Video);
+	
 	var _Account = __webpack_require__(601);
 	
 	var _Account2 = _interopRequireDefault(_Account);
@@ -22746,6 +22750,9 @@
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
+	
+					case 'video':
+						return page = _react2.default.createElement(_Video2.default, { slug: this.props.slug });
 	
 					case 'courses':
 						return page = _react2.default.createElement(_Courses2.default, { params: this.props.params });
@@ -45638,30 +45645,33 @@
 		_createClass(CourseCard, [{
 			key: 'render',
 			value: function render() {
+				var course = this.props.course;
 				var units = null;
-				if (this.props.course.type == 'online') units = _react2.default.createElement(
+				if (course.type == 'online') units = _react2.default.createElement(
 					'li',
 					null,
 					_react2.default.createElement('i', { className: 'icon-video' }),
 					' ',
-					this.props.course.units.length,
+					course.units.length,
 					' Videos '
 				);else units = _react2.default.createElement(
 					'li',
 					null,
 					_react2.default.createElement('i', { className: 'icon-desktop' }),
 					' ',
-					this.props.course.units.length,
+					course.units.length,
 					' Sections '
 				);
 	
-				var tags = this.props.course.tags.map(function (tag, i) {
+				var tags = course.tags.map(function (tag, i) {
 					return _react2.default.createElement(
 						'a',
 						{ key: i, style: { background: '#f9f9f9' }, href: '#' },
 						tag
 					);
 				});
+	
+				var url = course.type == 'online' ? '/video/' + course.slug : '/course/' + course.slug;
 	
 				return _react2.default.createElement(
 					'div',
@@ -45682,8 +45692,8 @@
 								null,
 								_react2.default.createElement(
 									'a',
-									{ style: { color: '#1ABC9C' }, href: '/course/' + this.props.course.slug },
-									this.props.course.title
+									{ style: { color: '#1ABC9C' }, href: url },
+									course.title
 								)
 							)
 						),
@@ -45696,7 +45706,7 @@
 								null,
 								_react2.default.createElement('i', { className: 'icon-star' }),
 								' ',
-								this.props.course.level
+								course.level
 							)
 						),
 						_react2.default.createElement('hr', { style: { marginBottom: 10 } }),
@@ -45706,7 +45716,7 @@
 							_react2.default.createElement(
 								'p',
 								{ style: { marginBottom: 20 } },
-								_TextUtils2.default.truncateText(this.props.course.description, 170)
+								_TextUtils2.default.truncateText(course.description, 170)
 							),
 							_react2.default.createElement(
 								'div',
@@ -64563,6 +64573,530 @@
 	}(_react.Component);
 	
 	exports.default = Checkout;
+
+/***/ },
+/* 604 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(205);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Header = __webpack_require__(473);
+	
+	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _CTA = __webpack_require__(597);
+	
+	var _CTA2 = _interopRequireDefault(_CTA);
+	
+	var _CourseSection = __webpack_require__(598);
+	
+	var _CourseSection2 = _interopRequireDefault(_CourseSection);
+	
+	var _CourseCard = __webpack_require__(482);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _Application = __webpack_require__(599);
+	
+	var _Application2 = _interopRequireDefault(_Application);
+	
+	var _DetailBox = __webpack_require__(600);
+	
+	var _DetailBox2 = _interopRequireDefault(_DetailBox);
+	
+	var _Login = __webpack_require__(460);
+	
+	var _Login2 = _interopRequireDefault(_Login);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Video = function (_Component) {
+		_inherits(Video, _Component);
+	
+		function Video(props, context) {
+			_classCallCheck(this, Video);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Video).call(this, props, context));
+	
+			_this2.closeModal = _this2.closeModal.bind(_this2);
+			_this2.closeLogin = _this2.closeLogin.bind(_this2);
+			_this2.submitApplication = _this2.submitApplication.bind(_this2);
+			_this2.showLoader = _this2.showLoader.bind(_this2);
+			_this2.hideLoader = _this2.hideLoader.bind(_this2);
+			_this2.showLogin = _this2.showLogin.bind(_this2);
+			_this2.showConfirmation = _this2.showConfirmation.bind(_this2);
+			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.updateCourse = _this2.updateCourse.bind(_this2);
+			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.state = {
+				showLogin: false,
+				showConfirmation: false,
+				syllabusRequest: {
+					name: '',
+					email: '',
+					course: '',
+					subject: 'Syllabus Request'
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(Video, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'closeModal',
+			value: function closeModal() {
+				this.setState({
+					showLogin: false,
+					showConfirmation: false
+				});
+			}
+		}, {
+			key: 'closeLogin',
+			value: function closeLogin() {
+				this.setState({ showLogin: false });
+			}
+		}, {
+			key: 'showLogin',
+			value: function showLogin() {
+				this.setState({ showLogin: true });
+			}
+		}, {
+			key: 'showConfirmation',
+			value: function showConfirmation() {
+				this.setState({ showConfirmation: true });
+			}
+		}, {
+			key: 'showLoader',
+			value: function showLoader() {
+				this.setState({ showLoader: true });
+			}
+		}, {
+			key: 'hideLoader',
+			value: function hideLoader() {
+				this.setState({ showLoader: false });
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				console.log('Subscribe');
+	
+				if (this.props.currentUser.id == null) {
+					// not logged in
+					this.showLogin();
+					return;
+				}
+	
+				// check credits first:
+				var course = this.props.courses[this.props.slug];
+				if (this.props.currentUser.credits < course.credits && this.props.currentUser.accountType == 'basic') {
+					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
+					return;
+				}
+	
+				// Fetch course first to get most updated subscriber list:
+				var _this = this;
+				var endpoint = '/api/course/' + course.id;
+				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var updatedCourse = response.course;
+					var subscribers = updatedCourse.subscribers;
+					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+						return;
+	
+					subscribers.push(_this.props.currentUser.id);
+					_this.updateCourse({
+						subscribers: subscribers
+					});
+				});
+			}
+		}, {
+			key: 'updateCourse',
+			value: function updateCourse(pkg) {
+				var course = this.props.courses[this.props.slug];
+				var _this = this;
+				var endpoint = '/api/course/' + course.id;
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var updatedCourse = response.course;
+					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(updatedCourse));
+	
+					if (_this.props.currentUser.accountType == 'premium') return;
+	
+					var credits = _this.props.currentUser.credits - updatedCourse.credits;
+					_this.updateCurrentUser({
+						credits: credits
+					});
+				});
+			}
+		}, {
+			key: 'updateCurrentUser',
+			value: function updateCurrentUser(pkg) {
+				var endpoint = '/api/profile/' + this.props.currentUser.id;
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
+				});
+			}
+		}, {
+			key: 'submitApplication',
+			value: function submitApplication(application) {
+				var course = this.props.courses[this.props.slug];
+				this.setState({ showLoader: true });
+				application['course'] = course.title;
+				var _this = this;
+				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
+					_this.setState({ showLoader: false });
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var course = this.props.courses[this.props.slug];
+	
+				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
+				var _course = course;
+				var _currentUser = this.props.currentUser;
+				var _showLogin = this.showLogin;
+				var _subscribe = this.subscribe;
+	
+				var units = course.units.map(function (unit, i) {
+					return _react2.default.createElement(_CourseSection2.default, { key: i, loginAction: _showLogin, unit: unit, course: _course, subscribeAction: _subscribe, currentUser: _currentUser });
+				});
+	
+				var bootcamps = this.props.bootcamps.map(function (bootcamp, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: bootcamp.id, className: 'col-md-12 bottommargin' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'team team-list clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'team-image', style: { width: 150 } },
+								_react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + bootcamp.image + '?crop=260', alt: 'Velocity 360' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'team-desc' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'team-title' },
+									_react2.default.createElement(
+										'h4',
+										{ style: { fontWeight: 400 } },
+										_react2.default.createElement(
+											'a',
+											{ href: '/course/' + bootcamp.slug },
+											bootcamp.title
+										)
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										bootcamp.dates
+									),
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#444' } },
+										bootcamp.schedule
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'team-content' },
+									bootcamp.description
+								)
+							)
+						)
+					);
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_Nav2.default, null),
+					_react2.default.createElement(
+						'section',
+						{ id: 'slider', className: 'slider-parallax dark full-screen', style: { background: 'url("/images/joe_light_blue.png") center' }, 'data-height-lg': '400', 'data-height-md': '400', 'data-height-sm': '200', 'data-height-xs': '200', 'data-height-xxs': '200' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'vertical-middle' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'heading-block center nobottomborder' },
+									_react2.default.createElement(
+										'h1',
+										{ style: { textTransform: 'none' }, 'data-animate': 'fadeInUp' },
+										course.title
+									),
+									_react2.default.createElement('hr', { style: { maxWidth: 120, borderTop: '2px solid #fff' } }),
+									_react2.default.createElement(
+										'span',
+										{ 'data-animate': 'fadeInUp', 'data-delay': '300' },
+										course.dates,
+										_react2.default.createElement('br', null),
+										course.schedule
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#F5F5F5' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'postcontent nobottommargin clearfix' },
+									_react2.default.createElement(
+										'div',
+										{ id: 'posts', className: 'post-timeline clearfix' },
+										_react2.default.createElement('div', { className: 'timeline-border' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'entry clearfix' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-timeline' },
+												'Intro',
+												_react2.default.createElement('span', null),
+												_react2.default.createElement('div', { className: 'timeline-divider' })
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'entry-content' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'col_full' },
+													_react2.default.createElement('img', { className: 'hidden-xs', style: { width: 190, float: 'right', marginLeft: 16 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
+													_react2.default.createElement(
+														'h2',
+														{ style: { marginBottom: 0 } },
+														course.title
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														course.description
+													)
+												)
+											)
+										),
+										units,
+										_react2.default.createElement(_DetailBox2.default, { hideLoader: this.hideLoader, showLoader: this.showLoader, course: course }),
+										_react2.default.createElement(_CTA2.default, { course: course, currentUser: this.props.currentUser, loginAction: _showLogin, showLoader: this.showLoader, hideLoader: this.hideLoader, showConfirmation: this.showConfirmation })
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ style: { background: '#fff', paddingTop: 48, borderTop: '1px solid #ddd' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'heading-block center' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { fontWeight: 400 } },
+								'Bootcamps'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap', style: { paddingTop: 0 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								bootcamps
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'content', style: { backgroundColor: '#fff', paddingBottom: 0 } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'row common-height clearfix', style: { background: '#f9f9f9', border: '1px solid #ddd' } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-8 col-padding' },
+								_react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'heading-block' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Prepare for Tomorrow'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'row clearfix' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-10' },
+											_react2.default.createElement(
+												'p',
+												null,
+												'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, Redux, and React Native.'
+											),
+											_react2.default.createElement(
+												'p',
+												null,
+												'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
+											)
+										)
+									)
+								)
+							),
+							_react2.default.createElement('div', { className: 'col-sm-4 col-padding', style: { background: "url('/images/kids.jpg') center center no-repeat", backgroundSize: 'cover' } })
+						)
+					),
+					course.type == 'immersive' ? _react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication }) : null,
+					_react2.default.createElement(_Login2.default, { isVisible: this.state.showLogin, hide: this.closeLogin, redirect: null }),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ show: this.state.showConfirmation, onHide: this.closeModal },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Header,
+							{ closeButton: true, style: { textAlign: 'center', padding: 12 } },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Deposit Confirmed'
+							),
+							_react2.default.createElement('img', { style: { width: 120, borderRadius: 60 }, src: '/images/logo_round_blue_260.png' })
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24, textAlign: 'center' } },
+							_react2.default.createElement(
+								'p',
+								null,
+								'Thank you for submitting a deposit to the ',
+								course.title,
+								'. We look forward to meeting you on ',
+								startDate,
+								'. If you have any questions or concerns, feel free to contact us at ',
+								_react2.default.createElement(
+									'a',
+									{ href: 'mailto:katrina@velocity360.io' },
+									'katrina@velocity360.io'
+								),
+								'. Thank you.'
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Footer,
+							{ style: { textAlign: 'center' } },
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.closeModal, href: '#', style: { marginRight: 12 }, className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+								'OK'
+							)
+						)
+					),
+					_react2.default.createElement(_Footer2.default, null)
+				);
+			}
+		}]);
+	
+		return Video;
+	}(_react.Component);
+	
+	var stateToProps = function stateToProps(state) {
+	
+		return {
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courses,
+			bootcamps: state.courseReducer.courseArray,
+			loaderOptions: state.staticReducer.loaderConfig,
+			banners: state.staticReducer.banners
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Video);
 
 /***/ }
 /******/ ]);

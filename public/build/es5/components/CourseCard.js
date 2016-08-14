@@ -29,30 +29,33 @@ var CourseCard = (function (Component) {
 	_prototypeProperties(CourseCard, null, {
 		render: {
 			value: function render() {
+				var course = this.props.course;
 				var units = null;
-				if (this.props.course.type == "online") units = React.createElement(
+				if (course.type == "online") units = React.createElement(
 					"li",
 					null,
 					React.createElement("i", { className: "icon-video" }),
 					" ",
-					this.props.course.units.length,
+					course.units.length,
 					" Videos "
 				);else units = React.createElement(
 					"li",
 					null,
 					React.createElement("i", { className: "icon-desktop" }),
 					" ",
-					this.props.course.units.length,
+					course.units.length,
 					" Sections "
 				);
 
-				var tags = this.props.course.tags.map(function (tag, i) {
+				var tags = course.tags.map(function (tag, i) {
 					return React.createElement(
 						"a",
 						{ key: i, style: { background: "#f9f9f9" }, href: "#" },
 						tag
 					);
 				});
+
+				var url = course.type == "online" ? "/video/" + course.slug : "/course/" + course.slug;
 
 				return React.createElement(
 					"div",
@@ -73,8 +76,8 @@ var CourseCard = (function (Component) {
 								null,
 								React.createElement(
 									"a",
-									{ style: { color: "#1ABC9C" }, href: "/course/" + this.props.course.slug },
-									this.props.course.title
+									{ style: { color: "#1ABC9C" }, href: url },
+									course.title
 								)
 							)
 						),
@@ -87,7 +90,7 @@ var CourseCard = (function (Component) {
 								null,
 								React.createElement("i", { className: "icon-star" }),
 								" ",
-								this.props.course.level
+								course.level
 							)
 						),
 						React.createElement("hr", { style: { marginBottom: 10 } }),
@@ -97,7 +100,7 @@ var CourseCard = (function (Component) {
 							React.createElement(
 								"p",
 								{ style: { marginBottom: 20 } },
-								TextUtils.truncateText(this.props.course.description, 170)
+								TextUtils.truncateText(course.description, 170)
 							),
 							React.createElement(
 								"div",
