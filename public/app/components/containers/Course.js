@@ -250,9 +250,13 @@ class Course extends Component {
 						<div style={{marginTop:24}} className="col_full nobottommargin">
 							<p className="about" style={{marginBottom:6}}>Scholarships</p>
 							<p>
-								A $1,000 scholarship is available to any woman is admittted to the 
-								course. Further, two full scholarships are allocated in each class
-								for highly qualified applicants.
+								A $1,000 scholarship is available to any woman admitted to the course. Further, 
+								two full scholarships are allotted in each class for highly qualified 
+								candidates. Full scholarships will be awarded solely on merit. Our holistic 
+								review considers factors such as aptitude, coding ability, and problem-solving 
+								determination. An award determination is made after your in-person code review. 
+								You will be notified of your scholarship award before the 
+								start of class, if applicable.
 							</p>
 	                    </div>
 						<div style={{marginTop:24}} className="col_full nobottommargin">
@@ -306,6 +310,9 @@ class Course extends Component {
 									You will have 7 days from your acceptance letter to make your 
 									deposit. After 7 days, your spot will be forfeited.
 								</p>
+
+								<hr />
+								<a onClick={this.toggleApplication} href="#" className="btn btn-lg btn-success">Apply</a>
 							</div>
 						</div>
 					</div>
@@ -379,13 +386,12 @@ class Course extends Component {
 				</article>
 			)
 		}
-		
 
 		return (
 			<div id="wrapper" className="clearfix">
 				<Nav headerStyle="dark" />
 
-				<section id="lpf-header" style={{backgroundImage: "url('/images/joe_light_blue.png')"}} >
+				<section id="lpf-header" style={{maxHeight:550, backgroundImage: "url('/images/joe_light_blue.png')"}} >
 					<header>
 						<div className="content-wrapper dark">
 							<div className="content">
@@ -393,9 +399,11 @@ class Course extends Component {
 								<h4 className="muted">
 									Learn Fullstack Development for Web and Mobile with Node, React, React Native
 								</h4>
-								<a href="https://www.velocity360.io/event/open-house" className="button button-glass">
-									Attend Info Session
-								</a>
+								{	(course.type == 'immersive') ?
+									<a onClick={this.toggleApplication} href="#" style={{marginTop:0}} className="button button-glass">Apply</a>
+									:
+									<a onClick={this.showPaypal} href="#" style={{marginTop:0}} className="button button-glass">Register</a>
+								}
 							</div>
 						</div>
 					</header>
