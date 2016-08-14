@@ -61888,22 +61888,6 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
-	var _Header = __webpack_require__(473);
-	
-	var _Header2 = _interopRequireDefault(_Header);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CTA = __webpack_require__(597);
-	
-	var _CTA2 = _interopRequireDefault(_CTA);
-	
-	var _CourseSection = __webpack_require__(598);
-	
-	var _CourseSection2 = _interopRequireDefault(_CourseSection);
-	
 	var _CourseCard = __webpack_require__(482);
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
@@ -61911,14 +61895,6 @@
 	var _Application = __webpack_require__(599);
 	
 	var _Application2 = _interopRequireDefault(_Application);
-	
-	var _DetailBox = __webpack_require__(600);
-	
-	var _DetailBox2 = _interopRequireDefault(_DetailBox);
-	
-	var _Login = __webpack_require__(460);
-	
-	var _Login2 = _interopRequireDefault(_Login);
 	
 	var _store = __webpack_require__(194);
 	
@@ -61950,72 +61926,27 @@
 		function Course(props, context) {
 			_classCallCheck(this, Course);
 	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Course).call(this, props, context));
 	
-			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.closeLogin = _this2.closeLogin.bind(_this2);
-			_this2.toggleApplication = _this2.toggleApplication.bind(_this2);
-			_this2.submitApplication = _this2.submitApplication.bind(_this2);
-			_this2.showLoader = _this2.showLoader.bind(_this2);
-			_this2.hideLoader = _this2.hideLoader.bind(_this2);
-			_this2.showLogin = _this2.showLogin.bind(_this2);
-			_this2.showConfirmation = _this2.showConfirmation.bind(_this2);
-			_this2.subscribe = _this2.subscribe.bind(_this2);
-			_this2.updateCourse = _this2.updateCourse.bind(_this2);
-			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.showPaypal = _this2.showPaypal.bind(_this2);
-			_this2.submitSyllabusRequest = _this2.submitSyllabusRequest.bind(_this2);
-			_this2.validate = _this2.validate.bind(_this2);
-			_this2.state = {
+			_this.toggleApplication = _this.toggleApplication.bind(_this);
+			_this.submitApplication = _this.submitApplication.bind(_this);
+			_this.updateVisitor = _this.updateVisitor.bind(_this);
+			_this.showPaypal = _this.showPaypal.bind(_this);
+			_this.submitSyllabusRequest = _this.submitSyllabusRequest.bind(_this);
+			_this.validate = _this.validate.bind(_this);
+			_this.state = {
 				showLoader: false,
 				showApplication: false,
-				showLogin: false,
-				showConfirmation: false,
 				visitor: {
 					name: '',
 					email: '',
-					course: '',
 					subject: 'Syllabus Request'
 				}
 			};
-			return _this2;
+			return _this;
 		}
 	
 		_createClass(Course, [{
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({
-					showLogin: false,
-					showConfirmation: false
-				});
-			}
-		}, {
-			key: 'closeLogin',
-			value: function closeLogin() {
-				this.setState({ showLogin: false });
-			}
-		}, {
-			key: 'showLogin',
-			value: function showLogin() {
-				this.setState({ showLogin: true });
-			}
-		}, {
-			key: 'showConfirmation',
-			value: function showConfirmation() {
-				this.setState({ showConfirmation: true });
-			}
-		}, {
-			key: 'showLoader',
-			value: function showLoader() {
-				this.setState({ showLoader: true });
-			}
-		}, {
-			key: 'hideLoader',
-			value: function hideLoader() {
-				this.setState({ showLoader: false });
-			}
-		}, {
 			key: 'toggleApplication',
 			value: function toggleApplication(event) {
 				if (event != null) event.preventDefault();
@@ -62026,84 +61957,9 @@
 				});
 			}
 		}, {
-			key: 'subscribe',
-			value: function subscribe(event) {
-				event.preventDefault();
-				console.log('Subscribe');
-	
-				if (this.props.currentUser.id == null) {
-					// not logged in
-					this.showLogin();
-					return;
-				}
-	
-				// check credits first:
-				var course = this.props.courses[this.props.slug];
-				if (this.props.currentUser.credits < course.credits && this.props.currentUser.accountType == 'basic') {
-					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
-					return;
-				}
-	
-				// Fetch course first to get most updated subscriber list:
-				var _this = this;
-				var endpoint = '/api/course/' + course.id;
-				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					var updatedCourse = response.course;
-					var subscribers = updatedCourse.subscribers;
-					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
-						return;
-	
-					subscribers.push(_this.props.currentUser.id);
-					_this.updateCourse({
-						subscribers: subscribers
-					});
-				});
-			}
-		}, {
-			key: 'updateCourse',
-			value: function updateCourse(pkg) {
-				var course = this.props.courses[this.props.slug];
-				var _this = this;
-				var endpoint = '/api/course/' + course.id;
-				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					var updatedCourse = response.course;
-					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(updatedCourse));
-	
-					if (_this.props.currentUser.accountType == 'premium') return;
-	
-					var credits = _this.props.currentUser.credits - updatedCourse.credits;
-					_this.updateCurrentUser({
-						credits: credits
-					});
-				});
-			}
-		}, {
-			key: 'updateCurrentUser',
-			value: function updateCurrentUser(pkg) {
-				var endpoint = '/api/profile/' + this.props.currentUser.id;
-				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
-				});
-			}
-		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
-				var _this3 = this;
+				var _this2 = this;
 	
 				var course = this.props.courses[this.props.slug];
 				this.setState({
@@ -62113,7 +61969,7 @@
 	
 				application['course'] = course.title;
 				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
-					_this3.setState({ showLoader: false });
+					_this2.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);
@@ -62135,7 +61991,7 @@
 		}, {
 			key: 'submitSyllabusRequest',
 			value: function submitSyllabusRequest(event) {
-				var _this4 = this;
+				var _this3 = this;
 	
 				event.preventDefault();
 				var missingField = this.validate(this.state.visitor, false);
@@ -62151,12 +62007,13 @@
 	
 				var course = this.props.courses[this.props.slug];
 				pkg['pdf'] = course.syllabus;
+				pkg['course'] = course.title;
 				pkg['subject'] = 'Syllabus Request';
 				pkg['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.';
 	
 				this.setState({ showLoader: true });
 				_APIManager2.default.handlePost('/account/syllabus', pkg, function (err, response) {
-					_this4.setState({ showLoader: false });
+					_this3.setState({ showLoader: false });
 					if (err) {
 						alert(err.message);
 						return;
@@ -62192,9 +62049,7 @@
 		}, {
 			key: 'showPaypal',
 			value: function showPaypal(event) {
-				//		console.log('showPaypal')
 				event.preventDefault();
-	
 				var course = this.props.courses[this.props.slug];
 				if (course.discountPaypalLink.length == 0) {
 					// no discount code
@@ -62220,13 +62075,6 @@
 			key: 'render',
 			value: function render() {
 				var course = this.props.courses[this.props.slug];
-	
-				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
-				var _course = course;
-				var _currentUser = this.props.currentUser;
-				var _showLogin = this.showLogin;
-				var _subscribe = this.subscribe;
-	
 				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(
 						'div',
@@ -63065,7 +62913,6 @@
 		return {
 			currentUser: state.profileReducer.currentUser,
 			courses: state.courseReducer.courses,
-			bootcamps: state.courseReducer.courseArray,
 			loaderOptions: state.staticReducer.loaderConfig,
 			faq: state.staticReducer.faq
 		};

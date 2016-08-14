@@ -25,21 +25,9 @@ var Loader = _interopRequire(require("react-loader"));
 var connect = require("react-redux").connect;
 var Nav = _interopRequire(require("../../components/Nav"));
 
-var Header = _interopRequire(require("../../components/Header"));
-
-var Footer = _interopRequire(require("../../components/Footer"));
-
-var CTA = _interopRequire(require("../../components/CTA"));
-
-var CourseSection = _interopRequire(require("../../components/CourseSection"));
-
 var CourseCard = _interopRequire(require("../../components/CourseCard"));
 
 var Application = _interopRequire(require("../../components/Application"));
-
-var DetailBox = _interopRequire(require("../../components/DetailBox"));
-
-var Login = _interopRequire(require("../../components/Login"));
 
 var store = _interopRequire(require("../../stores/store"));
 
@@ -54,17 +42,8 @@ var Course = (function (Component) {
 		_classCallCheck(this, Course);
 
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
-		this.closeModal = this.closeModal.bind(this);
-		this.closeLogin = this.closeLogin.bind(this);
 		this.toggleApplication = this.toggleApplication.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
-		this.showLoader = this.showLoader.bind(this);
-		this.hideLoader = this.hideLoader.bind(this);
-		this.showLogin = this.showLogin.bind(this);
-		this.showConfirmation = this.showConfirmation.bind(this);
-		this.subscribe = this.subscribe.bind(this);
-		this.updateCourse = this.updateCourse.bind(this);
-		this.updateCurrentUser = this.updateCurrentUser.bind(this);
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.showPaypal = this.showPaypal.bind(this);
 		this.submitSyllabusRequest = this.submitSyllabusRequest.bind(this);
@@ -72,12 +51,9 @@ var Course = (function (Component) {
 		this.state = {
 			showLoader: false,
 			showApplication: false,
-			showLogin: false,
-			showConfirmation: false,
 			visitor: {
 				name: "",
 				email: "",
-				course: "",
 				subject: "Syllabus Request"
 			}
 		};
@@ -86,51 +62,6 @@ var Course = (function (Component) {
 	_inherits(Course, Component);
 
 	_prototypeProperties(Course, null, {
-		closeModal: {
-			value: function closeModal() {
-				this.setState({
-					showLogin: false,
-					showConfirmation: false
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		closeLogin: {
-			value: function closeLogin() {
-				this.setState({ showLogin: false });
-			},
-			writable: true,
-			configurable: true
-		},
-		showLogin: {
-			value: function showLogin() {
-				this.setState({ showLogin: true });
-			},
-			writable: true,
-			configurable: true
-		},
-		showConfirmation: {
-			value: function showConfirmation() {
-				this.setState({ showConfirmation: true });
-			},
-			writable: true,
-			configurable: true
-		},
-		showLoader: {
-			value: function showLoader() {
-				this.setState({ showLoader: true });
-			},
-			writable: true,
-			configurable: true
-		},
-		hideLoader: {
-			value: function hideLoader() {
-				this.setState({ showLoader: false });
-			},
-			writable: true,
-			configurable: true
-		},
 		toggleApplication: {
 			value: function toggleApplication(event) {
 				if (event != null) event.preventDefault();
@@ -138,87 +69,6 @@ var Course = (function (Component) {
 				var showApplication = !this.state.showApplication;
 				this.setState({
 					showApplication: showApplication
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		subscribe: {
-			value: function subscribe(event) {
-				event.preventDefault();
-				console.log("Subscribe");
-
-				if (this.props.currentUser.id == null) {
-					// not logged in
-					this.showLogin();
-					return;
-				}
-
-				// check credits first:
-				var course = this.props.courses[this.props.slug];
-				if (this.props.currentUser.credits < course.credits && this.props.currentUser.accountType == "basic") {
-					alert("Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.");
-					return;
-				}
-
-				// Fetch course first to get most updated subscriber list:
-				var _this = this;
-				var endpoint = "/api/course/" + course.id;
-				api.handleGet(endpoint, null, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					var updatedCourse = response.course;
-					var subscribers = updatedCourse.subscribers;
-					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
-						return;
-
-					subscribers.push(_this.props.currentUser.id);
-					_this.updateCourse({
-						subscribers: subscribers
-					});
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		updateCourse: {
-			value: function updateCourse(pkg) {
-				var course = this.props.courses[this.props.slug];
-				var _this = this;
-				var endpoint = "/api/course/" + course.id;
-				api.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					var updatedCourse = response.course;
-					store.currentStore().dispatch(actions.courseRecieved(updatedCourse));
-
-					if (_this.props.currentUser.accountType == "premium") return;
-
-					var credits = _this.props.currentUser.credits - updatedCourse.credits;
-					_this.updateCurrentUser({
-						credits: credits
-					});
-				});
-			},
-			writable: true,
-			configurable: true
-		},
-		updateCurrentUser: {
-			value: function updateCurrentUser(pkg) {
-				var endpoint = "/api/profile/" + this.props.currentUser.id;
-				api.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 				});
 			},
 			writable: true,
@@ -276,6 +126,7 @@ var Course = (function (Component) {
 
 				var course = this.props.courses[this.props.slug];
 				pkg.pdf = course.syllabus;
+				pkg.course = course.title;
 				pkg.subject = "Syllabus Request";
 				pkg.confirmation = "Thanks for your interest! Check your email shortly for a direct download link to the syllabus.";
 
@@ -321,9 +172,7 @@ var Course = (function (Component) {
 		},
 		showPaypal: {
 			value: function showPaypal(event) {
-				//		console.log('showPaypal')
 				event.preventDefault();
-
 				var course = this.props.courses[this.props.slug];
 				if (course.discountPaypalLink.length == 0) {
 					// no discount code
@@ -351,13 +200,6 @@ var Course = (function (Component) {
 		render: {
 			value: function render() {
 				var course = this.props.courses[this.props.slug];
-
-				var startDate = course.dates == null ? "" : course.dates.split("-")[0].trim();
-				var _course = course;
-				var _currentUser = this.props.currentUser;
-				var _showLogin = this.showLogin;
-				var _subscribe = this.subscribe;
-
 				var units = course.units.map(function (unit, i) {
 					return React.createElement(
 						"div",
@@ -1200,7 +1042,6 @@ var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
 		courses: state.courseReducer.courses,
-		bootcamps: state.courseReducer.courseArray,
 		loaderOptions: state.staticReducer.loaderConfig,
 		faq: state.staticReducer.faq
 	};
