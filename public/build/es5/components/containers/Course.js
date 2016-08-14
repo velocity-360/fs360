@@ -224,7 +224,15 @@ var Course = (function (Component) {
 								React.createElement(
 									"h3",
 									null,
-									unit.topic
+									React.createElement(
+										"a",
+										{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
+										React.createElement(
+											"strong",
+											null,
+											unit.topic
+										)
+									)
 								),
 								React.createElement("hr", null),
 								unit.description,
@@ -370,7 +378,7 @@ var Course = (function (Component) {
 									null,
 									"The ",
 									course.title,
-									" is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you’re a beginner programming who is looking for the next step and is eager to learn, this course is for you."
+									" is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you are a beginner who is looking for the next step and is eager to learn, this course is for you."
 								)
 							)
 						)

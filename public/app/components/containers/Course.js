@@ -163,7 +163,9 @@ class Course extends Component {
 					</div>
 					<div className="panel panel-default" style={{maxWidth:600}}>
 						<div className="panel-body" style={{padding:36}}>
-							<h3>{unit.topic}</h3>
+							<h3>
+								<a href="#" style={{marginRight:12}} className="btn btn-info"><strong>{unit.topic}</strong></a>
+							</h3>
 							<hr />
 							{unit.description}<br />
 						</div>
@@ -223,7 +225,7 @@ class Course extends Component {
 								You should be comfortable writing  simple programs to perform string 
 								manipulation, arithmetic operations, etc. HTML should be 
 								familiar as well. This should not be your first time coding. 
-								If you’re a beginner programming who is looking for the next step and is 
+								If you are a beginner who is looking for the next step and is 
 								eager to learn, this course is for you.
 							</p>
 						</div>
