@@ -63,6 +63,7 @@ var Course = (function (Component) {
 		this.subscribe = this.subscribe.bind(this);
 		this.updateCourse = this.updateCourse.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
+		this.showPaypal = this.showPaypal.bind(this);
 		this.state = {
 			showApplication: false,
 			showLogin: false,
@@ -241,6 +242,35 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		showPaypal: {
+			value: function showPaypal(event) {
+				//		console.log('showPaypal')
+				event.preventDefault();
+
+				var course = this.props.courses[this.props.slug];
+				if (course.discountPaypalLink.length == 0) {
+					// no discount code
+					window.open(course.paypalLink, "Velocity 360", "width=650,height=900");
+					return;
+				}
+
+				var promoCode = this.state.promoCode.trim();
+				if (promoCode.length == 0) {
+					window.open(course.paypalLink, "Velocity 360", "width=650,height=900");
+					return;
+				}
+
+				if (course.promoCodes.indexOf(promoCode) == -1) {
+					window.open(course.paypalLink, "Velocity 360", "width=650,height=900");
+					return;
+				}
+
+				// successful promo code
+				window.open(course.discountPaypalLink, "Velocity 360", "width=650,height=900");
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var course = this.props.courses[this.props.slug];
@@ -305,6 +335,7 @@ var Course = (function (Component) {
 				var who = null;
 				var tuition = null;
 				var admissions = null;
+				var register = null;
 				if (course.type == "immersive") {
 					// bootcamp
 					sidemenu = React.createElement(
@@ -614,14 +645,18 @@ var Course = (function (Component) {
 								{ href: "#faq" },
 								"FAQ"
 							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#register", className: "apply" },
+								"Register"
+							)
 						)
 					);
 
-					btnApply = React.createElement(
-						"a",
-						{ href: "#", className: "apply" },
-						"Register"
-					);
 					tuition = React.createElement(
 						"article",
 						{ id: "tuition", className: "overview" },
@@ -641,6 +676,78 @@ var Course = (function (Component) {
 								" with a $",
 								course.deposit,
 								" deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
+							)
+						)
+					);
+
+					register = React.createElement(
+						"article",
+						{ id: "register", className: "overview" },
+						React.createElement(
+							"div",
+							{ className: "container" },
+							React.createElement(
+								"h2",
+								{ style: { marginTop: 24 } },
+								"Register"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel panel-default" },
+								React.createElement(
+									"div",
+									{ className: "panel-body", style: { padding: 36, lineHeight: 3 } },
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Dates"
+									),
+									course.dates,
+									React.createElement("br", null),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Schedule"
+									),
+									React.createElement(
+										"span",
+										null,
+										course.schedule
+									),
+									React.createElement("br", null),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Deposit"
+									),
+									React.createElement(
+										"span",
+										null,
+										"$",
+										course.deposit
+									),
+									React.createElement("br", null),
+									React.createElement(
+										"span",
+										{ className: "step" },
+										"Tuition"
+									),
+									React.createElement(
+										"span",
+										null,
+										"$",
+										course.tuition
+									),
+									React.createElement("br", null),
+									React.createElement("br", null),
+									React.createElement("input", { type: "text", onChange: this.updatePromoCode, id: "promo", placeholder: "Promo Code", className: "custom-input" }),
+									React.createElement(
+										"a",
+										{ onClick: this.showPaypal, href: course.paypalLink, style: { width: "100%", textAlign: "center" }, className: "button button-xlarge" },
+										"Submit Deposit"
+									),
+									React.createElement("br", null)
+								)
 							)
 						)
 					);
@@ -937,7 +1044,8 @@ var Course = (function (Component) {
 												)
 											)
 										),
-										admissions
+										admissions,
+										register
 									)
 								)
 							)

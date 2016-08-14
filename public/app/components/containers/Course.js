@@ -30,6 +30,7 @@ class Course extends Component {
 		this.subscribe = this.subscribe.bind(this)
 		this.updateCourse = this.updateCourse.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
+		this.showPaypal = this.showPaypal.bind(this)
 		this.state = {
 			showApplication: false,
 			showLogin: false,
@@ -173,6 +174,31 @@ class Course extends Component {
 		})
 	}	
 
+	showPaypal(event){
+//		console.log('showPaypal')
+		event.preventDefault()
+
+		const course = this.props.courses[this.props.slug]
+		if (course.discountPaypalLink.length == 0){ // no discount code
+			window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+			return
+		}
+
+		const promoCode = this.state.promoCode.trim()
+		if (promoCode.length == 0){
+			window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+			return
+		}
+
+		if (course.promoCodes.indexOf(promoCode) == -1){
+			window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+			return
+		}
+
+		// successful promo code
+		window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
+	}
+
 	render(){
 		const course = this.props.courses[this.props.slug]
 
@@ -214,6 +240,7 @@ class Course extends Component {
 		var who = null
 		var tuition = null
 		var admissions = null
+		var register = null
 		if (course.type == 'immersive'){ // bootcamp
 			sidemenu = (
 				<ul>
@@ -328,7 +355,6 @@ class Course extends Component {
 									You will have 7 days from your acceptance letter to make your 
 									deposit. After 7 days, your spot will be forfeited.
 								</p>
-
 							</div>
 						</div>
 					</div>
@@ -344,10 +370,10 @@ class Course extends Component {
 					<li><a href="#tuition">Tuition</a></li>
 					<li><a href="#instructors">Instructors</a></li>
 					<li><a href="#faq">FAQ</a></li>
+					<li><a href="#register" className="apply">Register</a></li>
 				</ul>				
 			)
 
-			btnApply = <a href="#" className="apply">Register</a>
 			tuition = (
 				<article id="tuition" className="overview">
 					<div className="container">
@@ -361,7 +387,26 @@ class Course extends Component {
 						</p>
 					</div>
 				</article>
-			)			
+			)
+
+			register = (
+				<article id="register" className="overview">
+					<div className="container">
+						<h2 style={{marginTop:24}}>Register</h2>
+						<div className="panel panel-default">
+							<div className="panel-body" style={{padding:36, lineHeight:3}}>
+								<span className="step">Dates</span>{course.dates}<br />
+								<span className="step">Schedule</span><span>{course.schedule}</span><br />
+								<span className="step">Deposit</span><span>${course.deposit}</span><br />
+								<span className="step">Tuition</span><span>${course.tuition}</span><br />
+								<br />
+								<input type="text" onChange={this.updatePromoCode} id="promo" placeholder="Promo Code" className="custom-input" />
+								<a onClick={this.showPaypal} href={course.paypalLink} style={{width:'100%', textAlign:'center'}} className="button button-xlarge">Submit Deposit</a><br />
+	                        </div>
+	                    </div>
+					</div>
+				</article>
+			)
 		}
 		
 
@@ -432,6 +477,7 @@ class Course extends Component {
 												<div className="timeline-border"></div>
 												{units}
 											</div>
+
 										</div>
 									</article>
 
@@ -515,6 +561,7 @@ class Course extends Component {
 									</article>
 
 									{admissions}
+									{register}
 
 								</div>
 

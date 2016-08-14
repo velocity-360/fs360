@@ -61959,6 +61959,7 @@
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.showPaypal = _this2.showPaypal.bind(_this2);
 			_this2.state = {
 				showApplication: false,
 				showLogin: false,
@@ -62115,6 +62116,33 @@
 				});
 			}
 		}, {
+			key: 'showPaypal',
+			value: function showPaypal(event) {
+				//		console.log('showPaypal')
+				event.preventDefault();
+	
+				var course = this.props.courses[this.props.slug];
+				if (course.discountPaypalLink.length == 0) {
+					// no discount code
+					window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				var promoCode = this.state.promoCode.trim();
+				if (promoCode.length == 0) {
+					window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				if (course.promoCodes.indexOf(promoCode) == -1) {
+					window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				// successful promo code
+				window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900');
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var course = this.props.courses[this.props.slug];
@@ -62179,6 +62207,7 @@
 				var who = null;
 				var tuition = null;
 				var admissions = null;
+				var register = null;
 				if (course.type == 'immersive') {
 					// bootcamp
 					sidemenu = _react2.default.createElement(
@@ -62488,14 +62517,18 @@
 								{ href: '#faq' },
 								'FAQ'
 							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#register', className: 'apply' },
+								'Register'
+							)
 						)
 					);
 	
-					btnApply = _react2.default.createElement(
-						'a',
-						{ href: '#', className: 'apply' },
-						'Register'
-					);
 					tuition = _react2.default.createElement(
 						'article',
 						{ id: 'tuition', className: 'overview' },
@@ -62515,6 +62548,78 @@
 								' with a $',
 								course.deposit,
 								' deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
+							)
+						)
+					);
+	
+					register = _react2.default.createElement(
+						'article',
+						{ id: 'register', className: 'overview' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { marginTop: 24 } },
+								'Register'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel panel-default' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'panel-body', style: { padding: 36, lineHeight: 3 } },
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Dates'
+									),
+									course.dates,
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Schedule'
+									),
+									_react2.default.createElement(
+										'span',
+										null,
+										course.schedule
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Deposit'
+									),
+									_react2.default.createElement(
+										'span',
+										null,
+										'$',
+										course.deposit
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'span',
+										{ className: 'step' },
+										'Tuition'
+									),
+									_react2.default.createElement(
+										'span',
+										null,
+										'$',
+										course.tuition
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updatePromoCode, id: 'promo', placeholder: 'Promo Code', className: 'custom-input' }),
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.showPaypal, href: course.paypalLink, style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
+										'Submit Deposit'
+									),
+									_react2.default.createElement('br', null)
+								)
 							)
 						)
 					);
@@ -62810,7 +62915,8 @@
 												)
 											)
 										),
-										admissions
+										admissions,
+										register
 									)
 								)
 							)
@@ -63039,6 +63145,7 @@
 		}, {
 			key: 'showPaypal',
 			value: function showPaypal(event) {
+				console.log('showPaypal');
 				event.preventDefault();
 				if (this.props.course.discountPaypalLink.length == 0) {
 					// no discount code
@@ -63218,7 +63325,7 @@
 						schedule = _react2.default.createElement(
 							'span',
 							null,
-							'Time: ',
+							'Schedule: ',
 							course.schedule,
 							_react2.default.createElement('br', null)
 						);
@@ -63291,7 +63398,7 @@
 						{ className: 'entry-image' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'panel panel-default' },
+							{ className: 'panel panel-default', style: { maxWidth: 600 } },
 							_react2.default.createElement(
 								'div',
 								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
@@ -63303,7 +63410,7 @@
 								_react2.default.createElement('hr', null),
 								_react2.default.createElement(
 									'div',
-									{ className: 'col_half' },
+									{ className: 'col_full col_last' },
 									date,
 									schedule,
 									deposit,
@@ -63311,11 +63418,6 @@
 									premiumTuition,
 									_react2.default.createElement('br', null),
 									register
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_half col_last' },
-									_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' })
 								)
 							)
 						)
@@ -64046,9 +64148,6 @@
 		}
 	
 		_createClass(Video, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
 			key: 'closeModal',
 			value: function closeModal() {
 				this.setState({

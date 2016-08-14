@@ -77,11 +77,6 @@ var Video = (function (Component) {
 	_inherits(Video, Component);
 
 	_prototypeProperties(Video, null, {
-		componentDidMount: {
-			value: function componentDidMount() {},
-			writable: true,
-			configurable: true
-		},
 		closeModal: {
 			value: function closeModal() {
 				this.setState({

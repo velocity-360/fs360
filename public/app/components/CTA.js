@@ -151,6 +151,7 @@ class CTA extends Component {
 	}
 
 	showPaypal(event){
+		console.log('showPaypal')
 		event.preventDefault()
 		if (this.props.course.discountPaypalLink.length == 0){ // no discount code
 			window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900')
@@ -170,8 +171,6 @@ class CTA extends Component {
 
 		// successful promo code
 		window.open(this.props.course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
-
-
 	}
 
 	render(){
@@ -249,7 +248,7 @@ class CTA extends Component {
 			case 'live':
 				cta = 'Register'
 				date = <span>Date: {course.dates}<br /></span>			
-				schedule = <span>Time: {course.schedule}<br /></span>			
+				schedule = <span>Schedule: {course.schedule}<br /></span>			
 				deposit = <span>Deposit: ${course.deposit}<br /></span>
 				tuition = <span>Regular Tuition: ${course.tuition}<br /></span>
 				premiumTuition = <span>Premium Member Tuition: ${course.premiumTuition}<br /></span>
@@ -276,12 +275,12 @@ class CTA extends Component {
 					<div className="timeline-divider"></div>
 				</div>
 				<div className="entry-image">
-					<div className="panel panel-default">
+					<div className="panel panel-default" style={{maxWidth:600}}>
 						<div className="panel-body" style={{padding:36, paddingBottom:0}}>
 							<h2>{cta}</h2>
 							<hr />
 
-							<div className='col_half'>
+							<div className='col_full col_last'>
 								{date}
 								{schedule}
 								{deposit}
@@ -292,9 +291,6 @@ class CTA extends Component {
 
 							</div>
 
-							<div className="col_half col_last">
-								<img style={{width:'80%', float:'right'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
-							</div>
 						</div>
 					</div>
 				</div>

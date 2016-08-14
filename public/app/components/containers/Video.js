@@ -41,10 +41,6 @@ class Video extends Component {
 		}
 	}
 
-	componentDidMount(){
-		
-	}
-
 	closeModal(){
 		this.setState({
 			showLogin: false,

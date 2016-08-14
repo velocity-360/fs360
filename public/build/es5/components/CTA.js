@@ -196,6 +196,7 @@ var CTA = (function (Component) {
 		},
 		showPaypal: {
 			value: function showPaypal(event) {
+				console.log("showPaypal");
 				event.preventDefault();
 				if (this.props.course.discountPaypalLink.length == 0) {
 					// no discount code
@@ -216,7 +217,6 @@ var CTA = (function (Component) {
 
 				// successful promo code
 				window.open(this.props.course.discountPaypalLink, "Velocity 360", "width=650,height=900");
-
 			},
 			writable: true,
 			configurable: true
@@ -379,7 +379,7 @@ var CTA = (function (Component) {
 						schedule = React.createElement(
 							"span",
 							null,
-							"Time: ",
+							"Schedule: ",
 							course.schedule,
 							React.createElement("br", null)
 						);
@@ -452,7 +452,7 @@ var CTA = (function (Component) {
 						{ className: "entry-image" },
 						React.createElement(
 							"div",
-							{ className: "panel panel-default" },
+							{ className: "panel panel-default", style: { maxWidth: 600 } },
 							React.createElement(
 								"div",
 								{ className: "panel-body", style: { padding: 36, paddingBottom: 0 } },
@@ -464,7 +464,7 @@ var CTA = (function (Component) {
 								React.createElement("hr", null),
 								React.createElement(
 									"div",
-									{ className: "col_half" },
+									{ className: "col_full col_last" },
 									date,
 									schedule,
 									deposit,
@@ -472,11 +472,6 @@ var CTA = (function (Component) {
 									premiumTuition,
 									React.createElement("br", null),
 									register
-								),
-								React.createElement(
-									"div",
-									{ className: "col_half col_last" },
-									React.createElement("img", { style: { width: "80%", float: "right" }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" })
 								)
 							)
 						)
