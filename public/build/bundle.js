@@ -62165,8 +62165,8 @@
 									),
 									_react2.default.createElement(
 										'a',
-										{ href: '#', target: '_blank', className: 'button button-glass' },
-										'Request Syllabus'
+										{ href: 'https://www.velocity360.io/event/open-house', className: 'button button-glass' },
+										'Attend Info Session'
 									)
 								)
 							)
@@ -62368,13 +62368,13 @@
 										),
 										_react2.default.createElement(
 											'article',
-											{ className: 'overview' },
+											{ id: 'tuition', className: 'overview' },
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
 												_react2.default.createElement(
 													'h2',
-													{ id: 'tuition', style: { marginTop: 24 } },
+													{ style: { marginTop: 24 } },
 													'Tuition, Scholarships, Deadlines'
 												),
 												_react2.default.createElement(

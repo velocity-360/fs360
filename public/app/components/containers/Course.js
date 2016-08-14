@@ -222,8 +222,8 @@ class Course extends Component {
 								<h4 className="muted">
 									Learn Fullstack Development for Web and Mobile with Node, React, React Native
 								</h4>
-								<a href="#" target="_blank" className="button button-glass">
-									Request Syllabus
+								<a href="https://www.velocity360.io/event/open-house" className="button button-glass">
+									Attend Info Session
 								</a>
 							</div>
 						</div>
@@ -314,9 +314,9 @@ class Course extends Component {
 										</div>
 									</article>
 
-									<article className="overview">
+									<article id="tuition" className="overview">
 										<div className="container">
-											<h2 id="tuition" style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
+											<h2 style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
 											<div className="col_full nobottommargin">
 												<p className="about" style={{marginBottom:6}}>Tuition</p>
 												<p>

@@ -328,8 +328,8 @@ var Course = (function (Component) {
 									),
 									React.createElement(
 										"a",
-										{ href: "#", target: "_blank", className: "button button-glass" },
-										"Request Syllabus"
+										{ href: "https://www.velocity360.io/event/open-house", className: "button button-glass" },
+										"Attend Info Session"
 									)
 								)
 							)
@@ -531,13 +531,13 @@ var Course = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ className: "overview" },
+											{ id: "tuition", className: "overview" },
 											React.createElement(
 												"div",
 												{ className: "container" },
 												React.createElement(
 													"h2",
-													{ id: "tuition", style: { marginTop: 24 } },
+													{ style: { marginTop: 24 } },
 													"Tuition, Scholarships, Deadlines"
 												),
 												React.createElement(
