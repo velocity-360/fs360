@@ -17,10 +17,6 @@ class Landing extends Component {
 		}
 	}
 
-	componentDidMount(){
-
-	}
-
 	render(){
 		var courses = this.props.courses.map(function(course, i){
 			return (
@@ -92,7 +88,7 @@ class Landing extends Component {
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
 								<RightSidebar />
-							</div>			
+							</div>
 
 						</div>
 					</div>
@@ -112,13 +108,25 @@ class Landing extends Component {
 					<div className="content-wrap" style={{paddingTop:0}}>
 	                    <div className="line"></div>
 	                    <h4 className="center">Our Students Currently Work At</h4>
-	                    <ul className="clients-grid grid-4 bottommargin clearfix">
-	                        <li><img style={{border:'1px solid #ddd'}} src="/images/crains.png" alt="Velocity 360" /></li>
-	                        <li><img style={{border:'1px solid #ddd'}} src="/images/bloomberg.png" alt="Velocity 360" /></li>
-	                        <li><img style={{border:'1px solid #ddd'}} src="/images/nytimes.png" alt="Velocity 360" /></li>
-	                        <li><img style={{border:'1px solid #ddd'}} src="/images/codeacademy.png" alt="Velocity 360" /></li>
-	                    </ul>
+	                    <div className="container">
+		                    <div className="row">
+			                    <div className="col-md-3">
+				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/crains.png" alt="Velocity 360" />
+			                    </div>
+			                    <div className="col-md-3">
+				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/bloomberg.png" alt="Velocity 360" />
+			                    </div>
+			                    <div className="col-md-3">
+				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/nytimes.png" alt="Velocity 360" />
+			                    </div>
+			                    <div className="col-md-3">
+				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/codeacademy.png" alt="Velocity 360" />
+			                    </div>
+		                    </div>
+
+	                    </div>
 					</div>
+
 				</section>
 
 				<Register />

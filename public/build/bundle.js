@@ -22867,9 +22867,6 @@
 		}
 	
 		_createClass(Landing, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
 			key: 'render',
 			value: function render() {
 				var courses = this.props.courses.map(function (course, i) {
@@ -23035,27 +23032,31 @@
 								'Our Students Currently Work At'
 							),
 							_react2.default.createElement(
-								'ul',
-								{ className: 'clients-grid grid-4 bottommargin clearfix' },
+								'div',
+								{ className: 'container' },
 								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/crains.png', alt: 'Velocity 360' })
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/bloomberg.png', alt: 'Velocity 360' })
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/nytimes.png', alt: 'Velocity 360' })
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { style: { border: '1px solid #ddd' }, src: '/images/codeacademy.png', alt: 'Velocity 360' })
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-3' },
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/crains.png', alt: 'Velocity 360' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-3' },
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/bloomberg.png', alt: 'Velocity 360' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-3' },
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/nytimes.png', alt: 'Velocity 360' })
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-3' },
+										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/codeacademy.png', alt: 'Velocity 360' })
+									)
 								)
 							)
 						)
@@ -64101,12 +64102,9 @@
 													_react2.default.createElement(
 														'p',
 														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
+														'The ',
+														course.title,
+														' is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you’re a beginner programming who is looking for the next step and is eager to learn, this course is for you.'
 													)
 												)
 											)

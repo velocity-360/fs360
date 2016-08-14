@@ -268,8 +268,16 @@ class Course extends Component {
 											</div>
 
 											<div className="text">
-												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
-												<p>Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.</p>
+												<p>
+													The {course.title} is designed for beginner to intermediate programmers. 
+													A typical applicant has written basic code before, possibly 
+													tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. 
+													You should be comfortable writing  simple programs to perform string 
+													manipulation, arithmetic operations, etc. HTML should be 
+													familiar as well. This should not be your first time coding. 
+													If you’re a beginner programming who is looking for the next step and is 
+													eager to learn, this course is for you.
+												</p>
 											</div>
 										</div>
 									</article>

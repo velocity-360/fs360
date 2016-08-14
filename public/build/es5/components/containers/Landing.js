@@ -42,11 +42,6 @@ var Landing = (function (Component) {
 	_inherits(Landing, Component);
 
 	_prototypeProperties(Landing, null, {
-		componentDidMount: {
-			value: function componentDidMount() {},
-			writable: true,
-			configurable: true
-		},
 		render: {
 			value: function render() {
 				var courses = this.props.courses.map(function (course, i) {
@@ -212,27 +207,31 @@ var Landing = (function (Component) {
 								"Our Students Currently Work At"
 							),
 							React.createElement(
-								"ul",
-								{ className: "clients-grid grid-4 bottommargin clearfix" },
+								"div",
+								{ className: "container" },
 								React.createElement(
-									"li",
-									null,
-									React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/crains.png", alt: "Velocity 360" })
-								),
-								React.createElement(
-									"li",
-									null,
-									React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/bloomberg.png", alt: "Velocity 360" })
-								),
-								React.createElement(
-									"li",
-									null,
-									React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/nytimes.png", alt: "Velocity 360" })
-								),
-								React.createElement(
-									"li",
-									null,
-									React.createElement("img", { style: { border: "1px solid #ddd" }, src: "/images/codeacademy.png", alt: "Velocity 360" })
+									"div",
+									{ className: "row" },
+									React.createElement(
+										"div",
+										{ className: "col-md-3" },
+										React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/crains.png", alt: "Velocity 360" })
+									),
+									React.createElement(
+										"div",
+										{ className: "col-md-3" },
+										React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/bloomberg.png", alt: "Velocity 360" })
+									),
+									React.createElement(
+										"div",
+										{ className: "col-md-3" },
+										React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/nytimes.png", alt: "Velocity 360" })
+									),
+									React.createElement(
+										"div",
+										{ className: "col-md-3" },
+										React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/codeacademy.png", alt: "Velocity 360" })
+									)
 								)
 							)
 						)
