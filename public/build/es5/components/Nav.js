@@ -252,6 +252,19 @@ var Nav = (function (Component) {
 										null,
 										React.createElement(
 											"a",
+											{ href: "https://www.velocity360.io/courses?type=online" },
+											React.createElement(
+												"div",
+												{ style: { padding: 4 } },
+												"Videos"
+											)
+										)
+									),
+									React.createElement(
+										"li",
+										null,
+										React.createElement(
+											"a",
 											{ target: "_blank", href: "https://www.coursereport.com/schools/velocity" },
 											React.createElement(
 												"div",

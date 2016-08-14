@@ -219,10 +219,15 @@ var Course = (function (Component) {
 		},
 		submitApplication: {
 			value: function submitApplication(application) {
-				var course = this.props.courses[this.props.slug];
-				this.setState({ showLoader: true });
-				application.course = course.title;
 				var _this = this;
+				var course = this.props.courses[this.props.slug];
+				this.setState({
+					showLoader: true,
+					showApplication: false
+				});
+
+				application.course = course.title;
+				//		var _this = this
 				api.handlePost("/account/application", application, function (err, response) {
 					_this.setState({ showLoader: false });
 
@@ -335,6 +340,7 @@ var Course = (function (Component) {
 							)
 						)
 					),
+					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
 						"section",
 						{ id: "content", style: { background: "#f9f9f9" } },
@@ -841,7 +847,7 @@ var Course = (function (Component) {
 					React.createElement(
 						Modal,
 						{ bsSize: "large", show: this.state.showApplication, onHide: this.toggleApplication },
-						React.createElement(Application, null)
+						React.createElement(Application, { onSubmit: this.submitApplication })
 					)
 				);
 			},

@@ -155,11 +155,15 @@ class Course extends Component {
 
 	submitApplication(application){
 		const course = this.props.courses[this.props.slug]
-		this.setState({showLoader: true})
+		this.setState({
+			showLoader: true,
+			showApplication: false
+		})
+
 		application['course'] = course.title
-		var _this = this
-		api.handlePost('/account/application', application, function(err, response){
-			_this.setState({showLoader: false})
+//		var _this = this
+		api.handlePost('/account/application', application, (err, response) => {
+			this.setState({showLoader: false})
 
 			if (err){
 				alert(err.message)
@@ -230,6 +234,7 @@ class Course extends Component {
 					</header>
 				</section>
 
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<section id="content" style={{background:'#f9f9f9'}}>
 					<div className="content-wrap">
 						<div id="lpf-content">
@@ -475,7 +480,7 @@ class Course extends Component {
 				</section>
 
 				<Modal bsSize="large" show={this.state.showApplication} onHide={this.toggleApplication}>
-					<Application />
+					<Application onSubmit={this.submitApplication} />
 				</Modal>
 
 			</div>

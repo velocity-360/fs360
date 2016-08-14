@@ -41195,6 +41195,19 @@
 										null,
 										_react2.default.createElement(
 											'a',
+											{ href: 'https://www.velocity360.io/courses?type=online' },
+											_react2.default.createElement(
+												'div',
+												{ style: { padding: 4 } },
+												'Videos'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
 											{ target: '_blank', href: 'https://www.coursereport.com/schools/velocity' },
 											_react2.default.createElement(
 												'div',
@@ -62058,12 +62071,18 @@
 		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
+				var _this3 = this;
+	
 				var course = this.props.courses[this.props.slug];
-				this.setState({ showLoader: true });
+				this.setState({
+					showLoader: true,
+					showApplication: false
+				});
+	
 				application['course'] = course.title;
-				var _this = this;
+				//		var _this = this
 				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
-					_this.setState({ showLoader: false });
+					_this3.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);
@@ -62172,6 +62191,7 @@
 							)
 						)
 					),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
 						'section',
 						{ id: 'content', style: { background: '#f9f9f9' } },
@@ -62678,7 +62698,7 @@
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ bsSize: 'large', show: this.state.showApplication, onHide: this.toggleApplication },
-						_react2.default.createElement(_Application2.default, null)
+						_react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication })
 					)
 				);
 			}
@@ -63409,9 +63429,6 @@
 		}
 	
 		_createClass(Application, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
 			key: 'updateApplication',
 			value: function updateApplication(event) {
 				//		console.log('updateUserApplication: '+event.target.id)

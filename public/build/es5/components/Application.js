@@ -44,11 +44,6 @@ var Application = (function (Component) {
 	_inherits(Application, Component);
 
 	_prototypeProperties(Application, null, {
-		componentDidMount: {
-			value: function componentDidMount() {},
-			writable: true,
-			configurable: true
-		},
 		updateApplication: {
 			value: function updateApplication(event) {
 				//		console.log('updateUserApplication: '+event.target.id)

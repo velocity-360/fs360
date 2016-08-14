@@ -25,10 +25,6 @@ class Application extends Component {
 		}
 	}
 
-	componentDidMount(){
-
-	}
-
 	updateApplication(event){
 //		console.log('updateUserApplication: '+event.target.id)
 		event.preventDefault()
