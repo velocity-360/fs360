@@ -201,6 +201,14 @@ class Course extends Component {
 			)
 		})
 
+		const faq = this.props.faq.general.map((question, i) => {
+			return (
+            	<div key={i}>
+                    <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>{question.question}</div>
+                    <div style={{background:'#fff'}} className="acc_content clearfix" dangerouslySetInnerHTML={{__html: question.answer }}></div>
+               	</div>
+			)
+		})
 
 		return (
 			<div id="wrapper" className="clearfix">
@@ -211,7 +219,9 @@ class Course extends Component {
 						<div className="content-wrapper dark">
 							<div className="content">
 								<h2>{course.title}</h2>
-								<h4 className="muted">Learn Software Development in 13 Weeks with Fullstack Academys Software Engineering Immersive</h4>
+								<h4 className="muted">
+									Learn Fullstack Development for Web and Mobile with Node, React, React Native
+								</h4>
 								<a href="#" target="_blank" className="button button-glass">
 									Request Syllabus
 								</a>
@@ -246,19 +256,21 @@ class Course extends Component {
 
 								<div className="content" style={{background:'#f9f9f9'}}>
 									<article id="introduction" className="overview">
-										<h2>{course.title}</h2>
-										<hr />
-										<p className="about">
-											{course.dates}<br />
-											{course.schedule}
-										</p>
 										<div className="container">
-											<div className="image">
-												<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
-											</div>
+											<h2>{course.title}</h2>
+											<hr />
+											<p className="about">
+												{course.dates}<br />
+												{course.schedule}
+											</p>
+											<div className="container">
+												<div className="image">
+													<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
+												</div>
 
-											<div className="text">
-												<p>{course.description}</p>
+												<div className="text">
+													<p>{course.description}</p>
+												</div>
 											</div>
 										</div>
 									</article>
@@ -266,11 +278,11 @@ class Course extends Component {
 									<hr style={{marginTop:24}} />
 
 									<article id="who" className="overview">
-										<h2>Who</h2>
-										<p className="about">
-											Are you right for this class?
-										</p>
 										<div className="container">
+											<h2>Who</h2>
+											<p className="about">
+												Are you right for this class?
+											</p>
 											<div className="image">
 												<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
 											</div>
@@ -294,7 +306,6 @@ class Course extends Component {
 
 									<article id="curriculum" className="overview">
 										<h2>Curriculum</h2>
-
 										<div className="postcontent clearfix" style={{paddingBottom:64}}>
 											<div id="posts" className="post-timeline clearfix">
 												<div className="timeline-border"></div>
@@ -304,23 +315,39 @@ class Course extends Component {
 									</article>
 
 									<article id="tuition" className="overview">
-										<h2 style={{marginTop:24}}>Tuition & Scholarships</h2>
 										<div className="container">
+											<h2 style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
 											<div className="col_full nobottommargin">
 												<p className="about" style={{marginBottom:6}}>Tuition</p>
-												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
+												<p>
+													Tuition is $8,500 with a $2,000 deposit to reserve your spot. 
+													A $500 discount will be applied to those who pay in full 
+													at the start of the course. Otherwise, payments can be 
+													made in bi-weekly installments throughout the duration of 
+													the course.
+												</p>
 						                    </div>
 											<div style={{marginTop:24}} className="col_full nobottommargin">
 												<p className="about" style={{marginBottom:6}}>Scholarships</p>
-												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
+												<p>
+													A $1,000 scholarship is available to any woman is admittted to the 
+													course. Further, two full scholarships are allocated in each class
+													for highly qualified applicants.
+												</p>
+						                    </div>
+											<div style={{marginTop:24}} className="col_full nobottommargin">
+												<p className="about" style={{marginBottom:6}}>Deadlines</p>
+												<p>
+													The deadline for application is August 29th for regular applicants. To 
+													be eligible for the full scholarship, the deadline is August 22nd.
+												</p>
 						                    </div>
 										</div>
 									</article>
 
 									<article id="instructors" className="overview">
-										<h2 style={{marginTop:24}}>Instructors</h2>
-										<p className="about">Are you right for this class?</p>
 										<div className="container">
+											<h2 style={{marginTop:24}}>Instructors</h2>
 						                    <div className="col-md-12 bottommargin">
 						                        <div className="team team-list clearfix">
 						                            <div className="team-image" style={{width:150}}>
@@ -386,46 +413,57 @@ class Course extends Component {
 									</article>
 
 									<article id="faq" className="overview">
-										<h2 style={{marginTop:24}}>FAQ</h2>
-										<p className="about">
-											Are you right for this class?
-										</p>
 										<div className="container">
-
+											<h2 style={{marginTop:24}}>FAQ</h2>
 											<div className="col_full nobottommargin">
 						                        <div className="accordion accordion-border clearfix" data-state="closed">
-						                        	<div>
-							                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>How do I become an author?</div>
-							                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-							                       	</div>
-						                        	<div>
-							                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>How do I become an author?</div>
-							                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-							                       	</div>
-						                        	<div>
-							                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>How do I become an author?</div>
-							                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-							                       	</div>
-						                        	<div>
-							                            <div style={{background:'#fff'}} className="acctitle"><i className="acc-closed icon-question-sign"></i><i className="acc-open icon-question-sign"></i>How do I become an author?</div>
-							                            <div style={{background:'#fff'}} className="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-							                       	</div>
+						                        	{faq}
 						                        </div>
 						                    </div>
-
 										</div>
 									</article>
 
 									<article id="admissions" className="overview">
-										<h2 style={{marginTop:24}}>Admissions</h2>
-										<p className="about">
-											The Process
-										</p>
 										<div className="container">
-											<div className="col_full nobottommargin">
-												<p>Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.</p>
-												<p>Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.</p>
-						                    </div>
+
+											<h2 style={{marginTop:24}}>Admissions</h2>
+											<div className="panel panel-default">
+												<div className="panel-body" style={{padding:36}}>
+													<h3>The Process</h3>
+													<hr />
+													<span className="step">Step 1</span><strong>Apply</strong>
+													<p style={{marginTop:10}}>
+														Complete our online application by midnight August 29th to 
+														apply for the course. To be eligible for a scholarship you 
+														must apply by midnight August 22nd.
+													</p>
+
+													<span className="step">Step 2</span><strong>Phone Interview</strong>
+													<p style={{marginTop:10}}>
+														All applicants will undergo a 15-30 minute phone interview to as a first technical 
+														assessment. You should feel comfortable speaking about prior programming experience.
+													</p>
+
+													<span className="step">Step 3</span><strong>In-person code review</strong>
+													<p style={{marginTop:10}}>
+														After the phone screen, the next step is  
+														an in-person code review. Here you’ll sit down with one of 
+														our instructors and complete our day 1 coding assignment. 
+														Rather than an algorithms assignment, you will work with an 
+														instructor to spin up a simple Node server to render a page. 
+														This should take about an hour, and will determine your 
+														preparedness for the pace of the course.
+													</p>
+
+													<span className="step">Step 4</span><strong>Decision</strong>
+													<p style={{marginTop:10}}>
+														You will receive an email with your application decision. 
+														You will have 7 days from your acceptance letter to make your 
+														deposit. After 7 days, your spot will be forfeited.
+													</p>
+
+												</div>
+											</div>
 										</div>
 									</article>									
 

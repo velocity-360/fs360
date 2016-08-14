@@ -56,8 +56,8 @@ class Application extends Component {
 				<div id="application" className="content-wrap">
 					<div className="container clearfix">
 
-						<div className="postcontent nobottommargin">
-							<h3>Apply</h3>
+						<div className="postcontent overview nobottommargin">
+							<h2 style={{marginTop:0}}>Application</h2>
 							<hr />
 
 							<div className="contact-widget">

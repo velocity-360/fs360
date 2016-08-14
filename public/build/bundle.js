@@ -22594,7 +22594,7 @@
 		banners: ['hackathon.jpg', 'hacking-2.jpg', 'girl.jpg'],
 		faq: {
 			highschool: [{ question: 'Will I Have Fun?', answer: 'Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.' }, { question: 'I don’t have a lot of experience coding - can I still take your summer class?', answer: 'Of course!  Velocity High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.' }, { question: 'Is there a screening process?', answer: 'We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.' }, { question: 'Who are the instructors for the summer classes?', answer: 'All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!' }, { question: 'Will this class help me get into college?  What about an internship in the future?', answer: 'Yes, I am glad you asked.  Velocity Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites. If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at Velocity is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at Velocity you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.' }, { question: 'Where is the Summer Program for Velocity?', answer: 'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at Velocity you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.' }],
-			general: [{ question: 'I don’t have a lot of experience coding - can I still take a class?', answer: 'Of course!  Velocity programs are designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.' }, { question: 'Is there a screening process?', answer: 'We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.' }, { question: 'Who are the instructors?', answer: 'All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!' }, { question: 'Will this class help me get a job or an internship?', answer: 'Yes, I am glad you asked.  Velocity Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites. If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at Velocity is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at Velocity you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.' }, { question: 'Where is Velocity located?', answer: 'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at Velocity you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.' }]
+			general: [{ question: 'How much programming experience do I need?', answer: 'There is no minimum experience required. We do not admit based on prior knowledge. but rather ability to learn in a fast-paced environment. For example, we’d gladly admit a student who recently began learning Python but shows a propensity for development over someone who learned Java 5+ years ago but struggles with learning anything new.' }, { question: 'Are instructors available beyond course hours?', answer: 'Yes - our instructors hold weekly office hours to address any bugs. Due to the small and intimate class sizes instructors will often make themselves available before or after a session to help students with any material.' }, { question: 'Cancellation Policy', answer: 'Your deposit is refundable until the course begins. Before the halfway point, 50% tuition (minus your deposit) is refundable. No refunds are permitted beyond the halfway point of the course.' }, { question: 'What is a typical class size?', answer: 'A typical class size is 7. Due to space limitations, no class will exceed 10 people. Our intimate classes enable instructors to give each student ample attention and assistance.' }, { question: 'Mac or PC?', answer: 'Either one is acceptable, however a Mac will be easier and is preferred. Instructors will use a Mac.' }]
 		},
 		isLoading: true,
 		loaderConfig: {
@@ -22653,43 +22653,39 @@
 	
 	var _Courses2 = _interopRequireDefault(_Courses);
 	
-	var _Test = __webpack_require__(483);
-	
-	var _Test2 = _interopRequireDefault(_Test);
-	
-	var _Event = __webpack_require__(488);
+	var _Event = __webpack_require__(483);
 	
 	var _Event2 = _interopRequireDefault(_Event);
 	
-	var _Feed = __webpack_require__(489);
+	var _Feed = __webpack_require__(484);
 	
 	var _Feed2 = _interopRequireDefault(_Feed);
 	
-	var _PostPage = __webpack_require__(598);
+	var _PostPage = __webpack_require__(593);
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
-	var _MVP = __webpack_require__(599);
+	var _MVP = __webpack_require__(594);
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Project = __webpack_require__(600);
+	var _Project = __webpack_require__(595);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(601);
+	var _Course = __webpack_require__(596);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Account = __webpack_require__(602);
+	var _Account = __webpack_require__(601);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(603);
+	var _Unit = __webpack_require__(602);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
-	var _Checkout = __webpack_require__(604);
+	var _Checkout = __webpack_require__(603);
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
@@ -22747,9 +22743,6 @@
 	
 					case 'landing':
 						return page = _react2.default.createElement(_ProjectLanding2.default, null);
-	
-					case 'test':
-						return page = _react2.default.createElement(_Test2.default, { slug: this.props.slug });
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
@@ -45738,1790 +45731,6 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _reactLoader = __webpack_require__(461);
-	
-	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _reactRedux = __webpack_require__(168);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Header = __webpack_require__(473);
-	
-	var _Header2 = _interopRequireDefault(_Header);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _CTA = __webpack_require__(484);
-	
-	var _CTA2 = _interopRequireDefault(_CTA);
-	
-	var _CourseSection = __webpack_require__(485);
-	
-	var _CourseSection2 = _interopRequireDefault(_CourseSection);
-	
-	var _CourseCard = __webpack_require__(482);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _Application = __webpack_require__(486);
-	
-	var _Application2 = _interopRequireDefault(_Application);
-	
-	var _DetailBox = __webpack_require__(487);
-	
-	var _DetailBox2 = _interopRequireDefault(_DetailBox);
-	
-	var _Login = __webpack_require__(460);
-	
-	var _Login2 = _interopRequireDefault(_Login);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Test = function (_Component) {
-		_inherits(Test, _Component);
-	
-		function Test(props, context) {
-			_classCallCheck(this, Test);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Test).call(this, props, context));
-	
-			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.closeLogin = _this2.closeLogin.bind(_this2);
-			_this2.submitApplication = _this2.submitApplication.bind(_this2);
-			_this2.showLoader = _this2.showLoader.bind(_this2);
-			_this2.hideLoader = _this2.hideLoader.bind(_this2);
-			_this2.showLogin = _this2.showLogin.bind(_this2);
-			_this2.showConfirmation = _this2.showConfirmation.bind(_this2);
-			_this2.subscribe = _this2.subscribe.bind(_this2);
-			_this2.updateCourse = _this2.updateCourse.bind(_this2);
-			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
-			_this2.state = {
-				showLogin: false,
-				showConfirmation: false,
-				syllabusRequest: {
-					name: '',
-					email: '',
-					course: '',
-					subject: 'Syllabus Request'
-				}
-			};
-			return _this2;
-		}
-	
-		_createClass(Test, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
-			key: 'closeModal',
-			value: function closeModal() {
-				this.setState({
-					showLogin: false,
-					showConfirmation: false
-				});
-			}
-		}, {
-			key: 'closeLogin',
-			value: function closeLogin() {
-				this.setState({ showLogin: false });
-			}
-		}, {
-			key: 'showLogin',
-			value: function showLogin() {
-				this.setState({ showLogin: true });
-			}
-		}, {
-			key: 'showConfirmation',
-			value: function showConfirmation() {
-				this.setState({ showConfirmation: true });
-			}
-		}, {
-			key: 'showLoader',
-			value: function showLoader() {
-				this.setState({ showLoader: true });
-			}
-		}, {
-			key: 'hideLoader',
-			value: function hideLoader() {
-				this.setState({ showLoader: false });
-			}
-		}, {
-			key: 'subscribe',
-			value: function subscribe(event) {
-				event.preventDefault();
-				console.log('Subscribe');
-	
-				if (this.props.currentUser.id == null) {
-					// not logged in
-					this.showLogin();
-					return;
-				}
-	
-				// check credits first:
-				var course = this.props.courses[this.props.slug];
-				if (this.props.currentUser.credits < course.credits && this.props.currentUser.accountType == 'basic') {
-					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
-					return;
-				}
-	
-				// Fetch course first to get most updated subscriber list:
-				var _this = this;
-				var endpoint = '/api/course/' + course.id;
-				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					var updatedCourse = response.course;
-					var subscribers = updatedCourse.subscribers;
-					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
-						return;
-	
-					subscribers.push(_this.props.currentUser.id);
-					_this.updateCourse({
-						subscribers: subscribers
-					});
-				});
-			}
-		}, {
-			key: 'updateCourse',
-			value: function updateCourse(pkg) {
-				var course = this.props.courses[this.props.slug];
-				var _this = this;
-				var endpoint = '/api/course/' + course.id;
-				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					var updatedCourse = response.course;
-					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(updatedCourse));
-	
-					if (_this.props.currentUser.accountType == 'premium') return;
-	
-					var credits = _this.props.currentUser.credits - updatedCourse.credits;
-					_this.updateCurrentUser({
-						credits: credits
-					});
-				});
-			}
-		}, {
-			key: 'updateCurrentUser',
-			value: function updateCurrentUser(pkg) {
-				var endpoint = '/api/profile/' + this.props.currentUser.id;
-				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
-				});
-			}
-		}, {
-			key: 'submitApplication',
-			value: function submitApplication(application) {
-				var course = this.props.courses[this.props.slug];
-				this.setState({ showLoader: true });
-				application['course'] = course.title;
-				var _this = this;
-				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
-					_this.setState({ showLoader: false });
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var course = this.props.courses[this.props.slug];
-	
-				var startDate = course.dates == null ? '' : course.dates.split('-')[0].trim();
-				var _course = course;
-				var _currentUser = this.props.currentUser;
-				var _showLogin = this.showLogin;
-				var _subscribe = this.subscribe;
-	
-				// var units = course.units.map(function(unit, i){
-				// 	return <CourseSection key={i} loginAction={_showLogin} unit={unit} course={_course} subscribeAction={_subscribe} currentUser={_currentUser} />
-				// })
-	
-				var units = course.units.map(function (unit, i) {
-					return _react2.default.createElement(
-						'div',
-						{ key: i, className: 'entry clearfix' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-timeline' },
-							'Unit',
-							_react2.default.createElement(
-								'span',
-								null,
-								i + 1
-							),
-							_react2.default.createElement('div', { className: 'timeline-divider' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default', style: { maxWidth: 600 } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36 } },
-								_react2.default.createElement(
-									'h3',
-									null,
-									unit.topic
-								),
-								_react2.default.createElement('hr', null),
-								unit.description,
-								_react2.default.createElement('br', null)
-							)
-						)
-					);
-				});
-	
-				return _react2.default.createElement(
-					'div',
-					{ id: 'wrapper', className: 'clearfix' },
-					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
-					_react2.default.createElement(
-						'section',
-						{ id: 'lpf-header', style: { backgroundImage: "url('/images/joe_light_blue.png')" } },
-						_react2.default.createElement(
-							'header',
-							null,
-							_react2.default.createElement(
-								'div',
-								{ className: 'content-wrapper dark' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'content' },
-									_react2.default.createElement(
-										'h2',
-										null,
-										course.title
-									),
-									_react2.default.createElement(
-										'h4',
-										{ className: 'muted' },
-										'Learn Software Development in 13 Weeks with Fullstack Academys Software Engineering Immersive'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#', target: '_blank', className: 'button button-glass' },
-										'Request Syllabus'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ id: 'content', style: { background: '#f9f9f9' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ id: 'lpf-content' },
-								_react2.default.createElement(
-									'main',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'aside-toggle' },
-										_react2.default.createElement('div', null)
-									),
-									_react2.default.createElement(
-										'aside',
-										null,
-										_react2.default.createElement(
-											'nav',
-											{ style: { padding: 16, background: '#fff', border: '1px solid #ddd' } },
-											_react2.default.createElement(
-												'ul',
-												null,
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#overview' },
-														'Overview'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#who' },
-														'Who'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#curriculum' },
-														'Curriculum'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#typicalday' },
-														'Typical Day'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#tuition' },
-														'Tuition, Scholarships'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#instructors' },
-														'Instructors'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#faq' },
-														'FAQ'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#admissions' },
-														'Admissions'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'a',
-												{ href: 'http://www.fullstackacademy.com/apply', className: 'apply', target: '_blank' },
-												'Apply'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'content', style: { background: '#f9f9f9' } },
-										_react2.default.createElement(
-											'article',
-											{ id: 'overview', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												null,
-												course.title
-											),
-											_react2.default.createElement('hr', null),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												course.dates,
-												_react2.default.createElement('br', null),
-												course.schedule
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'image' },
-													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'text' },
-													_react2.default.createElement(
-														'p',
-														null,
-														course.description
-													)
-												)
-											)
-										),
-										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
-										_react2.default.createElement(
-											'article',
-											{ id: 'who', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												null,
-												'Who'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'image' },
-													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: '/images/group.JPG', alt: 'Velocity 360' })
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'text' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
-													)
-												)
-											)
-										),
-										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
-										_react2.default.createElement(
-											'article',
-											{ id: 'curriculum', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												null,
-												'Curriculum'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'postcontent nobottommargin clearfix' },
-												_react2.default.createElement(
-													'div',
-													{ id: 'posts', className: 'post-timeline clearfix' },
-													_react2.default.createElement('div', { className: 'timeline-border' }),
-													units
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'typicalday', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'Typical Day'
-											),
-											_react2.default.createElement('img', { style: { width: 100 + '%', border: '1px solid #ddd' }, src: '/images/typicalday.png', alt: 'Velocity 360' })
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'tuition', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'Tuition, Scholarships'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_full nobottommargin' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'faq', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'FAQ'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_full nobottommargin' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'accordion accordion-border clearfix', 'data-state': 'closed' },
-														_react2.default.createElement(
-															'div',
-															{ style: { background: '#fff' }, className: 'acctitle' },
-															_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-															_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-															'How do I become an author?'
-														),
-														_react2.default.createElement(
-															'div',
-															{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-															'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
-														),
-														_react2.default.createElement(
-															'div',
-															{ style: { background: '#fff' }, className: 'acctitle' },
-															_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-															_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-															'Helpful Resources for Authors'
-														),
-														_react2.default.createElement(
-															'div',
-															{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-															'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.'
-														),
-														_react2.default.createElement(
-															'div',
-															{ style: { background: '#fff' }, className: 'acctitle' },
-															_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-															_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-															'How much money can I make?'
-														),
-														_react2.default.createElement(
-															'div',
-															{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-															'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!'
-														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'admissions', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'Admissions'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_full nobottommargin' },
-													_react2.default.createElement(
-														'p',
-														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
-													)
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Test;
-	}(_react.Component);
-	
-	var stateToProps = function stateToProps(state) {
-	
-		return {
-			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courses,
-			bootcamps: state.courseReducer.courseArray,
-			loaderOptions: state.staticReducer.loaderConfig,
-			banners: state.staticReducer.banners
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(stateToProps)(Test);
-
-/***/ },
-/* 484 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _StripeUtils = __webpack_require__(471);
-	
-	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CTA = function (_Component) {
-		_inherits(CTA, _Component);
-	
-		function CTA(props, context) {
-			_classCallCheck(this, CTA);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(CTA).call(this, props, context));
-	
-			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
-			_this2.configureStripe = _this2.configureStripe.bind(_this2);
-			_this2.subscribe = _this2.subscribe.bind(_this2);
-			_this2.updateCourse = _this2.updateCourse.bind(_this2);
-			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
-			_this2.updatePromoCode = _this2.updatePromoCode.bind(_this2);
-			_this2.showPaypal = _this2.showPaypal.bind(_this2);
-			_this2.login = _this2.login.bind(_this2);
-			_this2.state = {
-				promoCode: ''
-			};
-			return _this2;
-		}
-	
-		_createClass(CTA, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.configureStripe(this.props.course);
-			}
-		}, {
-			key: 'login',
-			value: function login(event) {
-				event.preventDefault();
-				this.props.loginAction(event);
-			}
-		}, {
-			key: 'subscribe',
-			value: function subscribe(event) {
-				event.preventDefault();
-	
-				if (this.props.currentUser.id == null) {
-					// not logged in
-					this.props.loginAction(event);
-					return;
-				}
-	
-				// check credits first:
-				if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType == 'basic') {
-					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
-					return;
-				}
-	
-				// Fetch course first to get most updated subscriber list:
-				var _this = this;
-				var endpoint = '/api/course/' + this.props.course.id;
-				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					var course = response.course;
-					var subscribers = course.subscribers;
-					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
-						return;
-	
-					subscribers.push(_this.props.currentUser.id);
-					_this.updateCourse({
-						subscribers: subscribers
-					});
-				});
-			}
-		}, {
-			key: 'updateCourse',
-			value: function updateCourse(pkg) {
-				var _this = this;
-				var endpoint = '/api/course/' + this.props.course.id;
-				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					var course = response.course;
-					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(course));
-	
-					if (_this.props.currentUser.accountType == 'premium') return;
-	
-					var credits = _this.props.currentUser.credits - course.credits;
-					_this.updateCurrentUser({
-						credits: credits
-					});
-				});
-			}
-		}, {
-			key: 'updateCurrentUser',
-			value: function updateCurrentUser(pkg) {
-				var endpoint = '/api/profile/' + this.props.currentUser.id;
-				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
-				});
-			}
-		}, {
-			key: 'configureStripe',
-			value: function configureStripe(course) {
-				var course = this.props.course;
-				var _this = this;
-				if (course.type == 'online') {
-					// for videos, show subscription prompt:
-					_StripeUtils2.default.initialize(function (token) {
-						_this.props.showLoader();
-						_APIManager2.default.submitStripeToken(token, function (err, response) {
-							_this.props.hideLoader();
-							if (err) {
-								alert(err.message);
-								return;
-							}
-	
-							window.location.href = '/account';
-						});
-					});
-					return;
-				}
-	
-				var text = 'Submit Deposit - $' + course.deposit;
-				_StripeUtils2.default.initializeWithText(text, function (token) {
-					_this.props.showLoader();
-					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
-						_this.props.hideLoader();
-						if (err) {
-							alert(err.message);
-							_this.setState({ showLoader: false });
-							return;
-						}
-	
-						_this.props.showConfirmation();
-					});
-				});
-			}
-		}, {
-			key: 'openStripeModal',
-			value: function openStripeModal(event) {
-				event.preventDefault();
-				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
-			}
-		}, {
-			key: 'updatePromoCode',
-			value: function updatePromoCode(event) {
-				event.preventDefault();
-				this.setState({
-					promoCode: event.target.value
-				});
-			}
-		}, {
-			key: 'showPaypal',
-			value: function showPaypal(event) {
-				event.preventDefault();
-				if (this.props.course.discountPaypalLink.length == 0) {
-					// no discount code
-					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
-					return;
-				}
-	
-				var promoCode = this.state.promoCode.trim();
-				if (promoCode.length == 0) {
-					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
-					return;
-				}
-	
-				if (this.props.course.promoCodes.indexOf(promoCode) == -1) {
-					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
-					return;
-				}
-	
-				// successful promo code
-				window.open(this.props.course.discountPaypalLink, 'Velocity 360', 'width=650,height=900');
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var course = this.props.course;
-				var user = this.props.currentUser;
-				var cta = null;
-				var date = null;
-				var schedule = null;
-				var deposit = null;
-				var tuition = null;
-				var premiumTuition = null;
-				var register = null;
-	
-				switch (course.type) {
-					case 'online':
-						cta = 'Subscribe';
-						premiumTuition = _react2.default.createElement(
-							'p',
-							{ style: { marginBottom: 0 } },
-							'Subscribe to this course to receive email notifications when new videos are published. If you are a ',
-							_react2.default.createElement(
-								'a',
-								{ href: user.id == null ? '/#register' : '/checkout' },
-								'premium'
-							),
-							' member, all online video courses are included in membership.'
-						);
-	
-						var creditsRemaining = null;
-						if (user.accountType == 'basic') creditsRemaining = _react2.default.createElement(
-							'span',
-							null,
-							'Hello ',
-							user.firstName,
-							'! You have ',
-							user.credits,
-							' credits remaining'
-						);else creditsRemaining = _react2.default.createElement(
-							'span',
-							null,
-							'Hello ',
-							user.firstName,
-							'. You are a premium member, feel free to subscribe to this series for free!'
-						);
-	
-						var isSubscriber = course.subscribers.indexOf(user.id) > -1;
-						register = _react2.default.createElement(
-							'div',
-							{ className: 'col_full panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-								'Fee: ',
-								course.credits,
-								' credits'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { textAlign: 'left' } },
-								user.id == null ? _react2.default.createElement(
-									'span',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.login, href: '#' },
-										'Login'
-									),
-									' or ',
-									_react2.default.createElement(
-										'a',
-										{ href: '/#register' },
-										'register'
-									),
-									' to subscribe.'
-								) : creditsRemaining,
-								_react2.default.createElement('br', null),
-								_react2.default.createElement('br', null),
-								isSubscriber ? _react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement('hr', null),
-									_react2.default.createElement(
-										'span',
-										null,
-										'You are subscribed to this series'
-									)
-								) : _react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.subscribe, href: '#', target: '_blank', className: 'button button-xlarge tright' },
-										'Subscribe',
-										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-									),
-									_react2.default.createElement('br', null)
-								)
-							)
-						);
-						break;
-	
-					case 'immersive':
-						cta = 'Details';
-						date = _react2.default.createElement(
-							'span',
-							null,
-							'Date: ',
-							course.dates,
-							_react2.default.createElement('br', null)
-						);
-						schedule = _react2.default.createElement(
-							'span',
-							null,
-							'Time: ',
-							course.schedule,
-							_react2.default.createElement('br', null)
-						);
-						deposit = _react2.default.createElement(
-							'span',
-							null,
-							'Deposit: $',
-							course.deposit,
-							_react2.default.createElement('br', null)
-						);
-						tuition = _react2.default.createElement(
-							'span',
-							null,
-							'Regular Tuition: $',
-							course.tuition,
-							_react2.default.createElement('br', null)
-						);
-						premiumTuition = _react2.default.createElement(
-							'span',
-							null,
-							'Premium Member Tuition: $',
-							course.premiumTuition,
-							_react2.default.createElement('br', null)
-						);
-						register = _react2.default.createElement(
-							'a',
-							{ href: '#application', className: 'button button-xlarge tright' },
-							'Apply',
-							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
-						);
-						break;
-	
-					case 'live':
-						cta = 'Register';
-						date = _react2.default.createElement(
-							'span',
-							null,
-							'Date: ',
-							course.dates,
-							_react2.default.createElement('br', null)
-						);
-						schedule = _react2.default.createElement(
-							'span',
-							null,
-							'Time: ',
-							course.schedule,
-							_react2.default.createElement('br', null)
-						);
-						deposit = _react2.default.createElement(
-							'span',
-							null,
-							'Deposit: $',
-							course.deposit,
-							_react2.default.createElement('br', null)
-						);
-						tuition = _react2.default.createElement(
-							'span',
-							null,
-							'Regular Tuition: $',
-							course.tuition,
-							_react2.default.createElement('br', null)
-						);
-						premiumTuition = _react2.default.createElement(
-							'span',
-							null,
-							'Premium Member Tuition: $',
-							course.premiumTuition,
-							_react2.default.createElement('br', null)
-						);
-						register = _react2.default.createElement(
-							'div',
-							{ className: 'col_full panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
-								'Submit Deposit'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { textAlign: 'left', paddingRight: 24 } },
-								_react2.default.createElement('input', { type: 'text', onChange: this.updatePromoCode, id: 'promo', placeholder: 'Promo Code', className: 'custom-input' }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(
-									'a',
-									{ onClick: this.showPaypal, href: course.paypalLink, style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
-									'PayPal'
-								),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(
-									'a',
-									{ onClick: this.openStripeModal, href: '#', style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
-									'Credit Card'
-								),
-								_react2.default.createElement('br', null)
-							)
-						);
-						break;
-	
-					default:
-						break;
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-timeline' },
-						'Join',
-						_react2.default.createElement('span', null),
-						_react2.default.createElement('div', { className: 'timeline-divider' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
-								_react2.default.createElement(
-									'h2',
-									null,
-									cta
-								),
-								_react2.default.createElement('hr', null),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_half' },
-									date,
-									schedule,
-									deposit,
-									tuition,
-									premiumTuition,
-									_react2.default.createElement('br', null),
-									register
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_half col_last' },
-									_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' })
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return CTA;
-	}(_react.Component);
-	
-	exports.default = CTA;
-
-/***/ },
-/* 485 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CourseSection = function (_Component) {
-		_inherits(CourseSection, _Component);
-	
-		function CourseSection(props, context) {
-			_classCallCheck(this, CourseSection);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).call(this, props, context));
-	
-			_this.login = _this.login.bind(_this);
-			_this.subscribe = _this.subscribe.bind(_this);
-			return _this;
-		}
-	
-		_createClass(CourseSection, [{
-			key: 'login',
-			value: function login(event) {
-				event.preventDefault();
-				this.props.loginAction(event);
-			}
-		}, {
-			key: 'subscribe',
-			value: function subscribe(event) {
-				event.preventDefault();
-				this.props.subscribeAction(event);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var accountType = this.props.currentUser.accountType;
-				var videoThumb = null;
-				var course = this.props.course;
-				if (course.type == 'online') {
-					if (this.props.unit.index < 1) {
-						// always show first video
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-							' '
-						);
-					} else if (accountType == 'premium') {
-						// premium subscriber
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-							' '
-						);
-					} else if (this.props.currentUser.id == null) {
-						// not logged in
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
-							'Please ',
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.login, style: { color: 'red' }, href: '#' },
-								'log in'
-							),
-							' or ',
-							_react2.default.createElement(
-								'a',
-								{ style: { color: 'red' }, href: '/#register' },
-								'register'
-							),
-							' to view this video.'
-						);
-					} else if (course.subscribers.indexOf(this.props.currentUser.id) > -1) {
-						// regular subscriber
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-							' '
-						);
-					} else if (accountType == 'basic' || accountType == '') {
-						videoThumb = _react2.default.createElement(
-							'div',
-							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
-							'To view this video, please ',
-							_react2.default.createElement(
-								'a',
-								{ onClick: this.subscribe, style: { color: 'red' }, href: '#' },
-								'subscribe'
-							),
-							' or ',
-							_react2.default.createElement(
-								'a',
-								{ style: { color: 'red' }, href: '/checkout' },
-								'upgrade'
-							),
-							' your account to Premium'
-						);
-					}
-	
-					// else { // not logged in
-					// 	videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to view this video.</div>
-					// }
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-timeline' },
-						'Unit',
-						_react2.default.createElement(
-							'span',
-							null,
-							this.props.unit.index + 1
-						),
-						_react2.default.createElement('div', { className: 'timeline-divider' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36 } },
-								_react2.default.createElement(
-									'h2',
-									null,
-									this.props.unit.topic
-								),
-								_react2.default.createElement('hr', null),
-								this.props.unit.description,
-								_react2.default.createElement('br', null),
-								videoThumb
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return CourseSection;
-	}(_react.Component);
-	
-	exports.default = CourseSection;
-
-/***/ },
-/* 486 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Application = function (_Component) {
-		_inherits(Application, _Component);
-	
-		function Application(props, context) {
-			_classCallCheck(this, Application);
-	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Application).call(this, props, context));
-	
-			_this.updateApplication = _this.updateApplication.bind(_this);
-			_this.submitApplication = _this.submitApplication.bind(_this);
-			_this.state = {
-				application: {
-					name: '',
-					email: '',
-					phone: '',
-					course: '',
-					goal: '',
-					history: '',
-					linkedin: '',
-					github: '',
-					college: '',
-					major: '',
-					currentLevel: 'total beginner',
-					subject: 'Course Application',
-					confirmation: 'Thank you for completing an application. We will reach out to you shortly to schedule a phone call.'
-				}
-			};
-			return _this;
-		}
-	
-		_createClass(Application, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
-			key: 'updateApplication',
-			value: function updateApplication(event) {
-				//		console.log('updateUserApplication: '+event.target.id)
-				event.preventDefault();
-	
-				var updatedApplication = Object.assign({}, this.state.application);
-				updatedApplication[event.target.id] = event.target.value;
-				this.setState({
-					application: updatedApplication
-				});
-			}
-		}, {
-			key: 'submitApplication',
-			value: function submitApplication(event) {
-				event.preventDefault();
-				var application = Object.assign({}, this.state.application);
-				this.props.onSubmit(application);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-	
-				return _react2.default.createElement(
-					'section',
-					{ id: 'content', style: { background: '#fff', borderTop: '1px solid #ddd' } },
-					_react2.default.createElement(
-						'div',
-						{ id: 'application', className: 'content-wrap' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'postcontent nobottommargin' },
-								_react2.default.createElement(
-									'h3',
-									null,
-									'Apply'
-								),
-								_react2.default.createElement('hr', null),
-								_react2.default.createElement(
-									'div',
-									{ className: 'contact-widget' },
-									_react2.default.createElement('div', { className: 'contact-form-result' }),
-									_react2.default.createElement(
-										'form',
-										{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
-										_react2.default.createElement('div', { className: 'form-process' }),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												{ 'for': 'template-contactform-name' },
-												'Name'
-											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												{ 'for': 'template-contactform-email' },
-												'Email'
-											),
-											_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												{ 'for': 'template-contactform-phone' },
-												'Phone'
-											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement('div', { className: 'clear' }),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												{ 'for': 'template-contactform-message' },
-												'What is your goal in technology for the next 6 to 12 months?'
-											),
-											_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'custom-input', style: { background: '#FEF9E7' }, id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												null,
-												'GitHub'
-											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												null,
-												'LinkedIn'
-											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full hidden' },
-											_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												{ 'for': 'template-contactform-subject' },
-												'Current Level'
-											),
-											_react2.default.createElement(
-												'select',
-												{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: 'currentLevel', className: 'form-control input-lg not-dark' },
-												_react2.default.createElement(
-													'option',
-													{ value: 'total beginner' },
-													'Total beginner - Never coded before'
-												),
-												_react2.default.createElement(
-													'option',
-													{ value: 'getting there' },
-													'Getting There - A couple online tutorials'
-												),
-												_react2.default.createElement(
-													'option',
-													{ value: 'intermediate' },
-													'Intermediate - Can build a few projects on my own'
-												),
-												_react2.default.createElement(
-													'option',
-													{ value: 'advanced' },
-													'Advanced - Professional, looking to learn new skills'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												null,
-												'Undergraduate College'
-											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'label',
-												null,
-												'Undergraduate Major'
-											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, style: { background: '#FEF9E7' }, className: 'custom-input' })
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col_full' },
-											_react2.default.createElement(
-												'a',
-												{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-												'Submit Application'
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Application;
-	}(_react.Component);
-	
-	exports.default = Application;
-
-/***/ },
-/* 487 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var DetailBox = function (_Component) {
-		_inherits(DetailBox, _Component);
-	
-		function DetailBox(props, context) {
-			_classCallCheck(this, DetailBox);
-	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailBox).call(this, props, context));
-	
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.submitRequest = _this2.submitRequest.bind(_this2);
-			_this2.state = {
-				visitor: {
-					name: '',
-					email: ''
-				}
-			};
-			return _this2;
-		}
-	
-		_createClass(DetailBox, [{
-			key: 'updateVisitor',
-			value: function updateVisitor(event) {
-				event.preventDefault();
-				var s = Object.assign({}, this.state.visitor);
-				s[event.target.id] = event.target.value;
-				s['course'] = this.props.course.title;
-				this.setState({
-					visitor: s
-				});
-			}
-		}, {
-			key: 'submitRequest',
-			value: function submitRequest(event) {
-				event.preventDefault();
-	
-				if (this.state.visitor.name.length == 0) {
-					alert('Please enter your name.');
-					return;
-				}
-	
-				if (this.state.visitor.email.length == 0) {
-					alert('Please enter your email.');
-					return;
-				}
-	
-				this.props.showLoader();
-	
-				var s = Object.assign({}, this.state.visitor);
-				var parts = s.name.split(' ');
-				s['firstName'] = parts[0];
-				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
-	
-				var _this = this;
-				var url = '';
-	
-				var course = this.props.course;
-				if (course.type == 'immersive') {
-					// syllabus request
-					s['pdf'] = course.syllabus;
-					s['subject'] = 'Syllabus Request';
-					s['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.';
-					url = '/account/syllabus';
-				}
-				if (course.type == 'online') {
-					s['subject'] = 'New Subscriber';
-					s['confirmation'] = 'Thanks for subscribing! We will reach out to you shortly with more information!';
-					url = '/account/subscribe';
-				}
-				if (course.type == 'live') {
-					s['subject'] = 'Free Session Request';
-					s['confirmation'] = 'Thanks for your interest. We will contact you shortly with more information about attending a free session!';
-					url = '/account/freesession';
-				}
-	
-				_APIManager2.default.handlePost(url, s, function (err, response) {
-					_this.props.hideLoader();
-	
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					alert(response.message);
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var detailContent = null;
-				var course = this.props.course;
-				if (course.type == 'online') {
-					detailContent = {
-						title: 'Newsletter',
-						text: 'Join our newsletter for notifications on upcoming courses, events and tutorials.',
-						path: '/account/subscribe'
-					};
-				} else if (course.type == 'immersive') {
-					detailContent = {
-						title: 'Request Syllabus',
-						text: 'Complete the form below to receive a syllabus for ' + course.title,
-						path: '/account/syllabus'
-					};
-				} else {
-					detailContent = {
-						title: 'Preview Free Session',
-						text: 'Complete the form below to attend a preview session of ' + course.title + ' for free.',
-						path: '/account/subscribe'
-					};
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'entry clearfix' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-timeline' },
-						'Preview',
-						_react2.default.createElement('span', null),
-						_react2.default.createElement('div', { className: 'timeline-divider' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'entry-image' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
-								_react2.default.createElement(
-									'h2',
-									null,
-									detailContent.title
-								),
-								_react2.default.createElement('hr', null),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full' },
-									_react2.default.createElement(
-										'p',
-										null,
-										detailContent.text
-									),
-									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'custom-input' }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'custom-input' }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-										'Submit'
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return DetailBox;
-	}(_react.Component);
-	
-	exports.default = DetailBox;
-
-/***/ },
-/* 488 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactBootstrap = __webpack_require__(205);
-	
-	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
-	
 	var _reactRedux = __webpack_require__(168);
 	
 	var _reactLoader = __webpack_require__(461);
@@ -47837,7 +46046,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Event);
 
 /***/ },
-/* 489 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47856,7 +46065,7 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _reactDropzone = __webpack_require__(490);
+	var _reactDropzone = __webpack_require__(485);
 	
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 	
@@ -47872,7 +46081,7 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Post = __webpack_require__(491);
+	var _Post = __webpack_require__(486);
 	
 	var _Post2 = _interopRequireDefault(_Post);
 	
@@ -48146,7 +46355,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Feed);
 
 /***/ },
-/* 490 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -48525,7 +46734,7 @@
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 491 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48544,7 +46753,7 @@
 	
 	var _TextUtils2 = _interopRequireDefault(_TextUtils);
 	
-	var _DateUtils = __webpack_require__(492);
+	var _DateUtils = __webpack_require__(487);
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
@@ -48654,7 +46863,7 @@
 	exports.default = Post;
 
 /***/ },
-/* 492 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48663,7 +46872,7 @@
 	       value: true
 	});
 	
-	var _reactTime = __webpack_require__(493);
+	var _reactTime = __webpack_require__(488);
 	
 	var _reactTime2 = _interopRequireDefault(_reactTime);
 	
@@ -48689,7 +46898,7 @@
 	};
 
 /***/ },
-/* 493 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48698,7 +46907,7 @@
 	  value: true
 	});
 	
-	var _Time = __webpack_require__(494);
+	var _Time = __webpack_require__(489);
 	
 	Object.defineProperty(exports, 'default', {
 	  enumerable: true,
@@ -48711,7 +46920,7 @@
 
 
 /***/ },
-/* 494 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48729,7 +46938,7 @@
 	                    * @copyright 2015, Andrey Popp <8mayday@gmail.com>
 	                    */
 	
-	var _moment = __webpack_require__(495);
+	var _moment = __webpack_require__(490);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -48854,7 +47063,7 @@
 
 
 /***/ },
-/* 495 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -49255,7 +47464,7 @@
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(497)("./" + name);
+	                __webpack_require__(492)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -52897,10 +51106,10 @@
 	    return _moment;
 	
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(496)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(491)(module)))
 
 /***/ },
-/* 496 */
+/* 491 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -52916,210 +51125,210 @@
 
 
 /***/ },
-/* 497 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 498,
-		"./af.js": 498,
-		"./ar": 499,
-		"./ar-ma": 500,
-		"./ar-ma.js": 500,
-		"./ar-sa": 501,
-		"./ar-sa.js": 501,
-		"./ar-tn": 502,
-		"./ar-tn.js": 502,
-		"./ar.js": 499,
-		"./az": 503,
-		"./az.js": 503,
-		"./be": 504,
-		"./be.js": 504,
-		"./bg": 505,
-		"./bg.js": 505,
-		"./bn": 506,
-		"./bn.js": 506,
-		"./bo": 507,
-		"./bo.js": 507,
-		"./br": 508,
-		"./br.js": 508,
-		"./bs": 509,
-		"./bs.js": 509,
-		"./ca": 510,
-		"./ca.js": 510,
-		"./cs": 511,
-		"./cs.js": 511,
-		"./cv": 512,
-		"./cv.js": 512,
-		"./cy": 513,
-		"./cy.js": 513,
-		"./da": 514,
-		"./da.js": 514,
-		"./de": 515,
-		"./de-at": 516,
-		"./de-at.js": 516,
-		"./de.js": 515,
-		"./dv": 517,
-		"./dv.js": 517,
-		"./el": 518,
-		"./el.js": 518,
-		"./en-au": 519,
-		"./en-au.js": 519,
-		"./en-ca": 520,
-		"./en-ca.js": 520,
-		"./en-gb": 521,
-		"./en-gb.js": 521,
-		"./en-ie": 522,
-		"./en-ie.js": 522,
-		"./en-nz": 523,
-		"./en-nz.js": 523,
-		"./eo": 524,
-		"./eo.js": 524,
-		"./es": 525,
-		"./es.js": 525,
-		"./et": 526,
-		"./et.js": 526,
-		"./eu": 527,
-		"./eu.js": 527,
-		"./fa": 528,
-		"./fa.js": 528,
-		"./fi": 529,
-		"./fi.js": 529,
-		"./fo": 530,
-		"./fo.js": 530,
-		"./fr": 531,
-		"./fr-ca": 532,
-		"./fr-ca.js": 532,
-		"./fr-ch": 533,
-		"./fr-ch.js": 533,
-		"./fr.js": 531,
-		"./fy": 534,
-		"./fy.js": 534,
-		"./gd": 535,
-		"./gd.js": 535,
-		"./gl": 536,
-		"./gl.js": 536,
-		"./he": 537,
-		"./he.js": 537,
-		"./hi": 538,
-		"./hi.js": 538,
-		"./hr": 539,
-		"./hr.js": 539,
-		"./hu": 540,
-		"./hu.js": 540,
-		"./hy-am": 541,
-		"./hy-am.js": 541,
-		"./id": 542,
-		"./id.js": 542,
-		"./is": 543,
-		"./is.js": 543,
-		"./it": 544,
-		"./it.js": 544,
-		"./ja": 545,
-		"./ja.js": 545,
-		"./jv": 546,
-		"./jv.js": 546,
-		"./ka": 547,
-		"./ka.js": 547,
-		"./kk": 548,
-		"./kk.js": 548,
-		"./km": 549,
-		"./km.js": 549,
-		"./ko": 550,
-		"./ko.js": 550,
-		"./ky": 551,
-		"./ky.js": 551,
-		"./lb": 552,
-		"./lb.js": 552,
-		"./lo": 553,
-		"./lo.js": 553,
-		"./lt": 554,
-		"./lt.js": 554,
-		"./lv": 555,
-		"./lv.js": 555,
-		"./me": 556,
-		"./me.js": 556,
-		"./mk": 557,
-		"./mk.js": 557,
-		"./ml": 558,
-		"./ml.js": 558,
-		"./mr": 559,
-		"./mr.js": 559,
-		"./ms": 560,
-		"./ms-my": 561,
-		"./ms-my.js": 561,
-		"./ms.js": 560,
-		"./my": 562,
-		"./my.js": 562,
-		"./nb": 563,
-		"./nb.js": 563,
-		"./ne": 564,
-		"./ne.js": 564,
-		"./nl": 565,
-		"./nl.js": 565,
-		"./nn": 566,
-		"./nn.js": 566,
-		"./pa-in": 567,
-		"./pa-in.js": 567,
-		"./pl": 568,
-		"./pl.js": 568,
-		"./pt": 569,
-		"./pt-br": 570,
-		"./pt-br.js": 570,
-		"./pt.js": 569,
-		"./ro": 571,
-		"./ro.js": 571,
-		"./ru": 572,
-		"./ru.js": 572,
-		"./se": 573,
-		"./se.js": 573,
-		"./si": 574,
-		"./si.js": 574,
-		"./sk": 575,
-		"./sk.js": 575,
-		"./sl": 576,
-		"./sl.js": 576,
-		"./sq": 577,
-		"./sq.js": 577,
-		"./sr": 578,
-		"./sr-cyrl": 579,
-		"./sr-cyrl.js": 579,
-		"./sr.js": 578,
-		"./ss": 580,
-		"./ss.js": 580,
-		"./sv": 581,
-		"./sv.js": 581,
-		"./sw": 582,
-		"./sw.js": 582,
-		"./ta": 583,
-		"./ta.js": 583,
-		"./te": 584,
-		"./te.js": 584,
-		"./th": 585,
-		"./th.js": 585,
-		"./tl-ph": 586,
-		"./tl-ph.js": 586,
-		"./tlh": 587,
-		"./tlh.js": 587,
-		"./tr": 588,
-		"./tr.js": 588,
-		"./tzl": 589,
-		"./tzl.js": 589,
-		"./tzm": 590,
-		"./tzm-latn": 591,
-		"./tzm-latn.js": 591,
-		"./tzm.js": 590,
-		"./uk": 592,
-		"./uk.js": 592,
-		"./uz": 593,
-		"./uz.js": 593,
-		"./vi": 594,
-		"./vi.js": 594,
-		"./x-pseudo": 595,
-		"./x-pseudo.js": 595,
-		"./zh-cn": 596,
-		"./zh-cn.js": 596,
-		"./zh-tw": 597,
-		"./zh-tw.js": 597
+		"./af": 493,
+		"./af.js": 493,
+		"./ar": 494,
+		"./ar-ma": 495,
+		"./ar-ma.js": 495,
+		"./ar-sa": 496,
+		"./ar-sa.js": 496,
+		"./ar-tn": 497,
+		"./ar-tn.js": 497,
+		"./ar.js": 494,
+		"./az": 498,
+		"./az.js": 498,
+		"./be": 499,
+		"./be.js": 499,
+		"./bg": 500,
+		"./bg.js": 500,
+		"./bn": 501,
+		"./bn.js": 501,
+		"./bo": 502,
+		"./bo.js": 502,
+		"./br": 503,
+		"./br.js": 503,
+		"./bs": 504,
+		"./bs.js": 504,
+		"./ca": 505,
+		"./ca.js": 505,
+		"./cs": 506,
+		"./cs.js": 506,
+		"./cv": 507,
+		"./cv.js": 507,
+		"./cy": 508,
+		"./cy.js": 508,
+		"./da": 509,
+		"./da.js": 509,
+		"./de": 510,
+		"./de-at": 511,
+		"./de-at.js": 511,
+		"./de.js": 510,
+		"./dv": 512,
+		"./dv.js": 512,
+		"./el": 513,
+		"./el.js": 513,
+		"./en-au": 514,
+		"./en-au.js": 514,
+		"./en-ca": 515,
+		"./en-ca.js": 515,
+		"./en-gb": 516,
+		"./en-gb.js": 516,
+		"./en-ie": 517,
+		"./en-ie.js": 517,
+		"./en-nz": 518,
+		"./en-nz.js": 518,
+		"./eo": 519,
+		"./eo.js": 519,
+		"./es": 520,
+		"./es.js": 520,
+		"./et": 521,
+		"./et.js": 521,
+		"./eu": 522,
+		"./eu.js": 522,
+		"./fa": 523,
+		"./fa.js": 523,
+		"./fi": 524,
+		"./fi.js": 524,
+		"./fo": 525,
+		"./fo.js": 525,
+		"./fr": 526,
+		"./fr-ca": 527,
+		"./fr-ca.js": 527,
+		"./fr-ch": 528,
+		"./fr-ch.js": 528,
+		"./fr.js": 526,
+		"./fy": 529,
+		"./fy.js": 529,
+		"./gd": 530,
+		"./gd.js": 530,
+		"./gl": 531,
+		"./gl.js": 531,
+		"./he": 532,
+		"./he.js": 532,
+		"./hi": 533,
+		"./hi.js": 533,
+		"./hr": 534,
+		"./hr.js": 534,
+		"./hu": 535,
+		"./hu.js": 535,
+		"./hy-am": 536,
+		"./hy-am.js": 536,
+		"./id": 537,
+		"./id.js": 537,
+		"./is": 538,
+		"./is.js": 538,
+		"./it": 539,
+		"./it.js": 539,
+		"./ja": 540,
+		"./ja.js": 540,
+		"./jv": 541,
+		"./jv.js": 541,
+		"./ka": 542,
+		"./ka.js": 542,
+		"./kk": 543,
+		"./kk.js": 543,
+		"./km": 544,
+		"./km.js": 544,
+		"./ko": 545,
+		"./ko.js": 545,
+		"./ky": 546,
+		"./ky.js": 546,
+		"./lb": 547,
+		"./lb.js": 547,
+		"./lo": 548,
+		"./lo.js": 548,
+		"./lt": 549,
+		"./lt.js": 549,
+		"./lv": 550,
+		"./lv.js": 550,
+		"./me": 551,
+		"./me.js": 551,
+		"./mk": 552,
+		"./mk.js": 552,
+		"./ml": 553,
+		"./ml.js": 553,
+		"./mr": 554,
+		"./mr.js": 554,
+		"./ms": 555,
+		"./ms-my": 556,
+		"./ms-my.js": 556,
+		"./ms.js": 555,
+		"./my": 557,
+		"./my.js": 557,
+		"./nb": 558,
+		"./nb.js": 558,
+		"./ne": 559,
+		"./ne.js": 559,
+		"./nl": 560,
+		"./nl.js": 560,
+		"./nn": 561,
+		"./nn.js": 561,
+		"./pa-in": 562,
+		"./pa-in.js": 562,
+		"./pl": 563,
+		"./pl.js": 563,
+		"./pt": 564,
+		"./pt-br": 565,
+		"./pt-br.js": 565,
+		"./pt.js": 564,
+		"./ro": 566,
+		"./ro.js": 566,
+		"./ru": 567,
+		"./ru.js": 567,
+		"./se": 568,
+		"./se.js": 568,
+		"./si": 569,
+		"./si.js": 569,
+		"./sk": 570,
+		"./sk.js": 570,
+		"./sl": 571,
+		"./sl.js": 571,
+		"./sq": 572,
+		"./sq.js": 572,
+		"./sr": 573,
+		"./sr-cyrl": 574,
+		"./sr-cyrl.js": 574,
+		"./sr.js": 573,
+		"./ss": 575,
+		"./ss.js": 575,
+		"./sv": 576,
+		"./sv.js": 576,
+		"./sw": 577,
+		"./sw.js": 577,
+		"./ta": 578,
+		"./ta.js": 578,
+		"./te": 579,
+		"./te.js": 579,
+		"./th": 580,
+		"./th.js": 580,
+		"./tl-ph": 581,
+		"./tl-ph.js": 581,
+		"./tlh": 582,
+		"./tlh.js": 582,
+		"./tr": 583,
+		"./tr.js": 583,
+		"./tzl": 584,
+		"./tzl.js": 584,
+		"./tzm": 585,
+		"./tzm-latn": 586,
+		"./tzm-latn.js": 586,
+		"./tzm.js": 585,
+		"./uk": 587,
+		"./uk.js": 587,
+		"./uz": 588,
+		"./uz.js": 588,
+		"./vi": 589,
+		"./vi.js": 589,
+		"./x-pseudo": 590,
+		"./x-pseudo.js": 590,
+		"./zh-cn": 591,
+		"./zh-cn.js": 591,
+		"./zh-tw": 592,
+		"./zh-tw.js": 592
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53132,11 +51341,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 497;
+	webpackContext.id = 492;
 
 
 /***/ },
-/* 498 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53144,7 +51353,7 @@
 	//! author : Werner Mollentze : https://github.com/wernerm
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53213,7 +51422,7 @@
 	}));
 
 /***/ },
-/* 499 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53223,7 +51432,7 @@
 	//! Native plural forms: forabi https://github.com/forabi
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53354,7 +51563,7 @@
 	}));
 
 /***/ },
-/* 500 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53363,7 +51572,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53418,7 +51627,7 @@
 	}));
 
 /***/ },
-/* 501 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53426,7 +51635,7 @@
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53526,14 +51735,14 @@
 	}));
 
 /***/ },
-/* 502 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53588,7 +51797,7 @@
 	}));
 
 /***/ },
-/* 503 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53596,7 +51805,7 @@
 	//! author : topchiyev : https://github.com/topchiyev
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53697,7 +51906,7 @@
 	}));
 
 /***/ },
-/* 504 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53707,7 +51916,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53835,7 +52044,7 @@
 	}));
 
 /***/ },
-/* 505 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53843,7 +52052,7 @@
 	//! author : Krasen Borisov : https://github.com/kraz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -53929,7 +52138,7 @@
 	}));
 
 /***/ },
-/* 506 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -53937,7 +52146,7 @@
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54052,7 +52261,7 @@
 	}));
 
 /***/ },
-/* 507 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54060,7 +52269,7 @@
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54175,7 +52384,7 @@
 	}));
 
 /***/ },
-/* 508 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54183,7 +52392,7 @@
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54287,7 +52496,7 @@
 	}));
 
 /***/ },
-/* 509 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54296,7 +52505,7 @@
 	//! based on (hr) translation by Bojan Marković
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54434,7 +52643,7 @@
 	}));
 
 /***/ },
-/* 510 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54442,7 +52651,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54519,7 +52728,7 @@
 	}));
 
 /***/ },
-/* 511 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54527,7 +52736,7 @@
 	//! author : petrbela : https://github.com/petrbela
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54694,7 +52903,7 @@
 	}));
 
 /***/ },
-/* 512 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54702,7 +52911,7 @@
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54761,7 +52970,7 @@
 	}));
 
 /***/ },
-/* 513 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54769,7 +52978,7 @@
 	//! author : Robert Allen
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54845,7 +53054,7 @@
 	}));
 
 /***/ },
-/* 514 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54853,7 +53062,7 @@
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54909,7 +53118,7 @@
 	}));
 
 /***/ },
-/* 515 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -54919,7 +53128,7 @@
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -54991,7 +53200,7 @@
 	}));
 
 /***/ },
-/* 516 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55002,7 +53211,7 @@
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55074,7 +53283,7 @@
 	}));
 
 /***/ },
-/* 517 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55082,7 +53291,7 @@
 	//! author : Jawish Hameed : https://github.com/jawish
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55177,7 +53386,7 @@
 	}));
 
 /***/ },
-/* 518 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55185,7 +53394,7 @@
 	//! author : Aggelos Karalias : https://github.com/mehiel
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55279,14 +53488,14 @@
 	}));
 
 /***/ },
-/* 519 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55349,7 +53558,7 @@
 	}));
 
 /***/ },
-/* 520 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55357,7 +53566,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55416,7 +53625,7 @@
 	}));
 
 /***/ },
-/* 521 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55424,7 +53633,7 @@
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55487,7 +53696,7 @@
 	}));
 
 /***/ },
-/* 522 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55495,7 +53704,7 @@
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55558,14 +53767,14 @@
 	}));
 
 /***/ },
-/* 523 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : New Zealand english (en-nz)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55628,7 +53837,7 @@
 	}));
 
 /***/ },
-/* 524 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55638,7 +53847,7 @@
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55705,7 +53914,7 @@
 	}));
 
 /***/ },
-/* 525 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55713,7 +53922,7 @@
 	//! author : Julio Napurí : https://github.com/julionc
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55790,7 +53999,7 @@
 	}));
 
 /***/ },
-/* 526 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55799,7 +54008,7 @@
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55874,7 +54083,7 @@
 	}));
 
 /***/ },
-/* 527 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55882,7 +54091,7 @@
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -55944,7 +54153,7 @@
 	}));
 
 /***/ },
-/* 528 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -55952,7 +54161,7 @@
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56054,7 +54263,7 @@
 	}));
 
 /***/ },
-/* 529 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56062,7 +54271,7 @@
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56165,7 +54374,7 @@
 	}));
 
 /***/ },
-/* 530 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56173,7 +54382,7 @@
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56229,7 +54438,7 @@
 	}));
 
 /***/ },
-/* 531 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56237,7 +54446,7 @@
 	//! author : John Fischer : https://github.com/jfroffice
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56297,7 +54506,7 @@
 	}));
 
 /***/ },
-/* 532 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56305,7 +54514,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56361,7 +54570,7 @@
 	}));
 
 /***/ },
-/* 533 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56369,7 +54578,7 @@
 	//! author : Gaspard Bucher : https://github.com/gaspard
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56429,7 +54638,7 @@
 	}));
 
 /***/ },
-/* 534 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56437,7 +54646,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56506,7 +54715,7 @@
 	}));
 
 /***/ },
-/* 535 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56514,7 +54723,7 @@
 	//! author : Jon Ashdown : https://github.com/jonashdown
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56586,7 +54795,7 @@
 	}));
 
 /***/ },
-/* 536 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56594,7 +54803,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56667,7 +54876,7 @@
 	}));
 
 /***/ },
-/* 537 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56677,7 +54886,7 @@
 	//! author : Tal Ater : https://github.com/TalAter
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56770,7 +54979,7 @@
 	}));
 
 /***/ },
-/* 538 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56778,7 +54987,7 @@
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -56898,7 +55107,7 @@
 	}));
 
 /***/ },
-/* 539 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -56906,7 +55115,7 @@
 	//! author : Bojan Marković : https://github.com/bmarkovic
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57047,7 +55256,7 @@
 	}));
 
 /***/ },
-/* 540 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57055,7 +55264,7 @@
 	//! author : Adam Brunner : https://github.com/adambrunner
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57160,7 +55369,7 @@
 	}));
 
 /***/ },
-/* 541 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57168,7 +55377,7 @@
 	//! author : Armendarabyan : https://github.com/armendarabyan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57259,7 +55468,7 @@
 	}));
 
 /***/ },
-/* 542 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57268,7 +55477,7 @@
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57346,7 +55555,7 @@
 	}));
 
 /***/ },
-/* 543 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57354,7 +55563,7 @@
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57477,7 +55686,7 @@
 	}));
 
 /***/ },
-/* 544 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57486,7 +55695,7 @@
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57551,7 +55760,7 @@
 	}));
 
 /***/ },
-/* 545 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57559,7 +55768,7 @@
 	//! author : LI Long : https://github.com/baryon
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57631,7 +55840,7 @@
 	}));
 
 /***/ },
-/* 546 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57640,7 +55849,7 @@
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57718,7 +55927,7 @@
 	}));
 
 /***/ },
-/* 547 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57726,7 +55935,7 @@
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57811,7 +56020,7 @@
 	}));
 
 /***/ },
-/* 548 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57819,7 +56028,7 @@
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57902,7 +56111,7 @@
 	}));
 
 /***/ },
-/* 549 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57910,7 +56119,7 @@
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -57964,7 +56173,7 @@
 	}));
 
 /***/ },
-/* 550 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -57976,7 +56185,7 @@
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58036,7 +56245,7 @@
 	}));
 
 /***/ },
-/* 551 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58044,7 +56253,7 @@
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58128,7 +56337,7 @@
 	}));
 
 /***/ },
-/* 552 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58136,7 +56345,7 @@
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58268,7 +56477,7 @@
 	}));
 
 /***/ },
-/* 553 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58276,7 +56485,7 @@
 	//! author : Ryan Hart : https://github.com/ryanhart2
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58342,7 +56551,7 @@
 	}));
 
 /***/ },
-/* 554 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58350,7 +56559,7 @@
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58462,7 +56671,7 @@
 	}));
 
 /***/ },
-/* 555 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58471,7 +56680,7 @@
 	//! author : Jānis Elmeris : https://github.com/JanisE
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58563,7 +56772,7 @@
 	}));
 
 /***/ },
-/* 556 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58571,7 +56780,7 @@
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58678,7 +56887,7 @@
 	}));
 
 /***/ },
-/* 557 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58686,7 +56895,7 @@
 	//! author : Borislav Mickov : https://github.com/B0k0
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58772,7 +56981,7 @@
 	}));
 
 /***/ },
-/* 558 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58780,7 +56989,7 @@
 	//! author : Floyd Pink : https://github.com/floydpink
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -58857,7 +57066,7 @@
 	}));
 
 /***/ },
-/* 559 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -58866,7 +57075,7 @@
 	//! author : Vivek Athalye : https://github.com/vnathalye
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59020,7 +57229,7 @@
 	}));
 
 /***/ },
-/* 560 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59028,7 +57237,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59106,7 +57315,7 @@
 	}));
 
 /***/ },
-/* 561 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59114,7 +57323,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59192,7 +57401,7 @@
 	}));
 
 /***/ },
-/* 562 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59200,7 +57409,7 @@
 	//! author : Squar team, mysquar.com
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59289,7 +57498,7 @@
 	}));
 
 /***/ },
-/* 563 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59298,7 +57507,7 @@
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59356,7 +57565,7 @@
 	}));
 
 /***/ },
-/* 564 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59364,7 +57573,7 @@
 	//! author : suvash : https://github.com/suvash
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59483,7 +57692,7 @@
 	}));
 
 /***/ },
-/* 565 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59491,7 +57700,7 @@
 	//! author : Joris Röling : https://github.com/jjupiter
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59560,7 +57769,7 @@
 	}));
 
 /***/ },
-/* 566 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59568,7 +57777,7 @@
 	//! author : https://github.com/mechuwind
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59624,7 +57833,7 @@
 	}));
 
 /***/ },
-/* 567 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59632,7 +57841,7 @@
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59752,7 +57961,7 @@
 	}));
 
 /***/ },
-/* 568 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59760,7 +57969,7 @@
 	//! author : Rafal Hirsz : https://github.com/evoL
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59861,7 +58070,7 @@
 	}));
 
 /***/ },
-/* 569 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59869,7 +58078,7 @@
 	//! author : Jefferson : https://github.com/jalex79
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59930,7 +58139,7 @@
 	}));
 
 /***/ },
-/* 570 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59938,7 +58147,7 @@
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59995,7 +58204,7 @@
 	}));
 
 /***/ },
-/* 571 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60004,7 +58213,7 @@
 	//! author : Valentin Agachi : https://github.com/avaly
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60074,7 +58283,7 @@
 	}));
 
 /***/ },
-/* 572 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60084,7 +58293,7 @@
 	//! author : Коренберг Марк : https://github.com/socketpair
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60253,7 +58462,7 @@
 	}));
 
 /***/ },
-/* 573 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60261,7 +58470,7 @@
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60318,7 +58527,7 @@
 	}));
 
 /***/ },
-/* 574 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60326,7 +58535,7 @@
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60393,7 +58602,7 @@
 	}));
 
 /***/ },
-/* 575 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60402,7 +58611,7 @@
 	//! based on work of petrbela : https://github.com/petrbela
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60547,7 +58756,7 @@
 	}));
 
 /***/ },
-/* 576 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60555,7 +58764,7 @@
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60713,7 +58922,7 @@
 	}));
 
 /***/ },
-/* 577 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60723,7 +58932,7 @@
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60787,7 +58996,7 @@
 	}));
 
 /***/ },
-/* 578 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60795,7 +59004,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60901,7 +59110,7 @@
 	}));
 
 /***/ },
-/* 579 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60909,7 +59118,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61015,7 +59224,7 @@
 	}));
 
 /***/ },
-/* 580 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61023,7 +59232,7 @@
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61108,7 +59317,7 @@
 	}));
 
 /***/ },
-/* 581 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61116,7 +59325,7 @@
 	//! author : Jens Alm : https://github.com/ulmus
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61181,7 +59390,7 @@
 	}));
 
 /***/ },
-/* 582 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61189,7 +59398,7 @@
 	//! author : Fahad Kassim : https://github.com/fadsel
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61244,7 +59453,7 @@
 	}));
 
 /***/ },
-/* 583 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61252,7 +59461,7 @@
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61377,7 +59586,7 @@
 	}));
 
 /***/ },
-/* 584 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61385,7 +59594,7 @@
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61470,7 +59679,7 @@
 	}));
 
 /***/ },
-/* 585 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61478,7 +59687,7 @@
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61541,7 +59750,7 @@
 	}));
 
 /***/ },
-/* 586 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61549,7 +59758,7 @@
 	//! author : Dan Hagman
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61607,7 +59816,7 @@
 	}));
 
 /***/ },
-/* 587 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61615,7 +59824,7 @@
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61731,7 +59940,7 @@
 	}));
 
 /***/ },
-/* 588 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61740,7 +59949,7 @@
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61825,7 +60034,7 @@
 	}));
 
 /***/ },
-/* 589 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61833,7 +60042,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61920,7 +60129,7 @@
 	}));
 
 /***/ },
-/* 590 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61928,7 +60137,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61982,7 +60191,7 @@
 	}));
 
 /***/ },
-/* 591 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61990,7 +60199,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62044,7 +60253,7 @@
 	}));
 
 /***/ },
-/* 592 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62053,7 +60262,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62194,7 +60403,7 @@
 	}));
 
 /***/ },
-/* 593 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62202,7 +60411,7 @@
 	//! author : Sardor Muminov : https://github.com/muminoff
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62256,7 +60465,7 @@
 	}));
 
 /***/ },
-/* 594 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62264,7 +60473,7 @@
 	//! author : Bang Nguyen : https://github.com/bangnk
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62339,7 +60548,7 @@
 	}));
 
 /***/ },
-/* 595 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62347,7 +60556,7 @@
 	//! author : Andrew Hood : https://github.com/andrewhood125
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62411,7 +60620,7 @@
 	}));
 
 /***/ },
-/* 596 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62420,7 +60629,7 @@
 	//! author : Zeno Zeng : https://github.com/zenozeng
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62542,7 +60751,7 @@
 	}));
 
 /***/ },
-/* 597 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62550,7 +60759,7 @@
 	//! author : Ben : https://github.com/ben-lin
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(495)) :
+	    true ? factory(__webpack_require__(490)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62647,7 +60856,7 @@
 	}));
 
 /***/ },
-/* 598 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62684,7 +60893,7 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _DateUtils = __webpack_require__(492);
+	var _DateUtils = __webpack_require__(487);
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
@@ -63015,7 +61224,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(PostPage);
 
 /***/ },
-/* 599 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63315,7 +61524,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
 
 /***/ },
-/* 600 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63356,7 +61565,7 @@
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
-	var _DateUtils = __webpack_require__(492);
+	var _DateUtils = __webpack_require__(487);
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
@@ -63614,7 +61823,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 601 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63651,11 +61860,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CTA = __webpack_require__(484);
+	var _CTA = __webpack_require__(597);
 	
 	var _CTA2 = _interopRequireDefault(_CTA);
 	
-	var _CourseSection = __webpack_require__(485);
+	var _CourseSection = __webpack_require__(598);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -63663,11 +61872,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(486);
+	var _Application = __webpack_require__(599);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(487);
+	var _DetailBox = __webpack_require__(600);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -63913,6 +62122,21 @@
 					);
 				});
 	
+				var faq = this.props.faq.general.map(function (question, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: i },
+						_react2.default.createElement(
+							'div',
+							{ style: { background: '#fff' }, className: 'acctitle' },
+							_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
+							_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
+							question.question
+						),
+						_react2.default.createElement('div', { style: { background: '#fff' }, className: 'acc_content clearfix', dangerouslySetInnerHTML: { __html: question.answer } })
+					);
+				});
+	
 				return _react2.default.createElement(
 					'div',
 					{ id: 'wrapper', className: 'clearfix' },
@@ -63937,7 +62161,7 @@
 									_react2.default.createElement(
 										'h4',
 										{ className: 'muted' },
-										'Learn Software Development in 13 Weeks with Fullstack Academys Software Engineering Immersive'
+										'Learn Fullstack Development for Web and Mobile with Node, React, React Native'
 									),
 									_react2.default.createElement(
 										'a',
@@ -64052,33 +62276,37 @@
 											'article',
 											{ id: 'introduction', className: 'overview' },
 											_react2.default.createElement(
-												'h2',
-												null,
-												course.title
-											),
-											_react2.default.createElement('hr', null),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												course.dates,
-												_react2.default.createElement('br', null),
-												course.schedule
-											),
-											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
 												_react2.default.createElement(
-													'div',
-													{ className: 'image' },
-													_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
+													'h2',
+													null,
+													course.title
+												),
+												_react2.default.createElement('hr', null),
+												_react2.default.createElement(
+													'p',
+													{ className: 'about' },
+													course.dates,
+													_react2.default.createElement('br', null),
+													course.schedule
 												),
 												_react2.default.createElement(
 													'div',
-													{ className: 'text' },
+													{ className: 'container' },
 													_react2.default.createElement(
-														'p',
-														null,
-														course.description
+														'div',
+														{ className: 'image' },
+														_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'text' },
+														_react2.default.createElement(
+															'p',
+															null,
+															course.description
+														)
 													)
 												)
 											)
@@ -64088,18 +62316,18 @@
 											'article',
 											{ id: 'who', className: 'overview' },
 											_react2.default.createElement(
-												'h2',
-												null,
-												'Who'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													null,
+													'Who'
+												),
+												_react2.default.createElement(
+													'p',
+													{ className: 'about' },
+													'Are you right for this class?'
+												),
 												_react2.default.createElement(
 													'div',
 													{ className: 'image' },
@@ -64142,13 +62370,13 @@
 											'article',
 											{ id: 'tuition', className: 'overview' },
 											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'Tuition & Scholarships'
-											),
-											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginTop: 24 } },
+													'Tuition, Scholarships, Deadlines'
+												),
 												_react2.default.createElement(
 													'div',
 													{ className: 'col_full nobottommargin' },
@@ -64160,7 +62388,7 @@
 													_react2.default.createElement(
 														'p',
 														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
+														'Tuition is $8,500 with a $2,000 deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
 													)
 												),
 												_react2.default.createElement(
@@ -64174,7 +62402,21 @@
 													_react2.default.createElement(
 														'p',
 														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
+														'A $1,000 scholarship is available to any woman is admittted to the course. Further, two full scholarships are allocated in each class for highly qualified applicants.'
+													)
+												),
+												_react2.default.createElement(
+													'div',
+													{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
+													_react2.default.createElement(
+														'p',
+														{ className: 'about', style: { marginBottom: 6 } },
+														'Deadlines'
+													),
+													_react2.default.createElement(
+														'p',
+														null,
+														'The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd.'
 													)
 												)
 											)
@@ -64183,18 +62425,13 @@
 											'article',
 											{ id: 'instructors', className: 'overview' },
 											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'Instructors'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginTop: 24 } },
+													'Instructors'
+												),
 												_react2.default.createElement(
 													'div',
 													{ className: 'col-md-12 bottommargin' },
@@ -64328,88 +62565,20 @@
 											'article',
 											{ id: 'faq', className: 'overview' },
 											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'FAQ'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'Are you right for this class?'
-											),
-											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginTop: 24 } },
+													'FAQ'
+												),
 												_react2.default.createElement(
 													'div',
 													{ className: 'col_full nobottommargin' },
 													_react2.default.createElement(
 														'div',
 														{ className: 'accordion accordion-border clearfix', 'data-state': 'closed' },
-														_react2.default.createElement(
-															'div',
-															null,
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acctitle' },
-																_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-																_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-																'How do I become an author?'
-															),
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-																'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															null,
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acctitle' },
-																_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-																_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-																'How do I become an author?'
-															),
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-																'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															null,
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acctitle' },
-																_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-																_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-																'How do I become an author?'
-															),
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-																'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															null,
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acctitle' },
-																_react2.default.createElement('i', { className: 'acc-closed icon-question-sign' }),
-																_react2.default.createElement('i', { className: 'acc-open icon-question-sign' }),
-																'How do I become an author?'
-															),
-															_react2.default.createElement(
-																'div',
-																{ style: { background: '#fff' }, className: 'acc_content clearfix' },
-																'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.'
-															)
-														)
+														faq
 													)
 												)
 											)
@@ -64418,30 +62587,85 @@
 											'article',
 											{ id: 'admissions', className: 'overview' },
 											_react2.default.createElement(
-												'h2',
-												{ style: { marginTop: 24 } },
-												'Admissions'
-											),
-											_react2.default.createElement(
-												'p',
-												{ className: 'about' },
-												'The Process'
-											),
-											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
 												_react2.default.createElement(
+													'h2',
+													{ style: { marginTop: 24 } },
+													'Admissions'
+												),
+												_react2.default.createElement(
 													'div',
-													{ className: 'col_full nobottommargin' },
+													{ className: 'panel panel-default' },
 													_react2.default.createElement(
-														'p',
-														null,
-														'Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies.'
-													),
-													_react2.default.createElement(
-														'p',
-														null,
-														'Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks.'
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h3',
+															null,
+															'The Process'
+														),
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'span',
+															{ className: 'step' },
+															'Step 1'
+														),
+														_react2.default.createElement(
+															'strong',
+															null,
+															'Apply'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginTop: 10 } },
+															'Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd.'
+														),
+														_react2.default.createElement(
+															'span',
+															{ className: 'step' },
+															'Step 2'
+														),
+														_react2.default.createElement(
+															'strong',
+															null,
+															'Phone Interview'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginTop: 10 } },
+															'All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
+														),
+														_react2.default.createElement(
+															'span',
+															{ className: 'step' },
+															'Step 3'
+														),
+														_react2.default.createElement(
+															'strong',
+															null,
+															'In-person code review'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginTop: 10 } },
+															'After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course.'
+														),
+														_react2.default.createElement(
+															'span',
+															{ className: 'step' },
+															'Step 4'
+														),
+														_react2.default.createElement(
+															'strong',
+															null,
+															'Decision'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginTop: 10 } },
+															'You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited.'
+														)
 													)
 												)
 											)
@@ -64477,7 +62701,1102 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 602 */
+/* 597 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _StripeUtils = __webpack_require__(471);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CTA = function (_Component) {
+		_inherits(CTA, _Component);
+	
+		function CTA(props, context) {
+			_classCallCheck(this, CTA);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(CTA).call(this, props, context));
+	
+			_this2.openStripeModal = _this2.openStripeModal.bind(_this2);
+			_this2.configureStripe = _this2.configureStripe.bind(_this2);
+			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.updateCourse = _this2.updateCourse.bind(_this2);
+			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.updatePromoCode = _this2.updatePromoCode.bind(_this2);
+			_this2.showPaypal = _this2.showPaypal.bind(_this2);
+			_this2.login = _this2.login.bind(_this2);
+			_this2.state = {
+				promoCode: ''
+			};
+			return _this2;
+		}
+	
+		_createClass(CTA, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.configureStripe(this.props.course);
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				this.props.loginAction(event);
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+	
+				if (this.props.currentUser.id == null) {
+					// not logged in
+					this.props.loginAction(event);
+					return;
+				}
+	
+				// check credits first:
+				if (this.props.currentUser.credits < this.props.course.credits && this.props.currentUser.accountType == 'basic') {
+					alert('Not Enough Credits. Please Upgrade to Premium or Purchase More Credits.');
+					return;
+				}
+	
+				// Fetch course first to get most updated subscriber list:
+				var _this = this;
+				var endpoint = '/api/course/' + this.props.course.id;
+				_APIManager2.default.handleGet(endpoint, null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var course = response.course;
+					var subscribers = course.subscribers;
+					if (subscribers.indexOf(_this.props.currentUser.id) != -1) // already subscribed
+						return;
+	
+					subscribers.push(_this.props.currentUser.id);
+					_this.updateCourse({
+						subscribers: subscribers
+					});
+				});
+			}
+		}, {
+			key: 'updateCourse',
+			value: function updateCourse(pkg) {
+				var _this = this;
+				var endpoint = '/api/course/' + this.props.course.id;
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					var course = response.course;
+					_store2.default.currentStore().dispatch(_actions2.default.courseRecieved(course));
+	
+					if (_this.props.currentUser.accountType == 'premium') return;
+	
+					var credits = _this.props.currentUser.credits - course.credits;
+					_this.updateCurrentUser({
+						credits: credits
+					});
+				});
+			}
+		}, {
+			key: 'updateCurrentUser',
+			value: function updateCurrentUser(pkg) {
+				var endpoint = '/api/profile/' + this.props.currentUser.id;
+				_APIManager2.default.handlePut(endpoint, pkg, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
+				});
+			}
+		}, {
+			key: 'configureStripe',
+			value: function configureStripe(course) {
+				var course = this.props.course;
+				var _this = this;
+				if (course.type == 'online') {
+					// for videos, show subscription prompt:
+					_StripeUtils2.default.initialize(function (token) {
+						_this.props.showLoader();
+						_APIManager2.default.submitStripeToken(token, function (err, response) {
+							_this.props.hideLoader();
+							if (err) {
+								alert(err.message);
+								return;
+							}
+	
+							window.location.href = '/account';
+						});
+					});
+					return;
+				}
+	
+				var text = 'Submit Deposit - $' + course.deposit;
+				_StripeUtils2.default.initializeWithText(text, function (token) {
+					_this.props.showLoader();
+					_APIManager2.default.submitStripeCharge(token, course, course.deposit, 'course', function (err, response) {
+						_this.props.hideLoader();
+						if (err) {
+							alert(err.message);
+							_this.setState({ showLoader: false });
+							return;
+						}
+	
+						_this.props.showConfirmation();
+					});
+				});
+			}
+		}, {
+			key: 'openStripeModal',
+			value: function openStripeModal(event) {
+				event.preventDefault();
+				if (this.props.course.type == 'online') _StripeUtils2.default.showModal();else _StripeUtils2.default.showModalWithText(this.props.course.title);
+			}
+		}, {
+			key: 'updatePromoCode',
+			value: function updatePromoCode(event) {
+				event.preventDefault();
+				this.setState({
+					promoCode: event.target.value
+				});
+			}
+		}, {
+			key: 'showPaypal',
+			value: function showPaypal(event) {
+				event.preventDefault();
+				if (this.props.course.discountPaypalLink.length == 0) {
+					// no discount code
+					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				var promoCode = this.state.promoCode.trim();
+				if (promoCode.length == 0) {
+					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				if (this.props.course.promoCodes.indexOf(promoCode) == -1) {
+					window.open(this.props.course.paypalLink, 'Velocity 360', 'width=650,height=900');
+					return;
+				}
+	
+				// successful promo code
+				window.open(this.props.course.discountPaypalLink, 'Velocity 360', 'width=650,height=900');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var course = this.props.course;
+				var user = this.props.currentUser;
+				var cta = null;
+				var date = null;
+				var schedule = null;
+				var deposit = null;
+				var tuition = null;
+				var premiumTuition = null;
+				var register = null;
+	
+				switch (course.type) {
+					case 'online':
+						cta = 'Subscribe';
+						premiumTuition = _react2.default.createElement(
+							'p',
+							{ style: { marginBottom: 0 } },
+							'Subscribe to this course to receive email notifications when new videos are published. If you are a ',
+							_react2.default.createElement(
+								'a',
+								{ href: user.id == null ? '/#register' : '/checkout' },
+								'premium'
+							),
+							' member, all online video courses are included in membership.'
+						);
+	
+						var creditsRemaining = null;
+						if (user.accountType == 'basic') creditsRemaining = _react2.default.createElement(
+							'span',
+							null,
+							'Hello ',
+							user.firstName,
+							'! You have ',
+							user.credits,
+							' credits remaining'
+						);else creditsRemaining = _react2.default.createElement(
+							'span',
+							null,
+							'Hello ',
+							user.firstName,
+							'. You are a premium member, feel free to subscribe to this series for free!'
+						);
+	
+						var isSubscriber = course.subscribers.indexOf(user.id) > -1;
+						register = _react2.default.createElement(
+							'div',
+							{ className: 'col_full panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+								'Fee: ',
+								course.credits,
+								' credits'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { textAlign: 'left' } },
+								user.id == null ? _react2.default.createElement(
+									'span',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.login, href: '#' },
+										'Login'
+									),
+									' or ',
+									_react2.default.createElement(
+										'a',
+										{ href: '/#register' },
+										'register'
+									),
+									' to subscribe.'
+								) : creditsRemaining,
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
+								isSubscriber ? _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement(
+										'span',
+										null,
+										'You are subscribed to this series'
+									)
+								) : _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.subscribe, href: '#', target: '_blank', className: 'button button-xlarge tright' },
+										'Subscribe',
+										_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+									),
+									_react2.default.createElement('br', null)
+								)
+							)
+						);
+						break;
+	
+					case 'immersive':
+						cta = 'Details';
+						date = _react2.default.createElement(
+							'span',
+							null,
+							'Date: ',
+							course.dates,
+							_react2.default.createElement('br', null)
+						);
+						schedule = _react2.default.createElement(
+							'span',
+							null,
+							'Time: ',
+							course.schedule,
+							_react2.default.createElement('br', null)
+						);
+						deposit = _react2.default.createElement(
+							'span',
+							null,
+							'Deposit: $',
+							course.deposit,
+							_react2.default.createElement('br', null)
+						);
+						tuition = _react2.default.createElement(
+							'span',
+							null,
+							'Regular Tuition: $',
+							course.tuition,
+							_react2.default.createElement('br', null)
+						);
+						premiumTuition = _react2.default.createElement(
+							'span',
+							null,
+							'Premium Member Tuition: $',
+							course.premiumTuition,
+							_react2.default.createElement('br', null)
+						);
+						register = _react2.default.createElement(
+							'a',
+							{ href: '#application', className: 'button button-xlarge tright' },
+							'Apply',
+							_react2.default.createElement('i', { 'class': 'icon-circle-arrow-right' })
+						);
+						break;
+	
+					case 'live':
+						cta = 'Register';
+						date = _react2.default.createElement(
+							'span',
+							null,
+							'Date: ',
+							course.dates,
+							_react2.default.createElement('br', null)
+						);
+						schedule = _react2.default.createElement(
+							'span',
+							null,
+							'Time: ',
+							course.schedule,
+							_react2.default.createElement('br', null)
+						);
+						deposit = _react2.default.createElement(
+							'span',
+							null,
+							'Deposit: $',
+							course.deposit,
+							_react2.default.createElement('br', null)
+						);
+						tuition = _react2.default.createElement(
+							'span',
+							null,
+							'Regular Tuition: $',
+							course.tuition,
+							_react2.default.createElement('br', null)
+						);
+						premiumTuition = _react2.default.createElement(
+							'span',
+							null,
+							'Premium Member Tuition: $',
+							course.premiumTuition,
+							_react2.default.createElement('br', null)
+						);
+						register = _react2.default.createElement(
+							'div',
+							{ className: 'col_full panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ style: { backgroundColor: '#f1f9f5', textAlign: 'left' }, className: 'panel-heading' },
+								'Submit Deposit'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { textAlign: 'left', paddingRight: 24 } },
+								_react2.default.createElement('input', { type: 'text', onChange: this.updatePromoCode, id: 'promo', placeholder: 'Promo Code', className: 'custom-input' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.showPaypal, href: course.paypalLink, style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
+									'PayPal'
+								),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.openStripeModal, href: '#', style: { width: '100%', textAlign: 'center' }, className: 'button button-xlarge' },
+									'Credit Card'
+								),
+								_react2.default.createElement('br', null)
+							)
+						);
+						break;
+	
+					default:
+						break;
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-timeline' },
+						'Join',
+						_react2.default.createElement('span', null),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									cta
+								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_half' },
+									date,
+									schedule,
+									deposit,
+									tuition,
+									premiumTuition,
+									_react2.default.createElement('br', null),
+									register
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_half col_last' },
+									_react2.default.createElement('img', { style: { width: '80%', float: 'right' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' })
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CTA;
+	}(_react.Component);
+	
+	exports.default = CTA;
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CourseSection = function (_Component) {
+		_inherits(CourseSection, _Component);
+	
+		function CourseSection(props, context) {
+			_classCallCheck(this, CourseSection);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CourseSection).call(this, props, context));
+	
+			_this.login = _this.login.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
+			return _this;
+		}
+	
+		_createClass(CourseSection, [{
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+				this.props.loginAction(event);
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				event.preventDefault();
+				this.props.subscribeAction(event);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var accountType = this.props.currentUser.accountType;
+				var videoThumb = null;
+				var course = this.props.course;
+				if (course.type == 'online') {
+					if (this.props.unit.index < 1) {
+						// always show first video
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+							' '
+						);
+					} else if (accountType == 'premium') {
+						// premium subscriber
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+							' '
+						);
+					} else if (this.props.currentUser.id == null) {
+						// not logged in
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+							'Please ',
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.login, style: { color: 'red' }, href: '#' },
+								'log in'
+							),
+							' or ',
+							_react2.default.createElement(
+								'a',
+								{ style: { color: 'red' }, href: '/#register' },
+								'register'
+							),
+							' to view this video.'
+						);
+					} else if (course.subscribers.indexOf(this.props.currentUser.id) > -1) {
+						// regular subscriber
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ className: 'wistia_embed wistia_async_' + this.props.unit.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+							' '
+						);
+					} else if (accountType == 'basic' || accountType == '') {
+						videoThumb = _react2.default.createElement(
+							'div',
+							{ style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginTop: 12, marginBottom: 12 } },
+							'To view this video, please ',
+							_react2.default.createElement(
+								'a',
+								{ onClick: this.subscribe, style: { color: 'red' }, href: '#' },
+								'subscribe'
+							),
+							' or ',
+							_react2.default.createElement(
+								'a',
+								{ style: { color: 'red' }, href: '/checkout' },
+								'upgrade'
+							),
+							' your account to Premium'
+						);
+					}
+	
+					// else { // not logged in
+					// 	videoThumb = <div style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginTop:12, marginBottom:12}}>Please <a onClick={ this.login } style={{color:'red'}} href="#">log in</a> or <a style={{color:'red'}} href="/#register">register</a> to view this video.</div>
+					// }
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-timeline' },
+						'Unit',
+						_react2.default.createElement(
+							'span',
+							null,
+							this.props.unit.index + 1
+						),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									this.props.unit.topic
+								),
+								_react2.default.createElement('hr', null),
+								this.props.unit.description,
+								_react2.default.createElement('br', null),
+								videoThumb
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return CourseSection;
+	}(_react.Component);
+	
+	exports.default = CourseSection;
+
+/***/ },
+/* 599 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Application = function (_Component) {
+		_inherits(Application, _Component);
+	
+		function Application(props, context) {
+			_classCallCheck(this, Application);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Application).call(this, props, context));
+	
+			_this.updateApplication = _this.updateApplication.bind(_this);
+			_this.submitApplication = _this.submitApplication.bind(_this);
+			_this.state = {
+				application: {
+					name: '',
+					email: '',
+					phone: '',
+					course: '',
+					goal: '',
+					history: '',
+					linkedin: '',
+					github: '',
+					college: '',
+					major: '',
+					currentLevel: 'total beginner',
+					subject: 'Course Application',
+					confirmation: 'Thank you for completing an application. We will reach out to you shortly to schedule a phone call.'
+				}
+			};
+			return _this;
+		}
+	
+		_createClass(Application, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'updateApplication',
+			value: function updateApplication(event) {
+				//		console.log('updateUserApplication: '+event.target.id)
+				event.preventDefault();
+	
+				var updatedApplication = Object.assign({}, this.state.application);
+				updatedApplication[event.target.id] = event.target.value;
+				this.setState({
+					application: updatedApplication
+				});
+			}
+		}, {
+			key: 'submitApplication',
+			value: function submitApplication(event) {
+				event.preventDefault();
+				var application = Object.assign({}, this.state.application);
+				this.props.onSubmit(application);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'section',
+					{ id: 'content', style: { background: '#fff', borderTop: '1px solid #ddd' } },
+					_react2.default.createElement(
+						'div',
+						{ id: 'application', className: 'content-wrap' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container clearfix' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'postcontent overview nobottommargin' },
+								_react2.default.createElement(
+									'h2',
+									{ style: { marginTop: 0 } },
+									'Application'
+								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement(
+									'div',
+									{ className: 'contact-widget' },
+									_react2.default.createElement('div', { className: 'contact-form-result' }),
+									_react2.default.createElement(
+										'form',
+										{ className: 'nobottommargin', id: 'template-contactform', name: 'template-contactform', action: '', method: 'post' },
+										_react2.default.createElement('div', { className: 'form-process' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-name' },
+												'Name'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-email' },
+												'Email'
+											),
+											_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-phone' },
+												'Phone'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement('div', { className: 'clear' }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-message' },
+												'What is your goal in technology for the next 6 to 12 months?'
+											),
+											_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'custom-input', style: { background: '#FEF9E7' }, id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'GitHub'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'LinkedIn'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full hidden' },
+											_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												{ 'for': 'template-contactform-subject' },
+												'Current Level'
+											),
+											_react2.default.createElement(
+												'select',
+												{ onChange: this.updateApplication, value: this.state.application.currentLevel, id: 'currentLevel', className: 'form-control input-lg not-dark' },
+												_react2.default.createElement(
+													'option',
+													{ value: 'total beginner' },
+													'Total beginner - Never coded before'
+												),
+												_react2.default.createElement(
+													'option',
+													{ value: 'getting there' },
+													'Getting There - A couple online tutorials'
+												),
+												_react2.default.createElement(
+													'option',
+													{ value: 'intermediate' },
+													'Intermediate - Can build a few projects on my own'
+												),
+												_react2.default.createElement(
+													'option',
+													{ value: 'advanced' },
+													'Advanced - Professional, looking to learn new skills'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'Undergraduate College'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'label',
+												null,
+												'Undergraduate Major'
+											),
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, style: { background: '#FEF9E7' }, className: 'custom-input' })
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col_full' },
+											_react2.default.createElement(
+												'a',
+												{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+												'Submit Application'
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Application;
+	}(_react.Component);
+	
+	exports.default = Application;
+
+/***/ },
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DetailBox = function (_Component) {
+		_inherits(DetailBox, _Component);
+	
+		function DetailBox(props, context) {
+			_classCallCheck(this, DetailBox);
+	
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailBox).call(this, props, context));
+	
+			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.submitRequest = _this2.submitRequest.bind(_this2);
+			_this2.state = {
+				visitor: {
+					name: '',
+					email: ''
+				}
+			};
+			return _this2;
+		}
+	
+		_createClass(DetailBox, [{
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				event.preventDefault();
+				var s = Object.assign({}, this.state.visitor);
+				s[event.target.id] = event.target.value;
+				s['course'] = this.props.course.title;
+				this.setState({
+					visitor: s
+				});
+			}
+		}, {
+			key: 'submitRequest',
+			value: function submitRequest(event) {
+				event.preventDefault();
+	
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				this.props.showLoader();
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var _this = this;
+				var url = '';
+	
+				var course = this.props.course;
+				if (course.type == 'immersive') {
+					// syllabus request
+					s['pdf'] = course.syllabus;
+					s['subject'] = 'Syllabus Request';
+					s['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.';
+					url = '/account/syllabus';
+				}
+				if (course.type == 'online') {
+					s['subject'] = 'New Subscriber';
+					s['confirmation'] = 'Thanks for subscribing! We will reach out to you shortly with more information!';
+					url = '/account/subscribe';
+				}
+				if (course.type == 'live') {
+					s['subject'] = 'Free Session Request';
+					s['confirmation'] = 'Thanks for your interest. We will contact you shortly with more information about attending a free session!';
+					url = '/account/freesession';
+				}
+	
+				_APIManager2.default.handlePost(url, s, function (err, response) {
+					_this.props.hideLoader();
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var detailContent = null;
+				var course = this.props.course;
+				if (course.type == 'online') {
+					detailContent = {
+						title: 'Newsletter',
+						text: 'Join our newsletter for notifications on upcoming courses, events and tutorials.',
+						path: '/account/subscribe'
+					};
+				} else if (course.type == 'immersive') {
+					detailContent = {
+						title: 'Request Syllabus',
+						text: 'Complete the form below to receive a syllabus for ' + course.title,
+						path: '/account/syllabus'
+					};
+				} else {
+					detailContent = {
+						title: 'Preview Free Session',
+						text: 'Complete the form below to attend a preview session of ' + course.title + ' for free.',
+						path: '/account/subscribe'
+					};
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'entry clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-timeline' },
+						'Preview',
+						_react2.default.createElement('span', null),
+						_react2.default.createElement('div', { className: 'timeline-divider' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'entry-image' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36, paddingBottom: 0 } },
+								_react2.default.createElement(
+									'h2',
+									null,
+									detailContent.title
+								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full' },
+									_react2.default.createElement(
+										'p',
+										null,
+										detailContent.text
+									),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.name, id: 'name', placeholder: 'Name', className: 'custom-input' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { type: 'text', onChange: this.updateVisitor, value: this.state.visitor.email, id: 'email', placeholder: 'Email', className: 'custom-input' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.submitRequest, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
+										'Submit'
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return DetailBox;
+	}(_react.Component);
+	
+	exports.default = DetailBox;
+
+/***/ },
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64498,7 +63817,7 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _reactDropzone = __webpack_require__(490);
+	var _reactDropzone = __webpack_require__(485);
 	
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 	
@@ -64829,7 +64148,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 603 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64858,7 +64177,7 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _DateUtils = __webpack_require__(492);
+	var _DateUtils = __webpack_require__(487);
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
@@ -64950,7 +64269,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
 
 /***/ },
-/* 604 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

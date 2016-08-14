@@ -7,7 +7,6 @@ var postController = require('../controllers/PostController')
 var projectController = require('../controllers/ProjectController')
 var eventController = require('../controllers/EventController')
 var controllers = {
-	test: courseController,
 	courses: courseController,
 	course: courseController,
 	feed: postController,
@@ -148,10 +147,6 @@ router.get('/:page/:slug', function(req, res, next) {
 
 		var entity = results[0]
 		if (page == 'course'){
-			initialData.courseReducer.courses[entity.slug] = entity
-		}
-
-		if (page == 'test'){
 			initialData.courseReducer.courses[entity.slug] = entity
 		}
 

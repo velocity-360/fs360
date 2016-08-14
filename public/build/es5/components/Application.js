@@ -86,11 +86,11 @@ var Application = (function (Component) {
 							{ className: "container clearfix" },
 							React.createElement(
 								"div",
-								{ className: "postcontent nobottommargin" },
+								{ className: "postcontent overview nobottommargin" },
 								React.createElement(
-									"h3",
-									null,
-									"Apply"
+									"h2",
+									{ style: { marginTop: 0 } },
+									"Application"
 								),
 								React.createElement("hr", null),
 								React.createElement(

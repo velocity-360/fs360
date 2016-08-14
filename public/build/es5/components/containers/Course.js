@@ -285,6 +285,20 @@ var Course = (function (Component) {
 					);
 				});
 
+				var faq = this.props.faq.general.map(function (question, i) {
+					return React.createElement(
+						"div",
+						{ key: i },
+						React.createElement(
+							"div",
+							{ style: { background: "#fff" }, className: "acctitle" },
+							React.createElement("i", { className: "acc-closed icon-question-sign" }),
+							React.createElement("i", { className: "acc-open icon-question-sign" }),
+							question.question
+						),
+						React.createElement("div", { style: { background: "#fff" }, className: "acc_content clearfix", dangerouslySetInnerHTML: { __html: question.answer } })
+					);
+				});
 
 				return React.createElement(
 					"div",
@@ -310,7 +324,7 @@ var Course = (function (Component) {
 									React.createElement(
 										"h4",
 										{ className: "muted" },
-										"Learn Software Development in 13 Weeks with Fullstack Academys Software Engineering Immersive"
+										"Learn Fullstack Development for Web and Mobile with Node, React, React Native"
 									),
 									React.createElement(
 										"a",
@@ -425,33 +439,37 @@ var Course = (function (Component) {
 											"article",
 											{ id: "introduction", className: "overview" },
 											React.createElement(
-												"h2",
-												null,
-												course.title
-											),
-											React.createElement("hr", null),
-											React.createElement(
-												"p",
-												{ className: "about" },
-												course.dates,
-												React.createElement("br", null),
-												course.schedule
-											),
-											React.createElement(
 												"div",
 												{ className: "container" },
 												React.createElement(
-													"div",
-													{ className: "image" },
-													React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd" }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460", alt: "Velocity 360" })
+													"h2",
+													null,
+													course.title
+												),
+												React.createElement("hr", null),
+												React.createElement(
+													"p",
+													{ className: "about" },
+													course.dates,
+													React.createElement("br", null),
+													course.schedule
 												),
 												React.createElement(
 													"div",
-													{ className: "text" },
+													{ className: "container" },
 													React.createElement(
-														"p",
-														null,
-														course.description
+														"div",
+														{ className: "image" },
+														React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd" }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460", alt: "Velocity 360" })
+													),
+													React.createElement(
+														"div",
+														{ className: "text" },
+														React.createElement(
+															"p",
+															null,
+															course.description
+														)
 													)
 												)
 											)
@@ -461,18 +479,18 @@ var Course = (function (Component) {
 											"article",
 											{ id: "who", className: "overview" },
 											React.createElement(
-												"h2",
-												null,
-												"Who"
-											),
-											React.createElement(
-												"p",
-												{ className: "about" },
-												"Are you right for this class?"
-											),
-											React.createElement(
 												"div",
 												{ className: "container" },
+												React.createElement(
+													"h2",
+													null,
+													"Who"
+												),
+												React.createElement(
+													"p",
+													{ className: "about" },
+													"Are you right for this class?"
+												),
 												React.createElement(
 													"div",
 													{ className: "image" },
@@ -515,13 +533,13 @@ var Course = (function (Component) {
 											"article",
 											{ id: "tuition", className: "overview" },
 											React.createElement(
-												"h2",
-												{ style: { marginTop: 24 } },
-												"Tuition & Scholarships"
-											),
-											React.createElement(
 												"div",
 												{ className: "container" },
+												React.createElement(
+													"h2",
+													{ style: { marginTop: 24 } },
+													"Tuition, Scholarships, Deadlines"
+												),
 												React.createElement(
 													"div",
 													{ className: "col_full nobottommargin" },
@@ -533,7 +551,7 @@ var Course = (function (Component) {
 													React.createElement(
 														"p",
 														null,
-														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
+														"Tuition is $8,500 with a $2,000 deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
 													)
 												),
 												React.createElement(
@@ -547,7 +565,21 @@ var Course = (function (Component) {
 													React.createElement(
 														"p",
 														null,
-														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
+														"A $1,000 scholarship is available to any woman is admittted to the course. Further, two full scholarships are allocated in each class for highly qualified applicants."
+													)
+												),
+												React.createElement(
+													"div",
+													{ style: { marginTop: 24 }, className: "col_full nobottommargin" },
+													React.createElement(
+														"p",
+														{ className: "about", style: { marginBottom: 6 } },
+														"Deadlines"
+													),
+													React.createElement(
+														"p",
+														null,
+														"The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd."
 													)
 												)
 											)
@@ -556,18 +588,13 @@ var Course = (function (Component) {
 											"article",
 											{ id: "instructors", className: "overview" },
 											React.createElement(
-												"h2",
-												{ style: { marginTop: 24 } },
-												"Instructors"
-											),
-											React.createElement(
-												"p",
-												{ className: "about" },
-												"Are you right for this class?"
-											),
-											React.createElement(
 												"div",
 												{ className: "container" },
+												React.createElement(
+													"h2",
+													{ style: { marginTop: 24 } },
+													"Instructors"
+												),
 												React.createElement(
 													"div",
 													{ className: "col-md-12 bottommargin" },
@@ -701,88 +728,20 @@ var Course = (function (Component) {
 											"article",
 											{ id: "faq", className: "overview" },
 											React.createElement(
-												"h2",
-												{ style: { marginTop: 24 } },
-												"FAQ"
-											),
-											React.createElement(
-												"p",
-												{ className: "about" },
-												"Are you right for this class?"
-											),
-											React.createElement(
 												"div",
 												{ className: "container" },
+												React.createElement(
+													"h2",
+													{ style: { marginTop: 24 } },
+													"FAQ"
+												),
 												React.createElement(
 													"div",
 													{ className: "col_full nobottommargin" },
 													React.createElement(
 														"div",
 														{ className: "accordion accordion-border clearfix", "data-state": "closed" },
-														React.createElement(
-															"div",
-															null,
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acctitle" },
-																React.createElement("i", { className: "acc-closed icon-question-sign" }),
-																React.createElement("i", { className: "acc-open icon-question-sign" }),
-																"How do I become an author?"
-															),
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acc_content clearfix" },
-																"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla."
-															)
-														),
-														React.createElement(
-															"div",
-															null,
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acctitle" },
-																React.createElement("i", { className: "acc-closed icon-question-sign" }),
-																React.createElement("i", { className: "acc-open icon-question-sign" }),
-																"How do I become an author?"
-															),
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acc_content clearfix" },
-																"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla."
-															)
-														),
-														React.createElement(
-															"div",
-															null,
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acctitle" },
-																React.createElement("i", { className: "acc-closed icon-question-sign" }),
-																React.createElement("i", { className: "acc-open icon-question-sign" }),
-																"How do I become an author?"
-															),
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acc_content clearfix" },
-																"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla."
-															)
-														),
-														React.createElement(
-															"div",
-															null,
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acctitle" },
-																React.createElement("i", { className: "acc-closed icon-question-sign" }),
-																React.createElement("i", { className: "acc-open icon-question-sign" }),
-																"How do I become an author?"
-															),
-															React.createElement(
-																"div",
-																{ style: { background: "#fff" }, className: "acc_content clearfix" },
-																"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla."
-															)
-														)
+														faq
 													)
 												)
 											)
@@ -791,30 +750,85 @@ var Course = (function (Component) {
 											"article",
 											{ id: "admissions", className: "overview" },
 											React.createElement(
-												"h2",
-												{ style: { marginTop: 24 } },
-												"Admissions"
-											),
-											React.createElement(
-												"p",
-												{ className: "about" },
-												"The Process"
-											),
-											React.createElement(
 												"div",
 												{ className: "container" },
 												React.createElement(
+													"h2",
+													{ style: { marginTop: 24 } },
+													"Admissions"
+												),
+												React.createElement(
 													"div",
-													{ className: "col_full nobottommargin" },
+													{ className: "panel panel-default" },
 													React.createElement(
-														"p",
-														null,
-														"Through an advanced curriculum and project based structure, students learn todays cutting edge development technologies. The Fullstack Immersive prepares graduates for software engineer roles at top-tier technology companies."
-													),
-													React.createElement(
-														"p",
-														null,
-														"Our JavaScript-driven curriculum immerses you in the latest web technologies such as Node.js and AngularJS. You bring the energy, curiosity and dedication — well provide a world-class school for becoming an expert software developer. New classes start every 7 weeks."
+														"div",
+														{ className: "panel-body", style: { padding: 36 } },
+														React.createElement(
+															"h3",
+															null,
+															"The Process"
+														),
+														React.createElement("hr", null),
+														React.createElement(
+															"span",
+															{ className: "step" },
+															"Step 1"
+														),
+														React.createElement(
+															"strong",
+															null,
+															"Apply"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginTop: 10 } },
+															"Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd."
+														),
+														React.createElement(
+															"span",
+															{ className: "step" },
+															"Step 2"
+														),
+														React.createElement(
+															"strong",
+															null,
+															"Phone Interview"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginTop: 10 } },
+															"All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience."
+														),
+														React.createElement(
+															"span",
+															{ className: "step" },
+															"Step 3"
+														),
+														React.createElement(
+															"strong",
+															null,
+															"In-person code review"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginTop: 10 } },
+															"After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course."
+														),
+														React.createElement(
+															"span",
+															{ className: "step" },
+															"Step 4"
+														),
+														React.createElement(
+															"strong",
+															null,
+															"Decision"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginTop: 10 } },
+															"You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited."
+														)
 													)
 												)
 											)
