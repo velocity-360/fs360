@@ -495,7 +495,7 @@ var Course = (function (Component) {
 									React.createElement(
 										"p",
 										{ style: { marginTop: 10 } },
-										"All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience."
+										"All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience."
 									),
 									React.createElement(
 										"a",

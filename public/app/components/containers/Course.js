@@ -288,7 +288,7 @@ class Course extends Component {
 
 								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 2</a><strong>Phone Interview</strong>
 								<p style={{marginTop:10}}>
-									All applicants will undergo a 15-30 minute phone interview to as a first technical 
+									All applicants will undergo a 15-30 minute phone interview as a first technical 
 									assessment. You should feel comfortable speaking about prior programming experience.
 								</p>
 
