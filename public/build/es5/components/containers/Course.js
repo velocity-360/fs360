@@ -1007,6 +1007,68 @@ var Course = (function (Component) {
 															)
 														)
 													)
+												),
+												React.createElement(
+													"div",
+													{ className: "col-md-12 bottommargin" },
+													React.createElement(
+														"div",
+														{ className: "team team-list clearfix" },
+														React.createElement(
+															"div",
+															{ className: "team-image", style: { width: 150 } },
+															React.createElement("img", { className: "img-circle", src: "/images/anna.png", alt: "Velocity 360" })
+														),
+														React.createElement(
+															"div",
+															{ className: "team-desc" },
+															React.createElement(
+																"div",
+																{ className: "team-title" },
+																React.createElement(
+																	"h4",
+																	{ style: { marginBottom: 12 } },
+																	"Anna Garcia"
+																),
+																React.createElement(
+																	"div",
+																	{ className: "tagcloud" },
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Node JS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"React"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"Angular JS"
+																	),
+																	React.createElement(
+																		"a",
+																		{ style: { background: "#fff" }, href: "#" },
+																		"JQuery"
+																	)
+																)
+															),
+															React.createElement("div", { className: "clearfix" }),
+															React.createElement(
+																"div",
+																{ className: "team-content" },
+																"A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original ",
+																React.createElement(
+																	"a",
+																	{ target: "_blank", href: "http://www.juicecrawl.com" },
+																	"JuiceCrawl"
+																),
+																", Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses."
+															)
+														)
+													)
 												)
 											)
 										),

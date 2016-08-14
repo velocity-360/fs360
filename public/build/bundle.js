@@ -62882,6 +62882,68 @@
 															)
 														)
 													)
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'col-md-12 bottommargin' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'team team-list clearfix' },
+														_react2.default.createElement(
+															'div',
+															{ className: 'team-image', style: { width: 150 } },
+															_react2.default.createElement('img', { className: 'img-circle', src: '/images/anna.png', alt: 'Velocity 360' })
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'team-desc' },
+															_react2.default.createElement(
+																'div',
+																{ className: 'team-title' },
+																_react2.default.createElement(
+																	'h4',
+																	{ style: { marginBottom: 12 } },
+																	'Anna Garcia'
+																),
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'tagcloud' },
+																	_react2.default.createElement(
+																		'a',
+																		{ style: { background: '#fff' }, href: '#' },
+																		'Node JS'
+																	),
+																	_react2.default.createElement(
+																		'a',
+																		{ style: { background: '#fff' }, href: '#' },
+																		'React'
+																	),
+																	_react2.default.createElement(
+																		'a',
+																		{ style: { background: '#fff' }, href: '#' },
+																		'Angular JS'
+																	),
+																	_react2.default.createElement(
+																		'a',
+																		{ style: { background: '#fff' }, href: '#' },
+																		'JQuery'
+																	)
+																)
+															),
+															_react2.default.createElement('div', { className: 'clearfix' }),
+															_react2.default.createElement(
+																'div',
+																{ className: 'team-content' },
+																'A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original ',
+																_react2.default.createElement(
+																	'a',
+																	{ target: '_blank', href: 'http://www.juicecrawl.com' },
+																	'JuiceCrawl'
+																),
+																', Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses.'
+															)
+														)
+													)
 												)
 											)
 										),

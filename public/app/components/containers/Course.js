@@ -525,6 +525,36 @@ class Course extends Component {
 						                            </div>
 						                        </div>
 						                    </div>
+
+						                    <div className="col-md-12 bottommargin">
+						                        <div className="team team-list clearfix">
+						                            <div className="team-image" style={{width:150}}>
+						                                <img className="img-circle" src="/images/anna.png" alt="Velocity 360" />
+						                            </div>
+						                            <div className="team-desc">
+						                                <div className="team-title">
+						                                	<h4 style={{marginBottom:12}}>Anna Garcia</h4>
+															<div className="tagcloud">
+							                                    <a style={{background:'#fff'}} href="#">Node JS</a>
+							                                    <a style={{background:'#fff'}} href="#">React</a>
+							                                    <a style={{background:'#fff'}} href="#">Angular JS</a>
+							                                    <a style={{background:'#fff'}} href="#">JQuery</a>
+							                                </div>                                	
+						                                </div>
+						                                <div className="clearfix"></div>
+						                                <div className="team-content">
+						                                	A recent graduate of the Grace Hopper coding school for women, Anna is a 
+						                                	life-long tech enthusiast, musician, and fitness fanatic. Founder of the 
+						                                	original <a target="_blank" href="http://www.juicecrawl.com">JuiceCrawl</a>, 
+						                                	Anna explored technology and programming on her own before deciding to make 
+						                                	it her career in 2015. With a  background in Node, Express, Angular, and SQL, 
+						                                	Anna will be helping out as a teaching assistant for several courses.
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>
+
+
 										</div>
 									</article>
 
