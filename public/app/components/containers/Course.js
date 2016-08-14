@@ -314,9 +314,9 @@ class Course extends Component {
 										</div>
 									</article>
 
-									<article id="tuition" className="overview">
+									<article className="overview">
 										<div className="container">
-											<h2 style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
+											<h2 id="tuition" style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
 											<div className="col_full nobottommargin">
 												<p className="about" style={{marginBottom:6}}>Tuition</p>
 												<p>
@@ -336,7 +336,7 @@ class Course extends Component {
 												</p>
 						                    </div>
 											<div style={{marginTop:24}} className="col_full nobottommargin">
-												<p className="about" style={{marginBottom:6}}>Deadlines</p>
+												<p className="about" style={{marginBottom:6}}>Deadline</p>
 												<p>
 													The deadline for application is August 29th for regular applicants. To 
 													be eligible for the full scholarship, the deadline is August 22nd.

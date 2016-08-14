@@ -531,13 +531,13 @@ var Course = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ id: "tuition", className: "overview" },
+											{ className: "overview" },
 											React.createElement(
 												"div",
 												{ className: "container" },
 												React.createElement(
 													"h2",
-													{ style: { marginTop: 24 } },
+													{ id: "tuition", style: { marginTop: 24 } },
 													"Tuition, Scholarships, Deadlines"
 												),
 												React.createElement(
@@ -574,7 +574,7 @@ var Course = (function (Component) {
 													React.createElement(
 														"p",
 														{ className: "about", style: { marginBottom: 6 } },
-														"Deadlines"
+														"Deadline"
 													),
 													React.createElement(
 														"p",

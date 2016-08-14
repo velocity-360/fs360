@@ -62368,13 +62368,13 @@
 										),
 										_react2.default.createElement(
 											'article',
-											{ id: 'tuition', className: 'overview' },
+											{ className: 'overview' },
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
 												_react2.default.createElement(
 													'h2',
-													{ style: { marginTop: 24 } },
+													{ id: 'tuition', style: { marginTop: 24 } },
 													'Tuition, Scholarships, Deadlines'
 												),
 												_react2.default.createElement(
@@ -62411,7 +62411,7 @@
 													_react2.default.createElement(
 														'p',
 														{ className: 'about', style: { marginBottom: 6 } },
-														'Deadlines'
+														'Deadline'
 													),
 													_react2.default.createElement(
 														'p',
