@@ -66,21 +66,14 @@ class Nav extends Component {
 										<li>
 											<div style={{padding:8, background:'#444'}}><strong>Bootcamp</strong></div>
 										</li>
-										<li>
-											<a href="https://www.velocity360.io/course/8-week-fundamentals-bootcamp"><div className="menu-item">8-Week Fundamentals</div></a>
-										</li>
-										<li>
-											<a href="https://www.velocity360.io/course/24-week-evening-bootcamp"><div className="menu-item">24-Week Evening Fundamentals</div></a>
-										</li>
+										<li><a href="https://www.velocity360.io/course/8-week-fundamentals-bootcamp"><div className="menu-item">8-Week Fundamentals</div></a></li>
+										<li><a href="https://www.velocity360.io/course/24-week-evening-bootcamp"><div className="menu-item">24-Week Evening Fundamentals</div></a></li>
+										<li><a href="https://www.velocity360.io/course/24-week-online-bootcamp"><div className="menu-item">24-Week Online Bootcamp</div></a></li>
 										<li>
 											<div style={{padding:8, background:'#444'}}><strong>Part Time</strong></div>
 										</li>
-										<li>
-											<a href="https://www.velocity360.io/course/node-react-evening-course"><div className="menu-item">Node & React</div></a>
-										</li>
-										<li>
-											<a href="https://www.velocity360.io/course/node-react-native-evening-course"><div className="menu-item">Bootcamp</div></a>
-										</li>
+										<li><a href="https://www.velocity360.io/course/node-react-evening-course"><div className="menu-item">Node & React</div></a></li>
+										<li><a href="https://www.velocity360.io/course/node-react-native-evening-course"><div className="menu-item">Intro to Node</div></a></li>
 									</ul>
 								</li>
 	                            <li><a href="https://www.velocity360.io/courses?type=online"><div style={{padding:4}}>Videos</div></a></li>

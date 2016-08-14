@@ -41160,6 +41160,19 @@
 												'li',
 												null,
 												_react2.default.createElement(
+													'a',
+													{ href: 'https://www.velocity360.io/course/24-week-online-bootcamp' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'menu-item' },
+														'24-Week Online Bootcamp'
+													)
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												null,
+												_react2.default.createElement(
 													'div',
 													{ style: { padding: 8, background: '#444' } },
 													_react2.default.createElement(
@@ -41191,7 +41204,7 @@
 													_react2.default.createElement(
 														'div',
 														{ className: 'menu-item' },
-														'Bootcamp'
+														'Intro to Node'
 													)
 												)
 											)

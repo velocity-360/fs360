@@ -210,6 +210,19 @@ var Nav = (function (Component) {
 												"li",
 												null,
 												React.createElement(
+													"a",
+													{ href: "https://www.velocity360.io/course/24-week-online-bootcamp" },
+													React.createElement(
+														"div",
+														{ className: "menu-item" },
+														"24-Week Online Bootcamp"
+													)
+												)
+											),
+											React.createElement(
+												"li",
+												null,
+												React.createElement(
 													"div",
 													{ style: { padding: 8, background: "#444" } },
 													React.createElement(
@@ -241,7 +254,7 @@ var Nav = (function (Component) {
 													React.createElement(
 														"div",
 														{ className: "menu-item" },
-														"Bootcamp"
+														"Intro to Node"
 													)
 												)
 											)
