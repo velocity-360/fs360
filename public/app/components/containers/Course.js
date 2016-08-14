@@ -21,6 +21,7 @@ class Course extends Component {
 		super(props, context)
 		this.closeModal = this.closeModal.bind(this)
 		this.closeLogin = this.closeLogin.bind(this)
+		this.toggleApplication = this.toggleApplication.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
 		this.showLoader = this.showLoader.bind(this)
 		this.hideLoader = this.hideLoader.bind(this)
@@ -30,6 +31,7 @@ class Course extends Component {
 		this.updateCourse = this.updateCourse.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.state = {
+			showApplication: false,
 			showLogin: false,
 			showConfirmation: false,
 			syllabusRequest: {
@@ -39,10 +41,6 @@ class Course extends Component {
 				subject: 'Syllabus Request'
 			}
 		}
-	}
-
-	componentDidMount(){
-		
 	}
 
 	closeModal(){
@@ -70,6 +68,16 @@ class Course extends Component {
 
 	hideLoader(){
 		this.setState({showLoader: false})
+	}
+
+	toggleApplication(event){
+		if (event != null)
+			event.preventDefault()
+
+		const showApplication = !this.state.showApplication
+		this.setState({
+			showApplication: showApplication
+		})
 	}
 
 	subscribe(event){
@@ -232,7 +240,7 @@ class Course extends Component {
 											<li><a href="#admissions">Admissions</a></li>
 										</ul>
 
-										<a href="http://www.fullstackacademy.com/apply" className="apply" target="_blank">Apply</a>
+										<a onClick={this.toggleApplication} href="#" className="apply">Apply</a>
 									</nav>
 								</aside>
 
@@ -411,7 +419,7 @@ class Course extends Component {
 									<article id="admissions" className="overview">
 										<h2 style={{marginTop:24}}>Admissions</h2>
 										<p className="about">
-											Are you right for this class?
+											The Process
 										</p>
 										<div className="container">
 											<div className="col_full nobottommargin">
@@ -427,6 +435,10 @@ class Course extends Component {
 						</div>
 					</div>
 				</section>
+
+				<Modal bsSize="large" show={this.state.showApplication} onHide={this.toggleApplication}>
+					<Application />
+				</Modal>
 
 			</div>
 		)

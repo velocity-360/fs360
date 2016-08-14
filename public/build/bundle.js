@@ -47143,7 +47143,7 @@
 	
 				return _react2.default.createElement(
 					'section',
-					{ id: 'content', style: { background: '#f9f9f9' } },
+					{ id: 'content', style: { background: '#fff', borderTop: '1px solid #ddd' } },
 					_react2.default.createElement(
 						'div',
 						{ id: 'application', className: 'content-wrap' },
@@ -47175,7 +47175,7 @@
 												{ 'for': 'template-contactform-name' },
 												'Name'
 											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', className: 'sm-form-control required' })
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'name', value: this.state.application.name, name: 'template-contactform-name', style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47185,7 +47185,7 @@
 												{ 'for': 'template-contactform-email' },
 												'Email'
 											),
-											_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', className: 'required email sm-form-control' })
+											_react2.default.createElement('input', { type: 'email', onChange: this.updateApplication, id: 'email', value: this.state.application.email, name: 'template-contactform-email', style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47195,7 +47195,7 @@
 												{ 'for': 'template-contactform-phone' },
 												'Phone'
 											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', className: 'sm-form-control' })
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'phone', value: this.state.application.phone, name: 'template-contactform-phone', style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement('div', { className: 'clear' }),
 										_react2.default.createElement(
@@ -47206,7 +47206,7 @@
 												{ 'for': 'template-contactform-message' },
 												'What is your goal in technology for the next 6 to 12 months?'
 											),
-											_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'required sm-form-control', id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
+											_react2.default.createElement('textarea', { onChange: this.updateApplication, value: this.state.application.goal, className: 'custom-input', style: { background: '#FEF9E7' }, id: 'goal', name: 'template-contactform-message', rows: '6', cols: '30' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47216,7 +47216,7 @@
 												null,
 												'GitHub'
 											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, className: 'sm-form-control' })
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'github', value: this.state.application.github, style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47226,12 +47226,12 @@
 												null,
 												'LinkedIn'
 											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, className: 'sm-form-control' })
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'linkedin', value: this.state.application.linkedin, style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
 											{ className: 'col_full hidden' },
-											_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', className: 'sm-form-control' })
+											_react2.default.createElement('input', { type: 'text', id: 'template-contactform-botcheck', name: 'template-contactform-botcheck', value: '', style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47274,7 +47274,7 @@
 												null,
 												'Undergraduate College'
 											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, className: 'sm-form-control' })
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'college', value: this.state.application.college, style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47284,7 +47284,7 @@
 												null,
 												'Undergraduate Major'
 											),
-											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, className: 'sm-form-control' })
+											_react2.default.createElement('input', { type: 'text', onChange: this.updateApplication, id: 'major', value: this.state.application.major, style: { background: '#FEF9E7' }, className: 'custom-input' })
 										),
 										_react2.default.createElement(
 											'div',
@@ -47292,7 +47292,7 @@
 											_react2.default.createElement(
 												'a',
 												{ onClick: this.submitApplication, href: '#', className: 'button button-border button-dark button-rounded noleftmargin' },
-												'Apply'
+												'Submit Application'
 											)
 										)
 									)
@@ -63705,6 +63705,7 @@
 	
 			_this2.closeModal = _this2.closeModal.bind(_this2);
 			_this2.closeLogin = _this2.closeLogin.bind(_this2);
+			_this2.toggleApplication = _this2.toggleApplication.bind(_this2);
 			_this2.submitApplication = _this2.submitApplication.bind(_this2);
 			_this2.showLoader = _this2.showLoader.bind(_this2);
 			_this2.hideLoader = _this2.hideLoader.bind(_this2);
@@ -63714,6 +63715,7 @@
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
 			_this2.state = {
+				showApplication: false,
 				showLogin: false,
 				showConfirmation: false,
 				syllabusRequest: {
@@ -63727,9 +63729,6 @@
 		}
 	
 		_createClass(Course, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
-		}, {
 			key: 'closeModal',
 			value: function closeModal() {
 				this.setState({
@@ -63761,6 +63760,16 @@
 			key: 'hideLoader',
 			value: function hideLoader() {
 				this.setState({ showLoader: false });
+			}
+		}, {
+			key: 'toggleApplication',
+			value: function toggleApplication(event) {
+				if (event != null) event.preventDefault();
+	
+				var showApplication = !this.state.showApplication;
+				this.setState({
+					showApplication: showApplication
+				});
 			}
 		}, {
 			key: 'subscribe',
@@ -64031,7 +64040,7 @@
 											),
 											_react2.default.createElement(
 												'a',
-												{ href: 'http://www.fullstackacademy.com/apply', className: 'apply', target: '_blank' },
+												{ onClick: this.toggleApplication, href: '#', className: 'apply' },
 												'Apply'
 											)
 										)
@@ -64416,7 +64425,7 @@
 											_react2.default.createElement(
 												'p',
 												{ className: 'about' },
-												'Are you right for this class?'
+												'The Process'
 											),
 											_react2.default.createElement(
 												'div',
@@ -64441,6 +64450,11 @@
 								)
 							)
 						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ bsSize: 'large', show: this.state.showApplication, onHide: this.toggleApplication },
+						_react2.default.createElement(_Application2.default, null)
 					)
 				);
 			}

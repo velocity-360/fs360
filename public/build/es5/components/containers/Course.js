@@ -54,6 +54,7 @@ var Course = (function (Component) {
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
 		this.closeModal = this.closeModal.bind(this);
 		this.closeLogin = this.closeLogin.bind(this);
+		this.toggleApplication = this.toggleApplication.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
 		this.showLoader = this.showLoader.bind(this);
 		this.hideLoader = this.hideLoader.bind(this);
@@ -63,6 +64,7 @@ var Course = (function (Component) {
 		this.updateCourse = this.updateCourse.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
 		this.state = {
+			showApplication: false,
 			showLogin: false,
 			showConfirmation: false,
 			syllabusRequest: {
@@ -77,11 +79,6 @@ var Course = (function (Component) {
 	_inherits(Course, Component);
 
 	_prototypeProperties(Course, null, {
-		componentDidMount: {
-			value: function componentDidMount() {},
-			writable: true,
-			configurable: true
-		},
 		closeModal: {
 			value: function closeModal() {
 				this.setState({
@@ -123,6 +120,18 @@ var Course = (function (Component) {
 		hideLoader: {
 			value: function hideLoader() {
 				this.setState({ showLoader: false });
+			},
+			writable: true,
+			configurable: true
+		},
+		toggleApplication: {
+			value: function toggleApplication(event) {
+				if (event != null) event.preventDefault();
+
+				var showApplication = !this.state.showApplication;
+				this.setState({
+					showApplication: showApplication
+				});
 			},
 			writable: true,
 			configurable: true
@@ -404,7 +413,7 @@ var Course = (function (Component) {
 											),
 											React.createElement(
 												"a",
-												{ href: "http://www.fullstackacademy.com/apply", className: "apply", target: "_blank" },
+												{ onClick: this.toggleApplication, href: "#", className: "apply" },
 												"Apply"
 											)
 										)
@@ -789,7 +798,7 @@ var Course = (function (Component) {
 											React.createElement(
 												"p",
 												{ className: "about" },
-												"Are you right for this class?"
+												"The Process"
 											),
 											React.createElement(
 												"div",
@@ -814,6 +823,11 @@ var Course = (function (Component) {
 								)
 							)
 						)
+					),
+					React.createElement(
+						Modal,
+						{ bsSize: "large", show: this.state.showApplication, onHide: this.toggleApplication },
+						React.createElement(Application, null)
 					)
 				);
 			},
