@@ -14,6 +14,7 @@ import Login from '../../components/Login'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import api from '../../utils/APIManager'
+import TrackingManager from '../../utils/TrackingManager'
 
 class Course extends Component {
 
@@ -30,12 +31,16 @@ class Course extends Component {
 		this.subscribe = this.subscribe.bind(this)
 		this.updateCourse = this.updateCourse.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
+		this.updateVisitor = this.updateVisitor.bind(this)
 		this.showPaypal = this.showPaypal.bind(this)
+		this.submitSyllabusRequest = this.submitSyllabusRequest.bind(this)
+		this.validate = this.validate.bind(this)
 		this.state = {
+			showLoader: false,
 			showApplication: false,
 			showLogin: false,
 			showConfirmation: false,
-			syllabusRequest: {
+			visitor: {
 				name: '',
 				email: '',
 				course: '',
@@ -172,6 +177,73 @@ class Course extends Component {
 
 			alert(response.message)
 		})
+	}
+
+	updateVisitor(event){
+		var updatedVisitor = Object.assign({}, this.state.visitor)
+		updatedVisitor[event.target.id] = event.target.value
+		this.setState({
+			visitor: updatedVisitor
+		})		
+	}
+
+	submitSyllabusRequest(event){
+		event.preventDefault()
+		var missingField = this.validate(this.state.visitor, false)
+		if (missingField != null){
+			alert('Please enter your '+missingField)
+			return
+		}
+
+		var pkg = Object.assign({}, this.state.visitor)
+		var parts = pkg.name.split(' ')
+		pkg['firstName'] = parts[0]
+		if (parts.length > 1)
+			pkg['lastName'] = parts[parts.length-1]
+
+		const course = this.props.courses[this.props.slug]
+		pkg['pdf'] = course.syllabus
+		pkg['subject'] = 'Syllabus Request'
+		pkg['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.'
+
+		this.setState({showLoader:true})
+		api.handlePost('/account/syllabus', pkg, (err, response) => {
+			this.setState({showLoader:false})
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+			var tracker = new TrackingManager() // this is a singelton so no need to reset page info:
+			tracker.updateTracking((err, response) => {
+
+				if (err){
+					console.log('ERROR: '+JSON.stringify(err))
+					return
+				}
+
+			})
+		})
+	}
+
+	validate(profile, withPassword){
+		if (profile.name.length == 0)
+			return 'Name'
+
+		if (profile.email.length == 0)
+			return 'Email'
+
+		if (profile.email.indexOf('@') == -1) // invalid email
+			return 'valid email address'			
+
+		if (withPassword == false)
+			return null
+
+		if (profile.password.length == 0)
+			return 'Password'
+
+		return null // this is successful
 	}	
 
 	showPaypal(event){
@@ -241,6 +313,7 @@ class Course extends Component {
 		var tuition = null
 		var admissions = null
 		var register = null
+		var syllabus = null
 		if (course.type == 'immersive'){ // bootcamp
 			sidemenu = (
 				<ul>
@@ -251,6 +324,7 @@ class Course extends Component {
 					<li><a href="#instructors">Instructors</a></li>
 					<li><a href="#faq">FAQ</a></li>
 					<li><a href="#admissions">Admissions</a></li>
+					<li><a href="#syllabus">Request Syllabus</a></li>
 				</ul>				
 			)
 
@@ -325,20 +399,20 @@ class Course extends Component {
 							<div className="panel-body" style={{padding:36}}>
 								<h3>The Process</h3>
 								<hr />
-								<span className="step">Step 1</span><strong>Apply</strong>
+								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 1</a><strong>Apply</strong>
 								<p style={{marginTop:10}}>
 									Complete our online application by midnight August 29th to 
 									apply for the course. To be eligible for a scholarship you 
 									must apply by midnight August 22nd.
 								</p>
 
-								<span className="step">Step 2</span><strong>Phone Interview</strong>
+								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 2</a><strong>Phone Interview</strong>
 								<p style={{marginTop:10}}>
 									All applicants will undergo a 15-30 minute phone interview to as a first technical 
 									assessment. You should feel comfortable speaking about prior programming experience.
 								</p>
 
-								<span className="step">Step 3</span><strong>In-person code review</strong>
+								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 3</a><strong>In-person code review</strong>
 								<p style={{marginTop:10}}>
 									After the phone screen, the next step is  
 									an in-person code review. Here you’ll sit down with one of 
@@ -349,7 +423,8 @@ class Course extends Component {
 									preparedness for the pace of the course.
 								</p>
 
-								<span className="step">Step 4</span><strong>Decision</strong>
+								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 4</a>
+								<strong>Decision</strong>
 								<p style={{marginTop:10}}>
 									You will receive an email with your application decision. 
 									You will have 7 days from your acceptance letter to make your 
@@ -360,6 +435,27 @@ class Course extends Component {
 					</div>
 				</article>
 			)
+			
+			syllabus = (
+				<article id="syllabus" className="overview">
+					<div className="container">
+						<h2 style={{marginTop:24}}>Request Syllabus</h2>
+						<div className="panel panel-default">
+							<div className="panel-body" style={{padding:36}}>
+								<h3>Download Full syllabus</h3>
+								<hr />
+								<p style={{marginBottom:16}}>
+									Sign up below to get our course syllabus, and to stay informed about Velocity 360.
+								</p>
+		                        <input onChange={this.updateVisitor} id="name" type="name" style={{borderRadius:'0px !important', background:'#FEF9E7'}} className="custom-input" placeholder="Name" /><br />
+		                        <input onChange={this.updateVisitor} id="email" type="email" style={{borderRadius:'0px !important', background:'#FEF9E7'}} className="custom-input" placeholder="Email" /><br />
+								<a onClick={this.submitSyllabusRequest} href="#" style={{marginRight:12}} className="btn btn-info">Submit</a>
+							</div>
+						</div>
+					</div>
+				</article>
+			)
+
 		}
 
 		if (course.type == 'live'){ // part time course
@@ -561,6 +657,7 @@ class Course extends Component {
 									</article>
 
 									{admissions}
+									{syllabus}
 									{register}
 
 								</div>

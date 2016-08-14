@@ -13027,8 +13027,9 @@ body:not(.no-transition) #wrapper,
 	background: #fff;
 	width: 100%;
 	border: 1px solid #999;
+	border-radius: 0px;
 	padding: 6px;
-	margin-bottom: 16px
+	margin-bottom: 16px;
 }
 
 

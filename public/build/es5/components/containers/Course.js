@@ -47,6 +47,8 @@ var actions = _interopRequire(require("../../actions/actions"));
 
 var api = _interopRequire(require("../../utils/APIManager"));
 
+var TrackingManager = _interopRequire(require("../../utils/TrackingManager"));
+
 var Course = (function (Component) {
 	function Course(props, context) {
 		_classCallCheck(this, Course);
@@ -63,12 +65,16 @@ var Course = (function (Component) {
 		this.subscribe = this.subscribe.bind(this);
 		this.updateCourse = this.updateCourse.bind(this);
 		this.updateCurrentUser = this.updateCurrentUser.bind(this);
+		this.updateVisitor = this.updateVisitor.bind(this);
 		this.showPaypal = this.showPaypal.bind(this);
+		this.submitSyllabusRequest = this.submitSyllabusRequest.bind(this);
+		this.validate = this.validate.bind(this);
 		this.state = {
+			showLoader: false,
 			showApplication: false,
 			showLogin: false,
 			showConfirmation: false,
-			syllabusRequest: {
+			visitor: {
 				name: "",
 				email: "",
 				course: "",
@@ -242,6 +248,77 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		updateVisitor: {
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		submitSyllabusRequest: {
+			value: function submitSyllabusRequest(event) {
+				var _this = this;
+				event.preventDefault();
+				var missingField = this.validate(this.state.visitor, false);
+				if (missingField != null) {
+					alert("Please enter your " + missingField);
+					return;
+				}
+
+				var pkg = Object.assign({}, this.state.visitor);
+				var parts = pkg.name.split(" ");
+				pkg.firstName = parts[0];
+				if (parts.length > 1) pkg.lastName = parts[parts.length - 1];
+
+				var course = this.props.courses[this.props.slug];
+				pkg.pdf = course.syllabus;
+				pkg.subject = "Syllabus Request";
+				pkg.confirmation = "Thanks for your interest! Check your email shortly for a direct download link to the syllabus.";
+
+				this.setState({ showLoader: true });
+				api.handlePost("/account/syllabus", pkg, function (err, response) {
+					_this.setState({ showLoader: false });
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+					var tracker = new TrackingManager(); // this is a singelton so no need to reset page info:
+					tracker.updateTracking(function (err, response) {
+						if (err) {
+							console.log("ERROR: " + JSON.stringify(err));
+							return;
+						}
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		validate: {
+			value: function validate(profile, withPassword) {
+				if (profile.name.length == 0) {
+					return "Name";
+				}if (profile.email.length == 0) {
+					return "Email";
+				}if (profile.email.indexOf("@") == -1) {
+					// invalid email
+					return "valid email address";
+				}if (withPassword == false) {
+					return null;
+				}if (profile.password.length == 0) {
+					return "Password";
+				}return null // this is successful
+				;
+			},
+			writable: true,
+			configurable: true
+		},
 		showPaypal: {
 			value: function showPaypal(event) {
 				//		console.log('showPaypal')
@@ -336,6 +413,7 @@ var Course = (function (Component) {
 				var tuition = null;
 				var admissions = null;
 				var register = null;
+				var syllabus = null;
 				if (course.type == "immersive") {
 					// bootcamp
 					sidemenu = React.createElement(
@@ -402,6 +480,15 @@ var Course = (function (Component) {
 								"a",
 								{ href: "#admissions" },
 								"Admissions"
+							)
+						),
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#syllabus" },
+								"Request Syllabus"
 							)
 						)
 					);
@@ -531,8 +618,8 @@ var Course = (function (Component) {
 									),
 									React.createElement("hr", null),
 									React.createElement(
-										"span",
-										{ className: "step" },
+										"a",
+										{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
 										"Step 1"
 									),
 									React.createElement(
@@ -546,8 +633,8 @@ var Course = (function (Component) {
 										"Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd."
 									),
 									React.createElement(
-										"span",
-										{ className: "step" },
+										"a",
+										{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
 										"Step 2"
 									),
 									React.createElement(
@@ -561,8 +648,8 @@ var Course = (function (Component) {
 										"All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience."
 									),
 									React.createElement(
-										"span",
-										{ className: "step" },
+										"a",
+										{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
 										"Step 3"
 									),
 									React.createElement(
@@ -576,8 +663,8 @@ var Course = (function (Component) {
 										"After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course."
 									),
 									React.createElement(
-										"span",
-										{ className: "step" },
+										"a",
+										{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
 										"Step 4"
 									),
 									React.createElement(
@@ -589,6 +676,48 @@ var Course = (function (Component) {
 										"p",
 										{ style: { marginTop: 10 } },
 										"You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited."
+									)
+								)
+							)
+						)
+					);
+
+					syllabus = React.createElement(
+						"article",
+						{ id: "syllabus", className: "overview" },
+						React.createElement(
+							"div",
+							{ className: "container" },
+							React.createElement(
+								"h2",
+								{ style: { marginTop: 24 } },
+								"Request Syllabus"
+							),
+							React.createElement(
+								"div",
+								{ className: "panel panel-default" },
+								React.createElement(
+									"div",
+									{ className: "panel-body", style: { padding: 36 } },
+									React.createElement(
+										"h3",
+										null,
+										"Download Full syllabus"
+									),
+									React.createElement("hr", null),
+									React.createElement(
+										"p",
+										{ style: { marginBottom: 16 } },
+										"Sign up below to get our course syllabus, and to stay informed about Velocity 360."
+									),
+									React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: { borderRadius: "0px !important", background: "#FEF9E7" }, className: "custom-input", placeholder: "Name" }),
+									React.createElement("br", null),
+									React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: { borderRadius: "0px !important", background: "#FEF9E7" }, className: "custom-input", placeholder: "Email" }),
+									React.createElement("br", null),
+									React.createElement(
+										"a",
+										{ onClick: this.submitSyllabusRequest, href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
+										"Submit"
 									)
 								)
 							)
@@ -1045,6 +1174,7 @@ var Course = (function (Component) {
 											)
 										),
 										admissions,
+										syllabus,
 										register
 									)
 								)

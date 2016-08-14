@@ -61932,6 +61932,10 @@
 	
 	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
+	var _TrackingManager = __webpack_require__(475);
+	
+	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61959,12 +61963,16 @@
 			_this2.subscribe = _this2.subscribe.bind(_this2);
 			_this2.updateCourse = _this2.updateCourse.bind(_this2);
 			_this2.updateCurrentUser = _this2.updateCurrentUser.bind(_this2);
+			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
 			_this2.showPaypal = _this2.showPaypal.bind(_this2);
+			_this2.submitSyllabusRequest = _this2.submitSyllabusRequest.bind(_this2);
+			_this2.validate = _this2.validate.bind(_this2);
 			_this2.state = {
+				showLoader: false,
 				showApplication: false,
 				showLogin: false,
 				showConfirmation: false,
-				syllabusRequest: {
+				visitor: {
 					name: '',
 					email: '',
 					course: '',
@@ -62116,6 +62124,72 @@
 				});
 			}
 		}, {
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			}
+		}, {
+			key: 'submitSyllabusRequest',
+			value: function submitSyllabusRequest(event) {
+				var _this4 = this;
+	
+				event.preventDefault();
+				var missingField = this.validate(this.state.visitor, false);
+				if (missingField != null) {
+					alert('Please enter your ' + missingField);
+					return;
+				}
+	
+				var pkg = Object.assign({}, this.state.visitor);
+				var parts = pkg.name.split(' ');
+				pkg['firstName'] = parts[0];
+				if (parts.length > 1) pkg['lastName'] = parts[parts.length - 1];
+	
+				var course = this.props.courses[this.props.slug];
+				pkg['pdf'] = course.syllabus;
+				pkg['subject'] = 'Syllabus Request';
+				pkg['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.';
+	
+				this.setState({ showLoader: true });
+				_APIManager2.default.handlePost('/account/syllabus', pkg, function (err, response) {
+					_this4.setState({ showLoader: false });
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+					var tracker = new _TrackingManager2.default(); // this is a singelton so no need to reset page info:
+					tracker.updateTracking(function (err, response) {
+	
+						if (err) {
+							console.log('ERROR: ' + JSON.stringify(err));
+							return;
+						}
+					});
+				});
+			}
+		}, {
+			key: 'validate',
+			value: function validate(profile, withPassword) {
+				if (profile.name.length == 0) return 'Name';
+	
+				if (profile.email.length == 0) return 'Email';
+	
+				if (profile.email.indexOf('@') == -1) // invalid email
+					return 'valid email address';
+	
+				if (withPassword == false) return null;
+	
+				if (profile.password.length == 0) return 'Password';
+	
+				return null; // this is successful
+			}
+		}, {
 			key: 'showPaypal',
 			value: function showPaypal(event) {
 				//		console.log('showPaypal')
@@ -62208,6 +62282,7 @@
 				var tuition = null;
 				var admissions = null;
 				var register = null;
+				var syllabus = null;
 				if (course.type == 'immersive') {
 					// bootcamp
 					sidemenu = _react2.default.createElement(
@@ -62274,6 +62349,15 @@
 								'a',
 								{ href: '#admissions' },
 								'Admissions'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: '#syllabus' },
+								'Request Syllabus'
 							)
 						)
 					);
@@ -62403,8 +62487,8 @@
 									),
 									_react2.default.createElement('hr', null),
 									_react2.default.createElement(
-										'span',
-										{ className: 'step' },
+										'a',
+										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
 										'Step 1'
 									),
 									_react2.default.createElement(
@@ -62418,8 +62502,8 @@
 										'Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd.'
 									),
 									_react2.default.createElement(
-										'span',
-										{ className: 'step' },
+										'a',
+										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
 										'Step 2'
 									),
 									_react2.default.createElement(
@@ -62433,8 +62517,8 @@
 										'All applicants will undergo a 15-30 minute phone interview to as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
 									),
 									_react2.default.createElement(
-										'span',
-										{ className: 'step' },
+										'a',
+										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
 										'Step 3'
 									),
 									_react2.default.createElement(
@@ -62448,8 +62532,8 @@
 										'After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course.'
 									),
 									_react2.default.createElement(
-										'span',
-										{ className: 'step' },
+										'a',
+										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
 										'Step 4'
 									),
 									_react2.default.createElement(
@@ -62461,6 +62545,48 @@
 										'p',
 										{ style: { marginTop: 10 } },
 										'You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited.'
+									)
+								)
+							)
+						)
+					);
+	
+					syllabus = _react2.default.createElement(
+						'article',
+						{ id: 'syllabus', className: 'overview' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'h2',
+								{ style: { marginTop: 24 } },
+								'Request Syllabus'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel panel-default' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'panel-body', style: { padding: 36 } },
+									_react2.default.createElement(
+										'h3',
+										null,
+										'Download Full syllabus'
+									),
+									_react2.default.createElement('hr', null),
+									_react2.default.createElement(
+										'p',
+										{ style: { marginBottom: 16 } },
+										'Sign up below to get our course syllabus, and to stay informed about Velocity 360.'
+									),
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: { borderRadius: '0px !important', background: '#FEF9E7' }, className: 'custom-input', placeholder: 'Name' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: { borderRadius: '0px !important', background: '#FEF9E7' }, className: 'custom-input', placeholder: 'Email' }),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
+										'a',
+										{ onClick: this.submitSyllabusRequest, href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+										'Submit'
 									)
 								)
 							)
@@ -62916,6 +63042,7 @@
 											)
 										),
 										admissions,
+										syllabus,
 										register
 									)
 								)
