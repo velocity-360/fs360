@@ -227,7 +227,6 @@ var Course = (function (Component) {
 				});
 
 				application.course = course.title;
-				//		var _this = this
 				api.handlePost("/account/application", application, function (err, response) {
 					_this.setState({ showLoader: false });
 

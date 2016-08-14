@@ -161,7 +161,6 @@ class Course extends Component {
 		})
 
 		application['course'] = course.title
-//		var _this = this
 		api.handlePost('/account/application', application, (err, response) => {
 			this.setState({showLoader: false})
 
@@ -489,7 +488,6 @@ class Course extends Component {
 }
 
 const stateToProps = function(state) {
-
     return {
         currentUser: state.profileReducer.currentUser,
         courses: state.courseReducer.courses,

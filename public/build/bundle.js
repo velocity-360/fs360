@@ -62080,7 +62080,6 @@
 				});
 	
 				application['course'] = course.title;
-				//		var _this = this
 				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
 					_this3.setState({ showLoader: false });
 	
@@ -62708,7 +62707,6 @@
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-	
 		return {
 			currentUser: state.profileReducer.currentUser,
 			courses: state.courseReducer.courses,
