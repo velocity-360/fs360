@@ -52,7 +52,7 @@ router.get('/:resource', function(req, res, next) {
 		
 
 		subscriberController.get({email:email}, function(err, subscribers){
-			if (err != null){
+			if (err == null){
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
 					subscriber.remove()
