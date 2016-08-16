@@ -55,7 +55,7 @@ router.get('/:resource', function(req, res, next) {
 			if (err == null){
 				for (var i=0; i<subscribers.length; i++){
 					var subscriber = subscribers[i]
-					subscriber.remove()
+//					subscriber.remove()
 				}
 			}
 
