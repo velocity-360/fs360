@@ -156,8 +156,20 @@ module.exports = {
 		})
 	},
 
-	delete: function(){
+	delete: function(params, completion){
+		Subscriber.find(params, function(err, subscribers){
+			if (err){
+				completion({confirmation:'fail', message:err.message}, null)
+				return
+			}
 
+			for (var i=0; i<subscribers.length; i++){
+				var subscriber = subscribers[i]
+				subscriber.remove()				
+			}
+
+			completion(null, null)
+		})
 	},
 
 	currentVisitor: function(req){

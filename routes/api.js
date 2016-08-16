@@ -51,14 +51,7 @@ router.get('/:resource', function(req, res, next) {
 			return
 		
 
-		subscriberController.get({email:email}, function(err, subscribers){
-			if (err == null){
-				for (var i=0; i<subscribers.length; i++){
-					var subscriber = subscribers[i]
-//					subscriber.remove()
-				}
-			}
-
+		subscriberController.delete({email:email}, function(err, subscribers){
 			EmailManager.sendEmail('info@fullstack360.com', 'dkwon@velocity360.io', 'unsubscribe', email)
 			res.send('You have been unsubscribed. Thank you')
 		})
