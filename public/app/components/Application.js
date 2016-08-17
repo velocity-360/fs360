@@ -41,6 +41,28 @@ class Application extends Component {
 	submitApplication(event){
 		event.preventDefault()
 		var application = Object.assign({}, this.state.application)
+		var required = [
+			{field:'name', message:'Please enter your name'},
+			{field:'email', message:'Please enter your email'},
+			{field:'phone', message:'Please enter your phone number'},
+			{field:'goal', message:'Please answer all questions.'}
+		]
+
+		var missing = null
+		for (var i=0; i<required.length; i++){
+			var prop = required[i]
+			var value = application[prop.field]
+			if (value.length == 0){
+				missing = prop
+				break
+			}
+		}
+
+		if (missing != null){
+			alert(missing.message)
+			return
+		}
+
 		this.props.onSubmit(application)
 	}
 
