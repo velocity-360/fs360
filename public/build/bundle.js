@@ -46258,7 +46258,7 @@
 	
 				_APIManager2.default.handlePost('/api/post', post, function (err, response) {
 					if (err) {
-						alert(response.message);
+						alert(message);
 						return;
 					}
 	
