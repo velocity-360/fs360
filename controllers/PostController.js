@@ -123,7 +123,6 @@ module.exports = {
 			return
 		}
 
-
 		var props = ['og:title', 'og:image', 'og:description']
 		Scraper.scrape(post.link, props)
 		.then(function(result){
@@ -146,7 +145,7 @@ module.exports = {
 			postInfo['slug'] = slug
 			Post.create(postInfo, function(err, post){
 				if (err){
-					completion({confirmation:'fail', message:err.message}, null)
+					completion({confirmation:'fail', message:err}, null)
 					return
 				}
 				
@@ -155,7 +154,7 @@ module.exports = {
 			})
 		})
 		.catch(function(err){
-			completion(err, null)
+			completion({confirmation:'fail', message:err}, null)
 		})
 	},
 
