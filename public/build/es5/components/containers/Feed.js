@@ -159,7 +159,7 @@ var Feed = (function (Component) {
 
 				api.handlePost("/api/post", post, function (err, response) {
 					if (err) {
-						alert(message);
+						alert(err);
 						return;
 					}
 

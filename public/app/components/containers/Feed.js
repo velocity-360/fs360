@@ -111,7 +111,7 @@ class Feed extends Component {
 
 		api.handlePost('/api/post', post, (err, response) => {
 			if (err){
-				alert(message)
+				alert(err)
 				return
 			}
 
