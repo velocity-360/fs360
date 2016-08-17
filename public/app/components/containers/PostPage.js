@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Loader from 'react-loader'
-import Sidebar from '../../components/Sidebar'
+import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
+import RightSidebar from '../../components/RightSidebar'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { connect } from 'react-redux'
@@ -25,8 +26,8 @@ class PostPage extends Component {
 		if (this.props.posts[this.props.slug] != null)
 			return
 		
-		var url = '/api/post?slug='+this.props.slug
-		api.handleGet(url, {}, function(err, response){
+		const url = '/api/post?slug='+this.props.slug
+		api.handleGet(url, null, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
@@ -60,21 +61,21 @@ class PostPage extends Component {
 			return
 
 		var url = '/api/post/'+post.id
-		var _this = this
-		api.handlePut(url, post, function(err, response){
+		api.handlePut(url, post, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
 			}
 
 			store.currentStore().dispatch(actions.postsRecieved([response.post]))
-			_this.setState({isEditing: false})
+			this.setState({isEditing: false})
 		})
 	}
 
 	render(){
-		var post = this.props.posts[this.props.slug]
+		const post = this.props.posts[this.props.slug]
 		var btnEdit = null
+
 		if (this.state.isEditing == true){
 			btnEdit = <div><button onClick={this.toggleEditing} className="button button-border button-dark button-rounded noleftmargin">Done</button></div>
 		}
@@ -109,7 +110,14 @@ class PostPage extends Component {
 			)
 		}
 		else {
-			title = <h1>{post.title}</h1>
+			title = (
+				<div className="fancy-title title-bottom-border">
+					<h2 style={{fontWeight:400}}>
+						{post.title}
+					</h2>
+				</div>				
+			)
+
 			content = (
 				<div style={{background:'#fff', padding: 24}}>
 					<div style={{textAlign:'center'}}>
@@ -143,19 +151,16 @@ class PostPage extends Component {
 		})
 
 		return (
-			<div style={{background:'#f5f5f5'}}>
-				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
-				<Sidebar />
+			<div className="clearfix">
+				<Nav headerStyle="dark" />
 
-				<section id="content">
-					<div className="content-wrap" style={{backgroundColor:'#f5f5f5'}}>
+				<section>
+					<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
+					<div className="content-wrap">
+						<div className="container clearfix">
 
-						<div className="entry clearfix">
-							<div className="container clearfix">
-								<div className="heading-block center">
-									{title}
-									{btnEdit}
-								</div>
+							<div className="col_two_third bottommargin-sm">
+								{title}
 
 								<div className="entry-c">
 									<div className="entry-content">
@@ -167,26 +172,31 @@ class PostPage extends Component {
 												<li><i className="icon-comments"></i> {post.numReplies} comments</li>
 											</ul>
 
+											{btnEdit}
 											{content}
 
 										</div>
 									</div>
 								</div>
-
 							</div>
+
+							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
+								<RightSidebar />
+							</div>			
+
+
 						</div>
 					</div>
 				</section>
 
-
-				<section style={{background:'#fff', paddingTop:48, borderTop:'1px solid #ddd'}}>
+				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
 						<h2 style={{fontWeight:400}}>Bootcamps</h2>
 					</div>
 
 					<div className="content-wrap" style={{paddingTop:0}}>
 						<div className="container clearfix">
-							{courses}
+			               	{courses}
 						</div>
 					</div>
 				</section>

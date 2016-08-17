@@ -2,19 +2,17 @@
 <html>
   <head>
     {{>head}}
-
-  	<meta property="og:title" content="{{ tags.title }}" />
+    
+    <meta property="og:title" content="{{ tags.title }}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{ tags.url }}" />
     <meta property="og:image" content="{{ tags.image }}" />
     <meta property="og:description" content="{{ tags.description }}" />
-    
+
   </head>
 
-  <body class="stretched side-header" style="background-color: #F5F5F5" onLoad="trackVisit()">
-    <div id="wrapper" class="clearfix">
-	    <div id="app">{{{react}}}</div>
-    </div>
+  <body class="stretched">
+    <div id="app">{{{react}}}</div>
 
     {{>imports}}
     <script charSet="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>

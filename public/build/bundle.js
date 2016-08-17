@@ -46179,9 +46179,6 @@
 		}
 	
 		_createClass(Feed, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				if (this.props.posts.length > 0) return;
@@ -46246,7 +46243,6 @@
 				this.setState({
 					post: post
 				});
-				// console.log('updatePost: ')
 			}
 		}, {
 			key: 'submitPost',
@@ -60921,13 +60917,17 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _Sidebar = __webpack_require__(481);
+	var _Nav = __webpack_require__(458);
 	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	var _Nav2 = _interopRequireDefault(_Nav);
 	
 	var _Footer = __webpack_require__(476);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(477);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
 	
 	var _store = __webpack_require__(194);
 	
@@ -60965,15 +60965,15 @@
 		function PostPage(props, context) {
 			_classCallCheck(this, PostPage);
 	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(PostPage).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PostPage).call(this, props, context));
 	
-			_this2.toggleEditing = _this2.toggleEditing.bind(_this2);
-			_this2.editPost = _this2.editPost.bind(_this2);
-			_this2.state = {
+			_this.toggleEditing = _this.toggleEditing.bind(_this);
+			_this.editPost = _this.editPost.bind(_this);
+			_this.state = {
 				showLoader: false,
 				isEditing: false
 			};
-			return _this2;
+			return _this;
 		}
 	
 		_createClass(PostPage, [{
@@ -60982,7 +60982,7 @@
 				if (this.props.posts[this.props.slug] != null) return;
 	
 				var url = '/api/post?slug=' + this.props.slug;
-				_APIManager2.default.handleGet(url, {}, function (err, response) {
+				_APIManager2.default.handleGet(url, null, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -61005,6 +61005,8 @@
 		}, {
 			key: 'toggleEditing',
 			value: function toggleEditing(event) {
+				var _this2 = this;
+	
 				event.preventDefault();
 				if (this.state.isEditing == false) {
 					this.setState({ isEditing: true });
@@ -61016,7 +61018,6 @@
 				if (post == null) return;
 	
 				var url = '/api/post/' + post.id;
-				var _this = this;
 				_APIManager2.default.handlePut(url, post, function (err, response) {
 					if (err) {
 						alert(response.message);
@@ -61024,7 +61025,7 @@
 					}
 	
 					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved([response.post]));
-					_this.setState({ isEditing: false });
+					_this2.setState({ isEditing: false });
 				});
 			}
 		}, {
@@ -61032,6 +61033,7 @@
 			value: function render() {
 				var post = this.props.posts[this.props.slug];
 				var btnEdit = null;
+	
 				if (this.state.isEditing == true) {
 					btnEdit = _react2.default.createElement(
 						'div',
@@ -61089,10 +61091,15 @@
 					);
 				} else {
 					title = _react2.default.createElement(
-						'h1',
-						null,
-						post.title
+						'div',
+						{ className: 'fancy-title title-bottom-border' },
+						_react2.default.createElement(
+							'h2',
+							{ style: { fontWeight: 400 } },
+							post.title
+						)
 					);
+	
 					content = _react2.default.createElement(
 						'div',
 						{ style: { background: '#fff', padding: 24 } },
@@ -61160,27 +61167,22 @@
 	
 				return _react2.default.createElement(
 					'div',
-					{ style: { background: '#f5f5f5' } },
-					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
+					{ className: 'clearfix' },
+					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
 					_react2.default.createElement(
 						'section',
-						{ id: 'content' },
+						null,
+						_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 						_react2.default.createElement(
 							'div',
-							{ className: 'content-wrap', style: { backgroundColor: '#f5f5f5' } },
+							{ className: 'content-wrap' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'entry clearfix' },
+								{ className: 'container clearfix' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'container clearfix' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'heading-block center' },
-										title,
-										btnEdit
-									),
+									{ className: 'col_two_third bottommargin-sm' },
+									title,
 									_react2.default.createElement(
 										'div',
 										{ className: 'entry-c' },
@@ -61220,17 +61222,23 @@
 														' comments'
 													)
 												),
+												btnEdit,
 												content
 											)
 										)
 									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
+									_react2.default.createElement(_RightSidebar2.default, null)
 								)
 							)
 						)
 					),
 					_react2.default.createElement(
 						'section',
-						{ style: { background: '#fff', paddingTop: 48, borderTop: '1px solid #ddd' } },
+						{ style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
 						_react2.default.createElement(
 							'div',
 							{ className: 'heading-block center' },

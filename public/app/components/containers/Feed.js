@@ -32,15 +32,11 @@ class Feed extends Component {
 		}
 	}
 
-	componentWillMount(){
-
-	}
-
 	componentDidMount(){
 		if (this.props.posts.length > 0)
 			return
 
-		api.handleGet('/api/post', {}, function(err, response){
+		api.handleGet('/api/post', {}, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
@@ -94,7 +90,6 @@ class Feed extends Component {
 		this.setState({
 			post: post
 		})
-		// console.log('updatePost: ')
 	}
 
 	submitPost(event){

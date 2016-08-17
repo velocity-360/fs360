@@ -17,9 +17,11 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 var Loader = _interopRequire(require("react-loader"));
 
-var Sidebar = _interopRequire(require("../../components/Sidebar"));
+var Nav = _interopRequire(require("../../components/Nav"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
+
+var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
 
 var store = _interopRequire(require("../../stores/store"));
 
@@ -53,7 +55,7 @@ var PostPage = (function (Component) {
 				if (this.props.posts[this.props.slug] != null) {
 					return;
 				}var url = "/api/post?slug=" + this.props.slug;
-				api.handleGet(url, {}, function (err, response) {
+				api.handleGet(url, null, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -80,6 +82,7 @@ var PostPage = (function (Component) {
 		},
 		toggleEditing: {
 			value: function toggleEditing(event) {
+				var _this = this;
 				event.preventDefault();
 				if (this.state.isEditing == false) {
 					this.setState({ isEditing: true });
@@ -91,7 +94,6 @@ var PostPage = (function (Component) {
 				if (post == null) {
 					return;
 				}var url = "/api/post/" + post.id;
-				var _this = this;
 				api.handlePut(url, post, function (err, response) {
 					if (err) {
 						alert(response.message);
@@ -109,6 +111,7 @@ var PostPage = (function (Component) {
 			value: function render() {
 				var post = this.props.posts[this.props.slug];
 				var btnEdit = null;
+
 				if (this.state.isEditing == true) {
 					btnEdit = React.createElement(
 						"div",
@@ -166,10 +169,15 @@ var PostPage = (function (Component) {
 					);
 				} else {
 					title = React.createElement(
-						"h1",
-						null,
-						post.title
+						"div",
+						{ className: "fancy-title title-bottom-border" },
+						React.createElement(
+							"h2",
+							{ style: { fontWeight: 400 } },
+							post.title
+						)
 					);
+
 					content = React.createElement(
 						"div",
 						{ style: { background: "#fff", padding: 24 } },
@@ -237,27 +245,22 @@ var PostPage = (function (Component) {
 
 				return React.createElement(
 					"div",
-					{ style: { background: "#f5f5f5" } },
-					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
-					React.createElement(Sidebar, null),
+					{ className: "clearfix" },
+					React.createElement(Nav, { headerStyle: "dark" }),
 					React.createElement(
 						"section",
-						{ id: "content" },
+						null,
+						React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 						React.createElement(
 							"div",
-							{ className: "content-wrap", style: { backgroundColor: "#f5f5f5" } },
+							{ className: "content-wrap" },
 							React.createElement(
 								"div",
-								{ className: "entry clearfix" },
+								{ className: "container clearfix" },
 								React.createElement(
 									"div",
-									{ className: "container clearfix" },
-									React.createElement(
-										"div",
-										{ className: "heading-block center" },
-										title,
-										btnEdit
-									),
+									{ className: "col_two_third bottommargin-sm" },
+									title,
 									React.createElement(
 										"div",
 										{ className: "entry-c" },
@@ -297,17 +300,23 @@ var PostPage = (function (Component) {
 														" comments"
 													)
 												),
+												btnEdit,
 												content
 											)
 										)
 									)
+								),
+								React.createElement(
+									"div",
+									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
+									React.createElement(RightSidebar, null)
 								)
 							)
 						)
 					),
 					React.createElement(
 						"section",
-						{ style: { background: "#fff", paddingTop: 48, borderTop: "1px solid #ddd" } },
+						{ style: { background: "#f9f9f9", paddingTop: 48, borderTop: "1px solid #ddd" } },
 						React.createElement(
 							"div",
 							{ className: "heading-block center" },

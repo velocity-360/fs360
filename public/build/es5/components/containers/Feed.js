@@ -63,11 +63,6 @@ var Feed = (function (Component) {
 	_inherits(Feed, Component);
 
 	_prototypeProperties(Feed, null, {
-		componentWillMount: {
-			value: function componentWillMount() {},
-			writable: true,
-			configurable: true
-		},
 		componentDidMount: {
 			value: function componentDidMount() {
 				if (this.props.posts.length > 0) {
@@ -296,4 +291,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Feed);
-// console.log('updatePost: ')
