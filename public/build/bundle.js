@@ -61183,6 +61183,7 @@
 									'div',
 									{ className: 'col_two_third bottommargin-sm' },
 									title,
+									btnEdit,
 									_react2.default.createElement(
 										'div',
 										{ className: 'entry-c' },
@@ -61222,7 +61223,6 @@
 														' comments'
 													)
 												),
-												btnEdit,
 												content
 											)
 										)

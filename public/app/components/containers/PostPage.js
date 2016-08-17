@@ -161,6 +161,7 @@ class PostPage extends Component {
 
 							<div className="col_two_third bottommargin-sm">
 								{title}
+								{btnEdit}
 
 								<div className="entry-c">
 									<div className="entry-content">
@@ -172,7 +173,6 @@ class PostPage extends Component {
 												<li><i className="icon-comments"></i> {post.numReplies} comments</li>
 											</ul>
 
-											{btnEdit}
 											{content}
 
 										</div>

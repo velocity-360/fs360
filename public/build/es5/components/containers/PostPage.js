@@ -261,6 +261,7 @@ var PostPage = (function (Component) {
 									"div",
 									{ className: "col_two_third bottommargin-sm" },
 									title,
+									btnEdit,
 									React.createElement(
 										"div",
 										{ className: "entry-c" },
@@ -300,7 +301,6 @@ var PostPage = (function (Component) {
 														" comments"
 													)
 												),
-												btnEdit,
 												content
 											)
 										)
