@@ -42124,7 +42124,7 @@
 				}
 	
 				var json = res.body;
-				console.log('ERROR: ' + JSON.stringify(json));
+				//			console.log('ERROR: '+JSON.stringify(json))
 				if (json.confirmation != 'success') {
 					completion({ message: json.message }, null);
 					return;
