@@ -40,12 +40,14 @@ export default {
 				return
 			}
 			
-			if (res.body.confirmation != 'success'){
-	    		completion({message:res.body.message}, null)
+			const json = res.body
+			console.log('ERROR: '+JSON.stringify(json))
+			if (json.confirmation != 'success'){
+	    		completion({message:json.message}, null)
 	    		return
 			}
 
-	    	completion(null, res.body)
+	    	completion(null,json)
 		})
 	},
 

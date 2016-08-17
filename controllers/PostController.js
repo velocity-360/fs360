@@ -98,7 +98,7 @@ module.exports = {
 	},	
 
 	post: function(postInfo, completion){
-		if (post.link.length == 0){
+		if (postInfo.link.length == 0){
 			var parts = postInfo.title.split(' ')
 			var slug = ''
 			for (var i=0; i<parts.length; i++){
@@ -124,7 +124,7 @@ module.exports = {
 		}
 
 		var props = ['og:title', 'og:image', 'og:description']
-		Scraper.scrape(post.link, props)
+		Scraper.scrape(postInfo.link, props)
 		.then(function(result){
 			var keys = Object.keys(result)
 			for (var i=0; i<keys.length; i++){
