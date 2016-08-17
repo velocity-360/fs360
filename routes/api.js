@@ -15,7 +15,6 @@ var postController = require('../controllers/PostController')
 var commentController = require('../controllers/CommentController')
 var eventController = require('../controllers/EventController')
 var projectController = require('../controllers/ProjectController')
-var sampleController = require('../controllers/SampleController')
 var unitController = require('../controllers/UnitController')
 var trackController = require('../controllers/TrackController')
 var controllers = {
@@ -26,7 +25,6 @@ var controllers = {
 	comment: commentController,
 	event: eventController,
 	project: projectController,
-	sample: sampleController,
 	unit: unitController,
 	track: trackController
 };
