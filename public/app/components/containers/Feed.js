@@ -68,9 +68,8 @@ class Feed extends Component {
 			showLoader: true
 		})
 
-		var _this = this
-		api.upload(files[0], function(err, response){
-			_this.setState({
+		api.upload(files[0], (err, response) => {
+			this.setState({
 				showLoader: false
 			})
 
@@ -79,12 +78,11 @@ class Feed extends Component {
 				return
 			}
 
-			var post = Object.assign({}, _this.state.post)
+			var post = Object.assign({}, this.state.post)
 			post['image'] = response.id
-			_this.setState({
+			this.setState({
 				post: post
 			})
-
 		})
 	}
 
@@ -101,7 +99,6 @@ class Feed extends Component {
 
 	submitPost(event){
 		event.preventDefault()
-		var _this = this
 		var post = Object.assign({}, this.state.post)
 
 		if (this.props.currentUser.id != null){
@@ -112,14 +109,14 @@ class Feed extends Component {
 			}
 		}
 
-		api.handlePost('/api/post', post, function(err, response){
+		api.handlePost('/api/post', post, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
 			}
 
 			store.currentStore().dispatch(actions.postCreated(response.post))
-			_this.setState({
+			this.setState({
 				showModal: false,
 			})
 		})

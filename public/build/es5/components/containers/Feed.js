@@ -105,11 +105,11 @@ var Feed = (function (Component) {
 		},
 		uploadImage: {
 			value: function uploadImage(files) {
+				var _this = this;
 				this.setState({
 					showLoader: true
 				});
 
-				var _this = this;
 				api.upload(files[0], function (err, response) {
 					_this.setState({
 						showLoader: false
@@ -145,8 +145,8 @@ var Feed = (function (Component) {
 		},
 		submitPost: {
 			value: function submitPost(event) {
-				event.preventDefault();
 				var _this = this;
+				event.preventDefault();
 				var post = Object.assign({}, this.state.post);
 
 				if (this.props.currentUser.id != null) {

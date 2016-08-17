@@ -46149,14 +46149,14 @@
 		function Feed(props, context) {
 			_classCallCheck(this, Feed);
 	
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Feed).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Feed).call(this, props, context));
 	
-			_this2.openModal = _this2.openModal.bind(_this2);
-			_this2.closeModal = _this2.closeModal.bind(_this2);
-			_this2.updatePost = _this2.updatePost.bind(_this2);
-			_this2.submitPost = _this2.submitPost.bind(_this2);
-			_this2.uploadImage = _this2.uploadImage.bind(_this2);
-			_this2.state = {
+			_this.openModal = _this.openModal.bind(_this);
+			_this.closeModal = _this.closeModal.bind(_this);
+			_this.updatePost = _this.updatePost.bind(_this);
+			_this.submitPost = _this.submitPost.bind(_this);
+			_this.uploadImage = _this.uploadImage.bind(_this);
+			_this.state = {
 				showLoader: false,
 				showModal: false,
 				post: {
@@ -46167,7 +46167,7 @@
 					image: 'y_I3PXcQ'
 				}
 			};
-			return _this2;
+			return _this;
 		}
 	
 		_createClass(Feed, [{
@@ -46205,13 +46205,14 @@
 		}, {
 			key: 'uploadImage',
 			value: function uploadImage(files) {
+				var _this2 = this;
+	
 				this.setState({
 					showLoader: true
 				});
 	
-				var _this = this;
 				_APIManager2.default.upload(files[0], function (err, response) {
-					_this.setState({
+					_this2.setState({
 						showLoader: false
 					});
 	
@@ -46220,9 +46221,9 @@
 						return;
 					}
 	
-					var post = Object.assign({}, _this.state.post);
+					var post = Object.assign({}, _this2.state.post);
 					post['image'] = response.id;
-					_this.setState({
+					_this2.setState({
 						post: post
 					});
 				});
@@ -46242,8 +46243,9 @@
 		}, {
 			key: 'submitPost',
 			value: function submitPost(event) {
+				var _this3 = this;
+	
 				event.preventDefault();
-				var _this = this;
 				var post = Object.assign({}, this.state.post);
 	
 				if (this.props.currentUser.id != null) {
@@ -46261,7 +46263,7 @@
 					}
 	
 					_store2.default.currentStore().dispatch(_actions2.default.postCreated(response.post));
-					_this.setState({
+					_this3.setState({
 						showModal: false
 					});
 				});

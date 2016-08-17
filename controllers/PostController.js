@@ -1,18 +1,19 @@
-var Post = require('../models/Post.js');
-var mongoose = require('mongoose');
+var Post = require('../models/Post')
+var Scraper = require('../utils/Scraper')
+var mongoose = require('mongoose')
 var Promise = require('bluebird')
 
 
 // - - - - - - - - - - - - - - - - - - - - HELPER METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 function convertToJson(posts){
-	var results = new Array();
+	var results = new Array()
     for (var i=0; i<posts.length; i++){
-  	  var p = posts[i];
-  	  results.push(p.summary());
+  	  var p = posts[i]
+  	  results.push(p.summary())
     }
 	
-	return results;
+	return results
 }
 
 module.exports = {
@@ -97,29 +98,66 @@ module.exports = {
 	},	
 
 	post: function(postInfo, completion){
-		var parts = postInfo.title.split(' ');
+		if (post.link.length == 0){
+			var parts = postInfo.title.split(' ')
+			var slug = ''
+			for (var i=0; i<parts.length; i++){
+				var word = parts[i]
+				slug += word
+				if (i != parts.length-1)
+					slug += '-'
+			}
 
-		var slug = '';
-		for (var i=0; i<parts.length; i++){
-			var word = parts[i];
-			slug += word;
-			if (i != parts.length-1)
-				slug += '-';
+			slug = slug.replace('?', '')
+			postInfo['slug'] = slug
+			Post.create(postInfo, function(err, post){
+				if (err){
+					completion({confirmation:'fail', message:err.message}, null)
+					return
+				}
+				
+				completion(null, post.summary())
+				return
+			})
+
+			return
 		}
 
-		slug = slug.replace('?', '');
-		postInfo['slug'] = slug;
-		Post.create(postInfo, function(err, post){
-			if (err){
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
-			}
-			
-			completion(null, post.summary());
-			return;
-		});
-	},
 
+		var props = ['og:title', 'og:image', 'og:description']
+		Scraper.scrape(post.link, props)
+		.then(function(result){
+			var keys = Object.keys(result)
+			for (var i=0; i<keys.length; i++){
+				var key = keys[i]
+				postInfo[key] = result[key]
+			}
+
+			var parts = postInfo.title.split(' ')
+			var slug = ''
+			for (var i=0; i<parts.length; i++){
+				var word = parts[i]
+				slug += word
+				if (i != parts.length-1)
+					slug += '-'
+			}
+
+			slug = slug.replace('?', '')
+			postInfo['slug'] = slug
+			Post.create(postInfo, function(err, post){
+				if (err){
+					completion({confirmation:'fail', message:err.message}, null)
+					return
+				}
+				
+				completion(null, post.summary())
+				return
+			})
+		})
+		.catch(function(err){
+			completion(err, null)
+		})
+	},
 
 
 	put: function(postId, postInfo, completion){
@@ -137,7 +175,6 @@ module.exports = {
 	delete: function(){
 
 	}
-
 }
 
 
