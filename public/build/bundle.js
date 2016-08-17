@@ -44818,7 +44818,8 @@
 		_createClass(RightSidebar, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this = this;
+				var _this3 = this;
+	
 				_APIManager2.default.handleGet('/api/post', { limit: '3' }, function (err, response) {
 	
 					if (err) {
@@ -44826,11 +44827,11 @@
 					}
 	
 					var posts = response.posts;
-					_this.setState({
+					_this3.setState({
 						posts: posts
 					});
 	
-					_this.fetchEvents();
+					_this3.fetchEvents();
 				});
 			}
 		}, {
@@ -44850,17 +44851,22 @@
 			value: function render() {
 				var posts = this.state.posts.map(function (post, i) {
 					var name = post.profile.name == null ? 'anon' : post.profile.name;
+					var link = post.link.length == 0 ? _react2.default.createElement(
+						'a',
+						{ href: '/post/' + post.slug },
+						post.title
+					) : _react2.default.createElement(
+						'a',
+						{ target: '_blank', href: post.link },
+						post.title
+					);
 					return _react2.default.createElement(
 						'div',
 						{ key: post.id, style: { border: '1px solid #ddd', padding: 12, background: '#f9f9f9', marginBottom: 16 } },
 						_react2.default.createElement(
 							'h5',
 							{ style: { fontWeight: 400, marginBottom: 0 } },
-							_react2.default.createElement(
-								'a',
-								{ href: '/post/' + post.slug },
-								post.title
-							)
+							link
 						),
 						_react2.default.createElement(
 							'span',

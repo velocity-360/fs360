@@ -17,19 +17,18 @@ class RightSidebar extends Component {
 	}
 
 	componentDidMount(){
-		var _this = this
-		api.handleGet('/api/post', {limit:'3'}, function(err, response){
+		api.handleGet('/api/post', {limit:'3'}, (err, response) => {
 
 			if (err){
 				return
 			}
 
 			var posts = response.posts
-			_this.setState({
+			this.setState({
 				posts: posts
 			})
 
-			_this.fetchEvents()
+			this.fetchEvents()
 		})
 	}
 
@@ -47,9 +46,12 @@ class RightSidebar extends Component {
 	render(){
 		var posts = this.state.posts.map(function(post, i){
 			var name = (post.profile.name == null ) ? 'anon' : post.profile.name
+			const link = (post.link.length == 0) ? <a href={'/post/'+post.slug}>{post.title}</a> : <a target="_blank" href={post.link}>{post.title}</a>
 			return (
 				<div key={post.id} style={{border:'1px solid #ddd', padding:12, background:'#f9f9f9', marginBottom:16}}>
-					<h5 style={{fontWeight:400, marginBottom:0}}><a href={'/post/'+post.slug}>{post.title}</a></h5>
+					<h5 style={{fontWeight:400, marginBottom:0}}>
+						{link}
+					</h5>
 					<span style={{fontWeight:100, fontSize:14}}>{name}</span>
 				</div>
 			)

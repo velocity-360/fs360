@@ -81,17 +81,22 @@ var RightSidebar = (function (Component) {
 			value: function render() {
 				var posts = this.state.posts.map(function (post, i) {
 					var name = post.profile.name == null ? "anon" : post.profile.name;
+					var link = post.link.length == 0 ? React.createElement(
+						"a",
+						{ href: "/post/" + post.slug },
+						post.title
+					) : React.createElement(
+						"a",
+						{ target: "_blank", href: post.link },
+						post.title
+					);
 					return React.createElement(
 						"div",
 						{ key: post.id, style: { border: "1px solid #ddd", padding: 12, background: "#f9f9f9", marginBottom: 16 } },
 						React.createElement(
 							"h5",
 							{ style: { fontWeight: 400, marginBottom: 0 } },
-							React.createElement(
-								"a",
-								{ href: "/post/" + post.slug },
-								post.title
-							)
+							link
 						),
 						React.createElement(
 							"span",
