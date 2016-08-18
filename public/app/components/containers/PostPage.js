@@ -52,7 +52,7 @@ class PostPage extends Component {
 			const post = this.props.posts[this.props.slug]
 			var updatedPost = Object.assign({}, post)
 			updatedPost.images.push(response.id)
-			this.updatePost(post)
+			this.updatePost(post, null)
 		})
 	}
 
@@ -79,10 +79,12 @@ class PostPage extends Component {
 		if (post == null)
 			return
 
-		this.updatePost(post)
+		this.updatePost(post, () => {
+			this.setState({isEditing: false})
+		})
 	}
 
-	updatePost(post){
+	updatePost(post, callback){
 		var url = '/api/post/'+post.id
 		api.handlePut(url, post, (err, response) => {
 			if (err){
@@ -91,7 +93,10 @@ class PostPage extends Component {
 			}
 
 			store.currentStore().dispatch(actions.postsRecieved([response.post]))
-			this.setState({isEditing: false})
+			if (callback == null)
+				return
+
+			callback()
 		})
 	}
 

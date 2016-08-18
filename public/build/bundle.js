@@ -61020,7 +61020,7 @@
 					var post = _this2.props.posts[_this2.props.slug];
 					var updatedPost = Object.assign({}, post);
 					updatedPost.images.push(response.id);
-					_this2.updatePost(post);
+					_this2.updatePost(post, null);
 				});
 			}
 		}, {
@@ -61037,6 +61037,8 @@
 		}, {
 			key: 'toggleEditing',
 			value: function toggleEditing(event) {
+				var _this3 = this;
+	
 				event.preventDefault();
 				if (this.state.isEditing == false) {
 					this.setState({ isEditing: true });
@@ -61047,13 +61049,13 @@
 				var post = this.props.posts[this.props.slug];
 				if (post == null) return;
 	
-				this.updatePost(post);
+				this.updatePost(post, function () {
+					_this3.setState({ isEditing: false });
+				});
 			}
 		}, {
 			key: 'updatePost',
-			value: function updatePost(post) {
-				var _this3 = this;
-	
+			value: function updatePost(post, callback) {
 				var url = '/api/post/' + post.id;
 				_utils.api.handlePut(url, post, function (err, response) {
 					if (err) {
@@ -61062,7 +61064,9 @@
 					}
 	
 					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved([response.post]));
-					_this3.setState({ isEditing: false });
+					if (callback == null) return;
+	
+					callback();
 				});
 			}
 		}, {

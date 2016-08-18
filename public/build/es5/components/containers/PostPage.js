@@ -87,7 +87,7 @@ var PostPage = (function (Component) {
 					var post = _this.props.posts[_this.props.slug];
 					var updatedPost = Object.assign({}, post);
 					updatedPost.images.push(response.id);
-					_this.updatePost(post);
+					_this.updatePost(post, null);
 				});
 			},
 			writable: true,
@@ -108,6 +108,7 @@ var PostPage = (function (Component) {
 		},
 		toggleEditing: {
 			value: function toggleEditing(event) {
+				var _this = this;
 				event.preventDefault();
 				if (this.state.isEditing == false) {
 					this.setState({ isEditing: true });
@@ -118,14 +119,15 @@ var PostPage = (function (Component) {
 				var post = this.props.posts[this.props.slug];
 				if (post == null) {
 					return;
-				}this.updatePost(post);
+				}this.updatePost(post, function () {
+					_this.setState({ isEditing: false });
+				});
 			},
 			writable: true,
 			configurable: true
 		},
 		updatePost: {
-			value: function updatePost(post) {
-				var _this = this;
+			value: function updatePost(post, callback) {
 				var url = "/api/post/" + post.id;
 				api.handlePut(url, post, function (err, response) {
 					if (err) {
@@ -134,7 +136,9 @@ var PostPage = (function (Component) {
 					}
 
 					store.currentStore().dispatch(actions.postsRecieved([response.post]));
-					_this.setState({ isEditing: false });
+					if (callback == null) return;
+
+					callback();
 				});
 			},
 			writable: true,
