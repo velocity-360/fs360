@@ -62488,7 +62488,7 @@
 									_react2.default.createElement(
 										'p',
 										{ style: { marginTop: 10 } },
-										'Complete our online application by midnight August 29th to apply for the course. To be eligible for a scholarship you must apply by midnight August 22nd.'
+										'Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships.'
 									),
 									_react2.default.createElement(
 										'a',
