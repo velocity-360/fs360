@@ -3,13 +3,10 @@ import { connect } from 'react-redux'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Dropzone from 'react-dropzone'
 import Loader from 'react-loader'
-import TextUtils from '../../utils/TextUtils'
-import CourseCard from '../../components/CourseCard'
-import Sidebar from '../../components/Sidebar'
-import Footer from '../../components/Footer'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import api from '../../utils/APIManager'
+import { TextUtils, api } from '../../utils'
+import { Footer, Nav, RightSidebar, Sidebar, CourseCard } from '../../components'
 
 
 class Account extends Component {
@@ -24,7 +21,7 @@ class Account extends Component {
 	}
 
 	componentDidMount(){
-		api.handleGet('/api/course', {subscribers:this.props.profile.id}, function(err, response){
+		api.handleGet('/api/course', {subscribers:this.props.profile.id}, (err, response) => {
 //			console.log('Fetch Courses: '+JSON.stringify(response))
 			if (err){
 				return

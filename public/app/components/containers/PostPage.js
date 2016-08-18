@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Loader from 'react-loader'
+import Dropzone from 'react-dropzone'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 import { Footer, Nav, RightSidebar } from '../../components'
@@ -11,7 +12,9 @@ class PostPage extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.toggleEditing = this.toggleEditing.bind(this)
+		this.uploadImage = this.uploadImage.bind(this)
 		this.editPost = this.editPost.bind(this)
+		this.updatePost = this.updatePost.bind(this)
 		this.state = {
 			showLoader: false,
 			isEditing: false
@@ -22,14 +25,34 @@ class PostPage extends Component {
 		if (this.props.posts[this.props.slug] != null)
 			return
 		
-		const url = '/api/post?slug='+this.props.slug
-		api.handleGet(url, null, (err, response) => {
+		const url = '/api/post'
+		api.handleGet(url, {slug:this.props.slug}, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
 			}
 
 			store.currentStore().dispatch(actions.postsRecieved(response.posts))
+		})
+	}
+
+	uploadImage(files){
+		this.setState({showLoader: true})
+
+		api.upload(files[0], (err, response) => {
+			this.setState({
+				showLoader: false
+			})
+
+			if (err){
+				alert(response.message)
+				return
+			}
+
+			const post = this.props.posts[this.props.slug]
+			var updatedPost = Object.assign({}, post)
+			updatedPost.images.push(response.id)
+			this.updatePost(post)
 		})
 	}
 
@@ -56,6 +79,10 @@ class PostPage extends Component {
 		if (post == null)
 			return
 
+		this.updatePost(post)
+	}
+
+	updatePost(post){
 		var url = '/api/post/'+post.id
 		api.handlePut(url, post, (err, response) => {
 			if (err){
@@ -67,6 +94,8 @@ class PostPage extends Component {
 			this.setState({isEditing: false})
 		})
 	}
+
+
 
 	render(){
 		const post = this.props.posts[this.props.slug]
@@ -88,8 +117,10 @@ class PostPage extends Component {
 
 		var title = null
 		var content = null
+		var upload = null
 		var image = (post.image.length == 0) ? null : <img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
 		var video = (post.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:100, width:178, marginTop:12}}>&nbsp;</div>
+
 
 		if (this.state.isEditing == true) {
 			title = (
@@ -102,6 +133,34 @@ class PostPage extends Component {
 			content = (
 				<div style={{background:'#fff', padding: 24}} className="panel-body">
 					<textarea id="text" onChange={this.editPost} placeholder="Text" style={{padding:0, width:'100%', border:'1px solid #ddd', background:'#f9f9f9', minHeight:360}} className="panel-body">{post.text}</textarea>
+				</div>
+			)
+
+			const images = post.images.map((image, i) => {
+				return (
+					<div key={image} className="col-md-4">
+						<div style={{padding:4}}>
+							<img src={'https://media-service.appspot.com/site/images/'+image+'?crop=260'} />
+						</div>
+					</div>
+				)
+			})
+
+			upload = (
+				<div>
+	                <div className="col_half">
+			            <Dropzone style={{width:100+'%', marginBottom:24, background:'#f9f9f9', border:'1px solid #ddd'}} onDrop={this.uploadImage}>
+			              <div style={{padding:24}}>
+			              	Upload Images Here.
+			              </div>
+			            </Dropzone>
+	                </div>
+
+	                <div className="col_half col_last">
+                		<div className="row">
+                			{images}
+                		</div>
+	                </div>
 				</div>
 			)
 		}
@@ -123,7 +182,7 @@ class PostPage extends Component {
 					<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body"></div>
 					<div style={{width:'50%', minWidth:240}}>{video}</div>
 				</div>
-			)
+			)		
 		}
 
 		var courses = this.props.courses.map(function(course, i){
@@ -172,6 +231,7 @@ class PostPage extends Component {
 											{content}
 
 										</div>
+										{upload}
 									</div>
 								</div>
 							</div>

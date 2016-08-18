@@ -25,20 +25,21 @@ var Dropzone = _interopRequire(require("react-dropzone"));
 
 var Loader = _interopRequire(require("react-loader"));
 
-var TextUtils = _interopRequire(require("../../utils/TextUtils"));
-
-var CourseCard = _interopRequire(require("../../components/CourseCard"));
-
-var Sidebar = _interopRequire(require("../../components/Sidebar"));
-
-var Footer = _interopRequire(require("../../components/Footer"));
-
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var api = _interopRequire(require("../../utils/APIManager"));
+var _utils = require("../../utils");
 
+var TextUtils = _utils.TextUtils;
+var api = _utils.api;
+var _components = require("../../components");
+
+var Footer = _components.Footer;
+var Nav = _components.Nav;
+var RightSidebar = _components.RightSidebar;
+var Sidebar = _components.Sidebar;
+var CourseCard = _components.CourseCard;
 var Account = (function (Component) {
 	function Account(props, context) {
 		_classCallCheck(this, Account);

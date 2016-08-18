@@ -18,6 +18,8 @@ var Component = _react.Component;
 var connect = require("react-redux").connect;
 var Loader = _interopRequire(require("react-loader"));
 
+var Dropzone = _interopRequire(require("react-dropzone"));
+
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -38,7 +40,9 @@ var PostPage = (function (Component) {
 
 		_get(Object.getPrototypeOf(PostPage.prototype), "constructor", this).call(this, props, context);
 		this.toggleEditing = this.toggleEditing.bind(this);
+		this.uploadImage = this.uploadImage.bind(this);
 		this.editPost = this.editPost.bind(this);
+		this.updatePost = this.updatePost.bind(this);
 		this.state = {
 			showLoader: false,
 			isEditing: false
@@ -52,14 +56,38 @@ var PostPage = (function (Component) {
 			value: function componentDidMount() {
 				if (this.props.posts[this.props.slug] != null) {
 					return;
-				}var url = "/api/post?slug=" + this.props.slug;
-				api.handleGet(url, null, function (err, response) {
+				}var url = "/api/post";
+				api.handleGet(url, { slug: this.props.slug }, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
 					}
 
 					store.currentStore().dispatch(actions.postsRecieved(response.posts));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		uploadImage: {
+			value: function uploadImage(files) {
+				var _this = this;
+				this.setState({ showLoader: true });
+
+				api.upload(files[0], function (err, response) {
+					_this.setState({
+						showLoader: false
+					});
+
+					if (err) {
+						alert(response.message);
+						return;
+					}
+
+					var post = _this.props.posts[_this.props.slug];
+					var updatedPost = Object.assign({}, post);
+					updatedPost.images.push(response.id);
+					_this.updatePost(post);
 				});
 			},
 			writable: true,
@@ -80,7 +108,6 @@ var PostPage = (function (Component) {
 		},
 		toggleEditing: {
 			value: function toggleEditing(event) {
-				var _this = this;
 				event.preventDefault();
 				if (this.state.isEditing == false) {
 					this.setState({ isEditing: true });
@@ -91,7 +118,15 @@ var PostPage = (function (Component) {
 				var post = this.props.posts[this.props.slug];
 				if (post == null) {
 					return;
-				}var url = "/api/post/" + post.id;
+				}this.updatePost(post);
+			},
+			writable: true,
+			configurable: true
+		},
+		updatePost: {
+			value: function updatePost(post) {
+				var _this = this;
+				var url = "/api/post/" + post.id;
 				api.handlePut(url, post, function (err, response) {
 					if (err) {
 						alert(response.message);
@@ -141,12 +176,14 @@ var PostPage = (function (Component) {
 
 				var title = null;
 				var content = null;
+				var upload = null;
 				var image = post.image.length == 0 ? null : React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + post.image + "?crop=260", alt: "Velocity 360" });
 				var video = post.wistia.length == 0 ? null : React.createElement(
 					"div",
 					{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 100, width: 178, marginTop: 12 } },
 					" "
 				);
+
 
 				if (this.state.isEditing == true) {
 					title = React.createElement(
@@ -163,6 +200,45 @@ var PostPage = (function (Component) {
 							"textarea",
 							{ id: "text", onChange: this.editPost, placeholder: "Text", style: { padding: 0, width: "100%", border: "1px solid #ddd", background: "#f9f9f9", minHeight: 360 }, className: "panel-body" },
 							post.text
+						)
+					);
+
+					var images = post.images.map(function (image, i) {
+						return React.createElement(
+							"div",
+							{ key: image, className: "col-md-4" },
+							React.createElement(
+								"div",
+								{ style: { padding: 4 } },
+								React.createElement("img", { src: "https://media-service.appspot.com/site/images/" + image + "?crop=260" })
+							)
+						);
+					});
+
+					upload = React.createElement(
+						"div",
+						null,
+						React.createElement(
+							"div",
+							{ className: "col_half" },
+							React.createElement(
+								Dropzone,
+								{ style: { width: 100 + "%", marginBottom: 24, background: "#f9f9f9", border: "1px solid #ddd" }, onDrop: this.uploadImage },
+								React.createElement(
+									"div",
+									{ style: { padding: 24 } },
+									"Upload Images Here."
+								)
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "col_half col_last" },
+							React.createElement(
+								"div",
+								{ className: "row" },
+								images
+							)
 						)
 					);
 				} else {
@@ -300,7 +376,8 @@ var PostPage = (function (Component) {
 													)
 												),
 												content
-											)
+											),
+											upload
 										)
 									)
 								),
