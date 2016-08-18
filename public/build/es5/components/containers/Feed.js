@@ -65,7 +65,7 @@ var Feed = (function (Component) {
 			value: function componentDidMount() {
 				if (this.props.posts.length > 0) {
 					return;
-				}api.handleGet("/api/post", {}, function (err, response) {
+				}api.handleGet("/api/post", { isPublic: "yes" }, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;

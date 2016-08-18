@@ -100,8 +100,6 @@ class PostPage extends Component {
 		})
 	}
 
-
-
 	render(){
 		const post = this.props.posts[this.props.slug]
 		var btnEdit = null

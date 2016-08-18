@@ -32,6 +32,8 @@ var MVP = _interopRequire(require("./containers/MVP"));
 
 var Project = _interopRequire(require("./containers/Project"));
 
+var Tutorials = _interopRequire(require("./containers/Tutorials"));
+
 var Course = _interopRequire(require("./containers/Course"));
 
 var Video = _interopRequire(require("./containers/Video"));
@@ -95,6 +97,9 @@ var Main = (function (Component) {
 
 					case "courses":
 						return page = React.createElement(Courses, { params: this.props.params });
+
+					case "tutorials":
+						return page = React.createElement(Tutorials, { params: this.props.params });
 
 					case "event":
 						return page = React.createElement(Event, { slug: this.props.slug });

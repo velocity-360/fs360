@@ -14,10 +14,13 @@ var Sidebar = _interopRequire(require("../components/Sidebar"));
 
 var Post = _interopRequire(require("../components/Post"));
 
+var Register = _interopRequire(require("../components/Register"));
+
 exports.Nav = Nav;
 exports.Footer = Footer;
 exports.Sidebar = Sidebar;
 exports.RightSidebar = RightSidebar;
+exports.Register = Register;
 exports.CourseCard = CourseCard;
 exports.Post = Post;
 Object.defineProperty(exports, "__esModule", {

@@ -8,6 +8,7 @@ import Feed from './containers/Feed'
 import PostPage from './containers/PostPage'
 import MVP from './containers/MVP'
 import Project from './containers/Project'
+import Tutorials from './containers/Tutorials'
 import Course from './containers/Course'
 import Video from './containers/Video'
 import Account from './containers/Account'
@@ -60,6 +61,9 @@ class Main extends Component {
 
 			case 'courses':
 				return page = <Courses params={this.props.params} />
+
+			case 'tutorials':
+				return page = <Tutorials params={this.props.params} />
 
 			case 'event':
 				return page = <Event slug={this.props.slug} />

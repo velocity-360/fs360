@@ -17,6 +17,7 @@ var eventController = require('../controllers/EventController')
 var projectController = require('../controllers/ProjectController')
 var unitController = require('../controllers/UnitController')
 var trackController = require('../controllers/TrackController')
+var tutorialController = require('../controllers/TutorialController')
 var controllers = {
 	course: courseController,
 	profile: profileController,
@@ -26,8 +27,9 @@ var controllers = {
 	event: eventController,
 	project: projectController,
 	unit: unitController,
-	track: trackController
-};
+	track: trackController,
+	tutorial: tutorialController
+}
 
 var fetchFile = function(path){
 	return new Promise(function (resolve, reject){

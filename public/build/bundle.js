@@ -22661,7 +22661,7 @@
 	
 	var _Feed2 = _interopRequireDefault(_Feed);
 	
-	var _PostPage = __webpack_require__(594);
+	var _PostPage = __webpack_require__(595);
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
@@ -22673,23 +22673,27 @@
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(598);
+	var _Tutorials = __webpack_require__(598);
+	
+	var _Tutorials2 = _interopRequireDefault(_Tutorials);
+	
+	var _Course = __webpack_require__(599);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Video = __webpack_require__(600);
+	var _Video = __webpack_require__(601);
 	
 	var _Video2 = _interopRequireDefault(_Video);
 	
-	var _Account = __webpack_require__(604);
+	var _Account = __webpack_require__(605);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(605);
+	var _Unit = __webpack_require__(606);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
-	var _Checkout = __webpack_require__(606);
+	var _Checkout = __webpack_require__(607);
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
@@ -22756,6 +22760,9 @@
 	
 					case 'courses':
 						return page = _react2.default.createElement(_Courses2.default, { params: this.props.params });
+	
+					case 'tutorials':
+						return page = _react2.default.createElement(_Tutorials2.default, { params: this.props.params });
 	
 					case 'event':
 						return page = _react2.default.createElement(_Event2.default, { slug: this.props.slug });
@@ -60145,7 +60152,7 @@
 	
 	var _utils = __webpack_require__(478);
 	
-	var _components = __webpack_require__(595);
+	var _components = __webpack_require__(593);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -60187,7 +60194,7 @@
 			value: function componentDidMount() {
 				if (this.props.posts.length > 0) return;
 	
-				_utils.api.handleGet('/api/post', {}, function (err, response) {
+				_utils.api.handleGet('/api/post', { isPublic: 'yes' }, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -60788,6 +60795,55 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Post = exports.CourseCard = exports.Register = exports.RightSidebar = exports.Sidebar = exports.Footer = exports.Nav = undefined;
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(477);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	var _CourseCard = __webpack_require__(589);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _Sidebar = __webpack_require__(588);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Post = __webpack_require__(594);
+	
+	var _Post2 = _interopRequireDefault(_Post);
+	
+	var _Register = __webpack_require__(470);
+	
+	var _Register2 = _interopRequireDefault(_Register);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.Nav = _Nav2.default;
+	exports.Footer = _Footer2.default;
+	exports.Sidebar = _Sidebar2.default;
+	exports.RightSidebar = _RightSidebar2.default;
+	exports.Register = _Register2.default;
+	exports.CourseCard = _CourseCard2.default;
+	exports.Post = _Post2.default;
+
+/***/ },
+/* 594 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -60910,7 +60966,7 @@
 	exports.default = Post;
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60943,7 +60999,7 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _components = __webpack_require__(595);
+	var _components = __webpack_require__(593);
 	
 	var _utils = __webpack_require__(478);
 	
@@ -61347,50 +61403,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(PostPage);
-
-/***/ },
-/* 595 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Post = exports.CourseCard = exports.RightSidebar = exports.Sidebar = exports.Footer = exports.Nav = undefined;
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(477);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
-	
-	var _CourseCard = __webpack_require__(589);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _Sidebar = __webpack_require__(588);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Post = __webpack_require__(593);
-	
-	var _Post2 = _interopRequireDefault(_Post);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.Nav = _Nav2.default;
-	exports.Footer = _Footer2.default;
-	exports.Sidebar = _Sidebar2.default;
-	exports.RightSidebar = _RightSidebar2.default;
-	exports.CourseCard = _CourseCard2.default;
-	exports.Post = _Post2.default;
 
 /***/ },
 /* 596 */
@@ -62011,6 +62023,212 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
+	var _reactRedux = __webpack_require__(168);
+	
+	var _utils = __webpack_require__(478);
+	
+	var _components = __webpack_require__(593);
+	
+	var _actions = __webpack_require__(459);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tutorials = function (_Component) {
+		_inherits(Tutorials, _Component);
+	
+		function Tutorials(props, context) {
+			_classCallCheck(this, Tutorials);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tutorials).call(this, props, context));
+	
+			_this.state = {};
+			return _this;
+		}
+	
+		_createClass(Tutorials, [{
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'clearfix' },
+					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
+					_react2.default.createElement(
+						'section',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container clearfix' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col_full bottommargin-sm' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'row' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-4' },
+											_react2.default.createElement(
+												'div',
+												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
+												_react2.default.createElement(
+													'div',
+													{ className: 'fancy-title title-bottom-border' },
+													_react2.default.createElement(
+														'h3',
+														{ style: { fontWeight: 400 } },
+														'Tutorial Title'
+													)
+												),
+												_react2.default.createElement(
+													'p',
+													{ style: { height: 100 } },
+													'Tutorial description.'
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+													'View'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-4' },
+											_react2.default.createElement(
+												'div',
+												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
+												_react2.default.createElement(
+													'div',
+													{ className: 'fancy-title title-bottom-border' },
+													_react2.default.createElement(
+														'h3',
+														{ style: { fontWeight: 400 } },
+														'Tutorial Title'
+													)
+												),
+												_react2.default.createElement(
+													'p',
+													{ style: { height: 100 } },
+													'Tutorial description.'
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+													'View'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-4' },
+											_react2.default.createElement(
+												'div',
+												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
+												_react2.default.createElement(
+													'div',
+													{ className: 'fancy-title title-bottom-border' },
+													_react2.default.createElement(
+														'h3',
+														{ style: { fontWeight: 400 } },
+														'Tutorial Title'
+													)
+												),
+												_react2.default.createElement(
+													'p',
+													{ style: { height: 100 } },
+													'Tutorial description.'
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+													'View'
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-md-4' },
+											_react2.default.createElement(
+												'div',
+												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
+												_react2.default.createElement(
+													'div',
+													{ className: 'fancy-title title-bottom-border' },
+													_react2.default.createElement(
+														'h3',
+														{ style: { fontWeight: 400 } },
+														'Tutorial Title'
+													)
+												),
+												_react2.default.createElement(
+													'p',
+													{ style: { height: 100 } },
+													'Tutorial description.'
+												),
+												_react2.default.createElement(
+													'a',
+													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+													'View'
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement('hr', null),
+					_react2.default.createElement(_components.Register, null),
+					_react2.default.createElement(_components.Footer, null)
+				);
+			}
+		}]);
+	
+		return Tutorials;
+	}(_react.Component);
+	
+	exports.default = Tutorials;
+
+/***/ },
+/* 599 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(205);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
 	var _reactLoader = __webpack_require__(461);
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
@@ -62025,7 +62243,7 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(599);
+	var _Application = __webpack_require__(600);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -63134,7 +63352,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 599 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63396,7 +63614,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 600 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63433,11 +63651,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CTA = __webpack_require__(601);
+	var _CTA = __webpack_require__(602);
 	
 	var _CTA2 = _interopRequireDefault(_CTA);
 	
-	var _CourseSection = __webpack_require__(602);
+	var _CourseSection = __webpack_require__(603);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -63445,11 +63663,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(599);
+	var _Application = __webpack_require__(600);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(603);
+	var _DetailBox = __webpack_require__(604);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -63917,7 +64135,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Video);
 
 /***/ },
-/* 601 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64402,7 +64620,7 @@
 	exports.default = CTA;
 
 /***/ },
-/* 602 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64567,7 +64785,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 603 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64760,7 +64978,7 @@
 	exports.default = DetailBox;
 
 /***/ },
-/* 604 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64799,7 +65017,7 @@
 	
 	var _utils = __webpack_require__(478);
 	
-	var _components = __webpack_require__(595);
+	var _components = __webpack_require__(593);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -65096,7 +65314,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 605 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65217,7 +65435,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
 
 /***/ },
-/* 606 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

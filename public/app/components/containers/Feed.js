@@ -35,7 +35,7 @@ class Feed extends Component {
 		if (this.props.posts.length > 0)
 			return
 
-		api.handleGet('/api/post', {}, (err, response) => {
+		api.handleGet('/api/post', {isPublic:'yes'}, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
