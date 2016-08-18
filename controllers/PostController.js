@@ -130,6 +130,9 @@ module.exports = {
 			for (var i=0; i<keys.length; i++){
 				var key = keys[i]
 				postInfo[key] = result[key]
+				
+				if (key == 'description')
+					postInfo['text'] = result[key]
 			}
 
 			var parts = postInfo.title.split(' ')
