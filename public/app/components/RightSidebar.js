@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { TextUtils, api } from '../utils'
 import store from '../stores/store'
 import actions from '../actions/actions'
-import TextUtils from '../utils/TextUtils'
-import api from '../utils/APIManager'
+
 
 class RightSidebar extends Component {
 	constructor(props, context){

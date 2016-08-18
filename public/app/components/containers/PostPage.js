@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Loader from 'react-loader'
-import Nav from '../../components/Nav'
-import Footer from '../../components/Footer'
-import RightSidebar from '../../components/RightSidebar'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import { connect } from 'react-redux'
-import DateUtils from '../../utils/DateUtils'
-import TextUtils from '../../utils/TextUtils'
-import api from '../../utils/APIManager'
+import { Footer, Nav, RightSidebar } from '../../components'
+import { TextUtils, DateUtils, api } from '../../utils'
 
 
 class PostPage extends Component {

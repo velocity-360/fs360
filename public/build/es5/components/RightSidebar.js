@@ -21,13 +21,13 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
 var connect = require("react-redux").connect;
+var _utils = require("../utils");
+
+var TextUtils = _utils.TextUtils;
+var api = _utils.api;
 var store = _interopRequire(require("../stores/store"));
 
 var actions = _interopRequire(require("../actions/actions"));
-
-var TextUtils = _interopRequire(require("../utils/TextUtils"));
-
-var api = _interopRequire(require("../utils/APIManager"));
 
 var RightSidebar = (function (Component) {
 	function RightSidebar(props, context) {

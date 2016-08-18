@@ -15,25 +15,23 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var connect = require("react-redux").connect;
 var Loader = _interopRequire(require("react-loader"));
-
-var Nav = _interopRequire(require("../../components/Nav"));
-
-var Footer = _interopRequire(require("../../components/Footer"));
-
-var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
 
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var connect = require("react-redux").connect;
-var DateUtils = _interopRequire(require("../../utils/DateUtils"));
+var _components = require("../../components");
 
-var TextUtils = _interopRequire(require("../../utils/TextUtils"));
+var Footer = _components.Footer;
+var Nav = _components.Nav;
+var RightSidebar = _components.RightSidebar;
+var _utils = require("../../utils");
 
-var api = _interopRequire(require("../../utils/APIManager"));
-
+var TextUtils = _utils.TextUtils;
+var DateUtils = _utils.DateUtils;
+var api = _utils.api;
 var PostPage = (function (Component) {
 	function PostPage(props, context) {
 		_classCallCheck(this, PostPage);

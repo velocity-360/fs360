@@ -22665,31 +22665,31 @@
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
-	var _MVP = __webpack_require__(594);
+	var _MVP = __webpack_require__(596);
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Project = __webpack_require__(595);
+	var _Project = __webpack_require__(597);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(596);
+	var _Course = __webpack_require__(598);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Video = __webpack_require__(598);
+	var _Video = __webpack_require__(600);
 	
 	var _Video2 = _interopRequireDefault(_Video);
 	
-	var _Account = __webpack_require__(602);
+	var _Account = __webpack_require__(604);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
-	var _Unit = __webpack_require__(603);
+	var _Unit = __webpack_require__(605);
 	
 	var _Unit2 = _interopRequireDefault(_Unit);
 	
-	var _Checkout = __webpack_require__(604);
+	var _Checkout = __webpack_require__(606);
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
@@ -44775,6 +44775,8 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
+	var _utils = __webpack_require__(595);
+	
 	var _store = __webpack_require__(194);
 	
 	var _store2 = _interopRequireDefault(_store);
@@ -44782,14 +44784,6 @@
 	var _actions = __webpack_require__(459);
 	
 	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _TextUtils = __webpack_require__(472);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44820,7 +44814,7 @@
 			value: function componentDidMount() {
 				var _this3 = this;
 	
-				_APIManager2.default.handleGet('/api/post', { limit: '3' }, function (err, response) {
+				_utils.api.handleGet('/api/post', { limit: '3' }, function (err, response) {
 	
 					if (err) {
 						return;
@@ -44838,7 +44832,7 @@
 			key: 'fetchEvents',
 			value: function fetchEvents() {
 				var _this = this;
-				_APIManager2.default.handleGet('/api/event', { limit: '3' }, function (err, response) {
+				_utils.api.handleGet('/api/event', { limit: '3' }, function (err, response) {
 					if (err) {
 						return;
 					}
@@ -60913,21 +60907,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRedux = __webpack_require__(168);
+	
 	var _reactLoader = __webpack_require__(461);
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(477);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
 	
 	var _store = __webpack_require__(194);
 	
@@ -60937,19 +60921,9 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _reactRedux = __webpack_require__(168);
+	var _components = __webpack_require__(594);
 	
-	var _DateUtils = __webpack_require__(487);
-	
-	var _DateUtils2 = _interopRequireDefault(_DateUtils);
-	
-	var _TextUtils = __webpack_require__(472);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
+	var _utils = __webpack_require__(595);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -60982,7 +60956,7 @@
 				if (this.props.posts[this.props.slug] != null) return;
 	
 				var url = '/api/post?slug=' + this.props.slug;
-				_APIManager2.default.handleGet(url, null, function (err, response) {
+				_utils.api.handleGet(url, null, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -61018,7 +60992,7 @@
 				if (post == null) return;
 	
 				var url = '/api/post/' + post.id;
-				_APIManager2.default.handlePut(url, post, function (err, response) {
+				_utils.api.handlePut(url, post, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -61108,7 +61082,7 @@
 							{ style: { textAlign: 'center' } },
 							image
 						),
-						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _TextUtils2.default.convertToHtml(post.text) }, className: 'panel-body' }),
+						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(post.text) }, className: 'panel-body' }),
 						_react2.default.createElement(
 							'div',
 							{ style: { width: '50%', minWidth: 240 } },
@@ -61168,7 +61142,7 @@
 				return _react2.default.createElement(
 					'div',
 					{ className: 'clearfix' },
-					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
+					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
 					_react2.default.createElement(
 						'section',
 						null,
@@ -61201,7 +61175,7 @@
 														null,
 														_react2.default.createElement('i', { className: 'icon-calendar3' }),
 														' ',
-														_DateUtils2.default.formattedDate(post.timestamp)
+														_utils.DateUtils.formattedDate(post.timestamp)
 													),
 													_react2.default.createElement(
 														'li',
@@ -61231,7 +61205,7 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
-									_react2.default.createElement(_RightSidebar2.default, null)
+									_react2.default.createElement(_components.RightSidebar, null)
 								)
 							)
 						)
@@ -61258,7 +61232,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(_Footer2.default, null)
+					_react2.default.createElement(_components.Footer, null)
 				);
 			}
 		}]);
@@ -61279,6 +61253,64 @@
 
 /***/ },
 /* 594 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.RightSidebar = exports.Footer = exports.Nav = undefined;
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(477);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.Nav = _Nav2.default;
+	exports.Footer = _Footer2.default;
+	exports.RightSidebar = _RightSidebar2.default;
+
+/***/ },
+/* 595 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.DateUtils = exports.TextUtils = exports.api = undefined;
+	
+	var _APIManager = __webpack_require__(463);
+	
+	var _APIManager2 = _interopRequireDefault(_APIManager);
+	
+	var _TextUtils = __webpack_require__(472);
+	
+	var _TextUtils2 = _interopRequireDefault(_TextUtils);
+	
+	var _DateUtils = __webpack_require__(487);
+	
+	var _DateUtils2 = _interopRequireDefault(_DateUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.api = _APIManager2.default;
+	exports.TextUtils = _TextUtils2.default;
+	exports.DateUtils = _DateUtils2.default;
+
+/***/ },
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61578,7 +61610,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
 
 /***/ },
-/* 595 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61877,7 +61909,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 596 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61910,7 +61942,7 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(597);
+	var _Application = __webpack_require__(599);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -63019,7 +63051,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 597 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63281,7 +63313,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 598 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63318,11 +63350,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CTA = __webpack_require__(599);
+	var _CTA = __webpack_require__(601);
 	
 	var _CTA2 = _interopRequireDefault(_CTA);
 	
-	var _CourseSection = __webpack_require__(600);
+	var _CourseSection = __webpack_require__(602);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -63330,11 +63362,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(597);
+	var _Application = __webpack_require__(599);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(601);
+	var _DetailBox = __webpack_require__(603);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -63802,7 +63834,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Video);
 
 /***/ },
-/* 599 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64287,7 +64319,7 @@
 	exports.default = CTA;
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64452,7 +64484,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64645,7 +64677,7 @@
 	exports.default = DetailBox;
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64997,7 +65029,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65118,7 +65150,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Unit);
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
