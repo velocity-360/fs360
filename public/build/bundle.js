@@ -22665,23 +22665,23 @@
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
-	var _MVP = __webpack_require__(595);
+	var _MVP = __webpack_require__(596);
 	
 	var _MVP2 = _interopRequireDefault(_MVP);
 	
-	var _Project = __webpack_require__(596);
+	var _Project = __webpack_require__(597);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
-	var _Course = __webpack_require__(597);
+	var _Course = __webpack_require__(598);
 	
 	var _Course2 = _interopRequireDefault(_Course);
 	
-	var _Video = __webpack_require__(599);
+	var _Video = __webpack_require__(600);
 	
 	var _Video2 = _interopRequireDefault(_Video);
 	
-	var _Account = __webpack_require__(603);
+	var _Account = __webpack_require__(604);
 	
 	var _Account2 = _interopRequireDefault(_Account);
 	
@@ -60125,6 +60125,8 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
+	var _reactRedux = __webpack_require__(168);
+	
 	var _reactDropzone = __webpack_require__(592);
 	
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
@@ -60132,18 +60134,6 @@
 	var _reactLoader = __webpack_require__(461);
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
-	
-	var _Sidebar = __webpack_require__(588);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _Post = __webpack_require__(593);
-	
-	var _Post2 = _interopRequireDefault(_Post);
 	
 	var _store = __webpack_require__(194);
 	
@@ -60153,11 +60143,9 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _reactRedux = __webpack_require__(168);
+	var _utils = __webpack_require__(478);
 	
-	var _APIManager = __webpack_require__(463);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
+	var _components = __webpack_require__(595);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -60199,7 +60187,7 @@
 			value: function componentDidMount() {
 				if (this.props.posts.length > 0) return;
 	
-				_APIManager2.default.handleGet('/api/post', {}, function (err, response) {
+				_utils.api.handleGet('/api/post', {}, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -60232,7 +60220,7 @@
 					showLoader: true
 				});
 	
-				_APIManager2.default.upload(files[0], function (err, response) {
+				_utils.api.upload(files[0], function (err, response) {
 					_this2.setState({
 						showLoader: false
 					});
@@ -60276,7 +60264,7 @@
 					};
 				}
 	
-				_APIManager2.default.handlePost('/api/post', post, function (err, response) {
+				_utils.api.handlePost('/api/post', post, function (err, response) {
 					if (err) {
 						alert(err);
 						return;
@@ -60292,7 +60280,7 @@
 			key: 'render',
 			value: function render() {
 				var postList = this.props.posts.map(function (post) {
-					return _react2.default.createElement(_Post2.default, { key: post.id, post: post });
+					return _react2.default.createElement(_components.Post, { key: post.id, post: post });
 				});
 	
 				var btnSubmit = this.props.currentUser.id == null ? null : _react2.default.createElement(
@@ -60305,7 +60293,7 @@
 					'div',
 					{ style: { background: '#f5f5f5' } },
 					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
-					_react2.default.createElement(_Sidebar2.default, null),
+					_react2.default.createElement(_components.Sidebar, null),
 					_react2.default.createElement(
 						'section',
 						{ id: 'content' },
@@ -60393,7 +60381,7 @@
 							)
 						)
 					),
-					_react2.default.createElement(_Footer2.default, null)
+					_react2.default.createElement(_components.Footer, null)
 				);
 			}
 		}]);
@@ -60807,13 +60795,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _TextUtils = __webpack_require__(472);
-	
-	var _TextUtils2 = _interopRequireDefault(_TextUtils);
-	
-	var _DateUtils = __webpack_require__(479);
-	
-	var _DateUtils2 = _interopRequireDefault(_DateUtils);
+	var _utils = __webpack_require__(478);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -60835,8 +60817,19 @@
 		_createClass(Post, [{
 			key: 'render',
 			value: function render() {
-				var timestamp = new Date(this.props.post.timestamp);
-				var date = _DateUtils2.default.formattedDate(timestamp);
+				var post = this.props.post;
+				var timestamp = new Date(post.timestamp);
+				var date = _utils.DateUtils.formattedDate(timestamp);
+				var image = post.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260' : post.image;
+				var link = post.link.length == 0 ? _react2.default.createElement(
+					'a',
+					{ href: '/post/' + post.slug },
+					post.title
+				) : _react2.default.createElement(
+					'a',
+					{ target: '_blank', href: post.link },
+					post.title
+				);
 	
 				return _react2.default.createElement(
 					'div',
@@ -60844,7 +60837,7 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'entry-image' },
-						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff' }, className: 'image_fade', src: 'https://media-service.appspot.com/site/images/' + this.props.post.image + '?crop=260', alt: 'Velocity 360' })
+						_react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', width: 220 }, className: 'image_fade', src: image, alt: 'Velocity 360' })
 					),
 					_react2.default.createElement(
 						'div',
@@ -60855,11 +60848,7 @@
 							_react2.default.createElement(
 								'h2',
 								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '/post/' + this.props.post.slug },
-									this.props.post.title
-								)
+								link
 							)
 						),
 						_react2.default.createElement(
@@ -60880,7 +60869,7 @@
 									{ href: '#' },
 									_react2.default.createElement('i', { className: 'icon-user' }),
 									' ',
-									this.props.post.profile.name
+									post.profile.name
 								)
 							),
 							_react2.default.createElement(
@@ -60891,7 +60880,7 @@
 									{ href: 'blog-single.html#comments' },
 									_react2.default.createElement('i', { className: 'icon-comments' }),
 									' ',
-									this.props.post.numReplies,
+									post.numReplies,
 									' comments'
 								)
 							)
@@ -60905,7 +60894,7 @@
 								_react2.default.createElement(
 									'div',
 									{ style: { padding: 16 }, className: 'panel-body' },
-									_TextUtils2.default.truncateText(this.props.post.text, 260)
+									_utils.TextUtils.truncateText(post.text, 260)
 								)
 							)
 						)
@@ -60954,7 +60943,7 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _components = __webpack_require__(604);
+	var _components = __webpack_require__(595);
 	
 	var _utils = __webpack_require__(478);
 	
@@ -61368,6 +61357,50 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Post = exports.CourseCard = exports.RightSidebar = exports.Sidebar = exports.Footer = exports.Nav = undefined;
+	
+	var _Nav = __webpack_require__(458);
+	
+	var _Nav2 = _interopRequireDefault(_Nav);
+	
+	var _Footer = __webpack_require__(476);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _RightSidebar = __webpack_require__(477);
+	
+	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
+	
+	var _CourseCard = __webpack_require__(589);
+	
+	var _CourseCard2 = _interopRequireDefault(_CourseCard);
+	
+	var _Sidebar = __webpack_require__(588);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Post = __webpack_require__(593);
+	
+	var _Post2 = _interopRequireDefault(_Post);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.Nav = _Nav2.default;
+	exports.Footer = _Footer2.default;
+	exports.Sidebar = _Sidebar2.default;
+	exports.RightSidebar = _RightSidebar2.default;
+	exports.CourseCard = _CourseCard2.default;
+	exports.Post = _Post2.default;
+
+/***/ },
+/* 596 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -61660,7 +61693,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(MVP);
 
 /***/ },
-/* 596 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61959,7 +61992,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Project);
 
 /***/ },
-/* 597 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61992,7 +62025,7 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(598);
+	var _Application = __webpack_require__(599);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
@@ -63101,7 +63134,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Course);
 
 /***/ },
-/* 598 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63363,7 +63396,7 @@
 	exports.default = Application;
 
 /***/ },
-/* 599 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63400,11 +63433,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _CTA = __webpack_require__(600);
+	var _CTA = __webpack_require__(601);
 	
 	var _CTA2 = _interopRequireDefault(_CTA);
 	
-	var _CourseSection = __webpack_require__(601);
+	var _CourseSection = __webpack_require__(602);
 	
 	var _CourseSection2 = _interopRequireDefault(_CourseSection);
 	
@@ -63412,11 +63445,11 @@
 	
 	var _CourseCard2 = _interopRequireDefault(_CourseCard);
 	
-	var _Application = __webpack_require__(598);
+	var _Application = __webpack_require__(599);
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
-	var _DetailBox = __webpack_require__(602);
+	var _DetailBox = __webpack_require__(603);
 	
 	var _DetailBox2 = _interopRequireDefault(_DetailBox);
 	
@@ -63884,7 +63917,7 @@
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Video);
 
 /***/ },
-/* 600 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64369,7 +64402,7 @@
 	exports.default = CTA;
 
 /***/ },
-/* 601 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64534,7 +64567,7 @@
 	exports.default = CourseSection;
 
 /***/ },
-/* 602 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64727,7 +64760,7 @@
 	exports.default = DetailBox;
 
 /***/ },
-/* 603 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64766,7 +64799,7 @@
 	
 	var _utils = __webpack_require__(478);
 	
-	var _components = __webpack_require__(604);
+	var _components = __webpack_require__(595);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -65061,45 +65094,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Account);
-
-/***/ },
-/* 604 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.CourseCard = exports.RightSidebar = exports.Sidebar = exports.Footer = exports.Nav = undefined;
-	
-	var _Nav = __webpack_require__(458);
-	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _Footer = __webpack_require__(476);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	var _RightSidebar = __webpack_require__(477);
-	
-	var _RightSidebar2 = _interopRequireDefault(_RightSidebar);
-	
-	var _CourseCard = __webpack_require__(589);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _Sidebar = __webpack_require__(588);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.Nav = _Nav2.default;
-	exports.Footer = _Footer2.default;
-	exports.Sidebar = _Sidebar2.default;
-	exports.RightSidebar = _RightSidebar2.default;
-	exports.CourseCard = _CourseCard2.default;
 
 /***/ },
 /* 605 */

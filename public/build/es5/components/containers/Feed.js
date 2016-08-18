@@ -20,23 +20,21 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
+var connect = require("react-redux").connect;
 var Dropzone = _interopRequire(require("react-dropzone"));
 
 var Loader = _interopRequire(require("react-loader"));
-
-var Sidebar = _interopRequire(require("../../components/Sidebar"));
-
-var Footer = _interopRequire(require("../../components/Footer"));
-
-var Post = _interopRequire(require("../../components/Post"));
 
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 
-var connect = require("react-redux").connect;
-var api = _interopRequire(require("../../utils/APIManager"));
+var api = require("../../utils").api;
+var _components = require("../../components");
 
+var Footer = _components.Footer;
+var Sidebar = _components.Sidebar;
+var Post = _components.Post;
 var Feed = (function (Component) {
 	function Feed(props, context) {
 		_classCallCheck(this, Feed);

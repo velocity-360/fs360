@@ -12,11 +12,14 @@ var CourseCard = _interopRequire(require("../components/CourseCard"));
 
 var Sidebar = _interopRequire(require("../components/Sidebar"));
 
+var Post = _interopRequire(require("../components/Post"));
+
 exports.Nav = Nav;
 exports.Footer = Footer;
 exports.Sidebar = Sidebar;
 exports.RightSidebar = RightSidebar;
 exports.CourseCard = CourseCard;
+exports.Post = Post;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });

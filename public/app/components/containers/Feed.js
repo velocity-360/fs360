@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import Loader from 'react-loader'
-import Sidebar from '../../components/Sidebar'
-import Footer from '../../components/Footer'
-import Post from '../../components/Post'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import { connect } from 'react-redux'
-import api from '../../utils/APIManager'
+import { api } from '../../utils'
+import { Footer, Sidebar, Post } from '../../components'
+
 
 class Feed extends Component {
 
@@ -129,9 +128,7 @@ class Feed extends Component {
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<Sidebar />
 				<section id="content">
-
 					<div className="content-wrap" style={{background:'#f5f5f5'}}>
-
 						<div className="container clearfix">
 							<div className="heading-block center">
 								<h1>Blog</h1>
@@ -141,13 +138,12 @@ class Feed extends Component {
 							<div className="postcontent nobottommargin clearfix">
 								<div id="posts" className="small-thumbs">
 									{postList}
-
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</section>
+
 		        <Modal show={this.state.showModal} onHide={this.closeModal} bsSize="large" >
 			        <Modal.Header closeButton style={{textAlign:'center', padding:12}}>
 			        	<h3>Submit Post</h3>

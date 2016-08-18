@@ -15,7 +15,6 @@ var PostSchema = new mongoose.Schema({
 	timestamp: {type:Date, default:Date.now}
 })
 
-
 PostSchema.methods.summary = function() {
 	var summary = {
 		'title':this.title,
@@ -34,9 +33,5 @@ PostSchema.methods.summary = function() {
 	}
 	return summary
 }
-
-
-
-
 
 module.exports = mongoose.model('PostSchema', PostSchema);

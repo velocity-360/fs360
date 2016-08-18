@@ -15,10 +15,10 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
-var TextUtils = _interopRequire(require("../utils/TextUtils"));
+var _utils = require("../utils");
 
-var DateUtils = _interopRequire(require("../utils/DateUtils"));
-
+var TextUtils = _utils.TextUtils;
+var DateUtils = _utils.DateUtils;
 var Post = (function (Component) {
 	function Post(props, context) {
 		_classCallCheck(this, Post);
@@ -31,8 +31,19 @@ var Post = (function (Component) {
 	_prototypeProperties(Post, null, {
 		render: {
 			value: function render() {
-				var timestamp = new Date(this.props.post.timestamp);
+				var post = this.props.post;
+				var timestamp = new Date(post.timestamp);
 				var date = DateUtils.formattedDate(timestamp);
+				var image = post.image.indexOf("http") == -1 ? "https://media-service.appspot.com/site/images/" + post.image + "?crop=260" : post.image;
+				var link = post.link.length == 0 ? React.createElement(
+					"a",
+					{ href: "/post/" + post.slug },
+					post.title
+				) : React.createElement(
+					"a",
+					{ target: "_blank", href: post.link },
+					post.title
+				);
 
 				return React.createElement(
 					"div",
@@ -40,7 +51,7 @@ var Post = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "entry-image" },
-						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff" }, className: "image_fade", src: "https://media-service.appspot.com/site/images/" + this.props.post.image + "?crop=260", alt: "Velocity 360" })
+						React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", width: 220 }, className: "image_fade", src: image, alt: "Velocity 360" })
 					),
 					React.createElement(
 						"div",
@@ -51,11 +62,7 @@ var Post = (function (Component) {
 							React.createElement(
 								"h2",
 								null,
-								React.createElement(
-									"a",
-									{ href: "/post/" + this.props.post.slug },
-									this.props.post.title
-								)
+								link
 							)
 						),
 						React.createElement(
@@ -76,7 +83,7 @@ var Post = (function (Component) {
 									{ href: "#" },
 									React.createElement("i", { className: "icon-user" }),
 									" ",
-									this.props.post.profile.name
+									post.profile.name
 								)
 							),
 							React.createElement(
@@ -87,7 +94,7 @@ var Post = (function (Component) {
 									{ href: "blog-single.html#comments" },
 									React.createElement("i", { className: "icon-comments" }),
 									" ",
-									this.props.post.numReplies,
+									post.numReplies,
 									" comments"
 								)
 							)
@@ -101,7 +108,7 @@ var Post = (function (Component) {
 								React.createElement(
 									"div",
 									{ style: { padding: 16 }, className: "panel-body" },
-									TextUtils.truncateText(this.props.post.text, 260)
+									TextUtils.truncateText(post.text, 260)
 								)
 							)
 						)
