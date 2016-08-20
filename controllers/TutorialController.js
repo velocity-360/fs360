@@ -78,7 +78,7 @@ module.exports = {
 				return
 			}
 			
-			completion(null, Tutorial.summary())
+			completion(null, tutorial.summary())
 			return
 		})
 	},
@@ -91,7 +91,7 @@ module.exports = {
 				return
 			}
 			
-			completion(null, Tutorial.summary())
+			completion(null, tutorial.summary())
 			return
 		})
 	},

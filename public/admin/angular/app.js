@@ -7,6 +7,7 @@ var modules = [
     'CoursesModule',
     'ProjectModule',
     'EventsModule',
+    'TutorialsModule',
     'SeriesModule',
     'GeneralServiceModule',
     'RestServiceModule',

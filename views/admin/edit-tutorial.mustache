@@ -14,7 +14,6 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
 
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
         <!-- Angular -->
@@ -40,70 +39,42 @@
         <script src='/admin/angular/controllers/scrape.js'></script>
         <script src='/admin/angular/controllers/series.js'></script>
         <script src='/admin/angular/controllers/project.js'></script>
-        
     </head>
     
-    <body ng-controller="CoursesController" ng-init="init()">
+    <body ng-controller="TutorialsController" ng-init="init()">
         {{>login}}
         {{>nav}}
         
         
-        <div class="main-container">
+        <div class="main-container container">
         
-          <section class="page-title page-title-4 image-bg overlay parallax">
-                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); top: -100px; background: url('/admin/img/cover12.jpg');">
-                    <img alt="Background Image" class="background-image" src="/admin/img/cover12.jpg" style="display: none;">
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 class="uppercase mb0">Courses</h3>
+            <section>
+                <h4>Edit Tutorial</h4>
+
+                <div class="row">
+                    <div class="col-md-6 mb-xs-24">
+                        <input ng-model="tutorial.title" class="form-control" type="text" placeholder="Title" />
+                        <input ng-model="tutorial.price" class="form-control" type="text" placeholder="Price" />
+                        <textarea ng-model="tutorial.description" class="form-control" type="text" placeholder="Description" style="height:220px"></textarea>
+                        <div style="border:1px solid #ddd;height:96px;background:#f9f9f9;padding:12px;color:#777;margin-bottom:24px" ng-file-drop="uploadImage($files)">
+                            <img style="width:72px;border:1px solid #ddd" ng-show="tutorial.image.length > 0" ng-src="https://media-service.appspot.com/site/images/<% tutorial.image %>?crop=360" />
+                            Drag &amp; drop image
                         </div>
-                        <div class="col-md-6 text-right">
-                            <ol class="breadcrumb breadcrumb-2">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/">Forum</a></li>
-                                <li class="active">Post</li>
-                            </ol>
-                        </div>
+
+                        <a class="btn btn-rounded btn-lg" ng-click="updateTutorial()" href="">Update</a>
+                        <a ng-show="tutorial.id != null" class="btn btn-rounded btn-lg" ng-click="removeTutorial()" href="">Delete Event</a>
                     </div>
-                    <!--end of row-->
+
+                    <div class="col-md-6 mb-xs-24">
+                        <h5>Posts</h5>
+                        <ol style="margin-left:24px">
+                            <li ng-repeat="post in tutorial.posts track by $index"><% post.title %></li>
+                        </ol>
+                        <input ng-model="post" class="form-control" type="text" placeholder="Post ID" />
+                        <a class="btn btn-rounded btn-lg" ng-click="addPost()" href="">Add Post</a>
+                    </div>                    
+
                 </div>
-                <!--end of container-->
-            </section>
-                    
-            
-            <section style="border-top:1px solid #ddd">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-md-6 mb-xs-24">
-                            <h4>Courses</h4>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <td>Title</td>
-                                        <td>Type</td>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr ng-repeat="course in courses track by $index">
-                                        <td><a href="/admin/edit-course/<% course.id %>"><% course.title %></a></td>
-                                        <td><% course.type %></td>
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                            
-                        </div>
-
-
-                        
-                    </div>
-                    <!--end of container row-->
-                </div>
-                <!--end of container-->
             </section>
             
             {{>footer}}

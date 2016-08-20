@@ -34,4 +34,5 @@ PostSchema.methods.summary = function() {
 	return summary
 }
 
-module.exports = mongoose.model('PostSchema', PostSchema);
+module.exports = mongoose.model('PostSchema', PostSchema)
+
