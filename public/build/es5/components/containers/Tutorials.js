@@ -38,14 +38,66 @@ var Tutorials = (function (Component) {
 		_classCallCheck(this, Tutorials);
 
 		_get(Object.getPrototypeOf(Tutorials.prototype), "constructor", this).call(this, props, context);
-		this.state = {};
+		this.state = {
+			tutorials: []
+		};
 	}
 
 	_inherits(Tutorials, Component);
 
 	_prototypeProperties(Tutorials, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				var _this = this;
+				api.handleGet("/api/tutorial", null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					console.log(JSON.stringify(response));
+					var tutorials = response.tutorials;
+					_this.setState({
+						tutorials: tutorials
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
+				var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
+					return React.createElement(
+						"div",
+						{ key: tutorial.id, className: "col-md-4" },
+						React.createElement(
+							"div",
+							{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
+							React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460" }),
+							React.createElement(
+								"div",
+								{ className: "fancy-title title-bottom-border" },
+								React.createElement(
+									"h3",
+									{ style: { fontWeight: 400 } },
+									tutorial.title
+								)
+							),
+							React.createElement(
+								"p",
+								{ style: { height: 100 } },
+								tutorial.description
+							),
+							React.createElement(
+								"a",
+								{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
+								"View"
+							)
+						)
+					);
+				});
+
 				return React.createElement(
 					"div",
 					{ className: "clearfix" },
@@ -65,118 +117,7 @@ var Tutorials = (function (Component) {
 									React.createElement(
 										"div",
 										{ className: "row" },
-										React.createElement(
-											"div",
-											{ className: "col-md-4" },
-											React.createElement(
-												"div",
-												{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-												React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/uphd7w3A?crop=460" }),
-												React.createElement(
-													"div",
-													{ className: "fancy-title title-bottom-border" },
-													React.createElement(
-														"h3",
-														{ style: { fontWeight: 400 } },
-														"Tutorial Title"
-													)
-												),
-												React.createElement(
-													"p",
-													{ style: { height: 100 } },
-													"Tutorial description."
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
-													"View"
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "col-md-4" },
-											React.createElement(
-												"div",
-												{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-												React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/uphd7w3A?crop=460" }),
-												React.createElement(
-													"div",
-													{ className: "fancy-title title-bottom-border" },
-													React.createElement(
-														"h3",
-														{ style: { fontWeight: 400 } },
-														"Tutorial Title"
-													)
-												),
-												React.createElement(
-													"p",
-													{ style: { height: 100 } },
-													"Tutorial description."
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
-													"View"
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "col-md-4" },
-											React.createElement(
-												"div",
-												{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-												React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/uphd7w3A?crop=460" }),
-												React.createElement(
-													"div",
-													{ className: "fancy-title title-bottom-border" },
-													React.createElement(
-														"h3",
-														{ style: { fontWeight: 400 } },
-														"Tutorial Title"
-													)
-												),
-												React.createElement(
-													"p",
-													{ style: { height: 100 } },
-													"Tutorial description."
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
-													"View"
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "col-md-4" },
-											React.createElement(
-												"div",
-												{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-												React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/uphd7w3A?crop=460" }),
-												React.createElement(
-													"div",
-													{ className: "fancy-title title-bottom-border" },
-													React.createElement(
-														"h3",
-														{ style: { fontWeight: 400 } },
-														"Tutorial Title"
-													)
-												),
-												React.createElement(
-													"p",
-													{ style: { height: 100 } },
-													"Tutorial description."
-												),
-												React.createElement(
-													"a",
-													{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
-													"View"
-												)
-											)
-										)
+										tutorialsList
 									)
 								)
 							)

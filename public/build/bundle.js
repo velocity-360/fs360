@@ -62053,13 +62053,63 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tutorials).call(this, props, context));
 	
-			_this.state = {};
+			_this.state = {
+				tutorials: []
+			};
 			return _this;
 		}
 	
 		_createClass(Tutorials, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
+	
+				_utils.api.handleGet('/api/tutorial', null, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+					var tutorials = response.tutorials;
+					_this2.setState({
+						tutorials: tutorials
+					});
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
+				var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: tutorial.id, className: 'col-md-4' },
+						_react2.default.createElement(
+							'div',
+							{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+							_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460' }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'fancy-title title-bottom-border' },
+								_react2.default.createElement(
+									'h3',
+									{ style: { fontWeight: 400 } },
+									tutorial.title
+								)
+							),
+							_react2.default.createElement(
+								'p',
+								{ style: { height: 100 } },
+								tutorial.description
+							),
+							_react2.default.createElement(
+								'a',
+								{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+								'View'
+							)
+						)
+					);
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -62080,118 +62130,7 @@
 									_react2.default.createElement(
 										'div',
 										{ className: 'row' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-md-4' },
-											_react2.default.createElement(
-												'div',
-												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
-												_react2.default.createElement(
-													'div',
-													{ className: 'fancy-title title-bottom-border' },
-													_react2.default.createElement(
-														'h3',
-														{ style: { fontWeight: 400 } },
-														'Tutorial Title'
-													)
-												),
-												_react2.default.createElement(
-													'p',
-													{ style: { height: 100 } },
-													'Tutorial description.'
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
-													'View'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-md-4' },
-											_react2.default.createElement(
-												'div',
-												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
-												_react2.default.createElement(
-													'div',
-													{ className: 'fancy-title title-bottom-border' },
-													_react2.default.createElement(
-														'h3',
-														{ style: { fontWeight: 400 } },
-														'Tutorial Title'
-													)
-												),
-												_react2.default.createElement(
-													'p',
-													{ style: { height: 100 } },
-													'Tutorial description.'
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
-													'View'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-md-4' },
-											_react2.default.createElement(
-												'div',
-												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
-												_react2.default.createElement(
-													'div',
-													{ className: 'fancy-title title-bottom-border' },
-													_react2.default.createElement(
-														'h3',
-														{ style: { fontWeight: 400 } },
-														'Tutorial Title'
-													)
-												),
-												_react2.default.createElement(
-													'p',
-													{ style: { height: 100 } },
-													'Tutorial description.'
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
-													'View'
-												)
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-md-4' },
-											_react2.default.createElement(
-												'div',
-												{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-												_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/uphd7w3A?crop=460' }),
-												_react2.default.createElement(
-													'div',
-													{ className: 'fancy-title title-bottom-border' },
-													_react2.default.createElement(
-														'h3',
-														{ style: { fontWeight: 400 } },
-														'Tutorial Title'
-													)
-												),
-												_react2.default.createElement(
-													'p',
-													{ style: { height: 100 } },
-													'Tutorial description.'
-												),
-												_react2.default.createElement(
-													'a',
-													{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
-													'View'
-												)
-											)
-										)
+										tutorialsList
 									)
 								)
 							)

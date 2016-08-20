@@ -12,12 +12,43 @@ class Tutorials extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.state = {
-
+			tutorials: []
 		}
+	}
+
+	componentDidMount(){
+		api.handleGet('/api/tutorial', null, (err, response) => {
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			console.log(JSON.stringify(response))
+			const tutorials = response.tutorials
+			this.setState({
+				tutorials: tutorials
+			})
+		})
 	}
 
 
 	render(){
+		const tutorialsList = this.state.tutorials.map((tutorial, i) => {
+			return (
+				<div key={tutorial.id} className="col-md-4">
+					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+						<img style={{width:100, borderRadius:50, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=460'} />
+						<div className="fancy-title title-bottom-border">
+							<h3 style={{fontWeight:400}}>{tutorial.title}</h3>
+						</div>
+						<p style={{height:100}}>{tutorial.description}</p>
+
+						<a href="#" className="button button-3d button-mini button-rounded button-teal">View</a>
+					</div>
+				</div>				
+			)
+
+		})
 
 		return(
 			<div className="clearfix">
@@ -29,63 +60,7 @@ class Tutorials extends Component {
 
 							<div className="col_full bottommargin-sm">
 								<div className="row">
-
-									<div className="col-md-4">
-										<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-											<img style={{width:100, borderRadius:50, marginBottom:12}} src="https://media-service.appspot.com/site/images/uphd7w3A?crop=460" />
-											<div className="fancy-title title-bottom-border">
-												<h3 style={{fontWeight:400}}>Tutorial Title</h3>
-											</div>
-											<p style={{height:100}}>
-												Tutorial description.
-											</p>
-
-											<a href="#" className="button button-3d button-mini button-rounded button-teal">View</a>
-										</div>
-									</div>
-
-									<div className="col-md-4">
-										<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-											<img style={{width:100, borderRadius:50, marginBottom:12}} src="https://media-service.appspot.com/site/images/uphd7w3A?crop=460" />
-											<div className="fancy-title title-bottom-border">
-												<h3 style={{fontWeight:400}}>Tutorial Title</h3>
-											</div>
-											<p style={{height:100}}>
-												Tutorial description.
-											</p>
-
-											<a href="#" className="button button-3d button-mini button-rounded button-teal">View</a>
-										</div>
-									</div>
-
-									<div className="col-md-4">
-										<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-											<img style={{width:100, borderRadius:50, marginBottom:12}} src="https://media-service.appspot.com/site/images/uphd7w3A?crop=460" />
-											<div className="fancy-title title-bottom-border">
-												<h3 style={{fontWeight:400}}>Tutorial Title</h3>
-											</div>
-											<p style={{height:100}}>
-												Tutorial description.
-											</p>
-
-											<a href="#" className="button button-3d button-mini button-rounded button-teal">View</a>
-										</div>
-									</div>
-
-									<div className="col-md-4">
-										<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-											<img style={{width:100, borderRadius:50, marginBottom:12}} src="https://media-service.appspot.com/site/images/uphd7w3A?crop=460" />
-											<div className="fancy-title title-bottom-border">
-												<h3 style={{fontWeight:400}}>Tutorial Title</h3>
-											</div>
-											<p style={{height:100}}>
-												Tutorial description.
-											</p>
-
-											<a href="#" className="button button-3d button-mini button-rounded button-teal">View</a>
-										</div>
-									</div>
-
+									{tutorialsList}
 								</div>
 							</div>
 
