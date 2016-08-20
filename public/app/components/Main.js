@@ -9,6 +9,7 @@ import PostPage from './containers/PostPage'
 import MVP from './containers/MVP'
 import Project from './containers/Project'
 import Tutorials from './containers/Tutorials'
+import Tutorial from './containers/Tutorial'
 import Course from './containers/Course'
 import Video from './containers/Video'
 import Account from './containers/Account'
@@ -55,6 +56,9 @@ class Main extends Component {
 
 			case 'course':
 				return page = <Course slug={this.props.slug} />
+
+			case 'tutorial':
+				return page = <Tutorial slug={this.props.slug} />
 
 			case 'video':
 				return page = <Video slug={this.props.slug} />

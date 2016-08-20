@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
-import { connect } from 'react-redux'
 import { api } from '../../utils'
 import { Nav, Footer, CourseCard, RightSidebar, Register } from '../../components'
-import actions from '../../actions/actions'
-import store from '../../stores/store'
 
 
 class Tutorials extends Component {
@@ -43,11 +40,10 @@ class Tutorials extends Component {
 						</div>
 						<p style={{height:100}}>{tutorial.description}</p>
 
-						<a href="#" className="button button-3d button-mini button-rounded button-teal">View</a>
+						<a href={'/tutorial/'+tutorial.slug} className="button button-3d button-mini button-rounded button-teal">View</a>
 					</div>
 				</div>				
 			)
-
 		})
 
 		return(

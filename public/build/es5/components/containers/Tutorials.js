@@ -20,7 +20,6 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
-var connect = require("react-redux").connect;
 var api = require("../../utils").api;
 var _components = require("../../components");
 
@@ -29,10 +28,6 @@ var Footer = _components.Footer;
 var CourseCard = _components.CourseCard;
 var RightSidebar = _components.RightSidebar;
 var Register = _components.Register;
-var actions = _interopRequire(require("../../actions/actions"));
-
-var store = _interopRequire(require("../../stores/store"));
-
 var Tutorials = (function (Component) {
 	function Tutorials(props, context) {
 		_classCallCheck(this, Tutorials);
@@ -91,7 +86,7 @@ var Tutorials = (function (Component) {
 							),
 							React.createElement(
 								"a",
-								{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
+								{ href: "/tutorial/" + tutorial.slug, className: "button button-3d button-mini button-rounded button-teal" },
 								"View"
 							)
 						)

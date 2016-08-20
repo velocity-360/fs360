@@ -22677,6 +22677,10 @@
 	
 	var _Tutorials2 = _interopRequireDefault(_Tutorials);
 	
+	var _Tutorial = __webpack_require__(608);
+	
+	var _Tutorial2 = _interopRequireDefault(_Tutorial);
+	
 	var _Course = __webpack_require__(599);
 	
 	var _Course2 = _interopRequireDefault(_Course);
@@ -22754,6 +22758,9 @@
 	
 					case 'course':
 						return page = _react2.default.createElement(_Course2.default, { slug: this.props.slug });
+	
+					case 'tutorial':
+						return page = _react2.default.createElement(_Tutorial2.default, { slug: this.props.slug });
 	
 					case 'video':
 						return page = _react2.default.createElement(_Video2.default, { slug: this.props.slug });
@@ -62023,19 +62030,9 @@
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
 	
-	var _reactRedux = __webpack_require__(168);
-	
 	var _utils = __webpack_require__(478);
 	
 	var _components = __webpack_require__(593);
-	
-	var _actions = __webpack_require__(459);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _store = __webpack_require__(194);
-	
-	var _store2 = _interopRequireDefault(_store);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -62104,7 +62101,7 @@
 							),
 							_react2.default.createElement(
 								'a',
-								{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+								{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
 								'View'
 							)
 						)
@@ -65653,6 +65650,272 @@
 	}(_react.Component);
 	
 	exports.default = Checkout;
+
+/***/ },
+/* 608 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactBootstrap = __webpack_require__(205);
+	
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+	
+	var _reactLoader = __webpack_require__(461);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _utils = __webpack_require__(478);
+	
+	var _components = __webpack_require__(593);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tutorial = function (_Component) {
+		_inherits(Tutorial, _Component);
+	
+		function Tutorial(props, context) {
+			_classCallCheck(this, Tutorial);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tutorial).call(this, props, context));
+	
+			_this.state = {
+				tutorial: {
+					title: '',
+					description: '',
+					image: '',
+					posts: []
+				}
+			};
+			return _this;
+		}
+	
+		_createClass(Tutorial, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
+	
+				var params = { slug: this.props.slug };
+				_utils.api.handleGet('/api/tutorial', params, function (err, response) {
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					console.log(JSON.stringify(response));
+					var tutorials = response.tutorials;
+					if (tutorials.length == 0) {
+						return;
+					}
+	
+					var tutorial = tutorials[0];
+					_this2.setState({
+						tutorial: tutorial
+					});
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var tutorial = this.state.tutorial;
+				var posts = tutorial.posts.map(function (post, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: i, className: 'entry clearfix' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'entry-timeline' },
+							'Unit',
+							_react2.default.createElement(
+								'span',
+								null,
+								i + 1
+							),
+							_react2.default.createElement('div', { className: 'timeline-divider' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel panel-default', style: { maxWidth: 600 } },
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', style: { padding: 36 } },
+								_react2.default.createElement(
+									'h3',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+										_react2.default.createElement(
+											'strong',
+											null,
+											post.title
+										)
+									)
+								),
+								_react2.default.createElement('hr', null),
+								post.description,
+								_react2.default.createElement(
+									'div',
+									{ className: 'wistia_embed wistia_async_' + post.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
+									' '
+								),
+								_react2.default.createElement('br', null),
+								'Click ',
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									'HERE'
+								),
+								' to view full post.'
+							)
+						)
+					);
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
+					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
+					_react2.default.createElement(
+						'section',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ id: 'lpf-content' },
+								_react2.default.createElement(
+									'main',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'aside-toggle' },
+										_react2.default.createElement('div', null)
+									),
+									_react2.default.createElement(
+										'aside',
+										{ style: { background: '#f9f9f9' } },
+										_react2.default.createElement(
+											'nav',
+											{ style: { padding: 16, background: '#fff', border: '1px solid #ddd' } },
+											_react2.default.createElement(
+												'ul',
+												null,
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#introduction' },
+														'Overview'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#curriculum' },
+														'Curriculum'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#subscribe' },
+														'Subscribe'
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'content', style: { background: '#f9f9f9' } },
+										_react2.default.createElement(
+											'article',
+											{ id: 'introduction', className: 'overview' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													null,
+													tutorial.title
+												),
+												_react2.default.createElement('hr', null),
+												_react2.default.createElement(
+													'p',
+													{ className: 'about' },
+													tutorial.description
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'container' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'image' },
+														_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460', alt: 'Velocity 360' })
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'text' },
+														tutorial.description
+													)
+												)
+											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'curriculum', className: 'overview' },
+											_react2.default.createElement(
+												'h2',
+												null,
+												'Curriculum'
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'postcontent clearfix', style: { paddingBottom: 64 } },
+												_react2.default.createElement(
+													'div',
+													{ id: 'posts', className: 'post-timeline clearfix' },
+													_react2.default.createElement('div', { className: 'timeline-border' }),
+													posts
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Tutorial;
+	}(_react.Component);
+	
+	exports.default = Tutorial;
 
 /***/ }
 /******/ ]);
