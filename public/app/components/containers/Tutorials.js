@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
-import { api } from '../../utils'
+import { api, TextUtils } from '../../utils'
 import { Nav, Footer, CourseCard, RightSidebar, Register } from '../../components'
 
 
@@ -40,9 +40,12 @@ class Tutorials extends Component {
 								<a style={{color:'#444'}} href={'/tutorial/'+tutorial.slug}>{tutorial.title}</a>
 							</h3>
 						</div>
-						<p style={{height:120}}>{tutorial.description}</p>
-						<h5 style={{marginBottom:6}}>FREE</h5>
-						<a href={'/tutorial/'+tutorial.slug} className="button button-3d button-mini button-rounded button-teal">View</a>
+						<p style={{height:144}}>{TextUtils.truncateText(tutorial.description, 180)}</p>
+						<h5 style={{marginBottom:6}}>
+							FREE
+							<span style={{margin:16}}>|</span>
+							<a href={'/tutorial/'+tutorial.slug} className="button button-3d button-mini button-rounded button-teal">View</a>
+						</h5>
 					</div>
 				</div>				
 			)

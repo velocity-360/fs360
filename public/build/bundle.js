@@ -62164,18 +62164,23 @@
 							),
 							_react2.default.createElement(
 								'p',
-								{ style: { height: 120 } },
-								tutorial.description
+								{ style: { height: 144 } },
+								_utils.TextUtils.truncateText(tutorial.description, 180)
 							),
 							_react2.default.createElement(
 								'h5',
 								{ style: { marginBottom: 6 } },
-								'FREE'
-							),
-							_react2.default.createElement(
-								'a',
-								{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
-								'View'
+								'FREE',
+								_react2.default.createElement(
+									'span',
+									{ style: { margin: 16 } },
+									'|'
+								),
+								_react2.default.createElement(
+									'a',
+									{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
+									'View'
+								)
 							)
 						)
 					);

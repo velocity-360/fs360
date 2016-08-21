@@ -20,7 +20,10 @@ var _reactBootstrap = require("react-bootstrap");
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
-var api = require("../../utils").api;
+var _utils = require("../../utils");
+
+var api = _utils.api;
+var TextUtils = _utils.TextUtils;
 var _components = require("../../components");
 
 var Nav = _components.Nav;
@@ -85,18 +88,23 @@ var Tutorials = (function (Component) {
 							),
 							React.createElement(
 								"p",
-								{ style: { height: 120 } },
-								tutorial.description
+								{ style: { height: 144 } },
+								TextUtils.truncateText(tutorial.description, 180)
 							),
 							React.createElement(
 								"h5",
 								{ style: { marginBottom: 6 } },
-								"FREE"
-							),
-							React.createElement(
-								"a",
-								{ href: "/tutorial/" + tutorial.slug, className: "button button-3d button-mini button-rounded button-teal" },
-								"View"
+								"FREE",
+								React.createElement(
+									"span",
+									{ style: { margin: 16 } },
+									"|"
+								),
+								React.createElement(
+									"a",
+									{ href: "/tutorial/" + tutorial.slug, className: "button button-3d button-mini button-rounded button-teal" },
+									"View"
+								)
 							)
 						)
 					);
