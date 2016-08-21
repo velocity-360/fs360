@@ -100,17 +100,6 @@ module.exports = {
 
 	post: function(postInfo, completion){
 		if (postInfo.link.length == 0){
-			// var parts = postInfo.title.split(' ')
-			// var slug = ''
-			// for (var i=0; i<parts.length; i++){
-			// 	var word = parts[i]
-			// 	slug += word
-			// 	if (i != parts.length-1)
-			// 		slug += '-'
-			// }
-
-			// slug = slug.replace('?', '')
-
 			postInfo['slug'] = TextUtils.slugVersion(postInfo.title)
 			Post.create(postInfo, function(err, post){
 				if (err){
@@ -136,18 +125,6 @@ module.exports = {
 				if (key == 'description')
 					postInfo['text'] = result[key]
 			}
-
-			// var parts = postInfo.title.split(' ')
-			// var slug = ''
-			// for (var i=0; i<parts.length; i++){
-			// 	var word = parts[i]
-			// 	slug += word
-			// 	if (i != parts.length-1)
-			// 		slug += '-'
-			// }
-
-			// slug = slug.replace('?', '')
-			// postInfo['slug'] = slug
 
 			postInfo['slug'] = TextUtils.slugVersion(postInfo.title)
 			Post.create(postInfo, function(err, post){

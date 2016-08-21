@@ -1,4 +1,5 @@
 var Tutorial = require('../models/Tutorial')
+var TextUtils = require('../utils/TextUtils')
 var mongoose = require('mongoose')
 var Promise = require('bluebird')
 
@@ -100,18 +101,20 @@ module.exports = {
 	},
 
 	post: function(params, completion){
-		var parts = params.title.split(' ')
+		// var parts = params.title.split(' ')
 
-		var slug = '';
-		for (var i=0; i<parts.length; i++){
-			var word = parts[i];
-			slug += word;
-			if (i != parts.length-1)
-				slug += '-';
-		}
+		// var slug = '';
+		// for (var i=0; i<parts.length; i++){
+		// 	var word = parts[i];
+		// 	slug += word;
+		// 	if (i != parts.length-1)
+		// 		slug += '-';
+		// }
 
-		slug = slug.replace('?', '')
-		params['slug'] = slug
+		// slug = slug.replace('?', '')
+		// params['slug'] = slug
+		
+		params['slug'] = TextUtils.slugVersion(params.title)
 		Tutorial.create(params, function(err, tutorial){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null)
@@ -125,6 +128,7 @@ module.exports = {
 
 
 	put: function(id, params, completion){
+		params['slug'] = TextUtils.slugVersion(params.title)
 		Tutorial.findByIdAndUpdate(id, params, {new:true}, function(err, tutorial){
 			if (err){
 				completion({confirmation:'fail', message:err.message}, null)
