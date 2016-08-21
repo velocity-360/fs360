@@ -33,13 +33,13 @@ class Tutorial extends Component {
 					<div className="panel panel-default" style={{maxWidth:600}}>
 						<div className="panel-body" style={{padding:36}}>
 							<h3>
-								<a href={'/post/'+tutorial.slug} style={{marginRight:12}} className="btn btn-info"><strong>{post.title}</strong></a>
+								<a href={'/post/'+post.slug} style={{marginRight:12}} className="btn btn-info"><strong>{post.title}</strong></a>
 							</h3>
 							<hr />
 							{post.description}
 							{video}
 							<br />
-							Click <a href={'/post/'+tutorial.slug}>HERE</a> to view full post.
+							Click <a href={'/post/'+post.slug}>HERE</a> to view full post.
 						</div>
 					</div>
 				</div>

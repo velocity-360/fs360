@@ -87,6 +87,7 @@ app.controller('TutorialsController', ['$scope', 'generalService', 'accountServi
 
 			var entry = {
 				title: post.title,
+				slug: post.slug,
 				id: post.id,
 				wistia: post.wistia,
 				image: post.image

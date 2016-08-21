@@ -85,7 +85,7 @@ var Tutorial = (function (Component) {
 									null,
 									React.createElement(
 										"a",
-										{ href: "/post/" + tutorial.slug, style: { marginRight: 12 }, className: "btn btn-info" },
+										{ href: "/post/" + post.slug, style: { marginRight: 12 }, className: "btn btn-info" },
 										React.createElement(
 											"strong",
 											null,
@@ -100,7 +100,7 @@ var Tutorial = (function (Component) {
 								"Click ",
 								React.createElement(
 									"a",
-									{ href: "/post/" + tutorial.slug },
+									{ href: "/post/" + post.slug },
 									"HERE"
 								),
 								" to view full post."
