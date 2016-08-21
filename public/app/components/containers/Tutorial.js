@@ -39,7 +39,7 @@ class Tutorial extends Component {
 							{post.description}
 							{video}
 							<br />
-							Click <a href=href={'/post/'+tutorial.slug}>HERE</a> to view full post.
+							Click <a href={'/post/'+tutorial.slug}>HERE</a> to view full post.
 						</div>
 					</div>
 				</div>

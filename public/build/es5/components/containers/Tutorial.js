@@ -53,6 +53,12 @@ var Tutorial = (function (Component) {
 		render: {
 			value: function render() {
 				var tutorial = this.props.tutorials[this.props.slug];
+				var video = tutorial.wistia.length == 0 ? null : React.createElement(
+					"div",
+					{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
+					" "
+				);
+
 				var posts = tutorial.posts.map(function (post, i) {
 					return React.createElement(
 						"div",
@@ -79,7 +85,7 @@ var Tutorial = (function (Component) {
 									null,
 									React.createElement(
 										"a",
-										{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
+										{ href: "/post/" + tutorial.slug, style: { marginRight: 12 }, className: "btn btn-info" },
 										React.createElement(
 											"strong",
 											null,
@@ -89,16 +95,12 @@ var Tutorial = (function (Component) {
 								),
 								React.createElement("hr", null),
 								post.description,
-								React.createElement(
-									"div",
-									{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
-									" "
-								),
+								video,
 								React.createElement("br", null),
 								"Click ",
 								React.createElement(
 									"a",
-									{ href: "#" },
+									{ href: "/post/" + tutorial.slug },
 									"HERE"
 								),
 								" to view full post."
