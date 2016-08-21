@@ -1,3 +1,0 @@
-trackVisit = function(){
-	
-}
