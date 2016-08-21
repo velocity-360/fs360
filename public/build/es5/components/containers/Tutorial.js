@@ -27,26 +27,74 @@ var _utils = require("../../utils");
 
 var TextUtils = _utils.TextUtils;
 var api = _utils.api;
-var _components = require("../../components");
-
-var Nav = _components.Nav;
-var Footer = _components.Footer;
-var CourseCard = _components.CourseCard;
-var RightSidebar = _components.RightSidebar;
-var Register = _components.Register;
+var Nav = require("../../components").Nav;
 var Tutorial = (function (Component) {
 	function Tutorial(props, context) {
 		_classCallCheck(this, Tutorial);
 
 		_get(Object.getPrototypeOf(Tutorial.prototype), "constructor", this).call(this, props, context);
-		this.state = {};
+		this.updateVisitor = this.updateVisitor.bind(this);
+		this.subscribe = this.subscribe.bind(this);
+		this.state = {
+			showLoader: false,
+			visitor: {
+				name: "",
+				email: ""
+			}
+		};
 	}
 
 	_inherits(Tutorial, Component);
 
 	_prototypeProperties(Tutorial, null, {
-		componentDidMount: {
-			value: function componentDidMount() {},
+		updateVisitor: {
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		subscribe: {
+			value: function subscribe(event) {
+				var _this = this;
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert("Please enter your name.");
+					return;
+				}
+
+				if (this.state.visitor.email.length == 0) {
+					alert("Please enter your email.");
+					return;
+				}
+
+				this.setState({ showLoader: true });
+
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(" ");
+				s.firstName = parts[0];
+				if (parts.length > 1) s.lastName = parts[parts.length - 1];
+
+				var tutorial = this.props.tutorials[this.props.slug];
+				s.source = tutorial.title;
+
+				s.subject = "New Subscriber";
+				s.confirmation = "Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!";
+				api.handlePost("/account/subscribe", s, function (err, response) {
+					_this.setState({ showLoader: false });
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
+			},
 			writable: true,
 			configurable: true
 		},
@@ -114,6 +162,7 @@ var Tutorial = (function (Component) {
 					"div",
 					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
 					React.createElement(Nav, { headerStyle: "dark" }),
+					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
 						"section",
 						null,
@@ -163,8 +212,17 @@ var Tutorial = (function (Component) {
 													null,
 													React.createElement(
 														"a",
-														{ href: "#subscribe" },
-														"Subscribe"
+														{ href: "#newsletter" },
+														"Newsletter"
+													)
+												),
+												React.createElement(
+													"li",
+													null,
+													React.createElement(
+														"a",
+														{ href: "#join" },
+														"Join"
 													)
 												)
 											)
@@ -209,6 +267,110 @@ var Tutorial = (function (Component) {
 													{ id: "posts", className: "post-timeline clearfix" },
 													React.createElement("div", { className: "timeline-border" }),
 													posts
+												)
+											)
+										),
+										React.createElement(
+											"article",
+											{ id: "newsletter", className: "overview" },
+											React.createElement(
+												"div",
+												{ className: "container" },
+												React.createElement(
+													"h2",
+													{ style: { marginTop: 24 } },
+													"Newsletter"
+												),
+												React.createElement(
+													"div",
+													{ className: "panel panel-default" },
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: { padding: 36 } },
+														React.createElement(
+															"h3",
+															null,
+															"Sign Up"
+														),
+														React.createElement("hr", null),
+														React.createElement(
+															"p",
+															{ style: { marginBottom: 16 } },
+															"Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses."
+														),
+														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: { borderRadius: "0px !important", background: "#FEF9E7" }, className: "custom-input", placeholder: "Name" }),
+														React.createElement("br", null),
+														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: { borderRadius: "0px !important", background: "#FEF9E7" }, className: "custom-input", placeholder: "Email" }),
+														React.createElement("br", null),
+														React.createElement(
+															"a",
+															{ onClick: this.subscribe, href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
+															"Submit"
+														)
+													)
+												)
+											)
+										),
+										React.createElement(
+											"article",
+											{ id: "join", className: "overview" },
+											React.createElement(
+												"div",
+												{ className: "container" },
+												React.createElement(
+													"h2",
+													{ style: { marginTop: 24 } },
+													"Join"
+												),
+												React.createElement(
+													"div",
+													{ className: "panel panel-default" },
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: { padding: 36 } },
+														React.createElement(
+															"h3",
+															null,
+															"The Process"
+														),
+														React.createElement("hr", null),
+														React.createElement(
+															"a",
+															{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
+															"Basic"
+														),
+														React.createElement(
+															"strong",
+															null,
+															"Free"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginTop: 10 } },
+															"Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships."
+														),
+														React.createElement(
+															"a",
+															{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
+															"Premium"
+														),
+														React.createElement(
+															"strong",
+															null,
+															"$19.99 / month"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginTop: 10 } },
+															"All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience."
+														),
+														React.createElement("hr", null),
+														React.createElement(
+															"a",
+															{ onClick: this.toggleApplication, href: "#", className: "btn btn-lg btn-success" },
+															"Apply"
+														)
+													)
 												)
 											)
 										)

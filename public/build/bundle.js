@@ -62269,13 +62269,66 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tutorial).call(this, props, context));
 	
-			_this.state = {};
+			_this.updateVisitor = _this.updateVisitor.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
+			_this.state = {
+				showLoader: false,
+				visitor: {
+					name: '',
+					email: ''
+				}
+			};
 			return _this;
 		}
 	
 		_createClass(Tutorial, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {}
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				var _this2 = this;
+	
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				this.setState({ showLoader: true });
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var tutorial = this.props.tutorials[this.props.slug];
+				s['source'] = tutorial.title;
+	
+				s['subject'] = 'New Subscriber';
+				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
+				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
+					_this2.setState({ showLoader: false });
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
 		}, {
 			key: 'render',
 			value: function render() {
@@ -62341,6 +62394,7 @@
 					'div',
 					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
 					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
 						'section',
 						null,
@@ -62390,8 +62444,17 @@
 													null,
 													_react2.default.createElement(
 														'a',
-														{ href: '#subscribe' },
-														'Subscribe'
+														{ href: '#newsletter' },
+														'Newsletter'
+													)
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'a',
+														{ href: '#join' },
+														'Join'
 													)
 												)
 											)
@@ -62436,6 +62499,110 @@
 													{ id: 'posts', className: 'post-timeline clearfix' },
 													_react2.default.createElement('div', { className: 'timeline-border' }),
 													posts
+												)
+											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'newsletter', className: 'overview' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginTop: 24 } },
+													'Newsletter'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h3',
+															null,
+															'Sign Up'
+														),
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginBottom: 16 } },
+															'Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses.'
+														),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: { borderRadius: '0px !important', background: '#FEF9E7' }, className: 'custom-input', placeholder: 'Name' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: { borderRadius: '0px !important', background: '#FEF9E7' }, className: 'custom-input', placeholder: 'Email' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.subscribe, href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+															'Submit'
+														)
+													)
+												)
+											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'join', className: 'overview' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'h2',
+													{ style: { marginTop: 24 } },
+													'Join'
+												),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
+														_react2.default.createElement(
+															'h3',
+															null,
+															'The Process'
+														),
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'a',
+															{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+															'Basic'
+														),
+														_react2.default.createElement(
+															'strong',
+															null,
+															'Free'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginTop: 10 } },
+															'Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships.'
+														),
+														_react2.default.createElement(
+															'a',
+															{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+															'Premium'
+														),
+														_react2.default.createElement(
+															'strong',
+															null,
+															'$19.99 / month'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginTop: 10 } },
+															'All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
+														),
+														_react2.default.createElement('hr', null),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.toggleApplication, href: '#', className: 'btn btn-lg btn-success' },
+															'Apply'
+														)
+													)
 												)
 											)
 										)

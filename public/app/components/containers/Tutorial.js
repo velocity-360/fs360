@@ -3,21 +3,69 @@ import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { TextUtils, api } from '../../utils'
-import { Nav, Footer, CourseCard, RightSidebar, Register } from '../../components'
+import { Nav } from '../../components'
 
 
 class Tutorial extends Component {
 
 	constructor(props, context){
 		super(props, context)
+		this.updateVisitor = this.updateVisitor.bind(this)
+		this.subscribe = this.subscribe.bind(this)
 		this.state = {
-
+			showLoader: false,
+			visitor: {
+				name: '',
+				email: ''
+			}
 		}
 	}
 
-	componentDidMount(){
-
+	updateVisitor(event){
+		var updatedVisitor = Object.assign({}, this.state.visitor)
+		updatedVisitor[event.target.id] = event.target.value
+		this.setState({
+			visitor: updatedVisitor
+		})		
 	}
+
+	subscribe(event){
+		event.preventDefault()
+		if (this.state.visitor.name.length == 0){
+			alert('Please enter your name.')
+			return
+		}
+
+		if (this.state.visitor.email.length == 0){
+			alert('Please enter your email.')
+			return
+		}
+
+		this.setState({showLoader: true})
+
+		var s = Object.assign({}, this.state.visitor)
+		var parts = s.name.split(' ')
+		s['firstName'] = parts[0]
+		if (parts.length > 1)
+			s['lastName'] = parts[parts.length-1]
+
+		const tutorial = this.props.tutorials[this.props.slug]
+		s['source'] = tutorial.title
+		
+		s['subject'] = 'New Subscriber'
+		s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!'
+		api.handlePost('/account/subscribe', s, (err, response) => {
+			this.setState({showLoader: false})
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		})
+	}
+
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]
@@ -50,6 +98,7 @@ class Tutorial extends Component {
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
 
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 				<section>
 					<div className="content-wrap">
 						<div id="lpf-content">
@@ -63,7 +112,8 @@ class Tutorial extends Component {
 										<ul>
 											<li><a href="#introduction">Overview</a></li>
 											<li><a href="#curriculum">Curriculum</a></li>
-											<li><a href="#subscribe">Subscribe</a></li>
+											<li><a href="#newsletter">Newsletter</a></li>
+											<li><a href="#join">Join</a></li>
 										</ul>
 									</nav>
 								</aside>
@@ -89,10 +139,59 @@ class Tutorial extends Component {
 										</div>
 									</article>
 
+									<article id="newsletter" className="overview">
+										<div className="container">
+											<h2 style={{marginTop:24}}>Newsletter</h2>
+											<div className="panel panel-default">
+												<div className="panel-body" style={{padding:36}}>
+													<h3>Sign Up</h3>
+													<hr />
+													<p style={{marginBottom:16}}>
+														Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses.
+													</p>
+							                        <input onChange={this.updateVisitor} id="name" type="name" style={{borderRadius:'0px !important', background:'#FEF9E7'}} className="custom-input" placeholder="Name" /><br />
+							                        <input onChange={this.updateVisitor} id="email" type="email" style={{borderRadius:'0px !important', background:'#FEF9E7'}} className="custom-input" placeholder="Email" /><br />
+													<a onClick={this.subscribe} href="#" style={{marginRight:12}} className="btn btn-info">Submit</a>
+												</div>
+											</div>
+										</div>
+									</article>
+
+
+				<article id="join" className="overview">
+					<div className="container">
+
+						<h2 style={{marginTop:24}}>Join</h2>
+						<div className="panel panel-default">
+							<div className="panel-body" style={{padding:36}}>
+								<h3>The Process</h3>
+								<hr />
+								<a href="#" style={{marginRight:12}} className="btn btn-info">Basic</a><strong>Free</strong>
+								<p style={{marginTop:10}}>
+									Complete our online application by midnight August 29th to 
+									apply for the course. All applicants will be considered for 
+									the full scholarships.
+								</p>
+
+								<a href="#" style={{marginRight:12}} className="btn btn-info">Premium</a><strong>$19.99 / month</strong>
+								<p style={{marginTop:10}}>
+									All applicants will undergo a 15-30 minute phone interview as a first technical 
+									assessment. You should feel comfortable speaking about prior programming experience.
+								</p>
+
+
+								<hr />
+								<a onClick={this.toggleApplication} href="#" className="btn btn-lg btn-success">Apply</a>
+							</div>
+						</div>
+					</div>
+				</article>							
+
 								</div>
 							</main>
 						</div>
 					</div>
+
 				</section>
 
 			</div>
