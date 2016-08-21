@@ -38,7 +38,7 @@ class Tutorial extends Component {
 							<hr />
 							{post.description}
 							{video}
-							<br />
+							<br /><br />
 							Click <a href={'/post/'+post.slug}>HERE</a> to view full post.
 						</div>
 					</div>
@@ -78,7 +78,7 @@ class Tutorial extends Component {
 										</div>
 									</article>
 
-									<article id="curriculum" className="overview">
+									<article id="curriculum" className="overview" style={{marginTop:20}}>
 										<h2>Curriculum</h2>
 										<div className="postcontent clearfix" style={{paddingBottom:64}}>
 											<div id="posts" className="post-timeline clearfix">

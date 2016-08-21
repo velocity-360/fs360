@@ -65759,6 +65759,7 @@
 								post.description,
 								video,
 								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
 								'Click ',
 								_react2.default.createElement(
 									'a',
@@ -65856,7 +65857,7 @@
 										),
 										_react2.default.createElement(
 											'article',
-											{ id: 'curriculum', className: 'overview' },
+											{ id: 'curriculum', className: 'overview', style: { marginTop: 20 } },
 											_react2.default.createElement(
 												'h2',
 												null,

@@ -97,6 +97,7 @@ var Tutorial = (function (Component) {
 								post.description,
 								video,
 								React.createElement("br", null),
+								React.createElement("br", null),
 								"Click ",
 								React.createElement(
 									"a",
@@ -194,7 +195,7 @@ var Tutorial = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ id: "curriculum", className: "overview" },
+											{ id: "curriculum", className: "overview", style: { marginTop: 20 } },
 											React.createElement(
 												"h2",
 												null,
