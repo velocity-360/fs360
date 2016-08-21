@@ -21,9 +21,9 @@ class Tutorial extends Component {
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]
-		const video = (tutorial.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 
 		const posts = tutorial.posts.map((post, i) => {
+			const video = (post.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 			return (
 				<div key={i} className="entry clearfix">
 					<div className="entry-timeline">

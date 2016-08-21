@@ -53,13 +53,13 @@ var Tutorial = (function (Component) {
 		render: {
 			value: function render() {
 				var tutorial = this.props.tutorials[this.props.slug];
-				var video = tutorial.wistia.length == 0 ? null : React.createElement(
-					"div",
-					{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
-					" "
-				);
 
 				var posts = tutorial.posts.map(function (post, i) {
+					var video = post.wistia.length == 0 ? null : React.createElement(
+						"div",
+						{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
+						" "
+					);
 					return React.createElement(
 						"div",
 						{ key: i, className: "entry clearfix" },
