@@ -51,7 +51,7 @@ module.exports = {
 		}
 
 		slug = slug.replace('?', '')
-		return slug
+		return slug.toLowerCase()
 	}
 
 }
