@@ -154,6 +154,12 @@ class Feed extends Component {
 					        	<input onChange={this.updatePost} value={this.state.post.title} id="title" className="form-control" type="text" placeholder="Title" /><br />
 					        	<input onChange={this.updatePost} value={this.state.post.link} id="link" className="form-control" type="text" placeholder="http://" /><br />
 					        	<input onChange={this.updatePost} value={this.state.post.wistia} id="wistia" className="form-control" type="text" placeholder="Video" /><br />
+					        	<select onChange={this.updatePost} value={this.state.post.isPublic} id="isPublic" className="form-control">
+					        		<option value="yes">Public</option>
+					        		<option value="no">Private</option>
+					        	</select>
+
+					        	<br />
 					            <Dropzone style={{width:100+'%', marginBottom:24, background:'#fff', border:'1px dotted #ddd'}} onDrop={this.uploadImage}>
 					              <div style={{padding:24}}>
 					              	{

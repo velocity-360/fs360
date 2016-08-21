@@ -76,13 +76,22 @@ var Tutorials = (function (Component) {
 								React.createElement(
 									"h3",
 									{ style: { fontWeight: 400 } },
-									tutorial.title
+									React.createElement(
+										"a",
+										{ style: { color: "#444" }, href: "/tutorial/" + tutorial.slug },
+										tutorial.title
+									)
 								)
 							),
 							React.createElement(
 								"p",
-								{ style: { height: 100 } },
+								{ style: { height: 120 } },
 								tutorial.description
+							),
+							React.createElement(
+								"h5",
+								{ style: { marginBottom: 6 } },
+								"FREE"
 							),
 							React.createElement(
 								"a",

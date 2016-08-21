@@ -240,6 +240,21 @@ var Feed = (function (Component) {
 									React.createElement("input", { onChange: this.updatePost, value: this.state.post.wistia, id: "wistia", className: "form-control", type: "text", placeholder: "Video" }),
 									React.createElement("br", null),
 									React.createElement(
+										"select",
+										{ onChange: this.updatePost, value: this.state.post.isPublic, id: "isPublic", className: "form-control" },
+										React.createElement(
+											"option",
+											{ value: "yes" },
+											"Public"
+										),
+										React.createElement(
+											"option",
+											{ value: "no" },
+											"Private"
+										)
+									),
+									React.createElement("br", null),
+									React.createElement(
 										Dropzone,
 										{ style: { width: 100 + "%", marginBottom: 24, background: "#fff", border: "1px dotted #ddd" }, onDrop: this.uploadImage },
 										React.createElement(

@@ -60374,6 +60374,21 @@
 									_react2.default.createElement('input', { onChange: this.updatePost, value: this.state.post.wistia, id: 'wistia', className: 'form-control', type: 'text', placeholder: 'Video' }),
 									_react2.default.createElement('br', null),
 									_react2.default.createElement(
+										'select',
+										{ onChange: this.updatePost, value: this.state.post.isPublic, id: 'isPublic', className: 'form-control' },
+										_react2.default.createElement(
+											'option',
+											{ value: 'yes' },
+											'Public'
+										),
+										_react2.default.createElement(
+											'option',
+											{ value: 'no' },
+											'Private'
+										)
+									),
+									_react2.default.createElement('br', null),
+									_react2.default.createElement(
 										_reactDropzone2.default,
 										{ style: { width: 100 + '%', marginBottom: 24, background: '#fff', border: '1px dotted #ddd' }, onDrop: this.uploadImage },
 										_react2.default.createElement(
@@ -62098,13 +62113,22 @@
 								_react2.default.createElement(
 									'h3',
 									{ style: { fontWeight: 400 } },
-									tutorial.title
+									_react2.default.createElement(
+										'a',
+										{ style: { color: '#444' }, href: '/tutorial/' + tutorial.slug },
+										tutorial.title
+									)
 								)
 							),
 							_react2.default.createElement(
 								'p',
-								{ style: { height: 100 } },
+								{ style: { height: 120 } },
 								tutorial.description
+							),
+							_react2.default.createElement(
+								'h5',
+								{ style: { marginBottom: 6 } },
+								'FREE'
 							),
 							_react2.default.createElement(
 								'a',
