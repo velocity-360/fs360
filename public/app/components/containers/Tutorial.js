@@ -21,6 +21,8 @@ class Tutorial extends Component {
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]
+		const video = (tutorial.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
+
 		const posts = tutorial.posts.map((post, i) => {
 			return (
 				<div key={i} className="entry clearfix">
@@ -31,13 +33,13 @@ class Tutorial extends Component {
 					<div className="panel panel-default" style={{maxWidth:600}}>
 						<div className="panel-body" style={{padding:36}}>
 							<h3>
-								<a href="#" style={{marginRight:12}} className="btn btn-info"><strong>{post.title}</strong></a>
+								<a href={'/post/'+tutorial.slug} style={{marginRight:12}} className="btn btn-info"><strong>{post.title}</strong></a>
 							</h3>
 							<hr />
 							{post.description}
-							<div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
+							{video}
 							<br />
-							Click <a href="#">HERE</a> to view full post.
+							Click <a href=href={'/post/'+tutorial.slug}>HERE</a> to view full post.
 						</div>
 					</div>
 				</div>
