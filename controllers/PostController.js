@@ -1,5 +1,6 @@
 var Post = require('../models/Post')
 var Scraper = require('../utils/Scraper')
+var TextUtils = require('../utils/TextUtils')
 var mongoose = require('mongoose')
 var Promise = require('bluebird')
 
@@ -99,17 +100,18 @@ module.exports = {
 
 	post: function(postInfo, completion){
 		if (postInfo.link.length == 0){
-			var parts = postInfo.title.split(' ')
-			var slug = ''
-			for (var i=0; i<parts.length; i++){
-				var word = parts[i]
-				slug += word
-				if (i != parts.length-1)
-					slug += '-'
-			}
+			// var parts = postInfo.title.split(' ')
+			// var slug = ''
+			// for (var i=0; i<parts.length; i++){
+			// 	var word = parts[i]
+			// 	slug += word
+			// 	if (i != parts.length-1)
+			// 		slug += '-'
+			// }
 
-			slug = slug.replace('?', '')
-			postInfo['slug'] = slug
+			// slug = slug.replace('?', '')
+
+			postInfo['slug'] = TextUtils.slugVersion(postInfo.title)
 			Post.create(postInfo, function(err, post){
 				if (err){
 					completion({confirmation:'fail', message:err.message}, null)
@@ -135,17 +137,19 @@ module.exports = {
 					postInfo['text'] = result[key]
 			}
 
-			var parts = postInfo.title.split(' ')
-			var slug = ''
-			for (var i=0; i<parts.length; i++){
-				var word = parts[i]
-				slug += word
-				if (i != parts.length-1)
-					slug += '-'
-			}
+			// var parts = postInfo.title.split(' ')
+			// var slug = ''
+			// for (var i=0; i<parts.length; i++){
+			// 	var word = parts[i]
+			// 	slug += word
+			// 	if (i != parts.length-1)
+			// 		slug += '-'
+			// }
 
-			slug = slug.replace('?', '')
-			postInfo['slug'] = slug
+			// slug = slug.replace('?', '')
+			// postInfo['slug'] = slug
+
+			postInfo['slug'] = TextUtils.slugVersion(postInfo.title)
 			Post.create(postInfo, function(err, post){
 				if (err){
 					completion({confirmation:'fail', message:err}, null)
@@ -163,15 +167,16 @@ module.exports = {
 
 
 	put: function(postId, postInfo, completion){
+		postInfo['slug'] = TextUtils.slugVersion(postInfo.title)
 		Post.findByIdAndUpdate(postId, postInfo, {new:true}, function(err, post){
 			if (err){
-				completion({confirmation:'fail', message:err.message}, null);
-				return;
+				completion({confirmation:'fail', message:err.message}, null)
+				return
 			}
 			
-			completion(null, post.summary());
-			return;
-		});		
+			completion(null, post.summary())
+			return
+		});	
 	},
 
 	delete: function(){
