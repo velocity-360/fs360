@@ -68,7 +68,10 @@
                     <div class="col-md-6 mb-xs-24">
                         <h5>Posts</h5>
                         <ol style="margin-left:24px">
-                            <li ng-repeat="post in tutorial.posts track by $index"><% post.title %></li>
+                            <li ng-repeat="post in tutorial.posts track by $index">
+                                <% post.title %>,
+                                <a ng-click="removePost(post)" href="">Remove</a>
+                            </li>
                         </ol>
                         <input ng-model="post" class="form-control" type="text" placeholder="Post ID" />
                         <a class="btn btn-rounded btn-lg" ng-click="addPost()" href="">Add Post</a>

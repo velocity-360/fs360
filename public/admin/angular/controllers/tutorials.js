@@ -85,9 +85,14 @@ app.controller('TutorialsController', ['$scope', 'generalService', 'accountServi
 			if (alreadyThere == true)
 				return
 
+			var description = post.text
+			if (description.length > 200)
+				description = description.substring(0, 200)+'...'
+
 			var entry = {
 				title: post.title,
 				slug: post.slug,
+				description: description,
 				id: post.id,
 				wistia: post.wistia,
 				image: post.image
@@ -98,6 +103,12 @@ app.controller('TutorialsController', ['$scope', 'generalService', 'accountServi
 		})
 	}
 
+	$scope.removePost = function(post){
+		var index = $scope.tutorial.posts.indexOf(post)
+		$scope.tutorial.posts.splice(index, 1)
+		if (index != -1)
+			$scope.updateTutorial(null)
+	}
 
 	$scope.updateTutorial = function(completion){
 		if ($scope.tutorial.id == null)
