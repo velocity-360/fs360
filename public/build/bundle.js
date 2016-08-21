@@ -22145,6 +22145,10 @@
 	
 	var _course2 = _interopRequireDefault(_course);
 	
+	var _tutorial = __webpack_require__(609);
+	
+	var _tutorial2 = _interopRequireDefault(_tutorial);
+	
 	var _post = __webpack_require__(199);
 	
 	var _post2 = _interopRequireDefault(_post);
@@ -22163,10 +22167,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var store;
+	
 	// App Reducers
 	
-	
-	var store;
 	exports.default = {
 	
 		configureStore: function configureStore(initialState) {
@@ -22174,6 +22178,7 @@
 			var reducers = (0, _redux.combineReducers)({
 				profileReducer: _profile2.default,
 				courseReducer: _course2.default,
+				tutorialReducer: _tutorial2.default,
 				postReducer: _post2.default,
 				eventReducer: _event2.default,
 				staticReducer: _static2.default,
@@ -22290,6 +22295,8 @@
 	
 		COURSES_RECIEVED: 'COURSES_RECIEVED',
 		COURSE_RECIEVED: 'COURSE_RECIEVED',
+	
+		TUTORIALS_RECIEVED: 'TUTORIALS_RECIEVED',
 	
 		POSTS_RECIEVED: 'POSTS_RECIEVED',
 		POST_CREATED: 'POST_CREATED',
@@ -65675,6 +65682,8 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
+	var _reactRedux = __webpack_require__(168);
+	
 	var _utils = __webpack_require__(478);
 	
 	var _components = __webpack_require__(593);
@@ -65695,45 +65704,17 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tutorial).call(this, props, context));
 	
-			_this.state = {
-				tutorial: {
-					title: '',
-					description: '',
-					image: '',
-					posts: []
-				}
-			};
+			_this.state = {};
 			return _this;
 		}
 	
 		_createClass(Tutorial, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _this2 = this;
-	
-				var params = { slug: this.props.slug };
-				_utils.api.handleGet('/api/tutorial', params, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-	
-					console.log(JSON.stringify(response));
-					var tutorials = response.tutorials;
-					if (tutorials.length == 0) {
-						return;
-					}
-	
-					var tutorial = tutorials[0];
-					_this2.setState({
-						tutorial: tutorial
-					});
-				});
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'render',
 			value: function render() {
-				var tutorial = this.state.tutorial;
+				var tutorial = this.props.tutorials[this.props.slug];
 				var posts = tutorial.posts.map(function (post, i) {
 					return _react2.default.createElement(
 						'div',
@@ -65863,24 +65844,11 @@
 													tutorial.title
 												),
 												_react2.default.createElement('hr', null),
+												_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd', marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460', alt: 'Velocity 360' }),
 												_react2.default.createElement(
 													'p',
 													{ className: 'about' },
 													tutorial.description
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'container' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'image' },
-														_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460', alt: 'Velocity 360' })
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'text' },
-														tutorial.description
-													)
 												)
 											)
 										),
@@ -65915,7 +65883,58 @@
 		return Tutorial;
 	}(_react.Component);
 	
-	exports.default = Tutorial;
+	var stateToProps = function stateToProps(state) {
+		return {
+			currentUser: state.profileReducer.currentUser,
+			tutorials: state.tutorialReducer.tutorials,
+			loaderOptions: state.staticReducer.loaderConfig,
+			faq: state.staticReducer.faq
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(Tutorial);
+
+/***/ },
+/* 609 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+	
+			case constants.TUTORIALS_RECIEVED:
+				var newState = Object.assign({}, state);
+				var c = action.tutorials;
+				newState['tutorialArray'] = c;
+				var tutorialMap = {};
+				for (var i = 0; i < c.length; i++) {
+					var tutorial = c[i];
+					tutorialMap[tutorial.slug] = tutorial;
+				}
+	
+				newState['tutorials'] = tutorialMap;
+				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				return newState;
+	
+			default:
+				return state;
+		}
+	};
+	
+	var constants = __webpack_require__(197);
+	
+	var initialState = {
+		tutorials: {},
+		tutorialArray: []
+	};
 
 /***/ }
 /******/ ]);

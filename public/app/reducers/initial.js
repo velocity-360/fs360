@@ -1,6 +1,7 @@
 // Reducers
 import profileReducer from '../reducers/profile'
 import courseReducer from '../reducers/course'
+import tutorialReducer from '../reducers/tutorial'
 import postReducer from '../reducers/post'
 import eventReducer from '../reducers/event'
 import projectReducer from '../reducers/project'
@@ -20,6 +21,10 @@ export default function() {
 				tagString: '',
 				accountType:'basic'
 			}
+		},
+		tutorialReducer: {
+			tutorials: {},
+			tutorialArray: []
 		},
 		courseReducer: {
 			courses: {

@@ -7,6 +7,8 @@ var profileReducer = _interopRequire(require("../reducers/profile"));
 
 var courseReducer = _interopRequire(require("../reducers/course"));
 
+var tutorialReducer = _interopRequire(require("../reducers/tutorial"));
+
 var postReducer = _interopRequire(require("../reducers/post"));
 
 var eventReducer = _interopRequire(require("../reducers/event"));
@@ -28,6 +30,10 @@ module.exports = function () {
 				tagString: "",
 				accountType: "basic"
 			}
+		},
+		tutorialReducer: {
+			tutorials: {},
+			tutorialArray: []
 		},
 		courseReducer: {
 			courses: {

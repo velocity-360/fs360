@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 // App Reducers
 import profileReducer from '../reducers/profile'
 import courseReducer from '../reducers/course'
+import tutorialReducer from '../reducers/tutorial'
 import postReducer from '../reducers/post'
 import eventReducer from '../reducers/event'
 import projectReducer from '../reducers/project'
@@ -18,6 +19,7 @@ export default {
 		var reducers = combineReducers({
 		    profileReducer: profileReducer,
 		    courseReducer: courseReducer,
+		    tutorialReducer: tutorialReducer,
 		    postReducer: postReducer,
 		    eventReducer: eventReducer,
 		    staticReducer: staticReducer,

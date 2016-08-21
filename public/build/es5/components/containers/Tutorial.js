@@ -22,6 +22,7 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
+var connect = require("react-redux").connect;
 var _utils = require("../../utils");
 
 var TextUtils = _utils.TextUtils;
@@ -38,48 +39,20 @@ var Tutorial = (function (Component) {
 		_classCallCheck(this, Tutorial);
 
 		_get(Object.getPrototypeOf(Tutorial.prototype), "constructor", this).call(this, props, context);
-		this.state = {
-			tutorial: {
-				title: "",
-				description: "",
-				image: "",
-				posts: []
-			}
-		};
+		this.state = {};
 	}
 
 	_inherits(Tutorial, Component);
 
 	_prototypeProperties(Tutorial, null, {
 		componentDidMount: {
-			value: function componentDidMount() {
-				var _this = this;
-				var params = { slug: this.props.slug };
-				api.handleGet("/api/tutorial", params, function (err, response) {
-					if (err) {
-						alert(err.message);
-						return;
-					}
-
-					console.log(JSON.stringify(response));
-					var tutorials = response.tutorials;
-					if (tutorials.length == 0) {
-						return;
-					}
-
-
-					var tutorial = tutorials[0];
-					_this.setState({
-						tutorial: tutorial
-					});
-				});
-			},
+			value: function componentDidMount() {},
 			writable: true,
 			configurable: true
 		},
 		render: {
 			value: function render() {
-				var tutorial = this.state.tutorial;
+				var tutorial = this.props.tutorials[this.props.slug];
 				var posts = tutorial.posts.map(function (post, i) {
 					return React.createElement(
 						"div",
@@ -209,24 +182,11 @@ var Tutorial = (function (Component) {
 													tutorial.title
 												),
 												React.createElement("hr", null),
+												React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
 												React.createElement(
 													"p",
 													{ className: "about" },
 													tutorial.description
-												),
-												React.createElement(
-													"div",
-													{ className: "container" },
-													React.createElement(
-														"div",
-														{ className: "image" },
-														React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd" }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" })
-													),
-													React.createElement(
-														"div",
-														{ className: "text" },
-														tutorial.description
-													)
 												)
 											)
 										),
@@ -264,4 +224,14 @@ var Tutorial = (function (Component) {
 	return Tutorial;
 })(Component);
 
-module.exports = Tutorial;
+var stateToProps = function (state) {
+	return {
+		currentUser: state.profileReducer.currentUser,
+		tutorials: state.tutorialReducer.tutorials,
+		loaderOptions: state.staticReducer.loaderConfig,
+		faq: state.staticReducer.faq
+	};
+};
+
+
+module.exports = connect(stateToProps)(Tutorial);

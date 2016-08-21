@@ -6,9 +6,11 @@ var courseController = require('../controllers/CourseController')
 var postController = require('../controllers/PostController')
 var projectController = require('../controllers/ProjectController')
 var eventController = require('../controllers/EventController')
+var tutorialController = require('../controllers/TutorialController')
 var controllers = {
 	courses: courseController,
 	course: courseController,
+	tutorial: tutorialController,
 	video: courseController,
 	feed: postController,
 	post: postController,
@@ -149,6 +151,10 @@ router.get('/:page/:slug', function(req, res, next) {
 		var entity = results[0]
 		if (page == 'course'){
 			initialData.courseReducer.courses[entity.slug] = entity
+		}
+
+		if (page == 'tutorial'){
+			initialData.tutorialReducer.tutorials[entity.slug] = entity
 		}
 
 		if (page == 'video'){
