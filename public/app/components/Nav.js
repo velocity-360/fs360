@@ -76,7 +76,7 @@ class Nav extends Component {
 										<li><a href="https://www.velocity360.io/course/node-react-native-evening-course"><div className="menu-item">Intro to Node</div></a></li>
 									</ul>
 								</li>
-	                            <li><a href="https://www.velocity360.io/courses?type=online"><div style={{padding:4}}>Videos</div></a></li>
+	                            <li><a href="https://www.velocity360.io/tutorials"><div style={{padding:4}}>Tutorials</div></a></li>
 	                            <li><a target="_blank" href="https://www.coursereport.com/schools/velocity"><div style={{padding:4}}>Reviews</div></a></li>
 								{login}
 	                        </ul>

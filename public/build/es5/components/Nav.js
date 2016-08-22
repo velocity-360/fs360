@@ -265,11 +265,11 @@ var Nav = (function (Component) {
 										null,
 										React.createElement(
 											"a",
-											{ href: "https://www.velocity360.io/courses?type=online" },
+											{ href: "https://www.velocity360.io/tutorials" },
 											React.createElement(
 												"div",
 												{ style: { padding: 4 } },
-												"Videos"
+												"Tutorials"
 											)
 										)
 									),

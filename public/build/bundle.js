@@ -41278,11 +41278,11 @@
 										null,
 										_react2.default.createElement(
 											'a',
-											{ href: 'https://www.velocity360.io/courses?type=online' },
+											{ href: 'https://www.velocity360.io/tutorials' },
 											_react2.default.createElement(
 												'div',
 												{ style: { padding: 4 } },
-												'Videos'
+												'Tutorials'
 											)
 										)
 									),
