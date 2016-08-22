@@ -62513,15 +62513,6 @@
 											_react2.default.createElement(
 												'ul',
 												null,
-												_react2.default.createElement(
-													'li',
-													{ style: { padding: 6 } },
-													_react2.default.createElement(
-														'a',
-														{ href: '#intro' },
-														'Intro'
-													)
-												),
 												sidebar,
 												_react2.default.createElement(
 													'li',

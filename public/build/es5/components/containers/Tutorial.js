@@ -273,15 +273,6 @@ var Tutorial = (function (Component) {
 											React.createElement(
 												"ul",
 												null,
-												React.createElement(
-													"li",
-													{ style: { padding: 6 } },
-													React.createElement(
-														"a",
-														{ href: "#intro" },
-														"Intro"
-													)
-												),
 												sidebar,
 												React.createElement(
 													"li",

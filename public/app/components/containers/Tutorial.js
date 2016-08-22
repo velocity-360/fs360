@@ -174,9 +174,6 @@ class Tutorial extends Component {
 											<h4 style={{marginBottom:6}}>Units</h4>
 										</div>
 										<ul>
-											<li style={{padding:6}}>
-												<a href="#intro">Intro</a>
-											</li>
 											{sidebar}
 											<li style={{borderTop:'1px solid #ddd', padding:6}}>
 												<a href="#newsletter">Newsletter</a>
