@@ -215,15 +215,6 @@ var Tutorial = (function (Component) {
 														{ href: "#newsletter" },
 														"Newsletter"
 													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#join" },
-														"Join"
-													)
 												)
 											)
 										)
@@ -306,69 +297,6 @@ var Tutorial = (function (Component) {
 															"a",
 															{ onClick: this.subscribe, href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
 															"Submit"
-														)
-													)
-												)
-											)
-										),
-										React.createElement(
-											"article",
-											{ id: "join", className: "overview" },
-											React.createElement(
-												"div",
-												{ className: "container" },
-												React.createElement(
-													"h2",
-													{ style: { marginTop: 24 } },
-													"Join"
-												),
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: { padding: 36 } },
-														React.createElement(
-															"h3",
-															null,
-															"The Process"
-														),
-														React.createElement("hr", null),
-														React.createElement(
-															"a",
-															{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
-															"Basic"
-														),
-														React.createElement(
-															"strong",
-															null,
-															"Free"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginTop: 10 } },
-															"Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships."
-														),
-														React.createElement(
-															"a",
-															{ href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
-															"Premium"
-														),
-														React.createElement(
-															"strong",
-															null,
-															"$19.99 / month"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginTop: 10 } },
-															"All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience."
-														),
-														React.createElement("hr", null),
-														React.createElement(
-															"a",
-															{ onClick: this.toggleApplication, href: "#", className: "btn btn-lg btn-success" },
-															"Apply"
 														)
 													)
 												)

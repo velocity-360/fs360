@@ -62447,15 +62447,6 @@
 														{ href: '#newsletter' },
 														'Newsletter'
 													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#join' },
-														'Join'
-													)
 												)
 											)
 										)
@@ -62538,69 +62529,6 @@
 															'a',
 															{ onClick: this.subscribe, href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
 															'Submit'
-														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'join', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginTop: 24 } },
-													'Join'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
-														_react2.default.createElement(
-															'h3',
-															null,
-															'The Process'
-														),
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'a',
-															{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-															'Basic'
-														),
-														_react2.default.createElement(
-															'strong',
-															null,
-															'Free'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginTop: 10 } },
-															'Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships.'
-														),
-														_react2.default.createElement(
-															'a',
-															{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-															'Premium'
-														),
-														_react2.default.createElement(
-															'strong',
-															null,
-															'$19.99 / month'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginTop: 10 } },
-															'All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
-														),
-														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.toggleApplication, href: '#', className: 'btn btn-lg btn-success' },
-															'Apply'
 														)
 													)
 												)

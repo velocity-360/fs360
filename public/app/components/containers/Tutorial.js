@@ -113,7 +113,6 @@ class Tutorial extends Component {
 											<li><a href="#introduction">Overview</a></li>
 											<li><a href="#curriculum">Curriculum</a></li>
 											<li><a href="#newsletter">Newsletter</a></li>
-											<li><a href="#join">Join</a></li>
 										</ul>
 									</nav>
 								</aside>
@@ -158,34 +157,6 @@ class Tutorial extends Component {
 									</article>
 
 
-				<article id="join" className="overview">
-					<div className="container">
-
-						<h2 style={{marginTop:24}}>Join</h2>
-						<div className="panel panel-default">
-							<div className="panel-body" style={{padding:36}}>
-								<h3>The Process</h3>
-								<hr />
-								<a href="#" style={{marginRight:12}} className="btn btn-info">Basic</a><strong>Free</strong>
-								<p style={{marginTop:10}}>
-									Complete our online application by midnight August 29th to 
-									apply for the course. All applicants will be considered for 
-									the full scholarships.
-								</p>
-
-								<a href="#" style={{marginRight:12}} className="btn btn-info">Premium</a><strong>$19.99 / month</strong>
-								<p style={{marginTop:10}}>
-									All applicants will undergo a 15-30 minute phone interview as a first technical 
-									assessment. You should feel comfortable speaking about prior programming experience.
-								</p>
-
-
-								<hr />
-								<a onClick={this.toggleApplication} href="#" className="btn btn-lg btn-success">Apply</a>
-							</div>
-						</div>
-					</div>
-				</article>							
 
 								</div>
 							</main>
