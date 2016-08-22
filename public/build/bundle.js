@@ -62518,9 +62518,27 @@
 													'li',
 													{ style: { borderTop: '1px solid #ddd', padding: 6 } },
 													_react2.default.createElement(
-														'a',
-														{ href: '#newsletter' },
-														'Newsletter'
+														'div',
+														{ style: { paddingTop: 16 } },
+														_react2.default.createElement(
+															'a',
+															{ href: '#newsletter' },
+															'Newsletter'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginBottom: 16, fontSize: 13 } },
+															'Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.'
+														),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.subscribe, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
+															'Submit'
+														)
 													)
 												)
 											)
@@ -62548,45 +62566,6 @@
 														)
 													),
 													_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(currentPostHtml) }, className: 'panel-body', style: { padding: 36 } })
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'newsletter', className: 'overview', style: style.article },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: style.panelBody },
-														_react2.default.createElement(
-															'h2',
-															{ style: style.header },
-															'Newsletter'
-														)
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
-														_react2.default.createElement(
-															'p',
-															{ style: { marginBottom: 16 } },
-															'Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses.'
-														),
-														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
-														_react2.default.createElement('br', null),
-														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
-														_react2.default.createElement('br', null),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.subscribe, href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-															'Submit'
-														)
-													)
 												)
 											)
 										)

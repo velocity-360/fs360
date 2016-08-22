@@ -176,7 +176,16 @@ class Tutorial extends Component {
 										<ul>
 											{sidebar}
 											<li style={{borderTop:'1px solid #ddd', padding:6}}>
-												<a href="#newsletter">Newsletter</a>
+												<div style={{paddingTop:16}}>
+													<a href="#newsletter">Newsletter</a>
+													<p style={{marginBottom:16, fontSize:13}}>
+														Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
+													</p>
+							                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
+							                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
+													<a onClick={this.subscribe} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Submit</a>
+												</div>
+
 											</li>
 										</ul>
 									</nav>
@@ -192,25 +201,6 @@ class Tutorial extends Component {
 												</div>
 
 												<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(currentPostHtml) }} className="panel-body" style={{padding:36}}></div>
-											</div>
-										</div>
-									</article>
-
-									<article id="newsletter" className="overview" style={style.article}>
-										<div className="container">
-											<div className="panel panel-default">
-												<div className="panel-body" style={style.panelBody}>
-													<h2 style={style.header}>Newsletter</h2>
-												</div>
-
-												<div className="panel-body" style={{padding:36}}>
-													<p style={{marginBottom:16}}>
-														Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses.
-													</p>
-							                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
-							                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
-													<a onClick={this.subscribe} href="#" style={{marginRight:12}} className="btn btn-info">Submit</a>
-												</div>
 											</div>
 										</div>
 									</article>

@@ -278,9 +278,27 @@ var Tutorial = (function (Component) {
 													"li",
 													{ style: { borderTop: "1px solid #ddd", padding: 6 } },
 													React.createElement(
-														"a",
-														{ href: "#newsletter" },
-														"Newsletter"
+														"div",
+														{ style: { paddingTop: 16 } },
+														React.createElement(
+															"a",
+															{ href: "#newsletter" },
+															"Newsletter"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginBottom: 16, fontSize: 13 } },
+															"Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses."
+														),
+														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
+														React.createElement("br", null),
+														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
+														React.createElement("br", null),
+														React.createElement(
+															"a",
+															{ onClick: this.subscribe, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
+															"Submit"
+														)
 													)
 												)
 											)
@@ -308,45 +326,6 @@ var Tutorial = (function (Component) {
 														)
 													),
 													React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(currentPostHtml) }, className: "panel-body", style: { padding: 36 } })
-												)
-											)
-										),
-										React.createElement(
-											"article",
-											{ id: "newsletter", className: "overview", style: style.article },
-											React.createElement(
-												"div",
-												{ className: "container" },
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: style.panelBody },
-														React.createElement(
-															"h2",
-															{ style: style.header },
-															"Newsletter"
-														)
-													),
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: { padding: 36 } },
-														React.createElement(
-															"p",
-															{ style: { marginBottom: 16 } },
-															"Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses."
-														),
-														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
-														React.createElement("br", null),
-														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
-														React.createElement("br", null),
-														React.createElement(
-															"a",
-															{ onClick: this.subscribe, href: "#", style: { marginRight: 12 }, className: "btn btn-info" },
-															"Submit"
-														)
-													)
 												)
 											)
 										)
