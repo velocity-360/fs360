@@ -15,6 +15,8 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var ReactDOM = _interopRequire(require("react-dom"));
+
 var _reactBootstrap = require("react-bootstrap");
 
 var ReactBootstrap = _interopRequire(_reactBootstrap);
@@ -28,6 +30,10 @@ var _utils = require("../../utils");
 var TextUtils = _utils.TextUtils;
 var api = _utils.api;
 var Nav = require("../../components").Nav;
+var store = _interopRequire(require("../../stores/store"));
+
+var actions = _interopRequire(require("../../actions/actions"));
+
 var Tutorial = (function (Component) {
 	function Tutorial(props, context) {
 		_classCallCheck(this, Tutorial);
@@ -35,8 +41,11 @@ var Tutorial = (function (Component) {
 		_get(Object.getPrototypeOf(Tutorial.prototype), "constructor", this).call(this, props, context);
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.subscribe = this.subscribe.bind(this);
+		this.changeUnit = this.changeUnit.bind(this);
+		this.findUnit = this.findUnit.bind(this);
 		this.state = {
 			showLoader: false,
+			currentPost: "", // slug of the selected post
 			visitor: {
 				name: "",
 				email: ""
@@ -47,6 +56,17 @@ var Tutorial = (function (Component) {
 	_inherits(Tutorial, Component);
 
 	_prototypeProperties(Tutorial, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				var tutorial = this.props.tutorials[this.props.slug];
+				if (tutorial.posts.length == 0) {
+					return;
+				}var firstPost = tutorial.posts[0];
+				this.findUnit(firstPost.slug);
+			},
+			writable: true,
+			configurable: true
+		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
 				var updatedVisitor = Object.assign({}, this.state.visitor);
@@ -98,10 +118,41 @@ var Tutorial = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		changeUnit: {
+			value: function changeUnit(event) {
+				event.preventDefault();
+				ReactDOM.findDOMNode(this).scrollIntoView();
+				var postSlug = event.target.id;
+				this.findUnit(postSlug);
+			},
+			writable: true,
+			configurable: true
+		},
+		findUnit: {
+			value: function findUnit(postSlug) {
+				if (this.state.currentPost == postSlug) {
+					return;
+				}this.setState({ currentPost: postSlug });
+
+				// check store first
+				var selectedPost = this.props.posts[postSlug];
+				if (selectedPost != null) {
+					return;
+				}var url = "/api/post";
+				api.handleGet(url, { slug: postSlug }, function (err, response) {
+					if (err) return;
+
+					var posts = response.posts;
+					store.currentStore().dispatch(actions.postsRecieved(posts));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
+				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
-
 				var posts = tutorial.posts.map(function (post, i) {
 					var video = post.wistia.length == 0 ? null : React.createElement(
 						"div",
@@ -158,6 +209,29 @@ var Tutorial = (function (Component) {
 					);
 				});
 
+				var sidebar = tutorial.posts.map(function (post, i) {
+					var borderTop = i == 0 ? "none" : "1px solid #ddd";
+					var color = post.slug == _this.state.currentPost ? "#1ABC9C" : "#86939f";
+					return React.createElement(
+						"li",
+						{ key: post.id, style: { borderTop: borderTop, padding: 6 } },
+						React.createElement(
+							"a",
+							{ id: post.slug, onClick: _this.changeUnit, href: "#top", style: { color: color } },
+							i + 1,
+							". ",
+							post.title
+						)
+					);
+				});
+
+				var selectedPost = this.props.posts[this.state.currentPost];
+				var currentPostHtml = "";
+				var currentPostTitle = "";
+				if (selectedPost != null) {
+					currentPostHtml = selectedPost.text;
+					currentPostTitle = selectedPost.title;
+				}
 
 				return React.createElement(
 					"div",
@@ -186,31 +260,23 @@ var Tutorial = (function (Component) {
 										{ style: { background: "#f9f9f9" } },
 										React.createElement(
 											"nav",
-											{ style: { padding: 16, background: "#fff", border: "1px solid #ddd" } },
+											{ style: style.sidebar },
+											React.createElement(
+												"div",
+												{ style: { textAlign: "center", background: "#f9f9f9", padding: 12 } },
+												React.createElement(
+													"h4",
+													{ style: { marginBottom: 6 } },
+													"Units"
+												)
+											),
 											React.createElement(
 												"ul",
 												null,
+												sidebar,
 												React.createElement(
 													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#introduction" },
-														"Overview"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
-													React.createElement(
-														"a",
-														{ href: "#curriculum" },
-														"Curriculum"
-													)
-												),
-												React.createElement(
-													"li",
-													null,
+													{ style: { borderTop: "1px solid #ddd", padding: 6 } },
 													React.createElement(
 														"a",
 														{ href: "#newsletter" },
@@ -222,76 +288,58 @@ var Tutorial = (function (Component) {
 									),
 									React.createElement(
 										"div",
-										{ className: "content", style: { background: "#f9f9f9" } },
+										{ className: "content", style: { background: "#f9f9f9", paddingTop: 62 } },
 										React.createElement(
 											"article",
-											{ id: "introduction", className: "overview" },
+											{ id: "misc", className: "overview" },
 											React.createElement(
 												"div",
 												{ className: "container" },
-												React.createElement(
-													"h2",
-													null,
-													tutorial.title
-												),
-												React.createElement("hr", null),
-												React.createElement(
-													"p",
-													{ className: "about" },
-													tutorial.description
-												)
-											)
-										),
-										React.createElement(
-											"article",
-											{ id: "curriculum", className: "overview", style: { marginTop: 40 } },
-											React.createElement(
-												"h2",
-												null,
-												"Curriculum"
-											),
-											React.createElement(
-												"div",
-												{ className: "postcontent clearfix", style: { paddingBottom: 64 } },
-												React.createElement(
-													"div",
-													{ id: "posts", className: "post-timeline clearfix" },
-													React.createElement("div", { className: "timeline-border" }),
-													posts
-												)
-											)
-										),
-										React.createElement(
-											"article",
-											{ id: "newsletter", className: "overview" },
-											React.createElement(
-												"div",
-												{ className: "container" },
-												React.createElement(
-													"h2",
-													{ style: { marginTop: 24 } },
-													"Newsletter"
-												),
 												React.createElement(
 													"div",
 													{ className: "panel panel-default" },
 													React.createElement(
 														"div",
-														{ className: "panel-body", style: { padding: 36 } },
+														{ className: "panel-body", style: style.panelBody },
 														React.createElement(
-															"h3",
-															null,
-															"Sign Up"
-														),
-														React.createElement("hr", null),
+															"h2",
+															{ style: style.header },
+															currentPostTitle
+														)
+													),
+													React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(currentPostHtml) }, className: "panel-body", style: { padding: 36 } })
+												)
+											)
+										),
+										React.createElement(
+											"article",
+											{ id: "newsletter", className: "overview", style: { marginTop: 40 } },
+											React.createElement(
+												"div",
+												{ className: "container" },
+												React.createElement(
+													"div",
+													{ className: "panel panel-default" },
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: style.panelBody },
+														React.createElement(
+															"h2",
+															{ style: style.header },
+															"Newsletter"
+														)
+													),
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: { padding: 36 } },
 														React.createElement(
 															"p",
 															{ style: { marginBottom: 16 } },
 															"Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses."
 														),
-														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: { borderRadius: "0px !important", background: "#FEF9E7" }, className: "custom-input", placeholder: "Name" }),
+														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
 														React.createElement("br", null),
-														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: { borderRadius: "0px !important", background: "#FEF9E7" }, className: "custom-input", placeholder: "Email" }),
+														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
 														React.createElement("br", null),
 														React.createElement(
 															"a",
@@ -317,13 +365,33 @@ var Tutorial = (function (Component) {
 	return Tutorial;
 })(Component);
 
+var style = {
+	header: {
+		marginBottom: 0,
+		marginTop: 0 },
+
+	panelBody: {
+		padding: 36,
+		borderBottom: "1px solid #ddd"
+	},
+	sidebar: {
+		padding: 16,
+		background: "#fff",
+		border: "1px solid #ddd"
+	},
+	input: {
+		borderRadius: "0px !important",
+		background: "#FEF9E7"
+	}
+};
+
 var stateToProps = function (state) {
 	return {
 		currentUser: state.profileReducer.currentUser,
 		tutorials: state.tutorialReducer.tutorials,
+		posts: state.postReducer.posts,
 		loaderOptions: state.staticReducer.loaderConfig,
-		faq: state.staticReducer.faq
-	};
+		faq: state.staticReducer.faq };
 };
 
 

@@ -36,14 +36,15 @@ export default function(state = initialState, action){
 
 			var c = action.posts
 			newState['postsArray'] = c
-			var postsMap = {}
+
+			var postsMap = Object.assign({}, newState.posts)
 			for (var i=0; i<c.length; i++){
 				var post = c[i]
 				postsMap[post.slug] = post // key posts by slug
 			}
 
 			newState['posts'] = postsMap
-//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+			// console.log('POSTS REDUCER - POSTS_RECIEVED: '+JSON.stringify(newState))
 			return newState
 
 		case constants.POST_EDITED:

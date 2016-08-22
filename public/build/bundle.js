@@ -22450,14 +22450,15 @@
 	
 				var c = action.posts;
 				newState['postsArray'] = c;
-				var postsMap = {};
+	
+				var postsMap = Object.assign({}, newState.posts);
 				for (var i = 0; i < c.length; i++) {
 					var post = c[i];
 					postsMap[post.slug] = post; // key posts by slug
 				}
 	
 				newState['posts'] = postsMap;
-				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
+				// console.log('POSTS REDUCER - POSTS_RECIEVED: '+JSON.stringify(newState))
 				return newState;
 	
 			case constants.POST_EDITED:
@@ -62245,6 +62246,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(38);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _reactBootstrap = __webpack_require__(206);
 	
 	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
@@ -62258,6 +62263,14 @@
 	var _utils = __webpack_require__(479);
 	
 	var _components = __webpack_require__(594);
+	
+	var _store = __webpack_require__(194);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(460);
+	
+	var _actions2 = _interopRequireDefault(_actions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -62277,8 +62290,11 @@
 	
 			_this.updateVisitor = _this.updateVisitor.bind(_this);
 			_this.subscribe = _this.subscribe.bind(_this);
+			_this.changeUnit = _this.changeUnit.bind(_this);
+			_this.findUnit = _this.findUnit.bind(_this);
 			_this.state = {
 				showLoader: false,
+				currentPost: '', // slug of the selected post
 				visitor: {
 					name: '',
 					email: ''
@@ -62288,6 +62304,15 @@
 		}
 	
 		_createClass(Tutorial, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var tutorial = this.props.tutorials[this.props.slug];
+				if (tutorial.posts.length == 0) return;
+	
+				var firstPost = tutorial.posts[0];
+				this.findUnit(firstPost.slug);
+			}
+		}, {
 			key: 'updateVisitor',
 			value: function updateVisitor(event) {
 				var updatedVisitor = Object.assign({}, this.state.visitor);
@@ -62336,10 +62361,38 @@
 				});
 			}
 		}, {
+			key: 'changeUnit',
+			value: function changeUnit(event) {
+				event.preventDefault();
+				_reactDom2.default.findDOMNode(this).scrollIntoView();
+				var postSlug = event.target.id;
+				this.findUnit(postSlug);
+			}
+		}, {
+			key: 'findUnit',
+			value: function findUnit(postSlug) {
+				if (this.state.currentPost == postSlug) return;
+	
+				this.setState({ currentPost: postSlug });
+	
+				// check store first
+				var selectedPost = this.props.posts[postSlug];
+				if (selectedPost != null) return;
+	
+				var url = '/api/post';
+				_utils.api.handleGet(url, { slug: postSlug }, function (err, response) {
+					if (err) return;
+	
+					var posts = response.posts;
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(posts));
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
-				var tutorial = this.props.tutorials[this.props.slug];
+				var _this3 = this;
 	
+				var tutorial = this.props.tutorials[this.props.slug];
 				var posts = tutorial.posts.map(function (post, i) {
 					var video = post.wistia.length == 0 ? null : _react2.default.createElement(
 						'div',
@@ -62396,6 +62449,30 @@
 					);
 				});
 	
+				var sidebar = tutorial.posts.map(function (post, i) {
+					var borderTop = i == 0 ? 'none' : '1px solid #ddd';
+					var color = post.slug == _this3.state.currentPost ? '#1ABC9C' : '#86939f';
+					return _react2.default.createElement(
+						'li',
+						{ key: post.id, style: { borderTop: borderTop, padding: 6 } },
+						_react2.default.createElement(
+							'a',
+							{ id: post.slug, onClick: _this3.changeUnit, href: '#top', style: { color: color } },
+							i + 1,
+							'. ',
+							post.title
+						)
+					);
+				});
+	
+				var selectedPost = this.props.posts[this.state.currentPost];
+				var currentPostHtml = '';
+				var currentPostTitle = '';
+				if (selectedPost != null) {
+					currentPostHtml = selectedPost.text;
+					currentPostTitle = selectedPost.title;
+				}
+	
 				return _react2.default.createElement(
 					'div',
 					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
@@ -62423,31 +62500,23 @@
 										{ style: { background: '#f9f9f9' } },
 										_react2.default.createElement(
 											'nav',
-											{ style: { padding: 16, background: '#fff', border: '1px solid #ddd' } },
+											{ style: style.sidebar },
+											_react2.default.createElement(
+												'div',
+												{ style: { textAlign: 'center', background: '#f9f9f9', padding: 12 } },
+												_react2.default.createElement(
+													'h4',
+													{ style: { marginBottom: 6 } },
+													'Units'
+												)
+											),
 											_react2.default.createElement(
 												'ul',
 												null,
+												sidebar,
 												_react2.default.createElement(
 													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#introduction' },
-														'Overview'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-														'a',
-														{ href: '#curriculum' },
-														'Curriculum'
-													)
-												),
-												_react2.default.createElement(
-													'li',
-													null,
+													{ style: { borderTop: '1px solid #ddd', padding: 6 } },
 													_react2.default.createElement(
 														'a',
 														{ href: '#newsletter' },
@@ -62459,76 +62528,58 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'content', style: { background: '#f9f9f9' } },
+										{ className: 'content', style: { background: '#f9f9f9', paddingTop: 62 } },
 										_react2.default.createElement(
 											'article',
-											{ id: 'introduction', className: 'overview' },
+											{ id: 'misc', className: 'overview' },
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													null,
-													tutorial.title
-												),
-												_react2.default.createElement('hr', null),
-												_react2.default.createElement(
-													'p',
-													{ className: 'about' },
-													tutorial.description
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'curriculum', className: 'overview', style: { marginTop: 40 } },
-											_react2.default.createElement(
-												'h2',
-												null,
-												'Curriculum'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'postcontent clearfix', style: { paddingBottom: 64 } },
-												_react2.default.createElement(
-													'div',
-													{ id: 'posts', className: 'post-timeline clearfix' },
-													_react2.default.createElement('div', { className: 'timeline-border' }),
-													posts
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'newsletter', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginTop: 24 } },
-													'Newsletter'
-												),
 												_react2.default.createElement(
 													'div',
 													{ className: 'panel panel-default' },
 													_react2.default.createElement(
 														'div',
-														{ className: 'panel-body', style: { padding: 36 } },
+														{ className: 'panel-body', style: style.panelBody },
 														_react2.default.createElement(
-															'h3',
-															null,
-															'Sign Up'
-														),
-														_react2.default.createElement('hr', null),
+															'h2',
+															{ style: style.header },
+															currentPostTitle
+														)
+													),
+													_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(currentPostHtml) }, className: 'panel-body', style: { padding: 36 } })
+												)
+											)
+										),
+										_react2.default.createElement(
+											'article',
+											{ id: 'newsletter', className: 'overview', style: { marginTop: 40 } },
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: style.panelBody },
+														_react2.default.createElement(
+															'h2',
+															{ style: style.header },
+															'Newsletter'
+														)
+													),
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: { padding: 36 } },
 														_react2.default.createElement(
 															'p',
 															{ style: { marginBottom: 16 } },
 															'Sign up below to recieve our newsletter, and to stay informed about upcoming tutorials, events, and courses.'
 														),
-														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: { borderRadius: '0px !important', background: '#FEF9E7' }, className: 'custom-input', placeholder: 'Name' }),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
 														_react2.default.createElement('br', null),
-														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: { borderRadius: '0px !important', background: '#FEF9E7' }, className: 'custom-input', placeholder: 'Email' }),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
 														_react2.default.createElement('br', null),
 														_react2.default.createElement(
 															'a',
@@ -62551,10 +62602,32 @@
 		return Tutorial;
 	}(_react.Component);
 	
+	var style = {
+		header: {
+			marginBottom: 0,
+			marginTop: 0
+		},
+	
+		panelBody: {
+			padding: 36,
+			borderBottom: '1px solid #ddd'
+		},
+		sidebar: {
+			padding: 16,
+			background: '#fff',
+			border: '1px solid #ddd'
+		},
+		input: {
+			borderRadius: '0px !important',
+			background: '#FEF9E7'
+		}
+	};
+	
 	var stateToProps = function stateToProps(state) {
 		return {
 			currentUser: state.profileReducer.currentUser,
 			tutorials: state.tutorialReducer.tutorials,
+			posts: state.postReducer.posts,
 			loaderOptions: state.staticReducer.loaderConfig,
 			faq: state.staticReducer.faq
 		};
