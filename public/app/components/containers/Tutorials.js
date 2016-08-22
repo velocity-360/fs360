@@ -31,6 +31,8 @@ class Tutorials extends Component {
 
 	render(){
 		const tutorialsList = this.state.tutorials.map((tutorial, i) => {
+			const link = (tutorial.status == 'live') ? <a href={'/tutorial/'+tutorial.slug} className="button button-3d button-mini button-rounded button-teal">View</a> : 'Coming Soon!'
+			const price = (tutorial.price == 0) ? 'FREE' : '$'+tutorial.price
 			return (
 				<div key={tutorial.id} className="col-md-4">
 					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
@@ -42,9 +44,7 @@ class Tutorials extends Component {
 						</div>
 						<p style={{height:144}}>{TextUtils.truncateText(tutorial.description, 180)}</p>
 						<h5 style={{marginBottom:6}}>
-							FREE
-							<span style={{margin:16}}>|</span>
-							<a href={'/tutorial/'+tutorial.slug} className="button button-3d button-mini button-rounded button-teal">View</a>
+							{price}<span style={{margin:16}}>|</span>{link}
 						</h5>
 					</div>
 				</div>				

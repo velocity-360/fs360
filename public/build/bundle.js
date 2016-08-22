@@ -62142,6 +62142,12 @@
 			key: 'render',
 			value: function render() {
 				var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
+					var link = tutorial.status == 'live' ? _react2.default.createElement(
+						'a',
+						{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
+						'View'
+					) : 'Coming Soon!';
+					var price = tutorial.price == 0 ? 'FREE' : '$' + tutorial.price;
 					return _react2.default.createElement(
 						'div',
 						{ key: tutorial.id, className: 'col-md-4' },
@@ -62170,17 +62176,13 @@
 							_react2.default.createElement(
 								'h5',
 								{ style: { marginBottom: 6 } },
-								'FREE',
+								price,
 								_react2.default.createElement(
 									'span',
 									{ style: { margin: 16 } },
 									'|'
 								),
-								_react2.default.createElement(
-									'a',
-									{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
-									'View'
-								)
+								link
 							)
 						)
 					);
