@@ -62146,7 +62146,11 @@
 						'a',
 						{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
 						'View'
-					) : 'Coming Soon!';
+					) : _react2.default.createElement(
+						'a',
+						{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+						'Coming Soon!'
+					);
 					var price = tutorial.price == 0 ? 'FREE' : '$' + tutorial.price;
 					return _react2.default.createElement(
 						'div',
