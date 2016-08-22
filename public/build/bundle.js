@@ -62396,12 +62396,6 @@
 					);
 				});
 	
-				var video = tutorial.wistia.length == 0 ? null : _react2.default.createElement(
-					'div',
-					{ className: 'wistia_embed wistia_async_' + tutorial.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-					' '
-				);
-	
 				return _react2.default.createElement(
 					'div',
 					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
@@ -62482,8 +62476,7 @@
 													'p',
 													{ className: 'about' },
 													tutorial.description
-												),
-												video
+												)
 											)
 										),
 										_react2.default.createElement(

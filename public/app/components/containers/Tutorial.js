@@ -94,7 +94,6 @@ class Tutorial extends Component {
 			)
 		})
 
-		const video = (tutorial.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+tutorial.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
 
 		return(
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
@@ -125,7 +124,6 @@ class Tutorial extends Component {
 											<h2>{tutorial.title}</h2>
 											<hr />
 											<p className="about">{tutorial.description}</p>
-											{video}
 										</div>
 									</article>
 

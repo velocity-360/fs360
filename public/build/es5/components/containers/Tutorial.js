@@ -158,11 +158,6 @@ var Tutorial = (function (Component) {
 					);
 				});
 
-				var video = tutorial.wistia.length == 0 ? null : React.createElement(
-					"div",
-					{ className: "wistia_embed wistia_async_" + tutorial.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
-					" "
-				);
 
 				return React.createElement(
 					"div",
@@ -244,8 +239,7 @@ var Tutorial = (function (Component) {
 													"p",
 													{ className: "about" },
 													tutorial.description
-												),
-												video
+												)
 											)
 										),
 										React.createElement(
