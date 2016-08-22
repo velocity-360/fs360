@@ -234,8 +234,7 @@ var Tutorial = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "container" },
-												React.createElement("img", { className: "visible-xs", style: { width: 160, background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
-												React.createElement("img", { className: "hidden-xs", style: { width: 160, float: "right", background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
+												React.createElement("img", { style: { width: 160, background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
 												React.createElement(
 													"h2",
 													null,
@@ -252,7 +251,7 @@ var Tutorial = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ id: "curriculum", className: "overview", style: { marginTop: 20 } },
+											{ id: "curriculum", className: "overview", style: { marginTop: 40 } },
 											React.createElement(
 												"h2",
 												null,
