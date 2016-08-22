@@ -62478,7 +62478,6 @@
 													tutorial.title
 												),
 												_react2.default.createElement('hr', null),
-												_react2.default.createElement('img', { style: { width: 160, background: '#fff', padding: 6, border: '1px solid #ddd', marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460', alt: 'Velocity 360' }),
 												_react2.default.createElement(
 													'p',
 													{ className: 'about' },

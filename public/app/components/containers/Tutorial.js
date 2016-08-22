@@ -124,7 +124,6 @@ class Tutorial extends Component {
 										<div className="container">
 											<h2>{tutorial.title}</h2>
 											<hr />
-											<img style={{width:160, background:'#fff', padding:6, border:'1px solid #ddd', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=460'} alt="Velocity 360" />
 											<p className="about">{tutorial.description}</p>
 											{video}
 										</div>

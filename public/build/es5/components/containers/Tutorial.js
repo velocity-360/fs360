@@ -240,7 +240,6 @@ var Tutorial = (function (Component) {
 													tutorial.title
 												),
 												React.createElement("hr", null),
-												React.createElement("img", { style: { width: 160, background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
 												React.createElement(
 													"p",
 													{ className: "about" },
