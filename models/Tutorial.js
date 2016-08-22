@@ -5,6 +5,7 @@ var TutorialSchema = new mongoose.Schema({
 	status: {type:String, trim:true, default: 'coming soon'}, // live or coming soon
 	description: {type:String, trim:true, default: ''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
+	wistia: {type:String, lowercase:true, trim:true, default:''},
 	slug: {type:String, lowercase:true, trim:true, default:''},
 	link: {type:String, trim:true, lowercase:true, default:''},
 	posts: {type:Array, default: []}, // blog posts for tutorial series. the 'isPublic' property should be 'no' for these
@@ -18,6 +19,7 @@ TutorialSchema.methods.summary = function() {
 		'status':this.status,
 		'description':this.description,
 		'image':this.image,
+		'wistia':this.wistia,
 		'slug':this.slug,
 		'link':this.link,
 		'posts':this.posts,

@@ -94,6 +94,8 @@ class Tutorial extends Component {
 			)
 		})
 
+		const video = (tutorial.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+tutorial.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
+
 		return(
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
@@ -120,10 +122,12 @@ class Tutorial extends Component {
 								<div className="content" style={{background:'#f9f9f9'}}>
 									<article id="introduction" className="overview">
 										<div className="container">
+											<img className="visible-xs" style={{width:160, background:'#fff', padding:6, border:'1px solid #ddd', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=460'} alt="Velocity 360" />
+											<img className="hidden-xs" style={{width:160, float:'right', background:'#fff', padding:6, border:'1px solid #ddd', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=460'} alt="Velocity 360" />
 											<h2>{tutorial.title}</h2>
 											<hr />
-											<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=460'} alt="Velocity 360" />
 											<p className="about">{tutorial.description}</p>
+											{video}
 										</div>
 									</article>
 

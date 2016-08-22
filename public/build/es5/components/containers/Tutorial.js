@@ -158,6 +158,12 @@ var Tutorial = (function (Component) {
 					);
 				});
 
+				var video = tutorial.wistia.length == 0 ? null : React.createElement(
+					"div",
+					{ className: "wistia_embed wistia_async_" + tutorial.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
+					" "
+				);
+
 				return React.createElement(
 					"div",
 					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
@@ -228,18 +234,20 @@ var Tutorial = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "container" },
+												React.createElement("img", { className: "visible-xs", style: { width: 160, background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
+												React.createElement("img", { className: "hidden-xs", style: { width: 160, float: "right", background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
 												React.createElement(
 													"h2",
 													null,
 													tutorial.title
 												),
 												React.createElement("hr", null),
-												React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460", alt: "Velocity 360" }),
 												React.createElement(
 													"p",
 													{ className: "about" },
 													tutorial.description
-												)
+												),
+												video
 											)
 										),
 										React.createElement(
