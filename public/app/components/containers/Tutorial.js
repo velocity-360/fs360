@@ -141,7 +141,7 @@ class Tutorial extends Component {
 			const borderTop = (i==0) ? 'none' : '1px solid #ddd'
 			const color = (post.slug == this.state.currentPost) ? '#1ABC9C' : '#86939f'
 			return (
-				<li key={post.id} style={{borderTop:borderTop, padding:6}}>
+				<li key={post.id} style={{borderTop:'1px solid #ddd', padding:6}}>
 					<a id={post.slug} onClick={this.changeUnit} href="#top" style={{color:color}}>{i+1}. {post.title}</a>
 				</li>				
 			)
@@ -174,18 +174,20 @@ class Tutorial extends Component {
 											<h4 style={{marginBottom:6}}>Units</h4>
 										</div>
 										<ul>
+											<li style={{padding:6}}>
+												<a href="#intro">Intro</a>
+											</li>
 											{sidebar}
 											<li style={{borderTop:'1px solid #ddd', padding:6}}>
 												<a href="#newsletter">Newsletter</a>
 											</li>
 										</ul>
 									</nav>
-
 								</aside>
 
-								<div className="content" style={{background:'#f9f9f9', paddingTop:62}}>
+								<div className="content" style={{background:'#f9f9f9', paddingTop:22}}>
 
-									<article id="misc" className="overview">
+									<article id="misc" className="overview" style={style.article}>
 										<div className="container">
 											<div className="panel panel-default">
 												<div className="panel-body" style={style.panelBody}>
@@ -197,7 +199,7 @@ class Tutorial extends Component {
 										</div>
 									</article>
 
-									<article id="newsletter" className="overview" style={{marginTop:40}}>
+									<article id="newsletter" className="overview" style={style.article}>
 										<div className="container">
 											<div className="panel panel-default">
 												<div className="panel-body" style={style.panelBody}>
@@ -246,6 +248,9 @@ const style = {
 	input: {
 		borderRadius:'0px !important',
 		background:'#FEF9E7'
+	},
+	article: {
+		marginTop: 40
 	}
 }
 

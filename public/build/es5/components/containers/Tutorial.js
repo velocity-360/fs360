@@ -214,7 +214,7 @@ var Tutorial = (function (Component) {
 					var color = post.slug == _this.state.currentPost ? "#1ABC9C" : "#86939f";
 					return React.createElement(
 						"li",
-						{ key: post.id, style: { borderTop: borderTop, padding: 6 } },
+						{ key: post.id, style: { borderTop: "1px solid #ddd", padding: 6 } },
 						React.createElement(
 							"a",
 							{ id: post.slug, onClick: _this.changeUnit, href: "#top", style: { color: color } },
@@ -273,6 +273,15 @@ var Tutorial = (function (Component) {
 											React.createElement(
 												"ul",
 												null,
+												React.createElement(
+													"li",
+													{ style: { padding: 6 } },
+													React.createElement(
+														"a",
+														{ href: "#intro" },
+														"Intro"
+													)
+												),
 												sidebar,
 												React.createElement(
 													"li",
@@ -288,10 +297,10 @@ var Tutorial = (function (Component) {
 									),
 									React.createElement(
 										"div",
-										{ className: "content", style: { background: "#f9f9f9", paddingTop: 62 } },
+										{ className: "content", style: { background: "#f9f9f9", paddingTop: 22 } },
 										React.createElement(
 											"article",
-											{ id: "misc", className: "overview" },
+											{ id: "misc", className: "overview", style: style.article },
 											React.createElement(
 												"div",
 												{ className: "container" },
@@ -313,7 +322,7 @@ var Tutorial = (function (Component) {
 										),
 										React.createElement(
 											"article",
-											{ id: "newsletter", className: "overview", style: { marginTop: 40 } },
+											{ id: "newsletter", className: "overview", style: style.article },
 											React.createElement(
 												"div",
 												{ className: "container" },
@@ -382,6 +391,9 @@ var style = {
 	input: {
 		borderRadius: "0px !important",
 		background: "#FEF9E7"
+	},
+	article: {
+		marginTop: 40
 	}
 };
 

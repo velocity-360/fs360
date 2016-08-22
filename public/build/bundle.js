@@ -62454,7 +62454,7 @@
 					var color = post.slug == _this3.state.currentPost ? '#1ABC9C' : '#86939f';
 					return _react2.default.createElement(
 						'li',
-						{ key: post.id, style: { borderTop: borderTop, padding: 6 } },
+						{ key: post.id, style: { borderTop: '1px solid #ddd', padding: 6 } },
 						_react2.default.createElement(
 							'a',
 							{ id: post.slug, onClick: _this3.changeUnit, href: '#top', style: { color: color } },
@@ -62513,6 +62513,15 @@
 											_react2.default.createElement(
 												'ul',
 												null,
+												_react2.default.createElement(
+													'li',
+													{ style: { padding: 6 } },
+													_react2.default.createElement(
+														'a',
+														{ href: '#intro' },
+														'Intro'
+													)
+												),
 												sidebar,
 												_react2.default.createElement(
 													'li',
@@ -62528,10 +62537,10 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'content', style: { background: '#f9f9f9', paddingTop: 62 } },
+										{ className: 'content', style: { background: '#f9f9f9', paddingTop: 22 } },
 										_react2.default.createElement(
 											'article',
-											{ id: 'misc', className: 'overview' },
+											{ id: 'misc', className: 'overview', style: style.article },
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
@@ -62553,7 +62562,7 @@
 										),
 										_react2.default.createElement(
 											'article',
-											{ id: 'newsletter', className: 'overview', style: { marginTop: 40 } },
+											{ id: 'newsletter', className: 'overview', style: style.article },
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
@@ -62620,6 +62629,9 @@
 		input: {
 			borderRadius: '0px !important',
 			background: '#FEF9E7'
+		},
+		article: {
+			marginTop: 40
 		}
 	};
 	
