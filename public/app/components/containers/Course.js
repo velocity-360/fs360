@@ -2,13 +2,10 @@ import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
-import Nav from '../../components/Nav'
-import CourseCard from '../../components/CourseCard'
-import Application from '../../components/Application'
+import { Nav, CourseCard, Application } from '../../components'
+import { api, TrackingManager } from '../../utils'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import api from '../../utils/APIManager'
-import TrackingManager from '../../utils/TrackingManager'
 
 class Course extends Component {
 

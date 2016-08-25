@@ -45027,7 +45027,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.DateUtils = exports.TextUtils = exports.api = undefined;
+	exports.TrackingManager = exports.DateUtils = exports.TextUtils = exports.api = undefined;
 	
 	var _APIManager = __webpack_require__(464);
 	
@@ -45041,11 +45041,16 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
+	var _TrackingManager = __webpack_require__(476);
+	
+	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.api = _APIManager2.default;
 	exports.TextUtils = _TextUtils2.default;
 	exports.DateUtils = _DateUtils2.default;
+	exports.TrackingManager = _TrackingManager2.default;
 
 /***/ },
 /* 480 */
@@ -60867,7 +60872,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.Post = exports.CourseCard = exports.Register = exports.RightSidebar = exports.Sidebar = exports.Footer = exports.Nav = undefined;
+	exports.Application = exports.Post = exports.CourseCard = exports.Register = exports.RightSidebar = exports.Sidebar = exports.Footer = exports.Nav = undefined;
 	
 	var _Nav = __webpack_require__(459);
 	
@@ -60897,6 +60902,10 @@
 	
 	var _Register2 = _interopRequireDefault(_Register);
 	
+	var _Application = __webpack_require__(602);
+	
+	var _Application2 = _interopRequireDefault(_Application);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.Nav = _Nav2.default;
@@ -60906,6 +60915,7 @@
 	exports.Register = _Register2.default;
 	exports.CourseCard = _CourseCard2.default;
 	exports.Post = _Post2.default;
+	exports.Application = _Application2.default;
 
 /***/ },
 /* 595 */
@@ -62643,17 +62653,9 @@
 	
 	var _reactRedux = __webpack_require__(168);
 	
-	var _Nav = __webpack_require__(459);
+	var _components = __webpack_require__(594);
 	
-	var _Nav2 = _interopRequireDefault(_Nav);
-	
-	var _CourseCard = __webpack_require__(590);
-	
-	var _CourseCard2 = _interopRequireDefault(_CourseCard);
-	
-	var _Application = __webpack_require__(602);
-	
-	var _Application2 = _interopRequireDefault(_Application);
+	var _utils = __webpack_require__(479);
 	
 	var _store = __webpack_require__(194);
 	
@@ -62662,14 +62664,6 @@
 	var _actions = __webpack_require__(460);
 	
 	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _APIManager = __webpack_require__(464);
-	
-	var _APIManager2 = _interopRequireDefault(_APIManager);
-	
-	var _TrackingManager = __webpack_require__(476);
-	
-	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -62727,7 +62721,7 @@
 				});
 	
 				application['course'] = course.title;
-				_APIManager2.default.handlePost('/account/application', application, function (err, response) {
+				_utils.api.handlePost('/account/application', application, function (err, response) {
 					_this2.setState({ showLoader: false });
 	
 					if (err) {
@@ -62771,7 +62765,7 @@
 				pkg['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.';
 	
 				this.setState({ showLoader: true });
-				_APIManager2.default.handlePost('/account/syllabus', pkg, function (err, response) {
+				_utils.api.handlePost('/account/syllabus', pkg, function (err, response) {
 					_this3.setState({ showLoader: false });
 					if (err) {
 						alert(err.message);
@@ -62779,7 +62773,7 @@
 					}
 	
 					alert(response.message);
-					var tracker = new _TrackingManager2.default(); // this is a singelton so no need to reset page info:
+					var tracker = new _utils.TrackingManager(); // this is a singelton so no need to reset page info:
 					tracker.updateTracking(function (err, response) {
 	
 						if (err) {
@@ -63359,7 +63353,7 @@
 				return _react2.default.createElement(
 					'div',
 					{ id: 'wrapper', className: 'clearfix' },
-					_react2.default.createElement(_Nav2.default, { headerStyle: 'dark' }),
+					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
 					_react2.default.createElement(
 						'section',
 						{ id: 'lpf-header', style: { maxHeight: 550, backgroundImage: "url('/images/joe_light_blue.png')" } },
@@ -63700,7 +63694,7 @@
 					_react2.default.createElement(
 						_reactBootstrap.Modal,
 						{ bsSize: 'large', show: this.state.showApplication, onHide: this.toggleApplication },
-						_react2.default.createElement(_Application2.default, { onSubmit: this.submitApplication })
+						_react2.default.createElement(_components.Application, { onSubmit: this.submitApplication })
 					)
 				);
 			}

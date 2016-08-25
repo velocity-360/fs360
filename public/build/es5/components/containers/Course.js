@@ -23,19 +23,18 @@ var Modal = _reactBootstrap.Modal;
 var Loader = _interopRequire(require("react-loader"));
 
 var connect = require("react-redux").connect;
-var Nav = _interopRequire(require("../../components/Nav"));
+var _components = require("../../components");
 
-var CourseCard = _interopRequire(require("../../components/CourseCard"));
+var Nav = _components.Nav;
+var CourseCard = _components.CourseCard;
+var Application = _components.Application;
+var _utils = require("../../utils");
 
-var Application = _interopRequire(require("../../components/Application"));
-
+var api = _utils.api;
+var TrackingManager = _utils.TrackingManager;
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
-
-var api = _interopRequire(require("../../utils/APIManager"));
-
-var TrackingManager = _interopRequire(require("../../utils/TrackingManager"));
 
 var Course = (function (Component) {
 	function Course(props, context) {

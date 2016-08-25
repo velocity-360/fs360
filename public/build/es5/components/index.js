@@ -16,6 +16,8 @@ var Post = _interopRequire(require("../components/Post"));
 
 var Register = _interopRequire(require("../components/Register"));
 
+var Application = _interopRequire(require("../components/Application"));
+
 exports.Nav = Nav;
 exports.Footer = Footer;
 exports.Sidebar = Sidebar;
@@ -23,6 +25,7 @@ exports.RightSidebar = RightSidebar;
 exports.Register = Register;
 exports.CourseCard = CourseCard;
 exports.Post = Post;
+exports.Application = Application;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });

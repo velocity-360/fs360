@@ -5,6 +5,7 @@ import CourseCard from '../components/CourseCard'
 import Sidebar from '../components/Sidebar'
 import Post from '../components/Post'
 import Register from '../components/Register'
+import Application from '../components/Application'
 
 export {
 	Nav,
@@ -13,5 +14,6 @@ export {
 	RightSidebar,
 	Register,
 	CourseCard,
-	Post
+	Post,
+	Application
 }
