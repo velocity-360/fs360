@@ -62985,190 +62985,174 @@
 	
 					who = _react2.default.createElement(
 						'article',
-						{ id: 'who', className: 'overview' },
+						{ id: 'who', className: 'overview', style: style.articleSection },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Who'
+						),
+						_react2.default.createElement(
+							'p',
+							{ className: 'about' },
+							'Are you right for this class?'
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'container' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Who'
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'about' },
-								'Are you right for this class?'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'image' },
-								_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: '/images/group.JPG', alt: 'Velocity 360' })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'text' },
-								_react2.default.createElement(
-									'p',
-									null,
-									'The ',
-									course.title,
-									' is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you are a beginner who is looking for the next step and is eager to learn, this course is for you.'
-								)
-							)
+							{ className: 'image' },
+							_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: '/images/group.JPG', alt: 'Velocity 360' })
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'The ',
+							course.title,
+							' is designed for beginner to intermediate programmers. A typical applicant has written basic code before, possibly tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. You should be comfortable writing  simple programs to perform string manipulation, arithmetic operations, etc. HTML should be familiar as well. This should not be your first time coding. If you are a beginner who is looking for the next step and is eager to learn, this course is for you.'
 						)
 					);
 	
 					tuition = _react2.default.createElement(
 						'article',
-						{ id: 'tuition', className: 'overview' },
+						{ id: 'tuition', className: 'overview', style: style.articleSection },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Tuition, Scholarships, Deadlines'
+						),
+						_react2.default.createElement(
+							'p',
+							{ className: 'about' },
+							course.dates,
+							_react2.default.createElement('br', null),
+							course.schedule
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'container' },
+							{ className: 'col_full nobottommargin' },
 							_react2.default.createElement(
-								'h2',
-								{ style: { marginTop: 24 } },
-								'Tuition, Scholarships, Deadlines'
+								'p',
+								{ className: 'about', style: { marginBottom: 6 } },
+								'Tuition'
 							),
 							_react2.default.createElement(
-								'div',
-								{ className: 'col_full nobottommargin' },
-								_react2.default.createElement(
-									'p',
-									{ className: 'about', style: { marginBottom: 6 } },
-									'Tuition'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'Tuition is $',
-									course.tuition,
-									' with a $',
-									course.deposit,
-									' deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
-								)
+								'p',
+								null,
+								'Tuition is $',
+								course.tuition,
+								' with a $',
+								course.deposit,
+								' deposit to reserve your spot. A $500 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
+							_react2.default.createElement(
+								'p',
+								{ className: 'about', style: { marginBottom: 6 } },
+								'Scholarships'
 							),
 							_react2.default.createElement(
-								'div',
-								{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
-								_react2.default.createElement(
-									'p',
-									{ className: 'about', style: { marginBottom: 6 } },
-									'Scholarships'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'A $1,000 scholarship is available to any woman admitted to the course. Further, two full scholarships are allotted in each class for highly qualified candidates. Full scholarships will be awarded solely on merit. Our holistic review considers factors such as aptitude, coding ability, and problem-solving determination. An award determination is made after your in-person code review. You will be notified of your scholarship award before the start of class, if applicable.'
-								)
+								'p',
+								null,
+								'A $1,000 scholarship is available to any woman admitted to the course. Further, two full scholarships are allotted in each class for highly qualified candidates. Full scholarships will be awarded solely on merit. Our holistic review considers factors such as aptitude, coding ability, and problem-solving determination. An award determination is made after your in-person code review. You will be notified of your scholarship award before the start of class, if applicable.'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
+							_react2.default.createElement(
+								'p',
+								{ className: 'about', style: { marginBottom: 6 } },
+								'Deadline'
 							),
 							_react2.default.createElement(
-								'div',
-								{ style: { marginTop: 24 }, className: 'col_full nobottommargin' },
-								_react2.default.createElement(
-									'p',
-									{ className: 'about', style: { marginBottom: 6 } },
-									'Deadline'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd.'
-								)
+								'p',
+								null,
+								'The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd.'
 							)
 						)
 					);
 	
 					admissions = _react2.default.createElement(
 						'article',
-						{ id: 'admissions', className: 'overview' },
+						{ id: 'admissions', className: 'overview', style: style.articleSection },
 						_react2.default.createElement(
-							'div',
-							{ className: 'container' },
-							_react2.default.createElement(
-								'h2',
-								{ style: { marginTop: 24 } },
-								'Admissions'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel panel-default' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'panel-body', style: { padding: 36 } },
-									_react2.default.createElement(
-										'h3',
-										null,
-										'The Process'
-									),
-									_react2.default.createElement('hr', null),
-									_react2.default.createElement(
-										'a',
-										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-										'Step 1'
-									),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'Apply'
-									),
-									_react2.default.createElement(
-										'p',
-										{ style: { marginTop: 10 } },
-										'Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships.'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-										'Step 2'
-									),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'Phone Interview'
-									),
-									_react2.default.createElement(
-										'p',
-										{ style: { marginTop: 10 } },
-										'All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-										'Step 3'
-									),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'In-person code review'
-									),
-									_react2.default.createElement(
-										'p',
-										{ style: { marginTop: 10 } },
-										'After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course.'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
-										'Step 4'
-									),
-									_react2.default.createElement(
-										'strong',
-										null,
-										'Decision'
-									),
-									_react2.default.createElement(
-										'p',
-										{ style: { marginTop: 10 } },
-										'You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited.'
-									),
-									_react2.default.createElement('hr', null),
-									_react2.default.createElement(
-										'a',
-										{ onClick: this.toggleApplication, href: '#', className: 'btn btn-lg btn-success' },
-										'Apply'
-									)
-								)
-							)
+							'h2',
+							null,
+							'Admissions'
+						),
+						_react2.default.createElement(
+							'p',
+							{ className: 'about' },
+							course.dates,
+							_react2.default.createElement('br', null),
+							course.schedule
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+							'Step 1'
+						),
+						_react2.default.createElement(
+							'strong',
+							null,
+							'Apply'
+						),
+						_react2.default.createElement(
+							'p',
+							{ style: { marginTop: 10 } },
+							'Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships.'
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+							'Step 2'
+						),
+						_react2.default.createElement(
+							'strong',
+							null,
+							'Phone Interview'
+						),
+						_react2.default.createElement(
+							'p',
+							{ style: { marginTop: 10 } },
+							'All applicants will undergo a 15-30 minute phone interview as a first technical assessment. You should feel comfortable speaking about prior programming experience.'
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+							'Step 3'
+						),
+						_react2.default.createElement(
+							'strong',
+							null,
+							'In-person code review'
+						),
+						_react2.default.createElement(
+							'p',
+							{ style: { marginTop: 10 } },
+							'After the phone screen, the next step is an in-person code review. Here you’ll sit down with one of our instructors and complete our day 1 coding assignment. Rather than an algorithms assignment, you will work with an instructor to spin up a simple Node server to render a page. This should take about an hour, and will determine your preparedness for the pace of the course.'
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: '#', style: { marginRight: 12 }, className: 'btn btn-info' },
+							'Step 4'
+						),
+						_react2.default.createElement(
+							'strong',
+							null,
+							'Decision'
+						),
+						_react2.default.createElement(
+							'p',
+							{ style: { marginTop: 10 } },
+							'You will receive an email with your application decision. You will have 7 days from your acceptance letter to make your deposit. After 7 days, your spot will be forfeited.'
+						),
+						_react2.default.createElement('hr', null),
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.toggleApplication, href: '#', className: 'btn btn-lg btn-success' },
+							'Apply'
 						)
 					);
 	
@@ -63441,296 +63425,276 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'content', style: { background: '#f9f9f9' } },
+										{ className: 'content', style: { background: '#f9f9f9', paddingTop: 22 } },
 										_react2.default.createElement(
 											'article',
-											{ id: 'introduction', className: 'overview' },
+											{ className: 'overview', style: style.article },
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
 												_react2.default.createElement(
-													'h2',
-													null,
-													course.title
-												),
-												_react2.default.createElement('hr', null),
-												_react2.default.createElement(
-													'p',
-													{ className: 'about' },
-													course.dates,
-													_react2.default.createElement('br', null),
-													course.schedule
-												),
-												_react2.default.createElement(
 													'div',
-													{ className: 'container' },
+													{ className: 'panel panel-default' },
 													_react2.default.createElement(
-														'div',
-														{ className: 'image' },
-														_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd' }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460', alt: 'Velocity 360' })
-													),
-													_react2.default.createElement(
-														'div',
-														{ className: 'text' },
+														'article',
+														{ id: 'introduction', className: 'overview', style: style.articleSection },
+														_react2.default.createElement(
+															'h2',
+															null,
+															course.title
+														),
 														_react2.default.createElement(
 															'p',
+															{ className: 'about' },
+															course.dates,
+															_react2.default.createElement('br', null),
+															course.schedule
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'text' },
+															_react2.default.createElement(
+																'p',
+																null,
+																course.description
+															)
+														)
+													),
+													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
+													who,
+													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
+													_react2.default.createElement(
+														'article',
+														{ id: 'curriculum', className: 'overview', style: style.articleSection },
+														_react2.default.createElement(
+															'h2',
 															null,
-															course.description
-														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
-										who,
-										_react2.default.createElement('hr', { style: { marginTop: 24 } }),
-										_react2.default.createElement(
-											'article',
-											{ id: 'curriculum', className: 'overview' },
-											_react2.default.createElement(
-												'h2',
-												null,
-												'Curriculum'
-											),
-											_react2.default.createElement(
-												'div',
-												{ className: 'postcontent clearfix', style: { paddingBottom: 64 } },
-												_react2.default.createElement(
-													'div',
-													{ id: 'posts', className: 'post-timeline clearfix' },
-													_react2.default.createElement('div', { className: 'timeline-border' }),
-													units
-												)
-											)
-										),
-										tuition,
-										_react2.default.createElement(
-											'article',
-											{ id: 'instructors', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginTop: 24 } },
-													'Instructors'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col-md-12 bottommargin' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'team team-list clearfix' },
-														_react2.default.createElement(
-															'div',
-															{ className: 'team-image', style: { width: 150 } },
-															_react2.default.createElement('img', { className: 'img-circle', src: '/images/kwon.png', alt: 'Velocity 360' })
+															'Curriculum'
 														),
 														_react2.default.createElement(
 															'div',
-															{ className: 'team-desc' },
+															{ className: 'postcontent clearfix', style: { paddingBottom: 64 } },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team-title' },
-																_react2.default.createElement(
-																	'h4',
-																	{ style: { marginBottom: 12 } },
-																	'Dan Kwon'
-																),
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'tagcloud' },
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Node JS'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'React'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'React Native'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Angular JS'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'iOS'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Swift'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Objective C'
-																	)
-																)
-															),
-															_react2.default.createElement('div', { className: 'clearfix' }),
-															_react2.default.createElement(
-																'div',
-																{ className: 'team-content' },
-																'Dan is a full stack developer focusing on building MVPs for early stage startups in New York. As a consultant, he has worked with several startups and development agencies over a five year span. Dan specializes in iOS, backend technologies such as Node JS, Google Compute Engine, Heroku, and AWS as well as front end libraries such as React and Angular JS. Dan graduated from Cornell University where he walked to class in the snow, uphill both ways.'
+																{ id: 'posts', className: 'post-timeline clearfix' },
+																_react2.default.createElement('div', { className: 'timeline-border' }),
+																units
 															)
 														)
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col-md-12 bottommargin' },
+													),
+													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
+													tuition,
+													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 													_react2.default.createElement(
-														'div',
-														{ className: 'team team-list clearfix' },
+														'article',
+														{ id: 'instructors', className: 'overview', style: style.articleSection },
 														_react2.default.createElement(
-															'div',
-															{ className: 'team-image', style: { width: 150 } },
-															_react2.default.createElement('img', { className: 'img-circle', src: '/images/beaman.png', alt: 'Velocity 360' })
+															'h2',
+															null,
+															'Instructors'
 														),
 														_react2.default.createElement(
 															'div',
-															{ className: 'team-desc' },
+															{ className: 'col-md-12 bottommargin' },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team-title' },
-																_react2.default.createElement(
-																	'h4',
-																	{ style: { marginBottom: 12 } },
-																	'Roger Beaman'
-																),
+																{ className: 'team team-list clearfix' },
 																_react2.default.createElement(
 																	'div',
-																	{ className: 'tagcloud' },
+																	{ className: 'team-desc' },
 																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Node JS'
+																		'div',
+																		{ className: 'team-title' },
+																		_react2.default.createElement('img', { style: { width: 96, marginBottom: 6 }, src: '/images/kwon.png', alt: 'Velocity 360' }),
+																		_react2.default.createElement(
+																			'h4',
+																			{ style: { marginBottom: 12 } },
+																			'Dan Kwon'
+																		),
+																		_react2.default.createElement(
+																			'div',
+																			{ className: 'tagcloud' },
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Node JS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'React'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'React Native'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Angular JS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'iOS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Swift'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Objective C'
+																			)
+																		)
 																	),
+																	_react2.default.createElement('div', { className: 'clearfix' }),
 																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'React'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Angular JS'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'JQuery'
+																		'div',
+																		{ className: 'team-content' },
+																		'Dan is a full stack developer focusing on building MVPs for early stage startups in New York. As a consultant, he has worked with several startups and development agencies over a five year span. Dan specializes in iOS, backend technologies such as Node JS, Google Compute Engine, Heroku, and AWS as well as front end libraries such as React and Angular JS. Dan graduated from Cornell University where he walked to class in the snow, uphill both ways.'
 																	)
 																)
-															),
-															_react2.default.createElement('div', { className: 'clearfix' }),
-															_react2.default.createElement(
-																'div',
-																{ className: 'team-content' },
-																'Roger Beaman is a passionate Fullstack JavaScript developer that took the unusual route to software development which perhaps you are on right now. He started work in finance and found that writing Excel formulas was by far the most exciting part of his job. Thus began a journey to joining you in the exciting career that is software development. In under a year he was able to go from a bootcamp to a lead developer at Shutterstock and he is excited about sharing the knowledge and advice he has to help you do the same.'
 															)
-														)
-													)
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col-md-12 bottommargin' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'team team-list clearfix' },
-														_react2.default.createElement(
-															'div',
-															{ className: 'team-image', style: { width: 150 } },
-															_react2.default.createElement('img', { className: 'img-circle', src: '/images/anna.png', alt: 'Velocity 360' })
 														),
 														_react2.default.createElement(
 															'div',
-															{ className: 'team-desc' },
+															{ className: 'col-md-12 bottommargin' },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team-title' },
-																_react2.default.createElement(
-																	'h4',
-																	{ style: { marginBottom: 12 } },
-																	'Anna Garcia'
-																),
+																{ className: 'team team-list clearfix' },
 																_react2.default.createElement(
 																	'div',
-																	{ className: 'tagcloud' },
+																	{ className: 'team-desc' },
 																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Node JS'
+																		'div',
+																		{ className: 'team-title' },
+																		_react2.default.createElement('img', { style: { width: 96, marginBottom: 6 }, src: '/images/beaman.png', alt: 'Velocity 360' }),
+																		_react2.default.createElement(
+																			'h4',
+																			{ style: { marginBottom: 12 } },
+																			'Roger Beaman'
+																		),
+																		_react2.default.createElement(
+																			'div',
+																			{ className: 'tagcloud' },
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Node JS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'React'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Angular JS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'JQuery'
+																			)
+																		)
 																	),
+																	_react2.default.createElement('div', { className: 'clearfix' }),
 																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'React'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'Angular JS'
-																	),
-																	_react2.default.createElement(
-																		'a',
-																		{ style: { background: '#fff' }, href: '#' },
-																		'JQuery'
+																		'div',
+																		{ className: 'team-content' },
+																		'Roger Beaman is a passionate Fullstack JavaScript developer that took the unusual route to software development which perhaps you are on right now. He started work in finance and found that writing Excel formulas was by far the most exciting part of his job. Thus began a journey to joining you in the exciting career that is software development. In under a year he was able to go from a bootcamp to a lead developer at Shutterstock and he is excited about sharing the knowledge and advice he has to help you do the same.'
 																	)
 																)
-															),
-															_react2.default.createElement('div', { className: 'clearfix' }),
+															)
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col-md-12 bottommargin' },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team-content' },
-																'A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original ',
+																{ className: 'team team-list clearfix' },
 																_react2.default.createElement(
-																	'a',
-																	{ target: '_blank', href: 'http://www.juicecrawl.com' },
-																	'JuiceCrawl'
-																),
-																', Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses.'
+																	'div',
+																	{ className: 'team-desc' },
+																	_react2.default.createElement(
+																		'div',
+																		{ className: 'team-title' },
+																		_react2.default.createElement('img', { style: { width: 96, marginBottom: 6 }, src: '/images/anna.png', alt: 'Velocity 360' }),
+																		_react2.default.createElement(
+																			'h4',
+																			{ style: { marginBottom: 12 } },
+																			'Anna Garcia'
+																		),
+																		_react2.default.createElement(
+																			'div',
+																			{ className: 'tagcloud' },
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Node JS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'React'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'Angular JS'
+																			),
+																			_react2.default.createElement(
+																				'a',
+																				{ style: style.tag, href: '#' },
+																				'JQuery'
+																			)
+																		)
+																	),
+																	_react2.default.createElement('div', { className: 'clearfix' }),
+																	_react2.default.createElement(
+																		'div',
+																		{ className: 'team-content' },
+																		'A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original ',
+																		_react2.default.createElement(
+																			'a',
+																			{ target: '_blank', href: 'http://www.juicecrawl.com' },
+																			'JuiceCrawl'
+																		),
+																		', Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses.'
+																	)
+																)
 															)
 														)
-													)
-												)
-											)
-										),
-										_react2.default.createElement(
-											'article',
-											{ id: 'faq', className: 'overview' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'container' },
-												_react2.default.createElement(
-													'h2',
-													{ style: { marginTop: 24 } },
-													'FAQ'
-												),
-												_react2.default.createElement(
-													'div',
-													{ className: 'col_full nobottommargin' },
+													),
+													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 													_react2.default.createElement(
-														'div',
-														{ className: 'accordion accordion-border clearfix', 'data-state': 'closed' },
-														faq
-													)
+														'article',
+														{ id: 'faq', className: 'overview', style: style.articleSection },
+														_react2.default.createElement(
+															'h2',
+															null,
+															'FAQ'
+														),
+														_react2.default.createElement(
+															'div',
+															{ className: 'col_full nobottommargin' },
+															_react2.default.createElement(
+																'div',
+																{ className: 'accordion accordion-border clearfix', 'data-state': 'closed' },
+																faq
+															)
+														)
+													),
+													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
+													admissions
 												)
 											)
-										),
-										admissions,
-										syllabus,
-										register
+										)
 									)
 								)
 							)
@@ -63747,6 +63711,37 @@
 	
 		return Course;
 	}(_react.Component);
+	
+	var style = {
+		header: {
+			marginBottom: 0,
+			marginTop: 0
+		},
+	
+		panelBody: {
+			padding: 36,
+			borderBottom: '1px solid #ddd'
+		},
+		sidebar: {
+			padding: 16,
+			background: '#fff',
+			border: '1px solid #ddd'
+		},
+		input: {
+			borderRadius: '0px !important',
+			background: '#FEF9E7'
+		},
+		article: {
+			marginTop: 46
+		},
+		articleSection: {
+			margin: 'auto',
+			padding: 32
+		},
+		tag: {
+			background: '#f9f9f9'
+		}
+	};
 	
 	var stateToProps = function stateToProps(state) {
 		return {

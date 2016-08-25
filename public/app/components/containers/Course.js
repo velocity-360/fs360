@@ -207,116 +207,111 @@ class Course extends Component {
 			btnApply = <a onClick={this.toggleApplication} href="#" className="apply">Apply</a>
 
 			who = (
-				<article id="who" className="overview">
-					<div className="container">
-						<h2>Who</h2>
-						<p className="about">
-							Are you right for this class?
-						</p>
-						<div className="image">
-							<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
-						</div>
-
-						<div className="text">
-							<p>
-								The {course.title} is designed for beginner to intermediate programmers. 
-								A typical applicant has written basic code before, possibly 
-								tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. 
-								You should be comfortable writing  simple programs to perform string 
-								manipulation, arithmetic operations, etc. HTML should be 
-								familiar as well. This should not be your first time coding. 
-								If you are a beginner who is looking for the next step and is 
-								eager to learn, this course is for you.
-							</p>
-						</div>
+				<article id="who" className="overview" style={style.articleSection}>
+					<h2>Who</h2>
+					<p className="about">
+						Are you right for this class?
+					</p>
+					<div className="image">
+						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
 					</div>
-				</article>				
+
+					<p>
+						The {course.title} is designed for beginner to intermediate programmers. 
+						A typical applicant has written basic code before, possibly 
+						tinkered with jQuery and JavaScript and/or a framework like Ruby on Rails. 
+						You should be comfortable writing  simple programs to perform string 
+						manipulation, arithmetic operations, etc. HTML should be 
+						familiar as well. This should not be your first time coding. 
+						If you are a beginner who is looking for the next step and is 
+						eager to learn, this course is for you.
+					</p>
+				</article>
 			)
 			
 			tuition = (
-				<article id="tuition" className="overview">
-					<div className="container">
-						<h2 style={{marginTop:24}}>Tuition, Scholarships, Deadlines</h2>
-						<div className="col_full nobottommargin">
-							<p className="about" style={{marginBottom:6}}>Tuition</p>
-							<p>
-								Tuition is ${course.tuition} with a ${course.deposit} deposit to reserve your spot. 
-								A $500 discount will be applied to those who pay in full 
-								at the start of the course. Otherwise, payments can be 
-								made in bi-weekly installments throughout the duration of 
-								the course.
-							</p>
-	                    </div>
-						<div style={{marginTop:24}} className="col_full nobottommargin">
-							<p className="about" style={{marginBottom:6}}>Scholarships</p>
-							<p>
-								A $1,000 scholarship is available to any woman admitted to the course. Further, 
-								two full scholarships are allotted in each class for highly qualified 
-								candidates. Full scholarships will be awarded solely on merit. Our holistic 
-								review considers factors such as aptitude, coding ability, and problem-solving 
-								determination. An award determination is made after your in-person code review. 
-								You will be notified of your scholarship award before the 
-								start of class, if applicable.
-							</p>
-	                    </div>
-						<div style={{marginTop:24}} className="col_full nobottommargin">
-							<p className="about" style={{marginBottom:6}}>Deadline</p>
-							<p>
-								The deadline for application is August 29th for regular applicants. To 
-								be eligible for the full scholarship, the deadline is August 22nd.
-							</p>
-	                    </div>
-					</div>
-				</article>
+				<article id="tuition" className="overview" style={style.articleSection}>
+					<h2>Tuition, Scholarships, Deadlines</h2>
+					<p className="about">
+						{course.dates}<br />{course.schedule}
+					</p>
+					<div className="col_full nobottommargin">
+						<p className="about" style={{marginBottom:6}}>Tuition</p>
+						<p>
+							Tuition is ${course.tuition} with a ${course.deposit} deposit to reserve your spot. 
+							A $500 discount will be applied to those who pay in full 
+							at the start of the course. Otherwise, payments can be 
+							made in bi-weekly installments throughout the duration of 
+							the course.
+						</p>
+                    </div>
+					<div style={{marginTop:24}} className="col_full nobottommargin">
+						<p className="about" style={{marginBottom:6}}>Scholarships</p>
+						<p>
+							A $1,000 scholarship is available to any woman admitted to the course. Further, 
+							two full scholarships are allotted in each class for highly qualified 
+							candidates. Full scholarships will be awarded solely on merit. Our holistic 
+							review considers factors such as aptitude, coding ability, and problem-solving 
+							determination. An award determination is made after your in-person code review. 
+							You will be notified of your scholarship award before the 
+							start of class, if applicable.
+						</p>
+                    </div>
+					<div style={{marginTop:24}} className="col_full nobottommargin">
+						<p className="about" style={{marginBottom:6}}>Deadline</p>
+						<p>
+							The deadline for application is August 29th for regular applicants. To 
+							be eligible for the full scholarship, the deadline is August 22nd.
+						</p>
+                    </div>
+				</article>				
+
+
 			)
 
 			admissions = (
-				<article id="admissions" className="overview">
-					<div className="container">
+				<article id="admissions" className="overview" style={style.articleSection}>
+					<h2>Admissions</h2>
+					<p className="about">
+						{course.dates}<br />{course.schedule}
+					</p>
+					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 1</a><strong>Apply</strong>
+					<p style={{marginTop:10}}>
+						Complete our online application by midnight August 29th to 
+						apply for the course. All applicants will be considered for 
+						the full scholarships.
+					</p>
 
-						<h2 style={{marginTop:24}}>Admissions</h2>
-						<div className="panel panel-default">
-							<div className="panel-body" style={{padding:36}}>
-								<h3>The Process</h3>
-								<hr />
-								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 1</a><strong>Apply</strong>
-								<p style={{marginTop:10}}>
-									Complete our online application by midnight August 29th to 
-									apply for the course. All applicants will be considered for 
-									the full scholarships.
-								</p>
+					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 2</a><strong>Phone Interview</strong>
+					<p style={{marginTop:10}}>
+						All applicants will undergo a 15-30 minute phone interview as a first technical 
+						assessment. You should feel comfortable speaking about prior programming experience.
+					</p>
 
-								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 2</a><strong>Phone Interview</strong>
-								<p style={{marginTop:10}}>
-									All applicants will undergo a 15-30 minute phone interview as a first technical 
-									assessment. You should feel comfortable speaking about prior programming experience.
-								</p>
+					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 3</a><strong>In-person code review</strong>
+					<p style={{marginTop:10}}>
+						After the phone screen, the next step is  
+						an in-person code review. Here you’ll sit down with one of 
+						our instructors and complete our day 1 coding assignment. 
+						Rather than an algorithms assignment, you will work with an 
+						instructor to spin up a simple Node server to render a page. 
+						This should take about an hour, and will determine your 
+						preparedness for the pace of the course.
+					</p>
 
-								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 3</a><strong>In-person code review</strong>
-								<p style={{marginTop:10}}>
-									After the phone screen, the next step is  
-									an in-person code review. Here you’ll sit down with one of 
-									our instructors and complete our day 1 coding assignment. 
-									Rather than an algorithms assignment, you will work with an 
-									instructor to spin up a simple Node server to render a page. 
-									This should take about an hour, and will determine your 
-									preparedness for the pace of the course.
-								</p>
+					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 4</a>
+					<strong>Decision</strong>
+					<p style={{marginTop:10}}>
+						You will receive an email with your application decision. 
+						You will have 7 days from your acceptance letter to make your 
+						deposit. After 7 days, your spot will be forfeited.
+					</p>
 
-								<a href="#" style={{marginRight:12}} className="btn btn-info">Step 4</a>
-								<strong>Decision</strong>
-								<p style={{marginTop:10}}>
-									You will receive an email with your application decision. 
-									You will have 7 days from your acceptance letter to make your 
-									deposit. After 7 days, your spot will be forfeited.
-								</p>
-
-								<hr />
-								<a onClick={this.toggleApplication} href="#" className="btn btn-lg btn-success">Apply</a>
-							</div>
-						</div>
-					</div>
+					<hr />
+					<a onClick={this.toggleApplication} href="#" className="btn btn-lg btn-success">Apply</a>
 				</article>
+
+
 			)
 			
 			syllabus = (
@@ -425,155 +420,149 @@ class Course extends Component {
 									</nav>
 								</aside>
 
-								<div className="content" style={{background:'#f9f9f9'}}>
-									<article id="introduction" className="overview">
-										<div className="container">
-											<h2>{course.title}</h2>
-											<hr />
-											<p className="about">
-												{course.dates}<br />{course.schedule}
-											</p>
-											<div className="container">
-												<div className="image">
-													<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} alt="Velocity 360" />
-												</div>
+								<div className="content" style={{background:'#f9f9f9', paddingTop:22}}>
 
-												<div className="text">
-													<p>{course.description}</p>
-												</div>
+									<article className="overview" style={style.article}>
+										<div className="container">
+											<div className="panel panel-default">
+
+												<article id="introduction" className="overview" style={style.articleSection}>
+													<h2>{course.title}</h2>
+													<p className="about">
+														{course.dates}<br />{course.schedule}
+													</p>
+													<div className="text">
+														<p>{course.description}</p>
+													</div>
+												</article>
+
+												<hr style={{marginTop:24}} />
+												{who}
+												<hr style={{marginTop:24}} />
+
+												<article id="curriculum" className="overview" style={style.articleSection}>
+													<h2>Curriculum</h2>
+													<div className="postcontent clearfix" style={{paddingBottom:64}}>
+														<div id="posts" className="post-timeline clearfix">
+															<div className="timeline-border"></div>
+															{units}
+														</div>
+
+													</div>
+												</article>
+
+
+												<hr style={{marginTop:24}} />
+												{tuition}
+												<hr style={{marginTop:24}} />
+
+												<article id="instructors" className="overview" style={style.articleSection}>
+													<h2>Instructors</h2>
+													
+								                    <div className="col-md-12 bottommargin">
+								                        <div className="team team-list clearfix">
+								                            <div className="team-desc">
+								                                <div className="team-title">
+									                                <img style={{width:96, marginBottom:6}} src="/images/kwon.png" alt="Velocity 360" />
+								                                	<h4 style={{marginBottom:12}}>Dan Kwon</h4>
+																	<div className="tagcloud">
+									                                    <a style={style.tag} href="#">Node JS</a>
+									                                    <a style={style.tag} href="#">React</a>
+									                                    <a style={style.tag} href="#">React Native</a>
+									                                    <a style={style.tag} href="#">Angular JS</a>
+									                                    <a style={style.tag} href="#">iOS</a>
+									                                    <a style={style.tag} href="#">Swift</a>
+									                                    <a style={style.tag} href="#">Objective C</a>
+									                                </div>                                	
+								                                </div>
+								                                <div className="clearfix"></div>
+								                                <div className="team-content">
+								                                	Dan is a full stack developer focusing on building MVPs for early stage 
+								                                	startups in New York. As a consultant, he has worked with several startups 
+								                                	and development agencies over a five year span. Dan specializes in iOS, 
+								                                	backend technologies such as Node JS, Google Compute Engine, Heroku, and 
+								                                	AWS as well as front end libraries such as React and Angular JS. Dan 
+								                                	graduated from Cornell University where he walked to class in the snow, 
+								                                	uphill both ways.
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+
+								                    <div className="col-md-12 bottommargin">
+								                        <div className="team team-list clearfix">
+								                            <div className="team-desc">
+								                                <div className="team-title">
+									                                <img style={{width:96, marginBottom:6}} src="/images/beaman.png" alt="Velocity 360" />
+								                                	<h4 style={{marginBottom:12}}>Roger Beaman</h4>
+																	<div className="tagcloud">
+									                                    <a style={style.tag} href="#">Node JS</a>
+									                                    <a style={style.tag} href="#">React</a>
+									                                    <a style={style.tag} href="#">Angular JS</a>
+									                                    <a style={style.tag} href="#">JQuery</a>
+									                                </div>                                	
+								                                </div>
+								                                <div className="clearfix"></div>
+								                                <div className="team-content">
+								                                	Roger Beaman is a passionate Fullstack JavaScript developer that took the 
+								                                	unusual route to software development which perhaps you are on right now. 
+								                                	He started work in finance and found that writing Excel formulas was by far 
+								                                	the most exciting part of his job. Thus began a journey to joining you in the 
+								                                	exciting career that is software development. In under a year he was able to 
+								                                	go from a bootcamp to a lead developer at Shutterstock and he is excited about 
+								                                	sharing the knowledge and advice he has to help you do the same.
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+
+								                    <div className="col-md-12 bottommargin">
+								                        <div className="team team-list clearfix">
+								                            <div className="team-desc">
+								                                <div className="team-title">
+									                                <img style={{width:96, marginBottom:6}} src="/images/anna.png" alt="Velocity 360" />
+								                                	<h4 style={{marginBottom:12}}>Anna Garcia</h4>
+																	<div className="tagcloud">
+									                                    <a style={style.tag} href="#">Node JS</a>
+									                                    <a style={style.tag} href="#">React</a>
+									                                    <a style={style.tag} href="#">Angular JS</a>
+									                                    <a style={style.tag} href="#">JQuery</a>
+									                                </div>                                	
+								                                </div>
+								                                <div className="clearfix"></div>
+								                                <div className="team-content">
+								                                	A recent graduate of the Grace Hopper coding school for women, Anna is a 
+								                                	life-long tech enthusiast, musician, and fitness fanatic. Founder of the 
+								                                	original <a target="_blank" href="http://www.juicecrawl.com">JuiceCrawl</a>, 
+								                                	Anna explored technology and programming on her own before deciding to make 
+								                                	it her career in 2015. With a  background in Node, Express, Angular, and SQL, 
+								                                	Anna will be helping out as a teaching assistant for several courses.
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+												</article>
+
+												<hr style={{marginTop:24}} />
+
+												<article id="faq" className="overview" style={style.articleSection}>
+													<h2>FAQ</h2>
+													<div className="col_full nobottommargin">
+								                        <div className="accordion accordion-border clearfix" data-state="closed">
+								                        	{faq}
+								                        </div>
+								                    </div>
+												</article>
+
+												<hr style={{marginTop:24}} />
+												{admissions}
+
 											</div>
 										</div>
 									</article>
-
-									<hr style={{marginTop:24}} />
-									{who}
-									<hr style={{marginTop:24}} />
-
-									<article id="curriculum" className="overview">
-										<h2>Curriculum</h2>
-										<div className="postcontent clearfix" style={{paddingBottom:64}}>
-											<div id="posts" className="post-timeline clearfix">
-												<div className="timeline-border"></div>
-												{units}
-											</div>
-
-										</div>
-									</article>
-
-									{tuition}
-
-									<article id="instructors" className="overview">
-										<div className="container">
-											<h2 style={{marginTop:24}}>Instructors</h2>
-						                    <div className="col-md-12 bottommargin">
-						                        <div className="team team-list clearfix">
-						                            <div className="team-image" style={{width:150}}>
-						                                <img className="img-circle" src="/images/kwon.png" alt="Velocity 360" />
-						                            </div>
-						                            <div className="team-desc">
-						                                <div className="team-title">
-						                                	<h4 style={{marginBottom:12}}>Dan Kwon</h4>
-															<div className="tagcloud">
-							                                    <a style={{background:'#fff'}} href="#">Node JS</a>
-							                                    <a style={{background:'#fff'}} href="#">React</a>
-							                                    <a style={{background:'#fff'}} href="#">React Native</a>
-							                                    <a style={{background:'#fff'}} href="#">Angular JS</a>
-							                                    <a style={{background:'#fff'}} href="#">iOS</a>
-							                                    <a style={{background:'#fff'}} href="#">Swift</a>
-							                                    <a style={{background:'#fff'}} href="#">Objective C</a>
-							                                </div>                                	
-						                                </div>
-						                                <div className="clearfix"></div>
-						                                <div className="team-content">
-						                                	Dan is a full stack developer focusing on building MVPs for early stage 
-						                                	startups in New York. As a consultant, he has worked with several startups 
-						                                	and development agencies over a five year span. Dan specializes in iOS, 
-						                                	backend technologies such as Node JS, Google Compute Engine, Heroku, and 
-						                                	AWS as well as front end libraries such as React and Angular JS. Dan 
-						                                	graduated from Cornell University where he walked to class in the snow, 
-						                                	uphill both ways.
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>
-
-						                    <div className="col-md-12 bottommargin">
-						                        <div className="team team-list clearfix">
-						                            <div className="team-image" style={{width:150}}>
-						                                <img className="img-circle" src="/images/beaman.png" alt="Velocity 360" />
-						                            </div>
-						                            <div className="team-desc">
-						                                <div className="team-title">
-						                                	<h4 style={{marginBottom:12}}>Roger Beaman</h4>
-															<div className="tagcloud">
-							                                    <a style={{background:'#fff'}} href="#">Node JS</a>
-							                                    <a style={{background:'#fff'}} href="#">React</a>
-							                                    <a style={{background:'#fff'}} href="#">Angular JS</a>
-							                                    <a style={{background:'#fff'}} href="#">JQuery</a>
-							                                </div>                                	
-						                                </div>
-						                                <div className="clearfix"></div>
-						                                <div className="team-content">
-						                                	Roger Beaman is a passionate Fullstack JavaScript developer that took the 
-						                                	unusual route to software development which perhaps you are on right now. 
-						                                	He started work in finance and found that writing Excel formulas was by far 
-						                                	the most exciting part of his job. Thus began a journey to joining you in the 
-						                                	exciting career that is software development. In under a year he was able to 
-						                                	go from a bootcamp to a lead developer at Shutterstock and he is excited about 
-						                                	sharing the knowledge and advice he has to help you do the same.
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>
-
-						                    <div className="col-md-12 bottommargin">
-						                        <div className="team team-list clearfix">
-						                            <div className="team-image" style={{width:150}}>
-						                                <img className="img-circle" src="/images/anna.png" alt="Velocity 360" />
-						                            </div>
-						                            <div className="team-desc">
-						                                <div className="team-title">
-						                                	<h4 style={{marginBottom:12}}>Anna Garcia</h4>
-															<div className="tagcloud">
-							                                    <a style={{background:'#fff'}} href="#">Node JS</a>
-							                                    <a style={{background:'#fff'}} href="#">React</a>
-							                                    <a style={{background:'#fff'}} href="#">Angular JS</a>
-							                                    <a style={{background:'#fff'}} href="#">JQuery</a>
-							                                </div>                                	
-						                                </div>
-						                                <div className="clearfix"></div>
-						                                <div className="team-content">
-						                                	A recent graduate of the Grace Hopper coding school for women, Anna is a 
-						                                	life-long tech enthusiast, musician, and fitness fanatic. Founder of the 
-						                                	original <a target="_blank" href="http://www.juicecrawl.com">JuiceCrawl</a>, 
-						                                	Anna explored technology and programming on her own before deciding to make 
-						                                	it her career in 2015. With a  background in Node, Express, Angular, and SQL, 
-						                                	Anna will be helping out as a teaching assistant for several courses.
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>
-
-
-										</div>
-									</article>
-
-									<article id="faq" className="overview">
-										<div className="container">
-											<h2 style={{marginTop:24}}>FAQ</h2>
-											<div className="col_full nobottommargin">
-						                        <div className="accordion accordion-border clearfix" data-state="closed">
-						                        	{faq}
-						                        </div>
-						                    </div>
-										</div>
-									</article>
-
-									{admissions}
-									{syllabus}
-									{register}
 
 								</div>
+
 
 							</main>
 						</div>
@@ -586,6 +575,38 @@ class Course extends Component {
 
 			</div>
 		)
+	}
+}
+
+
+const style = {
+	header: {
+		marginBottom:0,
+		marginTop:0,
+	},
+
+	panelBody: {
+		padding:36,
+		borderBottom:'1px solid #ddd'
+	},
+	sidebar: {
+		padding:16,
+		background:'#fff',
+		border:'1px solid #ddd'
+	},
+	input: {
+		borderRadius:'0px !important',
+		background:'#FEF9E7'
+	},
+	article: {
+		marginTop: 46
+	},
+	articleSection: {
+		margin: 'auto',
+		padding: 32
+	},
+	tag: {
+		background: '#f9f9f9'
 	}
 }
 
