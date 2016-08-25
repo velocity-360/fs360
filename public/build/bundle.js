@@ -63690,13 +63690,25 @@
 															null,
 															course.title
 														),
-														_react2.default.createElement('img', { style: { width: 180, background: '#fff', marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=320', alt: 'Velocity 360' }),
 														_react2.default.createElement(
-															'p',
-															{ style: { background: '#f9f9f9', padding: 12, border: '1px solid #ddd' }, className: 'about' },
-															course.dates,
-															_react2.default.createElement('br', null),
-															course.schedule
+															'div',
+															{ className: 'row' },
+															_react2.default.createElement(
+																'div',
+																{ className: 'col-md-4' },
+																_react2.default.createElement('img', { style: { width: 180, background: '#fff', marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=320', alt: 'Velocity 360' })
+															),
+															_react2.default.createElement(
+																'div',
+																{ className: 'col-md-8' },
+																_react2.default.createElement(
+																	'p',
+																	{ style: { background: '#f9f9f9', padding: 12, border: '1px solid #ddd' }, className: 'about' },
+																	course.dates,
+																	_react2.default.createElement('br', null),
+																	course.schedule
+																)
+															)
 														),
 														_react2.default.createElement(
 															'p',

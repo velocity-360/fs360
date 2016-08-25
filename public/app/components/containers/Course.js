@@ -416,11 +416,18 @@ class Course extends Component {
 
 												<article id="introduction" className="overview" style={style.articleSection}>
 													<h2>{course.title}</h2>
-													<img style={{width:180, background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} alt="Velocity 360" />
+													<div className="row">
+														<div className="col-md-4">
+															<img style={{width:180, background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} alt="Velocity 360" />
 
-													<p style={{background:'#f9f9f9', padding:12, border:'1px solid #ddd'}} className="about">
-														{course.dates}<br />{course.schedule}
-													</p>
+														</div>
+														<div className="col-md-8">
+															<p style={{background:'#f9f9f9', padding:12, border:'1px solid #ddd'}} className="about">
+																{course.dates}<br />{course.schedule}
+															</p>
+														</div>
+													</div>
+
 													<p>{course.description}</p>
 												</article>
 

@@ -799,13 +799,25 @@ var Course = (function (Component) {
 															null,
 															course.title
 														),
-														React.createElement("img", { style: { width: 180, background: "#fff", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=320", alt: "Velocity 360" }),
 														React.createElement(
-															"p",
-															{ style: { background: "#f9f9f9", padding: 12, border: "1px solid #ddd" }, className: "about" },
-															course.dates,
-															React.createElement("br", null),
-															course.schedule
+															"div",
+															{ className: "row" },
+															React.createElement(
+																"div",
+																{ className: "col-md-4" },
+																React.createElement("img", { style: { width: 180, background: "#fff", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=320", alt: "Velocity 360" })
+															),
+															React.createElement(
+																"div",
+																{ className: "col-md-8" },
+																React.createElement(
+																	"p",
+																	{ style: { background: "#f9f9f9", padding: 12, border: "1px solid #ddd" }, className: "about" },
+																	course.dates,
+																	React.createElement("br", null),
+																	course.schedule
+																)
+															)
 														),
 														React.createElement(
 															"p",
