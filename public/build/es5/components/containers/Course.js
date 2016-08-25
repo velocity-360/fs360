@@ -365,7 +365,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "image" },
-							React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd" }, src: "/images/group.JPG", alt: "Velocity 360" })
+							React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd", marginLeft: 6 }, src: "/images/group.JPG", alt: "Velocity 360" })
 						),
 						React.createElement(
 							"p",
@@ -809,6 +809,7 @@ var Course = (function (Component) {
 															null,
 															course.title
 														),
+														React.createElement("img", { style: { width: 180, background: "#fff", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=320", alt: "Velocity 360" }),
 														React.createElement(
 															"p",
 															{ className: "about" },

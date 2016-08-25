@@ -213,7 +213,7 @@ class Course extends Component {
 						Are you right for this class?
 					</p>
 					<div className="image">
-						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd'}} src="/images/group.JPG" alt="Velocity 360" />
+						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd', marginLeft:6}} src="/images/group.JPG" alt="Velocity 360" />
 					</div>
 
 					<p>
@@ -426,6 +426,8 @@ class Course extends Component {
 
 												<article id="introduction" className="overview" style={style.articleSection}>
 													<h2>{course.title}</h2>
+													<img style={{width:180, background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} alt="Velocity 360" />
+
 													<p className="about">
 														{course.dates}<br />{course.schedule}
 													</p>
