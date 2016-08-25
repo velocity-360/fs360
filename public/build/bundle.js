@@ -63474,6 +63474,7 @@
 														)
 													),
 													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
+													_react2.default.createElement('div', { className: 'clearfix' }),
 													tuition,
 													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
 													_react2.default.createElement(

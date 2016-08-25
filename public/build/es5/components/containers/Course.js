@@ -845,6 +845,7 @@ var Course = (function (Component) {
 														)
 													),
 													React.createElement("hr", { style: { marginTop: 24 } }),
+													React.createElement("div", { className: "clearfix" }),
 													tuition,
 													React.createElement("hr", { style: { marginTop: 24 } }),
 													React.createElement(

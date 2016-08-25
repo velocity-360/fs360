@@ -443,8 +443,8 @@ class Course extends Component {
 													</div>
 												</article>
 
-
 												<hr style={{marginTop:24}} />
+								                <div className="clearfix"></div>
 												{tuition}
 												<hr style={{marginTop:24}} />
 
