@@ -203,7 +203,7 @@ var Course = (function (Component) {
 				var units = course.units.map(function (unit, i) {
 					return React.createElement(
 						"div",
-						{ key: i, className: "entry clearfix" },
+						{ key: i, className: "entry clearfix", style: { border: "none" } },
 						React.createElement(
 							"div",
 							{ className: "entry-timeline" },
@@ -217,7 +217,7 @@ var Course = (function (Component) {
 						),
 						React.createElement(
 							"div",
-							{ className: "panel panel-default", style: { maxWidth: 600 } },
+							{ className: "panel panel-default", style: { maxWidth: 520 } },
 							React.createElement(
 								"div",
 								{ className: "panel-body", style: { padding: 36 } },
