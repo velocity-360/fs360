@@ -817,13 +817,9 @@ var Course = (function (Component) {
 															course.schedule
 														),
 														React.createElement(
-															"div",
-															{ className: "text" },
-															React.createElement(
-																"p",
-																null,
-																course.description
-															)
+															"p",
+															null,
+															course.description
 														)
 													),
 													React.createElement("hr", { style: { marginTop: 24 } }),

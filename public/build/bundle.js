@@ -63451,13 +63451,9 @@
 															course.schedule
 														),
 														_react2.default.createElement(
-															'div',
-															{ className: 'text' },
-															_react2.default.createElement(
-																'p',
-																null,
-																course.description
-															)
+															'p',
+															null,
+															course.description
 														)
 													),
 													_react2.default.createElement('hr', { style: { marginTop: 24 } }),

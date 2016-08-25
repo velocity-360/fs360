@@ -429,9 +429,7 @@ class Course extends Component {
 													<p className="about">
 														{course.dates}<br />{course.schedule}
 													</p>
-													<div className="text">
-														<p>{course.description}</p>
-													</div>
+													<p>{course.description}</p>
 												</article>
 
 												<hr style={{marginTop:24}} />
