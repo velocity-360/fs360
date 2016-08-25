@@ -860,7 +860,7 @@ var Course = (function (Component) {
 															{ className: "col-md-12 bottommargin" },
 															React.createElement(
 																"div",
-																{ className: "team team-list clearfix" },
+																{ className: "team team-list" },
 																React.createElement(
 																	"div",
 																	{ className: "team-desc" },
@@ -927,7 +927,7 @@ var Course = (function (Component) {
 															{ className: "col-md-12 bottommargin" },
 															React.createElement(
 																"div",
-																{ className: "team team-list clearfix" },
+																{ className: "team team-list" },
 																React.createElement(
 																	"div",
 																	{ className: "team-desc" },
@@ -979,7 +979,7 @@ var Course = (function (Component) {
 															{ className: "col-md-12 bottommargin" },
 															React.createElement(
 																"div",
-																{ className: "team team-list clearfix" },
+																{ className: "team team-list" },
 																React.createElement(
 																	"div",
 																	{ className: "team-desc" },
@@ -1034,6 +1034,7 @@ var Course = (function (Component) {
 														)
 													),
 													React.createElement("hr", { style: { marginTop: 24 } }),
+													React.createElement("div", { className: "clearfix" }),
 													React.createElement(
 														"article",
 														{ id: "faq", className: "overview", style: style.articleSection },

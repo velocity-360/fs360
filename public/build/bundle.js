@@ -63489,7 +63489,7 @@
 															{ className: 'col-md-12 bottommargin' },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team team-list clearfix' },
+																{ className: 'team team-list' },
 																_react2.default.createElement(
 																	'div',
 																	{ className: 'team-desc' },
@@ -63556,7 +63556,7 @@
 															{ className: 'col-md-12 bottommargin' },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team team-list clearfix' },
+																{ className: 'team team-list' },
 																_react2.default.createElement(
 																	'div',
 																	{ className: 'team-desc' },
@@ -63608,7 +63608,7 @@
 															{ className: 'col-md-12 bottommargin' },
 															_react2.default.createElement(
 																'div',
-																{ className: 'team team-list clearfix' },
+																{ className: 'team team-list' },
 																_react2.default.createElement(
 																	'div',
 																	{ className: 'team-desc' },
@@ -63663,6 +63663,7 @@
 														)
 													),
 													_react2.default.createElement('hr', { style: { marginTop: 24 } }),
+													_react2.default.createElement('div', { className: 'clearfix' }),
 													_react2.default.createElement(
 														'article',
 														{ id: 'faq', className: 'overview', style: style.articleSection },

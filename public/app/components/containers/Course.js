@@ -425,9 +425,7 @@ class Course extends Component {
 													<h2>{course.title}</h2>
 													<img style={{width:180, background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} alt="Velocity 360" />
 
-													<p className="about">
-														{course.dates}<br />{course.schedule}
-													</p>
+													<p className="about">{course.dates}<br />{course.schedule}</p>
 													<p>{course.description}</p>
 												</article>
 
@@ -442,7 +440,6 @@ class Course extends Component {
 															<div className="timeline-border"></div>
 															{units}
 														</div>
-
 													</div>
 												</article>
 
@@ -455,7 +452,7 @@ class Course extends Component {
 													<h2>Instructors</h2>
 
 								                    <div className="col-md-12 bottommargin">
-								                        <div className="team team-list clearfix">
+								                        <div className="team team-list">
 								                            <div className="team-desc">
 								                                <div className="team-title">
 									                                <img style={{width:96, marginBottom:6}} src="/images/kwon.png" alt="Velocity 360" />
@@ -485,7 +482,7 @@ class Course extends Component {
 								                    </div>
 
 								                    <div className="col-md-12 bottommargin">
-								                        <div className="team team-list clearfix">
+								                        <div className="team team-list">
 								                            <div className="team-desc">
 								                                <div className="team-title">
 									                                <img style={{width:96, marginBottom:6}} src="/images/beaman.png" alt="Velocity 360" />
@@ -495,7 +492,7 @@ class Course extends Component {
 									                                    <a style={style.tag} href="#">React</a>
 									                                    <a style={style.tag} href="#">Angular JS</a>
 									                                    <a style={style.tag} href="#">JQuery</a>
-									                                </div>                                	
+									                                </div>
 								                                </div>
 								                                <div className="clearfix"></div>
 								                                <div className="team-content">
@@ -512,7 +509,7 @@ class Course extends Component {
 								                    </div>
 
 								                    <div className="col-md-12 bottommargin">
-								                        <div className="team team-list clearfix">
+								                        <div className="team team-list">
 								                            <div className="team-desc">
 								                                <div className="team-title">
 									                                <img style={{width:96, marginBottom:6}} src="/images/anna.png" alt="Velocity 360" />
@@ -539,6 +536,7 @@ class Course extends Component {
 												</article>
 
 												<hr style={{marginTop:24}} />
+								                <div className="clearfix"></div>
 
 												<article id="faq" className="overview" style={style.articleSection}>
 													<h2>FAQ</h2>
