@@ -73,7 +73,7 @@ class Nav extends Component {
 											<div style={{padding:8, background:'#444'}}><strong>Part Time</strong></div>
 										</li>
 										<li><a href="https://www.velocity360.io/course/node-react-evening-course"><div className="menu-item">Node & React</div></a></li>
-										<li><a href="https://www.velocity360.io/course/node-react-native-evening-course"><div className="menu-item">Intro to Node</div></a></li>
+										<li><a href="https://www.velocity360.io/course/node-react-native-evening-course"><div className="menu-item">Intro Web Development</div></a></li>
 									</ul>
 								</li>
 	                            <li><a href="https://www.velocity360.io/tutorials"><div style={{padding:4}}>Tutorials</div></a></li>

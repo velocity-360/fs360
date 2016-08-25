@@ -254,7 +254,7 @@ var Nav = (function (Component) {
 													React.createElement(
 														"div",
 														{ className: "menu-item" },
-														"Intro to Node"
+														"Intro Web Development"
 													)
 												)
 											)

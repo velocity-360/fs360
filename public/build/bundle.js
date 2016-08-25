@@ -41268,7 +41268,7 @@
 													_react2.default.createElement(
 														'div',
 														{ className: 'menu-item' },
-														'Intro to Node'
+														'Intro Web Development'
 													)
 												)
 											)
@@ -63192,7 +63192,7 @@
 							_react2.default.createElement(
 								'a',
 								{ href: '#tuition' },
-								'Tuition, Scholarships'
+								'Tuition'
 							)
 						),
 						_react2.default.createElement(
@@ -63241,7 +63241,7 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'image' },
-							_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd', marginLeft: 6 }, src: '/images/group.JPG', alt: 'Velocity 360' })
+							_react2.default.createElement('img', { style: { width: 280, background: '#fff', padding: 6, border: '1px solid #ddd', marginLeft: 12 }, src: '/images/group.JPG', alt: 'Velocity 360' })
 						),
 						_react2.default.createElement(
 							'p',
@@ -63258,7 +63258,7 @@
 						_react2.default.createElement(
 							'h2',
 							null,
-							'Tuition, Scholarships, Deadlines'
+							'Tuition'
 						),
 						_react2.default.createElement(
 							'div',
@@ -63590,7 +63590,7 @@
 					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
 					_react2.default.createElement(
 						'section',
-						{ id: 'lpf-header', style: { maxHeight: 550, backgroundImage: "url('/images/joe_light_blue.png')" } },
+						{ id: 'lpf-header', style: { backgroundImage: "url('/images/joe_light_blue.png')" } },
 						_react2.default.createElement(
 							'header',
 							null,

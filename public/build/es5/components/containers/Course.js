@@ -301,7 +301,7 @@ var Course = (function (Component) {
 							React.createElement(
 								"a",
 								{ href: "#tuition" },
-								"Tuition, Scholarships"
+								"Tuition"
 							)
 						),
 						React.createElement(
@@ -350,7 +350,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "image" },
-							React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd", marginLeft: 6 }, src: "/images/group.JPG", alt: "Velocity 360" })
+							React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd", marginLeft: 12 }, src: "/images/group.JPG", alt: "Velocity 360" })
 						),
 						React.createElement(
 							"p",
@@ -367,7 +367,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"h2",
 							null,
-							"Tuition, Scholarships, Deadlines"
+							"Tuition"
 						),
 						React.createElement(
 							"div",
@@ -699,7 +699,7 @@ var Course = (function (Component) {
 					React.createElement(Nav, { headerStyle: "dark" }),
 					React.createElement(
 						"section",
-						{ id: "lpf-header", style: { maxHeight: 550, backgroundImage: "url('/images/joe_light_blue.png')" } },
+						{ id: "lpf-header", style: { backgroundImage: "url('/images/joe_light_blue.png')" } },
 						React.createElement(
 							"header",
 							null,

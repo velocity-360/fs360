@@ -192,7 +192,7 @@ class Course extends Component {
 					<li><a href="#introduction">Introduction</a></li>
 					<li><a href="#who">Who</a></li>
 					<li><a href="#curriculum">Curriculum</a></li>
-					<li><a href="#tuition">Tuition, Scholarships</a></li>
+					<li><a href="#tuition">Tuition</a></li>
 					<li><a href="#instructors">Instructors</a></li>
 					<li><a href="#faq">FAQ</a></li>
 					<li><a href="#admissions">Admissions</a></li>
@@ -205,7 +205,7 @@ class Course extends Component {
 				<article id="who" className="overview" style={style.articleSection}>
 					<h2>Who</h2>
 					<div className="image">
-						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd', marginLeft:6}} src="/images/group.JPG" alt="Velocity 360" />
+						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd', marginLeft:12}} src="/images/group.JPG" alt="Velocity 360" />
 					</div>
 					<p>
 						The {course.title} is designed for beginner to intermediate programmers. 
@@ -222,7 +222,7 @@ class Course extends Component {
 			
 			tuition = (
 				<article id="tuition" className="overview" style={style.articleSection}>
-					<h2>Tuition, Scholarships, Deadlines</h2>
+					<h2>Tuition</h2>
 					<div className="col_full nobottommargin">
 						<p className="about" style={{marginBottom:6}}>Tuition</p>
 						<p>
@@ -367,7 +367,7 @@ class Course extends Component {
 			<div id="wrapper" className="clearfix">
 				<Nav headerStyle="dark" />
 
-				<section id="lpf-header" style={{maxHeight:550, backgroundImage: "url('/images/joe_light_blue.png')"}} >
+				<section id="lpf-header" style={{backgroundImage: "url('/images/joe_light_blue.png')"}}>
 					<header>
 						<div className="content-wrapper dark">
 							<div className="content">
@@ -398,7 +398,6 @@ class Course extends Component {
 									<nav style={{padding:16, background:'#fff', border:'1px solid #ddd'}}>
 										{sidemenu}
 										{btnApply}
-
 										<div style={{paddingTop:16}}>
 											<hr />
 											<a href="#newsletter">Request Syllabus</a>
@@ -407,7 +406,6 @@ class Course extends Component {
 											<a onClick={this.submitSyllabusRequest} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Request Syllabus</a>
 										</div>
 									</nav>
-
 								</aside>
 
 								<div className="content" style={{background:'#f9f9f9', paddingTop:22}}>
