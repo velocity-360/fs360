@@ -62837,7 +62837,7 @@
 				var units = course.units.map(function (unit, i) {
 					return _react2.default.createElement(
 						'div',
-						{ key: i, className: 'entry clearfix' },
+						{ key: i, className: 'entry clearfix', style: { border: 'none' } },
 						_react2.default.createElement(
 							'div',
 							{ className: 'entry-timeline' },
@@ -62851,7 +62851,7 @@
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'panel panel-default', style: { maxWidth: 600 } },
+							{ className: 'panel panel-default', style: { maxWidth: 520 } },
 							_react2.default.createElement(
 								'div',
 								{ className: 'panel-body', style: { padding: 36 } },

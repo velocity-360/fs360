@@ -156,12 +156,12 @@ class Course extends Component {
 		const course = this.props.courses[this.props.slug]
 		const units = course.units.map((unit, i) => {
 			return (
-				<div key={i} className="entry clearfix">
+				<div key={i} className="entry clearfix" style={{border:'none'}}>
 					<div className="entry-timeline">
 						Unit<span>{i+1}</span>
 						<div className="timeline-divider"></div>
 					</div>
-					<div className="panel panel-default" style={{maxWidth:600}}>
+					<div className="panel panel-default" style={{maxWidth:520}}>
 						<div className="panel-body" style={{padding:36}}>
 							<h3>
 								<a href="#" style={{marginRight:12}} className="btn btn-info"><strong>{unit.topic}</strong></a>
@@ -264,9 +264,7 @@ class Course extends Component {
 							be eligible for the full scholarship, the deadline is August 22nd.
 						</p>
                     </div>
-				</article>				
-
-
+				</article>
 			)
 
 			admissions = (
@@ -458,7 +456,7 @@ class Course extends Component {
 
 												<article id="instructors" className="overview" style={style.articleSection}>
 													<h2>Instructors</h2>
-													
+
 								                    <div className="col-md-12 bottommargin">
 								                        <div className="team team-list clearfix">
 								                            <div className="team-desc">
