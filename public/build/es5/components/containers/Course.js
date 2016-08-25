@@ -330,15 +330,6 @@ var Course = (function (Component) {
 								{ href: "#admissions" },
 								"Admissions"
 							)
-						),
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								"a",
-								{ href: "#syllabus" },
-								"Request Syllabus"
-							)
 						)
 					);
 
@@ -355,11 +346,6 @@ var Course = (function (Component) {
 							"h2",
 							null,
 							"Who"
-						),
-						React.createElement(
-							"p",
-							{ className: "about" },
-							"Are you right for this class?"
 						),
 						React.createElement(
 							"div",
@@ -382,13 +368,6 @@ var Course = (function (Component) {
 							"h2",
 							null,
 							"Tuition, Scholarships, Deadlines"
-						),
-						React.createElement(
-							"p",
-							{ className: "about" },
-							course.dates,
-							React.createElement("br", null),
-							course.schedule
 						),
 						React.createElement(
 							"div",
@@ -445,13 +424,6 @@ var Course = (function (Component) {
 							"h2",
 							null,
 							"Admissions"
-						),
-						React.createElement(
-							"p",
-							{ className: "about" },
-							course.dates,
-							React.createElement("br", null),
-							course.schedule
 						),
 						React.createElement(
 							"a",
@@ -785,7 +757,26 @@ var Course = (function (Component) {
 											"nav",
 											{ style: { padding: 16, background: "#fff", border: "1px solid #ddd" } },
 											sidemenu,
-											btnApply
+											btnApply,
+											React.createElement(
+												"div",
+												{ style: { paddingTop: 16 } },
+												React.createElement("hr", null),
+												React.createElement(
+													"a",
+													{ href: "#newsletter" },
+													"Request Syllabus"
+												),
+												React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
+												React.createElement("br", null),
+												React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
+												React.createElement("br", null),
+												React.createElement(
+													"a",
+													{ onClick: this.submitSyllabusRequest, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
+													"Request Syllabus"
+												)
+											)
 										)
 									),
 									React.createElement(
@@ -811,7 +802,7 @@ var Course = (function (Component) {
 														React.createElement("img", { style: { width: 180, background: "#fff", marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=320", alt: "Velocity 360" }),
 														React.createElement(
 															"p",
-															{ className: "about" },
+															{ style: { background: "#f9f9f9", padding: 12, border: "1px solid #ddd" }, className: "about" },
 															course.dates,
 															React.createElement("br", null),
 															course.schedule

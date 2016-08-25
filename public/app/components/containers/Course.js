@@ -102,7 +102,6 @@ class Course extends Component {
 					console.log('ERROR: '+JSON.stringify(err))
 					return
 				}
-
 			})
 		})
 	}
@@ -197,7 +196,6 @@ class Course extends Component {
 					<li><a href="#instructors">Instructors</a></li>
 					<li><a href="#faq">FAQ</a></li>
 					<li><a href="#admissions">Admissions</a></li>
-					<li><a href="#syllabus">Request Syllabus</a></li>
 				</ul>				
 			)
 
@@ -206,13 +204,9 @@ class Course extends Component {
 			who = (
 				<article id="who" className="overview" style={style.articleSection}>
 					<h2>Who</h2>
-					<p className="about">
-						Are you right for this class?
-					</p>
 					<div className="image">
 						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd', marginLeft:6}} src="/images/group.JPG" alt="Velocity 360" />
 					</div>
-
 					<p>
 						The {course.title} is designed for beginner to intermediate programmers. 
 						A typical applicant has written basic code before, possibly 
@@ -229,9 +223,6 @@ class Course extends Component {
 			tuition = (
 				<article id="tuition" className="overview" style={style.articleSection}>
 					<h2>Tuition, Scholarships, Deadlines</h2>
-					<p className="about">
-						{course.dates}<br />{course.schedule}
-					</p>
 					<div className="col_full nobottommargin">
 						<p className="about" style={{marginBottom:6}}>Tuition</p>
 						<p>
@@ -267,9 +258,6 @@ class Course extends Component {
 			admissions = (
 				<article id="admissions" className="overview" style={style.articleSection}>
 					<h2>Admissions</h2>
-					<p className="about">
-						{course.dates}<br />{course.schedule}
-					</p>
 					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 1</a><strong>Apply</strong>
 					<p style={{marginTop:10}}>
 						Complete our online application by midnight August 29th to 
@@ -305,8 +293,6 @@ class Course extends Component {
 					<hr />
 					<a onClick={this.toggleApplication} href="#" className="btn btn-lg btn-success">Apply</a>
 				</article>
-
-
 			)
 			
 			syllabus = (
@@ -412,7 +398,16 @@ class Course extends Component {
 									<nav style={{padding:16, background:'#fff', border:'1px solid #ddd'}}>
 										{sidemenu}
 										{btnApply}
+
+										<div style={{paddingTop:16}}>
+											<hr />
+											<a href="#newsletter">Request Syllabus</a>
+					                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
+					                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
+											<a onClick={this.submitSyllabusRequest} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Request Syllabus</a>
+										</div>
 									</nav>
+
 								</aside>
 
 								<div className="content" style={{background:'#f9f9f9', paddingTop:22}}>
@@ -425,7 +420,9 @@ class Course extends Component {
 													<h2>{course.title}</h2>
 													<img style={{width:180, background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} alt="Velocity 360" />
 
-													<p className="about">{course.dates}<br />{course.schedule}</p>
+													<p style={{background:'#f9f9f9', padding:12, border:'1px solid #ddd'}} className="about">
+														{course.dates}<br />{course.schedule}
+													</p>
 													<p>{course.description}</p>
 												</article>
 
