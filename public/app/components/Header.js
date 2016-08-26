@@ -103,25 +103,24 @@ class Header extends Component {
 
 	render(){
 		return (
-	        <section id="slider" className="dark full-screen" style={{background: 'url("/images/joe_blue_2.png") center', overflow:'visible'}} data-height-lg="600" data-height-md="600" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
+	        <section id="slider" className="dark full-screen" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible'}} data-height-lg="600" data-height-md="600" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
                 <div className="vertical-middle">
                     <div className="heading-block center nobottomborder">
-                        <h1 style={{textTransform:'none'}} data-animate="fadeInUp">Become a Full Stack Developer</h1>
+                        <h1 style={{textTransform:'none', fontWeight:300}} data-animate="fadeInUp">Become a Full Stack Developer</h1>
                         <span style={{fontWeight:400}} data-animate="fadeInUp" data-delay="300">
 	                        Velocity 360 is the only coding bootcamp that trains students for the future 
 							of software - Node, React, and React Native.
                         </span>
+                        <br /><br />
+                    	<div data-animate="fadeIn" data-delay="800" style={{margin:'auto', maxWidth:320, background:'rgba(0,0,0,0.65)', padding:24}}>
+	                    	Next Cohort Begins October 3rd
+	                    	<br /><br />
+	                        <input id="name" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Name" />
+	                        <input id="email" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Email" />
+		                    <button onClick={this.submitSyllabusRequest} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Request Syllabus</button>
+                    	</div>
                     </div>
-
-                    <div style={{padding:24, color:'#fff', textAlign:'center'}}>
-                    	Next Cohort Begins October 3rd
-                    	<br /><br />
-                        <input id="name" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Name" />
-                        <input id="email" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Email" />
-	                    <button onClick={this.submitSyllabusRequest} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Request Syllabus</button>
-                    </div>
-
                 </div>
 	        </section>
 		)

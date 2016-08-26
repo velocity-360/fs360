@@ -144,7 +144,7 @@ var Header = (function (Component) {
 			value: function render() {
 				return React.createElement(
 					"section",
-					{ id: "slider", className: "dark full-screen", style: { background: "url(\"/images/joe_blue_2.png\") center", overflow: "visible" }, "data-height-lg": "600", "data-height-md": "600", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
+					{ id: "slider", className: "dark full-screen", style: { background: "url(\"/images/oc-dark-blue.jpg\") center", overflow: "visible" }, "data-height-lg": "600", "data-height-md": "600", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
 						"div",
@@ -154,27 +154,29 @@ var Header = (function (Component) {
 							{ className: "heading-block center nobottomborder" },
 							React.createElement(
 								"h1",
-								{ style: { textTransform: "none" }, "data-animate": "fadeInUp" },
+								{ style: { textTransform: "none", fontWeight: 300 }, "data-animate": "fadeInUp" },
 								"Become a Full Stack Developer"
 							),
 							React.createElement(
 								"span",
 								{ style: { fontWeight: 400 }, "data-animate": "fadeInUp", "data-delay": "300" },
 								"Velocity 360 is the only coding bootcamp that trains students for the future of software - Node, React, and React Native."
-							)
-						),
-						React.createElement(
-							"div",
-							{ style: { padding: 24, color: "#fff", textAlign: "center" } },
-							"Next Cohort Begins October 3rd",
+							),
 							React.createElement("br", null),
 							React.createElement("br", null),
-							React.createElement("input", { id: "name", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Name" }),
-							React.createElement("input", { id: "email", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Email" }),
 							React.createElement(
-								"button",
-								{ onClick: this.submitSyllabusRequest, className: "btn btn-lg btn-info nomargin", value: "submit", type: "submit" },
-								"Request Syllabus"
+								"div",
+								{ "data-animate": "fadeIn", "data-delay": "800", style: { margin: "auto", maxWidth: 320, background: "rgba(0,0,0,0.65)", padding: 24 } },
+								"Next Cohort Begins October 3rd",
+								React.createElement("br", null),
+								React.createElement("br", null),
+								React.createElement("input", { id: "name", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Name" }),
+								React.createElement("input", { id: "email", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Email" }),
+								React.createElement(
+									"button",
+									{ onClick: this.submitSyllabusRequest, className: "btn btn-lg btn-info nomargin", value: "submit", type: "submit" },
+									"Request Syllabus"
+								)
 							)
 						)
 					)

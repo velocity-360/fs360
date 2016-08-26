@@ -19,20 +19,6 @@ class Nav extends Component {
 		}
 	}
 
-	componentDidMount(){
-		if (this.props.currentUser.id != null)
-			return
-
-		api.handleGet('/account/currentuser', {}, function(err, response){
-//			console.log('CURRENT USER: '+JSON.stringify(response))
-			if (err){
-				return
-			}
-
-			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
-		})
-	}
-
 	openModal(event){
 		event.preventDefault()
 		this.setState({showLogin: true})

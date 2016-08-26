@@ -45,22 +45,6 @@ var Nav = (function (Component) {
 	_inherits(Nav, Component);
 
 	_prototypeProperties(Nav, null, {
-		componentDidMount: {
-			value: function componentDidMount() {
-				if (this.props.currentUser.id != null) {
-					return;
-				}api.handleGet("/account/currentuser", {}, function (err, response) {
-					//			console.log('CURRENT USER: '+JSON.stringify(response))
-					if (err) {
-						return;
-					}
-
-					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		openModal: {
 			value: function openModal(event) {
 				event.preventDefault();

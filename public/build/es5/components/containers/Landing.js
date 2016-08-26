@@ -93,6 +93,47 @@ var Landing = (function (Component) {
                     React.createElement(Nav, null),
                     React.createElement(Header, null),
                     React.createElement(
+                        "div",
+                        { className: "section notopmargin nobottommargin" },
+                        React.createElement(
+                            "div",
+                            { className: "container clearfix" },
+                            React.createElement(
+                                "div",
+                                { className: "col_half nobottommargin topmargin-lg" },
+                                React.createElement("img", { style: { padding: 6, background: "#fff", border: "1px solid #ddd" }, src: "/images/girl.png", alt: "Velocity 360", className: "center-block" })
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "col_half nobottommargin topmargin-lg col_last" },
+                                React.createElement(
+                                    "div",
+                                    { className: "heading-block topmargin-lg" },
+                                    React.createElement(
+                                        "h2",
+                                        { style: { fontWeight: 300 } },
+                                        "Plan Ahead"
+                                    ),
+                                    React.createElement(
+                                        "span",
+                                        null,
+                                        "Prepare for tomorrow."
+                                    )
+                                ),
+                                React.createElement(
+                                    "p",
+                                    { style: style.paragraph },
+                                    "Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native."
+                                ),
+                                React.createElement(
+                                    "a",
+                                    { href: "#", className: "button button-border button-rounded button-large button-dark noleftmargin" },
+                                    "Learn More"
+                                )
+                            )
+                        )
+                    ),
+                    React.createElement(
                         "section",
                         { id: "section-about", className: "page-section section nobg nomargin" },
                         React.createElement(
@@ -102,8 +143,8 @@ var Landing = (function (Component) {
                                 "div",
                                 { className: "heading-block bottommargin-lg center" },
                                 React.createElement(
-                                    "h4",
-                                    null,
+                                    "h2",
+                                    { style: style.heading },
                                     "The Velocity Advantage"
                                 )
                             ),
@@ -115,20 +156,20 @@ var Landing = (function (Component) {
                                     { className: "heading-block fancy-title nobottomborder title-bottom-border" },
                                     React.createElement(
                                         "h4",
-                                        null,
-                                        "Why choose ",
+                                        { style: style.heading },
+                                        "True Full ",
                                         React.createElement(
                                             "span",
                                             null,
-                                            "Us"
+                                            "Stack"
                                         )
                                     )
                                 ),
-                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/class-3.jpg" }),
+                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/aws.png" }),
                                 React.createElement(
                                     "p",
-                                    null,
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis."
+                                    { style: style.paragraph },
+                                    "At Velocity 360, students learn ALL areas of the stack: backend, frontend, mobile, and even dev ops. Through Node, React and React Native, we are able to focus on a wider range of areas because the concepts are transferrable. This is a key reason why React & React Native are becoming so popular - one set of concepts can be applied to both web and mobile development. Our course highly emphasizes this cross-compatability preparing students for careers in almost any aspect of software development."
                                 )
                             ),
                             React.createElement(
@@ -139,20 +180,20 @@ var Landing = (function (Component) {
                                     { className: "heading-block fancy-title nobottomborder title-bottom-border" },
                                     React.createElement(
                                         "h4",
-                                        null,
-                                        "Industry ",
+                                        { style: style.heading },
+                                        "Small ",
                                         React.createElement(
                                             "span",
                                             null,
-                                            "Driven"
+                                            "Classes"
                                         )
                                     )
                                 ),
                                 React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/class-2.jpg" }),
                                 React.createElement(
                                     "p",
-                                    null,
-                                    "Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native."
+                                    { style: style.paragraph },
+                                    "The average class size at Velocity is 10 students. We take very careful measures to ensure that the students selected for each cohort are qualified, motivated and prepared to succeed beyond the course. The tech bootcamp industry is quickly developing a reputation for churning out unqualified devs and much of this is due to students enrolling for the wrong reasons. We make sure our students are pursuing a career in software for the right reasons."
                                 )
                             ),
                             React.createElement(
@@ -163,7 +204,7 @@ var Landing = (function (Component) {
                                     { className: "heading-block fancy-title nobottomborder title-bottom-border" },
                                     React.createElement(
                                         "h4",
-                                        null,
+                                        { style: style.heading },
                                         "Modern ",
                                         React.createElement(
                                             "span",
@@ -172,10 +213,10 @@ var Landing = (function (Component) {
                                         )
                                     )
                                 ),
-                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/react-wide.jpg" }),
+                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/node-react.png" }),
                                 React.createElement(
                                     "p",
-                                    null,
+                                    { style: style.paragraph },
                                     "While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world."
                                 )
                             )
@@ -188,9 +229,13 @@ var Landing = (function (Component) {
                             "div",
                             { className: "content-wrap", style: { paddingTop: 0 } },
                             React.createElement(
-                                "h4",
-                                { className: "center" },
-                                "Our Students Currently Work At"
+                                "div",
+                                { className: "heading-block bottommargin-lg center" },
+                                React.createElement(
+                                    "h2",
+                                    { style: { fontWeight: 400 } },
+                                    "Our Students Currently Work At"
+                                )
                             ),
                             React.createElement(
                                 "div",
@@ -254,6 +299,16 @@ var Landing = (function (Component) {
 
     return Landing;
 })(Component);
+
+var style = {
+    paragraph: {
+        lineHeight: 25 + "px",
+        fontSize: 16
+    },
+    heading: {
+        fontWeight: 300
+    }
+};
 
 var stateToProps = function (state) {
     return {
