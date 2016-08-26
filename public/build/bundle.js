@@ -23999,7 +23999,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24025,199 +24025,238 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Landing = function (_Component) {
-		_inherits(Landing, _Component);
+	    _inherits(Landing, _Component);
 	
-		function Landing(props, context) {
-			_classCallCheck(this, Landing);
+	    function Landing(props, context) {
+	        _classCallCheck(this, Landing);
 	
-			var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props, context));
+	        var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props, context));
 	
-			_this.state = {};
-			return _this;
-		}
+	        _this.state = {};
+	        return _this;
+	    }
 	
-		_createClass(Landing, [{
-			key: 'render',
-			value: function render() {
-				var courses = this.props.courses.map(function (course, i) {
-					return _react2.default.createElement(
-						'div',
-						{ key: course.id, className: 'col-md-12 bottommargin' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'team team-list clearfix' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'team-image', style: { width: 150 } },
-								_react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=260', alt: 'Velocity 360' })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'team-desc' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'team-title' },
-									_react2.default.createElement(
-										'h4',
-										{ style: { fontWeight: 400 } },
-										_react2.default.createElement(
-											'a',
-											{ href: '/course/' + course.slug },
-											course.title
-										)
-									),
-									_react2.default.createElement(
-										'span',
-										{ style: { color: '#444' } },
-										course.dates
-									),
-									_react2.default.createElement(
-										'span',
-										{ style: { color: '#444' } },
-										course.schedule
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'team-content' },
-									course.description
-								)
-							)
-						)
-					);
-				});
+	    _createClass(Landing, [{
+	        key: 'render',
+	        value: function render() {
+	            var courses = this.props.courses.map(function (course, i) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { key: course.id, className: 'col-md-12 bottommargin' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'team team-list clearfix' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'team-image', style: { width: 150 } },
+	                            _react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=260', alt: 'Velocity 360' })
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'team-desc' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'team-title' },
+	                                _react2.default.createElement(
+	                                    'h4',
+	                                    { style: { fontWeight: 400 } },
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '/course/' + course.slug },
+	                                        course.title
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { style: { color: '#444' } },
+	                                    course.dates
+	                                ),
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { style: { color: '#444' } },
+	                                    course.schedule
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'team-content' },
+	                                course.description
+	                            )
+	                        )
+	                    )
+	                );
+	            });
 	
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_components.Nav, null),
-					_react2.default.createElement(_components.Header, null),
-					_react2.default.createElement(
-						'section',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix', style: { paddingTop: 64 } },
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_full bottommargin-sm' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'fancy-title title-bottom-border' },
-										_react2.default.createElement(
-											'h2',
-											{ style: { fontWeight: 400 } },
-											'Highly Demanded Skills'
-										)
-									),
-									_react2.default.createElement('img', { style: { background: '#fff', float: 'left', border: '1px solid #ddd', maxWidth: 260, padding: 6, marginRight: 12 }, className: 'image_fade', src: '/images/class.jpg', alt: 'Velocity 360' }),
-									_react2.default.createElement(
-										'h3',
-										{ style: { marginBottom: 6, fontWeight: 400 } },
-										'Industry Driven'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, Redux, and React Native.'
-									),
-									_react2.default.createElement(
-										'h3',
-										{ style: { marginBottom: 6, fontWeight: 400 } },
-										'Modern Curriculum'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
-									),
-									_react2.default.createElement('img', { style: { marginBottom: 6 }, src: '/images/wework.jpg' }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'i',
-										{ style: { fontWeight: 100 } },
-										'* Courses are held at our WeWork Location on 28th Street.'
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'heading-block center' },
-							_react2.default.createElement(
-								'h2',
-								{ style: { fontWeight: 400 } },
-								'Bootcamps'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { paddingTop: 0 } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								courses
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { paddingTop: 0 } },
-							_react2.default.createElement('div', { className: 'line' }),
-							_react2.default.createElement(
-								'h4',
-								{ className: 'center' },
-								'Our Students Currently Work At'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'container' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'row' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-3' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/crains.png', alt: 'Velocity 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-3' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/bloomberg.png', alt: 'Velocity 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-3' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/nytimes.png', alt: 'Velocity 360' })
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-md-3' },
-										_react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/codeacademy.png', alt: 'Velocity 360' })
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(_components.Footer, null)
-				);
-			}
-		}]);
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_components.Nav, null),
+	                _react2.default.createElement(_components.Header, null),
+	                _react2.default.createElement(
+	                    'section',
+	                    { id: 'section-about', className: 'page-section section nobg nomargin' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'container clearfix' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'heading-block bottommargin-lg center' },
+	                            _react2.default.createElement(
+	                                'h4',
+	                                null,
+	                                'The Velocity Advantage'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_one_third' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'heading-block fancy-title nobottomborder title-bottom-border' },
+	                                _react2.default.createElement(
+	                                    'h4',
+	                                    null,
+	                                    'Why choose ',
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        'Us'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement('img', { style: { maxWidth: 220, marginBottom: 12 }, src: '/images/class-3.jpg' }),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_one_third' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'heading-block fancy-title nobottomborder title-bottom-border' },
+	                                _react2.default.createElement(
+	                                    'h4',
+	                                    null,
+	                                    'Industry ',
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        'Driven'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement('img', { style: { maxWidth: 220, marginBottom: 12 }, src: '/images/class-2.jpg' }),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_one_third col_last' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'heading-block fancy-title nobottomborder title-bottom-border' },
+	                                _react2.default.createElement(
+	                                    'h4',
+	                                    null,
+	                                    'Modern ',
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        'Curriculum'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement('img', { style: { maxWidth: 220, marginBottom: 12 }, src: '/images/react-wide.jpg' }),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world.'
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'section',
+	                    { style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'content-wrap', style: { paddingTop: 0 } },
+	                        _react2.default.createElement(
+	                            'h4',
+	                            { className: 'center' },
+	                            'Our Students Currently Work At'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'container' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'row' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-3' },
+	                                    _react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/crains.png', alt: 'Velocity 360' })
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-3' },
+	                                    _react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/bloomberg.png', alt: 'Velocity 360' })
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-3' },
+	                                    _react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/nytimes.png', alt: 'Velocity 360' })
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-3' },
+	                                    _react2.default.createElement('img', { style: { border: '1px solid #ddd', marginTop: 24 }, src: '/images/codeacademy.png', alt: 'Velocity 360' })
+	                                )
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'section',
+	                    { style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'heading-block center' },
+	                        _react2.default.createElement(
+	                            'h2',
+	                            { style: { fontWeight: 400 } },
+	                            'Bootcamps'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'content-wrap', style: { paddingTop: 0 } },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'container clearfix' },
+	                            courses
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(_components.Footer, null)
+	            );
+	        }
+	    }]);
 	
-		return Landing;
+	    return Landing;
 	}(_react.Component);
 	
 	var stateToProps = function stateToProps(state) {
-		return {
-			currentUser: state.profileReducer.currentUser,
-			courses: state.courseReducer.courseArray
-		};
+	    return {
+	        currentUser: state.profileReducer.currentUser,
+	        courses: state.courseReducer.courseArray
+	    };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(stateToProps)(Landing);

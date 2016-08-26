@@ -39,55 +39,59 @@ class Landing extends Component {
 				<Nav />
 				<Header />
 
-				<section>
-					<div className="content-wrap">
+                <section id="section-about" className="page-section section nobg nomargin">
+                    <div className="container clearfix">
+                        <div className="heading-block bottommargin-lg center">
+                            <h4>The Velocity Advantage</h4>
+                        </div>
 
-						<div className="container clearfix" style={{paddingTop:64}}>
-							<div className="col_full bottommargin-sm">
-			                    <div className="fancy-title title-bottom-border">
-			                        <h2 style={{fontWeight:400}}>Highly Demanded Skills</h2>
-			                    </div>
-								<img style={{background:'#fff', float:'left', border:'1px solid #ddd', maxWidth: 260, padding:6, marginRight:12}} className="image_fade" src="/images/class.jpg" alt="Velocity 360" />
-								<h3 style={{marginBottom:6, fontWeight:400}}>Industry Driven</h3>
-								<p>
-									Technology, more than any other industry, changes rapidly and many fall behind. As a 
-									newcomer to tech, it is imperative to understand the trends and develop the skills
-									that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares 
-									students under that guiding principle. Our curriculum is highly focused on the bleeding 
-									edge of tech evolution: Node JS, React, Redux, and React Native. 
-								</p>
+                        <div className="col_one_third">
 
-								<h3 style={{marginBottom:6, fontWeight:400}}>Modern Curriculum</h3>
-								<p>
-									While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, 
-									General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, 
-									Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing 
-									Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails 
-									devs that graduate from bootcamps every three months, you will leave Velocity 360 with 
-									the skills highly in demand yet hard to find in the tech world. 
-								</p>
+                            <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                                <h4>Why choose <span>Us</span></h4>
+                            </div>
+                            <img style={{maxWidth:220, marginBottom:12}} src="/images/class-3.jpg" />
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.</p>
 
-			                    <img style={{marginBottom:6}} src="/images/wework.jpg" /><br />
-			                    <i style={{fontWeight:100}}>* Courses are held at our WeWork Location on 28th Street.</i>
-							</div>
+                        </div>
 
-						</div>
-					</div>
-				</section>
+                        <div className="col_one_third">
+                            <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                                <h4>Industry <span>Driven</span></h4>
+                            </div>
+                            <img style={{maxWidth:220, marginBottom:12}} src="/images/class-2.jpg" />
+                            <p>
+                            	Technology, more than any other industry, changes rapidly and many fall behind. 
+                            	As a newcomer to tech, it is imperative to understand the trends and develop the 
+                            	skills that will be valued tomorrow over those in demand today. Velocity 360 
+                            	strongly prepares students under that guiding principle. Our curriculum is highly 
+                            	focused on the bleeding edge of tech evolution: Node JS, React, and React Native.
+                            </p>
+
+                        </div>
+
+                        <div className="col_one_third col_last">
+                            <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                                <h4>Modern <span>Curriculum</span></h4>
+                            </div>
+                            <img style={{maxWidth:220, marginBottom:12}} src="/images/react-wide.jpg" />
+                            <p>
+                            	While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron 
+                            	School, General Assembly, NYCDA, App Academy, etc) and have been doing so for 
+                            	several years, Velocity 360 is the only bootcamp in NYC that focuses on the 
+                            	tremendously growing Node/React/React-Native ecosystem. Rather than joining the 
+                            	mass of Ruby on Rails devs that graduate from bootcamps every three months, you 
+                            	will leave Velocity 360 with the skills highly in demand yet hard to find in the 
+                            	tech world.
+                            </p>
+
+                        </div>
+
+                    </div>
+                </section>
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
-					<div className="heading-block center">
-						<h2 style={{fontWeight:400}}>Bootcamps</h2>
-					</div>
-
 					<div className="content-wrap" style={{paddingTop:0}}>
-						<div className="container clearfix">
-			               	{courses}
-						</div>
-					</div>
-
-					<div className="content-wrap" style={{paddingTop:0}}>
-	                    <div className="line"></div>
 	                    <h4 className="center">Our Students Currently Work At</h4>
 	                    <div className="container">
 		                    <div className="row">
@@ -107,8 +111,24 @@ class Landing extends Component {
 
 	                    </div>
 					</div>
+                </section>
+
+				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
+					<div className="heading-block center">
+						<h2 style={{fontWeight:400}}>Bootcamps</h2>
+					</div>
+
+					<div className="content-wrap" style={{paddingTop:0}}>
+						<div className="container clearfix">
+			               	{courses}
+						</div>
+					</div>
+
 
 				</section>
+
+
+
 
 				<Footer />
 			</div>
