@@ -18,39 +18,38 @@ var Component = _react.Component;
 var Loader = _interopRequire(require("react-loader"));
 
 var connect = require("react-redux").connect;
+var _utils = require("../utils");
+
+var api = _utils.api;
+var TrackingManager = _utils.TrackingManager;
 var _reactBootstrap = require("react-bootstrap");
 
 var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
-var QualifyingForm = _interopRequire(require("../components/QualifyingForm"));
-
 var Header = (function (Component) {
 	function Header(props, context) {
 		_classCallCheck(this, Header);
 
 		_get(Object.getPrototypeOf(Header.prototype), "constructor", this).call(this, props, context);
 		this.submitInfoRequest = this.submitInfoRequest.bind(this);
-		this.hideForm = this.hideForm.bind(this);
 		this.toggleLoader = this.toggleLoader.bind(this);
+		this.updateVisitor = this.updateVisitor.bind(this);
+		this.submitSyllabusRequest = this.submitSyllabusRequest.bind(this);
+		this.validate = this.validate.bind(this);
 		this.state = {
 			showLoader: false,
-			showForm: false
+			visitor: {
+				name: "",
+				email: "",
+				subject: "Syllabus Request"
+			}
 		};
 	}
 
 	_inherits(Header, Component);
 
 	_prototypeProperties(Header, null, {
-		hideForm: {
-			value: function hideForm() {
-				this.setState({
-					showForm: false
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		toggleLoader: {
 			value: function toggleLoader(show) {
 				this.setState({
@@ -70,79 +69,115 @@ var Header = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		submitSyllabusRequest: {
+			value: function submitSyllabusRequest(event) {
+				var _this = this;
+				event.preventDefault();
+				var missingField = this.validate(this.state.visitor, false);
+				if (missingField != null) {
+					alert("Please enter your " + missingField);
+					return;
+				}
+
+				var pkg = Object.assign({}, this.state.visitor);
+				var parts = pkg.name.split(" ");
+				pkg.firstName = parts[0];
+				if (parts.length > 1) pkg.lastName = parts[parts.length - 1];
+
+				pkg.pdf = "FundamentalsBootcamp.pdf";
+				pkg.course = "Full Stack Immersive";
+				pkg.subject = "Syllabus Request";
+				pkg.confirmation = "Thanks for your interest! Check your email shortly for a direct download link to the syllabus.";
+
+				this.setState({ showLoader: true });
+				api.handlePost("/account/syllabus", pkg, function (err, response) {
+					_this.setState({ showLoader: false });
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+					var tracker = new TrackingManager(); // this is a singelton so no need to reset page info:
+					tracker.updateTracking(function (err, response) {
+						if (err) {
+							console.log("ERROR: " + JSON.stringify(err));
+							return;
+						}
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		validate: {
+			value: function validate(profile, withPassword) {
+				if (profile.name.length == 0) {
+					return "Name";
+				}if (profile.email.length == 0) {
+					return "Email";
+				}if (profile.email.indexOf("@") == -1) {
+					// invalid email
+					return "valid email address";
+				}if (withPassword == false) {
+					return null;
+				}if (profile.password.length == 0) {
+					return "Password";
+				}return null // this is successful
+				;
+			},
+			writable: true,
+			configurable: true
+		},
+		updateVisitor: {
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
-				var nextEvent = this.props.events[0];
-				var rsvp = nextEvent.status == "open" ? React.createElement(
-					"a",
-					{ href: "/event/" + nextEvent.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-teal" },
-					"Details"
-				) : React.createElement(
-					"a",
-					{ href: "/event/" + nextEvent.slug, style: { marginRight: 0 }, className: "button button-3d button-mini button-rounded button-red" },
-					"Sold Out"
-				);
-
 				return React.createElement(
 					"section",
-					{ id: "slider", style: { background: "url(\"/images/joe_light_blue.png\") center", overflow: "visible" }, "data-height-lg": "450", "data-height-md": "450", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
+					{ id: "slider", className: "dark full-screen", style: { background: "url(\"/images/joe_blue_2.png\") center", overflow: "visible" }, "data-height-lg": "600", "data-height-md": "600", "data-height-sm": "600", "data-height-xs": "600", "data-height-xxs": "600" },
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
-					React.createElement("br", null),
 					React.createElement(
 						"div",
-						{ className: "container clearfix" },
+						{ className: "vertical-middle" },
 						React.createElement(
-							"form",
-							{ action: "#", method: "post", role: "form", className: "landing-wide-form landing-form-overlay dark clearfix" },
+							"div",
+							{ className: "heading-block center nobottomborder" },
 							React.createElement(
-								"div",
-								{ className: "heading-block nobottommargin nobottomborder" },
-								React.createElement(
-									"h4",
-									null,
-									"Attend Next Workshop"
-								)
+								"h1",
+								{ style: { textTransform: "none" }, "data-animate": "fadeInUp" },
+								"Become a Full Stack Developer"
 							),
 							React.createElement(
-								"div",
-								{ style: { border: "1px solid #ddd", background: "#f9f9f9", marginBottom: 16, marginTop: 16 } },
-								React.createElement("img", { style: { width: 104, float: "left", marginRight: 12 }, src: "https://media-service.appspot.com/site/images/" + nextEvent.image + "?crop=260", alt: "Velocity 360" }),
-								React.createElement(
-									"div",
-									{ style: { padding: 12, height: 104, textAlign: "right" } },
-									React.createElement(
-										"h5",
-										{ style: { fontWeight: 200, marginBottom: 0, fontSize: 12 } },
-										React.createElement(
-											"a",
-											{ href: "/event/" + nextEvent.slug },
-											nextEvent.title
-										)
-									),
-									React.createElement(
-										"span",
-										{ style: { fontWeight: 100, fontSize: 12, color: "#444" } },
-										nextEvent.date,
-										", ",
-										nextEvent.time
-									),
-									React.createElement("br", null),
-									rsvp
-								)
-							),
-							React.createElement("div", { className: "line", style: { margin: "15px 0 30px" } }),
+								"span",
+								{ style: { fontWeight: 400 }, "data-animate": "fadeInUp", "data-delay": "300" },
+								"Velocity 360 is the only coding bootcamp that trains students for the future of software - Node, React, and React Native."
+							)
+						),
+						React.createElement(
+							"div",
+							{ style: { padding: 24, color: "#fff", textAlign: "center" } },
+							"Next Cohort Begins October 3rd",
+							React.createElement("br", null),
+							React.createElement("br", null),
+							React.createElement("input", { id: "name", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Name" }),
+							React.createElement("input", { id: "email", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Email" }),
 							React.createElement(
-								"div",
-								{ className: "col_full nobottommargin" },
-								React.createElement(
-									"button",
-									{ onClick: this.submitInfoRequest, className: "btn btn-lg btn-danger btn-block nomargin", value: "submit" },
-									"RSVP"
-								)
+								"button",
+								{ onClick: this.submitSyllabusRequest, className: "btn btn-lg btn-info nomargin", value: "submit", type: "submit" },
+								"Request Syllabus"
 							)
 						)
-					),
-					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: nextEvent, toggleLoader: this.toggleLoader, endpoint: "/account/rsvp" })
+					)
 				);
 			},
 			writable: true,
@@ -153,10 +188,17 @@ var Header = (function (Component) {
 	return Header;
 })(Component);
 
+var style = {
+	input: {
+		maxWidth: 280,
+		margin: "auto",
+		marginBottom: 16
+	}
+};
+
 var stateToProps = function (state) {
 	return {
-		loaderOptions: state.staticReducer.loaderConfig,
-		events: state.eventReducer.eventArray
+		loaderOptions: state.staticReducer.loaderConfig
 	};
 };
 

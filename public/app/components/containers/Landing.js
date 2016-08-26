@@ -1,11 +1,7 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import Nav from '../../components/Nav'
-import Register from '../../components/Register'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import RightSidebar from '../../components/RightSidebar'
+import { Nav, Footer, Header } from '../../components'
 
 
 class Landing extends Component {
@@ -38,8 +34,6 @@ class Landing extends Component {
 			)
 		})
 
-		var headerString = 'Learn Tomorrow\'s Technology Today'
-
 		return (
 			<div>
 				<Nav />
@@ -47,18 +41,9 @@ class Landing extends Component {
 
 				<section>
 					<div className="content-wrap">
-		                <div className="promo promo-dark promo-full landing-promo header-stick">
-		                    <div className="container clearfix">
-		                        <h3>{headerString}</h3>
-		                        <span>
-		                        	Velocity 360 is the only coding bootcamp that delivers a full stack education <br />
-		                        	with the most cutting edge tech: Node, React, Redux, and React Native.
-		                        </span>
-		                    </div>
-		                </div>
 
 						<div className="container clearfix" style={{paddingTop:64}}>
-							<div className="col_two_third bottommargin-sm">
+							<div className="col_full bottommargin-sm">
 			                    <div className="fancy-title title-bottom-border">
 			                        <h2 style={{fontWeight:400}}>Highly Demanded Skills</h2>
 			                    </div>
@@ -82,12 +67,8 @@ class Landing extends Component {
 									the skills highly in demand yet hard to find in the tech world. 
 								</p>
 
-			                    <img style={{marginBottom:6}} src="/images/wework.jpg" />
+			                    <img style={{marginBottom:6}} src="/images/wework.jpg" /><br />
 			                    <i style={{fontWeight:100}}>* Courses are held at our WeWork Location on 28th Street.</i>
-							</div>
-
-							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
-								<RightSidebar />
 							</div>
 
 						</div>
@@ -129,7 +110,6 @@ class Landing extends Component {
 
 				</section>
 
-				<Register />
 				<Footer />
 			</div>
 		)

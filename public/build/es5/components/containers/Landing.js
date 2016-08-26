@@ -21,16 +21,11 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
 var connect = require("react-redux").connect;
-var Nav = _interopRequire(require("../../components/Nav"));
+var _components = require("../../components");
 
-var Register = _interopRequire(require("../../components/Register"));
-
-var Header = _interopRequire(require("../../components/Header"));
-
-var Footer = _interopRequire(require("../../components/Footer"));
-
-var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
-
+var Nav = _components.Nav;
+var Footer = _components.Footer;
+var Header = _components.Header;
 var Landing = (function (Component) {
 	function Landing(props, context) {
 		_classCallCheck(this, Landing);
@@ -92,8 +87,6 @@ var Landing = (function (Component) {
 					);
 				});
 
-				var headerString = "Learn Tomorrow's Technology Today";
-
 				return React.createElement(
 					"div",
 					null,
@@ -107,30 +100,10 @@ var Landing = (function (Component) {
 							{ className: "content-wrap" },
 							React.createElement(
 								"div",
-								{ className: "promo promo-dark promo-full landing-promo header-stick" },
-								React.createElement(
-									"div",
-									{ className: "container clearfix" },
-									React.createElement(
-										"h3",
-										null,
-										headerString
-									),
-									React.createElement(
-										"span",
-										null,
-										"Velocity 360 is the only coding bootcamp that delivers a full stack education ",
-										React.createElement("br", null),
-										"with the most cutting edge tech: Node, React, Redux, and React Native."
-									)
-								)
-							),
-							React.createElement(
-								"div",
 								{ className: "container clearfix", style: { paddingTop: 64 } },
 								React.createElement(
 									"div",
-									{ className: "col_two_third bottommargin-sm" },
+									{ className: "col_full bottommargin-sm" },
 									React.createElement(
 										"div",
 										{ className: "fancy-title title-bottom-border" },
@@ -162,16 +135,12 @@ var Landing = (function (Component) {
 										"While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world."
 									),
 									React.createElement("img", { style: { marginBottom: 6 }, src: "/images/wework.jpg" }),
+									React.createElement("br", null),
 									React.createElement(
 										"i",
 										{ style: { fontWeight: 100 } },
 										"* Courses are held at our WeWork Location on 28th Street."
 									)
-								),
-								React.createElement(
-									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
-									React.createElement(RightSidebar, null)
 								)
 							)
 						)
@@ -236,7 +205,6 @@ var Landing = (function (Component) {
 							)
 						)
 					),
-					React.createElement(Register, null),
 					React.createElement(Footer, null)
 				);
 			},
