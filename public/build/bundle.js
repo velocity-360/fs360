@@ -24268,7 +24268,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'section',
-	                    { style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
+	                    { style: { background: '#fff', paddingTop: 48, borderTop: '1px solid #ddd' } },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'heading-block center' },

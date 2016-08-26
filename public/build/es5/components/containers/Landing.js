@@ -271,7 +271,7 @@ var Landing = (function (Component) {
                     ),
                     React.createElement(
                         "section",
-                        { style: { background: "#f9f9f9", paddingTop: 48, borderTop: "1px solid #ddd" } },
+                        { style: { background: "#fff", paddingTop: 48, borderTop: "1px solid #ddd" } },
                         React.createElement(
                             "div",
                             { className: "heading-block center" },

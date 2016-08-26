@@ -148,7 +148,7 @@ class Landing extends Component {
 					</div>
                 </section>
 
-				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
+				<section style={{background:'#fff', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
 						<h2 style={{fontWeight:400}}>Bootcamps</h2>
 					</div>
