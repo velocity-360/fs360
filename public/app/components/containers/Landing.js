@@ -49,7 +49,7 @@ class Landing extends Component {
 
                         <div className="col_half nobottommargin topmargin-lg col_last">
                             <div className="heading-block topmargin-lg">
-                                <h2 style={style.paragraph}>Looking Ahead</h2>
+                                <h2 style={style.heading}>Looking Ahead</h2>
                                 <span>Prepare for tomorrow.</span>
                             </div>
 

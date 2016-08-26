@@ -24110,7 +24110,7 @@
 	                                { className: 'heading-block topmargin-lg' },
 	                                _react2.default.createElement(
 	                                    'h2',
-	                                    { style: style.paragraph },
+	                                    { style: style.heading },
 	                                    'Looking Ahead'
 	                                ),
 	                                _react2.default.createElement(

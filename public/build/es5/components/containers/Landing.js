@@ -113,7 +113,7 @@ var Landing = (function (Component) {
                                     { className: "heading-block topmargin-lg" },
                                     React.createElement(
                                         "h2",
-                                        { style: style.paragraph },
+                                        { style: style.heading },
                                         "Looking Ahead"
                                     ),
                                     React.createElement(
