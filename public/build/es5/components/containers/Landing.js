@@ -230,16 +230,16 @@ var Landing = (function (Component) {
                             { className: "content-wrap", style: { paddingTop: 0 } },
                             React.createElement(
                                 "div",
-                                { className: "heading-block bottommargin-lg center" },
+                                { className: "container clearfix" },
                                 React.createElement(
-                                    "h2",
-                                    { style: { fontWeight: 400 } },
-                                    "Our Students Currently Work At"
-                                )
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "container" },
+                                    "div",
+                                    { className: "heading-block bottommargin-lg center" },
+                                    React.createElement(
+                                        "h2",
+                                        { style: { fontWeight: 400 } },
+                                        "Our Students Currently Work At"
+                                    )
+                                ),
                                 React.createElement(
                                     "div",
                                     { className: "row" },

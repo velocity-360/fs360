@@ -23477,19 +23477,16 @@
 				}
 	
 				newState['courses'] = courseMap;
-				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
 				return newState;
 	
 			case constants.COURSE_RECIEVED:
 				var newState = Object.assign({}, state);
 	
-				// newState['courseArray'] = c
 				var courseMap = Object.assign({}, newState.courses);
 				var course = action.course;
 				courseMap[course.slug] = course;
 	
 				newState['courses'] = courseMap;
-				//			console.log('COURSE REDUCER - COURSES_RECIEVED: '+JSON.stringify(newState));
 				return newState;
 	
 			default:
@@ -24230,16 +24227,16 @@
 	                        { className: 'content-wrap', style: { paddingTop: 0 } },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'heading-block bottommargin-lg center' },
+	                            { className: 'container clearfix' },
 	                            _react2.default.createElement(
-	                                'h2',
-	                                { style: { fontWeight: 400 } },
-	                                'Our Students Currently Work At'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'container' },
+	                                'div',
+	                                { className: 'heading-block bottommargin-lg center' },
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { style: { fontWeight: 400 } },
+	                                    'Our Students Currently Work At'
+	                                )
+	                            ),
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'row' },
@@ -42499,6 +42496,42 @@
 				);
 				var headerStyle = this.props.headerStyle == 'dark' ? 'full-header dark sticky-style-1' : 'transparent-header page-section dark';
 	
+				var immersive = this.props.courses.map(function (course, i) {
+					if (course.type == 'immersive') {
+						return _react2.default.createElement(
+							'li',
+							{ key: course.id },
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://www.velocity360.io/course/' + course.slug },
+								_react2.default.createElement(
+									'div',
+									{ className: 'menu-item' },
+									course.title
+								)
+							)
+						);
+					}
+				});
+	
+				var partTime = this.props.courses.map(function (course, i) {
+					if (course.type == 'live') {
+						return _react2.default.createElement(
+							'li',
+							{ key: course.id },
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://www.velocity360.io/course/' + course.slug },
+								_react2.default.createElement(
+									'div',
+									{ className: 'menu-item' },
+									course.title
+								)
+							)
+						);
+					}
+				});
+	
 				return _react2.default.createElement(
 					'header',
 					{ id: 'header', className: headerStyle },
@@ -42566,7 +42599,7 @@
 												null,
 												_react2.default.createElement(
 													'div',
-													{ style: { padding: 8, background: '#444' } },
+													{ style: style.menuHeader },
 													_react2.default.createElement(
 														'strong',
 														null,
@@ -42574,51 +42607,13 @@
 													)
 												)
 											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: 'https://www.velocity360.io/course/8-week-fundamentals-bootcamp' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'menu-item' },
-														'8-Week Fundamentals'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: 'https://www.velocity360.io/course/24-week-evening-bootcamp' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'menu-item' },
-														'24-Week Evening Fundamentals'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: 'https://www.velocity360.io/course/24-week-online-bootcamp' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'menu-item' },
-														'24-Week Online Bootcamp'
-													)
-												)
-											),
+											immersive,
 											_react2.default.createElement(
 												'li',
 												null,
 												_react2.default.createElement(
 													'div',
-													{ style: { padding: 8, background: '#444' } },
+													{ style: style.menuHeader },
 													_react2.default.createElement(
 														'strong',
 														null,
@@ -42626,32 +42621,7 @@
 													)
 												)
 											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: 'https://www.velocity360.io/course/node-react-evening-course' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'menu-item' },
-														'Node & React'
-													)
-												)
-											),
-											_react2.default.createElement(
-												'li',
-												null,
-												_react2.default.createElement(
-													'a',
-													{ href: 'https://www.velocity360.io/course/node-react-native-evening-course' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'menu-item' },
-														'Intro Web Development'
-													)
-												)
-											)
+											partTime
 										)
 									),
 									_react2.default.createElement(
@@ -42693,10 +42663,18 @@
 		return Nav;
 	}(_react.Component);
 	
+	var style = {
+		menuHeader: {
+			padding: 8,
+			background: '#444'
+		}
+	};
+	
 	var stateToProps = function stateToProps(state) {
 		//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer))
 		return {
-			currentUser: state.profileReducer.currentUser
+			currentUser: state.profileReducer.currentUser,
+			courses: state.courseReducer.courseArray
 		};
 	};
 	

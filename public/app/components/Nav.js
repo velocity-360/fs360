@@ -32,6 +32,31 @@ class Nav extends Component {
 		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
 		const headerStyle = (this.props.headerStyle == 'dark') ? 'full-header dark sticky-style-1' : 'transparent-header page-section dark'
 
+		const immersive = this.props.courses.map((course, i) => {
+			if (course.type == 'immersive'){
+				return (
+					<li key={course.id}>
+						<a href={'https://www.velocity360.io/course/'+course.slug}>
+							<div className="menu-item">{course.title}</div>
+						</a>
+					</li>
+				)
+			}
+		})
+
+		const partTime = this.props.courses.map((course, i) => {
+			if (course.type == 'live'){
+				return (
+					<li key={course.id}>
+						<a href={'https://www.velocity360.io/course/'+course.slug}>
+							<div className="menu-item">{course.title}</div>
+						</a>
+					</li>
+				)
+			}			
+		})
+
+
 		return (
 
 	        <header id="header" className={headerStyle}>
@@ -50,16 +75,13 @@ class Nav extends Component {
 								<li><a href="#"><div style={{padding:4}}>Courses</div></a>
 									<ul>
 										<li>
-											<div style={{padding:8, background:'#444'}}><strong>Bootcamp</strong></div>
+											<div style={style.menuHeader}><strong>Bootcamp</strong></div>
 										</li>
-										<li><a href="https://www.velocity360.io/course/8-week-fundamentals-bootcamp"><div className="menu-item">8-Week Fundamentals</div></a></li>
-										<li><a href="https://www.velocity360.io/course/24-week-evening-bootcamp"><div className="menu-item">24-Week Evening Fundamentals</div></a></li>
-										<li><a href="https://www.velocity360.io/course/24-week-online-bootcamp"><div className="menu-item">24-Week Online Bootcamp</div></a></li>
+										{immersive}
 										<li>
-											<div style={{padding:8, background:'#444'}}><strong>Part Time</strong></div>
+											<div style={style.menuHeader}><strong>Part Time</strong></div>
 										</li>
-										<li><a href="https://www.velocity360.io/course/node-react-evening-course"><div className="menu-item">Node & React</div></a></li>
-										<li><a href="https://www.velocity360.io/course/node-react-native-evening-course"><div className="menu-item">Intro Web Development</div></a></li>
+										{partTime}
 									</ul>
 								</li>
 	                            <li><a href="https://www.velocity360.io/tutorials"><div style={{padding:4}}>Tutorials</div></a></li>
@@ -72,16 +94,22 @@ class Nav extends Component {
 	            <Login isVisible={this.state.showLogin} hide={this.closeLogin} redirect={'/account'} />
             
 	        </header>
-
 		)
 	}
+}
 
+const style = {
+	menuHeader: {
+		padding:8,
+		background:'#444'
+	}
 }
 
 const stateToProps = function(state) {
 //	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer))
     return {
-        currentUser: state.profileReducer.currentUser
+        currentUser: state.profileReducer.currentUser,
+        courses: state.courseReducer.courseArray
     }
 }
 

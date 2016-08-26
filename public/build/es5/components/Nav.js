@@ -89,6 +89,43 @@ var Nav = (function (Component) {
 				);
 				var headerStyle = this.props.headerStyle == "dark" ? "full-header dark sticky-style-1" : "transparent-header page-section dark";
 
+				var immersive = this.props.courses.map(function (course, i) {
+					if (course.type == "immersive") {
+						return React.createElement(
+							"li",
+							{ key: course.id },
+							React.createElement(
+								"a",
+								{ href: "https://www.velocity360.io/course/" + course.slug },
+								React.createElement(
+									"div",
+									{ className: "menu-item" },
+									course.title
+								)
+							)
+						);
+					}
+				});
+
+				var partTime = this.props.courses.map(function (course, i) {
+					if (course.type == "live") {
+						return React.createElement(
+							"li",
+							{ key: course.id },
+							React.createElement(
+								"a",
+								{ href: "https://www.velocity360.io/course/" + course.slug },
+								React.createElement(
+									"div",
+									{ className: "menu-item" },
+									course.title
+								)
+							)
+						);
+					}
+				});
+
+
 				return React.createElement(
 					"header",
 					{ id: "header", className: headerStyle },
@@ -156,7 +193,7 @@ var Nav = (function (Component) {
 												null,
 												React.createElement(
 													"div",
-													{ style: { padding: 8, background: "#444" } },
+													{ style: style.menuHeader },
 													React.createElement(
 														"strong",
 														null,
@@ -164,51 +201,13 @@ var Nav = (function (Component) {
 													)
 												)
 											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "https://www.velocity360.io/course/8-week-fundamentals-bootcamp" },
-													React.createElement(
-														"div",
-														{ className: "menu-item" },
-														"8-Week Fundamentals"
-													)
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "https://www.velocity360.io/course/24-week-evening-bootcamp" },
-													React.createElement(
-														"div",
-														{ className: "menu-item" },
-														"24-Week Evening Fundamentals"
-													)
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "https://www.velocity360.io/course/24-week-online-bootcamp" },
-													React.createElement(
-														"div",
-														{ className: "menu-item" },
-														"24-Week Online Bootcamp"
-													)
-												)
-											),
+											immersive,
 											React.createElement(
 												"li",
 												null,
 												React.createElement(
 													"div",
-													{ style: { padding: 8, background: "#444" } },
+													{ style: style.menuHeader },
 													React.createElement(
 														"strong",
 														null,
@@ -216,32 +215,7 @@ var Nav = (function (Component) {
 													)
 												)
 											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "https://www.velocity360.io/course/node-react-evening-course" },
-													React.createElement(
-														"div",
-														{ className: "menu-item" },
-														"Node & React"
-													)
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "https://www.velocity360.io/course/node-react-native-evening-course" },
-													React.createElement(
-														"div",
-														{ className: "menu-item" },
-														"Intro Web Development"
-													)
-												)
-											)
+											partTime
 										)
 									),
 									React.createElement(
@@ -286,10 +260,18 @@ var Nav = (function (Component) {
 	return Nav;
 })(Component);
 
+var style = {
+	menuHeader: {
+		padding: 8,
+		background: "#444"
+	}
+};
+
 var stateToProps = function (state) {
 	//	console.log('STATE TO PROPS: '+JSON.stringify(state.profileReducer))
 	return {
-		currentUser: state.profileReducer.currentUser
+		currentUser: state.profileReducer.currentUser,
+		courses: state.courseReducer.courseArray
 	};
 };
 

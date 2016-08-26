@@ -38,7 +38,7 @@ router.get('/', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
-		return courseController.find({type:'immersive'})
+		return courseController.find({}) // fetch all courses for nav bar
 	})
 	.then(function(courses){
 		initialData.courseReducer.courseArray = courses
@@ -69,6 +69,11 @@ router.get('/:page', function(req, res, next) {
 	.then(function(currentUser){
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
+
+		return courseController.find({}) // fetch all courses for nav bar
+	})
+	.then(function(courses){
+		initialData.courseReducer.courseArray = courses
 		
 		var controller = controllers[page]
 		if (controller == null){ // special pages, like account page:
@@ -122,7 +127,8 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
-		return courseController.find({type:'immersive'})
+//		return courseController.find({type:'immersive'})
+		return courseController.find({}) // fetch all courses for nav bar
 	})	
 	.then(function(courses){ 
 		initialData.courseReducer.courseArray = courses

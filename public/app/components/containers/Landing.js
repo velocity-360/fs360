@@ -122,11 +122,11 @@ class Landing extends Component {
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="content-wrap" style={{paddingTop:0}}>
-                        <div className="heading-block bottommargin-lg center">
-                            <h2 style={{fontWeight:400}}>Our Students Currently Work At</h2>
-                        </div>
 
-	                    <div className="container">
+                        <div className="container clearfix">
+                            <div className="heading-block bottommargin-lg center">
+                                <h2 style={{fontWeight:400}}>Our Students Currently Work At</h2>
+                            </div>
 		                    <div className="row">
 			                    <div className="col-md-3">
 				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/crains.png" alt="Velocity 360" />
@@ -156,12 +156,7 @@ class Landing extends Component {
 			               	{courses}
 						</div>
 					</div>
-
-
 				</section>
-
-
-
 
 				<Footer />
 			</div>
