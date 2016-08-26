@@ -15,23 +15,25 @@ class Landing extends Component {
 
 	render(){
 		var courses = this.props.courses.map(function(course, i){
-			return (
-                <div key={course.id} className="col-md-12 bottommargin">
-                    <div className="team team-list clearfix">
-                        <div className="team-image" style={{width: 150}}>
-                            <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
-                        </div>
-                        <div className="team-desc">
-                            <div className="team-title">
-	                            <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
-	                            <span style={{color:'#444'}}>{course.dates}</span>
-	                            <span style={{color:'#444'}}>{course.schedule}</span>
+            if (course.type == 'immersive'){
+                return (
+                    <div key={course.id} className="col-md-12 bottommargin">
+                        <div className="team team-list clearfix">
+                            <div className="team-image" style={{width: 150}}>
+                                <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
                             </div>
-                            <div className="team-content">{course.description}</div>
+                            <div className="team-desc">
+                                <div className="team-title">
+                                    <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
+                                    <span style={{color:'#444'}}>{course.dates}</span>
+                                    <span style={{color:'#444'}}>{course.schedule}</span>
+                                </div>
+                                <div className="team-content">{course.description}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-			)
+                )
+            }
 		})
 
 		return (
@@ -47,7 +49,7 @@ class Landing extends Component {
 
                         <div className="col_half nobottommargin topmargin-lg col_last">
                             <div className="heading-block topmargin-lg">
-                                <h2 style={{fontWeight:300}}>Plan Ahead</h2>
+                                <h2 style={style.paragraph}>Looking Ahead</h2>
                                 <span>Prepare for tomorrow.</span>
                             </div>
 

@@ -24037,51 +24037,53 @@
 	        key: 'render',
 	        value: function render() {
 	            var courses = this.props.courses.map(function (course, i) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: course.id, className: 'col-md-12 bottommargin' },
-	                    _react2.default.createElement(
+	                if (course.type == 'immersive') {
+	                    return _react2.default.createElement(
 	                        'div',
-	                        { className: 'team team-list clearfix' },
+	                        { key: course.id, className: 'col-md-12 bottommargin' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'team-image', style: { width: 150 } },
-	                            _react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=260', alt: 'Velocity 360' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'team-desc' },
+	                            { className: 'team team-list clearfix' },
 	                            _react2.default.createElement(
 	                                'div',
-	                                { className: 'team-title' },
-	                                _react2.default.createElement(
-	                                    'h4',
-	                                    { style: { fontWeight: 400 } },
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '/course/' + course.slug },
-	                                        course.title
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { style: { color: '#444' } },
-	                                    course.dates
-	                                ),
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { style: { color: '#444' } },
-	                                    course.schedule
-	                                )
+	                                { className: 'team-image', style: { width: 150 } },
+	                                _react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=260', alt: 'Velocity 360' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',
-	                                { className: 'team-content' },
-	                                course.description
+	                                { className: 'team-desc' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'team-title' },
+	                                    _react2.default.createElement(
+	                                        'h4',
+	                                        { style: { fontWeight: 400 } },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '/course/' + course.slug },
+	                                            course.title
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        { style: { color: '#444' } },
+	                                        course.dates
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        { style: { color: '#444' } },
+	                                        course.schedule
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'team-content' },
+	                                    course.description
+	                                )
 	                            )
 	                        )
-	                    )
-	                );
+	                    );
+	                }
 	            });
 	
 	            return _react2.default.createElement(
@@ -24108,8 +24110,8 @@
 	                                { className: 'heading-block topmargin-lg' },
 	                                _react2.default.createElement(
 	                                    'h2',
-	                                    { style: { fontWeight: 300 } },
-	                                    'Plan Ahead'
+	                                    { style: style.paragraph },
+	                                    'Looking Ahead'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',

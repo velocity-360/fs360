@@ -40,51 +40,53 @@ var Landing = (function (Component) {
         render: {
             value: function render() {
                 var courses = this.props.courses.map(function (course, i) {
-                    return React.createElement(
-                        "div",
-                        { key: course.id, className: "col-md-12 bottommargin" },
-                        React.createElement(
+                    if (course.type == "immersive") {
+                        return React.createElement(
                             "div",
-                            { className: "team team-list clearfix" },
+                            { key: course.id, className: "col-md-12 bottommargin" },
                             React.createElement(
                                 "div",
-                                { className: "team-image", style: { width: 150 } },
-                                React.createElement("img", { className: "img-circle", src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=260", alt: "Velocity 360" })
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "team-desc" },
+                                { className: "team team-list clearfix" },
                                 React.createElement(
                                     "div",
-                                    { className: "team-title" },
-                                    React.createElement(
-                                        "h4",
-                                        { style: { fontWeight: 400 } },
-                                        React.createElement(
-                                            "a",
-                                            { href: "/course/" + course.slug },
-                                            course.title
-                                        )
-                                    ),
-                                    React.createElement(
-                                        "span",
-                                        { style: { color: "#444" } },
-                                        course.dates
-                                    ),
-                                    React.createElement(
-                                        "span",
-                                        { style: { color: "#444" } },
-                                        course.schedule
-                                    )
+                                    { className: "team-image", style: { width: 150 } },
+                                    React.createElement("img", { className: "img-circle", src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=260", alt: "Velocity 360" })
                                 ),
                                 React.createElement(
                                     "div",
-                                    { className: "team-content" },
-                                    course.description
+                                    { className: "team-desc" },
+                                    React.createElement(
+                                        "div",
+                                        { className: "team-title" },
+                                        React.createElement(
+                                            "h4",
+                                            { style: { fontWeight: 400 } },
+                                            React.createElement(
+                                                "a",
+                                                { href: "/course/" + course.slug },
+                                                course.title
+                                            )
+                                        ),
+                                        React.createElement(
+                                            "span",
+                                            { style: { color: "#444" } },
+                                            course.dates
+                                        ),
+                                        React.createElement(
+                                            "span",
+                                            { style: { color: "#444" } },
+                                            course.schedule
+                                        )
+                                    ),
+                                    React.createElement(
+                                        "div",
+                                        { className: "team-content" },
+                                        course.description
+                                    )
                                 )
                             )
-                        )
-                    );
+                        );
+                    }
                 });
 
                 return React.createElement(
@@ -111,8 +113,8 @@ var Landing = (function (Component) {
                                     { className: "heading-block topmargin-lg" },
                                     React.createElement(
                                         "h2",
-                                        { style: { fontWeight: 300 } },
-                                        "Plan Ahead"
+                                        { style: style.paragraph },
+                                        "Looking Ahead"
                                     ),
                                     React.createElement(
                                         "span",
