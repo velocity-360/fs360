@@ -180,7 +180,7 @@ class Landing extends Component {
 
                         <div className="col_half nobottommargin col_last">
                             <div className="heading-block center">
-                                <h4 style={style.heading}>Rob Unger, Code Academy</h4>
+                                <h4 style={style.heading}>Rob Ungar, Code Academy</h4>
                                 <img style={{width:120, marginTop:12}} src="/images/rob.png" />
                             </div>
 

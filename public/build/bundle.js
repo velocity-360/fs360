@@ -24414,7 +24414,7 @@
 	                                _react2.default.createElement(
 	                                    'h4',
 	                                    { style: style.heading },
-	                                    'Rob Unger, Code Academy'
+	                                    'Rob Ungar, Code Academy'
 	                                ),
 	                                _react2.default.createElement('img', { style: { width: 120, marginTop: 12 }, src: '/images/rob.png' })
 	                            ),
