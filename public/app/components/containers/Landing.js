@@ -56,7 +56,7 @@ class Landing extends Component {
                             <p style={style.paragraph}>
                                 Technology, more than any other industry, changes rapidly and many fall behind. 
                                 As a newcomer to tech, it is imperative to understand the trends and develop the 
-                                skills that will be valued tomorrow over those in demand today. Velocity 360 
+                                skills that will be valued tomorrow over those in vogue today. Velocity 360 
                                 strongly prepares students under that guiding principle. Our curriculum is highly 
                                 focused on the bleeding edge of tech evolution: Node JS, React, and React Native.
                             </p>
@@ -172,6 +172,51 @@ class Landing extends Component {
 						</div>
 					</div>
 				</section>
+
+
+                <section id="section-testimonials" className="page-section section parallax dark" style={{backgroundImage: 'url("/images/joe_blue.png")', padding:'100px 0'}} data-stellar-background-ratio="0.3">
+                    <div className="container clearfix">
+                        <div className="col_half nobottommargin">&nbsp;</div>
+
+                        <div className="col_half nobottommargin col_last">
+                            <div className="heading-block center">
+                                <h4 style={style.heading}>Rob Unger, Code Academy</h4>
+                                <img style={{width:120, marginTop:12}} src="/images/rob.png" />
+                            </div>
+
+                            <div className="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding" data-arrows="false">
+                                <div className="testi-content">
+                                    <p style={{color:'#fff'}}>
+                                        This is the best learning experience in my journey to become a developer...You are coding on day one, there are no long lectures about theory. You code along and things are explained as you go. And then you build the project again. 
+                                    </p>
+                                    <a target="_blank" href="https://www.coursereport.com/schools/velocity">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="notopmargin nobottommargin" style={{marginTop:0, paddingBottom:60}}>
+                    <div className="container clearfix">
+                        <div className="col_half nobottommargin">
+                            <div className="heading-block topmargin-lg">
+                                <h2 style={style.heading}>Visit Us</h2>
+                                <span>Stop by for one of our free events</span>
+                            </div>
+                            <p style={style.paragraph}>
+                                If you are in the NYC area, feel free to stop by for one of our events. Each week, 
+                                we host a couple open workshops, demos, and study sessions. This is a great way to 
+                                get a feel for our teaching style and learn more about Velocity 360 classes.
+                            </p>
+                            <a target="_blank" href="https://www.meetup.com/velocity360/" className="button button-border button-rounded button-large button-dark noleftmargin">View Events</a>
+                        </div>
+
+                        <div className="hidden-xs col_half nobottommargin topmargin-lg col_last">
+                            <img style={{maxWidth:420, padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/class-4.jpg" alt="Velocity 360" className="center-block" />
+                        </div>
+
+                    </div>
+                </div>
 
 				<Footer />
 			</div>

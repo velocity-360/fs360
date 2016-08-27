@@ -125,7 +125,7 @@ var Landing = (function (Component) {
                                 React.createElement(
                                     "p",
                                     { style: style.paragraph },
-                                    "Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native."
+                                    "Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in vogue today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native."
                                 ),
                                 React.createElement(
                                     "h4",
@@ -394,6 +394,92 @@ var Landing = (function (Component) {
                                 "div",
                                 { className: "container clearfix" },
                                 courses
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        "section",
+                        { id: "section-testimonials", className: "page-section section parallax dark", style: { backgroundImage: "url(\"/images/joe_blue.png\")", padding: "100px 0" }, "data-stellar-background-ratio": "0.3" },
+                        React.createElement(
+                            "div",
+                            { className: "container clearfix" },
+                            React.createElement(
+                                "div",
+                                { className: "col_half nobottommargin" },
+                                " "
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "col_half nobottommargin col_last" },
+                                React.createElement(
+                                    "div",
+                                    { className: "heading-block center" },
+                                    React.createElement(
+                                        "h4",
+                                        { style: style.heading },
+                                        "Rob Unger, Code Academy"
+                                    ),
+                                    React.createElement("img", { style: { width: 120, marginTop: 12 }, src: "/images/rob.png" })
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding", "data-arrows": "false" },
+                                    React.createElement(
+                                        "div",
+                                        { className: "testi-content" },
+                                        React.createElement(
+                                            "p",
+                                            { style: { color: "#fff" } },
+                                            "This is the best learning experience in my journey to become a developer...You are coding on day one, there are no long lectures about theory. You code along and things are explained as you go. And then you build the project again."
+                                        ),
+                                        React.createElement(
+                                            "a",
+                                            { target: "_blank", href: "https://www.coursereport.com/schools/velocity" },
+                                            "Read More"
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "notopmargin nobottommargin", style: { marginTop: 0, paddingBottom: 60 } },
+                        React.createElement(
+                            "div",
+                            { className: "container clearfix" },
+                            React.createElement(
+                                "div",
+                                { className: "col_half nobottommargin" },
+                                React.createElement(
+                                    "div",
+                                    { className: "heading-block topmargin-lg" },
+                                    React.createElement(
+                                        "h2",
+                                        { style: style.heading },
+                                        "Visit Us"
+                                    ),
+                                    React.createElement(
+                                        "span",
+                                        null,
+                                        "Stop by for one of our free events"
+                                    )
+                                ),
+                                React.createElement(
+                                    "p",
+                                    { style: style.paragraph },
+                                    "If you are in the NYC area, feel free to stop by for one of our events. Each week, we host a couple open workshops, demos, and study sessions. This is a great way to get a feel for our teaching style and learn more about Velocity 360 classes."
+                                ),
+                                React.createElement(
+                                    "a",
+                                    { target: "_blank", href: "https://www.meetup.com/velocity360/", className: "button button-border button-rounded button-large button-dark noleftmargin" },
+                                    "View Events"
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "hidden-xs col_half nobottommargin topmargin-lg col_last" },
+                                React.createElement("img", { style: { maxWidth: 420, padding: 6, background: "#fff", border: "1px solid #ddd" }, src: "/images/class-4.jpg", alt: "Velocity 360", className: "center-block" })
                             )
                         )
                     ),

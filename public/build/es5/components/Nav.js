@@ -231,19 +231,6 @@ var Nav = (function (Component) {
 											)
 										)
 									),
-									React.createElement(
-										"li",
-										null,
-										React.createElement(
-											"a",
-											{ target: "_blank", href: "https://www.coursereport.com/schools/velocity" },
-											React.createElement(
-												"div",
-												{ style: { padding: 4 } },
-												"Reviews"
-											)
-										)
-									),
 									login
 								)
 							)

@@ -24122,7 +24122,7 @@
 	                            _react2.default.createElement(
 	                                'p',
 	                                { style: style.paragraph },
-	                                'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
+	                                'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in vogue today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
 	                            ),
 	                            _react2.default.createElement(
 	                                'h4',
@@ -24391,6 +24391,92 @@
 	                            'div',
 	                            { className: 'container clearfix' },
 	                            courses
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'section',
+	                    { id: 'section-testimonials', className: 'page-section section parallax dark', style: { backgroundImage: 'url("/images/joe_blue.png")', padding: '100px 0' }, 'data-stellar-background-ratio': '0.3' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'container clearfix' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_half nobottommargin' },
+	                            ' '
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_half nobottommargin col_last' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'heading-block center' },
+	                                _react2.default.createElement(
+	                                    'h4',
+	                                    { style: style.heading },
+	                                    'Rob Unger, Code Academy'
+	                                ),
+	                                _react2.default.createElement('img', { style: { width: 120, marginTop: 12 }, src: '/images/rob.png' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding', 'data-arrows': 'false' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'testi-content' },
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { style: { color: '#fff' } },
+	                                        'This is the best learning experience in my journey to become a developer...You are coding on day one, there are no long lectures about theory. You code along and things are explained as you go. And then you build the project again.'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { target: '_blank', href: 'https://www.coursereport.com/schools/velocity' },
+	                                        'Read More'
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'notopmargin nobottommargin', style: { marginTop: 0, paddingBottom: 60 } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'container clearfix' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_half nobottommargin' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'heading-block topmargin-lg' },
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { style: style.heading },
+	                                    'Visit Us'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    null,
+	                                    'Stop by for one of our free events'
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                { style: style.paragraph },
+	                                'If you are in the NYC area, feel free to stop by for one of our events. Each week, we host a couple open workshops, demos, and study sessions. This is a great way to get a feel for our teaching style and learn more about Velocity 360 classes.'
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { target: '_blank', href: 'https://www.meetup.com/velocity360/', className: 'button button-border button-rounded button-large button-dark noleftmargin' },
+	                                'View Events'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'hidden-xs col_half nobottommargin topmargin-lg col_last' },
+	                            _react2.default.createElement('img', { style: { maxWidth: 420, padding: 6, background: '#fff', border: '1px solid #ddd' }, src: '/images/class-4.jpg', alt: 'Velocity 360', className: 'center-block' })
 	                        )
 	                    )
 	                ),
@@ -42742,19 +42828,6 @@
 												'div',
 												{ style: { padding: 4 } },
 												'Tutorials'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ target: '_blank', href: 'https://www.coursereport.com/schools/velocity' },
-											_react2.default.createElement(
-												'div',
-												{ style: { padding: 4 } },
-												'Reviews'
 											)
 										)
 									),
