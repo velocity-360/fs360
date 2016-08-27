@@ -97,7 +97,7 @@ router.post('/:action', function(req, res, next) {
 	if (action == 'syllabus'){
 		var course = body.course
 
-		var template = 'node-react-evening.html'
+		var template = 'fullstack-immersive.html'
 		if (course == 'Node & React Evening Course')
 			template = 'node-react-evening.html'
 		
