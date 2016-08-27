@@ -108,6 +108,44 @@ var Course = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		subscribe: {
+			value: function subscribe(event) {
+				var _this = this;
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert("Please enter your name.");
+					return;
+				}
+
+				if (this.state.visitor.email.length == 0) {
+					alert("Please enter your email.");
+					return;
+				}
+
+				this.setState({ showLoader: true });
+
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(" ");
+				s.firstName = parts[0];
+				if (parts.length > 1) s.lastName = parts[parts.length - 1];
+
+				var course = this.props.courses[this.props.slug];
+				s.source = course.title;
+				s.subject = "New Subscriber";
+				s.confirmation = "Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!";
+				api.handlePost("/account/subscribe", s, function (err, response) {
+					_this.setState({ showLoader: false });
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		submitSyllabusRequest: {
 			value: function submitSyllabusRequest(event) {
 				var _this = this;
@@ -263,6 +301,7 @@ var Course = (function (Component) {
 				var admissions = null;
 				var register = null;
 				var syllabus = null;
+				var cta = null;
 				if (course.type == "immersive") {
 					// bootcamp
 					sidemenu = React.createElement(
@@ -337,6 +376,25 @@ var Course = (function (Component) {
 						"a",
 						{ onClick: this.toggleApplication, href: "#", className: "apply" },
 						"Apply"
+					);
+					cta = React.createElement(
+						"div",
+						{ style: { paddingTop: 16 } },
+						React.createElement("hr", null),
+						React.createElement(
+							"a",
+							{ href: "#newsletter" },
+							"Request Syllabus"
+						),
+						React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
+						React.createElement("br", null),
+						React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
+						React.createElement("br", null),
+						React.createElement(
+							"a",
+							{ onClick: this.submitSyllabusRequest, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
+							"Request Syllabus"
+						)
 					);
 
 					who = React.createElement(
@@ -597,6 +655,30 @@ var Course = (function (Component) {
 						)
 					);
 
+					cta = React.createElement(
+						"div",
+						{ style: { paddingTop: 16 } },
+						React.createElement(
+							"a",
+							{ href: "#newsletter" },
+							"Newsletter"
+						),
+						React.createElement(
+							"p",
+							{ style: { marginBottom: 16, fontSize: 13 } },
+							"Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses."
+						),
+						React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
+						React.createElement("br", null),
+						React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
+						React.createElement("br", null),
+						React.createElement(
+							"a",
+							{ onClick: this.subscribe, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
+							"Submit"
+						)
+					);
+
 					tuition = React.createElement(
 						"article",
 						{ id: "tuition", className: "overview" },
@@ -758,25 +840,7 @@ var Course = (function (Component) {
 											{ style: { padding: 16, background: "#fff", border: "1px solid #ddd" } },
 											sidemenu,
 											btnApply,
-											React.createElement(
-												"div",
-												{ style: { paddingTop: 16 } },
-												React.createElement("hr", null),
-												React.createElement(
-													"a",
-													{ href: "#newsletter" },
-													"Request Syllabus"
-												),
-												React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
-												React.createElement("br", null),
-												React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
-												React.createElement("br", null),
-												React.createElement(
-													"a",
-													{ onClick: this.submitSyllabusRequest, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
-													"Request Syllabus"
-												)
-											)
+											cta
 										)
 									),
 									React.createElement(

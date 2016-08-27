@@ -66,6 +66,41 @@ class Course extends Component {
 		})		
 	}
 
+	subscribe(event){
+		event.preventDefault()
+		if (this.state.visitor.name.length == 0){
+			alert('Please enter your name.')
+			return
+		}
+
+		if (this.state.visitor.email.length == 0){
+			alert('Please enter your email.')
+			return
+		}
+
+		this.setState({showLoader: true})
+
+		var s = Object.assign({}, this.state.visitor)
+		var parts = s.name.split(' ')
+		s['firstName'] = parts[0]
+		if (parts.length > 1)
+			s['lastName'] = parts[parts.length-1]
+
+		const course = this.props.courses[this.props.slug]
+		s['source'] = course.title
+		s['subject'] = 'New Subscriber'
+		s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!'
+		api.handlePost('/account/subscribe', s, (err, response) => {
+			this.setState({showLoader: false})
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		})
+	}
+
 	submitSyllabusRequest(event){
 		event.preventDefault()
 		var missingField = this.validate(this.state.visitor, false)
@@ -186,6 +221,7 @@ class Course extends Component {
 		var admissions = null
 		var register = null
 		var syllabus = null
+		var cta = null
 		if (course.type == 'immersive'){ // bootcamp
 			sidemenu = (
 				<ul>
@@ -200,6 +236,15 @@ class Course extends Component {
 			)
 
 			btnApply = <a onClick={this.toggleApplication} href="#" className="apply">Apply</a>
+			cta = (
+				<div style={{paddingTop:16}}>
+					<hr />
+					<a href="#newsletter">Request Syllabus</a>
+	                <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
+	                <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
+					<a onClick={this.submitSyllabusRequest} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Request Syllabus</a>
+				</div>				
+			)
 
 			who = (
 				<article id="who" className="overview" style={style.articleSection}>
@@ -328,6 +373,18 @@ class Course extends Component {
 				</ul>				
 			)
 
+			cta = (
+				<div style={{paddingTop:16}}>
+					<a href="#newsletter">Newsletter</a>
+					<p style={{marginBottom:16, fontSize:13}}>
+						Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
+					</p>
+                    <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
+                    <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
+					<a onClick={this.subscribe} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Submit</a>
+				</div>
+			)
+
 			tuition = (
 				<article id="tuition" className="overview">
 					<div className="container">
@@ -398,13 +455,7 @@ class Course extends Component {
 									<nav style={{padding:16, background:'#fff', border:'1px solid #ddd'}}>
 										{sidemenu}
 										{btnApply}
-										<div style={{paddingTop:16}}>
-											<hr />
-											<a href="#newsletter">Request Syllabus</a>
-					                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
-					                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
-											<a onClick={this.submitSyllabusRequest} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Request Syllabus</a>
-										</div>
+										{cta}
 									</nav>
 								</aside>
 

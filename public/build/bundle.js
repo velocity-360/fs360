@@ -64812,9 +64812,46 @@
 				});
 			}
 		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				var _this3 = this;
+	
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				this.setState({ showLoader: true });
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var course = this.props.courses[this.props.slug];
+				s['source'] = course.title;
+				s['subject'] = 'New Subscriber';
+				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
+				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
+					_this3.setState({ showLoader: false });
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
 			key: 'submitSyllabusRequest',
 			value: function submitSyllabusRequest(event) {
-				var _this3 = this;
+				var _this4 = this;
 	
 				event.preventDefault();
 				var missingField = this.validate(this.state.visitor, false);
@@ -64836,7 +64873,7 @@
 	
 				this.setState({ showLoader: true });
 				_utils.api.handlePost('/account/syllabus', pkg, function (err, response) {
-					_this3.setState({ showLoader: false });
+					_this4.setState({ showLoader: false });
 					if (err) {
 						alert(err.message);
 						return;
@@ -64962,6 +64999,7 @@
 				var admissions = null;
 				var register = null;
 				var syllabus = null;
+				var cta = null;
 				if (course.type == 'immersive') {
 					// bootcamp
 					sidemenu = _react2.default.createElement(
@@ -65036,6 +65074,25 @@
 						'a',
 						{ onClick: this.toggleApplication, href: '#', className: 'apply' },
 						'Apply'
+					);
+					cta = _react2.default.createElement(
+						'div',
+						{ style: { paddingTop: 16 } },
+						_react2.default.createElement('hr', null),
+						_react2.default.createElement(
+							'a',
+							{ href: '#newsletter' },
+							'Request Syllabus'
+						),
+						_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.submitSyllabusRequest, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
+							'Request Syllabus'
+						)
 					);
 	
 					who = _react2.default.createElement(
@@ -65296,6 +65353,30 @@
 						)
 					);
 	
+					cta = _react2.default.createElement(
+						'div',
+						{ style: { paddingTop: 16 } },
+						_react2.default.createElement(
+							'a',
+							{ href: '#newsletter' },
+							'Newsletter'
+						),
+						_react2.default.createElement(
+							'p',
+							{ style: { marginBottom: 16, fontSize: 13 } },
+							'Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.'
+						),
+						_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.subscribe, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
+							'Submit'
+						)
+					);
+	
 					tuition = _react2.default.createElement(
 						'article',
 						{ id: 'tuition', className: 'overview' },
@@ -65457,25 +65538,7 @@
 											{ style: { padding: 16, background: '#fff', border: '1px solid #ddd' } },
 											sidemenu,
 											btnApply,
-											_react2.default.createElement(
-												'div',
-												{ style: { paddingTop: 16 } },
-												_react2.default.createElement('hr', null),
-												_react2.default.createElement(
-													'a',
-													{ href: '#newsletter' },
-													'Request Syllabus'
-												),
-												_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
-												_react2.default.createElement('br', null),
-												_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
-												_react2.default.createElement('br', null),
-												_react2.default.createElement(
-													'a',
-													{ onClick: this.submitSyllabusRequest, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
-													'Request Syllabus'
-												)
-											)
+											cta
 										)
 									),
 									_react2.default.createElement(
