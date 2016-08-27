@@ -107,7 +107,7 @@ var Landing = (function (Component) {
                             ),
                             React.createElement(
                                 "div",
-                                { className: "col_half nobottommargin topmargin-lg col_last" },
+                                { className: "col_half nobottommargin col_last" },
                                 React.createElement(
                                     "div",
                                     { className: "heading-block topmargin-lg" },
@@ -128,9 +128,115 @@ var Landing = (function (Component) {
                                     "Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native."
                                 ),
                                 React.createElement(
-                                    "a",
-                                    { href: "#", className: "button button-border button-rounded button-large button-dark noleftmargin" },
-                                    "Learn More"
+                                    "h4",
+                                    null,
+                                    "Resources"
+                                ),
+                                React.createElement(
+                                    "table",
+                                    { style: { background: "#fff", border: "1px solid #ddd" }, className: "table table-striped" },
+                                    React.createElement(
+                                        "thead",
+                                        null,
+                                        React.createElement(
+                                            "tr",
+                                            null,
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "strong",
+                                                    null,
+                                                    "Article"
+                                                )
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "strong",
+                                                    null,
+                                                    "Source"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    React.createElement(
+                                        "tbody",
+                                        null,
+                                        React.createElement(
+                                            "tr",
+                                            { className: "info" },
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "a",
+                                                    { target: "_blank", href: "http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow" },
+                                                    "2016 Developer Survey Results"
+                                                )
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                "Stack Overflow"
+                                            )
+                                        ),
+                                        React.createElement(
+                                            "tr",
+                                            null,
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "a",
+                                                    { target: "_blank", href: "https://www.youtube.com/watch?v=sBzRwzY7G-k" },
+                                                    "2016/2017 Must-Know Web Development Tech"
+                                                )
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                "YouTube"
+                                            )
+                                        ),
+                                        React.createElement(
+                                            "tr",
+                                            { className: "info" },
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "a",
+                                                    { target: "_blank", href: "https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks" },
+                                                    "Hacker News “Who is Hiring?” - Supporting Technologies"
+                                                )
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                "Hacker News"
+                                            )
+                                        ),
+                                        React.createElement(
+                                            "tr",
+                                            null,
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "a",
+                                                    { href: "https://www.velocity360.io/post/starting-out-today" },
+                                                    "Starting Out Today"
+                                                )
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                "Velocity 360"
+                                            )
+                                        )
+                                    )
                                 )
                             )
                         )

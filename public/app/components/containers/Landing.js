@@ -47,7 +47,7 @@ class Landing extends Component {
                             <img style={{padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/girl.png" alt="Velocity 360" className="center-block" />
                         </div>
 
-                        <div className="col_half nobottommargin topmargin-lg col_last">
+                        <div className="col_half nobottommargin col_last">
                             <div className="heading-block topmargin-lg">
                                 <h2 style={style.heading}>Looking Ahead</h2>
                                 <span>Prepare for tomorrow.</span>
@@ -60,7 +60,20 @@ class Landing extends Component {
                                 strongly prepares students under that guiding principle. Our curriculum is highly 
                                 focused on the bleeding edge of tech evolution: Node JS, React, and React Native.
                             </p>
-                            <a href="#" className="button button-border button-rounded button-large button-dark noleftmargin">Learn More</a>
+
+                            <h4>Resources</h4>
+                            <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
+                                <thead>
+                                    <tr><td><strong>Article</strong></td><td><strong>Source</strong></td></tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr className="info"><td><a target="_blank" href="http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow">2016 Developer Survey Results</a></td><td>Stack Overflow</td></tr>
+                                    <tr><td><a target="_blank" href="https://www.youtube.com/watch?v=sBzRwzY7G-k">2016/2017 Must-Know Web Development Tech</a></td><td>YouTube</td></tr>
+                                    <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks">Hacker News “Who is Hiring?” - Supporting Technologies</a></td><td>Hacker News</td></tr>
+                                    <tr><td><a href="https://www.velocity360.io/post/starting-out-today">Starting Out Today</a></td><td>Velocity 360</td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

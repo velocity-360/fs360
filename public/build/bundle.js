@@ -24104,7 +24104,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'col_half nobottommargin topmargin-lg col_last' },
+	                            { className: 'col_half nobottommargin col_last' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'heading-block topmargin-lg' },
@@ -24125,9 +24125,115 @@
 	                                'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in demand today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
 	                            ),
 	                            _react2.default.createElement(
-	                                'a',
-	                                { href: '#', className: 'button button-border button-rounded button-large button-dark noleftmargin' },
-	                                'Learn More'
+	                                'h4',
+	                                null,
+	                                'Resources'
+	                            ),
+	                            _react2.default.createElement(
+	                                'table',
+	                                { style: { background: '#fff', border: '1px solid #ddd' }, className: 'table table-striped' },
+	                                _react2.default.createElement(
+	                                    'thead',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'strong',
+	                                                null,
+	                                                'Article'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'strong',
+	                                                null,
+	                                                'Source'
+	                                            )
+	                                        )
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'tbody',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        { className: 'info' },
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { target: '_blank', href: 'http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow' },
+	                                                '2016 Developer Survey Results'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            'Stack Overflow'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { target: '_blank', href: 'https://www.youtube.com/watch?v=sBzRwzY7G-k' },
+	                                                '2016/2017 Must-Know Web Development Tech'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            'YouTube'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        { className: 'info' },
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { target: '_blank', href: 'https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks' },
+	                                                'Hacker News “Who is Hiring?” - Supporting Technologies'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            'Hacker News'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { href: 'https://www.velocity360.io/post/starting-out-today' },
+	                                                'Starting Out Today'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            'Velocity 360'
+	                                        )
+	                                    )
+	                                )
 	                            )
 	                        )
 	                    )
