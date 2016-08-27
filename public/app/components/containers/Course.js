@@ -214,12 +214,34 @@ class Course extends Component {
 			)
 		})
 
+		const instructors = this.props.instructors.map((instructor, i) => {
+			return (
+                <div key={i} className="col-md-12 bottommargin">
+                    <div className="team team-list">
+                        <div className="team-desc">
+                            <div className="team-title">
+                                <img style={{width:96, marginBottom:6}} src={'/images/'+instructor.image} alt="Velocity 360" />
+                            	<h4 style={{marginBottom:12}}>{instructor.name}</h4>
+								<div className="tagcloud">
+                                    <a style={style.tag} href="#">Node JS</a>
+                                    <a style={style.tag} href="#">React</a>
+                                    <a style={style.tag} href="#">Angular JS</a>
+                                    <a style={style.tag} href="#">JQuery</a>
+                                </div>
+                            </div>
+                            <div className="clearfix"></div>
+                            <div className="team-content">{instructor.bio}</div>
+                        </div>
+                    </div>
+                </div>
+			)
+		})
+
 		var sidemenu = null
 		var btnApply = null
 		var who = null
 		var tuition = null
 		var admissions = null
-		var register = null
 		var syllabus = null
 		var cta = null
 		if (course.type == 'immersive'){ // bootcamp
@@ -250,7 +272,7 @@ class Course extends Component {
 				<article id="who" className="overview" style={style.articleSection}>
 					<h2>Who</h2>
 					<div className="image">
-						<img style={{width:280, background:'#fff', padding:6, border:'1px solid #ddd', marginLeft:12}} src="/images/group.JPG" alt="Velocity 360" />
+						<img style={{width:220, background:'#fff', padding:6, border:'1px solid #ddd', marginLeft:12}} src="/images/group.JPG" alt="Velocity 360" />
 					</div>
 					<p>
 						The {course.title} is designed for beginner to intermediate programmers. 
@@ -369,7 +391,7 @@ class Course extends Component {
 					<li><a href="#tuition">Tuition</a></li>
 					<li><a href="#instructors">Instructors</a></li>
 					<li><a href="#faq">FAQ</a></li>
-					<li><a href="#register" className="apply">Register</a></li>
+					<li><a onClick={this.showPaypal} href="#register" className="apply">Register</a></li>
 				</ul>				
 			)
 
@@ -386,7 +408,7 @@ class Course extends Component {
 			)
 
 			tuition = (
-				<article id="tuition" className="overview">
+				<article id="tuition" className="overview" style={style.articleSection}>
 					<div className="container">
 						<h2 style={{marginTop:24}}>Tuition</h2>
 						<p>
@@ -396,25 +418,6 @@ class Course extends Component {
 							made in bi-weekly installments throughout the duration of 
 							the course.
 						</p>
-					</div>
-				</article>
-			)
-
-			register = (
-				<article id="register" className="overview">
-					<div className="container">
-						<h2 style={{marginTop:24}}>Register</h2>
-						<div className="panel panel-default">
-							<div className="panel-body" style={{padding:36, lineHeight:3}}>
-								<span className="step">Dates</span>{course.dates}<br />
-								<span className="step">Schedule</span><span>{course.schedule}</span><br />
-								<span className="step">Deposit</span><span>${course.deposit}</span><br />
-								<span className="step">Tuition</span><span>${course.tuition}</span><br />
-								<br />
-								<input type="text" onChange={this.updatePromoCode} id="promo" placeholder="Promo Code" className="custom-input" />
-								<a onClick={this.showPaypal} href={course.paypalLink} style={{width:'100%', textAlign:'center'}} className="button button-xlarge">Submit Deposit</a><br />
-	                        </div>
-	                    </div>
 					</div>
 				</article>
 			)
@@ -482,11 +485,9 @@ class Course extends Component {
 													<p>{course.description}</p>
 												</article>
 
-												<hr style={{marginTop:24}} />
 												{who}
-												<hr style={{marginTop:24}} />
 
-												<article id="curriculum" className="overview" style={style.articleSection}>
+												<article id="curriculum" className="overview" style={{margin:'auto', padding:32}}>
 													<h2>Curriculum</h2>
 													<div className="postcontent clearfix" style={{paddingBottom:64}}>
 														<div id="posts" className="post-timeline clearfix">
@@ -496,99 +497,14 @@ class Course extends Component {
 													</div>
 												</article>
 
-												<hr style={{marginTop:24}} />
 								                <div className="clearfix"></div>
 												{tuition}
-												<hr style={{marginTop:24}} />
 
-												<article id="instructors" className="overview" style={style.articleSection}>
+												<article id="instructors" className="overview" style={{margin:'auto', padding:32}}>
 													<h2>Instructors</h2>
-
-								                    <div className="col-md-12 bottommargin">
-								                        <div className="team team-list">
-								                            <div className="team-desc">
-								                                <div className="team-title">
-									                                <img style={{width:96, marginBottom:6}} src="/images/kwon.png" alt="Velocity 360" />
-								                                	<h4 style={{marginBottom:12}}>Dan Kwon</h4>
-																	<div className="tagcloud">
-									                                    <a style={style.tag} href="#">Node JS</a>
-									                                    <a style={style.tag} href="#">React</a>
-									                                    <a style={style.tag} href="#">React Native</a>
-									                                    <a style={style.tag} href="#">Angular JS</a>
-									                                    <a style={style.tag} href="#">iOS</a>
-									                                    <a style={style.tag} href="#">Swift</a>
-									                                    <a style={style.tag} href="#">Objective C</a>
-									                                </div>                                	
-								                                </div>
-								                                <div className="clearfix"></div>
-								                                <div className="team-content">
-								                                	Dan is a full stack developer focusing on building MVPs for early stage 
-								                                	startups in New York. As a consultant, he has worked with several startups 
-								                                	and development agencies over a five year span. Dan specializes in iOS, 
-								                                	backend technologies such as Node JS, Google Compute Engine, Heroku, and 
-								                                	AWS as well as front end libraries such as React and Angular JS. Dan 
-								                                	graduated from Cornell University where he walked to class in the snow, 
-								                                	uphill both ways.
-								                                </div>
-								                            </div>
-								                        </div>
-								                    </div>
-
-								                    <div className="col-md-12 bottommargin">
-								                        <div className="team team-list">
-								                            <div className="team-desc">
-								                                <div className="team-title">
-									                                <img style={{width:96, marginBottom:6}} src="/images/beaman.png" alt="Velocity 360" />
-								                                	<h4 style={{marginBottom:12}}>Roger Beaman</h4>
-																	<div className="tagcloud">
-									                                    <a style={style.tag} href="#">Node JS</a>
-									                                    <a style={style.tag} href="#">React</a>
-									                                    <a style={style.tag} href="#">Angular JS</a>
-									                                    <a style={style.tag} href="#">JQuery</a>
-									                                </div>
-								                                </div>
-								                                <div className="clearfix"></div>
-								                                <div className="team-content">
-								                                	Roger Beaman is a passionate Fullstack JavaScript developer that took the 
-								                                	unusual route to software development which perhaps you are on right now. 
-								                                	He started work in finance and found that writing Excel formulas was by far 
-								                                	the most exciting part of his job. Thus began a journey to joining you in the 
-								                                	exciting career that is software development. In under a year he was able to 
-								                                	go from a bootcamp to a lead developer at Shutterstock and he is excited about 
-								                                	sharing the knowledge and advice he has to help you do the same.
-								                                </div>
-								                            </div>
-								                        </div>
-								                    </div>
-
-								                    <div className="col-md-12 bottommargin">
-								                        <div className="team team-list">
-								                            <div className="team-desc">
-								                                <div className="team-title">
-									                                <img style={{width:96, marginBottom:6}} src="/images/anna.png" alt="Velocity 360" />
-								                                	<h4 style={{marginBottom:12}}>Anna Garcia</h4>
-																	<div className="tagcloud">
-									                                    <a style={style.tag} href="#">Node JS</a>
-									                                    <a style={style.tag} href="#">React</a>
-									                                    <a style={style.tag} href="#">Angular JS</a>
-									                                    <a style={style.tag} href="#">JQuery</a>
-									                                </div>                                	
-								                                </div>
-								                                <div className="clearfix"></div>
-								                                <div className="team-content">
-								                                	A recent graduate of the Grace Hopper coding school for women, Anna is a 
-								                                	life-long tech enthusiast, musician, and fitness fanatic. Founder of the 
-								                                	original <a target="_blank" href="http://www.juicecrawl.com">JuiceCrawl</a>, 
-								                                	Anna explored technology and programming on her own before deciding to make 
-								                                	it her career in 2015. With a  background in Node, Express, Angular, and SQL, 
-								                                	Anna will be helping out as a teaching assistant for several courses.
-								                                </div>
-								                            </div>
-								                        </div>
-								                    </div>
+													{instructors}
 												</article>
 
-												<hr style={{marginTop:24}} />
 								                <div className="clearfix"></div>
 
 												<article id="faq" className="overview" style={style.articleSection}>
@@ -600,7 +516,6 @@ class Course extends Component {
 								                    </div>
 												</article>
 
-												<hr style={{marginTop:24}} />
 												{admissions}
 
 											</div>
@@ -608,8 +523,6 @@ class Course extends Component {
 									</article>
 
 								</div>
-
-
 							</main>
 						</div>
 					</div>
@@ -649,7 +562,8 @@ const style = {
 	},
 	articleSection: {
 		margin: 'auto',
-		padding: 32
+		padding: 32,
+		borderBottom: '1px solid #ddd'
 	},
 	tag: {
 		background: '#f9f9f9'
@@ -661,7 +575,9 @@ const stateToProps = function(state) {
         currentUser: state.profileReducer.currentUser,
         courses: state.courseReducer.courses,
         loaderOptions: state.staticReducer.loaderConfig,
-        faq: state.staticReducer.faq
+        faq: state.staticReducer.faq,
+        instructors: state.staticReducer.instructors
+
     }
 }
 

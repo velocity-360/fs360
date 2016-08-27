@@ -294,12 +294,66 @@ var Course = (function (Component) {
 					);
 				});
 
+				var instructors = this.props.instructors.map(function (instructor, i) {
+					return React.createElement(
+						"div",
+						{ key: i, className: "col-md-12 bottommargin" },
+						React.createElement(
+							"div",
+							{ className: "team team-list" },
+							React.createElement(
+								"div",
+								{ className: "team-desc" },
+								React.createElement(
+									"div",
+									{ className: "team-title" },
+									React.createElement("img", { style: { width: 96, marginBottom: 6 }, src: "/images/" + instructor.image, alt: "Velocity 360" }),
+									React.createElement(
+										"h4",
+										{ style: { marginBottom: 12 } },
+										instructor.name
+									),
+									React.createElement(
+										"div",
+										{ className: "tagcloud" },
+										React.createElement(
+											"a",
+											{ style: style.tag, href: "#" },
+											"Node JS"
+										),
+										React.createElement(
+											"a",
+											{ style: style.tag, href: "#" },
+											"React"
+										),
+										React.createElement(
+											"a",
+											{ style: style.tag, href: "#" },
+											"Angular JS"
+										),
+										React.createElement(
+											"a",
+											{ style: style.tag, href: "#" },
+											"JQuery"
+										)
+									)
+								),
+								React.createElement("div", { className: "clearfix" }),
+								React.createElement(
+									"div",
+									{ className: "team-content" },
+									instructor.bio
+								)
+							)
+						)
+					);
+				});
+
 				var sidemenu = null;
 				var btnApply = null;
 				var who = null;
 				var tuition = null;
 				var admissions = null;
-				var register = null;
 				var syllabus = null;
 				var cta = null;
 				if (course.type == "immersive") {
@@ -408,7 +462,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "image" },
-							React.createElement("img", { style: { width: 280, background: "#fff", padding: 6, border: "1px solid #ddd", marginLeft: 12 }, src: "/images/group.JPG", alt: "Velocity 360" })
+							React.createElement("img", { style: { width: 220, background: "#fff", padding: 6, border: "1px solid #ddd", marginLeft: 12 }, src: "/images/group.JPG", alt: "Velocity 360" })
 						),
 						React.createElement(
 							"p",
@@ -649,7 +703,7 @@ var Course = (function (Component) {
 							null,
 							React.createElement(
 								"a",
-								{ href: "#register", className: "apply" },
+								{ onClick: this.showPaypal, href: "#register", className: "apply" },
 								"Register"
 							)
 						)
@@ -681,7 +735,7 @@ var Course = (function (Component) {
 
 					tuition = React.createElement(
 						"article",
-						{ id: "tuition", className: "overview" },
+						{ id: "tuition", className: "overview", style: style.articleSection },
 						React.createElement(
 							"div",
 							{ className: "container" },
@@ -698,78 +752,6 @@ var Course = (function (Component) {
 								" with a $",
 								course.deposit,
 								" deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
-							)
-						)
-					);
-
-					register = React.createElement(
-						"article",
-						{ id: "register", className: "overview" },
-						React.createElement(
-							"div",
-							{ className: "container" },
-							React.createElement(
-								"h2",
-								{ style: { marginTop: 24 } },
-								"Register"
-							),
-							React.createElement(
-								"div",
-								{ className: "panel panel-default" },
-								React.createElement(
-									"div",
-									{ className: "panel-body", style: { padding: 36, lineHeight: 3 } },
-									React.createElement(
-										"span",
-										{ className: "step" },
-										"Dates"
-									),
-									course.dates,
-									React.createElement("br", null),
-									React.createElement(
-										"span",
-										{ className: "step" },
-										"Schedule"
-									),
-									React.createElement(
-										"span",
-										null,
-										course.schedule
-									),
-									React.createElement("br", null),
-									React.createElement(
-										"span",
-										{ className: "step" },
-										"Deposit"
-									),
-									React.createElement(
-										"span",
-										null,
-										"$",
-										course.deposit
-									),
-									React.createElement("br", null),
-									React.createElement(
-										"span",
-										{ className: "step" },
-										"Tuition"
-									),
-									React.createElement(
-										"span",
-										null,
-										"$",
-										course.tuition
-									),
-									React.createElement("br", null),
-									React.createElement("br", null),
-									React.createElement("input", { type: "text", onChange: this.updatePromoCode, id: "promo", placeholder: "Promo Code", className: "custom-input" }),
-									React.createElement(
-										"a",
-										{ onClick: this.showPaypal, href: course.paypalLink, style: { width: "100%", textAlign: "center" }, className: "button button-xlarge" },
-										"Submit Deposit"
-									),
-									React.createElement("br", null)
-								)
 							)
 						)
 					);
@@ -889,12 +871,10 @@ var Course = (function (Component) {
 															course.description
 														)
 													),
-													React.createElement("hr", { style: { marginTop: 24 } }),
 													who,
-													React.createElement("hr", { style: { marginTop: 24 } }),
 													React.createElement(
 														"article",
-														{ id: "curriculum", className: "overview", style: style.articleSection },
+														{ id: "curriculum", className: "overview", style: { margin: "auto", padding: 32 } },
 														React.createElement(
 															"h2",
 															null,
@@ -911,197 +891,18 @@ var Course = (function (Component) {
 															)
 														)
 													),
-													React.createElement("hr", { style: { marginTop: 24 } }),
 													React.createElement("div", { className: "clearfix" }),
 													tuition,
-													React.createElement("hr", { style: { marginTop: 24 } }),
 													React.createElement(
 														"article",
-														{ id: "instructors", className: "overview", style: style.articleSection },
+														{ id: "instructors", className: "overview", style: { margin: "auto", padding: 32 } },
 														React.createElement(
 															"h2",
 															null,
 															"Instructors"
 														),
-														React.createElement(
-															"div",
-															{ className: "col-md-12 bottommargin" },
-															React.createElement(
-																"div",
-																{ className: "team team-list" },
-																React.createElement(
-																	"div",
-																	{ className: "team-desc" },
-																	React.createElement(
-																		"div",
-																		{ className: "team-title" },
-																		React.createElement("img", { style: { width: 96, marginBottom: 6 }, src: "/images/kwon.png", alt: "Velocity 360" }),
-																		React.createElement(
-																			"h4",
-																			{ style: { marginBottom: 12 } },
-																			"Dan Kwon"
-																		),
-																		React.createElement(
-																			"div",
-																			{ className: "tagcloud" },
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Node JS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"React"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"React Native"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Angular JS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"iOS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Swift"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Objective C"
-																			)
-																		)
-																	),
-																	React.createElement("div", { className: "clearfix" }),
-																	React.createElement(
-																		"div",
-																		{ className: "team-content" },
-																		"Dan is a full stack developer focusing on building MVPs for early stage startups in New York. As a consultant, he has worked with several startups and development agencies over a five year span. Dan specializes in iOS, backend technologies such as Node JS, Google Compute Engine, Heroku, and AWS as well as front end libraries such as React and Angular JS. Dan graduated from Cornell University where he walked to class in the snow, uphill both ways."
-																	)
-																)
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col-md-12 bottommargin" },
-															React.createElement(
-																"div",
-																{ className: "team team-list" },
-																React.createElement(
-																	"div",
-																	{ className: "team-desc" },
-																	React.createElement(
-																		"div",
-																		{ className: "team-title" },
-																		React.createElement("img", { style: { width: 96, marginBottom: 6 }, src: "/images/beaman.png", alt: "Velocity 360" }),
-																		React.createElement(
-																			"h4",
-																			{ style: { marginBottom: 12 } },
-																			"Roger Beaman"
-																		),
-																		React.createElement(
-																			"div",
-																			{ className: "tagcloud" },
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Node JS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"React"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Angular JS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"JQuery"
-																			)
-																		)
-																	),
-																	React.createElement("div", { className: "clearfix" }),
-																	React.createElement(
-																		"div",
-																		{ className: "team-content" },
-																		"Roger Beaman is a passionate Fullstack JavaScript developer that took the unusual route to software development which perhaps you are on right now. He started work in finance and found that writing Excel formulas was by far the most exciting part of his job. Thus began a journey to joining you in the exciting career that is software development. In under a year he was able to go from a bootcamp to a lead developer at Shutterstock and he is excited about sharing the knowledge and advice he has to help you do the same."
-																	)
-																)
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col-md-12 bottommargin" },
-															React.createElement(
-																"div",
-																{ className: "team team-list" },
-																React.createElement(
-																	"div",
-																	{ className: "team-desc" },
-																	React.createElement(
-																		"div",
-																		{ className: "team-title" },
-																		React.createElement("img", { style: { width: 96, marginBottom: 6 }, src: "/images/anna.png", alt: "Velocity 360" }),
-																		React.createElement(
-																			"h4",
-																			{ style: { marginBottom: 12 } },
-																			"Anna Garcia"
-																		),
-																		React.createElement(
-																			"div",
-																			{ className: "tagcloud" },
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Node JS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"React"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"Angular JS"
-																			),
-																			React.createElement(
-																				"a",
-																				{ style: style.tag, href: "#" },
-																				"JQuery"
-																			)
-																		)
-																	),
-																	React.createElement("div", { className: "clearfix" }),
-																	React.createElement(
-																		"div",
-																		{ className: "team-content" },
-																		"A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original ",
-																		React.createElement(
-																			"a",
-																			{ target: "_blank", href: "http://www.juicecrawl.com" },
-																			"JuiceCrawl"
-																		),
-																		", Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses."
-																	)
-																)
-															)
-														)
+														instructors
 													),
-													React.createElement("hr", { style: { marginTop: 24 } }),
 													React.createElement("div", { className: "clearfix" }),
 													React.createElement(
 														"article",
@@ -1121,7 +922,6 @@ var Course = (function (Component) {
 															)
 														)
 													),
-													React.createElement("hr", { style: { marginTop: 24 } }),
 													admissions
 												)
 											)
@@ -1172,7 +972,8 @@ var style = {
 	},
 	articleSection: {
 		margin: "auto",
-		padding: 32
+		padding: 32,
+		borderBottom: "1px solid #ddd"
 	},
 	tag: {
 		background: "#f9f9f9"
@@ -1184,7 +985,9 @@ var stateToProps = function (state) {
 		currentUser: state.profileReducer.currentUser,
 		courses: state.courseReducer.courses,
 		loaderOptions: state.staticReducer.loaderConfig,
-		faq: state.staticReducer.faq
+		faq: state.staticReducer.faq,
+		instructors: state.staticReducer.instructors
+
 	};
 };
 
