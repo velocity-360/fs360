@@ -42,7 +42,6 @@ var Header = (function (Component) {
 			visitor: {
 				name: "",
 				email: "",
-				pdf: "FullStackImmersive.pdf",
 				subject: "Syllabus Request"
 			}
 		};
@@ -85,7 +84,7 @@ var Header = (function (Component) {
 				pkg.firstName = parts[0];
 				if (parts.length > 1) pkg.lastName = parts[parts.length - 1];
 
-				pkg.pdf = "FundamentalsBootcamp.pdf";
+				pkg.pdf = "FullStackImmersive.pdf";
 				pkg.course = "Full Stack Immersive";
 				pkg.subject = "Syllabus Request";
 				pkg.confirmation = "Thanks for your interest! Check your email shortly for a direct download link to the syllabus.";

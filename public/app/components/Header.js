@@ -18,7 +18,6 @@ class Header extends Component {
 			visitor: {
 				name: '',
 				email: '',
-				pdf: 'FullStackImmersive.pdf',
 				subject: 'Syllabus Request'
 			}
 		}
@@ -51,7 +50,7 @@ class Header extends Component {
 		if (parts.length > 1)
 			pkg['lastName'] = parts[parts.length-1]
 
-		pkg['pdf'] = 'FundamentalsBootcamp.pdf'
+		pkg['pdf'] = 'FullStackImmersive.pdf'
 		pkg['course'] = 'Full Stack Immersive'
 		pkg['subject'] = 'Syllabus Request'
 		pkg['confirmation'] = 'Thanks for your interest! Check your email shortly for a direct download link to the syllabus.'
