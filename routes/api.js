@@ -151,7 +151,7 @@ router.post('/:resource', function(req, res, next) {
 				var template = data.replace('{{title}}', nextEvent.title)
 				template = template.replace('{{description}}', nextEvent.description)
 				template = template.replace('{{image}}', nextEvent.image)
-				template = template.replace('{{slug}}', nextEvent.slug)
+				template = template.replace('{{link}}', nextEvent.link)
 				var time = nextEvent.date+', '+nextEvent.time
 				template = template.replace('{{time}}', time)
 
