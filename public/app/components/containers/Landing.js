@@ -61,7 +61,6 @@ class Landing extends Component {
                                 focused on the bleeding edge of tech evolution: Node JS, React, and React Native.
                             </p>
 
-                            <h4>Resources</h4>
                             <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
                                 <thead>
                                     <tr><td><strong>Article</strong></td><td><strong>Source</strong></td></tr>
@@ -74,7 +73,12 @@ class Landing extends Component {
                                     <tr><td><a href="https://www.velocity360.io/post/starting-out-today">Starting Out Today</a></td><td>Velocity 360</td></tr>
                                 </tbody>
                             </table>
+                            <i>* Cleary React is the winner here, Facebook did enormous job delivering a good technology and even better job convincing the JS crowd how good it is...it looks like the battle is lost.</i>
+                            <br /><br />
+                            <span>- <a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks">Sebastian Pawluś, WhoIsHiring.io</a></span>
                         </div>
+
+
                     </div>
                 </div>
 

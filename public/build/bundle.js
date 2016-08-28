@@ -24123,11 +24123,6 @@
 	                                'Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in vogue today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native.'
 	                            ),
 	                            _react2.default.createElement(
-	                                'h4',
-	                                null,
-	                                'Resources'
-	                            ),
-	                            _react2.default.createElement(
 	                                'table',
 	                                { style: { background: '#fff', border: '1px solid #ddd' }, className: 'table table-striped' },
 	                                _react2.default.createElement(
@@ -24231,6 +24226,23 @@
 	                                            'Velocity 360'
 	                                        )
 	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'i',
+	                                null,
+	                                '* Cleary React is the winner here, Facebook did enormous job delivering a good technology and even better job convincing the JS crowd how good it is...it looks like the battle is lost.'
+	                            ),
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                '- ',
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { target: '_blank', href: 'https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks' },
+	                                    'Sebastian Pawluś, WhoIsHiring.io'
 	                                )
 	                            )
 	                        )

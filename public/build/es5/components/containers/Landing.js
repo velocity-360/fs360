@@ -128,11 +128,6 @@ var Landing = (function (Component) {
                                     "Technology, more than any other industry, changes rapidly and many fall behind. As a newcomer to tech, it is imperative to understand the trends and develop the skills that will be valued tomorrow over those in vogue today. Velocity 360 strongly prepares students under that guiding principle. Our curriculum is highly focused on the bleeding edge of tech evolution: Node JS, React, and React Native."
                                 ),
                                 React.createElement(
-                                    "h4",
-                                    null,
-                                    "Resources"
-                                ),
-                                React.createElement(
                                     "table",
                                     { style: { background: "#fff", border: "1px solid #ddd" }, className: "table table-striped" },
                                     React.createElement(
@@ -236,6 +231,23 @@ var Landing = (function (Component) {
                                                 "Velocity 360"
                                             )
                                         )
+                                    )
+                                ),
+                                React.createElement(
+                                    "i",
+                                    null,
+                                    "* Cleary React is the winner here, Facebook did enormous job delivering a good technology and even better job convincing the JS crowd how good it is...it looks like the battle is lost."
+                                ),
+                                React.createElement("br", null),
+                                React.createElement("br", null),
+                                React.createElement(
+                                    "span",
+                                    null,
+                                    "- ",
+                                    React.createElement(
+                                        "a",
+                                        { target: "_blank", href: "https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks" },
+                                        "Sebastian Pawluś, WhoIsHiring.io"
                                     )
                                 )
                             )
