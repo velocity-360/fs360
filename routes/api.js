@@ -159,7 +159,7 @@ router.post('/:resource', function(req, res, next) {
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i];
 					var formatted = template.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, 'Workshop: '+nextEvent.title, formatted)
+					EmailManager.sendHtmlEmail('katrina@velocity360.io', address, 'Workshop | '+nextEvent.title, formatted)
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
