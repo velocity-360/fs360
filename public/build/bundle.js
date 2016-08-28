@@ -24384,7 +24384,108 @@
 	                ),
 	                _react2.default.createElement(
 	                    'section',
-	                    { style: { background: '#fff', paddingTop: 48, borderTop: '1px solid #ddd' } },
+	                    { id: 'events', style: { background: '#fff', padding: '32px 0px 48px', borderTop: '1px solid #ddd' } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'container clearfix' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col_half nobottommargin' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'heading-block topmargin-lg' },
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { style: style.heading },
+	                                    'Events'
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                { style: style.paragraph },
+	                                'If you are in the NYC area, feel free to stop by for one of our events. Each week, we host a couple open workshops, demos, and study sessions. This is a great way to get a feel for our teaching style and learn more about Velocity 360 classes.'
+	                            ),
+	                            _react2.default.createElement(
+	                                'table',
+	                                { style: { background: '#fff', border: '1px solid #ddd' }, className: 'table table-striped' },
+	                                _react2.default.createElement(
+	                                    'thead',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'strong',
+	                                                null,
+	                                                'Topic'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'strong',
+	                                                null,
+	                                                'Date'
+	                                            )
+	                                        )
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'tbody',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        { className: 'info' },
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233672142/' },
+	                                                'Intro Web Development With Node JS'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            'Aug 29th'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'tr',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233694498/' },
+	                                                'Mobile Development With React Native'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'td',
+	                                            null,
+	                                            'Aug 31st'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'hidden-xs col_half nobottommargin topmargin-lg col_last' },
+	                            _react2.default.createElement('img', { style: { maxWidth: 400, padding: 6, background: '#fff', border: '1px solid #ddd' }, src: '/images/class-4.jpg', alt: 'Velocity 360', className: 'center-block' })
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'section',
+	                    { style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'heading-block center' },
@@ -24406,7 +24507,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'section',
-	                    { id: 'section-testimonials', className: 'page-section section parallax dark', style: { backgroundImage: 'url("/images/joe_blue.png")', padding: '100px 0' }, 'data-stellar-background-ratio': '0.3' },
+	                    { id: 'section-testimonials', className: 'page-section section parallax dark', style: { backgroundImage: 'url("/images/joe_blue.png")', padding: '100px 0', margin: 0 }, 'data-stellar-background-ratio': '0.3' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'container clearfix' },
@@ -24446,47 +24547,6 @@
 	                                    )
 	                                )
 	                            )
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'notopmargin nobottommargin', style: { marginTop: 0, paddingBottom: 60 } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'container clearfix' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col_half nobottommargin' },
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'heading-block topmargin-lg' },
-	                                _react2.default.createElement(
-	                                    'h2',
-	                                    { style: style.heading },
-	                                    'Events'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    null,
-	                                    'Stop by for one of our free events'
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'p',
-	                                { style: style.paragraph },
-	                                'If you are in the NYC area, feel free to stop by for one of our events. Each week, we host a couple open workshops, demos, and study sessions. This is a great way to get a feel for our teaching style and learn more about Velocity 360 classes.'
-	                            ),
-	                            _react2.default.createElement(
-	                                'a',
-	                                { target: '_blank', href: 'https://www.meetup.com/velocity360/', className: 'button button-border button-rounded button-large button-dark noleftmargin' },
-	                                'View Events'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'hidden-xs col_half nobottommargin topmargin-lg col_last' },
-	                            _react2.default.createElement('img', { style: { maxWidth: 420, padding: 6, background: '#fff', border: '1px solid #ddd' }, src: '/images/class-4.jpg', alt: 'Velocity 360', className: 'center-block' })
 	                        )
 	                    )
 	                ),

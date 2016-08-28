@@ -77,8 +77,6 @@ class Landing extends Component {
                             <br /><br />
                             <span>- <a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks">Sebastian Pawluś, WhoIsHiring.io</a></span>
                         </div>
-
-
                     </div>
                 </div>
 
@@ -133,15 +131,12 @@ class Landing extends Component {
                             	will leave Velocity 360 with the skills highly in demand yet hard to find in the 
                             	tech world.
                             </p>
-
                         </div>
-
                     </div>
                 </section>
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="content-wrap" style={{paddingTop:0}}>
-
                         <div className="container clearfix">
                             <div className="heading-block bottommargin-lg center">
                                 <h2 style={{fontWeight:400}}>Our Students Currently Work At</h2>
@@ -160,12 +155,55 @@ class Landing extends Component {
 				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/codeacademy.png" alt="Velocity 360" />
 			                    </div>
 		                    </div>
-
 	                    </div>
 					</div>
                 </section>
 
-				<section style={{background:'#fff', paddingTop:48, borderTop:'1px solid #ddd'}}>
+                <section id="events" style={{background:'#fff', padding:'32px 0px 48px', borderTop:'1px solid #ddd'}}>
+                    <div className="container clearfix">
+                        <div className="col_half nobottommargin">
+                            <div className="heading-block topmargin-lg">
+                                <h2 style={style.heading}>Events</h2>
+                            </div>
+                            <p style={style.paragraph}>
+                                If you are in the NYC area, feel free to stop by for one of our events. Each week, 
+                                we host a couple open workshops, demos, and study sessions. This is a great way to 
+                                get a feel for our teaching style and learn more about Velocity 360 classes.
+                            </p>
+                            <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
+                                <thead>
+                                    <tr><td><strong>Topic</strong></td><td><strong>Date</strong></td></tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr className="info">
+                                        <td>
+                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233672142/">
+                                                Intro Web Development With Node JS
+                                            </a>
+                                        </td>
+                                        <td>Aug 29th</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233694498/">
+                                                Mobile Development With React Native
+                                            </a>
+                                        </td>
+                                        <td>Aug 31st</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div className="hidden-xs col_half nobottommargin topmargin-lg col_last">
+                            <img style={{maxWidth:400, padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/class-4.jpg" alt="Velocity 360" className="center-block" />
+                        </div>
+                    </div>
+                </section>
+
+				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
 						<h2 style={{fontWeight:400}}>Bootcamps</h2>
 					</div>
@@ -177,8 +215,7 @@ class Landing extends Component {
 					</div>
 				</section>
 
-
-                <section id="section-testimonials" className="page-section section parallax dark" style={{backgroundImage: 'url("/images/joe_blue.png")', padding:'100px 0'}} data-stellar-background-ratio="0.3">
+                <section id="section-testimonials" className="page-section section parallax dark" style={{backgroundImage: 'url("/images/joe_blue.png")', padding:'100px 0', margin:0}} data-stellar-background-ratio="0.3">
                     <div className="container clearfix">
                         <div className="col_half nobottommargin">&nbsp;</div>
 
@@ -199,28 +236,6 @@ class Landing extends Component {
                         </div>
                     </div>
                 </section>
-
-                <div className="notopmargin nobottommargin" style={{marginTop:0, paddingBottom:60}}>
-                    <div className="container clearfix">
-                        <div className="col_half nobottommargin">
-                            <div className="heading-block topmargin-lg">
-                                <h2 style={style.heading}>Events</h2>
-                                <span>Stop by for one of our free events</span>
-                            </div>
-                            <p style={style.paragraph}>
-                                If you are in the NYC area, feel free to stop by for one of our events. Each week, 
-                                we host a couple open workshops, demos, and study sessions. This is a great way to 
-                                get a feel for our teaching style and learn more about Velocity 360 classes.
-                            </p>
-                            <a target="_blank" href="https://www.meetup.com/velocity360/" className="button button-border button-rounded button-large button-dark noleftmargin">View Events</a>
-                        </div>
-
-                        <div className="hidden-xs col_half nobottommargin topmargin-lg col_last">
-                            <img style={{maxWidth:420, padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/class-4.jpg" alt="Velocity 360" className="center-block" />
-                        </div>
-
-                    </div>
-                </div>
 
 				<Footer />
 			</div>
