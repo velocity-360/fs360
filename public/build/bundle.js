@@ -65232,7 +65232,7 @@
 							_react2.default.createElement(
 								'p',
 								null,
-								'The deadline for application is August 29th for regular applicants. To be eligible for the full scholarship, the deadline is August 22nd.'
+								'The deadline for application is September 26th for regular applicants. To be eligible for the full scholarship, the deadline is September 19th.'
 							)
 						)
 					);
