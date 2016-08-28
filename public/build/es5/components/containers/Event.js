@@ -244,7 +244,7 @@ var Event = (function (Component) {
 											React.createElement("hr", null),
 											React.createElement(
 												"a",
-												{ onClick: this.submitRequest, href: "#", className: "btn btn-lg btn-danger btn-block nomargin" },
+												{ target: "_blank", href: event.link, className: "btn btn-lg btn-danger btn-block nomargin" },
 												"Attend"
 											)
 										)

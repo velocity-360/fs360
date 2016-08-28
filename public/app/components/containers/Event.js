@@ -125,9 +125,8 @@ class Event extends Component {
 										Time: {event.time}<br />
 										Location: {event.address}<br />
 										<hr />
-										<a onClick={this.submitRequest} href="#" className="btn btn-lg btn-danger btn-block nomargin">Attend</a>
+										<a target="_blank" href={event.link} className="btn btn-lg btn-danger btn-block nomargin">Attend</a>
 									</div>
-
 								</div>
 								<div className='col_half col_last'>
 				                    <img style={{marginBottom:6}} src="/images/wework.jpg" />

@@ -62214,7 +62214,7 @@
 											_react2.default.createElement('hr', null),
 											_react2.default.createElement(
 												'a',
-												{ onClick: this.submitRequest, href: '#', className: 'btn btn-lg btn-danger btn-block nomargin' },
+												{ target: '_blank', href: event.link, className: 'btn btn-lg btn-danger btn-block nomargin' },
 												'Attend'
 											)
 										)
