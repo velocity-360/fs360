@@ -204,7 +204,7 @@ class Landing extends Component {
                     <div className="container clearfix">
                         <div className="col_half nobottommargin">
                             <div className="heading-block topmargin-lg">
-                                <h2 style={style.heading}>Visit Us</h2>
+                                <h2 style={style.heading}>Events</h2>
                                 <span>Stop by for one of our free events</span>
                             </div>
                             <p style={style.paragraph}>

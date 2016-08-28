@@ -469,7 +469,7 @@ var Landing = (function (Component) {
                                     React.createElement(
                                         "h2",
                                         { style: style.heading },
-                                        "Visit Us"
+                                        "Events"
                                     ),
                                     React.createElement(
                                         "span",

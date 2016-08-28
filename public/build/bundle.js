@@ -24464,7 +24464,7 @@
 	                                _react2.default.createElement(
 	                                    'h2',
 	                                    { style: style.heading },
-	                                    'Visit Us'
+	                                    'Events'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
