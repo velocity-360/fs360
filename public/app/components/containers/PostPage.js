@@ -189,23 +189,25 @@ class PostPage extends Component {
 		}
 
 		var courses = this.props.courses.map(function(course, i){
-			return (
-                <div key={course.id} className="col-md-12 bottommargin">
-                    <div className="team team-list clearfix">
-                        <div className="team-image" style={{width: 150}}>
-                            <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
-                        </div>
-                        <div className="team-desc">
-                            <div className="team-title">
-	                            <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
-	                            <span style={{color:'#444'}}>{course.dates}</span>
-	                            <span style={{color:'#444'}}>{course.schedule}</span>
-                            </div>
-                            <div className="team-content">{course.description}</div>
-                        </div>
-                    </div>
-                </div>
-			)
+			if (course.type != 'online'){
+				return (
+	                <div key={course.id} className="col-md-12 bottommargin">
+	                    <div className="team team-list clearfix">
+	                        <div className="team-image" style={{width: 150}}>
+	                            <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
+	                        </div>
+	                        <div className="team-desc">
+	                            <div className="team-title">
+		                            <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
+		                            <span style={{color:'#444'}}>{course.dates}</span>
+		                            <span style={{color:'#444'}}>{course.schedule}</span>
+	                            </div>
+	                            <div className="team-content">{course.description}</div>
+	                        </div>
+	                    </div>
+	                </div>
+				)
+			}
 		})
 
 		return (
@@ -250,7 +252,7 @@ class PostPage extends Component {
 
 				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
 					<div className="heading-block center">
-						<h2 style={{fontWeight:400}}>Bootcamps</h2>
+						<h2 style={{fontWeight:400}}>Courses</h2>
 					</div>
 
 					<div className="content-wrap" style={{paddingTop:0}}>
