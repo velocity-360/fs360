@@ -217,7 +217,22 @@ class Landing extends Component {
 
                 <section id="section-testimonials" className="page-section section parallax dark" style={{backgroundImage: 'url("/images/joe_blue.png")', padding:'100px 0', margin:0}} data-stellar-background-ratio="0.3">
                     <div className="container clearfix">
-                        <div className="col_half nobottommargin">&nbsp;</div>
+                        <div className="col_half nobottommargin">
+                            <div className="heading-block center">
+                                <h4 style={style.heading}>Harsh Sinha, Bloomberg</h4>
+                                <img style={{width:120, marginTop:12}} src="/images/harsh.png" />
+                            </div>
+
+                            <div className="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding" data-arrows="false">
+                                <div className="testi-content">
+                                    <p style={{color:'#fff'}}>
+                                        I came into Velocity 360 as an experienced developer looking to sharpen my knowledge in react.js and web applications. Dan Kwon did a fantastic job guiding us into subject at a pace that worked for everybody.
+                                        We all began the class with many questions about Node, React, and Redux. But by the end we were able to create an actual project with real world applications.
+                                    </p>
+                                    <a target="_blank" href="https://www.coursereport.com/schools/velocity">Read More</a>
+                                </div>
+                            </div>
+                        </div>
 
                         <div className="col_half nobottommargin col_last">
                             <div className="heading-block center">

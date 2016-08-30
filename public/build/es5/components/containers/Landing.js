@@ -519,7 +519,34 @@ var Landing = (function (Component) {
                             React.createElement(
                                 "div",
                                 { className: "col_half nobottommargin" },
-                                " "
+                                React.createElement(
+                                    "div",
+                                    { className: "heading-block center" },
+                                    React.createElement(
+                                        "h4",
+                                        { style: style.heading },
+                                        "Harsh Sinha, Bloomberg"
+                                    ),
+                                    React.createElement("img", { style: { width: 120, marginTop: 12 }, src: "/images/harsh.png" })
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding", "data-arrows": "false" },
+                                    React.createElement(
+                                        "div",
+                                        { className: "testi-content" },
+                                        React.createElement(
+                                            "p",
+                                            { style: { color: "#fff" } },
+                                            "I came into Velocity 360 as an experienced developer looking to sharpen my knowledge in react.js and web applications. Dan Kwon did a fantastic job guiding us into subject at a pace that worked for everybody. We all began the class with many questions about Node, React, and Redux. But by the end we were able to create an actual project with real world applications."
+                                        ),
+                                        React.createElement(
+                                            "a",
+                                            { target: "_blank", href: "https://www.coursereport.com/schools/velocity" },
+                                            "Read More"
+                                        )
+                                    )
+                                )
                             ),
                             React.createElement(
                                 "div",
