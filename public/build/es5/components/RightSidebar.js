@@ -47,7 +47,7 @@ var RightSidebar = (function (Component) {
 		componentDidMount: {
 			value: function componentDidMount() {
 				var _this = this;
-				api.handleGet("/api/post", { limit: "3" }, function (err, response) {
+				api.handleGet("/api/post", { limit: "3", isPublic: "yes" }, function (err, response) {
 					if (err) {
 						return;
 					}

@@ -17,7 +17,7 @@ class RightSidebar extends Component {
 	}
 
 	componentDidMount(){
-		api.handleGet('/api/post', {limit:'3'}, (err, response) => {
+		api.handleGet('/api/post', {limit:'3', isPublic:'yes'}, (err, response) => {
 
 			if (err){
 				return

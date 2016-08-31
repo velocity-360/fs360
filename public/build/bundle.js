@@ -45619,7 +45619,7 @@
 			value: function componentDidMount() {
 				var _this3 = this;
 	
-				_utils.api.handleGet('/api/post', { limit: '3' }, function (err, response) {
+				_utils.api.handleGet('/api/post', { limit: '3', isPublic: 'yes' }, function (err, response) {
 	
 					if (err) {
 						return;
