@@ -23759,7 +23759,7 @@
 	
 	var initialState = {
 		testimonials: [{ name: 'Brian Correa', image: 'briancorrea.jpg', course: 'iOS Intensive', quote: "On the first day of class my instructor taught me more than I taught myself in the three weeks. I immediately knew I made the right choice to learn iOS with Velocity. The hands-on structure of the class is the best use of my time and prevents me from wasting time trying to get one thing off the ground. Instead, I was immediately building projects.  I am confident that after the Velocity class, my skill-set will be appealing to companies looking to hire a junior developer." }, { name: 'Jennifer Lin', image: 'jenn.jpg', course: 'Web Intensive', quote: "I took the Web Development course which was highly technical yet relaxing at the same time. Their team's over-the-shoulder help maximized the session for everyone. If we were on our own, most of our time would be spent debugging and making minor steps forwards. At the workshop, we were not debugging, we were creating real world projects. Stop debugging, Join the FullStack 360 Team" }],
-		instructors: [{ name: 'Dan Kwon', image: 'kwon.png', tags: ['Node JS', 'React', 'React Native', 'Angular JS', 'iOS', 'Swift', 'Objective C'], bio: "Dan is a full stack developer focusing on building MVPs for early stage startups in New York. As a consultant, he has worked with several startups and development agencies over a five year span. Dan specializes in iOS, backend technologies such as Node JS, Google Compute Engine, Heroku, and AWS as well as front end libraries such as React and Angular JS. Dan graduated from Cornell University where he walked to class in the snow, uphill both ways." }, { name: 'Roger Beaman', image: 'beaman.png', tags: ['Node JS', 'React', 'Angular JS', 'JQuery'], bio: "Roger Beaman is a passionate Fullstack JavaScript developer that took the unusual route to software development which perhaps you are on right now. He started work in finance and found that writing Excel formulas was by far the most exciting part of his job. Thus began a journey to joining you in the exciting career that is software development. In under a year he was able to go from a bootcamp to a lead developer at Shutterstock and he is excited about sharing the knowledge and advice he has to help you do the same." }, { name: 'Anna Garcia', image: 'anna.png', tags: ['Node JS', 'React', 'Angular JS', 'JQuery'], bio: "A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original <a target='_blank' href='http://www.juicecrawl.com'>JuiceCrawl</a>, Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses." }],
+		instructors: [{ name: 'Dan Kwon', image: 'kwon.png', tags: ['Node JS', 'React', 'React Native', 'Angular JS', 'iOS', 'Swift', 'Objective C'], bio: "Dan is a full stack developer focusing on building MVPs for early stage startups in New York. As a consultant, he has worked with several startups and development agencies over a five year span. Dan specializes in iOS, backend technologies such as Node JS, Google Compute Engine, Heroku, and AWS as well as front end libraries such as React and Angular JS. Dan graduated from Cornell University where he walked to class in the snow, uphill both ways." }, { name: 'Roger Beaman', image: 'beaman.png', tags: ['Node JS', 'React', 'Angular JS', 'JQuery'], bio: "Roger Beaman is a passionate Fullstack JavaScript developer that took the unusual route to software development which perhaps you are on right now. He started work in finance and found that writing Excel formulas was by far the most exciting part of his job. Thus began a journey to joining you in the exciting career that is software development. In under a year he was able to go from a bootcamp to a lead developer at Shutterstock and he is excited about sharing the knowledge and advice he has to help you do the same." }, { name: 'Anna Garcia', image: 'anna.png', tags: ['Node JS', 'React', 'Angular JS', 'JQuery'], bio: "A recent graduate of the Grace Hopper coding school for women, Anna is a life-long tech enthusiast, musician, and fitness fanatic. Founder of the original JuiceCrawl (http://www.juicecrawl.com), Anna explored technology and programming on her own before deciding to make it her career in 2015. With a  background in Node, Express, Angular, and SQL, Anna will be helping out as a teaching assistant for several courses." }],
 		banners: ['hackathon.jpg', 'hacking-2.jpg', 'girl.jpg'],
 		faq: {
 			highschool: [{ question: 'Will I Have Fun?', answer: 'Coding doesn’t have to be boring, although we wont be developing games, you will know how to create apps similar to, Snapchat, and YikYak.  Also, besides spending your day coding, we are going to have weekly hackothons, start up brainstorming and debate lunches, and at the end of the program we will have a coding competition.' }, { question: 'I don’t have a lot of experience coding - can I still take your summer class?', answer: 'Of course!  Velocity High school summer program is designed with students that have limited experience in mind.  If you have some knowledge of coding, that is great! But if not that does not mean we cannot teach you.' }, { question: 'Is there a screening process?', answer: 'We look to see that students are driven individuals, as well as what classes you are enrolled in, as well as other interests you have outside of school.  This is designed to ensure that no students enroll in a class that they are not ready and able to succeed in.' }, { question: 'Who are the instructors for the summer classes?', answer: 'All of our instructors have worked in the technology field and have developed countless projects both big and small some which you probably have used! (insert examples of projects dan and dan have worked on)  Our instructors want to teach the next generation of programmers the most efficient and effective way to develop. All of our instructors are extremely qualified to teach you how to become a developer.  Because we are all working professionals we only teach you highly relevant information not theoretical information, we are not academics we are coders!' }, { question: 'Will this class help me get into college?  What about an internship in the future?', answer: 'Yes, I am glad you asked.  Velocity Summer program will make all high school students a very attractive candidate for top colleges.  We can confidently say this because we know that Colleges want the next Steve Jobs, Mark Zuckerberg, Evan Spiegel (Snapchat), or Jack Dorsey (Twitter), to go to their college.  This makes college admissions officers constantly looking for students who know how to develop apps and websites. If your goal is to get an internship with exciting startups such as Uber or Instagram, learning how to code at Velocity is the perfect first step to take. Technology startups and giants such as Google and Apple all look for interns that have familiarity with code and have spent time developing.  After 2 weeks at Velocity you will be able to say, that you can build a project from scratch, which will impress any company while looking at a high schoolers or freshman in college resume.' }, { question: 'Where is the Summer Program for Velocity?', answer: 'Our location is <a target="_blank" href="https://www.wework.com/locations/new-york-city/nomad">WeWork</a> which is an exciting environment for all the students in the summer program.  WeWork is home to about 500 exciting companies and startups! This directly lends itself to help you understand what the daily life of working at a startup is like, because you will be around aot of employs at a wide variety of startups.  This creates a fun and exciting culture in the workshops.  WeWork has plenty of great areas to work and collaborate, debate, and enjoy your fellow students.  Also while you are attending the class at Velocity you will be able to take advantage of the great programming and networking opportunities WeWork organizes including socials, events hosted by companies, as well as interested speakers and presentations.' }],
@@ -64628,7 +64628,8 @@
 					);
 				});
 	
-				var sidebar = tutorial.posts.map(function (post, i) {
+				var units = tutorial.posts;
+				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? 'none' : '1px solid #ddd';
 					var color = post.slug == _this3.state.currentPost ? '#1ABC9C' : '#86939f';
 					return _react2.default.createElement(
@@ -64643,6 +64644,21 @@
 						)
 					);
 				});
+	
+				var nextUnit = null;
+				for (var i = 0; i < units.length; i++) {
+					if (i == units.length - 1) // end
+						break;
+	
+					var post = units[i];
+					if (post.slug == this.state.currentPost) {
+						nextUnit = units[i + 1];
+						break;
+					}
+				}
+	
+				var nextUnitTitle = nextUnit == null ? '' : nextUnit.title;
+				var nextUnitSlug = nextUnit == null ? '' : nextUnit.slug;
 	
 				var selectedPost = this.props.posts[this.state.currentPost];
 				var currentPostHtml = '';
@@ -64745,6 +64761,27 @@
 														)
 													),
 													_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(currentPostHtml) }, className: 'panel-body', style: { padding: 36 } })
+												),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: style.panelBody },
+														_react2.default.createElement(
+															'h2',
+															{ style: style.header },
+															'Next: ',
+															nextUnitTitle
+														),
+														_react2.default.createElement(
+															'button',
+															{ id: nextUnitSlug, onClick: this.changeUnit, className: 'btn btn-info' },
+															'View'
+														)
+													)
 												)
 											)
 										)
@@ -65347,7 +65384,7 @@
 						_react2.default.createElement(
 							'p',
 							{ style: { marginTop: 10 } },
-							'Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships.'
+							'Complete our online application by September 26th to apply for the course.'
 						),
 						_react2.default.createElement(
 							'a',

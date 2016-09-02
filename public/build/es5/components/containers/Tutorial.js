@@ -209,7 +209,8 @@ var Tutorial = (function (Component) {
 					);
 				});
 
-				var sidebar = tutorial.posts.map(function (post, i) {
+				var units = tutorial.posts;
+				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? "none" : "1px solid #ddd";
 					var color = post.slug == _this.state.currentPost ? "#1ABC9C" : "#86939f";
 					return React.createElement(
@@ -225,6 +226,23 @@ var Tutorial = (function (Component) {
 					);
 				});
 
+
+				var nextUnit = null;
+				for (var i = 0; i < units.length; i++) {
+					if (i == units.length - 1) // end
+						break;
+
+					var post = units[i];
+					if (post.slug == this.state.currentPost) {
+						nextUnit = units[i + 1];
+						break;
+					}
+				}
+
+				var nextUnitTitle = nextUnit == null ? "" : nextUnit.title;
+				var nextUnitSlug = nextUnit == null ? "" : nextUnit.slug;
+
+
 				var selectedPost = this.props.posts[this.state.currentPost];
 				var currentPostHtml = "";
 				var currentPostTitle = "";
@@ -232,6 +250,7 @@ var Tutorial = (function (Component) {
 					currentPostHtml = selectedPost.text;
 					currentPostTitle = selectedPost.title;
 				}
+
 
 				return React.createElement(
 					"div",
@@ -326,6 +345,27 @@ var Tutorial = (function (Component) {
 														)
 													),
 													React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(currentPostHtml) }, className: "panel-body", style: { padding: 36 } })
+												),
+												React.createElement("br", null),
+												React.createElement("br", null),
+												React.createElement(
+													"div",
+													{ className: "panel panel-default" },
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: style.panelBody },
+														React.createElement(
+															"h2",
+															{ style: style.header },
+															"Next: ",
+															nextUnitTitle
+														),
+														React.createElement(
+															"button",
+															{ id: nextUnitSlug, onClick: this.changeUnit, className: "btn btn-info" },
+															"View"
+														)
+													)
 												)
 											)
 										)

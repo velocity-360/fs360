@@ -327,9 +327,8 @@ class Course extends Component {
 					<h2>Admissions</h2>
 					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 1</a><strong>Apply</strong>
 					<p style={{marginTop:10}}>
-						Complete our online application by midnight August 29th to 
-						apply for the course. All applicants will be considered for 
-						the full scholarships.
+						Complete our online application by September 26th to 
+						apply for the course.
 					</p>
 
 					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 2</a><strong>Phone Interview</strong>

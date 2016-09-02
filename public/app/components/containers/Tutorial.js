@@ -137,15 +137,33 @@ class Tutorial extends Component {
 			)
 		})
 
-		const sidebar = tutorial.posts.map((post, i) => {
+		const units = tutorial.posts
+		const sidebar = units.map((post, i) => {
 			const borderTop = (i==0) ? 'none' : '1px solid #ddd'
-			const color = (post.slug == this.state.currentPost) ? '#1ABC9C' : '#86939f'
+			var color = (post.slug == this.state.currentPost) ? '#1ABC9C' : '#86939f'
 			return (
 				<li key={post.id} style={{borderTop:'1px solid #ddd', padding:6}}>
 					<a id={post.slug} onClick={this.changeUnit} href="#top" style={{color:color}}>{i+1}. {post.title}</a>
 				</li>				
 			)
 		})
+
+
+		var nextUnit = null
+		for (var i=0; i<units.length; i++){
+			if (i == units.length-1) // end
+				break
+
+			var post = units[i]
+			if (post.slug == this.state.currentPost){
+				nextUnit = units[i+1]
+				break
+			}
+		}
+
+		const nextUnitTitle = (nextUnit == null) ? '' : nextUnit.title
+		const nextUnitSlug = (nextUnit == null) ? '' : nextUnit.slug
+
 
 		const selectedPost = this.props.posts[this.state.currentPost]
 		var currentPostHtml = ''
@@ -154,7 +172,8 @@ class Tutorial extends Component {
 			currentPostHtml = selectedPost.text
 			currentPostTitle = selectedPost.title
 		}
-		
+
+
 		return(
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
@@ -202,6 +221,16 @@ class Tutorial extends Component {
 
 												<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(currentPostHtml) }} className="panel-body" style={{padding:36}}></div>
 											</div>
+
+											<br /><br />
+
+											<div className="panel panel-default">
+												<div className="panel-body" style={style.panelBody}>
+													<h2 style={style.header}>Next: {nextUnitTitle}</h2>
+													<button id={nextUnitSlug} onClick={this.changeUnit} className="btn btn-info">View</button>
+												</div>
+											</div>
+
 										</div>
 									</article>
 

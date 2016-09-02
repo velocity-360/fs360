@@ -550,7 +550,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"p",
 							{ style: { marginTop: 10 } },
-							"Complete our online application by midnight August 29th to apply for the course. All applicants will be considered for the full scholarships."
+							"Complete our online application by September 26th to apply for the course."
 						),
 						React.createElement(
 							"a",
