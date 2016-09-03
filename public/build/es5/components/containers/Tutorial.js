@@ -67,6 +67,27 @@ var Tutorial = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		findUnit: {
+			value: function findUnit(postSlug) {
+				if (this.state.currentPost == postSlug) {
+					return;
+				}this.setState({ currentPost: postSlug });
+
+				// check store first
+				var selectedPost = this.props.posts[postSlug];
+				if (selectedPost != null) {
+					return;
+				}var url = "/api/post";
+				api.handleGet(url, { slug: postSlug }, function (err, response) {
+					if (err) return;
+
+					var posts = response.posts;
+					store.currentStore().dispatch(actions.postsRecieved(posts));
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		updateVisitor: {
 			value: function updateVisitor(event) {
 				var updatedVisitor = Object.assign({}, this.state.visitor);
@@ -124,27 +145,6 @@ var Tutorial = (function (Component) {
 				ReactDOM.findDOMNode(this).scrollIntoView();
 				var postSlug = event.target.id;
 				this.findUnit(postSlug);
-			},
-			writable: true,
-			configurable: true
-		},
-		findUnit: {
-			value: function findUnit(postSlug) {
-				if (this.state.currentPost == postSlug) {
-					return;
-				}this.setState({ currentPost: postSlug });
-
-				// check store first
-				var selectedPost = this.props.posts[postSlug];
-				if (selectedPost != null) {
-					return;
-				}var url = "/api/post";
-				api.handleGet(url, { slug: postSlug }, function (err, response) {
-					if (err) return;
-
-					var posts = response.posts;
-					store.currentStore().dispatch(actions.postsRecieved(posts));
-				});
 			},
 			writable: true,
 			configurable: true

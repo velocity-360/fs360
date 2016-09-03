@@ -127,7 +127,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		if (currentUser != null)
 			initialData.profileReducer.currentUser = currentUser
 
-//		return courseController.find({type:'immersive'})
 		return courseController.find({}) // fetch all courses for nav bar
 	})	
 	.then(function(courses){ 

@@ -36,6 +36,27 @@ class Tutorial extends Component {
 		this.findUnit(firstPost.slug)
 	}
 
+	findUnit(postSlug){
+		if (this.state.currentPost == postSlug)
+			return
+
+		this.setState({currentPost:postSlug})
+
+		// check store first
+		const selectedPost = this.props.posts[postSlug]
+		if (selectedPost != null)
+			return
+
+		const url = '/api/post'
+		api.handleGet(url, {slug:postSlug}, (err, response) => {
+			if (err)
+				return
+			
+			const posts = response.posts
+			store.currentStore().dispatch(actions.postsRecieved(posts))
+		})
+	}
+
 	updateVisitor(event){
 		var updatedVisitor = Object.assign({}, this.state.visitor)
 		updatedVisitor[event.target.id] = event.target.value
@@ -88,28 +109,6 @@ class Tutorial extends Component {
 		this.findUnit(postSlug)
 
 	}
-
-	findUnit(postSlug){
-		if (this.state.currentPost == postSlug)
-			return
-
-		this.setState({currentPost:postSlug})
-
-		// check store first
-		const selectedPost = this.props.posts[postSlug]
-		if (selectedPost != null)
-			return
-
-		const url = '/api/post'
-		api.handleGet(url, {slug:postSlug}, (err, response) => {
-			if (err)
-				return
-			
-			const posts = response.posts
-			store.currentStore().dispatch(actions.postsRecieved(posts))
-		})
-	}
-
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]

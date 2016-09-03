@@ -64492,6 +64492,25 @@
 				this.findUnit(firstPost.slug);
 			}
 		}, {
+			key: 'findUnit',
+			value: function findUnit(postSlug) {
+				if (this.state.currentPost == postSlug) return;
+	
+				this.setState({ currentPost: postSlug });
+	
+				// check store first
+				var selectedPost = this.props.posts[postSlug];
+				if (selectedPost != null) return;
+	
+				var url = '/api/post';
+				_utils.api.handleGet(url, { slug: postSlug }, function (err, response) {
+					if (err) return;
+	
+					var posts = response.posts;
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(posts));
+				});
+			}
+		}, {
 			key: 'updateVisitor',
 			value: function updateVisitor(event) {
 				var updatedVisitor = Object.assign({}, this.state.visitor);
@@ -64546,25 +64565,6 @@
 				_reactDom2.default.findDOMNode(this).scrollIntoView();
 				var postSlug = event.target.id;
 				this.findUnit(postSlug);
-			}
-		}, {
-			key: 'findUnit',
-			value: function findUnit(postSlug) {
-				if (this.state.currentPost == postSlug) return;
-	
-				this.setState({ currentPost: postSlug });
-	
-				// check store first
-				var selectedPost = this.props.posts[postSlug];
-				if (selectedPost != null) return;
-	
-				var url = '/api/post';
-				_utils.api.handleGet(url, { slug: postSlug }, function (err, response) {
-					if (err) return;
-	
-					var posts = response.posts;
-					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(posts));
-				});
 			}
 		}, {
 			key: 'render',
