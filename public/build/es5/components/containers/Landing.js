@@ -450,14 +450,14 @@ var Landing = (function (Component) {
                                                 null,
                                                 React.createElement(
                                                     "a",
-                                                    { target: "_blank", href: "https://www.meetup.com/velocity360/events/233672142/" },
+                                                    { target: "_blank", href: "https://www.meetup.com/velocity360/events/233828246/" },
                                                     "Intro Web Development With Node JS"
                                                 )
                                             ),
                                             React.createElement(
                                                 "td",
                                                 null,
-                                                "Aug 29th"
+                                                "Sept 6th"
                                             )
                                         ),
                                         React.createElement(

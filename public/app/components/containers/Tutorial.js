@@ -163,7 +163,26 @@ class Tutorial extends Component {
 
 		const nextUnitTitle = (nextUnit == null) ? '' : nextUnit.title
 		const nextUnitSlug = (nextUnit == null) ? '' : nextUnit.slug
-
+		var nextUnitLink = null
+		if (nextUnitSlug.length == 0){
+			nextUnitLink = (
+				<div className="panel panel-default">
+					<div className="panel-body" style={style.panelBody}>
+						<h2 style={style.header}>End of Tutorial, Congratulations!</h2>
+					</div>
+				</div>
+			)
+		}
+		else {
+			nextUnitLink = (
+				<div className="panel panel-default">
+					<div className="panel-body" style={style.panelBody}>
+						<h2 style={style.header}>Next: {nextUnitTitle}</h2>
+						<button id={nextUnitSlug} onClick={this.changeUnit} className="btn btn-info">View</button>
+					</div>
+				</div>
+			)
+		}
 
 		const selectedPost = this.props.posts[this.state.currentPost]
 		var currentPostHtml = ''
@@ -172,7 +191,6 @@ class Tutorial extends Component {
 			currentPostHtml = selectedPost.text
 			currentPostTitle = selectedPost.title
 		}
-
 
 		return(
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
@@ -223,13 +241,7 @@ class Tutorial extends Component {
 											</div>
 
 											<br /><br />
-
-											<div className="panel panel-default">
-												<div className="panel-body" style={style.panelBody}>
-													<h2 style={style.header}>Next: {nextUnitTitle}</h2>
-													<button id={nextUnitSlug} onClick={this.changeUnit} className="btn btn-info">View</button>
-												</div>
-											</div>
+											{nextUnitLink}
 
 										</div>
 									</article>

@@ -24445,14 +24445,14 @@
 	                                            null,
 	                                            _react2.default.createElement(
 	                                                'a',
-	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233672142/' },
+	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233828246/' },
 	                                                'Intro Web Development With Node JS'
 	                                            )
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'td',
 	                                            null,
-	                                            'Aug 29th'
+	                                            'Sept 6th'
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -64659,6 +64659,42 @@
 	
 				var nextUnitTitle = nextUnit == null ? '' : nextUnit.title;
 				var nextUnitSlug = nextUnit == null ? '' : nextUnit.slug;
+				var nextUnitLink = null;
+				if (nextUnitSlug.length == 0) {
+					nextUnitLink = _react2.default.createElement(
+						'div',
+						{ className: 'panel panel-default' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'h2',
+								{ style: style.header },
+								'End of Tutorial, Congratulations!'
+							)
+						)
+					);
+				} else {
+					nextUnitLink = _react2.default.createElement(
+						'div',
+						{ className: 'panel panel-default' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'h2',
+								{ style: style.header },
+								'Next: ',
+								nextUnitTitle
+							),
+							_react2.default.createElement(
+								'button',
+								{ id: nextUnitSlug, onClick: this.changeUnit, className: 'btn btn-info' },
+								'View'
+							)
+						)
+					);
+				}
 	
 				var selectedPost = this.props.posts[this.state.currentPost];
 				var currentPostHtml = '';
@@ -64764,25 +64800,7 @@
 												),
 												_react2.default.createElement('br', null),
 												_react2.default.createElement('br', null),
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: style.panelBody },
-														_react2.default.createElement(
-															'h2',
-															{ style: style.header },
-															'Next: ',
-															nextUnitTitle
-														),
-														_react2.default.createElement(
-															'button',
-															{ id: nextUnitSlug, onClick: this.changeUnit, className: 'btn btn-info' },
-															'View'
-														)
-													)
-												)
+												nextUnitLink
 											)
 										)
 									)

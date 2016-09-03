@@ -241,7 +241,42 @@ var Tutorial = (function (Component) {
 
 				var nextUnitTitle = nextUnit == null ? "" : nextUnit.title;
 				var nextUnitSlug = nextUnit == null ? "" : nextUnit.slug;
-
+				var nextUnitLink = null;
+				if (nextUnitSlug.length == 0) {
+					nextUnitLink = React.createElement(
+						"div",
+						{ className: "panel panel-default" },
+						React.createElement(
+							"div",
+							{ className: "panel-body", style: style.panelBody },
+							React.createElement(
+								"h2",
+								{ style: style.header },
+								"End of Tutorial, Congratulations!"
+							)
+						)
+					);
+				} else {
+					nextUnitLink = React.createElement(
+						"div",
+						{ className: "panel panel-default" },
+						React.createElement(
+							"div",
+							{ className: "panel-body", style: style.panelBody },
+							React.createElement(
+								"h2",
+								{ style: style.header },
+								"Next: ",
+								nextUnitTitle
+							),
+							React.createElement(
+								"button",
+								{ id: nextUnitSlug, onClick: this.changeUnit, className: "btn btn-info" },
+								"View"
+							)
+						)
+					);
+				}
 
 				var selectedPost = this.props.posts[this.state.currentPost];
 				var currentPostHtml = "";
@@ -250,7 +285,6 @@ var Tutorial = (function (Component) {
 					currentPostHtml = selectedPost.text;
 					currentPostTitle = selectedPost.title;
 				}
-
 
 				return React.createElement(
 					"div",
@@ -348,25 +382,7 @@ var Tutorial = (function (Component) {
 												),
 												React.createElement("br", null),
 												React.createElement("br", null),
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: style.panelBody },
-														React.createElement(
-															"h2",
-															{ style: style.header },
-															"Next: ",
-															nextUnitTitle
-														),
-														React.createElement(
-															"button",
-															{ id: nextUnitSlug, onClick: this.changeUnit, className: "btn btn-info" },
-															"View"
-														)
-													)
-												)
+												nextUnitLink
 											)
 										)
 									)

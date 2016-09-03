@@ -178,11 +178,11 @@ class Landing extends Component {
                                 <tbody>
                                     <tr className="info">
                                         <td>
-                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233672142/">
+                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233828246/">
                                                 Intro Web Development With Node JS
                                             </a>
                                         </td>
-                                        <td>Aug 29th</td>
+                                        <td>Sept 6th</td>
                                     </tr>
                                     <tr>
                                         <td>
