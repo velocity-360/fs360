@@ -85,7 +85,7 @@ class Nav extends Component {
 									</ul>
 								</li>
 	                            <li><a href="https://www.velocity360.io/tutorials"><div style={{padding:4}}>Tutorials</div></a></li>
-								{login}
+	                            
 	                        </ul>
 	                    </nav>
 	                </div>

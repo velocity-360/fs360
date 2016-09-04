@@ -46,6 +46,7 @@ var Tutorial = (function (Component) {
 		this.state = {
 			showLoader: false,
 			currentPost: "", // slug of the selected post
+			tutorials: [],
 			visitor: {
 				name: "",
 				email: ""
@@ -58,11 +59,23 @@ var Tutorial = (function (Component) {
 	_prototypeProperties(Tutorial, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
+				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
 				if (tutorial.posts.length == 0) {
 					return;
 				}var firstPost = tutorial.posts[0];
 				this.findUnit(firstPost.slug);
+
+				var url = "/api/tutorial";
+				api.handleGet(url, null, function (err, response) {
+					if (err) return;
+
+					var tutorials = response.tutorials;
+					console.log("TUTORIALS: " + JSON.stringify(tutorials));
+					_this.setState({
+						tutorials: tutorials
+					});
+				});
 			},
 			writable: true,
 			configurable: true
@@ -281,6 +294,44 @@ var Tutorial = (function (Component) {
 					currentPostTitle = selectedPost.title;
 				}
 
+				var featured = this.state.tutorials.map(function (tutorial, i) {
+					var price = tutorial.price == 0 ? "FREE" : "$" + tutorial.price;
+					return React.createElement(
+						"div",
+						{ key: tutorial.id, className: "col-md-4" },
+						React.createElement(
+							"div",
+							{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
+							React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460" }),
+							React.createElement(
+								"div",
+								{ className: "fancy-title title-bottom-border" },
+								React.createElement(
+									"h3",
+									{ style: { fontWeight: 400 } },
+									React.createElement(
+										"a",
+										{ style: { color: "#444" }, href: "/tutorial/" + tutorial.slug },
+										tutorial.title
+									)
+								)
+							),
+							React.createElement(
+								"h5",
+								{ style: { marginBottom: 0, fontWeight: 200 } },
+								tutorial.posts.length,
+								" units",
+								React.createElement(
+									"span",
+									{ style: { margin: 10 } },
+									"|"
+								),
+								price
+							)
+						)
+					);
+				});
+
 				return React.createElement(
 					"div",
 					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
@@ -390,162 +441,7 @@ var Tutorial = (function (Component) {
 															"Featured Tutorials"
 														),
 														React.createElement("hr", null),
-														React.createElement(
-															"div",
-															{ className: "col-md-4" },
-															React.createElement(
-																"div",
-																{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-																React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/JCMzzPZU?crop=460" }),
-																React.createElement(
-																	"div",
-																	{ className: "fancy-title title-bottom-border" },
-																	React.createElement(
-																		"h3",
-																		{ style: { fontWeight: 400 } },
-																		React.createElement(
-																			"a",
-																			{ style: { color: "#444" }, href: "#" },
-																			"Title"
-																		)
-																	)
-																),
-																React.createElement(
-																	"h5",
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	"5 units",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Free",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Link"
-																)
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col-md-4" },
-															React.createElement(
-																"div",
-																{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-																React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/JCMzzPZU?crop=460" }),
-																React.createElement(
-																	"div",
-																	{ className: "fancy-title title-bottom-border" },
-																	React.createElement(
-																		"h3",
-																		{ style: { fontWeight: 400 } },
-																		React.createElement(
-																			"a",
-																			{ style: { color: "#444" }, href: "#" },
-																			"Title"
-																		)
-																	)
-																),
-																React.createElement(
-																	"h5",
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	"5 units",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Free",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Link"
-																)
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col-md-4" },
-															React.createElement(
-																"div",
-																{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-																React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/JCMzzPZU?crop=460" }),
-																React.createElement(
-																	"div",
-																	{ className: "fancy-title title-bottom-border" },
-																	React.createElement(
-																		"h3",
-																		{ style: { fontWeight: 400 } },
-																		React.createElement(
-																			"a",
-																			{ style: { color: "#444" }, href: "#" },
-																			"Title"
-																		)
-																	)
-																),
-																React.createElement(
-																	"h5",
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	"5 units",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Free",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Link"
-																)
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col-md-4" },
-															React.createElement(
-																"div",
-																{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-																React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/JCMzzPZU?crop=460" }),
-																React.createElement(
-																	"div",
-																	{ className: "fancy-title title-bottom-border" },
-																	React.createElement(
-																		"h3",
-																		{ style: { fontWeight: 400 } },
-																		React.createElement(
-																			"a",
-																			{ style: { color: "#444" }, href: "#" },
-																			"Title"
-																		)
-																	)
-																),
-																React.createElement(
-																	"h5",
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	"5 units",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Free",
-																	React.createElement(
-																		"span",
-																		{ style: { margin: 10 } },
-																		"|"
-																	),
-																	"Link"
-																)
-															)
-														)
+														featured
 													)
 												)
 											)
@@ -599,3 +495,4 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Tutorial);
+//			store.currentStore().dispatch(actions.postsRecieved(posts))

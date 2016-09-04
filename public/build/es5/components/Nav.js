@@ -230,8 +230,7 @@ var Nav = (function (Component) {
 												"Tutorials"
 											)
 										)
-									),
-									login
+									)
 								)
 							)
 						)

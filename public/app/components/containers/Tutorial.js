@@ -20,6 +20,7 @@ class Tutorial extends Component {
 		this.state = {
 			showLoader: false,
 			currentPost: '', // slug of the selected post
+			tutorials: [],
 			visitor: {
 				name: '',
 				email: ''
@@ -34,6 +35,20 @@ class Tutorial extends Component {
 
 		const firstPost = tutorial.posts[0]
 		this.findUnit(firstPost.slug)
+
+		const url = '/api/tutorial'
+		api.handleGet(url, null, (err, response) => {
+			if (err)
+				return
+			
+			const tutorials = response.tutorials
+			console.log('TUTORIALS: '+JSON.stringify(tutorials))
+			this.setState({
+				tutorials: tutorials
+			})
+
+//			store.currentStore().dispatch(actions.postsRecieved(posts))
+		})
 	}
 
 	findUnit(postSlug){
@@ -186,6 +201,27 @@ class Tutorial extends Component {
 			currentPostTitle = selectedPost.title
 		}
 
+		const featured = this.state.tutorials.map((tutorial, i) => {
+			const price = (tutorial.price == 0) ? 'FREE' : '$'+tutorial.price
+			return (
+				<div key={tutorial.id} className="col-md-4">
+					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+						<img style={{width:100, borderRadius:50, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=460'} />
+						<div className="fancy-title title-bottom-border">
+							<h3 style={{fontWeight:400}}>
+								<a style={{color:'#444'}} href={'/tutorial/'+tutorial.slug}>{tutorial.title}</a>
+							</h3>
+						</div>
+						<h5 style={{marginBottom:0, fontWeight:200}}>
+							{tutorial.posts.length} units
+							<span style={{margin:10}}>|</span>
+							{price}
+						</h5>
+					</div>
+				</div>
+			)
+		})
+
 		return(
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
@@ -242,79 +278,7 @@ class Tutorial extends Component {
 													<h2 style={style.header}>Featured Tutorials</h2>
 													<hr />
 
-				<div className="col-md-4">
-					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
-						<div className="fancy-title title-bottom-border">
-							<h3 style={{fontWeight:400}}>
-								<a style={{color:'#444'}} href='#'>Title</a>
-							</h3>
-						</div>
-						<h5 style={{marginBottom:0, fontWeight:200}}>
-							5 units
-							<span style={{margin:10}}>|</span>
-							Free
-							<span style={{margin:10}}>|</span>
-							Link
-						</h5>
-					</div>
-				</div>
-
-				<div className="col-md-4">
-					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
-						<div className="fancy-title title-bottom-border">
-							<h3 style={{fontWeight:400}}>
-								<a style={{color:'#444'}} href='#'>Title</a>
-							</h3>
-						</div>
-						<h5 style={{marginBottom:0, fontWeight:200}}>
-							5 units
-							<span style={{margin:10}}>|</span>
-							Free
-							<span style={{margin:10}}>|</span>
-							Link
-						</h5>
-					</div>
-				</div>
-
-				<div className="col-md-4">
-					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
-						<div className="fancy-title title-bottom-border">
-							<h3 style={{fontWeight:400}}>
-								<a style={{color:'#444'}} href='#'>Title</a>
-							</h3>
-						</div>
-						<h5 style={{marginBottom:0, fontWeight:200}}>
-							5 units
-							<span style={{margin:10}}>|</span>
-							Free
-							<span style={{margin:10}}>|</span>
-							Link
-						</h5>
-					</div>
-				</div>
-
-				<div className="col-md-4">
-					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
-						<div className="fancy-title title-bottom-border">
-							<h3 style={{fontWeight:400}}>
-								<a style={{color:'#444'}} href='#'>Title</a>
-							</h3>
-						</div>
-						<h5 style={{marginBottom:0, fontWeight:200}}>
-							5 units
-							<span style={{margin:10}}>|</span>
-							Free
-							<span style={{margin:10}}>|</span>
-							Link
-						</h5>
-					</div>
-				</div>
-
-
+													{featured}
 
 												</div>
 											</div>

@@ -42901,8 +42901,7 @@
 												'Tutorials'
 											)
 										)
-									),
-									login
+									)
 								)
 							)
 						)
@@ -63450,6 +63449,7 @@
 			_this.state = {
 				showLoader: false,
 				currentPost: '', // slug of the selected post
+				tutorials: [],
 				visitor: {
 					name: '',
 					email: ''
@@ -63461,11 +63461,26 @@
 		_createClass(Tutorial, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				var _this2 = this;
+	
 				var tutorial = this.props.tutorials[this.props.slug];
 				if (tutorial.posts.length == 0) return;
 	
 				var firstPost = tutorial.posts[0];
 				this.findUnit(firstPost.slug);
+	
+				var url = '/api/tutorial';
+				_utils.api.handleGet(url, null, function (err, response) {
+					if (err) return;
+	
+					var tutorials = response.tutorials;
+					console.log('TUTORIALS: ' + JSON.stringify(tutorials));
+					_this2.setState({
+						tutorials: tutorials
+					});
+	
+					//			store.currentStore().dispatch(actions.postsRecieved(posts))
+				});
 			}
 		}, {
 			key: 'findUnit',
@@ -63498,7 +63513,7 @@
 		}, {
 			key: 'subscribe',
 			value: function subscribe(event) {
-				var _this2 = this;
+				var _this3 = this;
 	
 				event.preventDefault();
 				if (this.state.visitor.name.length == 0) {
@@ -63524,7 +63539,7 @@
 				s['subject'] = 'New Subscriber';
 				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
 				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
-					_this2.setState({ showLoader: false });
+					_this3.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);
@@ -63545,7 +63560,7 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var _this3 = this;
+				var _this4 = this;
 	
 				var tutorial = this.props.tutorials[this.props.slug];
 				var posts = tutorial.posts.map(function (post, i) {
@@ -63607,13 +63622,13 @@
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? 'none' : '1px solid #ddd';
-					var color = post.slug == _this3.state.currentPost ? '#1ABC9C' : '#86939f';
+					var color = post.slug == _this4.state.currentPost ? '#1ABC9C' : '#86939f';
 					return _react2.default.createElement(
 						'li',
 						{ key: post.id, style: { borderTop: '1px solid #ddd', padding: 6 } },
 						_react2.default.createElement(
 							'a',
-							{ id: post.slug, onClick: _this3.changeUnit, href: '#top', style: { color: color } },
+							{ id: post.slug, onClick: _this4.changeUnit, href: '#top', style: { color: color } },
 							i + 1,
 							'. ',
 							post.title
@@ -63675,6 +63690,44 @@
 					currentPostHtml = selectedPost.text;
 					currentPostTitle = selectedPost.title;
 				}
+	
+				var featured = this.state.tutorials.map(function (tutorial, i) {
+					var price = tutorial.price == 0 ? 'FREE' : '$' + tutorial.price;
+					return _react2.default.createElement(
+						'div',
+						{ key: tutorial.id, className: 'col-md-4' },
+						_react2.default.createElement(
+							'div',
+							{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+							_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460' }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'fancy-title title-bottom-border' },
+								_react2.default.createElement(
+									'h3',
+									{ style: { fontWeight: 400 } },
+									_react2.default.createElement(
+										'a',
+										{ style: { color: '#444' }, href: '/tutorial/' + tutorial.slug },
+										tutorial.title
+									)
+								)
+							),
+							_react2.default.createElement(
+								'h5',
+								{ style: { marginBottom: 0, fontWeight: 200 } },
+								tutorial.posts.length,
+								' units',
+								_react2.default.createElement(
+									'span',
+									{ style: { margin: 10 } },
+									'|'
+								),
+								price
+							)
+						)
+					);
+				});
 	
 				return _react2.default.createElement(
 					'div',
@@ -63785,162 +63838,7 @@
 															'Featured Tutorials'
 														),
 														_react2.default.createElement('hr', null),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col-md-4' },
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-																_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' }),
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'fancy-title title-bottom-border' },
-																	_react2.default.createElement(
-																		'h3',
-																		{ style: { fontWeight: 400 } },
-																		_react2.default.createElement(
-																			'a',
-																			{ style: { color: '#444' }, href: '#' },
-																			'Title'
-																		)
-																	)
-																),
-																_react2.default.createElement(
-																	'h5',
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	'5 units',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Free',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Link'
-																)
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col-md-4' },
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-																_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' }),
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'fancy-title title-bottom-border' },
-																	_react2.default.createElement(
-																		'h3',
-																		{ style: { fontWeight: 400 } },
-																		_react2.default.createElement(
-																			'a',
-																			{ style: { color: '#444' }, href: '#' },
-																			'Title'
-																		)
-																	)
-																),
-																_react2.default.createElement(
-																	'h5',
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	'5 units',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Free',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Link'
-																)
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col-md-4' },
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-																_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' }),
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'fancy-title title-bottom-border' },
-																	_react2.default.createElement(
-																		'h3',
-																		{ style: { fontWeight: 400 } },
-																		_react2.default.createElement(
-																			'a',
-																			{ style: { color: '#444' }, href: '#' },
-																			'Title'
-																		)
-																	)
-																),
-																_react2.default.createElement(
-																	'h5',
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	'5 units',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Free',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Link'
-																)
-															)
-														),
-														_react2.default.createElement(
-															'div',
-															{ className: 'col-md-4' },
-															_react2.default.createElement(
-																'div',
-																{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-																_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' }),
-																_react2.default.createElement(
-																	'div',
-																	{ className: 'fancy-title title-bottom-border' },
-																	_react2.default.createElement(
-																		'h3',
-																		{ style: { fontWeight: 400 } },
-																		_react2.default.createElement(
-																			'a',
-																			{ style: { color: '#444' }, href: '#' },
-																			'Title'
-																		)
-																	)
-																),
-																_react2.default.createElement(
-																	'h5',
-																	{ style: { marginBottom: 0, fontWeight: 200 } },
-																	'5 units',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Free',
-																	_react2.default.createElement(
-																		'span',
-																		{ style: { margin: 10 } },
-																		'|'
-																	),
-																	'Link'
-																)
-															)
-														)
+														featured
 													)
 												)
 											)
