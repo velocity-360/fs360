@@ -37,7 +37,7 @@ class Tutorial extends Component {
 		this.findUnit(firstPost.slug)
 
 		const url = '/api/tutorial'
-		api.handleGet(url, null, (err, response) => {
+		api.handleGet(url, {status:'live'}, (err, response) => {
 			if (err)
 				return
 			

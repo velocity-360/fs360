@@ -63470,7 +63470,7 @@
 				this.findUnit(firstPost.slug);
 	
 				var url = '/api/tutorial';
-				_utils.api.handleGet(url, null, function (err, response) {
+				_utils.api.handleGet(url, { status: 'live' }, function (err, response) {
 					if (err) return;
 	
 					var tutorials = response.tutorials;
