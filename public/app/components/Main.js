@@ -9,7 +9,6 @@ import Project from './containers/Project'
 import Tutorials from './containers/Tutorials'
 import Tutorial from './containers/Tutorial'
 import Course from './containers/Course'
-import Video from './containers/Video'
 import Account from './containers/Account'
 import Unit from './containers/Unit'
 import Checkout from './containers/Checkout'
@@ -54,9 +53,6 @@ class Main extends Component {
 
 			case 'tutorial':
 				return page = <Tutorial slug={this.props.slug} />
-
-			case 'video':
-				return page = <Video slug={this.props.slug} />
 
 			case 'courses':
 				return page = <Courses params={this.props.params} />
