@@ -147,7 +147,6 @@ class Tutorial extends Component {
 			)
 		})
 
-
 		var nextUnit = null
 		for (var i=0; i<units.length; i++){
 			if (i == units.length-1) // end
@@ -165,20 +164,16 @@ class Tutorial extends Component {
 		var nextUnitLink = null
 		if (nextUnitSlug.length == 0){
 			nextUnitLink = (
-				<div className="panel panel-default">
-					<div className="panel-body" style={style.panelBody}>
-						<h2 style={style.header}>End of Tutorial, Congratulations!</h2>
-					</div>
+				<div className="panel-body" style={{padding:36}}>
+					<h2 style={style.header}>End of Tutorial, Congratulations!</h2>
 				</div>
 			)
 		}
 		else {
 			nextUnitLink = (
-				<div className="panel panel-default">
-					<div className="panel-body" style={style.panelBody}>
-						<h2 style={style.header}>Next: {nextUnitTitle}</h2>
-						<button id={nextUnitSlug} onClick={this.changeUnit} className="btn btn-info">View</button>
-					</div>
+				<div className="panel-body" style={{padding:36}}>
+					<h2 style={style.header}>Next Unit: <a id={nextUnitSlug} onClick={this.changeUnit} href='#'>{nextUnitTitle}</a></h2>
+					<button id={nextUnitSlug} onClick={this.changeUnit} className="btn btn-info">View</button>
 				</div>
 			)
 		}
@@ -237,10 +232,92 @@ class Tutorial extends Component {
 												</div>
 
 												<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(currentPostHtml) }} className="panel-body" style={{padding:36}}></div>
+												{nextUnitLink}
 											</div>
 
 											<br /><br />
-											{nextUnitLink}
+
+											<div className="panel panel-default">
+												<div className="panel-body" style={style.panelBody}>
+													<h2 style={style.header}>Featured Tutorials</h2>
+													<hr />
+
+				<div className="col-md-4">
+					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
+						<div className="fancy-title title-bottom-border">
+							<h3 style={{fontWeight:400}}>
+								<a style={{color:'#444'}} href='#'>Title</a>
+							</h3>
+						</div>
+						<h5 style={{marginBottom:0, fontWeight:200}}>
+							5 units
+							<span style={{margin:10}}>|</span>
+							Free
+							<span style={{margin:10}}>|</span>
+							Link
+						</h5>
+					</div>
+				</div>
+
+				<div className="col-md-4">
+					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
+						<div className="fancy-title title-bottom-border">
+							<h3 style={{fontWeight:400}}>
+								<a style={{color:'#444'}} href='#'>Title</a>
+							</h3>
+						</div>
+						<h5 style={{marginBottom:0, fontWeight:200}}>
+							5 units
+							<span style={{margin:10}}>|</span>
+							Free
+							<span style={{margin:10}}>|</span>
+							Link
+						</h5>
+					</div>
+				</div>
+
+				<div className="col-md-4">
+					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
+						<div className="fancy-title title-bottom-border">
+							<h3 style={{fontWeight:400}}>
+								<a style={{color:'#444'}} href='#'>Title</a>
+							</h3>
+						</div>
+						<h5 style={{marginBottom:0, fontWeight:200}}>
+							5 units
+							<span style={{margin:10}}>|</span>
+							Free
+							<span style={{margin:10}}>|</span>
+							Link
+						</h5>
+					</div>
+				</div>
+
+				<div className="col-md-4">
+					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+						<img style={{width:100, borderRadius:50, marginBottom:12}} src='https://media-service.appspot.com/site/images/JCMzzPZU?crop=460' />
+						<div className="fancy-title title-bottom-border">
+							<h3 style={{fontWeight:400}}>
+								<a style={{color:'#444'}} href='#'>Title</a>
+							</h3>
+						</div>
+						<h5 style={{marginBottom:0, fontWeight:200}}>
+							5 units
+							<span style={{margin:10}}>|</span>
+							Free
+							<span style={{margin:10}}>|</span>
+							Link
+						</h5>
+					</div>
+				</div>
+
+
+
+												</div>
+											</div>
 
 										</div>
 									</article>

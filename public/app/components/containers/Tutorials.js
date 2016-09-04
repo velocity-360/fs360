@@ -28,7 +28,6 @@ class Tutorials extends Component {
 		})
 	}
 
-
 	render(){
 		const tutorialsList = this.state.tutorials.map((tutorial, i) => {
 			const link = (tutorial.status == 'live') ? <a href={'/tutorial/'+tutorial.slug} className="button button-3d button-mini button-rounded button-teal">View</a> : <a href='#' className="button button-3d button-mini button-rounded button-teal">Coming Soon!</a>
@@ -51,7 +50,7 @@ class Tutorials extends Component {
 							{link}
 						</h5>
 					</div>
-				</div>				
+				</div>
 			)
 		})
 
@@ -68,7 +67,6 @@ class Tutorials extends Component {
 									{tutorialsList}
 								</div>
 							</div>
-
 
 						</div>
 					</div>

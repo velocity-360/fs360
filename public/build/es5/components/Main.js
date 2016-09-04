@@ -18,8 +18,6 @@ var Component = _react.Component;
 var connect = require("react-redux").connect;
 var Landing = _interopRequire(require("./containers/Landing"));
 
-var ProjectLanding = _interopRequire(require("./containers/ProjectLanding"));
-
 var Courses = _interopRequire(require("./containers/Courses"));
 
 var Event = _interopRequire(require("./containers/Event"));
@@ -87,9 +85,6 @@ var Main = (function (Component) {
 				switch (this.props.page) {
 					case "home":
 						return page = React.createElement(Landing, null);
-
-					case "landing":
-						return page = React.createElement(ProjectLanding, null);
 
 					case "course":
 						return page = React.createElement(Course, { slug: this.props.slug });

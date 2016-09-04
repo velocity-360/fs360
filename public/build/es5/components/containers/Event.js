@@ -39,8 +39,6 @@ var TextUtils = _interopRequire(require("../../utils/TextUtils"));
 
 var api = _interopRequire(require("../../utils/APIManager"));
 
-var QualifyingForm = _interopRequire(require("../../components/QualifyingForm"));
-
 var Event = (function (Component) {
 	function Event(props, context) {
 		_classCallCheck(this, Event);
@@ -51,7 +49,6 @@ var Event = (function (Component) {
 		this.hideForm = this.hideForm.bind(this);
 		this.state = {
 			showLoader: false,
-			showForm: false,
 			courses: []
 		};
 	}
@@ -85,21 +82,9 @@ var Event = (function (Component) {
 			writable: true,
 			configurable: true
 		},
-		hideForm: {
-			value: function hideForm() {
-				this.setState({
-					showForm: false
-				});
-			},
-			writable: true,
-			configurable: true
-		},
 		submitRequest: {
 			value: function submitRequest(event) {
 				event.preventDefault();
-				this.setState({
-					showForm: true
-				});
 			},
 			writable: true,
 			configurable: true
@@ -290,7 +275,6 @@ var Event = (function (Component) {
 							)
 						)
 					),
-					React.createElement(QualifyingForm, { show: this.state.showForm, closeModal: this.hideForm, subject: event, toggleLoader: this.toggleLoader, endpoint: "/account/rsvp" }),
 					React.createElement(Footer, null)
 				);
 			},

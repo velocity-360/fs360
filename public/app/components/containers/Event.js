@@ -10,7 +10,6 @@ import store from '../../stores/store'
 import actions from '../../actions/actions'
 import TextUtils from '../../utils/TextUtils'
 import api from '../../utils/APIManager'
-import QualifyingForm from '../../components/QualifyingForm'
 
 
 class Event extends Component {
@@ -22,7 +21,6 @@ class Event extends Component {
 		this.hideForm = this.hideForm.bind(this)
 		this.state = {
 			showLoader: false,
-			showForm: false,
 			courses: []
 		}
 	}
@@ -47,17 +45,9 @@ class Event extends Component {
 		})
 	}
 
-	hideForm(){
-		this.setState({
-			showForm: false
-		})
-	}
 
 	submitRequest(event){
 		event.preventDefault()
-		this.setState({
-			showForm: true
-		})
 	}
 
 
@@ -155,7 +145,6 @@ class Event extends Component {
 					</div>
 				</section>
 
-	        	<QualifyingForm show={this.state.showForm} closeModal={this.hideForm} subject={event} toggleLoader={this.toggleLoader} endpoint='/account/rsvp' />
 				<Footer />
 			</div>
 		)
