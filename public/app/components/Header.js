@@ -103,7 +103,7 @@ class Header extends Component {
 
 	render(){
 		return (
-	        <section id="slider" className="dark full-screen" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible'}} data-height-lg="600" data-height-md="600" data-height-sm="600" data-height-xs="600" data-height-xxs="600">
+	        <section id="slider" className="dark full-screen" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible'}} data-height-lg="600" data-height-md="600" data-height-sm="1000" data-height-xs="1000" data-height-xxs="1000">
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
                 <div className="vertical-middle">
                     <div className="heading-block center nobottomborder">
@@ -113,13 +113,29 @@ class Header extends Component {
 							of software - Node, React, and React Native.
                         </span>
                         <br /><br />
-                    	<div data-animate="fadeIn" data-delay="800" style={{margin:'auto', maxWidth:320, background:'rgba(0,0,0,0.65)', padding:24}}>
-	                    	Next Cohort Begins October 3rd
-	                    	<br /><br />
-	                        <input id="name" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Name" />
-	                        <input id="email" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Email" />
-		                    <button onClick={this.submitSyllabusRequest} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Request Syllabus</button>
-                    	</div>
+                        <div className="row">
+	                        <div className="col-md-4 col-md-offset-2">
+		                    	<div data-animate="fadeIn" data-delay="800" style={style.featuredBox}>
+			                    	<h4 style={{fontWeight:200, marginBottom:0}}>Next Cohort Begins October 3rd</h4>
+			                    	<hr />
+			                        <input id="name" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Name" />
+			                        <input id="email" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Email" />
+				                    <button onClick={this.submitSyllabusRequest} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Request Syllabus</button>
+		                    	</div>
+	                        </div>
+	                        <div className="col-md-4">
+		                    	<div data-animate="fadeIn" data-delay="800" style={style.featuredBox}>
+			                    	<h4 style={{fontWeight:200, marginBottom:0}}>Featured Tutorial</h4>
+			                    	<hr />
+			                    	<span>React Native Intro</span>
+			                    	<br />
+			                    	<img style={{borderRadius:50, width:100, marginTop:12}} src="https://media-service.appspot.com/site/images/Dt-RYzZg?crop=360" />
+			                    	<br /><br />
+				                    <a href="https://www.velocity360.io/tutorial/react-native-intro" className="btn btn-lg btn-info nomargin">View</a>
+		                    	</div>
+	                        </div>
+
+                        </div>
                     </div>
                 </div>
 	        </section>
@@ -132,6 +148,13 @@ const style = {
 		maxWidth:280,
 		margin:'auto',
 		marginBottom:16
+	},
+	featuredBox: {
+		margin:'auto',
+		maxWidth:340,
+		background:'rgba(0,0,0,0.65)',
+		padding:24,
+		marginTop:24
 	}
 }
 

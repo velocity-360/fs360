@@ -60628,7 +60628,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'section',
-					{ id: 'slider', className: 'dark full-screen', style: { background: 'url("/images/oc-dark-blue.jpg") center', overflow: 'visible' }, 'data-height-lg': '600', 'data-height-md': '600', 'data-height-sm': '600', 'data-height-xs': '600', 'data-height-xxs': '600' },
+					{ id: 'slider', className: 'dark full-screen', style: { background: 'url("/images/oc-dark-blue.jpg") center', overflow: 'visible' }, 'data-height-lg': '600', 'data-height-md': '600', 'data-height-sm': '1000', 'data-height-xs': '1000', 'data-height-xxs': '1000' },
 					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
 						'div',
@@ -60650,16 +60650,55 @@
 							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'div',
-								{ 'data-animate': 'fadeIn', 'data-delay': '800', style: { margin: 'auto', maxWidth: 320, background: 'rgba(0,0,0,0.65)', padding: 24 } },
-								'Next Cohort Begins October 3rd',
-								_react2.default.createElement('br', null),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement('input', { id: 'name', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' }),
-								_react2.default.createElement('input', { id: 'email', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' }),
+								{ className: 'row' },
 								_react2.default.createElement(
-									'button',
-									{ onClick: this.submitSyllabusRequest, className: 'btn btn-lg btn-info nomargin', value: 'submit', type: 'submit' },
-									'Request Syllabus'
+									'div',
+									{ className: 'col-md-4 col-md-offset-2' },
+									_react2.default.createElement(
+										'div',
+										{ 'data-animate': 'fadeIn', 'data-delay': '800', style: style.featuredBox },
+										_react2.default.createElement(
+											'h4',
+											{ style: { fontWeight: 200, marginBottom: 0 } },
+											'Next Cohort Begins October 3rd'
+										),
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement('input', { id: 'name', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' }),
+										_react2.default.createElement('input', { id: 'email', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' }),
+										_react2.default.createElement(
+											'button',
+											{ onClick: this.submitSyllabusRequest, className: 'btn btn-lg btn-info nomargin', value: 'submit', type: 'submit' },
+											'Request Syllabus'
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-4' },
+									_react2.default.createElement(
+										'div',
+										{ 'data-animate': 'fadeIn', 'data-delay': '800', style: style.featuredBox },
+										_react2.default.createElement(
+											'h4',
+											{ style: { fontWeight: 200, marginBottom: 0 } },
+											'Featured Tutorial'
+										),
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'span',
+											null,
+											'React Native Intro'
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('img', { style: { borderRadius: 50, width: 100, marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/Dt-RYzZg?crop=360' }),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'a',
+											{ href: 'https://www.velocity360.io/tutorial/react-native-intro', className: 'btn btn-lg btn-info nomargin' },
+											'View'
+										)
+									)
 								)
 							)
 						)
@@ -60676,6 +60715,13 @@
 			maxWidth: 280,
 			margin: 'auto',
 			marginBottom: 16
+		},
+		featuredBox: {
+			margin: 'auto',
+			maxWidth: 340,
+			background: 'rgba(0,0,0,0.65)',
+			padding: 24,
+			marginTop: 24
 		}
 	};
 	
