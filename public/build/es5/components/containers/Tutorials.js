@@ -103,11 +103,18 @@ var Tutorials = (function (Component) {
 							),
 							React.createElement(
 								"h5",
-								{ style: { marginBottom: 6 } },
+								{ style: { marginBottom: 0, fontWeight: 200 } },
+								tutorial.posts.length,
+								" units",
+								React.createElement(
+									"span",
+									{ style: { margin: 10 } },
+									"|"
+								),
 								price,
 								React.createElement(
 									"span",
-									{ style: { margin: 16 } },
+									{ style: { margin: 10 } },
 									"|"
 								),
 								link

@@ -186,11 +186,11 @@ class Landing extends Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233694498/">
+                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233828392/">
                                                 Mobile Development With React Native
                                             </a>
                                         </td>
-                                        <td>Aug 31st</td>
+                                        <td>Sept 7th</td>
                                     </tr>
                                 </tbody>
                             </table>

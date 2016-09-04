@@ -43,8 +43,12 @@ class Tutorials extends Component {
 							</h3>
 						</div>
 						<p style={{height:144}}>{TextUtils.truncateText(tutorial.description, 180)}</p>
-						<h5 style={{marginBottom:6}}>
-							{price}<span style={{margin:16}}>|</span>{link}
+						<h5 style={{marginBottom:0, fontWeight:200}}>
+							{tutorial.posts.length} units
+							<span style={{margin:10}}>|</span>
+							{price}
+							<span style={{margin:10}}>|</span>
+							{link}
 						</h5>
 					</div>
 				</div>				

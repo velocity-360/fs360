@@ -24463,14 +24463,14 @@
 	                                            null,
 	                                            _react2.default.createElement(
 	                                                'a',
-	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233694498/' },
+	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233828392/' },
 	                                                'Mobile Development With React Native'
 	                                            )
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'td',
 	                                            null,
-	                                            'Aug 31st'
+	                                            'Sept 7th'
 	                                        )
 	                                    )
 	                                )
@@ -64405,11 +64405,18 @@
 							),
 							_react2.default.createElement(
 								'h5',
-								{ style: { marginBottom: 6 } },
+								{ style: { marginBottom: 0, fontWeight: 200 } },
+								tutorial.posts.length,
+								' units',
+								_react2.default.createElement(
+									'span',
+									{ style: { margin: 10 } },
+									'|'
+								),
 								price,
 								_react2.default.createElement(
 									'span',
-									{ style: { margin: 16 } },
+									{ style: { margin: 10 } },
 									'|'
 								),
 								link

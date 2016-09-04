@@ -468,14 +468,14 @@ var Landing = (function (Component) {
                                                 null,
                                                 React.createElement(
                                                     "a",
-                                                    { target: "_blank", href: "https://www.meetup.com/velocity360/events/233694498/" },
+                                                    { target: "_blank", href: "https://www.meetup.com/velocity360/events/233828392/" },
                                                     "Mobile Development With React Native"
                                                 )
                                             ),
                                             React.createElement(
                                                 "td",
                                                 null,
-                                                "Aug 31st"
+                                                "Sept 7th"
                                             )
                                         )
                                     )
