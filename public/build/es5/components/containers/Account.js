@@ -37,7 +37,6 @@ var _components = require("../../components");
 
 var Footer = _components.Footer;
 var Nav = _components.Nav;
-var RightSidebar = _components.RightSidebar;
 var Sidebar = _components.Sidebar;
 var CourseCard = _components.CourseCard;
 var Account = (function (Component) {
@@ -148,12 +147,12 @@ var Account = (function (Component) {
 
 				return React.createElement(
 					"div",
-					null,
+					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
+					React.createElement(Nav, { headerStyle: "dark" }),
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
-					React.createElement(Sidebar, null),
 					React.createElement(
 						"section",
-						{ id: "content" },
+						null,
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },
@@ -162,153 +161,11 @@ var Account = (function (Component) {
 								{ className: "container clearfix" },
 								React.createElement(
 									"div",
-									{ className: "postcontent nobottommargin clearfix" },
+									{ className: "col_full bottommargin-sm" },
 									React.createElement(
 										"div",
-										{ className: "tabs clearfix", id: "tab-1" },
-										React.createElement(
-											"ul",
-											{ className: "tab-nav clearfix" },
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "#tabs-4" },
-													"Courses"
-												)
-											),
-											React.createElement(
-												"li",
-												null,
-												React.createElement(
-													"a",
-													{ href: "#tabs-2" },
-													"Profile"
-												)
-											)
-										),
-										React.createElement(
-											"div",
-											{ className: "tab-container" },
-											React.createElement(
-												"div",
-												{ className: "tab-content clearfix", id: "tabs-4" },
-												React.createElement(
-													"div",
-													{ id: "posts", className: "events small-thumbs" },
-													courseList
-												)
-											),
-											React.createElement(
-												"div",
-												{ className: "tab-content clearfix", id: "tabs-2" },
-												React.createElement(
-													"div",
-													{ id: "contact-form-overlay", className: "clearfix" },
-													React.createElement("div", { id: "contact-form-result", "data-notify-type": "success", "data-notify-msg": "<i className=icon-ok-sign></i> Message Sent Successfully!" }),
-													React.createElement(
-														"form",
-														{ className: "nobottommargin", id: "template-contactform", name: "template-contactform", action: "", method: "post" },
-														React.createElement(
-															"div",
-															{ className: "col_half" },
-															React.createElement(
-																"label",
-																null,
-																"First Name"
-															),
-															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "firstName", value: this.props.profile.firstName, className: "form-control" })
-														),
-														React.createElement(
-															"div",
-															{ className: "col_half col_last" },
-															React.createElement(
-																"label",
-																null,
-																"Last Name"
-															),
-															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "lastName", value: this.props.profile.lastName, className: "form-control" })
-														),
-														React.createElement("div", { className: "clear" }),
-														React.createElement(
-															"div",
-															{ className: "col_half" },
-															React.createElement(
-																"label",
-																null,
-																"Username"
-															),
-															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "username", value: this.props.profile.username, className: "form-control" })
-														),
-														React.createElement(
-															"div",
-															{ className: "col_half col_last" },
-															React.createElement(
-																"label",
-																null,
-																"GitHub"
-															),
-															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "githubId", value: this.props.profile.githubId, className: "form-control", placeholder: "e.g. https://github.com/fullstack360" })
-														),
-														React.createElement(
-															"div",
-															{ className: "col_half" },
-															React.createElement(
-																"label",
-																{ "for": "template-contactform-message" },
-																"Profile Image"
-															),
-															React.createElement(
-																Dropzone,
-																{ style: { width: 100 + "%", marginBottom: 24, background: "#fff", border: "1px solid #ddd" }, onDrop: this.uploadProfileImage },
-																React.createElement(
-																	"div",
-																	{ style: { padding: 24 } },
-																	this.props.profile.image.length == 0 ? null : React.createElement("img", { style: { width: 64, border: "1px solid #ddd", marginRight: 6 }, src: "https://media-service.appspot.com/site/images/" + this.props.profile.image + "?crop=120" }),
-																	"Drop file here, or click to select image to upload."
-																)
-															)
-														),
-														React.createElement(
-															"div",
-															{ className: "col_half col_last" },
-															React.createElement(
-																"label",
-																null,
-																"Skills"
-															),
-															React.createElement("input", { type: "text", onChange: this.updateCurrentUser, id: "tagString", value: this.props.profile.tagString, className: "form-control", placeholder: "iOS, Python, git..." })
-														),
-														React.createElement("div", { className: "clear" }),
-														React.createElement(
-															"div",
-															{ className: "col_full" },
-															React.createElement(
-																"label",
-																{ "for": "template-contactform-message" },
-																"Bio ",
-																React.createElement(
-																	"small",
-																	null,
-																	"*"
-																)
-															),
-															React.createElement("textarea", { className: "form-control", onChange: this.updateCurrentUser, id: "bio", value: this.props.profile.bio, rows: "6", cols: "30" })
-														),
-														React.createElement(
-															"div",
-															{ className: "col_full" },
-															React.createElement(
-																"button",
-																{ onClick: this.updateProfile, className: "button button-border button-dark button-rounded noleftmargin", type: "submit" },
-																"Update"
-															)
-														)
-													)
-												)
-											)
-										)
+										{ className: "row" },
+										"tutorialsList"
 									)
 								)
 							)

@@ -31,8 +31,6 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
-
 var api = _interopRequire(require("../../utils/APIManager"));
 
 var MVP = (function (Component) {
@@ -254,11 +252,7 @@ var MVP = (function (Component) {
 										)
 									)
 								),
-								React.createElement(
-									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
-									React.createElement(RightSidebar, null)
-								)
+								React.createElement("div", { className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } })
 							)
 						)
 					)

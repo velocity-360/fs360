@@ -6,8 +6,6 @@ var Nav = _interopRequire(require("../components/Nav"));
 
 var Footer = _interopRequire(require("../components/Footer"));
 
-var RightSidebar = _interopRequire(require("../components/RightSidebar"));
-
 var CourseCard = _interopRequire(require("../components/CourseCard"));
 
 var Sidebar = _interopRequire(require("../components/Sidebar"));
@@ -24,7 +22,6 @@ exports.Nav = Nav;
 exports.Header = Header;
 exports.Footer = Footer;
 exports.Sidebar = Sidebar;
-exports.RightSidebar = RightSidebar;
 exports.Register = Register;
 exports.CourseCard = CourseCard;
 exports.Post = Post;

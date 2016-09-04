@@ -6,7 +6,6 @@ import Nav from '../../components/Nav'
 import Register from '../../components/Register'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import RightSidebar from '../../components/RightSidebar'
 import api from '../../utils/APIManager'
 
 
@@ -170,7 +169,6 @@ class MVP extends Component {
 							</div>
 
 							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
-								<RightSidebar />
 							</div>			
 
 						</div>

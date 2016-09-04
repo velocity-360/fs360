@@ -28,8 +28,6 @@ var Header = _interopRequire(require("../../components/Header"));
 
 var Footer = _interopRequire(require("../../components/Footer"));
 
-var RightSidebar = _interopRequire(require("../../components/RightSidebar"));
-
 var Checkout = (function (Component) {
 	function Checkout(props, context) {
 		_classCallCheck(this, Checkout);
@@ -243,11 +241,7 @@ var Checkout = (function (Component) {
 										)
 									)
 								),
-								React.createElement(
-									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
-									React.createElement(RightSidebar, null)
-								)
+								React.createElement("div", { className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } })
 							)
 						)
 					),
