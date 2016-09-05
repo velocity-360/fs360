@@ -34,10 +34,16 @@ function findProfile(params){
 			Profile.find(params, function(err, profiles){
 				if (err){
 			        resolve(null)
-		            return null
+		            return
 				}
-			
-		        resolve(profiles)
+
+				if (profiles.length == 0){
+			        resolve(null)
+		            return
+				}
+
+				var profile = profiles[0]
+		        resolve(profile)
 			})
 
 			return
@@ -45,13 +51,13 @@ function findProfile(params){
 
     	Profile.findById(params.id, function(err, profile){
 			if (err){
-		        reject({message:'Profile not found'})
+			    resolve(null)
 	            return null
 			}
 
 			if (profile == null){
-		        reject({message:'Profile not found'})
-	            return null				
+			    resolve(null)
+	            return null
 			}
 		
 	        resolve(profile)
@@ -240,14 +246,23 @@ router.post('/:resource', function(req, res, next) {
 		})
 		.then(function(product){
 			prod = product
-			return findProfile({email:customerEmail})
+
+			var params = null
+			if (req.session == null)
+				params = {email: customerEmail}
+			else if (req.session.user == null)
+				params = {email: customerEmail}
+			else 
+				params = {id: req.session.user} // logged in user
+
+			return findProfile(params)
 		})
-		.then(function(profiles){
+		.then(function(profile){
 			var text = customerName+' purchased '+prod.title
 			EmailManager.sendEmails('info@thegridmedia.com', ['dkwon@velocity360.io'], type.toUpperCase()+' Purchase', text)
 
 			if (profiles.length > 0){ // registered user
-				var profile = profiles[0]
+//				var profile = profiles[0]
 				req.session.user = profile.id // login as user
 				var subscribers = prod.subscribers
 				if (subscribers.indexOf(profile.id) == -1){

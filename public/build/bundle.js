@@ -43903,10 +43903,9 @@
 		},
 	
 		submitStripeCharge: function submitStripeCharge(token, email, product, amt, type, completion) {
-			var customerEmail = email == null ? token.email : email; // defer to token if no current user
 			var body = {
 				stripeToken: token.id,
-				email: customerEmail,
+				email: token.email,
 				product: product.id,
 				description: product.title,
 				amount: amt,
@@ -63508,9 +63507,7 @@
 					_this2.setState({ showLoader: true });
 	
 					var currentUser = _this2.props.currentUser;
-					var email = currentUser.id == null ? null : currentUser.email;
-	
-					_utils.api.submitStripeCharge(token, email, tutorial, tutorial.price, 'tutorial', function (err, response) {
+					_utils.api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', function (err, response) {
 						_this2.setState({ showLoader: false });
 						if (err) {
 							alert(err.message);

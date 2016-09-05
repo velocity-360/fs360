@@ -47,9 +47,7 @@ class Tutorial extends Component {
 			this.setState({showLoader: true})
 
 			const currentUser = this.props.currentUser
-			const email = (currentUser.id == null) ? null : currentUser.email
-
-			api.submitStripeCharge(token, email, tutorial, tutorial.price, 'tutorial', (err, response) => {
+			api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
 				this.setState({showLoader: false})
 				if (err){
 					alert(err.message)

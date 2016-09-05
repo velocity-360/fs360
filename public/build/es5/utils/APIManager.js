@@ -109,10 +109,9 @@ module.exports = {
 	},
 
 	submitStripeCharge: function (token, email, product, amt, type, completion) {
-		var customerEmail = email == null ? token.email : email; // defer to token if no current user
 		var body = {
 			stripeToken: token.id,
-			email: customerEmail,
+			email: token.email,
 			product: product.id,
 			description: product.title,
 			amount: amt,

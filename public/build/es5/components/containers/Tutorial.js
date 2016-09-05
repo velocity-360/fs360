@@ -79,9 +79,7 @@ var Tutorial = (function (Component) {
 					_this.setState({ showLoader: true });
 
 					var currentUser = _this.props.currentUser;
-					var email = currentUser.id == null ? null : currentUser.email;
-
-					api.submitStripeCharge(token, email, tutorial, tutorial.price, "tutorial", function (err, response) {
+					api.submitStripeCharge(token, tutorial, tutorial.price, "tutorial", function (err, response) {
 						_this.setState({ showLoader: false });
 						if (err) {
 							alert(err.message);
