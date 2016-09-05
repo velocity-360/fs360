@@ -94,20 +94,21 @@ var Tutorial = (function (Component) {
 					});
 				});
 
+				var firstPost = tutorial.posts[0];
 				if (this.props.currentUser.id == null) {
 					// show subscirbe page
-					this.fetchFeaturedTutorials();
+					this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null));
 					return;
 				}
 
 				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
 				if (index == -1) {
 					// show subscirbe page
-					this.fetchFeaturedTutorials();
+					this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null));
 					return;
 				}
 
-				this.showFirstUnit(this.fetchFeaturedTutorials());
+				this.showFirstUnit(this.fetchFeaturedTutorials(null));
 			},
 			writable: true,
 			configurable: true
@@ -131,7 +132,7 @@ var Tutorial = (function (Component) {
 			configurable: true
 		},
 		fetchFeaturedTutorials: {
-			value: function fetchFeaturedTutorials() {
+			value: function fetchFeaturedTutorials(completion) {
 				var _this = this;
 				var url = "/api/tutorial";
 				api.handleGet(url, { status: "live" }, function (err, response) {
@@ -141,6 +142,8 @@ var Tutorial = (function (Component) {
 					_this.setState({
 						tutorials: tutorials
 					});
+
+					if (completion != null) completion();
 				});
 			},
 			writable: true,
@@ -251,6 +254,7 @@ var Tutorial = (function (Component) {
 			value: function render() {
 				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
+				var currentPost = this.state.currentPost;
 
 				var authorized = true;
 				if (tutorial.price > 0) {
@@ -260,7 +264,7 @@ var Tutorial = (function (Component) {
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? "none" : "1px solid #ddd";
-					var color = post.slug == _this.state.currentPost ? "#1ABC9C" : "#86939f";
+					var color = post.slug == currentPost ? "#1ABC9C" : "#86939f";
 					return React.createElement(
 						"li",
 						{ key: post.id, style: { borderTop: "1px solid #ddd", padding: 6 } },
@@ -280,7 +284,7 @@ var Tutorial = (function (Component) {
 						break;
 
 					var post = units[i];
-					if (post.slug == this.state.currentPost) {
+					if (post.slug == currentPost) {
 						nextUnit = units[i + 1];
 						break;
 					}
@@ -321,7 +325,7 @@ var Tutorial = (function (Component) {
 					);
 				}
 
-				var selectedPost = this.props.posts[this.state.currentPost];
+				var selectedPost = this.props.posts[currentPost];
 				var currentPostHtml = "";
 				var currentPostTitle = "";
 				if (selectedPost != null) {

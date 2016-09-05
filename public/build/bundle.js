@@ -63522,20 +63522,21 @@
 					});
 				});
 	
+				var firstPost = tutorial.posts[0];
 				if (this.props.currentUser.id == null) {
 					// show subscirbe page
-					this.fetchFeaturedTutorials();
+					this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null));
 					return;
 				}
 	
 				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
 				if (index == -1) {
 					// show subscirbe page
-					this.fetchFeaturedTutorials();
+					this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null));
 					return;
 				}
 	
-				this.showFirstUnit(this.fetchFeaturedTutorials());
+				this.showFirstUnit(this.fetchFeaturedTutorials(null));
 			}
 		}, {
 			key: 'showFirstUnit',
@@ -63553,7 +63554,7 @@
 			}
 		}, {
 			key: 'fetchFeaturedTutorials',
-			value: function fetchFeaturedTutorials() {
+			value: function fetchFeaturedTutorials(completion) {
 				var _this3 = this;
 	
 				var url = '/api/tutorial';
@@ -63564,6 +63565,8 @@
 					_this3.setState({
 						tutorials: tutorials
 					});
+	
+					if (completion != null) completion();
 				});
 			}
 		}, {
@@ -63666,6 +63669,7 @@
 				var _this5 = this;
 	
 				var tutorial = this.props.tutorials[this.props.slug];
+				var currentPost = this.state.currentPost;
 	
 				var authorized = true;
 				if (tutorial.price > 0) {
@@ -63675,7 +63679,7 @@
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? 'none' : '1px solid #ddd';
-					var color = post.slug == _this5.state.currentPost ? '#1ABC9C' : '#86939f';
+					var color = post.slug == currentPost ? '#1ABC9C' : '#86939f';
 					return _react2.default.createElement(
 						'li',
 						{ key: post.id, style: { borderTop: '1px solid #ddd', padding: 6 } },
@@ -63695,7 +63699,7 @@
 						break;
 	
 					var post = units[i];
-					if (post.slug == this.state.currentPost) {
+					if (post.slug == currentPost) {
 						nextUnit = units[i + 1];
 						break;
 					}
@@ -63736,7 +63740,7 @@
 					);
 				}
 	
-				var selectedPost = this.props.posts[this.state.currentPost];
+				var selectedPost = this.props.posts[currentPost];
 				var currentPostHtml = '';
 				var currentPostTitle = '';
 				if (selectedPost != null) {

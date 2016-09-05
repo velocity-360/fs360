@@ -62,18 +62,19 @@ class Tutorial extends Component {
 			})
 		})
 
+		const firstPost = tutorial.posts[0]
 		if (this.props.currentUser.id == null){ // show subscirbe page
-			this.fetchFeaturedTutorials()
+			this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null))
 			return
 		}
 
 		const index = tutorial.subscribers.indexOf(this.props.currentUser.id)
 		if (index == -1){ // show subscirbe page
-			this.fetchFeaturedTutorials()
+			this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null))
 			return
 		}
 
-		this.showFirstUnit(this.fetchFeaturedTutorials())
+		this.showFirstUnit(this.fetchFeaturedTutorials(null))
 	}
 
 	showFirstUnit(completion){
@@ -88,7 +89,7 @@ class Tutorial extends Component {
 		Stripe.showModalWithText(tutorial.title)
 	}
 
-	fetchFeaturedTutorials() {
+	fetchFeaturedTutorials(completion) {
 		const url = '/api/tutorial'
 		api.handleGet(url, {status:'live'}, (err, response) => {
 			if (err)
@@ -98,6 +99,9 @@ class Tutorial extends Component {
 			this.setState({
 				tutorials: tutorials
 			})
+
+			if (completion != null)
+				completion()
 		})
 	}
 
@@ -195,6 +199,7 @@ class Tutorial extends Component {
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]
+		const currentPost = this.state.currentPost
 
 		var authorized = true
 		if (tutorial.price > 0){
@@ -205,7 +210,7 @@ class Tutorial extends Component {
 		const units = tutorial.posts
 		const sidebar = units.map((post, i) => {
 			const borderTop = (i==0) ? 'none' : '1px solid #ddd'
-			var color = (post.slug == this.state.currentPost) ? '#1ABC9C' : '#86939f'
+			var color = (post.slug == currentPost) ? '#1ABC9C' : '#86939f'
 			return (
 				<li key={post.id} style={{borderTop:'1px solid #ddd', padding:6}}>
 					<a id={post.slug} onClick={this.changeUnit} href="#" style={{color:color}}>{i+1}. {post.title}</a>
@@ -219,7 +224,7 @@ class Tutorial extends Component {
 				break
 
 			var post = units[i]
-			if (post.slug == this.state.currentPost){
+			if (post.slug == currentPost){
 				nextUnit = units[i+1]
 				break
 			}
@@ -244,7 +249,7 @@ class Tutorial extends Component {
 			)
 		}
 
-		const selectedPost = this.props.posts[this.state.currentPost]
+		const selectedPost = this.props.posts[currentPost]
 		var currentPostHtml = ''
 		var currentPostTitle = ''
 		if (selectedPost != null){
