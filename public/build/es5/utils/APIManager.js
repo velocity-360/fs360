@@ -108,7 +108,7 @@ module.exports = {
 		});
 	},
 
-	submitStripeCharge: function (token, email, product, amt, type, completion) {
+	submitStripeCharge: function (token, product, amt, type, completion) {
 		var body = {
 			stripeToken: token.id,
 			email: token.email,

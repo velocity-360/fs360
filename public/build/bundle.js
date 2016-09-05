@@ -43902,7 +43902,7 @@
 			});
 		},
 	
-		submitStripeCharge: function submitStripeCharge(token, email, product, amt, type, completion) {
+		submitStripeCharge: function submitStripeCharge(token, product, amt, type, completion) {
 			var body = {
 				stripeToken: token.id,
 				email: token.email,
