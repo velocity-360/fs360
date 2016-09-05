@@ -33,19 +33,12 @@ function findProfile(params){
     	if (params.id == null){
 			Profile.find(params, function(err, profiles){
 				if (err){
-			        resolve(null)
+			        reject(err)
 		            return
 				}
 
-				if (profiles.length == 0){
-			        resolve(null)
-		            return
-				}
-
-				var profile = profiles[0]
-		        resolve(profile)
+		        resolve(profiles)
 			})
-
 			return
     	}
 
@@ -257,12 +250,12 @@ router.post('/:resource', function(req, res, next) {
 
 			return findProfile(params)
 		})
-		.then(function(profile){
+		.then(function(profiles){
 			var text = customerName+' purchased '+prod.title
 			EmailManager.sendEmails('info@thegridmedia.com', ['dkwon@velocity360.io'], type.toUpperCase()+' Purchase', text)
 
 			if (profiles.length > 0){ // registered user
-//				var profile = profiles[0]
+				var profile = profiles[0]
 				req.session.user = profile.id // login as user
 				var subscribers = prod.subscribers
 				if (subscribers.indexOf(profile.id) == -1){
@@ -329,7 +322,7 @@ router.post('/:resource', function(req, res, next) {
 		})
 		.catch(function(err){
 			console.log('CHARGE ERROR: '+err.message)
-			res.send({'confirmation':'fail', 'message':err.message})
+			res.send({confirmation:'fail', message:err.message})
 			return
 		})
 		
@@ -341,17 +334,17 @@ router.post('/:resource', function(req, res, next) {
 	if (resource == 'card') {
 		var stripeToken = req.body.stripeToken
 		if (stripeToken == null){
-			res.json({'confirmation':'fail', 'message':'Missing stripeToken parameter'})
+			res.json({confirmation:'fail', message:'Missing stripeToken parameter'})
 			return
 		}
 		
 		if (req.session == null){
-			res.send({'confirmation':'fail', 'message':'User not logged in.'})
+			res.send({confirmation:'fail', message:'User not logged in.'})
 			return
 		}
 
 		if (req.session.user  == null){
-			res.send({'confirmation':'fail', 'message':'User not logged in.'})
+			res.send({confirmation:'fail', message:'User not logged in.'})
 			return
 		}
 		
@@ -364,7 +357,7 @@ router.post('/:resource', function(req, res, next) {
 				source: stripeToken
 			}, function(err, customer) {
 				if (err){
-					res.json({'confirmation':'fail', 'message':err.message})
+					res.json({confirmation:'fail', 'message':err.message})
 					return;
 				}
 				
@@ -379,7 +372,7 @@ router.post('/:resource', function(req, res, next) {
 					}
 				}
 
-				res.json({'confirmation':'success', 'profile':profile.summary()})
+				res.json({confirmation:'success', profile:profile.summary()})
 				
 				var card = customer.sources.data[0]
 				profile['stripeId'] = customer.id
@@ -391,7 +384,7 @@ router.post('/:resource', function(req, res, next) {
 			})
 		})
 		.catch(function(err){
-			res.send({'confirmation':'fail', 'message':err.message})
+			res.send({confirmation:'fail', message:err.message})
 		})
 
 		return
