@@ -42934,7 +42934,6 @@
 	These actions are imported by Redux-aware components who need them, in our case it is just Home.
 	
 	https://github.com/krawaller/riastart2015
-	
 	*/
 	
 	var constants = __webpack_require__(203);
@@ -63518,17 +63517,17 @@
 					_this2.setState({ showLoader: true });
 	
 					_utils.api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', function (err, response) {
+						_this2.setState({ showLoader: false });
 						if (err) {
 							alert(err.message);
-							_this2.setState({ showLoader: false });
 							return;
 						}
 	
 						console.log('Stripe Charge: ' + JSON.stringify(response));
-						_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
-						_store2.default.currentStore().dispatch(_actions2.default.tutorialsReceived([response.tutorial]));
-	
-						//				_this.props.showConfirmation()
+						var currentStore = _store2.default.currentStore();
+						currentStore.dispatch(_actions2.default.currentUserRecieved(response.profile));
+						currentStore.dispatch(_actions2.default.tutorialsReceived([response.tutorial]));
+						_this2.setState({ authorized: true });
 					});
 				});
 	

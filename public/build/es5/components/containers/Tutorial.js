@@ -79,18 +79,19 @@ var Tutorial = (function (Component) {
 					_this.setState({ showLoader: true });
 
 					api.submitStripeCharge(token, tutorial, tutorial.price, "tutorial", function (err, response) {
+						_this.setState({ showLoader: false });
 						if (err) {
 							alert(err.message);
-							_this.setState({ showLoader: false });
 							return;
 						}
 
 						console.log("Stripe Charge: " + JSON.stringify(response));
-						store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
-						store.currentStore().dispatch(actions.tutorialsReceived([response.tutorial]));
+						var currentStore = store.currentStore();
+						currentStore.dispatch(actions.currentUserRecieved(response.profile));
+						currentStore.dispatch(actions.tutorialsReceived([response.tutorial]));
+						_this.setState({ authorized: true });
 					});
 				});
-
 
 				if (this.props.currentUser.id == null) {
 					// show subscirbe page
@@ -543,4 +544,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Tutorial);
-//				_this.props.showConfirmation()

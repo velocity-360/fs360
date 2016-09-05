@@ -47,20 +47,19 @@ class Tutorial extends Component {
 			this.setState({showLoader: true})
 
 			api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
+				this.setState({showLoader: false})
 				if (err){
 					alert(err.message)
-					this.setState({showLoader: false})
 					return
 				}
 				
 				console.log('Stripe Charge: '+JSON.stringify(response))
-				store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
-				store.currentStore().dispatch(actions.tutorialsReceived([response.tutorial]))
-
-//				_this.props.showConfirmation()
+				const currentStore = store.currentStore()
+				currentStore.dispatch(actions.currentUserRecieved(response.profile))
+				currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
+				this.setState({authorized: true})
 			})
 		})
-
 
 		if (this.props.currentUser.id == null){ // show subscirbe page
 			this.setState({authorized: false})
@@ -78,6 +77,8 @@ class Tutorial extends Component {
 		const firstPost = tutorial.posts[0]
 		this.findUnit(firstPost.slug, this.fetchFeaturedTutorials())
 	}
+
+
 
 	showStripeModal(event){
 		event.preventDefault()

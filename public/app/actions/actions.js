@@ -3,7 +3,6 @@ This module contains action creators. They are functions which will return an ob
 These actions are imported by Redux-aware components who need them, in our case it is just Home.
 
 https://github.com/krawaller/riastart2015
-
 */
 
 var constants = require('../constants/constants')
@@ -39,7 +38,7 @@ module.exports = {
 		// }
 	},
 
-	coursesRecieved: function(courses){
+	coursesRecieved: (courses) => {
 //		console.log('ACTIONS - coursesRecieved: '+JSON.stringify(courses));
 		// A normal action creator, returns a simple object describing the action.
 		return {
@@ -48,42 +47,42 @@ module.exports = {
 		}
 	},
 
-	courseRecieved: function(course){
+	courseRecieved: (course) => {
 		return {
 			type: constants.COURSE_RECIEVED,
 			course: course
 		}
 	},
 
-	postsRecieved: function(posts){
+	postsRecieved: (posts) => {
 		return {
 			type: constants.POSTS_RECIEVED,
 			posts: posts
 		}
 	},
 
-	postCreated: function(post){
+	postCreated: (post) => {
 		return {
 			type: constants.POST_CREATED,
 			post: post
 		}
 	},
 
-	postEdited: function(editedPost){
+	postEdited: (editedPost) => {
 		return {
 			type: constants.POST_EDITED,
 			post: editedPost
 		}
 	},
 
-	projectsRecieved: function(projects){
+	projectsRecieved: (projects) => {
 		return {
 			type: constants.PROJECTS_RECIEVED,
 			projects: projects
 		};
 	},
 
-	eventsRecieved: function(events){
+	eventsRecieved: (events) => {
 		return {
 			type: constants.EVENTS_RECIEVED,
 			events: events
@@ -91,21 +90,21 @@ module.exports = {
 	},
 
 
-	samplesRecieved: function(samples){
+	samplesRecieved: (samples) => {
 		return {
 			type: constants.SAMPLES_RECIEVED,
 			samples: samples
 		};
 	},
 
-	sampleCreated: function(sample){
+	sampleCreated: (sample) => {
 		return {
 			type: constants.SAMPLE_CREATED,
 			sample: sample
 		};
 	},
 
-	unitReceived: function(unit){
+	unitReceived: (unit) => {
 		return {
 			type: constants.UNIT_RECEIVED,
 			unit: unit

@@ -5,7 +5,6 @@ This module contains action creators. They are functions which will return an ob
 These actions are imported by Redux-aware components who need them, in our case it is just Home.
 
 https://github.com/krawaller/riastart2015
-
 */
 
 var constants = require("../constants/constants");
