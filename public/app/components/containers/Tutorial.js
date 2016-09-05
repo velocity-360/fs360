@@ -46,7 +46,10 @@ class Tutorial extends Component {
 		Stripe.initializeWithText(text, (token) => {
 			this.setState({showLoader: true})
 
-			api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
+			const currentUser = this.props.currentUser
+			const email = (currentUser.id == null) ? null : currentUser.email
+
+			api.submitStripeCharge(token, email, tutorial, tutorial.price, 'tutorial', (err, response) => {
 				this.setState({showLoader: false})
 				if (err){
 					alert(err.message)

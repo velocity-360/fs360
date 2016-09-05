@@ -78,7 +78,10 @@ var Tutorial = (function (Component) {
 				Stripe.initializeWithText(text, function (token) {
 					_this.setState({ showLoader: true });
 
-					api.submitStripeCharge(token, tutorial, tutorial.price, "tutorial", function (err, response) {
+					var currentUser = _this.props.currentUser;
+					var email = currentUser.id == null ? null : currentUser.email;
+
+					api.submitStripeCharge(token, email, tutorial, tutorial.price, "tutorial", function (err, response) {
 						_this.setState({ showLoader: false });
 						if (err) {
 							alert(err.message);

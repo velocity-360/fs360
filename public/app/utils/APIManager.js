@@ -97,28 +97,6 @@ export default {
 		})
 	},
 
-	// submitStripeToken: function(token, completion){
- //        var http = new XMLHttpRequest();
- //        var url = "/stripe/card";
- //        var params = "stripeToken="+token.id;
- //        http.open("POST", url, true);
-        
- //        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        
- //        // notice that the event handler is on xhr and not xhr.upload
- //        http.addEventListener('readystatechange', function(e) {
- //            if( this.readyState === 4 ) { // the transfer has completed and the server closed the connection.
- //                console.log('UPLOAD COMPLETE: ');
-
- //                if (completion != null)
-	//                 completion()
-
- //            }
- //        });
-  
- //        var response = http.send(params)
-	// },
-
 	submitStripeToken: function(token, completion){
 		var body = {
 			stripeToken: token.id,
@@ -148,10 +126,11 @@ export default {
 		})
 	},	
 
-	submitStripeCharge: (token, product, amt, type, completion) => {
+	submitStripeCharge: (token, email, product, amt, type, completion) => {
+		var customerEmail = (email == null) ? token.email : email // defer to token if no current user
 		var body = {
 			stripeToken: token.id,
-			email: token.email,
+			email: customerEmail,
 			product: product.id,
 			description: product.title,
 			amount: amt,
