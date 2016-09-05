@@ -82,8 +82,12 @@ router.get('/:page', function(req, res, next) {
 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
 			return null
 		}
+
+		var params = req.query
+		if (page == 'feed')
+			params = {isPublic:'yes'}
 		
-		return controller.find(req.query)
+		return controller.find(params)
 	})
 	.then(function(results){
 		if (results == null)
