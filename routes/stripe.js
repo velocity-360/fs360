@@ -53,7 +53,7 @@ function findProfile(params){
 	            return null
 			}
 		
-	        resolve(profile)
+	        resolve([profile])
     	})
     })
 }
@@ -349,8 +349,10 @@ router.post('/:resource', function(req, res, next) {
 		}
 		
 		var userId = req.session.user
-		findProfile({id:userId})
-		.then(function(profile){
+		findProfile({id: userId}) // this still returns an array
+		.then(function(profiles){
+			var profile = profiles[0]
+			
 			var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 			stripe.customers.create({
 				description: profile.id,
@@ -376,7 +378,7 @@ router.post('/:resource', function(req, res, next) {
 				
 				var card = customer.sources.data[0]
 				profile['stripeId'] = customer.id
-				profile['creditCard'] = {'id':customer.id, 'lastFour':card.last4, 'exp_month':card.exp_month, 'exp_year':card.exp_year, 'brand':card.brand}
+				profile['creditCard'] = {id:customer.id, lastFour:card.last4, exp_month:card.exp_month, exp_year:card.exp_year, brand:card.brand}
 
 				EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Premium Subscriber', JSON.stringify(profile.summary()))
 				profile.save()
