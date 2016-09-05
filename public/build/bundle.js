@@ -62389,6 +62389,8 @@
 						'div',
 						{ style: { padding: 10.5 } },
 						_react2.default.createElement('input', { style: { border: 'none', borderBottom: '1px solid #777', background: '#f5f5f5' }, type: 'text', id: 'title', onChange: this.editPost, placeholder: 'Title', value: post.title }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { style: { border: 'none', borderBottom: '1px solid #777', background: '#f5f5f5' }, type: 'text', id: 'isPublic', onChange: this.editPost, placeholder: 'Public', value: post.isPublic }),
 						_react2.default.createElement('br', null)
 					);
 	

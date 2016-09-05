@@ -129,6 +129,7 @@ class PostPage extends Component {
 			title = (
 				<div style={{padding:10.5}}>
 					<input style={{border:'none', borderBottom:'1px solid #777', background:'#f5f5f5'}} type="text" id="title" onChange={this.editPost} placeholder="Title" value={post.title} /><br />
+					<input style={{border:'none', borderBottom:'1px solid #777', background:'#f5f5f5'}} type="text" id="isPublic" onChange={this.editPost} placeholder="Public" value={post.isPublic} /><br />
 				</div>
 			)
 
@@ -172,7 +173,7 @@ class PostPage extends Component {
 					<h2 style={{fontWeight:400}}>
 						{post.title}
 					</h2>
-				</div>				
+				</div>
 			)
 
 			content = (
