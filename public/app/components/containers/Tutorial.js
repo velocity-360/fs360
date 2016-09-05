@@ -24,7 +24,6 @@ class Tutorial extends Component {
 			showLoader: false,
 			currentPost: '', // slug of the selected post
 			tutorials: [],
-			authorized: true,
 			visitor: {
 				name: '',
 				email: ''
@@ -59,20 +58,17 @@ class Tutorial extends Component {
 				currentStore.dispatch(actions.currentUserRecieved(response.profile))
 				currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
 
-				this.setState({authorized: true})
 				this.showFirstUnit(null)
 			})
 		})
 
 		if (this.props.currentUser.id == null){ // show subscirbe page
-			this.setState({authorized: false})
 			this.fetchFeaturedTutorials()
 			return
 		}
 
 		const index = tutorial.subscribers.indexOf(this.props.currentUser.id)
 		if (index == -1){ // show subscirbe page
-			this.setState({authorized: false})
 			this.fetchFeaturedTutorials()
 			return
 		}
@@ -121,8 +117,7 @@ class Tutorial extends Component {
 			if (err)
 				return
 			
-			const posts = response.posts
-			store.currentStore().dispatch(actions.postsRecieved(posts))
+			store.currentStore().dispatch(actions.postsRecieved(response.posts))
 			if (completion != null)
 				completion()
 		})
@@ -184,7 +179,7 @@ class Tutorial extends Component {
 		}
 
 		if (this.props.currentUser.id == null){
-			alert('Please log in to view this tutorial.')
+			alert('Please log in or subscribe to view this tutorial.')
 			return
 		}
 
@@ -200,6 +195,13 @@ class Tutorial extends Component {
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]
+
+		var authorized = true
+		if (tutorial.price > 0){
+			if (tutorial.subscribers.indexOf(this.props.currentUser.id) == -1)
+				authorized = false
+		}
+
 		const units = tutorial.posts
 		const sidebar = units.map((post, i) => {
 			const borderTop = (i==0) ? 'none' : '1px solid #ddd'
@@ -250,7 +252,7 @@ class Tutorial extends Component {
 			currentPostTitle = selectedPost.title
 		}
 
-		const content = (this.state.authorized == true) ?
+		const content = (authorized == true) ?
 		(
 			<div className="panel panel-default">
 				<div className="panel-body" style={style.panelBody}>

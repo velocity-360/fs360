@@ -23859,7 +23859,7 @@
 	
 	var _Checkout2 = _interopRequireDefault(_Checkout);
 	
-	var _TrackingManager = __webpack_require__(592);
+	var _TrackingManager = __webpack_require__(593);
 	
 	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
 	
@@ -42635,11 +42635,11 @@
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
-	var _Post = __webpack_require__(593);
+	var _Post = __webpack_require__(594);
 	
 	var _Post2 = _interopRequireDefault(_Post);
 	
-	var _Register = __webpack_require__(594);
+	var _Register = __webpack_require__(595);
 	
 	var _Register2 = _interopRequireDefault(_Register);
 	
@@ -46179,11 +46179,11 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
-	var _StripeUtils = __webpack_require__(595);
+	var _StripeUtils = __webpack_require__(592);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
-	var _TrackingManager = __webpack_require__(592);
+	var _TrackingManager = __webpack_require__(593);
 	
 	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
 	
@@ -60457,6 +60457,81 @@
 
 /***/ },
 /* 592 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var cbk;
+	var stripeHandler;
+	
+	exports.default = {
+	
+		initialize: function initialize(completion) {
+			cbk = completion;
+			//		var _this = this
+			stripeHandler = StripeCheckout.configure({
+				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+				image: '/images/logo_round_blue_260.png',
+				address: true,
+				locale: 'auto',
+				panelLabel: 'Premium: $19.99/month',
+				token: function token(_token) {
+					// You can access the token ID with `token.id`
+					cbk(_token);
+				}
+			});
+		},
+	
+		initializeWithText: function initializeWithText(text, completion) {
+			cbk = completion;
+			stripeHandler = StripeCheckout.configure({
+				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
+				image: '/images/logo_round_blue_260.png',
+				address: true,
+				locale: 'auto',
+				panelLabel: text,
+				token: function token(_token2) {
+					// You can access the token ID with `token.id`
+					cbk(_token2);
+				}
+			});
+		},
+	
+		showModal: function showModal() {
+			if (stripeHandler == null) return;
+	
+			stripeHandler.open({
+				name: 'Velocity 360',
+				description: 'Premium Subscription'
+			});
+	
+			// this.handler.open({
+			//  name: 'Velocity 360',
+			//  description: 'Premium Subscription'
+			// });		
+		},
+	
+		showModalWithText: function showModalWithText(text) {
+			if (stripeHandler == null) return;
+	
+			stripeHandler.open({
+				name: 'Velocity 360',
+				description: text
+			});
+	
+			// this.handler.open({
+			//  name: 'Velocity 360',
+			//  description: text
+			// });		
+		}
+	
+	};
+
+/***/ },
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60521,7 +60596,7 @@
 	exports.default = TrackingManager;
 
 /***/ },
-/* 593 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60651,7 +60726,7 @@
 	exports.default = Post;
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60674,7 +60749,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _StripeUtils = __webpack_require__(595);
+	var _StripeUtils = __webpack_require__(592);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
@@ -61001,81 +61076,6 @@
 	}(_react.Component);
 	
 	exports.default = Register;
-
-/***/ },
-/* 595 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var cbk;
-	var stripeHandler;
-	
-	exports.default = {
-	
-		initialize: function initialize(completion) {
-			cbk = completion;
-			//		var _this = this
-			stripeHandler = StripeCheckout.configure({
-				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-				image: '/images/logo_round_blue_260.png',
-				address: true,
-				locale: 'auto',
-				panelLabel: 'Premium: $19.99/month',
-				token: function token(_token) {
-					// You can access the token ID with `token.id`
-					cbk(_token);
-				}
-			});
-		},
-	
-		initializeWithText: function initializeWithText(text, completion) {
-			cbk = completion;
-			stripeHandler = StripeCheckout.configure({
-				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-				image: '/images/logo_round_blue_260.png',
-				address: true,
-				locale: 'auto',
-				panelLabel: text,
-				token: function token(_token2) {
-					// You can access the token ID with `token.id`
-					cbk(_token2);
-				}
-			});
-		},
-	
-		showModal: function showModal() {
-			if (stripeHandler == null) return;
-	
-			stripeHandler.open({
-				name: 'Velocity 360',
-				description: 'Premium Subscription'
-			});
-	
-			// this.handler.open({
-			//  name: 'Velocity 360',
-			//  description: 'Premium Subscription'
-			// });		
-		},
-	
-		showModalWithText: function showModalWithText(text) {
-			if (stripeHandler == null) return;
-	
-			stripeHandler.open({
-				name: 'Velocity 360',
-				description: text
-			});
-	
-			// this.handler.open({
-			//  name: 'Velocity 360',
-			//  description: text
-			// });		
-		}
-	
-	};
 
 /***/ },
 /* 596 */
@@ -62687,7 +62687,7 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
-	var _Register = __webpack_require__(594);
+	var _Register = __webpack_require__(595);
 	
 	var _Register2 = _interopRequireDefault(_Register);
 	
@@ -62987,7 +62987,7 @@
 	
 	var _reactRedux = __webpack_require__(172);
 	
-	var _StripeUtils = __webpack_require__(595);
+	var _StripeUtils = __webpack_require__(592);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	
@@ -63479,7 +63479,6 @@
 				showLoader: false,
 				currentPost: '', // slug of the selected post
 				tutorials: [],
-				authorized: true,
 				visitor: {
 					name: '',
 					email: ''
@@ -63519,14 +63518,12 @@
 						currentStore.dispatch(_actions2.default.currentUserRecieved(response.profile));
 						currentStore.dispatch(_actions2.default.tutorialsReceived([response.tutorial]));
 	
-						_this2.setState({ authorized: true });
 						_this2.showFirstUnit(null);
 					});
 				});
 	
 				if (this.props.currentUser.id == null) {
 					// show subscirbe page
-					this.setState({ authorized: false });
 					this.fetchFeaturedTutorials();
 					return;
 				}
@@ -63534,7 +63531,6 @@
 				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
 				if (index == -1) {
 					// show subscirbe page
-					this.setState({ authorized: false });
 					this.fetchFeaturedTutorials();
 					return;
 				}
@@ -63585,8 +63581,7 @@
 				_utils.api.handleGet(url, { slug: postSlug }, function (err, response) {
 					if (err) return;
 	
-					var posts = response.posts;
-					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(posts));
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(response.posts));
 					if (completion != null) completion();
 				});
 			}
@@ -63652,7 +63647,7 @@
 				}
 	
 				if (this.props.currentUser.id == null) {
-					alert('Please log in to view this tutorial.');
+					alert('Please log in or subscribe to view this tutorial.');
 					return;
 				}
 	
@@ -63671,6 +63666,12 @@
 				var _this5 = this;
 	
 				var tutorial = this.props.tutorials[this.props.slug];
+	
+				var authorized = true;
+				if (tutorial.price > 0) {
+					if (tutorial.subscribers.indexOf(this.props.currentUser.id) == -1) authorized = false;
+				}
+	
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? 'none' : '1px solid #ddd';
@@ -63743,7 +63744,7 @@
 					currentPostTitle = selectedPost.title;
 				}
 	
-				var content = this.state.authorized == true ? _react2.default.createElement(
+				var content = authorized == true ? _react2.default.createElement(
 					'div',
 					{ className: 'panel panel-default' },
 					_react2.default.createElement(
@@ -65292,7 +65293,7 @@
 	
 	var _reactLoader2 = _interopRequireDefault(_reactLoader);
 	
-	var _StripeUtils = __webpack_require__(595);
+	var _StripeUtils = __webpack_require__(592);
 	
 	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
 	

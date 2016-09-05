@@ -51,7 +51,6 @@ var Tutorial = (function (Component) {
 			showLoader: false,
 			currentPost: "", // slug of the selected post
 			tutorials: [],
-			authorized: true,
 			visitor: {
 				name: "",
 				email: ""
@@ -91,14 +90,12 @@ var Tutorial = (function (Component) {
 						currentStore.dispatch(actions.currentUserRecieved(response.profile));
 						currentStore.dispatch(actions.tutorialsReceived([response.tutorial]));
 
-						_this.setState({ authorized: true });
 						_this.showFirstUnit(null);
 					});
 				});
 
 				if (this.props.currentUser.id == null) {
 					// show subscirbe page
-					this.setState({ authorized: false });
 					this.fetchFeaturedTutorials();
 					return;
 				}
@@ -106,7 +103,6 @@ var Tutorial = (function (Component) {
 				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
 				if (index == -1) {
 					// show subscirbe page
-					this.setState({ authorized: false });
 					this.fetchFeaturedTutorials();
 					return;
 				}
@@ -164,8 +160,7 @@ var Tutorial = (function (Component) {
 				api.handleGet(url, { slug: postSlug }, function (err, response) {
 					if (err) return;
 
-					var posts = response.posts;
-					store.currentStore().dispatch(actions.postsRecieved(posts));
+					store.currentStore().dispatch(actions.postsRecieved(response.posts));
 					if (completion != null) completion();
 				});
 			},
@@ -236,7 +231,7 @@ var Tutorial = (function (Component) {
 				}
 
 				if (this.props.currentUser.id == null) {
-					alert("Please log in to view this tutorial.");
+					alert("Please log in or subscribe to view this tutorial.");
 					return;
 				}
 
@@ -256,6 +251,12 @@ var Tutorial = (function (Component) {
 			value: function render() {
 				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
+
+				var authorized = true;
+				if (tutorial.price > 0) {
+					if (tutorial.subscribers.indexOf(this.props.currentUser.id) == -1) authorized = false;
+				}
+
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? "none" : "1px solid #ddd";
@@ -328,7 +329,7 @@ var Tutorial = (function (Component) {
 					currentPostTitle = selectedPost.title;
 				}
 
-				var content = this.state.authorized == true ? React.createElement(
+				var content = authorized == true ? React.createElement(
 					"div",
 					{ className: "panel panel-default" },
 					React.createElement(
