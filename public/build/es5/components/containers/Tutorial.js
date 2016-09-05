@@ -29,6 +29,7 @@ var _utils = require("../../utils");
 
 var TextUtils = _utils.TextUtils;
 var api = _utils.api;
+var Stripe = _utils.Stripe;
 var Nav = require("../../components").Nav;
 var store = _interopRequire(require("../../stores/store"));
 
@@ -43,10 +44,13 @@ var Tutorial = (function (Component) {
 		this.subscribe = this.subscribe.bind(this);
 		this.changeUnit = this.changeUnit.bind(this);
 		this.findUnit = this.findUnit.bind(this);
+		this.fetchFeaturedTutorials = this.fetchFeaturedTutorials.bind(this);
+		this.showStripeModal = this.showStripeModal.bind(this);
 		this.state = {
 			showLoader: false,
 			currentPost: "", // slug of the selected post
 			tutorials: [],
+			authorized: true,
 			visitor: {
 				name: "",
 				email: ""
@@ -59,20 +63,73 @@ var Tutorial = (function (Component) {
 	_prototypeProperties(Tutorial, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
 				if (tutorial.posts.length == 0) {
 					return;
-				}var firstPost = tutorial.posts[0];
-				this.findUnit(firstPost.slug);
+				}if (tutorial.price == 0) {
+					// free
+					var _firstPost = tutorial.posts[0];
+					this.findUnit(_firstPost.slug, this.fetchFeaturedTutorials());
+					return;
+				}
 
+				Stripe.initializeWithText(tutorial.title, function (token) {
+					//			this.props.showLoader()
+
+					api.submitStripeCharge(token, tutorial, tutorial.price, "tutorial", function (err, response) {
+						//				_this.props.hideLoader()
+						if (err) {
+							alert(err.message);
+							_this.setState({ showLoader: false });
+							return;
+						}
+
+						console.log("Stripe Charge: " + JSON.stringify(response));
+					});
+				});
+
+
+				if (this.props.currentUser.id == null) {
+					// show subscirbe page
+					this.setState({ authorized: false });
+					this.fetchFeaturedTutorials();
+					return;
+				}
+
+				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
+				if (index == -1) {
+					// show subscirbe page
+					this.setState({ authorized: false });
+					this.fetchFeaturedTutorials();
+					return;
+				}
+
+				var firstPost = tutorial.posts[0];
+				this.findUnit(firstPost.slug, this.fetchFeaturedTutorials());
+			},
+			writable: true,
+			configurable: true
+		},
+		showStripeModal: {
+			value: function showStripeModal(event) {
+				event.preventDefault();
+				console.log("showStripeModal: ");
+				var tutorial = this.props.tutorials[this.props.slug];
+				Stripe.showModalWithText(tutorial.title);
+			},
+			writable: true,
+			configurable: true
+		},
+		fetchFeaturedTutorials: {
+			value: function fetchFeaturedTutorials() {
+				var _this2 = this;
 				var url = "/api/tutorial";
 				api.handleGet(url, { status: "live" }, function (err, response) {
 					if (err) return;
 
 					var tutorials = response.tutorials;
-					console.log("TUTORIALS: " + JSON.stringify(tutorials));
-					_this.setState({
+					//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
+					_this2.setState({
 						tutorials: tutorials
 					});
 				});
@@ -81,7 +138,7 @@ var Tutorial = (function (Component) {
 			configurable: true
 		},
 		findUnit: {
-			value: function findUnit(postSlug) {
+			value: function findUnit(postSlug, completion) {
 				if (this.state.currentPost == postSlug) {
 					return;
 				}this.setState({ currentPost: postSlug });
@@ -96,6 +153,7 @@ var Tutorial = (function (Component) {
 
 					var posts = response.posts;
 					store.currentStore().dispatch(actions.postsRecieved(posts));
+					if (completion != null) completion();
 				});
 			},
 			writable: true,
@@ -114,7 +172,7 @@ var Tutorial = (function (Component) {
 		},
 		subscribe: {
 			value: function subscribe(event) {
-				var _this = this;
+				var _this2 = this;
 				event.preventDefault();
 				if (this.state.visitor.name.length == 0) {
 					alert("Please enter your name.");
@@ -139,7 +197,7 @@ var Tutorial = (function (Component) {
 				s.subject = "New Subscriber";
 				s.confirmation = "Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!";
 				api.handlePost("/account/subscribe", s, function (err, response) {
-					_this.setState({ showLoader: false });
+					_this2.setState({ showLoader: false });
 
 					if (err) {
 						alert(err.message);
@@ -155,83 +213,46 @@ var Tutorial = (function (Component) {
 		changeUnit: {
 			value: function changeUnit(event) {
 				event.preventDefault();
+
+				var tutorial = this.props.tutorials[this.props.slug];
+				if (tutorial.price == 0) {
+					// free
+					ReactDOM.findDOMNode(this).scrollIntoView();
+					this.findUnit(event.target.id, null);
+					return;
+				}
+
+				if (this.props.currentUser.id == null) {
+					alert("Please log in to view this tutorial.");
+					return;
+				}
+
+				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
+				if (index == -1) {
+					alert("Please subscribe to view this tutorial.");
+					return;
+				}
+
 				ReactDOM.findDOMNode(this).scrollIntoView();
-				var postSlug = event.target.id;
-				this.findUnit(postSlug);
+				this.findUnit(event.target.id, null);
 			},
 			writable: true,
 			configurable: true
 		},
 		render: {
 			value: function render() {
-				var _this = this;
+				var _this2 = this;
 				var tutorial = this.props.tutorials[this.props.slug];
-				var posts = tutorial.posts.map(function (post, i) {
-					var video = post.wistia.length == 0 ? null : React.createElement(
-						"div",
-						{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 200, width: 356, marginTop: 12 } },
-						" "
-					);
-					return React.createElement(
-						"div",
-						{ key: i, className: "entry clearfix" },
-						React.createElement(
-							"div",
-							{ className: "entry-timeline" },
-							"Unit",
-							React.createElement(
-								"span",
-								null,
-								i + 1
-							),
-							React.createElement("div", { className: "timeline-divider" })
-						),
-						React.createElement(
-							"div",
-							{ className: "panel panel-default", style: { maxWidth: 600 } },
-							React.createElement(
-								"div",
-								{ className: "panel-body", style: { padding: 36 } },
-								React.createElement(
-									"h3",
-									null,
-									React.createElement(
-										"a",
-										{ href: "/post/" + post.slug, style: { marginRight: 12 }, className: "btn btn-info" },
-										React.createElement(
-											"strong",
-											null,
-											post.title
-										)
-									)
-								),
-								React.createElement("hr", null),
-								post.description,
-								video,
-								React.createElement("br", null),
-								React.createElement("br", null),
-								"Click ",
-								React.createElement(
-									"a",
-									{ href: "/post/" + post.slug },
-									"HERE"
-								),
-								" to view full post."
-							)
-						)
-					);
-				});
-
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? "none" : "1px solid #ddd";
-					var color = post.slug == _this.state.currentPost ? "#1ABC9C" : "#86939f";
+					var color = post.slug == _this2.state.currentPost ? "#1ABC9C" : "#86939f";
 					return React.createElement(
 						"li",
 						{ key: post.id, style: { borderTop: "1px solid #ddd", padding: 6 } },
 						React.createElement(
 							"a",
-							{ id: post.slug, onClick: _this.changeUnit, href: "#top", style: { color: color } },
+							{ id: post.slug, onClick: _this2.changeUnit, href: "#", style: { color: color } },
 							i + 1,
 							". ",
 							post.title
@@ -293,6 +314,45 @@ var Tutorial = (function (Component) {
 					currentPostHtml = selectedPost.text;
 					currentPostTitle = selectedPost.title;
 				}
+
+				var content = this.state.authorized == true ? React.createElement(
+					"div",
+					{ className: "panel panel-default" },
+					React.createElement(
+						"div",
+						{ className: "panel-body", style: style.panelBody },
+						React.createElement(
+							"h2",
+							{ style: style.header },
+							currentPostTitle
+						)
+					),
+					React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(currentPostHtml) }, className: "panel-body", style: { padding: 36 } }),
+					nextUnitLink
+				) : React.createElement(
+					"div",
+					{ className: "panel panel-default" },
+					React.createElement(
+						"div",
+						{ className: "panel-body", style: style.panelBody },
+						React.createElement(
+							"h2",
+							{ style: style.header },
+							tutorial.title
+						)
+					),
+					React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(tutorial.description) }, className: "panel-body", style: { padding: 36 } }),
+					React.createElement(
+						"div",
+						{ className: "panel-body", style: style.panelBody },
+						React.createElement(
+							"a",
+							{ onClick: this.showStripeModal, href: "#", className: "button button-3d button-xlarge button-rounded button-dirtygreen" },
+							"Subscribe"
+						)
+					)
+				);
+
 
 				var featured = this.state.tutorials.map(function (tutorial, i) {
 					var price = tutorial.price == 0 ? "FREE" : "$" + tutorial.price;
@@ -412,21 +472,7 @@ var Tutorial = (function (Component) {
 											React.createElement(
 												"div",
 												{ className: "container" },
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: style.panelBody },
-														React.createElement(
-															"h2",
-															{ style: style.header },
-															currentPostTitle
-														)
-													),
-													React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(currentPostHtml) }, className: "panel-body", style: { padding: 36 } }),
-													nextUnitLink
-												),
+												content,
 												React.createElement("br", null),
 												React.createElement("br", null),
 												React.createElement(
@@ -495,4 +541,4 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Tutorial);
-//			store.currentStore().dispatch(actions.postsRecieved(posts))
+//				_this.props.showConfirmation()

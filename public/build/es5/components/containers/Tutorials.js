@@ -53,7 +53,7 @@ var Tutorials = (function (Component) {
 						return;
 					}
 
-					console.log(JSON.stringify(response));
+					//			console.log(JSON.stringify(response))
 					var tutorials = response.tutorials;
 					_this.setState({
 						tutorials: tutorials

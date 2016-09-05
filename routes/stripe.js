@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var Profile = require('../models/Profile');
-var Course = require('../models/Course');
-var Project = require('../models/Project');
-var Promise = require('bluebird');
-var EmailManager = require('../managers/EmailManager');
+var express = require('express')
+var router = express.Router()
+var Profile = require('../models/Profile')
+var Course = require('../models/Course')
+var Tutorial = require('../models/Tutorial')
+var Project = require('../models/Project')
+var Promise = require('bluebird')
+var EmailManager = require('../managers/EmailManager')
 
 
 function createProfile(profileInfo){
@@ -92,6 +93,25 @@ function findCourse(courseId){
 			}
 
 	        resolve(course)
+		})
+    })
+}
+
+function findTutorial(tutorialId){
+    return new Promise(function (resolve, reject){
+
+		Tutorial.findById(tutorialId, function(err, tutorial){
+			if (err){
+	            reject(err)
+	            return
+			}
+		
+			if (tutorial == null){
+	            reject(null)
+	            return
+			}
+
+	        resolve(tutorial)
 		})
     })
 }
@@ -214,6 +234,9 @@ router.post('/:resource', function(req, res, next) {
 			
 			if (type == 'course')
 				return findCourse(productId)
+
+			if (type == 'tutorial')
+				return findTutorial(productId)
 		})
 		.then(function(product){
 			prod = product

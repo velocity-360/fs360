@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
-import { TextUtils, api } from '../../utils'
+import { TextUtils, api, Stripe } from '../../utils'
 import { Nav } from '../../components'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
@@ -17,10 +17,13 @@ class Tutorial extends Component {
 		this.subscribe = this.subscribe.bind(this)
 		this.changeUnit = this.changeUnit.bind(this)
 		this.findUnit = this.findUnit.bind(this)
+		this.fetchFeaturedTutorials = this.fetchFeaturedTutorials.bind(this)
+		this.showStripeModal = this.showStripeModal.bind(this)
 		this.state = {
 			showLoader: false,
 			currentPost: '', // slug of the selected post
 			tutorials: [],
+			authorized: true,
 			visitor: {
 				name: '',
 				email: ''
@@ -33,25 +36,69 @@ class Tutorial extends Component {
 		if (tutorial.posts.length == 0)
 			return
 
-		const firstPost = tutorial.posts[0]
-		this.findUnit(firstPost.slug)
+		if (tutorial.price == 0){ // free
+			const firstPost = tutorial.posts[0]
+			this.findUnit(firstPost.slug, this.fetchFeaturedTutorials())
+			return
+		}
 
+		Stripe.initializeWithText(tutorial.title, (token) => {
+//			this.props.showLoader()
+
+			api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
+//				_this.props.hideLoader()
+				if (err){
+					alert(err.message)
+					_this.setState({showLoader: false})
+					return
+				}
+				
+				console.log('Stripe Charge: '+JSON.stringify(response))
+//				_this.props.showConfirmation()
+			})
+		})
+
+
+		if (this.props.currentUser.id == null){ // show subscirbe page
+			this.setState({authorized: false})
+			this.fetchFeaturedTutorials()
+			return
+		}
+
+		const index = tutorial.subscribers.indexOf(this.props.currentUser.id)
+		if (index == -1){ // show subscirbe page
+			this.setState({authorized: false})
+			this.fetchFeaturedTutorials()
+			return
+		}
+
+		const firstPost = tutorial.posts[0]
+		this.findUnit(firstPost.slug, this.fetchFeaturedTutorials())
+	}
+
+	showStripeModal(event){
+		event.preventDefault()
+		console.log('showStripeModal: ')
+		const tutorial = this.props.tutorials[this.props.slug]
+		Stripe.showModalWithText(tutorial.title)
+
+	}
+
+	fetchFeaturedTutorials() {
 		const url = '/api/tutorial'
 		api.handleGet(url, {status:'live'}, (err, response) => {
 			if (err)
 				return
 			
 			const tutorials = response.tutorials
-			console.log('TUTORIALS: '+JSON.stringify(tutorials))
+//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
 			this.setState({
 				tutorials: tutorials
 			})
-
-//			store.currentStore().dispatch(actions.postsRecieved(posts))
 		})
 	}
 
-	findUnit(postSlug){
+	findUnit(postSlug, completion){
 		if (this.state.currentPost == postSlug)
 			return
 
@@ -69,6 +116,8 @@ class Tutorial extends Component {
 			
 			const posts = response.posts
 			store.currentStore().dispatch(actions.postsRecieved(posts))
+			if (completion != null)
+				completion()
 		})
 	}
 
@@ -119,45 +168,38 @@ class Tutorial extends Component {
 
 	changeUnit(event){
 		event.preventDefault()
-		ReactDOM.findDOMNode(this).scrollIntoView()
-		const postSlug = event.target.id
-		this.findUnit(postSlug)
 
+		const tutorial = this.props.tutorials[this.props.slug]
+		if (tutorial.price == 0){ // free
+			ReactDOM.findDOMNode(this).scrollIntoView()
+			this.findUnit(event.target.id, null)
+			return
+		}
+
+		if (this.props.currentUser.id == null){
+			alert('Please log in to view this tutorial.')
+			return
+		}
+
+		const index = tutorial.subscribers.indexOf(this.props.currentUser.id)
+		if (index == -1){
+			alert('Please subscribe to view this tutorial.')
+			return
+		}
+
+		ReactDOM.findDOMNode(this).scrollIntoView()
+		this.findUnit(event.target.id, null)
 	}
 
 	render(){
 		const tutorial = this.props.tutorials[this.props.slug]
-		const posts = tutorial.posts.map((post, i) => {
-			const video = (post.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:200, width:356, marginTop:12}}>&nbsp;</div>
-			return (
-				<div key={i} className="entry clearfix">
-					<div className="entry-timeline">
-						Unit<span>{i+1}</span>
-						<div className="timeline-divider"></div>
-					</div>
-					<div className="panel panel-default" style={{maxWidth:600}}>
-						<div className="panel-body" style={{padding:36}}>
-							<h3>
-								<a href={'/post/'+post.slug} style={{marginRight:12}} className="btn btn-info"><strong>{post.title}</strong></a>
-							</h3>
-							<hr />
-							{post.description}
-							{video}
-							<br /><br />
-							Click <a href={'/post/'+post.slug}>HERE</a> to view full post.
-						</div>
-					</div>
-				</div>
-			)
-		})
-
 		const units = tutorial.posts
 		const sidebar = units.map((post, i) => {
 			const borderTop = (i==0) ? 'none' : '1px solid #ddd'
 			var color = (post.slug == this.state.currentPost) ? '#1ABC9C' : '#86939f'
 			return (
 				<li key={post.id} style={{borderTop:'1px solid #ddd', padding:6}}>
-					<a id={post.slug} onClick={this.changeUnit} href="#top" style={{color:color}}>{i+1}. {post.title}</a>
+					<a id={post.slug} onClick={this.changeUnit} href="#" style={{color:color}}>{i+1}. {post.title}</a>
 				</li>				
 			)
 		})
@@ -201,6 +243,30 @@ class Tutorial extends Component {
 			currentPostTitle = selectedPost.title
 		}
 
+		const content = (this.state.authorized == true) ?
+		(
+			<div className="panel panel-default">
+				<div className="panel-body" style={style.panelBody}>
+					<h2 style={style.header}>{currentPostTitle}</h2>
+				</div>
+				<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(currentPostHtml) }} className="panel-body" style={{padding:36}}></div>
+				{nextUnitLink}
+			</div>
+		)
+		:
+		(
+			<div className="panel panel-default">
+				<div className="panel-body" style={style.panelBody}>
+					<h2 style={style.header}>{tutorial.title}</h2>
+				</div>
+				<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }} className="panel-body" style={{padding:36}}></div>
+				<div className="panel-body" style={style.panelBody}>
+					<a onClick={this.showStripeModal} href="#" className="button button-3d button-xlarge button-rounded button-dirtygreen">Subscribe</a>				
+				</div>
+			</div>
+		)
+
+
 		const featured = this.state.tutorials.map((tutorial, i) => {
 			const price = (tutorial.price == 0) ? 'FREE' : '$'+tutorial.price
 			return (
@@ -222,7 +288,7 @@ class Tutorial extends Component {
 			)
 		})
 
-		return(
+		return (
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
 
@@ -262,24 +328,13 @@ class Tutorial extends Component {
 
 									<article id="misc" className="overview" style={style.article}>
 										<div className="container">
-											<div className="panel panel-default">
-												<div className="panel-body" style={style.panelBody}>
-													<h2 style={style.header}>{currentPostTitle}</h2>
-												</div>
-
-												<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(currentPostHtml) }} className="panel-body" style={{padding:36}}></div>
-												{nextUnitLink}
-											</div>
-
+											{content}
 											<br /><br />
-
 											<div className="panel panel-default">
 												<div className="panel-body" style={style.panelBody}>
 													<h2 style={style.header}>Featured Tutorials</h2>
 													<hr />
-
 													{featured}
-
 												</div>
 											</div>
 

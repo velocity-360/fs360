@@ -29,7 +29,8 @@ class Nav extends Component {
 	}
 
 	render(){
-		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
+//		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
+		var login = (this.props.currentUser.id == null) ? null : <li><a href="#"><div className="user" style={{padding:4}}>Welcome {this.props.currentUser.firstName.toUpperCase()}</div></a></li>
 		const headerStyle = (this.props.headerStyle == 'dark') ? 'full-header dark sticky-style-1' : 'transparent-header page-section dark'
 
 		const immersive = this.props.courses.map((course, i) => {
@@ -58,7 +59,6 @@ class Nav extends Component {
 
 
 		return (
-
 	        <header id="header" className={headerStyle}>
 	            <div id="header-wrap">
 	                <div className="container clearfix">
@@ -85,7 +85,7 @@ class Nav extends Component {
 									</ul>
 								</li>
 	                            <li><a href="https://www.velocity360.io/tutorials"><div style={{padding:4}}>Tutorials</div></a></li>
-	                            
+	                            {login}
 	                        </ul>
 	                    </nav>
 	                </div>

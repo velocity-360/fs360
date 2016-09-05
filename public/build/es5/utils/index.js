@@ -8,11 +8,14 @@ var TextUtils = _interopRequire(require("../utils/TextUtils"));
 
 var DateUtils = _interopRequire(require("../utils/DateUtils"));
 
+var Stripe = _interopRequire(require("../utils/StripeUtils"));
+
 var TrackingManager = _interopRequire(require("../utils/TrackingManager"));
 
 exports.api = api;
 exports.TextUtils = TextUtils;
 exports.DateUtils = DateUtils;
+exports.Stripe = Stripe;
 exports.TrackingManager = TrackingManager;
 Object.defineProperty(exports, "__esModule", {
 	value: true

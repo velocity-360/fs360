@@ -62,28 +62,18 @@ var Nav = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var login = this.props.currentUser.id == null ? React.createElement(
+				//		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
+				var login = this.props.currentUser.id == null ? null : React.createElement(
 					"li",
 					null,
 					React.createElement(
 						"a",
-						{ onClick: this.openModal, href: "#" },
-						React.createElement(
-							"div",
-							{ className: "login", style: { padding: 4 } },
-							"Login"
-						)
-					)
-				) : React.createElement(
-					"li",
-					null,
-					React.createElement(
-						"a",
-						{ href: "/account" },
+						{ href: "#" },
 						React.createElement(
 							"div",
 							{ className: "user", style: { padding: 4 } },
-							this.props.currentUser.firstName
+							"Welcome ",
+							this.props.currentUser.firstName.toUpperCase()
 						)
 					)
 				);
@@ -230,7 +220,8 @@ var Nav = (function (Component) {
 												"Tutorials"
 											)
 										)
-									)
+									),
+									login
 								)
 							)
 						)

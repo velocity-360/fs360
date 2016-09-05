@@ -148,7 +148,7 @@ export default {
 		})
 	},	
 
-	submitStripeCharge: function(token, product, amt, type, completion){
+	submitStripeCharge: (token, product, amt, type, completion) => {
 		var body = {
 			stripeToken: token.id,
 			email: token.email,

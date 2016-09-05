@@ -42734,28 +42734,18 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var login = this.props.currentUser.id == null ? _react2.default.createElement(
+				//		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
+				var login = this.props.currentUser.id == null ? null : _react2.default.createElement(
 					'li',
 					null,
 					_react2.default.createElement(
 						'a',
-						{ onClick: this.openModal, href: '#' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'login', style: { padding: 4 } },
-							'Login'
-						)
-					)
-				) : _react2.default.createElement(
-					'li',
-					null,
-					_react2.default.createElement(
-						'a',
-						{ href: '/account' },
+						{ href: '#' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'user', style: { padding: 4 } },
-							this.props.currentUser.firstName
+							'Welcome ',
+							this.props.currentUser.firstName.toUpperCase()
 						)
 					)
 				);
@@ -42901,7 +42891,8 @@
 												'Tutorials'
 											)
 										)
-									)
+									),
+									login
 								)
 							)
 						)
@@ -46155,7 +46146,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.TrackingManager = exports.DateUtils = exports.TextUtils = exports.api = undefined;
+	exports.TrackingManager = exports.Stripe = exports.DateUtils = exports.TextUtils = exports.api = undefined;
 	
 	var _APIManager = __webpack_require__(472);
 	
@@ -46169,6 +46160,10 @@
 	
 	var _DateUtils2 = _interopRequireDefault(_DateUtils);
 	
+	var _StripeUtils = __webpack_require__(595);
+	
+	var _StripeUtils2 = _interopRequireDefault(_StripeUtils);
+	
 	var _TrackingManager = __webpack_require__(592);
 	
 	var _TrackingManager2 = _interopRequireDefault(_TrackingManager);
@@ -46178,6 +46173,7 @@
 	exports.api = _APIManager2.default;
 	exports.TextUtils = _TextUtils2.default;
 	exports.DateUtils = _DateUtils2.default;
+	exports.Stripe = _StripeUtils2.default;
 	exports.TrackingManager = _TrackingManager2.default;
 
 /***/ },
@@ -60996,15 +60992,15 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	var cbk;
+	var stripeHandler;
+	
 	exports.default = {
 	
-		handler: null,
-		callback: null,
-	
 		initialize: function initialize(completion) {
-			this.callback = completion;
-			var _this = this;
-			this.handler = StripeCheckout.configure({
+			cbk = completion;
+			//		var _this = this
+			stripeHandler = StripeCheckout.configure({
 				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
 				image: '/images/logo_round_blue_260.png',
 				address: true,
@@ -61012,15 +61008,14 @@
 				panelLabel: 'Premium: $19.99/month',
 				token: function token(_token) {
 					// You can access the token ID with `token.id`
-					_this.callback(_token);
+					cbk(_token);
 				}
 			});
 		},
 	
 		initializeWithText: function initializeWithText(text, completion) {
-			this.callback = completion;
-			var _this = this;
-			this.handler = StripeCheckout.configure({
+			cbk = completion;
+			stripeHandler = StripeCheckout.configure({
 				key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
 				image: '/images/logo_round_blue_260.png',
 				address: true,
@@ -61028,23 +61023,37 @@
 				panelLabel: text,
 				token: function token(_token2) {
 					// You can access the token ID with `token.id`
-					_this.callback(_token2);
+					cbk(_token2);
 				}
 			});
 		},
 	
 		showModal: function showModal() {
-			this.handler.open({
+			if (stripeHandler == null) return;
+	
+			stripeHandler.open({
 				name: 'Velocity 360',
 				description: 'Premium Subscription'
 			});
+	
+			// this.handler.open({
+			//  name: 'Velocity 360',
+			//  description: 'Premium Subscription'
+			// });		
 		},
 	
 		showModalWithText: function showModalWithText(text) {
-			this.handler.open({
+			if (stripeHandler == null) return;
+	
+			stripeHandler.open({
 				name: 'Velocity 360',
 				description: text
 			});
+	
+			// this.handler.open({
+			//  name: 'Velocity 360',
+			//  description: text
+			// });		
 		}
 	
 	};
@@ -63277,7 +63286,7 @@
 						return;
 					}
 	
-					console.log(JSON.stringify(response));
+					//			console.log(JSON.stringify(response))
 					var tutorials = response.tutorials;
 					_this2.setState({
 						tutorials: tutorials
@@ -63438,51 +63447,101 @@
 		function Tutorial(props, context) {
 			_classCallCheck(this, Tutorial);
 	
-			var _this = _possibleConstructorReturn(this, (Tutorial.__proto__ || Object.getPrototypeOf(Tutorial)).call(this, props, context));
+			var _this2 = _possibleConstructorReturn(this, (Tutorial.__proto__ || Object.getPrototypeOf(Tutorial)).call(this, props, context));
 	
-			_this.updateVisitor = _this.updateVisitor.bind(_this);
-			_this.subscribe = _this.subscribe.bind(_this);
-			_this.changeUnit = _this.changeUnit.bind(_this);
-			_this.findUnit = _this.findUnit.bind(_this);
-			_this.state = {
+			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
+			_this2.subscribe = _this2.subscribe.bind(_this2);
+			_this2.changeUnit = _this2.changeUnit.bind(_this2);
+			_this2.findUnit = _this2.findUnit.bind(_this2);
+			_this2.fetchFeaturedTutorials = _this2.fetchFeaturedTutorials.bind(_this2);
+			_this2.showStripeModal = _this2.showStripeModal.bind(_this2);
+			_this2.state = {
 				showLoader: false,
 				currentPost: '', // slug of the selected post
 				tutorials: [],
+				authorized: true,
 				visitor: {
 					name: '',
 					email: ''
 				}
 			};
-			return _this;
+			return _this2;
 		}
 	
 		_createClass(Tutorial, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this2 = this;
-	
 				var tutorial = this.props.tutorials[this.props.slug];
 				if (tutorial.posts.length == 0) return;
 	
+				if (tutorial.price == 0) {
+					// free
+					var _firstPost = tutorial.posts[0];
+					this.findUnit(_firstPost.slug, this.fetchFeaturedTutorials());
+					return;
+				}
+	
+				_utils.Stripe.initializeWithText(tutorial.title, function (token) {
+					//			this.props.showLoader()
+	
+					_utils.api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', function (err, response) {
+						//				_this.props.hideLoader()
+						if (err) {
+							alert(err.message);
+							_this.setState({ showLoader: false });
+							return;
+						}
+	
+						console.log('Stripe Charge: ' + JSON.stringify(response));
+						//				_this.props.showConfirmation()
+					});
+				});
+	
+				if (this.props.currentUser.id == null) {
+					// show subscirbe page
+					this.setState({ authorized: false });
+					this.fetchFeaturedTutorials();
+					return;
+				}
+	
+				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
+				if (index == -1) {
+					// show subscirbe page
+					this.setState({ authorized: false });
+					this.fetchFeaturedTutorials();
+					return;
+				}
+	
 				var firstPost = tutorial.posts[0];
-				this.findUnit(firstPost.slug);
+				this.findUnit(firstPost.slug, this.fetchFeaturedTutorials());
+			}
+		}, {
+			key: 'showStripeModal',
+			value: function showStripeModal(event) {
+				event.preventDefault();
+				console.log('showStripeModal: ');
+				var tutorial = this.props.tutorials[this.props.slug];
+				_utils.Stripe.showModalWithText(tutorial.title);
+			}
+		}, {
+			key: 'fetchFeaturedTutorials',
+			value: function fetchFeaturedTutorials() {
+				var _this3 = this;
 	
 				var url = '/api/tutorial';
 				_utils.api.handleGet(url, { status: 'live' }, function (err, response) {
 					if (err) return;
 	
 					var tutorials = response.tutorials;
-					console.log('TUTORIALS: ' + JSON.stringify(tutorials));
-					_this2.setState({
+					//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
+					_this3.setState({
 						tutorials: tutorials
 					});
-	
-					//			store.currentStore().dispatch(actions.postsRecieved(posts))
 				});
 			}
 		}, {
 			key: 'findUnit',
-			value: function findUnit(postSlug) {
+			value: function findUnit(postSlug, completion) {
 				if (this.state.currentPost == postSlug) return;
 	
 				this.setState({ currentPost: postSlug });
@@ -63497,6 +63556,7 @@
 	
 					var posts = response.posts;
 					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(posts));
+					if (completion != null) completion();
 				});
 			}
 		}, {
@@ -63511,7 +63571,7 @@
 		}, {
 			key: 'subscribe',
 			value: function subscribe(event) {
-				var _this3 = this;
+				var _this4 = this;
 	
 				event.preventDefault();
 				if (this.state.visitor.name.length == 0) {
@@ -63537,7 +63597,7 @@
 				s['subject'] = 'New Subscriber';
 				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
 				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
-					_this3.setState({ showLoader: false });
+					_this4.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);
@@ -63551,82 +63611,45 @@
 			key: 'changeUnit',
 			value: function changeUnit(event) {
 				event.preventDefault();
+	
+				var tutorial = this.props.tutorials[this.props.slug];
+				if (tutorial.price == 0) {
+					// free
+					_reactDom2.default.findDOMNode(this).scrollIntoView();
+					this.findUnit(event.target.id, null);
+					return;
+				}
+	
+				if (this.props.currentUser.id == null) {
+					alert('Please log in to view this tutorial.');
+					return;
+				}
+	
+				var index = tutorial.subscribers.indexOf(this.props.currentUser.id);
+				if (index == -1) {
+					alert('Please subscribe to view this tutorial.');
+					return;
+				}
+	
 				_reactDom2.default.findDOMNode(this).scrollIntoView();
-				var postSlug = event.target.id;
-				this.findUnit(postSlug);
+				this.findUnit(event.target.id, null);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var _this4 = this;
+				var _this5 = this;
 	
 				var tutorial = this.props.tutorials[this.props.slug];
-				var posts = tutorial.posts.map(function (post, i) {
-					var video = post.wistia.length == 0 ? null : _react2.default.createElement(
-						'div',
-						{ className: 'wistia_embed wistia_async_' + post.wistia + ' videoFoam=true', style: { height: 200, width: 356, marginTop: 12 } },
-						' '
-					);
-					return _react2.default.createElement(
-						'div',
-						{ key: i, className: 'entry clearfix' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'entry-timeline' },
-							'Unit',
-							_react2.default.createElement(
-								'span',
-								null,
-								i + 1
-							),
-							_react2.default.createElement('div', { className: 'timeline-divider' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel panel-default', style: { maxWidth: 600 } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'panel-body', style: { padding: 36 } },
-								_react2.default.createElement(
-									'h3',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ href: '/post/' + post.slug, style: { marginRight: 12 }, className: 'btn btn-info' },
-										_react2.default.createElement(
-											'strong',
-											null,
-											post.title
-										)
-									)
-								),
-								_react2.default.createElement('hr', null),
-								post.description,
-								video,
-								_react2.default.createElement('br', null),
-								_react2.default.createElement('br', null),
-								'Click ',
-								_react2.default.createElement(
-									'a',
-									{ href: '/post/' + post.slug },
-									'HERE'
-								),
-								' to view full post.'
-							)
-						)
-					);
-				});
-	
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? 'none' : '1px solid #ddd';
-					var color = post.slug == _this4.state.currentPost ? '#1ABC9C' : '#86939f';
+					var color = post.slug == _this5.state.currentPost ? '#1ABC9C' : '#86939f';
 					return _react2.default.createElement(
 						'li',
 						{ key: post.id, style: { borderTop: '1px solid #ddd', padding: 6 } },
 						_react2.default.createElement(
 							'a',
-							{ id: post.slug, onClick: _this4.changeUnit, href: '#top', style: { color: color } },
+							{ id: post.slug, onClick: _this5.changeUnit, href: '#', style: { color: color } },
 							i + 1,
 							'. ',
 							post.title
@@ -63688,6 +63711,44 @@
 					currentPostHtml = selectedPost.text;
 					currentPostTitle = selectedPost.title;
 				}
+	
+				var content = this.state.authorized == true ? _react2.default.createElement(
+					'div',
+					{ className: 'panel panel-default' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'panel-body', style: style.panelBody },
+						_react2.default.createElement(
+							'h2',
+							{ style: style.header },
+							currentPostTitle
+						)
+					),
+					_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(currentPostHtml) }, className: 'panel-body', style: { padding: 36 } }),
+					nextUnitLink
+				) : _react2.default.createElement(
+					'div',
+					{ className: 'panel panel-default' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'panel-body', style: style.panelBody },
+						_react2.default.createElement(
+							'h2',
+							{ style: style.header },
+							tutorial.title
+						)
+					),
+					_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(tutorial.description) }, className: 'panel-body', style: { padding: 36 } }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'panel-body', style: style.panelBody },
+						_react2.default.createElement(
+							'a',
+							{ onClick: this.showStripeModal, href: '#', className: 'button button-3d button-xlarge button-rounded button-dirtygreen' },
+							'Subscribe'
+						)
+					)
+				);
 	
 				var featured = this.state.tutorials.map(function (tutorial, i) {
 					var price = tutorial.price == 0 ? 'FREE' : '$' + tutorial.price;
@@ -63807,21 +63868,7 @@
 											_react2.default.createElement(
 												'div',
 												{ className: 'container' },
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: style.panelBody },
-														_react2.default.createElement(
-															'h2',
-															{ style: style.header },
-															currentPostTitle
-														)
-													),
-													_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(currentPostHtml) }, className: 'panel-body', style: { padding: 36 } }),
-													nextUnitLink
-												),
+												content,
 												_react2.default.createElement('br', null),
 												_react2.default.createElement('br', null),
 												_react2.default.createElement(

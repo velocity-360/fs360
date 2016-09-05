@@ -20,7 +20,7 @@ class Tutorials extends Component {
 				return
 			}
 
-			console.log(JSON.stringify(response))
+//			console.log(JSON.stringify(response))
 			const tutorials = response.tutorials
 			this.setState({
 				tutorials: tutorials
