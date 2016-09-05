@@ -63565,7 +63565,6 @@
 					if (err) return;
 	
 					var tutorials = response.tutorials;
-					//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
 					_this3.setState({
 						tutorials: tutorials
 					});
@@ -63777,7 +63776,8 @@
 						_react2.default.createElement(
 							'a',
 							{ onClick: this.showStripeModal, href: '#', className: 'button button-3d button-xlarge button-rounded button-dirtygreen' },
-							'Subscribe'
+							'Subscribe, $',
+							tutorial.price
 						)
 					)
 				);

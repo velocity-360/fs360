@@ -142,7 +142,6 @@ var Tutorial = (function (Component) {
 					if (err) return;
 
 					var tutorials = response.tutorials;
-					//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
 					_this.setState({
 						tutorials: tutorials
 					});
@@ -362,7 +361,8 @@ var Tutorial = (function (Component) {
 						React.createElement(
 							"a",
 							{ onClick: this.showStripeModal, href: "#", className: "button button-3d button-xlarge button-rounded button-dirtygreen" },
-							"Subscribe"
+							"Subscribe, $",
+							tutorial.price
 						)
 					)
 				);

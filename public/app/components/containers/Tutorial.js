@@ -99,7 +99,6 @@ class Tutorial extends Component {
 				return
 			
 			const tutorials = response.tutorials
-//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
 			this.setState({
 				tutorials: tutorials
 			})
@@ -269,7 +268,7 @@ class Tutorial extends Component {
 				</div>
 				<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }} className="panel-body" style={{padding:36}}></div>
 				<div className="panel-body" style={style.panelBody}>
-					<a onClick={this.showStripeModal} href="#" className="button button-3d button-xlarge button-rounded button-dirtygreen">Subscribe</a>				
+					<a onClick={this.showStripeModal} href="#" className="button button-3d button-xlarge button-rounded button-dirtygreen">Subscribe, ${tutorial.price}</a>				
 				</div>
 			</div>
 		)
