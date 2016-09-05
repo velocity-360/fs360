@@ -83,6 +83,7 @@ var Login = (function (Component) {
 		},
 		login: {
 			value: function login(event) {
+				var _this = this;
 				event.preventDefault();
 
 				var missingValue = this.validate(this.state.credentials);
@@ -92,7 +93,6 @@ var Login = (function (Component) {
 				}
 
 				this.setState({ showLoader: true });
-				var _this = this;
 				api.handlePost("/account/login", this.state.credentials, function (err, response) {
 					if (err) {
 						alert(err.message);
@@ -100,10 +100,10 @@ var Login = (function (Component) {
 						return;
 					}
 
-					if (_this.props.redirect != null) {
-						window.location.href = "/account";
-						return;
-					}
+					// if (this.props.redirect != null){
+					// 	window.location.href = '/account'
+					// 	return
+					// }
 
 					store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
 					_this.props.hide();

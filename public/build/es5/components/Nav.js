@@ -62,8 +62,19 @@ var Nav = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				//		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
-				var login = this.props.currentUser.id == null ? null : React.createElement(
+				var login = this.props.currentUser.id == null ? React.createElement(
+					"li",
+					null,
+					React.createElement(
+						"a",
+						{ onClick: this.openModal, href: "#" },
+						React.createElement(
+							"div",
+							{ className: "login", style: { padding: 4 } },
+							"Login"
+						)
+					)
+				) : React.createElement(
 					"li",
 					null,
 					React.createElement(
@@ -72,11 +83,11 @@ var Nav = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "user", style: { padding: 4 } },
-							"Welcome ",
-							this.props.currentUser.firstName.toUpperCase()
+							this.props.currentUser.firstName
 						)
 					)
 				);
+				//		var login = (this.props.currentUser.id == null) ? null : <li><a href="#"><div className="user" style={{padding:4}}>Welcome {this.props.currentUser.firstName.toUpperCase()}</div></a></li>
 				var headerStyle = this.props.headerStyle == "dark" ? "full-header dark sticky-style-1" : "transparent-header page-section dark";
 
 				var immersive = this.props.courses.map(function (course, i) {

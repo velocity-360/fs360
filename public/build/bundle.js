@@ -42735,8 +42735,19 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				//		var login = (this.props.currentUser.id == null) ? <li><a onClick={this.openModal} href="#"><div className="login" style={{padding:4}}>Login</div></a></li> : <li><a href="/account"><div className="user" style={{padding:4}}>{this.props.currentUser.firstName}</div></a></li>
-				var login = this.props.currentUser.id == null ? null : _react2.default.createElement(
+				var login = this.props.currentUser.id == null ? _react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ onClick: this.openModal, href: '#' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'login', style: { padding: 4 } },
+							'Login'
+						)
+					)
+				) : _react2.default.createElement(
 					'li',
 					null,
 					_react2.default.createElement(
@@ -42745,11 +42756,11 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'user', style: { padding: 4 } },
-							'Welcome ',
-							this.props.currentUser.firstName.toUpperCase()
+							this.props.currentUser.firstName
 						)
 					)
 				);
+				//		var login = (this.props.currentUser.id == null) ? null : <li><a href="#"><div className="user" style={{padding:4}}>Welcome {this.props.currentUser.firstName.toUpperCase()}</div></a></li>
 				var headerStyle = this.props.headerStyle == 'dark' ? 'full-header dark sticky-style-1' : 'transparent-header page-section dark';
 	
 				var immersive = this.props.courses.map(function (course, i) {
@@ -43122,20 +43133,20 @@
 		function Login(props, context) {
 			_classCallCheck(this, Login);
 	
-			var _this2 = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props, context));
 	
-			_this2.hide = _this2.hide.bind(_this2);
-			_this2.login = _this2.login.bind(_this2);
-			_this2.validate = _this2.validate.bind(_this2);
-			_this2.updateCredentials = _this2.updateCredentials.bind(_this2);
-			_this2.state = {
+			_this.hide = _this.hide.bind(_this);
+			_this.login = _this.login.bind(_this);
+			_this.validate = _this.validate.bind(_this);
+			_this.updateCredentials = _this.updateCredentials.bind(_this);
+			_this.state = {
 				showLoader: false,
 				credentials: {
 					email: '',
 					password: ''
 				}
 			};
-			return _this2;
+			return _this;
 		}
 	
 		_createClass(Login, [{
@@ -43166,6 +43177,8 @@
 		}, {
 			key: 'login',
 			value: function login(event) {
+				var _this2 = this;
+	
 				event.preventDefault();
 	
 				var missingValue = this.validate(this.state.credentials);
@@ -43175,22 +43188,21 @@
 				}
 	
 				this.setState({ showLoader: true });
-				var _this = this;
 				_APIManager2.default.handlePost('/account/login', this.state.credentials, function (err, response) {
 					if (err) {
 						alert(err.message);
-						_this.setState({ showLoader: false });
+						_this2.setState({ showLoader: false });
 						return;
 					}
 	
-					if (_this.props.redirect != null) {
-						window.location.href = '/account';
-						return;
-					}
+					// if (this.props.redirect != null){
+					// 	window.location.href = '/account'
+					// 	return
+					// }
 	
 					_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
-					_this.props.hide();
-					_this.setState({ showLoader: false });
+					_this2.props.hide();
+					_this2.setState({ showLoader: false });
 				});
 			}
 		}, {

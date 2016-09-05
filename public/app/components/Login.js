@@ -56,22 +56,21 @@ class Login extends Component {
 		}
 
 		this.setState({showLoader: true})
-		var _this = this
-		api.handlePost('/account/login', this.state.credentials, function(err, response){
+		api.handlePost('/account/login', this.state.credentials, (err, response) => {
 			if (err){
 				alert(err.message)
-				_this.setState({showLoader: false})
+				this.setState({showLoader: false})
 				return
 			}
 
-			if (_this.props.redirect != null){
-				window.location.href = '/account'
-				return
-			}
+			// if (this.props.redirect != null){
+			// 	window.location.href = '/account'
+			// 	return
+			// }
 
 			store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
-			_this.props.hide()
-			_this.setState({showLoader: false})
+			this.props.hide()
+			this.setState({showLoader: false})
 		})
 	}
 
