@@ -6,8 +6,8 @@ https://github.com/krawaller/riastart2015
 
 */
 
-var constants = require('../constants/constants');
-var store = require('../stores/store');
+var constants = require('../constants/constants')
+var store = require('../stores/store')
 
 module.exports = {
 	reset: function(){
@@ -17,7 +17,7 @@ module.exports = {
 		};
 	},
 
-	currentUserRecieved: function(user){
+	currentUserRecieved: (user) => {
 		return {
 			type:constants.CURRENT_USER_RECIEVED,
 			currentUser: user
@@ -112,6 +112,12 @@ module.exports = {
 		};
 	},
 
+	tutorialsReceived: (tutorials) => {
+		return {
+			type: constants.TUTORIALS_RECIEVED,
+			tutorials: tutorials
+		}
+	}
 
 	// duckDown: function(who){
 	// 	// here we take advantage of Redux-thunk; instead of returning an object describing an action,

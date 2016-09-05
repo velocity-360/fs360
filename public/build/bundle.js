@@ -23521,7 +23521,8 @@
 				var newState = Object.assign({}, state);
 				var c = action.tutorials;
 				newState['tutorialArray'] = c;
-				var tutorialMap = {};
+	
+				var tutorialMap = Object.assign({}, newState.tutorials);
 				for (var i = 0; i < c.length; i++) {
 					var tutorial = c[i];
 					tutorialMap[tutorial.slug] = tutorial;
@@ -43039,8 +43040,37 @@
 				type: constants.UNIT_RECEIVED,
 				unit: unit
 			};
+		},
+	
+		tutorialsReceived: function tutorialsReceived(tutorials) {
+			return {
+				type: constants.TUTORIALS_RECIEVED,
+				tutorials: tutorials
+			};
 		}
 	
+		// duckDown: function(who){
+		// 	// here we take advantage of Redux-thunk; instead of returning an object describing an action,
+		// 	// we return a function that takes dispatch and getState as arguments. This function can then
+		// 	// invoke dispatch, now or later using setTimeout or similar.
+	
+		// 	return function(dispatch, getState){
+		// 		dispatch({type:constants.DUCK_DOWN, coward:who});
+		// 		setTimeout(function(){
+		// 			dispatch({type:constants.STAND_UP, coward:who});
+		// 		},2000);
+		// 	}
+		// },
+	
+		// aimAt: function(killer,victim){
+		// 	// Another async action using the Redux-thunk syntax
+		// 	return function(dispatch,getState){
+		// 		dispatch({type:constants.AIM_AT, killer:killer, victim:victim});
+		// 		setTimeout(function(){
+		// 			dispatch({type:constants.KILL_HERO, killer:killer, victim:victim});
+		// 		},2000);
+		// 	};
+		// }
 	};
 
 /***/ },
@@ -63447,15 +63477,15 @@
 		function Tutorial(props, context) {
 			_classCallCheck(this, Tutorial);
 	
-			var _this2 = _possibleConstructorReturn(this, (Tutorial.__proto__ || Object.getPrototypeOf(Tutorial)).call(this, props, context));
+			var _this = _possibleConstructorReturn(this, (Tutorial.__proto__ || Object.getPrototypeOf(Tutorial)).call(this, props, context));
 	
-			_this2.updateVisitor = _this2.updateVisitor.bind(_this2);
-			_this2.subscribe = _this2.subscribe.bind(_this2);
-			_this2.changeUnit = _this2.changeUnit.bind(_this2);
-			_this2.findUnit = _this2.findUnit.bind(_this2);
-			_this2.fetchFeaturedTutorials = _this2.fetchFeaturedTutorials.bind(_this2);
-			_this2.showStripeModal = _this2.showStripeModal.bind(_this2);
-			_this2.state = {
+			_this.updateVisitor = _this.updateVisitor.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
+			_this.changeUnit = _this.changeUnit.bind(_this);
+			_this.findUnit = _this.findUnit.bind(_this);
+			_this.fetchFeaturedTutorials = _this.fetchFeaturedTutorials.bind(_this);
+			_this.showStripeModal = _this.showStripeModal.bind(_this);
+			_this.state = {
 				showLoader: false,
 				currentPost: '', // slug of the selected post
 				tutorials: [],
@@ -63465,12 +63495,14 @@
 					email: ''
 				}
 			};
-			return _this2;
+			return _this;
 		}
 	
 		_createClass(Tutorial, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				var _this2 = this;
+	
 				var tutorial = this.props.tutorials[this.props.slug];
 				if (tutorial.posts.length == 0) return;
 	
@@ -63481,18 +63513,21 @@
 					return;
 				}
 	
-				_utils.Stripe.initializeWithText(tutorial.title, function (token) {
-					//			this.props.showLoader()
+				var text = 'Subscribe - $' + tutorial.price;
+				_utils.Stripe.initializeWithText(text, function (token) {
+					_this2.setState({ showLoader: true });
 	
 					_utils.api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', function (err, response) {
-						//				_this.props.hideLoader()
 						if (err) {
 							alert(err.message);
-							_this.setState({ showLoader: false });
+							_this2.setState({ showLoader: false });
 							return;
 						}
 	
 						console.log('Stripe Charge: ' + JSON.stringify(response));
+						_store2.default.currentStore().dispatch(_actions2.default.currentUserRecieved(response.profile));
+						_store2.default.currentStore().dispatch(_actions2.default.tutorialsReceived([response.tutorial]));
+	
 						//				_this.props.showConfirmation()
 					});
 				});
@@ -63519,7 +63554,6 @@
 			key: 'showStripeModal',
 			value: function showStripeModal(event) {
 				event.preventDefault();
-				console.log('showStripeModal: ');
 				var tutorial = this.props.tutorials[this.props.slug];
 				_utils.Stripe.showModalWithText(tutorial.title);
 			}

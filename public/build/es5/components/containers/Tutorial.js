@@ -63,6 +63,7 @@ var Tutorial = (function (Component) {
 	_prototypeProperties(Tutorial, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
+				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
 				if (tutorial.posts.length == 0) {
 					return;
@@ -73,11 +74,11 @@ var Tutorial = (function (Component) {
 					return;
 				}
 
-				Stripe.initializeWithText(tutorial.title, function (token) {
-					//			this.props.showLoader()
+				var text = "Subscribe - $" + tutorial.price;
+				Stripe.initializeWithText(text, function (token) {
+					_this.setState({ showLoader: true });
 
 					api.submitStripeCharge(token, tutorial, tutorial.price, "tutorial", function (err, response) {
-						//				_this.props.hideLoader()
 						if (err) {
 							alert(err.message);
 							_this.setState({ showLoader: false });
@@ -85,6 +86,8 @@ var Tutorial = (function (Component) {
 						}
 
 						console.log("Stripe Charge: " + JSON.stringify(response));
+						store.currentStore().dispatch(actions.currentUserRecieved(response.profile));
+						store.currentStore().dispatch(actions.tutorialsReceived([response.tutorial]));
 					});
 				});
 
@@ -113,7 +116,6 @@ var Tutorial = (function (Component) {
 		showStripeModal: {
 			value: function showStripeModal(event) {
 				event.preventDefault();
-				console.log("showStripeModal: ");
 				var tutorial = this.props.tutorials[this.props.slug];
 				Stripe.showModalWithText(tutorial.title);
 			},
@@ -122,14 +124,14 @@ var Tutorial = (function (Component) {
 		},
 		fetchFeaturedTutorials: {
 			value: function fetchFeaturedTutorials() {
-				var _this2 = this;
+				var _this = this;
 				var url = "/api/tutorial";
 				api.handleGet(url, { status: "live" }, function (err, response) {
 					if (err) return;
 
 					var tutorials = response.tutorials;
 					//			console.log('TUTORIALS: '+JSON.stringify(tutorials))
-					_this2.setState({
+					_this.setState({
 						tutorials: tutorials
 					});
 				});
@@ -172,7 +174,7 @@ var Tutorial = (function (Component) {
 		},
 		subscribe: {
 			value: function subscribe(event) {
-				var _this2 = this;
+				var _this = this;
 				event.preventDefault();
 				if (this.state.visitor.name.length == 0) {
 					alert("Please enter your name.");
@@ -197,7 +199,7 @@ var Tutorial = (function (Component) {
 				s.subject = "New Subscriber";
 				s.confirmation = "Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!";
 				api.handlePost("/account/subscribe", s, function (err, response) {
-					_this2.setState({ showLoader: false });
+					_this.setState({ showLoader: false });
 
 					if (err) {
 						alert(err.message);
@@ -241,18 +243,18 @@ var Tutorial = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var _this2 = this;
+				var _this = this;
 				var tutorial = this.props.tutorials[this.props.slug];
 				var units = tutorial.posts;
 				var sidebar = units.map(function (post, i) {
 					var borderTop = i == 0 ? "none" : "1px solid #ddd";
-					var color = post.slug == _this2.state.currentPost ? "#1ABC9C" : "#86939f";
+					var color = post.slug == _this.state.currentPost ? "#1ABC9C" : "#86939f";
 					return React.createElement(
 						"li",
 						{ key: post.id, style: { borderTop: "1px solid #ddd", padding: 6 } },
 						React.createElement(
 							"a",
-							{ id: post.slug, onClick: _this2.changeUnit, href: "#", style: { color: color } },
+							{ id: post.slug, onClick: _this.changeUnit, href: "#", style: { color: color } },
 							i + 1,
 							". ",
 							post.title

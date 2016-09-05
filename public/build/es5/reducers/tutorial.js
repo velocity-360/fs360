@@ -15,7 +15,8 @@ module.exports = function (_x, action) {
 			var newState = Object.assign({}, state);
 			var c = action.tutorials;
 			newState.tutorialArray = c;
-			var tutorialMap = {};
+
+			var tutorialMap = Object.assign({}, newState.tutorials);
 			for (var i = 0; i < c.length; i++) {
 				var tutorial = c[i];
 				tutorialMap[tutorial.slug] = tutorial;

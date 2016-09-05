@@ -42,18 +42,21 @@ class Tutorial extends Component {
 			return
 		}
 
-		Stripe.initializeWithText(tutorial.title, (token) => {
-//			this.props.showLoader()
+		const text = 'Subscribe - $'+tutorial.price
+		Stripe.initializeWithText(text, (token) => {
+			this.setState({showLoader: true})
 
 			api.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
-//				_this.props.hideLoader()
 				if (err){
 					alert(err.message)
-					_this.setState({showLoader: false})
+					this.setState({showLoader: false})
 					return
 				}
 				
 				console.log('Stripe Charge: '+JSON.stringify(response))
+				store.currentStore().dispatch(actions.currentUserRecieved(response.profile))
+				store.currentStore().dispatch(actions.tutorialsReceived([response.tutorial]))
+
 //				_this.props.showConfirmation()
 			})
 		})
@@ -78,10 +81,8 @@ class Tutorial extends Component {
 
 	showStripeModal(event){
 		event.preventDefault()
-		console.log('showStripeModal: ')
 		const tutorial = this.props.tutorials[this.props.slug]
 		Stripe.showModalWithText(tutorial.title)
-
 	}
 
 	fetchFeaturedTutorials() {
