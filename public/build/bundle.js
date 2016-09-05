@@ -63544,6 +63544,7 @@
 		}, {
 			key: 'showFirstUnit',
 			value: function showFirstUnit(completion) {
+				var tutorial = this.props.tutorials[this.props.slug];
 				var firstPost = tutorial.posts[0];
 				this.findUnit(firstPost.slug, completion);
 			}

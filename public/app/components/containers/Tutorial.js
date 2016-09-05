@@ -81,6 +81,7 @@ class Tutorial extends Component {
 	}
 
 	showFirstUnit(completion){
+		const tutorial = this.props.tutorials[this.props.slug]
 		const firstPost = tutorial.posts[0]
 		this.findUnit(firstPost.slug, completion)
 	}
