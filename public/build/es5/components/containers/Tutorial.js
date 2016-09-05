@@ -43,6 +43,7 @@ var Tutorial = (function (Component) {
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.subscribe = this.subscribe.bind(this);
 		this.changeUnit = this.changeUnit.bind(this);
+		this.showFirstUnit = this.showFirstUnit.bind(this);
 		this.findUnit = this.findUnit.bind(this);
 		this.fetchFeaturedTutorials = this.fetchFeaturedTutorials.bind(this);
 		this.showStripeModal = this.showStripeModal.bind(this);
@@ -69,8 +70,7 @@ var Tutorial = (function (Component) {
 					return;
 				}if (tutorial.price == 0) {
 					// free
-					var _firstPost = tutorial.posts[0];
-					this.findUnit(_firstPost.slug, this.fetchFeaturedTutorials());
+					this.showFirstUnit(this.fetchFeaturedTutorials());
 					return;
 				}
 
@@ -89,7 +89,9 @@ var Tutorial = (function (Component) {
 						var currentStore = store.currentStore();
 						currentStore.dispatch(actions.currentUserRecieved(response.profile));
 						currentStore.dispatch(actions.tutorialsReceived([response.tutorial]));
+
 						_this.setState({ authorized: true });
+						_this.showFirstUnit(null);
 					});
 				});
 
@@ -108,8 +110,15 @@ var Tutorial = (function (Component) {
 					return;
 				}
 
+				this.showFirstUnit(this.fetchFeaturedTutorials());
+			},
+			writable: true,
+			configurable: true
+		},
+		showFirstUnit: {
+			value: function showFirstUnit(completion) {
 				var firstPost = tutorial.posts[0];
-				this.findUnit(firstPost.slug, this.fetchFeaturedTutorials());
+				this.findUnit(firstPost.slug, completion);
 			},
 			writable: true,
 			configurable: true

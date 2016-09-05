@@ -63481,6 +63481,7 @@
 			_this.updateVisitor = _this.updateVisitor.bind(_this);
 			_this.subscribe = _this.subscribe.bind(_this);
 			_this.changeUnit = _this.changeUnit.bind(_this);
+			_this.showFirstUnit = _this.showFirstUnit.bind(_this);
 			_this.findUnit = _this.findUnit.bind(_this);
 			_this.fetchFeaturedTutorials = _this.fetchFeaturedTutorials.bind(_this);
 			_this.showStripeModal = _this.showStripeModal.bind(_this);
@@ -63507,8 +63508,7 @@
 	
 				if (tutorial.price == 0) {
 					// free
-					var _firstPost = tutorial.posts[0];
-					this.findUnit(_firstPost.slug, this.fetchFeaturedTutorials());
+					this.showFirstUnit(this.fetchFeaturedTutorials());
 					return;
 				}
 	
@@ -63527,7 +63527,9 @@
 						var currentStore = _store2.default.currentStore();
 						currentStore.dispatch(_actions2.default.currentUserRecieved(response.profile));
 						currentStore.dispatch(_actions2.default.tutorialsReceived([response.tutorial]));
+	
 						_this2.setState({ authorized: true });
+						_this2.showFirstUnit(null);
 					});
 				});
 	
@@ -63546,8 +63548,13 @@
 					return;
 				}
 	
+				this.showFirstUnit(this.fetchFeaturedTutorials());
+			}
+		}, {
+			key: 'showFirstUnit',
+			value: function showFirstUnit(completion) {
 				var firstPost = tutorial.posts[0];
-				this.findUnit(firstPost.slug, this.fetchFeaturedTutorials());
+				this.findUnit(firstPost.slug, completion);
 			}
 		}, {
 			key: 'showStripeModal',

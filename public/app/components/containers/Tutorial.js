@@ -16,6 +16,7 @@ class Tutorial extends Component {
 		this.updateVisitor = this.updateVisitor.bind(this)
 		this.subscribe = this.subscribe.bind(this)
 		this.changeUnit = this.changeUnit.bind(this)
+		this.showFirstUnit = this.showFirstUnit.bind(this)
 		this.findUnit = this.findUnit.bind(this)
 		this.fetchFeaturedTutorials = this.fetchFeaturedTutorials.bind(this)
 		this.showStripeModal = this.showStripeModal.bind(this)
@@ -37,8 +38,7 @@ class Tutorial extends Component {
 			return
 
 		if (tutorial.price == 0){ // free
-			const firstPost = tutorial.posts[0]
-			this.findUnit(firstPost.slug, this.fetchFeaturedTutorials())
+			this.showFirstUnit(this.fetchFeaturedTutorials())
 			return
 		}
 
@@ -57,7 +57,9 @@ class Tutorial extends Component {
 				const currentStore = store.currentStore()
 				currentStore.dispatch(actions.currentUserRecieved(response.profile))
 				currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
+
 				this.setState({authorized: true})
+				this.showFirstUnit(null)
 			})
 		})
 
@@ -74,11 +76,13 @@ class Tutorial extends Component {
 			return
 		}
 
-		const firstPost = tutorial.posts[0]
-		this.findUnit(firstPost.slug, this.fetchFeaturedTutorials())
+		this.showFirstUnit(this.fetchFeaturedTutorials())
 	}
 
-
+	showFirstUnit(completion){
+		const firstPost = tutorial.posts[0]
+		this.findUnit(firstPost.slug, completion)
+	}
 
 	showStripeModal(event){
 		event.preventDefault()
