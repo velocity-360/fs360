@@ -4,7 +4,7 @@ import Loader from 'react-loader'
 import Dropzone from 'react-dropzone'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
-import { Footer, Nav, RightSidebar } from '../../components'
+import { Footer, Nav } from '../../components'
 import { TextUtils, DateUtils, api } from '../../utils'
 
 
@@ -128,8 +128,7 @@ class PostPage extends Component {
 		if (this.state.isEditing == true) {
 			title = (
 				<div style={{padding:10.5}}>
-					<input style={{border:'none', borderBottom:'1px solid #777', background:'#f5f5f5'}} type="text" id="title" onChange={this.editPost} placeholder="Title" value={post.title} />
-					<br />
+					<input style={{border:'none', borderBottom:'1px solid #777', background:'#f5f5f5'}} type="text" id="title" onChange={this.editPost} placeholder="Title" value={post.title} /><br />
 				</div>
 			)
 
@@ -241,8 +240,8 @@ class PostPage extends Component {
 								</div>
 							</div>
 
-							<div className="col_one_third bottommargin-sm hidden-xs col_last" style={{borderLeft: '1px solid #ddd', padding: 36}}>
-								<RightSidebar />
+							<div className="col_one_third bottommargin-sm hidden-xs col_last">
+
 							</div>			
 
 

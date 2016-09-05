@@ -62582,11 +62582,7 @@
 										)
 									)
 								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'col_one_third bottommargin-sm hidden-xs col_last', style: { borderLeft: '1px solid #ddd', padding: 36 } },
-									_react2.default.createElement(_components.RightSidebar, null)
-								)
+								_react2.default.createElement('div', { className: 'col_one_third bottommargin-sm hidden-xs col_last' })
 							)
 						)
 					),

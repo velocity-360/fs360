@@ -28,7 +28,6 @@ var _components = require("../../components");
 
 var Footer = _components.Footer;
 var Nav = _components.Nav;
-var RightSidebar = _components.RightSidebar;
 var _utils = require("../../utils");
 
 var TextUtils = _utils.TextUtils;
@@ -387,11 +386,7 @@ var PostPage = (function (Component) {
 										)
 									)
 								),
-								React.createElement(
-									"div",
-									{ className: "col_one_third bottommargin-sm hidden-xs col_last", style: { borderLeft: "1px solid #ddd", padding: 36 } },
-									React.createElement(RightSidebar, null)
-								)
+								React.createElement("div", { className: "col_one_third bottommargin-sm hidden-xs col_last" })
 							)
 						)
 					),
