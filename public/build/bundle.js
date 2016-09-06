@@ -23823,7 +23823,7 @@
 	
 	var _Feed2 = _interopRequireDefault(_Feed);
 	
-	var _PostPage = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./containers/PostPage\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _PostPage = __webpack_require__(600);
 	
 	var _PostPage2 = _interopRequireDefault(_PostPage);
 	
@@ -62219,7 +62219,540 @@
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 600 */,
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(172);
+	
+	var _reactLoader = __webpack_require__(470);
+	
+	var _reactLoader2 = _interopRequireDefault(_reactLoader);
+	
+	var _reactDropzone = __webpack_require__(599);
+	
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+	
+	var _store = __webpack_require__(200);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actions = __webpack_require__(468);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	var _components = __webpack_require__(466);
+	
+	var _utils = __webpack_require__(484);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PostPage = function (_Component) {
+		_inherits(PostPage, _Component);
+	
+		function PostPage(props, context) {
+			_classCallCheck(this, PostPage);
+	
+			var _this = _possibleConstructorReturn(this, (PostPage.__proto__ || Object.getPrototypeOf(PostPage)).call(this, props, context));
+	
+			_this.toggleEditing = _this.toggleEditing.bind(_this);
+			_this.uploadImage = _this.uploadImage.bind(_this);
+			_this.editPost = _this.editPost.bind(_this);
+			_this.updatePost = _this.updatePost.bind(_this);
+			_this.updateVisitor = _this.updateVisitor.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
+			_this.state = {
+				showLoader: false,
+				isEditing: false,
+				visitor: {
+					name: '',
+					email: ''
+				}
+			};
+			return _this;
+		}
+	
+		_createClass(PostPage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var url = '/api/post';
+				_utils.api.handleGet(url, { limit: 3, isPublic: 'yes' }, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(response.posts));
+				});
+			}
+		}, {
+			key: 'uploadImage',
+			value: function uploadImage(files) {
+				var _this2 = this;
+	
+				this.setState({ showLoader: true });
+	
+				_utils.api.upload(files[0], function (err, response) {
+					_this2.setState({
+						showLoader: false
+					});
+	
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					var post = _this2.props.posts[_this2.props.slug];
+					var updatedPost = Object.assign({}, post);
+					updatedPost.images.push(response.id);
+					_this2.updatePost(post, null);
+				});
+			}
+		}, {
+			key: 'editPost',
+			value: function editPost(event) {
+				event.preventDefault();
+				var post = this.props.posts[this.props.slug];
+				if (post == null) return;
+	
+				var updatedPost = Object.assign({}, post);
+				updatedPost[event.target.id] = event.target.value;
+				_store2.default.currentStore().dispatch(_actions2.default.postEdited(updatedPost));
+			}
+		}, {
+			key: 'toggleEditing',
+			value: function toggleEditing(event) {
+				var _this3 = this;
+	
+				event.preventDefault();
+				if (this.state.isEditing == false) {
+					this.setState({ isEditing: true });
+					return;
+				}
+	
+				// commit changes
+				var post = this.props.posts[this.props.slug];
+				if (post == null) return;
+	
+				this.updatePost(post, function () {
+					_this3.setState({ isEditing: false });
+				});
+			}
+		}, {
+			key: 'updatePost',
+			value: function updatePost(post, callback) {
+				var url = '/api/post/' + post.id;
+				_utils.api.handlePut(url, post, function (err, response) {
+					if (err) {
+						alert(response.message);
+						return;
+					}
+	
+					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved([response.post]));
+					if (callback == null) return;
+	
+					callback();
+				});
+			}
+		}, {
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				var _this4 = this;
+	
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				this.setState({ showLoader: true });
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var post = this.props.posts[this.props.slug];
+				s['source'] = post.title;
+	
+				s['subject'] = 'New Subscriber';
+				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
+				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
+					_this4.setState({ showLoader: false });
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var post = this.props.posts[this.props.slug];
+				var btnEdit = null;
+	
+				if (this.state.isEditing == true) {
+					btnEdit = _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'button',
+							{ onClick: this.toggleEditing, className: 'button button-border button-dark button-rounded noleftmargin' },
+							'Done'
+						)
+					);
+				} else {
+					if (this.props.currentUser.id != null) {
+						if (post.profile.id != null) {
+							if (this.props.currentUser.id == post.profile.id) {
+								// author of post
+								btnEdit = _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'button',
+										{ onClick: this.toggleEditing, className: 'button button-border button-dark button-rounded noleftmargin' },
+										'Edit'
+									)
+								);
+							}
+						}
+					}
+				}
+	
+				var title = null;
+				var content = null;
+				var upload = null;
+				var image = post.image.length == 0 ? null : _react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' });
+				var video = post.wistia.length == 0 ? null : _react2.default.createElement(
+					'div',
+					{ className: 'wistia_embed wistia_async_' + post.wistia + ' videoFoam=true', style: { height: 100, width: 178, marginTop: 12 } },
+					' '
+				);
+	
+				if (this.state.isEditing == true) {
+					title = _react2.default.createElement(
+						'div',
+						{ style: { padding: 10.5 } },
+						_react2.default.createElement('input', { style: { border: 'none', borderBottom: '1px solid #777', background: '#f5f5f5' }, type: 'text', id: 'title', onChange: this.editPost, placeholder: 'Title', value: post.title }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { style: { border: 'none', borderBottom: '1px solid #777', background: '#f5f5f5' }, type: 'text', id: 'isPublic', onChange: this.editPost, placeholder: 'Public', value: post.isPublic }),
+						_react2.default.createElement('br', null)
+					);
+	
+					content = _react2.default.createElement(
+						'div',
+						{ className: 'panel panel-default' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'textarea',
+								{ id: 'text', onChange: this.editPost, placeholder: 'Text', style: { padding: 0, width: '100%', border: '1px solid #ddd', background: '#f9f9f9', minHeight: 360 }, className: 'panel-body' },
+								post.text
+							)
+						)
+					);
+	
+					var images = post.images.map(function (image, i) {
+						return _react2.default.createElement(
+							'div',
+							{ key: image, className: 'col-md-4' },
+							_react2.default.createElement(
+								'div',
+								{ style: { padding: 4 } },
+								_react2.default.createElement('img', { src: 'https://media-service.appspot.com/site/images/' + image + '?crop=260' })
+							)
+						);
+					});
+	
+					upload = _react2.default.createElement(
+						'div',
+						{ className: 'panel panel-default', style: { marginTop: 24 } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_half' },
+								_react2.default.createElement(
+									_reactDropzone2.default,
+									{ style: { width: 100 + '%', marginBottom: 24, background: '#f9f9f9', border: '1px solid #ddd' }, onDrop: this.uploadImage },
+									_react2.default.createElement(
+										'div',
+										{ style: { padding: 24 } },
+										'Upload Images Here.'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_half col_last' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									images
+								)
+							)
+						)
+					);
+				} else {
+					content = _react2.default.createElement(
+						'div',
+						{ className: 'panel panel-default' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'h2',
+								{ style: style.header },
+								post.title
+							)
+						),
+						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(post.text) }, className: 'panel-body', style: { padding: 36 } }),
+						_react2.default.createElement(
+							'div',
+							{ style: { width: '50%', minWidth: 240 } },
+							video
+						)
+					);
+				}
+	
+				var courses = this.props.courses.map(function (course, i) {
+					if (course.type != 'online') {
+						return _react2.default.createElement(
+							'div',
+							{ key: course.id, className: 'col-md-4' },
+							_react2.default.createElement(
+								'div',
+								{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+								_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
+								_react2.default.createElement(
+									'div',
+									{ className: 'fancy-title title-bottom-border' },
+									_react2.default.createElement(
+										'h3',
+										{ style: { fontWeight: 400 } },
+										_react2.default.createElement(
+											'a',
+											{ style: { color: '#444' }, href: '/course/' + course.slug },
+											course.title
+										)
+									)
+								),
+								_react2.default.createElement(
+									'h5',
+									{ style: { marginBottom: 0, fontWeight: 200 } },
+									course.dates
+								)
+							)
+						);
+					}
+				});
+	
+				var recentPosts = this.props.postsArray.map(function (recentPost, i) {
+					var image = recentPost.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + recentPost.image + '?crop=128' : recentPost.image;
+					var link = recentPost.link.length == 0 ? '/post/' + recentPost.slug : recentPost.link;
+					return _react2.default.createElement(
+						'div',
+						{ key: recentPost.id, className: 'clearfix', style: { marginTop: 16, lineHeight: '4px' } },
+						_react2.default.createElement('img', { style: style.icon, src: image }),
+						_react2.default.createElement(
+							'a',
+							{ href: link, style: { color: '#444' } },
+							_utils.TextUtils.truncateText(recentPost.title, 28)
+						),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'span',
+							{ style: { fontSize: 12, color: '#999' } },
+							recentPost.profile.name
+						)
+					);
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
+					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
+					_react2.default.createElement(
+						'section',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'content-wrap' },
+							_react2.default.createElement(
+								'div',
+								{ id: 'lpf-content' },
+								_react2.default.createElement(
+									'main',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'aside-toggle' },
+										_react2.default.createElement('div', null)
+									),
+									_react2.default.createElement(
+										'aside',
+										{ style: { background: '#fff', minHeight: 750, borderRight: '1px solid #ddd' } },
+										_react2.default.createElement(
+											'nav',
+											{ style: { width: '100%', padding: 32 } },
+											_react2.default.createElement(
+												'h4',
+												{ style: { marginBottom: 0 } },
+												'Recent Posts'
+											),
+											_react2.default.createElement('hr', { style: { marginTop: 6 } }),
+											recentPosts,
+											_react2.default.createElement(
+												'div',
+												{ style: { padding: 20, background: '#f9f9f9', marginTop: 24 } },
+												_react2.default.createElement(
+													'a',
+													{ href: '#newsletter' },
+													'Newsletter'
+												),
+												_react2.default.createElement(
+													'p',
+													{ style: { marginBottom: 16, fontSize: 13 } },
+													'Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.'
+												),
+												_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement(
+													'a',
+													{ onClick: this.subscribe, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
+													'Submit'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'content', style: { background: '#f9f9f9', paddingTop: 22 } },
+										_react2.default.createElement(
+											'article',
+											{ id: 'misc', className: 'overview', style: style.article },
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												btnEdit,
+												title,
+												content,
+												upload,
+												_react2.default.createElement('br', null),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement(
+													'div',
+													{ className: 'panel panel-default' },
+													_react2.default.createElement(
+														'div',
+														{ className: 'panel-body', style: style.panelBody },
+														_react2.default.createElement(
+															'h2',
+															{ style: style.header },
+															'Upcoming Courses'
+														),
+														_react2.default.createElement('hr', null),
+														courses
+													)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return PostPage;
+	}(_react.Component);
+	
+	var style = {
+		header: {
+			marginBottom: 0,
+			marginTop: 0
+		},
+	
+		panelBody: {
+			padding: 36,
+			borderBottom: '1px solid #ddd'
+		},
+		sidebar: {
+			padding: 16,
+			background: '#fff',
+			border: '1px solid #ddd'
+		},
+		input: {
+			borderRadius: '0px !important',
+			background: '#FEF9E7'
+		},
+		article: {
+			marginTop: 40
+		},
+		icon: {
+			float: 'left',
+			width: 42,
+			height: 42,
+			borderRadius: 21,
+			marginRight: 12
+		}
+	};
+	
+	var stateToProps = function stateToProps(state) {
+		return {
+			currentUser: state.profileReducer.currentUser,
+			loaderOptions: state.staticReducer.loaderConfig,
+			posts: state.postReducer.posts,
+			postsArray: state.postReducer.postsArray,
+			courses: state.courseReducer.courseArray
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(stateToProps)(PostPage);
+
+/***/ },
 /* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
