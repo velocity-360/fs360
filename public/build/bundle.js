@@ -62276,9 +62276,14 @@
 			_this.uploadImage = _this.uploadImage.bind(_this);
 			_this.editPost = _this.editPost.bind(_this);
 			_this.updatePost = _this.updatePost.bind(_this);
+			_this.updateVisitor = _this.updateVisitor.bind(_this);
 			_this.state = {
 				showLoader: false,
-				isEditing: false
+				isEditing: false,
+				visitor: {
+					name: '',
+					email: ''
+				}
 			};
 			return _this;
 		}
@@ -62286,10 +62291,8 @@
 		_createClass(PostPage, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				if (this.props.posts[this.props.slug] != null) return;
-	
 				var url = '/api/post';
-				_utils.api.handleGet(url, { slug: this.props.slug }, function (err, response) {
+				_utils.api.handleGet(url, { limit: 3, isPublic: 'yes' }, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -62365,6 +62368,54 @@
 					if (callback == null) return;
 	
 					callback();
+				});
+			}
+		}, {
+			key: 'updateVisitor',
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			}
+		}, {
+			key: 'subscribe',
+			value: function subscribe(event) {
+				var _this4 = this;
+	
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert('Please enter your name.');
+					return;
+				}
+	
+				if (this.state.visitor.email.length == 0) {
+					alert('Please enter your email.');
+					return;
+				}
+	
+				this.setState({ showLoader: true });
+	
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(' ');
+				s['firstName'] = parts[0];
+				if (parts.length > 1) s['lastName'] = parts[parts.length - 1];
+	
+				var post = this.props.posts[this.props.slug];
+				s['source'] = post.title;
+	
+				s['subject'] = 'New Subscriber';
+				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
+				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
+					_this4.setState({ showLoader: false });
+	
+					if (err) {
+						alert(err.message);
+						return;
+					}
+	
+					alert(response.message);
 				});
 			}
 		}, {
@@ -62471,16 +62522,6 @@
 						)
 					);
 				} else {
-					title = _react2.default.createElement(
-						'div',
-						{ className: 'fancy-title title-bottom-border' },
-						_react2.default.createElement(
-							'h2',
-							{ style: { fontWeight: 400 } },
-							post.title
-						)
-					);
-	
 					content = _react2.default.createElement(
 						'div',
 						{ className: 'panel panel-default' },
@@ -62552,6 +62593,26 @@
 					}
 				});
 	
+				var recentPosts = this.props.postsArray.map(function (post, i) {
+					var image = post.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + post.image + '?crop=128' : post.image;
+					return _react2.default.createElement(
+						'div',
+						{ key: post.id, className: 'clearfix', style: { marginTop: 16, lineHeight: '4px' } },
+						_react2.default.createElement('img', { style: style.icon, src: image }),
+						_react2.default.createElement(
+							'a',
+							{ href: '#', style: { color: '#444' } },
+							_utils.TextUtils.truncateText(post.title, 28)
+						),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'span',
+							{ style: { fontSize: 12, color: '#999' } },
+							'Sept 5'
+						)
+					);
+				});
+	
 				return _react2.default.createElement(
 					'div',
 					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
@@ -62576,39 +62637,38 @@
 									),
 									_react2.default.createElement(
 										'aside',
-										{ style: { background: '#fff', minHeight: 600, borderRight: '1px solid #ddd', textAlign: 'center' } },
+										{ style: { background: '#fff', minHeight: 600, borderRight: '1px solid #ddd' } },
 										_react2.default.createElement(
 											'nav',
-											{ style: { width: '100%' } },
+											{ style: { width: '100%', padding: 32 } },
 											_react2.default.createElement(
-												'ul',
-												null,
+												'h4',
+												{ style: { marginBottom: 0 } },
+												'Recent Posts'
+											),
+											_react2.default.createElement('hr', { style: { marginTop: 6 } }),
+											recentPosts,
+											_react2.default.createElement(
+												'div',
+												{ style: { padding: 20, background: '#f9f9f9', marginTop: 24 } },
 												_react2.default.createElement(
-													'li',
-													{ style: { padding: 24 } },
-													_react2.default.createElement(
-														'div',
-														{ style: { paddingTop: 16 } },
-														_react2.default.createElement(
-															'a',
-															{ href: '#newsletter' },
-															'Newsletter'
-														),
-														_react2.default.createElement(
-															'p',
-															{ style: { marginBottom: 16, fontSize: 13 } },
-															'Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.'
-														),
-														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
-														_react2.default.createElement('br', null),
-														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
-														_react2.default.createElement('br', null),
-														_react2.default.createElement(
-															'a',
-															{ onClick: this.subscribe, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
-															'Submit'
-														)
-													)
+													'a',
+													{ href: '#newsletter' },
+													'Newsletter'
+												),
+												_react2.default.createElement(
+													'p',
+													{ style: { marginBottom: 16, fontSize: 13 } },
+													'Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.'
+												),
+												_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement(
+													'a',
+													{ onClick: this.subscribe, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
+													'Submit'
 												)
 											)
 										)
@@ -62659,6 +62719,13 @@
 		},
 		article: {
 			marginTop: 40
+		},
+		icon: {
+			float: 'left',
+			width: 42,
+			height: 42,
+			borderRadius: 21,
+			marginRight: 12
 		}
 	};
 	
@@ -62667,6 +62734,7 @@
 			currentUser: state.profileReducer.currentUser,
 			loaderOptions: state.staticReducer.loaderConfig,
 			posts: state.postReducer.posts,
+			postsArray: state.postReducer.postsArray,
 			courses: state.courseReducer.courseArray
 		};
 	};

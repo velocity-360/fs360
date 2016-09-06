@@ -42,9 +42,14 @@ var PostPage = (function (Component) {
 		this.uploadImage = this.uploadImage.bind(this);
 		this.editPost = this.editPost.bind(this);
 		this.updatePost = this.updatePost.bind(this);
+		this.updateVisitor = this.updateVisitor.bind(this);
 		this.state = {
 			showLoader: false,
-			isEditing: false
+			isEditing: false,
+			visitor: {
+				name: "",
+				email: ""
+			}
 		};
 	}
 
@@ -53,10 +58,8 @@ var PostPage = (function (Component) {
 	_prototypeProperties(PostPage, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
-				if (this.props.posts[this.props.slug] != null) {
-					return;
-				}var url = "/api/post";
-				api.handleGet(url, { slug: this.props.slug }, function (err, response) {
+				var url = "/api/post";
+				api.handleGet(url, { limit: 3, isPublic: "yes" }, function (err, response) {
 					if (err) {
 						alert(response.message);
 						return;
@@ -143,6 +146,57 @@ var PostPage = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		updateVisitor: {
+			value: function updateVisitor(event) {
+				var updatedVisitor = Object.assign({}, this.state.visitor);
+				updatedVisitor[event.target.id] = event.target.value;
+				this.setState({
+					visitor: updatedVisitor
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		subscribe: {
+			value: function subscribe(event) {
+				var _this = this;
+				event.preventDefault();
+				if (this.state.visitor.name.length == 0) {
+					alert("Please enter your name.");
+					return;
+				}
+
+				if (this.state.visitor.email.length == 0) {
+					alert("Please enter your email.");
+					return;
+				}
+
+				this.setState({ showLoader: true });
+
+				var s = Object.assign({}, this.state.visitor);
+				var parts = s.name.split(" ");
+				s.firstName = parts[0];
+				if (parts.length > 1) s.lastName = parts[parts.length - 1];
+
+				var post = this.props.posts[this.props.slug];
+				s.source = post.title;
+
+				s.subject = "New Subscriber";
+				s.confirmation = "Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!";
+				api.handlePost("/account/subscribe", s, function (err, response) {
+					_this.setState({ showLoader: false });
+
+					if (err) {
+						alert(err.message);
+						return;
+					}
+
+					alert(response.message);
+				});
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
 				var post = this.props.posts[this.props.slug];
@@ -186,7 +240,6 @@ var PostPage = (function (Component) {
 					{ className: "wistia_embed wistia_async_" + post.wistia + " videoFoam=true", style: { height: 100, width: 178, marginTop: 12 } },
 					" "
 				);
-
 
 				if (this.state.isEditing == true) {
 					title = React.createElement(
@@ -247,16 +300,6 @@ var PostPage = (function (Component) {
 						)
 					);
 				} else {
-					title = React.createElement(
-						"div",
-						{ className: "fancy-title title-bottom-border" },
-						React.createElement(
-							"h2",
-							{ style: { fontWeight: 400 } },
-							post.title
-						)
-					);
-
 					content = React.createElement(
 						"div",
 						{ className: "panel panel-default" },
@@ -328,6 +371,26 @@ var PostPage = (function (Component) {
 					}
 				});
 
+				var recentPosts = this.props.postsArray.map(function (post, i) {
+					var image = post.image.indexOf("http") == -1 ? "https://media-service.appspot.com/site/images/" + post.image + "?crop=128" : post.image;
+					return React.createElement(
+						"div",
+						{ key: post.id, className: "clearfix", style: { marginTop: 16, lineHeight: "4px" } },
+						React.createElement("img", { style: style.icon, src: image }),
+						React.createElement(
+							"a",
+							{ href: "#", style: { color: "#444" } },
+							TextUtils.truncateText(post.title, 28)
+						),
+						React.createElement("br", null),
+						React.createElement(
+							"span",
+							{ style: { fontSize: 12, color: "#999" } },
+							"Sept 5"
+						)
+					);
+				});
+
 				return React.createElement(
 					"div",
 					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
@@ -352,39 +415,38 @@ var PostPage = (function (Component) {
 									),
 									React.createElement(
 										"aside",
-										{ style: { background: "#fff", minHeight: 600, borderRight: "1px solid #ddd", textAlign: "center" } },
+										{ style: { background: "#fff", minHeight: 600, borderRight: "1px solid #ddd" } },
 										React.createElement(
 											"nav",
-											{ style: { width: "100%" } },
+											{ style: { width: "100%", padding: 32 } },
 											React.createElement(
-												"ul",
-												null,
+												"h4",
+												{ style: { marginBottom: 0 } },
+												"Recent Posts"
+											),
+											React.createElement("hr", { style: { marginTop: 6 } }),
+											recentPosts,
+											React.createElement(
+												"div",
+												{ style: { padding: 20, background: "#f9f9f9", marginTop: 24 } },
 												React.createElement(
-													"li",
-													{ style: { padding: 24 } },
-													React.createElement(
-														"div",
-														{ style: { paddingTop: 16 } },
-														React.createElement(
-															"a",
-															{ href: "#newsletter" },
-															"Newsletter"
-														),
-														React.createElement(
-															"p",
-															{ style: { marginBottom: 16, fontSize: 13 } },
-															"Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses."
-														),
-														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
-														React.createElement("br", null),
-														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
-														React.createElement("br", null),
-														React.createElement(
-															"a",
-															{ onClick: this.subscribe, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
-															"Submit"
-														)
-													)
+													"a",
+													{ href: "#newsletter" },
+													"Newsletter"
+												),
+												React.createElement(
+													"p",
+													{ style: { marginBottom: 16, fontSize: 13 } },
+													"Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses."
+												),
+												React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
+												React.createElement("br", null),
+												React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
+												React.createElement("br", null),
+												React.createElement(
+													"a",
+													{ onClick: this.subscribe, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
+													"Submit"
 												)
 											)
 										)
@@ -437,6 +499,13 @@ var style = {
 	},
 	article: {
 		marginTop: 40
+	},
+	icon: {
+		float: "left",
+		width: 42,
+		height: 42,
+		borderRadius: 21,
+		marginRight: 12
 	}
 };
 
@@ -445,6 +514,7 @@ var stateToProps = function (state) {
 		currentUser: state.profileReducer.currentUser,
 		loaderOptions: state.staticReducer.loaderConfig,
 		posts: state.postReducer.posts,
+		postsArray: state.postReducer.postsArray,
 		courses: state.courseReducer.courseArray
 	};
 };

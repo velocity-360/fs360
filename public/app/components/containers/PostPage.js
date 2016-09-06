@@ -15,18 +15,20 @@ class PostPage extends Component {
 		this.uploadImage = this.uploadImage.bind(this)
 		this.editPost = this.editPost.bind(this)
 		this.updatePost = this.updatePost.bind(this)
+		this.updateVisitor = this.updateVisitor.bind(this)
 		this.state = {
 			showLoader: false,
-			isEditing: false
+			isEditing: false,
+			visitor: {
+				name: '',
+				email: ''
+			}
 		}
 	}
 
 	componentDidMount(){
-		if (this.props.posts[this.props.slug] != null)
-			return
-		
 		const url = '/api/post'
-		api.handleGet(url, {slug:this.props.slug}, (err, response) => {
+		api.handleGet(url, {limit:3, isPublic:'yes'}, (err, response) => {
 			if (err){
 				alert(response.message)
 				return
@@ -100,6 +102,51 @@ class PostPage extends Component {
 		})
 	}
 
+	updateVisitor(event){
+		var updatedVisitor = Object.assign({}, this.state.visitor)
+		updatedVisitor[event.target.id] = event.target.value
+		this.setState({
+			visitor: updatedVisitor
+		})		
+	}
+
+	subscribe(event){
+		event.preventDefault()
+		if (this.state.visitor.name.length == 0){
+			alert('Please enter your name.')
+			return
+		}
+
+		if (this.state.visitor.email.length == 0){
+			alert('Please enter your email.')
+			return
+		}
+
+		this.setState({showLoader: true})
+
+		var s = Object.assign({}, this.state.visitor)
+		var parts = s.name.split(' ')
+		s['firstName'] = parts[0]
+		if (parts.length > 1)
+			s['lastName'] = parts[parts.length-1]
+
+		const post = this.props.posts[this.props.slug]
+		s['source'] = post.title
+		
+		s['subject'] = 'New Subscriber'
+		s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!'
+		api.handlePost('/account/subscribe', s, (err, response) => {
+			this.setState({showLoader: false})
+
+			if (err){
+				alert(err.message)
+				return
+			}
+
+			alert(response.message)
+		})
+	}
+
 	render(){
 		const post = this.props.posts[this.props.slug]
 		var btnEdit = null
@@ -123,7 +170,6 @@ class PostPage extends Component {
 		var upload = null
 		var image = (post.image.length == 0) ? null : <img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
 		var video = (post.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:100, width:178, marginTop:12}}>&nbsp;</div>
-
 
 		if (this.state.isEditing == true) {
 			title = (
@@ -168,14 +214,6 @@ class PostPage extends Component {
 			)
 		}
 		else {
-			title = (
-				<div className="fancy-title title-bottom-border">
-					<h2 style={{fontWeight:400}}>
-						{post.title}
-					</h2>
-				</div>
-			)
-
 			content = (
 				<div className="panel panel-default">
 					<div className="panel-body" style={style.panelBody}>
@@ -187,7 +225,7 @@ class PostPage extends Component {
 			)		
 		}
 
-		var courses = this.props.courses.map(function(course, i){
+		const courses = this.props.courses.map((course, i) => {
 			if (course.type != 'online'){
 				return (
 	                <div key={course.id} className="col-md-12 bottommargin">
@@ -208,6 +246,18 @@ class PostPage extends Component {
 				)
 			}
 		})
+		
+		const recentPosts = this.props.postsArray.map((post, i) => {
+			const image = (post.image.indexOf('http') == -1) ? 'https://media-service.appspot.com/site/images/'+post.image+'?crop=128' : post.image
+			return (
+				<div key={post.id} className="clearfix" style={{marginTop:16, lineHeight:'4px'}}>
+					<img style={style.icon} src={image} />
+					<a href="#" style={{color:'#444'}}>{TextUtils.truncateText(post.title, 28)}</a><br />
+					<span style={{fontSize:12, color:'#999'}}>Sept 5</span>
+
+				</div>
+			)
+		})
 
 		return (
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
@@ -222,22 +272,22 @@ class PostPage extends Component {
 									<div></div>
 								</div>
 
-								<aside style={{background:'#fff', minHeight:600, borderRight:'1px solid #ddd', textAlign:'center'}}>
-									<nav style={{width:'100%'}}>
-										<ul>
-											<li style={{padding:24}}>
-												<div style={{paddingTop:16}}>
-													<a href="#newsletter">Newsletter</a>
-													<p style={{marginBottom:16, fontSize:13}}>
-														Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
-													</p>
-							                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
-							                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
-													<a onClick={this.subscribe} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Submit</a>
-												</div>
+								<aside style={{background:'#fff', minHeight:600, borderRight:'1px solid #ddd'}}>
+									<nav style={{width:'100%', padding:32}}>
+										<h4 style={{marginBottom:0}}>Recent Posts</h4>
+										<hr style={{marginTop:6}} />
+										{recentPosts}
 
-											</li>
-										</ul>
+										<div style={{padding:20, background:'#f9f9f9', marginTop:24}}>
+											<a href="#newsletter">Newsletter</a>
+											<p style={{marginBottom:16, fontSize:13}}>
+												Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
+											</p>
+					                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
+					                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
+											<a onClick={this.subscribe} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Submit</a>
+										</div>
+
 									</nav>
 								</aside>
 
@@ -284,6 +334,13 @@ const style = {
 	},
 	article: {
 		marginTop: 40
+	},
+	icon: {
+		float:'left',
+		width:42,
+		height:42,
+		borderRadius:21,
+		marginRight:12
 	}
 }
 
@@ -292,6 +349,7 @@ const stateToProps = function(state) {
         currentUser: state.profileReducer.currentUser,
         loaderOptions: state.staticReducer.loaderConfig,
         posts: state.postReducer.posts,
+        postsArray: state.postReducer.postsArray,
         courses: state.courseReducer.courseArray
     }
 }

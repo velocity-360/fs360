@@ -42,9 +42,7 @@ export default function() {
 			courseArray: []
 		},
 		postReducer: {
-			posts: {
-
-			},
+			posts: {},
 			postsArray: [],
 			emptyPost: {
 				text: '',
