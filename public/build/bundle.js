@@ -62277,6 +62277,7 @@
 			_this.editPost = _this.editPost.bind(_this);
 			_this.updatePost = _this.updatePost.bind(_this);
 			_this.updateVisitor = _this.updateVisitor.bind(_this);
+			_this.subscribe = _this.subscribe.bind(_this);
 			_this.state = {
 				showLoader: false,
 				isEditing: false,

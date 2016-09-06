@@ -16,6 +16,7 @@ class PostPage extends Component {
 		this.editPost = this.editPost.bind(this)
 		this.updatePost = this.updatePost.bind(this)
 		this.updateVisitor = this.updateVisitor.bind(this)
+		this.subscribe = this.subscribe.bind(this)
 		this.state = {
 			showLoader: false,
 			isEditing: false,
