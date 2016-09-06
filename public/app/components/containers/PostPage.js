@@ -272,13 +272,13 @@ class PostPage extends Component {
 									<div></div>
 								</div>
 
-								<aside style={{background:'#fff', minHeight:600, borderRight:'1px solid #ddd'}}>
+								<aside style={{background:'#fff', minHeight:700, borderRight:'1px solid #ddd'}}>
 									<nav style={{width:'100%', padding:32}}>
 										<h4 style={{marginBottom:0}}>Recent Posts</h4>
 										<hr style={{marginTop:6}} />
 										{recentPosts}
 
-										<div style={{padding:20, background:'#f9f9f9', marginTop:24}}>
+										<div style={{padding:20, background:'#f9f9f9', marginTop:24, marginBottom:64}}>
 											<a href="#newsletter">Newsletter</a>
 											<p style={{marginBottom:16, fontSize:13}}>
 												Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
@@ -291,14 +291,12 @@ class PostPage extends Component {
 								</aside>
 
 								<div className="content" style={{background:'#f9f9f9', paddingTop:22}}>
-
 									<article id="misc" className="overview" style={style.article}>
 										<div className="container">
 											{btnEdit}
 											{content}
 										</div>
 									</article>
-
 								</div>
 							</main>
 						</div>
