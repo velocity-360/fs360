@@ -62609,7 +62609,7 @@
 						_react2.default.createElement(
 							'span',
 							{ style: { fontSize: 12, color: '#999' } },
-							_utils.DateUtils.formattedDate(recentPost.timestamp)
+							recentPost.profile.name
 						)
 					);
 				});

@@ -254,7 +254,7 @@ class PostPage extends Component {
 				<div key={recentPost.id} className="clearfix" style={{marginTop:16, lineHeight:'4px'}}>
 					<img style={style.icon} src={image} />
 					<a href={link} style={{color:'#444'}}>{TextUtils.truncateText(recentPost.title, 28)}</a><br />
-					<span style={{fontSize:12, color:'#999'}}>{DateUtils.formattedDate(recentPost.timestamp)}</span>
+					<span style={{fontSize:12, color:'#999'}}>{recentPost.profile.name}</span>
 				</div>
 			)
 		})
