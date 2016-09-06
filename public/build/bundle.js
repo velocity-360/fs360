@@ -62483,13 +62483,17 @@
 	
 					content = _react2.default.createElement(
 						'div',
-						{ style: { background: '#fff', padding: 24 } },
+						{ className: 'panel panel-default' },
 						_react2.default.createElement(
 							'div',
-							{ style: { textAlign: 'center' } },
-							image
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'h2',
+								{ style: style.header },
+								post.title
+							)
 						),
-						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(post.text) }, className: 'panel-body' }),
+						_react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _utils.TextUtils.convertToHtml(post.text) }, className: 'panel-body', style: { padding: 36 } }),
 						_react2.default.createElement(
 							'div',
 							{ style: { width: '50%', minWidth: 240 } },
@@ -62550,101 +62554,113 @@
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'clearfix' },
+					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
 					_react2.default.createElement(_components.Nav, { headerStyle: 'dark' }),
+					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
 						'section',
 						null,
-						_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'content-wrap' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'container clearfix' },
+								{ id: 'lpf-content' },
 								_react2.default.createElement(
-									'div',
-									{ className: 'col_two_third bottommargin-sm' },
-									title,
-									btnEdit,
+									'main',
+									null,
 									_react2.default.createElement(
 										'div',
-										{ className: 'entry-c' },
+										{ className: 'aside-toggle' },
+										_react2.default.createElement('div', null)
+									),
+									_react2.default.createElement(
+										'aside',
+										{ style: { background: '#fff', minHeight: 600, borderRight: '1px solid #ddd', textAlign: 'center' } },
 										_react2.default.createElement(
-											'div',
-											{ className: 'entry-content' },
+											'nav',
+											{ style: { width: '100%' } },
 											_react2.default.createElement(
-												'div',
-												{ className: 'panel panel-default', style: { background: '#f1f9f5' } },
+												'ul',
+												null,
 												_react2.default.createElement(
-													'ul',
-													{ className: 'entry-meta clearfix', style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: '1px solid #eee' } },
+													'li',
+													{ style: { padding: 24 } },
 													_react2.default.createElement(
-														'li',
-														null,
-														_react2.default.createElement('i', { className: 'icon-calendar3' }),
-														' ',
-														_utils.DateUtils.formattedDate(post.timestamp)
-													),
-													_react2.default.createElement(
-														'li',
-														null,
+														'div',
+														{ style: { paddingTop: 16 } },
 														_react2.default.createElement(
 															'a',
-															{ href: '#' },
-															_react2.default.createElement('i', { className: 'icon-user' }),
-															' ',
-															post.profile.name
+															{ href: '#newsletter' },
+															'Newsletter'
+														),
+														_react2.default.createElement(
+															'p',
+															{ style: { marginBottom: 16, fontSize: 13 } },
+															'Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.'
+														),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'name', style: style.input, className: 'custom-input', placeholder: 'Name' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement('input', { onChange: this.updateVisitor, id: 'email', type: 'email', style: style.input, className: 'custom-input', placeholder: 'Email' }),
+														_react2.default.createElement('br', null),
+														_react2.default.createElement(
+															'a',
+															{ onClick: this.subscribe, href: '#', style: { marginRight: 12, color: '#fff' }, className: 'btn btn-info' },
+															'Submit'
 														)
-													),
-													_react2.default.createElement(
-														'li',
-														null,
-														_react2.default.createElement('i', { className: 'icon-comments' }),
-														' ',
-														post.numReplies,
-														' comments'
 													)
-												),
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'content', style: { background: '#f9f9f9', paddingTop: 22 } },
+										_react2.default.createElement(
+											'article',
+											{ id: 'misc', className: 'overview', style: style.article },
+											_react2.default.createElement(
+												'div',
+												{ className: 'container' },
+												btnEdit,
 												content
-											),
-											upload
+											)
 										)
 									)
-								),
-								_react2.default.createElement('div', { className: 'col_one_third bottommargin-sm hidden-xs col_last' })
+								)
 							)
 						)
-					),
-					_react2.default.createElement(
-						'section',
-						{ style: { background: '#f9f9f9', paddingTop: 48, borderTop: '1px solid #ddd' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'heading-block center' },
-							_react2.default.createElement(
-								'h2',
-								{ style: { fontWeight: 400 } },
-								'Courses'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'content-wrap', style: { paddingTop: 0 } },
-							_react2.default.createElement(
-								'div',
-								{ className: 'container clearfix' },
-								courses
-							)
-						)
-					),
-					_react2.default.createElement(_components.Footer, null)
+					)
 				);
 			}
 		}]);
 	
 		return PostPage;
 	}(_react.Component);
+	
+	var style = {
+		header: {
+			marginBottom: 0,
+			marginTop: 0
+		},
+	
+		panelBody: {
+			padding: 36,
+			borderBottom: '1px solid #ddd'
+		},
+		sidebar: {
+			padding: 16,
+			background: '#fff',
+			border: '1px solid #ddd'
+		},
+		input: {
+			borderRadius: '0px !important',
+			background: '#FEF9E7'
+		},
+		article: {
+			marginTop: 40
+		}
+	};
 	
 	var stateToProps = function stateToProps(state) {
 		return {
@@ -63513,7 +63529,7 @@
 							return;
 						}
 	
-						console.log('Stripe Charge: ' + JSON.stringify(response));
+						//				console.log('Stripe Charge: '+JSON.stringify(response))
 						var currentStore = _store2.default.currentStore();
 						currentStore.dispatch(_actions2.default.currentUserRecieved(response.profile));
 						currentStore.dispatch(_actions2.default.tutorialsReceived([response.tutorial]));
@@ -63524,7 +63540,7 @@
 	
 				var firstPost = tutorial.posts[0];
 				if (this.props.currentUser.id == null) {
-					// show subscirbe page
+					// not logged in, show subscirbe page
 					this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null));
 					return;
 				}

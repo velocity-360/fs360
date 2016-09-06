@@ -85,7 +85,7 @@ var Tutorial = (function (Component) {
 							return;
 						}
 
-						console.log("Stripe Charge: " + JSON.stringify(response));
+						//				console.log('Stripe Charge: '+JSON.stringify(response))
 						var currentStore = store.currentStore();
 						currentStore.dispatch(actions.currentUserRecieved(response.profile));
 						currentStore.dispatch(actions.tutorialsReceived([response.tutorial]));
@@ -96,7 +96,7 @@ var Tutorial = (function (Component) {
 
 				var firstPost = tutorial.posts[0];
 				if (this.props.currentUser.id == null) {
-					// show subscirbe page
+					// not logged in, show subscirbe page
 					this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null));
 					return;
 				}

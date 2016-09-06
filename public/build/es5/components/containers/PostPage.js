@@ -259,13 +259,17 @@ var PostPage = (function (Component) {
 
 					content = React.createElement(
 						"div",
-						{ style: { background: "#fff", padding: 24 } },
+						{ className: "panel panel-default" },
 						React.createElement(
 							"div",
-							{ style: { textAlign: "center" } },
-							image
+							{ className: "panel-body", style: style.panelBody },
+							React.createElement(
+								"h2",
+								{ style: style.header },
+								post.title
+							)
 						),
-						React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(post.text) }, className: "panel-body" }),
+						React.createElement("div", { dangerouslySetInnerHTML: { __html: TextUtils.convertToHtml(post.text) }, className: "panel-body", style: { padding: 36 } }),
 						React.createElement(
 							"div",
 							{ style: { width: "50%", minWidth: 240 } },
@@ -326,95 +330,83 @@ var PostPage = (function (Component) {
 
 				return React.createElement(
 					"div",
-					{ className: "clearfix" },
+					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
 					React.createElement(Nav, { headerStyle: "dark" }),
+					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
 						"section",
 						null,
-						React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 						React.createElement(
 							"div",
 							{ className: "content-wrap" },
 							React.createElement(
 								"div",
-								{ className: "container clearfix" },
+								{ id: "lpf-content" },
 								React.createElement(
-									"div",
-									{ className: "col_two_third bottommargin-sm" },
-									title,
-									btnEdit,
+									"main",
+									null,
 									React.createElement(
 										"div",
-										{ className: "entry-c" },
+										{ className: "aside-toggle" },
+										React.createElement("div", null)
+									),
+									React.createElement(
+										"aside",
+										{ style: { background: "#fff", minHeight: 600, borderRight: "1px solid #ddd", textAlign: "center" } },
 										React.createElement(
-											"div",
-											{ className: "entry-content" },
+											"nav",
+											{ style: { width: "100%" } },
 											React.createElement(
-												"div",
-												{ className: "panel panel-default", style: { background: "#f1f9f5" } },
+												"ul",
+												null,
 												React.createElement(
-													"ul",
-													{ className: "entry-meta clearfix", style: { paddingLeft: 24, paddingTop: 10, paddingBottom: 16, borderBottom: "1px solid #eee" } },
+													"li",
+													{ style: { padding: 24 } },
 													React.createElement(
-														"li",
-														null,
-														React.createElement("i", { className: "icon-calendar3" }),
-														" ",
-														DateUtils.formattedDate(post.timestamp)
-													),
-													React.createElement(
-														"li",
-														null,
+														"div",
+														{ style: { paddingTop: 16 } },
 														React.createElement(
 															"a",
-															{ href: "#" },
-															React.createElement("i", { className: "icon-user" }),
-															" ",
-															post.profile.name
+															{ href: "#newsletter" },
+															"Newsletter"
+														),
+														React.createElement(
+															"p",
+															{ style: { marginBottom: 16, fontSize: 13 } },
+															"Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses."
+														),
+														React.createElement("input", { onChange: this.updateVisitor, id: "name", type: "name", style: style.input, className: "custom-input", placeholder: "Name" }),
+														React.createElement("br", null),
+														React.createElement("input", { onChange: this.updateVisitor, id: "email", type: "email", style: style.input, className: "custom-input", placeholder: "Email" }),
+														React.createElement("br", null),
+														React.createElement(
+															"a",
+															{ onClick: this.subscribe, href: "#", style: { marginRight: 12, color: "#fff" }, className: "btn btn-info" },
+															"Submit"
 														)
-													),
-													React.createElement(
-														"li",
-														null,
-														React.createElement("i", { className: "icon-comments" }),
-														" ",
-														post.numReplies,
-														" comments"
 													)
-												),
+												)
+											)
+										)
+									),
+									React.createElement(
+										"div",
+										{ className: "content", style: { background: "#f9f9f9", paddingTop: 22 } },
+										React.createElement(
+											"article",
+											{ id: "misc", className: "overview", style: style.article },
+											React.createElement(
+												"div",
+												{ className: "container" },
+												btnEdit,
 												content
-											),
-											upload
+											)
 										)
 									)
-								),
-								React.createElement("div", { className: "col_one_third bottommargin-sm hidden-xs col_last" })
+								)
 							)
 						)
-					),
-					React.createElement(
-						"section",
-						{ style: { background: "#f9f9f9", paddingTop: 48, borderTop: "1px solid #ddd" } },
-						React.createElement(
-							"div",
-							{ className: "heading-block center" },
-							React.createElement(
-								"h2",
-								{ style: { fontWeight: 400 } },
-								"Courses"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "content-wrap", style: { paddingTop: 0 } },
-							React.createElement(
-								"div",
-								{ className: "container clearfix" },
-								courses
-							)
-						)
-					),
-					React.createElement(Footer, null)
+					)
 				);
 			},
 			writable: true,
@@ -424,6 +416,29 @@ var PostPage = (function (Component) {
 
 	return PostPage;
 })(Component);
+
+var style = {
+	header: {
+		marginBottom: 0,
+		marginTop: 0 },
+
+	panelBody: {
+		padding: 36,
+		borderBottom: "1px solid #ddd"
+	},
+	sidebar: {
+		padding: 16,
+		background: "#fff",
+		border: "1px solid #ddd"
+	},
+	input: {
+		borderRadius: "0px !important",
+		background: "#FEF9E7"
+	},
+	article: {
+		marginTop: 40
+	}
+};
 
 var stateToProps = function (state) {
 	return {

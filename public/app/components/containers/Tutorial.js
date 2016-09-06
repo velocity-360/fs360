@@ -53,7 +53,7 @@ class Tutorial extends Component {
 					return
 				}
 				
-				console.log('Stripe Charge: '+JSON.stringify(response))
+//				console.log('Stripe Charge: '+JSON.stringify(response))
 				const currentStore = store.currentStore()
 				currentStore.dispatch(actions.currentUserRecieved(response.profile))
 				currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
@@ -63,7 +63,7 @@ class Tutorial extends Component {
 		})
 
 		const firstPost = tutorial.posts[0]
-		if (this.props.currentUser.id == null){ // show subscirbe page
+		if (this.props.currentUser.id == null){ // not logged in, show subscirbe page
 			this.fetchFeaturedTutorials(this.findUnit(firstPost.slug, null))
 			return
 		}
@@ -305,8 +305,8 @@ class Tutorial extends Component {
 		return (
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
-
 				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
+				
 				<section>
 					<div className="content-wrap">
 						<div id="lpf-content">

@@ -177,12 +177,11 @@ class PostPage extends Component {
 			)
 
 			content = (
-				<div style={{background:'#fff', padding: 24}}>
-					<div style={{textAlign:'center'}}>
-						{image}
+				<div className="panel panel-default">
+					<div className="panel-body" style={style.panelBody}>
+						<h2 style={style.header}>{post.title}</h2>
 					</div>
-
-					<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body"></div>
+					<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body" style={{padding:36}}></div>
 					<div style={{width:'50%', minWidth:240}}>{video}</div>
 				</div>
 			)		
@@ -211,61 +210,80 @@ class PostPage extends Component {
 		})
 
 		return (
-			<div className="clearfix">
+			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
+				<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 
 				<section>
-					<Loader options={this.props.loaderOptions} loaded={!this.state.showLoader} className="spinner" loadedClassName="loadedContent" />
 					<div className="content-wrap">
-						<div className="container clearfix">
-
-							<div className="col_two_third bottommargin-sm">
-								{title}
-								{btnEdit}
-
-								<div className="entry-c">
-									<div className="entry-content">
-										<div className="panel panel-default" style={{background:'#f1f9f5'}}>
-
-											<ul className="entry-meta clearfix" style={{paddingLeft:24, paddingTop:10, paddingBottom:16, borderBottom:'1px solid #eee'}}>
-												<li><i className="icon-calendar3"></i> { DateUtils.formattedDate(post.timestamp) }</li>
-												<li><a href="#"><i className="icon-user"></i> {post.profile.name}</a></li>
-												<li><i className="icon-comments"></i> {post.numReplies} comments</li>
-											</ul>
-
-											{content}
-
-										</div>
-										{upload}
-									</div>
+						<div id="lpf-content">
+							<main>
+								<div className="aside-toggle">
+									<div></div>
 								</div>
-							</div>
 
-							<div className="col_one_third bottommargin-sm hidden-xs col_last">
+								<aside style={{background:'#fff', minHeight:600, borderRight:'1px solid #ddd', textAlign:'center'}}>
+									<nav style={{width:'100%'}}>
+										<ul>
+											<li style={{padding:24}}>
+												<div style={{paddingTop:16}}>
+													<a href="#newsletter">Newsletter</a>
+													<p style={{marginBottom:16, fontSize:13}}>
+														Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
+													</p>
+							                        <input onChange={this.updateVisitor} id="name" type="name" style={style.input} className="custom-input" placeholder="Name" /><br />
+							                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
+													<a onClick={this.subscribe} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Submit</a>
+												</div>
 
-							</div>			
+											</li>
+										</ul>
+									</nav>
+								</aside>
 
+								<div className="content" style={{background:'#f9f9f9', paddingTop:22}}>
 
+									<article id="misc" className="overview" style={style.article}>
+										<div className="container">
+											{btnEdit}
+											{content}
+										</div>
+									</article>
+
+								</div>
+							</main>
 						</div>
 					</div>
+
 				</section>
 
-				<section style={{background:'#f9f9f9', paddingTop:48, borderTop:'1px solid #ddd'}}>
-					<div className="heading-block center">
-						<h2 style={{fontWeight:400}}>Courses</h2>
-					</div>
-
-					<div className="content-wrap" style={{paddingTop:0}}>
-						<div className="container clearfix">
-			               	{courses}
-						</div>
-					</div>
-				</section>
-
-				<Footer />
 			</div>
 		)
 
+	}
+}
+
+const style = {
+	header: {
+		marginBottom:0,
+		marginTop:0,
+	},
+
+	panelBody: {
+		padding:36,
+		borderBottom:'1px solid #ddd'
+	},
+	sidebar: {
+		padding:16,
+		background:'#fff',
+		border:'1px solid #ddd'
+	},
+	input: {
+		borderRadius:'0px !important',
+		background:'#FEF9E7'
+	},
+	article: {
+		marginTop: 40
 	}
 }
 
