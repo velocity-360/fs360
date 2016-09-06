@@ -62293,8 +62293,6 @@
 		_createClass(PostPage, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this2 = this;
-	
 				var url = '/api/post';
 				_utils.api.handleGet(url, { limit: 3, isPublic: 'yes' }, function (err, response) {
 					if (err) {
@@ -62303,29 +62301,17 @@
 					}
 	
 					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved(response.posts));
-	
-					_utils.api.handleGet('/api/course', { type: 'immersive' }, function (err, response) {
-						if (err) {
-							alert(response.message);
-							return;
-						}
-	
-						//				console.log(JSON.stringify(response))
-						_this2.setState({
-							courses: response.courses
-						});
-					});
 				});
 			}
 		}, {
 			key: 'uploadImage',
 			value: function uploadImage(files) {
-				var _this3 = this;
+				var _this2 = this;
 	
 				this.setState({ showLoader: true });
 	
 				_utils.api.upload(files[0], function (err, response) {
-					_this3.setState({
+					_this2.setState({
 						showLoader: false
 					});
 	
@@ -62334,10 +62320,10 @@
 						return;
 					}
 	
-					var post = _this3.props.posts[_this3.props.slug];
+					var post = _this2.props.posts[_this2.props.slug];
 					var updatedPost = Object.assign({}, post);
 					updatedPost.images.push(response.id);
-					_this3.updatePost(post, null);
+					_this2.updatePost(post, null);
 				});
 			}
 		}, {
@@ -62354,7 +62340,7 @@
 		}, {
 			key: 'toggleEditing',
 			value: function toggleEditing(event) {
-				var _this4 = this;
+				var _this3 = this;
 	
 				event.preventDefault();
 				if (this.state.isEditing == false) {
@@ -62367,7 +62353,7 @@
 				if (post == null) return;
 	
 				this.updatePost(post, function () {
-					_this4.setState({ isEditing: false });
+					_this3.setState({ isEditing: false });
 				});
 			}
 		}, {
@@ -62398,7 +62384,7 @@
 		}, {
 			key: 'subscribe',
 			value: function subscribe(event) {
-				var _this5 = this;
+				var _this4 = this;
 	
 				event.preventDefault();
 				if (this.state.visitor.name.length == 0) {
@@ -62424,7 +62410,7 @@
 				s['subject'] = 'New Subscriber';
 				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
 				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
-					_this5.setState({ showLoader: false });
+					_this4.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);
@@ -62563,46 +62549,28 @@
 					if (course.type != 'online') {
 						return _react2.default.createElement(
 							'div',
-							{ key: course.id, className: 'col-md-12 bottommargin' },
+							{ key: course.id, className: 'col-md-4' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'team team-list clearfix' },
+								{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+								_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
 								_react2.default.createElement(
 									'div',
-									{ className: 'team-image', style: { width: 150 } },
-									_react2.default.createElement('img', { className: 'img-circle', src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=260', alt: 'Velocity 360' })
+									{ className: 'fancy-title title-bottom-border' },
+									_react2.default.createElement(
+										'h3',
+										{ style: { fontWeight: 400 } },
+										_react2.default.createElement(
+											'a',
+											{ style: { color: '#444' }, href: '/course/' + course.slug },
+											course.title
+										)
+									)
 								),
 								_react2.default.createElement(
-									'div',
-									{ className: 'team-desc' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-title' },
-										_react2.default.createElement(
-											'h4',
-											{ style: { fontWeight: 400 } },
-											_react2.default.createElement(
-												'a',
-												{ href: '/course/' + course.slug },
-												course.title
-											)
-										),
-										_react2.default.createElement(
-											'span',
-											{ style: { color: '#444' } },
-											course.dates
-										),
-										_react2.default.createElement(
-											'span',
-											{ style: { color: '#444' } },
-											course.schedule
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'team-content' },
-										course.description
-									)
+									'h5',
+									{ style: { marginBottom: 0, fontWeight: 200 } },
+									course.dates
 								)
 							)
 						);
@@ -62630,35 +62598,6 @@
 					);
 				});
 	
-				var featured = this.state.courses.map(function (course, i) {
-					return _react2.default.createElement(
-						'div',
-						{ key: course.id, className: 'col-md-4' },
-						_react2.default.createElement(
-							'div',
-							{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-							_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'fancy-title title-bottom-border' },
-								_react2.default.createElement(
-									'h3',
-									{ style: { fontWeight: 400 } },
-									_react2.default.createElement(
-										'a',
-										{ style: { color: '#444' }, href: '/course/' + course.slug },
-										course.title
-									)
-								)
-							),
-							_react2.default.createElement(
-								'h5',
-								{ style: { marginBottom: 0, fontWeight: 200 } },
-								course.dates
-							)
-						)
-					);
-				});
 				return _react2.default.createElement(
 					'div',
 					{ id: 'wrapper', className: 'clearfix', style: { background: '#f9f9f9' } },
@@ -62744,7 +62683,7 @@
 															'Upcoming Courses'
 														),
 														_react2.default.createElement('hr', null),
-														featured
+														courses
 													)
 												)
 											)

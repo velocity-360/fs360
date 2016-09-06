@@ -38,17 +38,6 @@ class PostPage extends Component {
 
 			store.currentStore().dispatch(actions.postsRecieved(response.posts))
 
-			api.handleGet('/api/course', {type:'immersive'}, (err, response) => {
-				if (err){
-					alert(response.message)
-					return
-				}
-
-//				console.log(JSON.stringify(response))
-				this.setState({
-					courses: response.courses
-				})
-			})
 		})
 	}
 
@@ -242,21 +231,19 @@ class PostPage extends Component {
 		const courses = this.props.courses.map((course, i) => {
 			if (course.type != 'online'){
 				return (
-	                <div key={course.id} className="col-md-12 bottommargin">
-	                    <div className="team team-list clearfix">
-	                        <div className="team-image" style={{width: 150}}>
-	                            <img className="img-circle" src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" />
-	                        </div>
-	                        <div className="team-desc">
-	                            <div className="team-title">
-		                            <h4 style={{fontWeight:400}}><a href={'/course/'+course.slug}>{course.title}</a></h4>
-		                            <span style={{color:'#444'}}>{course.dates}</span>
-		                            <span style={{color:'#444'}}>{course.schedule}</span>
-	                            </div>
-	                            <div className="team-content">{course.description}</div>
-	                        </div>
-	                    </div>
-	                </div>
+					<div key={course.id} className="col-md-4">
+						<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+							<img style={{width:100, borderRadius:50, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
+							<div className="fancy-title title-bottom-border">
+								<h3 style={{fontWeight:400}}>
+									<a style={{color:'#444'}} href={'/course/'+course.slug}>{course.title}</a>
+								</h3>
+							</div>
+							<h5 style={{marginBottom:0, fontWeight:200}}>
+								{course.dates}
+							</h5>
+						</div>
+					</div>
 				)
 			}
 		})
@@ -273,23 +260,6 @@ class PostPage extends Component {
 			)
 		})
 
-		const featured = this.state.courses.map((course, i) => {
-			return (
-				<div key={course.id} className="col-md-4">
-					<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-						<img style={{width:100, borderRadius:50, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
-						<div className="fancy-title title-bottom-border">
-							<h3 style={{fontWeight:400}}>
-								<a style={{color:'#444'}} href={'/course/'+course.slug}>{course.title}</a>
-							</h3>
-						</div>
-						<h5 style={{marginBottom:0, fontWeight:200}}>
-							{course.dates}
-						</h5>
-					</div>
-				</div>
-			)
-		})
 		return (
 			<div id="wrapper" className="clearfix" style={{background:'#f9f9f9'}}>
 				<Nav headerStyle="dark" />
@@ -332,7 +302,7 @@ class PostPage extends Component {
 												<div className="panel-body" style={style.panelBody}>
 													<h2 style={style.header}>Upcoming Courses</h2>
 													<hr />
-													{featured}
+													{courses}
 												</div>
 											</div>
 
