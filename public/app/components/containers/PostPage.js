@@ -182,7 +182,8 @@ class PostPage extends Component {
 			)
 
 			content = (
-				<div style={{background:'#fff', padding: 24}} className="panel-body">
+				<div className="panel panel-default">
+					<div className="panel-body" style={style.panelBody}>
 					<textarea id="text" onChange={this.editPost} placeholder="Text" style={{padding:0, width:'100%', border:'1px solid #ddd', background:'#f9f9f9', minHeight:360}} className="panel-body">{post.text}</textarea>
 				</div>
 			)
@@ -198,7 +199,7 @@ class PostPage extends Component {
 			})
 
 			upload = (
-				<div className="panel panel-default">
+				<div className="panel panel-default" style={{marginTop:24}}>
 					<div className="panel-body" style={style.panelBody}>
 		                <div className="col_half">
 				            <Dropzone style={{width:100+'%', marginBottom:24, background:'#f9f9f9', border:'1px solid #ddd'}} onDrop={this.uploadImage}>
@@ -213,7 +214,7 @@ class PostPage extends Component {
 	                			{images}
 	                		</div>
 		                </div>
-					
+
 					</div>
 				</div>
 			)
