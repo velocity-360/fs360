@@ -387,7 +387,7 @@ var PostPage = (function (Component) {
 						React.createElement(
 							"span",
 							{ style: { fontSize: 12, color: "#999" } },
-							"Sept 5"
+							DateUtils.formattedDate(post.timestamp)
 						)
 					);
 				});

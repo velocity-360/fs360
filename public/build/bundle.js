@@ -62609,7 +62609,7 @@
 						_react2.default.createElement(
 							'span',
 							{ style: { fontSize: 12, color: '#999' } },
-							'Sept 5'
+							_utils.DateUtils.formattedDate(post.timestamp)
 						)
 					);
 				});
