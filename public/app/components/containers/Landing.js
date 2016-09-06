@@ -96,7 +96,7 @@ class Landing extends Component {
                                 and even dev ops. Through Node, React and React Native, we are able to focus on a 
                                 wider range of areas because the concepts are transferrable. This is a key reason 
                                 why React & React Native are becoming so popular - one set of concepts can be applied 
-                                to both web and mobile development. Our course highly emphasizes this cross-compatability 
+                                to both web and mobile development. Our course highly emphasizes this cross-compatibility 
                                 preparing students for careers in almost any aspect of software development.
                             </p>
                         </div>

@@ -289,7 +289,7 @@ var Landing = (function (Component) {
                                 React.createElement(
                                     "p",
                                     { style: style.paragraph },
-                                    "At Velocity 360, students learn ALL areas of the stack: backend, frontend, mobile, and even dev ops. Through Node, React and React Native, we are able to focus on a wider range of areas because the concepts are transferrable. This is a key reason why React & React Native are becoming so popular - one set of concepts can be applied to both web and mobile development. Our course highly emphasizes this cross-compatability preparing students for careers in almost any aspect of software development."
+                                    "At Velocity 360, students learn ALL areas of the stack: backend, frontend, mobile, and even dev ops. Through Node, React and React Native, we are able to focus on a wider range of areas because the concepts are transferrable. This is a key reason why React & React Native are becoming so popular - one set of concepts can be applied to both web and mobile development. Our course highly emphasizes this cross-compatibility preparing students for careers in almost any aspect of software development."
                                 )
                             ),
                             React.createElement(
