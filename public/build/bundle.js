@@ -62281,7 +62281,6 @@
 			_this.state = {
 				showLoader: false,
 				isEditing: false,
-				courses: [],
 				visitor: {
 					name: '',
 					email: ''
@@ -62668,7 +62667,9 @@
 												'div',
 												{ className: 'container' },
 												btnEdit,
+												title,
 												content,
+												upload,
 												_react2.default.createElement('br', null),
 												_react2.default.createElement('br', null),
 												_react2.default.createElement(

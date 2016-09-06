@@ -47,7 +47,6 @@ var PostPage = (function (Component) {
 		this.state = {
 			showLoader: false,
 			isEditing: false,
-			courses: [],
 			visitor: {
 				name: "",
 				email: ""
@@ -446,7 +445,9 @@ var PostPage = (function (Component) {
 												"div",
 												{ className: "container" },
 												btnEdit,
+												title,
 												content,
+												upload,
 												React.createElement("br", null),
 												React.createElement("br", null),
 												React.createElement(

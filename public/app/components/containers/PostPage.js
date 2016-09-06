@@ -20,7 +20,6 @@ class PostPage extends Component {
 		this.state = {
 			showLoader: false,
 			isEditing: false,
-			courses: [],
 			visitor: {
 				name: '',
 				email: ''
@@ -295,8 +294,9 @@ class PostPage extends Component {
 									<article id="misc" className="overview" style={style.article}>
 										<div className="container">
 											{btnEdit}
+											{title}
 											{content}
-
+											{upload}
 											<br /><br />
 											<div className="panel panel-default">
 												<div className="panel-body" style={style.panelBody}>
