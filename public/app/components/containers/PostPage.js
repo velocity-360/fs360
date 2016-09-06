@@ -317,14 +317,7 @@ class PostPage extends Component {
 
 											<br /><br />
 
-											<div className="panel panel-default">
-												<div className="panel-body" style={style.panelBody}>
-													<h2 style={style.header}>Upcoming Courses</h2>
-													<hr />
-													{courses}
-												</div>
-											</div>
-
+											{upcoming}
 										</div>
 									</article>
 								</div>

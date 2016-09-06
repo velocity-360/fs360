@@ -330,7 +330,7 @@ var PostPage = (function (Component) {
 						)
 					);
 
-					var _courses = this.props.courses.map(function (course, i) {
+					var courses = this.props.courses.map(function (course, i) {
 						if (course.type != "online") {
 							return React.createElement(
 								"div",
@@ -374,7 +374,7 @@ var PostPage = (function (Component) {
 								"Upcoming Courses"
 							),
 							React.createElement("hr", null),
-							_courses
+							courses
 						)
 					);
 				}
@@ -475,21 +475,7 @@ var PostPage = (function (Component) {
 												upload,
 												React.createElement("br", null),
 												React.createElement("br", null),
-												React.createElement(
-													"div",
-													{ className: "panel panel-default" },
-													React.createElement(
-														"div",
-														{ className: "panel-body", style: style.panelBody },
-														React.createElement(
-															"h2",
-															{ style: style.header },
-															"Upcoming Courses"
-														),
-														React.createElement("hr", null),
-														courses
-													)
-												)
+												upcoming
 											)
 										)
 									)

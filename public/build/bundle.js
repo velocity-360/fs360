@@ -62545,7 +62545,7 @@
 						)
 					);
 	
-					var _courses = this.props.courses.map(function (course, i) {
+					var courses = this.props.courses.map(function (course, i) {
 						if (course.type != 'online') {
 							return _react2.default.createElement(
 								'div',
@@ -62589,7 +62589,7 @@
 								'Upcoming Courses'
 							),
 							_react2.default.createElement('hr', null),
-							_courses
+							courses
 						)
 					);
 				}
@@ -62690,21 +62690,7 @@
 												upload,
 												_react2.default.createElement('br', null),
 												_react2.default.createElement('br', null),
-												_react2.default.createElement(
-													'div',
-													{ className: 'panel panel-default' },
-													_react2.default.createElement(
-														'div',
-														{ className: 'panel-body', style: style.panelBody },
-														_react2.default.createElement(
-															'h2',
-															{ style: style.header },
-															'Upcoming Courses'
-														),
-														_react2.default.createElement('hr', null),
-														courses
-													)
-												)
+												upcoming
 											)
 										)
 									)
