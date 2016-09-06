@@ -278,7 +278,7 @@ class PostPage extends Component {
 										<hr style={{marginTop:6}} />
 										{recentPosts}
 
-										<div style={{padding:20, background:'#f9f9f9', marginTop:24}}>
+										<div style={{padding:20, background:'#f9f9f9', marginTop:24, marginBottom:64}}>
 											<a href="#newsletter">Newsletter</a>
 											<p style={{marginBottom:16, fontSize:13}}>
 												Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.
@@ -287,7 +287,6 @@ class PostPage extends Component {
 					                        <input onChange={this.updateVisitor} id="email" type="email" style={style.input} className="custom-input" placeholder="Email" /><br />
 											<a onClick={this.subscribe} href="#" style={{marginRight:12, color:'#fff'}} className="btn btn-info">Submit</a>
 										</div>
-
 									</nav>
 								</aside>
 

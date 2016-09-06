@@ -429,7 +429,7 @@ var PostPage = (function (Component) {
 											recentPosts,
 											React.createElement(
 												"div",
-												{ style: { padding: 20, background: "#f9f9f9", marginTop: 24 } },
+												{ style: { padding: 20, background: "#f9f9f9", marginTop: 24, marginBottom: 64 } },
 												React.createElement(
 													"a",
 													{ href: "#newsletter" },
