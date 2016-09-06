@@ -272,7 +272,7 @@ class PostPage extends Component {
 									<div></div>
 								</div>
 
-								<aside style={{background:'#fff', minHeight:600, borderRight:'1px solid #ddd'}}>
+								<aside style={{background:'#fff', minHeight:850, borderRight:'1px solid #ddd'}}>
 									<nav style={{width:'100%', padding:32}}>
 										<h4 style={{marginBottom:0}}>Recent Posts</h4>
 										<hr style={{marginTop:6}} />

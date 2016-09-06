@@ -416,7 +416,7 @@ var PostPage = (function (Component) {
 									),
 									React.createElement(
 										"aside",
-										{ style: { background: "#fff", minHeight: 600, borderRight: "1px solid #ddd" } },
+										{ style: { background: "#fff", minHeight: 850, borderRight: "1px solid #ddd" } },
 										React.createElement(
 											"nav",
 											{ style: { width: "100%", padding: 32 } },

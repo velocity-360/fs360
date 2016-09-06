@@ -62638,7 +62638,7 @@
 									),
 									_react2.default.createElement(
 										'aside',
-										{ style: { background: '#fff', minHeight: 600, borderRight: '1px solid #ddd' } },
+										{ style: { background: '#fff', minHeight: 850, borderRight: '1px solid #ddd' } },
 										_react2.default.createElement(
 											'nav',
 											{ style: { width: '100%', padding: 32 } },
