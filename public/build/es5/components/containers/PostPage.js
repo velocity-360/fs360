@@ -47,6 +47,7 @@ var PostPage = (function (Component) {
 		this.state = {
 			showLoader: false,
 			isEditing: false,
+			courses: [],
 			visitor: {
 				name: "",
 				email: ""
@@ -59,6 +60,7 @@ var PostPage = (function (Component) {
 	_prototypeProperties(PostPage, null, {
 		componentDidMount: {
 			value: function componentDidMount() {
+				var _this = this;
 				var url = "/api/post";
 				api.handleGet(url, { limit: 3, isPublic: "yes" }, function (err, response) {
 					if (err) {
@@ -67,6 +69,18 @@ var PostPage = (function (Component) {
 					}
 
 					store.currentStore().dispatch(actions.postsRecieved(response.posts));
+
+					api.handleGet("/api/course", { type: "immersive" }, function (err, response) {
+						if (err) {
+							alert(response.message);
+							return;
+						}
+
+						//				console.log(JSON.stringify(response))
+						_this.setState({
+							courses: response.courses
+						});
+					});
 				});
 			},
 			writable: true,
@@ -393,6 +407,35 @@ var PostPage = (function (Component) {
 					);
 				});
 
+				var featured = this.state.courses.map(function (course, i) {
+					return React.createElement(
+						"div",
+						{ key: course.id, className: "col-md-4" },
+						React.createElement(
+							"div",
+							{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
+							React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
+							React.createElement(
+								"div",
+								{ className: "fancy-title title-bottom-border" },
+								React.createElement(
+									"h3",
+									{ style: { fontWeight: 400 } },
+									React.createElement(
+										"a",
+										{ style: { color: "#444" }, href: "/course/" + course.slug },
+										course.title
+									)
+								)
+							),
+							React.createElement(
+								"h5",
+								{ style: { marginBottom: 0, fontWeight: 200 } },
+								course.dates
+							)
+						)
+					);
+				});
 				return React.createElement(
 					"div",
 					{ id: "wrapper", className: "clearfix", style: { background: "#f9f9f9" } },
@@ -463,7 +506,24 @@ var PostPage = (function (Component) {
 												"div",
 												{ className: "container" },
 												btnEdit,
-												content
+												content,
+												React.createElement("br", null),
+												React.createElement("br", null),
+												React.createElement(
+													"div",
+													{ className: "panel panel-default" },
+													React.createElement(
+														"div",
+														{ className: "panel-body", style: style.panelBody },
+														React.createElement(
+															"h2",
+															{ style: style.header },
+															"Upcoming Courses"
+														),
+														React.createElement("hr", null),
+														featured
+													)
+												)
 											)
 										)
 									)
