@@ -62593,23 +62593,23 @@
 					}
 				});
 	
-				var recentPosts = this.props.postsArray.map(function (post, i) {
-					var image = post.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + post.image + '?crop=128' : post.image;
-					var link = post.link.length == 0 ? '/post/' + post.slug : post.link;
+				var recentPosts = this.props.postsArray.map(function (recentPost, i) {
+					var image = recentPost.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + recentPost.image + '?crop=128' : recentPost.image;
+					var link = recentPost.link.length == 0 ? '/post/' + recentPost.slug : recentPost.link;
 					return _react2.default.createElement(
 						'div',
-						{ key: post.id, className: 'clearfix', style: { marginTop: 16, lineHeight: '4px' } },
+						{ key: recentPost.id, className: 'clearfix', style: { marginTop: 16, lineHeight: '4px' } },
 						_react2.default.createElement('img', { style: style.icon, src: image }),
 						_react2.default.createElement(
 							'a',
 							{ href: link, style: { color: '#444' } },
-							_utils.TextUtils.truncateText(post.title, 28)
+							_utils.TextUtils.truncateText(recentPost.title, 28)
 						),
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'span',
 							{ style: { fontSize: 12, color: '#999' } },
-							'Sept 5'
+							_utils.DateUtils.formattedDate(recentPost.timestamp)
 						)
 					);
 				});

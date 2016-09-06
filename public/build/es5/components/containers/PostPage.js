@@ -371,23 +371,23 @@ var PostPage = (function (Component) {
 					}
 				});
 
-				var recentPosts = this.props.postsArray.map(function (post, i) {
-					var image = post.image.indexOf("http") == -1 ? "https://media-service.appspot.com/site/images/" + post.image + "?crop=128" : post.image;
-					var link = post.link.length == 0 ? "/post/" + post.slug : post.link;
+				var recentPosts = this.props.postsArray.map(function (recentPost, i) {
+					var image = recentPost.image.indexOf("http") == -1 ? "https://media-service.appspot.com/site/images/" + recentPost.image + "?crop=128" : recentPost.image;
+					var link = recentPost.link.length == 0 ? "/post/" + recentPost.slug : recentPost.link;
 					return React.createElement(
 						"div",
-						{ key: post.id, className: "clearfix", style: { marginTop: 16, lineHeight: "4px" } },
+						{ key: recentPost.id, className: "clearfix", style: { marginTop: 16, lineHeight: "4px" } },
 						React.createElement("img", { style: style.icon, src: image }),
 						React.createElement(
 							"a",
 							{ href: link, style: { color: "#444" } },
-							TextUtils.truncateText(post.title, 28)
+							TextUtils.truncateText(recentPost.title, 28)
 						),
 						React.createElement("br", null),
 						React.createElement(
 							"span",
 							{ style: { fontSize: 12, color: "#999" } },
-							"Sept 5"
+							DateUtils.formattedDate(recentPost.timestamp)
 						)
 					);
 				});
