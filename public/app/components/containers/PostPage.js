@@ -96,7 +96,7 @@ class PostPage extends Component {
 				return
 			}
 
-			store.currentStore().dispatch(actions.postsRecieved([response.post]))
+			store.currentStore().dispatch(actions.postEdited(response.post))
 			if (callback == null)
 				return
 
@@ -170,6 +170,7 @@ class PostPage extends Component {
 		var title = null
 		var content = null
 		var upload = null
+		var upcoming = null
 		var image = (post.image.length == 0) ? null : <img style={{border:'1px solid #ddd', background:'#fff', marginTop:12}} src={'https://media-service.appspot.com/site/images/'+post.image+'?crop=260'} alt="Velocity 360" />
 		var video = (post.wistia.length == 0) ? null : <div className={'wistia_embed wistia_async_'+post.wistia+' videoFoam=true'} style={{height:100, width:178, marginTop:12}}>&nbsp;</div>
 
@@ -229,29 +230,40 @@ class PostPage extends Component {
 					<div dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.text) }} className="panel-body" style={{padding:36}}></div>
 					<div style={{width:'50%', minWidth:240}}>{video}</div>
 				</div>
-			)		
+			)
+
+			const courses = this.props.courses.map((course, i) => {
+				if (course.type != 'online'){
+					return (
+						<div key={course.id} className="col-md-4">
+							<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
+								<img style={{width:100, borderRadius:50, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
+								<div className="fancy-title title-bottom-border">
+									<h3 style={{fontWeight:400}}>
+										<a style={{color:'#444'}} href={'/course/'+course.slug}>{course.title}</a>
+									</h3>
+								</div>
+								<h5 style={{marginBottom:0, fontWeight:200}}>
+									{course.dates}
+								</h5>
+							</div>
+						</div>
+					)
+				}
+			})			
+
+			upcoming = (
+				<div className="panel panel-default">
+					<div className="panel-body" style={style.panelBody}>
+						<h2 style={style.header}>Upcoming Courses</h2>
+						<hr />
+						{courses}
+					</div>
+				</div>
+			)
+
 		}
 
-		const courses = this.props.courses.map((course, i) => {
-			if (course.type != 'online'){
-				return (
-					<div key={course.id} className="col-md-4">
-						<div style={{width:92+'%', margin:'auto', background:'#f9f9f9', border:'1px solid #ddd', textAlign:'center', padding:16, marginBottom:32}}>
-							<img style={{width:100, borderRadius:50, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=460'} />
-							<div className="fancy-title title-bottom-border">
-								<h3 style={{fontWeight:400}}>
-									<a style={{color:'#444'}} href={'/course/'+course.slug}>{course.title}</a>
-								</h3>
-							</div>
-							<h5 style={{marginBottom:0, fontWeight:200}}>
-								{course.dates}
-							</h5>
-						</div>
-					</div>
-				)
-			}
-		})
-		
 		const recentPosts = this.props.postsArray.map((recentPost, i) => {
 			const image = (recentPost.image.indexOf('http') == -1) ? 'https://media-service.appspot.com/site/images/'+recentPost.image+'?crop=128' : recentPost.image
 			const link = (recentPost.link.length == 0) ? '/post/'+recentPost.slug : recentPost.link
@@ -302,7 +314,9 @@ class PostPage extends Component {
 											{title}
 											{content}
 											{upload}
+
 											<br /><br />
+
 											<div className="panel panel-default">
 												<div className="panel-body" style={style.panelBody}>
 													<h2 style={style.header}>Upcoming Courses</h2>

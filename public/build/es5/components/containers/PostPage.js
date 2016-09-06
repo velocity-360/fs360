@@ -138,7 +138,7 @@ var PostPage = (function (Component) {
 						return;
 					}
 
-					store.currentStore().dispatch(actions.postsRecieved([response.post]));
+					store.currentStore().dispatch(actions.postEdited(response.post));
 					if (callback == null) return;
 
 					callback();
@@ -235,6 +235,7 @@ var PostPage = (function (Component) {
 				var title = null;
 				var content = null;
 				var upload = null;
+				var upcoming = null;
 				var image = post.image.length == 0 ? null : React.createElement("img", { style: { border: "1px solid #ddd", background: "#fff", marginTop: 12 }, src: "https://media-service.appspot.com/site/images/" + post.image + "?crop=260", alt: "Velocity 360" });
 				var video = post.wistia.length == 0 ? null : React.createElement(
 					"div",
@@ -328,39 +329,55 @@ var PostPage = (function (Component) {
 							video
 						)
 					);
-				}
 
-				var courses = this.props.courses.map(function (course, i) {
-					if (course.type != "online") {
-						return React.createElement(
-							"div",
-							{ key: course.id, className: "col-md-4" },
-							React.createElement(
+					var _courses = this.props.courses.map(function (course, i) {
+						if (course.type != "online") {
+							return React.createElement(
 								"div",
-								{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-								React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
+								{ key: course.id, className: "col-md-4" },
 								React.createElement(
 									"div",
-									{ className: "fancy-title title-bottom-border" },
+									{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
+									React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + course.image + "?crop=460" }),
 									React.createElement(
-										"h3",
-										{ style: { fontWeight: 400 } },
+										"div",
+										{ className: "fancy-title title-bottom-border" },
 										React.createElement(
-											"a",
-											{ style: { color: "#444" }, href: "/course/" + course.slug },
-											course.title
+											"h3",
+											{ style: { fontWeight: 400 } },
+											React.createElement(
+												"a",
+												{ style: { color: "#444" }, href: "/course/" + course.slug },
+												course.title
+											)
 										)
+									),
+									React.createElement(
+										"h5",
+										{ style: { marginBottom: 0, fontWeight: 200 } },
+										course.dates
 									)
-								),
-								React.createElement(
-									"h5",
-									{ style: { marginBottom: 0, fontWeight: 200 } },
-									course.dates
 								)
-							)
-						);
-					}
-				});
+							);
+						}
+					});
+
+					upcoming = React.createElement(
+						"div",
+						{ className: "panel panel-default" },
+						React.createElement(
+							"div",
+							{ className: "panel-body", style: style.panelBody },
+							React.createElement(
+								"h2",
+								{ style: style.header },
+								"Upcoming Courses"
+							),
+							React.createElement("hr", null),
+							_courses
+						)
+					);
+				}
 
 				var recentPosts = this.props.postsArray.map(function (recentPost, i) {
 					var image = recentPost.image.indexOf("http") == -1 ? "https://media-service.appspot.com/site/images/" + recentPost.image + "?crop=128" : recentPost.image;

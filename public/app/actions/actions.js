@@ -29,13 +29,6 @@ module.exports = {
 			type:constants.UPDATE_CURRENT_USER,
 			currentUser: updatedUser
 		}
-
-		// return function(dispatch, getState){
-		// 	dispatch({
-		// 		type:'UPDATE_CURRENT_USER',
-		// 		currentUser: updatedUser
-		// 	});
-		// }
 	},
 
 	coursesRecieved: (courses) => {

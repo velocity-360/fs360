@@ -42971,13 +42971,6 @@
 				type: constants.UPDATE_CURRENT_USER,
 				currentUser: updatedUser
 			};
-	
-			// return function(dispatch, getState){
-			// 	dispatch({
-			// 		type:'UPDATE_CURRENT_USER',
-			// 		currentUser: updatedUser
-			// 	});
-			// }
 		},
 	
 		coursesRecieved: function coursesRecieved(courses) {
@@ -62365,7 +62358,7 @@
 						return;
 					}
 	
-					_store2.default.currentStore().dispatch(_actions2.default.postsRecieved([response.post]));
+					_store2.default.currentStore().dispatch(_actions2.default.postEdited(response.post));
 					if (callback == null) return;
 	
 					callback();
@@ -62457,6 +62450,7 @@
 				var title = null;
 				var content = null;
 				var upload = null;
+				var upcoming = null;
 				var image = post.image.length == 0 ? null : _react2.default.createElement('img', { style: { border: '1px solid #ddd', background: '#fff', marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/' + post.image + '?crop=260', alt: 'Velocity 360' });
 				var video = post.wistia.length == 0 ? null : _react2.default.createElement(
 					'div',
@@ -62550,39 +62544,55 @@
 							video
 						)
 					);
-				}
 	
-				var courses = this.props.courses.map(function (course, i) {
-					if (course.type != 'online') {
-						return _react2.default.createElement(
-							'div',
-							{ key: course.id, className: 'col-md-4' },
-							_react2.default.createElement(
+					var _courses = this.props.courses.map(function (course, i) {
+						if (course.type != 'online') {
+							return _react2.default.createElement(
 								'div',
-								{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-								_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
+								{ key: course.id, className: 'col-md-4' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'fancy-title title-bottom-border' },
+									{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+									_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + course.image + '?crop=460' }),
 									_react2.default.createElement(
-										'h3',
-										{ style: { fontWeight: 400 } },
+										'div',
+										{ className: 'fancy-title title-bottom-border' },
 										_react2.default.createElement(
-											'a',
-											{ style: { color: '#444' }, href: '/course/' + course.slug },
-											course.title
+											'h3',
+											{ style: { fontWeight: 400 } },
+											_react2.default.createElement(
+												'a',
+												{ style: { color: '#444' }, href: '/course/' + course.slug },
+												course.title
+											)
 										)
+									),
+									_react2.default.createElement(
+										'h5',
+										{ style: { marginBottom: 0, fontWeight: 200 } },
+										course.dates
 									)
-								),
-								_react2.default.createElement(
-									'h5',
-									{ style: { marginBottom: 0, fontWeight: 200 } },
-									course.dates
 								)
-							)
-						);
-					}
-				});
+							);
+						}
+					});
+	
+					upcoming = _react2.default.createElement(
+						'div',
+						{ className: 'panel panel-default' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel-body', style: style.panelBody },
+							_react2.default.createElement(
+								'h2',
+								{ style: style.header },
+								'Upcoming Courses'
+							),
+							_react2.default.createElement('hr', null),
+							_courses
+						)
+					);
+				}
 	
 				var recentPosts = this.props.postsArray.map(function (recentPost, i) {
 					var image = recentPost.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + recentPost.image + '?crop=128' : recentPost.image;
