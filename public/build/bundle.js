@@ -62638,7 +62638,7 @@
 									),
 									_react2.default.createElement(
 										'aside',
-										{ style: { background: '#fff', minHeight: 700, borderRight: '1px solid #ddd' } },
+										{ style: { background: '#fff', minHeight: 600, borderRight: '1px solid #ddd' } },
 										_react2.default.createElement(
 											'nav',
 											{ style: { width: '100%', padding: 32 } },
@@ -62651,7 +62651,7 @@
 											recentPosts,
 											_react2.default.createElement(
 												'div',
-												{ style: { padding: 20, background: '#f9f9f9', marginTop: 24, marginBottom: 64 } },
+												{ style: { padding: 20, background: '#f9f9f9', marginTop: 24 } },
 												_react2.default.createElement(
 													'a',
 													{ href: '#newsletter' },
