@@ -249,10 +249,11 @@ class PostPage extends Component {
 		
 		const recentPosts = this.props.postsArray.map((post, i) => {
 			const image = (post.image.indexOf('http') == -1) ? 'https://media-service.appspot.com/site/images/'+post.image+'?crop=128' : post.image
+			const link = (post.link.length == 0) ? '/post/'+post.slug : post.link
 			return (
 				<div key={post.id} className="clearfix" style={{marginTop:16, lineHeight:'4px'}}>
 					<img style={style.icon} src={image} />
-					<a href="#" style={{color:'#444'}}>{TextUtils.truncateText(post.title, 28)}</a><br />
+					<a href={link} style={{color:'#444'}}>{TextUtils.truncateText(post.title, 28)}</a><br />
 					<span style={{fontSize:12, color:'#999'}}>Sept 5</span>
 
 				</div>

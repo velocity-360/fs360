@@ -62595,13 +62595,14 @@
 	
 				var recentPosts = this.props.postsArray.map(function (post, i) {
 					var image = post.image.indexOf('http') == -1 ? 'https://media-service.appspot.com/site/images/' + post.image + '?crop=128' : post.image;
+					var link = post.link.length == 0 ? '/post/' + post.slug : post.link;
 					return _react2.default.createElement(
 						'div',
 						{ key: post.id, className: 'clearfix', style: { marginTop: 16, lineHeight: '4px' } },
 						_react2.default.createElement('img', { style: style.icon, src: image }),
 						_react2.default.createElement(
 							'a',
-							{ href: '#', style: { color: '#444' } },
+							{ href: link, style: { color: '#444' } },
 							_utils.TextUtils.truncateText(post.title, 28)
 						),
 						_react2.default.createElement('br', null),

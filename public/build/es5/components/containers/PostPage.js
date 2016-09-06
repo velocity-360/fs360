@@ -373,13 +373,14 @@ var PostPage = (function (Component) {
 
 				var recentPosts = this.props.postsArray.map(function (post, i) {
 					var image = post.image.indexOf("http") == -1 ? "https://media-service.appspot.com/site/images/" + post.image + "?crop=128" : post.image;
+					var link = post.link.length == 0 ? "/post/" + post.slug : post.link;
 					return React.createElement(
 						"div",
 						{ key: post.id, className: "clearfix", style: { marginTop: 16, lineHeight: "4px" } },
 						React.createElement("img", { style: style.icon, src: image }),
 						React.createElement(
 							"a",
-							{ href: "#", style: { color: "#444" } },
+							{ href: link, style: { color: "#444" } },
 							TextUtils.truncateText(post.title, 28)
 						),
 						React.createElement("br", null),
