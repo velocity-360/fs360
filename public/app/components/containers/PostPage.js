@@ -278,7 +278,7 @@ class PostPage extends Component {
 										<hr style={{marginTop:6}} />
 										{recentPosts}
 
-										<div style={{padding:20, background:'#f9f9f9', marginTop:24, marginBottom:64}}>
+										<div style={{padding:20, background:'#f9f9f9', marginTop:24}}>
 											<a href="#newsletter">Newsletter</a>
 											<p style={{marginBottom:16, fontSize:13}}>
 												Sign up to our newsletter to stay informed about upcoming tutorials, events, and courses.

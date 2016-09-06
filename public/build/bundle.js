@@ -62651,7 +62651,7 @@
 											recentPosts,
 											_react2.default.createElement(
 												'div',
-												{ style: { padding: 20, background: '#f9f9f9', marginTop: 24, marginBottom: 64 } },
+												{ style: { padding: 20, background: '#f9f9f9', marginTop: 24 } },
 												_react2.default.createElement(
 													'a',
 													{ href: '#newsletter' },
