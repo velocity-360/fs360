@@ -198,20 +198,23 @@ class PostPage extends Component {
 			})
 
 			upload = (
-				<div>
-	                <div className="col_half">
-			            <Dropzone style={{width:100+'%', marginBottom:24, background:'#f9f9f9', border:'1px solid #ddd'}} onDrop={this.uploadImage}>
-			              <div style={{padding:24}}>
-			              	Upload Images Here.
-			              </div>
-			            </Dropzone>
-	                </div>
+				<div className="panel panel-default">
+					<div className="panel-body" style={style.panelBody}>
+		                <div className="col_half">
+				            <Dropzone style={{width:100+'%', marginBottom:24, background:'#f9f9f9', border:'1px solid #ddd'}} onDrop={this.uploadImage}>
+				              <div style={{padding:24}}>
+				              	Upload Images Here.
+				              </div>
+				            </Dropzone>
+		                </div>
 
-	                <div className="col_half col_last">
-                		<div className="row">
-                			{images}
-                		</div>
-	                </div>
+		                <div className="col_half col_last">
+	                		<div className="row">
+	                			{images}
+	                		</div>
+		                </div>
+					
+					</div>
 				</div>
 			)
 		}

@@ -62498,27 +62498,31 @@
 	
 					upload = _react2.default.createElement(
 						'div',
-						null,
+						{ className: 'panel panel-default' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col_half' },
-							_react2.default.createElement(
-								_reactDropzone2.default,
-								{ style: { width: 100 + '%', marginBottom: 24, background: '#f9f9f9', border: '1px solid #ddd' }, onDrop: this.uploadImage },
-								_react2.default.createElement(
-									'div',
-									{ style: { padding: 24 } },
-									'Upload Images Here.'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col_half col_last' },
+							{ className: 'panel-body', style: style.panelBody },
 							_react2.default.createElement(
 								'div',
-								{ className: 'row' },
-								images
+								{ className: 'col_half' },
+								_react2.default.createElement(
+									_reactDropzone2.default,
+									{ style: { width: 100 + '%', marginBottom: 24, background: '#f9f9f9', border: '1px solid #ddd' }, onDrop: this.uploadImage },
+									_react2.default.createElement(
+										'div',
+										{ style: { padding: 24 } },
+										'Upload Images Here.'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col_half col_last' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									images
+								)
 							)
 						)
 					);

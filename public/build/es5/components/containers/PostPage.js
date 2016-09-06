@@ -276,27 +276,31 @@ var PostPage = (function (Component) {
 
 					upload = React.createElement(
 						"div",
-						null,
+						{ className: "panel panel-default" },
 						React.createElement(
 							"div",
-							{ className: "col_half" },
-							React.createElement(
-								Dropzone,
-								{ style: { width: 100 + "%", marginBottom: 24, background: "#f9f9f9", border: "1px solid #ddd" }, onDrop: this.uploadImage },
-								React.createElement(
-									"div",
-									{ style: { padding: 24 } },
-									"Upload Images Here."
-								)
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "col_half col_last" },
+							{ className: "panel-body", style: style.panelBody },
 							React.createElement(
 								"div",
-								{ className: "row" },
-								images
+								{ className: "col_half" },
+								React.createElement(
+									Dropzone,
+									{ style: { width: 100 + "%", marginBottom: 24, background: "#f9f9f9", border: "1px solid #ddd" }, onDrop: this.uploadImage },
+									React.createElement(
+										"div",
+										{ style: { padding: 24 } },
+										"Upload Images Here."
+									)
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "col_half col_last" },
+								React.createElement(
+									"div",
+									{ className: "row" },
+									images
+								)
 							)
 						)
 					);
