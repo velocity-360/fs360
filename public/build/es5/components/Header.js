@@ -144,7 +144,7 @@ var Header = (function (Component) {
 			value: function render() {
 				return React.createElement(
 					"section",
-					{ id: "slider", className: "dark full-screen", style: { background: "url(\"/images/oc-dark-blue.jpg\") center", overflow: "visible" }, "data-height-lg": "600", "data-height-md": "600", "data-height-sm": "1000", "data-height-xs": "1000", "data-height-xxs": "1000" },
+					{ id: "slider", className: "dark full-screen", style: { background: "url(\"/images/oc-dark-blue.jpg\") center", overflow: "visible" }, "data-height-lg": "600", "data-height-md": "600", "data-height-sm": "850", "data-height-xs": "850", "data-height-xxs": "850" },
 					React.createElement(Loader, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: "spinner", loadedClassName: "loadedContent" }),
 					React.createElement(
 						"div",
@@ -166,55 +166,19 @@ var Header = (function (Component) {
 							React.createElement("br", null),
 							React.createElement(
 								"div",
-								{ className: "row" },
+								{ "data-animate": "fadeIn", "data-delay": "800", style: style.featuredBox },
 								React.createElement(
-									"div",
-									{ className: "col-md-4 col-md-offset-2" },
-									React.createElement(
-										"div",
-										{ "data-animate": "fadeIn", "data-delay": "800", style: style.featuredBox },
-										React.createElement(
-											"h4",
-											{ style: { fontWeight: 200, marginBottom: 0 } },
-											"Next Cohort Begins October 3rd"
-										),
-										React.createElement("hr", null),
-										React.createElement("input", { id: "name", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Name" }),
-										React.createElement("input", { id: "email", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Email" }),
-										React.createElement(
-											"button",
-											{ onClick: this.submitSyllabusRequest, className: "btn btn-lg btn-info nomargin", value: "submit", type: "submit" },
-											"Request Syllabus"
-										)
-									)
+									"h4",
+									{ style: { fontWeight: 200, marginBottom: 0 } },
+									"Next Cohort Begins October 3rd"
 								),
+								React.createElement("hr", null),
+								React.createElement("input", { id: "name", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Name" }),
+								React.createElement("input", { id: "email", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Email" }),
 								React.createElement(
-									"div",
-									{ className: "col-md-4" },
-									React.createElement(
-										"div",
-										{ "data-animate": "fadeIn", "data-delay": "800", style: style.featuredBox },
-										React.createElement(
-											"h4",
-											{ style: { fontWeight: 200, marginBottom: 0 } },
-											"Featured Tutorial"
-										),
-										React.createElement("hr", null),
-										React.createElement(
-											"span",
-											null,
-											"React Native Intro"
-										),
-										React.createElement("br", null),
-										React.createElement("img", { style: { borderRadius: 50, width: 100, marginTop: 12 }, src: "https://media-service.appspot.com/site/images/Dt-RYzZg?crop=360" }),
-										React.createElement("br", null),
-										React.createElement("br", null),
-										React.createElement(
-											"a",
-											{ href: "https://www.velocity360.io/tutorial/react-native-intro", className: "btn btn-lg btn-info nomargin" },
-											"View"
-										)
-									)
+									"button",
+									{ onClick: this.submitSyllabusRequest, className: "btn btn-lg btn-info nomargin", value: "submit", type: "submit" },
+									"Request Syllabus"
 								)
 							)
 						)

@@ -3,7 +3,7 @@ import ReactBootstrap, { Modal } from 'react-bootstrap'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { Nav, CourseCard, Application } from '../../components'
-import { api, TrackingManager } from '../../utils'
+import { api, TrackingManager, Stripe } from '../../utils'
 import store from '../../stores/store'
 import actions from '../../actions/actions'
 
@@ -17,6 +17,7 @@ class Course extends Component {
 		this.showPaypal = this.showPaypal.bind(this)
 		this.submitSyllabusRequest = this.submitSyllabusRequest.bind(this)
 		this.validate = this.validate.bind(this)
+		this.showStripeModal = this.showStripeModal.bind(this)
 		this.state = {
 			showLoader: false,
 			showApplication: false,
@@ -26,6 +27,37 @@ class Course extends Component {
 				subject: 'Syllabus Request'
 			}
 		}
+	}
+
+	componentDidMount(){
+		const course = this.props.courses[this.props.slug]
+		const discountTuition = course.tuition-200
+		const text = 'Full Tuition - $'+discountTuition
+		Stripe.initializeWithText(text, (token) => {
+			this.setState({showLoader: true})
+
+			const currentUser = this.props.currentUser
+			api.submitStripeCharge(token, course, discountTuition, 'course', (err, response) => {
+				this.setState({showLoader: false})
+				if (err){
+					alert(err.message)
+					return
+				}
+				
+				console.log('Stripe Charge: '+JSON.stringify(response))
+				const currentStore = store.currentStore()
+
+				// currentStore.dispatch(actions.currentUserRecieved(response.profile))
+				// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
+				// this.showFirstUnit(null)
+			})
+		})
+	}
+
+	showStripeModal(event){
+		event.preventDefault()
+		const course = this.props.courses[this.props.slug]
+		Stripe.showModalWithText(course.title)
 	}
 
 	toggleApplication(event){
@@ -244,6 +276,7 @@ class Course extends Component {
 		var admissions = null
 		var syllabus = null
 		var cta = null
+		var register = null
 		if (course.type == 'immersive'){ // bootcamp
 			sidemenu = (
 				<ul>
@@ -390,7 +423,7 @@ class Course extends Component {
 					<li><a href="#tuition">Tuition</a></li>
 					<li><a href="#instructors">Instructors</a></li>
 					<li><a href="#faq">FAQ</a></li>
-					<li><a onClick={this.showPaypal} href="#register" className="apply">Register</a></li>
+					<li><a href="#register" className="apply">Register</a></li>
 				</ul>				
 			)
 
@@ -417,6 +450,24 @@ class Course extends Component {
 							made in bi-weekly installments throughout the duration of 
 							the course.
 						</p>
+					</div>
+				</article>
+			)
+
+			register = (
+				<article id="register" className="overview" style={{margin:'auto', padding:32}}>
+					<h2>Register</h2>
+					<div className="row">
+						<div className="col-md-6" style={{marginBottom:32}}>
+							<h3>Deposit</h3>
+							<a onClick={this.showPaypal} href="#register" className="btn btn-success">Submit Deposit</a>
+
+						</div>
+						<div className="col-md-6">
+							<h3>Full Tuition</h3>
+							<a onClick={this.showStripeModal} href="#" className="btn btn-success">Full Tution</a>
+
+						</div>
 					</div>
 				</article>
 			)
@@ -516,8 +567,11 @@ class Course extends Component {
 												</article>
 
 												{admissions}
+												{register}
 
 											</div>
+
+
 										</div>
 									</article>
 

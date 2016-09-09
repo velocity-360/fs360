@@ -32,6 +32,7 @@ var _utils = require("../../utils");
 
 var api = _utils.api;
 var TrackingManager = _utils.TrackingManager;
+var Stripe = _utils.Stripe;
 var store = _interopRequire(require("../../stores/store"));
 
 var actions = _interopRequire(require("../../actions/actions"));
@@ -47,6 +48,7 @@ var Course = (function (Component) {
 		this.showPaypal = this.showPaypal.bind(this);
 		this.submitSyllabusRequest = this.submitSyllabusRequest.bind(this);
 		this.validate = this.validate.bind(this);
+		this.showStripeModal = this.showStripeModal.bind(this);
 		this.state = {
 			showLoader: false,
 			showApplication: false,
@@ -61,6 +63,45 @@ var Course = (function (Component) {
 	_inherits(Course, Component);
 
 	_prototypeProperties(Course, null, {
+		componentDidMount: {
+			value: function componentDidMount() {
+				var _this = this;
+				var course = this.props.courses[this.props.slug];
+				var discountTuition = course.tuition - 200;
+				var text = "Full Tuition - $" + discountTuition;
+				Stripe.initializeWithText(text, function (token) {
+					_this.setState({ showLoader: true });
+
+					var currentUser = _this.props.currentUser;
+					api.submitStripeCharge(token, course, discountTuition, "course", function (err, response) {
+						_this.setState({ showLoader: false });
+						if (err) {
+							alert(err.message);
+							return;
+						}
+
+						console.log("Stripe Charge: " + JSON.stringify(response));
+						var currentStore = store.currentStore()
+
+						// currentStore.dispatch(actions.currentUserRecieved(response.profile))
+						// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
+						// this.showFirstUnit(null)
+						;
+					});
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		showStripeModal: {
+			value: function showStripeModal(event) {
+				event.preventDefault();
+				var course = this.props.courses[this.props.slug];
+				Stripe.showModalWithText(course.title);
+			},
+			writable: true,
+			configurable: true
+		},
 		toggleApplication: {
 			value: function toggleApplication(event) {
 				if (event != null) event.preventDefault();
@@ -356,6 +397,7 @@ var Course = (function (Component) {
 				var admissions = null;
 				var syllabus = null;
 				var cta = null;
+				var register = null;
 				if (course.type == "immersive") {
 					// bootcamp
 					sidemenu = React.createElement(
@@ -703,7 +745,7 @@ var Course = (function (Component) {
 							null,
 							React.createElement(
 								"a",
-								{ onClick: this.showPaypal, href: "#register", className: "apply" },
+								{ href: "#register", className: "apply" },
 								"Register"
 							)
 						)
@@ -752,6 +794,48 @@ var Course = (function (Component) {
 								" with a $",
 								course.deposit,
 								" deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course."
+							)
+						)
+					);
+
+					register = React.createElement(
+						"article",
+						{ id: "register", className: "overview", style: { margin: "auto", padding: 32 } },
+						React.createElement(
+							"h2",
+							null,
+							"Register"
+						),
+						React.createElement(
+							"div",
+							{ className: "row" },
+							React.createElement(
+								"div",
+								{ className: "col-md-6", style: { marginBottom: 32 } },
+								React.createElement(
+									"h3",
+									null,
+									"Deposit"
+								),
+								React.createElement(
+									"a",
+									{ onClick: this.showPaypal, href: "#register", className: "btn btn-success" },
+									"Submit Deposit"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "col-md-6" },
+								React.createElement(
+									"h3",
+									null,
+									"Full Tuition"
+								),
+								React.createElement(
+									"a",
+									{ onClick: this.showStripeModal, href: "#", className: "btn btn-success" },
+									"Full Tution"
+								)
 							)
 						)
 					);
@@ -922,7 +1006,8 @@ var Course = (function (Component) {
 															)
 														)
 													),
-													admissions
+													admissions,
+													register
 												)
 											)
 										)

@@ -46044,7 +46044,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'section',
-					{ id: 'slider', className: 'dark full-screen', style: { background: 'url("/images/oc-dark-blue.jpg") center', overflow: 'visible' }, 'data-height-lg': '600', 'data-height-md': '600', 'data-height-sm': '1000', 'data-height-xs': '1000', 'data-height-xxs': '1000' },
+					{ id: 'slider', className: 'dark full-screen', style: { background: 'url("/images/oc-dark-blue.jpg") center', overflow: 'visible' }, 'data-height-lg': '600', 'data-height-md': '600', 'data-height-sm': '850', 'data-height-xs': '850', 'data-height-xxs': '850' },
 					_react2.default.createElement(_reactLoader2.default, { options: this.props.loaderOptions, loaded: !this.state.showLoader, className: 'spinner', loadedClassName: 'loadedContent' }),
 					_react2.default.createElement(
 						'div',
@@ -46066,55 +46066,19 @@
 							_react2.default.createElement('br', null),
 							_react2.default.createElement(
 								'div',
-								{ className: 'row' },
+								{ 'data-animate': 'fadeIn', 'data-delay': '800', style: style.featuredBox },
 								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-4 col-md-offset-2' },
-									_react2.default.createElement(
-										'div',
-										{ 'data-animate': 'fadeIn', 'data-delay': '800', style: style.featuredBox },
-										_react2.default.createElement(
-											'h4',
-											{ style: { fontWeight: 200, marginBottom: 0 } },
-											'Next Cohort Begins October 3rd'
-										),
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement('input', { id: 'name', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' }),
-										_react2.default.createElement('input', { id: 'email', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' }),
-										_react2.default.createElement(
-											'button',
-											{ onClick: this.submitSyllabusRequest, className: 'btn btn-lg btn-info nomargin', value: 'submit', type: 'submit' },
-											'Request Syllabus'
-										)
-									)
+									'h4',
+									{ style: { fontWeight: 200, marginBottom: 0 } },
+									'Next Cohort Begins October 3rd'
 								),
+								_react2.default.createElement('hr', null),
+								_react2.default.createElement('input', { id: 'name', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Name' }),
+								_react2.default.createElement('input', { id: 'email', onChange: this.updateVisitor, style: style.input, type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Email' }),
 								_react2.default.createElement(
-									'div',
-									{ className: 'col-md-4' },
-									_react2.default.createElement(
-										'div',
-										{ 'data-animate': 'fadeIn', 'data-delay': '800', style: style.featuredBox },
-										_react2.default.createElement(
-											'h4',
-											{ style: { fontWeight: 200, marginBottom: 0 } },
-											'Featured Tutorial'
-										),
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'span',
-											null,
-											'React Native Intro'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement('img', { style: { borderRadius: 50, width: 100, marginTop: 12 }, src: 'https://media-service.appspot.com/site/images/Dt-RYzZg?crop=360' }),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'a',
-											{ href: 'https://www.velocity360.io/tutorial/react-native-intro', className: 'btn btn-lg btn-info nomargin' },
-											'View'
-										)
-									)
+									'button',
+									{ onClick: this.submitSyllabusRequest, className: 'btn btn-lg btn-info nomargin', value: 'submit', type: 'submit' },
+									'Request Syllabus'
 								)
 							)
 						)
@@ -64124,6 +64088,7 @@
 			_this.showPaypal = _this.showPaypal.bind(_this);
 			_this.submitSyllabusRequest = _this.submitSyllabusRequest.bind(_this);
 			_this.validate = _this.validate.bind(_this);
+			_this.showStripeModal = _this.showStripeModal.bind(_this);
 			_this.state = {
 				showLoader: false,
 				showApplication: false,
@@ -64137,6 +64102,41 @@
 		}
 	
 		_createClass(Course, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
+	
+				var course = this.props.courses[this.props.slug];
+				var discountTuition = course.tuition - 200;
+				var text = 'Full Tuition - $' + discountTuition;
+				_utils.Stripe.initializeWithText(text, function (token) {
+					_this2.setState({ showLoader: true });
+	
+					var currentUser = _this2.props.currentUser;
+					_utils.api.submitStripeCharge(token, course, discountTuition, 'course', function (err, response) {
+						_this2.setState({ showLoader: false });
+						if (err) {
+							alert(err.message);
+							return;
+						}
+	
+						console.log('Stripe Charge: ' + JSON.stringify(response));
+						var currentStore = _store2.default.currentStore();
+	
+						// currentStore.dispatch(actions.currentUserRecieved(response.profile))
+						// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
+						// this.showFirstUnit(null)
+					});
+				});
+			}
+		}, {
+			key: 'showStripeModal',
+			value: function showStripeModal(event) {
+				event.preventDefault();
+				var course = this.props.courses[this.props.slug];
+				_utils.Stripe.showModalWithText(course.title);
+			}
+		}, {
 			key: 'toggleApplication',
 			value: function toggleApplication(event) {
 				if (event != null) event.preventDefault();
@@ -64149,7 +64149,7 @@
 		}, {
 			key: 'submitApplication',
 			value: function submitApplication(application) {
-				var _this2 = this;
+				var _this3 = this;
 	
 				var course = this.props.courses[this.props.slug];
 				this.setState({
@@ -64159,7 +64159,7 @@
 	
 				application['course'] = course.title;
 				_utils.api.handlePost('/account/application', application, function (err, response) {
-					_this2.setState({ showLoader: false });
+					_this3.setState({ showLoader: false });
 	
 					if (err) {
 						alert(err.message);
@@ -64181,7 +64181,7 @@
 		}, {
 			key: 'subscribe',
 			value: function subscribe(event) {
-				var _this3 = this;
+				var _this4 = this;
 	
 				event.preventDefault();
 				if (this.state.visitor.name.length == 0) {
@@ -64206,7 +64206,7 @@
 				s['subject'] = 'New Subscriber';
 				s['confirmation'] = 'Thanks for subscribing! Stay tuned for more tutorials, events and upcoming courses!';
 				_utils.api.handlePost('/account/subscribe', s, function (err, response) {
-					_this3.setState({ showLoader: false });
+					_this4.setState({ showLoader: false });
 					if (err) {
 						alert(err.message);
 						return;
@@ -64218,7 +64218,7 @@
 		}, {
 			key: 'submitSyllabusRequest',
 			value: function submitSyllabusRequest(event) {
-				var _this4 = this;
+				var _this5 = this;
 	
 				event.preventDefault();
 				var missingField = this.validate(this.state.visitor, false);
@@ -64240,7 +64240,7 @@
 	
 				this.setState({ showLoader: true });
 				_utils.api.handlePost('/account/syllabus', pkg, function (err, response) {
-					_this4.setState({ showLoader: false });
+					_this5.setState({ showLoader: false });
 					if (err) {
 						alert(err.message);
 						return;
@@ -64421,6 +64421,7 @@
 				var admissions = null;
 				var syllabus = null;
 				var cta = null;
+				var register = null;
 				if (course.type == 'immersive') {
 					// bootcamp
 					sidemenu = _react2.default.createElement(
@@ -64768,7 +64769,7 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ onClick: this.showPaypal, href: '#register', className: 'apply' },
+								{ href: '#register', className: 'apply' },
 								'Register'
 							)
 						)
@@ -64817,6 +64818,48 @@
 								' with a $',
 								course.deposit,
 								' deposit to reserve your spot. A $200 discount will be applied to those who pay in full at the start of the course. Otherwise, payments can be made in bi-weekly installments throughout the duration of the course.'
+							)
+						)
+					);
+	
+					register = _react2.default.createElement(
+						'article',
+						{ id: 'register', className: 'overview', style: { margin: 'auto', padding: 32 } },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Register'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'row' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-6', style: { marginBottom: 32 } },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Deposit'
+								),
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.showPaypal, href: '#register', className: 'btn btn-success' },
+									'Submit Deposit'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-6' },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Full Tuition'
+								),
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.showStripeModal, href: '#', className: 'btn btn-success' },
+									'Full Tution'
+								)
 							)
 						)
 					);
@@ -64987,7 +65030,8 @@
 															)
 														)
 													),
-													admissions
+													admissions,
+													register
 												)
 											)
 										)
