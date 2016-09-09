@@ -64083,6 +64083,7 @@
 			var _this = _possibleConstructorReturn(this, (Course.__proto__ || Object.getPrototypeOf(Course)).call(this, props, context));
 	
 			_this.toggleApplication = _this.toggleApplication.bind(_this);
+			_this.toggleConfirmation = _this.toggleConfirmation.bind(_this);
 			_this.submitApplication = _this.submitApplication.bind(_this);
 			_this.updateVisitor = _this.updateVisitor.bind(_this);
 			_this.showPaypal = _this.showPaypal.bind(_this);
@@ -64091,6 +64092,7 @@
 			_this.showStripeModal = _this.showStripeModal.bind(_this);
 			_this.state = {
 				showLoader: false,
+				showConfirmation: false,
 				showApplication: false,
 				visitor: {
 					name: '',
@@ -64122,6 +64124,9 @@
 	
 						console.log('Stripe Charge: ' + JSON.stringify(response));
 						var currentStore = _store2.default.currentStore();
+						_this2.setState({
+							showConfirmation: true
+						});
 	
 						// currentStore.dispatch(actions.currentUserRecieved(response.profile))
 						// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
@@ -64144,6 +64149,15 @@
 				var showApplication = !this.state.showApplication;
 				this.setState({
 					showApplication: showApplication
+				});
+			}
+		}, {
+			key: 'toggleConfirmation',
+			value: function toggleConfirmation(event) {
+				event.preventDefault();
+				var showConfirmation = !this.state.showConfirmation;
+				this.setState({
+					showConfirmation: showConfirmation
 				});
 			}
 		}, {
@@ -64422,6 +64436,7 @@
 				var syllabus = null;
 				var cta = null;
 				var register = null;
+				var startDate = null;
 				if (course.type == 'immersive') {
 					// bootcamp
 					sidemenu = _react2.default.createElement(
@@ -64838,9 +64853,12 @@
 								{ className: 'col-md-6', style: { marginBottom: 32 } },
 								_react2.default.createElement(
 									'h3',
-									null,
+									{ style: { marginBottom: 12 } },
 									'Deposit'
 								),
+								'To secure a spot in the next class, submit a deposit below. If the class does not run for any reason, the deposit will be fully refunded. The first payment installment is due on the first day of class.',
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
 								_react2.default.createElement(
 									'a',
 									{ onClick: this.showPaypal, href: '#register', className: 'btn btn-success' },
@@ -64852,9 +64870,12 @@
 								{ className: 'col-md-6' },
 								_react2.default.createElement(
 									'h3',
-									null,
+									{ style: { marginBottom: 12 } },
 									'Full Tuition'
 								),
+								'Submit the full tution today to receive a $200 discount. If the class does not run for any reason, your payment will be fully refunded.',
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
 								_react2.default.createElement(
 									'a',
 									{ onClick: this.showStripeModal, href: '#', className: 'btn btn-success' },
@@ -64863,6 +64884,8 @@
 							)
 						)
 					);
+	
+					startDate = course.dates.split('-')[0].trim();
 				}
 	
 				return _react2.default.createElement(
@@ -65036,6 +65059,37 @@
 											)
 										)
 									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal,
+						{ bsSize: 'sm', show: this.state.showConfirmation, onHide: this.toggleConfirmation },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Body,
+							{ style: { background: '#f9f9f9', padding: 24, borderRadius: 3 } },
+							_react2.default.createElement(
+								'div',
+								{ style: { textAlign: 'center' } },
+								_react2.default.createElement('img', { style: { width: 96, borderRadius: 48, border: '1px solid #ddd', background: '#fff', marginBottom: 24 }, src: '/images/logo_round_blue_260.png' }),
+								_react2.default.createElement(
+									'h4',
+									null,
+									'Confirmed'
+								),
+								_react2.default.createElement('hr', { style: { borderTop: '1px solid #ddd' } }),
+								'Thanks for submitting the full tuition to the ',
+								course.title,
+								' course. Your payment has been confirmed. We look forward to getting started on ',
+								startDate,
+								'.',
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.toggleConfirmation, href: '#', className: 'button button-border button-dark button-rounded button-large noleftmargin' },
+									'Close'
 								)
 							)
 						)

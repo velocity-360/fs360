@@ -12,6 +12,7 @@ class Course extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.toggleApplication = this.toggleApplication.bind(this)
+		this.toggleConfirmation = this.toggleConfirmation.bind(this)
 		this.submitApplication = this.submitApplication.bind(this)
 		this.updateVisitor = this.updateVisitor.bind(this)
 		this.showPaypal = this.showPaypal.bind(this)
@@ -20,6 +21,7 @@ class Course extends Component {
 		this.showStripeModal = this.showStripeModal.bind(this)
 		this.state = {
 			showLoader: false,
+			showConfirmation: false,
 			showApplication: false,
 			visitor: {
 				name: '',
@@ -46,6 +48,9 @@ class Course extends Component {
 				
 				console.log('Stripe Charge: '+JSON.stringify(response))
 				const currentStore = store.currentStore()
+				this.setState({
+					showConfirmation: true
+				})
 
 				// currentStore.dispatch(actions.currentUserRecieved(response.profile))
 				// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
@@ -68,7 +73,15 @@ class Course extends Component {
 		this.setState({
 			showApplication: showApplication
 		})
-	}	
+	}
+
+	toggleConfirmation(event){
+		event.preventDefault()
+		const showConfirmation = !this.state.showConfirmation
+		this.setState({
+			showConfirmation: showConfirmation
+		})
+	}
 
 	submitApplication(application){
 		const course = this.props.courses[this.props.slug]
@@ -277,6 +290,7 @@ class Course extends Component {
 		var syllabus = null
 		var cta = null
 		var register = null
+		var startDate = null
 		if (course.type == 'immersive'){ // bootcamp
 			sidemenu = (
 				<ul>
@@ -459,18 +473,26 @@ class Course extends Component {
 					<h2>Register</h2>
 					<div className="row">
 						<div className="col-md-6" style={{marginBottom:32}}>
-							<h3>Deposit</h3>
+							<h3 style={{marginBottom:12}}>Deposit</h3>
+							To secure a spot in the next class, submit a deposit below. If the class does not run for 
+							any reason, the deposit will be fully refunded. The first payment installment is due on the 
+							first day of class.
+							<br /><br />
 							<a onClick={this.showPaypal} href="#register" className="btn btn-success">Submit Deposit</a>
 
 						</div>
 						<div className="col-md-6">
-							<h3>Full Tuition</h3>
+							<h3 style={{marginBottom:12}}>Full Tuition</h3>
+							Submit the full tution today to receive a $200 discount. If the class does not run for 
+							any reason, your payment will be fully refunded.
+							<br /><br />
 							<a onClick={this.showStripeModal} href="#" className="btn btn-success">Full Tution</a>
-
 						</div>
 					</div>
 				</article>
 			)
+
+			startDate = course.dates.split('-')[0].trim()
 		}
 
 		return (
@@ -571,7 +593,6 @@ class Course extends Component {
 
 											</div>
 
-
 										</div>
 									</article>
 
@@ -580,6 +601,20 @@ class Course extends Component {
 						</div>
 					</div>
 				</section>
+
+		        <Modal bsSize="sm" show={this.state.showConfirmation} onHide={this.toggleConfirmation}>
+			        <Modal.Body style={{background:'#f9f9f9', padding:24, borderRadius:3}}>
+			        	<div style={{textAlign:'center'}}>
+				        	<img style={{width:96, borderRadius:48, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_blue_260.png' />
+				        	<h4>Confirmed</h4>
+				        	<hr style={{borderTop:'1px solid #ddd'}} />
+				        	Thanks for submitting the full tuition to the {course.title} course. Your payment has been
+				        	confirmed. We look forward to getting started on {startDate}.
+				        	<br /><br />
+							<a onClick={this.toggleConfirmation} href="#" className="button button-border button-dark button-rounded button-large noleftmargin">Close</a>
+						</div>
+			        </Modal.Body>
+		        </Modal>
 
 				<Modal bsSize="large" show={this.state.showApplication} onHide={this.toggleApplication}>
 					<Application onSubmit={this.submitApplication} />

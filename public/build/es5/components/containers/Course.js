@@ -43,6 +43,7 @@ var Course = (function (Component) {
 
 		_get(Object.getPrototypeOf(Course.prototype), "constructor", this).call(this, props, context);
 		this.toggleApplication = this.toggleApplication.bind(this);
+		this.toggleConfirmation = this.toggleConfirmation.bind(this);
 		this.submitApplication = this.submitApplication.bind(this);
 		this.updateVisitor = this.updateVisitor.bind(this);
 		this.showPaypal = this.showPaypal.bind(this);
@@ -51,6 +52,7 @@ var Course = (function (Component) {
 		this.showStripeModal = this.showStripeModal.bind(this);
 		this.state = {
 			showLoader: false,
+			showConfirmation: false,
 			showApplication: false,
 			visitor: {
 				name: "",
@@ -81,12 +83,10 @@ var Course = (function (Component) {
 						}
 
 						console.log("Stripe Charge: " + JSON.stringify(response));
-						var currentStore = store.currentStore()
-
-						// currentStore.dispatch(actions.currentUserRecieved(response.profile))
-						// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
-						// this.showFirstUnit(null)
-						;
+						var currentStore = store.currentStore();
+						_this.setState({
+							showConfirmation: true
+						});
 					});
 				});
 			},
@@ -109,6 +109,17 @@ var Course = (function (Component) {
 				var showApplication = !this.state.showApplication;
 				this.setState({
 					showApplication: showApplication
+				});
+			},
+			writable: true,
+			configurable: true
+		},
+		toggleConfirmation: {
+			value: function toggleConfirmation(event) {
+				event.preventDefault();
+				var showConfirmation = !this.state.showConfirmation;
+				this.setState({
+					showConfirmation: showConfirmation
 				});
 			},
 			writable: true,
@@ -398,6 +409,7 @@ var Course = (function (Component) {
 				var syllabus = null;
 				var cta = null;
 				var register = null;
+				var startDate = null;
 				if (course.type == "immersive") {
 					// bootcamp
 					sidemenu = React.createElement(
@@ -814,9 +826,12 @@ var Course = (function (Component) {
 								{ className: "col-md-6", style: { marginBottom: 32 } },
 								React.createElement(
 									"h3",
-									null,
+									{ style: { marginBottom: 12 } },
 									"Deposit"
 								),
+								"To secure a spot in the next class, submit a deposit below. If the class does not run for any reason, the deposit will be fully refunded. The first payment installment is due on the first day of class.",
+								React.createElement("br", null),
+								React.createElement("br", null),
 								React.createElement(
 									"a",
 									{ onClick: this.showPaypal, href: "#register", className: "btn btn-success" },
@@ -828,9 +843,12 @@ var Course = (function (Component) {
 								{ className: "col-md-6" },
 								React.createElement(
 									"h3",
-									null,
+									{ style: { marginBottom: 12 } },
 									"Full Tuition"
 								),
+								"Submit the full tution today to receive a $200 discount. If the class does not run for any reason, your payment will be fully refunded.",
+								React.createElement("br", null),
+								React.createElement("br", null),
 								React.createElement(
 									"a",
 									{ onClick: this.showStripeModal, href: "#", className: "btn btn-success" },
@@ -839,6 +857,8 @@ var Course = (function (Component) {
 							)
 						)
 					);
+
+					startDate = course.dates.split("-")[0].trim();
 				}
 
 				return React.createElement(
@@ -1018,6 +1038,37 @@ var Course = (function (Component) {
 					),
 					React.createElement(
 						Modal,
+						{ bsSize: "sm", show: this.state.showConfirmation, onHide: this.toggleConfirmation },
+						React.createElement(
+							Modal.Body,
+							{ style: { background: "#f9f9f9", padding: 24, borderRadius: 3 } },
+							React.createElement(
+								"div",
+								{ style: { textAlign: "center" } },
+								React.createElement("img", { style: { width: 96, borderRadius: 48, border: "1px solid #ddd", background: "#fff", marginBottom: 24 }, src: "/images/logo_round_blue_260.png" }),
+								React.createElement(
+									"h4",
+									null,
+									"Confirmed"
+								),
+								React.createElement("hr", { style: { borderTop: "1px solid #ddd" } }),
+								"Thanks for submitting the full tuition to the ",
+								course.title,
+								" course. Your payment has been confirmed. We look forward to getting started on ",
+								startDate,
+								".",
+								React.createElement("br", null),
+								React.createElement("br", null),
+								React.createElement(
+									"a",
+									{ onClick: this.toggleConfirmation, href: "#", className: "button button-border button-dark button-rounded button-large noleftmargin" },
+									"Close"
+								)
+							)
+						)
+					),
+					React.createElement(
+						Modal,
 						{ bsSize: "large", show: this.state.showApplication, onHide: this.toggleApplication },
 						React.createElement(Application, { onSubmit: this.submitApplication })
 					)
@@ -1078,3 +1129,6 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
+// currentStore.dispatch(actions.currentUserRecieved(response.profile))
+// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
+// this.showFirstUnit(null)
