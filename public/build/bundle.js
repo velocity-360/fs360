@@ -23989,6 +23989,8 @@
 	
 	var _reactRedux = __webpack_require__(172);
 	
+	var _utils = __webpack_require__(484);
+	
 	var _components = __webpack_require__(466);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24007,11 +24009,31 @@
 	
 	        var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props, context));
 	
-	        _this.state = {};
+	        _this.state = {
+	            tutorials: []
+	        };
 	        return _this;
 	    }
 	
 	    _createClass(Landing, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+	
+	            _utils.api.handleGet('/api/tutorial', { limit: 3 }, function (err, response) {
+	                if (err) {
+	                    alert(err.message);
+	                    return;
+	                }
+	
+	                //          console.log(JSON.stringify(response))
+	                var tutorials = response.tutorials;
+	                _this2.setState({
+	                    tutorials: tutorials
+	                });
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var courses = this.props.courses.map(function (course, i) {
@@ -24062,6 +24084,10 @@
 	                        )
 	                    );
 	                }
+	            });
+	
+	            var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
+	                return _react2.default.createElement(_components.TutorialCard, { key: tutorial.id, tutorial: tutorial, bg: '#fff' });
 	            });
 	
 	            return _react2.default.createElement(
@@ -24482,6 +24508,42 @@
 	                            'div',
 	                            { className: 'container clearfix' },
 	                            courses
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'heading-block center' },
+	                        _react2.default.createElement(
+	                            'h2',
+	                            { style: { fontWeight: 400 } },
+	                            'Tutorials'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'content-wrap', style: { paddingTop: 0 } },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'container clearfix' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'row' },
+	                                tutorialsList
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { style: { textAlign: 'center' } },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { href: '/tutorials', className: 'button button-rounded button-reveal button-large button-border tright' },
+	                                    _react2.default.createElement('i', { className: 'icon-signal' }),
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        'View All Tutorials'
+	                                    )
+	                                )
+	                            )
 	                        )
 	                    )
 	                ),
@@ -42613,7 +42675,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.Application = exports.Post = exports.CourseCard = exports.Register = exports.Sidebar = exports.Footer = exports.Header = exports.Nav = undefined;
+	exports.TutorialCard = exports.Application = exports.Post = exports.CourseCard = exports.Register = exports.Sidebar = exports.Footer = exports.Header = exports.Nav = undefined;
 	
 	var _Nav = __webpack_require__(467);
 	
@@ -42647,6 +42709,10 @@
 	
 	var _Application2 = _interopRequireDefault(_Application);
 	
+	var _TutorialCard = __webpack_require__(609);
+	
+	var _TutorialCard2 = _interopRequireDefault(_TutorialCard);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.Nav = _Nav2.default;
@@ -42657,6 +42723,7 @@
 	exports.CourseCard = _CourseCard2.default;
 	exports.Post = _Post2.default;
 	exports.Application = _Application2.default;
+	exports.TutorialCard = _TutorialCard2.default;
 
 /***/ },
 /* 467 */
@@ -63371,61 +63438,7 @@
 			key: 'render',
 			value: function render() {
 				var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
-					var link = tutorial.status == 'live' ? _react2.default.createElement(
-						'a',
-						{ href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
-						'View'
-					) : _react2.default.createElement(
-						'a',
-						{ href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
-						'Coming Soon!'
-					);
-					var price = tutorial.price == 0 ? 'FREE' : '$' + tutorial.price;
-					return _react2.default.createElement(
-						'div',
-						{ key: tutorial.id, className: 'col-md-4' },
-						_react2.default.createElement(
-							'div',
-							{ style: { width: 92 + '%', margin: 'auto', background: '#f9f9f9', border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
-							_react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460' }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'fancy-title title-bottom-border' },
-								_react2.default.createElement(
-									'h3',
-									{ style: { fontWeight: 400 } },
-									_react2.default.createElement(
-										'a',
-										{ style: { color: '#444' }, href: '/tutorial/' + tutorial.slug },
-										tutorial.title
-									)
-								)
-							),
-							_react2.default.createElement(
-								'p',
-								{ style: { height: 144 } },
-								_utils.TextUtils.truncateText(tutorial.description, 180)
-							),
-							_react2.default.createElement(
-								'h5',
-								{ style: { marginBottom: 0, fontWeight: 200 } },
-								tutorial.posts.length,
-								' units',
-								_react2.default.createElement(
-									'span',
-									{ style: { margin: 10 } },
-									'|'
-								),
-								price,
-								_react2.default.createElement(
-									'span',
-									{ style: { margin: 10 } },
-									'|'
-								),
-								link
-							)
-						)
-					);
+					return _react2.default.createElement(_components.TutorialCard, { key: tutorial.id, tutorial: tutorial });
 				});
 	
 				return _react2.default.createElement(
@@ -65738,6 +65751,110 @@
 	}(_react.Component);
 	
 	exports.default = Checkout;
+
+/***/ },
+/* 609 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _utils = __webpack_require__(484);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TutorialCard = function (_Component) {
+	    _inherits(TutorialCard, _Component);
+	
+	    function TutorialCard() {
+	        _classCallCheck(this, TutorialCard);
+	
+	        return _possibleConstructorReturn(this, (TutorialCard.__proto__ || Object.getPrototypeOf(TutorialCard)).apply(this, arguments));
+	    }
+	
+	    _createClass(TutorialCard, [{
+	        key: 'render',
+	        value: function render() {
+	            var tutorial = this.props.tutorial;
+	            var link = tutorial.status == 'live' ? _react2.default.createElement(
+	                'a',
+	                { href: '/tutorial/' + tutorial.slug, className: 'button button-3d button-mini button-rounded button-teal' },
+	                'View'
+	            ) : _react2.default.createElement(
+	                'a',
+	                { href: '#', className: 'button button-3d button-mini button-rounded button-teal' },
+	                'Coming Soon!'
+	            );
+	            var price = tutorial.price == 0 ? 'FREE' : '$' + tutorial.price;
+	            var background = this.props.bg == null ? '#f9f9f9' : this.props.bg;
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'col-md-4' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: { width: 92 + '%', margin: 'auto', background: background, border: '1px solid #ddd', textAlign: 'center', padding: 16, marginBottom: 32 } },
+	                    _react2.default.createElement('img', { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: 'https://media-service.appspot.com/site/images/' + tutorial.image + '?crop=460' }),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'fancy-title title-bottom-border' },
+	                        _react2.default.createElement(
+	                            'h3',
+	                            { style: { fontWeight: 400 } },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { style: { color: '#444' }, href: '/tutorial/' + tutorial.slug },
+	                                tutorial.title
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        { style: { height: 144 } },
+	                        _utils.TextUtils.truncateText(tutorial.description, 180)
+	                    ),
+	                    _react2.default.createElement(
+	                        'h5',
+	                        { style: { marginBottom: 0, fontWeight: 200 } },
+	                        tutorial.posts.length,
+	                        ' units',
+	                        _react2.default.createElement(
+	                            'span',
+	                            { style: { margin: 10 } },
+	                            '|'
+	                        ),
+	                        price,
+	                        _react2.default.createElement(
+	                            'span',
+	                            { style: { margin: 10 } },
+	                            '|'
+	                        ),
+	                        link
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return TutorialCard;
+	}(_react.Component);
+	
+	exports.default = TutorialCard;
 
 /***/ }
 /******/ ]);

@@ -18,6 +18,8 @@ var Register = _interopRequire(require("../components/Register"));
 
 var Application = _interopRequire(require("../components/Application"));
 
+var TutorialCard = _interopRequire(require("../components/TutorialCard"));
+
 exports.Nav = Nav;
 exports.Header = Header;
 exports.Footer = Footer;
@@ -26,6 +28,7 @@ exports.Register = Register;
 exports.CourseCard = CourseCard;
 exports.Post = Post;
 exports.Application = Application;
+exports.TutorialCard = TutorialCard;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });

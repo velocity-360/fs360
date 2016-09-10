@@ -21,22 +21,48 @@ var ReactBootstrap = _interopRequire(_reactBootstrap);
 
 var Modal = _reactBootstrap.Modal;
 var connect = require("react-redux").connect;
+var _utils = require("../../utils");
+
+var api = _utils.api;
+var TextUtils = _utils.TextUtils;
 var _components = require("../../components");
 
 var Nav = _components.Nav;
 var Footer = _components.Footer;
 var Header = _components.Header;
+var TutorialCard = _components.TutorialCard;
 var Landing = (function (Component) {
     function Landing(props, context) {
         _classCallCheck(this, Landing);
 
         _get(Object.getPrototypeOf(Landing.prototype), "constructor", this).call(this, props, context);
-        this.state = {};
+        this.state = {
+            tutorials: []
+        };
     }
 
     _inherits(Landing, Component);
 
     _prototypeProperties(Landing, null, {
+        componentDidMount: {
+            value: function componentDidMount() {
+                var _this = this;
+                api.handleGet("/api/tutorial", { limit: 3 }, function (err, response) {
+                    if (err) {
+                        alert(err.message);
+                        return;
+                    }
+
+                    //          console.log(JSON.stringify(response))
+                    var tutorials = response.tutorials;
+                    _this.setState({
+                        tutorials: tutorials
+                    });
+                });
+            },
+            writable: true,
+            configurable: true
+        },
         render: {
             value: function render() {
                 var courses = this.props.courses.map(function (course, i) {
@@ -87,6 +113,10 @@ var Landing = (function (Component) {
                             )
                         );
                     }
+                });
+
+                var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
+                    return React.createElement(TutorialCard, { key: tutorial.id, tutorial: tutorial, bg: "#fff" });
                 });
 
                 return React.createElement(
@@ -507,6 +537,42 @@ var Landing = (function (Component) {
                                 "div",
                                 { className: "container clearfix" },
                                 courses
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "heading-block center" },
+                            React.createElement(
+                                "h2",
+                                { style: { fontWeight: 400 } },
+                                "Tutorials"
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "content-wrap", style: { paddingTop: 0 } },
+                            React.createElement(
+                                "div",
+                                { className: "container clearfix" },
+                                React.createElement(
+                                    "div",
+                                    { className: "row" },
+                                    tutorialsList
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { style: { textAlign: "center" } },
+                                    React.createElement(
+                                        "a",
+                                        { href: "/tutorials", className: "button button-rounded button-reveal button-large button-border tright" },
+                                        React.createElement("i", { className: "icon-signal" }),
+                                        React.createElement(
+                                            "span",
+                                            null,
+                                            "View All Tutorials"
+                                        )
+                                    )
+                                )
                             )
                         )
                     ),

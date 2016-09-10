@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Post from '../components/Post'
 import Register from '../components/Register'
 import Application from '../components/Application'
+import TutorialCard from '../components/TutorialCard'
 
 export {
 	Nav,
@@ -15,5 +16,6 @@ export {
 	Register,
 	CourseCard,
 	Post,
-	Application
+	Application,
+	TutorialCard
 }

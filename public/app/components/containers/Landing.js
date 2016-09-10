@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Nav, Footer, Header } from '../../components'
+import { api, TextUtils } from '../../utils'
+import { Nav, Footer, Header, TutorialCard } from '../../components'
 
 
 class Landing extends Component {
@@ -9,9 +10,24 @@ class Landing extends Component {
 	constructor(props, context){
 		super(props, context)
 		this.state = {
-
+            tutorials: []
 		}
 	}
+
+    componentDidMount(){
+        api.handleGet('/api/tutorial', {limit: 3}, (err, response) => {
+            if (err){
+                alert(err.message)
+                return
+            }
+
+//          console.log(JSON.stringify(response))
+            const tutorials = response.tutorials
+            this.setState({
+                tutorials: tutorials
+            })
+        })
+    }
 
 	render(){
 		var courses = this.props.courses.map(function(course, i){
@@ -36,6 +52,10 @@ class Landing extends Component {
             }
 		})
 
+        const tutorialsList = this.state.tutorials.map((tutorial, i) => {
+            return <TutorialCard key={tutorial.id} tutorial={tutorial} bg="#fff" />
+        })
+        
 		return (
 			<div>
 				<Nav />
@@ -213,6 +233,24 @@ class Landing extends Component {
 			               	{courses}
 						</div>
 					</div>
+
+                    <div className="heading-block center">
+                        <h2 style={{fontWeight:400}}>Tutorials</h2>
+                    </div>
+
+                    <div className="content-wrap" style={{paddingTop:0}}>
+                        <div className="container clearfix">
+                            <div className="row">
+                                {tutorialsList}
+                            </div>
+                            <div style={{textAlign:'center'}}>
+                                <a href="/tutorials" className="button button-rounded button-reveal button-large button-border tright">
+                                    <i className="icon-signal"></i><span>View All Tutorials</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
 				</section>
 
                 <section id="section-testimonials" className="page-section section parallax dark" style={{backgroundImage: 'url("/images/joe_blue.png")', padding:'100px 0', margin:0}} data-stellar-background-ratio="0.3">

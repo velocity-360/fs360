@@ -31,6 +31,7 @@ var Footer = _components.Footer;
 var CourseCard = _components.CourseCard;
 var RightSidebar = _components.RightSidebar;
 var Register = _components.Register;
+var TutorialCard = _components.TutorialCard;
 var Tutorials = (function (Component) {
 	function Tutorials(props, context) {
 		_classCallCheck(this, Tutorials);
@@ -66,61 +67,7 @@ var Tutorials = (function (Component) {
 		render: {
 			value: function render() {
 				var tutorialsList = this.state.tutorials.map(function (tutorial, i) {
-					var link = tutorial.status == "live" ? React.createElement(
-						"a",
-						{ href: "/tutorial/" + tutorial.slug, className: "button button-3d button-mini button-rounded button-teal" },
-						"View"
-					) : React.createElement(
-						"a",
-						{ href: "#", className: "button button-3d button-mini button-rounded button-teal" },
-						"Coming Soon!"
-					);
-					var price = tutorial.price == 0 ? "FREE" : "$" + tutorial.price;
-					return React.createElement(
-						"div",
-						{ key: tutorial.id, className: "col-md-4" },
-						React.createElement(
-							"div",
-							{ style: { width: 92 + "%", margin: "auto", background: "#f9f9f9", border: "1px solid #ddd", textAlign: "center", padding: 16, marginBottom: 32 } },
-							React.createElement("img", { style: { width: 100, borderRadius: 50, marginBottom: 12 }, src: "https://media-service.appspot.com/site/images/" + tutorial.image + "?crop=460" }),
-							React.createElement(
-								"div",
-								{ className: "fancy-title title-bottom-border" },
-								React.createElement(
-									"h3",
-									{ style: { fontWeight: 400 } },
-									React.createElement(
-										"a",
-										{ style: { color: "#444" }, href: "/tutorial/" + tutorial.slug },
-										tutorial.title
-									)
-								)
-							),
-							React.createElement(
-								"p",
-								{ style: { height: 144 } },
-								TextUtils.truncateText(tutorial.description, 180)
-							),
-							React.createElement(
-								"h5",
-								{ style: { marginBottom: 0, fontWeight: 200 } },
-								tutorial.posts.length,
-								" units",
-								React.createElement(
-									"span",
-									{ style: { margin: 10 } },
-									"|"
-								),
-								price,
-								React.createElement(
-									"span",
-									{ style: { margin: 10 } },
-									"|"
-								),
-								link
-							)
-						)
-					);
+					return React.createElement(TutorialCard, { key: tutorial.id, tutorial: tutorial });
 				});
 
 				return React.createElement(
