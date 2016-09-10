@@ -89,13 +89,13 @@ class Landing extends Component {
                                 <tbody>
                                     <tr className="info"><td><a target="_blank" href="http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow">2016 Developer Survey Results</a></td><td>Stack Overflow</td></tr>
                                     <tr><td><a target="_blank" href="https://www.youtube.com/watch?v=sBzRwzY7G-k">2016/2017 Must-Know Web Development Tech</a></td><td>YouTube</td></tr>
-                                    <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks">Hacker News “Who is Hiring?” - Supporting Technologies</a></td><td>Hacker News</td></tr>
+                                    <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">Hacker News “Who is Hiring?” - Supporting Technologies</a></td><td>Hacker News</td></tr>
                                     <tr><td><a href="https://www.velocity360.io/post/starting-out-today">Starting Out Today</a></td><td>Velocity 360</td></tr>
                                 </tbody>
                             </table>
                             <i>* Cleary React is the winner here, Facebook did enormous job delivering a good technology and even better job convincing the JS crowd how good it is...it looks like the battle is lost.</i>
                             <br /><br />
-                            <span>- <a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#frontendframeworks">Sebastian Pawluś, WhoIsHiring.io</a></span>
+                            <span>- <a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">Sebastian Pawluś, WhoIsHiring.io</a></span>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ class Landing extends Component {
                             </div>
                             <img style={{maxWidth:220, marginBottom:12}} src="/images/aws.png" />
                             <p style={style.paragraph}>
-                                At Velocity 360, students learn ALL areas of the stack: backend, frontend, mobile, 
+                                At Velocity 360, students learn ALL areas of the stack: backend, front end, mobile, 
                                 and even dev ops. Through Node, React and React Native, we are able to focus on a 
                                 wider range of areas because the concepts are transferrable. This is a key reason 
                                 why React & React Native are becoming so popular - one set of concepts can be applied 
