@@ -24020,7 +24020,7 @@
 	        value: function componentDidMount() {
 	            var _this2 = this;
 	
-	            _utils.api.handleGet('/api/tutorial', { limit: 3 }, function (err, response) {
+	            _utils.api.handleGet('/api/tutorial', { limit: 3, status: 'live' }, function (err, response) {
 	                if (err) {
 	                    alert(err.message);
 	                    return;

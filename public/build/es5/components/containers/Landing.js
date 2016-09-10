@@ -47,7 +47,7 @@ var Landing = (function (Component) {
         componentDidMount: {
             value: function componentDidMount() {
                 var _this = this;
-                api.handleGet("/api/tutorial", { limit: 3 }, function (err, response) {
+                api.handleGet("/api/tutorial", { limit: 3, status: "live" }, function (err, response) {
                     if (err) {
                         alert(err.message);
                         return;

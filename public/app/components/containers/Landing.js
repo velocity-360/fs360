@@ -15,7 +15,7 @@ class Landing extends Component {
 	}
 
     componentDidMount(){
-        api.handleGet('/api/tutorial', {limit: 3}, (err, response) => {
+        api.handleGet('/api/tutorial', {limit: 3, status:'live'}, (err, response) => {
             if (err){
                 alert(err.message)
                 return
@@ -55,7 +55,7 @@ class Landing extends Component {
         const tutorialsList = this.state.tutorials.map((tutorial, i) => {
             return <TutorialCard key={tutorial.id} tutorial={tutorial} bg="#fff" />
         })
-        
+
 		return (
 			<div>
 				<Nav />
