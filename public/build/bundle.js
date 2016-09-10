@@ -24617,6 +24617,41 @@
 	                                )
 	                            )
 	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { style: { textAlign: 'center', marginTop: 36 } },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'heading-block center' },
+	                            _react2.default.createElement(
+	                                'h2',
+	                                { style: { fontWeight: 400 } },
+	                                'Read More Reviews'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'row' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-md-2 col-md-offset-4' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { target: '_blank', href: 'https://www.switchup.org/bootcamps/velocity-360' },
+	                                    _react2.default.createElement('img', { style: { marginBottom: 24 }, src: '/images/switchup.png' })
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-md-2' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { target: '_blank', href: 'https://www.coursereport.com/schools/velocity' },
+	                                    _react2.default.createElement('img', { style: { width: 110 }, src: '/images/coursereport.png' })
+	                                )
+	                            )
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(_components.Footer, null)

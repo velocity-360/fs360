@@ -288,6 +288,27 @@ class Landing extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <div style={{textAlign:'center', marginTop:36}}>
+                        <div className="heading-block center">
+                            <h2 style={{fontWeight:400}}>Read More Reviews</h2>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-2 col-md-offset-4">
+                                <a target="_blank" href="https://www.switchup.org/bootcamps/velocity-360">
+                                    <img style={{marginBottom:24}} src="/images/switchup.png" />
+                                </a>
+                            </div>
+                            <div className="col-md-2">
+                                <a target="_blank" href="https://www.coursereport.com/schools/velocity">
+                                    <img style={{width:110}} src="/images/coursereport.png" />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </section>
 
 				<Footer />

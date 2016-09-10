@@ -646,6 +646,41 @@ var Landing = (function (Component) {
                                     )
                                 )
                             )
+                        ),
+                        React.createElement(
+                            "div",
+                            { style: { textAlign: "center", marginTop: 36 } },
+                            React.createElement(
+                                "div",
+                                { className: "heading-block center" },
+                                React.createElement(
+                                    "h2",
+                                    { style: { fontWeight: 400 } },
+                                    "Read More Reviews"
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "row" },
+                                React.createElement(
+                                    "div",
+                                    { className: "col-md-2 col-md-offset-4" },
+                                    React.createElement(
+                                        "a",
+                                        { target: "_blank", href: "https://www.switchup.org/bootcamps/velocity-360" },
+                                        React.createElement("img", { style: { marginBottom: 24 }, src: "/images/switchup.png" })
+                                    )
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "col-md-2" },
+                                    React.createElement(
+                                        "a",
+                                        { target: "_blank", href: "https://www.coursereport.com/schools/velocity" },
+                                        React.createElement("img", { style: { width: 110 }, src: "/images/coursereport.png" })
+                                    )
+                                )
+                            )
                         )
                     ),
                     React.createElement(Footer, null)
