@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var mongoose = require('mongoose');
+var compression = require('compression');
 
 
 var main = require('./routes/main');
@@ -47,6 +48,7 @@ app.use(sessions({
   duration: 60*24*60*60*1000, // 60 days
   activeDuration:30*60*1000,
 }));
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
