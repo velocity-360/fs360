@@ -11,8 +11,16 @@ module.exports = {
 	},
     devtool: '#source-map',	
 	plugins: process.env.NODE_ENV === 'production' ? [
+	    new webpack.DefinePlugin({
+	      'process.env':{
+	        'NODE_ENV': JSON.stringify('production')
+	      }
+	    }),
     	new webpack.optimize.UglifyJsPlugin({
-    		minimize: true
+    		minimize: true,
+		    compress:{
+		        warnings: true
+		    }
     	})
 	] : [],	
 	module: {
