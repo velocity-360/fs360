@@ -204,6 +204,14 @@ class Landing extends Component {
                                         </td>
                                         <td>Sept 14th</td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <a target="_blank" href="http://www.meetup.com/velocity360/events/234154415/">
+                                                Chat App Using React & Firebase
+                                            </a>
+                                        </td>
+                                        <td>Sept 17th</td>
+                                    </tr>
                                 </tbody>
                             </table>
 

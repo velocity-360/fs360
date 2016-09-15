@@ -489,6 +489,24 @@ var Landing = (function (Component) {
                                                 null,
                                                 "Sept 14th"
                                             )
+                                        ),
+                                        React.createElement(
+                                            "tr",
+                                            null,
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                React.createElement(
+                                                    "a",
+                                                    { target: "_blank", href: "http://www.meetup.com/velocity360/events/234154415/" },
+                                                    "Chat App Using React & Firebase"
+                                                )
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                null,
+                                                "Sept 17th"
+                                            )
                                         )
                                     )
                                 )
