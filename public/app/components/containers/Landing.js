@@ -198,19 +198,11 @@ class Landing extends Component {
                                 <tbody>
                                     <tr className="info">
                                         <td>
-                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233828246/">
-                                                Intro Web Development With Node JS
-                                            </a>
-                                        </td>
-                                        <td>Sept 6th</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/233828392/">
+                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/234029714/">
                                                 Mobile Development With React Native
                                             </a>
                                         </td>
-                                        <td>Sept 7th</td>
+                                        <td>Sept 14th</td>
                                     </tr>
                                 </tbody>
                             </table>

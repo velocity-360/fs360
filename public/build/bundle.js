@@ -24510,32 +24510,14 @@
 	                                            null,
 	                                            _react2.default.createElement(
 	                                                'a',
-	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233828246/' },
-	                                                'Intro Web Development With Node JS'
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            'td',
-	                                            null,
-	                                            'Sept 6th'
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'tr',
-	                                        null,
-	                                        _react2.default.createElement(
-	                                            'td',
-	                                            null,
-	                                            _react2.default.createElement(
-	                                                'a',
-	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/233828392/' },
+	                                                { target: '_blank', href: 'https://www.meetup.com/velocity360/events/234029714/' },
 	                                                'Mobile Development With React Native'
 	                                            )
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'td',
 	                                            null,
-	                                            'Sept 7th'
+	                                            'Sept 14th'
 	                                        )
 	                                    )
 	                                )
