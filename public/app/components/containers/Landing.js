@@ -110,7 +110,7 @@ class Landing extends Component {
                             <div className="heading-block fancy-title nobottomborder title-bottom-border">
                                 <h4 style={style.heading}>True Full <span>Stack</span></h4>
                             </div>
-                            <img style={{maxWidth:220, marginBottom:12}} src="/images/aws.png" />
+                            <img style={{marginBottom:12}} src="/images/aws.png" />
                             <p style={style.paragraph}>
                                 At Velocity 360, students learn ALL areas of the stack: backend, front end, mobile, 
                                 and even dev ops. Through Node, React and React Native, we are able to focus on a 
@@ -125,7 +125,7 @@ class Landing extends Component {
                             <div className="heading-block fancy-title nobottomborder title-bottom-border">
                                 <h4 style={style.heading}>Small <span>Classes</span></h4>
                             </div>
-                            <img style={{maxWidth:220, marginBottom:12}} src="/images/class-2.jpg" />
+                            <img style={{marginBottom:12}} src="/images/class-2.jpg" />
                             <p style={style.paragraph}>
                                 The average class size at Velocity is 10 students. We take very careful measures to 
                                 ensure that the students selected for each cohort are qualified, motivated and prepared 
@@ -141,7 +141,7 @@ class Landing extends Component {
                             <div className="heading-block fancy-title nobottomborder title-bottom-border">
                                 <h4 style={style.heading}>Modern <span>Curriculum</span></h4>
                             </div>
-                            <img style={{maxWidth:220, marginBottom:12}} src="/images/node-react.png" />
+                            <img style={{marginBottom:12}} src="/images/node-react.png" />
                             <p style={style.paragraph}>
                             	While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron 
                             	School, General Assembly, NYCDA, App Academy, etc) and have been doing so for 
@@ -163,16 +163,16 @@ class Landing extends Component {
                             </div>
 		                    <div className="row">
 			                    <div className="col-md-3">
-				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/crains.png" alt="Velocity 360" />
+				                    <img style={style.company} src="/images/crains.png" alt="Velocity 360" />
 			                    </div>
 			                    <div className="col-md-3">
-				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/bloomberg.png" alt="Velocity 360" />
+				                    <img style={style.company} src="/images/bloomberg.png" alt="Velocity 360" />
 			                    </div>
 			                    <div className="col-md-3">
-				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/nytimes.png" alt="Velocity 360" />
+				                    <img style={style.company} src="/images/nytimes.png" alt="Velocity 360" />
 			                    </div>
 			                    <div className="col-md-3">
-				                    <img style={{border:'1px solid #ddd', marginTop:24}} src="/images/codeacademy.png" alt="Velocity 360" />
+				                    <img style={style.company} src="/images/codeacademy.png" alt="Velocity 360" />
 			                    </div>
 		                    </div>
 	                    </div>
@@ -210,7 +210,7 @@ class Landing extends Component {
                         </div>
 
                         <div className="hidden-xs col_half nobottommargin topmargin-lg col_last">
-                            <img style={{maxWidth:400, padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/class-4.jpg" alt="Velocity 360" className="center-block" />
+                            <img style={{padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/class-4.jpg" alt="Velocity 360" className="center-block" />
                         </div>
                     </div>
                 </section>
@@ -250,7 +250,7 @@ class Landing extends Component {
                         <div className="col_half nobottommargin">
                             <div className="heading-block center">
                                 <h4 style={style.heading}>Harsh Sinha, Bloomberg</h4>
-                                <img style={{width:120, marginTop:12}} src="/images/harsh.png" />
+                                <img style={{marginTop:12}} src="/images/harsh.png" />
                             </div>
 
                             <div className="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding" data-arrows="false">
@@ -267,7 +267,7 @@ class Landing extends Component {
                         <div className="col_half nobottommargin col_last">
                             <div className="heading-block center">
                                 <h4 style={style.heading}>Rob Ungar, Code Academy</h4>
-                                <img style={{width:120, marginTop:12}} src="/images/rob.png" />
+                                <img style={{marginTop:12}} src="/images/rob.png" />
                             </div>
 
                             <div className="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding" data-arrows="false">
@@ -294,7 +294,7 @@ class Landing extends Component {
                             </div>
                             <div className="col-md-2">
                                 <a target="_blank" href="https://www.coursereport.com/schools/velocity">
-                                    <img style={{width:110}} src="/images/coursereport.png" />
+                                    <img src="/images/coursereport.png" />
                                 </a>
                             </div>
                         </div>
@@ -316,6 +316,10 @@ const style = {
     },
     heading: {
         fontWeight: 300
+    },
+    company: {
+        border:'1px solid #ddd',
+        marginTop:24
     }
 }
 

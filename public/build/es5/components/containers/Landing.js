@@ -315,7 +315,7 @@ var Landing = (function (Component) {
                                         )
                                     )
                                 ),
-                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/aws.png" }),
+                                React.createElement("img", { style: { marginBottom: 12 }, src: "/images/aws.png" }),
                                 React.createElement(
                                     "p",
                                     { style: style.paragraph },
@@ -339,7 +339,7 @@ var Landing = (function (Component) {
                                         )
                                     )
                                 ),
-                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/class-2.jpg" }),
+                                React.createElement("img", { style: { marginBottom: 12 }, src: "/images/class-2.jpg" }),
                                 React.createElement(
                                     "p",
                                     { style: style.paragraph },
@@ -363,7 +363,7 @@ var Landing = (function (Component) {
                                         )
                                     )
                                 ),
-                                React.createElement("img", { style: { maxWidth: 220, marginBottom: 12 }, src: "/images/node-react.png" }),
+                                React.createElement("img", { style: { marginBottom: 12 }, src: "/images/node-react.png" }),
                                 React.createElement(
                                     "p",
                                     { style: style.paragraph },
@@ -396,22 +396,22 @@ var Landing = (function (Component) {
                                     React.createElement(
                                         "div",
                                         { className: "col-md-3" },
-                                        React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/crains.png", alt: "Velocity 360" })
+                                        React.createElement("img", { style: style.company, src: "/images/crains.png", alt: "Velocity 360" })
                                     ),
                                     React.createElement(
                                         "div",
                                         { className: "col-md-3" },
-                                        React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/bloomberg.png", alt: "Velocity 360" })
+                                        React.createElement("img", { style: style.company, src: "/images/bloomberg.png", alt: "Velocity 360" })
                                     ),
                                     React.createElement(
                                         "div",
                                         { className: "col-md-3" },
-                                        React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/nytimes.png", alt: "Velocity 360" })
+                                        React.createElement("img", { style: style.company, src: "/images/nytimes.png", alt: "Velocity 360" })
                                     ),
                                     React.createElement(
                                         "div",
                                         { className: "col-md-3" },
-                                        React.createElement("img", { style: { border: "1px solid #ddd", marginTop: 24 }, src: "/images/codeacademy.png", alt: "Velocity 360" })
+                                        React.createElement("img", { style: style.company, src: "/images/codeacademy.png", alt: "Velocity 360" })
                                     )
                                 )
                             )
@@ -496,7 +496,7 @@ var Landing = (function (Component) {
                             React.createElement(
                                 "div",
                                 { className: "hidden-xs col_half nobottommargin topmargin-lg col_last" },
-                                React.createElement("img", { style: { maxWidth: 400, padding: 6, background: "#fff", border: "1px solid #ddd" }, src: "/images/class-4.jpg", alt: "Velocity 360", className: "center-block" })
+                                React.createElement("img", { style: { padding: 6, background: "#fff", border: "1px solid #ddd" }, src: "/images/class-4.jpg", alt: "Velocity 360", className: "center-block" })
                             )
                         )
                     ),
@@ -575,7 +575,7 @@ var Landing = (function (Component) {
                                         { style: style.heading },
                                         "Harsh Sinha, Bloomberg"
                                     ),
-                                    React.createElement("img", { style: { width: 120, marginTop: 12 }, src: "/images/harsh.png" })
+                                    React.createElement("img", { style: { marginTop: 12 }, src: "/images/harsh.png" })
                                 ),
                                 React.createElement(
                                     "div",
@@ -607,7 +607,7 @@ var Landing = (function (Component) {
                                         { style: style.heading },
                                         "Rob Ungar, Code Academy"
                                     ),
-                                    React.createElement("img", { style: { width: 120, marginTop: 12 }, src: "/images/rob.png" })
+                                    React.createElement("img", { style: { marginTop: 12 }, src: "/images/rob.png" })
                                 ),
                                 React.createElement(
                                     "div",
@@ -659,7 +659,7 @@ var Landing = (function (Component) {
                                     React.createElement(
                                         "a",
                                         { target: "_blank", href: "https://www.coursereport.com/schools/velocity" },
-                                        React.createElement("img", { style: { width: 110 }, src: "/images/coursereport.png" })
+                                        React.createElement("img", { src: "/images/coursereport.png" })
                                     )
                                 )
                             )
@@ -683,6 +683,10 @@ var style = {
     },
     heading: {
         fontWeight: 300
+    },
+    company: {
+        border: "1px solid #ddd",
+        marginTop: 24
     }
 };
 
