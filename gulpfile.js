@@ -61,4 +61,7 @@ gulp.task('watch', function() {
     gulp.watch(['./public/app/ServerApp.js', './public/app/*/**.js', './public/app/*/*/**.js'], ['es6-es5']);
 });
 
+gulp.task('prod', ['es6-es5', 'build', 'css'], function(){});
+
 gulp.task('default', ['es6-es5', 'build', 'css', 'watch'], function(){});
+

@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "test": "mocha --compilers js:babel-core/register --require ./public/app/tests/setup.js 'public/app/tests/*spec.js'",
     "test:watch": "npm run test -- --watch",
-    "build": "gulp"
+    "build": "NODE_ENV=production webpack && gulp prod"
   },
   "babel": {
     "presets": [
