@@ -370,6 +370,26 @@ var Landing = (function (Component) {
                                     "While other bootcamps continue to teach Ruby on Rails (Dev Bootcamp, Flatiron School, General Assembly, NYCDA, App Academy, etc) and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps every three months, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world."
                                 )
                             )
+                        ),
+                        React.createElement(
+                            "div",
+                            { style: { textAlign: "center" } },
+                            React.createElement("iframe", { src: "https://player.vimeo.com/video/183060655", width: "640", height: "360", frameborder: "0", webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }),
+                            React.createElement(
+                                "p",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { target: "_blank", href: "https://vimeo.com/183060655" },
+                                    "Velocity360"
+                                ),
+                                " on",
+                                React.createElement(
+                                    "a",
+                                    { target: "_blank", href: "https://vimeo.com" },
+                                    " Vimeo"
+                                )
+                            )
                         )
                     ),
                     React.createElement(
