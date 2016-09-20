@@ -496,10 +496,10 @@ class Course extends Component {
 		}
 
 		return (
-			<div id="wrapper" className="clearfix">
-				<Nav headerStyle="dark" />
+			<div id="wrapper" className="clearfix" style={{backgroundImage: "url('/images/keyboard.png')", backgroundSize:'contain'}}>
+				<Nav />
 
-				<section id="lpf-header" style={{backgroundImage: "url('/images/joe_light_blue.png')"}}>
+				<section id="lpf-header">
 					<header>
 						<div className="content-wrapper dark">
 							<div className="content">

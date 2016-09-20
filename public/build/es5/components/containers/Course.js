@@ -863,11 +863,11 @@ var Course = (function (Component) {
 
 				return React.createElement(
 					"div",
-					{ id: "wrapper", className: "clearfix" },
-					React.createElement(Nav, { headerStyle: "dark" }),
+					{ id: "wrapper", className: "clearfix", style: { backgroundImage: "url('/images/keyboard.png')", backgroundSize: "contain" } },
+					React.createElement(Nav, null),
 					React.createElement(
 						"section",
-						{ id: "lpf-header", style: { backgroundImage: "url('/images/joe_light_blue.png')" } },
+						{ id: "lpf-header" },
 						React.createElement(
 							"header",
 							null,
