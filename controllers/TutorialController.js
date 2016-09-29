@@ -47,6 +47,8 @@ module.exports = {
 			var limit = params.limit
 			if (limit == null)
 				limit = 0
+			else
+				limit = parseInt(limit)
 			
 			delete params['limit']
 			

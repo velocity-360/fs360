@@ -46,7 +46,7 @@ module.exports = {
 		if (limit == null)
 			limit = 0
 		
-		delete params['limit'];
+		delete params['limit']
 		
 		Track.find(params, null, {limit:limit, sort:{score: -1}}, function(err, tracks) {
 			if (err) {
