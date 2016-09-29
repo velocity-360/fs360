@@ -154,7 +154,7 @@ class Landing extends Component {
                         </div>
                     </div>
                     <div style={{textAlign:'center'}}>
-                        <iframe src="https://player.vimeo.com/video/183060655" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/183060655" width="640" height="360" frameBorder="0"></iframe>
                         <p>
                             <a target="_blank" href="https://vimeo.com/183060655">Velocity360</a> on 
                             <a target="_blank" href="https://vimeo.com"> Vimeo</a>

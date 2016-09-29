@@ -46,11 +46,11 @@ module.exports = {
 		/* Query by filters passed into parameter string: */
 		var limit = params.limit
 		if (limit == null)
-			limit = 0;
+			limit = '0';
 		
 		delete params['limit']
 		
-		Event.find(params, null, {limit:limit, sort:{priority: 1}}, function(err, events) {
+		Event.find(params, null, {limit:parseInt(limit), sort:{priority: 1}}, function(err, events) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null)
 				return
@@ -85,11 +85,11 @@ module.exports = {
 			/* Query by filters passed into parameter string: */
 			var limit = params.limit
 			if (limit == null)
-				limit = 0
+				limit = '0'
 			
 			delete params['limit']
 			
-			Event.find(params, null, {limit:limit, sort:{timestamp: -1}}, function(err, events) {
+			Event.find(params, null, {limit:parseInt(limit), sort:{timestamp: -1}}, function(err, events) {
 				if (err) {
 					reject(err)
 					return

@@ -374,7 +374,7 @@ var Landing = (function (Component) {
                         React.createElement(
                             "div",
                             { style: { textAlign: "center" } },
-                            React.createElement("iframe", { src: "https://player.vimeo.com/video/183060655", width: "640", height: "360", frameborder: "0", webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }),
+                            React.createElement("iframe", { src: "https://player.vimeo.com/video/183060655", width: "640", height: "360", frameBorder: "0" }),
                             React.createElement(
                                 "p",
                                 null,

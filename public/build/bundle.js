@@ -24404,7 +24404,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { style: { textAlign: 'center' } },
-	                        _react2.default.createElement('iframe', { src: 'https://player.vimeo.com/video/183060655', width: '640', height: '360', frameborder: '0', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }),
+	                        _react2.default.createElement('iframe', { src: 'https://player.vimeo.com/video/183060655', width: '640', height: '360', frameBorder: '0' }),
 	                        _react2.default.createElement(
 	                            'p',
 	                            null,

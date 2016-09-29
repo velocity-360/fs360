@@ -44,11 +44,11 @@ module.exports = {
 		/* Query by filters passed into parameter string: */
 		var limit = params.limit;
 		if (limit == null)
-			limit = 0
+			limit = '0'
 		
 		delete params['limit']
 		
-		Track.find(params, null, {limit:limit, sort:{score: -1}}, function(err, tracks) {
+		Track.find(params, null, {limit:parseInt(limit), sort:{score: -1}}, function(err, tracks) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null)
 				return
