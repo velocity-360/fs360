@@ -51,10 +51,6 @@ class Course extends Component {
 				this.setState({
 					showConfirmation: true
 				})
-
-				// currentStore.dispatch(actions.currentUserRecieved(response.profile))
-				// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
-				// this.showFirstUnit(null)
 			})
 		})
 	}
