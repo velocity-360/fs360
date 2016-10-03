@@ -1129,6 +1129,3 @@ var stateToProps = function (state) {
 
 
 module.exports = connect(stateToProps)(Course);
-// currentStore.dispatch(actions.currentUserRecieved(response.profile))
-// currentStore.dispatch(actions.tutorialsReceived([response.tutorial]))
-// this.showFirstUnit(null)
