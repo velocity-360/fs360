@@ -578,7 +578,7 @@ var Course = (function (Component) {
 							React.createElement(
 								"p",
 								null,
-								"The deadline for application is September 26th for regular applicants. To be eligible for the full scholarship, the deadline is September 19th."
+								"The deadline for application is November 28th for regular applicants. To be eligible for the full scholarship, the deadline is November 7th."
 							)
 						)
 					);
@@ -604,7 +604,7 @@ var Course = (function (Component) {
 						React.createElement(
 							"p",
 							{ style: { marginTop: 10 } },
-							"Complete our online application by September 26th to apply for the course."
+							"Complete our online application by November 28th to apply for the course."
 						),
 						React.createElement(
 							"a",

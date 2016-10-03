@@ -114,7 +114,7 @@ class Header extends Component {
                         </span>
                         <br /><br />
                     	<div data-animate="fadeIn" data-delay="800" style={style.featuredBox}>
-	                    	<h4 style={{fontWeight:200, marginBottom:0}}>Next Cohort Begins October 3rd</h4>
+	                    	<h4 style={{fontWeight:200, marginBottom:0}}>Next Cohort Begins January 9th</h4>
 	                    	<hr />
 	                        <input id="name" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Name" />
 	                        <input id="email" onChange={this.updateVisitor} style={style.input} type="text" className="form-control input-lg not-dark" placeholder="Email" />

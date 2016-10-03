@@ -170,7 +170,7 @@ var Header = (function (Component) {
 								React.createElement(
 									"h4",
 									{ style: { fontWeight: 200, marginBottom: 0 } },
-									"Next Cohort Begins October 3rd"
+									"Next Cohort Begins January 9th"
 								),
 								React.createElement("hr", null),
 								React.createElement("input", { id: "name", onChange: this.updateVisitor, style: style.input, type: "text", className: "form-control input-lg not-dark", placeholder: "Name" }),

@@ -358,8 +358,8 @@ class Course extends Component {
 					<div style={{marginTop:24}} className="col_full nobottommargin">
 						<p className="about" style={{marginBottom:6}}>Deadline</p>
 						<p>
-							The deadline for application is September 26th for regular applicants. To 
-							be eligible for the full scholarship, the deadline is September 19th.
+							The deadline for application is November 28th for regular applicants. To 
+							be eligible for the full scholarship, the deadline is November 7th.
 						</p>
                     </div>
 				</article>
@@ -370,7 +370,7 @@ class Course extends Component {
 					<h2>Admissions</h2>
 					<a href="#" style={{marginRight:12}} className="btn btn-info">Step 1</a><strong>Apply</strong>
 					<p style={{marginTop:10}}>
-						Complete our online application by September 26th to 
+						Complete our online application by November 28th to 
 						apply for the course.
 					</p>
 
