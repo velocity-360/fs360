@@ -207,19 +207,11 @@ class Landing extends Component {
                                 <tbody>
                                     <tr className="info">
                                         <td>
-                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/234029714/">
-                                                Mobile Development With React Native
+                                            <a target="_blank" href="https://www.meetup.com/velocity360/events/234759199/">
+                                                React & Google Maps
                                             </a>
                                         </td>
-                                        <td>Sept 14th</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a target="_blank" href="http://www.meetup.com/velocity360/events/234154415/">
-                                                Chat App Using React & Firebase
-                                            </a>
-                                        </td>
-                                        <td>Sept 17th</td>
+                                        <td>Oct 12th</td>
                                     </tr>
                                 </tbody>
                             </table>

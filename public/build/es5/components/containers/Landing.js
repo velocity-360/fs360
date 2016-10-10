@@ -500,32 +500,14 @@ var Landing = (function (Component) {
                                                 null,
                                                 React.createElement(
                                                     "a",
-                                                    { target: "_blank", href: "https://www.meetup.com/velocity360/events/234029714/" },
-                                                    "Mobile Development With React Native"
+                                                    { target: "_blank", href: "https://www.meetup.com/velocity360/events/234759199/" },
+                                                    "React & Google Maps"
                                                 )
                                             ),
                                             React.createElement(
                                                 "td",
                                                 null,
-                                                "Sept 14th"
-                                            )
-                                        ),
-                                        React.createElement(
-                                            "tr",
-                                            null,
-                                            React.createElement(
-                                                "td",
-                                                null,
-                                                React.createElement(
-                                                    "a",
-                                                    { target: "_blank", href: "http://www.meetup.com/velocity360/events/234154415/" },
-                                                    "Chat App Using React & Firebase"
-                                                )
-                                            ),
-                                            React.createElement(
-                                                "td",
-                                                null,
-                                                "Sept 17th"
+                                                "Oct 12th"
                                             )
                                         )
                                     )
