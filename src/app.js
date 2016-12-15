@@ -14,7 +14,7 @@ const app = (
 			<Route path='/' component={Main}>
 				<IndexRoute component={Home} />
 				<Route path='/courses' component={Split} />
-				<Route path='/online' component={Online} />
+				<Route path='/online' component={Split} />
 				<Route path='/course/:slug' component={Split} />
 			</Route>
 		</Router>
