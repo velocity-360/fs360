@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var TextUtils = require('../utils/TextUtils')
 
 var React = require('react')
 var ReactRouter = require('react-router')
@@ -91,62 +92,44 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/:page', function(req, res, next) {
-	var page = req.params.page // 'courses', 'feed', 'account'
+	var page = req.params.page // 'courses', 'online', 'account'
 	if (page == 'tracker'){
 		next()
 		return
 	}
 
 	var initialData = initial()
-	accountController.currentUser(req)
+	var initialState = null
+
+	controllers.account.currentUser(req)
 	.then(function(currentUser){
-		if (currentUser != null)
-			initialData.profileReducer.currentUser = currentUser
+		initialData['account'] = {currentUser: currentUser}
+		initialState = store.configureStore(initialData)
 
-		return courseController.find({}) // fetch all courses for nav bar
-	})
-	.then(function(courses){
-		initialData.courseReducer.courseArray = courses
-		
-		var controller = controllers[page]
-		if (controller == null){ // special pages, like account page:
-			var initialState = store.configureStore(initialData).getState()
-			var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
-			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-			return null
+		var routes = {
+			path: '/'+page,
+			component: serverapp,
+			initial: initialState,
+			indexRoute: {
+				component: layout[TextUtils.capitalize(page)]
+			}
 		}
 
-		var params = req.query
-		if (page == 'feed')
-			params = {isPublic:'yes'}
-		
-		return controller.find(params)
+		return matchRoutes(req, routes)
 	})
-	.then(function(results){
-		if (results == null)
-			return
-
-		if (results){
-			if (page == 'courses')
-				initialData.courseReducer.courseArray = results
-
-			if (page == 'feed')
-				initialData.postReducer.postsArray = results
-
-			if (page == 'landing')
-				initialData.projectReducer.projects = results
-		}
-
-		var initialState = store.configureStore(initialData).getState()
-		var element = React.createElement(ServerApp, {page:page, params:req.query, initial:initialState})
-		res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-		return
-	})
+	.then(function(renderProps){
+		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
+	    res.render('index', {
+	    	react: html,
+	    	preloadedState:JSON.stringify(initialState.getState())
+	    })
+	})	
 	.catch(function(err){ // TODO: Handle Error
 		console.log('ERROR: '+err)
 
 	})
 })
+
 
 router.get('/:page/:slug', function(req, res, next) {
 	var initialData = initial()
