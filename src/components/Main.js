@@ -1,12 +1,35 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import actions from '../actions'
 
 class Main extends Component {
 	constructor(){
 		super()
+		this.state = {
+			menu: [
+				'Home',
+				'Courses',
+				'Online'
+			]
+		}
+	}
 
+	select(item, event){
+		event.preventDefault()
+//		console.log('SELECT: '+item)
+		this.props.selectMenuItem(item.toLowerCase())
 	}
 
 	render(){
+		const list = this.state.menu.map((item, i) => {
+			const itemStyle = (item.toLowerCase() == this.props.selected) ? style.selected : style.menuItem
+			return (
+				<li key={i}>
+					<div style={itemStyle}><a onClick={this.select.bind(this, item)} style={{color:'#333'}} href="#"><div>{item}</div></a></div>
+				</li>
+			)
+		})
+
 		return (
 			<div className="stretched side-header">
 				<div id="wrapper">
@@ -24,6 +47,11 @@ class Main extends Component {
 									</a>
 									<hr />
 								</div>
+
+								<nav id="primary-menu">
+									<ul>{ list }</ul>
+								</nav>
+
 				            </div>
 
 			            </div>
@@ -37,4 +65,29 @@ class Main extends Component {
 	}
 }
 
-export default Main
+const style = {
+	selected: {
+		padding: 8,
+		background:'#fff',
+		borderRadius: 2
+	},
+	menuItem: {
+		color: '#333',
+		padding:8,
+		background:'#f9f9f9'
+	}	
+}
+
+const stateToProps = (state) => {
+	return {
+		selected: state.session.selectedMenuItem
+	}
+}
+
+const dispatchToProps = (dispatch) => {
+	return {
+		selectMenuItem: (item) => dispatch(actions.selectMenuItem(item))
+	}
+}
+
+export default connect(stateToProps, dispatchToProps)(Main)
