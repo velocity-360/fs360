@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import styles from './styles'
 import { Footer } from '../view'
+import { Courses } from '../containers'
+import styles from './styles'
 
-class Courses extends Component {
+class Split extends Component {
     componentDidMount(){
         window.scrollTo(0 ,0)
     }
@@ -14,12 +15,13 @@ class Courses extends Component {
 			<div className="clearfix">
                 <section className="notopmargin">
                     <div className="container clearfix">
+
                         <div className="col_two_third">
-
-
+                            <Courses />
                         </div>
 
                         <div className="col_one_third col_last topmargin-lg">
+                            TEST
 
 
                         </div>
@@ -33,4 +35,4 @@ class Courses extends Component {
 	}
 }
 
-export default Courses
+export default Split

@@ -113,7 +113,7 @@ router.get('/:page', function(req, res, next) {
 			component: serverapp,
 			initial: initialState,
 			indexRoute: {
-				component: layout[TextUtils.capitalize(page)]
+				component: layout.Split
 			}
 		}
 
