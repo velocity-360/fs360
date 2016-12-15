@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node ./bin/www",
     "test": "mocha --compilers js:babel-core/register --require ./public/app/tests/setup.js 'public/app/tests/*spec.js'",
     "test:watch": "npm run test -- --watch",
