@@ -1,23 +1,26 @@
 // including plugins
-var minifyCSS = require('gulp-minify-css');
-var autoprefixer = require('gulp-autoprefixer');
+var minifyCSS = require('gulp-minify-css')
+var autoprefixer = require('gulp-autoprefixer')
 
 var gulp = require('gulp'),
     gp_concat = require('gulp-concat'),
     gp_rename = require('gulp-rename'),
     gp_uglify = require('gulp-uglify'),
-    to5 = require('gulp-6to5');
+    to5 = require('gulp-6to5')
 
 
 gulp.task('es6-es5', function(){
 	return gulp.src([
-				'./public/app/ServerApp.js',
-				'./public/app/*/**.js',
-				'./public/app/*/*/**.js'
+				// './public/app/ServerApp.js',
+				// './public/app/*/**.js',
+				// './public/app/*/*/**.js'
+                './src/serverapp.js',
+                './src/*/**.js',
+                './src/*/*/**.js'
 			]
 		)
 		.pipe(to5())
-		.pipe(gulp.dest('./public/build/es5/'));
+		.pipe(gulp.dest('./public/dist/es5/'))
 });
 
 gulp.task('css', function(){
@@ -38,7 +41,7 @@ gulp.task('css', function(){
         .pipe(minifyCSS())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
         .pipe(gp_concat('style.min.css'))
-        .pipe(gulp.dest('./public/build/css/'))
+        .pipe(gulp.dest('./public/dist/css/'))
 });
 
 gulp.task('build', function(){
@@ -54,14 +57,15 @@ gulp.task('build', function(){
         .pipe(gulp.dest('./public/min/'))
         .pipe(gp_rename('vendor.min.js'))
         .pipe(gp_uglify())
-        .pipe(gulp.dest('./public/build/'));
+        .pipe(gulp.dest('./public/dist/'))
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['./public/app/ServerApp.js', './public/app/*/**.js', './public/app/*/*/**.js'], ['es6-es5']);
-});
+//    gulp.watch(['./public/app/ServerApp.js', './public/app/*/**.js', './public/app/*/*/**.js'], ['es6-es5']);
+    gulp.watch(['./src/serverapp.js', './src/*/**.js', './src/*/*/**.js'], ['es6-es5'])
+})
 
-gulp.task('prod', ['es6-es5', 'build', 'css'], function(){});
+gulp.task('prod', ['es6-es5', 'build', 'css'], function(){})
 
-gulp.task('default', ['es6-es5', 'build', 'css', 'watch'], function(){});
+gulp.task('default', ['es6-es5', 'build', 'css', 'watch'], function(){})
 

@@ -1,0 +1,5 @@
+export default {
+
+	CURRENT_USER_RECIEVED: 'CURRENT_USER_RECIEVED'
+	
+}
