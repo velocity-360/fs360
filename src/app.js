@@ -15,6 +15,7 @@ const app = (
 				<IndexRoute component={Home} />
 				<Route path='/courses' component={Courses} />
 				<Route path='/online' component={Online} />
+				<Route path='/course/:slug' component={Courses} />
 			</Route>
 		</Router>
 	</Provider>
