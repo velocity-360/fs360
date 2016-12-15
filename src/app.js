@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Main from './components/Main'
-import { Home } from './components/layout'
+import { Home, Courses, Online } from './components/layout'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import store from './stores/store'
@@ -13,6 +13,8 @@ const app = (
 		<Router history={browserHistory}>
 			<Route path='/' component={Main}>
 				<IndexRoute component={Home} />
+				<Route path='/courses' component={Courses} />
+				<Route path='/online' component={Online} />
 			</Route>
 		</Router>
 	</Provider>

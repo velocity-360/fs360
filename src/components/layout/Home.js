@@ -3,13 +3,17 @@ import styles from './styles'
 import { Footer } from '../view'
 
 class Home extends Component {
+    componentDidMount(){
+        window.scrollTo(0 ,0)
+    }
+    
 	render(){
 		const style = styles.home
 
 		return ( 
 			<div className="clearfix">
 
-		        <section id="slider" className="dark full-screen" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible'}} data-height-lg="425" data-height-md="425" data-height-sm="850" data-height-xs="850" data-height-xxs="850">
+		        <section className="page-section section parallax dark" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible', margin:0}} data-height-lg="425" data-height-md="425" data-height-sm="850" data-height-xs="850" data-height-xxs="850">
 	                <div className="vertical-middle">
 	                    <div className="heading-block center nobottomborder">
 	                        <h1 style={styles.titleWhite} data-animate="fadeInUp">Become a Full Stack Developer</h1>

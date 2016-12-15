@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import actions from '../actions'
+import { Link, browserHistory } from 'react-router'
+
 
 class Main extends Component {
 	constructor(){
@@ -16,8 +18,15 @@ class Main extends Component {
 
 	select(item, event){
 		event.preventDefault()
+		const lowerCaseItem = item.toLowerCase()
 //		console.log('SELECT: '+item)
-		this.props.selectMenuItem(item.toLowerCase())
+		this.props.selectMenuItem(lowerCaseItem)
+		if (lowerCaseItem == 'home'){
+			browserHistory.push('/')
+			return
+		}
+
+		browserHistory.push('/'+lowerCaseItem)
 	}
 
 	render(){
