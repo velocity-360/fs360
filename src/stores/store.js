@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { accountReducer } from '../reducers'
+import { accountReducer, sessionReducer } from '../reducers'
 
 var store
 export default {
@@ -8,7 +8,8 @@ export default {
 	configureStore: (initialState) => {
 		// Combine Reducers
 		var reducers = combineReducers({
-			account: accountReducer
+			account: accountReducer,
+			session: sessionReducer
 		})
 
 		store = createStore(

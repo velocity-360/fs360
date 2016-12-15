@@ -42,7 +42,15 @@ export default {
 		body: {
 			padding: 16,
 			textAlign: 'left'			
-		}
+		},
+		paragraph: {
+			fontWeight: 200
+		},
+	    company: {
+	        border:'1px solid #ddd',
+	        marginTop:24
+	    }
+		
 	},
 	container: {
 		background:'#fff',
@@ -54,10 +62,17 @@ export default {
 		className: 'comment-content clearfix'
 	},
 	header: {
-		marginBottom:0
+		fontFamily: 'Pathway Gothic One',
+		marginBottom:0,
+		fontWeight: 200
 	},
 	title: {
 		color:'#333',
+		fontFamily:'Pathway Gothic One',
+		fontWeight: 100
+	},
+	titleWhite: {
+		color:'#fff',
 		fontFamily:'Pathway Gothic One',
 		fontWeight: 100
 	},
