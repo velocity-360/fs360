@@ -12,43 +12,42 @@ class Courses extends Component {
 
 		return ( 
 			<div className="clearfix">
-
-                <section className="notopmargin nobottommargin">
+                <section className="notopmargin">
                     <div className="container clearfix">
-                        <div className="col_two_third nobottommargin">
+                        <div className="col_two_third">
                             <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
                                 <h2 style={styles.title}>Courses</h2>
                             </div>
 
                             <p style={style.paragraph}>
-                                Technology, more than any other industry, changes rapidly and many fall behind. 
-                                As a newcomer to tech, it is imperative to understand the trends and develop the 
-                                skills that will be valued tomorrow over those in vogue today. Velocity 360 
-                                strongly prepares students under that guiding principle. Our curriculum is highly 
-                                focused on the bleeding edge of tech evolution: Node JS, React, and React Native.
+                                Our live courses take place in New York City at our 28th Street and Park Avenue 
+                                location. Taught by professional developers who currently work in the field, the courses 
+                                are always up-to-date and maintain highly relevant curriculum. In addition, our classes 
+                                are small (6-10 students) and personal.
                             </p>
 
                             <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
                                 <thead>
-                                    <tr><td><strong>Article</strong></td><td><strong>Source</strong></td></tr>
+                                    <tr>
+                                        <td><strong>Course</strong></td>
+                                        <td><strong>Start Date</strong></td>
+                                    </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr className="info"><td><a target="_blank" href="http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow">2016 Developer Survey Results</a></td><td>Stack Overflow</td></tr>
-                                    <tr><td><a target="_blank" href="https://www.youtube.com/watch?v=sBzRwzY7G-k">2016/2017 Must-Know Web Development Tech</a></td><td>YouTube</td></tr>
-                                    <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">Hacker News “Who is Hiring?” - Supporting Technologies</a></td><td>Hacker News</td></tr>
-                                    <tr><td><a href="https://www.velocity360.io/post/starting-out-today">Starting Out Today</a></td><td>Velocity 360</td></tr>
+                                    <tr className="info"><td><a target="_blank" href="http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow">Full Stack Immersive</a></td><td>Jan 9th</td></tr>
+                                    <tr><td><a target="_blank" href="https://www.youtube.com/watch?v=sBzRwzY7G-k">Evening Immersive</a></td><td>Jan 9th</td></tr>
+                                    <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">Node & React Intro</a></td><td>Feb 7th</td></tr>
                                 </tbody>
                             </table>
-                            <div>
-	                            <i style={style.paragraph}>* Cleary React is the winner here, Facebook did enormous job delivering a good technology and even better job convincing the JS crowd how good it is...it looks like the battle is lost.</i>
-	                            <br />
-	                            <a target="_blank" style={{fontWeight:100, float:'right'}} href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">- Sebastian Pawluś, WhoIsHiring.io</a>
-                            </div>
+                            <img style={{padding:6, background:'#fff', border:'1px solid #ddd', width:70+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
+                            <br />
+                            <i style={style.paragraph}>* Node & React Intro Course, instructed by Roger Beaman.</i>
                         </div>
 
-                        <div className="col_one_third col_last nobottommargin topmargin-lg">
-                            <img style={{padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/girl.png" alt="Velocity 360" className="center-block" />
+                        <div className="col_one_third col_last topmargin-lg">
+
+
                         </div>
 
                     </div>

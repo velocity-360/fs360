@@ -104,6 +104,8 @@ router.get('/:page', function(req, res, next) {
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
 		initialData['account'] = {currentUser: currentUser}
+		initialData['session'] = {selectedMenuItem: page}
+
 		initialState = store.configureStore(initialData)
 
 		var routes = {
