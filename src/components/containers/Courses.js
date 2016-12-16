@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import styles from './styles'
+import { connect } from 'react-redux'
+import actions from '../../actions'
 
 class Courses extends Component {
+    componentDidMount(){
+        if (this.props.courses == null)
+            this.props.fetchCourses(null)
+    }
+
 	render(){
         const style = styles.home
-        
+
 		return (
 			<div>
                 <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
@@ -22,14 +29,22 @@ class Courses extends Component {
                     <thead>
                         <tr>
                             <td><strong>Course</strong></td>
-                            <td><strong>Start Date</strong></td>
+                            <td><strong>Dates</strong></td>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr className="info"><td><a target="_blank" href="http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow">Full Stack Immersive</a></td><td>Jan 9th</td></tr>
-                        <tr><td><a target="_blank" href="https://www.youtube.com/watch?v=sBzRwzY7G-k">Evening Immersive</a></td><td>Jan 9th</td></tr>
-                        <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">Node & React Intro</a></td><td>Feb 7th</td></tr>
+                        { (this.props.courses == null) ? null :
+                            this.props.courses.map((course, i) => {
+                                const className = (i==0) ? 'info' : ''
+                                return (
+                                    <tr className={className}>
+                                        <td><a target="_blank" href={'/course/'+course.slug}>{course.title}</a></td>
+                                        <td>{course.dates}</td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
                 <img style={{padding:6, background:'#fff', border:'1px solid #ddd', width:70+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
@@ -40,4 +55,16 @@ class Courses extends Component {
 	}
 }
 
-export default Courses
+const stateToProps = (state) => {
+    return {
+        courses: state.course.all
+    }
+}
+
+const dispatchToProps = (dispatch) => {
+    return {
+        fetchCourses: (params) => dispatch(actions.fetchCourses(params))
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Courses)
