@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './styles'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import actions from '../../actions'
 
 class Courses extends Component {
@@ -18,7 +19,7 @@ class Courses extends Component {
                     <h2 style={styles.title}>Courses</h2>
                 </div>
 
-                <p style={style.paragraph}>
+                <p style={styles.paragraph}>
                     Our live courses take place in New York City at our 28th Street and Park Avenue 
                     location. Taught by professional developers who currently work in the field, the courses 
                     are always up-to-date and maintain highly relevant curriculum. In addition, our classes 
@@ -39,7 +40,7 @@ class Courses extends Component {
                                 const className = (i==0) ? 'info' : ''
                                 return (
                                     <tr className={className}>
-                                        <td><a target="_blank" href={'/course/'+course.slug}>{course.title}</a></td>
+                                        <td><Link to={'/course/'+course.slug}>{course.title}</Link></td>
                                         <td>{course.dates}</td>
                                     </tr>
                                 )
@@ -49,7 +50,7 @@ class Courses extends Component {
                 </table>
                 <img style={{padding:6, background:'#fff', border:'1px solid #ddd', width:70+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
                 <br />
-                <i style={style.paragraph}>* Node & React Intro Course, instructed by Roger Beaman.</i>
+                <i style={styles.paragraph}>* Node & React Intro Course, instructed by Roger Beaman.</i>
 			</div>
 		)
 	}

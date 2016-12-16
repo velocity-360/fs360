@@ -124,6 +124,9 @@ export default {
 		width:100+'%',
 		height: 8+'%',
 		borderTop: '1px solid #ddd'
-	}		
+	},
+	paragraph: {
+		fontWeight: 200
+	}
 
 }

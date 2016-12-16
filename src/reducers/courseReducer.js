@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
 				return newState
 
 			const keys = Object.keys(action.params)
-			keys.forEach((key, i) => {
+			keys.forEach((key, i) => { // ignore slug and id
 				let array = (newState[key]) ? Object.assign([], newState[key]) : []
 
 			})
