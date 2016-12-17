@@ -55,7 +55,12 @@ export default {
 		return dispatch => {
 			return dispatch(getData('/api/course', params, constants.COURSES_RECEIVED, 'courses'))
 		}
-		
 	},
+
+	fetchTutorials: (params) => {
+		return dispatch => {
+			return dispatch(getData('/api/tutorial', params, constants.TUTORIALS_RECEIVED, 'tutorials'))
+		}
+	}
 
 }

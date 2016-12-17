@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import styles from './styles'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import actions from '../../actions'
 
 class Online extends Component {
+    componentDidMount(){
+        if (this.props.tutorials == null)
+            this.props.fetchTutorials(null)
+    }
+
 	render(){
         const style = styles.home
         
@@ -12,33 +20,50 @@ class Online extends Component {
                 </div>
 
                 <p style={style.paragraph}>
-                    Technology, more than any other industry, changes rapidly and many fall behind. 
-                    As a newcomer to tech, it is imperative to understand the trends and develop the 
-                    skills that will be valued tomorrow over those in vogue today. Velocity 360 
-                    strongly prepares students under that guiding principle. Our curriculum is highly 
-                    focused on the bleeding edge of tech evolution: Node JS, React, and React Native.
+                    Cant make it to our live courses? Check out our online video tutorials. The video series are a great 
+                    way to learn while watching someone code a project from the bottom up. All original source code 
+                    is included in each series package and there is a forum dedicated to answering questions and 
+                    tracking down bugs.
                 </p>
 
                 <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
                     <thead>
-                        <tr><td><strong>Article</strong></td><td><strong>Source</strong></td></tr>
+                        <tr>
+                            <td><strong>Title</strong></td>
+                            <td><strong>Source</strong></td>
+                        </tr>
                     </thead>
 
                     <tbody>
-                        <tr className="info"><td><a target="_blank" href="http://stackoverflow.com/research/developer-survey-2016#technology-trending-tech-on-stack-overflow">2016 Developer Survey Results</a></td><td>Stack Overflow</td></tr>
-                        <tr><td><a target="_blank" href="https://www.youtube.com/watch?v=sBzRwzY7G-k">2016/2017 Must-Know Web Development Tech</a></td><td>YouTube</td></tr>
-                        <tr className="info"><td><a target="_blank" href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">Hacker News “Who is Hiring?” - Supporting Technologies</a></td><td>Hacker News</td></tr>
-                        <tr><td><a href="https://www.velocity360.io/post/starting-out-today">Starting Out Today</a></td><td>Velocity 360</td></tr>
+                        { (this.props.tutorials == null) ? null :
+                            this.props.tutorials.map((tutorial, i) => {
+                                const className = (i==0) ? 'info' : ''
+                                return (
+                                    <tr key={tutorial.id} className={className}>
+                                        <td><Link to={'/tutorial/'+tutorial.slug}>{tutorial.title}</Link></td>
+                                        <td>TEST</td>
+                                    </tr>
+                                )
+                            })
+                        }                    
                     </tbody>
                 </table>
-                <div>
-                    <i style={style.paragraph}>* Cleary React is the winner here, Facebook did enormous job delivering a good technology and even better job convincing the JS crowd how good it is...it looks like the battle is lost.</i>
-                    <br />
-                    <a target="_blank" style={{fontWeight:100, float:'right'}} href="https://blog.whoishiring.io/hacker-news-who-is-hiring-thread-part-3/#front endframeworks">- Sebastian Pawluś, WhoIsHiring.io</a>
-                </div>
+
 			</div>
 		)
 	}
 }
 
-export default Online
+const stateToProps = (state) => {
+    return {
+        tutorials: state.tutorial.all
+    }
+}
+
+const dispatchToProps = (dispatch) => {
+    return {
+        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Online)

@@ -90,7 +90,12 @@ router.get('/:page', function(req, res, next) {
 			reducer.all.push(entity)
 		})
 
-		initialData['course'] = reducer // TODO: can be tutorial reducer
+		if (page == 'online')
+			initialData['tutorial'] = reducer // can be tutorial reducer
+
+		if (page == 'courses')
+			initialData['course'] = reducer // can be course reducer
+
 		initialState = store.configureStore(initialData)
 
 		var routes = {
