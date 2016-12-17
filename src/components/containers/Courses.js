@@ -3,6 +3,7 @@ import styles from './styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
+import { Preview } from '../view'
 
 class Courses extends Component {
     componentDidMount(){
@@ -25,29 +26,17 @@ class Courses extends Component {
                     are always up-to-date and maintain highly relevant curriculum. In addition, our classes 
                     are small (6-10 students) and personal.
                 </p>
+                
+                <div id="posts" className="events small-thumbs">
+                    { (this.props.courses == null) ? null :
+                        this.props.courses.map((course, i) => {
+                            return (
+                                <Preview course={course} key={course.id} />
+                            )
+                        })
+                    }
+                </div>
 
-                <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
-                    <thead>
-                        <tr>
-                            <td><strong>Course</strong></td>
-                            <td><strong>Dates</strong></td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        { (this.props.courses == null) ? null :
-                            this.props.courses.map((course, i) => {
-                                const className = (i==0) ? 'info' : ''
-                                return (
-                                    <tr key={course.id} className={className}>
-                                        <td><Link to={'/course/'+course.slug}>{course.title}</Link></td>
-                                        <td>{course.dates}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
                 <img style={{padding:6, background:'#fff', border:'1px solid #ddd', width:70+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
                 <br />
                 <i style={styles.paragraph}>* Node & React Intro Course, instructed by Roger Beaman.</i>
