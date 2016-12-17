@@ -2,13 +2,14 @@
 <html>
   <head>
   	{{>head}}
-    <title>Velocity 360 | Node, React Coding Bootcamp</title>
+    <title>Velocity 360 | {{ tags.title }}</title>
 
-  	<meta property="og:title" content="Velocity 360 | Full Stack Immersive" />
+    <meta property="og:title" content="{{ tags.title }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://www.velocity360.io" />
-    <meta property="og:image" content="https://www.velocity360.io/images/logo_round_green_260.png" />
-    <meta property="og:description" content="The Velocity 360 Full Stack Immersive Bootcamp prepares students for the most rapidly growing technologies. While other bootcamps continue to teach Ruby on Rails and have been doing so for several years, Velocity 360 is the only bootcamp in NYC that focuses on the tremendously growing Node/React/React-Native ecosystem. Rather than joining the mass of Ruby on Rails devs that graduate from bootcamps, you will leave Velocity 360 with the skills highly in demand yet hard to find in the tech world." />
+    <meta property="og:url" content="{{ tags.url }}" />
+    <meta property="og:image" content="{{ tags.image }}" />
+    <meta property="og:description" content="{{ tags.description }}" />
+
   </head>
 
   <body class="stretched">

@@ -128,6 +128,7 @@ router.get('/:page/:slug', function(req, res, next) {
 
 	var initialData = initial()
 	var initialState = null
+	var tags = null
 
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
@@ -154,12 +155,28 @@ router.get('/:page/:slug', function(req, res, next) {
 			}
 		}
 
+		if (entities.length > 0){
+			// Facebook tags:
+			var entity = entities[0]
+			var description = entity.text || entity.description
+			if (description.length > 200)
+				description = description.substring(0, 200)+'...'
+
+			tags = {
+				title: entity.title,
+				url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
+				image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
+				description: description
+			}
+		}
+
 		return matchRoutes(req, routes)
 	})
 	.then(function(renderProps){
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
 	    res.render('index', {
 	    	react: html,
+	    	tags: tags,
 	    	preloadedState:JSON.stringify(initialState.getState())
 	    })
 	})
@@ -167,96 +184,6 @@ router.get('/:page/:slug', function(req, res, next) {
 		console.log('ERROR: '+err)
 	})
 })
-
-// router.get('/:page/:slug', function(req, res, next) {
-// 	var initialData = initial()
-// 	var page = req.params.page
-// 	var slug = req.params.slug
-
-// 	if (page == 'api' || page == 'admin' || page == 'account' || page == 'tracker'){
-// 		next()
-// 		return
-// 	}
-
-// 	var user = null
-// 	accountController.currentUser(req)
-// 	.then(function(currentUser){ // can be null
-// 		if (currentUser != null)
-// 			initialData.profileReducer.currentUser = currentUser
-
-// 		return courseController.find({}) // fetch all courses for nav bar
-// 	})	
-// 	.then(function(courses){ 
-// 		initialData.courseReducer.courseArray = courses
-
-// 		var controller = controllers[page]
-// 		if (controller == null){
-// 			var initialState = store.configureStore(initialData).getState()
-// 			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
-// 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-// 			return null
-// 		}
-
-// 		return controller.find({slug: slug})
-// 	})
-// 	.then(function(results){
-// 		if (results == null)
-// 			return
-		
-// 		if (results.length == 0){
-// 			var initialState = store.configureStore(initialData).getState()
-// 			var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
-// 			res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-// 			return
-// 		}
-
-// 		var entity = results[0]
-// 		if (page == 'course'){
-// 			initialData.courseReducer.courses[entity.slug] = entity
-// 		}
-
-// 		if (page == 'tutorial'){
-// 			initialData.tutorialReducer.tutorials[entity.slug] = entity
-// 		}
-
-// 		if (page == 'video'){
-// 			initialData.courseReducer.courses[entity.slug] = entity
-// 		}
-
-// 		if (page == 'project')
-// 			initialData.projectReducer.projectsArray = [entity]
-
-// 		if (page == 'event'){
-// 			initialData.eventReducer.eventArray = [entity]
-// 			initialData.eventReducer.events[entity.slug] = entity
-// 		}
-
-// 		if (page == 'post'){
-// 			initialData.postReducer.postsArray = [entity]
-// 			initialData.postReducer.posts[entity.slug] = entity
-// 		}
-
-// 		// Facebook tags:
-// 		var description = (entity.description == null) ? entity.text : entity.description
-// 		if (description.length > 200)
-// 			description = description.substring(0, 200)+'...'
-
-// 		var tags = {
-// 			title: entity.title,
-// 			url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
-// 			image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
-// 			description: description
-// 		}
-
-// 		var initialState = store.configureStore(initialData).getState()
-// 		var element = React.createElement(ServerApp, {page:page, slug:slug, initial:initialState})
-// 		res.render(page, {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState), tags:tags})
-// 		return
-// 	})
-// 	.catch(function(err){
-// 		console.log('ERROR: '+err)
-// 	})
-// })
 
 
 module.exports = router
