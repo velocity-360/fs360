@@ -57,6 +57,7 @@ CourseSchema.methods.summary = function() {
 		'profile':this.profile,
 		'subscribers':this.subscribers,
 		'timestamp':this.timestamp,
+		'schema':'course',
 		'id':this._id
 	};
 	return summary

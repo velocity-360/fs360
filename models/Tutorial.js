@@ -29,6 +29,7 @@ TutorialSchema.methods.summary = function() {
 		'posts':this.posts,
 		'price':this.price,
 		'timestamp':this.timestamp,
+		'schema':'tutorial',
 		'id':this._id
 	};
 	return summary
