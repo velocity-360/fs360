@@ -10,6 +10,29 @@ class Course extends Component {
         //     this.props.fetchCourses(null)
     }
 
+    showPaypal(event){
+        event.preventDefault()
+        const course = this.props.courses[this.props.slug]
+        if (course.discountPaypalLink.length == 0){ // no discount code
+            window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+            return
+        }
+
+        // const promoCode = this.state.promoCode.trim()
+        // if (promoCode.length == 0){
+        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+        //     return
+        // }
+
+        // if (course.promoCodes.indexOf(promoCode) == -1){
+        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+        //     return
+        // }
+
+        // successful promo code
+//        window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
+    }
+
 	render(){
         const course = this.props.courses[this.props.slug]
         console.log('COURSE: '+JSON.stringify(course))
@@ -46,7 +69,7 @@ class Course extends Component {
                                             Unit<span>{i+1}</span>
                                             <div className="timeline-divider"></div>
                                         </div>
-                                        <div className="panel panel-default" style={{maxWidth:500, boxShadow:'none'}}>
+                                        <div className="panel panel-default" style={{maxWidth:500, boxShadow:'none', background:'#FDFEFE'}}>
                                             <div className="panel-body" style={{padding:24}}>
                                                 <h3 style={styles.title}>{unit.topic}</h3>
                                                 <hr />
@@ -67,7 +90,7 @@ class Course extends Component {
                         any reason, the deposit will be fully refunded. The first payment installment is due on the 
                         first day of class.
                         <br /><br />
-                        <a href="#register" className="btn btn-success">Submit Deposit</a>
+                        <a onClick={this.showPaypal.bind(this)} href="#register" className="btn btn-success">Submit Deposit</a>
 
                     </div>
                     <div className="col_half col_last" style={styles.paragraph}>
@@ -75,7 +98,7 @@ class Course extends Component {
                         Submit the full tution today to receive a $200 discount. If the class does not run for 
                         any reason, your payment will be fully refunded.
                         <br /><br />
-                        <a href="#" className="btn btn-success">Full Tution</a>
+                        <a onClick={this.showPaypal.bind(this)} href="#" className="btn btn-success">Full Tution</a>
                     </div>
                 </div>
 
