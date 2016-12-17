@@ -30,9 +30,22 @@ class Sidebar extends Component {
         })
     }
 
+    submitCredentials(event){
+        console.log('submitCredentials: '+JSON.stringify(this.state.visitor))
+        event.preventDefault()
+
+        if (this.state.register){ // sign up
+
+            return
+        }
+
+        // log in
+
+    }
+
 	render(){
 		return (
-            <div>
+            <div style={{padding:16}}>
                 <div className="heading-block fancy-title nobottomborder nobottommargin title-bottom-border">
                     <h4 style={styles.title}>Account</h4>
                 </div>
@@ -40,7 +53,7 @@ class Sidebar extends Component {
                     { (this.state.register) ? <input id="fullName" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Full Name" /> : null }
                     <input id="email" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Email" /><br />
                     <input id="password" style={style.input} onChange={this.updateVisitor.bind(this)} type="password" placeholder="Password" /><br />
-                    <a href="#" className="button button-small button-circle button-border button-aqua">{ (this.state.register) ? 'Sign Up' : 'Log In'}</a>
+                    <a href="#" onClick={this.submitCredentials.bind(this)} className="button button-small button-circle button-border button-aqua">{ (this.state.register) ? 'Sign Up' : 'Log In'}</a>
                     <br />
                     { (this.state.register) ? <span style={style.smallText}>Already registered? Login <a onClick={this.toggleLoginMode.bind(this)} href="#">HERE</a>.</span> : <span style={style.smallText}>Sign up <a onClick={this.toggleLoginMode.bind(this)} href="#">HERE</a>.</span> }
                 </div>
