@@ -24,7 +24,7 @@ module.exports = {
 	},
 
 	get: function(params, completion){
-		console.log('CourseController - GET: '+JSON.stringify(params));
+//		console.log('CourseController - GET: '+JSON.stringify(params));
 
 		// fetch specific Course by ID:
 		if (params.id != null){ 
