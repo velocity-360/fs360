@@ -9,7 +9,7 @@ class Courses extends Component {
     componentDidMount(){
         window.scrollTo(0, 0)
         if (this.props.courses == null)
-            this.props.fetchCourses({type:'live'})
+            this.props.fetchCourses(null)
     }
 
 	render(){
