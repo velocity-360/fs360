@@ -8,6 +8,7 @@ var tutorialController = require('./TutorialController')
 module.exports = {
 	account: accountController,
 	courses: courseController,
+	online: tutorialController,
 	course: courseController,
 	tutorial: tutorialController,
 	video: courseController,

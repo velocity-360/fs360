@@ -55,7 +55,7 @@ class Course extends Component {
 
 	render(){
         const course = this.props.courses[this.props.slug]
-        console.log('COURSE: '+JSON.stringify(course))
+//        console.log('COURSE: '+JSON.stringify(course))
 
         const style = styles.home
 
@@ -81,8 +81,6 @@ class Course extends Component {
                         <div className="timeline-border"></div>
                         {
                             course.units.map((unit, i) => {
-                                const paragraph = styles.paragraph
-                                paragraph['marginBottom'] = 0
                                 return (
                                     <div key={i} className="entry clearfix" style={{border:'none'}}>
                                         <div className="entry-timeline">
@@ -93,7 +91,7 @@ class Course extends Component {
                                             <div className="panel-body" style={{padding:24}}>
                                                 <h3 style={styles.title}>{unit.topic}</h3>
                                                 <hr />
-                                                <p style={paragraph}>{unit.description}</p>
+                                                <p style={styles.paragraph}>{unit.description}</p>
                                             </div>
                                         </div>
                                     </div>

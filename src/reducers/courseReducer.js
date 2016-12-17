@@ -19,11 +19,9 @@ export default (state = initialState, action) => {
 			})
 
 			newState['all'] = updatedList
-//			console.log('COURSES_RECEIVED: '+JSON.stringify(newState))
 			if (action.params == null)
 				return newState
 
-			const keys = Object.keys(action.params)
 			keys.forEach((key, i) => { // ignore slug and id
 				let array = (newState[key]) ? Object.assign([], newState[key]) : []
 

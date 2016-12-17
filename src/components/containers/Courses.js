@@ -39,7 +39,7 @@ class Courses extends Component {
                             this.props.courses.map((course, i) => {
                                 const className = (i==0) ? 'info' : ''
                                 return (
-                                    <tr className={className}>
+                                    <tr key={course.id} className={className}>
                                         <td><Link to={'/course/'+course.slug}>{course.title}</Link></td>
                                         <td>{course.dates}</td>
                                     </tr>
