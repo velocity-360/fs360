@@ -5,6 +5,8 @@ import styles from './style'
 class Preview extends Component {
 	render(){
 		const course = this.props.course
+		const schema = course.schema
+
 		return (
             <div className="entry clearfix" style={{borderBottom:'1px solid #EEE', marginBottom:24}}>
                 <div className="entry-image hidden-sm" style={{width:120}}>
@@ -14,13 +16,13 @@ class Preview extends Component {
                 </div>
                 <div className="entry-c">
                     <div className="entry-title">
-                        <h2 style={styles.title}><Link to={'/course/'+course.slug}>{course.title}</Link></h2>
+                        <h2 style={styles.title}><Link to={'/'+schema+'/'+course.slug}>{course.title}</Link></h2>
                     </div>
                     <ul className="entry-meta clearfix" style={{borderTop:'1px solid #ddd', paddingTop:6}}>
                         <li>{course.dates}</li>
                     </ul>
                     <div className="entry-content">
-	                    <Link style={{float:'right'}} to={'/course/'+course.slug} className="button button-small button-circle button-border button-aqua">Read More</Link>
+	                    <Link style={{float:'right'}} to={'/'+schema+'/'+course.slug} className="button button-small button-circle button-border button-aqua">Read More</Link>
                     </div>
                 </div>
             </div>
