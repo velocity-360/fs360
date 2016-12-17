@@ -3,11 +3,31 @@ import styles from './styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
+import { TextUtils } from '../../utils'
 
 class Course extends Component {
+    constructor(){
+        super()
+        this.state = {
+            visitor: {
+                name: '',
+                email: '',
+                subject: ''
+            }
+        }
+    }
+
     componentDidMount(){
         // if (this.props.courses == null)
         //     this.props.fetchCourses(null)
+    }
+
+    updateVisitor(event){
+        var updatedVisitor = Object.assign({}, this.state.visitor)
+        updatedVisitor[event.target.id] = event.target.value
+        this.setState({
+            visitor: updatedVisitor
+        })      
     }
 
     showPaypal(event){
@@ -45,10 +65,10 @@ class Course extends Component {
                     <h2 style={styles.title}>{course.title}</h2>
                 </div>
 
-                <p style={styles.paragraph}>
+                <p style={{fontFamily:'Pathway Gothic One', fontSize:18+'px', fontWeight:400}}>
                     <img style={{float:'right', width:180, border:'1px solid #ddd', background:'#fff', padding:3, marginLeft:12, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} />
                     {course.dates}<br />
-                    ${course.tuition}
+                    ${ TextUtils.numberWithCommas(course.tuition) }
                     <br />
                 </p>
                 <p style={styles.paragraph}>

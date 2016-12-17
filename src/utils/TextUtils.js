@@ -40,9 +40,28 @@ export default {
 		return array
 	},
 
+	numberWithCommas: (num) => {
+	    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+	},
+
 	validateEmail: (email) => {
 	    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 	    return re.test(email)
-	}	
+	},
 
+	validate(params, withPassword){ // validates name, email, password
+		if (params.name.length == 0)
+			return 'Name'
+
+		if (params.email.length == 0)
+			return 'Email'
+
+		if (withPassword == false)
+			return null
+
+		if (params.password.length == 0)
+			return 'Password'
+
+		return null // this is successful
+	}	
 }
