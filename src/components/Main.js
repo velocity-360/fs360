@@ -78,12 +78,14 @@ const style = {
 	selected: {
 		padding: 8,
 		background:'#fff',
-		borderRadius: 2
+		borderRadius: 2,
+		border: '1px solid #ddd'
 	},
 	menuItem: {
 		color: '#333',
 		padding:8,
-		background:'#f9f9f9'
+		background:'#f9f9f9',
+		border: '1px solid #f9f9f9'
 	}	
 }
 
