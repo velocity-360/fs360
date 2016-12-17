@@ -1,4 +1,4 @@
-## FullStack 360 Website: www.fullstack360.com
+## Velocity 360 Website: www.velocity360.io
 
 ## To Run:
 1. clone
