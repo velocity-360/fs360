@@ -66,7 +66,7 @@ class Sidebar extends Component {
         :
         (
             <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
-                <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>Welcome { this.props.currentUser.firstName }</h4>
+                <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>Welcome { this.props.currentUser.firstName.toUpperCase() }</h4>
                 <a href="/account/logout" className="button button-small button-circle button-border button-aqua">Log Out</a>
             </div>
         )
