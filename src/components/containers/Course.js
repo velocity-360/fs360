@@ -71,7 +71,7 @@ class Course extends Component {
                     <br />
                 </p>
                 <p style={styles.paragraph}>
-                    The Full Stack Immersive bootcamp covers backend and frontend development using the most up-to-date technologies. Using Node JS, Mongo, Express and React (with ES6), we create fully functional websites with user registration, image uploading, and email notification functionality. We also deeply explore React Native which leverages the powerful React library to build native iOS and Android apps in JavaScript. The Full Stack Immersive is one of a kind - we cover all the areas of the stack (backend, frontend, mobile) with the most modern libraries, frameworks and language.
+                    {course.description}
                 </p>
 
                 <div className="postcontent clearfix topmargin">
