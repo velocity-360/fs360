@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Footer } from '../view'
+import { Footer, Sidebar } from '../view'
 import { Courses, Course, Online, Tutorial } from '../containers'
 import styles from './styles'
 
@@ -35,7 +35,7 @@ class Split extends Component {
                         </div>
 
                         <div className="col_one_third col_last topmargin-lg">
-                            Right Side
+                            <Sidebar />
                         </div>
 
                     </div>
@@ -46,5 +46,6 @@ class Split extends Component {
 		)
 	}
 }
+
 
 export default Split
