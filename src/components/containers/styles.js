@@ -15,6 +15,13 @@ export default {
 		minHeight: 100,
 		resize: 'none'
 	},
+    icon: {
+        float: 'left',
+        width: 48,
+        height: 48,
+        borderRadius: 24,
+        marginRight: 12
+    },
 	home: {
 		content: {
 			background:'#fff',

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
-import styles from './style'
+import styles from './styles'
+import { connect } from 'react-redux'
 
 class Sidebar extends Component {
     constructor(){
@@ -94,4 +95,18 @@ const style = {
     }
 }
 
-export default Sidebar
+const stateToProps = (state) => {
+    return {
+        courses: state.course,
+        tutorial: state.tutorial
+    }
+}
+
+const dispatchToProps = (dispatch) => {
+    return {
+        register: (params) => dispatch(actions.register(params)),
+        login: (params) => dispatch(actions.login(params))
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Sidebar)
