@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
-import styles from './styles'
 import { connect } from 'react-redux'
+import styles from './styles'
+import actions from '../../actions'
 
 class Sidebar extends Component {
     constructor(){
@@ -41,23 +42,42 @@ class Sidebar extends Component {
         }
 
         // log in
-
+        this.props.login(this.state.visitor)
+        .then((profile) => {
+//            console.log('THEN: '+JSON.stringify(profile))
+        })
+        .catch((err) => {
+            alert(err)
+        })
     }
 
 	render(){
+        const account = (this.props.currentUser == null) ? 
+        (
+            <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
+                { (this.state.register) ? <input id="fullName" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Full Name" /> : null }
+                <input id="email" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Email" /><br />
+                <input id="password" style={style.input} onChange={this.updateVisitor.bind(this)} type="password" placeholder="Password" /><br />
+                <a href="#" onClick={this.submitCredentials.bind(this)} className="button button-small button-circle button-border button-aqua">{ (this.state.register) ? 'Sign Up' : 'Log In'}</a>
+                <br />
+                { (this.state.register) ? <span style={style.smallText}>Already registered? Login <a onClick={this.toggleLoginMode.bind(this)} href="#">HERE</a>.</span> : <span style={style.smallText}>Sign up <a onClick={this.toggleLoginMode.bind(this)} href="#">HERE</a>.</span> }
+            </div>
+        )
+        :
+        (
+            <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
+                <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>Welcome { this.props.currentUser.firstName }</h4>
+                <a href="/account/logout" className="button button-small button-circle button-border button-aqua">Log Out</a>
+            </div>
+        )
+
+
 		return (
             <div style={{padding:16}}>
                 <div className="heading-block fancy-title nobottomborder nobottommargin title-bottom-border">
                     <h4 style={styles.title}>Account</h4>
                 </div>
-                <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
-                    { (this.state.register) ? <input id="fullName" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Full Name" /> : null }
-                    <input id="email" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Email" /><br />
-                    <input id="password" style={style.input} onChange={this.updateVisitor.bind(this)} type="password" placeholder="Password" /><br />
-                    <a href="#" onClick={this.submitCredentials.bind(this)} className="button button-small button-circle button-border button-aqua">{ (this.state.register) ? 'Sign Up' : 'Log In'}</a>
-                    <br />
-                    { (this.state.register) ? <span style={style.smallText}>Already registered? Login <a onClick={this.toggleLoginMode.bind(this)} href="#">HERE</a>.</span> : <span style={style.smallText}>Sign up <a onClick={this.toggleLoginMode.bind(this)} href="#">HERE</a>.</span> }
-                </div>
+                { account }
 
 
                 <div className="heading-block fancy-title nobottomborder title-bottom-border">
@@ -97,6 +117,7 @@ const style = {
 
 const stateToProps = (state) => {
     return {
+        currentUser: state.account.currentUser,
         courses: state.course,
         tutorial: state.tutorial
     }

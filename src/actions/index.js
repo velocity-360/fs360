@@ -1,17 +1,17 @@
 import constants from '../constants'
 import { APIManager } from '../utils'
 
-const postData = (path, data, actionType) => {
+const postData = (path, data, actionType, payloadKey) => {
 	return (dispatch) => APIManager
 		.handlePost(path, data)
 		.then((response) => {
-			const result = response.result
+//			const result = response.result
 			dispatch({
 				type: actionType,
-				data: result
+				[payloadKey]: response[payloadKey]
 			})
 
-			return result
+			return response
 		})
 		.catch((err) => {
 			alert(err.message)
@@ -36,6 +36,18 @@ const getData = (path, params, actionType, payloadKey) => {
 }
 
 export default {
+
+	register: (credentials) => {
+		return dispatch => {
+			return dispatch(postData('/account/login', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
+		}
+	},
+
+	login: (credentials) => {
+		return dispatch => { // this needs to change:
+			return dispatch(postData('/api/profile', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
+		}
+	},
 
 	selectMenuItem: (item) => {
 		return {
