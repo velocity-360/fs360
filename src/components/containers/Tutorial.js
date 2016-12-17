@@ -18,6 +18,7 @@ class Tutorial extends Component {
     }
 
     componentDidMount(){
+        window.scrollTo(0, 0)
         if (this.props.tutorials == null)
             this.props.fetchTutorials(null)
     }

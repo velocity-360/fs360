@@ -3,9 +3,11 @@ import styles from './styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
+import { Preview } from '../view'
 
 class Online extends Component {
     componentDidMount(){
+        window.scrollTo(0, 0)
         if (this.props.tutorials == null)
             this.props.fetchTutorials(null)
     }
@@ -26,28 +28,13 @@ class Online extends Component {
                     tracking down bugs.
                 </p>
 
-                <table style={{background:'#fff', border:'1px solid #ddd'}} className="table table-striped">
-                    <thead>
-                        <tr>
-                            <td><strong>Title</strong></td>
-                            <td><strong>Source</strong></td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        { (this.props.tutorials == null) ? null :
-                            this.props.tutorials.map((tutorial, i) => {
-                                const className = (i==0) ? 'info' : ''
-                                return (
-                                    <tr key={tutorial.id} className={className}>
-                                        <td><Link to={'/tutorial/'+tutorial.slug}>{tutorial.title}</Link></td>
-                                        <td>TEST</td>
-                                    </tr>
-                                )
-                            })
-                        }                    
-                    </tbody>
-                </table>
+                <div id="posts" className="events small-thumbs">
+                    { (this.props.tutorials == null) ? null :
+                        this.props.tutorials.map((tutorial, i) => {
+                            return <Preview course={tutorial} key={tutorial.id} />
+                        })
+                    }
+                </div>
 
 			</div>
 		)

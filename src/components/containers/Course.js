@@ -18,8 +18,7 @@ class Course extends Component {
     }
 
     componentDidMount(){
-        // if (this.props.courses == null)
-        //     this.props.fetchCourses(null)
+        window.scrollTo(0, 0)
     }
 
     updateVisitor(event){

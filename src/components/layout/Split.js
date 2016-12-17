@@ -6,7 +6,7 @@ import styles from './styles'
 class Split extends Component {
     componentDidMount(){
 //        console.log('componentDidMount = '+JSON.stringify(this.props.location))
-        window.scrollTo(0 ,0)
+        window.scrollTo(0, 0)
     }
 
 	render(){

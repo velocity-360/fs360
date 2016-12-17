@@ -7,6 +7,7 @@ import { Preview } from '../view'
 
 class Courses extends Component {
     componentDidMount(){
+        window.scrollTo(0, 0)
         if (this.props.courses == null)
             this.props.fetchCourses(null)
     }
@@ -30,9 +31,7 @@ class Courses extends Component {
                 <div id="posts" className="events small-thumbs">
                     { (this.props.courses == null) ? null :
                         this.props.courses.map((course, i) => {
-                            return (
-                                <Preview course={course} key={course.id} />
-                            )
+                            return <Preview course={course} key={course.id} />
                         })
                     }
                 </div>
