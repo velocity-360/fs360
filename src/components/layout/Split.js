@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Footer } from '../view'
-import { Courses, Online } from '../containers'
+import { Courses, Course, Online } from '../containers'
 import styles from './styles'
 
 class Split extends Component {
     componentDidMount(){
+//        console.log('componentDidMount = '+JSON.stringify(this.props.location))
         window.scrollTo(0 ,0)
     }
 
@@ -12,7 +13,17 @@ class Split extends Component {
 		const style = styles.home
 
         const path = this.props.location.pathname.replace('/', '')
-        const content = (path == 'courses') ? <Courses /> : <Online />
+        const parts = path.split('/')
+        const page = parts[0]
+
+        let content = null
+        if (parts.length == 1){
+            content = (page == 'courses') ? <Courses /> : <Online />
+        }
+        if (parts.length == 2){
+            const slug = parts[1]
+            content = (page == 'course') ? <Course slug={slug} /> : null            
+        }
 
 		return ( 
 			<div className="clearfix">
