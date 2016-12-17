@@ -24,12 +24,12 @@ class Sidebar extends Component {
 	render(){
 		return (
             <div>
-                <div className="heading-block fancy-title nobottomborder nobottommargin">
+                <div className="heading-block fancy-title nobottomborder nobottommargin title-bottom-border">
                     <h4 style={styles.title}>Account</h4>
                 </div>
-                <div style={{background:'#f9f9f9', padding:12, marginBottom:36, marginTop:6, textAlign:'right'}}>
-                    <input style={style.input} type="text" placeholder="Email" /><br />
-                    <input style={style.input} type="password" placeholder="Password" /><br />
+                <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
+                    <input style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Email" /><br />
+                    <input style={style.input} onChange={this.updateVisitor.bind(this)} type="password" placeholder="Password" /><br />
                     <a href="#" className="button button-small button-circle button-border button-aqua">Log In</a>
                 </div>
 
@@ -57,10 +57,12 @@ class Sidebar extends Component {
 const style = {
     input: {
         border: 'none',
+        borderBottom:'1px solid #eee',
         width: 100+'%',
         marginBottom: 12,
         padding: 4,
-        fontWeight: 200
+        fontWeight: 200,
+        background: '#fff'
     }
 }
 
