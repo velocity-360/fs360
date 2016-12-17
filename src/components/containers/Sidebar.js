@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import styles from './styles'
 import actions from '../../actions'
 
@@ -14,6 +15,13 @@ class Sidebar extends Component {
                 password: ''
             }
         }
+    }
+
+    componentDidMount(){
+        if (this.props.tutorials == null)
+            this.props.fetchTutorials(null)
+//            console.log('FETCH TUTORIALS')
+
     }
 
     updateVisitor(event){
@@ -71,7 +79,6 @@ class Sidebar extends Component {
             </div>
         )
 
-
 		return (
             <div style={{padding:16}}>
                 <div className="heading-block fancy-title nobottomborder nobottommargin title-bottom-border">
@@ -84,17 +91,19 @@ class Sidebar extends Component {
                     <h4 style={styles.title}>Recent <span>Posts</span></h4>
                 </div>
 
-                <div className="clearfix" style={{marginBottom:16, lineHeight:'4px'}}>
-                    <img style={styles.icon} src={'https://media-service.appspot.com/site/images/K4h2ZFdY?crop=320'} />
-                    <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}><a href="#" style={{color:'#444'}}>Post synopsis</a></h4>
-                    <span style={style.smallText}>username</span>
-                </div>
-                <div className="clearfix" style={{marginBottom:16, lineHeight:'4px'}}>
-                    <img style={styles.icon} src={'https://media-service.appspot.com/site/images/K4h2ZFdY?crop=320'} />
-                    <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}><a href="#" style={{color:'#444'}}>Post synopsis</a></h4>
-                    <span style={style.smallText}>username</span>
-                </div>
-
+                { (this.props.tutorials == null) ? null : 
+                    this.props.tutorials.map((tutorial, i) => {
+                        return (
+                            <div className="clearfix" style={{marginBottom:16, lineHeight:'4px'}}>
+                                <img style={styles.icon} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                                <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>
+                                    <Link to={'/tutorial/'+tutorial.slug} style={{color:'#444'}}>{tutorial.title}</Link>
+                                </h4>
+                                <span style={style.smallText}>username</span>
+                            </div>
+                        )
+                    })
+                }
             </div>
 		)
 	}
@@ -118,15 +127,17 @@ const style = {
 const stateToProps = (state) => {
     return {
         currentUser: state.account.currentUser,
-        courses: state.course,
-        tutorial: state.tutorial
+        courses: state.course.all,
+        tutorials: state.tutorial.all
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
         register: (params) => dispatch(actions.register(params)),
-        login: (params) => dispatch(actions.login(params))
+        login: (params) => dispatch(actions.login(params)),
+        fetchCourses: (params) => dispatch(actions.fetchCourses(params)),
+        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
     }
 }
 
