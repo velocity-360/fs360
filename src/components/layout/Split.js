@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Footer } from '../view'
-import { Courses, Course, Online } from '../containers'
+import { Courses, Course, Online, Tutorial } from '../containers'
 import styles from './styles'
 
 class Split extends Component {
@@ -22,7 +22,7 @@ class Split extends Component {
         }
         if (parts.length == 2){
             const slug = parts[1]
-            content = (page == 'course') ? <Course slug={slug} /> : null            
+            content = (page == 'course') ? <Course slug={slug} /> : <Tutorial slug={slug} />
         }
 
 		return ( 
