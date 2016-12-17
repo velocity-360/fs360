@@ -6,6 +6,7 @@ class Preview extends Component {
 	render(){
 		const course = this.props.course
 		const schema = course.schema
+		const detail = (schema == 'course') ? course.dates : <span>{course.posts.length} units</span>
 
 		return (
             <div className="entry clearfix" style={{borderBottom:'1px solid #EEE', marginBottom:24}}>
@@ -19,7 +20,7 @@ class Preview extends Component {
                         <h2 style={styles.title}><Link to={'/'+schema+'/'+course.slug}>{course.title}</Link></h2>
                     </div>
                     <ul className="entry-meta clearfix" style={{borderTop:'1px solid #ddd', paddingTop:6}}>
-                        <li>{course.dates}</li>
+                        <li>{detail}</li>
                     </ul>
                     <div className="entry-content">
 	                    <Link style={{float:'right'}} to={'/'+schema+'/'+course.slug} className="button button-small button-circle button-border button-aqua">Read More</Link>

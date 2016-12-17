@@ -66,6 +66,7 @@ class Tutorial extends Component {
 
                 <p style={{fontFamily:'Pathway Gothic One', fontSize:18+'px', fontWeight:400}}>
                     <img style={{float:'right', width:180, border:'1px solid #ddd', background:'#fff', padding:3, marginLeft:12, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                    {tutorial.posts.length} units<br />
                     ${ TextUtils.numberWithCommas(tutorial.price) }
                     <br />
                 </p>
