@@ -14,32 +14,6 @@ var initial = require('../public/dist/es5/reducers/initial') // default values f
 var layout = require('../public/dist/es5/components/layout')
 
 
-// router.get('/', function(req, res, next) {
-	// var initialData = initial()
-
-	// accountController.currentUser(req)
-	// .then(function(currentUser){
-	// 	if (currentUser != null)
-	// 		initialData.profileReducer.currentUser = currentUser
-
-	// 	return courseController.find({}) // fetch all courses for nav bar
-	// })
-// 	.then(function(courses){
-// 		initialData.courseReducer.courseArray = courses
-// 		return eventController.find({limit:3})
-// 	})
-// 	.then(function(events){
-// 		initialData.eventReducer.eventArray = events
-
-		// var initialState = store.configureStore(initialData).getState()
-		// var element = React.createElement(ServerApp, {page:'home', initial:initialState})
-		// res.render('index', {react: ReactDOMServer.renderToString(element), preloadedState:JSON.stringify(initialState)})
-// 	})
-// 	.catch(function(err){
-		// console.log('ERROR: '+err)
-// 	})
-// })
-
 var controllers = require('../controllers')
 
 matchRoutes = function(req, routes){
@@ -65,7 +39,6 @@ router.get('/', function(req, res, next) {
 
 	controllers.account.currentUser(req)
 	.then(function(currentUser){ // can be null
-//		console.log('currentUser: '+JSON.stringify(currentUser))
 		initialData['account'] = {currentUser: currentUser}
 		initialState = store.configureStore(initialData)
 		var routes = {
