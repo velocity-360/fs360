@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Footer } from '../view'
+import { Footer, Section } from '../view'
 import { Courses, Course, Online, Tutorial, Sidebar } from '../containers'
 import styles from './styles'
 
@@ -40,6 +40,8 @@ class Split extends Component {
 
                     </div>
                 </section>
+
+                { (page == 'courses') ? <div><Section content="velocityAdvantage" /><Section content="testimonials" /><Section content="companies" /></div> : null }
 
                 <Footer />
 			</div>

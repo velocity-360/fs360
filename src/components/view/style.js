@@ -134,6 +134,10 @@ export default {
 	},
 	paragraph: {
 		fontWeight: 200
-	}
+	},
+    company: {
+        border:'1px solid #ddd',
+        marginTop:24
+    }
 
 }

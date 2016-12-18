@@ -38,14 +38,14 @@ const getData = (path, params, actionType, payloadKey) => {
 export default {
 
 	register: (credentials) => {
-		return dispatch => {
-			return dispatch(postData('/account/login', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
+		return dispatch => { // this needs to change:
+			return dispatch(postData('/api/profile', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
 		}
 	},
 
 	login: (credentials) => {
-		return dispatch => { // this needs to change:
-			return dispatch(postData('/api/profile', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
+		return dispatch => { 
+			return dispatch(postData('/account/login', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
 		}
 	},
 
