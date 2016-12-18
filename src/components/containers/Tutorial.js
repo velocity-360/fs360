@@ -86,7 +86,7 @@ class Tutorial extends Component {
                                         <i className="acc-open icon-remove-circle"></i>
                                         {post.title}
                                     </div>
-                                    <div className="acc_content clearfix" style={styles.paragraph}>{post.description}</div>
+                                    <div className="acc_content clearfix" style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.description) }}></div>
                                 </div>
                             )
                         })
