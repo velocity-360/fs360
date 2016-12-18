@@ -105,7 +105,13 @@ class Tutorial extends Component {
                                         <i className="acc-open icon-remove-circle"></i>
                                         {post.title}
                                     </div>
-                                    <div className="acc_content clearfix" style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(post.description) }}></div>
+
+                                    <div className="acc_content clearfix" style={styles.paragraph}>
+                                        {post.description}<br />
+                                        { (post.youtube.length == 0) ? null : 
+                                            <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube} allowfullscreen></object>                                    
+                                        }
+                                    </div>
                                 </div>
                             )
                         })
@@ -149,6 +155,17 @@ class Tutorial extends Component {
 	}
 }
 
+const localStyle = {
+    youtube: {
+        background:'#fff',
+        padding:3,
+        border:'1px solid #ddd',
+        width:'50%',
+        float:'none',
+        clear:'both',
+        margin:'4px auto'
+    }
+}
 
 const stateToProps = (state) => {
     return {
