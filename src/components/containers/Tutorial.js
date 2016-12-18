@@ -90,11 +90,9 @@ class Tutorial extends Component {
                     <br />
                 </p>
 
-                <p style={styles.paragraph}>
-                    {tutorial.description}
-                </p>
+                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: tutorial.description }}></p>
 
-                <h3 style={styles.title}>Units</h3>
+                <h3 style={styles.title}>Preview</h3>
                 <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
                     {
                         tutorial.posts.map((post, i) => {

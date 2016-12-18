@@ -131,6 +131,10 @@ export default {
 		width:100+'%',
 		height: 8+'%',
 		borderTop: '1px solid #ddd'
-	}		
-
+	},
+    smallText: {
+        fontSize:14,
+        color:'#999',
+        fontWeight:100
+    }
 }

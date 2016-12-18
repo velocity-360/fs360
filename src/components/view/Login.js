@@ -83,7 +83,9 @@ const localStyle = {
         background: '#fff'
     },
     smallText: {
-        fontSize:14, color:'#999', fontWeight:100
+        fontSize:14,
+        color:'#999',
+        fontWeight:100
     }
 }
 export default Login

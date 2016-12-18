@@ -35,10 +35,6 @@ class Courses extends Component {
                         })
                     }
                 </div>
-
-                <img style={{padding:6, background:'#fff', border:'1px solid #ddd', width:70+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
-                <br />
-                <i style={styles.paragraph}>* Node & React Intro Course, instructed by Roger Beaman.</i>
 			</div>
 		)
 	}

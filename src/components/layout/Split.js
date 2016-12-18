@@ -36,6 +36,12 @@ class Split extends Component {
 
                         <div className="col_one_third col_last topmargin-lg">
                             <Sidebar />
+
+                            <div style={{textAlign:'right'}}>
+                                <img style={{padding:3, background:'#fff', border:'1px solid #ddd', width:100+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
+                                <br />
+                                <i style={styles.smallText}>* Node & React Intro Course, instructed by Roger Beaman.</i>
+                            </div>
                         </div>
 
                     </div>
