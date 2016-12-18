@@ -108,7 +108,7 @@ class Tutorial extends Component {
 
                                     <div className="acc_content clearfix" style={styles.paragraph}>
                                         {post.description}<br />
-                                        { (post.youtube.length == 0) ? null : 
+                                        { (post.youtube == null) ? null : 
                                             <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube} allowfullscreen></object>                                    
                                         }
                                     </div>
