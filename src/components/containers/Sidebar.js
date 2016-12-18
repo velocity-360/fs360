@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import styles from './styles'
 import actions from '../../actions'
+import { TextUtils } from '../../utils'
 
 class Sidebar extends Component {
     constructor(){
@@ -99,7 +100,7 @@ class Sidebar extends Component {
                                 <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>
                                     <Link to={'/tutorial/'+tutorial.slug} style={{color:'#444'}}>{tutorial.title}</Link>
                                 </h4>
-                                <span style={style.smallText}>{tutorial.posts.length} units</span>
+                                { (tutorial.price == 0) ? <span style={style.smallText}>Free</span> : <span style={style.smallText}>${TextUtils.numberWithCommas(tutorial.price)}</span> }
                             </div>
                         )
                     })
