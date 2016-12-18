@@ -70,7 +70,7 @@ class Course extends Component {
                     ${ TextUtils.numberWithCommas(course.tuition) }
                     <br />
                 </p>
-                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: course.description }}></p>
+                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(course.description) }}></p>
 
                 <div className="postcontent clearfix topmargin">
                     <h3 style={styles.title}>Curriculum</h3>

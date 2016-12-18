@@ -90,7 +90,7 @@ class Tutorial extends Component {
                     <br />
                 </p>
 
-                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: tutorial.description }}></p>
+                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
 
                 <h3 style={styles.title}>Preview</h3>
                 <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
