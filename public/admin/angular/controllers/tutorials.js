@@ -4,7 +4,12 @@ app.controller('TutorialsController', ['$scope', 'generalService', 'accountServi
 	$scope['generalService'] = generalService
 	$scope.profile = null
 	$scope.tutorials = null
-	$scope.post = ''
+	$scope.post = {
+		title: '',
+		youtube: '',
+		package: '',
+		description: ''
+	},
 	$scope.tutorial = {
 		id: null,
 		title: '',
@@ -59,49 +64,68 @@ app.controller('TutorialsController', ['$scope', 'generalService', 'accountServi
 	}
 
 	$scope.addPost = function(){
-		if ($scope.post.length == 0)
-			return
-
-		var tutorialId = $scope.tutorial.id
-		if (tutorialId == null)
-			return
-
-		RestService.get({resource:'post', id:$scope.post}, function(response){
-			if (response.confirmation != 'success'){
-				alert(response.message)
-				return
+		$scope.tutorial.posts.push($scope.post)
+		$scope.updateTutorial(function(){
+			$scope.post = {
+				title: '',
+				youtube: '',
+				package: '',
+				description: ''
 			}
-
-			var post = response.post
-			var alreadyThere = false
-			for (var i=0; i<$scope.tutorial.posts.length; i++){
-				var p = $scope.tutorial.posts[i]
-				if (p.id == post.id){ // already there, ignore
-					alreadyThere = true
-					break
-				}
-			}
-
-			if (alreadyThere == true)
-				return
-
-			var description = post.text
-			if (description.length > 200)
-				description = description.substring(0, 200)+'...'
-
-			var entry = {
-				title: post.title,
-				slug: post.slug,
-				description: description,
-				id: post.id,
-				wistia: post.wistia,
-				image: post.image
-			}
-
-			$scope.tutorial.posts.push(entry)
-			$scope.updateTutorial()
 		})
 	}
+
+
+
+	// $scope.addPost = function(){
+	// 	if ($scope.post.length == 0)
+	// 		return
+
+	// 	var tutorialId = $scope.tutorial.id
+	// 	if (tutorialId == null)
+	// 		return
+
+	// 	RestService.get({resource:'post', id:$scope.post}, function(response){
+	// 		if (response.confirmation != 'success'){
+	// 			alert(response.message)
+	// 			return
+	// 		}
+
+	// 		var post = response.post
+	// 		var alreadyThere = false
+	// 		for (var i=0; i<$scope.tutorial.posts.length; i++){
+	// 			var p = $scope.tutorial.posts[i]
+	// 			if (p.id == post.id){ // already there, ignore
+	// 				alreadyThere = true
+	// 				break
+	// 			}
+	// 		}
+
+	// 		if (alreadyThere == true)
+	// 			return
+
+	// 		var description = post.text
+	// 		if (description.length > 200)
+	// 			description = description.substring(0, 200)+'...'
+
+	// 		var entry = {
+	// 			title: post.title,
+	// 			slug: post.slug,
+	// 			description: description,
+	// 			id: post.id,
+	// 			wistia: post.wistia,
+	// 			image: post.image
+	// 		}
+
+			// $scope.tutorial.posts.push(entry)
+			// $scope.updateTutorial()
+	// 	})
+	// }
+
+	$scope.selectPost = function(post){
+		$scope.post = post
+	}
+
 
 	$scope.removePost = function(post){
 		var index = $scope.tutorial.posts.indexOf(post)

@@ -72,12 +72,23 @@
                         <h5>Posts</h5>
                         <ol style="margin-left:24px">
                             <li ng-repeat="post in tutorial.posts track by $index">
-                                <% post.title %>,
-                                <a ng-click="removePost(post)" href="">Remove</a>
+                                <span><a ng-click="selectPost(post)" style="color:red" href=""><% post.title %></a></span>
+                                <p style="color:#777">
+                                    <% post.description %>
+                                    <br />
+                                    <a ng-click="removePost(post)" href="">Remove</a>
+                                </p>
                             </li>
                         </ol>
-                        <input ng-model="post" class="form-control" type="text" placeholder="Post ID" />
-                        <a class="btn btn-rounded btn-lg" ng-click="addPost()" href="">Add Post</a>
+
+                        <input ng-model="post.title" type="text" placeholder="Topic" class="form-control" />
+                        <input ng-model="post.youtube" type="text" placeholder="Youtube ID" class="form-control" />
+                        <input ng-model="post.package" type="text" placeholder="Package" class="form-control" />
+                        <textarea ng-model="post.description" rows="3" placeholder="Description"></textarea>
+
+                        <a class="btn btn-rounded btn-sm" ng-click="addPost()" href="">+ Add Post</a>
+
+
                     </div>                    
 
                 </div>
