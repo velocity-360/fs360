@@ -88,7 +88,7 @@ class Sidebar extends Component {
 
 
                 <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 style={styles.title}>Recent <span>Posts</span></h4>
+                    <h4 style={styles.title}>Recent <span>Tutorials</span></h4>
                 </div>
 
                 { (this.props.tutorials == null) ? null : 
@@ -99,7 +99,7 @@ class Sidebar extends Component {
                                 <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>
                                     <Link to={'/tutorial/'+tutorial.slug} style={{color:'#444'}}>{tutorial.title}</Link>
                                 </h4>
-                                <span style={style.smallText}>username</span>
+                                <span style={style.smallText}>{tutorial.posts.length} units</span>
                             </div>
                         )
                     })
