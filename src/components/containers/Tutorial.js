@@ -75,30 +75,22 @@ class Tutorial extends Component {
                     {tutorial.description}
                 </p>
 
-                <div className="postcontent clearfix topmargin">
-                    <h3 style={styles.title}>Units</h3>
-                    <div id="posts" className="post-timeline clearfix">
-                        <div className="timeline-border"></div>
-                        {
-                            tutorial.posts.map((post, i) => {
-                                return (
-                                    <div key={i} className="entry clearfix" style={{border:'none'}}>
-                                        <div className="entry-timeline">
-                                            Unit<span>{i+1}</span>
-                                            <div className="timeline-divider"></div>
-                                        </div>
-                                        <div className="panel panel-default" style={{maxWidth:500, boxShadow:'none', background:'#FDFEFE'}}>
-                                            <div className="panel-body" style={{padding:24}}>
-                                                <h3 style={styles.title}>{post.title}</h3>
-                                                <hr />
-                                                <p style={styles.paragraph}>{post.description}</p>
-                                            </div>
-                                        </div>
+                <h3 style={styles.title}>Units</h3>
+                <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
+                    {
+                        tutorial.posts.map((post, i) => {
+                            return (
+                                <div key={i} style={{borderTop:'1px solid #ddd'}}>
+                                    <div className="acctitle">
+                                        <i className="acc-closed icon-ok-circle"></i>
+                                        <i className="acc-open icon-remove-circle"></i>
+                                        {post.title}
                                     </div>
-                                )
-                            })
-                        }
-                    </div>
+                                    <div className="acc_content clearfix" style={styles.paragraph}>{post.description}</div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
                 <div className="topmargin" style={{marginBottom:0}}>
