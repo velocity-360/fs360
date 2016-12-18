@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
 import { TextUtils } from '../../utils'
+import { Login, Account } from '../view'
 
 class Tutorial extends Component {
     constructor(){
@@ -54,6 +55,24 @@ class Tutorial extends Component {
 //        window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
     }
 
+    sendCredentials(visitor, mode){
+//        console.log('SEND CREDENTIALS: '+JSON.stringify(visitor)+', '+mode)
+
+        if (mode == 'register'){ // sign up
+
+            return
+        }
+
+        // log in
+        this.props.login(visitor)
+        .then((profile) => {
+//            console.log('THEN: '+JSON.stringify(profile))
+        })
+        .catch((err) => {
+            alert(err)
+        })
+    }
+
 	render(){
         const tutorial = this.props.tutorials[this.props.slug]
         const style = styles.home
@@ -99,9 +118,8 @@ class Tutorial extends Component {
                             <h4 style={styles.title}>Purchase</h4>
                         </div>
                         <p style={styles.paragraph}>
-                            To secure a spot in the next class, submit a deposit below. If the class does not run for 
-                            any reason, the deposit will be fully refunded. The first payment installment is due on the 
-                            first day of class.
+                            Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
+                            access to the forum where people post questions and answers. 
                             <br /><br />
                             <a onClick={this.showPaypal.bind(this)} href="#register" className="btn btn-success">Submit Deposit</a>
                         </p>
@@ -111,12 +129,18 @@ class Tutorial extends Component {
                         <div className="heading-block fancy-title nobottomborder title-bottom-border">
                             <h4 style={styles.title}>Membership</h4>
                         </div>
-                        <p style={styles.paragraph}>
-                            Submit the full tution today to receive a $200 discount. If the class does not run for 
-                            any reason, your payment will be fully refunded.
-                            <br /><br />
-                            <a onClick={this.showPaypal.bind(this)} href="#" className="btn btn-success">Full Tution</a>
-                        </p>
+
+                        { (this.props.currentUser) ? <Account currentUser={this.props.currentUser} /> : (
+                            <div>
+                                <p style={styles.paragraph}>
+                                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                                    code samples, and forums on the site. There are no long term commitments and membership 
+                                    can be canceled at any time.
+                                </p>
+                                <Login onSubmit={this.sendCredentials.bind(this)} />
+                            </div>
+                        )}
+
                     </div>
                 </div>                
 
@@ -125,14 +149,18 @@ class Tutorial extends Component {
 	}
 }
 
+
 const stateToProps = (state) => {
     return {
+        currentUser: state.account.currentUser,
         tutorials: state.tutorial
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
+        register: (params) => dispatch(actions.register(params)),
+        login: (params) => dispatch(actions.login(params)),
         fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
     }
 }
