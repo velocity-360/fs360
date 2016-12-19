@@ -140,15 +140,15 @@ export default {
 		})
 	},	
 
-//	submitStripeCharge: (token, amt, type, user, completion) => {
-	submitStripeCharge: (token, amt, type, completion) => {
+	submitStripeCharge: (token, product, completion) => {
+		var price = product.price || product.tuition
 		var body = {
 			stripeToken: token.id,
 			email: token.email,
-			amount: amt,
-			type: type,
-			description: type
-//			profile: JSON.stringify(user)
+			amount: price,
+			type: product.schema,
+			description: product.title,
+			product: product.id
 		}
 
 		superagent

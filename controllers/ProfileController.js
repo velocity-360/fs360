@@ -20,6 +20,74 @@ module.exports = {
 		return 'profiles';
 	},
 
+	find: function(params){ // Promise version
+		return new Promise(function(resolve, reject){
+
+			if (params.id != null){ 
+				Profile.findById(params.id, function(err, profile){
+					if (err){
+						resolve(null)
+						return
+					}
+					
+					if (profile == null){
+						resolve(null)
+						return
+					}
+
+					resolve(profile)
+				})
+				return
+			}
+			
+			
+			/* Query by filters passed into parameter string: */
+			var limit = params.limit
+			if (limit == null)
+				limit = '0'
+
+			delete params['limit']
+			
+			Profile.find(params, null, {limit:parseInt(limit), sort:{timestamp: -1}}, function(err, profiles) {
+				if (err) {
+					reject(err)
+					return
+				}
+				
+				resolve(convertToJson(profiles))
+			})
+		})
+	},
+
+	create: function(params){ // Promise version
+		return new Promise(function(resolve, reject){
+
+			Profile.find({email:params.email}, function(err, profiles){
+				if (err){
+					reject(err)
+					return
+				}
+
+				if (profiles.length > 0){ // profile with email already exists - send it back
+					var profile = profiles[0]
+					resolve(profile.summary())
+					return
+				}
+
+				// Create new profile. This is what should happen:
+				Profile.create(params, function(error, profile){
+					if (error){
+						reject(err)
+						return
+					}
+					
+					resolve(profile.summary())
+					return
+				})
+			})
+		})
+	},
+
 
 	get: function(params, completion){
 
@@ -84,7 +152,6 @@ module.exports = {
 			});
 		});
 	},
-
 
 
 	put: function(id, params, completion){

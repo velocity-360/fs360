@@ -4,6 +4,7 @@ var postController = require('./PostController')
 var projectController = require('./ProjectController')
 var eventController = require('./EventController')
 var tutorialController = require('./TutorialController')
+var profileController = require('./ProfileController')
 
 module.exports = {
 	account: accountController,
@@ -17,5 +18,6 @@ module.exports = {
 	events: eventController,
 	event: eventController,
 	landing: projectController,
-	project: projectController
+	project: projectController,
+	profile: profileController
 }

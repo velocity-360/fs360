@@ -61,7 +61,7 @@ class Tutorial extends Component {
 
         const tutorial = this.props.tutorials[this.props.slug]
         Stripe.initializeWithText('Purchase', (token) => {
-            APIManager.submitStripeCharge(token, tutorial.price, 'tutorial', (err, response) => {
+            APIManager.submitStripeCharge(token, tutorial, (err, response) => {
                 if (err){
                     alert(err.message)
                     return
