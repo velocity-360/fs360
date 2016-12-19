@@ -146,7 +146,7 @@ class Tutorial extends Component {
                                     Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
                                     access to the forum where people post questions and answers. 
                                     <br /><br />
-                                    <a onClick={this.showStripeModal.bind(this)} href="#" className="btn btn-success">Submit Deposit</a>
+                                    <a onClick={this.showStripeModal.bind(this)} href="#" className="btn btn-success">Purchase</a>
                                 </p>
                             </div>
                         )
@@ -154,7 +154,7 @@ class Tutorial extends Component {
 
                     <div className="col_half col_last">
                         <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                            <h4 style={styles.title}>Membership</h4>
+                            <h4 style={styles.title}>Premium <span>Membership</span></h4>
                         </div>
 
                         { (this.props.currentUser) ? <Account currentUser={this.props.currentUser} /> : (
