@@ -6,7 +6,7 @@ class Preview extends Component {
 	render(){
 		const course = this.props.course
 		const schema = course.schema
-		const detail = (schema == 'course') ? course.dates : <span>{course.posts.length} units</span>
+		const detail = (schema == 'course') ? course.dates : <span>{ (course.price == 0) ? 'Free' : '$'+course.price}</span>
 
 		return (
             <div className="entry clearfix" style={{borderBottom:'1px solid #EEE', marginBottom:24}}>
