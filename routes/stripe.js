@@ -6,6 +6,7 @@ var Tutorial = require('../models/Tutorial')
 var Project = require('../models/Project')
 var Promise = require('bluebird')
 var EmailManager = require('../managers/EmailManager')
+var controllers = require('../controllers')
 
 
 function createProfile(profileInfo){

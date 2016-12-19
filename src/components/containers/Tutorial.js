@@ -3,7 +3,7 @@ import styles from './styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
-import { TextUtils } from '../../utils'
+import { TextUtils, Stripe, APIManager } from '../../utils'
 import { Login, Account } from '../view'
 
 class Tutorial extends Component {
@@ -55,9 +55,28 @@ class Tutorial extends Component {
 //        window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
     }
 
+
+    showStripeModal(event){
+        event.preventDefault()
+
+        const tutorial = this.props.tutorials[this.props.slug]
+        Stripe.initializeWithText(tutorial.title, (token) => {
+            APIManager.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
+                if (err){
+                    alert(err.message)
+                    return
+                }
+                
+                console.log('Stripe Charge: '+JSON.stringify(response))
+            })
+        })
+
+        Stripe.showModalWithText(tutorial.title+' - $'+tutorial.price)
+    }
+
+
     sendCredentials(visitor, mode){
 //        console.log('SEND CREDENTIALS: '+JSON.stringify(visitor)+', '+mode)
-
         if (mode == 'register'){ // sign up
 
             return
@@ -107,7 +126,7 @@ class Tutorial extends Component {
                                     <div className="acc_content clearfix" style={styles.paragraph}>
                                         {post.description}<br />
                                         { (post.youtube == null) ? null : 
-                                            <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube} allowfullscreen></object>                                    
+                                            <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>                                    
                                         }
                                     </div>
                                 </div>
@@ -127,7 +146,7 @@ class Tutorial extends Component {
                                     Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
                                     access to the forum where people post questions and answers. 
                                     <br /><br />
-                                    <a onClick={this.showPaypal.bind(this)} href="#register" className="btn btn-success">Submit Deposit</a>
+                                    <a onClick={this.showStripeModal.bind(this)} href="#" className="btn btn-success">Submit Deposit</a>
                                 </p>
                             </div>
                         )
