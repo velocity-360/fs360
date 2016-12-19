@@ -70,7 +70,7 @@ module.exports = {
 
 				if (profiles.length > 0){ // profile with email already exists - send it back
 					var profile = profiles[0]
-					resolve(profile.summary())
+					resolve(profile)
 					return
 				}
 
@@ -81,7 +81,7 @@ module.exports = {
 						return
 					}
 					
-					resolve(profile.summary())
+					resolve(profile)
 					return
 				})
 			})

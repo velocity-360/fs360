@@ -56,22 +56,41 @@ class Tutorial extends Component {
     }
 
 
-    showStripeModal(event){
+    showStripeModal(type, event){
         event.preventDefault()
+        console.log('showStripeModal: '+type)
 
-        const tutorial = this.props.tutorials[this.props.slug]
-        Stripe.initializeWithText('Purchase', (token) => {
-            this.props.submitStripeCharge(token, tutorial)
-            .then((response) => {
-                console.log('TEST: '+JSON.stringify(response))
+        if (type == 'charge'){
+            const tutorial = this.props.tutorials[this.props.slug]
+            Stripe.initializeWithText('Purchase', (token) => {
+                this.props.submitStripeCharge(token, tutorial)
+                .then((response) => {
+                    console.log('TEST: '+JSON.stringify(response))
 
+                })
+                .catch((err) => {
+
+                })
             })
-            .catch((err) => {
 
+            Stripe.showModalWithText(tutorial.title+' - $'+tutorial.price)
+            return
+        }
+
+        if (type == 'subscription'){
+            Stripe.initializeWithText('Subscribe', (token) => {
+                this.props.submitStripeCard(token)
+                .then((response) => {
+                    console.log('TEST: '+JSON.stringify(response))
+
+                })
+                .catch((err) => {
+
+                })
             })
-        })
 
-        Stripe.showModalWithText(tutorial.title+' - $'+tutorial.price)
+            Stripe.showModalWithText('Premium subscription - $19.99/mo')
+        }
     }
 
 
@@ -146,7 +165,7 @@ class Tutorial extends Component {
                                     Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
                                     access to the forum where people post questions and answers. 
                                     <br /><br />
-                                    <a onClick={this.showStripeModal.bind(this)} href="#" className="btn btn-success">Purchase</a>
+                                    <a onClick={this.showStripeModal.bind(this, 'charge')} href="#" className="button button-small button-circle button-border button-aqua">Purchase</a>
                                 </p>
                             </div>
                         )
@@ -157,17 +176,12 @@ class Tutorial extends Component {
                             <h4 style={styles.title}>Premium <span>Membership</span></h4>
                         </div>
 
-                        { (this.props.currentUser) ? <Account currentUser={this.props.currentUser} /> : (
-                            <div>
-                                <p style={styles.paragraph}>
-                                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
-                                    code samples, and forums on the site. There are no long term commitments and membership 
-                                    can be canceled at any time.
-                                </p>
-                                <Login onSubmit={this.sendCredentials.bind(this)} />
-                            </div>
-                        )}
-
+                        <p style={styles.paragraph}>
+                            Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                            code samples, and forums on the site. There are no long term commitments and membership 
+                            can be canceled at any time.
+                        </p>
+                        <a onClick={this.showStripeModal.bind(this, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
                     </div>
                 </div>                
 
@@ -197,6 +211,7 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
     return {
+        submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
         submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
         register: (params) => dispatch(actions.register(params)),
         login: (params) => dispatch(actions.login(params)),

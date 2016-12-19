@@ -111,33 +111,60 @@ export default {
 		})
 	},
 
-	submitStripeToken: (token, completion) => {
-		var body = {
-			stripeToken: token.id,
-			email: token.email
-		}
-
-		superagent
-		.post('/stripe/card')
-		.type('form')
-		.send(body)
-		.set('Accept', 'application/json')
-		.end(function(err, res){
-			if (completion == null)
-				return
-
-			if (err){ 
-				completion(err, null)
-				return
-			}
-			
-			if (res.body.confirmation != 'success'){
-	    		completion({message:res.body.message}, null)
-	    		return
+	submitStripeCard: (token) => {
+		return new Promise((resolve, reject) => {
+			var body = {
+				stripeToken: token.id,
+				email: token.email,
+				name: token.name
 			}
 
-	    	completion(null, res.body)
+			superagent
+			.post('/stripe/card')
+			.type('form')
+			.send(body)
+			.set('Accept', 'application/json')
+			.end(function(err, res){
+				if (err){ 
+					reject(err)
+					return
+				}
+				
+				if (res.body.confirmation != 'success'){
+					reject({message:res.body.message})
+		    		return
+				}
+
+				resolve(res.body)
+			})
 		})
+
+		// var body = {
+		// 	stripeToken: token.id,
+		// 	email: token.email
+		// }
+
+		// superagent
+		// .post('/stripe/card')
+		// .type('form')
+		// .send(body)
+		// .set('Accept', 'application/json')
+		// .end(function(err, res){
+		// 	if (completion == null)
+		// 		return
+
+		// 	if (err){ 
+		// 		completion(err, null)
+		// 		return
+		// 	}
+			
+		// 	if (res.body.confirmation != 'success'){
+	 //    		completion({message:res.body.message}, null)
+	 //    		return
+		// 	}
+
+	 //    	completion(null, res.body)
+		// })
 	},	
 
 	submitStripeCharge: (token, product) => {

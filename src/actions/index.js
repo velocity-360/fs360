@@ -47,6 +47,23 @@ const submitStripeCharge = (token, product) => {
 		})
 }
 
+const submitStripeCard = (token) => {
+	return (dispatch) => APIManager
+		.submitStripeCard(token)
+		.then((response) => { // returns profile and product
+//			console.log('SUBMIT STRIPE CARD: '+JSON.stringify(response))
+			dispatch({
+				type: constants.CURRENT_USER_RECIEVED,
+				profile: response.profile
+			})
+
+			return response
+		})
+		.catch((err) => {
+			alert(err.message)
+		})
+}
+
 export default {
 	register: (credentials) => {
 		return dispatch => { // this needs to change:
@@ -90,6 +107,12 @@ export default {
 		return dispatch => {
 			return dispatch(submitStripeCharge(token, product))
 		}
-	}
+	},
+
+	submitStripeCard: (token) => {
+		return dispatch => {
+			return dispatch(submitStripeCard(token))
+		}
+	},
 
 }

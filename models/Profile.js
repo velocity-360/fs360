@@ -43,7 +43,7 @@ ProfileSchema.methods.summary = function() {
 		'image':this.image,
 		'timestamp':this.timestamp,
 		'isAdmin':this.isAdmin,
-		'id':this._id
+		'id':this._id.toString()
 	}
 	
 	return summary
