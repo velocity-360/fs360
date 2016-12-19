@@ -61,13 +61,13 @@ class Tutorial extends Component {
 
         const tutorial = this.props.tutorials[this.props.slug]
         Stripe.initializeWithText('Purchase', (token) => {
-            APIManager.submitStripeCharge(token, tutorial, (err, response) => {
-                if (err){
-                    alert(err.message)
-                    return
-                }
-                
-                console.log('Stripe Charge: '+JSON.stringify(response))
+            this.props.submitStripeCharge(token, tutorial)
+            .then((response) => {
+                console.log('TEST: '+JSON.stringify(response))
+
+            })
+            .catch((err) => {
+
             })
         })
 
@@ -197,6 +197,7 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
     return {
+        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
         register: (params) => dispatch(actions.register(params)),
         login: (params) => dispatch(actions.login(params)),
         fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))

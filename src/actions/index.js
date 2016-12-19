@@ -35,8 +35,19 @@ const getData = (path, params, actionType, payloadKey) => {
 		})
 }
 
-export default {
+const submitStripeCharge = (token, product) => {
+	return (dispatch) => APIManager
+		.submitStripeCharge(token, product)
+		.then((response) => { // returns profile and product
+//			console.log('SUBMIT STRIPE CHARGE: '+JSON.stringify(response))
+			return response
+		})
+		.catch((err) => {
+			alert(err.message)
+		})
+}
 
+export default {
 	register: (credentials) => {
 		return dispatch => { // this needs to change:
 			return dispatch(postData('/api/profile', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
@@ -72,6 +83,12 @@ export default {
 	fetchTutorials: (params) => {
 		return dispatch => {
 			return dispatch(getData('/api/tutorial', params, constants.TUTORIALS_RECEIVED, 'tutorials'))
+		}
+	},
+
+	submitStripeCharge: (token, product) => {
+		return dispatch => {
+			return dispatch(submitStripeCharge(token, product))
 		}
 	}
 
