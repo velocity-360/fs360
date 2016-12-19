@@ -60,8 +60,8 @@ class Tutorial extends Component {
         event.preventDefault()
 
         const tutorial = this.props.tutorials[this.props.slug]
-        Stripe.initializeWithText(tutorial.title, (token) => {
-            APIManager.submitStripeCharge(token, tutorial, tutorial.price, 'tutorial', (err, response) => {
+        Stripe.initializeWithText('Purchase', (token) => {
+            APIManager.submitStripeCharge(token, tutorial.price, 'tutorial', (err, response) => {
                 if (err){
                     alert(err.message)
                     return

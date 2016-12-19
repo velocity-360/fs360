@@ -140,14 +140,15 @@ export default {
 		})
 	},	
 
-	submitStripeCharge: (token, amt, type, user, completion) => {
+//	submitStripeCharge: (token, amt, type, user, completion) => {
+	submitStripeCharge: (token, amt, type, completion) => {
 		var body = {
 			stripeToken: token.id,
 			email: token.email,
 			amount: amt,
 			type: type,
-			description: type,
-			profile: JSON.stringify(user)
+			description: type
+//			profile: JSON.stringify(user)
 		}
 
 		superagent
