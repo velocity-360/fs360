@@ -158,57 +158,18 @@ export default {
 			.send(body)
 			.set('Accept', 'application/json')
 			.end(function(err, res){
-				// if (completion == null)
-				// 	return
-
 				if (err){ 
 					reject(err)
-//					completion(err, null)
 					return
 				}
 				
 				if (res.body.confirmation != 'success'){
 					reject({message:res.body.message})
-//		    		completion({message:res.body.message}, null)
 		    		return
 				}
 
 				resolve(res.body)
-//		    	completion(null, res.body)
 			})
 		})
-
-
-		// var price = product.price || product.tuition
-		// var body = {
-		// 	stripeToken: token.id,
-		// 	email: token.email,
-		// 	amount: price,
-		// 	type: product.schema,
-		// 	description: product.title,
-		// 	product: product.id
-		// }
-
-		// superagent
-		// .post('/stripe/charge')
-		// .type('form')
-		// .send(body)
-		// .set('Accept', 'application/json')
-		// .end(function(err, res){
-		// 	if (completion == null)
-		// 		return
-
-		// 	if (err){ 
-		// 		completion(err, null)
-		// 		return
-		// 	}
-			
-		// 	if (res.body.confirmation != 'success'){
-	 //    		completion({message:res.body.message}, null)
-	 //    		return
-		// 	}
-
-	 //    	completion(null, res.body)
-		// })
 	}
 }
