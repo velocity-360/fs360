@@ -214,7 +214,7 @@ const subscribed = (tutorial) => {
                     You are subscribed to this tutorial series. To access all of the videos and code samples, 
                     click on the link below:
                 </p>
-                <a href="#" className="button button-small button-circle button-border button-aqua">Download</a>
+                <a target="_blank" href={tutorial.link} className="button button-small button-circle button-border button-aqua">Download</a>
             </div>
         </div>
     )
