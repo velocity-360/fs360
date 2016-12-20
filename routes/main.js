@@ -64,6 +64,41 @@ router.get('/', function(req, res, next) {
 	})
 })
 
+router.get('/account', function(req, res, next) {
+	var initialData = initial()
+	var initialState = null
+
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		initialData['account'] = {currentUser: currentUser}
+		initialData['session'] = {selectedMenuItem: 'account'}
+
+		initialState = store.configureStore(initialData)
+
+		var routes = {
+			path: '/account',
+			component: serverapp,
+			initial: initialState,
+			indexRoute: {
+				component: layout.Split
+			}
+		}
+
+		return matchRoutes(req, routes)		
+	})
+	.then(function(renderProps){
+		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
+	    res.render('index', {
+	    	react: html,
+	    	preloadedState:JSON.stringify(initialState.getState())
+	    })
+	})	
+	.catch(function(err){ // TODO: Handle Error
+		console.log('ERROR: '+err)
+
+	})
+})
+
 router.get('/:page', function(req, res, next) {
 	var page = req.params.page // 'courses', 'online', 'account'
 	if (page == 'tracker'){

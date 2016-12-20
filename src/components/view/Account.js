@@ -10,7 +10,7 @@ class Account extends Component {
 		return (
             <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
                 <h4 style={localStyle.title}>Welcome { user.firstName.toUpperCase() }</h4>
-                <a href="/account/logout" className="button button-small button-circle button-border button-aqua">Log Out</a>
+                <a href="/account" className="button button-small button-circle button-border button-aqua">View Account</a>
             </div>
 		)
 	}
