@@ -109,7 +109,6 @@ class Tutorial extends Component {
 
 
     sendCredentials(visitor, mode){
-//        console.log('SEND CREDENTIALS: '+JSON.stringify(visitor)+', '+mode)
         if (mode == 'register'){ // sign up
 
             return
@@ -128,6 +127,19 @@ class Tutorial extends Component {
 	render(){
         const tutorial = this.props.tutorials[this.props.slug]
         const style = styles.home
+
+        let cta = null
+        if (this.props.currentUser == null)
+            cta = purchase(tutorial, this)
+
+        else if (this.props.currentUser.accountType == 'premium')
+            cta = premium(this.props.currentUser)
+
+        else if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
+            cta = subscribed
+        
+        else // logged in, not subscribed
+            cta = purchase(tutorial, this)
 
 		return (
 			<div>
@@ -169,40 +181,58 @@ class Tutorial extends Component {
                     }
                 </div>
 
-                <div className="topmargin" style={{marginBottom:0}}>
-                    { (tutorial.price == 0) ? null : 
-                        (
-                            <div className="col_half">
-                                <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                                    <h4 style={styles.title}>Purchase</h4>
-                                </div>
-                                <p style={styles.paragraph}>
-                                    Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
-                                    access to the forum where people post questions and answers. 
-                                    <br /><br />
-                                    <a onClick={this.showStripeModal.bind(this, 'charge')} href="#" className="button button-small button-circle button-border button-aqua">Purchase</a>
-                                </p>
-                            </div>
-                        )
-                    }
-
-                    <div className="col_half col_last">
-                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                            <h4 style={styles.title}>Premium <span>Membership</span></h4>
-                        </div>
-
-                        <p style={styles.paragraph}>
-                            Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
-                            code samples, and forums on the site. There are no long term commitments and membership 
-                            can be canceled at any time.
-                        </p>
-                        <a onClick={this.showStripeModal.bind(this, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
-                    </div>
-                </div>                
+                { cta }
+              
 
 			</div>
 		)
 	}
+}
+
+const premium = (user) => {
+    return (
+        <div>Premium Subscriber</div>
+    )    
+}
+
+const subscribed = (
+    <div>Subscribed</div>
+
+)
+
+const purchase = (tutorial, context) => {
+    return (
+        <div className="topmargin" style={{marginBottom:0}}>
+            { (tutorial.price == 0) ? null : 
+                (
+                    <div className="col_half">
+                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                            <h4 style={styles.title}>Purchase</h4>
+                        </div>
+                        <p style={styles.paragraph}>
+                            Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
+                            access to the forum where people post questions and answers. 
+                            <br /><br />
+                        </p>
+                        <a onClick={context.showStripeModal.bind(context, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
+                    </div>
+                )
+            }
+
+            <div className="col_half col_last">
+                <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                    <h4 style={styles.title}>Premium <span>Membership</span></h4>
+                </div>
+
+                <p style={styles.paragraph}>
+                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                    code samples, and forums on the site. There are no long term commitments and membership 
+                    can be canceled at any time.
+                </p>
+                <a onClick={context.showStripeModal.bind(context, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
+            </div>
+        </div> 
+    )
 }
 
 const localStyle = {
