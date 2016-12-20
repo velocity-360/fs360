@@ -30,7 +30,7 @@ ProfileSchema.methods.summary = function() {
 		'promoCode':this.promoCode,
 		'githubId':this.githubId,
 		'accountType':this.accountType,
-		'stripeId':this.stripeId,
+//		'stripeId':this.stripeId,
 		'email':this.email,
 		'city':this.city,
 		'about':this.about,
