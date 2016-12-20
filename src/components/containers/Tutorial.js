@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import styles from './styles'
+import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
 import { TextUtils, Stripe, APIManager } from '../../utils'
 import { Login, Account } from '../view'
+import styles from './styles'
 
 class Tutorial extends Component {
     constructor(){
         super()
         this.state = {
+            showLoading: false,
             visitor: {
                 name: '',
                 email: '',
@@ -58,7 +60,9 @@ class Tutorial extends Component {
 
     showStripeModal(type, event){
         event.preventDefault()
-        console.log('showStripeModal: '+type)
+//        console.log('showStripeModal: '+type)
+
+        this.setState({showLoading: true})
 
         if (type == 'charge'){
             const tutorial = this.props.tutorials[this.props.slug]
@@ -66,11 +70,16 @@ class Tutorial extends Component {
                 this.props.submitStripeCharge(token, tutorial)
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
+                    this.setState({showLoading: false})
 
                 })
                 .catch((err) => {
 
                 })
+            }, () => {
+                setTimeout(()=>{
+                    this.setState({showLoading: false})
+                }, 100)
             })
 
             Stripe.showModalWithText(tutorial.title+' - $'+tutorial.price)
@@ -82,11 +91,16 @@ class Tutorial extends Component {
                 this.props.submitStripeCard(token)
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
+                    this.setState({showLoading: false})
 
                 })
                 .catch((err) => {
 
                 })
+            }, () => {
+                setTimeout(()=>{
+                    this.setState({showLoading: false})
+                }, 100)
             })
 
             Stripe.showModalWithText('Premium subscription - $19.99/mo')
@@ -117,6 +131,7 @@ class Tutorial extends Component {
 
 		return (
 			<div>
+                <Loader options={styles.loader} loaded={!this.state.showLoading} className="spinner" loadedClassName="loadedContent" />
                 <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
                     <h2 style={styles.title}>{tutorial.title}</h2>
                 </div>
