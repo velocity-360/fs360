@@ -22,6 +22,21 @@ export default (state = initialState, action) => {
 			newState['all'] = updatedList
 			return newState
 
+		case constants.TUTORIAL_UPDATED:
+			newState[action.tutorial.id] = action.tutorial
+			newState[action.tutorial.slug] = action.tutorial
+
+			let array = []
+			updatedList.forEach((tutorial, i) => {
+				if (tutorial.id == action.tutorial.id) // replace old with new
+					array.push(action.tutorial)
+				else
+					array.push(tutorial)
+			})
+
+			newState['all'] = array
+			return newState
+
 		default:
 			return state
 	}

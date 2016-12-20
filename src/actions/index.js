@@ -35,6 +35,23 @@ const getData = (path, params, actionType, payloadKey) => {
 		})
 }
 
+const putData = (path, data, actionType, payloadKey) => {
+	return (dispatch) => APIManager
+		.handlePut(path, data)
+		.then((response) => {
+//			console.log('RESPONSE: '+JSON.stringify(response[payloadKey]))
+			dispatch({
+				type: actionType,
+				[payloadKey]: response[payloadKey]
+			})
+
+			return response
+		})
+		.catch((err) => {
+			alert('ERROR: '+JSON.stringify(err))
+		})
+}
+
 const submitStripeCharge = (token, product) => {
 	return (dispatch) => APIManager
 		.submitStripeCharge(token, product)
@@ -114,5 +131,11 @@ export default {
 			return dispatch(submitStripeCard(token))
 		}
 	},
+
+	updateTutorial: (tutorial, params) => {
+		return dispatch => {
+			return dispatch(putData('/api/tutorial/'+tutorial.id, params, constants.TUTORIAL_UPDATED, 'tutorial'))
+		}
+	}
 
 }

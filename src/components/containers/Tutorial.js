@@ -34,30 +34,6 @@ class Tutorial extends Component {
         })      
     }
 
-    showPaypal(event){
-        event.preventDefault()
-        const course = this.props.courses[this.props.slug]
-        if (course.discountPaypalLink.length == 0){ // no discount code
-            window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
-            return
-        }
-
-        // const promoCode = this.state.promoCode.trim()
-        // if (promoCode.length == 0){
-        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
-        //     return
-        // }
-
-        // if (course.promoCodes.indexOf(promoCode) == -1){
-        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
-        //     return
-        // }
-
-        // successful promo code
-//        window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
-    }
-
-
     showStripeModal(type, event){
         event.preventDefault()
 //        console.log('showStripeModal: '+type)
@@ -107,7 +83,6 @@ class Tutorial extends Component {
         }
     }
 
-
     sendCredentials(visitor, mode){
         if (mode == 'register'){ // sign up
 
@@ -124,6 +99,28 @@ class Tutorial extends Component {
         })
     }
 
+    subscribe(event){
+        event.preventDefault()
+        if (this.props.currentUser == null)
+            return
+
+        const tutorial = this.props.tutorials[this.props.slug]
+        if (tutorial == null)
+            return
+
+        if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
+            return
+
+//        console.log('Subscribe')
+        let subscribers = Object.assign([], tutorial.subscribers)
+        subscribers.push(this.props.currentUser.id)
+        this.props.updateTutorial(tutorial, {subscribers: subscribers})
+    }
+
+    componentDidUpdate(){
+//        console.log('componentDidUpdate: ')
+    }
+
 	render(){
         const tutorial = this.props.tutorials[this.props.slug]
         const style = styles.home
@@ -132,11 +129,11 @@ class Tutorial extends Component {
         if (this.props.currentUser == null)
             cta = purchase(tutorial, this)
 
-        else if (this.props.currentUser.accountType == 'premium')
-            cta = premium(this.props.currentUser)
-
         else if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
-            cta = subscribed
+            cta = subscribed(tutorial)
+
+        else if (this.props.currentUser.accountType == 'premium')
+            cta = premium(this.props.currentUser, this)
         
         else // logged in, not subscribed
             cta = purchase(tutorial, this)
@@ -181,24 +178,47 @@ class Tutorial extends Component {
                     }
                 </div>
 
-                { cta }
-              
+                { cta }              
 
 			</div>
 		)
 	}
 }
 
-const premium = (user) => {
+const premium = (user, context) => {
     return (
-        <div>Premium Subscriber</div>
+        <div className="topmargin" style={{marginBottom:0}}>
+            <div className="col_half col_last">
+                <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                    <h4 style={styles.title}>Premium <span>Member</span></h4>
+                </div>
+
+                <p style={styles.paragraph}>
+                    As a premium member, you can subscribe to this tutorial for free by clicking below:
+                </p>
+                <a href="#" onClick={context.subscribe.bind(context)} className="button button-small button-circle button-border button-aqua">Subscribe</a>
+            </div>
+        </div>
     )    
 }
 
-const subscribed = (
-    <div>Subscribed</div>
+const subscribed = (tutorial) => {
+    return (
+        <div className="topmargin" style={{marginBottom:0}}>
+            <div className="col_half col_last">
+                <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                    <h4 style={styles.title}>Subscribed</h4>
+                </div>
 
-)
+                <p style={styles.paragraph}>
+                    You are subscribed to this tutorial series. To access all of the videos and code samples, 
+                    click on the link below:
+                </p>
+                <a href="#" className="button button-small button-circle button-border button-aqua">Download</a>
+            </div>
+        </div>
+    )
+}
 
 const purchase = (tutorial, context) => {
     return (
@@ -260,7 +280,8 @@ const dispatchToProps = (dispatch) => {
         submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
         register: (params) => dispatch(actions.register(params)),
         login: (params) => dispatch(actions.login(params)),
-        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
+        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params)),
+        updateTutorial: (tutorial, params) => dispatch(actions.updateTutorial(tutorial, params))
     }
 }
 
