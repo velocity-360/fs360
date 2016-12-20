@@ -126,7 +126,10 @@ class Tutorial extends Component {
         const style = styles.home
 
         let cta = null
-        if (this.props.currentUser == null)
+        if (tutorial.price == 0) // it's free
+            cta = null
+
+        else if (this.props.currentUser == null)
             cta = purchase(tutorial, this)
 
         else if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
@@ -154,7 +157,7 @@ class Tutorial extends Component {
 
                 <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
 
-                <h3 style={styles.title}>Preview</h3>
+                <h3 style={styles.title}>{ (tutorial.price == 0) ? 'Units' : 'Preview' }</h3>
                 <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
                     {
                         tutorial.posts.map((post, i) => {
