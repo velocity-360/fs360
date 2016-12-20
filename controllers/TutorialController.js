@@ -90,7 +90,7 @@ module.exports = {
 		
 		delete params['limit']
 		
-		Tutorial.find(params, null, {limit:parseInt(limit), sort:{timestamp: -1}}, function(err, tutorials) {
+		Tutorial.find(params, null, {limit:parseInt(limit), sort:{priority: 1}}, function(err, tutorials) {
 			if (err) {
 				completion({confirmation:'fail', message:err.message}, null)
 				return
