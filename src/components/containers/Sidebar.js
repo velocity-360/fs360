@@ -75,8 +75,9 @@ class Sidebar extends Component {
         :
         (
             <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
-                <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>Welcome { this.props.currentUser.firstName.toUpperCase() }</h4>
-                <Link to="/account" className="button button-small button-circle button-border button-aqua">View Account</Link>
+                <h4 style={{fontFamily:'Pathway Gothic One', fontWeight:100, marginBottom:0}}>Welcome { this.props.currentUser.firstName.toUpperCase() }</h4>
+                <span style={{fontFamily:'Pathway Gothic One', fontWeight:100}}>{TextUtils.capitalize(this.props.currentUser.accountType)} Member</span><br />
+                <Link to="/account" style={{fontFamily:'Pathway Gothic One', fontWeight:100, marginTop:6}} className="btn btn-info">View Account</Link>
             </div>
         )
 
