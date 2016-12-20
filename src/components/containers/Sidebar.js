@@ -99,7 +99,7 @@ class Sidebar extends Component {
                             <div key={i} className="clearfix" style={{marginBottom:16, lineHeight:'4px'}}>
                                 <img style={styles.icon} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
                                 <h4 style={{fontFamily:'Pathway Gothic One', fontWeight: 100, marginBottom:2}}>
-                                    <Link to={'/tutorial/'+tutorial.slug} style={{color:'#444'}}>{tutorial.title}</Link>
+                                    <Link to={'/tutorial/'+tutorial.slug} style={{color:'#444'}}>{ TextUtils.truncateText(tutorial.title, 24) }</Link>
                                 </h4>
                                 { (tutorial.price == 0) ? <span style={style.smallText}>Free</span> : <span style={style.smallText}>${TextUtils.numberWithCommas(tutorial.price)}</span> }
                             </div>

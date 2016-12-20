@@ -12,6 +12,7 @@ var TutorialSchema = new mongoose.Schema({
 	youtube: {type:Array, default: []}, // free clips on youtubd
 	posts: {type:Array, default: []}, // blog posts for tutorial series. the 'isPublic' property should be 'no' for these
 	price: {type:Number, default: 0},
+	priority: {type:Number, default: 100},
 	timestamp: {type:Date, default:Date.now}
 })
 
@@ -28,6 +29,7 @@ TutorialSchema.methods.summary = function() {
 		'youtube':this.youtube,
 		'posts':this.posts,
 		'price':this.price,
+		'priority':this.priority,
 		'timestamp':this.timestamp,
 		'schema':'tutorial',
 		'id':this._id
