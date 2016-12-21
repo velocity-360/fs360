@@ -35,8 +35,7 @@ class Tutorial extends Component {
     showStripeModal(type, event){
         event.preventDefault()
 //        console.log('showStripeModal: '+type)
-
-//        this.setState({showLoading: true})
+        this.props.toggleLoading(true)
 
         if (type == 'charge'){
             const tutorial = this.props.tutorials[this.props.slug]
@@ -44,6 +43,7 @@ class Tutorial extends Component {
                 this.props.submitStripeCharge(token, tutorial)
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
+                    this.props.toggleLoading(false)
                     // this.setState({showLoading: false})
 
                 })
@@ -66,6 +66,7 @@ class Tutorial extends Component {
                 this.props.submitStripeCard(token)
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
+                    this.props.toggleLoading(false)
                     // this.setState({showLoading: false})
 
                 })
