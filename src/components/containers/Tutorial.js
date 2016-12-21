@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
 import { TextUtils, Stripe, APIManager } from '../../utils'
-import { Login, Account } from '../view'
 import styles from './styles'
 
 class Tutorial extends Component {
@@ -24,17 +23,8 @@ class Tutorial extends Component {
             this.props.fetchTutorials(null)
     }
 
-    updateVisitor(event){
-        var updatedVisitor = Object.assign({}, this.state.visitor)
-        updatedVisitor[event.target.id] = event.target.value
-        this.setState({
-            visitor: updatedVisitor
-        })      
-    }
-
     showStripeModal(type, event){
         event.preventDefault()
-//        console.log('showStripeModal: '+type)
         this.props.toggleLoading(true)
 
         if (type == 'charge'){
@@ -44,8 +34,6 @@ class Tutorial extends Component {
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
                     this.props.toggleLoading(false)
-                    // this.setState({showLoading: false})
-
                 })
                 .catch((err) => {
 
@@ -53,7 +41,6 @@ class Tutorial extends Component {
             }, () => {
                 setTimeout(() => {
                     this.props.toggleLoading(false)
-                    // this.setState({showLoading: false})
                 }, 100)
             })
 
@@ -65,10 +52,8 @@ class Tutorial extends Component {
             Stripe.initializeWithText('Subscribe', (token) => {
                 this.props.submitStripeCard(token)
                 .then((response) => {
-                    console.log('TEST: '+JSON.stringify(response))
+                    // console.log('TEST: '+JSON.stringify(response))
                     this.props.toggleLoading(false)
-                    // this.setState({showLoading: false})
-
                 })
                 .catch((err) => {
 
@@ -76,28 +61,11 @@ class Tutorial extends Component {
             }, () => {
                 setTimeout(() => {
                     this.props.toggleLoading(false)
-//                    this.setState({showLoading: false})
                 }, 100)
             })
 
             Stripe.showModalWithText('Premium subscription - $19.99/mo')
         }
-    }
-
-    sendCredentials(visitor, mode){
-        if (mode == 'register'){ // sign up
-
-            return
-        }
-
-        // log in
-        this.props.login(visitor)
-        .then((profile) => {
-//            console.log('THEN: '+JSON.stringify(profile))
-        })
-        .catch((err) => {
-            alert(err)
-        })
     }
 
     subscribe(event){
@@ -281,8 +249,6 @@ const dispatchToProps = (dispatch) => {
     return {
         submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
         submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
-        register: (params) => dispatch(actions.register(params)),
-        login: (params) => dispatch(actions.login(params)),
         fetchTutorials: (params) => dispatch(actions.fetchTutorials(params)),
         updateTutorial: (tutorial, params) => dispatch(actions.updateTutorial(tutorial, params)),
         toggleLoading: (loading) => dispatch(actions.toggleLoading(loading))
