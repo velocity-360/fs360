@@ -237,7 +237,7 @@ const purchase = (tutorial, context) => {
                             access to the forum where people post questions and answers. 
                             <br /><br />
                         </p>
-                        <a onClick={context.showStripeModal.bind(context, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
+                        <a onClick={context.showStripeModal.bind(context, 'charge')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
                     </div>
                 )
             }
