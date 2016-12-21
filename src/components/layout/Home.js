@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles'
-import { Footer, Section } from '../view'
+import { Header, Footer, Section } from '../view'
 
 class Home extends Component {
     componentDidMount(){
@@ -12,8 +12,7 @@ class Home extends Component {
 
 		return ( 
 			<div className="clearfix">
-
-                <Section content="header" />
+                <Header />
                 <Section content="articles" />
                 <Section content="velocityAdvantage" />
                 <Section content="testimonials" />
