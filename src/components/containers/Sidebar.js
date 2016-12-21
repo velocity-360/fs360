@@ -12,6 +12,7 @@ class Sidebar extends Component {
         this.state = {
             register: true,
             visitor: {
+                fullName: '',
                 email: '',
                 password: ''
             }
@@ -35,25 +36,35 @@ class Sidebar extends Component {
 
     toggleLoginMode(event){
         event.preventDefault()
-        console.log('toggleLoginMode')
+        // console.log('toggleLoginMode')
         this.setState({
             register: !this.state.register
         })
     }
 
     submitCredentials(event){
-        console.log('submitCredentials: '+JSON.stringify(this.state.visitor))
         event.preventDefault()
 
         if (this.state.register){ // sign up
+            let updated = Object.assign({}, this.state.visitor)
+            let nameParts = this.state.visitor.fullName.split(' ')
+            updated['firstName'] = nameParts[0]
+            updated['lastName'] = (nameParts.length > 1) ? nameParts[nameParts.length-1] : ''
 
+            this.props.register(updated)
+            .then((profile) => {
+                this.props.toggleLoading(false)
+            })
+            .catch((err) => {
+                alert(err)
+            })
             return
         }
 
         // log in
         this.props.login(this.state.visitor)
         .then((profile) => {
-//            console.log('THEN: '+JSON.stringify(profile))
+            this.props.toggleLoading(false)
         })
         .catch((err) => {
             alert(err)
@@ -139,7 +150,8 @@ const dispatchToProps = (dispatch) => {
         register: (params) => dispatch(actions.register(params)),
         login: (params) => dispatch(actions.login(params)),
         fetchCourses: (params) => dispatch(actions.fetchCourses(params)),
-        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
+        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params)),
+        toggleLoading: (loading) => dispatch(actions.toggleLoading(loading))
     }
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
@@ -11,7 +10,6 @@ class Tutorial extends Component {
     constructor(){
         super()
         this.state = {
-            showLoading: false,
             visitor: {
                 name: '',
                 email: '',
@@ -38,7 +36,7 @@ class Tutorial extends Component {
         event.preventDefault()
 //        console.log('showStripeModal: '+type)
 
-        this.setState({showLoading: true})
+//        this.setState({showLoading: true})
 
         if (type == 'charge'){
             const tutorial = this.props.tutorials[this.props.slug]
@@ -46,15 +44,16 @@ class Tutorial extends Component {
                 this.props.submitStripeCharge(token, tutorial)
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
-                    this.setState({showLoading: false})
+                    // this.setState({showLoading: false})
 
                 })
                 .catch((err) => {
 
                 })
             }, () => {
-                setTimeout(()=>{
-                    this.setState({showLoading: false})
+                setTimeout(() => {
+                    this.props.toggleLoading(false)
+                    // this.setState({showLoading: false})
                 }, 100)
             })
 
@@ -67,15 +66,16 @@ class Tutorial extends Component {
                 this.props.submitStripeCard(token)
                 .then((response) => {
                     console.log('TEST: '+JSON.stringify(response))
-                    this.setState({showLoading: false})
+                    // this.setState({showLoading: false})
 
                 })
                 .catch((err) => {
 
                 })
             }, () => {
-                setTimeout(()=>{
-                    this.setState({showLoading: false})
+                setTimeout(() => {
+                    this.props.toggleLoading(false)
+//                    this.setState({showLoading: false})
                 }, 100)
             })
 
@@ -143,7 +143,6 @@ class Tutorial extends Component {
 
 		return (
 			<div>
-                <Loader options={styles.loader} loaded={!this.state.showLoading} className="spinner" loadedClassName="loadedContent" />
                 <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
                     <h2 style={styles.title}>{tutorial.title}</h2>
                 </div>
@@ -284,7 +283,8 @@ const dispatchToProps = (dispatch) => {
         register: (params) => dispatch(actions.register(params)),
         login: (params) => dispatch(actions.login(params)),
         fetchTutorials: (params) => dispatch(actions.fetchTutorials(params)),
-        updateTutorial: (tutorial, params) => dispatch(actions.updateTutorial(tutorial, params))
+        updateTutorial: (tutorial, params) => dispatch(actions.updateTutorial(tutorial, params)),
+        toggleLoading: (loading) => dispatch(actions.toggleLoading(loading))
     }
 }
 

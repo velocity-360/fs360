@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import actions from '../actions'
 import { Link, browserHistory } from 'react-router'
@@ -31,7 +32,7 @@ class Main extends Component {
 
 	render(){
 		const list = this.state.menu.map((item, i) => {
-			const itemStyle = (item.toLowerCase() == this.props.selected) ? style.selected : style.menuItem
+			const itemStyle = (item.toLowerCase() == this.props.session.selectedMenuItem) ? style.selected : style.menuItem
 			return (
 				<li key={i}>
 					<div style={itemStyle}><a onClick={this.select.bind(this, item)} style={{color:'#333'}} href="#"><div>{item}</div></a></div>
@@ -41,6 +42,7 @@ class Main extends Component {
 
 		return (
 			<div className="stretched side-header">
+                <Loader options={style.loader} loaded={!this.props.session.isLoading} className="spinner" loadedClassName="loadedContent" />
 				<div id="wrapper">
 
 					<header id="header" className="no-sticky" style={{background:'#f9f9f9'}}>
@@ -86,12 +88,30 @@ const style = {
 		padding:8,
 		background:'#f9f9f9',
 		border: '1px solid #f9f9f9'
+	},
+	loader: {
+	    lines: 13,
+	    length: 20,
+	    width: 10,
+	    radius: 30,
+	    corners: 1,
+	    rotate: 0,
+	    direction: 1,
+	    color: '#fff',
+	    speed: 1,
+	    trail: 60,
+	    shadow: false,
+	    hwaccel: false,
+	    zIndex: 2e9,
+	    top: '50%',
+	    left: '50%',
+	    scale: 1.00
 	}	
 }
 
 const stateToProps = (state) => {
 	return {
-		selected: state.session.selectedMenuItem
+		session: state.session
 	}
 }
 

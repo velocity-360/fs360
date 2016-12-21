@@ -14,6 +14,10 @@ const postData = (path, data, actionType, payloadKey) => {
 			return response
 		})
 		.catch((err) => {
+			dispatch({
+				type: constants.TOGGLE_LOADING,
+				isLoading: false
+			})
 			alert(err.message)
 		})
 }
@@ -31,6 +35,10 @@ const getData = (path, params, actionType, payloadKey) => {
 			return response
 		})
 		.catch((err) => {
+			dispatch({
+				type: constants.TOGGLE_LOADING,
+				isLoading: false
+			})
 			alert(err.message)
 		})
 }
@@ -48,6 +56,10 @@ const putData = (path, data, actionType, payloadKey) => {
 			return response
 		})
 		.catch((err) => {
+			dispatch({
+				type: constants.TOGGLE_LOADING,
+				isLoading: false
+			})
 			alert('ERROR: '+JSON.stringify(err))
 		})
 }
@@ -82,14 +94,29 @@ const submitStripeCard = (token) => {
 }
 
 export default {
+	toggleLoading: (isLoading) => {
+		return {
+			type: constants.TOGGLE_LOADING,
+			isLoading: isLoading
+		}
+	},
+
 	register: (credentials) => {
-		return dispatch => { // this needs to change:
+		return dispatch => {
+			dispatch({
+				type: constants.TOGGLE_LOADING,
+				isLoading: true
+			})
 			return dispatch(postData('/api/profile', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
 		}
 	},
 
 	login: (credentials) => {
 		return dispatch => { 
+			dispatch({
+				type: constants.TOGGLE_LOADING,
+				isLoading: true
+			})			
 			return dispatch(postData('/account/login', credentials, constants.CURRENT_USER_RECIEVED, 'profile'))
 		}
 	},
