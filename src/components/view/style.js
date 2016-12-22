@@ -75,7 +75,7 @@ export default {
 	},
 	title: {
 		color:'#333',
-		fontFamily:'Pathway Gothic One',
+		fontFamily:'\'Pathway Gothic One\'',
 		fontWeight: 100
 	},
 	titleWhite: {
