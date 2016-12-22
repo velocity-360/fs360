@@ -11,9 +11,6 @@ var gulp = require('gulp'),
 
 gulp.task('es6-es5', function(){
 	return gulp.src([
-				// './public/app/ServerApp.js',
-				// './public/app/*/**.js',
-				// './public/app/*/*/**.js'
                 './src/serverapp.js',
                 './src/*/**.js',
                 './src/*/*/**.js'
