@@ -12,8 +12,6 @@ var store = require('../public/dist/es5/stores/store')
 var initial = require('../public/dist/es5/reducers/initial') // default values for all reducesrs
 
 var layout = require('../public/dist/es5/components/layout')
-
-
 var controllers = require('../controllers')
 
 matchRoutes = function(req, routes){
@@ -59,7 +57,8 @@ router.get('/', function(req, res, next) {
 	})
 	.then(function(renderProps){
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-	    res.render('index', {
+		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+	    res.render(template, {
 	    	react: html,
 	    	tags: tags,
 	    	preloadedState:JSON.stringify(initialState.getState())
@@ -94,7 +93,8 @@ router.get('/account', function(req, res, next) {
 	})
 	.then(function(renderProps){
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-	    res.render('index', {
+		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+	    res.render(template, {
 	    	react: html,
 	    	preloadedState:JSON.stringify(initialState.getState())
 	    })
@@ -152,7 +152,8 @@ router.get('/:page', function(req, res, next) {
 	})
 	.then(function(renderProps){
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-	    res.render('index', {
+		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+	    res.render(template, {
 	    	react: html,
 	    	preloadedState:JSON.stringify(initialState.getState())
 	    })
@@ -220,7 +221,8 @@ router.get('/:page/:slug', function(req, res, next) {
 	})
 	.then(function(renderProps){
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-	    res.render('index', {
+		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+	    res.render(template, {
 	    	react: html,
 	    	tags: tags,
 	    	preloadedState:JSON.stringify(initialState.getState())
