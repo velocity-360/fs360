@@ -25,9 +25,8 @@ router.get('/:resource', function(req, res, next) {
 		var email = req.query.email
 		if (email == null)
 			return
-		
 
-		subscriberController.delete({email:email}, function(err, subscribers){
+		controllers.subscriber.delete({email:email}, function(err, subscribers){
 			EmailManager.sendEmail(process.env.BASE_EMAIL, address, 'dkwon@velocity360.io', 'unsubscribe', email)
 			res.send('You have been unsubscribed. Thank you')
 		})
@@ -114,10 +113,10 @@ router.post('/:resource', function(req, res, next) {
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
-				return				
+				return
 			}
 
-			eventController.get({}, function(err, events){
+			controllers.event.get({}, function(err, events){
 				if (err){
 					res.json({'confirmation':'fail','message':err.message})
 					return
@@ -127,7 +126,6 @@ router.post('/:resource', function(req, res, next) {
 				var template = data.replace('{{title}}', nextEvent.title)
 				template = template.replace('{{description}}', nextEvent.description)
 				template = template.replace('{{image}}', nextEvent.image)
-//				template = template.replace('{{link}}', nextEvent.link)
 				var time = nextEvent.date+', '+nextEvent.time
 				template = template.replace('{{time}}', time)
 
@@ -151,7 +149,7 @@ router.post('/:resource', function(req, res, next) {
 	}
 
 
-	var controller = controllers[resource];
+	var controller = controllers[resource]
 	if (controller == null){
 		res.json({confirmation:'fail', message:'Invalid Resource'})
 		return
@@ -199,19 +197,19 @@ router.put('/:resource/:id', function(req, res, next) {
 
 
 router.delete('/:resource/:id', function(req, res, next) {
-	var resource = req.params.resource;
-	var resourceId = req.params.id;
+	var resource = req.params.resource
+	var resourceId = req.params.id
 
-	var controller = controllers[resource];
+	var controller = controllers[resource]
 	if (controller == null){
-		res.json({confirmation:'fail', message:'Invalid Resource'});
-		return;
+		res.json({confirmation:'fail', message:'Invalid Resource'})
+		return
 	}
 
 	controller.delete(resourceId, function(err, result){
 		if (err){
-			res.json({confirmation:'fail', message:err.message});
-			return;
+			res.json({confirmation:'fail', message:err.message})
+			return
 		}
 
 		res.json({
