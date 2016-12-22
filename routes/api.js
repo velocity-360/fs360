@@ -142,6 +142,7 @@ router.post('/:resource', function(req, res, next) {
 					var template = data.replace('{{title}}', featuredTutorial.title)
 					template = template.replace('{{description}}', featuredTutorial.description)
 					template = template.replace('{{image}}', featuredTutorial.image)
+					template = template.replace('{{slug}}', featuredTutorial.slug)
 
 					var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
 					for (var i=0; i<recipients.length; i++){
