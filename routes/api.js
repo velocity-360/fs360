@@ -5,6 +5,7 @@ var fs = require('fs')
 var EmailManager = require('../managers/EmailManager')
 var Helpers = require('../managers/Helpers')
 var Scraper = require('../managers/Scraper')
+var TextUtils = require('../utils/TextUtils')
 var controllers = require('../controllers')
 
 var fetchFile = function(path){
@@ -140,7 +141,7 @@ router.post('/:resource', function(req, res, next) {
 
 					var featuredTutorial = tutorials[0]
 					var template = data.replace('{{title}}', featuredTutorial.title)
-					template = template.replace('{{description}}', featuredTutorial.description)
+					template = template.replace('{{description}}', TextUtils.convertToHtml(featuredTutorial.description))
 					template = template.replace('{{image}}', featuredTutorial.image)
 					template = template.replace('{{slug}}', featuredTutorial.slug)
 
@@ -148,7 +149,7 @@ router.post('/:resource', function(req, res, next) {
 					for (var i=0; i<recipients.length; i++){
 						var address = recipients[i]
 						var formatted = template.replace('{{email}}', address) // for unsubscribe link
-						EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, featuredTutorial.title, formatted)
+						EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, 'Free Tutorial | '+featuredTutorial.title, formatted)
 					}
 				
 					res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
