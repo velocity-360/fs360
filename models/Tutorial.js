@@ -1,8 +1,9 @@
 var mongoose = require('mongoose')
 
 var TutorialSchema = new mongoose.Schema({
-	title: {type:String, trim:true, default: ''},
+	title: {type:String, trim:true, default:''},
 	status: {type:String, trim:true, default: 'coming soon'}, // live or coming soon
+	isFeatured: {type:String, default:'no'},
 	description: {type:String, trim:true, default: ''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
 	wistia: {type:String, lowercase:true, trim:true, default:''},
@@ -20,6 +21,7 @@ TutorialSchema.methods.summary = function() {
 	var summary = {
 		'title':this.title,
 		'status':this.status,
+		'isFeatured':this.isFeatured,
 		'description':this.description,
 		'image':this.image,
 		'wistia':this.wistia,

@@ -52,7 +52,6 @@ router.get('/:resource', function(req, res, next) {
 	})
 })
 
-
 router.get('/:resource/:id', function(req, res, next) {
 	var resource = req.params.resource
 	var resourceId = req.params.id
@@ -81,7 +80,7 @@ router.post('/:resource', function(req, res, next) {
 	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
 	
 	if (req.params.resource == 'email'){
-		var recipients = req.body.recipients;
+		var recipients = req.body.recipients
 		if (recipients == null){
 			res.json({'confirmation':'fail','message':'Missing recipients parameter.'})
 			return
@@ -104,41 +103,69 @@ router.post('/:resource', function(req, res, next) {
 			return Scraper.scrapeRawHtml(data)
 		})
 		.then(function(results){
-			if (template != 'workshop'){
-				var subject = results['title']
-				for (var i=0; i<recipients.length; i++){
-					var address = recipients[i]
-					var formatted = data.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, address, subject, formatted)
-				}
-			
-				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
+			if (template == 'workshop'){
+				controllers.event.get({}, function(err, events){
+					if (err){
+						res.json({'confirmation':'fail','message':err.message})
+						return
+					}
+
+					var nextEvent = events[0] // most recent event
+					var template = data.replace('{{title}}', nextEvent.title)
+					template = template.replace('{{description}}', nextEvent.description)
+					template = template.replace('{{image}}', nextEvent.image)
+					var time = nextEvent.date+', '+nextEvent.time
+					template = template.replace('{{time}}', time)
+
+					var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
+					for (var i=0; i<recipients.length; i++){
+						var address = recipients[i]
+						var formatted = template.replace('{{email}}', address) // for unsubscribe link
+						EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, 'Workshop | '+nextEvent.title, formatted)
+					}
+				
+					res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
+					return
+				})
+
 				return
 			}
 
-			controllers.event.get({}, function(err, events){
-				if (err){
-					res.json({'confirmation':'fail','message':err.message})
+			if (template == 'tutorial'){
+				controllers.tutorial.get({isFeatured:'yes'}, function(err, tutorials){
+					if (err){
+						res.json({'confirmation':'fail','message':err.message})
+						return
+					}
+
+					var featuredTutorial = tutorials[0]
+					var template = data.replace('{{title}}', featuredTutorial.title)
+					template = template.replace('{{description}}', featuredTutorial.description)
+					template = template.replace('{{image}}', featuredTutorial.image)
+
+					var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
+					for (var i=0; i<recipients.length; i++){
+						var address = recipients[i]
+						var formatted = template.replace('{{email}}', address) // for unsubscribe link
+						EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, featuredTutorial.title, formatted)
+					}
+				
+					res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
 					return
-				}
+				})
 
-				var nextEvent = events[0]
-				var template = data.replace('{{title}}', nextEvent.title)
-				template = template.replace('{{description}}', nextEvent.description)
-				template = template.replace('{{image}}', nextEvent.image)
-				var time = nextEvent.date+', '+nextEvent.time
-				template = template.replace('{{time}}', time)
-
-				var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD)
-				for (var i=0; i<recipients.length; i++){
-					var address = recipients[i];
-					var formatted = template.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, 'Workshop | '+nextEvent.title, formatted)
-				}
-			
-				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
 				return
-			})
+			}
+
+
+			var subject = results['title']
+			for (var i=0; i<recipients.length; i++){
+				var address = recipients[i]
+				var formatted = data.replace('{{email}}', address) // for unsubscribe link
+				EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, address, subject, formatted)
+			}
+		
+			res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
 		})
 		.catch(function(err){
 			res.json({'confirmation':'fail','message':err.message})
