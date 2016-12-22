@@ -232,6 +232,7 @@ const localStyle = {
         padding:3,
         border:'1px solid #ddd',
         width:'50%',
+        minWidth: 220,
         float:'none',
         clear:'both',
         margin:'4px auto'
