@@ -15,9 +15,6 @@ class Home extends Component {
                 <Header />
                 <Section content="articles" />
                 <Section content="velocityAdvantage" />
-                <Section content="testimonials" />
-                <Section content="companies" />
-
                 <Footer />
 
 			</div>

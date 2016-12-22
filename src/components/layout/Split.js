@@ -55,7 +55,7 @@ class Split extends Component {
                     </div>
                 </section>
 
-                { (page == 'courses') ? <div><Section content="velocityAdvantage" /><Section content="testimonials" /><Section content="companies" /></div> : null }
+                { (page == 'courses') ? <div><Section content="testimonials" /><Section content="companies" /></div> : null }
 
                 <Footer />
 			</div>
