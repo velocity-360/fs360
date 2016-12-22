@@ -95,21 +95,27 @@ router.post('/:action', function(req, res, next) {
 	}
 
 	if (action == 'syllabus'){
-		var course = body.course
+		var course = body.course.toLowerCase()
 
-		var template = 'fullstack-immersive.html'
-		if (course == 'Node & React Evening Course')
-			template = 'node-react-evening.html'
-		
-		else if (course == '8-Week Fundamentals Bootcamp')
-			template = 'fundamentals-bootcamp.html'
+		var syllabusMap = {
+			'full stack immersive': {
+				template: 'fullstack-immersive.html',
+				pdf: 'FullStackImmersive.pdf'
+			},
+			'node and react': {
+				template: '',
+				pdf: 'NodeReactEvening.pdf'
+			},
+			'full stack evening': {
+				template: 'node-react-evening.html',
+				pdf: '24-Week-Part-Time.pdf'
+			}			
+		}
 
-		else if (course == '24-Week Evening Bootcamp')
-			template = 'fundamentals-bootcamp.html'
-		
-		fetchFile('public/email/syllabus/'+template)
+		var syllabus = syllabusMap[course]
+		fetchFile('public/email/syllabus/'+syllabus['template'])
 		.then(function(html){
-			var url = 'https://www.velocity360.io/syllabus/'+body.pdf
+			var url = 'https://www.velocity360.io/syllabus/'+syllabus['pdf']
 			html = html.replace('{{link}}', url)
 			html = html.replace('{{name}}', Helpers.capitalize(body.firstName))
 			html = html.replace('{{link}}', url)
@@ -138,7 +144,7 @@ router.post('/:action', function(req, res, next) {
 
 		})
 
-		EmailManager.sendEmails(process.env.BASE_EMAIL, emailList, 'Syllabus Request', JSON.stringify(body))
+		EmailManager.sendEmails(process.env.BASE_EMAIL, ['dkwon@velocity360.io'], 'Syllabus Request', JSON.stringify(body))
 		return
 	}
 

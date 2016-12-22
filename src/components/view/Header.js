@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
+import { APIManager } from '../../utils'
 import styles from './style'
 
 class Header extends Component {
@@ -8,7 +9,7 @@ class Header extends Component {
 		this.state = {
 			showModal: false,
 			visitor: {
-				name: '',
+				fullName: '',
 				email: '',
 				course: 'Full Stack Immersive'
 			}
@@ -36,10 +37,16 @@ class Header extends Component {
         let nameParts = this.state.visitor.fullName.split(' ')
         updated['firstName'] = nameParts[0]
         updated['lastName'] = (nameParts.length > 1) ? nameParts[nameParts.length-1] : ''
-
-        
-
-
+        APIManager.handlePost('/account/syllabus', updated)
+        .then((response) => {
+        	console.log('SYLLABUS REQUEST: '+JSON.stringify(response))
+        	alert('Thanks for your interest! Check your email to download the syllabus.')
+			this.setState({showModal: false})
+        })
+        .catch((err) => {
+			this.setState({showModal: false})
+        	alert(err)
+        })
 	}
 
 	render(){
@@ -66,12 +73,12 @@ class Header extends Component {
 			        <Modal.Body style={{background:'#f9f9f9', padding:24, borderRadius:3}}>
 			        	<div style={{textAlign:'center'}}>
 				        	<img style={{width:96, borderRadius:48, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_blue_260.png' />
-				        	<h4>Request Syllabus</h4>
+				        	<h4 style={styles.title}>Request Syllabus</h4>
 			        	</div>
-			        	<input onChange={this.updateVisitor.bind(this)} id="name" className="form-control" style={{marginBottom:12}} type="text" placeholder="Name" />
-			        	<input onChange={this.updateVisitor.bind(this)} id="email" className="form-control" style={{marginBottom:12}} type="text" placeholder="Email" />
+			        	<input onChange={this.updateVisitor.bind(this)} id="fullName" style={localStyle.input} type="text" placeholder="Name" />
+			        	<input onChange={this.updateVisitor.bind(this)} id="email" style={localStyle.input} type="text" placeholder="Email" />
 						<div style={{textAlign:'center', marginTop:24}}>
-							<a href="#" className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+							<a onClick={this.requestSyllabus.bind(this)} href="#" className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
 						</div>
 			        </Modal.Body>
 
@@ -81,5 +88,17 @@ class Header extends Component {
 		)
 	}
 }
+
+const localStyle = {
+    input: {
+        border: 'none',
+        width: 100+'%',
+        marginBottom: 12,
+        padding: 4,
+        fontWeight: 200,
+        background: '#fff'
+    }
+}
+
 
 export default Header
