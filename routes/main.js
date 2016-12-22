@@ -36,6 +36,11 @@ matchRoutes = function(req, routes){
 router.get('/', function(req, res, next) {
 	var initialData = initial()
 	var initialState = null
+	var tags = {
+		title: 'Home',
+		url: 'https://www.velocity360.io/',
+		image: 'https://www.velocity360.io/images/logo_round_green_260.png'
+	}
 
 	controllers.account.currentUser(req)
 	.then(function(currentUser){ // can be null
@@ -56,6 +61,7 @@ router.get('/', function(req, res, next) {
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
 	    res.render('index', {
 	    	react: html,
+	    	tags: tags,
 	    	preloadedState:JSON.stringify(initialState.getState())
 	    })
 	})
