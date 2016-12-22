@@ -33,6 +33,16 @@ class Header extends Component {
 	requestSyllabus(event){
 		event.preventDefault()
 
+        if (this.state.visitor.fullName.length == 0){
+            alert('Please enter your name.')
+            return
+        }
+
+        if (this.state.visitor.email.length == 0){
+            alert('Please enter your Email.')
+            return
+        }
+
         let updated = Object.assign({}, this.state.visitor)
         let nameParts = this.state.visitor.fullName.split(' ')
         updated['firstName'] = nameParts[0]

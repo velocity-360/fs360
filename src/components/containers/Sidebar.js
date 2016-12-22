@@ -46,6 +46,22 @@ class Sidebar extends Component {
         event.preventDefault()
 
         if (this.state.register){ // sign up
+            if (this.state.visitor.fullName.length == 0){
+                alert('Please enter your name.')
+                return
+            }
+
+            if (this.state.visitor.email.length == 0){
+                alert('Please enter your Email.')
+                return
+            }
+
+            if (this.state.visitor.password.length == 0){
+                alert('Please enter your Password.')
+                return
+            }
+
+
             let updated = Object.assign({}, this.state.visitor)
             let nameParts = this.state.visitor.fullName.split(' ')
             updated['firstName'] = nameParts[0]
@@ -61,6 +77,16 @@ class Sidebar extends Component {
             return
         }
 
+        if (this.state.visitor.email.length == 0){
+            alert('Please enter your Email.')
+            return
+        }
+
+        if (this.state.visitor.password.length == 0){
+            alert('Please enter your Password.')
+            return
+        }
+        
         // log in
         this.props.login(this.state.visitor)
         .then((profile) => {
