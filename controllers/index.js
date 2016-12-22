@@ -5,12 +5,17 @@ var projectController = require('./ProjectController')
 var eventController = require('./EventController')
 var tutorialController = require('./TutorialController')
 var profileController = require('./ProfileController')
+var subscriberController = require('./SubscriberController')
+var commentController = require('./CommentController')
+var unitController = require('./UnitController')
+var trackController = require('./TrackController')
+
 
 module.exports = {
 	account: accountController,
 	courses: courseController,
-	online: tutorialController,
 	course: courseController,
+	online: tutorialController,
 	tutorial: tutorialController,
 	video: courseController,
 	feed: postController,
@@ -19,5 +24,9 @@ module.exports = {
 	event: eventController,
 	landing: projectController,
 	project: projectController,
-	profile: profileController
+	profile: profileController,
+	subscriber: subscriberController,
+	comment: commentController,
+	unit: unitController,
+	track: trackController
 }

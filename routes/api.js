@@ -1,35 +1,11 @@
 var express = require('express')
+var router = express.Router()
 var Promise = require('bluebird')
 var fs = require('fs')
-var router = express.Router()
 var EmailManager = require('../managers/EmailManager')
 var Helpers = require('../managers/Helpers')
 var Scraper = require('../managers/Scraper')
-
-
-// controllers:
-var courseController = require('../controllers/CourseController')
-var profileController = require('../controllers/ProfileController')
-var subscriberController = require('../controllers/SubscriberController')
-var postController = require('../controllers/PostController')
-var commentController = require('../controllers/CommentController')
-var eventController = require('../controllers/EventController')
-var projectController = require('../controllers/ProjectController')
-var unitController = require('../controllers/UnitController')
-var trackController = require('../controllers/TrackController')
-var tutorialController = require('../controllers/TutorialController')
-var controllers = {
-	course: courseController,
-	profile: profileController,
-	subscriber: subscriberController,
-	post: postController,
-	comment: commentController,
-	event: eventController,
-	project: projectController,
-	unit: unitController,
-	track: trackController,
-	tutorial: tutorialController
-}
+var controllers = require('../controllers')
 
 var fetchFile = function(path){
 	return new Promise(function (resolve, reject){
@@ -52,7 +28,7 @@ router.get('/:resource', function(req, res, next) {
 		
 
 		subscriberController.delete({email:email}, function(err, subscribers){
-			EmailManager.sendEmail('info@fullstack360.com', 'dkwon@velocity360.io', 'unsubscribe', email)
+			EmailManager.sendEmail(process.env.BASE_EMAIL, address, 'dkwon@velocity360.io', 'unsubscribe', email)
 			res.send('You have been unsubscribed. Thank you')
 		})
 
@@ -134,7 +110,7 @@ router.post('/:resource', function(req, res, next) {
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i]
 					var formatted = data.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail('info@thegridmedia.com', address, subject, formatted)
+					EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, address, subject, formatted)
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
@@ -159,7 +135,7 @@ router.post('/:resource', function(req, res, next) {
 				for (var i=0; i<recipients.length; i++){
 					var address = recipients[i];
 					var formatted = template.replace('{{email}}', address) // for unsubscribe link
-					EmailManager.sendHtmlEmail('katrina@velocity360.io', address, 'Workshop | '+nextEvent.title, formatted)
+					EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, 'Workshop | '+nextEvent.title, formatted)
 				}
 			
 				res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
@@ -189,7 +165,7 @@ router.post('/:resource', function(req, res, next) {
 
 		if (resource == 'profile') { // profile registration, install session cookie
 			req.session.user = result.id
-			EmailManager.sendEmail('info@thegridmedia.com', 'dkwon@velocity360.io', 'New Profile', JSON.stringify(req.body))
+			EmailManager.sendEmail(process.env.BASE_EMAIL, address, 'dkwon@velocity360.io', 'New Profile', JSON.stringify(req.body))
 		}
 		
 		var data = {confirmation:'success'}
