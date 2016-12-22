@@ -116,8 +116,10 @@ router.post('/:resource', function(req, res, next) {
 			var text = customerName + ' purchased ' + prod.title
 			EmailManager.sendEmails(process.env.BASE_EMAIL, ['dkwon@velocity360.io'], type.toUpperCase()+' Purchase', text)
 
-			if (profiles.length > 0) // registered user
-				return profiles[0]
+			if (profiles != null){ // can be null
+				if (profiles.length > 0) // registered user
+					return profiles[0]
+			}
 			
 			// unregistered user, create account
 			var parts = customerName.split(' ')

@@ -68,7 +68,18 @@ const submitStripeCharge = (token, product) => {
 	return (dispatch) => APIManager
 		.submitStripeCharge(token, product)
 		.then((response) => { // returns profile and product
-//			console.log('SUBMIT STRIPE CHARGE: '+JSON.stringify(response))
+			console.log('SUBMIT STRIPE CHARGE: '+JSON.stringify(response))
+			dispatch({
+				type: constants.CURRENT_USER_RECIEVED,
+				profile: response.profile
+			})
+			return response
+		})
+		.then((response) => {
+			dispatch({ // TODO: make this conditional based on product purchased:
+				type: constants.TUTORIAL_UPDATED,
+				tutorial: response.tutorial
+			})
 			return response
 		})
 		.catch((err) => {
