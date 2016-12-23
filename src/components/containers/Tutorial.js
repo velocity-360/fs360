@@ -110,6 +110,14 @@ class Tutorial extends Component {
         else // logged in, not subscribed
             cta = purchase(tutorial, this)
 
+        let units = null
+        if (tutorial.posts.length == 0)
+            units = <h3 style={styles.title}>Coming Soon</h3>
+        else if (tutorial.price == 0)
+            units = <h3 style={styles.title}>Units</h3>
+        else
+            units = <h3 style={styles.title}>Preview</h3>
+
 		return (
 			<div>
                 <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
@@ -126,7 +134,7 @@ class Tutorial extends Component {
 
                 <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
 
-                <h3 style={styles.title}>{ (tutorial.price == 0) ? 'Units' : 'Preview' }</h3>
+                { units }
                 <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
                     {
                         tutorial.posts.map((post, i) => {
