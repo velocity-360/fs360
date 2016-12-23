@@ -28,7 +28,7 @@ router.get('/:resource', function(req, res, next) {
 			return
 
 		controllers.subscriber.delete({email:email}, function(err, subscribers){
-			EmailManager.sendEmail(process.env.BASE_EMAIL, address, 'dkwon@velocity360.io', 'unsubscribe', email)
+			EmailManager.sendEmail(process.env.BASE_EMAIL, 'dkwon@velocity360.io', 'unsubscribe', email)
 			res.send('You have been unsubscribed. Thank you')
 		})
 
@@ -164,7 +164,7 @@ router.post('/:resource', function(req, res, next) {
 			for (var i=0; i<recipients.length; i++){
 				var address = recipients[i]
 				var formatted = data.replace('{{email}}', address) // for unsubscribe link
-				EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, address, subject, formatted)
+				EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, address, subject, formatted)
 			}
 		
 			res.json({'confirmation':'success', 'message':'Email sent to '+recipients})
@@ -192,7 +192,7 @@ router.post('/:resource', function(req, res, next) {
 
 		if (resource == 'profile') { // profile registration, install session cookie
 			req.session.user = result.id
-			EmailManager.sendEmail(process.env.BASE_EMAIL, address, 'dkwon@velocity360.io', 'New Profile', JSON.stringify(req.body))
+			EmailManager.sendEmail(process.env.BASE_EMAIL, 'dkwon@velocity360.io', 'New Profile', JSON.stringify(req.body))
 		}
 		
 		var data = {confirmation:'success'}
