@@ -118,7 +118,8 @@ class Tutorial extends Component {
 
                 <p style={{fontFamily:'Pathway Gothic One', fontSize:18+'px', fontWeight:400}}>
                     <img style={{float:'right', width:180, border:'1px solid #ddd', background:'#fff', padding:3, marginLeft:12, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-                    {tutorial.posts.length} units<br />
+                    { (tutorial.posts.length==0) ? <span>Coming Soon</span> : tutorial.posts.length+' units'}
+                    <br />
                     { (tutorial.price == 0) ? <span>FREE</span> : <span>${TextUtils.numberWithCommas(tutorial.price)}</span> }
                     <br />
                 </p>
