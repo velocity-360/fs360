@@ -19,7 +19,7 @@ class Main extends Component {
 
 	select(item, event){
 		event.preventDefault()
-		$( '#primary-menu > ul, #primary-menu > div > ul' ).toggleClass('show')
+		$('#primary-menu > ul, #primary-menu > div > ul').toggleClass('show')
 
 		const lowerCaseItem = item.toLowerCase()
 		this.props.selectMenuItem(lowerCaseItem)

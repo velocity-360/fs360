@@ -144,6 +144,10 @@ class Tutorial extends Component {
                 <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
                     {
                         tutorial.posts.map((post, i) => {
+                            let youtube = null
+                            if (post.youtube != null)
+                                youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
+                            
                             return (
                                 <div key={i} style={{borderTop:'1px solid #ddd'}}>
                                     <div className="acctitle">
@@ -154,9 +158,7 @@ class Tutorial extends Component {
 
                                     <div className="acc_content clearfix" style={styles.paragraph}>
                                         {post.description}<br />
-                                        { (post.youtube == null) ? null : 
-                                            <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>                                    
-                                        }
+                                        { youtube }
                                     </div>
                                 </div>
                             )
