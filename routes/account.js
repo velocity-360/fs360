@@ -70,12 +70,12 @@ router.post('/:action', function(req, res, next) {
 	if (action == 'login') {
 		accountController.login(req.body, function(err, profile){
 			if (err){
-				res.json({confirmation:'fail', message:err.message});
-				return;
+				res.json({confirmation:'fail', message:err.message})
+				return
 			}
 
-			req.session.user = profile.id; // install cookie with profile id set to 'user'
-			res.json({confirmation:'success', profile:profile});
+			req.session.user = profile.id // install cookie with profile id set to 'user'
+			res.json({confirmation:'success', profile:profile})
 		})
 		return
 	}
