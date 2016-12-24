@@ -26,7 +26,7 @@ TutorialSchema.methods.summary = function() {
 		'image':this.image,
 		'wistia':this.wistia,
 		'slug':this.slug,
-		'link':this.link,
+//		'link':this.link,
 		'subscribers':this.subscribers,
 		'youtube':this.youtube,
 		'posts':this.posts,
