@@ -19,8 +19,9 @@ class Main extends Component {
 
 	select(item, event){
 		event.preventDefault()
+		$( '#primary-menu > ul, #primary-menu > div > ul' ).toggleClass('show')
+
 		const lowerCaseItem = item.toLowerCase()
-//		console.log('SELECT: '+item)
 		this.props.selectMenuItem(lowerCaseItem)
 		if (lowerCaseItem == 'home'){
 			browserHistory.push('/')
