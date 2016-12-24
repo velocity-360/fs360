@@ -49,6 +49,8 @@ class Main extends Component {
 			            <div id="header-wrap">
 							<div className="container clearfix">
 
+								<div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
+
 								<div id="logo" className="nobottomborder">
 									<a href="/" className="standard-logo" data-dark-logo="/images/logo-side-dark.png">
 										<img src="/images/logo-side.png" alt="Velocity 360" />
@@ -56,12 +58,13 @@ class Main extends Component {
 									<a href="/" className="retina-logo" data-dark-logo="/images/logo-side-dark@2x.png">
 										<img src="/images/logo-side@2x.png" alt="Velocity 360" />
 									</a>
-									<hr />
+									<hr className="hidden-xs" />
 								</div>
 
 								<nav id="primary-menu">
 									<ul>{ list }</ul>
 								</nav>
+								<br />
 
 				            </div>
 
