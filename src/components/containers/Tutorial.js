@@ -95,9 +95,15 @@ class Tutorial extends Component {
         const style = styles.home
 
         let cta = null
-        if (tutorial.price == 0)  // it's free
-            cta = purchase(tutorial, this)
-        
+        if (tutorial.price == 0) { // it's free
+            if (this.props.currentUser == null)
+                cta = purchase(tutorial, this)
+            else if (this.props.currentUser.accountType == 'premium')
+                cta = premium(this.props.currentUser, this)
+            else 
+                cta = purchase(tutorial, this)
+        }
+
         else if (this.props.currentUser == null)
             cta = purchase(tutorial, this)
 
