@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var controllers = require('../controllers')
+var utils = require('../utils')
 
 router.get('/:resource/:id', function(req, res, next) {
 	var resource = req.params.resource
@@ -16,8 +17,25 @@ router.get('/:resource/:id', function(req, res, next) {
 		return
 	}
 
-	controller.find({id: resourceId})
+	var currentUser = null
+	controllers.account.currentUser(req)
+	.then(function(profile){
+		if (profile == null)
+			return null
+		else if (profile.accountType != 'premium')
+			return null
+		else {
+			currentUser = profile
+			return controller.find({id: resourceId})
+		}
+	})
 	.then(function(entity){
+		if (currentUser == null){
+			// console.log('TEST !!!')
+			res.redirect('/')
+			return
+		}
+
 		if (entity == null){
 			res.redirect('/')
 			return
@@ -31,10 +49,9 @@ router.get('/:resource/:id', function(req, res, next) {
 		res.redirect(entity.link)
 	})
 	.catch(function(err){
+		console.log('TEST ERROR')
 		res.redirect('/')
 	})
-
-
 })
 
 
