@@ -19,10 +19,8 @@ router.get('/:resource/:id', function(req, res, next) {
 
 	var currentUser = null
 	controllers.account.currentUser(req)
-	.then(function(profile){
+	.then(function(profile){ // can be null
 		if (profile == null)
-			return null
-		else if (profile.accountType != 'premium')
 			return null
 		else {
 			currentUser = profile
@@ -30,23 +28,23 @@ router.get('/:resource/:id', function(req, res, next) {
 		}
 	})
 	.then(function(entity){
-		if (currentUser == null){
-			// console.log('TEST !!!')
+		if (currentUser == null)
 			res.redirect('/')
-			return
-		}
-
-		if (entity == null){
+		
+		else if (entity == null)
 			res.redirect('/')
-			return
-		}
-
-		if (entity.link == 0){
+		
+		else if (entity.link == 0) // there is no link
 			res.redirect('/')
-			return
-		}
-
-		res.redirect(entity.link)
+		
+		else if (currentUser.accountType == 'premium')
+			res.redirect(entity.link)
+		
+		else if (entity.subscribers.indexOf(currentUser.id) == -1)
+			res.redirect('/')
+		
+		else 
+			res.redirect(entity.link)		
 	})
 	.catch(function(err){
 		console.log('TEST ERROR')
