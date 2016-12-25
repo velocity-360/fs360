@@ -28,7 +28,7 @@ class FeaturedTutorials extends Component {
 									</h3>
 									<hr />
 									<p style={styles.paragraph}>
-										{ TextUtils(tutorial.description, 220) }
+										{ TextUtils.truncateText(tutorial.description, 220) }
 									</p>
 									<div style={{textAlign:'right'}}>
 										<Link to={'/tutorial/'+tutorial.slug} className="btn btn-primary" role="button">Read More</Link>
