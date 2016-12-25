@@ -101,7 +101,9 @@ class Sidebar extends Component {
         const account = (this.props.currentUser == null) ? 
         (
             <div style={{marginBottom:36, marginTop:12, textAlign:'right'}}>
-                { (this.state.register) ? <input id="fullName" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Full Name" /> : null }
+                { (this.state.register == false) ? null :
+                    <div style={{fontWeight:100, fontSize:14, textAlign:'left', color:'#999'}}>Receive updates for new tutorials or courses:<br /><br /><input id="fullName" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Full Name" /></div>
+                }
                 <input id="email" style={style.input} onChange={this.updateVisitor.bind(this)} type="text" placeholder="Email" /><br />
                 <input id="password" style={style.input} onChange={this.updateVisitor.bind(this)} type="password" placeholder="Password" /><br />
                 <a href="#" onClick={this.submitCredentials.bind(this)} className="button button-small button-circle button-border button-aqua">{ (this.state.register) ? 'Sign Up' : 'Log In'}</a>
@@ -124,7 +126,6 @@ class Sidebar extends Component {
                     <h4 style={styles.title}>Account</h4>
                 </div>
                 { account }
-
 
                 <div className="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4 style={styles.title}>Recent <span>Tutorials</span></h4>
