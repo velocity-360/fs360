@@ -3,6 +3,8 @@ import styles from './styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
+import { TextUtils, Stripe } from '../../utils'
+
 
 class FeaturedTutorials extends Component {
 
@@ -26,10 +28,10 @@ class FeaturedTutorials extends Component {
 									</h3>
 									<hr />
 									<p style={styles.paragraph}>
-										{tutorial.description}
+										{ TextUtils(tutorial.description, 220) }
 									</p>
 									<div style={{textAlign:'right'}}>
-										<Link to={'/tutorial/'+tutorial.slug} className="btn btn-primary" role="button">View</Link>
+										<Link to={'/tutorial/'+tutorial.slug} className="btn btn-primary" role="button">Read More</Link>
 									</div>
 							    </div>
 							</div>
