@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './styles'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import actions from '../../actions'
 import { TextUtils, Stripe } from '../../utils'
 
@@ -12,6 +12,52 @@ class FeaturedTutorials extends Component {
 		this.props.fetchTutorials(null)
 
 	}
+
+    showStripeModal(type, event){
+        event.preventDefault()
+        this.props.toggleLoading(true)
+
+        if (type == 'charge'){
+            const tutorial = this.props.tutorials[this.props.slug]
+            Stripe.initializeWithText('Purchase', (token) => {
+                this.props.submitStripeCharge(token, tutorial)
+                .then((response) => {
+                    console.log('TEST: '+JSON.stringify(response))
+                    this.props.toggleLoading(false)
+                })
+                .catch((err) => {
+
+                })
+            }, () => {
+                setTimeout(() => {
+                    this.props.toggleLoading(false)
+                }, 100)
+            })
+
+            Stripe.showModalWithText(tutorial.title+' - $'+tutorial.price)
+            return
+        }
+
+        if (type == 'subscription'){
+            Stripe.initializeWithText('Subscribe', (token) => {
+                this.props.submitStripeCard(token)
+                .then((response) => {
+                    this.props.toggleLoading(false)
+                    browserHistory.push('/online')
+                })
+                .catch((err) => {
+
+                })
+            }, () => {
+                setTimeout(() => {
+                    this.props.toggleLoading(false)
+                }, 100)
+            })
+
+            Stripe.showModalWithText('Premium subscription - $19.99/mo')
+        }
+    }
+
 
 	render(){
 		let list = null
@@ -43,7 +89,6 @@ class FeaturedTutorials extends Component {
 			})
 		}
 
-
 		return (
 		    <section style={{background:'#FDFEFE', paddingTop:48, borderTop:'1px solid #ddd'}}>
 		        <div className="content-wrap" style={{paddingTop:0}}>
@@ -67,8 +112,13 @@ class FeaturedTutorials extends Component {
 			                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
 			                    code samples, and forums on the site. There are no long term commitments and membership 
 			                    can be canceled at any time.
+			                    <br /><br />
+			                    &#8226; <i style={{marginLeft:8}}>Downloadable Code Samples</i><br />
+			                    &#8226; <i style={{marginLeft:8}}>Downloadable Videos</i><br />
+			                    &#8226; <i style={{marginLeft:8}}>Q&A Forum Access</i><br />
+			                    &#8226; <i style={{marginLeft:8}}>Discounts on Live Courses</i><br />
 			                </p>
-			                <a href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
+			                <a onClick={this.showStripeModal.bind(this, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
 			            </div>
 
 		            </div>
@@ -80,13 +130,17 @@ class FeaturedTutorials extends Component {
 
 const stateToProps = (state) => {
 	return {
+        currentUser: state.account.currentUser,
 		tutorials: state.tutorial.all
 	}
 }
 
 const dispatchToProps = (dispatch) => {
 	return {
-		fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
+		fetchTutorials: (params) => dispatch(actions.fetchTutorials(params)),
+        submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
+        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
+        toggleLoading: (loading) => dispatch(actions.toggleLoading(loading))
 	}
 }
 

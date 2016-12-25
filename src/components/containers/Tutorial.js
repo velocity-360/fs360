@@ -236,6 +236,11 @@ const purchase = (tutorial, context) => {
                     Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
                     code samples, and forums on the site. There are no long term commitments and membership 
                     can be canceled at any time.
+                    <br /><br />
+                    &#8226; <i style={{marginLeft:8}}>Downloadable Code Samples</i><br />
+                    &#8226; <i style={{marginLeft:8}}>Downloadable Videos</i><br />
+                    &#8226; <i style={{marginLeft:8}}>Q&A Forum Access</i><br />
+                    &#8226; <i style={{marginLeft:8}}>Discounts on Live Courses</i><br />                    
                 </p>
                 <a onClick={context.showStripeModal.bind(context, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
             </div>
