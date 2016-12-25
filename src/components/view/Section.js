@@ -21,9 +21,9 @@ export default ({content}) => {
 }
 
 const articles = (
-    <section className="notopmargin nobottommargin">
+    <section className="notopmargin">
         <div className="container clearfix">
-            <div className="col_two_third nobottommargin">
+            <div className="col_two_third">
                 <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
                     <h2 style={styles.title}>Prepare for tomorrow</h2>
                 </div>
@@ -55,7 +55,7 @@ const articles = (
                 </div>
             </div>
 
-            <div className="col_one_third col_last nobottommargin topmargin-lg">
+            <div className="col_one_third col_last topmargin-lg">
                 <img style={{padding:6, background:'#fff', border:'1px solid #ddd'}} src="/images/girl.png" alt="Velocity 360" className="center-block" />
             </div>
 
@@ -149,7 +149,7 @@ const testimonials = (
 )
 
 const velocityAdvantage = (
-    <section style={{background:'#FDFEFE', borderTop:'1px solid #ddd'}} id="section-about" className="page-section nobottommargin section">
+    <section style={{background:'#fff', borderTop:'1px solid #ddd'}} id="section-about" className="page-section notopmargin nobottommargin section">
         <div className="container clearfix">
             <div className="heading-block bottommargin-lg" style={{marginBottom:20}}>
                 <h2 style={styles.title}>The Velocity Advantage</h2>

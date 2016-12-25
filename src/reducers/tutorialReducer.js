@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
 
 	switch (action.type) {
 		case constants.TUTORIALS_RECEIVED:
-//			console.log('TUTORIALS_RECEIVED: '+JSON.stringify(action.tutorials))
+			console.log('TUTORIALS_RECEIVED: '+JSON.stringify(action.tutorials))
 			action.tutorials.forEach((tutorial, i) => {
 				if (newState[tutorial.id] == null){
 					newState[tutorial.id] = tutorial
