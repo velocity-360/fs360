@@ -24,11 +24,11 @@ class FeaturedTutorials extends Component {
 							    <div className="caption">
 	                                <img style={styles.icon} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
 									<h3 style={styles.title}>
-										<Link to={'/tutorial/'+tutorial.slug}>{ TextUtils.truncateText(tutorial.title, 22) }</Link>
+										<Link to={'/tutorial/'+tutorial.slug}>{ TextUtils.truncateText(tutorial.title, 20) }</Link>
 									</h3>
 									<hr />
 									<p style={styles.paragraph}>
-										{ TextUtils.truncateText(tutorial.description, 180) }
+										{ TextUtils.truncateText(tutorial.description, 175) }
 									</p>
 									<div style={{textAlign:'right'}}>
 										<Link to={'/tutorial/'+tutorial.slug} className="btn btn-primary" role="button">Read More</Link>
