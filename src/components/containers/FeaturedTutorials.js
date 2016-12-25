@@ -23,9 +23,11 @@ class FeaturedTutorials extends Component {
 							<div className="thumbnail">
 							    <div className="caption">
 	                                <img style={styles.icon} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-									<h3 style={styles.title}>
-										<Link to={'/tutorial/'+tutorial.slug}>{ TextUtils.truncateText(tutorial.title, 20) }</Link>
-									</h3>
+					                <div className="heading-block fancy-title nobottomborder">
+					                    <h4 style={styles.title}>
+											<Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}>{ TextUtils.truncateText(tutorial.title, 20) }</Link>
+					                    </h4>
+					                </div>
 									<hr />
 									<p style={styles.paragraph}>
 										{ TextUtils.truncateText(tutorial.description, 175) }
@@ -52,9 +54,7 @@ class FeaturedTutorials extends Component {
 
             			<div className="col_two_third">
 							<div className="row">
-
 								{ list }
-
 							</div>
             			</div>
 
