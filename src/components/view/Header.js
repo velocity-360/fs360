@@ -47,6 +47,7 @@ class Header extends Component {
         let nameParts = this.state.visitor.fullName.split(' ')
         updated['firstName'] = nameParts[0]
         updated['lastName'] = (nameParts.length > 1) ? nameParts[nameParts.length-1] : ''
+
         APIManager.handlePost('/account/syllabus', updated)
         .then((response) => {
         	console.log('SYLLABUS REQUEST: '+JSON.stringify(response))
@@ -58,6 +59,36 @@ class Header extends Component {
         	alert(err)
         })
 	}
+
+	subscribe(event){
+		event.preventDefault()
+        if (this.state.visitor.fullName.length == 0){
+            alert('Please enter your name.')
+            return
+        }
+
+        if (this.state.visitor.email.length == 0){
+            alert('Please enter your Email.')
+            return
+        }
+
+        let updated = Object.assign({}, this.state.visitor)
+        let nameParts = this.state.visitor.fullName.split(' ')
+        updated['firstName'] = nameParts[0]
+        updated['lastName'] = (nameParts.length > 1) ? nameParts[nameParts.length-1] : ''
+
+        APIManager.handlePost('/account/subscribe', updated)
+        .then((response) => {
+        	console.log('SYLLABUS REQUEST: '+JSON.stringify(response))
+        	alert('Thanks for Subscribing! You Will Receive an Email When We Publish the Next Tutorial.')
+			this.setState({showModal: false})
+        })
+        .catch((err) => {
+			this.setState({showModal: false})
+        	alert(err)
+        })
+	}
+
 
 	render(){
 		let content = null
@@ -74,6 +105,7 @@ class Header extends Component {
 		)
 	}
 }
+
 
 const home = (context) => {
 	return (
@@ -118,12 +150,34 @@ const tutorials = (context) => {
 	        <div className="vertical-middle">
 	            <div className="heading-block center nobottomborder">
 	                <h1 style={styles.titleWhite} data-animate="fadeInUp">Tutorials</h1>
-	                <span style={{fontWeight:400}} data-animate="fadeInUp" data-delay="300">
+	                <span style={{fontWeight:300}} data-animate="fadeInUp" data-delay="300">
 	                	Learn Full Stack Node, React, and Redux by watching tutorials and 
 	                	downloading code samples.
 	                </span>
+	                <br /><br />
+
+	                <div data-animate="fadeIn" data-delay="800">
+	                    <button onClick={context.toggleModal.bind(context)} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Subscribe</button>
+	                    <br /><br />
+	                    <h4 style={styles.titleWhite}>Receive Updates For New Tutorials</h4>
+	                </div>                          
+
 	            </div>
 	        </div>
+
+	        <Modal bsSize="sm" show={context.state.showModal} onHide={context.toggleModal.bind(context)}>
+		        <Modal.Body style={{background:'#f9f9f9', padding:24, borderRadius:3}}>
+		        	<div style={{textAlign:'center'}}>
+			        	<img style={{width:96, borderRadius:48, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_blue_260.png' />
+			        	<h4 style={styles.title}>Subscribe</h4>
+		        	</div>
+		        	<input onChange={context.updateVisitor.bind(context)} id="fullName" style={localStyle.input} type="text" placeholder="Name" />
+		        	<input onChange={context.updateVisitor.bind(context)} id="email" style={localStyle.input} type="text" placeholder="Email" />
+					<div style={{textAlign:'center', marginTop:24}}>
+						<a onClick={context.subscribe.bind(context)} href="#" className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+					</div>
+		        </Modal.Body>
+	        </Modal>	        
 	    </section>
 	)
 }

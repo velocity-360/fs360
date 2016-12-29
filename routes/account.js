@@ -94,6 +94,27 @@ router.post('/:action', function(req, res, next) {
 		return
 	}
 
+	if (action == 'subscribe'){
+		// var subscriber = {
+		// 	name: body.firstName + body.lastName,
+		// 	email: body.email
+		// }
+
+		subscriberController.post(body, function(err, result){
+			if (err){
+				return
+			}
+
+			req.session.visitor = result.id
+//			EmailManager.sendHtmlEmail(process.env.BASE_EMAIL, result.email, 'Velocity 360 - Syllabus Request', html)
+			res.json({
+				confirmation: 'success'
+			})
+
+			return
+		})
+	}
+
 	if (action == 'syllabus'){
 		var course = body.course.toLowerCase()
 
