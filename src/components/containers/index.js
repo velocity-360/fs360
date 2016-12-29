@@ -1,6 +1,7 @@
 import Courses from './Courses'
 import Course from './Course'
 import Online from './Online'
+import Tutorials from './Tutorials'
 import Tutorial from './Tutorial'
 import Sidebar from './Sidebar'
 import Account from './Account'
@@ -10,6 +11,7 @@ export {
 	Courses,
 	Course,
 	Online,
+	Tutorials,
 	Tutorial,
 	Sidebar,
 	Account,

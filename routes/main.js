@@ -131,11 +131,16 @@ router.get('/:page', function(req, res, next) {
 			reducer.all.push(entity)
 		})
 
-		if (page == 'online')
+		var base = null
+		if (page == 'online'){
 			initialData['tutorial'] = reducer // can be tutorial reducer
+			base = layout.Landing
+		}
 
-		if (page == 'courses')
+		if (page == 'courses'){
 			initialData['course'] = reducer // can be course reducer
+			base = layout.Split
+		}
 
 		initialState = store.configureStore(initialData)
 
@@ -144,7 +149,7 @@ router.get('/:page', function(req, res, next) {
 			component: serverapp,
 			initial: initialState,
 			indexRoute: {
-				component: layout.Split
+				component: base
 			}
 		}
 
@@ -160,7 +165,6 @@ router.get('/:page', function(req, res, next) {
 	})	
 	.catch(function(err){ // TODO: Handle Error
 		console.log('ERROR: '+err)
-
 	})
 })
 

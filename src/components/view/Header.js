@@ -60,43 +60,72 @@ class Header extends Component {
 	}
 
 	render(){
+		let content = null
+		if (this.props.content == 'home')
+			content = home(this)
+
+		if (this.props.content == 'tutorials')
+			content = tutorials(this)
+
 		return (
-		    <section className="page-section section parallax dark" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible', margin:0}} data-height-lg="425" data-height-md="425" data-height-sm="550" data-height-xs="550" data-height-xxs="550">
-		        <div className="vertical-middle">
-		            <div className="heading-block center nobottomborder">
-		                <h1 style={styles.titleWhite} data-animate="fadeInUp">Become a Full Stack Developer</h1>
-		                <span style={{fontWeight:300}} data-animate="fadeInUp" data-delay="300">
-		                    Velocity 360 is the only coding bootcamp that trains students for the future 
-		                    of software - Node, React, and React Native.
-		                </span>
-		                <br /><br />
-
-		                <div data-animate="fadeIn" data-delay="800">
-		                    <button onClick={this.toggleModal.bind(this)} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Request Syllabus</button>
-		                    <br /><br />
-		                    <h4 style={styles.titleWhite}>Next Cohort Begins January 9th</h4>
-		                </div>                          
-		            </div>
-		        </div>
-
-		        <Modal bsSize="sm" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
-			        <Modal.Body style={{background:'#f9f9f9', padding:24, borderRadius:3}}>
-			        	<div style={{textAlign:'center'}}>
-				        	<img style={{width:96, borderRadius:48, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_blue_260.png' />
-				        	<h4 style={styles.title}>Request Syllabus</h4>
-			        	</div>
-			        	<input onChange={this.updateVisitor.bind(this)} id="fullName" style={localStyle.input} type="text" placeholder="Name" />
-			        	<input onChange={this.updateVisitor.bind(this)} id="email" style={localStyle.input} type="text" placeholder="Email" />
-						<div style={{textAlign:'center', marginTop:24}}>
-							<a onClick={this.requestSyllabus.bind(this)} href="#" className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
-						</div>
-			        </Modal.Body>
-
-		        </Modal>
-
-		    </section>
+			<div>
+				{ content }
+			</div>
 		)
 	}
+}
+
+const home = (context) => {
+	return (
+	    <section className="page-section section parallax dark" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible', margin:0}} data-height-lg="425" data-height-md="425" data-height-sm="450" data-height-xs="450" data-height-xxs="450">
+	        <div className="vertical-middle">
+	            <div className="heading-block center nobottomborder">
+	                <h1 style={styles.titleWhite} data-animate="fadeInUp">Become a Full Stack Developer</h1>
+	                <span style={{fontWeight:300}} data-animate="fadeInUp" data-delay="300">
+	                    Velocity 360 is the only coding bootcamp that trains students for the future 
+	                    of software - Node, React, and React Native.
+	                </span>
+	                <br /><br />
+
+	                <div data-animate="fadeIn" data-delay="800">
+	                    <button onClick={context.toggleModal.bind(context)} className="btn btn-lg btn-info nomargin" value="submit" type="submit">Request Syllabus</button>
+	                    <br /><br />
+	                    <h4 style={styles.titleWhite}>Next Cohort Begins January 9th</h4>
+	                </div>                          
+	            </div>
+	        </div>
+
+	        <Modal bsSize="sm" show={context.state.showModal} onHide={context.toggleModal.bind(context)}>
+		        <Modal.Body style={{background:'#f9f9f9', padding:24, borderRadius:3}}>
+		        	<div style={{textAlign:'center'}}>
+			        	<img style={{width:96, borderRadius:48, border:'1px solid #ddd', background:'#fff', marginBottom:24}} src='/images/logo_round_blue_260.png' />
+			        	<h4 style={styles.title}>Request Syllabus</h4>
+		        	</div>
+		        	<input onChange={context.updateVisitor.bind(context)} id="fullName" style={localStyle.input} type="text" placeholder="Name" />
+		        	<input onChange={context.updateVisitor.bind(context)} id="email" style={localStyle.input} type="text" placeholder="Email" />
+					<div style={{textAlign:'center', marginTop:24}}>
+						<a onClick={context.requestSyllabus.bind(context)} href="#" className="button button-border button-dark button-rounded button-large noleftmargin">Submit</a>
+					</div>
+		        </Modal.Body>
+	        </Modal>
+	    </section>
+	)
+}
+
+const tutorials = (context) => {
+	return (
+	    <section className="page-section section parallax dark" style={{background: 'url("/images/oc-dark-blue.jpg") center', overflow:'visible', margin:0}} data-height-lg="425" data-height-md="425" data-height-sm="450" data-height-xs="450" data-height-xxs="450">
+	        <div className="vertical-middle">
+	            <div className="heading-block center nobottomborder">
+	                <h1 style={styles.titleWhite} data-animate="fadeInUp">Tutorials</h1>
+	                <span style={{fontWeight:400}} data-animate="fadeInUp" data-delay="300">
+	                	Learn Full Stack Node, React, and Redux by watching tutorials and 
+	                	downloading code samples.
+	                </span>
+	            </div>
+	        </div>
+	    </section>
+	)
 }
 
 const localStyle = {

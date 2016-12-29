@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styles from './styles'
 import { Header, Footer, Section } from '../view'
-import { FeaturedTutorials } from '../containers'
+import { Tutorials } from '../containers'
 
-class Home extends Component {
+class Landing extends Component {
     componentDidMount(){
         window.scrollTo(0 ,0)
     }
@@ -13,15 +13,12 @@ class Home extends Component {
 
 		return ( 
 			<div className="clearfix">
-                <Header content="home" />
-                <Section content="articles" />
-                <FeaturedTutorials />
-                <Section content="velocityAdvantage" />
+                <Header content="tutorials" />
+                <Tutorials />
                 <Footer />
-
 			</div>
 		)
 	}
 }
 
-export default Home
+export default Landing
