@@ -23,16 +23,14 @@ gulp.task('es6-es5', function(){
 gulp.task('css', function(){
     return gulp.src(
             [
-                './public/css/custom.css',
                 './public/css/bootstrap.css',
-                './public/css/style.css',
-                './public/css/dark.css',
-                './public/css/font-icons.css',
-                './public/css/animate.css',
-                './public/css/magnific-popup.css',
-                './public/css/font-awesome.min.css',
-                './public/css/components/pricing-table.css',
-                './public/css/responsive.css'
+                './public/css/themify-icons.css',
+                './public/css/flexslider.css',
+                './public/css/lightbox.min.css',
+                './public/css/ytplayer.css',
+                './public/css/theme-gunmetal.css',
+                './public/css/custom.css',
+                './public/css/google-fonts.css',
             ]
         )
         .pipe(minifyCSS())
@@ -41,20 +39,37 @@ gulp.task('css', function(){
         .pipe(gulp.dest('./public/dist/css/'))
 })
 
-gulp.task('copy', function(){
+gulp.task('copy-fonts', function(){
     return gulp.src(
-            ['./public/css/fonts/**']
+            ['./public/fonts/**']
         )
-        .pipe(gulp.dest('./public/dist/css/fonts/'))
+        .pipe(gulp.dest('./public/dist/fonts/'))
 })
+
+gulp.task('copy-lightbox', function(){
+    return gulp.src(
+            ['./public/img/lightbox/**']
+        )
+        .pipe(gulp.dest('./public/dist/img/lightbox/'))
+})
+
+gulp.task('copy', ['copy-fonts', 'copy-lightbox'], function(){})
+
 
 gulp.task('build', function(){
     return gulp.src(
     		[
-				'./public/js/jquery.js',
-				'./public/js/plugins.js',
-				'./public/js/functions.js',
-                './public/js/lpform.js'
+				'./public/js/jquery.min.js',
+                './public/js/bootstrap.min.js',
+                './public/js/flexslider.min.js',
+                './public/js/lightbox.min.js',
+                './public/js/masonry.min.js',
+                './public/js/spectragram.min.js',
+                './public/js/ytplayer.min.js',
+                './public/js/countdown.min.js',
+                './public/js/smooth-scroll.min.js',
+                './public/js/parallax.js',
+                './public/js/scripts.js',
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))
