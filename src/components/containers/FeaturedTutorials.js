@@ -63,25 +63,24 @@ class FeaturedTutorials extends Component {
 		let list = null
 		if (this.props.tutorials != null){
 			list = this.props.tutorials.map((tutorial, i) => {
-				if (i < 4){ // only show 4
-					return (
-	                    <div key={tutorial.id}>
-	                        <div className="overflow-hidden">
-	                            <img alt="Pic" style={{width:120}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=220'} />
-	                            <div className="pull-left p32 p0-xs pt24">
-	                                <h6 className="uppercase mb8 number">9:30am - 10:30am</h6>
-									<Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4>{ TextUtils.truncateText(tutorial.title, 20) }</h4></Link>
-	                            </div>
-	                        </div>
-	                        <p>
-								{ TextUtils.truncateText(tutorial.description, 175) }
-								<Link style={{float:'right'}} to={'/tutorial/'+tutorial.slug} className="btn btn-sm btn-rounded" role="button">Read More</Link>
-	                        </p>
+				return (
+                    <div key={tutorial.id}>
+                        <div className="overflow-hidden">
+                            <img alt="Pic" style={{width:120, border:'1px solid #ddd'}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=120'} />
+                        	<div className="clearfix visible-xs"></div>
+                            <div className="pull-left p32 p0-xs pt24">
+                                <h6 className="uppercase mb0 mt0 number">{ tutorial.posts.length } Units | { (tutorial.price == 0) ? 'Free' : '$'+tutorial.price}</h6>
+								<Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ TextUtils.truncateText(tutorial.title, 20) }</h4></Link>
+                            </div>
+                        </div>
+                        <p>
+							{ TextUtils.truncateText(tutorial.description, 250) }
+							<Link style={{float:'right', marginTop:16}} to={'/tutorial/'+tutorial.slug} className="btn btn-sm btn-rounded" role="button">Read More</Link>
+                        </p>
 
-	                        <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
-	                    </div>
-					)
-				}
+                        <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
+                    </div>
+				)
 			})
 		}
 
@@ -103,25 +102,8 @@ class FeaturedTutorials extends Component {
                             <ul className="tabs thirds mb64 mb-xs-24">
                                 <li className="active">
                                     <div className="tab-content text-left">
-
                                     	{list}
-                                        <div>
-                                            <div className="overflow-hidden">
-                                                <img alt="Pic" className="mb24 pull-left" src="img/avatar1.png" />
-                                                <div className="pull-left p32 p0-xs pt24">
-                                                    <h6 className="uppercase mb8 number">9:30am - 10:30am</h6>
-                                                    <h4>Alice French - E-Commerce & Fashion</h4>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                                            </p>
-                                            <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
-                                        </div>
-
-
-
-
+                                        <img style={{display:'none'}} alt="Pic" className="mb24 pull-left" src="img/avatar1.png" />
 
                                     </div>
                                 </li>
