@@ -65,65 +65,81 @@ class FeaturedTutorials extends Component {
 			list = this.props.tutorials.map((tutorial, i) => {
 				if (i < 4){ // only show 4
 					return (
-					    <div key={tutorial.id} className="col-sm-6 col-md-6">
-							<div className="thumbnail">
-							    <div className="caption">
-	                                <img style={styles.icon} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-					                <div className="heading-block fancy-title nobottomborder">
-					                    <h4 style={styles.title}>
-											<Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}>{ TextUtils.truncateText(tutorial.title, 20) }</Link>
-					                    </h4>
-					                </div>
-									<hr />
-									<p style={styles.paragraph}>
-										{ TextUtils.truncateText(tutorial.description, 175) }
-									</p>
-									<div style={{textAlign:'right'}}>
-										<Link to={'/tutorial/'+tutorial.slug} className="btn btn-primary" role="button">Read More</Link>
-									</div>
-							    </div>
-							</div>
-					    </div>
+	                    <div key={tutorial.id}>
+	                        <div className="overflow-hidden">
+	                            <img alt="Pic" style={{width:120}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=220'} />
+	                            <div className="pull-left p32 p0-xs pt24">
+	                                <h6 className="uppercase mb8 number">9:30am - 10:30am</h6>
+									<Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4>{ TextUtils.truncateText(tutorial.title, 20) }</h4></Link>
+	                            </div>
+	                        </div>
+	                        <p>
+								{ TextUtils.truncateText(tutorial.description, 175) }
+								<Link style={{float:'right'}} to={'/tutorial/'+tutorial.slug} className="btn btn-sm btn-rounded" role="button">Read More</Link>
+	                        </p>
+
+	                        <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
+	                    </div>
 					)
 				}
 			})
 		}
 
 		return (
-		    <section style={{background:'#FDFEFE', paddingTop:48, borderTop:'1px solid #ddd'}}>
-		        <div className="content-wrap" style={{paddingTop:0}}>
-		            <div className="container clearfix">
-		                <div className="heading-block bottommargin-lg" style={{marginBottom:20}}>
-		                    <h2 style={styles.title}>Online Tutorials</h2>
-		                </div>
+			<div className="container">
+                <div className="row mb0 mb-xs-24">
+                    <div className="col-sm-12 text-center">
+                        <h3>Strap yourself in for ideas</h3>
+                        <p className="lead">
+                            Prepare for a full day of discussion from some of the webs best and brightest.
+                        </p>
+                    </div>
+                </div>
 
-            			<div className="col_two_third">
-							<div className="row">
-								{ list }
-							</div>
-            			</div>
 
-			            <div className="col_one_third col_last">
-			                <div className="heading-block fancy-title nobottomborder title-bottom-border">
-			                    <h4 style={styles.title}>Premium <span>Membership</span></h4>
-			                </div>
+                <div className="row">
+                    <div className="col-md-8 col-md-offset-2">
+                        <div className="tabbed-content button-tabs">
+                            <ul className="tabs thirds mb64 mb-xs-24">
+                                <li className="active">
+                                    <div className="tab-content text-left">
 
-			                <p style={styles.paragraph}>
-			                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
-			                    code samples, and forums on the site. There are no long term commitments and membership 
-			                    can be canceled at any time.
-			                    <br /><br />
-			                    &#8226; <i style={{marginLeft:8}}>Downloadable Code Samples</i><br />
-			                    &#8226; <i style={{marginLeft:8}}>Downloadable Videos</i><br />
-			                    &#8226; <i style={{marginLeft:8}}>Q&A Forum Access</i><br />
-			                    &#8226; <i style={{marginLeft:8}}>Discounts on Live Courses</i><br />
-			                </p>
-			                <a onClick={this.showStripeModal.bind(this, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
-			            </div>
+                                    	{list}
+                                        <div>
+                                            <div className="overflow-hidden">
+                                                <img alt="Pic" className="mb24 pull-left" src="img/avatar1.png" />
+                                                <div className="pull-left p32 p0-xs pt24">
+                                                    <h6 className="uppercase mb8 number">9:30am - 10:30am</h6>
+                                                    <h4>Alice French - E-Commerce & Fashion</h4>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                                            </p>
+                                            <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
+                                        </div>
 
-		            </div>
-		        </div>
-		    </section>
+
+
+
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="container">
+                        <div className="row text-center">
+                            <div className="col-md-12">
+                                <a className="btn btn-lg" href="#">Explore Tutorials</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
 		)
 	}
 }
