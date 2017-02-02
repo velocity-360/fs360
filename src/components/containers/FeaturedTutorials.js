@@ -70,7 +70,7 @@ class FeaturedTutorials extends Component {
                                     <div className="inline-block pull-left">
                                         <h6 className="uppercase mb0 mt0 number">{ tutorial.posts.length } Units | { (tutorial.price == 0) ? 'Free' : '$'+tutorial.price}</h6>
                                         <Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ tutorial.title }</h4></Link>
-                                        <p className="mb0">
+                                        <p className="mb0 mt24">
                                             { TextUtils.truncateText(tutorial.description, 250) }
                                         </p>
                                     </div>
@@ -79,7 +79,7 @@ class FeaturedTutorials extends Component {
                                     <img alt="Pic" style={{maxWidth:90, border:'1px solid #ddd'}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=120'} />
                                 </div>
                             </div>
-                            <div className="inline-block pull-right pt48 pt-xs-24">
+                            <div className="inline-block pull-right pt24 pt-xs-24">
                                 <Link to={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">Read More</Link>
                             </div>
                         </div>
