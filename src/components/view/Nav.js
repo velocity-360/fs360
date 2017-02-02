@@ -23,28 +23,22 @@ export default (props) => {
                                 </li>
                                 <li className="has-dropdown">
                                     <a href="#">
-                                        Pages
+                                        Courses
                                     </a>
                                     <ul className="mega-menu">
                                         <li>
                                             <ul>
                                                 <li>
-                                                    <span className="title">Inner Pages</span>
+                                                    <a href="page-about-us-1.html">Online</a>
                                                 </li>
                                                 <li>
-                                                    <a href="page-about-us-1.html">About Us 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="page-about-us-2.html">About Us 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="page-about-us-3.html">About Us 3</a>
+                                                    <a href="page-about-us-2.html">Live</a>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Elements</a></li>
+                                <li><a href="#">Login</a></li>
                             </ul>
                         </div>
                         

@@ -93,13 +93,9 @@ class FeaturedTutorials extends Component {
 			<div className="container" id="tutorials">
                 <div className="row mb0 mb-xs-24">
                     <div className="col-sm-12 text-center">
-                        <h3>Strap yourself in for ideas</h3>
-                        <p className="lead">
-                            Prepare for a full day of discussion from some of the webs best and brightest.
-                        </p>
+                        <h3>Featured Tutorials</h3>
                     </div>
                 </div>
-
 
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2">
@@ -115,7 +111,6 @@ class FeaturedTutorials extends Component {
                             </ul>
                         </div>
                     </div>
-
                 </div>
 
                 <div className="row">
@@ -127,10 +122,6 @@ class FeaturedTutorials extends Component {
                         </div>
                     </div>
                 </div>
-
-
-
-
 
             </div>
 		)

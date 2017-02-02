@@ -45,28 +45,38 @@ const welcome = (
         <div className="container">
             <div className="row v-align-children">
                 <div className="col-sm-5">
-                    <h3>Join us for a day of<br /> ideas &amp; discussion.</h3>
+                    <h3>Project Based Learning</h3>
                     <p className="lead mb40" style={{fontWeight:100}}>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                        Our video tutorial series are based on full stack projects that incorporate all elements 
+                        of realistic sites: front end, back end, database, design, and UI. Further, all series 
+                        start from scrath.
+                        <br /><br />
+                        We do not start a 'beginner' tutorial with several hundred files and lines 
+                        of pre-scaffolded code like so many other tutorials on the internet. Every series begins from 
+                        step zero and goes all the way to deployment.
                     </p>
-                    <div className="overflow-hidden mb32 mb-xs-24">
-                        <i className="ti-package icon icon-sm pull-left"></i>
+                    <div className="overflow-hidden mb16 mb-xs-24">
+                        <span style={{fontWeight:800, fontSize:18+'px'}}>&#10003;</span>
                         <h6 className="uppercase mb0 inline-block p32">All Inclusive Package</h6>
                     </div>
-                    <div className="overflow-hidden mb32 mb-xs-24">
-                        <i className="ti-medall-alt icon icon-sm pull-left"></i>
+                    <div className="overflow-hidden mb16 mb-xs-24">
+                        <span style={{fontWeight:800, fontSize:18+'px'}}>&#10003;</span>
+                        <h6 className="uppercase mb0 inline-block p32">Foundry Club Access</h6>
+                    </div>
+                    <div className="overflow-hidden mb16 mb-xs-24">
+                        <span style={{fontWeight:800, fontSize:18+'px'}}>&#10003;</span>
                         <h6 className="uppercase mb0 inline-block p32">Foundry Club Access</h6>
                     </div>
                 </div>
                 <div className="col-md-4 col-sm-6">
                     <div className="pricing-table pt-1 text-center emphasis" style={{border:'1px solid #ddd'}}>
-                        <h5 className="uppercase">Admit One</h5>
-                        <span className="price">$89</span>
-                        <p className="lead">Per Ticket</p>
-                        <a className="btn btn-white btn-lg" href="#">Purchase Ticket</a>
+                        <h5 className="uppercase">All Access</h5>
+                        <span className="price">$19.99</span>
+                        <p className="lead">Per Month</p>
+                        <a className="btn btn-white btn-lg" href="#">Join</a>
                         <p>
-                            <a href="#">Contact Us for</a>
-                            <br /> large ticket volumes
+                            Gain access to all tutorials, code samples and online forums for help and feedback for 
+                            $19.99 each month. There is no long term commitment.
                         </p>
                     </div>
                 </div>
@@ -85,11 +95,11 @@ const testimonials = (
             </div>
             <div className="row masonry masonryFlyIn">
                 <div className="col-md-4 col-sm-12 masonry-item mb30">
-                    <div className="feature boxed mb0">
-                        <h2 className=" color-primary mb0">80+</h2>
-                        <h6 className="uppercase color-primary">Page Templates</h6>
+                    <div className="boxed feature mb0">
+                        <i className="icon ti-infinite color-primary inline-block mb0"></i>
+                        <h6 className="uppercase color-primary">Layout Possibilities</h6>
                         <p>
-                            Pre-made HTML page templates including fully realized shop, blog and portfolio layouts.
+                            With tons of purpose-built content blocks, colors and fonts, Foundry presents a mind-boggling number of combinations. Test drive the builder now!
                         </p>
                     </div>
                 </div>
@@ -104,10 +114,10 @@ const testimonials = (
                 </div>
                 <div className="col-md-4 masonry-item mb30">
                     <div className="boxed feature mb0">
-                        <h2 className=" color-primary mb8">Concepts</h2>
-                        <h6 className="uppercase color-primary">Kickstart your project</h6>
+                        <i className="icon ti-infinite color-primary inline-block mb0"></i>
+                        <h6 className="uppercase color-primary">Layout Possibilities</h6>
                         <p>
-                            Fresh and unique concepts included out of the box. From portfolio to property showcase, Foundrys adaptable look is perfect for your next project.
+                            With tons of purpose-built content blocks, colors and fonts, Foundry presents a mind-boggling number of combinations. Test drive the builder now!
                         </p>
                     </div>
                 </div>
@@ -121,15 +131,30 @@ const join = (
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
             <div className="feature boxed bg-secondary">
                 <form className="text-center form-email" data-error="There were errors, please check all required fields and try again" data-success="Thanks for taking the time to complete the planner. We'll be in touch shortly!">
-                    <h4 className="uppercase mt48 mt-xs-0">Plan your Foundry project</h4>
-                    <p className="lead mb64 mb-xs-24">
-                        Share a little detail about your project so we<br /> can tailor the solution thats right for you.
-                    </p>
-                    <div className="overflow-hidden">
+                    <h4 className="uppercase mb12 mt24 mt-xs-0">Premium Membership</h4>
+                    <hr />
+                    <div className="overflow-hidden pt24">
                         <div className="col-sm-6 col-sm-offset-3">
-                        <input type="text" name="name" style={{background:'#ededed'}} placeholder="Name*" />
-                        <input type="text" name="email" style={{background:'#ededed'}} placeholder="Email*" />
-                            <button type="submit">Submit Planner</button>
+                        <input type="text" name="name" style={{background:'#ededed'}} placeholder="Name" />
+                        <input type="text" name="email" style={{background:'#ededed'}} placeholder="Email" />
+                            <button type="submit">Join</button>
+                        </div>
+                    </div>
+
+                    <div className="row mt24 mb16">
+                        <div className="col-md-8 col-md-offset-2">
+                            <div style={{padding:16, border:'1px solid #ddd', fontSize:14+'px'}}>
+                                <p className="lead mb12 mb-xs-24" style={{fontWeight:100}}>
+                                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                                    code samples, and forums on the site. There are no long term commitments and membership can be 
+                                    canceled at any time.
+                                </p>
+                                <hr />
+                                &#8226; <strong style={{color:'#5fcf80'}}>Downloadable Code Samples</strong><br />
+                                &#8226; <strong style={{color:'#5fcf80'}}>Downloadable Videos</strong><br />
+                                &#8226; <strong style={{color:'#5fcf80'}}>Q&A Forum Access</strong><br />
+                                &#8226; <strong style={{color:'#5fcf80'}}>Discounts on Live Courses</strong>
+                            </div>
                         </div>
                     </div>
                 </form>
