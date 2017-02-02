@@ -43,6 +43,23 @@ router.get('/', function(req, res, next) {
 	controllers.account.currentUser(req)
 	.then(function(currentUser){ // can be null
 		initialData['account'] = {currentUser: currentUser}
+		// initialState = store.configureStore(initialData)
+		// var routes = {
+		// 	path: '/',
+		// 	component: serverapp,
+		// 	initial: initialState,
+		// 	indexRoute: {
+		// 		component: layout.Home
+		// 	}
+		// }
+
+		// return matchRoutes(req, routes)
+
+		return controllers.tutorial.find({})
+	})
+	.then(function(tutorials){
+		initialData['tutorial'] = {all: tutorials}
+
 		initialState = store.configureStore(initialData)
 		var routes = {
 			path: '/',

@@ -9,7 +9,7 @@ import { TextUtils, Stripe } from '../../utils'
 class FeaturedTutorials extends Component {
 
 	componentDidMount(){
-		this.props.fetchTutorials(null)
+//		this.props.fetchTutorials(null)
 
 	}
 
@@ -22,7 +22,6 @@ class FeaturedTutorials extends Component {
             Stripe.initializeWithText('Purchase', (token) => {
                 this.props.submitStripeCharge(token, tutorial)
                 .then((response) => {
-                    console.log('TEST: '+JSON.stringify(response))
                     this.props.toggleLoading(false)
                 })
                 .catch((err) => {
@@ -66,18 +65,24 @@ class FeaturedTutorials extends Component {
 				return (
                     <div key={tutorial.id}>
                         <div className="overflow-hidden">
-                            <img alt="Pic" style={{width:120, border:'1px solid #ddd'}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=120'} />
-                        	<div className="clearfix visible-xs"></div>
-                            <div className="pull-left p32 p0-xs pt24">
-                                <h6 className="uppercase mb0 mt0 number">{ tutorial.posts.length } Units | { (tutorial.price == 0) ? 'Free' : '$'+tutorial.price}</h6>
-								<Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ TextUtils.truncateText(tutorial.title, 20) }</h4></Link>
+                            <div className="row">
+                                <div className="col-md-10">
+                                    <div className="inline-block pull-left">
+                                        <h6 className="uppercase mb0 mt0 number">{ tutorial.posts.length } Units | { (tutorial.price == 0) ? 'Free' : '$'+tutorial.price}</h6>
+                                        <Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ tutorial.title }</h4></Link>
+                                        <p className="mb0">
+                                            { TextUtils.truncateText(tutorial.description, 250) }
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="col-md-2 pull-right">
+                                    <img alt="Pic" style={{maxWidth:90, border:'1px solid #ddd'}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=120'} />
+                                </div>
+                            </div>
+                            <div className="inline-block pull-right pt48 pt-xs-24">
+                                <Link to={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">Read More</Link>
                             </div>
                         </div>
-                        <p>
-							{ TextUtils.truncateText(tutorial.description, 250) }
-							<Link style={{float:'right', marginTop:16}} to={'/tutorial/'+tutorial.slug} className="btn btn-sm btn-rounded" role="button">Read More</Link>
-                        </p>
-
                         <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
                     </div>
 				)
@@ -101,16 +106,19 @@ class FeaturedTutorials extends Component {
                         <div className="tabbed-content button-tabs">
                             <ul className="tabs thirds mb64 mb-xs-24">
                                 <li className="active">
-                                    <div className="tab-content text-left">
-                                    	{list}
-                                        <img style={{display:'none'}} alt="Pic" className="mb24 pull-left" src="img/avatar1.png" />
 
+                                    <div className="tab-content text-left">
+                                        { list }
                                     </div>
+
                                 </li>
                             </ul>
                         </div>
                     </div>
 
+                </div>
+
+                <div className="row">
                     <div className="container">
                         <div className="row text-center">
                             <div className="col-md-12">
@@ -118,8 +126,11 @@ class FeaturedTutorials extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+
+
+
 
             </div>
 		)
