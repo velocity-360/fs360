@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Footer, Section } from '../view'
+import { Footer, Section, Nav } from '../view'
 import { Courses, Course, Online, Tutorial, Account, Sidebar } from '../containers'
 import styles from './styles'
 
@@ -34,31 +34,15 @@ class Split extends Component {
         }
 
 		return ( 
-			<div className="clearfix">
-                <section className="notopmargin">
-                    <div className="container clearfix">
+            <div>
+                <Nav type="standard" />
+                <div className="main-container">
+                    { content }
+                    <Footer />
+                </div>
+            </div>
 
-                        <div className="col_two_third">
-                            { content }
-                        </div>
 
-                        <div className="col_one_third col_last topmargin-lg">
-                            <Sidebar />
-
-                            <div style={{textAlign:'right'}}>
-                                <img style={{padding:3, background:'#fff', border:'1px solid #ddd', width:100+'%'}} src="/images/node-react-1.jpg" alt="Velocity 360" />
-                                <br />
-                                <i style={styles.smallText}>* Node & React Intro Course, instructed by Roger Beaman.</i>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-                { (page == 'courses') ? <div><Section content="testimonials" /><Section content="companies" /></div> : null }
-
-                <Footer />
-			</div>
 		)
 	}
 }

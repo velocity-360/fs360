@@ -99,17 +99,7 @@ class FeaturedTutorials extends Component {
 
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2">
-                        <div className="tabbed-content button-tabs">
-                            <ul className="tabs thirds mb64 mb-xs-24">
-                                <li className="active">
-
-                                    <div className="tab-content text-left">
-                                        { list }
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
+                        { list }
                     </div>
                 </div>
 

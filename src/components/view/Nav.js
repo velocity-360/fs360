@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
 export default (props) => {
+    const type = (props.type) ? props.type : 'large'
+    let nav = null
 
-	return (
-        <div className="nav-container">
+    if (type == 'large'){
+        nav = (
             <nav className="nav-centered">
                 <div className="text-center">
-                    <a href="index.html">
+                    <a href="/">
                         <img className="logo logo-light" alt="Foundry" src="/img/logo-light.png" />
                         <img className="logo logo-dark" alt="Foundry" src="/img/logo-dark.png" />
                     </a>
@@ -22,17 +24,15 @@ export default (props) => {
                                     <a href="#">Home</a>
                                 </li>
                                 <li className="has-dropdown">
-                                    <a href="#">
-                                        Courses
-                                    </a>
+                                    <a href="#">Courses</a>
                                     <ul className="mega-menu">
                                         <li>
                                             <ul>
                                                 <li>
-                                                    <a href="page-about-us-1.html">Online</a>
+                                                    <a href="/online">Online</a>
                                                 </li>
                                                 <li>
-                                                    <a href="page-about-us-2.html">Live</a>
+                                                    <a href="/courses">Live</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -45,7 +45,46 @@ export default (props) => {
                     </div>
                 </div>
             </nav>
-        </div>
-	)
+        )    
+    }
+    else {
+        nav = (
+            <nav>
+                <div className="nav-bar">
+                    <div className="module left">
+                        <a href="/">
+                            <img className="logo logo-light" alt="Foundry" src="/img/logo-light.png" />
+                            <img className="logo logo-dark" alt="Foundry" src="/img/logo-dark.png" />
+                        </a>
+                    </div>
+                    <div className="module widget-handle mobile-toggle right visible-sm visible-xs">
+                        <i className="ti-menu"></i>
+                    </div>
+                    <div className="module-group right">
+                        <div className="module left">
+                            <ul className="menu">
+                                <li><a href="/">Home</a></li>
+                                <li className="has-dropdown">
+                                    <a href="#">Courses</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/online">Online</a>
+                                        </li>
+                                        <li>
+                                            <a href="/courses">Live</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        )
+    }
+
+	return  <div className="nav-container">{nav}</div>
+
 
 }

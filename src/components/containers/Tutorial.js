@@ -125,25 +125,34 @@ class Tutorial extends Component {
             units = <h3 style={styles.title}>Preview</h3>
 
 		return (
-			<div>
-                <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
-                    <h2 style={styles.title}>{tutorial.title}</h2>
-                </div>
+			<div className="main-container">
 
-                <p style={{fontFamily:'Pathway Gothic One', fontSize:18+'px', fontWeight:400}}>
-                    <img style={{float:'right', width:180, border:'1px solid #ddd', background:'#fff', padding:3, marginLeft:12, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-                    { (tutorial.posts.length==0) ? <span>Coming Soon</span> : <span>Beginner</span>}
-                    <br />
-                    { (tutorial.price == 0) ? <span>FREE</span> : <span>${TextUtils.numberWithCommas(tutorial.price)}</span> }
-                    <br />
-                </p>
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-9 mb-xs-24">
+                            <div className="post-snippet mb64">
+                                <img className="mb24" alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                                <div className="post-title">
+                                    <span className="label">{(tutorial.price == 0) ? 'FREE' : '$'+TextUtils.numberWithCommas(tutorial.price)}</span>
+                                    <h4 className="inline-block">{tutorial.title}</h4>
+                                </div>
+                                <ul className="post-meta">
+                                    <li>
+                                        <i className="ti-user"></i>
+                                        <span><a href="#">Craig Garner</a></span>
+                                    </li>
+                                    <li>
+                                        <i className="ti-tag"></i>
+                                        <span><a href="#">Lifestyle</a></span>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <p className="lead" dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
+                                { units }
 
-                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
-
-                { units }
                 <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
-                    {
-                        tutorial.posts.map((post, i) => {
+                    { tutorial.posts.map((post, i) => {
                             let youtube = null
                             if (post.youtube != null)
                                 youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
@@ -166,7 +175,77 @@ class Tutorial extends Component {
                     }
                 </div>
 
-                { cta }              
+                { cta }
+
+
+                
+                            </div>
+                        </div>
+
+                        <div className="col-md-3 hidden-sm">
+                            <div className="widget">
+                                <h6 className="title">Search Blog</h6>
+                                <hr />
+                                <form>
+                                    <input className="mb0" type="text" placeholder="Type Here" />
+                                </form>
+                            </div>
+                            <div className="widget">
+                                <h6 className="title">About The Author</h6>
+                                <hr />
+                                <p>
+                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem antium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+                                </p>
+                            </div>
+                            <div className="widget">
+                                <h6 className="title">Blog Categories</h6>
+                                <hr />
+                                <ul className="link-list">
+                                    <li>
+                                        <a href="#">Lifestyle</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Web Design</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Photography</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Freelance</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="widget">
+                                <h6 className="title">Recent Posts</h6>
+                                <hr />
+                                <ul className="link-list recent-posts">
+                                    <li>
+                                        <a href="#">A simple image post for starters</a>
+                                        <span className="date">September 23, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="#">An audio post for good measure</a>
+                                        <span className="date">September 19, 2015</span>
+                                    </li>
+                                    <li>
+                                        <a href="#">A thoguhtful blockquote post on life</a>
+                                        <span className="date">September 07, 2015</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="widget">
+                                <h6 className="title">Latest Updates</h6>
+                                <hr />
+                                <div className="twitter-feed">
+                                    <div className="tweets-feed" data-feed-name="mrareweb">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
 			</div>
 		)
