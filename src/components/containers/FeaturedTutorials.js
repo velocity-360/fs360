@@ -80,7 +80,7 @@ class FeaturedTutorials extends Component {
                                 </div>
                             </div>
                             <div className="inline-block pull-right pt24 pt-xs-24">
-                                <Link to={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">Read More</Link>
+                                <Link to={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">View Tutorial</Link>
                             </div>
                         </div>
                         <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />

@@ -25,7 +25,7 @@ const header = (
         <ul className="slides">
             <li className="overlay image-bg pt160 pb160 pt-xs-120 pb-xs-120">
                 <div className="background-image-holder">
-                    <img alt="image" className="background-image" src="/img/girls.jpg" />
+                    <img alt="image" className="background-image" src="/img/girl.jpg" />
                 </div>
                 <div className="container">
                     <div className="row text-center">
