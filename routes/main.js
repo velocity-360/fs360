@@ -58,7 +58,16 @@ router.get('/', function(req, res, next) {
 		return controllers.tutorial.find({})
 	})
 	.then(function(tutorials){
-		initialData['tutorial'] = {all: tutorials}
+		var tutorialReducer = {
+			all: tutorials
+		}
+
+		tutorials.forEach(function(tutorial, i){
+			tutorialReducer[tutorial.id] = tutorial
+			tutorialReducer[tutorial.slug] = tutorial
+		})
+
+		initialData['tutorial'] = tutorialReducer
 
 		initialState = store.configureStore(initialData)
 		var routes = {
