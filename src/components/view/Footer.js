@@ -18,7 +18,7 @@ export default (props) => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a target="_blank" href="https://www.facebook.com/Velocity-360-1631852427085987/?ref=bookmarks">
                                     <i className="ti-facebook icon icon-sm"></i>
                                 </a>
                             </li>

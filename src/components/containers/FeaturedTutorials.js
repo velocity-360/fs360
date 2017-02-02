@@ -90,7 +90,7 @@ class FeaturedTutorials extends Component {
 		}
 
 		return (
-			<div className="container">
+			<div className="container" id="tutorials">
                 <div className="row mb0 mb-xs-24">
                     <div className="col-sm-12 text-center">
                         <h3>Strap yourself in for ideas</h3>

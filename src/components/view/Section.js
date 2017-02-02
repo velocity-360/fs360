@@ -30,8 +30,8 @@ const header = (
                 <div className="container">
                     <div className="row text-center">
                         <div className="col-md-12">
-                            <h2 className="mb40 uppercase">Bold, Vibrant, You.</h2>
-                            <a className="btn btn-lg" href="#">Explore Collection</a>
+                            <h2 className="mb40 uppercase">Learn Full<br />Stack Development</h2>
+                            <a className="btn btn-lg" href="#welcome">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ const header = (
 )
 
 const welcome = (
-    <section style={{backgroundColor: '#f9f9f9'}}>
+    <section style={{backgroundColor: '#f9f9f9'}} id="welcome">
         <div className="container">
             <div className="row v-align-children">
                 <div className="col-sm-5">
