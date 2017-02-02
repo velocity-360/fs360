@@ -7,7 +7,7 @@ export default (props) => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-sm-3 text-center">
-                        <img alt="Logo" style={{maxWidth:180}} className="logo" src="/img/logo-light.png" />
+                        <img alt="Logo" style={{maxWidth:120}} className="logo" src="/img/logo-light.png" />
                     </div>
 
                     <div className="col-sm-3 text-center pt8">
@@ -23,8 +23,8 @@ export default (props) => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i className="ti-vimeo-alt icon icon-sm"></i>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCf5CgGVs6zEq6DUtyFw9e-Q/videos">
+                                    <i className="ti-youtube icon icon-sm"></i>
                                 </a>
                             </li>
                         </ul>
