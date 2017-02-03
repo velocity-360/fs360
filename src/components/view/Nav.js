@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styles from './style'
 
 export default (props) => {
     const type = (props.type) ? props.type : 'large'
@@ -53,8 +54,7 @@ export default (props) => {
                 <div className="nav-bar">
                     <div className="module left">
                         <a href="/">
-                            <img className="logo logo-light" alt="Foundry" src="/img/logo-light.png" />
-                            <img className="logo logo-dark" alt="Foundry" src="/img/logo-dark.png" />
+                            <h3 style={localStyle.title}>Velocity 360</h3>
                         </a>
                     </div>
                     <div className="module widget-handle mobile-toggle right visible-sm visible-xs">
@@ -86,6 +86,13 @@ export default (props) => {
     }
 
 	return  <div className="nav-container">{nav}</div>
+}
 
-
+const localStyle = {
+    title: {
+        marginTop: 6,
+        color:'#333',
+        fontFamily: 'Pathway Gothic One',
+        fontWeight: 100
+    }
 }
