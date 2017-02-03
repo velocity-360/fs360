@@ -254,7 +254,7 @@ const purchase = (tutorial, context) => {
                             access to the forum where people post questions and answers. 
                             <br /><br />
                         </p>
-                        <a onClick={context.showStripeModal.bind(context, 'charge')} className="btn btn-lg btn-filled" href="#">Purchase, ${tutorial.price}</a>
+                        <a onClick={context.showStripeModal.bind(context, 'charge')} className="btn btn-lg" href="#">Purchase, ${tutorial.price}</a>
                     </div>
                 )
             }
@@ -274,7 +274,7 @@ const purchase = (tutorial, context) => {
                     &#8226; <i style={{marginLeft:8}}>Q&A Forum Access</i><br />
                     &#8226; <i style={{marginLeft:8}}>Discounts on Live Courses</i><br />                    
                 </p>
-                <a onClick={context.showStripeModal.bind(context, 'subscription')} className="btn btn-lg btn-filled" href="#">Subscribe</a>
+                <a onClick={context.showStripeModal.bind(context, 'subscription')} className="btn btn-lg" href="#">Subscribe</a>
             </div>
         </div> 
     )
