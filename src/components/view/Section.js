@@ -127,35 +127,33 @@ const testimonials = (
 )
 
 const join = (
-            <section className="image-square left">
-                <div className="col-md-6 image">
-                    <div className="background-image-holder">
-                        <img alt="image" className="background-image" src="/theme/img/cover11.jpg" />
-                    </div>
+    <section className="image-square left">
+        <div className="col-md-6 image">
+            <div className="background-image-holder">
+                <img alt="image" className="background-image" src="/theme/img/cover11.jpg" />
+            </div>
+        </div>
+        <div className="col-md-6 col-md-offset-1 content">
+            <h4 className="uppercase mb12 mt0 mt-xs-0">Premium Membership</h4>
+            <form className="text-center form-email">
+                <div className="overflow-hidden pt24">
+                    <input type="text" name="name" style={{background:'#ededed'}} placeholder="Name" />
+                    <input type="text" name="email" style={{background:'#ededed'}} placeholder="Email" />
+                    <button type="submit">Join</button>
                 </div>
-                <div className="col-md-6 col-md-offset-1 content">
-                    <h4 className="uppercase mb12 mt0 mt-xs-0">Premium Membership</h4>
-                    <form className="text-center form-email">
-                        <div className="overflow-hidden pt24">
-                            <input type="text" name="name" style={{background:'#ededed'}} placeholder="Name" />
-                            <input type="text" name="email" style={{background:'#ededed'}} placeholder="Email" />
-                            <button type="submit">Join</button>
-                        </div>
-                    </form>
+            </form>
 
-                    <div style={{fontSize:12+'px'}}>
-                        <p className="lead mb12 mb-xs-24" style={{fontWeight:100}}>
-                            Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
-                            code samples, and forums on the site.
-                        </p>
-                        <hr />
-                        &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Downloadable Code Samples</strong><br />
-                        &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Downloadable Videos</strong><br />
-                        &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Q&A Forum Access</strong><br />
-                        &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Discounts on Live Courses</strong>
-                    </div>
-                </div>
-            </section>
-
-
+            <div style={{fontSize:12+'px'}}>
+                <p className="lead mb12 mb-xs-24" style={{fontWeight:100}}>
+                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                    code samples, and forums on the site.
+                </p>
+                <hr />
+                &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Downloadable Code Samples</strong><br />
+                &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Downloadable Videos</strong><br />
+                &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Q&A Forum Access</strong><br />
+                &#8226; <strong style={{color:'#5fcf80', fontSize:14}}>Discounts on Live Courses</strong>
+            </div>
+        </div>
+    </section>
 )
