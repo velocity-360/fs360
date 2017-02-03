@@ -80,14 +80,9 @@ class Tutorial extends Component {
         if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
             return
 
-//        console.log('Subscribe')
         let subscribers = Object.assign([], tutorial.subscribers)
         subscribers.push(this.props.currentUser.id)
         this.props.updateTutorial(tutorial, {subscribers: subscribers})
-    }
-
-    componentDidUpdate(){
-//        console.log('componentDidUpdate: ')
     }
 
 	render(){
@@ -131,12 +126,14 @@ class Tutorial extends Component {
                     <div className="row">
                         <div className="col-md-9 mb-xs-24">
                             <div className="post-snippet mb64">
-                                <img className="mb24" alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                                <img className="mb24" style={{border:'1px solid #ddd', width:260}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
                                 <div className="post-title">
-                                    <span className="label">{(tutorial.price == 0) ? 'FREE' : '$'+TextUtils.numberWithCommas(tutorial.price)}</span>
                                     <h4 className="inline-block">{tutorial.title}</h4>
                                 </div>
                                 <ul className="post-meta">
+                                    <li>
+                                        <span className="label">{(tutorial.price == 0) ? 'FREE' : '$'+TextUtils.numberWithCommas(tutorial.price)}</span>
+                                    </li>
                                     <li>
                                         <i className="ti-tag"></i>
                                         <span><a href="#">Beginner</a></span>
@@ -166,45 +163,19 @@ class Tutorial extends Component {
                                     }
                                 </div>
 
-                { cta }
-
-
+                                { cta }
 
                             </div>
                         </div>
 
                         <div className="col-md-3 hidden-sm">
                             <div className="widget">
-                                <h6 className="title">Search Blog</h6>
+                                <h6 className="title">Account</h6>
                                 <hr />
-                                <form>
-                                    <input className="mb0" type="text" placeholder="Type Here" />
-                                </form>
-                            </div>
-                            <div className="widget">
-                                <h6 className="title">About The Author</h6>
-                                <hr />
-                                <p>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem antium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-                                </p>
-                            </div>
-                            <div className="widget">
-                                <h6 className="title">Blog Categories</h6>
-                                <hr />
-                                <ul className="link-list">
-                                    <li>
-                                        <a href="#">Lifestyle</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Web Design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Photography</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Freelance</a>
-                                    </li>
-                                </ul>
+                                Receive updates for new tutorials or courses:
+                                <input style={localStyle.input} className="mb0" type="text" placeholder="Full Name" />
+                                <input style={localStyle.input} className="mb0" type="text" placeholder="Email" />
+                                <input style={localStyle.input} className="mb0" type="password" placeholder="Password" />
                             </div>
                             <div className="widget">
                                 <h6 className="title">Recent Posts</h6>
@@ -223,14 +194,6 @@ class Tutorial extends Component {
                                         <span className="date">September 07, 2015</span>
                                     </li>
                                 </ul>
-                            </div>
-                            <div className="widget">
-                                <h6 className="title">Latest Updates</h6>
-                                <hr />
-                                <div className="twitter-feed">
-                                    <div className="tweets-feed" data-feed-name="mrareweb">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -328,6 +291,12 @@ const localStyle = {
         float:'none',
         clear:'both',
         margin:'4px auto'
+    },
+    input: {
+        background: '#f9f9f9',
+        border: 'none',
+        padding: 12,
+        marginTop: 12
     }
 }
 
