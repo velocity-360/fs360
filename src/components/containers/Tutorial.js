@@ -125,7 +125,6 @@ class Tutorial extends Component {
             units = <h3 style={styles.title}>Preview</h3>
 
 		return (
-			<div className="main-container">
 
             <section>
                 <div className="container">
@@ -151,34 +150,30 @@ class Tutorial extends Component {
                                 <p className="lead" dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                                 { units }
 
-                <div className="accordion accordion-border clearfix" style={{borderTop:'none', background:'#FDFEFE'}}>
-                    { tutorial.posts.map((post, i) => {
-                            let youtube = null
-                            if (post.youtube != null)
-                                youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
-                            
-                            return (
-                                <div key={i} style={{borderTop:'1px solid #ddd'}}>
-                                    <div className="acctitle">
-                                        <i className="acc-closed icon-ok-circle"></i>
-                                        <i className="acc-open icon-remove-circle"></i>
-                                        {post.title}
-                                    </div>
+                                <div style={{border:'1px solid #ddd', borderRadius:3, marginBottom:24, background:'#FDFEFE'}}>
+                                    { tutorial.posts.map((post, i) => {
+                                            let youtube = null
+                                            if (post.youtube != null)
+                                                youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
+                                            
+                                            return (
+                                                <div key={i} style={{borderBottom:'1px solid #ddd', padding:16}}>
+                                                    <h4 style={styles.title}>{post.title}</h4>
 
-                                    <div className="acc_content clearfix" style={styles.paragraph}>
-                                        {post.description}<br />
-                                        { youtube }
-                                    </div>
+                                                    <div style={styles.paragraph}>
+                                                        {post.description}<br />
+                                                        { youtube }
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </div>
-                            )
-                        })
-                    }
-                </div>
 
                 { cta }
 
 
-                
+
                             </div>
                         </div>
 
@@ -243,11 +238,12 @@ class Tutorial extends Component {
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </section>
 
 
-			</div>
 		)
 	}
 }
