@@ -163,7 +163,9 @@ class Tutorial extends Component {
                                     }
                                 </div>
 
-                                { cta }
+                                <div className="row">
+                                    { cta }
+                                </div>
 
                             </div>
                         </div>
@@ -209,45 +211,41 @@ class Tutorial extends Component {
 
 const premium = (user, context) => {
     return (
-        <div className="topmargin" style={{marginBottom:0}}>
-            <div className="col_half col_last">
-                <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 style={styles.title}>Premium <span>Member</span></h4>
-                </div>
-
-                <p style={styles.paragraph}>
-                    As a premium member, you can subscribe to this tutorial for free by clicking below:
-                </p>
-                <a href="#" onClick={context.subscribe.bind(context)} className="button button-small button-circle button-border button-aqua">Subscribe</a>
+        <div className="col-md-6">
+            <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                <h4 style={styles.title}>Premium <span>Member</span></h4>
             </div>
+
+            <p style={styles.paragraph}>
+                As a premium member, you can subscribe to this tutorial for free by clicking below:
+            </p>
+            <a href="#" onClick={context.subscribe.bind(context)} className="button button-small button-circle button-border button-aqua">Subscribe</a>
         </div>
     )    
 }
 
 const subscribed = (tutorial) => {
     return (
-        <div className="topmargin" style={{marginBottom:0}}>
-            <div className="col_half col_last">
-                <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 style={styles.title}>Subscribed</h4>
-                </div>
-
-                <p style={styles.paragraph}>
-                    You are subscribed to this tutorial series. To access all of the videos and code samples, 
-                    click on the link below:
-                </p>
-                <a target="_blank" href={'/premium/tutorial/'+tutorial.id} className="button button-small button-circle button-border button-aqua">Download</a>
+        <div className="col-md-6">
+            <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                <h4 style={styles.title}>Subscribed</h4>
             </div>
+
+            <p style={styles.paragraph}>
+                You are subscribed to this tutorial series. To access all of the videos and code samples, 
+                click on the link below:
+            </p>
+            <a target="_blank" href={'/premium/tutorial/'+tutorial.id} className="button button-small button-circle button-border button-aqua">Download</a>
         </div>
     )
 }
 
 const purchase = (tutorial, context) => {
     return (
-        <div className="topmargin" style={{marginBottom:0}}>
+        <div>
             { (tutorial.price == 0) ? null : 
                 (
-                    <div className="col_half">
+                    <div className="col-md-6">
                         <div className="heading-block fancy-title nobottomborder title-bottom-border">
                             <h4 style={styles.title}>Purchase</h4>
                         </div>
@@ -256,12 +254,12 @@ const purchase = (tutorial, context) => {
                             access to the forum where people post questions and answers. 
                             <br /><br />
                         </p>
-                        <a onClick={context.showStripeModal.bind(context, 'charge')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
+                        <a onClick={context.showStripeModal.bind(context, 'charge')} className="btn btn-lg btn-filled" href="#">Purchase, ${tutorial.price}</a>
                     </div>
                 )
             }
 
-            <div className="col_half col_last">
+            <div className="col-md-6">
                 <div className="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4 style={styles.title}>Premium <span>Membership</span></h4>
                 </div>
@@ -276,7 +274,7 @@ const purchase = (tutorial, context) => {
                     &#8226; <i style={{marginLeft:8}}>Q&A Forum Access</i><br />
                     &#8226; <i style={{marginLeft:8}}>Discounts on Live Courses</i><br />                    
                 </p>
-                <a onClick={context.showStripeModal.bind(context, 'subscription')} href="#" className="button button-small button-circle button-border button-aqua">Subscribe</a>
+                <a onClick={context.showStripeModal.bind(context, 'subscription')} className="btn btn-lg btn-filled" href="#">Subscribe</a>
             </div>
         </div> 
     )
