@@ -138,12 +138,8 @@ class Tutorial extends Component {
                                 </div>
                                 <ul className="post-meta">
                                     <li>
-                                        <i className="ti-user"></i>
-                                        <span><a href="#">Craig Garner</a></span>
-                                    </li>
-                                    <li>
                                         <i className="ti-tag"></i>
-                                        <span><a href="#">Lifestyle</a></span>
+                                        <span><a href="#">Beginner</a></span>
                                     </li>
                                 </ul>
                                 <hr />
@@ -328,8 +324,7 @@ const localStyle = {
         background:'#fff',
         padding:3,
         border:'1px solid #ddd',
-        width:'50%',
-        minWidth: 220,
+        width: 220,
         float:'none',
         clear:'both',
         margin:'4px auto'
