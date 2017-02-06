@@ -51,10 +51,10 @@ export default (props) => {
     else {
         nav = (
             <nav>
-                <div className="nav-bar">
+                <div className="nav-bar bg-dark">
                     <div className="module left">
                         <a href="/">
-                            <h3 style={localStyle.title}>Velocity 360</h3>
+                            <h3 style={localStyle.titleWhite}>Velocity 360</h3>
                         </a>
                     </div>
                     <div className="module widget-handle mobile-toggle right visible-sm visible-xs">
@@ -63,9 +63,9 @@ export default (props) => {
                     <div className="module-group right">
                         <div className="module left">
                             <ul className="menu">
-                                <li><a href="/">Home</a></li>
+                                <li><a style={{color:'#fff'}} href="/">Home</a></li>
                                 <li className="has-dropdown">
-                                    <a href="#">Courses</a>
+                                    <a style={{color:'#fff'}} href="#">Courses</a>
                                     <ul>
                                         <li>
                                             <a href="/online">Online</a>
@@ -75,7 +75,7 @@ export default (props) => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Login</a></li>
+                                <li><a style={{color:'#fff'}} href="#">Login</a></li>
                                 
                             </ul>
                         </div>
@@ -92,6 +92,12 @@ const localStyle = {
     title: {
         marginTop: 6,
         color:'#333',
+        fontFamily: 'Pathway Gothic One',
+        fontWeight: 100
+    },
+    titleWhite: {
+        marginTop: 6,
+        color:'#fff',
         fontFamily: 'Pathway Gothic One',
         fontWeight: 100
     }

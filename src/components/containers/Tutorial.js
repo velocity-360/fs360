@@ -120,7 +120,6 @@ class Tutorial extends Component {
             units = <h3 style={styles.title}>Preview</h3>
 
 		return (
-
             <section>
                 <div className="container">
                     <div className="row">
