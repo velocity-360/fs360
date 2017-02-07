@@ -122,7 +122,7 @@ class Tutorial extends Component {
 		return (
 
         <div>
-            <section className="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/sub_header_short_2.jpg" data-natural-width="1400" data-natural-height="350">
+            <section className="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
                 <div id="subheader">
                     <h1>{tutorial.title}</h1>
                 </div>
