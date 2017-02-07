@@ -58,7 +58,7 @@ class Home extends Component {
                                 <label>Email</label>
                                 <input type="text" className="form-control" id="email" placeholder="Email" />
                             </div>
-                            <button style={{height:36, borderRadius:18}} className="btn_1 white" id="submit-newsletter_2">Join</button>
+                            <button style={{height:36, borderRadius:18, marginBottom:24}} className="btn_1 white" id="submit-newsletter_2">Join</button>
                         </div>
                     </div>
                 </div>
