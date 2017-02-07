@@ -50,9 +50,12 @@ const welcome = (
                         <div className="room_desc_home">
                             <h3>Project Based Learning</h3>
                             <p>
-                                Our video tutorial series are based on full stack projects that incorporate all elements 
-                                of realistic sites: front end, back end, database, design, and UI. Further, all series 
-                                start from scratch.
+                                Our video tutorial series are based on full stack projects that incorporate elements 
+                                of realistic sites: front end, back end, database, design, and UI. Some of these projects are 
+                                actual sites (like <a target="_blank" style={{color:'red'}} href="http://thevarsity.co">this</a> one) 
+                                while others are full stack apps that demonstrate the usage of key tools and concepts such as 
+                                Google Maps, sending emails, image uploading and more. 
+                                a 
                             </p>
                             <ul>
                                 <li>
@@ -98,8 +101,11 @@ const welcome = (
                         <h3>Clear Explanations</h3>
                         <p>
                             We do not start a 'beginner' tutorial with several hundred files and lines of pre-scaffolded 
-                            code like so many other tutorials on the internet. Every series begins from step zero and goes 
-                            all the way to deployment.
+                            code like so many other tutorials on the internet like 
+                            <a target="_blank" style={{color:'red'}} href="https://www.youtube.com/watch?v=TSAw5f8mOQs"> this</a>. 
+                            Every series begins from step zero and goes all the way to deployment. Tutorials that begin with 
+                            pre-scaffolded code and setup may be helpful for some but we find that users miss basic fundamentals 
+                            when learning this way. Our tutorials start from the ground and work their way up to a fully functioning site.
                         </p>
                         <ul>
                             <li>
