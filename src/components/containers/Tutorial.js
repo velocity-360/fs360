@@ -138,7 +138,7 @@ class Tutorial extends Component {
                                     <li><a href="#overview" className="active">Overview</a></li>
                                     <li><a href="#units">Units</a></li>
                                     <li><a href="#downloads">Downloads</a></li>
-                                    <li><a href="#takeaway">Subscribe</a></li>
+                                    <li><a href="#subscribe">Subscribe</a></li>
                                 </ul>
                             </div>
                         </div>
