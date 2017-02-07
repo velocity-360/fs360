@@ -67,7 +67,7 @@ class FeaturedTutorials extends Component {
                         <div className="box_feat">
                         <img style={{padding:3, border:'1px solid #ddd', background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=96'} />
                             <h4>{tutorial.title}</h4>
-                            <p>{ TextUtils.truncateText(tutorial.description, 200) }</p>
+                            <p style={{height:130}}>{ TextUtils.truncateText(tutorial.description, 160) }</p>
                         </div>
                     </div>
 				)
