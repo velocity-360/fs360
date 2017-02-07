@@ -153,7 +153,7 @@ class Tutorial extends Component {
                 <div className="row">
                     <div className="col-md-9">
                         <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-                        <p>{tutorial.description}</p>
+                        <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                         <h4>Room facilities</h4>
                         <p>
                             Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. 
