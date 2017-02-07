@@ -247,22 +247,6 @@ const subscribed = (tutorial) => {
 const purchase = (tutorial, context) => {
     return (
         <div>
-            { (tutorial.price == 0) ? null : 
-                (
-                    <div className="col-md-6">
-                        <div className="box_style_3" id="general_facilities">
-                            <h3>Purchase</h3>
-                            <p>
-                                Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
-                                access to the forum where people post questions and answers. 
-                            </p>
-
-                            <button onClick={context.showStripeModal.bind(context, 'charge')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Purchase, ${tutorial.price}</button>
-                        </div>
-                    </div>
-                )
-            }
-
             <div className="col-md-6">
                 <div className="box_style_3" id="general_facilities">
                     <h3>Premium Membership</h3>
@@ -281,6 +265,23 @@ const purchase = (tutorial, context) => {
                     <button onClick={context.showStripeModal.bind(context, 'subscription')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Subscribe</button>
                 </div>
             </div>
+                    
+            { (tutorial.price == 0) ? null : 
+                (
+                    <div className="col-md-6">
+                        <div className="box_style_3" id="general_facilities">
+                            <h3>Purchase</h3>
+                            <p>
+                                Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
+                                access to the forum where people post questions and answers. 
+                            </p>
+
+                            <button onClick={context.showStripeModal.bind(context, 'charge')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Purchase, ${tutorial.price}</button>
+                        </div>
+                    </div>
+                )
+            }
+
         </div> 
     )
 }
