@@ -89,22 +89,15 @@ router.get('/account', function(req, res, next) {
 
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
+		if (currentUser == null){ // not logged in, redirect to home
+			res.redirect('/')
+			return
+		}
+
 		initialData['account'] = {currentUser: currentUser}
 		initialData['session'] = {selectedMenuItem: 'account'}
+//		return controllers.tutorial.find({subscribers: currentUser.id})
 		return controllers.tutorial.find({})
-
-		// initialState = store.configureStore(initialData)
-
-		// var routes = {
-		// 	path: '/account',
-		// 	component: serverapp,
-		// 	initial: initialState,
-		// 	indexRoute: {
-		// 		component: layout.Split
-		// 	}
-		// }
-
-		// return matchRoutes(req, routes)		
 	})
 	.then(function(tutorials){
 		var tutorialReducer = {
@@ -120,7 +113,7 @@ router.get('/account', function(req, res, next) {
 
 		initialState = store.configureStore(initialData)
 		var routes = {
-			path: '/',
+			path: '/account',
 			component: serverapp,
 			initial: initialState,
 			indexRoute: {
