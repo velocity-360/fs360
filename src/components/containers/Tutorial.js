@@ -137,7 +137,7 @@ class Tutorial extends Component {
                                 <ul id="cat_nav">
                                     <li><a href="#overview" className="active">Overview</a></li>
                                     <li><a href="#units">Units</a></li>
-                                    <li><a href="#files">Files</a></li>
+                                    <li><a href="#downloads">Downloads</a></li>
                                     <li><a href="#takeaway">Subscribe</a></li>
                                 </ul>
                             </div>
@@ -186,9 +186,9 @@ class Tutorial extends Component {
                         </div>
 
 
-                        <h3 className="nomargin_top">Files</h3>
+                        <h3 className="nomargin_top">Downloads</h3>
                         <hr />
-                        <div className="panel-group" id="files">
+                        <div className="panel-group" id="downloads">
                             <div className="row">
                                 <div className="col-md-9">
                                     <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
@@ -265,7 +265,7 @@ const purchase = (tutorial, context) => {
                     <button onClick={context.showStripeModal.bind(context, 'subscription')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Subscribe</button>
                 </div>
             </div>
-                    
+
             { (tutorial.price == 0) ? null : 
                 (
                     <div className="col-md-6">
