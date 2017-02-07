@@ -89,10 +89,10 @@ router.get('/account', function(req, res, next) {
 
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
-		if (currentUser == null){ // not logged in, redirect to home
-			res.redirect('/')
-			return
-		}
+		// if (currentUser == null){ // not logged in, redirect to home
+		// 	res.redirect('/')
+		// 	return
+		// }
 
 		initialData['account'] = {currentUser: currentUser}
 		initialData['session'] = {selectedMenuItem: 'account'}
@@ -117,7 +117,7 @@ router.get('/account', function(req, res, next) {
 			component: serverapp,
 			initial: initialState,
 			indexRoute: {
-				component: layout.Home
+				component: layout.Split
 			}
 		}
 

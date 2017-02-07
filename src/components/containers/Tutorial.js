@@ -120,94 +120,93 @@ class Tutorial extends Component {
             units = <h3 style={styles.title}>Preview</h3>
 
 		return (
-
-        <div>
-            <section className="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
-                <div id="subheader">
-                    <h1>{tutorial.title}</h1>
-                </div>
-            </section>
-
-            <div className="container margin_60_35">
-                <div className="row">
-                
-                    <div className="col-md-3" id="sidebar">
-                        <div className="theiaStickySidebar">
-                            <div id="faq_box">
-                                <ul id="cat_nav">
-                                    <li><a href="#overview" className="active">Overview</a></li>
-                                    <li><a href="#units">Units</a></li>
-                                    <li><a href="#downloads">Downloads</a></li>
-                                    <li><a href="#subscribe">Subscribe</a></li>
-                                </ul>
-                            </div>
-                        </div>
+            <div>
+                <section className="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
+                    <div id="subheader">
+                        <h1>{tutorial.title}</h1>
                     </div>
+                </section>
+
+                <div className="container margin_60_35">
+                    <div className="row">
                     
-                    <div className="col-md-9">
-                        <h3 className="nomargin_top">Overview</h3>
-                        <hr />
-
-                        <div className="panel-group" id="overview">
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-                                    <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 className="nomargin_top">Units</h3>
-                        <hr />
-                        <div className="panel-group" id="units">
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <ul id="policies">
-                                        { tutorial.posts.map((post, i) => {
-                                                let youtube = null
-                                                if (post.youtube != null)
-                                                    youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
-                                                
-                                                return (
-                                                    <li key={i}>
-                                                        <i className="icon-video-5"></i>
-                                                        <h5>{post.title}</h5>
-                                                        <p>{post.description}</p>
-                                                        { youtube }
-                                                    </li>
-                                                )
-                                            })
-                                        }
-
+                        <div className="col-md-3" id="sidebar">
+                            <div className="theiaStickySidebar">
+                                <div id="faq_box">
+                                    <ul id="cat_nav">
+                                        <li><a href="#overview" className="active">Overview</a></li>
+                                        <li><a href="#units">Units</a></li>
+                                        <li><a href="#downloads">Downloads</a></li>
+                                        <li><a href="#subscribe">Subscribe</a></li>
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
+                        
+                        <div className="col-md-9">
+                            <h3 className="nomargin_top">Overview</h3>
+                            <hr />
 
-
-                        <h3 className="nomargin_top">Downloads</h3>
-                        <hr />
-                        <div className="panel-group" id="downloads">
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
+                            <div className="panel-group" id="overview">
+                                <div className="row">
+                                    <div className="col-md-9">
+                                        <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                                        <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <h3 className="nomargin_top">Subscribe</h3>
-                        <hr />
-                        <div className="panel-group" id="subscribe">
-                            <div className="row">
-                                {cta}
+                            <h3 className="nomargin_top">Units</h3>
+                            <hr />
+                            <div className="panel-group" id="units">
+                                <div className="row">
+                                    <div className="col-md-9">
+                                        <ul id="policies">
+                                            { tutorial.posts.map((post, i) => {
+                                                    let youtube = null
+                                                    if (post.youtube != null)
+                                                        youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
+                                                    
+                                                    return (
+                                                        <li key={i}>
+                                                            <i className="icon-video-5"></i>
+                                                            <h5>{post.title}</h5>
+                                                            <p>{post.description}</p>
+                                                            { youtube }
+                                                        </li>
+                                                    )
+                                                })
+                                            }
+
+                                        </ul>
+
+                                    </div>
+                                </div>
                             </div>
+
+
+                            <h3 className="nomargin_top">Downloads</h3>
+                            <hr />
+                            <div className="panel-group" id="downloads">
+                                <div className="row">
+                                    <div className="col-md-9">
+                                        <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 className="nomargin_top">Subscribe</h3>
+                            <hr />
+                            <div className="panel-group" id="subscribe">
+                                <div className="row">
+                                    {cta}
+                                </div>
+                            </div>
+                                
                         </div>
-                            
                     </div>
-                </div>
-            </div>  
-        </div>
+                </div>  
+            </div>
 
 		)
 	}
