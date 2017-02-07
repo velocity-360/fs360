@@ -21,104 +21,181 @@ export default (props) => {
 }
 
 const header = (
-    <section className="image-slider slider-all-controls parallax controls-inside pt0 pb0">
-        <ul className="slides">
-            <li className="overlay image-bg pt160 pb160 pt-xs-120 pb-xs-120">
-                <div className="background-image-holder">
-                    <img alt="image" className="background-image" src="/img/girl.jpg" />
-                </div>
-                <div className="container">
-                    <div className="row text-center">
-                        <div className="col-md-12">
-                            <h2 className="mb40 uppercase">Learn Full<br />Stack Development</h2>
-                            <a className="btn btn-lg" href="#welcome">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </section>
+    <div className="parallax-window" id="booking" data-parallax="scroll" data-image-src="/img/girl.jpg" data-natural-width="1400" data-natural-height="550">
+        <div className="promo_full_wp">
+            <div style={{paddingTop:164}}>
+                <h3>
+                    Learn Full Stack Development
+                    <span>Real World Node, React, and Redux Projects</span>
+                </h3>
+                <button className="btn_1 white">Learn More</button>
+            </div>
+        </div>
+    </div>
 )
 
 const welcome = (
-    <section style={{backgroundColor: '#f9f9f9'}} id="welcome">
-        <div className="container">
-            <div className="row v-align-children">
-                <div className="col-sm-5">
-                    <h3>Project Based Learning</h3>
-                    <p className="lead mb40" style={{fontWeight:100}}>
-                        Our video tutorial series are based on full stack projects that incorporate all elements 
-                        of realistic sites: front end, back end, database, design, and UI. Further, all series 
-                        start from scrath.
-                        <br /><br />
-                        We do not start a 'beginner' tutorial with several hundred files and lines 
-                        of pre-scaffolded code like so many other tutorials on the internet. Every series begins from 
-                        step zero and goes all the way to deployment.
-                    </p>
-                    <div className="overflow-hidden mb16 mb-xs-24">
-                        <span style={{fontWeight:800, fontSize:18+'px'}}>&#10003;</span>
-                        <h6 className="uppercase mb0 inline-block p32">All Inclusive Package</h6>
+    <div>
+        <div className="container_styled_1">
+            <div className="container margin_60">
+                <div className="row">
+                    <div className="col-md-5 col-md-offset-1">
+                        <figure className="room_pic">
+                            <a href="#">
+                                <img src="/img/room_home_1.jpg" alt="Velocity 360" className="img-responsive" />
+                            </a>
+                        </figure>
                     </div>
-                    <div className="overflow-hidden mb16 mb-xs-24">
-                        <span style={{fontWeight:800, fontSize:18+'px'}}>&#10003;</span>
-                        <h6 className="uppercase mb0 inline-block p32">Foundry Club Access</h6>
-                    </div>
-                    <div className="overflow-hidden mb16 mb-xs-24">
-                        <span style={{fontWeight:800, fontSize:18+'px'}}>&#10003;</span>
-                        <h6 className="uppercase mb0 inline-block p32">Foundry Club Access</h6>
-                    </div>
-                </div>
-                <div className="col-md-4 col-sm-6">
-                    <div className="pricing-table pt-1 text-center emphasis" style={{border:'1px solid #ddd'}}>
-                        <h5 className="uppercase">All Access</h5>
-                        <span className="price">$19.99</span>
-                        <p className="lead">Per Month</p>
-                        <a className="btn btn-white btn-lg" href="#">Join</a>
-                        <p>
-                            Gain access to all tutorials, code samples and online forums for help and feedback for 
-                            $19.99 each month. There is no long term commitment.
-                        </p>
+                    <div className="col-md-4 col-md-offset-1">
+                        <div className="room_desc_home">
+                            <h3>Project Based Learning</h3>
+                            <p>
+                                Our video tutorial series are based on full stack projects that incorporate all elements 
+                                of realistic sites: front end, back end, database, design, and UI. Further, all series 
+                                start from scratch.
+                            </p>
+                            <ul>
+                                <li>
+                                <div className="tooltip_styled tooltip-effect-4">
+                                    <span className="tooltip-item"><i className="icon-video-5"></i></span>
+                                    <div className="tooltip-content">
+                                        Detailed Videos
+                                    </div>
+                                </div>
+                                </li>
+                                <li>
+                                <div className="tooltip_styled tooltip-effect-4">
+                                    <span className="tooltip-item"><i className="icon-download-cloud"></i></span>
+                                    <div className="tooltip-content">
+                                        Download Source Code
+                                    </div>
+                                </div>
+                                </li>
+                                <li>
+                                <div className="tooltip_styled tooltip-effect-4">
+                                    <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
+                                    <div className="tooltip-content">
+                                        Plasma TV
+                                    </div>
+                                </div>
+                                </li>
+                            </ul>
+                            <a href="#0" className="btn_1_outline">Read more</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div className="container margin_60">
+            <div className="row">
+                <div className="col-md-5 col-md-offset-1 col-md-push-5">
+                    <figure className="room_pic left">
+                        <a href="#"><img src="/img/room_home_3.jpg" alt="Velocity 360" className="img-responsive" /></a>
+                    </figure>
+                </div>
+                <div className="col-md-4 col-md-offset-1 col-md-pull-6">
+                    <div className="room_desc_home">
+                        <h3>Clear Explanations</h3>
+                        <p>
+                            We do not start a 'beginner' tutorial with several hundred files and lines of pre-scaffolded 
+                            code like so many other tutorials on the internet. Every series begins from step zero and goes 
+                            all the way to deployment.
+                        </p>
+                        <ul>
+                            <li>
+                            <div className="tooltip_styled tooltip-effect-4">
+                                <span className="tooltip-item"><i className="icon_set_2_icon-104"></i></span>
+                                <div className="tooltip-content">
+                                    King size bed
+                                </div>
+                            </div>
+                            </li>
+                            <li>
+                            <div className="tooltip_styled tooltip-effect-4">
+                                <span className="tooltip-item"><i className="icon_set_2_icon-111"></i></span>
+                                <div className="tooltip-content">
+                                    Bathtub
+                                </div>
+                            </div>
+                            </li>
+                            <li>
+                            <div className="tooltip_styled tooltip-effect-4">
+                                <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
+                                <div className="tooltip-content">
+                                    Plasma TV
+                                </div>
+                            </div>
+                            </li>
+                            <li>
+                            <div className="tooltip_styled tooltip-effect-4">
+                                <span className="tooltip-item"><i className="icon_set_2_icon-106"></i></span>
+                                <div className="tooltip-content">
+                                    Safe box
+                                </div>
+                            </div>
+                            </li>
+                        </ul>
+                        <a href="#0" className="btn_1_outline">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 )
 
 const testimonials = (
-    <section className="pt96 bg-secondary">
-        <div className="container">
-            <div className="row mb64 mb-xs-24">
-                <div className="col-sm-12 col-md-10 col-md-offset-1 text-center">
-                    <h2 className="mb40 uppercase">Bold, Vibrant, You.</h2>
-                </div>
-            </div>
-            <div className="row masonry masonryFlyIn">
-                <div className="col-md-4 col-sm-12 masonry-item mb30">
-                    <div className="boxed feature mb0">
-                        <i className="icon ti-infinite color-primary inline-block mb0"></i>
-                        <h6 className="uppercase color-primary">Layout Possibilities</h6>
-                        <p>
-                            With tons of purpose-built content blocks, colors and fonts, Foundry presents a mind-boggling number of combinations. Test drive the builder now!
-                        </p>
-                    </div>
-                </div>
-                <div className="col-md-4 masonry-item mb30">
-                    <div className="boxed feature mb0">
-                        <i className="icon ti-infinite color-primary inline-block mb0"></i>
-                        <h6 className="uppercase color-primary">Layout Possibilities</h6>
-                        <p>
-                            With tons of purpose-built content blocks, colors and fonts, Foundry presents a mind-boggling number of combinations. Test drive the builder now!
-                        </p>
-                    </div>
-                </div>
-                <div className="col-md-4 masonry-item mb30">
-                    <div className="boxed feature mb0">
-                        <i className="icon ti-infinite color-primary inline-block mb0"></i>
-                        <h6 className="uppercase color-primary">Layout Possibilities</h6>
-                        <p>
-                            With tons of purpose-built content blocks, colors and fonts, Foundry presents a mind-boggling number of combinations. Test drive the builder now!
-                        </p>
+    <section className="promo_full" style={{background: 'url(/img/rooftop.jpg) no-repeat center center'}}>
+        <div className="promo_full_wp">
+            <div>
+                <h3>
+                    Testimonials
+                    <span>Id tale utinam ius, an mei omnium recusabo iracundia.</span>
+                </h3>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 col-md-offset-2">
+                            <div className="carousel_testimonials">
+                            
+                                <div>
+                                    <div className="box_overlay">
+                                        <div className="pic">
+                                            <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
+                                            <h4>Roberta<small>12 October 2015</small></h4>
+                                        </div>
+                                        <div className="comment">
+                                            "Mea ad postea meliore fuisset. Timeam repudiare id eum, ex paulo dictas elaboraret sed, mel cu unum nostrud. No nam indoctum accommodare, vix ei discere civibus philosophia. Vis ea dicant diceret ocurreret."
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div className="box_overlay">
+                                        <div className="pic">
+                                            <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
+                                            <h4>Roberta<small>13 October 2015</small></h4>
+                                        </div>
+                                        <div className="comment">
+                                            "Mea ad postea meliore fuisset. Timeam repudiare id eum, ex paulo dictas elaboraret sed, mel cu unum nostrud. No nam indoctum accommodare, vix ei discere civibus philosophia. Vis ea dicant diceret ocurreret."
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div className="box_overlay">
+                                        <div className="pic">
+                                            <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
+                                            <h4>Roberta<small>14 October 2015</small></h4>
+                                        </div>
+                                        <div className="comment">
+                                            "Mea ad postea meliore fuisset. Timeam repudiare id eum, ex paulo dictas elaboraret sed, mel cu unum nostrud. No nam indoctum accommodare, vix ei discere civibus philosophia. Vis ea dicant diceret ocurreret."
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

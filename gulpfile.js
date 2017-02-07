@@ -22,15 +22,11 @@ gulp.task('es6-es5', function(){
 
 gulp.task('css', function(){
     return gulp.src(
-            [
-                './public/css/bootstrap.css',
-                './public/css/themify-icons.css',
-                './public/css/flexslider.css',
-                './public/css/lightbox.min.css',
-                './public/css/ytplayer.css',
-                './public/css/theme-gunmetal.css',
-                './public/css/custom.css',
-                './public/css/google-fonts.css',
+            [            
+                './public/css/base.css',
+                './public/css/DateTimePicker.css',
+                './public/css/owl.carousel.css',
+                './public/css/owl.theme.default.css'
             ]
         )
         .pipe(minifyCSS())
@@ -41,9 +37,9 @@ gulp.task('css', function(){
 
 gulp.task('copy-fonts', function(){
     return gulp.src(
-            ['./public/fonts/**']
+            ['./public/css/fontello/**']
         )
-        .pipe(gulp.dest('./public/dist/fonts/'))
+        .pipe(gulp.dest('./public/dist/css/fontello/'))
 })
 
 gulp.task('copy-lightbox', function(){
@@ -53,23 +49,17 @@ gulp.task('copy-lightbox', function(){
         .pipe(gulp.dest('./public/dist/img/lightbox/'))
 })
 
-gulp.task('copy', ['copy-fonts', 'copy-lightbox'], function(){})
+//gulp.task('copy', ['copy-fonts', 'copy-lightbox'], function(){})
+gulp.task('copy', ['copy-fonts'], function(){})
 
 
 gulp.task('build', function(){
     return gulp.src(
     		[
-				'./public/js/jquery.min.js',
-                './public/js/bootstrap.min.js',
-                './public/js/flexslider.min.js',
-                './public/js/lightbox.min.js',
-                './public/js/masonry.min.js',
-                './public/js/spectragram.min.js',
-                './public/js/ytplayer.min.js',
-                './public/js/countdown.min.js',
-                './public/js/smooth-scroll.min.js',
-                './public/js/parallax.js',
-                './public/js/scripts.js',
+				'./public/js/jquery-1.11.2.min.js',
+                './public/js/common_scripts_min.js',
+                './public/js/functions.js',
+                './public/js/DateTimePicker.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))

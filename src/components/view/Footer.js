@@ -3,41 +3,54 @@ import React, { Component } from 'react'
 export default (props) => {
 
 	return (
-        <section className="pt40 pb40 bg-dark">
+         <footer >
             <div className="container">
                 <div className="row">
-                    <div className="col-md-3 col-sm-3 text-center">
-                        <img alt="Logo" style={{maxWidth:120}} className="logo" src="/img/logo-light.png" />
+                    <div className="col-md-4 col-sm-12">
+                        <h1 style={{fontFamily:'Pathway Gothic One', color:'#fff'}}>Velocity 360</h1>
+                        <ul id="contact_details_footer">
+                            <li>
+                                www.velocity360.io
+                                <br />katrina@velocity360.io
+                            </li>
+                        </ul>  
                     </div>
-
-                    <div className="col-sm-3 text-center pt8">
-                        <ul className="list-inline social-list">
-                            <li>
-                                <a href="#">
-                                    <i className="ti-twitter-alt icon icon-sm"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://www.facebook.com/Velocity-360-1631852427085987/?ref=bookmarks">
-                                    <i className="ti-facebook icon icon-sm"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://www.youtube.com/channel/UCf5CgGVs6zEq6DUtyFw9e-Q/videos">
-                                    <i className="ti-youtube icon icon-sm"></i>
-                                </a>
-                            </li>
+                    <div className="col-md-4 col-sm-4">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Account</a></li>
                         </ul>
-                    </div>
-                    <div className="col-sm-6">
-                        <form className="form-newsletter halves" data-success="Thanks for your registration, we will be in touch shortly." data-error="Please fill all fields correctly.">
-                            <input type="text" name="email" className="mb24" placeholder="Email Address" />
-                            <button type="submit" className="mb24">Join Newsletter</button>
+                    </div>                
+                    <div className="col-md-4 col-sm-4"  id="newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Join our newsletter to keep be informed about offers and news.</p>
+                        <div id="message-newsletter_2"></div>
+                        <form method="post" action="assets/newsletter.php" name="newsletter_2" id="newsletter_2">
+                            <div className="form-group">
+                                <input type="text" placeholder="Name" className="form-control" /><br />
+                                <input type="text" placeholder="Email" className="form-control" />
+                            </div>
+                            <input type="submit" value="Subscribe" className="btn_1 white" id="submit-newsletter_2" />
                         </form>
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div id="social_footer">
+                            <ul>
+                                <li><a href="#"><i className="icon-facebook"></i></a></li>
+                                <li><a href="#"><i className="icon-twitter"></i></a></li>
+                                <li><a href="#"><i className="icon-youtube-play"></i></a></li>
+                            </ul>
+                            <p>&copy; 2017. Velocity 360</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </footer>
+
 	)
 
 }

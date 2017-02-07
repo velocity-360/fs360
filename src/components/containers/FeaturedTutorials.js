@@ -63,57 +63,32 @@ class FeaturedTutorials extends Component {
 		if (this.props.tutorials != null){
 			list = this.props.tutorials.map((tutorial, i) => {
 				return (
-                    <div key={tutorial.id}>
-                        <div className="overflow-hidden">
-                            <div className="row">
-                                <div className="col-md-10">
-                                    <div className="inline-block pull-left">
-                                        <h6 className="uppercase mb0 mt0 number">{ tutorial.posts.length } Units | { (tutorial.price == 0) ? 'Free' : '$'+tutorial.price}</h6>
-                                        <a style={{color:'#333'}} href={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ tutorial.title }</h4></a>
-                                        <p className="mb0 mt24">
-                                            { TextUtils.truncateText(tutorial.description, 250) }
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="col-md-2 pull-right">
-                                    <img alt="Pic" style={{maxWidth:90, border:'1px solid #ddd'}} className="mb24 pull-left" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=120'} />
-                                </div>
-                            </div>
-                            <div className="inline-block pull-right pt24 pt-xs-24">
-                                <a href={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">View Tutorial</a>
-                            </div>
+                    <div key={tutorial.id} className="col-md-4 col-sm-4">
+                        <div className="box_feat">
+                        <img style={{padding:3, border:'1px solid #ddd', background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=96'} />
+                            <h4>{tutorial.title}</h4>
+                            <p>{tutorial.description}</p>
                         </div>
-                        <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />
                     </div>
 				)
 			})
 		}
 
 		return (
-			<div className="container" id="tutorials">
-                <div className="row mb0 mb-xs-24">
-                    <div className="col-sm-12 text-center">
-                        <h3>Featured Tutorials</h3>
-                    </div>
-                </div>
+            <div className="container_styled_1">
+                <div className="container margin_60">
+                    <h2 className="main_title" style={{fontFamily:'Pathway Gothic One'}}>
+                        Tutorials
+                    </h2>
 
-                <div className="row">
-                    <div className="col-md-8 col-md-offset-2">
+                    <div className="row">
                         { list }
                     </div>
-                </div>
 
-                <div className="row">
-                    <div className="container">
-                        <div className="row text-center">
-                            <div className="col-md-12">
-                                <a className="btn btn-lg" href="#">Explore Tutorials</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
             </div>
+
+
 		)
 	}
 }

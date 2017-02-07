@@ -107,10 +107,37 @@ export default (props) => {
     }
 
     return (
-            <div className="nav-container">
-                {nav}
+        <header>
+            <div className="container">
+                <div className="row">
+                    <div className="col--md-3 col-sm-3 col-xs-3">
+                        <a href="/" id="logo">
+                            <h2 style={{fontFamily:'Pathway Gothic One', marginTop:6}}>Velocity 360</h2>
+                        </a>
+                    </div>
+                    <nav className="col--md-9 col-sm-9 col-xs-9">
+                    <a className="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+                    <div className="main-menu">
+                        <div id="header_menu">
+                             <img src="/img/logo_m.png" width="141" height="40" alt="Velocity 360" data-retina="true" />
+                        </div>
+                        <a href="#" className="open_close" id="close_in"><i className="icon_set_1_icon-77"></i></a>
+                         <ul>
+                            <li><a href="/">Home</a></li>
+                            <li className="submenu">
+                                <a href="javascript:void(0);" className="show-submenu">Courses<i className="icon-down-open-mini"></i></a>
+                                <ul>
+                                    <li><a href="index.html">Home Booking</a></li>
+                                    <li><a href="index_5.html">Home Booking date 2</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/">Login</a></li>
+                        </ul>
+                    </div>
+                    </nav>
+                </div>
             </div>
-
+        </header>
     )
 
 }
