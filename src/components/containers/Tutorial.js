@@ -123,7 +123,7 @@ class Tutorial extends Component {
             <section>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-9 mb-xs-24">
+                        <div className="col-md-8 col-md-offset-2 mb-xs-24">
                             <div className="post-snippet mb64">
                                 <img className="mb24" style={{border:'1px solid #ddd', width:260}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
                                 <div className="post-title">
@@ -169,34 +169,6 @@ class Tutorial extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-3 hidden-sm">
-                            <div className="widget">
-                                <h6 className="title">Account</h6>
-                                <hr />
-                                Receive updates for new tutorials or courses:
-                                <input style={localStyle.input} className="mb0" type="text" placeholder="Full Name" />
-                                <input style={localStyle.input} className="mb0" type="text" placeholder="Email" />
-                                <input style={localStyle.input} className="mb0" type="password" placeholder="Password" />
-                            </div>
-                            <div className="widget">
-                                <h6 className="title">Recent Posts</h6>
-                                <hr />
-                                <ul className="link-list recent-posts">
-                                    <li>
-                                        <a href="#">A simple image post for starters</a>
-                                        <span className="date">September 23, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">An audio post for good measure</a>
-                                        <span className="date">September 19, 2015</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">A thoguhtful blockquote post on life</a>
-                                        <span className="date">September 07, 2015</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
 
 
