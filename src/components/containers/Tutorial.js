@@ -137,8 +137,8 @@ class Tutorial extends Component {
                                 <ul id="cat_nav">
                                     <li><a href="#overview" className="active">Overview</a></li>
                                     <li><a href="#units">Units</a></li>
-                                    <li><a href="#delay">Delivery delay</a></li>
-                                    <li><a href="#takeaway">Takeaway</a></li>
+                                    <li><a href="#files">Files</a></li>
+                                    <li><a href="#takeaway">Subscribe</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -153,28 +153,9 @@ class Tutorial extends Component {
                                 <div className="col-md-9">
                                     <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
                                     <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
-                                    <div className="row">
-                                        <div className="col-md-4 col-sm-4">
-                                            <ul className="list_ok">
-                                                <li>Coffee machine</li>
-                                                <li>Wifi</li>
-                                                <li>Microwave</li>
-                                                <li>Oven</li>
-                                            </ul>
-                                        </div>
-                                        <div className="col-md-4 col-sm-4">
-                                            <ul className="list_ok">
-                                                <li>Fridge</li>
-                                                <li>Hairdryer</li>
-                                                <li>Towels</li>
-                                                <li>Toiletries</li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-
 
                         <h3 className="nomargin_top">Units</h3>
                         <hr />
@@ -205,9 +186,9 @@ class Tutorial extends Component {
                         </div>
 
 
-                        <h3 className="nomargin_top">Delivery Delay</h3>
+                        <h3 className="nomargin_top">Files</h3>
                         <hr />
-                        <div className="panel-group" id="delay">
+                        <div className="panel-group" id="files">
                             <div className="row">
                                 <div className="col-md-9">
                                     <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
@@ -215,9 +196,9 @@ class Tutorial extends Component {
                             </div>
                         </div>
 
-                        <h3 className="nomargin_top">Takeaway</h3>
+                        <h3 className="nomargin_top">Subscribe</h3>
                         <hr />
-                        <div className="panel-group" id="takeaway">
+                        <div className="panel-group" id="subscribe">
                             <div className="row">
                                 <div className="col-md-9">
                                     <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
