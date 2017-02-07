@@ -28,7 +28,7 @@ const header = (
                     Learn Full Stack Development
                     <span>Real World Node, React, and Redux Projects</span>
                 </h3>
-                <button className="btn_1 white">Learn More</button>
+                <button style={{height:36, borderRadius:18}} className="btn_1 white">Learn More</button>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@ const welcome = (
                     <div className="col-md-5 col-md-offset-1">
                         <figure className="room_pic">
                             <a href="#">
-                                <img src="/img/room_home_1.jpg" alt="Velocity 360" className="img-responsive" />
+                                <img src="/img/react-node.jpg" alt="Velocity 360" className="img-responsive" />
                             </a>
                         </figure>
                     </div>
@@ -56,31 +56,30 @@ const welcome = (
                             </p>
                             <ul>
                                 <li>
-                                <div className="tooltip_styled tooltip-effect-4">
-                                    <span className="tooltip-item"><i className="icon-video-5"></i></span>
-                                    <div className="tooltip-content">
-                                        Detailed Videos
+                                    <div className="tooltip_styled tooltip-effect-4">
+                                        <span className="tooltip-item"><i className="icon-video-5"></i></span>
+                                        <div className="tooltip-content">
+                                            Detailed Videos
+                                        </div>
                                     </div>
-                                </div>
                                 </li>
                                 <li>
-                                <div className="tooltip_styled tooltip-effect-4">
-                                    <span className="tooltip-item"><i className="icon-download-cloud"></i></span>
-                                    <div className="tooltip-content">
-                                        Download Source Code
+                                    <div className="tooltip_styled tooltip-effect-4">
+                                        <span className="tooltip-item"><i className="icon-download-cloud"></i></span>
+                                        <div className="tooltip-content">
+                                            Download Source Code
+                                        </div>
                                     </div>
-                                </div>
                                 </li>
                                 <li>
-                                <div className="tooltip_styled tooltip-effect-4">
-                                    <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
-                                    <div className="tooltip-content">
-                                        Plasma TV
+                                    <div className="tooltip_styled tooltip-effect-4">
+                                        <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
+                                        <div className="tooltip-content">
+                                            Plasma TV
+                                        </div>
                                     </div>
-                                </div>
                                 </li>
                             </ul>
-                            <a href="#0" className="btn_1_outline">Read more</a>
                         </div>
                     </div>
                 </div>
@@ -91,7 +90,7 @@ const welcome = (
             <div className="row">
                 <div className="col-md-5 col-md-offset-1 col-md-push-5">
                     <figure className="room_pic left">
-                        <a href="#"><img src="/img/room_home_3.jpg" alt="Velocity 360" className="img-responsive" /></a>
+                        <a href="#"><img src="/img/girls.jpg" alt="Velocity 360" className="img-responsive" /></a>
                     </figure>
                 </div>
                 <div className="col-md-4 col-md-offset-1 col-md-pull-6">
@@ -104,39 +103,30 @@ const welcome = (
                         </p>
                         <ul>
                             <li>
-                            <div className="tooltip_styled tooltip-effect-4">
-                                <span className="tooltip-item"><i className="icon_set_2_icon-104"></i></span>
-                                <div className="tooltip-content">
-                                    King size bed
+                                <div className="tooltip_styled tooltip-effect-4">
+                                    <span className="tooltip-item"><i className="icon_set_2_icon-104"></i></span>
+                                    <div className="tooltip-content">
+                                        King size bed
+                                    </div>
                                 </div>
-                            </div>
                             </li>
                             <li>
-                            <div className="tooltip_styled tooltip-effect-4">
-                                <span className="tooltip-item"><i className="icon_set_2_icon-111"></i></span>
-                                <div className="tooltip-content">
-                                    Bathtub
+                                <div className="tooltip_styled tooltip-effect-4">
+                                    <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
+                                    <div className="tooltip-content">
+                                        Plasma TV
+                                    </div>
                                 </div>
-                            </div>
                             </li>
                             <li>
-                            <div className="tooltip_styled tooltip-effect-4">
-                                <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
-                                <div className="tooltip-content">
-                                    Plasma TV
+                                <div className="tooltip_styled tooltip-effect-4">
+                                    <span className="tooltip-item"><i className="icon_set_2_icon-106"></i></span>
+                                    <div className="tooltip-content">
+                                        Safe box
+                                    </div>
                                 </div>
-                            </div>
-                            </li>
-                            <li>
-                            <div className="tooltip_styled tooltip-effect-4">
-                                <span className="tooltip-item"><i className="icon_set_2_icon-106"></i></span>
-                                <div className="tooltip-content">
-                                    Safe box
-                                </div>
-                            </div>
                             </li>
                         </ul>
-                        <a href="#0" className="btn_1_outline">Read more</a>
                     </div>
                 </div>
             </div>
