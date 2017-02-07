@@ -250,15 +250,15 @@ const purchase = (tutorial, context) => {
             { (tutorial.price == 0) ? null : 
                 (
                     <div className="col-md-6">
-                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                            <h4 style={styles.title}>Purchase</h4>
+                        <div className="box_style_3" id="general_facilities">
+                            <h3>Purchase</h3>
+                            <p>
+                                Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
+                                access to the forum where people post questions and answers. 
+                            </p>
+
+                            <button onClick={context.showStripeModal.bind(context, 'charge')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Purchase, ${tutorial.price}</button>
                         </div>
-                        <p style={styles.paragraph}>
-                            Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
-                            access to the forum where people post questions and answers. 
-                            <br /><br />
-                        </p>
-                        <a onClick={context.showStripeModal.bind(context, 'charge')} className="btn btn-lg" href="#">Purchase, ${tutorial.price}</a>
                     </div>
                 )
             }
