@@ -69,7 +69,7 @@ class FeaturedTutorials extends Component {
                                 <div className="col-md-10">
                                     <div className="inline-block pull-left">
                                         <h6 className="uppercase mb0 mt0 number">{ tutorial.posts.length } Units | { (tutorial.price == 0) ? 'Free' : '$'+tutorial.price}</h6>
-                                        <Link style={{color:'#333'}} to={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ tutorial.title }</h4></Link>
+                                        <a style={{color:'#333'}} href={'/tutorial/'+tutorial.slug}><h4 className="mb0 mt0">{ tutorial.title }</h4></a>
                                         <p className="mb0 mt24">
                                             { TextUtils.truncateText(tutorial.description, 250) }
                                         </p>
@@ -80,7 +80,7 @@ class FeaturedTutorials extends Component {
                                 </div>
                             </div>
                             <div className="inline-block pull-right pt24 pt-xs-24">
-                                <Link to={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">View Tutorial</Link>
+                                <a href={'/tutorial/'+tutorial.slug} className="btn btn-lg" role="button">View Tutorial</a>
                             </div>
                         </div>
                         <hr className="mt40 mb40 mt-xs-0 mb-xs-24" />

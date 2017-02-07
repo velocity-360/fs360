@@ -40,7 +40,17 @@ export default (props) => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="/account">Login</a></li>
+                                <li className="modal-container">
+                                    <a className="btn-modal" href="#">
+                                        Login
+                                    </a>
+                                    <div className="foundry_modal text-center">
+                                        <h3 className="uppercase">Login</h3>
+                                        <input type="text" name="email" className="mb12 signup-email-field" placeholder="Email" />
+                                        <input type="text" name="email" className="mb12 signup-email-field" placeholder="Password" />
+                                        <button type="submit" className="btn-white mb0">Submit</button>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         
@@ -76,8 +86,18 @@ export default (props) => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a style={{color:'#fff'}} href="/account">Login</a></li>
-                                
+                                <li className="modal-container">
+                                    <a style={{color:'#fff'}} className="btn-modal" href="#">
+                                        Login
+                                    </a>
+                                    <div className="foundry_modal text-center">
+                                        <h3 className="uppercase">Login</h3>
+                                        <input type="text" name="email" className="mb12 signup-email-field" placeholder="Email" />
+                                        <input type="text" name="email" className="mb12 signup-email-field" placeholder="Password" />
+                                        <button type="submit" className="btn-white mb0">Submit</button>
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -86,7 +106,13 @@ export default (props) => {
         )
     }
 
-	return  <div className="nav-container">{nav}</div>
+    return (
+            <div className="nav-container">
+                {nav}
+            </div>
+
+    )
+
 }
 
 const localStyle = {

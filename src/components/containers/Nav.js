@@ -94,7 +94,30 @@ class Nav extends Component {
 	        )
 	    }
 
-		return  <div className="nav-container">{nav}</div>
+		return (
+			<div className="nav-container">
+				{nav}
+
+
+							<div className="modal-container">
+                                <a className="btn btn-lg btn-modal" href="#">
+                                    <i className="ti-layout-menu-v"></i> Signup Form
+                                </a>
+                                <div className="foundry_modal text-center">
+                                    <h3 className="uppercase">Sign Up & Be Cool.</h3>
+                                    <p className="lead mb48">
+                                        Stay in the loop with our awesome newsletter. Well send you monthly
+                                        <br /> updates of our latest and greatest tools and resources.
+                                    </p>
+                                    <input type="text" name="email" className="mb0 signup-email-field" placeholder="Email Address" />
+                                    <button type="submit" className="btn-white mb0">Keep Me Informed</button>
+                                </div>
+                            </div>
+
+			</div>
+
+
+		)
 	}
 }
 
