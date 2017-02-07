@@ -148,162 +148,82 @@ class Tutorial extends Component {
                         <h3 className="nomargin_top">Overview</h3>
                         <hr />
 
-                            <div className="panel-group" id="overview">
-
-                <div className="row">
-                    <div className="col-md-9">
-                        <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
-                        <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
-                        <h4>Room facilities</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. 
-                            Sit cu detraxit constituam, an mel iudico constituto efficiendi.
-                        </p>
-                        <div className="row">
-                            <div className="col-md-4 col-sm-4">
-                                <ul className="list_ok">
-                                    <li>Coffee machine</li>
-                                    <li>Wifi</li>
-                                    <li>Microwave</li>
-                                    <li>Oven</li>
-                                </ul>
-                            </div>
-                            <div className="col-md-4 col-sm-4">
-                                <ul className="list_ok">
-                                    <li>Fridge</li>
-                                    <li>Hairdryer</li>
-                                    <li>Towels</li>
-                                    <li>Toiletries</li>
-                                </ul>
+                        <div className="panel-group" id="overview">
+                            <div className="row">
+                                <div className="col-md-9">
+                                    <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                                    <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
+                                    <div className="row">
+                                        <div className="col-md-4 col-sm-4">
+                                            <ul className="list_ok">
+                                                <li>Coffee machine</li>
+                                                <li>Wifi</li>
+                                                <li>Microwave</li>
+                                                <li>Oven</li>
+                                            </ul>
+                                        </div>
+                                        <div className="col-md-4 col-sm-4">
+                                            <ul className="list_ok">
+                                                <li>Fridge</li>
+                                                <li>Hairdryer</li>
+                                                <li>Towels</li>
+                                                <li>Toiletries</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
+
+                        <h3 className="nomargin_top">Units</h3>
+                        <hr />
+                        <div className="panel-group" id="units">
+                            <div className="row">
+                                <div className="col-md-9">
+                                    <ul id="policies">
+                                        { tutorial.posts.map((post, i) => {
+                                                let youtube = null
+                                                if (post.youtube != null)
+                                                    youtube = (post.youtube.length == 0) ? null : <object style={localStyle.youtube} data={'https://www.youtube.com/embed/'+post.youtube}></object>
+                                                
+                                                return (
+                                                    <li key={i}>
+                                                        <i className="icon-video-5"></i>
+                                                        <h5>{post.title}</h5>
+                                                        <p>{post.description}</p>
+                                                        { youtube }
+                                                    </li>
+                                                )
+                                            })
+                                        }
+
+                                    </ul>
+
+                                </div>
                             </div>
-                            
-                            <h3>Units</h3>
-                     
-                            <div className="panel-group" id="units">
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#works" href="#collapseOne_works">Anim pariatur cliche reprehenderit?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
+                        </div>
+
+
+                        <h3 className="nomargin_top">Delivery Delay</h3>
+                        <hr />
+                        <div className="panel-group" id="delay">
+                            <div className="row">
+                                <div className="col-md-9">
+                                    <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                                 </div>
-                                <div id="collapseOne_works" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#works" href="#collapseTwo_works">Parsnip lotus root celery?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseTwo_works" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#works" href="#collapseThree_works">Beet greens peanut salad?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseThree_works" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
                             </div>
-                            
-                             <h3>Delivery delay</h3>
-                     
-                            <div className="panel-group" id="delay">
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#delay" href="#collapseOne_delay">Anim pariatur cliche reprehenderit?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
+                        </div>
+
+                        <h3 className="nomargin_top">Takeaway</h3>
+                        <hr />
+                        <div className="panel-group" id="takeaway">
+                            <div className="row">
+                                <div className="col-md-9">
+                                    <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                                 </div>
-                                <div id="collapseOne_delay" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#delay" href="#collapseTwo_delay">Parsnip lotus root celery?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseTwo_delay" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#delay" href="#collapseThree_delay">Beet greens peanut salad?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseThree_delay" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
                             </div>
-                                            
-                            <h3>Takeaway</h3>
-                     
-                            <div className="panel-group" id="takeaway">
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#takeaway" href="#collapseOne_takeaway">Anim pariatur cliche reprehenderit?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseOne_takeaway" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#takeaway" href="#collapseTwo_takeaway">Parsnip lotus root celery?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseTwo_takeaway" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="panel panel-default">
-                                <div className="panel-heading">
-                                  <h4 className="panel-title">
-                                    <a className="accordion-toggle" data-toggle="collapse" data-parent="#takeaway" href="#collapseThree_takeaway">Beet greens peanut salad?<i className="indicator icon_set_1_icon-11 pull-right"></i></a>
-                                  </h4>
-                                </div>
-                                <div id="collapseThree_takeaway" className="panel-collapse collapse">
-                                  <div className="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                        </div>
                             
                     </div>
                 </div>
