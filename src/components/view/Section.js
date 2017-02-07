@@ -54,8 +54,7 @@ const welcome = (
                                 of realistic sites: front end, back end, database, design, and UI. Some of these projects are 
                                 actual sites (like <a target="_blank" style={{color:'red'}} href="http://thevarsity.co">this</a> one) 
                                 while others are full stack apps that demonstrate the usage of key tools and concepts such as 
-                                Google Maps, sending emails, image uploading and more. 
-                                a 
+                                Google Maps, sending emails, image uploading and more.
                             </p>
                             <ul>
                                 <li>
