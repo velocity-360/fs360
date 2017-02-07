@@ -11,7 +11,8 @@ export default (props) => {
                         <ul id="contact_details_footer">
                             <li>
                                 <a href="/">www.velocity360.io</a>
-                                <br />katrina@velocity360.io
+                                <br />
+                                <a href="mailto:katrina@velocity360.io">katrina@velocity360.io</a>
                             </li>
                         </ul>  
                     </div>
@@ -24,16 +25,14 @@ export default (props) => {
                         </ul>
                     </div>
                     <div className="col-md-3 col-sm-4" id="newsletter">
-                        <h3>Newsletter</h3>
-                        <p>Join our newsletter to keep be informed about offers and news.</p>
+                        <h3>Subscribe</h3>
+                        <p>Join our newsletter to receive updates for new tutorials or courses:</p>
                         <div id="message-newsletter_2"></div>
-                        <form method="post" action="assets/newsletter.php" name="newsletter_2" id="newsletter_2">
-                            <div className="form-group">
-                                <input type="text" placeholder="Name" className="form-control" /><br />
-                                <input type="text" placeholder="Email" className="form-control" />
-                            </div>
-                            <input style={{height:36, borderRadius:18}} type="submit" value="Subscribe" className="btn_1 white" id="submit-newsletter_2" />
-                        </form>
+                        <div className="form-group">
+                            <input type="text" placeholder="Name" className="form-control" /><br />
+                            <input type="text" placeholder="Email" className="form-control" />
+                        </div>
+                        <input style={{height:36, borderRadius:18}} type="submit" value="Subscribe" className="btn_1 white" id="submit-newsletter_2" />
                     </div>
                 </div>
 

@@ -121,7 +121,7 @@ class Tutorials extends Component {
 
 		            </div>
 		        </div>
-		    </section>
+		    </section>	    
 		)
 	}
 }
