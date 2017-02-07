@@ -200,9 +200,7 @@ class Tutorial extends Component {
                         <hr />
                         <div className="panel-group" id="subscribe">
                             <div className="row">
-                                <div className="col-md-9">
-                                    <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
-                                </div>
+                                {cta}
                             </div>
                         </div>
                             
@@ -266,21 +264,22 @@ const purchase = (tutorial, context) => {
             }
 
             <div className="col-md-6">
-                <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 style={styles.title}>Premium <span>Membership</span></h4>
-                </div>
+                <div className="box_style_3" id="general_facilities">
+                    <h3>Premium Membership</h3>
+                    <p>
+                        Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                        code samples, and forums on the site. There are no long term commitments and membership 
+                        can be canceled at any time.
+                    </p>
 
-                <p style={styles.paragraph}>
-                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
-                    code samples, and forums on the site. There are no long term commitments and membership 
-                    can be canceled at any time.
-                    <br /><br />
-                    &#8226; <i style={{marginLeft:8}}>Downloadable Code Samples</i><br />
-                    &#8226; <i style={{marginLeft:8}}>Downloadable Videos</i><br />
-                    &#8226; <i style={{marginLeft:8}}>Q&A Forum Access</i><br />
-                    &#8226; <i style={{marginLeft:8}}>Discounts on Live Courses</i><br />                    
-                </p>
-                <a onClick={context.showStripeModal.bind(context, 'subscription')} className="btn btn-lg" href="#">Subscribe</a>
+                    <ul className="list_ok">
+                        <li>Downloadable Code Samples</li>
+                        <li>Downloadable Videos</li>
+                        <li>Q&A Forum Access</li>
+                        <li>Discounts on Live Courses</li>
+                    </ul>
+                    <button onClick={context.showStripeModal.bind(context, 'subscription')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Subscribe</button>
+                </div>
             </div>
         </div> 
     )
