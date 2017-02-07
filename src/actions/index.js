@@ -18,7 +18,8 @@ const postData = (path, data, actionType, payloadKey) => {
 				type: constants.TOGGLE_LOADING,
 				isLoading: false
 			})
-			alert(err.message)
+			throw err
+//			alert(err.message)
 		})
 }
 
@@ -26,6 +27,7 @@ const getData = (path, params, actionType, payloadKey) => {
 	return (dispatch) => APIManager
 		.handleGet(path, params)
 		.then((response) => {
+//			console.log('GET: '+JSON.stringify(response))
 			dispatch({
 				type: actionType,
 				params: params, // can be null
@@ -35,11 +37,14 @@ const getData = (path, params, actionType, payloadKey) => {
 			return response
 		})
 		.catch((err) => {
+			console.log('ERROR: '+JSON.stringify(err))
 			dispatch({
 				type: constants.TOGGLE_LOADING,
 				isLoading: false
 			})
-			alert(err.message)
+
+			throw err
+			// alert(err.message)
 		})
 }
 
@@ -60,7 +65,8 @@ const putData = (path, data, actionType, payloadKey) => {
 				type: constants.TOGGLE_LOADING,
 				isLoading: false
 			})
-			alert('ERROR: '+JSON.stringify(err))
+			throw err
+			// alert('ERROR: '+JSON.stringify(err))
 		})
 }
 

@@ -43,18 +43,6 @@ router.get('/', function(req, res, next) {
 	controllers.account.currentUser(req)
 	.then(function(currentUser){ // can be null
 		initialData['account'] = {currentUser: currentUser}
-		// initialState = store.configureStore(initialData)
-		// var routes = {
-		// 	path: '/',
-		// 	component: serverapp,
-		// 	initial: initialState,
-		// 	indexRoute: {
-		// 		component: layout.Home
-		// 	}
-		// }
-
-		// return matchRoutes(req, routes)
-
 		return controllers.tutorial.find({})
 	})
 	.then(function(tutorials){
@@ -103,19 +91,44 @@ router.get('/account', function(req, res, next) {
 	.then(function(currentUser){
 		initialData['account'] = {currentUser: currentUser}
 		initialData['session'] = {selectedMenuItem: 'account'}
+		return controllers.tutorial.find({})
+
+		// initialState = store.configureStore(initialData)
+
+		// var routes = {
+		// 	path: '/account',
+		// 	component: serverapp,
+		// 	initial: initialState,
+		// 	indexRoute: {
+		// 		component: layout.Split
+		// 	}
+		// }
+
+		// return matchRoutes(req, routes)		
+	})
+	.then(function(tutorials){
+		var tutorialReducer = {
+			all: tutorials
+		}
+
+		tutorials.forEach(function(tutorial, i){
+			tutorialReducer[tutorial.id] = tutorial
+			tutorialReducer[tutorial.slug] = tutorial
+		})
+
+		initialData['tutorial'] = tutorialReducer
 
 		initialState = store.configureStore(initialData)
-
 		var routes = {
-			path: '/account',
+			path: '/',
 			component: serverapp,
 			initial: initialState,
 			indexRoute: {
-				component: layout.Split
+				component: layout.Home
 			}
 		}
 
-		return matchRoutes(req, routes)		
+		return matchRoutes(req, routes)
 	})
 	.then(function(renderProps){
 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))

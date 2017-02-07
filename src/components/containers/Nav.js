@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import actions from '../../actions'
+import { Link } from 'react-router'
 
 class Nav extends Component {
 
@@ -47,7 +48,7 @@ class Nav extends Component {
 	                                        </li>
 	                                    </ul>
 	                                </li>
-	                                <li><a onClick={ this.showLogin.bind(this) } href="#">TEST</a></li>
+	                                <li><Link to="/account">TEST</Link></li>
 	                            </ul>
 	                        </div>
 	                        
@@ -83,7 +84,7 @@ class Nav extends Component {
 	                                        </li>
 	                                    </ul>
 	                                </li>
-	                                <li><a onClick={this.props.toggleLogin.bind(this)} style={{color:'#fff'}} href="#">Login</a></li>
+	                                <li><Link to="/account">TEST</Link></li>
 	                                
 	                            </ul>
 	                        </div>

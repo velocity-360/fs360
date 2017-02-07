@@ -2287,6 +2287,7 @@ button[type="submit"] .form-loading {
   padding-left: 3%;
   max-width: 70%;
   float: right;
+  width: 100%;
 }
 .button-tabs.vertical > .tabs li,
 .button-tabs.vertical .tab-title {

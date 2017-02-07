@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './style'
+import { Link } from 'react-router'
 
 export default (props) => {
     const type = (props.type) ? props.type : 'large'
@@ -39,7 +40,7 @@ export default (props) => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="/account">Login</a></li>
                             </ul>
                         </div>
                         
@@ -75,7 +76,7 @@ export default (props) => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a style={{color:'#fff'}} href="#">Login</a></li>
+                                <li><a style={{color:'#fff'}} href="/account">Login</a></li>
                                 
                             </ul>
                         </div>
