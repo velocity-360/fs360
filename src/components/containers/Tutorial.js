@@ -57,8 +57,13 @@ class Tutorial extends Component {
         if (tutorial.price == 0) { // it's free
             if (currentUser == null)
                 cta = purchase(tutorial, this.props)
+
+            else if (tutorial.subscribers.indexOf(currentUser.id) != -1)
+                cta = subscribed(tutorial)
+
             else if (currentUser.accountType == 'premium')
                 cta = premium(currentUser, this)
+            
             else 
                 cta = purchase(tutorial, this.props)
         }
