@@ -73,14 +73,6 @@ const welcome = (
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div className="tooltip_styled tooltip-effect-4">
-                                        <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
-                                        <div className="tooltip-content">
-                                            Plasma TV
-                                        </div>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -109,17 +101,17 @@ const welcome = (
                         <ul>
                             <li>
                                 <div className="tooltip_styled tooltip-effect-4">
-                                    <span className="tooltip-item"><i className="icon_set_2_icon-104"></i></span>
+                                    <span className="tooltip-item"><i className="icon-chat"></i></span>
                                     <div className="tooltip-content">
-                                        King size bed
+                                        Live Forum
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div className="tooltip_styled tooltip-effect-4">
-                                    <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
+                                    <span className="tooltip-item"><i className="icon-meetup"></i></span>
                                     <div className="tooltip-content">
-                                        Plasma TV
+                                        Events in NYC
                                     </div>
                                 </div>
                             </li>
