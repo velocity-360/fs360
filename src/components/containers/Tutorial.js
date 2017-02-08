@@ -121,7 +121,7 @@ class Tutorial extends Component {
                                         <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
                                         <br />
                                         <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'}</span>
-                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (tutorial.posts.length) ? 'Coming Soon' : tutorial.posts.length+' Units' }</span>
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (tutorial.posts.length==0) ? 'Coming Soon' : tutorial.posts.length+' Units' }</span>
                                         <br /><br />
                                         <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                                     </div>

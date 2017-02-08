@@ -72,7 +72,7 @@ class FeaturedTutorials extends Component {
                             <hr />
                             <p style={{height:130}}>{ TextUtils.truncateText(tutorial.description, 160) }</p>
                             <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'}</span>
-                            <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (tutorial.posts.length) ? 'Coming Soon' : tutorial.posts.length+' Units' }</span>
+                            <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (tutorial.posts.length==0) ? 'Coming Soon' : tutorial.posts.length+' Units' }</span>
                         </div>
                     </div>
 				)
