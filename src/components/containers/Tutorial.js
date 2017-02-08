@@ -40,7 +40,7 @@ class Tutorial extends Component {
         subscribers.push(this.props.currentUser.id)
         this.props.updateTutorial(tutorial, {subscribers: subscribers})
         .then(response => {
-
+            window.location.href = '/account'
         })
         .catch(err => {
 
