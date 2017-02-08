@@ -138,11 +138,13 @@ const testimonials = (
                                 <div style={{marginBottom:16}}>
                                     <div className="box_overlay">
                                         <div className="pic">
-                                            <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
-                                            <h4>Roberta<small>12 October 2015</small></h4>
+                                            <figure><img src="/img/jake.jpg" alt="Velocity 360" className="img-circle" /></figure>
+                                            <h4>Jake<small>Node JS Developer</small></h4>
                                         </div>
                                         <div className="comment">
-                                            "Mea ad postea meliore fuisset. Timeam repudiare id eum, ex paulo dictas elaboraret sed, mel cu unum nostrud. No nam indoctum accommodare, vix ei discere civibus philosophia. Vis ea dicant diceret ocurreret."
+                                            "Finding tutorials online is pretty but finding good tutorials that tie various 
+                                            concepts together - this is where Velocity 360 shines. Bringing together the backend,
+                                            frontend and even design into tutorials really separated Velocity from the others."
                                         </div>
                                     </div>
                                 </div>
@@ -150,27 +152,17 @@ const testimonials = (
                                 <div style={{marginBottom:16}}>
                                     <div className="box_overlay">
                                         <div className="pic">
-                                            <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
-                                            <h4>Roberta<small>13 October 2015</small></h4>
+                                            <figure><img src="/img/alex.jpg" alt="Velocity 360" className="img-circle" /></figure>
+                                            <h4>Alex<small>React Developer</small></h4>
                                         </div>
                                         <div className="comment">
-                                            "Mea ad postea meliore fuisset. Timeam repudiare id eum, ex paulo dictas elaboraret sed, mel cu unum nostrud. No nam indoctum accommodare, vix ei discere civibus philosophia. Vis ea dicant diceret ocurreret."
+                                            "Velocity helped tremendously when trying to learn React. The React world changed so rapidly over 
+                                            the past two years - ES5 vs ES6, Browserify or Webpack, JSX, Babel, JSX Transform etc - that starting
+                                            out was overwhelming. The Velocity courses really clarified the picture."
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div style={{marginBottom:16}}>
-                                    <div className="box_overlay">
-                                        <div className="pic">
-                                            <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
-                                            <h4>Roberta<small>14 October 2015</small></h4>
-                                        </div>
-                                        <div className="comment">
-                                            "Mea ad postea meliore fuisset. Timeam repudiare id eum, ex paulo dictas elaboraret sed, mel cu unum nostrud. No nam indoctum accommodare, vix ei discere civibus philosophia. Vis ea dicant diceret ocurreret."
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                                                                
                             </div>
 
                         </div>

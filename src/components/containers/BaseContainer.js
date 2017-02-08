@@ -25,6 +25,17 @@ const BaseContainer = (Container) => {
 			})
 		}
 
+		subscribe(event){
+			console.log('subscribe: '+JSON.stringify(this.state.credentials))
+			APIManager.handlePost('/api/subscriber', this.state.credentials)
+			.then(response => {
+				alert('Thanks for Subscribing!')
+			})
+			.catch(err => {
+
+			})
+		}
+
 		register(event){
 			console.log('register: '+JSON.stringify(this.state.credentials))
 
@@ -99,6 +110,7 @@ const BaseContainer = (Container) => {
 					<Container
 						updateCredentials={this.updateCredentials.bind(this)}
 						register={this.register.bind(this)}
+						subscribe={this.subscribe.bind(this)}
 						showStripeModal={this.showStripeModal.bind(this)} 
 						updateData={this.updateData.bind(this)}
 						{...this.props} />

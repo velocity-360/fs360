@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
 export default (props) => {
-
-	return (
+    return (
          <footer >
             <div className="container">
                 <div className="row">
@@ -25,14 +24,14 @@ export default (props) => {
                         </ul>
                     </div>
                     <div className="col-md-3 col-sm-4" id="newsletter">
-                        <h3>Subscribe</h3>
+                        <h3>Newsletter</h3>
                         <p>Join our newsletter to receive updates for new tutorials or courses:</p>
                         <div id="message-newsletter_2"></div>
                         <div className="form-group">
-                            <input type="text" placeholder="Name" className="form-control" /><br />
-                            <input type="text" placeholder="Email" className="form-control" />
+                            <input onChange={props.updateCredentials.bind(this)} type="text" id="name" placeholder="Name" className="form-control" /><br />
+                            <input onChange={props.updateCredentials.bind(this)} type="text" id="email" placeholder="Email" className="form-control" />
                         </div>
-                        <input style={{height:36, borderRadius:18}} type="submit" value="Subscribe" className="btn_1 white" id="submit-newsletter_2" />
+                        <button onClick={props.subscribe.bind(this)} style={{height:36, borderRadius:18}} className="btn_1 white">Subscribe</button>
                     </div>
                 </div>
 
@@ -50,7 +49,5 @@ export default (props) => {
             </div>
         </footer>
 
-	)
-
+    )
 }
-

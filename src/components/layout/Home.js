@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './styles'
 import { Header, Footer, Section } from '../view'
-import { FeaturedTutorials, Nav, Join } from '../containers'
+import { FeaturedTutorials, Nav, Join, BaseContainer } from '../containers'
 
 class Home extends Component {
     componentDidMount(){
@@ -9,6 +9,7 @@ class Home extends Component {
     }
     
 	render(){
+        const FooterHOC = BaseContainer(Footer)
 
 		return ( 
             <div>            
@@ -25,7 +26,7 @@ class Home extends Component {
                 <Join />
 
                 <div id="dtBox"></div>
-                <Footer />
+                <FooterHOC />
             </div>
 		)
 	}
