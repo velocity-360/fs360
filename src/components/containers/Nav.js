@@ -121,7 +121,7 @@ class Nav extends Component {
 	                                </ul>
 	                            </li>
 	                            { (this.props.account.currentUser) ? <li><a href="/account">Welcome {TextUtils.capitalize(this.props.account.currentUser.firstName)}</a></li> : <li><a onClick={this.toggleLogin.bind(this)} href="#">Login</a></li> }
-	                            
+	                            <li><a onClick={this.toggleLogin.bind(this)} href="#">TEST</a></li>
 	                        </ul>
 	                    </div>
 	                    </nav>
