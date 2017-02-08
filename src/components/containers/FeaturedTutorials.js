@@ -68,10 +68,11 @@ class FeaturedTutorials extends Component {
                             <a href={'/tutorial/'+tutorial.slug}>
                                 <img style={{padding:3, border:'1px solid #ddd', background:'#fff', marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=96'} />
                             </a>
-                            <h4>
-                                <a href={'/tutorial/'+tutorial.slug}>{tutorial.title}</a>
-                            </h4>
+                            <h4><a href={'/tutorial/'+tutorial.slug}>{tutorial.title}</a></h4>
+                            <hr />
                             <p style={{height:130}}>{ TextUtils.truncateText(tutorial.description, 160) }</p>
+                            <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'}</span>
+                            <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ tutorial.posts.length } Units</span>
                         </div>
                     </div>
 				)

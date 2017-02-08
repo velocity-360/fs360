@@ -119,6 +119,10 @@ class Tutorial extends Component {
                                 <div className="row">
                                     <div className="col-md-9">
                                         <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={tutorial.title} src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=320'} />
+                                        <br />
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'}</span>
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ tutorial.posts.length } Units</span>
+                                        <br /><br />
                                         <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                                     </div>
                                 </div>
