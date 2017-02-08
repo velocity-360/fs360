@@ -117,17 +117,17 @@ class Nav extends Component {
 	                        </a>
 	                    </div>
 	                    <nav className="col--md-9 col-sm-9 col-xs-9">
-	                    <a className="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
-	                    <div className="main-menu">
-	                        <div id="header_menu">
-	                             <img src="/img/logo_m.png" width="141" height="40" alt="Velocity 360" data-retina="true" />
-	                        </div>
-	                        <a href="#" className="open_close" id="close_in"><i className="icon_set_1_icon-77"></i></a>
-	                         <ul>
-	                            <li><a href="/">Home</a></li>
-	                            { (this.props.account.currentUser) ? <li><a href="/account">Welcome {TextUtils.capitalize(this.props.account.currentUser.firstName)}</a></li> : <li><a onClick={this.toggleLogin.bind(this)} href="#">Login</a></li> }
-	                        </ul>
-	                    </div>
+		                    <a className="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+		                    <div className="main-menu">
+		                        <div id="header_menu">
+		                            <h1 style={{fontFamily:'Pathway Gothic One', marginTop:6, color:'#fff'}}>Velocity 360</h1>
+		                        </div>
+		                        <a href="#" className="open_close" id="close_in"><i className="icon_set_1_icon-77"></i></a>
+		                        <ul>
+		                            <li><a href="/">Home</a></li>
+		                            { (this.props.account.currentUser) ? <li><a href="/account">Welcome {TextUtils.capitalize(this.props.account.currentUser.firstName)}</a></li> : <li><a onClick={this.toggleLogin.bind(this)} href="#">Login</a></li> }
+		                        </ul>
+		                    </div>
 	                    </nav>
 	                </div>
 	            </div>
