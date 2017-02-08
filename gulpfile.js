@@ -61,7 +61,8 @@ gulp.task('build', function(){
                 './public/js/functions.js',
                 './public/js/DateTimePicker.js',
                 './public/js/theia-sticky-sidebar.js',
-                './public/js/sidebar-config.js'
+                './public/js/sidebar-config.js',
+                './public/js/sweetalert.min.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))

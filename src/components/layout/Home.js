@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './styles'
-import { Header, Footer, Section, Nav } from '../view'
-import { FeaturedTutorials } from '../containers'
+import { Header, Footer, Section } from '../view'
+import { FeaturedTutorials, Nav } from '../containers'
 
 class Home extends Component {
     componentDidMount(){

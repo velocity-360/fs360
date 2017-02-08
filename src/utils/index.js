@@ -3,6 +3,7 @@ import FirebaseManager from './FirebaseManager'
 import TextUtils from './TextUtils'
 import DateUtils from './DateUtils'
 import Stripe from '../utils/StripeUtils'
+import Alert from './Alert'
 
 export {
 
@@ -10,6 +11,7 @@ export {
 	FirebaseManager,
 	TextUtils,
 	DateUtils,
-	Stripe
+	Stripe,
+	Alert
 	
 }
