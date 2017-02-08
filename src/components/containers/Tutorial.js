@@ -261,8 +261,7 @@ const localStyle = {
 
 const stateToProps = (state) => {
     return {
-        // currentUser: state.account.currentUser,
-        // tutorials: state.tutorial
+        
     }
 }
 
