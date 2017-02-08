@@ -142,7 +142,7 @@ const testimonials = (
                                             <h4>Jake<small>Node JS Developer</small></h4>
                                         </div>
                                         <div className="comment">
-                                            "Finding tutorials online is pretty but finding good tutorials that tie various 
+                                            "Finding tutorials online is pretty easy but finding good tutorials that tie various 
                                             concepts together - this is where Velocity 360 shines. Bringing together the backend,
                                             frontend and even design into tutorials really separated Velocity from the others."
                                         </div>

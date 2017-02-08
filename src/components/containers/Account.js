@@ -157,6 +157,9 @@ class Account extends Component {
                                     <small> - { tutorial.posts.length } Units -</small>
                                     <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
                                     <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
+                                    <div style={{textAlign:'right'}}>
+                                        <a target="_blank" href={'/premium/tutorial/'+tutorial.id} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Download</a>
+                                    </div>
                                 </div>
                             )
                         })
