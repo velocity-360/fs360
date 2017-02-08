@@ -42,27 +42,28 @@ class Tutorial extends Component {
     }
 
 	render(){
+        const currentUser = this.props.account.currentUser
         const tutorial = this.props.tutorials[this.props.slug]
         const style = styles.home
 
         let cta = null
         if (tutorial.price == 0) { // it's free
-            if (this.props.currentUser == null)
+            if (currentUser == null)
                 cta = purchase(tutorial, this.props)
-            else if (this.props.currentUser.accountType == 'premium')
-                cta = premium(this.props.currentUser, this.props)
+            else if (currentUser.accountType == 'premium')
+                cta = premium(currentUser, this.props)
             else 
                 cta = purchase(tutorial, this.props)
         }
 
-        else if (this.props.currentUser == null)
+        else if (currentUser == null)
             cta = purchase(tutorial, this.props)
 
-        else if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
+        else if (tutorial.subscribers.indexOf(currentUser.id) != -1)
             cta = subscribed(tutorial)
 
-        else if (this.props.currentUser.accountType == 'premium')
-            cta = premium(this.props.currentUser, this.props)
+        else if (currentUser.accountType == 'premium')
+            cta = premium(currentUser, this.props)
         
         else // logged in, not subscribed
             cta = purchase(tutorial, this.props)
