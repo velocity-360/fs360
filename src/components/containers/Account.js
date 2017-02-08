@@ -7,6 +7,12 @@ import { TextUtils, Stripe } from '../../utils'
 
 
 class Account extends Component {
+    constructor(){
+        super()
+        this.state = {
+            selected: 'My Courses'
+        }
+    }
 
 	componentDidMount(){
         if (this.props.tutorials != null)
@@ -23,25 +29,51 @@ class Account extends Component {
         })
 	}
 
+    selectItem(item, event){
+        event.preventDefault()
+        this.setState({
+            selected: item
+        })
+
+    }
+
 	componentDidUpdate(){
-		console.log('componentDidUpdate: ')
+        const selected = this.state.selected
+        console.log('componentDidUpdate: '+selected)
 
 	}
 
 	render(){
-		let list = null
-		if (this.props.tutorials != null){
-			list = this.props.tutorials.map((tutorial, i) => {
-				return (
-                    <div key={tutorial.id} className="review_strip_single">
-                        <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
-                        <small> - { tutorial.posts.length } Units -</small>
-                        <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
-                        <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
-                    </div>
-				)
-			})
-		}
+
+        const selected = this.state.selected
+        let content = null
+
+        if (selected == 'My Courses'){
+            content = (
+                <div>
+                    { (this.props.tutorials == null) ? null : (
+                            this.props.tutorials.map((tutorial, i) => {
+                                return (
+                                    <div key={tutorial.id} className="review_strip_single">
+                                        <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
+                                        <small> - { tutorial.posts.length } Units -</small>
+                                        <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
+                                        <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
+                                    </div>
+                                )
+                            })
+                        )
+                    }
+                </div>
+            )
+        }
+        if (selected == 'Profile'){
+            content = (
+                <div style={{height: 600}}>
+                    <p>text text</p>
+                </div>
+            )            
+        }
 
 		return (
             <div style={{paddingTop:64}}>
@@ -52,36 +84,24 @@ class Account extends Component {
                             <div className="theiaStickySidebar">
                                 <div id="faq_box">
                                     <ul id="cat_nav">
-                                        <li><a href="#courses" className="active">My Courses</a></li>
-                                        <li><a href="#profile">Profile</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'My Courses')} href="#" className="active">My Courses</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'Profile')} href="#">Profile</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="col-md-9">
-                            <h3 className="nomargin_top">My Courses</h3>
+                            <h3 className="nomargin_top">{selected}</h3>
                             <hr />
 
                             <div className="panel-group" id="courses">
                                 <div className="row">
                                     <div className="col-md-9">
-                                        {list}
+                                        {content}
                                     </div>
                                 </div>
                             </div>
-
-
-                            <h3 className="nomargin_top">Profile</h3>
-                            <hr />
-                            <div className="panel-group" id="profile">
-                                <div className="row">
-                                    <div className="col-md-9">
-                                        <p>text text</p>
-                                    </div>
-                                </div>
-                            </div>
-
                                 
                         </div>
                     </div>
