@@ -56,9 +56,36 @@ export default {
 	    company: {
 	        border:'1px solid #ddd',
 	        marginTop:24
-	    }
-		
+	    }		
 	},
+	nav: {
+		ul: {
+			fontWeight: 100
+		},
+		title: {
+			color:'#fff',
+			fontFamily: 'Pathway Gothic One',
+			fontWeight: 200,
+			fontSize: 30
+		},
+		modal: {
+			background:'#f9f9f9',
+			padding:24,
+			borderRadius:3,
+			minHeight: 370
+		},
+		textField: {
+			marginBottom:12,
+			className: 'form-control'
+		},
+		btnLoginContainer: {
+			textAlign:'center',
+			marginTop:24
+		},
+		btnLogin: {
+			className: 'button button-circle button-blue'
+		}
+	},	
 	container: {
 		background:'#fff',
 		className: 'comment-wrap clearfix',

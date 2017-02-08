@@ -75,6 +75,24 @@ const BaseContainer = (Container) => {
             Stripe.showModalWithText(product.title+' - $'+product.price)
 	    }
 
+
+		updateData(req, entity, params){
+			const user = this.props.account.currentUser // every update requires login
+			if (user == null){
+				alert('Please register or log in.')
+				// Alert.showAlert({
+				// 	title: 'Oops',
+				// 	text: 'Please register or log in.'
+				// })
+				return
+			}
+
+			console.log('updateData: '+req+' == '+JSON.stringify(params))
+			if (req == 'profile')
+				return this.props.updateProfile(entity, params)			
+		}
+
+
 		render(){
 			return (
 				<div>
@@ -82,6 +100,7 @@ const BaseContainer = (Container) => {
 						updateCredentials={this.updateCredentials.bind(this)}
 						register={this.register.bind(this)}
 						showStripeModal={this.showStripeModal.bind(this)} 
+						updateData={this.updateData.bind(this)}
 						{...this.props} />
 				</div>
 			)
@@ -98,7 +117,8 @@ const BaseContainer = (Container) => {
 	const dispatchToProps = (dispatch) => {
 		return {
 	        submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
-	        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product))
+	        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
+			updateProfile: (profile, params) => dispatch(actions.updateProfile(profile, params))
 		}
 	}
 

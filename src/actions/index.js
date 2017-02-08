@@ -152,6 +152,12 @@ export default {
 		}
 	},
 	
+	updateProfile: (profile, params) => {
+		return dispatch => {
+			return dispatch(putData('/api/profile/'+profile.id, params, constants.PROFILE_UPDDATED, 'profile'))
+		}
+	},
+
 	fetchCourses: (params) => {
 		return dispatch => {
 			return dispatch(getData('/api/course', params, constants.COURSES_RECEIVED, 'courses'))

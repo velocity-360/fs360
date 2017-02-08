@@ -14,6 +14,10 @@ export default (state = initialState, action) => {
 			newState['currentUser'] = action.profile
 			return newState
 
+		case constants.PROFILE_UPDDATED:
+			newState['currentUser'] = action.profile
+			return newState
+
 		default:
 			return state
 	}

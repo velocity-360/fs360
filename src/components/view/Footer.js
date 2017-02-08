@@ -19,9 +19,9 @@ export default (props) => {
                     <div className="col-md-2 col-sm-4">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Account</a></li>
+                            <li><a href="/">About</a></li>
+                            <li><a href="/courses">Courses</a></li>
+                            <li><a href="/account">Account</a></li>
                         </ul>
                     </div>
                     <div className="col-md-3 col-sm-4" id="newsletter">
