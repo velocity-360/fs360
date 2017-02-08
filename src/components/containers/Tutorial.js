@@ -180,7 +180,7 @@ const premium = (user, context) => {
             <p style={styles.paragraph}>
                 As a premium member, you can subscribe to this tutorial for free by clicking below:
             </p>
-            <a href="#" onClick={context.subscribe.bind(context)} className="button button-small button-circle button-border button-aqua">Subscribe</a>
+            <a href="#" onClick={context.subscribe.bind(context)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</a>
         </div>
     )    
 }
@@ -196,7 +196,7 @@ const subscribed = (tutorial) => {
                 You are subscribed to this tutorial series. To access all of the videos and code samples, 
                 click on the link below:
             </p>
-            <a target="_blank" href={'/premium/tutorial/'+tutorial.id} className="button button-small button-circle button-border button-aqua">Download</a>
+            <a target="_blank" href={'/premium/tutorial/'+tutorial.id} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Download</a>
         </div>
     )
 }
