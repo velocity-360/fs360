@@ -39,6 +39,12 @@ class Tutorial extends Component {
         let subscribers = Object.assign([], tutorial.subscribers)
         subscribers.push(this.props.currentUser.id)
         this.props.updateTutorial(tutorial, {subscribers: subscribers})
+        .then(response => {
+
+        })
+        .catch(err => {
+
+        })
     }
 
 	render(){
@@ -180,7 +186,7 @@ const premium = (user, context) => {
             <p style={styles.paragraph}>
                 As a premium member, you can subscribe to this tutorial for free by clicking below:
             </p>
-            <a href="#" onClick={context.subscribe.bind(context)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</a>
+            <button onClick={context.subscribe.bind(context)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
         </div>
     )    
 }
