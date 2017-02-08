@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles'
-import { Header, Footer, Section } from '../view'
+import { Header, Footer, Section, BaseContainer } from '../view'
 import { Tutorials } from '../containers'
 
 class Landing extends Component {
@@ -11,11 +11,12 @@ class Landing extends Component {
 	render(){
 		const style = styles.home
 
+        const FooterHOC = BaseContainer(Footer)
 		return ( 
 			<div className="clearfix">
                 <Header content="tutorials" />
                 <Tutorials />
-                <Footer />
+                <FooterHOC />
 			</div>
 		)
 	}

@@ -88,7 +88,6 @@ class Tutorial extends Component {
         else
             units = <h3 style={styles.title}>Preview</h3>
 
-
 		return (
             <div>
                 <section className="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
@@ -106,7 +105,6 @@ class Tutorial extends Component {
                                     <ul id="cat_nav">
                                         <li><a href="#overview" className="active">Overview</a></li>
                                         <li><a href="#units">Units</a></li>
-                                        <li><a href="#downloads">Downloads</a></li>
                                         <li><a href="#subscribe">Subscribe</a></li>
                                     </ul>
                                 </div>
@@ -150,17 +148,6 @@ class Tutorial extends Component {
 
                                         </ul>
 
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <h3 className="nomargin_top">Downloads</h3>
-                            <hr />
-                            <div className="panel-group" id="downloads">
-                                <div className="row">
-                                    <div className="col-md-9">
-                                        <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(tutorial.description) }}></p>
                                     </div>
                                 </div>
                             </div>

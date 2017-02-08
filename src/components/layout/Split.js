@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Footer, Section } from '../view'
-import { Courses, Course, Online, Tutorial, Account, Sidebar, Nav } from '../containers'
+import { Courses, Course, Online, Tutorial, Account, Sidebar, Nav, BaseContainer } from '../containers'
 import styles from './styles'
 
 class Split extends Component {
@@ -33,12 +33,13 @@ class Split extends Component {
             content = (page == 'course') ? <Course slug={slug} /> : <Tutorial slug={slug} />
         }
 
+        const FooterHOC = BaseContainer(Footer)
 		return ( 
             <div>
                 <Nav type="standard" />
                 <div className="main-container">
                     { content }
-                    <Footer />
+                    <FooterHOC />
                 </div>
             </div>
 

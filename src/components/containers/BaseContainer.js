@@ -26,7 +26,7 @@ const BaseContainer = (Container) => {
 		}
 
 		subscribe(event){
-			console.log('subscribe: '+JSON.stringify(this.state.credentials))
+//			console.log('subscribe: '+JSON.stringify(this.state.credentials))
 			APIManager.handlePost('/api/subscriber', this.state.credentials)
 			.then(response => {
 				alert('Thanks for Subscribing!')
