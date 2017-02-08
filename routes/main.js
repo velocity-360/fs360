@@ -222,7 +222,6 @@ router.get('/:page/:slug', function(req, res, next) {
 	.then(function(entities){
 		var reducer = {all: null}
 		entities.forEach(function(entity, i) {
-//			reducer[entity.id] = entity
 			reducer[entity.slug] = entity
 		})
 

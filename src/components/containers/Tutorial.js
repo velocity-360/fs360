@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import actions from '../../actions'
 import { TextUtils, Stripe, APIManager } from '../../utils'
 import styles from './styles'
+import BaseContainer from './BaseContainer'
 
 class Tutorial extends Component {
     constructor(){
@@ -21,51 +22,6 @@ class Tutorial extends Component {
         window.scrollTo(0, 0)
         if (this.props.tutorials == null)
             this.props.fetchTutorials(null)
-    }
-
-    showStripeModal(type, event){
-        event.preventDefault()
-        this.props.toggleLoading(true)
-
-        if (type == 'charge'){
-            const tutorial = this.props.tutorials[this.props.slug]
-            Stripe.initializeWithText('Purchase', (token) => {
-                this.props.submitStripeCharge(token, tutorial)
-                .then((response) => {
-                    console.log('TEST: '+JSON.stringify(response))
-                    this.props.toggleLoading(false)
-                })
-                .catch((err) => {
-
-                })
-            }, () => {
-                setTimeout(() => {
-                    this.props.toggleLoading(false)
-                }, 100)
-            })
-
-            Stripe.showModalWithText(tutorial.title+' - $'+tutorial.price)
-            return
-        }
-
-        if (type == 'subscription'){
-            Stripe.initializeWithText('Subscribe', (token) => {
-                this.props.submitStripeCard(token)
-                .then((response) => {
-                    // console.log('TEST: '+JSON.stringify(response))
-                    this.props.toggleLoading(false)
-                })
-                .catch((err) => {
-
-                })
-            }, () => {
-                setTimeout(() => {
-                    this.props.toggleLoading(false)
-                }, 100)
-            })
-
-            Stripe.showModalWithText('Premium subscription - $19.99/mo')
-        }
     }
 
     subscribe(event){
@@ -92,24 +48,24 @@ class Tutorial extends Component {
         let cta = null
         if (tutorial.price == 0) { // it's free
             if (this.props.currentUser == null)
-                cta = purchase(tutorial, this)
+                cta = purchase(tutorial, this.props)
             else if (this.props.currentUser.accountType == 'premium')
-                cta = premium(this.props.currentUser, this)
+                cta = premium(this.props.currentUser, this.props)
             else 
-                cta = purchase(tutorial, this)
+                cta = purchase(tutorial, this.props)
         }
 
         else if (this.props.currentUser == null)
-            cta = purchase(tutorial, this)
+            cta = purchase(tutorial, this.props)
 
         else if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
             cta = subscribed(tutorial)
 
         else if (this.props.currentUser.accountType == 'premium')
-            cta = premium(this.props.currentUser, this)
+            cta = premium(this.props.currentUser, this.props)
         
         else // logged in, not subscribed
-            cta = purchase(tutorial, this)
+            cta = purchase(tutorial, this.props)
 
         let units = null
         if (tutorial.posts.length == 0)
@@ -118,6 +74,7 @@ class Tutorial extends Component {
             units = <h3 style={styles.title}>Units</h3>
         else
             units = <h3 style={styles.title}>Preview</h3>
+
 
 		return (
             <div>
@@ -261,7 +218,7 @@ const purchase = (tutorial, context) => {
                         <li>Q&A Forum Access</li>
                         <li>Discounts on Live Courses</li>
                     </ul>
-                    <button onClick={context.showStripeModal.bind(context, 'subscription')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Subscribe</button>
+                    <button onClick={context.showStripeModal.bind(context, {schema:'subscription'})} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Subscribe</button>
                 </div>
             </div>
 
@@ -275,12 +232,11 @@ const purchase = (tutorial, context) => {
                                 access to the forum where people post questions and answers. 
                             </p>
 
-                            <button onClick={context.showStripeModal.bind(context, 'charge')} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Purchase, ${tutorial.price}</button>
+                            <button onClick={context.showStripeModal.bind(context, tutorial)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Purchase, ${tutorial.price}</button>
                         </div>
                     </div>
                 )
             }
-
         </div> 
     )
 }
@@ -305,19 +261,17 @@ const localStyle = {
 
 const stateToProps = (state) => {
     return {
-        currentUser: state.account.currentUser,
-        tutorials: state.tutorial
+        // currentUser: state.account.currentUser,
+        // tutorials: state.tutorial
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
-        submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
-        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
         fetchTutorials: (params) => dispatch(actions.fetchTutorials(params)),
         updateTutorial: (tutorial, params) => dispatch(actions.updateTutorial(tutorial, params)),
         toggleLoading: (loading) => dispatch(actions.toggleLoading(loading))
     }
 }
 
-export default connect(stateToProps, dispatchToProps)(Tutorial)
+export default connect(stateToProps, dispatchToProps)(BaseContainer(Tutorial))

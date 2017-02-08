@@ -20,7 +20,6 @@ const BaseContainer = (Container) => {
 		updateCredentials(event){
 			let updated = Object.assign({}, this.state.credentials)
 			updated[event.target.id] = event.target.value
-//			console.log('updateCredentials: '+JSON.stringify(updated))
 			this.setState({
 				credentials: updated
 			})
@@ -82,7 +81,8 @@ const BaseContainer = (Container) => {
 					<Container
 						updateCredentials={this.updateCredentials.bind(this)}
 						register={this.register.bind(this)}
-						showStripeModal={this.showStripeModal.bind(this)} />
+						showStripeModal={this.showStripeModal.bind(this)} 
+						{...this.props} />
 				</div>
 			)
 		}
@@ -99,7 +99,6 @@ const BaseContainer = (Container) => {
 		return {
 	        submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
 	        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product))
-
 		}
 	}
 
