@@ -26,18 +26,19 @@ class Tutorial extends Component {
 
     subscribe(event){
         event.preventDefault()
-        if (this.props.currentUser == null)
+        const currentUser = this.props.account.currentUser
+        if (currentUser == null)
             return
 
         const tutorial = this.props.tutorials[this.props.slug]
         if (tutorial == null)
             return
 
-        if (tutorial.subscribers.indexOf(this.props.currentUser.id) != -1)
+        if (tutorial.subscribers.indexOf(currentUser.id) != -1)
             return
 
         let subscribers = Object.assign([], tutorial.subscribers)
-        subscribers.push(this.props.currentUser.id)
+        subscribers.push(currentUser.id)
         this.props.updateTutorial(tutorial, {subscribers: subscribers})
         .then(response => {
             window.location.href = '/account'
