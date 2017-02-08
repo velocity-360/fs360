@@ -51,7 +51,7 @@ class Tutorial extends Component {
             if (currentUser == null)
                 cta = purchase(tutorial, this.props)
             else if (currentUser.accountType == 'premium')
-                cta = premium(currentUser, this.props)
+                cta = premium(currentUser, this)
             else 
                 cta = purchase(tutorial, this.props)
         }
@@ -63,7 +63,7 @@ class Tutorial extends Component {
             cta = subscribed(tutorial)
 
         else if (currentUser.accountType == 'premium')
-            cta = premium(currentUser, this.props)
+            cta = premium(currentUser, this)
         
         else // logged in, not subscribed
             cta = purchase(tutorial, this.props)
