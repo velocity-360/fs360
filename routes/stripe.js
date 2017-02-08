@@ -74,7 +74,7 @@ router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource
 
 	if (resource == 'register') { // new user signing up as premium subscriber
-		console.log('REGISTER: '+JSON.stringify(req.body))
+//		console.log('REGISTER: '+JSON.stringify(req.body))
 		var params = {email: req.body.email}
 
 //		controllers.profile.create(req.body)
