@@ -37,7 +37,7 @@ class Account extends Component {
                         <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
                         <small> - { tutorial.posts.length } Units -</small>
                         <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
-                        <p>{ TextUtils.truncateText(tutorial.description, 250) }</p>
+                        <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
                     </div>
 				)
 			})
