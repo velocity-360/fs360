@@ -86,6 +86,7 @@ class Account extends Component {
                                     <ul id="cat_nav">
                                         <li><a onClick={this.selectItem.bind(this, 'My Courses')} href="#" className="active">My Courses</a></li>
                                         <li><a onClick={this.selectItem.bind(this, 'Profile')} href="#">Profile</a></li>
+                                        <li><a href="/account/logout">Log Out</a></li>
                                     </ul>
                                 </div>
                             </div>
