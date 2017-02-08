@@ -97,7 +97,7 @@ const welcome = (
                 </div>
                 <div className="col-md-4 col-md-offset-1 col-md-pull-6">
                     <div className="room_desc_home">
-                        <h3>Clear Explanations</h3>
+                        <h3>Complete Explanations</h3>
                         <p>
                             We do not start a 'beginner' tutorial with several hundred files and lines of pre-scaffolded 
                             code like so many other tutorials on the internet like 
@@ -120,14 +120,6 @@ const welcome = (
                                     <span className="tooltip-item"><i className="icon_set_2_icon-116"></i></span>
                                     <div className="tooltip-content">
                                         Plasma TV
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="tooltip_styled tooltip-effect-4">
-                                    <span className="tooltip-item"><i className="icon_set_2_icon-106"></i></span>
-                                    <div className="tooltip-content">
-                                        Safe box
                                     </div>
                                 </div>
                             </li>
