@@ -96,8 +96,8 @@ router.get('/account', function(req, res, next) {
 
 		initialData['account'] = {currentUser: currentUser}
 		initialData['session'] = {selectedMenuItem: 'account'}
-//		return controllers.tutorial.find({subscribers: currentUser.id})
-		return controllers.tutorial.find({})
+		return controllers.tutorial.find({subscribers: currentUser.id})
+//		return controllers.tutorial.find({})
 	})
 	.then(function(tutorials){
 		var tutorialReducer = {
