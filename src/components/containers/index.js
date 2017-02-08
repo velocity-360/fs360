@@ -1,3 +1,4 @@
+import BaseContainer from './BaseContainer'
 import Nav from './Nav'
 import Courses from './Courses'
 import Course from './Course'
@@ -7,8 +8,10 @@ import Tutorial from './Tutorial'
 import Sidebar from './Sidebar'
 import Account from './Account'
 import FeaturedTutorials from './FeaturedTutorials'
+import Join from './Join'
 
 export {
+	BaseContainer,
 	Nav,
 	Courses,
 	Course,
@@ -17,5 +20,6 @@ export {
 	Tutorial,
 	Sidebar,
 	Account,
-	FeaturedTutorials
+	FeaturedTutorials,
+	Join
 }

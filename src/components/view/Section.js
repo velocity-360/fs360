@@ -144,16 +144,14 @@ const testimonials = (
     <section className="promo_full" style={{background: 'url(/img/rooftop.jpg) no-repeat center center'}}>
         <div className="promo_full_wp">
             <div>
-                <h3>
-                    Testimonials
-                    <span>Id tale utinam ius, an mei omnium recusabo iracundia.</span>
-                </h3>
+                <h3>Testimonials</h3>
+
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 col-md-offset-2">
-                            <div className="carousel_testimonials">
-                            
-                                <div>
+
+                            <div>
+                                <div style={{marginBottom:16}}>
                                     <div className="box_overlay">
                                         <div className="pic">
                                             <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
@@ -165,7 +163,7 @@ const testimonials = (
                                     </div>
                                 </div>
                                 
-                                <div>
+                                <div style={{marginBottom:16}}>
                                     <div className="box_overlay">
                                         <div className="pic">
                                             <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
@@ -177,7 +175,7 @@ const testimonials = (
                                     </div>
                                 </div>
                                 
-                                <div>
+                                <div style={{marginBottom:16}}>
                                     <div className="box_overlay">
                                         <div className="pic">
                                             <figure><img src="/img/testimonial_1.jpg" alt="Velocity 360" className="img-circle" /></figure>
@@ -190,9 +188,10 @@ const testimonials = (
                                 </div>
                                 
                             </div>
+
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </section>

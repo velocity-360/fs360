@@ -26,6 +26,7 @@ class Nav extends Component {
 	}
 
 	updateCredentials(event){
+		console.log(event.target.value)
 		var updatedCredentials = Object.assign({}, this.state.credentials)
 		updatedCredentials[event.target.id] = event.target.value
 
@@ -116,8 +117,8 @@ class Nav extends Component {
 	                            <li className="submenu">
 	                                <a href="javascript:void(0);" className="show-submenu">Courses<i className="icon-down-open-mini"></i></a>
 	                                <ul>
-	                                    <li><a href="index.html">Home Booking</a></li>
-	                                    <li><a href="index_5.html">Home Booking date 2</a></li>
+	                                    <li><a href="index.html">Online</a></li>
+	                                    <li><a href="index_5.html">Live</a></li>
 	                                </ul>
 	                            </li>
 	                            { (this.props.account.currentUser) ? <li><a href="/account">Welcome {TextUtils.capitalize(this.props.account.currentUser.firstName)}</a></li> : <li><a onClick={this.toggleLogin.bind(this)} href="#">Login</a></li> }
