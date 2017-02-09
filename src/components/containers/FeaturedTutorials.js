@@ -71,8 +71,9 @@ class FeaturedTutorials extends Component {
                             <h4><a href={'/tutorial/'+tutorial.slug}>{tutorial.title}</a></h4>
                             <hr />
                             <p style={{height:130}}>{ TextUtils.truncateText(tutorial.description, 160) }</p>
-                            <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'}</span>
-                            <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (tutorial.posts.length==0) ? 'Coming Soon' : tutorial.posts.length+' Units' }</span>
+                            <span style={{padding:3, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'}</span>
+                            <span style={{padding:3, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6, marginRight:6}}>{ (tutorial.posts.length==0) ? 'Coming Soon' : tutorial.posts.length+' Units' }</span>
+                            <a href={'/tutorial/'+tutorial.slug} style={{marginLeft:6}} className="btn_1 white">View</a>
                         </div>
                     </div>
 				)
