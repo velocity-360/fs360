@@ -10,7 +10,7 @@ export default {
 		cbk = completion
 	    stripeHandler = StripeCheckout.configure({
 	        key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-	        image: '/images/logo_round_blue_260.png',
+	        image: '/img/logo_260.png',
 	        address: true,
 	        locale: 'auto',
 	        panelLabel: 'Premium: $19.99/month',
@@ -28,7 +28,7 @@ export default {
 		cbk = completion
 	    stripeHandler = StripeCheckout.configure({
 	        key: 'pk_live_yKFwKJsJXwOxC0yZob29rIN5',
-	        image: '/images/logo_round_blue_260.png',
+	        image: '/img/logo_260.png',
 	        address: true,
 	        locale: 'auto',
 	        panelLabel: text,

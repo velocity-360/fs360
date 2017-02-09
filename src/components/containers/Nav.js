@@ -135,7 +135,7 @@ class Nav extends Component {
 		        <Modal bsSize="sm" show={this.state.showLogin} onHide={this.toggleLogin.bind(this)}>
 			        <Modal.Body style={localStyle.modal}>
 			        	<div style={{textAlign:'center', marginBottom:24}}>
-				        	<img style={localStyle.logo} src='/images/logo.png' />
+				        	<img style={localStyle.logo} src='/img/logo_260.png' />
 				        	<hr />
 				        	<h4>Log In</h4>
 			        	</div>
@@ -167,6 +167,11 @@ const localStyle = {
         color:'#fff',
         fontFamily: 'Pathway Gothic One',
         fontWeight: 100
+    },
+    logo: {
+    	width: 88,
+    	borderRadius: 44
+
     },
 	ul: {
 		fontWeight: 100
