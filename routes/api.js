@@ -95,7 +95,8 @@ router.post('/:resource', function(req, res, next) {
 		recipients.push('dennykwon2@gmail.com');
 
 		var template = req.body.template
-		var path = 'public/email/'+template+'/email.html'
+//		var path = 'public/email/'+template+'/email.html'
+		var path = 'public/email/'+template+'/email-2.html'
 
 		var data = ''
 		fetchFile(path)
