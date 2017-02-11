@@ -8,7 +8,7 @@ var bodyParser = require('body-parser')
 var sessions = require('client-sessions')
 var mongoose = require('mongoose')
 var compression = require('compression')
-if (app.get('env') === 'development') 
+if (process.env.ENVIRONMENT == 'dev') 
   require('dotenv').config()
 
 var main = require('./routes/main')
