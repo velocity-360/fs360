@@ -14,14 +14,14 @@ export default (props) => {
                 <div className="row">
                     <div className="col-md-3 col-md-offset-1">
                         <figure className="room_pic">
-                            <a href="#">
+                            <a href={'/course/'+course.slug}>
                                 <img src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" className="img-responsive" />
                             </a>
                         </figure>
                     </div>
                     <div className="col-md-6 col-md-offset-1">
                         <div className="room_desc_home">
-                            <h3>{course.title}</h3>
+                            <h3><a href={'/course/'+course.slug}>{course.title}</a></h3>
                             <p>{course.description}</p>
                             <ul>
                                 <li>
