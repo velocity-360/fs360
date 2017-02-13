@@ -11,8 +11,8 @@ class Home extends Component {
 	render(){
         const FooterHOC = BaseContainer(Footer)
 
-		return ( 
-            <div>            
+		return (
+            <div>
                 <div className="layer"></div>
                 <div id="preloader">
                     <div data-loader="circle-side"></div>

@@ -2,33 +2,52 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import styles from './style'
 
-class Preview extends Component {
-	render(){
-		const course = this.props.course
-		const schema = course.schema
-		const detail = (schema == 'course') ? course.dates : <span>{ (course.price == 0) ? 'Free' : '$'+course.price}</span>
+export default (props) => {
+    const course = props.course
+    const schema = course.schema
+    const detail = (schema == 'course') ? course.dates : <span>{ (course.price == 0) ? 'Free' : '$'+course.price}</span>
 
-		return (
-            <div className="entry clearfix" style={{borderBottom:'1px solid #EEE', marginBottom:24}}>
-                <div className="entry-image hidden-sm" style={{width:120}}>
-                    <a href="#">
-                        <img style={{width:120}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} alt="Velocity 360" />
-                    </a>
-                </div>
-                <div className="entry-c">
-                    <div className="entry-title">
-                        <h2 style={styles.title}><Link to={'/'+schema+'/'+course.slug}>{course.title}</Link></h2>
+
+    return (
+        <div className="container_styled_1" style={{borderBottom:'1px solid #ededed'}}>
+            <div className="container margin_60">
+                <div className="row">
+                    <div className="col-md-3 col-md-offset-1">
+                        <figure className="room_pic">
+                            <a href="#">
+                                <img src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=260'} alt="Velocity 360" className="img-responsive" />
+                            </a>
+                        </figure>
                     </div>
-                    <ul className="entry-meta clearfix" style={{borderTop:'1px solid #ddd', paddingTop:6}}>
-                        <li>{detail}</li>
-                    </ul>
-                    <div className="entry-content">
-	                    <Link style={{float:'right'}} to={'/'+schema+'/'+course.slug} className="button button-small button-circle button-border button-aqua">Read More</Link>
+                    <div className="col-md-6 col-md-offset-1">
+                        <div className="room_desc_home">
+                            <h3>{course.title}</h3>
+                            <p>{course.description}</p>
+                            <ul>
+                                <li>
+                                    <div className="tooltip_styled tooltip-effect-4">
+                                        <span className="tooltip-item"><i className="icon-video-5"></i></span>
+                                        <div className="tooltip-content">
+                                            Detailed Videos
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="tooltip_styled tooltip-effect-4">
+                                        <span className="tooltip-item"><i className="icon-download-cloud"></i></span>
+                                        <div className="tooltip-content">
+                                            Download Source Code
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-		)
-	}
+        </div>
+    )
+
 }
 
-export default Preview
+
