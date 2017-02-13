@@ -96,16 +96,6 @@ class Nav extends Component {
 	}
 
 	render(){
-		// TODO: put this in the nav bar when ready:
-		const submenu = (
-            <li className="submenu">
-                <a href="javascript:void(0);" className="show-submenu">Courses<i className="icon-down-open-mini"></i></a>
-                <ul>
-                    <li><a href="index.html">Online</a></li>
-                    <li><a href="index_5.html">Live</a></li>
-                </ul>
-            </li>
-		)
 
 		return (
 	        <header>
@@ -125,6 +115,13 @@ class Nav extends Component {
 		                        <a href="#" className="open_close" id="close_in"><i className="icon_set_1_icon-77"></i></a>
 		                        <ul>
 		                            <li><a href="/">Home</a></li>
+						            <li className="submenu">
+						                <a href="javascript:void(0);" className="show-submenu">Courses<i className="icon-down-open-mini"></i></a>
+						                <ul>
+						                    <li><a href="/online">Online</a></li>
+						                    <li><a href="/courses">Live</a></li>
+						                </ul>
+						            </li>
 		                            { (this.props.account.currentUser) ? <li><a href="/account">Welcome {TextUtils.capitalize(this.props.account.currentUser.firstName)}</a></li> : <li><a onClick={this.toggleLogin.bind(this)} href="#">Login</a></li> }
 		                        </ul>
 		                    </div>
@@ -150,7 +147,6 @@ class Nav extends Component {
 
 	        </header>
 		)
-
 
 	}
 }
