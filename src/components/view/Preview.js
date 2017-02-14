@@ -23,24 +23,7 @@ export default (props) => {
                         <div className="room_desc_home">
                             <h3><a href={'/course/'+course.slug}>{course.title}</a></h3>
                             <p>{course.description}</p>
-                            <ul>
-                                <li>
-                                    <div className="tooltip_styled tooltip-effect-4">
-                                        <span className="tooltip-item"><i className="icon-video-5"></i></span>
-                                        <div className="tooltip-content">
-                                            Detailed Videos
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="tooltip_styled tooltip-effect-4">
-                                        <span className="tooltip-item"><i className="icon-download-cloud"></i></span>
-                                        <div className="tooltip-content">
-                                            Download Source Code
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                            <a href={'/course/'+course.slug} className="btn_1 white">Learn More</a>
                         </div>
                     </div>
                 </div>
