@@ -115,6 +115,7 @@ class Nav extends Component {
 		                        <a href="#" className="open_close" id="close_in"><i className="icon_set_1_icon-77"></i></a>
 		                        <ul>
 		                            <li><a href="/">Home</a></li>
+		                            <li><a href="/courses">Courses</a></li>
 		                            { (true) ? null : 
 							            <li className="submenu">
 							                <a href="javascript:void(0);" className="show-submenu">Courses<i className="icon-down-open-mini"></i></a>
