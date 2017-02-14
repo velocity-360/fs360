@@ -36,94 +36,81 @@ class Course extends Component {
             window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
             return
         }
-
-        // const promoCode = this.state.promoCode.trim()
-        // if (promoCode.length == 0){
-        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
-        //     return
-        // }
-
-        // if (course.promoCodes.indexOf(promoCode) == -1){
-        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
-        //     return
-        // }
-
-        // successful promo code
-//        window.open(course.discountPaypalLink, 'Velocity 360', 'width=650,height=900')
     }
 
 	render(){
         const course = this.props.courses[this.props.slug]
-//        console.log('COURSE: '+JSON.stringify(course))
-
         const style = styles.home
 
 		return (
 			<div>
-                <div className="heading-block topmargin-lg" style={{marginBottom:20}}>
-                    <h2 style={styles.title}>{course.title}</h2>
-                </div>
+                <section className="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
+                    <div id="subheader">
+                        <h1>{course.title}</h1>
+                    </div>
+                </section>
 
-                <p style={{fontFamily:'Pathway Gothic One', fontSize:18+'px', fontWeight:400}}>
-                    <img style={{float:'right', width:180, border:'1px solid #ddd', background:'#fff', padding:3, marginLeft:12, marginBottom:12}} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} />
-                    {course.dates}<br />
-                    ${ TextUtils.numberWithCommas(course.tuition) }
-                    <br />
-                </p>
-                <p style={styles.paragraph} dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(course.description) }}></p>
+                <div className="container margin_60_35">
+                    <div className="row">
+                    
+                        <div className="col-md-3" id="sidebar">
+                            <div className="theiaStickySidebar">
+                                <div id="faq_box">
+                                    <ul id="cat_nav">
+                                        <li><a href="#overview" className="active">Overview</a></li>
+                                        <li><a href="#curriculum">Curriculum</a></li>
+                                        <li><a href="#subscribe">Enroll</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="col-md-9">
+                            <h3 className="nomargin_top">Overview</h3>
+                            <hr />
 
-                <div className="postcontent clearfix topmargin">
-                    <h3 style={styles.title}>Curriculum</h3>
-                    <div id="posts" className="post-timeline clearfix">
-                        <div className="timeline-border"></div>
-                        {
-                            course.units.map((unit, i) => {
-                                return (
-                                    <div key={i} className="entry clearfix" style={{border:'none'}}>
-                                        <div className="entry-timeline">
-                                            Unit<span>{i+1}</span>
-                                            <div className="timeline-divider"></div>
-                                        </div>
-                                        <div className="panel panel-default" style={{maxWidth:500, boxShadow:'none', background:'#FDFEFE'}}>
-                                            <div className="panel-body" style={{padding:24}}>
-                                                <h3 style={styles.title}>{unit.topic}</h3>
-                                                <hr />
-                                                <p style={styles.paragraph}>{unit.description}</p>
-                                            </div>
-                                        </div>
+                            <div className="panel-group" id="overview">
+                                <div className="row">
+                                    <div className="col-md-9">
+                                        <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={course.title} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} />
+                                        <br />
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (course.dates.length==0) ? 'Coming Soon' : course.dates }</span>
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (course.tuition == 0) ? 'Free' : '$'+course.tuition+'.00'}</span>
+                                        <br /><br />
+                                        <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(course.description) }}></p>
                                     </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+                                </div>
+                            </div>
 
-                <div className="topmargin" style={{marginBottom:0}}>
-                    <div className="col_half">
-                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                            <h4 style={styles.title}>Submit <span>Deposit</span></h4>
-                        </div>
-                        <p style={styles.paragraph}>
-                            To secure a spot in the next class, submit a deposit below. If the class does not run for 
-                            any reason, the deposit will be fully refunded. The first payment installment is due on the 
-                            first day of class.
-                            <br /><br />
-                            <a onClick={this.showPaypal.bind(this)} href="#register" className="btn btn-success">Submit Deposit</a>
-                        </p>
-                    </div>
+                            <h3 className="nomargin_top">Curriculum</h3>
+                            <hr />
+                            <div className="panel-group" id="curriculum">
+                                <div className="row">
+                                    <div className="col-md-8">
+                                        { course.units.map((unit, i) => {
+                                                return (
+                                                    <div key={i} className="entry clearfix" style={{border:'none', marginBottom:24}}>
+                                                        <div className="panel panel-default" style={{boxShadow:'none', background:'#FDFEFE'}}>
+                                                            <div className="panel-body" style={{padding:24}}>
+                                                                <h3 style={{marginTop:0}}>{unit.topic}</h3>
+                                                                <hr />
+                                                                <p style={styles.paragraph}>{unit.description}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div className="col_half col_last">
-                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                            <h4 style={styles.title}>Full <span>Tuition</span></h4>
+                                
                         </div>
-                        <p style={styles.paragraph}>
-                            Submit the full tution today to receive a $200 discount. If the class does not run for 
-                            any reason, your payment will be fully refunded.
-                            <br /><br />
-                            <a onClick={this.showPaypal.bind(this)} href="#" className="btn btn-success">Full Tution</a>
-                        </p>
                     </div>
-                </div>
+                </div> 
+
+
 
 			</div>
 		)
