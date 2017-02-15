@@ -59,7 +59,7 @@ class Course extends Component {
                                     <ul id="cat_nav">
                                         <li><a href="#overview" className="active">Overview</a></li>
                                         <li><a href="#curriculum">Curriculum</a></li>
-                                        <li><a href="#subscribe">Enroll</a></li>
+                                        <li><a href="#register">Register</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ class Course extends Component {
                                     </div>
                                 </div>
                             </div>
-
+ 
                             <h3 className="nomargin_top">Curriculum</h3>
                             <hr />
                             <div className="panel-group" id="curriculum">
@@ -102,6 +102,40 @@ class Course extends Component {
                                             })
                                         }
                                     </div>
+                                </div>
+                            </div>
+
+                            <h3 className="nomargin_top">Register</h3>
+                            <hr />
+                            <div className="panel-group" id="register">
+                                <div className="row">
+
+            <div className="col-md-6">
+                <div className="box_style_3" id="general_facilities">
+                    <h3>Deposit</h3>
+                    <p>
+                        To secure a spot in the next class, submit a deposit below. If the class does not run for 
+                        any reason, the deposit will be fully refunded. The first payment installment is due on the 
+                        first day of class.
+                    </p>
+
+                    <button onClick={this.showPaypal.bind(this)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Submit Deposit</button>
+                </div>
+            </div>
+
+
+            <div className="col-md-6">
+                <div className="box_style_3" id="general_facilities">
+                    <h3>Full Tuition</h3>
+                    <p>
+                        Submit the full tuition today to receive a $200 discount. If the class does not run for 
+                        any reason, your payment will be fully refunded.
+                    </p>
+
+                    <button onClick={this.showPaypal.bind(this)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Submit Full Tuition</button>
+                </div>
+            </div>
+
                                 </div>
                             </div>
 

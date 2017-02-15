@@ -46,7 +46,7 @@ class Courses extends Component {
                         </div>
                         <div className="col-md-4 col-md-offset-1 col-md-pull-6">
                             <div className="room_desc_home">
-                                <h3>NYC Location</h3>
+                                <h3>NYC</h3>
                                 <p>
                                     Our live courses take place in New York City at our 28th Street and Park Avenue 
                                     location. Taught by professional developers who currently work in the field, the courses 
