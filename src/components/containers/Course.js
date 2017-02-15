@@ -29,13 +29,15 @@ class Course extends Component {
         })      
     }
 
-    showPaypal(event){
+    showPaypal(link, event){
         event.preventDefault()
         const course = this.props.courses[this.props.slug]
-        if (course.discountPaypalLink.length == 0){ // no discount code
-            window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
-            return
-        }
+        window.open(link, 'Velocity 360', 'width=650,height=900')
+        
+        // if (course.discountPaypalLink.length == 0){ // no discount code
+        //     window.open(course.paypalLink, 'Velocity 360', 'width=650,height=900')
+        //     return
+        // }
     }
 
 	render(){
@@ -74,8 +76,9 @@ class Course extends Component {
                                     <div className="col-md-9">
                                         <img style={{border:'1px solid #ddd', width:260, marginBottom:16}} alt={course.title} src={'https://media-service.appspot.com/site/images/'+course.image+'?crop=320'} />
                                         <br />
-                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:6}}>{ (course.dates.length==0) ? 'Coming Soon' : course.dates }</span>
-                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginLeft:6}}>{ (course.tuition == 0) ? 'Free' : '$'+course.tuition+'.00'}</span>
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:12}}>{ (course.dates.length==0) ? 'Coming Soon' : course.dates }</span>
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:12}}>{ course.schedule }</span>
+                                        <span style={{padding:4, background:'#f9f9f9', border:'1px solid #ddd', marginRight:12}}>{ (course.tuition == 0) ? 'Free' : '$'+course.tuition+'.00'}</span>
                                         <br /><br />
                                         <p dangerouslySetInnerHTML={{__html: TextUtils.convertToHtml(course.description) }}></p>
                                     </div>
@@ -110,31 +113,30 @@ class Course extends Component {
                             <div className="panel-group" id="register">
                                 <div className="row">
 
-            <div className="col-md-6">
-                <div className="box_style_3" id="general_facilities">
-                    <h3>Deposit</h3>
-                    <p>
-                        To secure a spot in the next class, submit a deposit below. If the class does not run for 
-                        any reason, the deposit will be fully refunded. The first payment installment is due on the 
-                        first day of class.
-                    </p>
+                                    <div className="col-md-6">
+                                        <div className="box_style_3" id="general_facilities">
+                                            <h3>Deposit</h3>
+                                            <p>
+                                                To secure a spot in the next class, submit a deposit below. If the class does not run for 
+                                                any reason, the deposit will be fully refunded. The first payment installment is due on the 
+                                                first day of class.
+                                            </p>
 
-                    <button onClick={this.showPaypal.bind(this)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Submit Deposit</button>
-                </div>
-            </div>
+                                            <button onClick={this.showPaypal.bind(this, course.discountPaypalLink)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Submit Deposit</button>
+                                        </div>
+                                    </div>
 
+                                    <div className="col-md-6">
+                                        <div className="box_style_3" id="general_facilities">
+                                            <h3>Full Tuition</h3>
+                                            <p>
+                                                Submit the full tuition today to receive a $200 discount. If the class does not run for 
+                                                any reason, your payment will be fully refunded.
+                                            </p>
 
-            <div className="col-md-6">
-                <div className="box_style_3" id="general_facilities">
-                    <h3>Full Tuition</h3>
-                    <p>
-                        Submit the full tuition today to receive a $200 discount. If the class does not run for 
-                        any reason, your payment will be fully refunded.
-                    </p>
-
-                    <button onClick={this.showPaypal.bind(this)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Submit Full Tuition</button>
-                </div>
-            </div>
+                                            <button onClick={this.showPaypal.bind(this, course.paypalLink)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Submit Full Tuition</button>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
