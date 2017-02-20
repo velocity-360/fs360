@@ -36,6 +36,9 @@ router.get('/:resource/:id', function(req, res, next) {
 		
 		else if (entity.link == 0) // there is no link
 			res.redirect('/')
+
+		else if (entity.price == 0) // it's free, everyone can download
+			res.redirect(entity.link)
 		
 		else if (currentUser.accountType == 'premium')
 			res.redirect(entity.link)
