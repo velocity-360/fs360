@@ -238,7 +238,7 @@ const purchase = (tutorial, context, isLoggedIn) => {
                                     <p style={styles.paragraph}>
                                         You can subscribe to this tutorial for free by clicking below:
                                     </p>
-                                    <button onClick={context.subscribe.bind(context)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
+                                    <button onClick={context.followTutorial.bind(context, tutorial)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
                                 </div>
                             ):
                             (

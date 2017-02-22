@@ -35,6 +35,27 @@ const BaseContainer = (Container) => {
 			})
 		}
 
+		followTutorial(tutorial){
+			const user = this.props.account.currentUser
+			if (user == null)
+				return
+
+	        let subscribers = Object.assign([], tutorial.subscribers)
+	        if (subscribers.indexOf(user.id) != -1){ // already subscribed
+	            window.location.href = '/account'
+	            return
+	        }
+
+	        subscribers.push(user.id)
+	        this.props.updateTutorial(tutorial, {subscribers: subscribers})
+	        .then(response => {
+	            window.location.href = '/account'
+	        })
+	        .catch(err => {
+
+	        })
+		}
+
 		register(event){
 			console.log('register: '+JSON.stringify(this.state.credentials))
 			APIManager
@@ -118,6 +139,7 @@ const BaseContainer = (Container) => {
 						updateCredentials={this.updateCredentials.bind(this)}
 						register={this.register.bind(this)}
 						subscribe={this.subscribe.bind(this)}
+						followTutorial={this.followTutorial.bind(this)}
 						showStripeModal={this.showStripeModal.bind(this)} 
 						updateData={this.updateData.bind(this)}
 						{...this.props} />
@@ -137,7 +159,8 @@ const BaseContainer = (Container) => {
 		return {
 	        submitStripeCard: (token) => dispatch(actions.submitStripeCard(token)),
 	        submitStripeCharge: (token, product) => dispatch(actions.submitStripeCharge(token, product)),
-			updateProfile: (profile, params) => dispatch(actions.updateProfile(profile, params))
+			updateProfile: (profile, params) => dispatch(actions.updateProfile(profile, params)),
+	        updateTutorial: (tutorial, params) => dispatch(actions.updateTutorial(tutorial, params))
 		}
 	}
 
