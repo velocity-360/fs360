@@ -61,7 +61,6 @@ module.exports = {
 
 	create: function(params){ // Promise version
 		return new Promise(function(resolve, reject){
-
 			Profile.find({email:params.email}, function(err, profiles){
 				if (err){
 					reject(err)

@@ -26,7 +26,6 @@ const BaseContainer = (Container) => {
 		}
 
 		subscribe(event){
-//			console.log('subscribe: '+JSON.stringify(this.state.credentials))
 			APIManager.handlePost('/api/subscriber', this.state.credentials)
 			.then(response => {
 				alert('Thanks for Subscribing!')
@@ -38,7 +37,15 @@ const BaseContainer = (Container) => {
 
 		register(event){
 			console.log('register: '+JSON.stringify(this.state.credentials))
+			APIManager
+			.handlePost('/account/register', this.state.credentials)
+			.then(response => {
+				window.location.href = '/account'
+			})
+			.catch(err => {
+				alert('ERROR: '+err)
 
+			})
 		}
 
 

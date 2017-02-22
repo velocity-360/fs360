@@ -5,19 +5,21 @@ import actions from '../../actions'
 
 class Join extends Component {
 
+
 	render(){
 		return (
             <div className="container margin_60_35">
-                <h2 className="main_title">Premium Membership
-                    <span>Receive Full Access for $19.99 / Month</span>
+                <h2 className="main_title">Membership
+                    <span>Get Notified When New Tutorials and Courses are Published</span>
                 </h2>
                 <div className="row add_top_20">
-                    <div className="col-md-4 col-md-offset-4">
+                    <div className="col-md-4 col-md-offset-2">
                         <div className="box_style_1">
                             <div className="box_contact">
                                 <i className="icon_set_1_icon-41"></i>
-                                <h4>All Access</h4>
-                                <p>
+                                <h4>Premium</h4>
+                                <span>$19.99 / month</span>
+                                <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
                                     Join as a premium member for $19.99 each month and receive unlimited access 
                                     to all tutorials, code samples, and forums on the site.
                                 </p>
@@ -27,8 +29,24 @@ class Join extends Component {
                                     <li>Q &amp; A Forum Access</li>
                                     <li>Discounts on Live Courses</li>
                                 </ul>
+                                <button onClick={this.props.showStripeModal.bind(this, {schema:'subscription'})} style={{height:36, borderRadius:18, marginBottom:24, marginTop:24, width:100+'%'}} className="btn_1 white">JOIN</button>
                             </div>
-                            <button onClick={this.props.showStripeModal.bind(this, {schema:'subscription'})} style={{height:36, borderRadius:18, marginBottom:24, marginTop:24, width:100+'%'}} className="btn_1 white">JOIN</button>
+                       </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="box_style_1">
+                            <div className="box_contact">
+                                <i className="icon_set_1_icon-41"></i>
+                                <h4>Basic</h4>
+                                <span>Free</span>
+                                <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
+                                    Join as a basic member to gain access to the free tutorials, get notifications when 
+                                    new tutorials and courses are published, and participate in the Q&A forums.
+                                </p>
+                                <input onChange={this.props.updateCredentials.bind(this)} className="form-control" type="text" id="username" placeholder="Username" /><br />
+                                <input onChange={this.props.updateCredentials.bind(this)} className="form-control" type="text" id="email" placeholder="Email" />
+                                <button onClick={this.props.register.bind(this)} style={{height:36, borderRadius:18, marginBottom:24, marginTop:24, width:100+'%'}} className="btn_1 white">JOIN</button>
+                            </div>
                        </div>
                     </div>   
                     

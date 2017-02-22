@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var accountController = require('../controllers/AccountController')
+var profileController = require('../controllers/ProfileController')
 var subscriberController = require('../controllers/SubscriberController')
 var Helpers = require('../managers/Helpers')
 var EmailManager = require('../managers/EmailManager')
@@ -77,6 +78,26 @@ router.post('/:action', function(req, res, next) {
 			req.session.user = profile.id // install cookie with profile id set to 'user'
 			res.json({confirmation:'success', profile:profile})
 		})
+		return
+	}
+
+	if (action == 'register') {
+		profileController
+		.create(req.body)
+		.then(function(profile){
+			req.session.user = profile.id // install cookie with profile id set to 'user'
+			res.json({
+				confirmation: 'success',
+				profile: profile
+			})
+		})
+		.catch(function(err){
+			res.json({
+				confirmation: 'fail',
+				message: err
+			})
+		})
+
 		return
 	}
 
