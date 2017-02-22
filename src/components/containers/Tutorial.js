@@ -56,20 +56,20 @@ class Tutorial extends Component {
         let cta = null
         if (tutorial.price == 0) { // it's free
             if (currentUser == null)
-                cta = purchase(tutorial, this.props)
+                cta = purchase(tutorial, this.props, false)
 
-            else if (tutorial.subscribers.indexOf(currentUser.id) != -1)
+            else if (tutorial.subscribers.indexOf(currentUser.id) != -1) // already subscribed
                 cta = subscribed(tutorial)
 
-            else if (currentUser.accountType == 'premium')
+            else if (currentUser.accountType == 'premium') // premium member
                 cta = premium(currentUser, this)
             
             else 
-                cta = purchase(tutorial, this.props)
+                cta = purchase(tutorial, this.props, true) // show premium signup and subcribe
         }
 
         else if (currentUser == null)
-            cta = purchase(tutorial, this.props)
+            cta = purchase(tutorial, this.props, false)
 
         else if (tutorial.subscribers.indexOf(currentUser.id) != -1)
             cta = subscribed(tutorial)
@@ -78,7 +78,7 @@ class Tutorial extends Component {
             cta = premium(currentUser, this)
         
         else // logged in, not subscribed
-            cta = purchase(tutorial, this.props)
+            cta = purchase(tutorial, this.props, true)
 
         let units = null
         if (tutorial.posts.length == 0)
@@ -204,13 +204,13 @@ const subscribed = (tutorial) => {
     )
 }
 
-const purchase = (tutorial, context) => {
+const purchase = (tutorial, context, isLoggedIn) => {
     return (
         <div>
             <div className="col-md-6">
                 <div className="box_style_3" id="general_facilities">
                     <h3>Premium Membership</h3>
-                    <p>
+                    <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
                         Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
                         code samples, and forums on the site. There are no long term commitments and membership 
                         can be canceled at any time.
@@ -226,12 +226,37 @@ const purchase = (tutorial, context) => {
                 </div>
             </div>
 
-            { (tutorial.price == 0) ? null : 
+            { (tutorial.price == 0) ? 
+                (
+                    <div className="col-md-6">
+                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                            <h3 style={styles.title}>Subscribe</h3>
+                        </div>
+
+                        { (isLoggedIn) ? (
+                                <div>
+                                    <p style={styles.paragraph}>
+                                        You can subscribe to this tutorial for free by clicking below:
+                                    </p>
+                                    <button onClick={context.subscribe.bind(context)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
+                                </div>
+                            ):
+                            (
+                                <div>
+                                    <input style={{marginTop:12}} className="form-control" type="text" placeholder="Username" />
+                                    <input style={{marginTop:12}} className="form-control" type="text" placeholder="Email" />
+                                </div>
+                            )
+                        }
+
+                    </div>
+                ) 
+                : 
                 (
                     <div className="col-md-6">
                         <div className="box_style_3" id="general_facilities">
                             <h3>Purchase</h3>
-                            <p>
+                            <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
                                 Purchase this tutorial for ${tutorial.price} and receive all videos, code samples and 
                                 access to the forum where people post questions and answers. 
                             </p>
