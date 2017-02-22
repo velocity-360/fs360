@@ -243,8 +243,9 @@ const purchase = (tutorial, context, isLoggedIn) => {
                             ):
                             (
                                 <div>
-                                    <input style={{marginTop:12}} className="form-control" type="text" placeholder="Username" />
-                                    <input style={{marginTop:12}} className="form-control" type="text" placeholder="Email" />
+                                    <input onChange={context.updateCredentials.bind(context)} style={{marginTop:12}} className="form-control" type="text" id="username" placeholder="Username" />
+                                    <input onChange={context.updateCredentials.bind(context)} style={{marginTop:12}} className="form-control" type="text" id="email" placeholder="Email" />
+                                    <button onClick={context.followTutorial.bind(context, tutorial)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
                                 </div>
                             )
                         }

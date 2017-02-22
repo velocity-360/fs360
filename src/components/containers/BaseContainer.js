@@ -37,8 +37,24 @@ const BaseContainer = (Container) => {
 
 		followTutorial(tutorial){
 			const user = this.props.account.currentUser
-			if (user == null)
+			if (user == null){ // register first THEN follow tutorial:
+				APIManager
+				.handlePost('/account/register', this.state.credentials)
+				.then(response => {
+					const profile = response.profile
+			        let subscribers = Object.assign([], tutorial.subscribers)
+			        subscribers.push(profile._id)
+			        return this.props.updateTutorial(tutorial, {subscribers: subscribers})
+				})
+				.then(response => {
+		            window.location.href = '/account'
+				})
+				.catch(err => {
+					alert('ERROR: '+err.message)
+				})
+
 				return
+			}
 
 	        let subscribers = Object.assign([], tutorial.subscribers)
 	        if (subscribers.indexOf(user.id) != -1){ // already subscribed
