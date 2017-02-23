@@ -229,12 +229,11 @@ const purchase = (tutorial, context, isLoggedIn) => {
             { (tutorial.price == 0) ? 
                 (
                     <div className="col-md-6">
-                        <div className="heading-block fancy-title nobottomborder title-bottom-border">
-                            <h3 style={styles.title}>Subscribe</h3>
-                        </div>
-
                         { (isLoggedIn) ? (
                                 <div>
+                                    <div className="heading-block fancy-title nobottomborder title-bottom-border">
+                                        <h3 style={styles.title}>Subscribe</h3>
+                                    </div>
                                     <p style={styles.paragraph}>
                                         You can subscribe to this tutorial for free by clicking below:
                                     </p>
@@ -242,7 +241,12 @@ const purchase = (tutorial, context, isLoggedIn) => {
                                 </div>
                             ):
                             (
-                                <div>
+                                <div className="box_style_3" id="general_facilities">
+                                    <h3>Basic Membership</h3>
+                                    <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
+                                        Join as a basic member to gain access to the free tutorials, get notifications when 
+                                        new tutorials and courses are published, and participate in the Q&A forums.
+                                    </p>
                                     <input onChange={context.updateCredentials.bind(context)} style={{marginTop:12}} className="form-control" type="text" id="username" placeholder="Username" />
                                     <input onChange={context.updateCredentials.bind(context)} style={{marginTop:12}} className="form-control" type="text" id="email" placeholder="Email" />
                                     <button onClick={context.followTutorial.bind(context, tutorial)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
