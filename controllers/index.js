@@ -17,6 +17,7 @@ module.exports = {
 	course: courseController,
 	online: tutorialController,
 	tutorial: tutorialController,
+	tutorials: tutorialController,
 	video: courseController,
 	feed: postController,
 	post: postController,

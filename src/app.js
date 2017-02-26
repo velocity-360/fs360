@@ -14,6 +14,7 @@ const app = (
 			<Route path='/' component={Main}>
 				<IndexRoute component={Home} />
 				<Route path='/courses' component={Split} />
+				<Route path='/tutorials' component={Split} />
 				<Route path='/online' component={Landing} />
 				<Route path='/account' component={Split} />
 				<Route path='/course/:slug' component={Split} />

@@ -169,6 +169,11 @@ router.get('/:page', function(req, res, next) {
 			base = layout.Split
 		}
 
+		if (page == 'tutorials'){
+			initialData['tutorial'] = reducer // can be tutorials reducer
+			base = layout.Split
+		}
+
 		initialState = store.configureStore(initialData)
 
 		var routes = {

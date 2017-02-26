@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Footer, Section } from '../view'
-import { Courses, Course, Online, Tutorial, Account, Sidebar, Nav, BaseContainer } from '../containers'
+import { Courses, Course, Online, Tutorials, Tutorial, Account, Sidebar, Nav, BaseContainer } from '../containers'
 import styles from './styles'
 
 class Split extends Component {
@@ -20,6 +20,9 @@ class Split extends Component {
         if (parts.length == 1){
             if (page == 'courses')
                 content = <Courses />
+
+            if (page == 'tutorials')
+                content = <Tutorials />
 
             if (page == 'online')
                 content = <Online />
