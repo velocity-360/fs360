@@ -77,6 +77,21 @@ class Tutorials extends Component {
                                         <li><a onClick={this.selectItem.bind(this, 'Fullstack')} href="#">Fullstack</a></li>
                                         <li><a onClick={this.selectItem.bind(this, 'Node')} href="#">Node</a></li>
                                         <li><a onClick={this.selectItem.bind(this, 'React')} href="#">React</a></li>
+                                        <li>
+                                            <div style={{padding:'15px 15px'}}>
+                                                <img src="/img/slack.png" /> 
+                                                <p style={{marginTop:12}}>
+                                                    Join our Slack channel to ask questions about tutorials, get feedback on 
+                                                    your code and to discuss general programming and industry topics: 
+                                                </p>
+                                                <div id="message-newsletter_2"></div>
+                                                <div className="form-group">
+                                                    <input style={localStyle.input} onChange={this.props.updateCredentials.bind(this)} type="text" id="name" placeholder="Name" className="form-control" /><br />
+                                                    <input style={localStyle.input} onChange={this.props.updateCredentials.bind(this)} type="text" id="email" placeholder="Email" className="form-control" />
+                                                </div>
+                                                <button onClick={this.props.subscribe.bind(this)} className="btn_1 white">Join</button>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -146,6 +161,16 @@ class Tutorials extends Component {
 			</div>
 		)
 	}
+}
+
+const localStyle = {
+    input: {
+        border: 'none',
+        boxShadow: 'none',
+        height: 28,
+        padding: 0,
+        borderBottom: '1px solid #eee'
+    }
 }
 
 const stateToProps = (state) => {
