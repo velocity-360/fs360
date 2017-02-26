@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
 
 var TutorialSchema = new mongoose.Schema({
 	title: {type:String, trim:true, default:''},
+	catgory: {type:String, trim:true, default:'web development'}, // web development, data science, etc
 	status: {type:String, trim:true, default: 'coming soon'}, // live or coming soon
 	isFeatured: {type:String, default:'no'},
 	description: {type:String, trim:true, default: ''},
@@ -20,6 +21,7 @@ var TutorialSchema = new mongoose.Schema({
 TutorialSchema.methods.summary = function() {
 	var summary = {
 		'title':this.title,
+		'catgory':this.catgory,
 		'status':this.status,
 		'isFeatured':this.isFeatured,
 		'description':this.description,

@@ -4,23 +4,20 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import actions from '../../actions'
 import { Preview, Section } from '../view'
+import { TextUtils, Stripe } from '../../utils'
+import BaseContainer from './BaseContainer'
+
 
 class Tutorials extends Component {
     constructor(){
         super()
         this.state = {
-            selected: 'My Courses',
+            selected: 'All',
             showModal: false,
             showCreateTeam: false,
             passwords: {},
             updatedProfile: null
         }
-    }
-
-    componentDidMount(){
-        window.scrollTo(0, 0)
-        // if (this.props.courses == null)
-        //     this.props.fetchCourses(null)
     }
 
     selectItem(item, event){
@@ -35,6 +32,29 @@ class Tutorials extends Component {
         const style = styles.home
 
         const selected = this.state.selected
+        let content = null
+
+        if (selected == 'All'){
+            const list = this.props.tutorials.all || []
+            content = (
+                <div>
+                    { list.map((tutorial, i) => {
+                            return (
+                                <div key={tutorial.id} className="review_strip_single">
+                                    <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
+                                    <small> - { tutorial.posts.length } Units -</small>
+                                    <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
+                                    <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
+                                    <div style={{textAlign:'right'}}>
+                                        <a href={'/tutorial/'+tutorial.slug} style={{height:36, borderRadius:18, marginTop:12, paddingTop:9}} className="btn_1 white">View</a>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
 
 		return (
 			<div>
@@ -51,9 +71,8 @@ class Tutorials extends Component {
                             <div className="theiaStickySidebar">
                                 <div id="faq_box">
                                     <ul id="cat_nav">
-                                        <li><a onClick={this.selectItem.bind(this, 'My Courses')} href="#" className="active">My Courses</a></li>
-                                        <li><a onClick={this.selectItem.bind(this, 'Profile')} href="#">Profile</a></li>
-                                        <li><a href="/account/logout">Log Out</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'All')} href="#" className="active">All</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'Web Development')} href="#">Web Development</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -66,11 +85,54 @@ class Tutorials extends Component {
                             <div className="panel-group" id="courses">
                                 <div className="row">
                                     <div className="col-md-9">
-                                    	CONTENT
+                                    	{ content }
 
                                     </div>
                                 </div>
                             </div>
+
+                            <h3 className="nomargin_top">Subscribe</h3>
+                            <hr />
+                            <div className="panel-group" id="subscribe">
+                                <div className="row">
+
+                                    <div className="col-md-6">
+                                        <div className="box_style_3" id="general_facilities">
+                                            <h3>Premium Membership</h3>
+                                            <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
+                                                Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
+                                                code samples, and forums on the site. There are no long term commitments and membership 
+                                                can be canceled at any time.
+                                            </p>
+
+                                            <ul className="list_ok">
+                                                <li>Downloadable Code Samples</li>
+                                                <li>Downloadable Videos</li>
+                                                <li>Q&A Forum Access</li>
+                                                <li>Discounts on Live Courses</li>
+                                            </ul>
+                                            <button onClick={this.props.showStripeModal.bind(this, {schema:'subscription'})} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white" href="#">Subscribe</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-md-6">
+                                        <div className="box_style_3" id="general_facilities">
+                                            <h3>Basic Membership</h3>
+                                            <p style={{marginTop:12, paddingTop:12, borderTop:'1px solid #ddd'}}>
+                                                Join as a basic member to gain access to the free tutorials, get notifications when 
+                                                new tutorials and courses are published, and participate in the Q&A forums.
+                                            </p>
+                                            <input onChange={this.props.updateCredentials.bind(this)} style={{marginTop:12}} className="form-control" type="text" id="username" placeholder="Username" />
+                                            <input onChange={this.props.updateCredentials.bind(this)} style={{marginTop:12}} className="form-control" type="text" id="email" placeholder="Email" />
+                                            <button onClick={this.props.register.bind(this)} style={{height:36, borderRadius:18, marginTop:12}} className="btn_1 white">Subscribe</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
                                 
                         </div>
                     </div>
@@ -84,14 +146,16 @@ class Tutorials extends Component {
 
 const stateToProps = (state) => {
     return {
-        courses: state.course.all
+        courses: state.course.all,
+        tutorials: state.tutorial
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
-        fetchCourses: (params) => dispatch(actions.fetchCourses(params))
+        fetchCourses: (params) => dispatch(actions.fetchCourses(params)),
+        fetchTutorials: (params) => dispatch(actions.fetchTutorials(params))
     }
 }
 
-export default connect(stateToProps, dispatchToProps)(Tutorials)
+export default connect(stateToProps, dispatchToProps)(BaseContainer(Tutorials))

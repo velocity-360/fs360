@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import styles from './style'
+import { TextUtils } from '../../utils'
 
 export default (props) => {
     const course = props.course
@@ -22,7 +23,7 @@ export default (props) => {
                     <div className="col-md-6 col-md-offset-1">
                         <div className="room_desc_home">
                             <h3><a href={'/course/'+course.slug}>{course.title}</a></h3>
-                            <p>{course.description}</p>
+                            <p>{ TextUtils.truncateText(course.description, 220) }</p>
                             <a href={'/course/'+course.slug} className="btn_1 white">Learn More</a>
                         </div>
                     </div>
