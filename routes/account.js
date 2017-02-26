@@ -117,11 +117,6 @@ router.post('/:action', function(req, res, next) {
 	}
 
 	if (action == 'subscribe'){
-		// var subscriber = {
-		// 	name: body.firstName + body.lastName,
-		// 	email: body.email
-		// }
-
 		subscriberController.post(body, function(err, result){
 			if (err){
 				return
