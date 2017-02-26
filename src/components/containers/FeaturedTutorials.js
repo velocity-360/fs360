@@ -81,7 +81,7 @@ class FeaturedTutorials extends Component {
 		}
 
 		return (
-            <div className="container_styled_1">
+            <div id="tutorials" className="container_styled_1">
                 <div className="container margin_60">
                     <h2 className="main_title" style={{fontFamily:'Pathway Gothic One'}}>
                         Tutorials

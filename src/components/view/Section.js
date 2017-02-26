@@ -4,7 +4,7 @@ import styles from './style'
 export default (props) => {
     switch (props.content){
         case 'header':
-            return (header)
+            return (header(props))
 
         case 'welcome':
             return (welcome)
@@ -20,19 +20,21 @@ export default (props) => {
     }
 }
 
-const header = (
-    <div className="parallax-window" id="booking" data-parallax="scroll" data-image-src="/img/girl.jpg" data-natural-width="1400" data-natural-height="550">
-        <div className="promo_full_wp">
-            <div style={{paddingTop:164}}>
-                <h3>
-                    Learn Full Stack Development
-                    <span>Real World Node, React, and Redux Projects</span>
-                </h3>
-                <button style={{height:36, borderRadius:18}} className="btn_1 white">Learn More</button>
+const header = (props) => {
+    return (
+        <div className="parallax-window" id="booking" data-parallax="scroll" data-image-src="/img/girl.jpg" data-natural-width="1400" data-natural-height="550">
+            <div className="promo_full_wp">
+                <div style={{paddingTop:164}}>
+                    <h3>
+                        Learn Full Stack Development
+                        <span>Real World Node, React, and Redux Projects</span>
+                    </h3>
+                    <a href="#tutorials" onClick={props.showElement.bind(this, 'tutorials')} style={{height:36, borderRadius:18}} className="btn_1 white">Learn More</a>
+                </div>
             </div>
         </div>
-    </div>
-)
+    )
+}
 
 const welcome = (
     <div>

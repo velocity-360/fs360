@@ -7,6 +7,12 @@ class Home extends Component {
     componentDidMount(){
         window.scrollTo(0, 0)
     }
+
+    showElement(element, event){
+        event.preventDefault()
+        const divPosition = $('#'+element).offset()
+        $('html, body').animate({scrollTop: divPosition.top}, 'slow')
+    }
     
 	render(){
         const FooterHOC = BaseContainer(Footer)
@@ -19,7 +25,7 @@ class Home extends Component {
                 </div>
                 
                 <Nav />
-                <Section content="header" />
+                <Section showElement={this.showElement.bind(this)} content="header" />
                 <Section content="welcome" />
                 <FeaturedTutorials />
                 <Section content="testimonials" />
@@ -27,6 +33,7 @@ class Home extends Component {
 
                 <div id="dtBox"></div>
                 <FooterHOC />
+
             </div>
 		)
 	}
