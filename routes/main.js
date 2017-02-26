@@ -156,6 +156,12 @@ router.get('/:page', function(req, res, next) {
 			reducer[entity.id] = entity
 			reducer[entity.slug] = entity
 			reducer.all.push(entity)
+
+			if (entity.category != null){
+				var list = reducer[entity.category] || []
+				list.push(entity)
+				reducer[entity.category] = list
+			}
 		})
 
 		var base = null

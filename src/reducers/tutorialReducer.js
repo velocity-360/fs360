@@ -10,12 +10,16 @@ export default (state = initialState, action) => {
 
 	switch (action.type) {
 		case constants.TUTORIALS_RECEIVED:
-			console.log('TUTORIALS_RECEIVED: '+JSON.stringify(action.tutorials))
+//			console.log('TUTORIALS_RECEIVED: '+JSON.stringify(action.tutorials))
 			action.tutorials.forEach((tutorial, i) => {
 				if (newState[tutorial.id] == null){
 					newState[tutorial.id] = tutorial
 					newState[tutorial.slug] = tutorial
 					updatedList.push(tutorial)
+
+					let list = (newState[tutorial.category]) ? Object.assign([], newState[tutorial.category]) : []
+					list.push(tutorial)
+					newState[tutorial.category] = list
 				}
 			})
 

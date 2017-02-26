@@ -32,29 +32,55 @@ class Tutorials extends Component {
         const style = styles.home
 
         const selected = this.state.selected
-        let content = null
+//        let content = null
+
+        let list = null
 
         if (selected == 'All'){
-            const list = this.props.tutorials.all || []
-            content = (
-                <div>
-                    { list.map((tutorial, i) => {
-                            return (
-                                <div key={tutorial.id} className="review_strip_single">
-                                    <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
-                                    <small> - { tutorial.posts.length } Units -</small>
-                                    <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
-                                    <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
-                                    <div style={{textAlign:'right'}}>
-                                        <a href={'/tutorial/'+tutorial.slug} style={{height:36, borderRadius:18, marginTop:12, paddingTop:9}} className="btn_1 white">View</a>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            )
+            list = this.props.tutorials.all || []
+            // content = (
+            //     <div>
+            //         { list.map((tutorial, i) => {
+            //                 return (
+            //                     <div key={tutorial.id} className="review_strip_single">
+            //                         <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
+            //                         <small> - { tutorial.posts.length } Units -</small>
+            //                         <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
+            //                         <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
+            //                         <div style={{textAlign:'right'}}>
+            //                             <a href={'/tutorial/'+tutorial.slug} style={{height:36, borderRadius:18, marginTop:12, paddingTop:9}} className="btn_1 white">View</a>
+            //                         </div>
+            //                     </div>
+            //                 )
+            //             })
+            //         }
+            //     </div>
+            // )
         }
+        else if (selected == 'Web Development'){
+            list = this.props.tutorials['web development'] || []
+
+        }
+
+        let content = (
+            <div>
+                { list.map((tutorial, i) => {
+                        return (
+                            <div key={tutorial.id} className="review_strip_single">
+                                <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
+                                <small> - { tutorial.posts.length } Units -</small>
+                                <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
+                                <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
+                                <div style={{textAlign:'right'}}>
+                                    <a href={'/tutorial/'+tutorial.slug} style={{height:36, borderRadius:18, marginTop:12, paddingTop:9}} className="btn_1 white">View</a>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        )
+
 
 		return (
 			<div>
