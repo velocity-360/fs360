@@ -13,7 +13,10 @@ module.exports = {
 				subject:  subject,
 				text:     text
 			}, function(err) {
-				if (err) {reject(err); }
+				if (err) {
+					console.log('EMAIL MANAGER ERROR: '+err)
+					reject(err); 
+				}
 				else { resolve(); }
 			})
 		})

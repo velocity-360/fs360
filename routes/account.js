@@ -67,6 +67,8 @@ router.get('/:action', function(req, res, next) {
 
 router.post('/:action', function(req, res, next) {
 	var action = req.params.action
+	var body = req.body
+	console.log('ACCOUNT: '+action)
 
 	if (action == 'login') {
 		accountController.login(req.body, function(err, profile){
@@ -102,20 +104,6 @@ router.post('/:action', function(req, res, next) {
 		return
 	}
 
-	var body = req.body
-	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
-	var actions = ['application', 'proposal', 'freesession', 'subscribe']
-
-	if (actions.indexOf(action) != -1){
-		EmailManager.sendEmails(process.env.BASE_EMAIL, emailList, body.subject, JSON.stringify(body))
-		res.json({
-			confirmation:'success', 
-			message: body.confirmation
-		})
-
-		return
-	}
-
 	if (action == 'subscribe'){
 		subscriberController.post(body, function(err, result){
 			if (err){
@@ -130,6 +118,22 @@ router.post('/:action', function(req, res, next) {
 
 			return
 		})
+
+		return
+	}
+
+
+	var emailList = ['dkwon@velocity360.io', 'katrina@velocity360.io']
+	var actions = ['application', 'proposal', 'freesession']
+
+	if (actions.indexOf(action) != -1){
+		EmailManager.sendEmails(process.env.BASE_EMAIL, emailList, body.subject, JSON.stringify(body))
+		res.json({
+			confirmation:'success', 
+			message: body.confirmation
+		})
+
+		return
 	}
 
 	if (action == 'syllabus'){
