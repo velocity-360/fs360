@@ -89,6 +89,9 @@ class FeaturedTutorials extends Component {
 
                     <div className="row">
                         { list }
+                        <div style={{textAlign:'center'}}>
+                            <a href="/tutorials" className="btn_1 white">VIEW ALL TUTORIALS</a>
+                        </div>
                     </div>
 
                 </div>

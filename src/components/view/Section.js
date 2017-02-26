@@ -29,7 +29,7 @@ const header = (props) => {
                         Learn Full Stack Development
                         <span>Real World Node, React, and Redux Projects</span>
                     </h3>
-                    <a href="#tutorials" onClick={props.showElement.bind(this, 'tutorials')} style={{height:36, borderRadius:18}} className="btn_1 white">Learn More</a>
+                    <a href="#tutorials" onClick={props.showElement.bind(this, 'tutorials')} style={{height:36, borderRadius:18, paddingTop:9}} className="btn_1 white">Learn More</a>
                 </div>
             </div>
         </div>

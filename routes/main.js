@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
 	controllers.account.currentUser(req)
 	.then(function(currentUser){ // can be null
 		initialData['account'] = {currentUser: currentUser}
-		return controllers.tutorial.find({})
+		return controllers.tutorial.find({limit:6})
 	})
 	.then(function(tutorials){
 		var tutorialReducer = {
