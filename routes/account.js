@@ -86,7 +86,7 @@ router.post('/:action', function(req, res, next) {
 		.create(req.body)
 		.then(function(profile){
 			req.session.user = profile.id // install cookie with profile id set to 'user'
-			EmailManager.sendEmails(process.env.BASE_EMAIL, 'dkwwon@velocity360.io', 'New Registration', JSON.stringify(req.body))
+			EmailManager.sendEmail(process.env.BASE_EMAIL, 'dkwwon@velocity360.io', 'New Registration', JSON.stringify(req.body))
 			res.json({
 				confirmation: 'success',
 				profile: profile
@@ -128,7 +128,7 @@ router.post('/:action', function(req, res, next) {
 			}
 
 			req.session.visitor = result.id
-			EmailManager.sendEmails(process.env.BASE_EMAIL, 'dkwwon@velocity360.io', 'Slack Invitation Request', JSON.stringify(body))
+			EmailManager.sendEmail(process.env.BASE_EMAIL, 'dkwwon@velocity360.io', 'Slack Invitation Request', JSON.stringify(body))
 			res.json({
 				confirmation: 'success'
 			})
