@@ -22,6 +22,11 @@ class Tutorials extends Component {
 
     selectItem(item, event){
         event.preventDefault()
+//        window.scrollTo(0, 0)
+        const divPosition = $('#tutorials').offset()
+        $('html, body').animate({scrollTop: divPosition.top}, 'slow')
+
+
         this.setState({
             selected: item
         })
@@ -32,7 +37,7 @@ class Tutorials extends Component {
         const style = styles.home
         const selected = this.state.selected
         const list = this.props.tutorials[selected.toLowerCase()] || []
-        
+
         let content = (
             <div>
                 { list.map((tutorial, i) => {
@@ -61,9 +66,9 @@ class Tutorials extends Component {
 				    </div>
 			    </section>
 
-                <div className="container margin_60_35" style={{paddingTop:64}}>
+                <div id="tutorials" className="container margin_60_35" style={{paddingTop:64}}>
+
                     <div className="row">
-                    
                         <div className="col-md-3" id="sidebar">
                             <div className="theiaStickySidebar">
                                 <div id="faq_box">
