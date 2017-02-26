@@ -30,38 +30,9 @@ class Tutorials extends Component {
 
 	render(){
         const style = styles.home
-
         const selected = this.state.selected
-//        let content = null
-
-        let list = null
-
-        if (selected == 'All'){
-            list = this.props.tutorials.all || []
-            // content = (
-            //     <div>
-            //         { list.map((tutorial, i) => {
-            //                 return (
-            //                     <div key={tutorial.id} className="review_strip_single">
-            //                         <img alt="Pic" className="img-circle" src={'https://media-service.appspot.com/site/images/'+tutorial.image+'?crop=68'} />
-            //                         <small> - { tutorial.posts.length } Units -</small>
-            //                         <h4><a href={'/tutorial/'+tutorial.slug}>{ tutorial.title }</a></h4>
-            //                         <p>{ TextUtils.truncateText(tutorial.description, 175) }</p>
-            //                         <div style={{textAlign:'right'}}>
-            //                             <a href={'/tutorial/'+tutorial.slug} style={{height:36, borderRadius:18, marginTop:12, paddingTop:9}} className="btn_1 white">View</a>
-            //                         </div>
-            //                     </div>
-            //                 )
-            //             })
-            //         }
-            //     </div>
-            // )
-        }
-        else if (selected == 'Web Development'){
-            list = this.props.tutorials['web development'] || []
-
-        }
-
+        const list = this.props.tutorials[selected.toLowerCase()] || []
+        
         let content = (
             <div>
                 { list.map((tutorial, i) => {
@@ -98,7 +69,9 @@ class Tutorials extends Component {
                                 <div id="faq_box">
                                     <ul id="cat_nav">
                                         <li><a onClick={this.selectItem.bind(this, 'All')} href="#" className="active">All</a></li>
-                                        <li><a onClick={this.selectItem.bind(this, 'Web Development')} href="#">Web Development</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'Fullstack')} href="#">Fullstack</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'Node')} href="#">Node</a></li>
+                                        <li><a onClick={this.selectItem.bind(this, 'React')} href="#">React</a></li>
                                     </ul>
                                 </div>
                             </div>
