@@ -35,8 +35,8 @@ router.get('/', function(req, res, next) {
 	var initialData = initial()
 	var initialState = null
 	var tags = {
-		title: 'Home',
-		url: 'https://www.velocity360.io/',
+		title: 'Learn Full Stack Node, React, Redux',
+		url: 'https://www.velocity360.io',
 		image: 'https://www.velocity360.io/images/logo_round_green_260.png'
 	}
 
@@ -251,7 +251,7 @@ router.get('/:page/:slug', function(req, res, next) {
 				description = description.substring(0, 200)+'...'
 
 			tags = {
-				title: entity.title,
+				title: entity.title || entity.name,
 				url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
 				image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
 				description: description
