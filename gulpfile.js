@@ -63,7 +63,9 @@ gulp.task('build', function(){
                 './public/js/theia-sticky-sidebar.js',
                 './public/js/sidebar-config.js',
                 './public/js/sweetalert.min.js',
-                './public/js/velocity360.js'
+                './public/js/velocity360.js',
+                './public/js/tutorials.js',
+                './public/js/courses.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))
