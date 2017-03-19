@@ -1,3 +1,23 @@
+var ajaxRequest = function(path, params, method, completion){
+    $.ajax({
+        url: path,
+        type: method,
+        data: JSON.stringify(params),
+        contentType: 'application/json; charset=utf-8',
+        success: function(response) { // console.log('AJAX CALLBACK: '+JSON.stringify(response))
+            if (response.confirmation != 'success'){
+                completion({message: response.message}, null)
+                return
+            }
+
+            completion(null, response)
+        },
+        error: function(XMLHttpRequest, textStatus, error) {
+            alert('Error: ' + error)
+        }
+    })
+}
+
 
 var visitor = {
 	username: '',
@@ -19,22 +39,14 @@ var stripePremium = StripeCheckout.configure({
             name: token.name
         }
 
-        $.ajax({
-            url: '/stripe/card',
-            type: 'POST',
-            data: JSON.stringify(params),
-            contentType: 'application/json; charset=utf-8',
-            success: function(response) { // console.log('AJAX CALLBACK: '+JSON.stringify(response))
-                if (response.confirmation != 'success'){
-                    alert(response.message)
-                    return
-                }
-
-                window.location.href = '/account'                    
-            },
-            error: function(XMLHttpRequest, textStatus, error) { 
-                alert('Error: ' + error)
+        ajaxRequest('/stripe/card', params, 'POST', function(err, response){
+            if (err){
+                var msg = err.message || err
+                alert(msg)
+                return
             }
+
+            window.location.href = '/account'
         })
     },
     closed: function() {
@@ -47,6 +59,20 @@ var updateVisitor = function(event){
 	visitor[event.target.id] = event.target.value
 }
 
+var slackRequest = function(event){
+    event.preventDefault()
+//    console.log('SLACK REQUEST: '+JSON.stringify(visitor))
+    ajaxRequest('/account/subscribe', visitor, 'POST', function(err, response){
+        if (err){
+            var msg = err.message || err
+            alert(msg)
+            return
+        }
+
+        alert('Thanks for Subscribing! We will send you an email shortly with an invitation to our Slack Chanel!')
+
+    })
+}
 
 var login = function(event){
 	event.preventDefault()
@@ -61,23 +87,14 @@ var login = function(event){
 	}
 
 //	console.log('LOGIN: '+JSON.stringify(visitor))
-    $.ajax({
-        url: '/account/login',
-        type: 'POST',
-        data: JSON.stringify(visitor),
-        contentType: 'application/json; charset=utf-8',
-        success: function(response) {
-            // console.log('AJAX CALLBACK: '+JSON.stringify(response))
-            if (response.confirmation != 'success'){
-            	alert(response.message)
-            	return
-            }
-
-            window.location.href = '/account'
-        },
-        error: function(XMLHttpRequest, textStatus, error) { 
-            alert('Error: ' + error)
+    ajaxRequest('/account/login', visitor, 'POST', function(err, response){
+        if (err){
+            var msg = err.message || err
+            alert(msg)
+            return
         }
+
+        window.location.href = '/account'
     })
 }
 
@@ -104,22 +121,13 @@ var register = function(event, type){ // basic or premium
 	}
 
 //	console.log('REGISTER: '+JSON.stringify(visitor)+', '+type)
-    $.ajax({
-        url: '/account/register',
-        type: 'POST',
-        data: JSON.stringify(visitor),
-        contentType: 'application/json; charset=utf-8',
-        success: function(response) {
-            // console.log('AJAX CALLBACK: '+JSON.stringify(response))
-            if (response.confirmation != 'success'){
-            	alert(response.message)
-            	return
-            }
-
-            window.location.href = '/account'
-        },
-        error: function(XMLHttpRequest, textStatus, error) { 
-            alert('Error: ' + error)
+    ajaxRequest('/account/register', visitor, 'POST', function(err, response){
+        if (err){
+            var msg = err.message || err
+            alert(msg)
+            return
         }
+
+        window.location.href = '/account'
     })
 };

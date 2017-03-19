@@ -158,6 +158,38 @@ router.get('/home', function(req, res, next) {
 	})
 })
 
+router.get('/tutorials', function(req, res, next) {
+	var data = {}
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
+		return controllers.tutorial.find({})
+	})
+	.then(function(tutorials){
+		tutorials.forEach(function(tutorial, i){
+			tutorial['fee'] = function(){
+				return (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'
+			}
+
+			tutorial['preview'] = function(){
+				return (tutorial.description.length < 175) ? tutorial.description : tutorial.description.substring(0, 175)+'...'
+			}
+
+			tutorial['numUnits'] = function(){
+				return (tutorial.posts.length == 0) ? 'Coming Soon' : tutorial.posts.length+' Units'
+			}
+
+		})
+
+		data['tutorials'] = tutorials
+	    res.render('tutorials', data)
+	})
+	.catch(function(err){
+		// console.log('ERROR: '+err)
+	    res.render('tutorials', data)
+	})
+})
+
 
 router.get('/:page', function(req, res, next) {
 	var page = req.params.page // 'courses', 'online', 'account'
