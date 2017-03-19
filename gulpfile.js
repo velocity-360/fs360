@@ -75,7 +75,7 @@ gulp.task('build', function(){
 
 gulp.task('watch', function() {
 //    gulp.watch(['./public/app/ServerApp.js', './public/app/*/**.js', './public/app/*/*/**.js'], ['es6-es5']);
-    gulp.watch(['./src/serverapp.js', './src/*/**.js', './src/*/*/**.js'], ['es6-es5'])
+    gulp.watch(['./src/serverapp.js', './src/*/**.js', './src/*/*/**.js', './public/js/**.js'], ['es6-es5'])
 })
 
 gulp.task('prod', ['es6-es5', 'build', 'css', 'copy'], function(){})
