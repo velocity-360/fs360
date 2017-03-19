@@ -18,4 +18,6 @@ var selectCategory = function(event, category){
 		}
 	})
 
+    var divPosition = $('#tutorials').offset()
+    $('html, body').animate({scrollTop: divPosition.top}, 'slow')
 }
