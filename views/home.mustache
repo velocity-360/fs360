@@ -216,7 +216,7 @@
                             <li>Q &amp; A Forum Access</li>
                             <li>Discounts on Live Courses</li>
                         </ul>
-                        <button style="height:36px;border-radius:18px;margin-bottom:24px;margin-top:24px; width:100%" class="btn_1 white">JOIN</button>
+                        <button onClick="register(event, 'premium')" style="height:36px;border-radius:18px;margin-bottom:24px;margin-top:24px; width:100%" class="btn_1 white">JOIN</button>
                     </div>
                </div>
             </div>
@@ -230,9 +230,9 @@
                             Join as a basic member to gain access to the free tutorials, get notifications when 
                             new tutorials and courses are published, and participate in the Q&amp;A forums.
                         </p>
-                        <input class="form-control" type="text" id="username" placeholder="Username" /><br />
-                        <input class="form-control" type="text" id="email" placeholder="Email" />
-                        <button style="height:36px;border-radius:18px;margin-bottom:24px;margin-top:24px; width:100%" class="btn_1 white">JOIN</button>
+                        <input class="form-control" type="text" onChange="updateVisitor(event)" id="username" placeholder="Username" /><br />
+                        <input class="form-control" type="text" onChange="updateVisitor(event)" id="email" placeholder="Email" />
+                        <button onClick="register(event, 'basic')" style="height:36px;border-radius:18px;margin-bottom:24px;margin-top:24px; width:100%" class="btn_1 white">JOIN</button>
                     </div>
                </div>
             </div>   
