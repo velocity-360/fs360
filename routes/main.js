@@ -132,6 +132,31 @@ router.get('/account', function(req, res, next) {
 	})
 })
 
+router.get('/home', function(req, res, next) {
+	controllers.tutorial.find({limit:6})
+	.then(function(tutorials){
+		tutorials.forEach(function(tutorial, i){
+			tutorial['fee'] = function(){
+				return (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'
+			}
+
+			tutorial['preview'] = function(){
+				return (tutorial.description.length < 160) ? tutorial.description : tutorial.description.substring(0, 160)+'...'
+			}
+		})
+
+		var data = {
+			tutorials: tutorials
+		}
+
+	    res.render('home', data)
+	})
+	.catch(function(err){
+
+	})
+})
+
+
 router.get('/:page', function(req, res, next) {
 	var page = req.params.page // 'courses', 'online', 'account'
 	if (page == 'tracker'){
