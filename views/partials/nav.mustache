@@ -22,7 +22,14 @@
                                 <li><a href="/courses">Live</a></li>
                             </ul>
                         </li>
+
+                        {{#currentUser}}
+                        <li><a href="/account">Welcome {{currentUser.firstName}}</a></li>
+                        {{/currentUser}}
+
+                        {{^currentUser}}
                         <li><a onClick="login(event)" href="/">Login</a></li>
+                        {{/currentUser}}
                     </ul>
                 </div>
             </nav>

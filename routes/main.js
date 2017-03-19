@@ -133,7 +133,12 @@ router.get('/account', function(req, res, next) {
 })
 
 router.get('/home', function(req, res, next) {
-	controllers.tutorial.find({limit:6})
+	var data = {}
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
+		return controllers.tutorial.find({limit:6})
+	})
 	.then(function(tutorials){
 		tutorials.forEach(function(tutorial, i){
 			tutorial['fee'] = function(){
@@ -145,14 +150,11 @@ router.get('/home', function(req, res, next) {
 			}
 		})
 
-		var data = {
-			tutorials: tutorials
-		}
-
+		data['tutorials'] = tutorials
 	    res.render('home', data)
 	})
 	.catch(function(err){
-
+	    res.render('home', data)
 	})
 })
 
