@@ -56,14 +56,14 @@ gulp.task('copy', ['copy-fonts'], function(){})
 gulp.task('build', function(){
     return gulp.src(
     		[
-                './public/js/velocity360.js',
 				'./public/js/jquery-1.11.2.min.js',
                 './public/js/common_scripts_min.js',
                 './public/js/functions.js',
                 './public/js/DateTimePicker.js',
                 './public/js/theia-sticky-sidebar.js',
                 './public/js/sidebar-config.js',
-                './public/js/sweetalert.min.js'
+                './public/js/sweetalert.min.js',
+                './public/js/velocity360.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))
