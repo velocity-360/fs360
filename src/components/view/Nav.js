@@ -8,9 +8,9 @@ class Nav extends Component {
 	            <div className="container-fluid">
 	                <div className="navbar-header has-right-divider">
 	                    <div className="rs-logo fixed-width">
-	                        <a className="navbar-brand" href="index.html">
-	                        <img alt="Brand" src="/dash/dist/img/logo.png" />
-	                        </a>
+	                    	<h1 style={localStyle.headerLogo}>
+		                        <a style={{color:'#333'}} href="/dashboard">Velocity 360</a>
+	                    	</h1>
 	                    </div>
 
 	                    <button type="button" className="navbar-toggle collapsed sidebar-toggle" id="rs-sidebar-toggle-mobile">
@@ -69,6 +69,14 @@ class Nav extends Component {
 	}
 }
 
+const localStyle = {
+	headerLogo: {
+		fontFamily: 'Pathway Gothic One',
+		fontSize: 36,
+		marginTop: 16,
+		marginLeft: 24
+	}
+}
 
 export default Nav
 
