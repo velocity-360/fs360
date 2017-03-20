@@ -30,33 +30,58 @@ class Dashboard extends Component {
                                         <div className="dropdown-menu dropdown-demo m-b-lg">
 
                                             <div className="panel-heading borderless">
-                                                <h3 className="panel-title">React & Google Maps</h3>
-                                                <p className="subtitle text-uppercase m-t">Last 10 Months</p>
+                                                <h2 style={{fontFamily:'Pathway Gothic One'}}>React & Google Maps</h2>
+                                                <p className="subtitle m-t">$25</p>
                                                 <div className="panel-toolbar mobile-block">
                                                     <button className="btn btn-default btn-sm block-on-mobile"><i className="gcon gcon-print m-r"></i>Export CSV</button>
                                                 </div>
+                                                <hr />
                                             </div>
 
-                                    <div className="panel-body p-t-0">
-                                        <div className="rs-col-stacked full-width-on-mobile borderless border-items m-a-0">
-                                            <div className="stacked-item p-a text-center">
-                                                <p className="text-muted m-a-0">Total Sales</p>
-                                                <h3 className="m-t-0 f-w-400">213,015</h3>
+                                            <div className="panel-body p-t-0">
+                                                <div className="media-body">
+                                                    <img style={{float:'right', marginLeft:12}} className="media-object" src="https://media-service.appspot.com/site/images/Jo4TJTkw?crop=160" alt="Velocity 360" />
+                                                    <h4 className="media-heading bg-d">Overview</h4>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                                </div>
                                             </div>
-                                            <div className="stacked-item p-a text-center">
-                                                <p className="text-muted m-a-0">Total Revenue</p>
-                                                <h3 className="m-t-0 f-w-400 text-success">$2.5M</h3>
+
+
+                                            <div className="panel-body p-t-0">
+                                                <div className="media-body">
+                                                    <h4 className="media-heading bg-d">Units</h4>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                                </div>
                                             </div>
-                                            <div className="stacked-item p-a text-center">
-                                                <p className="text-muted m-a-0">This Year Sales</p>
-                                                <h3 className="m-t-0 f-w-400 text-info">57,760</h3>
+
+
+                                            <div className="panel-body p-t-0">
+                                                <div className="media-body">
+                                                    <h4 className="media-heading bg-d">Subscribe</h4>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                                </div>
                                             </div>
-                                            <div className="stacked-item p-a text-center">
-                                                <p className="text-muted m-a-0">Today Revenue</p>
-                                                <h3 className="m-t-0 f-w-400 text-warning">$2,257</h3>
+
+                                            <div className="panel-body">
+                                                <div className="rs-col-stacked full-width-on-mobile borderless border-items m-a-0">
+                                                    <div className="stacked-item p-a text-center">
+                                                        <p className="text-muted m-a-0">Subscribers</p>
+                                                        <h3 className="m-t-0 f-w-400">213</h3>
+                                                    </div>
+                                                    <div className="stacked-item p-a text-center">
+                                                        <p className="text-muted m-a-0">Category</p>
+                                                        <h3 className="m-t-0 f-w-400 text-success">Node</h3>
+                                                    </div>
+                                                    <div className="stacked-item p-a text-center">
+                                                        <p className="text-muted m-a-0">Level</p>
+                                                        <h3 className="m-t-0 f-w-400 text-info">Beginner</h3>
+                                                    </div>
+                                                    <div className="stacked-item p-a text-center">
+                                                        <p className="text-muted m-a-0">Units</p>
+                                                        <h3 className="m-t-0 f-w-400 text-warning">10</h3>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
 
 
 
@@ -71,6 +96,14 @@ class Dashboard extends Component {
                                             </li>
                                             <li>
                                                 <ul className="rs-inner-dropdown has-divider media-menu">
+                                                    <li className="new">
+                                                        <a href="javascript:void(0);">
+                                                            <img style={{width:57, height:57, left:10}} className="media" src="https://media-service.appspot.com/site/images/Jo4TJTkw?crop=96" />
+                                                            <span className="id">React & Google Maps<br />
+                                                            </span> Add one of your items as favorite
+                                                            <span className="time small">About 30 minutes ago</span>
+                                                        </a>
+                                                    </li>
                                                     <li>
                                                         <a href="javascript:void(0);">
                                                             <img style={{width:57, height:57, left:10}} className="media" src="https://media-service.appspot.com/site/images/nB0-S90s?crop=96" />
@@ -83,14 +116,6 @@ class Dashboard extends Component {
                                                         <a href="javascript:void(0);">
                                                             <img style={{width:57, height:57, left:10}} className="media" src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=96" />
                                                             <span className="id">React, Redux & Foursquare<br />
-                                                            </span> Add one of your items as favorite
-                                                            <span className="time small">About 30 minutes ago</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="new">
-                                                        <a href="javascript:void(0);">
-                                                            <img style={{width:57, height:57, left:10}} className="media" src="https://media-service.appspot.com/site/images/Jo4TJTkw?crop=96" />
-                                                            <span className="id">React & Google Maps<br />
                                                             </span> Add one of your items as favorite
                                                             <span className="time small">About 30 minutes ago</span>
                                                         </a>
