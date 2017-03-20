@@ -31,55 +31,93 @@ matchRoutes = function(req, routes){
 	})
 }
 
-router.get('/', function(req, res, next) {
-	var initialData = initial()
-	var initialState = null
-	var tags = {
-		title: 'Learn Full Stack Node, React, Redux',
-		url: 'https://www.velocity360.io',
-		image: 'https://www.velocity360.io/images/logo_round_green_260.png'
-	}
+// router.get('/', function(req, res, next) {
+// 	var initialData = initial()
+// 	var initialState = null
+// 	var tags = {
+// 		title: 'Learn Full Stack Node, React, Redux',
+// 		url: 'https://www.velocity360.io',
+// 		image: 'https://www.velocity360.io/images/logo_round_green_260.png'
+// 	}
 
+// 	controllers.account.currentUser(req)
+// 	.then(function(currentUser){ // can be null
+// 		initialData['account'] = {currentUser: currentUser}
+// 		return controllers.tutorial.find({limit:6})
+// 	})
+// 	.then(function(tutorials){
+// 		var tutorialReducer = {
+// 			all: tutorials
+// 		}
+
+// 		tutorials.forEach(function(tutorial, i){
+// 			tutorialReducer[tutorial.id] = tutorial
+// 			tutorialReducer[tutorial.slug] = tutorial
+// 		})
+
+// 		initialData['tutorial'] = tutorialReducer
+
+// 		initialState = store.configureStore(initialData)
+// 		var routes = {
+// 			path: '/',
+// 			component: serverapp,
+// 			initial: initialState,
+// 			indexRoute: {
+// 				component: layout.Home
+// 			}
+// 		}
+
+// 		return matchRoutes(req, routes)
+// 	})
+// 	.then(function(renderProps){
+// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
+// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+// 	    res.render(template, {
+// 	    	react: html,
+// 	    	tags: tags,
+// 	    	preloadedState:JSON.stringify(initialState.getState())
+// 	    })
+// 	})
+// 	.catch(function(err){
+// 		console.log('ERROR: '+err)
+// 	})
+// })
+
+router.get('/', function(req, res, next) {
+	var data = {}
 	controllers.account.currentUser(req)
-	.then(function(currentUser){ // can be null
-		initialData['account'] = {currentUser: currentUser}
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
 		return controllers.tutorial.find({limit:6})
 	})
 	.then(function(tutorials){
-		var tutorialReducer = {
-			all: tutorials
-		}
-
-		tutorials.forEach(function(tutorial, i){
-			tutorialReducer[tutorial.id] = tutorial
-			tutorialReducer[tutorial.slug] = tutorial
-		})
-
-		initialData['tutorial'] = tutorialReducer
-
-		initialState = store.configureStore(initialData)
-		var routes = {
-			path: '/',
-			component: serverapp,
-			initial: initialState,
-			indexRoute: {
-				component: layout.Home
-			}
-		}
-
-		return matchRoutes(req, routes)
-	})
-	.then(function(renderProps){
-		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-	    res.render(template, {
-	    	react: html,
-	    	tags: tags,
-	    	preloadedState:JSON.stringify(initialState.getState())
-	    })
+		data['tutorials'] = tutorials
+	    res.render('home', data)
 	})
 	.catch(function(err){
-		console.log('ERROR: '+err)
+	    res.render('home', data)
+	})
+})
+
+router.get('/tutorials', function(req, res, next) {
+	var data = {}
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
+		return controllers.tutorial.find({})
+	})
+	.then(function(tutorials){
+		// tutorials.forEach(function(tutorial, i){
+		// 	tutorial['preview'] = function(){
+		// 		return (tutorial.description.length < 175) ? tutorial.description : tutorial.description.substring(0, 175)+'...'
+		// 	}
+		// })
+		data['tutorials'] = tutorials
+	    res.render('tutorials', data)
+	})
+	.catch(function(err){
+		// console.log('ERROR: '+err)
+	    res.render('tutorials', data)
 	})
 })
 
@@ -129,64 +167,6 @@ router.get('/account', function(req, res, next) {
 	.catch(function(err){ // TODO: Handle Error
 		console.log('ERROR: '+err)
 
-	})
-})
-
-router.get('/home', function(req, res, next) {
-	var data = {}
-	controllers.account.currentUser(req)
-	.then(function(currentUser){
-		data['currentUser'] = currentUser // can be null
-		return controllers.tutorial.find({limit:6})
-	})
-	.then(function(tutorials){
-		tutorials.forEach(function(tutorial, i){
-			tutorial['fee'] = function(){
-				return (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'
-			}
-
-			tutorial['preview'] = function(){
-				return (tutorial.description.length < 160) ? tutorial.description : tutorial.description.substring(0, 160)+'...'
-			}
-		})
-
-		data['tutorials'] = tutorials
-	    res.render('home', data)
-	})
-	.catch(function(err){
-	    res.render('home', data)
-	})
-})
-
-router.get('/tutorials', function(req, res, next) {
-	var data = {}
-	controllers.account.currentUser(req)
-	.then(function(currentUser){
-		data['currentUser'] = currentUser // can be null
-		return controllers.tutorial.find({})
-	})
-	.then(function(tutorials){
-		tutorials.forEach(function(tutorial, i){
-			tutorial['fee'] = function(){
-				return (tutorial.price == 0) ? 'Free' : '$'+tutorial.price+'.00'
-			}
-
-			tutorial['preview'] = function(){
-				return (tutorial.description.length < 175) ? tutorial.description : tutorial.description.substring(0, 175)+'...'
-			}
-
-			tutorial['numUnits'] = function(){
-				return (tutorial.posts.length == 0) ? 'Coming Soon' : tutorial.posts.length+' Units'
-			}
-
-		})
-
-		data['tutorials'] = tutorials
-	    res.render('tutorials', data)
-	})
-	.catch(function(err){
-		// console.log('ERROR: '+err)
-	    res.render('tutorials', data)
 	})
 })
 
