@@ -30,7 +30,7 @@ class Dashboard extends Component {
                                         <div className="dropdown-menu dropdown-demo m-b-lg">
 
                                             <div className="panel-heading borderless">
-                                                <h2 style={{fontFamily:'Pathway Gothic One'}}>React & Google Maps</h2>
+                                                <h2 style={{fontFamily:'Pathway Gothic One', marginTop:0}}>React & Google Maps</h2>
                                                 <p className="subtitle m-t">$25</p>
                                                 <div className="panel-toolbar mobile-block">
                                                     <button className="btn btn-default btn-sm block-on-mobile"><i className="gcon gcon-print m-r"></i>Export CSV</button>
@@ -40,7 +40,7 @@ class Dashboard extends Component {
 
                                             <div className="panel-body p-t-0">
                                                 <div className="media-body">
-                                                    <img style={{float:'right', marginLeft:12}} className="media-object" src="https://media-service.appspot.com/site/images/Jo4TJTkw?crop=160" alt="Velocity 360" />
+                                                    <img style={{float:'right', marginLeft:12, border:'1px solid #ddd', padding:3}} className="media-object" src="https://media-service.appspot.com/site/images/Jo4TJTkw?crop=160" alt="Velocity 360" />
                                                     <h4 className="media-heading bg-d">Overview</h4>
                                                     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
                                                 </div>
@@ -82,9 +82,6 @@ class Dashboard extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
                                         </div>
 
                                     </div>
