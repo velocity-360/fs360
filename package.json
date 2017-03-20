@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf ./public/dist",
     "postinstall": "npm run build",
     "start": "node ./bin/www",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "build": "NODE_ENV=production webpack && gulp prod"
+    "build": "npm run clean && NODE_ENV=production webpack && gulp prod"
   },
   "babel": {
     "presets": [
