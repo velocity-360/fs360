@@ -64,7 +64,7 @@
     "serve-favicon": "~2.3.0",
     "stripe": "^4.5.0",
     "superagent": "^1.8.3",
-    "webpack": "^1.12.14"
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",

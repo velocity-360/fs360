@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Footer } from '../view'
+import { Sidebar, Footer } from '../view'
 import { Dashboard, Nav, BaseContainer } from '../containers'
 import styles from './styles'
 
@@ -10,7 +10,6 @@ class Split extends Component {
 
 	render(){
 		//const style = styles.home
-
         const path = this.props.location.pathname.replace('/', '')
         const parts = path.split('/')
         const page = parts[0]
@@ -21,14 +20,13 @@ class Split extends Component {
                 content = <Dashboard />
         }
 
-        const FooterHOC = BaseContainer(Footer)
+        // const FooterHOC = BaseContainer(Footer)
 		return ( 
-            <div>
-                <Nav type="standard" />
-                <div className="main-container">
-                    { content }
-                    <FooterHOC />
-                </div>
+            <div id="rs-wrapper" className="rs-header-fixed-top rs-sidebar-fixed">
+                <Nav />
+                <Sidebar />
+                { content }
+                <Footer />
             </div>
 		)
 	}
