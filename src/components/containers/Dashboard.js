@@ -42,7 +42,11 @@ class Dashboard extends Component {
                                                 <div className="media-body">
                                                     <img style={{float:'right', marginLeft:12, border:'1px solid #ddd', padding:3}} className="media-object" src="https://media-service.appspot.com/site/images/Jo4TJTkw?crop=160" alt="Velocity 360" />
                                                     <h4 className="media-heading bg-d">Overview</h4>
-                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                                    <p>
+                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                                    </p>
                                                 </div>
                                             </div>
 
