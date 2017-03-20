@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 export default (props) => {
-    return (
 
+    return (
         <aside className="rs-sidebar rs-scroll-custom">
             <ul className="rs-sidebar-nav default-sidebar-nav">
                 <li className="rs-user-sidebar">
@@ -20,26 +20,49 @@ export default (props) => {
                 </li>
 
                 <li className="menu-block-divider"></li>
-                <li className="menu-header">No Icon Menu</li>
+                <li className="menu-header">Dashboard</li>
 
-                <li className="no-icon-menu">
-                    <a href="javascript:void(0);">Gorengan</a>
+                <li className="active no-icon-menu">
+                    <a href="javascript:void(0);">My Courses</a>
                 </li>
                 <li className="no-icon-menu">
-                    <a href="javascript:void(0);">Soto Ayam</a>
+                    <a href="javascript:void(0);">Featured</a>
                     <ul>
-                        <li>
-                            <a href="javascript:void(0);">Paket Hemat Kampus</a>
+                        <li className="p-y p-x-md">
+                            <div className="radio radio-custom radio-lighten m-b-md">
+                                <label>
+                                    <input type="radio" name="rs-revenue" value="" checked />
+                                    <span className="checker bg-transparent"></span>
+                                    All
+                                </label>
+                            </div>
+                            <div className="radio radio-custom radio-lighten m-b-md">
+                                <label>
+                                    <input type="radio" name="rs-revenue" value="" />
+                                    <span className="checker bg-transparent"></span>
+                                    React / Redux
+                                </label>
+                            </div>
+                            <div className="radio radio-custom radio-lighten m-b-md">
+                                <label>
+                                    <input type="radio" name="rs-revenue" value="" />
+                                    <span className="checker bg-transparent"></span>
+                                    Node
+                                </label>
+                            </div>
+                            <div className="radio radio-custom radio-lighten m-b-md">
+                                <label>
+                                    <input type="radio" name="rs-revenue" value="" />
+                                    <span className="checker bg-transparent"></span>
+                                    Full Stack
+                                </label>
+                            </div>
                         </li>
                     </ul>
-                </li>
-                <li className="no-icon-menu">
-                    <a href="javascript:void(0);">Tahu Bakso</a>
                 </li>
 
                 <li className="menu-block-divider"></li>
             </ul>
-        </aside>
-    	
+        </aside>    	
     )
 }
