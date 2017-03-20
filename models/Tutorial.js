@@ -20,25 +20,36 @@ var TutorialSchema = new mongoose.Schema({
 
 TutorialSchema.methods.summary = function() {
 	var summary = {
-		'title':this.title,
-		'category':this.category,
-		'status':this.status,
-		'isFeatured':this.isFeatured,
-		'description':this.description,
-		'image':this.image,
-		'wistia':this.wistia,
-		'slug':this.slug,
-//		'link':this.link,
-		'subscribers':this.subscribers,
-		'youtube':this.youtube,
-		'posts':this.posts,
-		'price':this.price,
-		'priority':this.priority,
-		'timestamp':this.timestamp,
-		'schema':'tutorial',
-		'id':this._id
-	};
+		title: this.title,
+		category: this.category,
+		status: this.status,
+		isFeatured: this.isFeatured,
+		description: this.description,
+		image: this.image,
+		wistia: this.wistia,
+		slug: this.slug,
+		subscribers: this.subscribers,
+		youtube: this.youtube,
+		posts: this.posts,
+		price: this.price,
+		priority: this.priority,
+		timestamp: this.timestamp,
+		schema:'tutorial',
+		id: this._id.toString(),
+		fee: function(){
+			return (this.price == 0) ? 'Free' : '$'+this.price+'.00'
+		},
+		preview: function(max){
+			var ceiling = max || 160
+			return (this.description.length < ceiling) ? this.description : this.description.substring(0, ceiling)+'...'			
+		},
+		numUnits: function(){
+			return (this.posts.length == 0) ? 'Coming Soon' : this.posts.length+' Units'
+		}
+	}
+
 	return summary
 }
+
 
 module.exports = mongoose.model('TutorialSchema', TutorialSchema)
