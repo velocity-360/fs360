@@ -1,0 +1,261 @@
+.navbar.@{css-prefix}-navbar {
+  min-height: @navbar-min-height;
+  height: auto;
+  border-width: 0 0 @navbar-border-width;
+  .container &, .container-fluid & {
+    min-height: @navbar-in-container-min-height;
+    height: auto;
+    border-radius: @navbar-in-container-rounded-size;
+    border-width: @navbar-border-width;
+  }
+  &.navbar-static-top {
+    margin-bottom: 0 !important;
+  }
+  &.navbar-default {
+    background: @navbar-default-bg;
+    border-color: @navbar-default-border-color;
+    color: @navbar-default-color;
+  }
+  &.navbar-inverse {
+    background: @navbar-inverse-bg;
+    border-color: @navbar-inverse-border-color;
+    color: @navbar-inverse-color;
+  }
+}
+
+// Navbar header
+.navbar-header {
+  position: relative;
+}
+
+// Navbar brand
+.navbar-brand {
+  height: @navbar-brand-height;
+  padding: 0;
+  font-size: @navbar-brand-font-size;
+  line-height: @navbar-brand-height;
+  font-weight: 700;
+  > img {
+    height: auto;
+    max-height: @navbar-brand-height;
+  }
+}
+
+// Navbar logo
+.@{css-prefix}-logo .@{css-prefix}-brand-text {
+  padding: 0 @navbar-logo-text-padding-x;
+}
+.@{css-prefix}-brand-text.brand-initial {
+  font-size: @navbar-logo-text-initial-font-size;
+  display: block;
+  min-width: @navbar-brand-height;
+  text-align: center;
+  line-height: @navbar-brand-height;
+}
+.navbar-default .navbar-brand {
+  color: @navbar-default-brand-color;
+}
+
+// Navbar avatar
+.@{css-prefix}-nav-avatar {
+  width: @navbar-avatar-size;
+  height: @navbar-avatar-size;
+}
+
+// Navbar toggle
+.navbar-toggle {
+  padding: 0;
+  width: @navbar-toggle-size;
+  height: @navbar-toggle-size;
+  line-height: @navbar-toggle-size;
+  margin: 0;
+  border: 1px solid transparent !important;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  font-size: @navbar-toggle-font-size;
+  &:hover, &:focus, &:active {
+    background-color: fade(@color-black,0) !important;
+  } 
+  .icon-bar {
+    border-radius: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.sidebar-toggle {
+    right: auto;
+    left: 0;
+    &.visible-desktop {
+      display: none;
+    }
+  }
+}
+.navbar-default .navbar-nav {
+  > .active, > .open {
+    > a, > a:hover, > a:focus {
+      background-color: fade(@color-black,2.5);
+    }
+  }
+}
+
+// Navbar button
+.navbar-btn {
+  margin-top: @navbar-btn-margin-y;
+  margin-bottom: @navbar-btn-margin-y;
+}
+.navbar-nav > li.navbar-icon > a {
+  font-size: @navbar-menu-icon-size;
+  padding-left: @navbar-menu-icon-padding-x;
+  padding-right: @navbar-menu-icon-padding-x;
+}
+
+// Navbar badge & notification sign
+.badge-notification {
+  position: absolute;
+  top: @navbar-badge-margin-y;
+  left: @navbar-badge-margin-x;
+  z-index: 3;
+}
+.circle-notification {
+  width: @navbar-circle-notification-size;
+  height: @navbar-circle-notification-size;
+  border-radius: @navbar-circle-notification-size / 2;
+  content: " ";
+  &.badge-notification {
+    top: @navbar-circle-notification-margin-y;
+    left: @navbar-circle-notification-margin-x;
+  }
+}
+
+// User avatar
+.@{css-prefix}-user-nav .badge-notification {
+  left: @navbar-badge-margin-x-user-nav;
+  &.circle-notification {
+    left: @navbar-circle-margin-x-user-nav;
+    -webkit-box-shadow: 0px 0px 0px 2px @navbar-default-bg;
+    -moz-box-shadow: 0px 0px 0px 2px @navbar-default-bg;
+    box-shadow: 0px 0px 0px 2px @navbar-default-bg;
+  }
+}
+
+.responsive(@device-tablet;{
+  .navbar-header {
+    text-align: center;
+  }
+  .navbar-brand {
+    float: none;
+    display: inline-block;
+    > img {
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+      vertical-align: top;
+    }
+  }
+  .@{css-prefix}-logo {
+    min-width: @navbar-logo-min-width !important;
+    width: auto !important;
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .badge-notification {
+    top: @navbar-badge-margin-y-mobile;
+  }
+  .circle-notification.badge-notification {
+    top: @navbar-circle-notification-margin-y-mobile;
+    .@{css-prefix}-user-nav & {
+      top: @navbar-badge-margin-y-user-nav-mobile;
+    }
+  }
+  .navbar-nav > li.navbar-icon > a .text-menu {
+    font-size: @font-size-base;
+    vertical-align: top;
+    margin-left: @navbar-text-menu-margin-x;
+  }
+});
+
+.responsive(@device-tablet + 1;{
+  .@{css-prefix}-logo {
+    min-width: @navbar-logo-min-width-desktop;
+    position: relative;
+    .clear();
+    &.fixed-width {
+      min-width: @sidebar-width;
+    }
+  }
+  .@{css-prefix}-navbar .navbar-header{
+    margin-left: -@navbar-header-margin-x;
+  }
+  .@{css-prefix}-user-nav {
+    margin-left: @navbar-user-nav-margin-x;
+  }
+  .has-right-divider,
+  .has-left-divider {
+    position: relative;
+  }
+  .has-right-divider:after{
+    position: absolute;
+    z-index: 2;
+    width: @navbar-item-divider-width;
+    height: @navbar-item-divider-height;
+    background: @navbar-item-divider-bg;
+    right: 0;
+    top: @navbar-item-divider-top;
+    content: "";
+  }
+  .has-left-divider:before {
+    position: absolute;
+    z-index: 2;
+    width: @navbar-item-divider-width;
+    height: @navbar-item-divider-height;
+    background: @navbar-item-divider-bg;
+    left: 0;
+    top: @navbar-item-divider-top;
+    content: "";
+  }
+  .@{css-prefix}-navbar.navbar-default .dropdown-menu {
+    border-color: @navbar-dropdown-border;
+  }
+  .navbar.@{css-prefix}-navbar {
+    height: @navbar-min-height;
+  }
+  .navbar.@{css-prefix}-navbar .navbar-nav .dropdown-menu {
+    .container &, .container-fluid & {
+      margin-top: 0 !important;
+    }
+  }
+  .@{css-prefix}-navbar .navbar-nav .dropdown-menu {
+    margin-top: -1px !important;
+  }
+  .navbar-form {
+    padding-top: @navbar-form-padding-y;
+    padding-bottom: @navbar-form-padding-y;
+    .form-control {
+      width: @navbar-form-control-width;
+    }
+  }
+  .navbar-nav > li > a {
+    height: @navbar-menu-item-height;
+    line-height: @navbar-menu-item-height;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navbar-nav > li.navbar-icon > a {
+    line-height: @navbar-menu-icon-line-height;
+  }
+  .navbar-text {
+    margin-top: @navbar-text-margin-y;
+    margin-bottom: @navbar-text-margin-y;
+    float: left;
+    margin-right: @navbar-text-margin-x;
+    margin-left: @navbar-text-margin-x;
+  }
+  .navbar-toggle.sidebar-toggle.visible-desktop {
+    right: 0;
+    left: auto;
+    display: block;
+  }
+});

@@ -1,0 +1,203 @@
+// Disable box shadow
+.box-shadow-none(){
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+// Clear
+.clear(){
+  &:before,
+  &:after{
+    display: table;
+    content: " ";
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+// Responsive
+.responsive(@max-width; @rules) {
+  @media (max-width: @max-width) {
+    @rules();
+  }
+}
+.responsive-min(@min-width; @rules) {
+  @media (min-width: @min-width) {
+    @rules();
+  }
+}
+
+// Colored button varian
+.button-variant(@color; @background; @border){
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+  &:focus,&.hover,&:hover {
+    color: @color;
+    background-color: darken(@background,6);
+    border-color: darken(@border,6);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background,10);
+        border-color: darken(@border,10);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: darken(@background,10);
+          border-color: darken(@border,10);
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}
+
+// Default button variant
+.button-default-variant(@color; @background; @border){
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+  &:focus,&.hover,&:hover {
+    color: darken(@color,13.5);
+    background-color: darken(@background,2);
+    border-color: @border;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: darken(@color,13.5);
+    background-color: darken(@background,5.5);
+        border-color: @border;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: darken(@color,13.5);
+      background-color: darken(@background,5.5);
+          border-color: @border;
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}
+
+// Button outline variant
+.btn-outline-variant(@color; @background; @border) {
+  &.btn-outline {
+    color: @background;
+    background-color: transparent;
+    border-color: @border;
+    &:focus, &.focus, &:hover {
+      color: @color;
+      background-color: @background;
+      border-color: @border;
+    }
+    &:active, &.active,
+    .open > .dropdown-toggle&,
+    &:active:hover, &.active:hover,
+    .open > .dropdown-toggle&:hover,
+    &:active:focus, &.active:focus,
+    .open > .dropdown-toggle&:focus,
+    &:active.focus, &.active.focus,
+    .open > .dropdown-toggle&.focus {
+      color: @color;
+      background-color: darken(@background,10);
+      border-color: darken(@border,10);
+    }
+    &.disabled:hover,&[disabled]:hover,
+    fieldset[disabled] &:hover,
+    &.disabled:focus,&[disabled]:focus,
+    fieldset[disabled] &:focus,
+    &.disabled.focus,&[disabled].focus,
+    fieldset[disabled] &.focus {
+      background-color: transparent;
+      border-color: @border;
+      color: @background;
+    }
+  }
+}
+
+// Progress bar variant
+.progress-bar-variant(@color){
+  background-color: @color;
+  .progress-striped & {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  }
+}
+
+// Panel Variant
+.panel-variant(@color, @text) {
+  border-color: @color;
+  > .panel-heading {
+    color: @text;
+    background-color: @color;
+    border-color: @color;
+    + .panel-collapse > .panel-body {
+      border-top-color: @color;
+    }
+    .badge {
+      color: @color;
+      background-color: @text;
+    }
+  }
+  > .panel-footer + .panel-collapse > .panel-body  {
+    border-bottom-color: @color;
+  }
+}
+
+// Gradient
+.bg-gradient(@start-color; @end-color){
+  background: @start-color !important;
+  background: -moz-linear-gradient(45deg,  @start-color 0%, @end-color 100%) !important;
+  background: -webkit-linear-gradient(45deg,  @start-color 0%,@end-color 100%) !important;
+  background: linear-gradient(45deg,  @start-color 0%,@end-color 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@start-color', endColorstr='@end-color',GradientType=1 ) !important;
+}

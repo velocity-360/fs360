@@ -1,0 +1,23 @@
+// Filestyle plugin
+.icon-span-filestyle {
+  margin-right: @filestyle-icon-margin-x;
+  margin-left: @filestyle-icon-margin-x;
+  font-size: @filestyle-icon-font-size;
+  display: inline-block;
+  vertical-align: top;
+  line-height: @filestyle-line-height;
+}
+
+// Custom placeholder color
+.form-control.light-placeholder{
+  &::-moz-placeholder {
+    color: fade(@color-white,65);
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: fade(@color-white,65);
+  }
+  &::-webkit-input-placeholder {
+    color: fade(@color-white,65);
+  }
+}

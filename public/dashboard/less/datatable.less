@@ -1,0 +1,30 @@
+table.dataTable thead {
+  .sorting:after,
+  .sorting_asc:after,
+  .sorting_desc:after,
+  .sorting_asc_disabled:after,
+  .sorting_desc_disabled:after{
+    font-family: @datatable-sort-font;
+    height: @datatable-sort-height;
+    top: 50%;
+    margin-top: -(@datatable-sort-height / 2);
+  }
+  .sorting:after {
+    content: @datatable-sort-content;
+  }
+  .sorting_asc:after {
+    content: @datatable-sort-asc-content;
+  }
+  .sorting_desc:after {
+    content: @datatable-sort-desc-content;
+  }
+}
+table.dataTable tbody > tr {
+  &.selected,
+  > .selected {
+    background-color: @datatable-selected-bg;
+  }
+}
+.dataTables_info {
+  color: @datatable-info-color;
+}

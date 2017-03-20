@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Roosa - Just Another Dashboard Template</title>
+
+	<!-- Site Icons -->
+	<link rel="apple-touch-icon" href="../dist/img/apple-touch-icon.png">
+	<link rel="icon" href="../dist/img/icon.ico">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+	<!-- Framework -->
+	<link rel="stylesheet" href="../dist/css/vendor/bootstrap.min.css">
+
+	<!-- Icon Fonts -->
+	<link rel="stylesheet" href="../dist/icons/entypo/entypo.min.css">
+	<link rel="stylesheet" href="../dist/icons/fa/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../dist/icons/flag-icon/css/flag-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/material-icon/material-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/weather-icon/css/weather-icons.min.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="../dist/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datatable/datatables.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datepicker/css/datepicker.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/medium-editor.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/themes/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/plugins/morris/morris.min.css">
+	<link rel="stylesheet" href="../dist/plugins/prettify/themes/tomorrow-night.min.css">
+	<link rel="stylesheet" href="../dist/plugins/selectize/css/selectize.min.css">
+	<link rel="stylesheet" href="../dist/plugins/sortable/sortable.min.css">
+	<link rel="stylesheet" href="../dist/plugins/stepy/jquery.stepy.min.css">
+	<link rel="stylesheet" href="../dist/plugins/pace/pace.css">
+	<link rel="stylesheet" href="../dist/plugins/summernote/summernote.min.css">
+	
+
+	<!-- Main Template CSS -->
+	<link rel="stylesheet" href="../dist/css/bootstrap.custom.css">
+	<link rel="stylesheet" href="../dist/css/style.css">
+	<link rel="stylesheet" href="../dist/css/helper.css">
+</head>
+
+
+<body>
+
+	<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<div id="rs-wrapper">
+
+		<!-- BEGIN MAIN HEADER NAV -->
+		<nav class="navbar navbar-default rs-navbar navbar-static-top">
+			<div class="container-fluid">
+
+				<!-- 
+				Begin navbar header
+				Brand and toggle get grouped for better mobile display 
+				-->
+				<div class="navbar-header has-right-divider">
+
+					<!-- Begin Logo Brand 
+					Available class : .fixed-width
+					-->
+					<div class="rs-logo fixed-width">
+						<!-- Main Image logo -->
+						<a class="navbar-brand" href="index.html">
+						<img alt="Brand" src="../dist/img/logo.png">
+						</a>
+						<!-- Main small logo -->
+						<!-- <a class="navbar-brand" href="index.html">
+						<img alt="Brand" src="../dist/img/logo-small.png">
+						</a> -->
+						<!-- Text logo -->
+						<!-- <a class="navbar-brand text-uppercase rs-brand-text" href="index.html">
+						Roosa
+						</a> -->
+						<!-- Initial text / icon logo -->
+						<!-- <a class="navbar-brand rs-brand-text brand-initial" href="index.html">
+						<i class="gcon gcon-twitter text-info"></i>
+						</a> -->
+					</div><!-- /.rs-logo -->
+					<!-- End Logo Brand -->
+
+					<!-- Begin button to toggle sidebar -->
+					<button type="button" class="navbar-toggle collapsed sidebar-toggle" id="rs-sidebar-toggle-mobile">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- End button to toggle sidebar -->
+
+					<!-- Begin button to toggle navbar element -->
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#roosa-nav-collapse" aria-expanded="false">
+						<span class="gcon gcon-dots-three-vertical f-s-sm"></span>
+					</button>
+					<!-- End button to toggle navbar element -->
+
+				</div><!-- /.navbar-header -->
+				<!-- End Navbar header -->
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="roosa-nav-collapse">
+
+					<!-- All left content goes here -->
+					<div class="navbar-left">
+
+						<ul class="nav navbar-nav">
+							<li class="navbar-icon dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="gcon gcon-globe"></i>
+									<span class="visible-xs-inline-block text-menu">Connected Accounts</span>
+								</a>
+								<ul class="dropdown-menu p-b-0 p-t-0">
+									<li class="dropdown-header text-uppercase has-divider hidden-xs">Connected Accounts</li>
+
+									<li>
+										<ul class="grid-dropdown scroll-dropdown rs-scroll-custom">
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/google-play.png" class="rs-dropdown-img" alt="Icon">
+													Play
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/dropbox.png" class="rs-dropdown-img" alt="Icon">
+													Dropobox
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/dribbble.png" class="rs-dropdown-img" alt="Icon">
+													Dribbble
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/drive.png" class="rs-dropdown-img" alt="Icon">
+													Drive
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/skype.png" class="rs-dropdown-img" alt="Icon">
+													Skype
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/github.png" class="rs-dropdown-img" alt="Icon">
+													Github
+												</a>
+											</li>
+										</ul>
+									</li>
+
+									<li class="text-center bottom-button"><a href="javascript:void(0);">All Accounts</a></li>
+								</ul>
+							</li>
+						</ul>
+
+						<!-- Begin nav search form -->
+						<form class="navbar-form navbar-left">
+							<div class="form-group has-feedback">
+								<input type="text" class="form-control" placeholder="Search and hit enter">
+								<span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+							</div>
+						</form>
+						<!-- End nav search form -->
+
+					</div><!-- /.navbar-left -->
+					<!-- End navbar left content -->
+
+					<!-- All right content goes here -->
+					<div class="navbar-right">
+
+						<ul class="nav navbar-nav">
+							<li class="navbar-icon dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="gcon gcon-shopping-bag"></i>
+									<span class="visible-xs-inline-block text-menu">Your Cart</span>
+								</a>
+								<ul class="dropdown-menu xl-dropdown p-b-0 p-t-0">
+									<li class="dropdown-header text-uppercase has-divider hidden-xs">
+										Your cart
+									</li>
+									<li class="dropdown-empty-state text-center">
+										<span class="empty-icon m-b-md"><img src="../images/icons/basic/store.png" alt="Icon"></span>
+										<p>You don't have any product</p>
+										<p><a class="btn btn-success">Add some</a></p>
+									</li>
+								</ul>
+							</li>
+							<li class="navbar-icon dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="circle-notification bg-danger badge-notification"></span>
+									<i class="gcon gcon-bell"></i>
+									<span class="visible-xs-inline-block text-menu">Notifications</span>
+								</a>
+								<ul class="dropdown-menu xl-dropdown p-b-0 p-t-0">
+									<li class="dropdown-header text-uppercase has-divider hidden-xs">
+										Notifications
+										<span class="label label-success m-l">2 new</span>
+									</li>
+									<li>
+										<ul class="rs-inner-dropdown has-divider media-menu scroll-dropdown rs-scroll-custom">
+											<li class="new"><a href="javascript:void(0);">
+												<span class="media img-circle bg-primary">EJ</span>
+												<span class="id">Enjelina Joli</span> Add one of your items as favorite
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+											<li class="new"><a href="javascript:void(0);">
+												<img src="../images/avatars/04.png" class="media img-circle" alt="Avatar">
+												<span class="id">Joker Betmen</span> Follows you
+												<span class="time small">About an hour ago</span>
+											</a></li>
+											<li><a href="javascript:void(0);">
+												<img src="../images/avatars/13.png" class="media img-circle" alt="Avatar">
+												<span class="id">Selena Gemes</span> Commented on one of your items
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+											<li><a href="javascript:void(0);">
+												<img src="../images/avatars/07.png" class="media img-circle" alt="Avatar">
+												<span class="id">Jono Linon</span> Rated you item
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+											<li><a href="javascript:void(0);">
+												<span class="media img-circle gcon gcon-shopping-bag bg-primary"></span>
+												<span class="id">Enjelina Joli</span> Purchased your item
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+										</ul>
+									</li>
+									<li class="text-center bottom-button"><a href="javascript:void(0);">View all notifications</a></li>
+								</ul>
+							</li>
+							<li class="navbar-icon">
+								<a href="javascript:void(0);">
+									<i class="gcon gcon-lifebuoy"></i>
+									<span class="visible-xs-inline-block text-menu">Help &amp; Support</span>
+								</a>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav">
+							<!-- Begin user menu -->
+							<li class="rs-user-nav dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="circle-notification badge-notification bg-success"></span>
+									<img src="../images/avatars/01.png" class="rs-nav-avatar img-circle" alt="Avatar">
+									<span class="visible-xs-inline-block m-l">Welcome, <strong>Mister Bin</strong></span>
+								</a>
+								<!-- Dropdown -->
+								<ul class="dropdown-menu lg-dropdown">
+									<li class="inherit-bg">
+										<a href="javascript:void(0);">
+											<span class="f-s-xs f-w-500">Mister Bin, Jr</span><br />
+											<small class="text-muted">Earnings:<strong class="m-l-xs text-success">$25,441.35</strong></small>
+										</a>
+									</li>
+									<li role="separator" class="divider"></li>
+									<li class="dropdown-header text-uppercase">Account Settings</li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="mcon mcon-face rs-dropdown-icon"></span>My Account</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-cog rs-dropdown-icon"></span>General Settings</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-lock-open rs-dropdown-icon"></span>Change Password</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-log-out rs-dropdown-icon"></span>Log Out</a></li>
+								</ul>
+								<!-- End dropdown -->
+							</li>
+							<!-- End user menu -->
+						</ul>
+					</div><!-- /.navbar-right -->
+					<!-- End navbar right content -->
+
+				</div><!-- /.collapse navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		<!-- END MAIN HEADER NAV -->
+
+
+		<!-- BEGIN SIDEBAR NAV -->
+		<aside class="rs-sidebar">
+
+			<!-- Sidebar menu -->
+			<ul class="rs-sidebar-nav default-sidebar-nav">
+				<li class="rs-user-sidebar">
+					<a href="javascript:void(0);">
+						<img src="../images/avatars/01.png" alt="Avatar" class="avatar img-circle">
+						Mister Bin, Jr
+						<span class="subname text-uppercase m-t">GentoLab, LLC</span>
+					</a>
+					<ul>
+						<li><a href="javascript:void(0);">My Profile</a></li>
+						<li><a href="javascript:void(0);">Account Settings</a></li>
+						<li><a href="javascript:void(0);">Author Level<span class="label label-success p-x text-uppercase">Elite</span></a></li>
+						<li><a href="javascript:void(0);">Log Out</a></li>
+					</ul>
+				</li>
+
+				<li class="menu-block-divider"></li>
+				<li class="menu-header">Main menu</li>
+
+				<li>
+					<a href="index.html">
+						<span class="gcon gcon-gauge rs-icon-menu"></span>Dashboard
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="badge badge-danger">6</span>
+						<span class="gcon gcon-browser rs-icon-menu"></span>Page Layouts
+					</a>
+					<ul>
+						<li><a href="pl-static.html">Static Layout</a></li>
+						<li><a href="pl-fixed-nav.html">Fixed Nav</a></li>
+						<li><a href="pl-fixed.html">Fixed Nav &amp; Sidebar</a></li>
+						<li><a href="pl-default-scroll.html">Sidebar Default Scroll</a></li>
+						<li><a href="pl-boxed-static.html">Boxed Static Layout</a></li>
+						<li><a href="pl-boxed-fixed-nav.html">Boxed Fixed Nav</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-colours rs-icon-menu"></span>Color Palette
+					</a>
+					<ul>
+						<li><a href="palette-basic.html">Basic Colors</a></li>
+						<li><a href="palette-gradient.html">Gradients</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-attachment rs-icon-menu"></span>Ready Pages
+					</a>
+					<ul>
+						<li><a href="page-login-01.html">Login Page 01</a></li>
+						<li><a href="page-login-02.html">Login Page 02</a></li>
+						<li><a href="page-lock-01.html">Lock Screen 01</a></li>
+						<li><a href="page-lock-02.html">Lock Screen 02</a></li>
+						<li><a href="page-forgot-01.html">Forgot Password 01</a></li>
+						<li><a href="page-forgot-02.html">Forgot Password 02</a></li>
+						<li><a href="page-reset-01.html">Reset Password 01</a></li>
+						<li><a href="page-reset-02.html">Reset Password 02</a></li>
+						<li><a href="page-signup-01.html">Sign Up 01</a></li>
+						<li><a href="page-signup-02.html">Sign Up 02</a></li>
+						<li><a href="page-404.html">404 Not Found</a></li>
+						<li><a href="page-empty.html">Empty Page</a></li>
+					</ul>
+				</li>
+
+				<li class="menu-block-divider"></li>
+				<li class="menu-header">Development</li>
+
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-water rs-icon-menu"></span>Layout Components
+					</a>
+					<ul>
+						<li><a href="lc-navbar-elements.html">Navbar Elements</a></li>
+						<li><a href="lc-dashhead.html">Dashhead</a></li>
+						<li><a href="lc-dashhead-elements.html">Dashhead Elements</a></li>
+						<li><a href="lc-breadcrumbs.html">Breadcrumbs</a></li>
+					</ul>
+				</li>
+				<li class="active selected">
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-pin rs-icon-menu"></span>Components
+					</a>
+					<ul>
+						<li><a href="component-alerts.html">Alerts</a></li>
+						<li><a href="component-buttons.html">Buttons</a></li>
+						<li><a href="component-dropdowns.html">Dropdowns</a></li>
+						<li><a href="component-general.html">General Items</a></li>
+						<li><a href="component-helper.html">Helper</a></li>
+						<li class="active selected"><a href="component-list-group.html">List Group</a></li>
+						<li><a href="component-media-object.html">Media Object</a></li>
+						<li><a href="component-modals.html">Modals</a></li>
+						<li><a href="component-nav.html">Nav</a></li>
+						<li><a href="component-prettify.html">Google Code Prettify</a></li>
+						<li><a href="component-tabs.html">Tabs &amp; Accordions</a></li>
+						<li><a href="component-typography.html">Typography</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-documents rs-icon-menu"></span>Panels
+					</a>
+					<ul>
+						<li><a href="panel-variations.html">Panel Variations</a></li>
+						<li><a href="panel-elements.html">Panel Elements</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-new-message rs-icon-menu"></span>Form Input
+					</a>
+					<ul>
+						<li><a href="form-basic.html">Basic Input</a></li>
+						<li><a href="form-custom.html">Custom Input</a></li>
+						<li><a href="form-validation.html">Validation</a></li>
+						<li><a href="form-wizard.html">Wizard</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-pencil rs-icon-menu"></span>WYSWYG Editor
+					</a>
+					<ul>
+						<li><a href="editor-summernote.html">Summernote</a></li>
+						<li><a href="editor-medium.html">Medium Editor</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-ruler rs-icon-menu"></span>Tables
+					</a>
+					<ul>
+						<li><a href="table-static.html">Static Table</a></li>
+						<li><a href="table-datatable.html">Data Table</a></li>
+						<li><a href="table-sortable.html">Sortable</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-line-graph rs-icon-menu"></span>Chart Plugins
+					</a>
+					<ul>
+						<li><a href="chart-js.html">Chart Js</a></li>
+						<li><a href="chart-morris.html">Morris Js</a></li>
+						<li><a href="chart-sparklines.html">Sparklines</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="label bg-darken text-success">2658</span><span class="gcon gcon-vinyl rs-icon-menu"></span>Icons
+					</a>
+					<ul>
+						<li><a href="icon-bootstrap.html">Bootstrap Glyphicons</a></li>
+						<li><a href="icon-fa.html">Font Awesome</a></li>
+						<li><a href="icon-entypo.html">Entypo</a></li>
+						<li><a href="icon-weather.html">Weather Icon</a></li>
+						<li><a href="icon-material.html">Material Icon</a></li>
+						<li><a href="icon-flag.html">Flag Icon</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-flow-tree rs-icon-menu"></span>Multilevel Menu
+					</a>
+					<ul>
+						<li><a href="javascript:void(0);">Hi, I am First</a></li>
+						<li><a href="javascript:void(0);">Pertamax</a>
+							<ul>
+								<li><a href="javascript:void(0);">Keduax</a></li>
+								<li><a href="javascript:void(0);">Do ngopo ki?</a></li>
+								<li><a href="javascript:void(0);">I am Newbie</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+				<li class="menu-block-divider"></li>
+				<li class="menu-header">No Icon Menu</li>
+
+				<li class="no-icon-menu">
+					<a href="javascript:void(0);">Gorengan</a>
+				</li>
+				<li class="no-icon-menu">
+					<a href="javascript:void(0);">Soto Ayam</a>
+					<ul>
+						<li>
+							<a href="javascript:void(0);">
+								<span class="label label-warning bg-transparent text-warning p-x-0">$50</span>
+								Paket Hemat Kampus
+							</a>
+						</li>
+						<li><a href="javascript:void(0);">Paket Jumbo Telolet</a>
+							<ul>
+								<li>
+									<a href="javascript:void(0);">
+									<span class="label label-warning bg-transparent text-warning p-x-0">$250</span>
+									Pakai Dada Montok
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);">
+									<span class="label label-warning bg-transparent text-warning p-x-0">$225</span>
+									Pakai Paha Mulus
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);">
+									<span class="label label-warning bg-transparent text-warning p-x-0">$175</span>
+									Pakai Brutu Mambu
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="no-icon-menu">
+					<a href="javascript:void(0);">Tahu Bakso</a>
+				</li>
+
+				<li class="menu-block-divider"></li>
+			</ul>
+			<!-- End sidebar menu -->
+
+			<!-- Custom Content -->
+			<ul class="custom-content">
+				<li class="menu-header">Running projects</li>
+				<li class="p-a-md">
+					<div class="form-group m-b-lg">
+						<label class="f-w-400">Roosa HTML Template</label>
+						<label class="pull-right text-lighten small">8/10</label>
+						<div class="progress progress-xs bg-lightest m-a-0">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							</div>
+						</div>
+						<p class="help-block m-t-xs"><span class="label label-success bg-darken text-lighten label-block text-left">You almost there, hurry up!</span></p>
+					</div><!-- /.form-group -->
+					<div class="form-group m-b-lg">
+						<label class="f-w-400">Weet Landing Page HTML</label>
+						<label class="pull-right text-lighten small">4/10</label>
+						<div class="progress progress-xs bg-lightest m-a-0">
+							<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+							</div>
+						</div>
+						<p class="help-block m-t-xs"><span class="label label-success bg-darken text-lighten label-block text-left">It seems you are working on another :c</span></p>
+					</div><!-- /.form-group -->
+					<div class="form-group m-b-lg">
+						<label class="f-w-400">Manook Template</label>
+						<label class="pull-right text-lighten small">2/10</label>
+						<div class="progress progress-xs bg-lightest m-a-0">
+							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							</div>
+						</div>
+						<p class="help-block m-t-xs"><span class="label label-success bg-darken text-lighten label-block text-left">Hey man! We missed you!</span></p>
+					</div><!-- /.form-group -->
+					<button class="btn btn-darken btn-sm text-uppercase btn-block">Review All Projects</button>
+				</li>
+				<li class="menu-block-divider"></li>
+			</ul>
+			<!-- End Custom content -->
+
+			<!-- Custom Content -->
+			<ul class="custom-content">
+				<li class="menu-header">This Month Revenue</li>
+				<li class="p-y p-x-md">
+					<div class="radio radio-custom radio-lighten m-b-md">
+						<label>
+							<input type="radio" name="rs-revenue" value="" checked>
+							<span class="checker bg-transparent"></span>
+							Envato Market
+						</label>
+						<span class="badge bg-darken m-a-0 p-x pull-right text-lighten">USD 36,457</span>
+					</div><!-- /.radio -->
+					<div class="radio radio-custom radio-lighten m-b-md">
+						<label>
+							<input type="radio" name="rs-revenue" value="">
+							<span class="checker bg-transparent"></span>
+							Wrapbootstrap
+						</label>
+						<span class="badge bg-darken m-a-0 p-x pull-right text-lighten">USD 12,214</span>
+					</div><!-- /.radio -->
+					<div class="radio radio-custom radio-lighten m-b-md">
+						<label>
+							<input type="radio" name="rs-revenue" value="">
+							<span class="checker bg-transparent"></span>
+							Creative Market
+						</label>
+						<span class="badge bg-darken m-a-0 p-x pull-right text-lighten">USD 10,320</span>
+					</div><!-- /.radio -->
+					<div>
+					<a href="https://goo.gl/yWlIVx" target="_blank" class="btn btn-block btn-success m-t-lg"><i class="gcon gcon-shopping-bag icon-btn text-darken m-r"></i>Buy this template for <strong class="m-l-xs">$24</strong></a></div>
+				</li>
+				<li class="menu-block-divider"></li>
+			</ul>
+			<!-- End Custom content -->
+
+		</aside><!-- /.rs-sidebar -->
+		<!-- END SIDEBAR NAV -->
+
+
+		<!-- BEGIN MAIN CONTENT -->
+		<article class="rs-content-wrapper">
+			<div class="rs-content">
+				<div class="rs-inner">
+
+					<!-- Begin Dashhead -->
+					<div class="rs-dashhead m-b-lg">
+						<div class="rs-dashhead-content">
+							<div class="rs-dashhead-titles">
+								<h6 class="rs-dashhead-subtitle text-uppercase">Components</h6>
+								<h3 class="rs-dashhead-title m-t">List Group</h3>
+								<!-- End Toolbar toggle button on mobile -->
+							</div><!-- /.rs-dashhead-titles -->
+						</div><!-- /.rs-dashhead-content -->
+						<!-- Begin Breadcrumb -->
+						<ol class="breadcrumb">
+							<li><a href="javascript:void(0);"><i class="fa fa-home m-r"></i> Home</a></li>
+							<li><a href="javascript:void(0);">Library</a></li>
+							<li class="active">Data</li>
+						</ol>
+						<!-- End Breadcrumb -->
+					</div><!-- /.rs-dashhead -->
+					<!-- End Dashhead -->
+
+					<!-- Begin default content width -->
+					<div class="container-fluid">
+					
+						<div class="row">
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Basic Example</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<ul class="list-group m-b-0">
+											<li class="list-group-item">Cras justo odio</li>
+											<li class="list-group-item">Dapibus ac facilisis in</li>
+											<li class="list-group-item">Morbi leo risus</li>
+											<li class="list-group-item">Porta ac consectetur ac</li>
+											<li class="list-group-item">Vestibulum at eros</li>
+										</ul>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Linked Item</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<div class="list-group m-b-0">
+											<a href="javascript:void(0);" class="list-group-item">Cras justo odio</a>
+											<a href="javascript:void(0);" class="list-group-item">Dapibus ac facilisis in</a>
+											<a href="javascript:void(0);" class="list-group-item">Morbi leo risus</a>
+											<a href="javascript:void(0);" class="list-group-item">Porta ac consectetur ac</a>
+											<a href="javascript:void(0);" class="list-group-item">Vestibulum at eros</a>
+										</div>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Button Item</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<div class="list-group m-b-0">
+											<button type="button" class="list-group-item">Cras justo odio</button>
+											<button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+											<button type="button" class="list-group-item">Morbi leo risus</button>
+											<button type="button" class="list-group-item">Porta ac consectetur ac</button>
+											<button type="button" class="list-group-item">Vestibulum at eros</button>
+										</div>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Active &amp; Disabled Item</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<div class="list-group m-b-0">
+											<a href="javascript:void(0);" class="list-group-item active">Cras justo odio</a>
+											<a href="javascript:void(0);" class="list-group-item">Dapibus ac facilisis in</a>
+											<a href="javascript:void(0);" class="list-group-item">Morbi leo risus</a>
+											<a href="javascript:void(0);" class="list-group-item disabled">Porta ac consectetur ac</a>
+											<a href="javascript:void(0);" class="list-group-item">Vestibulum at eros</a>
+										</div>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Contextual Color</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<ul class="list-group m-b-0">
+											<li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+											<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+											<li class="list-group-item list-group-item-info active">Example active list</li>
+											<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+											<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+										</ul>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Contextual Color</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<div class="list-group m-b-0">
+											<a href="javascript:void(0);" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+											<a href="javascript:void(0);" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+											<a href="javascript:void(0);" class="list-group-item list-group-item-success active">Example active list</a>
+											<a href="javascript:void(0);" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+											<a href="javascript:void(0);" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+										</div>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">Roundedless Corner</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<ul class="list-group list-group-square m-b-0">
+											<li class="list-group-item">Cras justo odio</li>
+											<li class="list-group-item">Dapibus ac facilisis in</li>
+											<li class="list-group-item">Morbi leo risus</li>
+											<li class="list-group-item">Porta ac consectetur ac</li>
+											<li class="list-group-item">Vestibulum at eros</li>
+										</ul>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">With Badges</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<ul class="list-group m-b-0">
+											<li class="list-group-item">Cras justo odio<span class="badge">14</span></li>
+											<li class="list-group-item">Dapibus ac facilisis in<span class="badge badge-primary">14</span></li>
+											<li class="list-group-item">Morbi leo risus<span class="badge badge-success">14</span></li>
+											<li class="list-group-item">Porta ac consectetur ac<span class="badge badge-info">14</span></li>
+											<li class="list-group-item">Vestibulum at eros<span class="badge badge-danger">14</span></li>
+										</ul>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+							<div class="col-md-4">
+								<!-- Begin Panel -->
+								<div class="panel panel-plain panel-rounded">
+									<div class="panel-heading borderless">
+										<h3 class="panel-title">With Labels</h3>
+										<p class="subtitle text-uppercase m-t">List Group</p>
+										<!-- Begin Panel Toolbar -->
+										<div class="panel-toolbar">
+											<ul class="list-inline m-a-0">
+												<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+											</ul>
+										</div><!-- /.panel-toolbar -->
+										<!-- End Panel Toolbar -->
+									</div><!-- /.panel-heading -->
+									<div class="panel-body p-t-0">
+										<ul class="list-group m-b-0">
+											<li class="list-group-item">Cras justo odio<span class="label label-default">Offline</span></li>
+											<li class="list-group-item">Dapibus ac facilisis in<span class="label label-primary">Mod</span></li>
+											<li class="list-group-item">Morbi leo risus<span class="label label-success">Active</span></li>
+											<li class="list-group-item">Porta ac consectetur ac<span class="label label-info">Member</span></li>
+											<li class="list-group-item">Vestibulum at eros<span class="label label-danger">Offline</span></li>
+										</ul>
+									</div><!-- .panel-body -->
+								</div><!-- /.panel -->
+								<!-- End Panel -->
+							</div><!-- /.col-md-4 -->
+
+						</div><!-- /.row -->
+
+					</div><!-- /.container-fluid -->
+
+				</div><!-- /.rs-inner -->
+			</div><!-- /.rs-content -->
+		</article><!-- /.rs-content-wrapper -->
+		<!-- END MAIN CONTENT -->
+
+
+		<!-- BEGIN FOOTER -->
+		<footer class="rs-footer absolute-footer">
+			<span class="text-muted small">&copy; 2017 Roosa Template by <a href="http://gentolab.com">Gento Lab</a></span>
+		</footer>
+		<!-- END FOOTER -->
+
+
+	</div><!-- /#rs-wrapper -->
+
+	<!-- Screen overlay is required -->
+	<div id="rs-screen-overlay"></div>
+
+
+	
+	<!-- <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+	<script>
+	window.jQuery || document.write('<script src="../dist/js/vendor/jquery.min.js"><\/script>')
+	</script> -->
+	
+	<script src="../dist/js/vendor/modernizr.min.js"></script>
+	<script src="../dist/js/vendor/jquery.min.js"></script>
+	<script src="../dist/js/vendor/bootstrap.min.js"></script>
+	<script src="../dist/js/vendor/raphael.min.js"></script>
+
+	<script src="../dist/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="../dist/plugins/ismobile/isMobile.min.js"></script>
+	<script src="../dist/plugins/blockui/blockui.min.js"></script>
+	<script src="../dist/plugins/prettify/prettify.min.js"></script>
+	<script src="../dist/plugins/clipboard/clipboard.min.js"></script>
+	<script src="../dist/plugins/filestyle/bootstrap-filestyle.min.js"></script>
+	<script src="../dist/plugins/pace/pace.min.js"></script>
+
+	<!-- Template Js -->
+	<script src="../dist/js/apps.js"></script>
+	<script src="../dist/js/layout-default.js"></script>
+
+</body>
+</html>

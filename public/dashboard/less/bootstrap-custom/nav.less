@@ -1,0 +1,67 @@
+// Nav tabs
+.nav-tabs {
+  border-bottom-color: @nav-tabs-border-color;
+  > li {
+    > a:hover {
+      border-color: #eee #eee #ddd;
+    }
+    &.active {
+      > a, > a:hover, > a:focus {
+        border-color: @nav-tabs-border-color;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+  &.nav-justified {
+    > .active {
+      > a, > a:hover, > a:focus {
+        border-color: @nav-tabs-border-color;
+      }
+    }
+  }
+}
+
+// Nav pills
+.nav-pills {
+  > li.active {
+    > a, > a:hover, > a:focus {
+      color: @nav-pills-active-color;
+      background-color: @nav-pills-active-bg-color;
+    }
+  }
+}
+
+// Nav tabs justified
+.nav-tabs-justified {
+  > .active {
+    > a, > a:hover, > a:focus {
+      border-color: @nav-tabs-border-color;
+    }
+  }
+}
+
+// Nav tabs responsive
+.responsive-min(@device-tablet; {
+  .nav-tabs {
+    &.nav-justified {
+      > li > a {
+      border-bottom-color: @nav-tabs-border-color;
+      }
+      > .active {
+        > a, > a:hover, > a:focus {
+          border-bottom-color: @nav-tabs-active-border-color;
+        }
+      }
+    }
+    &-justified {
+      > li > a {
+        border-bottom-color: @nav-tabs-border-color;
+      }
+      > .active {
+        > a, > a:hover, > a:focus {
+          border-bottom-color: @nav-tabs-active-border-color;
+        }
+      }
+    }
+  }
+});

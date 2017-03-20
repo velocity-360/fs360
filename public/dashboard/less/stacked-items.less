@@ -1,0 +1,106 @@
+.@{css-prefix}-col-stacked {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin-bottom: @stacked-item-margin-bottom;
+  border: 1px solid @stacked-item-border-color;
+  overflow: hidden;
+
+  // Stacked wrapper with vertical borders
+  &.v-border {
+    border-top-width: 0;
+    border-bottom-width: 0;
+  }
+
+  // Stacked wrapper with horizontal borders
+  &.h-border {
+    border-right-width: 0;
+    border-left-width: 0;
+  }
+
+  // With top border
+  &.t-border {
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 0;
+  }
+
+  // With bottom border
+  &.b-border {
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+  }
+
+  // Stacked items
+  .stacked-item {
+    display: table-cell;
+    position: relative;
+    margin-bottom: 0;
+    border-width: 0;
+  }
+}
+
+// Bordered stacked items
+.@{css-prefix}-col-stacked.border-items {
+  .stacked-item {
+    border-right: 1px solid @stacked-item-border-color;
+    &:last-child {
+      border-right-width: 0;
+    }
+  }
+  &.light-border .stacked-item {
+    border-right-color: @stacked-item-light-border-color;
+  }
+}
+.responsive-min(@device-tablet-small; {
+  .@{css-prefix}-col-stacked.border-items .stacked-item {
+    &.top-item {
+      z-index: 1;
+      border-right-width: 0;
+    }
+    + .stacked-item.top-item {
+      border-right-width: 0;
+    }
+  }
+});
+.responsive(@device-tablet-landscape; {
+  .@{css-prefix}-col-stacked.full-width-on-tablet {
+    display: block;
+    table-layout: none;
+    .stacked-item {
+      width: 100%;
+      display: block;
+    }
+    &.border-items .stacked-item {
+      border-right-width: 0;
+      border-bottom: 1px solid @stacked-item-border-color;
+      &:last-child {
+        border-bottom-width: 0;
+      }
+    }
+    &.border-items.light-border .stacked-item {
+      border-bottom-color: @stacked-item-light-border-color;
+    }
+  }
+});
+.responsive(@device-tablet-small; {
+  .@{css-prefix}-col-stacked.full-width-on-mobile {
+    display: block;
+    table-layout: none;
+    .stacked-item {
+      width: 100%;
+      display: block;
+    }
+    &.border-items .stacked-item {
+      border-right-width: 0;
+      border-bottom: 1px solid @stacked-item-border-color;
+      &:last-child {
+        border-bottom-width: 0;
+      }
+    }
+    &.border-items.light-border .stacked-item {
+      border-bottom-color: @stacked-item-light-border-color;
+    }
+  }
+});

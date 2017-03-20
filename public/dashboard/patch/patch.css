@@ -1,0 +1,187 @@
+// ## Boxed wrapper shadow
+@media (min-width: 1200px) {
+  body.rs-boxed-layout #rs-wrapper {
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.25);
+  }
+}
+
+//## Alert close z-index
+.alert-dismissable .close,
+.alert-dismissible .close {
+  z-index: 1;
+}
+
+// ## Media object
+.media .media-heading {
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+.media .media-subheading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+@media (max-width: 480px) {
+  .media-heading {
+    margin-bottom: 5px;
+  }
+  .media .media-subheading {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 5px;
+  }
+}
+
+// ## Progress bar 
+.progress-lg.progress-striped .progress-bar,
+.progress-lg .progress-bar-striped {
+ -webkit-background-size: 60px 60px;
+  background-size: 60px 60px;
+}
+.progress-sm.progress-striped .progress-bar,
+.progress-sm .progress-bar-striped {
+ -webkit-background-size: 30px 30px;
+  background-size: 30px 30px;
+}
+.progress-xs.progress-striped .progress-bar,
+.progress-xs .progress-bar-striped {
+ -webkit-background-size: 16px 16px;
+  background-size: 16px 16px;
+}
+.progress-lg.progress.active .progress-bar,
+.progress-lg .progress-bar.active {
+  -webkit-animation: progress-bar-stripes-lg 2s linear infinite;
+  -o-animation: progress-bar-stripes-lg 2s linear infinite;
+  animation: progress-bar-stripes-lg 2s linear infinite;
+}
+.progress-sm.progress.active .progress-bar,
+.progress-sm .progress-bar.active {
+  -webkit-animation: progress-bar-stripes-sm 1s linear infinite;
+  -o-animation: progress-bar-stripes-sm 1s linear infinite;
+  animation: progress-bar-stripes-sm 1s linear infinite;
+}
+.progress-xs.progress.active .progress-bar,
+.progress-xs .progress-bar.active {
+  -webkit-animation: progress-bar-stripes-xs 0.5s linear infinite;
+  -o-animation: progress-bar-stripes-xs 0.5s linear infinite;
+  animation: progress-bar-stripes-xs 0.5s linear infinite;
+}
+@-webkit-keyframes progress-bar-stripes-lg {
+  from {
+    background-position: 60px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-o-keyframes progress-bar-stripes-lg {
+  from {
+    background-position: 60px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes progress-bar-stripes-lg {
+  from {
+    background-position: 60px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-webkit-keyframes progress-bar-stripes-sm {
+  from {
+    background-position: 30px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-o-keyframes progress-bar-stripes-sm {
+  from {
+    background-position: 30px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes progress-bar-stripes-sm {
+  from {
+    background-position: 30px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-webkit-keyframes progress-bar-stripes-xs {
+  from {
+    background-position: 16px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-o-keyframes progress-bar-stripes-xs {
+  from {
+    background-position: 16px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes progress-bar-stripes-xs {
+  from {
+    background-position: 16px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+// ## Color classes helper
+.bg-primary-100		{ background: #dbe8f8 !important; }
+.bg-primary-200		{ background: #b1ccf0 !important; }
+.bg-primary-300		{ background: #86b0e8 !important; }
+.bg-primary-500		{ background: #3078d7 !important; }
+.bg-primary-600		{ background: #276ecc !important; }
+.bg-primary-700		{ background: #2465bb !important; }
+
+.bg-success-100		{ background: #ebf6eb !important; }
+.bg-success-200		{ background: #d6edd7 !important; }
+.bg-success-300		{ background: #b2ddb4 !important; }
+.bg-success-500		{ background: #6cbe6f !important; }
+.bg-success-600		{ background: #5eb762 !important; }
+.bg-success-700		{ background: #50b154 !important; }
+
+.bg-info-100		{ background: #e1f5fe !important; }
+.bg-info-200		{ background: #c4ebfc !important; }
+.bg-info-300		{ background: #93dafa !important; }
+.bg-info-500		{ background: #32b9f6 !important; }
+.bg-info-600		{ background: #1eb2f5 !important; }
+.bg-info-700		{ background: #0bacf4 !important; }
+
+.bg-warning-100		{ background: #fef7e8 !important; }
+.bg-warning-200		{ background: #fce5b7 !important; }
+.bg-warning-300		{ background: #f9d486 !important; }
+.bg-warning-500		{ background: #f4a911 !important; }
+.bg-warning-600		{ background: #e69e0b !important; }
+.bg-warning-700		{ background: #d2910a !important; }
+
+.bg-danger-100		{ background: #feefef !important; }
+.bg-danger-200		{ background: #f9c1c0 !important; }
+.bg-danger-300		{ background: #f59391 !important; }
+.bg-danger-500		{ background: #ec3734 !important; }
+.bg-danger-600		{ background: #eb2521 !important; }
+.bg-danger-700		{ background: #e31915 !important; }
+
+.bg-dark-100		{ background: #999eb2 !important; }
+.bg-dark-200		{ background: #7c839c !important; }
+.bg-dark-300		{ background: #4d5266 !important; }
+.bg-dark-500		{ background: #21232c !important; }
+.bg-dark-600		{ background: #181a20 !important; }
+.bg-dark-700		{ background: #0f1014 !important; }

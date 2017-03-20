@@ -1,0 +1,10 @@
+.responsive-min(@device-tablet; {
+  .jumbotron {
+  	padding-left: @jumbotron-padding-x;
+    padding-right: @jumbotron-padding-x;
+    .container &, .container-fluid & {
+      padding-right: @jumbotron-padding-x-in-container;
+      padding-left: @jumbotron-padding-x-in-container;
+    }
+  }
+});

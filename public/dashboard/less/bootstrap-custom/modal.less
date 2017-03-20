@@ -1,0 +1,26 @@
+.modal {
+  &-header, &-footer {
+    border-color:  rgba(0, 0, 0, .08);
+    position: relative;
+  }
+  &-content {
+    border-color: @modal-content-border-color;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  &-dialog, &-lg, &-sm {
+    &.modal-demo {
+      width: 100% !important;
+    }
+  }
+  &-color:not(.borderless) .modal-header {
+    margin: -1px -1px 0 -1px;
+    z-index: 2;
+  }
+}
+.responsive-min(@device-tablet; {
+  .modal-content {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+});

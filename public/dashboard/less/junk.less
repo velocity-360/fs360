@@ -1,0 +1,93 @@
+// Junk for demo
+.icon-wrap {
+  font-size: 0;
+  text-align: center;
+}
+.rsi {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  font-size: 13px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  width: 10%;
+  height: 100px;
+  padding: 15px 5px;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+@media (max-width: 768px) {
+  .rsi {
+    width: 20%;
+  }
+}
+@media (max-width: 480px) {
+  .rsi {
+    width: 25%;
+  }
+}
+@media (max-width: 360px) {
+  .rsi {
+    width: 50%;
+  }
+}
+.rsi samp {
+  white-space: normal;
+  color: #999;
+}
+.rsi:hover {
+  background: #4a89dc;
+  color: #fff;
+}
+.rsi:hover samp {
+  color: #fff;
+}
+.rsi i {
+  font-size: 24px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.lv-current {
+  -webkit-box-shadow: 0px 0px 0px 4px rgba(74,137,220,1);
+  -moz-box-shadow: 0px 0px 0px 4px rgba(74,137,220,1);
+  box-shadow: 0px 0px 0px 4px rgba(74,137,220,1);
+}
+.lv {
+  -webkit-box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.4);
+  -moz-box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.4);
+  box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.4);
+}
+.lv-current-label {
+  z-index: 3;
+  pointer-events: none;
+}
+.dropdown-demo {
+  position: relative !important;
+  display: block !important;
+  display: inline-block !important;
+  top: auto !important;
+  left: auto !important;
+  float: none !important;
+  z-index: 1 !important;
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu.dropdown-demo.xl-dropdown,
+  .dropdown-menu.dropdown-demo.lg-dropdown {
+    min-width: 200px;
+    width: 100% !important;
+  }
+}
+@media (max-width: 480px) {
+  .dropdown-demo {
+    display: block !important;
+  }
+}

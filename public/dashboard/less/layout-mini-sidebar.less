@@ -1,0 +1,172 @@
+.responsive-min(@device-tablet + 1; {
+	#@{css-prefix}-wrapper.@{css-prefix}-mini-sidebar {
+		.@{css-prefix}-sidebar {
+			.custom-content {
+				display: none;
+			}
+			overflow: visible !important;
+			& , &:after {
+				width: @mini-sidebar-width;
+			}
+		}
+		.@{css-prefix}-content-wrapper {
+			margin-left: @mini-sidebar-width;
+		}
+		.@{css-prefix}-footer.absolute-footer {
+			left: @mini-sidebar-width;
+		}
+	}
+	.@{css-prefix}-mini-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav{
+		li {
+			position: relative;
+			z-index: 9;
+			&.menu-header {
+				color: transparent;
+				overflow: hidden;
+				display: none;
+				&:hover {
+					width: @mini-sidebar-width !important;
+				}
+			}
+		}
+	}
+	.@{css-prefix}-mini-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li{
+		overflow: hidden;
+		width: @mini-sidebar-width;
+		> a {
+			padding-left: @mini-sidebar-item-padding-x;
+			.@{css-prefix}-icon-menu {
+				width: @mini-sidebar-width;
+			}
+		}
+		&:not(.menu-block-divider):hover {
+			overflow: visible;
+			width: @mini-sidebar-item-width;
+			background: @sidebar-bg;
+		}
+		&.no-icon-menu > a {
+			position: relative;
+			&:after {
+				font-family: @font-icon-entypo;
+				content: @mini-sidebar-no-icon-item-content;
+				font-size: @mini-sidebar-no-icon-font-size;
+				position: absolute;
+				z-index: 2;
+				width: @mini-sidebar-width;
+				height: @sidebar-menu-item-height;
+				text-align: center;
+				line-height: @sidebar-menu-item-height;
+				left: 0;
+				top: 0;
+				color: @mini-sidebar-no-icon-color;
+				color: fade(@mini-sidebar-no-icon-color,30);
+				display: block;
+			}
+		}
+	}
+	.@{css-prefix}-mini-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav ul {
+		position: absolute;
+		top: @sidebar-menu-item-height;
+		width: @mini-sidebar-submenu-width;
+		left: @mini-sidebar-width;
+		z-index: 9;
+		background: @sidebar-bg;
+	}
+	.@{css-prefix}-mini-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li {
+		&:hover > a {
+			background: fade(@color-black,10);
+		}
+		> ul,
+		&.active > ul,
+		> ul > li > ul,
+		> ul > li.active > ul {
+			display: none;
+		}
+		&:hover > ul,
+		&.active:hover > ul {
+			display: block;
+			border-top: 1px solid @sidebar-menu-item-border-color;
+		}
+		> ul > li > ul {
+			left: 100%;
+			top: 0;
+		}
+		> ul > li:hover > ul,
+		> ul > li.active:hover > ul {
+			display: block;
+		}
+		> ul > li:not(.active):hover > a {
+			background: fade(@color-black,20);
+		}
+		> ul > li > ul > li > a {
+			padding-left: @sidebar-menu-item-padding-x;
+			background: fade(@color-black,20);
+		}
+		> a .label {
+			display: none;
+		}
+		&:hover > a .label {
+			display: block;
+		}
+		> a .badge,
+		> a .badge.over-icon{
+			left: @mini-sidebar-badge-x;
+			top: @mini-sidebar-badge-y;
+			margin-top: 0;
+			right: auto;
+		}
+		> ul > li > a {
+			padding-left: @sidebar-menu-item-padding-x;
+			background: fade(@color-black,10);
+		}
+	}
+	.@{css-prefix}-mini-sidebar .@{css-prefix}-sidebar-nav {
+		a:not(:only-child):after {
+			content: @mini-sidebar-menu-has-sub-icon-content;
+		}
+		.active > a:not(:only-child):after {
+			-ms-transform: rotate(0);
+			-webkit-transform: rotate(0);
+			-moz-transform: rotate(0);
+			transform: rotate(0);
+		}
+		> li > a:not(:only-child):after {
+			display: none;
+		}
+	}
+
+	.@{css-prefix}-mini-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav {
+		> li.@{css-prefix}-user-sidebar {
+			> a {
+				height: @mini-sidebar-user-menu-height;
+				padding: @mini-sidebar-user-menu-padding;
+				padding-left: @mini-sidebar-item-padding-x;
+				line-height: 100%;
+			}
+			> a .badge,
+			> a .badge.over-icon{
+				left: @mini-sidebar-user-menu-badge-x;
+				top: @mini-sidebar-user-menu-badge-y;
+			}
+		}
+		.@{css-prefix}-user-sidebar ul {
+			top: 100%;
+		}
+		> li.@{css-prefix}-user-sidebar {
+			> ul > li > ul{
+				top: 0;
+			}
+			> a .avatar {
+				width: @mini-sidebar-user-menu-avatar-size;
+				height: @mini-sidebar-user-menu-avatar-size;
+				left: @mini-sidebar-user-menu-avatar-x;
+				margin-top: -(@mini-sidebar-user-menu-avatar-size / 2);
+			}
+			> a .subname {
+				display: block;
+				font-size: @sidebar-user-menu-subname-font-size;
+				letter-spacing: @sidebar-user-menu-subname-letter-spacing;
+				color: @sidebar-user-menu-subname-color;			}
+		}
+	}
+});

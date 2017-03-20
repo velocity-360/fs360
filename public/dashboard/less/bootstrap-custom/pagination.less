@@ -1,0 +1,19 @@
+.pagination {
+  > li > a,
+  > li > span {
+    color: @pagination-color;
+    &:hover, &:focus {
+      z-index: 2;
+      color: @pagination-hover-color;
+      background-color: @pagination-hover-bg;
+    }
+  }
+  > .active {
+    > a, > span {
+      &, &:hover, &:focus {
+        background-color: @pagination-active-bg;
+        border-color: @pagination-active-bg;
+      }
+    }
+  }
+}

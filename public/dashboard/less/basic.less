@@ -1,0 +1,174 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  line-height: 175%;
+  font-family: @font-body;
+}
+
+// Selection color
+::selection {
+  background-color: @color-selection;
+  color: @color-white;
+}
+::-moz-selection {
+  background-color: @color-selection;
+  color: @color-white;
+}
+
+// Link
+a {
+  color: @link-color;
+  text-decoration: none;
+  &:hover,&:focus {
+    color: @link-color-hover;
+    text-decoration: none;
+  }
+}
+
+// Canvas (Chjart plugins)
+canvas{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  &.chart-js-no-ratio {
+    height: @canvas-height-no-ratio;
+  }
+}
+.responsive(@device-phone; {
+  canvas.chart-js-no-ratio {
+    height: @canvas-height-no-ratio-mobile;
+  }
+});
+
+// Sparkline Chart
+.jqstooltip {
+  padding: 0 !important;
+  border: none !important;
+}
+.jqsfield {
+  padding: @spark-tooltip-padding;
+}
+
+// Popular badge
+.popular-badge {
+  padding: @popular-badge-padding;
+  font-weight: bold;
+  font-size: @popular-badge-font-size;
+  position: absolute;
+  z-index: 3;
+  width: @popular-badge-width;
+  right: -@popular-badge-right;
+  top: @popular-badge-top;
+  text-align: center;
+  transform: rotate(45deg) ;
+  -webkit-transform: rotate(45deg) ;
+  -moz-transform: rotate(45deg) ;
+  -o-transform: rotate(45deg) ;
+  -ms-transform: rotate(45deg) ;
+}
+
+// Quick stat widget
+.quick-stat .panel-toolbar {
+  top: @quick-stat-panel-toolbar-top;
+  right: @quick-stat-panel-toolbar-right;
+}
+
+// Sepecial page
+// Login, signup, 404, etc...
+.login-wrap {
+  width: auto;
+  max-width: @login-wrap-max-width;
+  display: block;
+  margin-top: @login-wrap-margin-top;
+  &.login-wrap-md {
+    max-width: @login-wrap-max-width-md;
+    margin-top: @login-wrap-margin-top-md;
+  }
+  &.login-wrap-lg {
+    max-width: @login-wrap-max-width-lg;
+    margin-top: @login-wrap-margin-top-lg;
+  }
+}
+.light-bs {
+  -webkit-box-shadow: 0px 0px 0px 6px fade(@color-white,20);
+  -moz-box-shadow: 0px 0px 0px 6px fade(@color-white,20);
+  box-shadow: 0px 0px 0px 6px fade(@color-white,20);
+}
+.@{css-prefix}-footer.login-footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-top: 0;
+  background: transparent;
+  border-width: 0;
+}
+.full-height-content {
+  & , &.fixed {
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+}
+.center-content {
+  position: relative;
+  display: inline-block;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  top: auto;
+  margin-right: auto;
+  margin-left: auto;
+  transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+}
+.responsive-min(@device-tablet + 1; {
+  .full-height-content {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 50% !important;
+    &.fixed {
+      position: fixed !important;
+    }
+    &.right-side {
+      right: 0;
+      left: auto;
+    }
+  }
+  .center-content {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+  }
+});
+.special-page-content {
+  position: absolute;
+  z-index: 10;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: @special-page-content-width;
+  margin-left: -(@special-page-content-width / 2);
+}
+.heading-text-xl {
+  font-size: @heading-special-page-size;
+}
+.avatar-img {
+  width: @avatar-img-size;
+  height: @avatar-img-size;
+}

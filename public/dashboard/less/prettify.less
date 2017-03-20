@@ -1,0 +1,15 @@
+// Prettify plugin
+.prettyprint {
+  -moz-tab-size: @pre-tab-size;
+  -o-tab-size: @pre-tab-size;
+  tab-size: @pre-tab-size;
+}
+.pre-wrapper {
+  position: relative;
+  .btn {
+  	z-index: 9;
+  	top: @pre-btn-copy-y;
+  	right: @pre-btn-copy-x;
+  	position: absolute !important;
+  }
+}

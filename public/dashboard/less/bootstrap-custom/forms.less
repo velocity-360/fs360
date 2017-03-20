@@ -1,0 +1,305 @@
+// General input custom
+.form-control {
+  &[disabled], &[readonly], fieldset[disabled] & {
+    background-color: @input-readonly-bg;
+    opacity: 1;
+  }
+  height: @input-height;
+  border-radius: @input-rounded-size;
+  border-color: @input-border-color;
+  padding-top: @input-padding-top;
+  padding-bottom: @input-padding-bottom;
+  -webkit-transition: border-color ease-in-out 0.3s;
+  -o-transition: border-color ease-in-out 0.3s ;
+  transition: border-color ease-in-out 0.3s ;
+  .box-shadow-none();
+  &:focus {
+    border-color: @input-border-color-focus;
+    .box-shadow-none();
+  }
+}
+
+// Help block
+.help-block {
+  font-size: @help-block-font-size;
+  color: @help-block-color;
+}
+
+// Input feedback
+.has-feedback {
+  .form-control-feedback {
+   color: @form-control-feedback-color;
+ }
+ &.feecback-left {
+  .form-control-feedback {
+    left: 0;
+    right: auto;
+  }
+  .form-control {
+    padding-left: @input-has-feedback-padding;
+    padding-right: @input-has-feedback-left-padding-right;
+  }
+}
+}
+.form-control-feedback {
+  width: @input-feedback-width;
+  height: @input-feedback-height;
+  line-height: @input-height;
+  z-index: 4;
+  .has-feedback label ~ & {
+    top: @input-has-feedback-has-label-top;
+  }
+  .has-feedback label.sr-only ~ & {
+    top: 0;
+  }
+}
+.has-feedback {
+  position: relative;
+  .form-control {
+    padding-right: @input-has-feedback-padding;
+  }
+}
+
+// Static control
+.form-control-static {
+  &.input-lg, &.input-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Input sizing
+.input-sm {
+  height: @input-height-sm;
+  padding: @input-padding-y-sm @input-padding-x-sm;
+  font-size: @input-font-size-sm;
+  line-height: @input-line-height-sm;
+  border-radius: @input-rounded-size-sm;
+  select& {
+    height: @input-height-sm;
+    line-height: @input-height-sm;
+  }
+  textarea&, select[multiple]& {
+    height: auto;
+  }
+}
+.form-group-sm {
+  .form-control {
+    height: @input-height-sm;
+    padding: @input-padding-y-sm @input-padding-x-sm;
+    font-size: @input-font-size-sm;
+    line-height: @input-line-height-sm;
+    border-radius: @input-rounded-size-sm;
+  }
+  select.form-control{
+    height: @input-height-sm;
+    line-height: @input-height-sm;
+  }
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+  .form-control-static {
+    height: @input-height-sm;
+    min-height: @input-height-sm;
+    padding: @input-padding-y-sm @input-padding-x-sm;
+    font-size: @input-font-size-sm;
+    line-height: @input-line-height-sm;
+  }
+}
+.input-lg {
+  height: @input-height-lg;
+  padding: @input-padding-y-lg @input-padding-x-lg;
+  font-size: @input-font-size-lg;
+  line-height: @input-line-height-lg;
+  border-radius: @input-rounded-size-lg;
+  select& {
+    height: @input-height-lg;
+    line-height: @input-height-lg;
+  }
+  textarea&, select[multiple]& {
+    height: auto;
+  }
+}
+.form-group-lg {
+  .form-control {
+    height: @input-height-lg;
+    padding: @input-padding-y-lg @input-padding-x-lg;
+    font-size: @input-font-size-lg;
+    line-height: @input-line-height-lg;
+    border-radius: @input-rounded-size-lg;
+  }
+  select.form-control {
+    height: @input-height-lg;
+    line-height: @input-height-lg;
+  }
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+  .form-control-static {
+    height: @input-height-lg;
+    min-height: @input-height-lg;
+    padding: @input-padding-y-lg @input-padding-x-lg;
+    font-size: @input-font-size-lg;
+    line-height: @input-line-height-lg;
+  }
+}
+
+// Form control feedback
+.form-control-feedback {
+  .input-lg + &, .input-group-lg + &, .form-group-lg .form-control + &{
+    width: @input-height-lg;
+    height: @input-height-lg;
+    line-height: @input-height-lg;
+  }
+}
+.form-control-feedback {
+  .input-sm + &, .input-group-sm + &, .form-group-sm .form-control + &{
+    width: @input-feedback-width-sm;
+    height: @input-feedback-width-sm;
+    line-height: @input-height-sm;
+  }
+}
+
+// Select multiple
+select[multiple].form-control option {
+  padding: @input-select-multiple-padding-y @input-select-multiple-padding-x;
+  border-radius: @input-rounded-size;
+}
+
+// Has color
+.has-success {
+  .help-block, .control-label, .radio,
+  .checkbox, .radio-inline, .checkbox-inline,
+  &.radio label, &.checkbox label,
+  &.radio-inline label, &.checkbox-inline label {
+    color: @input-has-success-color;
+  }
+  .form-control {
+    border-color: @input-has-success-color;
+    .box-shadow-none();
+    &:focus {
+      border-color: darken(@input-has-success-color,14);
+      .box-shadow-none();
+    }
+  }
+  .input-group-addon {
+    color: @input-has-success-color;
+    background-color: lighten(@input-has-success-color,30);
+    border-color: @input-has-success-color;
+  }
+  .form-control-feedback {
+    color: @input-has-success-color;
+  }
+}
+.has-warning {
+  .help-block, .control-label, .radio,
+  .checkbox, .radio-inline, .checkbox-inline,
+  &.radio label, &.checkbox label,
+  &.radio-inline label, &.checkbox-inline label {
+    color: @input-has-warning-color;
+  }
+  .form-control {
+    border-color: @input-has-warning-color;
+    .box-shadow-none();
+    &:focus {
+      border-color: darken(@input-has-warning-color,14);
+      .box-shadow-none();
+    }
+  }
+  .input-group-addon {
+    color: @input-has-warning-color;
+    background-color: lighten(@input-has-warning-color,34);
+    border-color: @input-has-warning-color;
+  }
+  .form-control-feedback {
+    color: @input-has-warning-color;
+  }
+}
+.has-error {
+  .help-block, .control-label, .radio,
+  .checkbox, .radio-inline, .checkbox-inline,
+  &.radio label, &.checkbox label,
+  &.radio-inline label, &.checkbox-inline label {
+    color: @input-has-danger-color;
+  }
+  .form-control {
+    border-color: @input-has-danger-color;
+    .box-shadow-none();
+    &:focus {
+      border-color: darken(@input-has-danger-color,10);
+      .box-shadow-none();
+    }
+  }
+  .input-group-addon {
+    color: @input-has-danger-color;
+    background-color: lighten(@input-has-danger-color,34);
+    border-color: @input-has-danger-color;
+  }
+  .form-control-feedback {
+    color: @input-has-danger-color;
+  }
+}
+
+// Radio & Checkbox
+label {
+  + .radio, + .checkbox {
+    margin-top: @checkradio-in-label-margin-top;
+  }
+  .radio & , .checkbox & {
+    padding-left: @checkradio-in-label-padding-left;
+  }
+}
+input {
+  &[type="radio"] {
+    .radio &, .radio-inline & {
+      margin-top: @checkradio-in-div-margin-top;
+      margin-left: @checkradio-in-div-margin-left;
+    }
+  }
+  &[type="checkbox"] {
+    .checkbox &, .checkbox-inline & {
+      margin-top: @checkradio-in-div-margin-top;
+      margin-left: @checkradio-in-div-margin-left;
+    }
+  }
+}
+.right-input {
+  label {
+    .radio& , .checkbox& {
+      padding-right: @checkradio-in-label-padding-right;
+      padding-left: 0;
+    }
+  }
+  .radio& input[type="radio"], .checkbox& input[type="checkbox"] {
+    margin-left: 0;
+    right: 0;
+    top: 0;
+  }
+}
+.disabled {
+  .radio& label, .checkbox& label {
+    color: @checkradio-disabled-color-label;
+  }
+}
+.radio-inline,
+.checkbox-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: @checkradio-inline-padding-left;
+  margin-bottom: 0;
+  font-weight: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  & + radio-inline,
+  & + checkbox-inline {
+    margin-top: 0;
+    margin-left: @checkradio-inline-multiple-margin;
+  }
+}
+.input-group-addon {
+  input[type="radio"], input[type="checkbox"] {
+    margin-top: @checkradio-group-addon-margin-top;
+  }
+}

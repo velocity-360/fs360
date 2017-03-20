@@ -1,0 +1,202 @@
+#@{css-prefix}-wrapper.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar {
+  &, &:after {
+	width: @iconic-sidebar-width;
+  }
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav li {
+  position: relative;
+  z-index: 9;
+  border-bottom-width: 0;
+  &.menu-header {
+    color: transparent;
+    overflow: hidden;
+    display: none;
+    &:hover {
+      width: @iconic-sidebar-width !important;
+    }
+  }
+  &.no-icon-menu {
+    display: none;
+  }
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li {
+	width: @iconic-sidebar-width;
+	> a {
+		padding: 0;
+		height: @iconic-sidebar-width;
+		line-height: @iconic-sidebar-width;
+		border-bottom: 1px solid @sidebar-menu-item-border-color;
+	}
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li {
+	&.selected > a,
+	&.active > a {
+		background: transparent;
+	}
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav {
+	.tooltip {
+		white-space: nowrap;
+	}
+	> li > a .@{css-prefix}-icon-menu {
+		position: relative;
+		width: @iconic-sidebar-width;
+		height: @iconic-sidebar-width;
+		line-height: @iconic-sidebar-width;
+		left: auto;
+		top: auto;
+		display: inline-block;
+	}
+	> li:hover > a {
+		background: fade(@color-black,10);
+	}
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav {
+  .a:not(:only-child):after,
+  ul,
+  > li > ul,
+  > li.active > ul,
+  > li > ul > li > ul,
+  > li > ul > li.active > ul,
+  > li:hover > ul,
+  > li.active:hover > ul,
+  > li > ul > li:hover > ul,
+  .@{css-prefix}-user-sidebar ul,
+  > li > ul > li.active:hover > ul {
+    display: none !important;
+  }
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li > a .badge {
+	& , &.over-icon {
+		left: @iconic-sidebar-badge-x;
+		top: @iconic-sidebar-badge-y;
+		margin-top: 0;
+		right: auto;
+	}
+}
+.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li.@{css-prefix}-user-sidebar > a {
+	width: @iconic-sidebar-width;
+	height: @iconic-sidebar-width;
+	padding: @iconic-sidebar-user-padding;
+	line-height: @iconic-sidebar-user-line-height;
+  .badge, .badge.over-icon {
+  	left: @iconic-sidebar-user-menu-badge-x;
+	top: @iconic-sidebar-user-menu-badge-y;
+  }
+  .avatar {
+	position: static;
+	width: @iconic-sidebar-user-menu-avatar-size;
+	height: @iconic-sidebar-user-menu-avatar-size;
+	left: auto;
+	top: auto;
+	margin-top: 0;
+	display: inline-block;
+  }	
+}
+
+.responsive-min(@device-tablet + 1; {
+	#@{css-prefix}-wrapper.@{css-prefix}-icon-sidebar {
+		.@{css-prefix}-sidebar{
+			overflow: visible !important;
+		}
+		.@{css-prefix}-content-wrapper {
+			margin-left: @iconic-sidebar-width;
+		}
+		.@{css-prefix}-footer.absolute-footer {
+			left: @iconic-sidebar-width;
+		}
+	}
+	.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li {
+		&.selected:hover > a:after,
+		&.active:hover > a:after,
+		&.selected > a:after,
+		&.active > a:after {
+			right: 0;
+			top: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-color: transparent;
+			border-right-color: @iconic-sidebar-menu-triangle-bg;
+			border-width: @iconic-sidebar-menu-triangle-size;
+			margin-top: -@iconic-sidebar-menu-triangle-size;
+			z-index: 10;
+		}
+	}
+});
+
+.responsive(@device-tablet; {
+	#@{css-prefix}-wrapper.@{css-prefix}-icon-sidebar {
+		padding-bottom: @iconic-sidebar-height-mobile;
+		.navbar-header {
+			text-align: left;
+		}
+		.@{css-prefix}-footer.absolute-footer {
+			bottom: @iconic-sidebar-height-mobile;
+		}
+		.@{css-prefix}-sidebar {
+			left: 0 !important;
+			right: 0 !important;
+			width: auto;
+			top: auto !important;
+			height: @iconic-sidebar-height-mobile;
+			bottom: 0 !important;
+		}
+	}
+	.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav {
+		white-space: nowrap;
+		font-size: 0;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		text-align: center;
+		.clear();
+		li.menu-block-divider,
+		.tooltip {
+			display: none !important; 
+		}
+	}
+	.@{css-prefix}-icon-sidebar .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li {
+		display: inline-block;
+		width: @iconic-sidebar-height-mobile;
+		vertical-align: top;
+		> a {
+			border-bottom-width: 0;
+			height: @iconic-sidebar-height-mobile;
+			line-height: @iconic-sidebar-height-mobile;
+			.@{css-prefix}-icon-menu {
+				font-size: 20px;
+				width: @iconic-sidebar-height-mobile;
+				height: @iconic-sidebar-height-mobile;
+				line-height: @iconic-sidebar-height-mobile;
+			}
+			.badge,
+			.badge.over-icon {
+				left: @iconic-sidebar-user-menu-badge-x-mobile;
+				top: @iconic-sidebar-user-menu-badge-y-mobile;
+			}
+		}
+		&.selected, &.active {
+			-webkit-box-shadow: inset 0 -@sidebar-active-v-border-width 0px 0px @sidebar-menu-item-active-shadow;
+			-moz-box-shadow: inset 0 -@sidebar-active-v-border-width 0px 0px @sidebar-menu-item-active-shadow;
+			box-shadow: inset 0 -@sidebar-active-v-border-width 0px 0px @sidebar-menu-item-active-shadow;
+		}
+		&.@{css-prefix}-user-sidebar > a .badge,
+		&.@{css-prefix}-user-sidebar > a .badge.over-icon {
+			left: @iconic-sidebar-user-menu-badge-x-mobile;
+		}
+		&.@{css-prefix}-user-sidebar > a {
+			width: @iconic-sidebar-height-mobile;
+			height: @iconic-sidebar-height-mobile;
+			padding: 0;
+			border: none;
+			line-height: @iconic-sidebar-height-mobile;
+			.avatar {
+				left: auto;
+				margin-top: -@iconic-sidebar-user-menu-avatar-margin-y !important;
+			}
+		}
+	}
+});

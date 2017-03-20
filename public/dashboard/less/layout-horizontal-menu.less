@@ -1,0 +1,141 @@
+@media (min-width: 1200px) {
+	#@{css-prefix}-wrapper.@{css-prefix}-horizontal-menu {
+		.@{css-prefix}-sidebar {
+			overflow: visible !important;
+			width: 100%;
+			height: auto;
+			&:after, .custom-content {
+				display: none;
+			}
+		}
+		.@{css-prefix}-content-wrapper {
+			margin-left: 0;
+		}
+		.@{css-prefix}-footer.absolute-footer {
+			left: 0;
+		}
+	}
+	.@{css-prefix}-horizontal-menu .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav {
+		font-size: 0;
+		text-align: center;
+		ul {
+			text-align: left;
+			position: absolute;
+			top: 100%;
+			width: @horiz-menu-sub-item-width;
+			left: 0;
+			z-index: 9;
+			background: @sidebar-bg;
+			&.right-submenus {
+				right: 0;
+				left: auto;
+			}
+		}
+		li {
+			position: relative;
+			z-index: 9;
+			vertical-align: top;
+			&.menu-header {
+				color: transparent;
+				overflow: hidden;
+				display: none;
+				:hover {
+					display: none;
+				}
+			}
+		}
+	}
+	.@{css-prefix}-horizontal-menu .@{css-prefix}-sidebar .@{css-prefix}-sidebar-nav > li {
+		display: inline-block;
+		font-size: @horiz-menu-item-font-size;
+		width: auto;
+		border-bottom-width: 0;
+		&.selected,
+		&.active {
+			-webkit-box-shadow: inset 0px @sidebar-active-v-border-width 0px 0px @sidebar-menu-item-active-shadow;
+			-moz-box-shadow: inset 0px @sidebar-active-v-border-width 0px 0px @sidebar-menu-item-active-shadow;
+			box-shadow: inset 0px @sidebar-active-v-border-width 0px 0px @sidebar-menu-item-active-shadow;
+		}
+		&.no-icon-menu {
+			display: none;
+		}
+		> a {
+			height: auto;
+			width: @horiz-menu-item-width;
+			padding: 0;
+			line-height: @horiz-menu-item-line-height;
+			padding: @horiz-menu-item-padding-top 0 @horiz-menu-item-padding-bottom 0;
+			.@{css-prefix}-icon-menu {
+				width: @horiz-menu-item-icon-width;
+				height: @horiz-menu-item-icon-height;
+				line-height: @horiz-menu-item-icon-height;
+				position: relative;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+		&:not(.menu-block-divider):hover {
+			overflow: visible;
+			background: @sidebar-bg;
+		}
+		&:hover > a {
+			background: fade(@color-black,10);
+		}
+		> ul,
+		&.active > ul,
+		> ul > li > ul,
+		> ul > li.active > ul {
+			display: none;
+		}
+		&:hover > ul,
+		&.active:hover > ul {
+			display: block;
+			border-top-width: 0;
+		}
+		> ul > li > ul {
+			left: 100%;
+			top: 0;
+		}
+		> ul.right-submenus > li > ul {
+			right: 100%;
+			left: auto;
+		}
+		> ul > li:hover > ul,
+		> ul > li.active:hover > ul {
+			display: block;
+		}
+		> ul > li:not(.active):hover > a {
+			background: fade(@color-black,20);
+		}
+		> ul > li > ul > li > a {
+			padding-left: @sidebar-menu-item-padding-x;
+			background: fade(@color-black,20);
+		}
+		> a .badge,
+		> a .badge.over-icon{
+			left: @horiz-menu-badge-x;
+			top: @horiz-menu-badge-y;
+			margin-top: 0;
+			right: auto;
+		}
+		> ul > li > a {
+			padding-left: @sidebar-menu-item-padding-x;
+			background: fade(@color-black,10);
+		}
+	}
+	.@{css-prefix}-horizontal-menu .@{css-prefix}-sidebar-nav {
+		a:not(:only-child):after {
+			content: @mini-sidebar-menu-has-sub-icon-content;
+		}
+		.active > a:not(:only-child):after {
+			-ms-transform: rotate(0);
+			-webkit-transform: rotate(0);
+			-moz-transform: rotate(0);
+			transform: rotate(0);
+		}
+		> li > a:not(:only-child):after,
+		> li.@{css-prefix}-user-sidebar {
+			display: none;
+		}
+	}
+}

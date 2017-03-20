@@ -1,0 +1,562 @@
+// Icon button
+.btn {
+  .icon-btn {
+    font-size: @btn-icon-size;
+    display: inline-block;
+    vertical-align: top;
+    line-height: @btn-icon-line-height;
+  }
+}
+
+// Button outline variant
+.btn-primary {
+  .btn-outline-variant(@color-white; @btn-primary; @btn-primary);
+}
+.btn-success {
+  .btn-outline-variant(@color-white; @btn-success; @btn-success);
+}
+.btn-info {
+  .btn-outline-variant(@color-white; @btn-info; @btn-info);
+}
+.btn-warning {
+  .btn-outline-variant(@color-white; @btn-warning; @btn-warning);
+}
+.btn-danger {
+  .btn-outline-variant(@color-white; @btn-danger; @btn-danger);
+}
+
+// Custom button color
+.btn-dark {
+  .button-variant(@color-white; @btn-dark; @btn-dark);
+}
+.btn-dark {
+  .btn-outline-variant(@color-white; @btn-dark; @btn-dark);
+}
+
+// Button white
+.btn-white {
+  color: @btn-white-color;
+  background-color: @btn-white;
+  border-color: @btn-white;
+  &:focus,&.hover,&:hover {
+    color: darken(@btn-white-color,13.5);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: darken(@btn-white-color,13.5);
+    background-color: @btn-white;
+    border-color: @btn-white;
+    &:hover,
+    &:focus,
+    &.focus {
+      color: darken(@btn-white-color,13.5);
+      background-color: @btn-white;
+      border-color: @btn-white;
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: @btn-white;
+      border-color: @btn-white;
+    }
+  }
+  &.btn-outline {
+    color: @btn-white;
+    background-color: transparent;
+    border-color: @btn-white;
+    &:focus, &.focus, &:hover {
+      color: darken(@btn-white-color,13.5);
+      background-color: @btn-white;
+      border-color: @btn-white;
+    }
+    &:active, &.active,
+    .open > .dropdown-toggle&,
+    &:active:hover, &.active:hover,
+    .open > .dropdown-toggle&:hover,
+    &:active:focus, &.active:focus,
+    .open > .dropdown-toggle&:focus,
+    &:active.focus, &.active.focus,
+    .open > .dropdown-toggle&.focus {
+      color: darken(@btn-white-color,13.5);
+      background-color: @btn-white;
+      border-color: @btn-white;
+    }
+    &.disabled:hover,&[disabled]:hover,
+    fieldset[disabled] &:hover,
+    &.disabled:focus,&[disabled]:focus,
+    fieldset[disabled] &:focus,
+    &.disabled.focus,&[disabled].focus,
+    fieldset[disabled] &.focus {
+      background-color: transparent;
+      border-color: @btn-white;
+      color: @btn-white;
+    }
+  }
+}
+
+// Button lighten (White transparent)
+.btn-lighten {
+  color: @btn-lighten;
+  background-color: fade(@btn-lighten,20);
+  border-color: fade(@btn-lighten,0);
+  &:focus,&.hover,&:hover {
+    color: @btn-lighten;
+    background-color: fade(@btn-lighten,30);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @btn-lighten;
+    background-color: @btn-lighten;
+    border-color: @btn-lighten;
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @btn-lighten;
+      background-color: @btn-lighten;
+      border-color: @btn-lighten;
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: fade(@btn-lighten,20);
+      border-color: fade(@btn-lighten,0);
+    }
+  }
+  &.btn-outline {
+    color: @btn-lighten;
+    background-color: transparent;
+    border-color: fade(@btn-lighten,40);
+    &:focus, &.focus, &:hover {
+      background-color: fade(@btn-lighten,20);
+      border-color: fade(@btn-lighten,0);
+    }
+    &:active, &.active,
+    .open > .dropdown-toggle&,
+    &:active:hover, &.active:hover,
+    .open > .dropdown-toggle&:hover,
+    &:active:focus, &.active:focus,
+    .open > .dropdown-toggle&:focus,
+    &:active.focus, &.active.focus,
+    .open > .dropdown-toggle&.focus {
+      color: @btn-lighten;
+      background-color: @btn-lighten;
+      border-color: @btn-lighten;
+    }
+    &.disabled:hover,&[disabled]:hover,
+    fieldset[disabled] &:hover,
+    &.disabled:focus,&[disabled]:focus,
+    fieldset[disabled] &:focus,
+    &.disabled.focus,&[disabled].focus,
+    fieldset[disabled] &.focus {
+      color: @btn-lighten;
+      background-color: transparent;
+      border-color: fade(@btn-lighten,20);
+    }
+  }
+}
+
+// Button darken (black transparent)
+.btn-darken {
+  color: @btn-darken-color;
+  background-color: fade(@btn-darken,10);
+  border-color: fade(@btn-darken,0);
+  &:focus,&.hover,&:hover {
+    color: @btn-darken-color;
+    background-color: fade(@btn-darken,18);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @btn-darken-color;
+    background-color: fade(@btn-darken,18);
+    &:hover,
+    &:focus,
+    &.focus {
+    color: @btn-darken-color;
+    background-color: fade(@btn-darken,18);
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: fade(@btn-darken,10);
+      border-color: fade(@btn-darken,0);
+    }
+  }
+  &.btn-outline {
+    color: @btn-darken-color;
+    background-color: transparent;
+    border-color: fade(@btn-darken,15);
+    &:focus, &.focus, &:hover {
+      background-color: fade(@btn-darken,18);
+      border-color: fade(@btn-darken,0);
+    }
+    &:active, &.active,
+    .open > .dropdown-toggle&,
+    &:active:hover, &.active:hover,
+    .open > .dropdown-toggle&:hover,
+    &:active:focus, &.active:focus,
+    .open > .dropdown-toggle&:focus,
+    &:active.focus, &.active.focus,
+    .open > .dropdown-toggle&.focus {
+      color: @btn-darken-color;
+      background-color: fade(@btn-darken,18);
+    }
+    &.disabled:hover,&[disabled]:hover,
+    fieldset[disabled] &:hover,
+    &.disabled:focus,&[disabled]:focus,
+    fieldset[disabled] &:focus,
+    &.disabled.focus,&[disabled].focus,
+    fieldset[disabled] &.focus {
+      color: @btn-darken-color;
+      background-color: fade(@btn-darken,15);
+      border-color: fade(@btn-darken,0);
+    }
+  }
+}
+
+// Button icon
+.btn.@{css-prefix}-btn-icon {
+  position: relative;
+  overflow: hidden;
+  padding-left: @btn-icon-separated-padding-left;
+  &.btn-wide {
+    padding-left: @btn-wide-icon-separated-padding-left;
+    padding-right: @btn-wide-icon-separated-padding-right;
+  }
+  .icon-btn {
+    border-right: 1px solid fade(@color-white,20);
+    width: @btn-icon-separated-size;
+    height: @btn-icon-separated-size;
+    text-align: center;
+    line-height: @btn-icon-separated-size;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    font-size: @btn-icon-separated-font-size;
+  }
+  &.icon-right {
+    padding-right: @btn-icon-right-separated-padding-right;
+    padding-left: @btn-icon-right-separated-padding-left;
+    &.btn-wide {
+      padding-left: @btn-wide-icon-right-separated-padding-left;
+      padding-right: @btn-wide-icon-right-separated-padding-right;
+    }
+    .icon-btn {
+      border-left: 1px solid fade(@color-white,20);
+      border-right-width: 0;
+      right: -@btn-icon-right-separated-margin-right;
+      left: auto;
+    }
+  }
+  &.icon-block .icon-btn {
+    border-right-width: 0;
+    border-left-width: 0;
+  }
+}
+
+// Button icon sizing
+.btn.btn-xs {
+  .icon-btn {
+    font-size: @input-font-size-xs;
+  }
+  &.@{css-prefix}-btn-icon {
+    padding-left: @btn-icon-separated-padding-left-xs;
+    &.btn-wide {
+      padding-left: @btn-wide-icon-separated-padding-left-xs;
+      padding-right: @btn-wide-padding-x;
+    }
+    .icon-btn {
+      width: @btn-icon-separated-size-xs;
+      height: @btn-icon-separated-size-xs;
+      line-height: @btn-icon-separated-size-xs;
+    }
+    &.icon-right {
+      padding-right: @btn-icon-separated-size-xs;
+      padding-left: @input-padding-x-xs;
+      &.btn-wide {
+        padding-left: @btn-wide-padding-x;
+        padding-right: @btn-wide-icon-right-separated-padding-right-xs;
+      }
+      .icon-btn {
+        right: -@btn-icon-right-separated-margin-right;
+      }
+    }
+  }
+}
+.btn.btn-sm {
+  .icon-btn {
+    font-size: @btn-icon-separated-font-size-sm;
+  }
+  &.@{css-prefix}-btn-icon {
+    padding-left: @btn-icon-separated-padding-left-sm;
+    &.btn-wide {
+      padding-left: @btn-wide-icon-separated-padding-left-sm;
+      padding-right: @btn-wide-padding-x;
+    }
+    .icon-btn {
+      width: @btn-icon-separated-size-sm;
+      height: @btn-icon-separated-size-sm;
+      line-height: @btn-icon-separated-size-sm;
+    }
+    &.icon-right {
+      padding-right: @btn-icon-separated-size-sm;
+      padding-left: @input-padding-x-sm;
+      &.btn-wide {
+        padding-left: @btn-wide-padding-x;
+        padding-right: @btn-wide-icon-right-separated-padding-right-sm;
+      }
+      .icon-btn {
+        right: -@btn-icon-right-separated-margin-right;
+      }
+    }
+  }
+}
+.btn.btn-lg {
+  .icon-btn {
+    font-size: @btn-icon-separated-font-size-lg;
+    line-height: @btn-icon-separated-line-height-lg;
+  }
+  &.@{css-prefix}-btn-icon {
+    padding-left: @btn-icon-separated-padding-left-lg;
+    &.btn-wide {
+      padding-left: @btn-wide-icon-separated-padding-left-lg;
+      padding-right: @btn-wide-padding-x;
+    }
+    .icon-btn {
+      width: @btn-icon-separated-size-lg;
+      height: @btn-icon-separated-size-lg;
+      line-height: @btn-icon-separated-size-lg;
+    }
+    &.icon-right {
+      padding-right: @btn-icon-separated-size-lg;
+      padding-left: @input-padding-x-lg;
+      &.btn-wide {
+        padding-left: @btn-wide-padding-x;
+        padding-right: @btn-wide-icon-right-separated-padding-right-lg;
+      }
+      .icon-btn {
+        right: -@btn-icon-right-separated-margin-right;
+      }
+    }
+  }
+}
+
+.@{css-prefix}-btn-icon.icon-block .icon-btn {
+  .btn-default& {
+    background: darken(@btn-default-bg-color,5.5);
+  }
+  .btn-primary& {
+    background: darken(@btn-primary,10);
+  }
+  .btn-success& {
+    background: darken(@btn-success,10);
+  }
+  .btn-info& {
+    background: darken(@btn-info,10);
+  }
+  .btn-warning& {
+    background: darken(@btn-warning,10);
+  }
+  .btn-danger& {
+    background: darken(@btn-danger,10);
+  }
+  .btn-dark& {
+    background: darken(@btn-dark,10);
+  }
+}
+
+// Button icon border color
+.@{css-prefix}-btn-icon {
+  .btn.btn-default& {
+    .icon-btn {
+      border-right-color: @btn-default-border-color;
+    }
+    &.icon-right {
+      .icon-btn {
+        border-left-color: @btn-default-border-color;
+      }
+    }
+  }
+  .btn-primary& {
+    &.btn-outline {
+      .icon-btn {
+        border-right-color: @btn-primary;
+      }
+      &.icon-right {
+        .icon-btn {
+          border-left-color: @btn-primary;
+        }
+      }
+    }
+  }
+  .btn-success& {
+    &.btn-outline {
+      .icon-btn {
+        border-right-color: @btn-success;
+      }
+      &.icon-right {
+        .icon-btn {
+          border-left-color: @btn-success;
+        }
+      }
+    }
+  }
+  .btn-info& {
+    &.btn-outline {
+      .icon-btn {
+        border-right-color: @btn-info;
+      }
+      &.icon-right {
+        .icon-btn {
+          border-left-color: @btn-info;
+        }
+      }
+    }
+  }
+  .btn-warning& {
+    &.btn-outline {
+      .icon-btn {
+        border-right-color: @btn-warning;
+      }
+      &.icon-right {
+        .icon-btn {
+          border-left-color: @btn-warning;
+        }
+      }
+    }
+  }
+  .btn-danger& {
+    &.btn-outline {
+      .icon-btn {
+        border-right-color: @btn-danger;
+      }
+      &.icon-right {
+        .icon-btn {
+          border-left-color: @btn-danger;
+        }
+      }
+    }
+  }
+  .btn-dark& {
+    &.btn-outline {
+      .icon-btn {
+        border-right-color: @btn-dark;
+      }
+      &.icon-right {
+        .icon-btn {
+          border-left-color: @btn-dark;
+        }
+      }
+    }
+  }
+}
+
+// Button white
+.btn-outline{
+  &:not(.btn-default).@{css-prefix}-btn-icon {
+    &.icon-block .icon-btn{
+      color: @color-white;
+    }
+    &:hover .icon-btn,
+    &:focus .icon-btn {
+      border-right-color: fade(@color-white,20);
+    }
+    &.icon-right:hover .icon-btn,
+    &.icon-right:focus .icon-btn {
+      border-left-color: fade(@color-white,20);
+    }
+  }
+}
+.btn-white {
+  &.btn-outline.@{css-prefix}-btn-icon {
+    &.icon-right .icon-btn,
+    .icon-btn {
+      border-color: @btn-white;
+    }
+  }
+  &.@{css-prefix}-btn-icon.icon-right .icon-btn,
+  &.@{css-prefix}-btn-icon .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon.icon-right:hover .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon.icon-right:focus .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon:hover .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon:focus .icon-btn {
+    border-color: @btn-default-border-color;
+  }
+  &.@{css-prefix}-btn-icon.icon-block.btn-outline .icon-btn {
+    background: @btn-white;
+    color: @btn-white-color;
+  }
+}
+
+// Button lighten
+.btn-lighten {
+  &.btn-outline.@{css-prefix}-btn-icon {
+    &.icon-right .icon-btn,
+    .icon-btn {
+      border-color: fade(@btn-lighten,40);
+    }
+  }
+  &.@{css-prefix}-btn-icon.icon-right .icon-btn,
+  &.@{css-prefix}-btn-icon .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon.icon-right:hover .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon.icon-right:focus .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon:hover .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon:focus .icon-btn {
+    border-color: fade(@btn-lighten,40);
+  }
+  &.@{css-prefix}-btn-icon.icon-block.btn-outline .icon-btn {
+    background: fade(@btn-lighten,20);
+    color: @btn-lighten;
+  }
+}
+
+// Button darken
+.btn-darken {
+  &.btn-outline.@{css-prefix}-btn-icon {
+    &.icon-right .icon-btn,
+    .icon-btn {
+      border-color: fade(@btn-darken,10);
+    }
+  }
+  &.@{css-prefix}-btn-icon.icon-right .icon-btn,
+  &.@{css-prefix}-btn-icon .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon.icon-right:hover .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon.icon-right:focus .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon:hover .icon-btn,
+  &.btn-outline.@{css-prefix}-btn-icon:focus .icon-btn {
+    border-color: fade(@btn-darken,10);
+  }
+  &.@{css-prefix}-btn-icon.icon-block.btn-outline .icon-btn {
+    background: fade(@btn-darken,10);
+    color: @btn-darken-color;
+  }
+}

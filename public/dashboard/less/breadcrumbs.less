@@ -1,0 +1,38 @@
+// Custom separators
+.breadcrumb {
+  &.breadcrumb-no-separator > li + li:before {
+    content: " ";
+  }
+  &.breadcrumb-arrow > li + li:before {
+    font-family: @font-icon-fa;
+    padding: 0 @breadcrumb-separator-padding-x;
+    content: @breadcrumb-separator-arrow;
+  }
+  &.breadcrumb-double-arrow > li + li:before {
+    font-family: @font-icon-fa;
+    padding: 0 @breadcrumb-separator-padding-x;
+    content: @breadcrumb-separator-double-arrow;
+  }
+  &.breadcrumb-caret > li + li:before {
+    font-family: @font-icon-fa;
+    padding: 0 @breadcrumb-separator-padding-x;
+    content: @breadcrumb-separator-caret;
+  }
+  .breadcrumb-backslash > li + li:before {
+    padding: 0 @breadcrumb-separator-padding-x;
+    content: @breadcrumb-separator-backslash;
+  }
+  > li + li:before{
+    .bg-grad&, .bg-color& {
+      color: fade(@color-white,40);
+    }
+  }
+  > .active {
+    .bg-grad&, .bg-color& {
+      color: fade(@color-white,70);
+    }
+  }
+  &.bg-grad, &.bg-color {
+    border-color: transparent !important;
+  }
+}

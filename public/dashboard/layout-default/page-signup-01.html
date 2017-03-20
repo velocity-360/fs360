@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Roosa - Just Another Dashboard Template</title>
+
+	<!-- Site Icons -->
+	<link rel="apple-touch-icon" href="../dist/img/apple-touch-icon.png">
+	<link rel="icon" href="../dist/img/icon.ico">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+	<!-- Framework -->
+	<link rel="stylesheet" href="../dist/css/vendor/bootstrap.min.css">
+
+	<!-- Icon Fonts -->
+	<link rel="stylesheet" href="../dist/icons/entypo/entypo.min.css">
+	<link rel="stylesheet" href="../dist/icons/fa/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../dist/icons/flag-icon/css/flag-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/material-icon/material-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/weather-icon/css/weather-icons.min.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="../dist/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datatable/datatables.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datepicker/css/datepicker.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/medium-editor.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/themes/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/plugins/morris/morris.min.css">
+	<link rel="stylesheet" href="../dist/plugins/prettify/themes/tomorrow-night.min.css">
+	<link rel="stylesheet" href="../dist/plugins/selectize/css/selectize.min.css">
+	<link rel="stylesheet" href="../dist/plugins/sortable/sortable.min.css">
+	<link rel="stylesheet" href="../dist/plugins/stepy/jquery.stepy.min.css">
+	<link rel="stylesheet" href="../dist/plugins/pace/pace.css">
+	<link rel="stylesheet" href="../dist/plugins/summernote/summernote.min.css">
+	
+
+	<!-- Main Template CSS -->
+	<link rel="stylesheet" href="../dist/css/bootstrap.custom.css">
+	<link rel="stylesheet" href="../dist/css/style.css">
+	<link rel="stylesheet" href="../dist/css/helper.css">
+	<style type="text/css">
+		/*Small change for stepy*/
+		.stepy-header {
+			margin-bottom: 30px;
+			-webkit-box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.2);
+			-moz-box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.2);
+			box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.2);
+			border-radius: 4px;
+		}
+		.stepy-header li div {
+			color: #f2f2f2;
+			background: rgba(255,255,255,0.5);
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			width: 34px;
+			height: 34px;
+			left: 8px;
+			top: 8px;
+			line-height: 34px;
+		}
+		.stepy-header li span {
+			color: #fff;
+			background: rgba(255,255,255,0.2);
+  			border-radius: 0;
+		}
+		.stepy-header li:first-child span {
+  			border-radius: 4px 0 0 4px;
+		}
+		.stepy-header li:last-child span {
+  			border-radius: 0 4px 4px 0;
+		}
+		.stepy-header li:not(:last-child) span:after,
+		.stepy-header li:not(:first-child) span:before {
+			display: none;
+		}
+		.stepy-header li.stepy-active div {
+			color: #f6bb42;
+			cursor: auto
+		}
+		.stepy-header li.stepy-active span {
+			background: #f6bb42;
+		}
+		.stepy-header li.stepy-active:not(:last-child) span:after {
+			background: #f6bb42;
+		}
+		.stepy-header li.stepy-active div {
+			-webkit-box-shadow: 0px 0px 0px 3px #f6bb42;
+			-moz-box-shadow: 0px 0px 0px 3px #f6bb42;
+			box-shadow: 0px 0px 0px 3px #f6bb42;
+			background: #fff;
+			color: #f6bb42;
+		}
+		.stepy-header li.stepy-active~li div{
+			background: rgba(255,255,255,0.2);
+			color:#fff;
+		}
+		.stepy-header li.stepy-active div:after,
+		.stepy-header li.stepy-active~li div:after{
+			display: none;
+		}
+		.stepy-header li.stepy-active~li span{
+			background: rgba(255,255,255,0.2);
+			color:#fff;
+			font-weight: normal;
+		}
+		.stepy-header li div{
+			background-color:#f6bb42;
+			color:#fff;
+			font-size: 0;
+		}
+		.stepy-header li div:after{
+			width: 34px;
+			height: 34px;
+		}
+		.stepy-header li span{
+			color:#fff;
+			font-weight: 500;
+		}
+		.stepy-header li.stepy-active span{
+			color:#fff;
+		}
+
+		@media (max-width: 600px) {
+			.stepy-header {
+				-webkit-box-shadow: none;
+				-moz-box-shadow: none;
+				box-shadow: none;
+			}
+			.stepy-header li div {
+				left: 50%;
+				margin-left: -17px;
+			}
+			.stepy-header li span {
+				background: transparent !important;
+				color: #fff !important;
+			}
+		}
+	</style>
+</head>
+
+
+<body>
+
+	<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<div id="rs-wrapper" class="bg-grad-03">
+
+		<div class="rs-small-content p-a-md">
+
+			<p class="text-center"><img src="../dist/img/roosa-logo-darken.png" alt="Logo"></p>
+			<p class="f-l-15 m-b-lg text-uppercase text-center text-white">Create New Account</p>
+
+			<form id="rs-wizard-sign-up" class="p-a-lg bg-white b-r-a light-bs">
+				<input type="hidden" name="id" />
+				<fieldset title="01">
+					<legend>Create Account</legend>
+
+					<div class="row">
+
+						<div class="col-md-8 col-md-offset-2">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">First Name</label>
+										<input type="text" class="form-control" name="firstname">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Last Name</label>
+										<input type="text" class="form-control" name="lastname">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+							<div class="form-group">
+								<label class="control-label">Email Address</label>
+								<input type="email" class="form-control" name="email">
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label class="control-label">Username</label>
+								<input type="text" class="form-control" name="username">
+								<p class="help-block">Think about very unique and easy to remember, please no [<em>space</em>]</p>
+							</div><!-- /.form-group -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Password</label>
+										<input type="password" class="form-control" name="password">
+									</div><!-- /.form-control -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Confirm Password</label>
+										<input type="password" class="form-control" name="confirm_password">
+									</div><!-- /.form-control -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+						</div><!-- /.col-md-6 -->
+					</div><!-- /.row -->
+				</fieldset>
+
+				<fieldset title="02">
+					<legend>Contact Info</legend>
+
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+						
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Phone</label>
+										<input type="text" class="form-control rs-mask-phone" name="phone" placeholder="(999) 999-9999">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Mobile</label>
+										<input type="text" class="form-control" name="mobile">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group has-feedback">
+										<label class="control-label">Date of Birth</label>
+										<input type="text" class="form-control rs-mask-date rs-datepicker" data-date-format="dd/mm/yyyy" placeholder="DD/MM/YYYY" name="dob">
+										<span class="fa fa-calendar form-control-feedback" aria-hidden="true"></span>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Your gender please</label>
+										<div class="radio radio-custom">
+											<label class="radio-inline">
+												<input type="radio" value="" name="gender">
+												<span class="checker"></span>
+												Male
+											</label>
+											<label class="radio-inline">
+												<input type="radio" value="" name="gender">
+												<span class="checker"></span>
+												Female
+											</label>
+										</div><!-- /.radio -->
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Address 01</label>
+										<input type="text" class="form-control" name="address01">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Address 02</label>
+										<input type="text" class="form-control" name="address02">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Zip Code</label>
+										<input type="text" class="form-control rs-mask-zipcode" name="zip">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Country</label>
+										<select name="country" class="rs-selectize-single">
+											<option value="">Select a country...</option>
+										    <option value="AU">Australia</option>
+										    <option value="ID">Indonesia</option>
+										</select>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+
+						</div><!-- /.col-md-8 -->
+					</div><!-- /.row -->
+				</fieldset>
+
+				<fieldset title="03">
+					<legend>Payment</legend>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+						
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group has-feedback">
+										<label class="control-label">CC Number</label>
+										<input type="text" class="form-control" name="ccnum" placeholder="XXXX XXXX XXXX XXXX">
+										<span class="fa fa-credit-card form-control-feedback" aria-hidden="true"></span>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-8 -->
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">CVC</label>
+										<input type="password" class="form-control" name="cvc" placeholder="XXX">
+										<p class="help-block">Card Validation Code, <a href="javascript:void(0);">Learn more</a></p>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-4 -->
+							</div><!-- /.row -->
+
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group">
+										<label class="control-label">Name on Card</label>
+										<input type="text" class="form-control" name="ccname">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-8 -->
+								<div class="col-md-4">
+									<div class="form-group has-feedback">
+										<label class="control-label">Expired Date</label>
+										<input type="text" class="form-control rs-datepicker" name="ccdate" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months" placeholder="MM/YYYY" readonly>
+										<span class="fa fa-calendar form-control-feedback" aria-hidden="true"></span>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-4 -->
+							</div><!-- /.row -->
+							<hr>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Total Deposit</label>
+										<input type="text" class="form-control" name="deposit">
+										<p class="help-block">Deposit is in US Dollar, no minimum desposit</p>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group has-feedback">
+										<label class="control-label">Attach File</label>
+										<input type="file" class="filestyle" name="file" data-buttonText="Browse"  data-buttonName="btn-default" data-placeholder="Select file" data-iconName="fa fa-paperclip" accept="application/pdf">
+										<p class="help-block">Plese make sure your file is PDF</p>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-md-6 -->
+							</div><!-- /.row -->
+
+						</div><!-- /.col-md-8 -->
+					</div><!-- /.row -->
+				</fieldset>
+
+				<fieldset title="04">
+					<legend>Last Step</legend>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<div class="form-group">
+								<label class="control-label">Which ways we would contact you in future?</label>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="checkbox checkbox-custom">
+											<label>
+												<input type="checkbox" value="" name="contachmethod">
+												<span class="checker"></span>
+												Office Phone
+											</label>
+										</div><!-- /.checkbox -->
+										<div class="checkbox checkbox-custom">
+											<label>
+												<input type="checkbox" value="" name="contachmethod">
+												<span class="checker"></span>
+												Mobile Phone
+											</label>
+										</div><!-- /.checkbox -->
+										<div class="checkbox checkbox-custom">
+											<label>
+												<input type="checkbox" value="" name="contachmethod">
+												<span class="checker"></span>
+												Email
+											</label>
+										</div><!-- /.checkbox -->
+									</div><!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="checkbox checkbox-custom">
+											<label>
+												<input type="checkbox" value="" name="contachmethod">
+												<span class="checker"></span>
+												Email Messenger
+											</label>
+										</div><!-- /.checkbox -->
+										<div class="checkbox checkbox-custom">
+											<label>
+												<input type="checkbox" value="" name="contachmethod">
+												<span class="checker"></span>
+												Traditional Mail
+											</label>
+										</div><!-- /.checkbox -->
+										<div class="checkbox checkbox-custom">
+											<label>
+												<input type="checkbox" value="" name="contachmethod">
+												<span class="checker"></span>
+												WhatsApp<span class="label label-success m-l">Recommended</span>
+											</label>
+										</div><!-- /.checkbox -->
+									</div><!-- /.col-md-6 -->
+								</div><!-- /.row -->
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label class="control-label">Additional Notes</label>
+								<textarea class="form-control" name="addnotes" style="height: 120px;"></textarea>
+								<p class="help-block">Type anything you want to talk with us</p>
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<div class="checkbox checkbox-custom">
+									<label>
+										<input type="checkbox" value="" name="agree">
+										<span class="checker"></span>
+										I have read and agree with <a href="javascript:void(0);">Terms and Conditions</a>
+									</label>
+								</div><!-- /.checkbox -->
+							</div><!-- /.form-group -->
+
+						</div><!-- /.col-md-8 -->
+					</div><!-- /.row -->
+				</fieldset>
+
+				<button class="btn btn-success btn-wide stepy-finish" type="submit">Finish!</button>
+			</form>
+
+		</div><!-- /.login-wrap -->
+
+
+		<!-- BEGIN FOOTER -->
+		<footer class="rs-footer login-footer text-center">
+			<span class="text-white small">&copy; 2017 Roosa Template by <a href="http://gentolab.com" class="text-lighten">Gento Lab</a></span>
+		</footer>
+		<!-- END FOOTER -->
+
+	</div><!-- /#rs-wrapper -->
+
+
+	
+	<!-- <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+	<script>
+	window.jQuery || document.write('<script src="../dist/js/vendor/jquery.min.js"><\/script>')
+	</script> -->
+	
+	<script src="../dist/js/vendor/modernizr.min.js"></script>
+	<script src="../dist/js/vendor/jquery.min.js"></script>
+	<script src="../dist/js/vendor/bootstrap.min.js"></script>
+	<script src="../dist/js/vendor/raphael.min.js"></script>
+
+	<script src="../dist/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="../dist/plugins/ismobile/isMobile.min.js"></script>
+	<script src="../dist/plugins/blockui/blockui.min.js"></script>
+	<script src="../dist/plugins/prettify/prettify.min.js"></script>
+	<script src="../dist/plugins/clipboard/clipboard.min.js"></script>
+	<script src="../dist/plugins/filestyle/bootstrap-filestyle.min.js"></script>
+	<script src="../dist/plugins/pace/pace.min.js"></script>
+
+	<!-- Page Plugins -->
+	<script src="../dist/plugins/cleave/cleave.min.js"></script>
+	<script src="../dist/plugins/cleave/addons/cleave-phone.au.js"></script><!-- Example -->
+	<script src="../dist/plugins/cleave/cleave-example.js"></script><!-- Example -->
+
+	<script src="../dist/plugins/datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="../dist/plugins/datepicker/datepicker-example.js"></script><!-- Example -->
+
+	<script src="../dist/plugins/masked-input/jquery.maskedinput.min.js"></script>
+	<script src="../dist/plugins/masked-input/maskedinput-example.js"></script><!-- Example -->
+
+	<script src="../dist/plugins/maxlength/bootstrap-maxlength.min.js"></script>
+	<script src="../dist/plugins/maxlength/maxlength-example.js"></script><!-- Example -->
+
+	<script src="../dist/plugins/selectize/js/standalone/selectize.min.js"></script>
+	<script src="../dist/plugins/selectize/selectize-example.js"></script><!-- Example -->
+
+	<script src="../dist/plugins/stepy/jquery.stepy.min.js"></script>
+
+	<!-- Template Js -->
+	<script src="../dist/js/apps.js"></script>
+
+	<script type="text/javascript">
+	
+		jQuery(document).ready(function($){
+
+			"use strict";
+
+			$.fn.stepy.defaults.legend 			= false;
+			$.fn.stepy.defaults.backLabel 		= '<i class="fa fa-angle-left icon-btn m-r"></i>Back';
+			$.fn.stepy.defaults.nextLabel 		= 'Next<i class="fa fa-angle-right icon-btn m-l"></i>';
+
+			// Initialize wizard with title click
+			$('#rs-wizard-sign-up').stepy({
+				titleClick: true
+			});
+
+			$('.stepy-step').find('.button-next').addClass('btn btn-success btn-wide');
+			$('.stepy-step').find('.button-back').addClass('btn btn-default btn-wide');
+
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'rs-small-content'
+			});
+
+		});
+
+	</script>
+
+</body>
+</html>

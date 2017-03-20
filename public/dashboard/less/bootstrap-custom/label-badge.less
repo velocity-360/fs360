@@ -1,0 +1,53 @@
+// General custom
+.label,
+.badge {
+  width: auto;
+  min-width: @badge-width;
+  height: @badge-height;
+  border-radius: @badge-rounded-size;
+  line-height: @badge-height;
+  padding: 0 @badge-padding-x;
+  font-size: @badge-font-size;
+  display: inline-block;
+  color: @badge-color;
+  font-weight: 500;
+}
+.label {
+  border-radius: @label-rounded-size;
+  padding-left: @badge-padding-x;
+  padding-right: @badge-padding-x;
+  min-width: @label-width;
+  height: @label-height;
+  line-height: @label-height;
+  &.label-block {
+    display: block;
+    &.text-left {
+      text-align: left !important;
+    }
+    &.text-center {
+      text-align: center !important;
+    }
+    &.text-right {
+      text-align: right !important;
+    }
+  }
+}
+
+// Label & badge coloring
+.label, .badge {
+  &-primary {
+    background: @label-bg-primary;
+  }
+  &-success {
+    background: @label-bg-success;
+  }
+  &-info {
+    background: @label-bg-info;
+  }
+  &-warning {
+    background: @label-bg-warning;
+  }
+  &-danger {
+    background: @label-bg-danger;
+  }
+}

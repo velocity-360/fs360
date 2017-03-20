@@ -1,0 +1,740 @@
+@css-prefix			: rs;
+@main-rounded-size	: 4px;
+
+// Margin Padding
+@spacer 		: 10px;
+@spacer-xs 		: @spacer / 2; 		//5px
+@spacer-sm 		: @spacer / 1.5; 	//15px
+@spacer-md 		: @spacer * 2; 		//20px
+@spacer-lg 		: @spacer * 3; 		//30px
+@spacer-xl 		: @spacer * 4; 		//40px
+
+// Font sizes
+@font-size-base			: 14px;
+@font-size-xl 			: floor((@font-size-base * 3.45)); // 48px
+@font-size-lg 			: floor((@font-size-base * 2.15)); // 30px
+@font-size-md 			: ceil((@font-size-base * 1.7)); //24px
+@font-size-sm 			: ceil((@font-size-base * 1.25)); // 18px
+@font-size-xs 			: ceil((@font-size-base * 1.1)); // 16px
+@font-size-small 		: ceil((@font-size-base * 0.85)); // 12px
+@font-size-large 		: floor((@font-size-base * 2.6)); // 36px
+
+@font-body				: 'Roboto', sans-serif;	
+@font-icon-fa			: 'FontAwesome';
+@font-icon-entypo		: 'Entypo';
+
+// Main colors
+@color-primary 			: #4a89dc; //Blue
+@color-success 			: #81c784; //Green
+@color-info 			: #4fc3f7; //Light Blue
+@color-warning 			: #f6bb42; //Dark Yellow
+@color-danger 			: #ef5350; //Red
+@color-dark 			: #2e313d; //Night Dark
+@color-white			: #ffffff; //White
+@color-black			: #000000; //Black
+@color-main-gray 		: #e1e8ed;
+@color-extra-light-gray : #fafafa;
+@color-lightest-gray 	: #f5f5f5;
+@color-light-gray 		: #f4f4f4;
+@color-selection		: #434a54;
+@color-muted			: #999999;
+
+// Link
+@link-color				: @color-primary;
+@link-color-hover		: darken(@link-color,10);
+
+// Code
+@color-code 			: #ef5350; //@color-danger 
+@bg-code 				: @color-extra-light-gray; //#fafafa;
+
+// Horizontal Rule
+@border-color-hr 		: #f2f2f2;
+
+// Table
+@table-border-color 			: @color-main-gray;	//#e1e8ed;
+@table-striped-odd-bg 			: @color-extra-light-gray; //#fafafa;
+@table-hover-bg 				: @color-lightest-gray; //#f5f5f5;
+@table-active-bg 				: @color-lightest-gray; //#f5f5f5;
+@table-active-hover-bg 			: #e8e8e8;
+@table-template-padding			: 12px;
+@table-template-padding-lg-x	: 15px;
+@table-template-padding-lg-y	: 20px;
+@table-default					: @color-light-gray;
+@table-primary					: @color-primary;
+@table-success					: @color-success;
+@table-info						: @color-info;
+@table-warning					: @color-warning;
+@table-danger					: @color-danger;
+@table-bg-color-font-color		: @color-white;
+
+// Input (Forms, Buttons)
+@input-readonly-bg						: @color-extra-light-gray;
+@input-border-color						: @color-main-gray;
+@form-control-feedback-color			: #bcbcbc;
+@input-border-color-focus				: #aaaaaa;
+
+@input-has-success-color				: @color-success;
+@input-has-warning-color				: @color-warning;
+@input-has-danger-color					: @color-danger;
+
+@help-block-color						: #999999;
+@help-block-font-size					: @font-size-small;
+
+// Input Default size
+@input-height							: 40px;
+@input-rounded-size						: 3px;
+@input-padding-top 						: 8px;
+@input-padding-bottom 					: 8px;
+@input-select-multiple-padding-y		: 9px;
+@input-select-multiple-padding-x		: 15px;
+@input-feedback-width					: @input-height;
+@input-feedback-height					: @input-height;
+@input-has-feedback-padding				: @input-height;
+@input-has-feedback-left-padding-right	: 12px;
+@input-has-feedback-has-label-top		: 28px;
+
+// Input Xs size
+@input-height-xs						: 24px;
+@input-font-size-xs						: @font-size-small;
+@input-rounded-size-xs					: 2px;
+@input-padding-y-xs						: 1px;
+@input-padding-x-xs						: 5px;
+@input-line-height-xs					: 1.5;
+
+// Input Sm size
+@input-height-sm						: 32px;
+@input-font-size-sm						: @font-size-small;
+@input-rounded-size-sm					: 2px;
+@input-padding-y-sm						: 5px;
+@input-padding-x-sm						: 10px;
+@input-line-height-sm					: 1.5;
+@input-feedback-width-sm				: @input-height-sm;
+@input-feedback-height-sm				: @input-height-sm;
+
+// Input Lg size
+@input-height-lg						: 46px;
+@input-font-size-lg						: @font-size-sm;
+@input-rounded-size-lg					: 4px;
+@input-padding-y-lg						: 10px;
+@input-padding-x-lg						: 16px;
+@input-line-height-lg					: 1.3333333;
+
+@input-group-addon-padding-y			: 6px;
+@input-group-addon-padding-x			: 12px;
+@input-group-addon-color				: #555555;
+
+// Checkbox radio
+@checkradio-in-label-margin-top			: 5px;
+@checkradio-in-label-padding-left		: 22px;
+@checkradio-in-label-padding-right		: 22px;
+@checkradio-in-div-margin-top			: 6px;
+@checkradio-in-div-margin-left			: -22px;
+@checkradio-disabled-color-label		: #999999;
+@checkradio-inline-padding-left			: 20px;
+@checkradio-inline-multiple-margin		: 15px;
+@checkradio-group-addon-margin-top		: 4px;
+@checkradio-custom-label-padding-x		: 30px;
+@checkradio-custom-checker-size			: 20px;
+@checkradio-custom-checker-top			: 2px;
+@checkradio-custom-font-size			: @font-size-small;
+@checkradio-custom-bg					: @color-white;
+@checkradio-custom-color				: #555555;
+@checkradio-custom-rounded-size			: 3px;
+@checkradio-custom-round-size			: @checkradio-custom-checker-size / 2;
+@checkradio-custom-checker-content		: "\f00c";
+@checkradio-custom-radio-checker-size	: 12px;
+@checkradio-in-input-addon-label		: 20px;
+@checkradio-primary						: @color-primary;
+@checkradio-success						: @color-success;
+@checkradio-info						: @color-info;
+@checkradio-warning						: @color-warning;
+@checkradio-danger						: @color-danger;
+@checkradio-white						: @color-white;
+
+// Buttons
+@btn-default-color			: #555555;
+@btn-default-border-color	: @color-main-gray;
+@btn-default-bg-color		: @color-white;
+@btn-link-color				: @link-color;
+@btn-padding-y				: 9px;
+@btn-padding-x				: 12px;
+@btn-wide-padding-x			: 20px;
+@btn-icon-size				: @font-size-xs;
+@btn-icon-line-height		: 20px;
+@btn-white-color			: #555555;
+@btn-darken-color			: @color-white;
+
+@btn-primary				: @color-primary;
+@btn-success				: @color-success;
+@btn-info					: @color-info;
+@btn-warning				: @color-warning;
+@btn-danger					: @color-danger;
+@btn-dark					: @color-dark;
+@btn-white					: @color-white;
+@btn-lighten				: @color-white;
+@btn-darken					: @color-black;
+
+@btn-icon-separated-size						: @input-height;
+@btn-icon-separated-padding-left				: @btn-icon-separated-size + @btn-padding-x;
+@btn-icon-separated-font-size					: @btn-icon-size;
+@btn-wide-icon-separated-padding-left			: @btn-icon-separated-size + @btn-wide-padding-x;
+@btn-wide-icon-separated-padding-right			: @btn-wide-padding-x;
+@btn-icon-right-separated-padding-right			: 50px;
+@btn-icon-right-separated-padding-left			: @btn-padding-x;
+@btn-icon-right-separated-margin-right			: 10px;
+@btn-wide-icon-right-separated-padding-right	: @btn-icon-separated-size + @btn-wide-padding-x;
+@btn-wide-icon-right-separated-padding-left		: @btn-wide-padding-x;
+
+
+@btn-icon-separated-size-xs						: @input-height-xs;
+@btn-icon-separated-padding-left-xs				: @input-height-xs + @input-padding-x-xs;
+@btn-wide-icon-separated-padding-left-xs		: @btn-icon-separated-size-xs + @btn-wide-padding-x;
+@btn-wide-icon-right-separated-padding-right-xs	: @btn-icon-separated-size-xs + @btn-wide-padding-x;
+
+@btn-icon-separated-font-size-sm				: @font-size-base;
+@btn-icon-separated-size-sm						: @input-height-sm;
+@btn-icon-separated-padding-left-sm				: @input-height-sm + @input-padding-x-sm;
+@btn-wide-icon-separated-padding-left-sm		: @btn-icon-separated-size-sm + @btn-wide-padding-x;
+@btn-wide-icon-right-separated-padding-right-sm	: @btn-icon-separated-size-sm + @btn-wide-padding-x;
+
+@btn-icon-separated-font-size-lg				: @font-size-sm;
+@btn-icon-separated-line-height-lg				: @font-size-md;
+@btn-icon-separated-size-lg						: @input-height-lg;
+@btn-icon-separated-padding-left-lg				: @input-height-lg + @input-padding-x-lg;
+@btn-wide-icon-separated-padding-left-lg		: @btn-icon-separated-size-lg + @btn-wide-padding-x;
+@btn-wide-icon-right-separated-padding-right-lg	: @btn-icon-separated-size-lg + @btn-wide-padding-x;
+
+// Dropdown
+@dropdown-border-color				: @color-main-gray;
+@dropdown-divider-bg				: @dropdown-border-color;
+@dropdown-header-padding-y			: 10px;
+@dropdown-header-font-size			: 11px;
+@dropdown-header-spacing			: 1.5px;
+@dropdown-header-color				: #999999;
+@dropdown-menu-padding-y			: 5px;
+@dropdown-menu-hover-bg				: @color-extra-light-gray;
+@dropdown-menu-active-bg			: @color-primary;
+@dropdown-menu-active-color			: @color-white;
+@dropdown-menu-active-primary		: @color-primary;
+@dropdown-menu-active-success		: @color-success;
+@dropdown-menu-active-info			: @color-info;
+@dropdown-menu-active-warning		: @color-warning;
+@dropdown-menu-active-danger		: @color-danger;
+@dropdown-icon-flag-margin-x		: 10px;
+@dropdown-header-divider-border		: @dropdown-border-color;
+@dropdown-header-divider-padding-y	: 15px;
+@dropdown-xl-width					: 320px;
+@dropdown-lg-width					: 200px;
+
+@dropdown-menu-lg-padding-y					: 10px;
+@dropdown-menu-icon-font-size				: @font-size-base;
+@dropdown-menu-icon-color					: #999999;
+@dropdown-menu-icon-color-active			: fade(@color-white,60);
+@dropdown-menu-icon-size					: 20px;
+@dropdown-menu-icon-margin-x				: 18px;
+@dropdown-menu-icon-font-size-lg			: @font-size-sm;
+@dropdown-menu-icon-size-lg					: 24px;
+@dropdown-menu-icon-padding-x				: 45px;
+@dropdown-menu-icon-padding-x-lg			: 50px;
+@dropdown-menu-avatar-padding				: 15px 20px 15px 95px;
+@dropdown-menu-avatar-img-size				: 60px;
+@dropdown-menu-avatar-img-margin-x			: 20px;
+@dropdown-menu-btn-bottom-padding			: 10px 15px;
+@dropdown-menu-btn-bottom-bg				: @color-extra-light-gray;
+@dropdown-menu-btn-bottom-color				: #999999;
+@dropdown-menu-btn-bottom-color-hover		: #333333;
+@dropdown-menu-btn-bottom-font-size			: 13px;
+@dropdown-grid-width						: 296px;
+@dropdown-grid-padding-y					: 10px;
+@dropdown-grid-padding-x					: 5px;
+@dropdown-grid-item-font-size				: @font-size-small;
+@dropdown-grid-item-margin					: 5px;
+@dropdown-grid-item-width					: 80px;
+@dropdown-grid-item-height					: 80px;
+@dropdown-grid-item-padding-y				: 10px;
+@dropdown-grid-item-color					: #999999;
+@dropdown-grid-item-rounded-size			: 8px;
+@dropdown-grid-item-icon-size				: @font-size-large;
+@dropdown-grid-item-icon-height				: 40px;
+@dropdown-grid-item-icon-margin-bottom		: 5px;
+@dropdown-grid-item-img-margin-bottom		: 5px;
+@dropdown-grid-item-img-size				: 40px;
+@dropdown-inner-color						: #999999;
+@dropdown-inner-menu-item-font-size			: 13px;
+@dropdown-inner-menu-item-line-height		: 18px;
+@dropdown-inner-menu-item-hover-bg			: @dropdown-menu-hover-bg;
+@dropdown-inner-menu-item-new-color			: #777777;
+@dropdown-inner-menu-item-new-color-hover	: #555555;
+@dropdown-inner-menu-item-new-circle-size	: 6px;
+@dropdown-inner-menu-item-new-circle-y		: 10px;
+@dropdown-inner-menu-item-new-circle-x		: 10px;
+@dropdown-inner-menu-item-padding-y-lg		: 5px;
+@dropdown-inner-menu-item-padding-x-lg		: 20px;
+@dropdown-inner-menu-item-padding-y-xl		: 10px;
+@dropdown-inner-menu-item-padding-x-xl		: 20px;
+@dropdown-inner-menu-item-media-size		: 40px;
+@dropdown-inner-menu-item-media-font-size	: @font-size-sm;
+@dropdown-inner-menu-item-media-padding-x	: @dropdown-inner-menu-item-padding-x-lg + @dropdown-inner-menu-item-media-size + 15px;
+@dropdown-inner-menu-item-media-y			: 10px;
+@dropdown-inner-menu-item-media-x			: 20px;
+@dropdown-remove-btn-size					: 30px;
+@dropdown-id-color	 						: #333333;
+@dropdown-new-id-color	 					: @color-primary;
+@dropdown-time-color	 					: #acacac;
+@dropdown-time-margin-top 					: 5px;
+@dropdown-price-margin-top 					: 3px;
+@dropdown-empty-state-padding				: 20px;
+@dropdown-empty-state-font-size				: 66px;
+@dropdown-empty-state-img-size				: 60px;
+@dropdown-scroll-max-height					: 300px;
+
+// Nav
+@nav-tabs-border-color			: @color-main-gray;
+@nav-tabs-active-border-color	: @color-white;
+@nav-pills-active-bg-color		: @color-primary;
+@nav-pills-active-color			: @color-white;
+
+// Navbar
+@navbar-collapse-padding-x	: 15px;
+
+// Breadcrumb
+@breadcrumb-bg						: @color-extra-light-gray;
+@breadcrumb-font-size				: @font-size-small;
+@breadcrumb-border-color			: @color-main-gray;
+@breadcrumb-link-color				: #555555;
+@breadcrumb-link-hover-color		: #333333;
+@breadcrumb-link-active-color		: #999999;
+@breadcrumb-separator-padding-x		: 7px;
+@breadcrumb-separator-arrow			: "\f105";
+@breadcrumb-separator-double-arrow	: "\f101";
+@breadcrumb-separator-caret			: "\f0da";
+@breadcrumb-separator-backslash		: "\005c";
+
+// Pagination
+@pagination-color			: #555555;
+@pagination-hover-color		: #333333;
+@pagination-hover-bg		: #f4f4f4;
+@pagination-active-bg		: @color-primary;
+@pagination-margin-x		: 2px;
+@pagination-rounded-size	: 4px;
+@pagination-margin-x-lg		: 4px;
+@pagination-rounded-size-lg	: 6px;
+@pagination-margin-x-sm		: 2px;
+@pagination-rounded-size-sm	: 3px;
+@pagination-primary			: @color-primary;
+@pagination-success			: @color-success;
+@pagination-info			: @color-info;
+@pagination-warning			: @color-warning;
+@pagination-danger			: @color-danger;
+
+// Label & Badge
+@badge-height			: 24px;
+@badge-width			: 24px;
+@badge-rounded-size		: @badge-height / 2;
+@badge-padding-x		: 5px;
+@badge-font-size		: 11px;
+@badge-color			: @color-white;
+@label-rounded-size		: 2px;
+@label-height			: 20px;
+@label-width			: 20px;
+@label-bg-primary		: @color-primary;
+@label-bg-success		: @color-success;
+@label-bg-info			: @color-info;
+@label-bg-warning		: @color-warning;
+@label-bg-danger		: @color-danger;
+
+// Jumbotron
+@jumbotron-padding-x				: 5px;
+@jumbotron-padding-x-in-container 	: 60px;
+
+// Alert
+@alert-padding					: 20px;
+@alert-dismissable-padding		: 30px;
+@alert-close-margin				: 10px;
+@alert-close-color				: @color-black;
+@alert-hr-bg					: fade(@color-black,10);
+@alert-block-hr-bg				: fade(@color-white,20);
+@alert-block-link-color			: @color-white;
+@alert-block-color				: @color-white;
+@alert-plain-color				: #555555;
+@alert-simple-color				: #555555;
+@alert-gray-color				: #555555;
+@alert-plain-bg					: @color-white;
+@alert-simple-bg				: @color-white;
+@alert-gray-bg					: @color-extra-light-gray;
+@alert-success					: @color-success;
+@alert-info						: @color-info;
+@alert-warning					: @color-warning;
+@alert-danger					: @color-danger;
+@alert-iconic-alert-padding-x	: 80px;
+@alert-simple-alert-padding-x	: 23px;
+@alert-simple-iconic-padding-x	: 60px;
+@alert-alert-icon-width			: 60px;
+@alert-alert-icon-font-size		: @font-size-sm;
+@alert-alert-icon-color			: @color-white;
+@alert-block-alert-icon-color	: fade(@color-black,5);
+
+// Progress bar
+@progress-primary		: @color-primary;
+@progress-success		: @color-success;
+@progress-info			: @color-info;
+@progress-warning		: @color-warning;
+@progress-danger		: @color-danger;
+@progress-height		: 20px;
+@progress-margin-bottom	: 20px;
+@progress-bg			: @color-white;
+@progress-gray-bg		: @color-light-gray;
+@progress-rounded-size	: 4px;
+@progress-font-size		: @font-size-small;
+@progress-color			: @color-white;
+@progress-striped-size	: 40px;
+@progress-lg-size		: 30px;
+@progress-sm-size		: 15px;
+@progress-xs-size		: 8px;
+
+// Media
+@media-margin-top				: 20px;
+@media-padding-x				: 15px;
+@media-object-sm-size			: 50px;
+@media-object-md-size			: 80px;
+@media-object-lg-size			: 120px;
+@media-list-margin-top			: 20px;
+@media-list-margin-left			: 40px;
+@media-heading-margin-bottom	: @spacer;
+
+// List group
+@list-group-border-color		: @color-main-gray;
+@list-group-label-margin-right	: 5px;
+@list-group-item-active-bg		: @color-primary;
+@list-group-item-active-color	: @color-white;
+@list-group-success				: @color-success;
+@list-group-info				: @color-info;
+@list-group-warning				: @color-warning;
+@list-group-danger				: @color-danger;
+@list-group-sm-item-padding-x	: 10px;
+@list-group-sm-item-padding-y	: 5px;
+
+// Panels
+@panel-primary					: @color-primary;
+@panel-success					: @color-success;
+@panel-info						: @color-info;
+@panel-warning					: @color-warning;
+@panel-danger					: @color-danger;
+@panel-margin-bottom			: 30px;
+@panel-heading-padding-y		: 22px;
+@panel-heading-padding-x		: 20px;
+@panel-body-padding				: 20px;
+@panel-title-font-size			: @font-size-xs;
+@panel-footer-padding-y			: 20px;
+@panel-footer-padding-x			: 20px;
+@panel-rounded-size 			: 4px;
+@panel-footer-bg				: @color-extra-light-gray;
+@panel-footer-border-color		: @color-main-gray;
+@panel-footer-rounded-size		: @panel-rounded-size - 1px;
+@panel-header-rounded-size		: @panel-rounded-size - 1px;
+@panel-default-border-color		: @color-main-gray;
+@panel-default-bg				: @color-extra-light-gray;
+@panel-default-color			: #333333;
+@panel-table-caption-padding	: 15px;
+
+@panel-media-title-font-size			: 20px;
+@panel-media-title-width				: 24px;
+@panel-media-title-margin-x				: 20px;
+@panel-image-title-size					: 40px;
+@panel-media-circle-size				: 40px;
+@panel-media-circle-color				: #999999;
+@panel-media-circle-color-hover			: #333333;
+@panel-heading-img-title-padding-x		: @panel-image-title-size + @panel-heading-padding-x + 10px;
+@panel-heading-icon-title-padding-x		: @panel-media-title-width + @panel-heading-padding-x + 10px;
+@panel-subtitle-font-size				: 11px;
+@panel-subtitle-line-height				: 1.2;
+@panel-subtitle-letter-spacing			: 1.5px;
+@panel-subtitle-color					: #999999;
+@panel-toolbar-top 						: 18px;
+@panel-toolbar-right					: 20px;
+@panel-dropdown-icon-last-child			: 10px;
+@panel-dropdown-menu-font-size			: 13px;
+@panel-icon-toolbar-color				: fade(@color-black,30);
+@panel-icon-toolbar-color-hover			: fade(@color-black,50);
+@panel-icon-toolbar-size				: 24px;
+@panel-icon-toolbar-font-size			: @font-size-xs;
+@panel-list-inline-margin-x				: 5px;
+@panel-toolbar-mobile-block-margin-top	: 20px;
+@panel-plain-heading-color				: #333333;
+@panel-plain-badge-color				: @color-extra-light-gray;
+@panel-block-color						: @color-white;
+@panel-block-border-color				: fade(@color-white,10);
+@panel-block-heading-bg					: fade(@color-white,8);
+@panel-color-subtitle-color				: @color-white;
+@panel-loading-size						: 24px;
+@panel-scroll-max-height				: 300px;
+
+// Modal
+@modal-content-border-color		: @color-main-gray;
+
+// Tooltip
+@tooltip-margin		: 3px;
+
+// Stacked item
+@stacked-item-border-color				: @color-main-gray;
+@stacked-item-light-border-color		: fade(@color-white,20);
+@stacked-item-margin-bottom				: 30px;
+
+// Wrapper
+@wrapper-background						: @color-lightest-gray;
+@wrapper-boxed-width					: 1200px;
+
+// Navbar
+@navbar-min-height						: 70px;
+@navbar-brand-height					: @navbar-min-height;
+@navbar-brand-font-size					: @font-size-sm;
+@navbar-logo-text-padding-x				: 15px;
+@navbar-logo-text-initial-font-size		: @font-size-large;
+@navbar-menu-item-height				: @navbar-min-height;
+@navbar-menu-icon-line-height			: @navbar-min-height + 3px;
+@navbar-text-margin-y					: 22px;
+@navbar-text-margin-x					: 15px;
+
+@navbar-toggle-size						: @navbar-min-height;
+@navbar-toggle-font-size				: 20px;
+@navbar-in-container-min-height			: @navbar-min-height + (@navbar-border-width * 2);
+@navbar-border-width					: 1px;
+@navbar-in-container-rounded-size		: 4px;
+@navbar-avatar-size						: 40px;
+@navbar-btn-margin-y					: 14px;
+@navbar-menu-icon-size					: 20px;
+@navbar-menu-icon-padding-x				: 15px;
+@navbar-text-menu-margin-x				: 10px;
+@navbar-header-margin-x					: 15px;
+@navbar-user-nav-margin-x				: 15px;
+@navbar-item-divider-bg					: @navbar-default-border-color;
+@navbar-item-divider-width				: 1px;
+@navbar-item-divider-height				: 50px;
+@navbar-item-divider-top				: (@navbar-min-height - @navbar-item-divider-height) / 2;
+@navbar-dropdown-border					: @navbar-default-border-color;
+@navbar-form-control-width				: 230px;
+@navbar-form-padding-y					: 6px;
+
+@navbar-badge-margin-y						: 10px;
+@navbar-badge-margin-x						: 24px;
+@navbar-badge-margin-y-mobile				: 2px;
+@navbar-badge-margin-y-user-nav-mobile		: 14px;
+@navbar-badge-margin-x-user-nav				: 40px;
+@navbar-circle-margin-x-user-nav			: 47px;
+@navbar-circle-notification-size			: 8px;
+@navbar-circle-notification-margin-y		: 22px;
+@navbar-circle-notification-margin-y-mobile	: 10px;
+@navbar-circle-notification-margin-x		: 30px;
+
+@navbar-logo-min-width					: 60px;
+@navbar-logo-min-width-desktop			: @navbar-min-height;
+
+@navbar-default-bg						: @color-white;
+@navbar-default-border-color			: @color-main-gray;
+@navbar-default-color					: #888888;
+@navbar-default-brand-color				: #333333;
+
+@navbar-inverse-bg						: darken(@color-dark,3);
+@navbar-inverse-border-color			: fade(@color-black,5);
+@navbar-inverse-color					: @color-white;
+
+// Main content 
+@content-small-width						: 900px;
+@content-medium-width						: 1200px;
+@content-container-fluid-padding-mobile		: 20px;
+@content-container-fluid-padding-desktop	: 30px;
+
+// Dashhead
+@dashhead-padding								: 20px;
+@dashhead-border								: @color-main-gray;
+@dashhead-bg									: @color-white;
+@dashhead-breadcrumb-bg							: @color-white;
+@dashhead-breadcrumb-inline-margin-y			: 20px;
+@dashhead-subtitle-color						: #999999;
+@dashhead-subtitle-letter-spacing				: 1.5px;
+@dashhead-toogle-btn-size						: 50px;
+@dashhead-toogle-btn-x							: 10px;
+@dashhead-padding-min-mobile					: 30px;
+@dashhead-breadcrumb-inline-margin-y-min-mobile	: 30px;
+@dashhead-breadcrumb-inline-padding-x-mobile	: 20px;
+
+// Footer
+@footer-bg 					: @color-white;
+@footer-padding 			: 15px;
+@footer-border 				: @color-main-gray;
+@footer-margin-y 			: 30px;
+
+// Back top
+@back-top-size		: 40px;
+@back-top-y			: 5px;
+@back-top-x			: 5px;
+
+// Utilities
+@block-on-mobile-margin-y		: 5px;
+
+// Sidebar
+@sidebar-width						: 270px;
+@sidebar-bg							: @color-dark;
+@sidebar-color						: @color-white;
+@sidebar-menu-sub-font-size			: 13px;
+@sidebar-menu-item-border-color		: fade(@color-white,3.5);
+@sidebar-menu-item-active-shadow	: @color-success;
+@sidebar-active-v-border-width		: 2px;
+@sidebar-menu-item-padding-x		: 20px;
+@sidebar-menu-item-height			: 50px;
+@sidebar-menu-item-color			: @color-white;
+@sidebar-menu-item-color-active		: @color-white;
+@sidebar-menu-item-color-active		: @color-white;
+
+@sidebar-icon-menu-size				: @sidebar-menu-item-height;
+@sidebar-icon-menu-color			: @color-white;
+@sidebar-icon-menu-font-size		: 20px;
+
+@sidebar-badge-over-icon-y			: 4px;
+@sidebar-badge-over-icon-x			: 25px;
+
+@sidebar-menu-has-sub-icon-content		: "\f107";
+@sidebar-menu-has-sub-icon-font-size	: @font-size-small;
+@sidebar-menu-has-sub-icon-margin-x		: 10px;
+@sidebar-menu-has-sub-icon-color		: @color-white;
+
+@sidebar-user-menu-padding-x				: 20px;
+@sidebar-user-menu-padding-y				: 30px;
+@sidebar-user-menu-avatar-size				: 60px;
+@sidebar-user-menu-avatar-x					: 15px;
+@sidebar-user-menu-line-height				: 14px;
+@sidebar-user-menu-font-size				: @font-size-xs;
+@sidebar-user-menu-badge-over-icon-x		: 60px;
+@sidebar-user-menu-badge-over-icon-y		: 15px;
+@sidebar-user-menu-arrow-y					: 42%;
+
+@sidebar-user-menu-subname-font-size		: 11px;
+@sidebar-user-menu-subname-letter-spacing	: 1.5px;
+@sidebar-user-menu-subname-color			: fade(@color-white,25);
+
+@sidebar-sub-menu-item-height				: 36px;
+@sidebar-sub-menu-item-color				: @color-white;
+
+@sidebar-header-font-size			: 11px;
+@sidebar-header-letter-spacing		: 1.5px;
+@sidebar-header-color				: @color-white;
+@sidebar-header-border-color		: fade(@color-white,3.5);
+@sidebar-header-padding-y			: 10px;
+@sidebar-header-padding-x			: 20px;
+@sidebar-divider-height				: 30px;
+
+// Mini sidebar layout
+@mini-sidebar-width							: 70px;
+@mini-sidebar-item-padding-x				: @mini-sidebar-width + @sidebar-menu-item-padding-x;
+@mini-sidebar-item-width					: 290px;
+@mini-sidebar-no-icon-item-content			: "\e97a";
+@mini-sidebar-no-icon-font-size				: 20px;
+@mini-sidebar-no-icon-color					: @color-white;
+@mini-sidebar-submenu-width					: @mini-sidebar-item-width - @mini-sidebar-width;
+@mini-sidebar-badge-x						: @mini-sidebar-width / 2;
+@mini-sidebar-badge-y						: 4px;
+@mini-sidebar-menu-has-sub-icon-content		: "\f105";
+@mini-sidebar-user-menu-height				: 80px;
+@mini-sidebar-user-menu-padding				: 20px;
+@mini-sidebar-user-menu-badge-x				: 43px;
+@mini-sidebar-user-menu-badge-y				: 4px;
+@mini-sidebar-user-menu-avatar-size			: 50px;
+@mini-sidebar-user-menu-avatar-x			: 10px;
+
+// Iconic Sidebar layout
+@iconic-sidebar-width						: 70px;
+@iconic-sidebar-badge-x						: @iconic-sidebar-width / 2;
+@iconic-sidebar-badge-y						: 12px;
+@iconic-sidebar-user-padding				: 15px;
+@iconic-sidebar-user-line-height			: 14px;
+@iconic-sidebar-user-menu-badge-x			: 43px;
+@iconic-sidebar-user-menu-badge-y			: 4px;
+@iconic-sidebar-user-menu-avatar-size		: 40px;
+@iconic-sidebar-menu-triangle-bg			: @wrapper-background;
+@iconic-sidebar-menu-triangle-size			: 6px;
+@iconic-sidebar-height-mobile				: 60px;
+@iconic-sidebar-user-menu-badge-x-mobile	: 30px;
+@iconic-sidebar-user-menu-badge-y-mobile	: 5px;
+@iconic-sidebar-user-menu-badge-x-mobile	: 33px;
+@iconic-sidebar-user-menu-avatar-margin-y	: 3px;
+
+// Horizontal menu layout
+@horiz-menu-item-width					: 120px;
+@horiz-menu-item-line-height			: 30px;
+@horiz-menu-item-padding-top			: 5px;
+@horiz-menu-item-icon-width				: 70px;
+@horiz-menu-item-icon-height			: 40px;
+@horiz-menu-item-padding-bottom			: 10px;
+@horiz-menu-sub-item-width				: 220px;
+@horiz-menu-item-font-size				: 13px;
+@horiz-menu-badge-x						: @horiz-menu-item-icon-width / 2;
+@horiz-menu-badge-y						: 4px;
+
+// Prettify
+@pre-tab-size			: 3;
+@pre-btn-copy-x			: 10px;
+@pre-btn-copy-y			: 10px;
+
+// Easypie
+@easypie-size			: 80px;
+@easypie-padding-y		: 16px;
+@easypie-span-font-size	: 20px;
+
+// Datatable
+@datatable-sort-font			: @font-icon-fa;
+@datatable-sort-height			: 20px;
+@datatable-sort-content		: "\f0dc";
+@datatable-sort-asc-content	: "\f0de";
+@datatable-sort-desc-content	: "\f0dd";
+@datatable-selected-bg			: @color-primary;
+@datatable-info-color			: #999999;
+
+// Summernote
+@summernote-resize-bar-bg		: @color-white;
+@summernote-toobar-padding-x	: 10px;
+@summernote-btn-group-margin-x	: 5px;
+@summernote-btn-group-margin-y	: 5px;
+@summernote-btn-height			: 40px;
+@summernote-btn-padding-x		: 10px;
+
+// Canvas for Chart js
+@canvas-height-no-ratio			: 400px;
+@canvas-height-no-ratio-mobile	: 300px;
+
+// Sparkline js
+@spark-tooltip-padding	: 5px;
+
+// Filestyle
+@filestyle-icon-margin-x	: 5px;
+@filestyle-icon-font-size	: @font-size-xs;
+@filestyle-line-height		: 20px;
+
+// Popular badge
+@popular-badge-padding		: 5px;
+@popular-badge-font-size	: @font-size-small;
+@popular-badge-width		: 200px;
+@popular-badge-right		: 60px;
+@popular-badge-top			: 20px;
+
+// Quick stat
+@quick-stat-panel-toolbar-top	: 10px;
+@quick-stat-panel-toolbar-right	: 10px;
+
+// Login Page
+@login-wrap-max-width		: 400px;
+@login-wrap-margin-top		: 30px;
+@login-wrap-max-width-md	: 420px;
+@login-wrap-margin-top-md	: 80px;
+@login-wrap-max-width-lg	: 800px;
+@login-wrap-margin-top-lg	: 80px;
+@special-page-content-width	: 320px;
+@avatar-img-size			: 100px;
+@heading-special-page-size	: 80px;
+
+// Device sizes
+@device-desktop-small 		: 1200px;
+@device-tablet-landscape	: 1024px;
+@device-tablet 				: 768px;
+@device-tablet-small 		: 600px;
+@device-phone 				: 480px;
+@device-phone-small 		: 360px;

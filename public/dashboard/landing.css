@@ -1,0 +1,12 @@
+.rs-landing-section {
+	padding: 100px 20px;
+}
+.hero-text {
+	font-size: 60px;
+}
+.hero-text-box {
+	width: auto;
+	max-width: 600px;
+	display: block;
+	margin-bottom: 50px;
+}

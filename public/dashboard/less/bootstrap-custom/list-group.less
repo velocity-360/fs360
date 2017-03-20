@@ -1,0 +1,109 @@
+// General custom
+.list-group-item {
+  border-color: @list-group-border-color;
+  > .label,
+  > .badge {
+    float: right;
+  }
+  > .label + .label,
+  > .badge + .badge {
+    margin-right: @list-group-label-margin-right;
+  }
+  &.active {
+    & , &:hover, &:focus {
+      background-color: @list-group-item-active-bg;
+      border-color: @list-group-item-active-bg;
+      .list-group-item-text {
+        color: @list-group-item-active-color;
+      }
+    }
+  }
+}
+
+// List group square
+.list-group-square {
+  .list-group-item {
+    &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+// List group coloring
+.list-group-item-success {
+  color: darken(@list-group-success,14);
+  background-color: lighten(@list-group-success,30);
+  a&, button& {
+    color: darken(@list-group-success,14);
+    &:hover, &:focus {
+      color: darken(@list-group-success,14);
+      background-color: lighten(@list-group-success,24);
+    }
+  }
+  &.active {
+    & , &:hover, &:focus {
+      color: @list-group-item-active-color;
+      background-color: darken(@list-group-success,14) !important;
+      border-color: darken(@list-group-success,14) !important;
+    }
+  }
+}
+.list-group-item-info {
+  color: darken(@list-group-info,14);
+  background-color: lighten(@list-group-info,30);
+  a&, button& {
+    color: darken(@list-group-info,14);
+    &:hover, &:focus {
+      color: darken(@list-group-info,14);
+      background-color: lighten(@list-group-info,24);
+    }
+  }
+  &.active {
+    & , &:hover, &:focus {
+      color: @list-group-item-active-color;
+      background-color: darken(@list-group-info,14) !important;
+      border-color: darken(@list-group-info,14) !important;
+    }
+  }
+}
+.list-group-item-warning {
+  color: darken(@list-group-warning,18);
+  background-color: lighten(@list-group-warning,34);
+  a&, button& {
+    color: darken(@list-group-warning,18);
+    &:hover, &:focus {
+      color: darken(@list-group-warning,18);
+      background-color: lighten(@list-group-warning,24);
+    }
+  }
+  &.active {
+    & , &:hover, &:focus {
+      color: @list-group-item-active-color;
+      background-color: darken(@list-group-warning,18) !important;
+      border-color: darken(@list-group-warning,18) !important;
+    }
+  }
+}
+.list-group-item-danger {
+  color: darken(@list-group-danger,14);
+  background-color: lighten(@list-group-danger,34);
+  a&, button& {
+    color: darken(@list-group-danger,14);
+    &:hover, &:focus {
+      color: darken(@list-group-danger,14);
+      background-color: lighten(@list-group-danger,24);
+    }
+  }
+  &.active {
+    & , &:hover, &:focus {
+      color: @list-group-item-active-color;
+      background-color: darken(@list-group-danger,14) !important;
+      border-color: darken(@list-group-danger,14) !important;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+// Navbar static top
+.navbar-static-top {
+  z-index: 1000;
+  border-width: 0 0 1px;
+}
+
+// Navbar fixed
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+
+// Navbar responsive
+.responsive-min(@device-tablet; {
+  .navbar-static-top {
+    border-radius: 0;
+  }
+  .navbar-collapse {
+    .navbar-fixed-top &,
+    .navbar-static-top &,
+    .navbar-fixed-bottom & {
+      padding-right: @navbar-collapse-padding-x;
+      padding-left: @navbar-collapse-padding-x;
+    }
+  }
+  .navbar {
+    > .container, > .container-fluid {
+      .navbar-brand {
+        margin-left: 0;
+      }
+    }
+  }
+});
+
+.responsive(@device-tablet - 1px; {
+  .navbar-default .navbar-nav .open .dropdown-menu > .active {
+    > a, > a:hover, > a:focus {
+      color: @dropdown-menu-active-color;
+      background-color: @dropdown-menu-active-bg;
+    }
+  }
+});

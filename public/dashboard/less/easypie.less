@@ -1,0 +1,23 @@
+.easypiechart {
+  display: inline-block;
+  width: @easypie-size;
+  height: @easypie-size;
+  margin: 0 auto;
+  vertical-align: top;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: @easypie-padding-y;
+  span {
+    display: block;
+    font-weight: normal;
+    font-size: @easypie-span-font-size;
+    margin: 0;
+  }
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

@@ -1,0 +1,61 @@
+// General custom
+.alert {
+  border-radius: 0;
+  padding: @alert-padding;
+  position: relative;
+  &-dismissable,
+  &-dismissible {
+    padding-right: @alert-dismissable-padding;
+    .close {
+      position: absolute;
+      top: @alert-close-margin;
+      right: @alert-close-margin;
+      z-index: 1;
+      color: @alert-close-color;
+    }
+  }
+  &-success, &-info, &-warning, &-danger {
+    hr {
+      border-top-color: @alert-hr-bg;
+    }
+  }
+  &-link {
+    text-decoration: underline;
+  }
+} 
+
+// Alert color
+.alert {
+  &-success {
+    border-color: @alert-success;
+    color: @alert-success;
+    background: lighten(@alert-success,30);
+    .alert-link {
+      color: @alert-success;
+    }
+  }
+  &-info {
+    border-color: @alert-info;
+    color: @alert-info;
+    background: lighten(@alert-info,30);;
+    .alert-link {
+      color: @alert-info;
+    }
+  }
+  &-warning {
+    border-color: @alert-warning;
+    color: @alert-warning;
+    background: lighten(@alert-warning,34);;
+    .alert-link {
+      color: @alert-warning;
+    }
+  }
+  &-danger {
+    border-color: @alert-danger;
+    color: @alert-danger;
+    background: lighten(@alert-danger,34);;
+    .alert-link {
+      color: @alert-danger;
+    }
+  }
+}

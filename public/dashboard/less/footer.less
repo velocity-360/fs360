@@ -1,0 +1,39 @@
+.@{css-prefix}-footer {
+  position: relative;
+  background-color: @footer-bg;
+  z-index: 2;
+  padding: @footer-padding;
+  text-align: center;
+  display: block;
+  border-top: 1px solid @footer-border;
+  margin-top: @footer-margin-y;
+  &.absolute-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-top: 0;
+    left: @sidebar-width;
+  }
+}
+.responsive(@device-tablet + 1; {
+  .@{css-prefix}-footer.absolute-footer {
+    left: 0;
+  }
+});
+
+// Back to top button
+.back-to-top {
+  position: fixed;
+  width: @back-top-size;
+  height: @back-top-size;
+  z-index: 1000;
+  bottom: @back-top-y;
+  right: @back-top-x;
+  line-height: @back-top-size;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 1px 3px 0px fade(@color-black,8);
+  -moz-box-shadow: 0px 1px 3px 0px fade(@color-black,8);
+  box-shadow: 0px 1px 3px 0px fade(@color-black,8);
+  text-align: center;
+  display: none;
+}

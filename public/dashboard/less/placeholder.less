@@ -1,0 +1,103 @@
+.place-holder {
+  position: relative;
+
+  // Image filling placeholder
+  &.img-fill {
+    overflow: hidden;
+    z-index: 2;
+    .gimg {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      right: auto;
+      bottom: auto;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      &.fheight {
+        width: auto !important;
+        height: 100% !important;
+      }
+    }
+  }
+
+  // Image auto width, max 100%
+  &.img-auto .gimg {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    &.fheight {
+      width: auto !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  // Centered image
+  &.img-centered .gimg {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    &.fheight {
+      width: auto !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+  &.img-fullwidth .gimg {
+    position: relative;
+    width: 100% !important;
+    &.fheight {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+}
+
+// Create element ratio
+.get-ratio {
+  &:before {
+    height: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    content: "";
+    position: relative;
+  }
+  &.r-1-1:before {
+    padding-top: 100%;
+  }
+  &.r-4-3:before {
+    padding-top: 75%;
+  }
+  &.r-3-4:before {
+    padding-top: 125%;
+  }
+  &.r-16-9:before {
+    padding-top: 56.25%;
+  }
+}
+
+// Centered element
+.centered-xy {
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}

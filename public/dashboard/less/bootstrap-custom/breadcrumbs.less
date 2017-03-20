@@ -1,0 +1,15 @@
+.breadcrumb {
+  background: @breadcrumb-bg;
+  font-size: @breadcrumb-font-size;
+  border: 1px solid @breadcrumb-border-color;
+  border-radius: 0;
+  a {
+  	color: @breadcrumb-link-color;
+    &:hover, &:focus {
+    	color: @breadcrumb-link-hover-color;
+    }
+  }
+  > li.active {
+  	color: @breadcrumb-link-active-color;
+  }
+}

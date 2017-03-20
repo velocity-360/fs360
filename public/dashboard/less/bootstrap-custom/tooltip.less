@@ -1,0 +1,36 @@
+.tooltip {
+  .in {
+    .opacity(90);
+  }
+  &-inner {
+    border-radius: 2px;
+  }
+  &.top {
+    margin-top: @tooltip-margin;
+    transition: margin-top .15s ease-in-out, opacity 0.15s ease-in-out;
+    &.in {
+      margin-top: -@tooltip-margin;
+    }
+  }
+  &.right {
+    margin-left: -@tooltip-margin;
+    transition: margin-left .15s ease-in-out, opacity 0.15s ease-in-out;
+    &.in {
+      margin-left: @tooltip-margin;
+    }
+  }
+  &.bottom {
+    margin-top: -@tooltip-margin;
+    transition: margin-top .15s ease-in-out, opacity 0.15s ease-in-out;
+    &.in {
+      margin-top: @tooltip-margin;
+    }
+  }
+  &.left {
+    margin-left: @tooltip-margin;
+    transition: margin-left .15s ease-in-out, opacity 0.15s ease-in-out;
+    &.in {
+      margin-left: -@tooltip-margin;
+    }
+  }
+}

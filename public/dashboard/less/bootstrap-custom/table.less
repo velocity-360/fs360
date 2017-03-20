@@ -1,0 +1,281 @@
+// General custom
+.table {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+    	> th,
+      > td {
+        border-top-color: @table-border-color;
+      }
+    }
+  }
+  > thead > tr > th {
+    border-bottom-color: @table-border-color;
+    border-bottom-width: 0;
+    font-weight: 500;
+  }
+  > tbody + tbody {
+    border-top-color: @table-border-color;
+  }
+}
+
+// Table bordered
+.table-bordered {
+  border-color:  @table-border-color;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+    	> th,
+     > td {
+      border-top-color: @table-border-color;
+    }
+  }
+}
+}
+
+// Table striped
+.table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    background-color: @table-striped-odd-bg;
+  }
+}
+
+// Table hover
+.table-hover {
+  > tbody > tr:hover {
+    background-color: @table-hover-bg;
+  }
+}
+.table {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+     td.active,
+     th.active,
+     &.active > td,
+     &.actie > th {
+      background-color: @table-active-bg;
+    }
+  }
+}
+}
+.table-hover {
+  > tbody {
+    > tr {
+      > td.active:hover,
+      > th.active:hover,
+      &.active:hover > td,
+      &:hover > .active,
+      &.active:hover > th {
+        background-color: @table-active-hover-bg;
+      }
+    }
+  }
+}
+.table {
+  > thead,> tbody, > tfoot {
+    > tr {
+      > td.success,
+      > th.success,
+      &.success > td,
+      &.success > th {
+        background-color: lighten(@color-success,30);
+      }
+    }
+  }
+  &-hover {
+    > tbody {
+      > tr {
+       > td.success:hover,
+       > th.success:hover,
+       &.success:hover > td,
+       &:hover > .success,
+       &.success:hover > th {
+         background-color: lighten(@color-success,24);
+       }
+     }
+   }
+ }
+}
+.table {
+  > thead,> tbody, > tfoot {
+    > tr {
+    	> td.info,
+     > th.info,
+     &.info > td,
+     &.info > th {
+      background-color: lighten(@color-success,30);
+    }
+  }
+}
+&-hover {
+  > tbody {
+    > tr {
+     > td.info:hover,
+     > th.info:hover,
+     &.info:hover > td,
+     &:hover > .info,
+     &.info:hover > th {
+       background-color: lighten(@color-success,24);
+     }
+   }
+ }
+}
+}
+.table {
+  > thead,> tbody, > tfoot {
+    > tr {
+    	> td.warning,
+     > th.warning,
+     &.warning > td,
+     &.warning > th {
+      background-color: lighten(@color-warning,34);
+    }
+  }
+}
+&-hover {
+  > tbody {
+    > tr {
+     > td.warning:hover,
+     > th.warning:hover,
+     &.warning:hover > td,
+     &:hover > .warning,
+     &.warning:hover > th {
+       background-color: lighten(@color-warning,24);
+     }
+   }
+ }
+}
+}
+.table {
+  > thead,> tbody, > tfoot {
+    > tr {
+    	> td.danger,
+     > th.danger,
+     &.danger > td,
+     &.danger > th {
+      background-color: lighten(@color-danger,34);
+    }
+  }
+}
+&-hover {
+  > tbody {
+    > tr {
+     > td.danger:hover,
+     > th.danger:hover,
+     &.danger:hover > td,
+     &:hover > .danger,
+     &.danger:hover > th {
+       background-color: lighten(@color-danger,24);
+     }
+   }
+ }
+}
+}
+.table {
+  &.table-block-color {
+    > thead, > tbody, > tfoot {
+      > tr {
+        > td.success,
+        > th.success,
+        &.success > td,
+        &.success > th {
+          background-color: @color-success;
+          color: @color-white;
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td.success:hover,
+        > th.success:hover,
+        &.success:hover > td,
+        &:hover > .success,
+        &.success:hover > th {
+          background-color: darken(@color-success,6);
+        }
+      }
+    }
+  }
+}
+.table {
+  &.table-block-color {
+    > thead, > tbody, > tfoot {
+      > tr {
+        > td.info,
+        > th.info,
+        &.info > td,
+        &.info > th {
+          background-color: @color-info;
+          color: @color-white;
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td.info:hover,
+        > th.info:hover,
+        &.info:hover > td,
+        &:hover > .info,
+        &.info:hover > th {
+          background-color: darken(@color-info,6);
+        }
+      }
+    }
+  }
+}
+.table {
+  &.table-block-color {
+    > thead, > tbody, > tfoot {
+      > tr {
+        > td.warning,
+        > th.warning,
+        &.warning > td,
+        &.warning > th {
+          background-color: @color-warning;
+          color: @color-white;
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td.warning:hover,
+        > th.warning:hover,
+        &.warning:hover > td,
+        &:hover > .warning,
+        &.warning:hover > th {
+          background-color: darken(@color-warning,10);
+        }
+      }
+    }
+  }
+}
+.table {
+  &.table-block-color {
+    > thead, > tbody, > tfoot {
+      > tr {
+        > td.danger,
+        > th.danger,
+        &.danger > td,
+        &.danger > th {
+          background-color: @color-danger;
+          color: @color-white;
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td.danger:hover,
+        > th.danger:hover,
+        &.danger:hover > td,
+        &:hover > .danger,
+        &.danger:hover > th {
+          background-color: darken(#ef5350,6);
+        }
+      }
+    }
+  }
+}

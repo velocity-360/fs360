@@ -1,0 +1,126 @@
+.@{css-prefix}-dashhead {
+  padding: @dashhead-padding;
+  border: 1px solid @dashhead-border;
+  border-width: 0 0 1px;
+  background: @dashhead-bg;
+  .breadcrumb {
+    margin: 0;
+    background: fade(@color-black,1.5);
+    margin: @dashhead-padding -@dashhead-padding -@dashhead-padding -@dashhead-padding;
+    padding-left: @dashhead-padding;
+    padding-right: @dashhead-padding;
+    border-width: 1px 0 0;
+    display: block;
+  }
+  &.transparent-bg {
+    background: transparent;
+    .breadcrumb {
+      background: @dashhead-breadcrumb-bg;
+    }
+  }
+  &.inline-breadcrumb .breadcrumb {
+    margin: @dashhead-breadcrumb-inline-margin-y 0 0 0;
+    border-width: 1px;
+  }
+}
+
+// Dashhead content
+.@{css-prefix}-dashhead-content {
+  position: relative;
+  .clear();
+}
+
+// Dashhead inside container
+.container .@{css-prefix}-dashhead,
+.@{css-prefix}-inner .container-fluid .@{css-prefix}-dashhead {
+  border-width: 1px;
+}
+
+// Dashhead subtitle
+.@{css-prefix}-dashhead-subtitle {
+  color: @dashhead-subtitle-color;
+  letter-spacing: @dashhead-subtitle-letter-spacing;
+  padding: 0;
+  margin: 0;
+}
+
+// Dashhead title
+.@{css-prefix}-dashhead-title {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+// Dashead toolbar
+.@{css-prefix}-dashhead .@{css-prefix}-dashhead-toolbar {
+  right: 0;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+}
+.toggle-toolbar-btn {
+  display: none;
+}
+
+// Dashhead reponsive mobile
+.responsive(@device-phone; {
+  .@{css-prefix}-dashhead .@{css-prefix}-dashhead-toolbar {
+    position: relative !important;
+    display: none;
+    border-top: 1px solid @dashhead-border;
+    margin: @dashhead-padding -@dashhead-padding -@dashhead-padding -@dashhead-padding !important;
+    padding: @dashhead-padding;
+    top: auto;
+    float: none;
+  }
+  .block-on-mobile {
+    width: 100%;
+    margin: 0 !important;
+    margin-bottom: @block-on-mobile-margin-y !important;
+    display: block;
+  }
+  .@{css-prefix}-dashhead-titles {
+    position: relative;
+  }
+  .toggle-toolbar-btn {
+    position: absolute;
+    width: @dashhead-toogle-btn-size;
+    height: @dashhead-toogle-btn-size;
+    cursor: pointer;
+    top: 50%;
+    margin-top: -(@dashhead-toogle-btn-size / 2);
+    right: -@dashhead-toogle-btn-x;
+    z-index: 3;
+    text-align: center;
+    line-height: @dashhead-toogle-btn-size;
+    color: fade(@color-black,45);
+    display: block;
+  }
+  .@{css-prefix}-dashhead-toolbar,
+  .@{css-prefix}-dashhead .breadcrumb {
+    display: none;
+  }
+  .@{css-prefix}-dashhead.toggle-toolbar {
+    display: block;
+    .@{css-prefix}-dashhead-toolbar,
+    .breadcrumb {
+      display: block;
+    }
+  }
+});
+
+.responsive-min(@device-tablet; {
+  .@{css-prefix}-dashhead {
+    padding: @dashhead-padding-min-mobile;
+  }
+  .@{css-prefix}-dashhead .breadcrumb {
+    margin: @dashhead-padding-min-mobile -@dashhead-padding-min-mobile -@dashhead-padding-min-mobile -@dashhead-padding-min-mobile;
+    padding-left: @dashhead-padding-min-mobile;
+    padding-right: @dashhead-padding-min-mobile;
+  }
+  .@{css-prefix}-dashhead.inline-breadcrumb .breadcrumb {
+    margin: @dashhead-breadcrumb-inline-margin-y-min-mobile 0 -10px 0;
+    padding-left: @dashhead-breadcrumb-inline-padding-x-mobile;
+    padding-right: @dashhead-breadcrumb-inline-padding-x-mobile;
+  }
+});

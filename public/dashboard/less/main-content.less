@@ -1,0 +1,50 @@
+// Content wrapper
+.@{css-prefix}-content-wrapper {
+  margin-left: @sidebar-width;
+  display: block;
+  width: auto;
+}
+
+// Content inner
+.@{css-prefix}-content {
+  .clear();
+  .@{css-prefix}-inner {
+    float: left;
+    width: 100%;
+  }
+}
+
+// Content inner sizing
+.@{css-prefix}-small-content {
+  max-width: @content-small-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+.@{css-prefix}-medium-content {
+  max-width: @content-medium-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+.@{css-prefix}-boxed-layout {
+  .@{css-prefix}-medium-content,
+  .@{css-prefix}-small-content {
+    max-width: 100%;
+  }
+}
+
+.responsive(@device-tablet + 1; {
+  .@{css-prefix}-content .@{css-prefix}-inner > .container-fluid {
+    padding-left: @content-container-fluid-padding-mobile;
+    padding-right: @content-container-fluid-padding-mobile;
+  }
+  .@{css-prefix}-content-wrapper {
+    margin-left: 0;
+  }
+});
+
+.responsive-min(@device-tablet; {
+  .@{css-prefix}-content .@{css-prefix}-inner > .container-fluid {
+    padding-left: @content-container-fluid-padding-desktop;
+    padding-right: @content-container-fluid-padding-desktop;
+  }
+});

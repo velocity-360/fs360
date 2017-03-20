@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Roosa - Just Another Dashboard Template</title>
+
+	<!-- Site Icons -->
+	<link rel="apple-touch-icon" href="../dist/img/apple-touch-icon.png">
+	<link rel="icon" href="../dist/img/icon.ico">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+	<!-- Framework -->
+	<link rel="stylesheet" href="../dist/css/vendor/bootstrap.min.css">
+
+	<!-- Icon Fonts -->
+	<link rel="stylesheet" href="../dist/icons/entypo/entypo.min.css">
+	<link rel="stylesheet" href="../dist/icons/fa/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../dist/icons/flag-icon/css/flag-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/material-icon/material-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/weather-icon/css/weather-icons.min.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="../dist/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datatable/datatables.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datepicker/css/datepicker.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/medium-editor.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/themes/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/plugins/morris/morris.min.css">
+	<link rel="stylesheet" href="../dist/plugins/prettify/themes/tomorrow-night.min.css">
+	<link rel="stylesheet" href="../dist/plugins/selectize/css/selectize.min.css">
+	<link rel="stylesheet" href="../dist/plugins/sortable/sortable.min.css">
+	<link rel="stylesheet" href="../dist/plugins/stepy/jquery.stepy.min.css">
+	<link rel="stylesheet" href="../dist/plugins/pace/pace.css">
+	<link rel="stylesheet" href="../dist/plugins/summernote/summernote.min.css">
+	
+
+	<!-- Main Template CSS -->
+	<link rel="stylesheet" href="../dist/css/bootstrap.custom.css">
+	<link rel="stylesheet" href="../dist/css/style.css">
+	<link rel="stylesheet" href="../dist/css/helper.css">
+</head>
+
+
+<body>
+
+	<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<div id="rs-wrapper">
+
+		<!-- BEGIN MAIN HEADER NAV -->
+		<nav class="navbar navbar-default rs-navbar navbar-static-top">
+			<div class="container-fluid">
+
+				<!-- 
+				Begin navbar header
+				Brand and toggle get grouped for better mobile display 
+				-->
+				<div class="navbar-header has-right-divider">
+
+					<!-- Begin Logo Brand 
+					Available class : .fixed-width
+					-->
+					<div class="rs-logo fixed-width">
+						<!-- Main Image logo -->
+						<a class="navbar-brand" href="index.html">
+						<img alt="Brand" src="../dist/img/logo.png">
+						</a>
+						<!-- Main small logo -->
+						<!-- <a class="navbar-brand" href="index.html">
+						<img alt="Brand" src="../dist/img/logo-small.png">
+						</a> -->
+						<!-- Text logo -->
+						<!-- <a class="navbar-brand text-uppercase rs-brand-text" href="index.html">
+						Roosa
+						</a> -->
+						<!-- Initial text / icon logo -->
+						<!-- <a class="navbar-brand rs-brand-text brand-initial" href="index.html">
+						<i class="gcon gcon-twitter text-info"></i>
+						</a> -->
+					</div><!-- /.rs-logo -->
+					<!-- End Logo Brand -->
+
+					<!-- Begin button to toggle sidebar -->
+					<button type="button" class="navbar-toggle collapsed sidebar-toggle" id="rs-sidebar-toggle-mobile">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- End button to toggle sidebar -->
+
+					<!-- Begin button to toggle navbar element -->
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#roosa-nav-collapse" aria-expanded="false">
+						<span class="gcon gcon-dots-three-vertical f-s-sm"></span>
+					</button>
+					<!-- End button to toggle navbar element -->
+
+				</div><!-- /.navbar-header -->
+				<!-- End Navbar header -->
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="roosa-nav-collapse">
+
+					<!-- All left content goes here -->
+					<div class="navbar-left">
+
+						<ul class="nav navbar-nav">
+							<li class="navbar-icon dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="gcon gcon-globe"></i>
+									<span class="visible-xs-inline-block text-menu">Connected Accounts</span>
+								</a>
+								<ul class="dropdown-menu p-b-0 p-t-0">
+									<li class="dropdown-header text-uppercase has-divider hidden-xs">Connected Accounts</li>
+
+									<li>
+										<ul class="grid-dropdown scroll-dropdown rs-scroll-custom">
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/google-play.png" class="rs-dropdown-img" alt="Icon">
+													Play
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/dropbox.png" class="rs-dropdown-img" alt="Icon">
+													Dropobox
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/dribbble.png" class="rs-dropdown-img" alt="Icon">
+													Dribbble
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/drive.png" class="rs-dropdown-img" alt="Icon">
+													Drive
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/skype.png" class="rs-dropdown-img" alt="Icon">
+													Skype
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0);">
+													<img src="../images/icons/logotype/github.png" class="rs-dropdown-img" alt="Icon">
+													Github
+												</a>
+											</li>
+										</ul>
+									</li>
+
+									<li class="text-center bottom-button"><a href="javascript:void(0);">All Accounts</a></li>
+								</ul>
+							</li>
+						</ul>
+
+						<!-- Begin nav search form -->
+						<form class="navbar-form navbar-left">
+							<div class="form-group has-feedback">
+								<input type="text" class="form-control" placeholder="Search and hit enter">
+								<span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+							</div>
+						</form>
+						<!-- End nav search form -->
+
+					</div><!-- /.navbar-left -->
+					<!-- End navbar left content -->
+
+					<!-- All right content goes here -->
+					<div class="navbar-right">
+
+						<ul class="nav navbar-nav">
+							<li class="navbar-icon dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="gcon gcon-shopping-bag"></i>
+									<span class="visible-xs-inline-block text-menu">Your Cart</span>
+								</a>
+								<ul class="dropdown-menu xl-dropdown p-b-0 p-t-0">
+									<li class="dropdown-header text-uppercase has-divider hidden-xs">
+										Your cart
+									</li>
+									<li class="dropdown-empty-state text-center">
+										<span class="empty-icon m-b-md"><img src="../images/icons/basic/store.png" alt="Icon"></span>
+										<p>You don't have any product</p>
+										<p><a class="btn btn-success">Add some</a></p>
+									</li>
+								</ul>
+							</li>
+							<li class="navbar-icon dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="circle-notification bg-danger badge-notification"></span>
+									<i class="gcon gcon-bell"></i>
+									<span class="visible-xs-inline-block text-menu">Notifications</span>
+								</a>
+								<ul class="dropdown-menu xl-dropdown p-b-0 p-t-0">
+									<li class="dropdown-header text-uppercase has-divider hidden-xs">
+										Notifications
+										<span class="label label-success m-l">2 new</span>
+									</li>
+									<li>
+										<ul class="rs-inner-dropdown has-divider media-menu scroll-dropdown rs-scroll-custom">
+											<li class="new"><a href="javascript:void(0);">
+												<span class="media img-circle bg-primary">EJ</span>
+												<span class="id">Enjelina Joli</span> Add one of your items as favorite
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+											<li class="new"><a href="javascript:void(0);">
+												<img src="../images/avatars/04.png" class="media img-circle" alt="Avatar">
+												<span class="id">Joker Betmen</span> Follows you
+												<span class="time small">About an hour ago</span>
+											</a></li>
+											<li><a href="javascript:void(0);">
+												<img src="../images/avatars/13.png" class="media img-circle" alt="Avatar">
+												<span class="id">Selena Gemes</span> Commented on one of your items
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+											<li><a href="javascript:void(0);">
+												<img src="../images/avatars/07.png" class="media img-circle" alt="Avatar">
+												<span class="id">Jono Linon</span> Rated you item
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+											<li><a href="javascript:void(0);">
+												<span class="media img-circle gcon gcon-shopping-bag bg-primary"></span>
+												<span class="id">Enjelina Joli</span> Purchased your item
+												<span class="time small">About 30 minutes ago</span>
+											</a></li>
+										</ul>
+									</li>
+									<li class="text-center bottom-button"><a href="javascript:void(0);">View all notifications</a></li>
+								</ul>
+							</li>
+							<li class="navbar-icon">
+								<a href="javascript:void(0);">
+									<i class="gcon gcon-lifebuoy"></i>
+									<span class="visible-xs-inline-block text-menu">Help &amp; Support</span>
+								</a>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav">
+							<!-- Begin user menu -->
+							<li class="rs-user-nav dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="circle-notification badge-notification bg-success"></span>
+									<img src="../images/avatars/01.png" class="rs-nav-avatar img-circle" alt="Avatar">
+									<span class="visible-xs-inline-block m-l">Welcome, <strong>Mister Bin</strong></span>
+								</a>
+								<!-- Dropdown -->
+								<ul class="dropdown-menu lg-dropdown">
+									<li class="inherit-bg">
+										<a href="javascript:void(0);">
+											<span class="f-s-xs f-w-500">Mister Bin, Jr</span><br />
+											<small class="text-muted">Earnings:<strong class="m-l-xs text-success">$25,441.35</strong></small>
+										</a>
+									</li>
+									<li role="separator" class="divider"></li>
+									<li class="dropdown-header text-uppercase">Account Settings</li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="mcon mcon-face rs-dropdown-icon"></span>My Account</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-cog rs-dropdown-icon"></span>General Settings</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-lock-open rs-dropdown-icon"></span>Change Password</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-log-out rs-dropdown-icon"></span>Log Out</a></li>
+								</ul>
+								<!-- End dropdown -->
+							</li>
+							<!-- End user menu -->
+						</ul>
+					</div><!-- /.navbar-right -->
+					<!-- End navbar right content -->
+
+				</div><!-- /.collapse navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		<!-- END MAIN HEADER NAV -->
+
+
+		<!-- BEGIN SIDEBAR NAV -->
+		<aside class="rs-sidebar">
+
+			<!-- Sidebar menu -->
+			<ul class="rs-sidebar-nav default-sidebar-nav">
+				<li class="rs-user-sidebar">
+					<a href="javascript:void(0);">
+						<img src="../images/avatars/01.png" alt="Avatar" class="avatar img-circle">
+						Mister Bin, Jr
+						<span class="subname text-uppercase m-t">GentoLab, LLC</span>
+					</a>
+					<ul>
+						<li><a href="javascript:void(0);">My Profile</a></li>
+						<li><a href="javascript:void(0);">Account Settings</a></li>
+						<li><a href="javascript:void(0);">Author Level<span class="label label-success p-x text-uppercase">Elite</span></a></li>
+						<li><a href="javascript:void(0);">Log Out</a></li>
+					</ul>
+				</li>
+
+				<li class="menu-block-divider"></li>
+				<li class="menu-header">Main menu</li>
+
+				<li>
+					<a href="index.html">
+						<span class="gcon gcon-gauge rs-icon-menu"></span>Dashboard
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="badge badge-danger">6</span>
+						<span class="gcon gcon-browser rs-icon-menu"></span>Page Layouts
+					</a>
+					<ul>
+						<li><a href="pl-static.html">Static Layout</a></li>
+						<li><a href="pl-fixed-nav.html">Fixed Nav</a></li>
+						<li><a href="pl-fixed.html">Fixed Nav &amp; Sidebar</a></li>
+						<li><a href="pl-default-scroll.html">Sidebar Default Scroll</a></li>
+						<li><a href="pl-boxed-static.html">Boxed Static Layout</a></li>
+						<li><a href="pl-boxed-fixed-nav.html">Boxed Fixed Nav</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-colours rs-icon-menu"></span>Color Palette
+					</a>
+					<ul>
+						<li><a href="palette-basic.html">Basic Colors</a></li>
+						<li><a href="palette-gradient.html">Gradients</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-attachment rs-icon-menu"></span>Ready Pages
+					</a>
+					<ul>
+						<li><a href="page-login-01.html">Login Page 01</a></li>
+						<li><a href="page-login-02.html">Login Page 02</a></li>
+						<li><a href="page-lock-01.html">Lock Screen 01</a></li>
+						<li><a href="page-lock-02.html">Lock Screen 02</a></li>
+						<li><a href="page-forgot-01.html">Forgot Password 01</a></li>
+						<li><a href="page-forgot-02.html">Forgot Password 02</a></li>
+						<li><a href="page-reset-01.html">Reset Password 01</a></li>
+						<li><a href="page-reset-02.html">Reset Password 02</a></li>
+						<li><a href="page-signup-01.html">Sign Up 01</a></li>
+						<li><a href="page-signup-02.html">Sign Up 02</a></li>
+						<li><a href="page-404.html">404 Not Found</a></li>
+						<li><a href="page-empty.html">Empty Page</a></li>
+					</ul>
+				</li>
+
+				<li class="menu-block-divider"></li>
+				<li class="menu-header">Development</li>
+
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-water rs-icon-menu"></span>Layout Components
+					</a>
+					<ul>
+						<li><a href="lc-navbar-elements.html">Navbar Elements</a></li>
+						<li><a href="lc-dashhead.html">Dashhead</a></li>
+						<li><a href="lc-dashhead-elements.html">Dashhead Elements</a></li>
+						<li><a href="lc-breadcrumbs.html">Breadcrumbs</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-pin rs-icon-menu"></span>Components
+					</a>
+					<ul>
+						<li><a href="component-alerts.html">Alerts</a></li>
+						<li><a href="component-buttons.html">Buttons</a></li>
+						<li><a href="component-dropdowns.html">Dropdowns</a></li>
+						<li><a href="component-general.html">General Items</a></li>
+						<li><a href="component-helper.html">Helper</a></li>
+						<li><a href="component-list-group.html">List Group</a></li>
+						<li><a href="component-media-object.html">Media Object</a></li>
+						<li><a href="component-modals.html">Modals</a></li>
+						<li><a href="component-nav.html">Nav</a></li>
+						<li><a href="component-prettify.html">Google Code Prettify</a></li>
+						<li><a href="component-tabs.html">Tabs &amp; Accordions</a></li>
+						<li><a href="component-typography.html">Typography</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-documents rs-icon-menu"></span>Panels
+					</a>
+					<ul>
+						<li><a href="panel-variations.html">Panel Variations</a></li>
+						<li><a href="panel-elements.html">Panel Elements</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-new-message rs-icon-menu"></span>Form Input
+					</a>
+					<ul>
+						<li><a href="form-basic.html">Basic Input</a></li>
+						<li><a href="form-custom.html">Custom Input</a></li>
+						<li><a href="form-validation.html">Validation</a></li>
+						<li><a href="form-wizard.html">Wizard</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-pencil rs-icon-menu"></span>WYSWYG Editor
+					</a>
+					<ul>
+						<li><a href="editor-summernote.html">Summernote</a></li>
+						<li><a href="editor-medium.html">Medium Editor</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-ruler rs-icon-menu"></span>Tables
+					</a>
+					<ul>
+						<li><a href="table-static.html">Static Table</a></li>
+						<li><a href="table-datatable.html">Data Table</a></li>
+						<li><a href="table-sortable.html">Sortable</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-line-graph rs-icon-menu"></span>Chart Plugins
+					</a>
+					<ul>
+						<li><a href="chart-js.html">Chart Js</a></li>
+						<li><a href="chart-morris.html">Morris Js</a></li>
+						<li><a href="chart-sparklines.html">Sparklines</a></li>
+					</ul>
+				</li>
+				<li class="active selected">
+					<a href="javascript:void(0);">
+						<span class="label bg-darken text-success">2658</span><span class="gcon gcon-vinyl rs-icon-menu"></span>Icons
+					</a>
+					<ul>
+						<li><a href="icon-bootstrap.html">Bootstrap Glyphicons</a></li>
+						<li><a href="icon-fa.html">Font Awesome</a></li>
+						<li><a href="icon-entypo.html">Entypo</a></li>
+						<li><a href="icon-weather.html">Weather Icon</a></li>
+						<li class="active selected"><a href="icon-material.html">Material Icon</a></li>
+						<li><a href="icon-flag.html">Flag Icon</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span class="gcon gcon-flow-tree rs-icon-menu"></span>Multilevel Menu
+					</a>
+					<ul>
+						<li><a href="javascript:void(0);">Hi, I am First</a></li>
+						<li><a href="javascript:void(0);">Pertamax</a>
+							<ul>
+								<li><a href="javascript:void(0);">Keduax</a></li>
+								<li><a href="javascript:void(0);">Do ngopo ki?</a></li>
+								<li><a href="javascript:void(0);">I am Newbie</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+				<li class="menu-block-divider"></li>
+				<li class="menu-header">No Icon Menu</li>
+
+				<li class="no-icon-menu">
+					<a href="javascript:void(0);">Gorengan</a>
+				</li>
+				<li class="no-icon-menu">
+					<a href="javascript:void(0);">Soto Ayam</a>
+					<ul>
+						<li>
+							<a href="javascript:void(0);">
+								<span class="label label-warning bg-transparent text-warning p-x-0">$50</span>
+								Paket Hemat Kampus
+							</a>
+						</li>
+						<li><a href="javascript:void(0);">Paket Jumbo Telolet</a>
+							<ul>
+								<li>
+									<a href="javascript:void(0);">
+									<span class="label label-warning bg-transparent text-warning p-x-0">$250</span>
+									Pakai Dada Montok
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);">
+									<span class="label label-warning bg-transparent text-warning p-x-0">$225</span>
+									Pakai Paha Mulus
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);">
+									<span class="label label-warning bg-transparent text-warning p-x-0">$175</span>
+									Pakai Brutu Mambu
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="no-icon-menu">
+					<a href="javascript:void(0);">Tahu Bakso</a>
+				</li>
+
+				<li class="menu-block-divider"></li>
+			</ul>
+			<!-- End sidebar menu -->
+
+			<!-- Custom Content -->
+			<ul class="custom-content">
+				<li class="menu-header">Running projects</li>
+				<li class="p-a-md">
+					<div class="form-group m-b-lg">
+						<label class="f-w-400">Roosa HTML Template</label>
+						<label class="pull-right text-lighten small">8/10</label>
+						<div class="progress progress-xs bg-lightest m-a-0">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							</div>
+						</div>
+						<p class="help-block m-t-xs"><span class="label label-success bg-darken text-lighten label-block text-left">You almost there, hurry up!</span></p>
+					</div><!-- /.form-group -->
+					<div class="form-group m-b-lg">
+						<label class="f-w-400">Weet Landing Page HTML</label>
+						<label class="pull-right text-lighten small">4/10</label>
+						<div class="progress progress-xs bg-lightest m-a-0">
+							<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+							</div>
+						</div>
+						<p class="help-block m-t-xs"><span class="label label-success bg-darken text-lighten label-block text-left">It seems you are working on another :c</span></p>
+					</div><!-- /.form-group -->
+					<div class="form-group m-b-lg">
+						<label class="f-w-400">Manook Template</label>
+						<label class="pull-right text-lighten small">2/10</label>
+						<div class="progress progress-xs bg-lightest m-a-0">
+							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							</div>
+						</div>
+						<p class="help-block m-t-xs"><span class="label label-success bg-darken text-lighten label-block text-left">Hey man! We missed you!</span></p>
+					</div><!-- /.form-group -->
+					<button class="btn btn-darken btn-sm text-uppercase btn-block">Review All Projects</button>
+				</li>
+				<li class="menu-block-divider"></li>
+			</ul>
+			<!-- End Custom content -->
+
+			<!-- Custom Content -->
+			<ul class="custom-content">
+				<li class="menu-header">This Month Revenue</li>
+				<li class="p-y p-x-md">
+					<div class="radio radio-custom radio-lighten m-b-md">
+						<label>
+							<input type="radio" name="rs-revenue" value="" checked>
+							<span class="checker bg-transparent"></span>
+							Envato Market
+						</label>
+						<span class="badge bg-darken m-a-0 p-x pull-right text-lighten">USD 36,457</span>
+					</div><!-- /.radio -->
+					<div class="radio radio-custom radio-lighten m-b-md">
+						<label>
+							<input type="radio" name="rs-revenue" value="">
+							<span class="checker bg-transparent"></span>
+							Wrapbootstrap
+						</label>
+						<span class="badge bg-darken m-a-0 p-x pull-right text-lighten">USD 12,214</span>
+					</div><!-- /.radio -->
+					<div class="radio radio-custom radio-lighten m-b-md">
+						<label>
+							<input type="radio" name="rs-revenue" value="">
+							<span class="checker bg-transparent"></span>
+							Creative Market
+						</label>
+						<span class="badge bg-darken m-a-0 p-x pull-right text-lighten">USD 10,320</span>
+					</div><!-- /.radio -->
+					<div>
+					<a href="https://goo.gl/yWlIVx" target="_blank" class="btn btn-block btn-success m-t-lg"><i class="gcon gcon-shopping-bag icon-btn text-darken m-r"></i>Buy this template for <strong class="m-l-xs">$24</strong></a></div>
+				</li>
+				<li class="menu-block-divider"></li>
+			</ul>
+			<!-- End Custom content -->
+
+		</aside><!-- /.rs-sidebar -->
+		<!-- END SIDEBAR NAV -->
+
+
+		<!-- BEGIN MAIN CONTENT -->
+		<article class="rs-content-wrapper">
+			<div class="rs-content">
+				<div class="rs-inner">
+
+					<!-- Begin Dashhead -->
+					<div class="rs-dashhead m-b-lg">
+						<div class="rs-dashhead-content">
+							<div class="rs-dashhead-titles">
+								<h6 class="rs-dashhead-subtitle text-uppercase">Font icons</h6>
+								<h3 class="rs-dashhead-title m-t">Material Icons</h3>
+								<!-- Begin Toolbar toggle button on mobile -->
+								<div class="toggle-toolbar-btn">
+									<span class="fa fa-sort"></span>
+								</div><!-- /.toggle-toolbar-btn -->
+								<!-- End Toolbar toggle button on mobile -->
+							</div><!-- /.rs-dashhead-titles -->
+							<div class="rs-dashhead-toolbar">
+								<span class="label label-success">845 icons</span>
+							</div><!-- /.rs-dashhead-toolbar -->
+						</div><!-- /.rs-dashhead-content -->
+						<!-- Begin Breadcrumb -->
+						<ol class="breadcrumb">
+							<li><a href="javascript:void(0);"><i class="fa fa-home m-r"></i> Home</a></li>
+							<li><a href="javascript:void(0);">Library</a></li>
+							<li class="active">Data</li>
+						</ol>
+						<!-- End Breadcrumb -->
+					</div><!-- /.rs-dashhead -->
+					<!-- End Dashhead -->
+
+					<!-- Begin default content width -->
+					<div class="container-fluid">
+
+						<!-- Begin Panel -->
+						<div class="panel panel-plain panel-rounded">
+							<div class="panel-heading">
+								<h3 class="panel-title">Icon classes</h3>
+								<!-- Begin Panel Toolbar -->
+								<div class="panel-toolbar v-centered">
+									<ul class="list-inline m-a-0">
+									<li><i class="rs-collapse-panel icon-toolbar-rotate icon-toolbar gcon gcon-chevron-up"></i></li>
+									<li><i class="rs-refresh-panel icon-toolbar gcon gcon-cycle"></i></li>
+									<li><i class="rs-close-panel icon-toolbar gcon gcon-cross"></i></li>
+									</ul>
+								</div><!-- /.panel-toolbar -->
+								<!-- End Panel Toolbar -->
+							</div><!-- /.panel-heading -->
+							<div class="panel-body">
+								
+								<div class="icon-wrap">
+<div class="rsi"><i class="mcon mcon-3d_rotation"></i><samp>mcon-3d_rotation</samp></div>
+<div class="rsi"><i class="mcon mcon-ac_unit"></i><samp>mcon-ac_unit</samp></div>
+<div class="rsi"><i class="mcon mcon-alarm"></i><samp>mcon-alarm</samp></div>
+<div class="rsi"><i class="mcon mcon-access_alarms"></i><samp>mcon-access_alarms</samp></div>
+<div class="rsi"><i class="mcon mcon-schedule"></i><samp>mcon-schedule</samp></div>
+<div class="rsi"><i class="mcon mcon-accessibility"></i><samp>mcon-accessibility</samp></div>
+<div class="rsi"><i class="mcon mcon-accessible"></i><samp>mcon-accessible</samp></div>
+<div class="rsi"><i class="mcon mcon-account_balance"></i><samp>mcon-account_balance</samp></div>
+<div class="rsi"><i class="mcon mcon-account_balance_wallet"></i><samp>mcon-account_balance_wallet</samp></div>
+<div class="rsi"><i class="mcon mcon-account_box"></i><samp>mcon-account_box</samp></div>
+<div class="rsi"><i class="mcon mcon-account_circle"></i><samp>mcon-account_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-adb"></i><samp>mcon-adb</samp></div>
+<div class="rsi"><i class="mcon mcon-add"></i><samp>mcon-add</samp></div>
+<div class="rsi"><i class="mcon mcon-add_a_photo"></i><samp>mcon-add_a_photo</samp></div>
+<div class="rsi"><i class="mcon mcon-alarm_add"></i><samp>mcon-alarm_add</samp></div>
+<div class="rsi"><i class="mcon mcon-add_alert"></i><samp>mcon-add_alert</samp></div>
+<div class="rsi"><i class="mcon mcon-add_box"></i><samp>mcon-add_box</samp></div>
+<div class="rsi"><i class="mcon mcon-add_circle"></i><samp>mcon-add_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-control_point"></i><samp>mcon-control_point</samp></div>
+<div class="rsi"><i class="mcon mcon-add_location"></i><samp>mcon-add_location</samp></div>
+<div class="rsi"><i class="mcon mcon-add_shopping_cart"></i><samp>mcon-add_shopping_cart</samp></div>
+<div class="rsi"><i class="mcon mcon-queue"></i><samp>mcon-queue</samp></div>
+<div class="rsi"><i class="mcon mcon-add_to_queue"></i><samp>mcon-add_to_queue</samp></div>
+<div class="rsi"><i class="mcon mcon-adjust"></i><samp>mcon-adjust</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_flat"></i><samp>mcon-airline_seat_flat</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_flat_angled"></i><samp>mcon-airline_seat_flat_angled</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_individual_suite"></i><samp>mcon-airline_seat_individual_suite</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_legroom_extra"></i><samp>mcon-airline_seat_legroom_extra</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_legroom_normal"></i><samp>mcon-airline_seat_legroom_normal</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_legroom_reduced"></i><samp>mcon-airline_seat_legroom_reduced</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_recline_extra"></i><samp>mcon-airline_seat_recline_extra</samp></div>
+<div class="rsi"><i class="mcon mcon-airline_seat_recline_normal"></i><samp>mcon-airline_seat_recline_normal</samp></div>
+<div class="rsi"><i class="mcon mcon-flight"></i><samp>mcon-flight</samp></div>
+<div class="rsi"><i class="mcon mcon-airplanemode_inactive"></i><samp>mcon-airplanemode_inactive</samp></div>
+<div class="rsi"><i class="mcon mcon-airplay"></i><samp>mcon-airplay</samp></div>
+<div class="rsi"><i class="mcon mcon-airport_shuttle"></i><samp>mcon-airport_shuttle</samp></div>
+<div class="rsi"><i class="mcon mcon-alarm_off"></i><samp>mcon-alarm_off</samp></div>
+<div class="rsi"><i class="mcon mcon-alarm_on"></i><samp>mcon-alarm_on</samp></div>
+<div class="rsi"><i class="mcon mcon-album"></i><samp>mcon-album</samp></div>
+<div class="rsi"><i class="mcon mcon-all_inclusive"></i><samp>mcon-all_inclusive</samp></div>
+<div class="rsi"><i class="mcon mcon-all_out"></i><samp>mcon-all_out</samp></div>
+<div class="rsi"><i class="mcon mcon-android"></i><samp>mcon-android</samp></div>
+<div class="rsi"><i class="mcon mcon-announcement"></i><samp>mcon-announcement</samp></div>
+<div class="rsi"><i class="mcon mcon-apps"></i><samp>mcon-apps</samp></div>
+<div class="rsi"><i class="mcon mcon-archive"></i><samp>mcon-archive</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_back"></i><samp>mcon-arrow_back</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_downward"></i><samp>mcon-arrow_downward</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_drop_down"></i><samp>mcon-arrow_drop_down</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_drop_down_circle"></i><samp>mcon-arrow_drop_down_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_drop_up"></i><samp>mcon-arrow_drop_up</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_forward"></i><samp>mcon-arrow_forward</samp></div>
+<div class="rsi"><i class="mcon mcon-arrow_upward"></i><samp>mcon-arrow_upward</samp></div>
+<div class="rsi"><i class="mcon mcon-art_track"></i><samp>mcon-art_track</samp></div>
+<div class="rsi"><i class="mcon mcon-aspect_ratio"></i><samp>mcon-aspect_ratio</samp></div>
+<div class="rsi"><i class="mcon mcon-poll"></i><samp>mcon-poll</samp></div>
+<div class="rsi"><i class="mcon mcon-assignment"></i><samp>mcon-assignment</samp></div>
+<div class="rsi"><i class="mcon mcon-assignment_ind"></i><samp>mcon-assignment_ind</samp></div>
+<div class="rsi"><i class="mcon mcon-assignment_late"></i><samp>mcon-assignment_late</samp></div>
+<div class="rsi"><i class="mcon mcon-assignment_return"></i><samp>mcon-assignment_return</samp></div>
+<div class="rsi"><i class="mcon mcon-assignment_returned"></i><samp>mcon-assignment_returned</samp></div>
+<div class="rsi"><i class="mcon mcon-assignment_turned_in"></i><samp>mcon-assignment_turned_in</samp></div>
+<div class="rsi"><i class="mcon mcon-assistant"></i><samp>mcon-assistant</samp></div>
+<div class="rsi"><i class="mcon mcon-flag"></i><samp>mcon-flag</samp></div>
+<div class="rsi"><i class="mcon mcon-attach_file"></i><samp>mcon-attach_file</samp></div>
+<div class="rsi"><i class="mcon mcon-attach_money"></i><samp>mcon-attach_money</samp></div>
+<div class="rsi"><i class="mcon mcon-attachment"></i><samp>mcon-attachment</samp></div>
+<div class="rsi"><i class="mcon mcon-audiotrack"></i><samp>mcon-audiotrack</samp></div>
+<div class="rsi"><i class="mcon mcon-autorenew"></i><samp>mcon-autorenew</samp></div>
+<div class="rsi"><i class="mcon mcon-av_timer"></i><samp>mcon-av_timer</samp></div>
+<div class="rsi"><i class="mcon mcon-backspace"></i><samp>mcon-backspace</samp></div>
+<div class="rsi"><i class="mcon mcon-cloud_upload"></i><samp>mcon-cloud_upload</samp></div>
+<div class="rsi"><i class="mcon mcon-battery_alert"></i><samp>mcon-battery_alert</samp></div>
+<div class="rsi"><i class="mcon mcon-battery_charging_full"></i><samp>mcon-battery_charging_full</samp></div>
+<div class="rsi"><i class="mcon mcon-battery_std"></i><samp>mcon-battery_std</samp></div>
+<div class="rsi"><i class="mcon mcon-battery_unknown"></i><samp>mcon-battery_unknown</samp></div>
+<div class="rsi"><i class="mcon mcon-beach_access"></i><samp>mcon-beach_access</samp></div>
+<div class="rsi"><i class="mcon mcon-beenhere"></i><samp>mcon-beenhere</samp></div>
+<div class="rsi"><i class="mcon mcon-block"></i><samp>mcon-block</samp></div>
+<div class="rsi"><i class="mcon mcon-bluetooth"></i><samp>mcon-bluetooth</samp></div>
+<div class="rsi"><i class="mcon mcon-bluetooth_searching"></i><samp>mcon-bluetooth_searching</samp></div>
+<div class="rsi"><i class="mcon mcon-bluetooth_connected"></i><samp>mcon-bluetooth_connected</samp></div>
+<div class="rsi"><i class="mcon mcon-bluetooth_disabled"></i><samp>mcon-bluetooth_disabled</samp></div>
+<div class="rsi"><i class="mcon mcon-blur_circular"></i><samp>mcon-blur_circular</samp></div>
+<div class="rsi"><i class="mcon mcon-blur_linear"></i><samp>mcon-blur_linear</samp></div>
+<div class="rsi"><i class="mcon mcon-blur_off"></i><samp>mcon-blur_off</samp></div>
+<div class="rsi"><i class="mcon mcon-blur_on"></i><samp>mcon-blur_on</samp></div>
+<div class="rsi"><i class="mcon mcon-class"></i><samp>mcon-class</samp></div>
+<div class="rsi"><i class="mcon mcon-turned_in"></i><samp>mcon-turned_in</samp></div>
+<div class="rsi"><i class="mcon mcon-turned_in_not"></i><samp>mcon-turned_in_not</samp></div>
+<div class="rsi"><i class="mcon mcon-border_all"></i><samp>mcon-border_all</samp></div>
+<div class="rsi"><i class="mcon mcon-border_bottom"></i><samp>mcon-border_bottom</samp></div>
+<div class="rsi"><i class="mcon mcon-border_clear"></i><samp>mcon-border_clear</samp></div>
+<div class="rsi"><i class="mcon mcon-border_color"></i><samp>mcon-border_color</samp></div>
+<div class="rsi"><i class="mcon mcon-border_horizontal"></i><samp>mcon-border_horizontal</samp></div>
+<div class="rsi"><i class="mcon mcon-border_inner"></i><samp>mcon-border_inner</samp></div>
+<div class="rsi"><i class="mcon mcon-border_left"></i><samp>mcon-border_left</samp></div>
+<div class="rsi"><i class="mcon mcon-border_outer"></i><samp>mcon-border_outer</samp></div>
+<div class="rsi"><i class="mcon mcon-border_right"></i><samp>mcon-border_right</samp></div>
+<div class="rsi"><i class="mcon mcon-border_style"></i><samp>mcon-border_style</samp></div>
+<div class="rsi"><i class="mcon mcon-border_top"></i><samp>mcon-border_top</samp></div>
+<div class="rsi"><i class="mcon mcon-border_vertical"></i><samp>mcon-border_vertical</samp></div>
+<div class="rsi"><i class="mcon mcon-branding_watermark"></i><samp>mcon-branding_watermark</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_1"></i><samp>mcon-brightness_1</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_2"></i><samp>mcon-brightness_2</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_3"></i><samp>mcon-brightness_3</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_4"></i><samp>mcon-brightness_4</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_low"></i><samp>mcon-brightness_low</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_medium"></i><samp>mcon-brightness_medium</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_high"></i><samp>mcon-brightness_high</samp></div>
+<div class="rsi"><i class="mcon mcon-brightness_auto"></i><samp>mcon-brightness_auto</samp></div>
+<div class="rsi"><i class="mcon mcon-broken_image"></i><samp>mcon-broken_image</samp></div>
+<div class="rsi"><i class="mcon mcon-brush"></i><samp>mcon-brush</samp></div>
+<div class="rsi"><i class="mcon mcon-bubble_chart"></i><samp>mcon-bubble_chart</samp></div>
+<div class="rsi"><i class="mcon mcon-bug_report"></i><samp>mcon-bug_report</samp></div>
+<div class="rsi"><i class="mcon mcon-build"></i><samp>mcon-build</samp></div>
+<div class="rsi"><i class="mcon mcon-burst_mode"></i><samp>mcon-burst_mode</samp></div>
+<div class="rsi"><i class="mcon mcon-domain"></i><samp>mcon-domain</samp></div>
+<div class="rsi"><i class="mcon mcon-business_center"></i><samp>mcon-business_center</samp></div>
+<div class="rsi"><i class="mcon mcon-cached"></i><samp>mcon-cached</samp></div>
+<div class="rsi"><i class="mcon mcon-cake"></i><samp>mcon-cake</samp></div>
+<div class="rsi"><i class="mcon mcon-phone"></i><samp>mcon-phone</samp></div>
+<div class="rsi"><i class="mcon mcon-call_end"></i><samp>mcon-call_end</samp></div>
+<div class="rsi"><i class="mcon mcon-call_made"></i><samp>mcon-call_made</samp></div>
+<div class="rsi"><i class="mcon mcon-merge_type"></i><samp>mcon-merge_type</samp></div>
+<div class="rsi"><i class="mcon mcon-call_missed"></i><samp>mcon-call_missed</samp></div>
+<div class="rsi"><i class="mcon mcon-call_missed_outgoing"></i><samp>mcon-call_missed_outgoing</samp></div>
+<div class="rsi"><i class="mcon mcon-call_received"></i><samp>mcon-call_received</samp></div>
+<div class="rsi"><i class="mcon mcon-call_split"></i><samp>mcon-call_split</samp></div>
+<div class="rsi"><i class="mcon mcon-call_to_action"></i><samp>mcon-call_to_action</samp></div>
+<div class="rsi"><i class="mcon mcon-camera"></i><samp>mcon-camera</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_camera"></i><samp>mcon-photo_camera</samp></div>
+<div class="rsi"><i class="mcon mcon-camera_enhance"></i><samp>mcon-camera_enhance</samp></div>
+<div class="rsi"><i class="mcon mcon-camera_front"></i><samp>mcon-camera_front</samp></div>
+<div class="rsi"><i class="mcon mcon-camera_rear"></i><samp>mcon-camera_rear</samp></div>
+<div class="rsi"><i class="mcon mcon-camera_roll"></i><samp>mcon-camera_roll</samp></div>
+<div class="rsi"><i class="mcon mcon-cancel"></i><samp>mcon-cancel</samp></div>
+<div class="rsi"><i class="mcon mcon-redeem"></i><samp>mcon-redeem</samp></div>
+<div class="rsi"><i class="mcon mcon-card_membership"></i><samp>mcon-card_membership</samp></div>
+<div class="rsi"><i class="mcon mcon-card_travel"></i><samp>mcon-card_travel</samp></div>
+<div class="rsi"><i class="mcon mcon-casino"></i><samp>mcon-casino</samp></div>
+<div class="rsi"><i class="mcon mcon-cast"></i><samp>mcon-cast</samp></div>
+<div class="rsi"><i class="mcon mcon-cast_connected"></i><samp>mcon-cast_connected</samp></div>
+<div class="rsi"><i class="mcon mcon-center_focus_strong"></i><samp>mcon-center_focus_strong</samp></div>
+<div class="rsi"><i class="mcon mcon-center_focus_weak"></i><samp>mcon-center_focus_weak</samp></div>
+<div class="rsi"><i class="mcon mcon-change_history"></i><samp>mcon-change_history</samp></div>
+<div class="rsi"><i class="mcon mcon-chat"></i><samp>mcon-chat</samp></div>
+<div class="rsi"><i class="mcon mcon-chat_bubble"></i><samp>mcon-chat_bubble</samp></div>
+<div class="rsi"><i class="mcon mcon-chat_bubble_outline"></i><samp>mcon-chat_bubble_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-check"></i><samp>mcon-check</samp></div>
+<div class="rsi"><i class="mcon mcon-check_box"></i><samp>mcon-check_box</samp></div>
+<div class="rsi"><i class="mcon mcon-check_box_outline_blank"></i><samp>mcon-check_box_outline_blank</samp></div>
+<div class="rsi"><i class="mcon mcon-check_circle"></i><samp>mcon-check_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-navigate_before"></i><samp>mcon-navigate_before</samp></div>
+<div class="rsi"><i class="mcon mcon-navigate_next"></i><samp>mcon-navigate_next</samp></div>
+<div class="rsi"><i class="mcon mcon-child_care"></i><samp>mcon-child_care</samp></div>
+<div class="rsi"><i class="mcon mcon-child_friendly"></i><samp>mcon-child_friendly</samp></div>
+<div class="rsi"><i class="mcon mcon-chrome_reader_mode"></i><samp>mcon-chrome_reader_mode</samp></div>
+<div class="rsi"><i class="mcon mcon-close"></i><samp>mcon-close</samp></div>
+<div class="rsi"><i class="mcon mcon-clear_all"></i><samp>mcon-clear_all</samp></div>
+<div class="rsi"><i class="mcon mcon-closed_caption"></i><samp>mcon-closed_caption</samp></div>
+<div class="rsi"><i class="mcon mcon-wb_cloudy"></i><samp>mcon-wb_cloudy</samp></div>
+<div class="rsi"><i class="mcon mcon-cloud_circle"></i><samp>mcon-cloud_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-cloud_done"></i><samp>mcon-cloud_done</samp></div>
+<div class="rsi"><i class="mcon mcon-cloud_download"></i><samp>mcon-cloud_download</samp></div>
+<div class="rsi"><i class="mcon mcon-cloud_off"></i><samp>mcon-cloud_off</samp></div>
+<div class="rsi"><i class="mcon mcon-cloud_queue"></i><samp>mcon-cloud_queue</samp></div>
+<div class="rsi"><i class="mcon mcon-code"></i><samp>mcon-code</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_library"></i><samp>mcon-photo_library</samp></div>
+<div class="rsi"><i class="mcon mcon-collections_bookmark"></i><samp>mcon-collections_bookmark</samp></div>
+<div class="rsi"><i class="mcon mcon-palette"></i><samp>mcon-palette</samp></div>
+<div class="rsi"><i class="mcon mcon-colorize"></i><samp>mcon-colorize</samp></div>
+<div class="rsi"><i class="mcon mcon-comment"></i><samp>mcon-comment</samp></div>
+<div class="rsi"><i class="mcon mcon-compare"></i><samp>mcon-compare</samp></div>
+<div class="rsi"><i class="mcon mcon-compare_arrows"></i><samp>mcon-compare_arrows</samp></div>
+<div class="rsi"><i class="mcon mcon-laptop"></i><samp>mcon-laptop</samp></div>
+<div class="rsi"><i class="mcon mcon-confirmation_number"></i><samp>mcon-confirmation_number</samp></div>
+<div class="rsi"><i class="mcon mcon-contact_mail"></i><samp>mcon-contact_mail</samp></div>
+<div class="rsi"><i class="mcon mcon-contact_phone"></i><samp>mcon-contact_phone</samp></div>
+<div class="rsi"><i class="mcon mcon-contacts"></i><samp>mcon-contacts</samp></div>
+<div class="rsi"><i class="mcon mcon-content_copy"></i><samp>mcon-content_copy</samp></div>
+<div class="rsi"><i class="mcon mcon-content_cut"></i><samp>mcon-content_cut</samp></div>
+<div class="rsi"><i class="mcon mcon-content_paste"></i><samp>mcon-content_paste</samp></div>
+<div class="rsi"><i class="mcon mcon-control_point_duplicate"></i><samp>mcon-control_point_duplicate</samp></div>
+<div class="rsi"><i class="mcon mcon-copyright"></i><samp>mcon-copyright</samp></div>
+<div class="rsi"><i class="mcon mcon-mode_edit"></i><samp>mcon-mode_edit</samp></div>
+<div class="rsi"><i class="mcon mcon-create_new_folder"></i><samp>mcon-create_new_folder</samp></div>
+<div class="rsi"><i class="mcon mcon-payment"></i><samp>mcon-payment</samp></div>
+<div class="rsi"><i class="mcon mcon-crop"></i><samp>mcon-crop</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_16_9"></i><samp>mcon-crop_16_9</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_3_2"></i><samp>mcon-crop_3_2</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_landscape"></i><samp>mcon-crop_landscape</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_7_5"></i><samp>mcon-crop_7_5</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_din"></i><samp>mcon-crop_din</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_free"></i><samp>mcon-crop_free</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_original"></i><samp>mcon-crop_original</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_portrait"></i><samp>mcon-crop_portrait</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_rotate"></i><samp>mcon-crop_rotate</samp></div>
+<div class="rsi"><i class="mcon mcon-crop_square"></i><samp>mcon-crop_square</samp></div>
+<div class="rsi"><i class="mcon mcon-dashboard"></i><samp>mcon-dashboard</samp></div>
+<div class="rsi"><i class="mcon mcon-data_usage"></i><samp>mcon-data_usage</samp></div>
+<div class="rsi"><i class="mcon mcon-date_range"></i><samp>mcon-date_range</samp></div>
+<div class="rsi"><i class="mcon mcon-dehaze"></i><samp>mcon-dehaze</samp></div>
+<div class="rsi"><i class="mcon mcon-delete"></i><samp>mcon-delete</samp></div>
+<div class="rsi"><i class="mcon mcon-delete_forever"></i><samp>mcon-delete_forever</samp></div>
+<div class="rsi"><i class="mcon mcon-delete_sweep"></i><samp>mcon-delete_sweep</samp></div>
+<div class="rsi"><i class="mcon mcon-description"></i><samp>mcon-description</samp></div>
+<div class="rsi"><i class="mcon mcon-desktop_mac"></i><samp>mcon-desktop_mac</samp></div>
+<div class="rsi"><i class="mcon mcon-desktop_windows"></i><samp>mcon-desktop_windows</samp></div>
+<div class="rsi"><i class="mcon mcon-details"></i><samp>mcon-details</samp></div>
+<div class="rsi"><i class="mcon mcon-developer_board"></i><samp>mcon-developer_board</samp></div>
+<div class="rsi"><i class="mcon mcon-developer_mode"></i><samp>mcon-developer_mode</samp></div>
+<div class="rsi"><i class="mcon mcon-device_hub"></i><samp>mcon-device_hub</samp></div>
+<div class="rsi"><i class="mcon mcon-phonelink"></i><samp>mcon-phonelink</samp></div>
+<div class="rsi"><i class="mcon mcon-devices_other"></i><samp>mcon-devices_other</samp></div>
+<div class="rsi"><i class="mcon mcon-dialer_sip"></i><samp>mcon-dialer_sip</samp></div>
+<div class="rsi"><i class="mcon mcon-dialpad"></i><samp>mcon-dialpad</samp></div>
+<div class="rsi"><i class="mcon mcon-directions"></i><samp>mcon-directions</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_bike"></i><samp>mcon-directions_bike</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_boat"></i><samp>mcon-directions_boat</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_bus"></i><samp>mcon-directions_bus</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_car"></i><samp>mcon-directions_car</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_railway"></i><samp>mcon-directions_railway</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_run"></i><samp>mcon-directions_run</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_transit"></i><samp>mcon-directions_transit</samp></div>
+<div class="rsi"><i class="mcon mcon-directions_walk"></i><samp>mcon-directions_walk</samp></div>
+<div class="rsi"><i class="mcon mcon-disc_full"></i><samp>mcon-disc_full</samp></div>
+<div class="rsi"><i class="mcon mcon-dns"></i><samp>mcon-dns</samp></div>
+<div class="rsi"><i class="mcon mcon-not_interested"></i><samp>mcon-not_interested</samp></div>
+<div class="rsi"><i class="mcon mcon-do_not_disturb_alt"></i><samp>mcon-do_not_disturb_alt</samp></div>
+<div class="rsi"><i class="mcon mcon-do_not_disturb_off"></i><samp>mcon-do_not_disturb_off</samp></div>
+<div class="rsi"><i class="mcon mcon-remove_circle"></i><samp>mcon-remove_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-dock"></i><samp>mcon-dock</samp></div>
+<div class="rsi"><i class="mcon mcon-done"></i><samp>mcon-done</samp></div>
+<div class="rsi"><i class="mcon mcon-done_all"></i><samp>mcon-done_all</samp></div>
+<div class="rsi"><i class="mcon mcon-donut_large"></i><samp>mcon-donut_large</samp></div>
+<div class="rsi"><i class="mcon mcon-donut_small"></i><samp>mcon-donut_small</samp></div>
+<div class="rsi"><i class="mcon mcon-drafts"></i><samp>mcon-drafts</samp></div>
+<div class="rsi"><i class="mcon mcon-drag_handle"></i><samp>mcon-drag_handle</samp></div>
+<div class="rsi"><i class="mcon mcon-time_to_leave"></i><samp>mcon-time_to_leave</samp></div>
+<div class="rsi"><i class="mcon mcon-dvr"></i><samp>mcon-dvr</samp></div>
+<div class="rsi"><i class="mcon mcon-edit_location"></i><samp>mcon-edit_location</samp></div>
+<div class="rsi"><i class="mcon mcon-eject"></i><samp>mcon-eject</samp></div>
+<div class="rsi"><i class="mcon mcon-markunread"></i><samp>mcon-markunread</samp></div>
+<div class="rsi"><i class="mcon mcon-enhanced_encryption"></i><samp>mcon-enhanced_encryption</samp></div>
+<div class="rsi"><i class="mcon mcon-equalizer"></i><samp>mcon-equalizer</samp></div>
+<div class="rsi"><i class="mcon mcon-error"></i><samp>mcon-error</samp></div>
+<div class="rsi"><i class="mcon mcon-error_outline"></i><samp>mcon-error_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-euro_symbol"></i><samp>mcon-euro_symbol</samp></div>
+<div class="rsi"><i class="mcon mcon-ev_station"></i><samp>mcon-ev_station</samp></div>
+<div class="rsi"><i class="mcon mcon-insert_invitation"></i><samp>mcon-insert_invitation</samp></div>
+<div class="rsi"><i class="mcon mcon-event_available"></i><samp>mcon-event_available</samp></div>
+<div class="rsi"><i class="mcon mcon-event_busy"></i><samp>mcon-event_busy</samp></div>
+<div class="rsi"><i class="mcon mcon-event_note"></i><samp>mcon-event_note</samp></div>
+<div class="rsi"><i class="mcon mcon-event_seat"></i><samp>mcon-event_seat</samp></div>
+<div class="rsi"><i class="mcon mcon-exit_to_app"></i><samp>mcon-exit_to_app</samp></div>
+<div class="rsi"><i class="mcon mcon-expand_less"></i><samp>mcon-expand_less</samp></div>
+<div class="rsi"><i class="mcon mcon-expand_more"></i><samp>mcon-expand_more</samp></div>
+<div class="rsi"><i class="mcon mcon-explicit"></i><samp>mcon-explicit</samp></div>
+<div class="rsi"><i class="mcon mcon-explore"></i><samp>mcon-explore</samp></div>
+<div class="rsi"><i class="mcon mcon-exposure"></i><samp>mcon-exposure</samp></div>
+<div class="rsi"><i class="mcon mcon-exposure_neg_1"></i><samp>mcon-exposure_neg_1</samp></div>
+<div class="rsi"><i class="mcon mcon-exposure_neg_2"></i><samp>mcon-exposure_neg_2</samp></div>
+<div class="rsi"><i class="mcon mcon-exposure_plus_1"></i><samp>mcon-exposure_plus_1</samp></div>
+<div class="rsi"><i class="mcon mcon-exposure_plus_2"></i><samp>mcon-exposure_plus_2</samp></div>
+<div class="rsi"><i class="mcon mcon-exposure_zero"></i><samp>mcon-exposure_zero</samp></div>
+<div class="rsi"><i class="mcon mcon-extension"></i><samp>mcon-extension</samp></div>
+<div class="rsi"><i class="mcon mcon-face"></i><samp>mcon-face</samp></div>
+<div class="rsi"><i class="mcon mcon-fast_forward"></i><samp>mcon-fast_forward</samp></div>
+<div class="rsi"><i class="mcon mcon-fast_rewind"></i><samp>mcon-fast_rewind</samp></div>
+<div class="rsi"><i class="mcon mcon-favorite"></i><samp>mcon-favorite</samp></div>
+<div class="rsi"><i class="mcon mcon-favorite_border"></i><samp>mcon-favorite_border</samp></div>
+<div class="rsi"><i class="mcon mcon-featured_play_list"></i><samp>mcon-featured_play_list</samp></div>
+<div class="rsi"><i class="mcon mcon-featured_video"></i><samp>mcon-featured_video</samp></div>
+<div class="rsi"><i class="mcon mcon-sms_failed"></i><samp>mcon-sms_failed</samp></div>
+<div class="rsi"><i class="mcon mcon-fiber_dvr"></i><samp>mcon-fiber_dvr</samp></div>
+<div class="rsi"><i class="mcon mcon-fiber_manual_record"></i><samp>mcon-fiber_manual_record</samp></div>
+<div class="rsi"><i class="mcon mcon-fiber_new"></i><samp>mcon-fiber_new</samp></div>
+<div class="rsi"><i class="mcon mcon-fiber_pin"></i><samp>mcon-fiber_pin</samp></div>
+<div class="rsi"><i class="mcon mcon-fiber_smart_record"></i><samp>mcon-fiber_smart_record</samp></div>
+<div class="rsi"><i class="mcon mcon-get_app"></i><samp>mcon-get_app</samp></div>
+<div class="rsi"><i class="mcon mcon-file_upload"></i><samp>mcon-file_upload</samp></div>
+<div class="rsi"><i class="mcon mcon-filter"></i><samp>mcon-filter</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_1"></i><samp>mcon-filter_1</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_2"></i><samp>mcon-filter_2</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_3"></i><samp>mcon-filter_3</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_4"></i><samp>mcon-filter_4</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_5"></i><samp>mcon-filter_5</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_6"></i><samp>mcon-filter_6</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_7"></i><samp>mcon-filter_7</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_8"></i><samp>mcon-filter_8</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_9"></i><samp>mcon-filter_9</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_9_plus"></i><samp>mcon-filter_9_plus</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_b_and_w"></i><samp>mcon-filter_b_and_w</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_center_focus"></i><samp>mcon-filter_center_focus</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_drama"></i><samp>mcon-filter_drama</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_frames"></i><samp>mcon-filter_frames</samp></div>
+<div class="rsi"><i class="mcon mcon-terrain"></i><samp>mcon-terrain</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_list"></i><samp>mcon-filter_list</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_none"></i><samp>mcon-filter_none</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_tilt_shift"></i><samp>mcon-filter_tilt_shift</samp></div>
+<div class="rsi"><i class="mcon mcon-filter_vintage"></i><samp>mcon-filter_vintage</samp></div>
+<div class="rsi"><i class="mcon mcon-find_in_page"></i><samp>mcon-find_in_page</samp></div>
+<div class="rsi"><i class="mcon mcon-find_replace"></i><samp>mcon-find_replace</samp></div>
+<div class="rsi"><i class="mcon mcon-fingerprint"></i><samp>mcon-fingerprint</samp></div>
+<div class="rsi"><i class="mcon mcon-first_page"></i><samp>mcon-first_page</samp></div>
+<div class="rsi"><i class="mcon mcon-fitness_center"></i><samp>mcon-fitness_center</samp></div>
+<div class="rsi"><i class="mcon mcon-flare"></i><samp>mcon-flare</samp></div>
+<div class="rsi"><i class="mcon mcon-flash_auto"></i><samp>mcon-flash_auto</samp></div>
+<div class="rsi"><i class="mcon mcon-flash_off"></i><samp>mcon-flash_off</samp></div>
+<div class="rsi"><i class="mcon mcon-flash_on"></i><samp>mcon-flash_on</samp></div>
+<div class="rsi"><i class="mcon mcon-flight_land"></i><samp>mcon-flight_land</samp></div>
+<div class="rsi"><i class="mcon mcon-flight_takeoff"></i><samp>mcon-flight_takeoff</samp></div>
+<div class="rsi"><i class="mcon mcon-flip"></i><samp>mcon-flip</samp></div>
+<div class="rsi"><i class="mcon mcon-flip_to_back"></i><samp>mcon-flip_to_back</samp></div>
+<div class="rsi"><i class="mcon mcon-flip_to_front"></i><samp>mcon-flip_to_front</samp></div>
+<div class="rsi"><i class="mcon mcon-folder"></i><samp>mcon-folder</samp></div>
+<div class="rsi"><i class="mcon mcon-folder_open"></i><samp>mcon-folder_open</samp></div>
+<div class="rsi"><i class="mcon mcon-folder_shared"></i><samp>mcon-folder_shared</samp></div>
+<div class="rsi"><i class="mcon mcon-folder_special"></i><samp>mcon-folder_special</samp></div>
+<div class="rsi"><i class="mcon mcon-font_download"></i><samp>mcon-font_download</samp></div>
+<div class="rsi"><i class="mcon mcon-format_align_center"></i><samp>mcon-format_align_center</samp></div>
+<div class="rsi"><i class="mcon mcon-format_align_justify"></i><samp>mcon-format_align_justify</samp></div>
+<div class="rsi"><i class="mcon mcon-format_align_left"></i><samp>mcon-format_align_left</samp></div>
+<div class="rsi"><i class="mcon mcon-format_align_right"></i><samp>mcon-format_align_right</samp></div>
+<div class="rsi"><i class="mcon mcon-format_bold"></i><samp>mcon-format_bold</samp></div>
+<div class="rsi"><i class="mcon mcon-format_clear"></i><samp>mcon-format_clear</samp></div>
+<div class="rsi"><i class="mcon mcon-format_color_fill"></i><samp>mcon-format_color_fill</samp></div>
+<div class="rsi"><i class="mcon mcon-format_color_reset"></i><samp>mcon-format_color_reset</samp></div>
+<div class="rsi"><i class="mcon mcon-format_color_text"></i><samp>mcon-format_color_text</samp></div>
+<div class="rsi"><i class="mcon mcon-format_indent_decrease"></i><samp>mcon-format_indent_decrease</samp></div>
+<div class="rsi"><i class="mcon mcon-format_indent_increase"></i><samp>mcon-format_indent_increase</samp></div>
+<div class="rsi"><i class="mcon mcon-format_italic"></i><samp>mcon-format_italic</samp></div>
+<div class="rsi"><i class="mcon mcon-format_line_spacing"></i><samp>mcon-format_line_spacing</samp></div>
+<div class="rsi"><i class="mcon mcon-format_list_bulleted"></i><samp>mcon-format_list_bulleted</samp></div>
+<div class="rsi"><i class="mcon mcon-format_list_numbered"></i><samp>mcon-format_list_numbered</samp></div>
+<div class="rsi"><i class="mcon mcon-format_paint"></i><samp>mcon-format_paint</samp></div>
+<div class="rsi"><i class="mcon mcon-format_quote"></i><samp>mcon-format_quote</samp></div>
+<div class="rsi"><i class="mcon mcon-format_shapes"></i><samp>mcon-format_shapes</samp></div>
+<div class="rsi"><i class="mcon mcon-format_size"></i><samp>mcon-format_size</samp></div>
+<div class="rsi"><i class="mcon mcon-format_strikethrough"></i><samp>mcon-format_strikethrough</samp></div>
+<div class="rsi"><i class="mcon mcon-format_textdirection_l_to_r"></i><samp>mcon-format_textdirection_l_to_r</samp></div>
+<div class="rsi"><i class="mcon mcon-format_textdirection_r_to_l"></i><samp>mcon-format_textdirection_r_to_l</samp></div>
+<div class="rsi"><i class="mcon mcon-format_underlined"></i><samp>mcon-format_underlined</samp></div>
+<div class="rsi"><i class="mcon mcon-question_answer"></i><samp>mcon-question_answer</samp></div>
+<div class="rsi"><i class="mcon mcon-forward"></i><samp>mcon-forward</samp></div>
+<div class="rsi"><i class="mcon mcon-forward_10"></i><samp>mcon-forward_10</samp></div>
+<div class="rsi"><i class="mcon mcon-forward_30"></i><samp>mcon-forward_30</samp></div>
+<div class="rsi"><i class="mcon mcon-forward_5"></i><samp>mcon-forward_5</samp></div>
+<div class="rsi"><i class="mcon mcon-free_breakfast"></i><samp>mcon-free_breakfast</samp></div>
+<div class="rsi"><i class="mcon mcon-fullscreen"></i><samp>mcon-fullscreen</samp></div>
+<div class="rsi"><i class="mcon mcon-fullscreen_exit"></i><samp>mcon-fullscreen_exit</samp></div>
+<div class="rsi"><i class="mcon mcon-functions"></i><samp>mcon-functions</samp></div>
+<div class="rsi"><i class="mcon mcon-g_translate"></i><samp>mcon-g_translate</samp></div>
+<div class="rsi"><i class="mcon mcon-games"></i><samp>mcon-games</samp></div>
+<div class="rsi"><i class="mcon mcon-gavel"></i><samp>mcon-gavel</samp></div>
+<div class="rsi"><i class="mcon mcon-gesture"></i><samp>mcon-gesture</samp></div>
+<div class="rsi"><i class="mcon mcon-gif"></i><samp>mcon-gif</samp></div>
+<div class="rsi"><i class="mcon mcon-goat"></i><samp>mcon-goat</samp></div>
+<div class="rsi"><i class="mcon mcon-golf_course"></i><samp>mcon-golf_course</samp></div>
+<div class="rsi"><i class="mcon mcon-my_location"></i><samp>mcon-my_location</samp></div>
+<div class="rsi"><i class="mcon mcon-location_searching"></i><samp>mcon-location_searching</samp></div>
+<div class="rsi"><i class="mcon mcon-location_disabled"></i><samp>mcon-location_disabled</samp></div>
+<div class="rsi"><i class="mcon mcon-star"></i><samp>mcon-star</samp></div>
+<div class="rsi"><i class="mcon mcon-gradient"></i><samp>mcon-gradient</samp></div>
+<div class="rsi"><i class="mcon mcon-grain"></i><samp>mcon-grain</samp></div>
+<div class="rsi"><i class="mcon mcon-graphic_eq"></i><samp>mcon-graphic_eq</samp></div>
+<div class="rsi"><i class="mcon mcon-grid_off"></i><samp>mcon-grid_off</samp></div>
+<div class="rsi"><i class="mcon mcon-grid_on"></i><samp>mcon-grid_on</samp></div>
+<div class="rsi"><i class="mcon mcon-people"></i><samp>mcon-people</samp></div>
+<div class="rsi"><i class="mcon mcon-group_add"></i><samp>mcon-group_add</samp></div>
+<div class="rsi"><i class="mcon mcon-group_work"></i><samp>mcon-group_work</samp></div>
+<div class="rsi"><i class="mcon mcon-hd"></i><samp>mcon-hd</samp></div>
+<div class="rsi"><i class="mcon mcon-hdr_off"></i><samp>mcon-hdr_off</samp></div>
+<div class="rsi"><i class="mcon mcon-hdr_on"></i><samp>mcon-hdr_on</samp></div>
+<div class="rsi"><i class="mcon mcon-hdr_strong"></i><samp>mcon-hdr_strong</samp></div>
+<div class="rsi"><i class="mcon mcon-hdr_weak"></i><samp>mcon-hdr_weak</samp></div>
+<div class="rsi"><i class="mcon mcon-headset"></i><samp>mcon-headset</samp></div>
+<div class="rsi"><i class="mcon mcon-headset_mic"></i><samp>mcon-headset_mic</samp></div>
+<div class="rsi"><i class="mcon mcon-healing"></i><samp>mcon-healing</samp></div>
+<div class="rsi"><i class="mcon mcon-hearing"></i><samp>mcon-hearing</samp></div>
+<div class="rsi"><i class="mcon mcon-help"></i><samp>mcon-help</samp></div>
+<div class="rsi"><i class="mcon mcon-help_outline"></i><samp>mcon-help_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-high_quality"></i><samp>mcon-high_quality</samp></div>
+<div class="rsi"><i class="mcon mcon-highlight"></i><samp>mcon-highlight</samp></div>
+<div class="rsi"><i class="mcon mcon-highlight_off"></i><samp>mcon-highlight_off</samp></div>
+<div class="rsi"><i class="mcon mcon-restore"></i><samp>mcon-restore</samp></div>
+<div class="rsi"><i class="mcon mcon-home"></i><samp>mcon-home</samp></div>
+<div class="rsi"><i class="mcon mcon-hot_tub"></i><samp>mcon-hot_tub</samp></div>
+<div class="rsi"><i class="mcon mcon-local_hotel"></i><samp>mcon-local_hotel</samp></div>
+<div class="rsi"><i class="mcon mcon-hourglass_empty"></i><samp>mcon-hourglass_empty</samp></div>
+<div class="rsi"><i class="mcon mcon-hourglass_full"></i><samp>mcon-hourglass_full</samp></div>
+<div class="rsi"><i class="mcon mcon-http"></i><samp>mcon-http</samp></div>
+<div class="rsi"><i class="mcon mcon-lock"></i><samp>mcon-lock</samp></div>
+<div class="rsi"><i class="mcon mcon-photo"></i><samp>mcon-photo</samp></div>
+<div class="rsi"><i class="mcon mcon-image_aspect_ratio"></i><samp>mcon-image_aspect_ratio</samp></div>
+<div class="rsi"><i class="mcon mcon-import_contacts"></i><samp>mcon-import_contacts</samp></div>
+<div class="rsi"><i class="mcon mcon-import_export"></i><samp>mcon-import_export</samp></div>
+<div class="rsi"><i class="mcon mcon-important_devices"></i><samp>mcon-important_devices</samp></div>
+<div class="rsi"><i class="mcon mcon-inbox"></i><samp>mcon-inbox</samp></div>
+<div class="rsi"><i class="mcon mcon-indeterminate_check_box"></i><samp>mcon-indeterminate_check_box</samp></div>
+<div class="rsi"><i class="mcon mcon-info"></i><samp>mcon-info</samp></div>
+<div class="rsi"><i class="mcon mcon-info_outline"></i><samp>mcon-info_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-input"></i><samp>mcon-input</samp></div>
+<div class="rsi"><i class="mcon mcon-insert_comment"></i><samp>mcon-insert_comment</samp></div>
+<div class="rsi"><i class="mcon mcon-insert_drive_file"></i><samp>mcon-insert_drive_file</samp></div>
+<div class="rsi"><i class="mcon mcon-tag_faces"></i><samp>mcon-tag_faces</samp></div>
+<div class="rsi"><i class="mcon mcon-link"></i><samp>mcon-link</samp></div>
+<div class="rsi"><i class="mcon mcon-invert_colors"></i><samp>mcon-invert_colors</samp></div>
+<div class="rsi"><i class="mcon mcon-invert_colors_off"></i><samp>mcon-invert_colors_off</samp></div>
+<div class="rsi"><i class="mcon mcon-iso"></i><samp>mcon-iso</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard"></i><samp>mcon-keyboard</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_arrow_down"></i><samp>mcon-keyboard_arrow_down</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_arrow_left"></i><samp>mcon-keyboard_arrow_left</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_arrow_right"></i><samp>mcon-keyboard_arrow_right</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_arrow_up"></i><samp>mcon-keyboard_arrow_up</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_backspace"></i><samp>mcon-keyboard_backspace</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_capslock"></i><samp>mcon-keyboard_capslock</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_hide"></i><samp>mcon-keyboard_hide</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_return"></i><samp>mcon-keyboard_return</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_tab"></i><samp>mcon-keyboard_tab</samp></div>
+<div class="rsi"><i class="mcon mcon-keyboard_voice"></i><samp>mcon-keyboard_voice</samp></div>
+<div class="rsi"><i class="mcon mcon-kitchen"></i><samp>mcon-kitchen</samp></div>
+<div class="rsi"><i class="mcon mcon-label"></i><samp>mcon-label</samp></div>
+<div class="rsi"><i class="mcon mcon-label_outline"></i><samp>mcon-label_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-language"></i><samp>mcon-language</samp></div>
+<div class="rsi"><i class="mcon mcon-laptop_chromebook"></i><samp>mcon-laptop_chromebook</samp></div>
+<div class="rsi"><i class="mcon mcon-laptop_mac"></i><samp>mcon-laptop_mac</samp></div>
+<div class="rsi"><i class="mcon mcon-laptop_windows"></i><samp>mcon-laptop_windows</samp></div>
+<div class="rsi"><i class="mcon mcon-last_page"></i><samp>mcon-last_page</samp></div>
+<div class="rsi"><i class="mcon mcon-open_in_new"></i><samp>mcon-open_in_new</samp></div>
+<div class="rsi"><i class="mcon mcon-layers"></i><samp>mcon-layers</samp></div>
+<div class="rsi"><i class="mcon mcon-layers_clear"></i><samp>mcon-layers_clear</samp></div>
+<div class="rsi"><i class="mcon mcon-leak_add"></i><samp>mcon-leak_add</samp></div>
+<div class="rsi"><i class="mcon mcon-leak_remove"></i><samp>mcon-leak_remove</samp></div>
+<div class="rsi"><i class="mcon mcon-lens"></i><samp>mcon-lens</samp></div>
+<div class="rsi"><i class="mcon mcon-library_books"></i><samp>mcon-library_books</samp></div>
+<div class="rsi"><i class="mcon mcon-library_music"></i><samp>mcon-library_music</samp></div>
+<div class="rsi"><i class="mcon mcon-lightbulb_outline"></i><samp>mcon-lightbulb_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-line_style"></i><samp>mcon-line_style</samp></div>
+<div class="rsi"><i class="mcon mcon-line_weight"></i><samp>mcon-line_weight</samp></div>
+<div class="rsi"><i class="mcon mcon-linear_scale"></i><samp>mcon-linear_scale</samp></div>
+<div class="rsi"><i class="mcon mcon-linked_camera"></i><samp>mcon-linked_camera</samp></div>
+<div class="rsi"><i class="mcon mcon-list"></i><samp>mcon-list</samp></div>
+<div class="rsi"><i class="mcon mcon-live_help"></i><samp>mcon-live_help</samp></div>
+<div class="rsi"><i class="mcon mcon-live_tv"></i><samp>mcon-live_tv</samp></div>
+<div class="rsi"><i class="mcon mcon-local_play"></i><samp>mcon-local_play</samp></div>
+<div class="rsi"><i class="mcon mcon-local_airport"></i><samp>mcon-local_airport</samp></div>
+<div class="rsi"><i class="mcon mcon-local_atm"></i><samp>mcon-local_atm</samp></div>
+<div class="rsi"><i class="mcon mcon-local_bar"></i><samp>mcon-local_bar</samp></div>
+<div class="rsi"><i class="mcon mcon-local_cafe"></i><samp>mcon-local_cafe</samp></div>
+<div class="rsi"><i class="mcon mcon-local_car_wash"></i><samp>mcon-local_car_wash</samp></div>
+<div class="rsi"><i class="mcon mcon-local_convenience_store"></i><samp>mcon-local_convenience_store</samp></div>
+<div class="rsi"><i class="mcon mcon-restaurant_menu"></i><samp>mcon-restaurant_menu</samp></div>
+<div class="rsi"><i class="mcon mcon-local_drink"></i><samp>mcon-local_drink</samp></div>
+<div class="rsi"><i class="mcon mcon-local_florist"></i><samp>mcon-local_florist</samp></div>
+<div class="rsi"><i class="mcon mcon-local_gas_station"></i><samp>mcon-local_gas_station</samp></div>
+<div class="rsi"><i class="mcon mcon-shopping_cart"></i><samp>mcon-shopping_cart</samp></div>
+<div class="rsi"><i class="mcon mcon-local_hospital"></i><samp>mcon-local_hospital</samp></div>
+<div class="rsi"><i class="mcon mcon-local_laundry_service"></i><samp>mcon-local_laundry_service</samp></div>
+<div class="rsi"><i class="mcon mcon-local_library"></i><samp>mcon-local_library</samp></div>
+<div class="rsi"><i class="mcon mcon-local_mall"></i><samp>mcon-local_mall</samp></div>
+<div class="rsi"><i class="mcon mcon-theaters"></i><samp>mcon-theaters</samp></div>
+<div class="rsi"><i class="mcon mcon-local_offer"></i><samp>mcon-local_offer</samp></div>
+<div class="rsi"><i class="mcon mcon-local_parking"></i><samp>mcon-local_parking</samp></div>
+<div class="rsi"><i class="mcon mcon-local_pharmacy"></i><samp>mcon-local_pharmacy</samp></div>
+<div class="rsi"><i class="mcon mcon-local_pizza"></i><samp>mcon-local_pizza</samp></div>
+<div class="rsi"><i class="mcon mcon-print"></i><samp>mcon-print</samp></div>
+<div class="rsi"><i class="mcon mcon-local_shipping"></i><samp>mcon-local_shipping</samp></div>
+<div class="rsi"><i class="mcon mcon-local_taxi"></i><samp>mcon-local_taxi</samp></div>
+<div class="rsi"><i class="mcon mcon-location_city"></i><samp>mcon-location_city</samp></div>
+<div class="rsi"><i class="mcon mcon-location_off"></i><samp>mcon-location_off</samp></div>
+<div class="rsi"><i class="mcon mcon-room"></i><samp>mcon-room</samp></div>
+<div class="rsi"><i class="mcon mcon-lock_open"></i><samp>mcon-lock_open</samp></div>
+<div class="rsi"><i class="mcon mcon-lock_outline"></i><samp>mcon-lock_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-looks"></i><samp>mcon-looks</samp></div>
+<div class="rsi"><i class="mcon mcon-looks_3"></i><samp>mcon-looks_3</samp></div>
+<div class="rsi"><i class="mcon mcon-looks_4"></i><samp>mcon-looks_4</samp></div>
+<div class="rsi"><i class="mcon mcon-looks_5"></i><samp>mcon-looks_5</samp></div>
+<div class="rsi"><i class="mcon mcon-looks_6"></i><samp>mcon-looks_6</samp></div>
+<div class="rsi"><i class="mcon mcon-looks_one"></i><samp>mcon-looks_one</samp></div>
+<div class="rsi"><i class="mcon mcon-looks_two"></i><samp>mcon-looks_two</samp></div>
+<div class="rsi"><i class="mcon mcon-sync"></i><samp>mcon-sync</samp></div>
+<div class="rsi"><i class="mcon mcon-loupe"></i><samp>mcon-loupe</samp></div>
+<div class="rsi"><i class="mcon mcon-low_priority"></i><samp>mcon-low_priority</samp></div>
+<div class="rsi"><i class="mcon mcon-loyalty"></i><samp>mcon-loyalty</samp></div>
+<div class="rsi"><i class="mcon mcon-mail_outline"></i><samp>mcon-mail_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-map"></i><samp>mcon-map</samp></div>
+<div class="rsi"><i class="mcon mcon-markunread_mailbox"></i><samp>mcon-markunread_mailbox</samp></div>
+<div class="rsi"><i class="mcon mcon-memory"></i><samp>mcon-memory</samp></div>
+<div class="rsi"><i class="mcon mcon-menu"></i><samp>mcon-menu</samp></div>
+<div class="rsi"><i class="mcon mcon-message"></i><samp>mcon-message</samp></div>
+<div class="rsi"><i class="mcon mcon-mic"></i><samp>mcon-mic</samp></div>
+<div class="rsi"><i class="mcon mcon-mic_none"></i><samp>mcon-mic_none</samp></div>
+<div class="rsi"><i class="mcon mcon-mic_off"></i><samp>mcon-mic_off</samp></div>
+<div class="rsi"><i class="mcon mcon-mms"></i><samp>mcon-mms</samp></div>
+<div class="rsi"><i class="mcon mcon-mode_comment"></i><samp>mcon-mode_comment</samp></div>
+<div class="rsi"><i class="mcon mcon-monetization_on"></i><samp>mcon-monetization_on</samp></div>
+<div class="rsi"><i class="mcon mcon-money_off"></i><samp>mcon-money_off</samp></div>
+<div class="rsi"><i class="mcon mcon-monochrome_photos"></i><samp>mcon-monochrome_photos</samp></div>
+<div class="rsi"><i class="mcon mcon-mood_bad"></i><samp>mcon-mood_bad</samp></div>
+<div class="rsi"><i class="mcon mcon-more"></i><samp>mcon-more</samp></div>
+<div class="rsi"><i class="mcon mcon-more_horiz"></i><samp>mcon-more_horiz</samp></div>
+<div class="rsi"><i class="mcon mcon-more_vert"></i><samp>mcon-more_vert</samp></div>
+<div class="rsi"><i class="mcon mcon-motorcycle"></i><samp>mcon-motorcycle</samp></div>
+<div class="rsi"><i class="mcon mcon-mouse"></i><samp>mcon-mouse</samp></div>
+<div class="rsi"><i class="mcon mcon-move_to_inbox"></i><samp>mcon-move_to_inbox</samp></div>
+<div class="rsi"><i class="mcon mcon-movie_creation"></i><samp>mcon-movie_creation</samp></div>
+<div class="rsi"><i class="mcon mcon-movie_filter"></i><samp>mcon-movie_filter</samp></div>
+<div class="rsi"><i class="mcon mcon-multiline_chart"></i><samp>mcon-multiline_chart</samp></div>
+<div class="rsi"><i class="mcon mcon-music_note"></i><samp>mcon-music_note</samp></div>
+<div class="rsi"><i class="mcon mcon-music_video"></i><samp>mcon-music_video</samp></div>
+<div class="rsi"><i class="mcon mcon-nature"></i><samp>mcon-nature</samp></div>
+<div class="rsi"><i class="mcon mcon-nature_people"></i><samp>mcon-nature_people</samp></div>
+<div class="rsi"><i class="mcon mcon-navigation"></i><samp>mcon-navigation</samp></div>
+<div class="rsi"><i class="mcon mcon-near_me"></i><samp>mcon-near_me</samp></div>
+<div class="rsi"><i class="mcon mcon-network_cell"></i><samp>mcon-network_cell</samp></div>
+<div class="rsi"><i class="mcon mcon-network_check"></i><samp>mcon-network_check</samp></div>
+<div class="rsi"><i class="mcon mcon-network_locked"></i><samp>mcon-network_locked</samp></div>
+<div class="rsi"><i class="mcon mcon-network_wifi"></i><samp>mcon-network_wifi</samp></div>
+<div class="rsi"><i class="mcon mcon-new_releases"></i><samp>mcon-new_releases</samp></div>
+<div class="rsi"><i class="mcon mcon-next_week"></i><samp>mcon-next_week</samp></div>
+<div class="rsi"><i class="mcon mcon-nfc"></i><samp>mcon-nfc</samp></div>
+<div class="rsi"><i class="mcon mcon-no_encryption"></i><samp>mcon-no_encryption</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_cellular_no_sim"></i><samp>mcon-signal_cellular_no_sim</samp></div>
+<div class="rsi"><i class="mcon mcon-note"></i><samp>mcon-note</samp></div>
+<div class="rsi"><i class="mcon mcon-note_add"></i><samp>mcon-note_add</samp></div>
+<div class="rsi"><i class="mcon mcon-notifications"></i><samp>mcon-notifications</samp></div>
+<div class="rsi"><i class="mcon mcon-notifications_active"></i><samp>mcon-notifications_active</samp></div>
+<div class="rsi"><i class="mcon mcon-notifications_none"></i><samp>mcon-notifications_none</samp></div>
+<div class="rsi"><i class="mcon mcon-notifications_off"></i><samp>mcon-notifications_off</samp></div>
+<div class="rsi"><i class="mcon mcon-notifications_paused"></i><samp>mcon-notifications_paused</samp></div>
+<div class="rsi"><i class="mcon mcon-offline_pin"></i><samp>mcon-offline_pin</samp></div>
+<div class="rsi"><i class="mcon mcon-ondemand_video"></i><samp>mcon-ondemand_video</samp></div>
+<div class="rsi"><i class="mcon mcon-opacity"></i><samp>mcon-opacity</samp></div>
+<div class="rsi"><i class="mcon mcon-open_in_browser"></i><samp>mcon-open_in_browser</samp></div>
+<div class="rsi"><i class="mcon mcon-open_with"></i><samp>mcon-open_with</samp></div>
+<div class="rsi"><i class="mcon mcon-pages"></i><samp>mcon-pages</samp></div>
+<div class="rsi"><i class="mcon mcon-pageview"></i><samp>mcon-pageview</samp></div>
+<div class="rsi"><i class="mcon mcon-pan_tool"></i><samp>mcon-pan_tool</samp></div>
+<div class="rsi"><i class="mcon mcon-panorama"></i><samp>mcon-panorama</samp></div>
+<div class="rsi"><i class="mcon mcon-radio_button_unchecked"></i><samp>mcon-radio_button_unchecked</samp></div>
+<div class="rsi"><i class="mcon mcon-panorama_horizontal"></i><samp>mcon-panorama_horizontal</samp></div>
+<div class="rsi"><i class="mcon mcon-panorama_vertical"></i><samp>mcon-panorama_vertical</samp></div>
+<div class="rsi"><i class="mcon mcon-panorama_wide_angle"></i><samp>mcon-panorama_wide_angle</samp></div>
+<div class="rsi"><i class="mcon mcon-party_mode"></i><samp>mcon-party_mode</samp></div>
+<div class="rsi"><i class="mcon mcon-pause"></i><samp>mcon-pause</samp></div>
+<div class="rsi"><i class="mcon mcon-pause_circle_filled"></i><samp>mcon-pause_circle_filled</samp></div>
+<div class="rsi"><i class="mcon mcon-pause_circle_outline"></i><samp>mcon-pause_circle_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-people_outline"></i><samp>mcon-people_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_camera_mic"></i><samp>mcon-perm_camera_mic</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_contact_calendar"></i><samp>mcon-perm_contact_calendar</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_data_setting"></i><samp>mcon-perm_data_setting</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_device_information"></i><samp>mcon-perm_device_information</samp></div>
+<div class="rsi"><i class="mcon mcon-person_outline"></i><samp>mcon-person_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_media"></i><samp>mcon-perm_media</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_phone_msg"></i><samp>mcon-perm_phone_msg</samp></div>
+<div class="rsi"><i class="mcon mcon-perm_scan_wifi"></i><samp>mcon-perm_scan_wifi</samp></div>
+<div class="rsi"><i class="mcon mcon-person"></i><samp>mcon-person</samp></div>
+<div class="rsi"><i class="mcon mcon-person_add"></i><samp>mcon-person_add</samp></div>
+<div class="rsi"><i class="mcon mcon-person_pin"></i><samp>mcon-person_pin</samp></div>
+<div class="rsi"><i class="mcon mcon-person_pin_circle"></i><samp>mcon-person_pin_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-personal_video"></i><samp>mcon-personal_video</samp></div>
+<div class="rsi"><i class="mcon mcon-pets"></i><samp>mcon-pets</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_android"></i><samp>mcon-phone_android</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_bluetooth_speaker"></i><samp>mcon-phone_bluetooth_speaker</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_forwarded"></i><samp>mcon-phone_forwarded</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_in_talk"></i><samp>mcon-phone_in_talk</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_iphone"></i><samp>mcon-phone_iphone</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_locked"></i><samp>mcon-phone_locked</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_missed"></i><samp>mcon-phone_missed</samp></div>
+<div class="rsi"><i class="mcon mcon-phone_paused"></i><samp>mcon-phone_paused</samp></div>
+<div class="rsi"><i class="mcon mcon-phonelink_erase"></i><samp>mcon-phonelink_erase</samp></div>
+<div class="rsi"><i class="mcon mcon-phonelink_lock"></i><samp>mcon-phonelink_lock</samp></div>
+<div class="rsi"><i class="mcon mcon-phonelink_off"></i><samp>mcon-phonelink_off</samp></div>
+<div class="rsi"><i class="mcon mcon-phonelink_ring"></i><samp>mcon-phonelink_ring</samp></div>
+<div class="rsi"><i class="mcon mcon-phonelink_setup"></i><samp>mcon-phonelink_setup</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_album"></i><samp>mcon-photo_album</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_filter"></i><samp>mcon-photo_filter</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_size_select_actual"></i><samp>mcon-photo_size_select_actual</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_size_select_large"></i><samp>mcon-photo_size_select_large</samp></div>
+<div class="rsi"><i class="mcon mcon-photo_size_select_small"></i><samp>mcon-photo_size_select_small</samp></div>
+<div class="rsi"><i class="mcon mcon-picture_as_pdf"></i><samp>mcon-picture_as_pdf</samp></div>
+<div class="rsi"><i class="mcon mcon-picture_in_picture"></i><samp>mcon-picture_in_picture</samp></div>
+<div class="rsi"><i class="mcon mcon-picture_in_picture_alt"></i><samp>mcon-picture_in_picture_alt</samp></div>
+<div class="rsi"><i class="mcon mcon-pie_chart"></i><samp>mcon-pie_chart</samp></div>
+<div class="rsi"><i class="mcon mcon-pie_chart_outlined"></i><samp>mcon-pie_chart_outlined</samp></div>
+<div class="rsi"><i class="mcon mcon-pin_drop"></i><samp>mcon-pin_drop</samp></div>
+<div class="rsi"><i class="mcon mcon-play_arrow"></i><samp>mcon-play_arrow</samp></div>
+<div class="rsi"><i class="mcon mcon-play_circle_filled"></i><samp>mcon-play_circle_filled</samp></div>
+<div class="rsi"><i class="mcon mcon-play_circle_outline"></i><samp>mcon-play_circle_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-play_for_work"></i><samp>mcon-play_for_work</samp></div>
+<div class="rsi"><i class="mcon mcon-playlist_add"></i><samp>mcon-playlist_add</samp></div>
+<div class="rsi"><i class="mcon mcon-playlist_add_check"></i><samp>mcon-playlist_add_check</samp></div>
+<div class="rsi"><i class="mcon mcon-playlist_play"></i><samp>mcon-playlist_play</samp></div>
+<div class="rsi"><i class="mcon mcon-plus_one"></i><samp>mcon-plus_one</samp></div>
+<div class="rsi"><i class="mcon mcon-polymer"></i><samp>mcon-polymer</samp></div>
+<div class="rsi"><i class="mcon mcon-pool"></i><samp>mcon-pool</samp></div>
+<div class="rsi"><i class="mcon mcon-portable_wifi_off"></i><samp>mcon-portable_wifi_off</samp></div>
+<div class="rsi"><i class="mcon mcon-portrait"></i><samp>mcon-portrait</samp></div>
+<div class="rsi"><i class="mcon mcon-power"></i><samp>mcon-power</samp></div>
+<div class="rsi"><i class="mcon mcon-power_input"></i><samp>mcon-power_input</samp></div>
+<div class="rsi"><i class="mcon mcon-power_settings_new"></i><samp>mcon-power_settings_new</samp></div>
+<div class="rsi"><i class="mcon mcon-pregnant_woman"></i><samp>mcon-pregnant_woman</samp></div>
+<div class="rsi"><i class="mcon mcon-present_to_all"></i><samp>mcon-present_to_all</samp></div>
+<div class="rsi"><i class="mcon mcon-priority_high"></i><samp>mcon-priority_high</samp></div>
+<div class="rsi"><i class="mcon mcon-public"></i><samp>mcon-public</samp></div>
+<div class="rsi"><i class="mcon mcon-publish"></i><samp>mcon-publish</samp></div>
+<div class="rsi"><i class="mcon mcon-queue_music"></i><samp>mcon-queue_music</samp></div>
+<div class="rsi"><i class="mcon mcon-queue_play_next"></i><samp>mcon-queue_play_next</samp></div>
+<div class="rsi"><i class="mcon mcon-radio"></i><samp>mcon-radio</samp></div>
+<div class="rsi"><i class="mcon mcon-radio_button_checked"></i><samp>mcon-radio_button_checked</samp></div>
+<div class="rsi"><i class="mcon mcon-rate_review"></i><samp>mcon-rate_review</samp></div>
+<div class="rsi"><i class="mcon mcon-receipt"></i><samp>mcon-receipt</samp></div>
+<div class="rsi"><i class="mcon mcon-recent_actors"></i><samp>mcon-recent_actors</samp></div>
+<div class="rsi"><i class="mcon mcon-record_voice_over"></i><samp>mcon-record_voice_over</samp></div>
+<div class="rsi"><i class="mcon mcon-redo"></i><samp>mcon-redo</samp></div>
+<div class="rsi"><i class="mcon mcon-refresh"></i><samp>mcon-refresh</samp></div>
+<div class="rsi"><i class="mcon mcon-remove"></i><samp>mcon-remove</samp></div>
+<div class="rsi"><i class="mcon mcon-remove_circle_outline"></i><samp>mcon-remove_circle_outline</samp></div>
+<div class="rsi"><i class="mcon mcon-remove_from_queue"></i><samp>mcon-remove_from_queue</samp></div>
+<div class="rsi"><i class="mcon mcon-visibility"></i><samp>mcon-visibility</samp></div>
+<div class="rsi"><i class="mcon mcon-remove_shopping_cart"></i><samp>mcon-remove_shopping_cart</samp></div>
+<div class="rsi"><i class="mcon mcon-reorder"></i><samp>mcon-reorder</samp></div>
+<div class="rsi"><i class="mcon mcon-repeat"></i><samp>mcon-repeat</samp></div>
+<div class="rsi"><i class="mcon mcon-repeat_one"></i><samp>mcon-repeat_one</samp></div>
+<div class="rsi"><i class="mcon mcon-replay"></i><samp>mcon-replay</samp></div>
+<div class="rsi"><i class="mcon mcon-replay_10"></i><samp>mcon-replay_10</samp></div>
+<div class="rsi"><i class="mcon mcon-replay_30"></i><samp>mcon-replay_30</samp></div>
+<div class="rsi"><i class="mcon mcon-replay_5"></i><samp>mcon-replay_5</samp></div>
+<div class="rsi"><i class="mcon mcon-reply"></i><samp>mcon-reply</samp></div>
+<div class="rsi"><i class="mcon mcon-reply_all"></i><samp>mcon-reply_all</samp></div>
+<div class="rsi"><i class="mcon mcon-report"></i><samp>mcon-report</samp></div>
+<div class="rsi"><i class="mcon mcon-warning"></i><samp>mcon-warning</samp></div>
+<div class="rsi"><i class="mcon mcon-restaurant"></i><samp>mcon-restaurant</samp></div>
+<div class="rsi"><i class="mcon mcon-restore_page"></i><samp>mcon-restore_page</samp></div>
+<div class="rsi"><i class="mcon mcon-ring_volume"></i><samp>mcon-ring_volume</samp></div>
+<div class="rsi"><i class="mcon mcon-room_service"></i><samp>mcon-room_service</samp></div>
+<div class="rsi"><i class="mcon mcon-rotate_90_degrees_ccw"></i><samp>mcon-rotate_90_degrees_ccw</samp></div>
+<div class="rsi"><i class="mcon mcon-rotate_left"></i><samp>mcon-rotate_left</samp></div>
+<div class="rsi"><i class="mcon mcon-rotate_right"></i><samp>mcon-rotate_right</samp></div>
+<div class="rsi"><i class="mcon mcon-rounded_corner"></i><samp>mcon-rounded_corner</samp></div>
+<div class="rsi"><i class="mcon mcon-router"></i><samp>mcon-router</samp></div>
+<div class="rsi"><i class="mcon mcon-rowing"></i><samp>mcon-rowing</samp></div>
+<div class="rsi"><i class="mcon mcon-rss_feed"></i><samp>mcon-rss_feed</samp></div>
+<div class="rsi"><i class="mcon mcon-rv_hookup"></i><samp>mcon-rv_hookup</samp></div>
+<div class="rsi"><i class="mcon mcon-satellite"></i><samp>mcon-satellite</samp></div>
+<div class="rsi"><i class="mcon mcon-save"></i><samp>mcon-save</samp></div>
+<div class="rsi"><i class="mcon mcon-scanner"></i><samp>mcon-scanner</samp></div>
+<div class="rsi"><i class="mcon mcon-school"></i><samp>mcon-school</samp></div>
+<div class="rsi"><i class="mcon mcon-screen_lock_landscape"></i><samp>mcon-screen_lock_landscape</samp></div>
+<div class="rsi"><i class="mcon mcon-screen_lock_portrait"></i><samp>mcon-screen_lock_portrait</samp></div>
+<div class="rsi"><i class="mcon mcon-screen_lock_rotation"></i><samp>mcon-screen_lock_rotation</samp></div>
+<div class="rsi"><i class="mcon mcon-screen_rotation"></i><samp>mcon-screen_rotation</samp></div>
+<div class="rsi"><i class="mcon mcon-screen_share"></i><samp>mcon-screen_share</samp></div>
+<div class="rsi"><i class="mcon mcon-sd_storage"></i><samp>mcon-sd_storage</samp></div>
+<div class="rsi"><i class="mcon mcon-search"></i><samp>mcon-search</samp></div>
+<div class="rsi"><i class="mcon mcon-security"></i><samp>mcon-security</samp></div>
+<div class="rsi"><i class="mcon mcon-select_all"></i><samp>mcon-select_all</samp></div>
+<div class="rsi"><i class="mcon mcon-send"></i><samp>mcon-send</samp></div>
+<div class="rsi"><i class="mcon mcon-sentiment_dissatisfied"></i><samp>mcon-sentiment_dissatisfied</samp></div>
+<div class="rsi"><i class="mcon mcon-sentiment_neutral"></i><samp>mcon-sentiment_neutral</samp></div>
+<div class="rsi"><i class="mcon mcon-sentiment_satisfied"></i><samp>mcon-sentiment_satisfied</samp></div>
+<div class="rsi"><i class="mcon mcon-sentiment_very_dissatisfied"></i><samp>mcon-sentiment_very_dissatisfied</samp></div>
+<div class="rsi"><i class="mcon mcon-sentiment_very_satisfied"></i><samp>mcon-sentiment_very_satisfied</samp></div>
+<div class="rsi"><i class="mcon mcon-settings"></i><samp>mcon-settings</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_applications"></i><samp>mcon-settings_applications</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_backup_restore"></i><samp>mcon-settings_backup_restore</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_bluetooth"></i><samp>mcon-settings_bluetooth</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_brightness"></i><samp>mcon-settings_brightness</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_cell"></i><samp>mcon-settings_cell</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_ethernet"></i><samp>mcon-settings_ethernet</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_input_antenna"></i><samp>mcon-settings_input_antenna</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_input_composite"></i><samp>mcon-settings_input_composite</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_input_hdmi"></i><samp>mcon-settings_input_hdmi</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_input_svideo"></i><samp>mcon-settings_input_svideo</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_overscan"></i><samp>mcon-settings_overscan</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_phone"></i><samp>mcon-settings_phone</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_power"></i><samp>mcon-settings_power</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_remote"></i><samp>mcon-settings_remote</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_system_daydream"></i><samp>mcon-settings_system_daydream</samp></div>
+<div class="rsi"><i class="mcon mcon-settings_voice"></i><samp>mcon-settings_voice</samp></div>
+<div class="rsi"><i class="mcon mcon-share"></i><samp>mcon-share</samp></div>
+<div class="rsi"><i class="mcon mcon-shop"></i><samp>mcon-shop</samp></div>
+<div class="rsi"><i class="mcon mcon-shop_two"></i><samp>mcon-shop_two</samp></div>
+<div class="rsi"><i class="mcon mcon-shopping_basket"></i><samp>mcon-shopping_basket</samp></div>
+<div class="rsi"><i class="mcon mcon-short_text"></i><samp>mcon-short_text</samp></div>
+<div class="rsi"><i class="mcon mcon-show_chart"></i><samp>mcon-show_chart</samp></div>
+<div class="rsi"><i class="mcon mcon-shuffle"></i><samp>mcon-shuffle</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_cellular_4_bar"></i><samp>mcon-signal_cellular_4_bar</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_cellular_connected_no_internet_4_bar"></i><samp>mcon-signal_cellular_connected_no_internet_4_bar</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_cellular_null"></i><samp>mcon-signal_cellular_null</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_cellular_off"></i><samp>mcon-signal_cellular_off</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_wifi_4_bar"></i><samp>mcon-signal_wifi_4_bar</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_wifi_4_bar_lock"></i><samp>mcon-signal_wifi_4_bar_lock</samp></div>
+<div class="rsi"><i class="mcon mcon-signal_wifi_off"></i><samp>mcon-signal_wifi_off</samp></div>
+<div class="rsi"><i class="mcon mcon-sim_card"></i><samp>mcon-sim_card</samp></div>
+<div class="rsi"><i class="mcon mcon-sim_card_alert"></i><samp>mcon-sim_card_alert</samp></div>
+<div class="rsi"><i class="mcon mcon-skip_next"></i><samp>mcon-skip_next</samp></div>
+<div class="rsi"><i class="mcon mcon-skip_previous"></i><samp>mcon-skip_previous</samp></div>
+<div class="rsi"><i class="mcon mcon-slideshow"></i><samp>mcon-slideshow</samp></div>
+<div class="rsi"><i class="mcon mcon-slow_motion_video"></i><samp>mcon-slow_motion_video</samp></div>
+<div class="rsi"><i class="mcon mcon-stay_primary_portrait"></i><samp>mcon-stay_primary_portrait</samp></div>
+<div class="rsi"><i class="mcon mcon-smoke_free"></i><samp>mcon-smoke_free</samp></div>
+<div class="rsi"><i class="mcon mcon-smoking_rooms"></i><samp>mcon-smoking_rooms</samp></div>
+<div class="rsi"><i class="mcon mcon-textsms"></i><samp>mcon-textsms</samp></div>
+<div class="rsi"><i class="mcon mcon-snooze"></i><samp>mcon-snooze</samp></div>
+<div class="rsi"><i class="mcon mcon-sort"></i><samp>mcon-sort</samp></div>
+<div class="rsi"><i class="mcon mcon-sort_by_alpha"></i><samp>mcon-sort_by_alpha</samp></div>
+<div class="rsi"><i class="mcon mcon-spa"></i><samp>mcon-spa</samp></div>
+<div class="rsi"><i class="mcon mcon-space_bar"></i><samp>mcon-space_bar</samp></div>
+<div class="rsi"><i class="mcon mcon-speaker"></i><samp>mcon-speaker</samp></div>
+<div class="rsi"><i class="mcon mcon-speaker_group"></i><samp>mcon-speaker_group</samp></div>
+<div class="rsi"><i class="mcon mcon-speaker_notes"></i><samp>mcon-speaker_notes</samp></div>
+<div class="rsi"><i class="mcon mcon-speaker_notes_off"></i><samp>mcon-speaker_notes_off</samp></div>
+<div class="rsi"><i class="mcon mcon-speaker_phone"></i><samp>mcon-speaker_phone</samp></div>
+<div class="rsi"><i class="mcon mcon-spellcheck"></i><samp>mcon-spellcheck</samp></div>
+<div class="rsi"><i class="mcon mcon-star_border"></i><samp>mcon-star_border</samp></div>
+<div class="rsi"><i class="mcon mcon-star_half"></i><samp>mcon-star_half</samp></div>
+<div class="rsi"><i class="mcon mcon-stars"></i><samp>mcon-stars</samp></div>
+<div class="rsi"><i class="mcon mcon-stay_primary_landscape"></i><samp>mcon-stay_primary_landscape</samp></div>
+<div class="rsi"><i class="mcon mcon-stop"></i><samp>mcon-stop</samp></div>
+<div class="rsi"><i class="mcon mcon-stop_screen_share"></i><samp>mcon-stop_screen_share</samp></div>
+<div class="rsi"><i class="mcon mcon-storage"></i><samp>mcon-storage</samp></div>
+<div class="rsi"><i class="mcon mcon-store_mall_directory"></i><samp>mcon-store_mall_directory</samp></div>
+<div class="rsi"><i class="mcon mcon-straighten"></i><samp>mcon-straighten</samp></div>
+<div class="rsi"><i class="mcon mcon-streetview"></i><samp>mcon-streetview</samp></div>
+<div class="rsi"><i class="mcon mcon-strikethrough_s"></i><samp>mcon-strikethrough_s</samp></div>
+<div class="rsi"><i class="mcon mcon-style"></i><samp>mcon-style</samp></div>
+<div class="rsi"><i class="mcon mcon-subdirectory_arrow_left"></i><samp>mcon-subdirectory_arrow_left</samp></div>
+<div class="rsi"><i class="mcon mcon-subdirectory_arrow_right"></i><samp>mcon-subdirectory_arrow_right</samp></div>
+<div class="rsi"><i class="mcon mcon-subject"></i><samp>mcon-subject</samp></div>
+<div class="rsi"><i class="mcon mcon-subscriptions"></i><samp>mcon-subscriptions</samp></div>
+<div class="rsi"><i class="mcon mcon-subtitles"></i><samp>mcon-subtitles</samp></div>
+<div class="rsi"><i class="mcon mcon-subway"></i><samp>mcon-subway</samp></div>
+<div class="rsi"><i class="mcon mcon-supervisor_account"></i><samp>mcon-supervisor_account</samp></div>
+<div class="rsi"><i class="mcon mcon-surround_sound"></i><samp>mcon-surround_sound</samp></div>
+<div class="rsi"><i class="mcon mcon-swap_calls"></i><samp>mcon-swap_calls</samp></div>
+<div class="rsi"><i class="mcon mcon-swap_horiz"></i><samp>mcon-swap_horiz</samp></div>
+<div class="rsi"><i class="mcon mcon-swap_vert"></i><samp>mcon-swap_vert</samp></div>
+<div class="rsi"><i class="mcon mcon-swap_vertical_circle"></i><samp>mcon-swap_vertical_circle</samp></div>
+<div class="rsi"><i class="mcon mcon-switch_camera"></i><samp>mcon-switch_camera</samp></div>
+<div class="rsi"><i class="mcon mcon-switch_video"></i><samp>mcon-switch_video</samp></div>
+<div class="rsi"><i class="mcon mcon-sync_disabled"></i><samp>mcon-sync_disabled</samp></div>
+<div class="rsi"><i class="mcon mcon-sync_problem"></i><samp>mcon-sync_problem</samp></div>
+<div class="rsi"><i class="mcon mcon-system_update"></i><samp>mcon-system_update</samp></div>
+<div class="rsi"><i class="mcon mcon-system_update_alt"></i><samp>mcon-system_update_alt</samp></div>
+<div class="rsi"><i class="mcon mcon-tab"></i><samp>mcon-tab</samp></div>
+<div class="rsi"><i class="mcon mcon-tab_unselected"></i><samp>mcon-tab_unselected</samp></div>
+<div class="rsi"><i class="mcon mcon-tablet"></i><samp>mcon-tablet</samp></div>
+<div class="rsi"><i class="mcon mcon-tablet_android"></i><samp>mcon-tablet_android</samp></div>
+<div class="rsi"><i class="mcon mcon-tablet_mac"></i><samp>mcon-tablet_mac</samp></div>
+<div class="rsi"><i class="mcon mcon-tap_and_play"></i><samp>mcon-tap_and_play</samp></div>
+<div class="rsi"><i class="mcon mcon-text_fields"></i><samp>mcon-text_fields</samp></div>
+<div class="rsi"><i class="mcon mcon-text_format"></i><samp>mcon-text_format</samp></div>
+<div class="rsi"><i class="mcon mcon-texture"></i><samp>mcon-texture</samp></div>
+<div class="rsi"><i class="mcon mcon-thumb_down"></i><samp>mcon-thumb_down</samp></div>
+<div class="rsi"><i class="mcon mcon-thumb_up"></i><samp>mcon-thumb_up</samp></div>
+<div class="rsi"><i class="mcon mcon-thumbs_up_down"></i><samp>mcon-thumbs_up_down</samp></div>
+<div class="rsi"><i class="mcon mcon-timelapse"></i><samp>mcon-timelapse</samp></div>
+<div class="rsi"><i class="mcon mcon-timeline"></i><samp>mcon-timeline</samp></div>
+<div class="rsi"><i class="mcon mcon-timer"></i><samp>mcon-timer</samp></div>
+<div class="rsi"><i class="mcon mcon-timer_10"></i><samp>mcon-timer_10</samp></div>
+<div class="rsi"><i class="mcon mcon-timer_3"></i><samp>mcon-timer_3</samp></div>
+<div class="rsi"><i class="mcon mcon-timer_off"></i><samp>mcon-timer_off</samp></div>
+<div class="rsi"><i class="mcon mcon-title"></i><samp>mcon-title</samp></div>
+<div class="rsi"><i class="mcon mcon-toc"></i><samp>mcon-toc</samp></div>
+<div class="rsi"><i class="mcon mcon-today"></i><samp>mcon-today</samp></div>
+<div class="rsi"><i class="mcon mcon-toll"></i><samp>mcon-toll</samp></div>
+<div class="rsi"><i class="mcon mcon-tonality"></i><samp>mcon-tonality</samp></div>
+<div class="rsi"><i class="mcon mcon-touch_app"></i><samp>mcon-touch_app</samp></div>
+<div class="rsi"><i class="mcon mcon-toys"></i><samp>mcon-toys</samp></div>
+<div class="rsi"><i class="mcon mcon-track_changes"></i><samp>mcon-track_changes</samp></div>
+<div class="rsi"><i class="mcon mcon-traffic"></i><samp>mcon-traffic</samp></div>
+<div class="rsi"><i class="mcon mcon-train"></i><samp>mcon-train</samp></div>
+<div class="rsi"><i class="mcon mcon-tram"></i><samp>mcon-tram</samp></div>
+<div class="rsi"><i class="mcon mcon-transfer_within_a_station"></i><samp>mcon-transfer_within_a_station</samp></div>
+<div class="rsi"><i class="mcon mcon-transform"></i><samp>mcon-transform</samp></div>
+<div class="rsi"><i class="mcon mcon-translate"></i><samp>mcon-translate</samp></div>
+<div class="rsi"><i class="mcon mcon-trending_down"></i><samp>mcon-trending_down</samp></div>
+<div class="rsi"><i class="mcon mcon-trending_flat"></i><samp>mcon-trending_flat</samp></div>
+<div class="rsi"><i class="mcon mcon-trending_up"></i><samp>mcon-trending_up</samp></div>
+<div class="rsi"><i class="mcon mcon-tune"></i><samp>mcon-tune</samp></div>
+<div class="rsi"><i class="mcon mcon-tv"></i><samp>mcon-tv</samp></div>
+<div class="rsi"><i class="mcon mcon-unarchive"></i><samp>mcon-unarchive</samp></div>
+<div class="rsi"><i class="mcon mcon-undo"></i><samp>mcon-undo</samp></div>
+<div class="rsi"><i class="mcon mcon-unfold_less"></i><samp>mcon-unfold_less</samp></div>
+<div class="rsi"><i class="mcon mcon-unfold_more"></i><samp>mcon-unfold_more</samp></div>
+<div class="rsi"><i class="mcon mcon-update"></i><samp>mcon-update</samp></div>
+<div class="rsi"><i class="mcon mcon-usb"></i><samp>mcon-usb</samp></div>
+<div class="rsi"><i class="mcon mcon-verified_user"></i><samp>mcon-verified_user</samp></div>
+<div class="rsi"><i class="mcon mcon-vertical_align_bottom"></i><samp>mcon-vertical_align_bottom</samp></div>
+<div class="rsi"><i class="mcon mcon-vertical_align_center"></i><samp>mcon-vertical_align_center</samp></div>
+<div class="rsi"><i class="mcon mcon-vertical_align_top"></i><samp>mcon-vertical_align_top</samp></div>
+<div class="rsi"><i class="mcon mcon-vibration"></i><samp>mcon-vibration</samp></div>
+<div class="rsi"><i class="mcon mcon-video_call"></i><samp>mcon-video_call</samp></div>
+<div class="rsi"><i class="mcon mcon-video_label"></i><samp>mcon-video_label</samp></div>
+<div class="rsi"><i class="mcon mcon-video_library"></i><samp>mcon-video_library</samp></div>
+<div class="rsi"><i class="mcon mcon-videocam"></i><samp>mcon-videocam</samp></div>
+<div class="rsi"><i class="mcon mcon-videocam_off"></i><samp>mcon-videocam_off</samp></div>
+<div class="rsi"><i class="mcon mcon-videogame_asset"></i><samp>mcon-videogame_asset</samp></div>
+<div class="rsi"><i class="mcon mcon-view_agenda"></i><samp>mcon-view_agenda</samp></div>
+<div class="rsi"><i class="mcon mcon-view_array"></i><samp>mcon-view_array</samp></div>
+<div class="rsi"><i class="mcon mcon-view_carousel"></i><samp>mcon-view_carousel</samp></div>
+<div class="rsi"><i class="mcon mcon-view_column"></i><samp>mcon-view_column</samp></div>
+<div class="rsi"><i class="mcon mcon-view_comfy"></i><samp>mcon-view_comfy</samp></div>
+<div class="rsi"><i class="mcon mcon-view_compact"></i><samp>mcon-view_compact</samp></div>
+<div class="rsi"><i class="mcon mcon-view_day"></i><samp>mcon-view_day</samp></div>
+<div class="rsi"><i class="mcon mcon-view_headline"></i><samp>mcon-view_headline</samp></div>
+<div class="rsi"><i class="mcon mcon-view_list"></i><samp>mcon-view_list</samp></div>
+<div class="rsi"><i class="mcon mcon-view_module"></i><samp>mcon-view_module</samp></div>
+<div class="rsi"><i class="mcon mcon-view_quilt"></i><samp>mcon-view_quilt</samp></div>
+<div class="rsi"><i class="mcon mcon-view_stream"></i><samp>mcon-view_stream</samp></div>
+<div class="rsi"><i class="mcon mcon-view_week"></i><samp>mcon-view_week</samp></div>
+<div class="rsi"><i class="mcon mcon-vignette"></i><samp>mcon-vignette</samp></div>
+<div class="rsi"><i class="mcon mcon-visibility_off"></i><samp>mcon-visibility_off</samp></div>
+<div class="rsi"><i class="mcon mcon-voice_chat"></i><samp>mcon-voice_chat</samp></div>
+<div class="rsi"><i class="mcon mcon-voicemail"></i><samp>mcon-voicemail</samp></div>
+<div class="rsi"><i class="mcon mcon-volume_down"></i><samp>mcon-volume_down</samp></div>
+<div class="rsi"><i class="mcon mcon-volume_mute"></i><samp>mcon-volume_mute</samp></div>
+<div class="rsi"><i class="mcon mcon-volume_off"></i><samp>mcon-volume_off</samp></div>
+<div class="rsi"><i class="mcon mcon-volume_up"></i><samp>mcon-volume_up</samp></div>
+<div class="rsi"><i class="mcon mcon-vpn_key"></i><samp>mcon-vpn_key</samp></div>
+<div class="rsi"><i class="mcon mcon-vpn_lock"></i><samp>mcon-vpn_lock</samp></div>
+<div class="rsi"><i class="mcon mcon-wallpaper"></i><samp>mcon-wallpaper</samp></div>
+<div class="rsi"><i class="mcon mcon-watch"></i><samp>mcon-watch</samp></div>
+<div class="rsi"><i class="mcon mcon-watch_later"></i><samp>mcon-watch_later</samp></div>
+<div class="rsi"><i class="mcon mcon-wb_auto"></i><samp>mcon-wb_auto</samp></div>
+<div class="rsi"><i class="mcon mcon-wb_incandescent"></i><samp>mcon-wb_incandescent</samp></div>
+<div class="rsi"><i class="mcon mcon-wb_iridescent"></i><samp>mcon-wb_iridescent</samp></div>
+<div class="rsi"><i class="mcon mcon-wb_sunny"></i><samp>mcon-wb_sunny</samp></div>
+<div class="rsi"><i class="mcon mcon-wc"></i><samp>mcon-wc</samp></div>
+<div class="rsi"><i class="mcon mcon-web"></i><samp>mcon-web</samp></div>
+<div class="rsi"><i class="mcon mcon-web_asset"></i><samp>mcon-web_asset</samp></div>
+<div class="rsi"><i class="mcon mcon-weekend"></i><samp>mcon-weekend</samp></div>
+<div class="rsi"><i class="mcon mcon-whatshot"></i><samp>mcon-whatshot</samp></div>
+<div class="rsi"><i class="mcon mcon-widgets"></i><samp>mcon-widgets</samp></div>
+<div class="rsi"><i class="mcon mcon-wifi"></i><samp>mcon-wifi</samp></div>
+<div class="rsi"><i class="mcon mcon-wifi_lock"></i><samp>mcon-wifi_lock</samp></div>
+<div class="rsi"><i class="mcon mcon-wifi_tethering"></i><samp>mcon-wifi_tethering</samp></div>
+<div class="rsi"><i class="mcon mcon-work"></i><samp>mcon-work</samp></div>
+<div class="rsi"><i class="mcon mcon-wrap_text"></i><samp>mcon-wrap_text</samp></div>
+<div class="rsi"><i class="mcon mcon-youtube_searched_for"></i><samp>mcon-youtube_searched_for</samp></div>
+<div class="rsi"><i class="mcon mcon-zoom_in"></i><samp>mcon-zoom_in</samp></div>
+<div class="rsi"><i class="mcon mcon-zoom_out"></i><samp>mcon-zoom_out</samp></div>
+<div class="rsi"><i class="mcon mcon-zoom_out_map"></i><samp>mcon-zoom_out_map</samp></div>
+								</div><!-- /.icon-wrap -->
+								
+
+							</div><!-- .panel-body -->
+						</div><!-- /.panel -->
+						<!-- End Panel -->
+
+
+					</div><!-- /.container-fluid -->
+
+				</div><!-- /.rs-inner -->
+			</div><!-- /.rs-content -->
+		</article><!-- /.rs-content-wrapper -->
+		<!-- END MAIN CONTENT -->
+
+
+		<!-- BEGIN FOOTER -->
+		<footer class="rs-footer absolute-footer">
+			<span class="text-muted small">&copy; 2017 Roosa Template by <a href="http://gentolab.com">Gento Lab</a></span>
+		</footer>
+		<!-- END FOOTER -->
+
+
+	</div><!-- /#rs-wrapper -->
+
+	<!-- Screen overlay is required -->
+	<div id="rs-screen-overlay"></div>
+
+
+	
+	<!-- <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+	<script>
+	window.jQuery || document.write('<script src="../dist/js/vendor/jquery.min.js"><\/script>')
+	</script> -->
+	
+	<script src="../dist/js/vendor/modernizr.min.js"></script>
+	<script src="../dist/js/vendor/jquery.min.js"></script>
+	<script src="../dist/js/vendor/bootstrap.min.js"></script>
+	<script src="../dist/js/vendor/raphael.min.js"></script>
+
+	<script src="../dist/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="../dist/plugins/ismobile/isMobile.min.js"></script>
+	<script src="../dist/plugins/blockui/blockui.min.js"></script>
+	<script src="../dist/plugins/prettify/prettify.min.js"></script>
+	<script src="../dist/plugins/clipboard/clipboard.min.js"></script>
+	<script src="../dist/plugins/filestyle/bootstrap-filestyle.min.js"></script>
+	<script src="../dist/plugins/pace/pace.min.js"></script>
+
+	<!-- Template Js -->
+	<script src="../dist/js/apps.js"></script>
+	<script src="../dist/js/layout-default.js"></script>
+
+</body>
+</html>

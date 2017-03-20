@@ -1,0 +1,89 @@
+// Th & Td sizings
+.@{css-prefix}-table {
+  > thead, > tbody, > tfoot {
+    > tr {
+      > th, > td {
+        padding: @table-template-padding;
+      }
+    }
+  }
+  &.table-lg {
+    > thead, > tbody, > tfoot {
+      > tr {
+        > th, > td {
+          padding: @table-template-padding-lg-y @table-template-padding-lg-x;
+        }
+      }
+    }
+  }
+}
+
+// Table border hacks
+.table-b {
+
+  // Table border top
+  &-t {
+    border-top: 1px solid @table-border-color !important;
+  }
+
+  // Table border vertical
+  &-v {
+    border-left: 1px solid @table-border-color !important;
+    border-right: 1px solid @table-border-color !important;
+  }
+
+  // Table border horizontal
+  &-h {
+    border-top: 1px solid @table-border-color !important;
+    border-bottom: 1px solid @table-border-color !important;
+  }
+
+  // Table border bottom
+  &-b {
+    border-bottom: 1px solid @table-border-color !important;
+  }
+
+  // Table bordered all
+  &-a {
+    border: 1px solid @table-border-color !important;
+  }
+}
+
+// Table coloring
+.table {
+  &-default > thead > tr {
+    > td, > th {
+      background-color: @table-default;
+    }
+  }
+  &-primary > thead > tr {
+    > td, > th {
+      background-color: @table-primary;
+      color: @table-bg-color-font-color;
+    }
+  }
+  &-success > thead > tr {
+    > td, > th {
+      background-color: @table-success;
+      color: @table-bg-color-font-color;
+    }
+  }
+  &-info > thead > tr {
+    > td, > th {
+      background-color: @table-info;
+      color: @table-bg-color-font-color;
+    }
+  }
+  &-warning > thead > tr {
+    > td, > th {
+      background-color: @table-warning;
+      color: @table-bg-color-font-color;
+    }
+  }
+  &-danger > thead > tr {
+    > td, > th {
+      background-color: @table-danger;
+      color: @table-bg-color-font-color;
+    }
+  }
+}

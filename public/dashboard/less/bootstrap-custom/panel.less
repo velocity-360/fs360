@@ -1,0 +1,121 @@
+// General custom
+.panel {
+  margin-bottom: @panel-margin-bottom;
+  border: 1px solid transparent;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  &-heading {
+    padding: @panel-heading-padding-y @panel-heading-padding-x;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    position: relative;
+  }
+  &-body {
+    padding: @panel-body-padding;
+  }
+  &-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: @panel-title-font-size;
+    color: inherit;
+    font-weight: 400;
+    > a, > small, > .small, > small > a, > .small > a {
+      color: inherit;
+    }
+  }
+  &-footer {
+    padding: @panel-footer-padding-y @panel-footer-padding-x;
+    background-color: @panel-footer-bg;
+    border-top: 1px solid @panel-footer-border-color;
+    border-bottom-right-radius: @panel-footer-rounded-size;
+    border-bottom-left-radius: @panel-footer-rounded-size;
+    position: relative;
+  }
+  .table-responsive {
+    margin-bottom: 0;
+    border: 0;
+  }
+}
+
+// Panel coloring
+.panel-default {
+  border-color: @panel-default-border-color;
+  > .panel-heading {
+    color: @panel-default-color;
+    background-color: @panel-default-bg;
+    border-color: @panel-default-border-color;
+    + .panel-collapse > .panel-body {
+      border-top-color: @panel-default-border-color;
+    }
+    .badge {
+      color: @panel-default-bg;
+      background-color: @panel-default-color;
+    }
+  }
+  > .panel-footer + .panel-collapse > .panel-body  {
+    border-bottom-color: @panel-default-border-color;
+  }
+}
+.panel-primary {
+  .panel-variant(@panel-primary, @color-white);
+}
+.panel-success {
+  .panel-variant(@panel-success, @color-white);
+}
+.panel-info {
+  .panel-variant(@panel-info, @color-white);
+}
+.panel-warning {
+  .panel-variant(@panel-warning, @color-white);
+}
+.panel-danger {
+  .panel-variant(@panel-danger, @color-white);
+}
+
+// Table panel
+.panel .table {
+  margin-bottom: 0;
+  caption{
+    padding-right: @panel-table-caption-padding;
+    padding-left: @panel-table-caption-padding;
+  }
+  &-bordered {
+    border: none;
+  }
+}
+.panel {
+  .table-bordered, .table-responsive > .table-bordered {
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+      &:first-child {
+        border-left: 0;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+.panel {
+  .table-borderes, .table-responsive > .table-bordered {
+    > thead > tr,
+    > tbody > tr {
+      &:first-child {
+        > td, > th {
+          border-bottom: 0;
+        }
+      }
+      &:last-child {
+        > td, > th {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}

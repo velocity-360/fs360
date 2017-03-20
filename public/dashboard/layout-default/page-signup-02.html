@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Roosa - Just Another Dashboard Template</title>
+
+	<!-- Site Icons -->
+	<link rel="apple-touch-icon" href="../dist/img/apple-touch-icon.png">
+	<link rel="icon" href="../dist/img/icon.ico">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+	<!-- Framework -->
+	<link rel="stylesheet" href="../dist/css/vendor/bootstrap.min.css">
+
+	<!-- Icon Fonts -->
+	<link rel="stylesheet" href="../dist/icons/entypo/entypo.min.css">
+	<link rel="stylesheet" href="../dist/icons/fa/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../dist/icons/flag-icon/css/flag-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/material-icon/material-icon.min.css">
+	<link rel="stylesheet" href="../dist/icons/weather-icon/css/weather-icons.min.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="../dist/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datatable/datatables.min.css">
+	<link rel="stylesheet" href="../dist/plugins/datepicker/css/datepicker.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/medium-editor.min.css">
+	<link rel="stylesheet" href="../dist/plugins/medium-editor/css/themes/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/plugins/morris/morris.min.css">
+	<link rel="stylesheet" href="../dist/plugins/prettify/themes/tomorrow-night.min.css">
+	<link rel="stylesheet" href="../dist/plugins/selectize/css/selectize.min.css">
+	<link rel="stylesheet" href="../dist/plugins/sortable/sortable.min.css">
+	<link rel="stylesheet" href="../dist/plugins/stepy/jquery.stepy.min.css">
+	<link rel="stylesheet" href="../dist/plugins/pace/pace.css">
+	<link rel="stylesheet" href="../dist/plugins/summernote/summernote.min.css">
+	
+
+	<!-- Main Template CSS -->
+	<link rel="stylesheet" href="../dist/css/bootstrap.custom.css">
+	<link rel="stylesheet" href="../dist/css/style.css">
+	<link rel="stylesheet" href="../dist/css/helper.css">
+
+	<style type="text/css">
+		.bg-grad-trans {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4776e6+0,8e54e9+100 */
+			background: rgba(71,118,230,0.7) !important;
+			background: -moz-linear-gradient(45deg,  rgba(71,118,230,0.7) 0%, rgba(142,84,233,0.7) 100%) !important;
+			background: -webkit-linear-gradient(45deg,  rgba(71,118,230,0.7) 0%,rgba(142,84,233,0.7) 100%) !important;
+			background: linear-gradient(45deg,  rgba(71,118,230,0.7) 0%,rgba(142,84,233,0.7) 100%) !important;
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(71,118,230,0.7)', endColorstr='rgba(142,84,233,0.7)',GradientType=1 ) !important;
+		}
+	</style>
+</head>
+
+
+<body>
+
+	<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<div id="rs-wrapper" class="bg-transparent">
+
+		<div class="full-height-content fixed bg-grad-trans text-center">
+			<div class="center-content p-a-lg">
+				<img src="../dist/img/250.png" class="img-responsive m-x-auto m-y-lg" alt="Logo">
+				<p class="text-white">Have an account? Click button below</p>
+				<div class="form-group">
+					<a href="page-login-02.html" class="btn btn-warning btn-wide text-uppercase">Log in Page</a>
+				</div><!-- /.form-group -->
+			</div><!-- /.center-content -->
+
+			<!-- BEGIN FOOTER -->
+			<footer class="rs-footer login-footer text-center">
+				<span class="text-white small">&copy; 2017 Roosa Template by <a href="http://gentolab.com" class="text-lighten">Gento Lab</a></span>
+			</footer>
+			<!-- END FOOTER -->
+		</div><!-- /.full-height-content -->
+
+		<div class="full-height-content right-side bg-white">
+			<div class="p-a-md p-y-lg bg-white">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<p class="f-l-15 text-uppercase text-center text-muted m-y-lg">Create New Account</p>
+						<form class="m-b-lg">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="control-label">First Name</label>
+										<input type="text" class="form-control" name="firstname">
+									</div><!-- /.form-group -->
+								</div><!-- /.col-sm-6 -->
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="control-label">Last Name</label>
+										<input type="text" class="form-control" name="lastname">
+										<p class="help-block">Optional</p>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-sm-6 -->
+							</div><!-- /.row -->
+							<div class="form-group">
+								<label class="control-label">Email Address</label>
+								<input type="email" class="form-control" name="email">
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label class="control-label">Username</label>
+								<input type="text" class="form-control" name="username">
+								<p class="help-block">Think about very unique and easy to remember, please no [<em>space</em>]</p>
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label class="control-label">Password</label>
+								<input type="password" class="form-control" name="password">
+							</div><!-- /.form-control -->
+							<div class="form-group">
+								<label class="control-label">Confirm Password</label>
+								<input type="password" class="form-control" name="confirm_password">
+							</div><!-- /.form-control -->
+							<div class="form-group">
+								<div class="checkbox checkbox-custom text-muted">
+									<label>
+										<input type="checkbox" value="">
+										<span class="checker"></span>
+										I have read and agree with <a href="">Terms &amp; Contitions</a>
+									</label>
+								</div>
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<button class="btn btn-success btn-block text-uppercase">Sign me up</button>
+							</div><!-- /.form-group -->
+						</form>
+
+					</div><!-- /.col-md-8 col-md-offset-2 -->
+				</div><!-- /.row -->
+			</div><!-- /.bg-white -->
+		</div><!-- /.full-height-content -->
+
+	</div><!-- /#rs-wrapper -->
+
+
+	
+	<!-- <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+	<script>
+	window.jQuery || document.write('<script src="../dist/js/vendor/jquery.min.js"><\/script>')
+	</script> -->
+	
+	<script src="../dist/js/vendor/modernizr.min.js"></script>
+	<script src="../dist/js/vendor/jquery.min.js"></script>
+	<script src="../dist/js/vendor/bootstrap.min.js"></script>
+	<script src="../dist/js/vendor/raphael.min.js"></script>
+
+	<script src="../dist/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="../dist/plugins/ismobile/isMobile.min.js"></script>
+	<script src="../dist/plugins/blockui/blockui.min.js"></script>
+	<script src="../dist/plugins/prettify/prettify.min.js"></script>
+	<script src="../dist/plugins/clipboard/clipboard.min.js"></script>
+	<script src="../dist/plugins/filestyle/bootstrap-filestyle.min.js"></script>
+	<script src="../dist/plugins/pace/pace.min.js"></script>
+
+	<!-- Page Plugin -->
+	<script src="../dist/plugins/backstretch/jquery.backstretch.min.js"></script>
+
+	<!-- Template Js -->
+	<script src="../dist/js/apps.js"></script>
+
+	<script type="text/javascript">
+	
+		jQuery(document).ready(function($){
+
+			"use strict";
+
+			$("body").backstretch("../images/fogggy-mt.jpg");
+
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'center-content'
+			});
+
+		});
+
+	</script>
+
+</body>
+</html>

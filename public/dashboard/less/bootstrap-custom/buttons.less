@@ -1,0 +1,78 @@
+// General custom
+.btn {
+  padding: @btn-padding-y @btn-padding-x;
+  border-radius: @input-rounded-size;
+  height: @input-height;
+  &.btn-wide {
+    padding-right: @btn-wide-padding-x;
+    padding-left: @btn-wide-padding-x;
+  }
+  &:active,&.active {
+    .box-shadow-none();
+    background-image: none;
+    outline: 0 !important;
+    outline: none !important;
+  }
+  &:focus,&.focus {
+    outline: 0;
+    outline: none;
+  }
+}
+
+// Button variant custom
+.btn-default {
+  .button-default-variant(@btn-default-color; @btn-default-bg-color; @btn-default-border-color);
+}
+.btn-primary {
+  .button-variant(@color-white; @btn-primary; @btn-primary);
+}
+.btn-success {
+  .button-variant(@color-white; @btn-success; @btn-success);
+}
+.btn-info {
+  .button-variant(@color-white; @btn-info; @btn-info);
+}
+.btn-warning {
+  .button-variant(@color-white; @btn-warning; @btn-warning);
+}
+.btn-danger {
+  .button-variant(@color-white; @btn-danger; @btn-danger);
+}
+
+// Button link
+.btn-link {
+  font-weight: normal;
+  color: @btn-link-color;
+  border-radius: 0;
+}
+
+// Button sizing
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: @input-padding-y-lg @input-padding-x-lg;
+  font-size: @input-font-size-lg;
+  line-height: @input-line-height-lg;
+  border-radius: @input-rounded-size-lg;
+  height: @input-height-lg;
+}
+.btn-sm,
+.btn-group-sm > .btn {
+  padding: @input-padding-y-sm @input-padding-x-sm;
+  font-size: @input-font-size-sm;
+  line-height: @input-line-height-sm;
+  border-radius: @input-rounded-size-sm;
+  height: @input-height-sm;
+}
+.btn-xs,
+.btn-group-xs > .btn {
+  padding: @input-padding-y-xs @input-padding-x-xs;
+  font-size: @input-font-size-xs;
+  line-height: @input-line-height-xs;
+  border-radius: @input-rounded-size-xs;
+  height: @input-height-xs;
+}
+
+// Disable box shadow
+.btn-group.open .dropdown-toggle {
+  .box-shadow-none();
+}

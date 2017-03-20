@@ -1,0 +1,79 @@
+// Main wrapper (Wrap all page content)
+#@{css-prefix}-wrapper {
+  position: relative;
+  min-height: 100%;
+  background-color: @wrapper-background;
+  z-index: 1;
+  .clear();
+  &.@{css-prefix}-header-fixed-top {
+    padding-top: @navbar-min-height;
+  }
+}
+
+.responsive-min(@device-desktop-small; {
+
+  // Boxed layout
+  body.@{css-prefix}-boxed-layout {
+    background-attachment: fixed !important;
+    #@{css-prefix}-wrapper {
+      width: auto;
+      max-width: @wrapper-boxed-width;
+      margin: 0 auto;
+    }
+  }
+
+});
+
+.responsive(@device-tablet + 1; {
+  #@{css-prefix}-wrapper{
+    .@{css-prefix}-sidebar {
+      -webkit-transition: left .3s ease-in-out;
+      -moz-transition: left .3s ease-in-out;
+      -o-transition: left .3s ease-in-out;
+      transition: left .3s ease-in-out;
+    }
+    &.@{css-prefix}-toggle-sidebar .@{css-prefix}-sidebar{
+      left: 0 !important;
+    }
+  }
+  #@{css-prefix}-screen-overlay {
+    background: fade(@color-black,50);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1071;
+    content: "";
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility .3s ease-in-out, opacity .3s ease-in-out, left .3s ease-in-out;
+    -moz-transition: visibility .3s ease-in-out, opacity .3s ease-in-out, left .3s ease-in-out;
+    -o-transition: visibility .3s ease-in-out, opacity .3s ease-in-out, left .3s ease-in-out;
+    transition: visibility .3s ease-in-out, opacity .3s ease-in-out, left .3s ease-in-out;
+    &.@{css-prefix}-toggle-sidebar {
+      visibility: visible;
+      opacity: 1;
+      left: 270px;
+    }
+  }
+  #@{css-prefix}-wrapper .navbar-fixed-top,
+  .@{css-prefix}-footer.absolute-footer {
+    -webkit-transition: left .3s ease-in-out, right .3s ease-in-out;
+    -moz-transition: left .3s ease-in-out, right .3s ease-in-out;
+    -o-transition: left .3s ease-in-out, right .3s ease-in-out;
+    transition: left .3s ease-in-out, right .3s ease-in-out;
+  }
+});
+
+#@{css-prefix}-wrapper.@{css-prefix}-header-fixed-top.@{css-prefix}-sidebar-fixed:not(.@{css-prefix}-mini-sidebar) .@{css-prefix}-sidebar {
+  overflow-y: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 900;
+  top: @navbar-min-height;
+  &:after {
+    display: none;
+  }
+}
