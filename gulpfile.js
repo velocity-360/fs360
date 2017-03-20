@@ -64,8 +64,7 @@ gulp.task('build', function(){
                 './public/js/sidebar-config.js',
                 './public/js/sweetalert.min.js',
                 './public/js/velocity360.js',
-                './public/js/tutorials.js',
-                './public/js/courses.js'
+                './public/js/tutorials.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))
