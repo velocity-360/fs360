@@ -81,9 +81,9 @@
                 <div class="panel-group" id="subscribe">
                     <div class="row">
                         {{#currentUser}} <!-- Logged In -->
-                            <div id="logged-in" class="col-md-6">
+                        <div class="col-md-6">
 
-                            </div>
+                        </div>
 
                         {{/currentUser}}
 
@@ -117,10 +117,5 @@
 
     {{>footer}}
     {{>javascripts}}
-    <script type="text/javascript">
-        var tutorial = {{{json}}}
-        var currentUser = {{{currentUserJson}}}
-        checkSubscription(tutorial, currentUser)
-    </script>
 </body>
 </html>

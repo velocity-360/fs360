@@ -31,58 +31,6 @@ matchRoutes = function(req, routes){
 	})
 }
 
-// router.get('/', function(req, res, next) {
-// 	var initialData = initial()
-// 	var initialState = null
-// 	var tags = {
-// 		title: 'Learn Full Stack Node, React, Redux',
-// 		url: 'https://www.velocity360.io',
-// 		image: 'https://www.velocity360.io/images/logo_round_green_260.png'
-// 	}
-
-// 	controllers.account.currentUser(req)
-// 	.then(function(currentUser){ // can be null
-// 		initialData['account'] = {currentUser: currentUser}
-// 		return controllers.tutorial.find({limit:6})
-// 	})
-// 	.then(function(tutorials){
-// 		var tutorialReducer = {
-// 			all: tutorials
-// 		}
-
-// 		tutorials.forEach(function(tutorial, i){
-// 			tutorialReducer[tutorial.id] = tutorial
-// 			tutorialReducer[tutorial.slug] = tutorial
-// 		})
-
-// 		initialData['tutorial'] = tutorialReducer
-
-// 		initialState = store.configureStore(initialData)
-// 		var routes = {
-// 			path: '/',
-// 			component: serverapp,
-// 			initial: initialState,
-// 			indexRoute: {
-// 				component: layout.Home
-// 			}
-// 		}
-
-// 		return matchRoutes(req, routes)
-// 	})
-// 	.then(function(renderProps){
-// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-// 	    res.render(template, {
-// 	    	react: html,
-// 	    	tags: tags,
-// 	    	preloadedState:JSON.stringify(initialState.getState())
-// 	    })
-// 	})
-// 	.catch(function(err){
-// 		console.log('ERROR: '+err)
-// 	})
-// })
-
 router.get('/', function(req, res, next) {
 	var data = {}
 	controllers.account.currentUser(req)
@@ -222,7 +170,6 @@ router.get('/:page', function(req, res, next) {
 
 
 router.get('/tutorial/:slug', function(req, res, next) {
-//	var slug = req.params.slug
 
 	var data = {}
 	controllers.account.currentUser(req)
@@ -235,10 +182,8 @@ router.get('/tutorial/:slug', function(req, res, next) {
 		return controller.find({slug: req.params.slug})
 	})
 	.then(function(tutorials){
-		if (tutorials.length > 0){
+		if (tutorials.length > 0)
 			data['tutorial'] = tutorials[0]
-			data['json'] = JSON.stringify(data.tutorial)
-		}
 
 		// console.log('DATA: '+JSON.stringify(data))
 	    res.render('tutorial', data)
@@ -249,74 +194,98 @@ router.get('/tutorial/:slug', function(req, res, next) {
 	})
 })
 
+router.get('/course/:slug', function(req, res, next) {
 
-router.get('/:page/:slug', function(req, res, next) {
-	var page = req.params.page
-	var slug = req.params.slug
-
-	if (page == 'api' || page == 'admin' || page == 'account' || page == 'tracker' || page == 'premium'){
-		next()
-		return
-	}
-
-	var initialData = initial()
-	var initialState = null
-	var tags = null
-
+	var data = {}
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
-		initialData['account'] = {currentUser: currentUser}
-		var controller = controllers[page] // page can be course or tutorial
-		return controller.find({slug: slug})
+		data['currentUser'] = currentUser // can be null
+		if (data.currentUser != null)
+			data['currentUserJson'] = JSON.stringify(data.currentUser)
+
+		var controller = controllers['course']
+		return controller.find({slug: req.params.slug})
 	})
-	.then(function(entities){
-		var reducer = {all: null}
-		entities.forEach(function(entity, i) {
-			reducer[entity.slug] = entity
-		})
-
-		initialData[page] = reducer
-		initialState = store.configureStore(initialData)
-
-		var routes = {
-			path: '/'+page+'/:slug',
-			component: serverapp,
-			initial: initialState,
-			indexRoute: {
-				component: layout.Split
-			}
-		}
-
-		if (entities.length > 0){
-			// Facebook tags:
-			var entity = entities[0]
-			var description = entity.text || entity.description
-			if (description.length > 200)
-				description = description.substring(0, 200)+'...'
-
-			tags = {
-				title: entity.title || entity.name,
-				url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
-				image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
-				description: description
-			}
-		}
-
-		return matchRoutes(req, routes)
+	.then(function(courses){
+		if (courses.length > 0)
+			data['course'] = courses[0]
+		
+		// console.log('DATA: '+JSON.stringify(data))
+	    res.render('course', data)
 	})
-	.then(function(renderProps){
-		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-	    res.render(template, {
-	    	react: html,
-	    	tags: tags,
-	    	preloadedState:JSON.stringify(initialState.getState())
-	    })
-	})
-	.catch(function(err){ // TODO: Handle Error
-		console.log('ERROR: '+err)
+	.catch(function(err){
+//		console.log('ERROR: '+err)
+	    res.render('course', data)
 	})
 })
+
+// router.get('/:page/:slug', function(req, res, next) {
+// 	var page = req.params.page
+// 	var slug = req.params.slug
+
+// 	if (page == 'api' || page == 'admin' || page == 'account' || page == 'tracker' || page == 'premium'){
+// 		next()
+// 		return
+// 	}
+
+// 	var initialData = initial()
+// 	var initialState = null
+// 	var tags = null
+
+// 	controllers.account.currentUser(req)
+// 	.then(function(currentUser){
+// 		initialData['account'] = {currentUser: currentUser}
+// 		var controller = controllers[page] // page can be course or tutorial
+// 		return controller.find({slug: slug})
+// 	})
+// 	.then(function(entities){
+// 		var reducer = {all: null}
+// 		entities.forEach(function(entity, i) {
+// 			reducer[entity.slug] = entity
+// 		})
+
+// 		initialData[page] = reducer
+// 		initialState = store.configureStore(initialData)
+
+// 		var routes = {
+// 			path: '/'+page+'/:slug',
+// 			component: serverapp,
+// 			initial: initialState,
+// 			indexRoute: {
+// 				component: layout.Split
+// 			}
+// 		}
+
+// 		if (entities.length > 0){
+// 			// Facebook tags:
+// 			var entity = entities[0]
+// 			var description = entity.text || entity.description
+// 			if (description.length > 200)
+// 				description = description.substring(0, 200)+'...'
+
+// 			tags = {
+// 				title: entity.title || entity.name,
+// 				url: 'https://www.velocity360.io/'+page+'/'+entity.slug,
+// 				image: 'https://media-service.appspot.com/site/images/'+entity.image+'?crop=260',
+// 				description: description
+// 			}
+// 		}
+
+// 		return matchRoutes(req, routes)
+// 	})
+// 	.then(function(renderProps){
+// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
+// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+// 	    res.render(template, {
+// 	    	react: html,
+// 	    	tags: tags,
+// 	    	preloadedState:JSON.stringify(initialState.getState())
+// 	    })
+// 	})
+// 	.catch(function(err){ // TODO: Handle Error
+// 		console.log('ERROR: '+err)
+// 	})
+// })
 
 
 module.exports = router

@@ -142,4 +142,13 @@ var register = function(event, type){ // basic or premium
 
         window.location.href = '/account'
     })
-};
+}
+
+var showPaypal = function(paypalLink){
+//    console.log('showPaypal: '+paypalLink)
+    if (paypalLink.length == 0)
+        return
+
+    // event.preventDefault()
+    window.open(paypalLink, 'Velocity 360', 'width=650,height=900')
+}

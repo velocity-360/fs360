@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<html>
+<head>
+    {{>head}}
+</head>
+
+<body>
+    <!--[if lte IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+    <![endif]-->
+    <div class="layer"></div>
+    <div id="preloader">
+        <div data-loader="circle-side"></div>
+    </div>
+    {{>nav}}
+
+    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
+        <div id="subheader">
+            <h1>{{course.title}}</h1>
+        </div>
+    </section>
+
+    <div class="container margin_60_35">
+        <div class="row">
+        
+            <div class="col-md-3" id="sidebar">
+                <div class="theiaStickySidebar">
+                    <div id="faq_box">
+                        <ul id="cat_nav">
+                            <li><a href="#overview" class="active">Overview</a></li>
+                            <li><a href="#curriculum">Curriculum</a></li>
+                            <li><a href="#register">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <h3 class="nomargin_top">Overview</h3>
+                <hr />
+
+                <div class="panel-group" id="overview">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <img style="border:1px solid #ddd;width:260px;margin-bottom:16px" alt="Velocity 360" src="https://media-service.appspot.com/site/images/{{course.image}}?crop=320" />
+                            <br />
+                            <span style="padding:4px;background:#f9f9f9;border:1px solid #ddd;margin-right:12px">{{course.dates}}</span>
+                            <span style="padding:4px;background:#f9f9f9;border:1px solid #ddd;margin-right:12px">{{ course.schedule }}</span>
+                            <span style="padding:4px;background:#f9f9f9;border:1px solid #ddd;margin-right:12px">${{course.tuition}}</span>
+                            <br /><br />
+                            <p>{{course.description}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="nomargin_top">Curriculum</h3>
+                <hr />
+                <div class="panel-group" id="curriculum">
+                    <div class="row">
+                        <div class="col-md-8">
+                            
+                            {{#course.units}}
+                            <div class="entry clearfix" style="border:none;margin-bottom:24px">
+                                <div class="panel panel-default" style="boxShadow:none;background:#FDFEFE">
+                                    <div class="panel-body" style="padding:24px">
+                                        <h3 style="margin-top:0px">{{topic}}</h3>
+                                        <hr />
+                                        <p style="">{{description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/course.units}}
+
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="nomargin_top">Register</h3>
+                <hr />
+                <div class="panel-group" id="register">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="box_style_3" id="general_facilities">
+                                <h3>Deposit</h3>
+                                <p>
+                                    To secure a spot in the next class, submit a deposit below. If the class does not run for 
+                                    any reason, the deposit will be fully refunded. The first payment installment is due on the 
+                                    first day of class.
+                                </p>
+
+                                <button onClick="showPaypal('{{course.discountPaypalLink}}')" style="height:36px;border-radius:18px;margin-top:12px" class="btn_1 white" href="#">Submit Deposit</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="box_style_3" id="general_facilities">
+                                <h3>Full Tuition</h3>
+                                <p>
+                                    Submit the full tuition today to receive a $200 discount. If the class does not run for 
+                                    any reason, your payment will be fully refunded.
+                                </p>
+
+                                <button onClick="showPaypal('{{course.discountPaypalLink}}')" style="height:36px;border-radius:18px;margin-top:12px" class="btn_1 white" href="#">Submit Full Tuition</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> 
+
+
+
+    {{>footer}}
+    {{>javascripts}}
+</body>
+</html>
