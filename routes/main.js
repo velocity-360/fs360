@@ -99,28 +99,6 @@ router.get('/', function(req, res, next) {
 	})
 })
 
-router.get('/tutorials', function(req, res, next) {
-	var data = {}
-	controllers.account.currentUser(req)
-	.then(function(currentUser){
-		data['currentUser'] = currentUser // can be null
-		return controllers.tutorial.find({})
-	})
-	.then(function(tutorials){
-		// tutorials.forEach(function(tutorial, i){
-		// 	tutorial['preview'] = function(){
-		// 		return (tutorial.description.length < 175) ? tutorial.description : tutorial.description.substring(0, 175)+'...'
-		// 	}
-		// })
-		data['tutorials'] = tutorials
-	    res.render('tutorials', data)
-	})
-	.catch(function(err){
-		// console.log('ERROR: '+err)
-	    res.render('tutorials', data)
-	})
-})
-
 router.get('/account', function(req, res, next) {
 	var initialData = initial()
 	var initialState = null
@@ -170,80 +148,103 @@ router.get('/account', function(req, res, next) {
 	})
 })
 
-
 router.get('/:page', function(req, res, next) {
-	var page = req.params.page // 'courses', 'online', 'account'
+	var page = req.params.page // 'courses', 'tutorials', 'account'
 	if (page == 'tracker'){
 		next()
 		return
 	}
 
-	var initialData = initial()
-	var initialState = null
-
+	var data = {}
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
-		initialData['account'] = {currentUser: currentUser}
-		initialData['session'] = {selectedMenuItem: page}
-
-		var controller = controllers[page] // page can be course or tutorial
+		data['currentUser'] = currentUser // can be null
+		var controller = controllers[page]
 		return controller.find({})
 	})
 	.then(function(entities){
-		var reducer = {all: []}
-		entities.forEach(function(entity, i) {
-			reducer[entity.id] = entity
-			reducer[entity.slug] = entity
-			reducer.all.push(entity)
-
-			if (entity.category != null){
-				var list = reducer[entity.category] || []
-				list.push(entity)
-				reducer[entity.category] = list
-			}
-		})
-
-		var base = null
-		if (page == 'online'){
-			initialData['tutorial'] = reducer // can be tutorial reducer
-			base = layout.Landing
-		}
-
-		if (page == 'courses'){
-			initialData['course'] = reducer // can be course reducer
-			base = layout.Split
-		}
-
-		if (page == 'tutorials'){
-			initialData['tutorial'] = reducer // can be tutorials reducer
-			base = layout.Split
-		}
-
-		initialState = store.configureStore(initialData)
-
-		var routes = {
-			path: '/'+page,
-			component: serverapp,
-			initial: initialState,
-			indexRoute: {
-				component: base
-			}
-		}
-
-		return matchRoutes(req, routes)		
+		data[page] = entities
+	    res.render(page, data)
 	})
-	.then(function(renderProps){
-		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-	    res.render(template, {
-	    	react: html,
-	    	preloadedState:JSON.stringify(initialState.getState())
-	    })
-	})	
-	.catch(function(err){ // TODO: Handle Error
-		console.log('ERROR: '+err)
+	.catch(function(err){
+	    res.render(page, data)
 	})
 })
+
+
+// router.get('/:page', function(req, res, next) {
+// 	var page = req.params.page // 'courses', 'online', 'account'
+// 	if (page == 'tracker'){
+// 		next()
+// 		return
+// 	}
+
+// 	var initialData = initial()
+// 	var initialState = null
+
+// 	controllers.account.currentUser(req)
+// 	.then(function(currentUser){
+// 		initialData['account'] = {currentUser: currentUser}
+// 		initialData['session'] = {selectedMenuItem: page}
+
+// 		var controller = controllers[page] // page can be course or tutorial
+// 		return controller.find({})
+// 	})
+// 	.then(function(entities){
+// 		var reducer = {all: []}
+// 		entities.forEach(function(entity, i) {
+// 			reducer[entity.id] = entity
+// 			reducer[entity.slug] = entity
+// 			reducer.all.push(entity)
+
+// 			if (entity.category != null){
+// 				var list = reducer[entity.category] || []
+// 				list.push(entity)
+// 				reducer[entity.category] = list
+// 			}
+// 		})
+
+// 		var base = null
+// 		if (page == 'online'){
+// 			initialData['tutorial'] = reducer // can be tutorial reducer
+// 			base = layout.Landing
+// 		}
+
+// 		if (page == 'courses'){
+// 			initialData['course'] = reducer // can be course reducer
+// 			base = layout.Split
+// 		}
+
+// 		if (page == 'tutorials'){
+// 			initialData['tutorial'] = reducer // can be tutorials reducer
+// 			base = layout.Split
+// 		}
+
+// 		initialState = store.configureStore(initialData)
+
+// 		var routes = {
+// 			path: '/'+page,
+// 			component: serverapp,
+// 			initial: initialState,
+// 			indexRoute: {
+// 				component: base
+// 			}
+// 		}
+
+// 		return matchRoutes(req, routes)		
+// 	})
+// 	.then(function(renderProps){
+// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
+// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+// 	    res.render(template, {
+// 	    	react: html,
+// 	    	preloadedState:JSON.stringify(initialState.getState())
+// 	    })
+// 	})	
+// 	.catch(function(err){ // TODO: Handle Error
+// 		console.log('ERROR: '+err)
+// 	})
+// })
 
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page
