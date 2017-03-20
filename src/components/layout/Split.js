@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Sidebar, Footer } from '../view'
-import { Dashboard, Nav, BaseContainer } from '../containers'
+import { Nav, Sidebar, Footer } from '../view'
+import { Dashboard, BaseContainer } from '../containers'
 import styles from './styles'
 
 class Split extends Component {

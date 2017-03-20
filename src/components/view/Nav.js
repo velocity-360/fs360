@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import actions from '../../actions'
 
 class Nav extends Component {
 
@@ -72,18 +70,5 @@ class Nav extends Component {
 }
 
 
-const stateToProps = (state) => {
-	return {
-		account: state.account,
-		session: state.session
-	}
-}
-
-const dispatchToProps = (dispatch) => {
-	return {
-
-	}
-}
-
-export default connect(stateToProps, dispatchToProps)(Nav)
+export default Nav
 
