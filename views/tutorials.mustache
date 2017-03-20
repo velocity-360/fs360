@@ -32,21 +32,7 @@
                             <li><a onClick="selectCategory(event, 'fullstack')" href="#">Fullstack</a></li>
                             <li><a onClick="selectCategory(event, 'node')" href="#">Node</a></li>
                             <li><a onClick="selectCategory(event, 'react')" href="#">React</a></li>
-                            <li>
-                                <div style="padding:15px 15px">
-                                    <img src="/img/slack.png" /> 
-                                    <p style="margin-top:12px">
-                                        Join our Slack channel to ask questions about tutorials, get feedback on 
-                                        your code and to discuss general programming and industry topics: 
-                                    </p>
-                                    <div id="message-newsletter_2"></div>
-                                    <div class="form-group">
-                                        <input style="" type="text" onChange="updateVisitor(event)" id="name" placeholder="Name" class="form-control" /><br />
-                                        <input style="" type="text" onChange="updateVisitor(event)" id="email" placeholder="Email" class="form-control" />
-                                    </div>
-                                    <button onClick="slackRequest(event)" class="btn_1 white">Join</button>
-                                </div>
-                            </li>
+                            <li>{{>slack}}</li>
                         </ul>
                     </div>
                 </div>
@@ -79,39 +65,8 @@
                 <hr />
                 <div class="panel-group" id="subscribe">
                     <div class="row">
-
-                        <div class="col-md-6">
-                            <div class="box_style_3" id="general_facilities">
-                                <h3>Premium Membership</h3>
-                                <p style="margin-top:12px;padding-top:12px;border-top:1px solid #ddd">
-                                    Join as a premium member for $19.99 each month and receive unlimited access to all tutorials, 
-                                    code samples, and forums on the site. There are no long term commitments and membership 
-                                    can be canceled at any time.
-                                </p>
-
-                                <ul class="list_ok">
-                                    <li>Downloadable Code Samples</li>
-                                    <li>Downloadable Videos</li>
-                                    <li>Q&amp;A Forum Access</li>
-                                    <li>Discounts on Live Courses</li>
-                                </ul>
-                                <button style="height:36px;border-radius:18px;margin-top:12px" onClick="register(event, 'premium')" class="btn_1 white" href="#">Subscribe</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="box_style_3" id="general_facilities">
-                                <h3>Basic Membership</h3>
-                                <p style="margin-top:12px;padding-top:12px;border-top:1px solid #ddd">
-                                    Join as a basic member to gain access to the free tutorials, get notifications when 
-                                    new tutorials and courses are published, and participate in the Q&amp;A forums.
-                                </p>
-                                <input style="margin-top:12px" onChange="updateVisitor(event)" class="form-control" type="text" id="username" placeholder="Username" />
-                                <input style="margin-top:12px" onChange="updateVisitor(event)" class="form-control" type="text" id="email" placeholder="Email" />
-                                <button style="height:36px;border-radius:18px;margin-top:12px" onClick="register(event, 'basic')" class="btn_1 white">Subscribe</button>
-                            </div>
-                        </div>
-
+                        {{>premiummembership}}
+                        {{>basicmembership}}
                     </div>
                 </div>
 

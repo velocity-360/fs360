@@ -30,6 +30,9 @@ class Split extends Component {
             if (page == 'account')
                 content = <Account />
 
+            if (page == 'dashboard')
+                content = <Account />
+
         }
         if (parts.length == 2){
             const slug = parts[1]

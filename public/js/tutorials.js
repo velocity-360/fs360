@@ -21,3 +21,18 @@ var selectCategory = function(event, category){
     var divPosition = $('#tutorials').offset()
     $('html, body').animate({scrollTop: divPosition.top}, 'slow')
 }
+
+var checkSubscription = function(tutorial, currentUser){
+	console.log('checkSubscription: '+JSON.stringify(tutorial))
+	console.log('checkSubscription: '+JSON.stringify(currentUser))
+
+	if (tutorial.subscribers.indexOf(currentUser.id) == -1){ // not subscribed
+		$('#logged-in').html('you are NOT subscribed to this tutorial')
+
+	}
+	else { // not subscribed
+		$('#logged-in').html('you are subscribed to this tutorial')
+	}
+
+
+}

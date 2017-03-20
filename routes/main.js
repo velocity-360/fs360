@@ -148,6 +148,55 @@ router.get('/account', function(req, res, next) {
 	})
 })
 
+router.get('/dashboard', function(req, res, next) {
+	var initialData = initial()
+	var initialState = null
+
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		initialData['account'] = {currentUser: currentUser}
+		initialData['session'] = {selectedMenuItem: 'account'}
+		return controllers.tutorial.find({subscribers: currentUser.id})
+//		return controllers.tutorial.find({})
+	})
+	.then(function(tutorials){
+		var tutorialReducer = {
+			all: tutorials
+		}
+
+		tutorials.forEach(function(tutorial, i){
+			tutorialReducer[tutorial.id] = tutorial
+			tutorialReducer[tutorial.slug] = tutorial
+		})
+
+		initialData['tutorial'] = tutorialReducer
+
+		initialState = store.configureStore(initialData)
+		var routes = {
+			path: '/dashboard',
+			component: serverapp,
+			initial: initialState,
+			indexRoute: {
+				component: layout.Split
+			}
+		}
+
+		return matchRoutes(req, routes)
+	})
+	.then(function(renderProps){
+		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
+		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
+	    res.render(template, {
+	    	react: html,
+	    	preloadedState:JSON.stringify(initialState.getState())
+	    })
+	})	
+	.catch(function(err){ // TODO: Handle Error
+		console.log('ERROR: '+err)
+
+	})
+})
+
 router.get('/:page', function(req, res, next) {
 	var page = req.params.page // 'courses', 'tutorials', 'account'
 	if (page == 'tracker'){
@@ -172,79 +221,34 @@ router.get('/:page', function(req, res, next) {
 })
 
 
-// router.get('/:page', function(req, res, next) {
-// 	var page = req.params.page // 'courses', 'online', 'account'
-// 	if (page == 'tracker'){
-// 		next()
-// 		return
-// 	}
+router.get('/tutorial/:slug', function(req, res, next) {
+//	var slug = req.params.slug
 
-// 	var initialData = initial()
-// 	var initialState = null
+	var data = {}
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
+		if (data.currentUser != null)
+			data['currentUserJson'] = JSON.stringify(data.currentUser)
 
-// 	controllers.account.currentUser(req)
-// 	.then(function(currentUser){
-// 		initialData['account'] = {currentUser: currentUser}
-// 		initialData['session'] = {selectedMenuItem: page}
+		var controller = controllers['tutorial']
+		return controller.find({slug: req.params.slug})
+	})
+	.then(function(tutorials){
+		if (tutorials.length > 0){
+			data['tutorial'] = tutorials[0]
+			data['json'] = JSON.stringify(data.tutorial)
+		}
 
-// 		var controller = controllers[page] // page can be course or tutorial
-// 		return controller.find({})
-// 	})
-// 	.then(function(entities){
-// 		var reducer = {all: []}
-// 		entities.forEach(function(entity, i) {
-// 			reducer[entity.id] = entity
-// 			reducer[entity.slug] = entity
-// 			reducer.all.push(entity)
+		// console.log('DATA: '+JSON.stringify(data))
+	    res.render('tutorial', data)
+	})
+	.catch(function(err){
+//		console.log('ERROR: '+err)
+	    res.render('tutorial', data)
+	})
+})
 
-// 			if (entity.category != null){
-// 				var list = reducer[entity.category] || []
-// 				list.push(entity)
-// 				reducer[entity.category] = list
-// 			}
-// 		})
-
-// 		var base = null
-// 		if (page == 'online'){
-// 			initialData['tutorial'] = reducer // can be tutorial reducer
-// 			base = layout.Landing
-// 		}
-
-// 		if (page == 'courses'){
-// 			initialData['course'] = reducer // can be course reducer
-// 			base = layout.Split
-// 		}
-
-// 		if (page == 'tutorials'){
-// 			initialData['tutorial'] = reducer // can be tutorials reducer
-// 			base = layout.Split
-// 		}
-
-// 		initialState = store.configureStore(initialData)
-
-// 		var routes = {
-// 			path: '/'+page,
-// 			component: serverapp,
-// 			initial: initialState,
-// 			indexRoute: {
-// 				component: base
-// 			}
-// 		}
-
-// 		return matchRoutes(req, routes)		
-// 	})
-// 	.then(function(renderProps){
-// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-// 	    res.render(template, {
-// 	    	react: html,
-// 	    	preloadedState:JSON.stringify(initialState.getState())
-// 	    })
-// 	})	
-// 	.catch(function(err){ // TODO: Handle Error
-// 		console.log('ERROR: '+err)
-// 	})
-// })
 
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page

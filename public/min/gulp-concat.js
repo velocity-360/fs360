@@ -3190,6 +3190,7 @@ var ajaxRequest = function(path, params, method, completion){
 
 
 var visitor = {
+    name: '',
 	username: '',
 	email: '',
 	password: ''
@@ -3231,7 +3232,18 @@ var updateVisitor = function(event){
 
 var slackRequest = function(event){
     event.preventDefault()
-//    console.log('SLACK REQUEST: '+JSON.stringify(visitor))
+    console.log('SLACK REQUEST: '+JSON.stringify(visitor))
+    
+    if (visitor.name.length == 0){
+        alert('Please Enter Your Name')
+        return
+    }
+
+    if (visitor.email.length == 0){
+        alert('Please Enter Your Email')
+        return
+    }
+
     ajaxRequest('/account/subscribe', visitor, 'POST', function(err, response){
         if (err){
             var msg = err.message || err
@@ -3324,4 +3336,19 @@ var selectCategory = function(event, category){
 
     var divPosition = $('#tutorials').offset()
     $('html, body').animate({scrollTop: divPosition.top}, 'slow')
+}
+
+var checkSubscription = function(tutorial, currentUser){
+	console.log('checkSubscription: '+JSON.stringify(tutorial))
+	console.log('checkSubscription: '+JSON.stringify(currentUser))
+
+	if (tutorial.subscribers.indexOf(currentUser.id) == -1){ // not subscribed
+		$('#logged-in').html('you are NOT subscribed to this tutorial')
+
+	}
+	else { // not subscribed
+		$('#logged-in').html('you are subscribed to this tutorial')
+	}
+
+
 }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<html>
+<head>
+    {{>head}}
+</head>
+
+<body>
+    <!--[if lte IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+    <![endif]-->
+    <div class="layer"></div>
+    <div id="preloader">
+        <div data-loader="circle-side"></div>
+    </div>
+    {{>nav}}
+
+    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/desktop.jpg" data-natural-width="1400" data-natural-height="350">
+        <div id="subheader">
+            <h1>{{tutorial.title}}</h1>
+        </div>
+    </section>
+
+    <div class="container margin_60_35">
+        <div class="row">
+        
+            <div class="col-md-3" id="sidebar">
+                <div class="theiaStickySidebar">
+                    <div id="faq_box">
+                        <ul id="cat_nav">
+                            <li><a href="#overview" class="active">Overview</a></li>
+                            <li><a href="#units">Units</a></li>
+                            <li><a href="#subscribe">Subscribe</a></li>
+                            <li>{{>slack}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <h3 class="nomargin_top">Overview</h3>
+                <hr />
+
+                <div class="panel-group" id="overview">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <img style="border:1px solid #ddd;width:260px;margin-bottom:16px" alt="Velocity 360" src="https://media-service.appspot.com/site/images/{{tutorial.image}}?crop=320" />
+                            <br />
+                            <span style="padding:4px;background:#f9f9f9;border:1px solid #ddd;margin-right:6px">{{tutorial.fee}}</span>
+                            <span style="padding:4px;background:#f9f9f9;border:1px solid #ddd;margin-left:6px">{{tutorial.numUnits}}</span>
+                            <br /><br />
+                            <p>{{tutorial.description}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="nomargin_top">Units</h3>
+                <hr />
+                <div class="panel-group" id="units">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <ul id="policies">
+                                {{#tutorial.posts}}
+                                <li>
+                                    <i class="icon-video-5"></i>
+                                    <h5>{{title}}</h5>
+                                    <p>{{description}}</p>
+                                    {{#youtube}}
+                                    <object style="background:#fff;padding:3px;border:1px solid #ddd;width: 220px;float:none;clear:both;margin:4px auto" data="https://www.youtube.com/embed/{{youtube}}"></object>
+                                    {{/youtube}}
+                                </li>
+                                {{/tutorial.posts}}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="nomargin_top">Subscribe</h3>
+                <hr />
+                <div class="panel-group" id="subscribe">
+                    <div class="row">
+                        {{#currentUser}} <!-- Logged In -->
+                            <div id="logged-in" class="col-md-6">
+
+                            </div>
+
+                        {{/currentUser}}
+
+                        {{^currentUser}} <!-- Not Logged In -->
+                            {{>premiummembership}}
+
+                            {{#tutorial.isPremium}}
+                            <div class="col-md-6">
+                                <div class="box_style_3" id="general_facilities">
+                                    <h3>Purchase</h3>
+                                    <p style="margin-top:12px;padding-top:12px;border-top:1px solid #ddd">
+                                        Purchase this tutorial for ${{tutorial.price}} and receive all videos, code samples and 
+                                        access to the forum where people post questions and answers. 
+                                    </p>
+
+                                    <button style="height:36px;border-radius:18px;margin-top:12px" class="btn_1 white" href="#">Purchase, $</button>
+                                </div>
+                            </div>
+                            {{/tutorial.isPremium}}
+
+                            {{^tutorial.isPremium}}
+                                {{>basicmembership}}
+                            {{/tutorial.isPremium}}
+                        {{/currentUser}}
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+
+    {{>footer}}
+    {{>javascripts}}
+    <script type="text/javascript">
+        var tutorial = {{{json}}}
+        var currentUser = {{{currentUserJson}}}
+        checkSubscription(tutorial, currentUser)
+    </script>
+</body>
+</html>

@@ -20,6 +20,7 @@ var ajaxRequest = function(path, params, method, completion){
 
 
 var visitor = {
+    name: '',
 	username: '',
 	email: '',
 	password: ''
@@ -61,7 +62,18 @@ var updateVisitor = function(event){
 
 var slackRequest = function(event){
     event.preventDefault()
-//    console.log('SLACK REQUEST: '+JSON.stringify(visitor))
+    console.log('SLACK REQUEST: '+JSON.stringify(visitor))
+    
+    if (visitor.name.length == 0){
+        alert('Please Enter Your Name')
+        return
+    }
+
+    if (visitor.email.length == 0){
+        alert('Please Enter Your Email')
+        return
+    }
+
     ajaxRequest('/account/subscribe', visitor, 'POST', function(err, response){
         if (err){
             var msg = err.message || err
