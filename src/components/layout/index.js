@@ -1,9 +1,9 @@
-import Landing from './Landing'
-import Home from './Home'
+// import Landing from './Landing'
+// import Home from './Home'
 import Split from './Split'
 
 export {
-	Landing,
-	Home,
+	// Landing,
+	// Home,
 	Split
 }

@@ -26,7 +26,6 @@ const BaseContainer = (Container) => {
 		}
 
 		subscribe(event){
-//			APIManager.handlePost('/api/subscriber', this.state.credentials)
 			APIManager.handlePost('/account/subscribe', this.state.credentials)
 			.then(response => {
 				alert('Thanks for Subscribing! We will send you an email shortly with an invitation to our Slack Chanel!')

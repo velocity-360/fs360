@@ -8,7 +8,7 @@ import { TextUtils, Stripe } from '../../utils'
 import BaseContainer from './BaseContainer'
 
 
-class Account extends Component {
+class Dashboard extends Component {
     constructor(){
         super()
         this.state = {
@@ -224,7 +224,7 @@ class Account extends Component {
                         </div>
                         
                         <div className="col-md-9">
-                            <h3 className="nomargin_top">{selected}</h3>
+                            <h3 className="nomargin_top">TEST</h3>
                             <hr />
 
                             <div className="panel-group" id="courses">
@@ -273,5 +273,5 @@ const dispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(stateToProps, dispatchToProps)(BaseContainer(Account))
+export default connect(stateToProps, dispatchToProps)(BaseContainer(Dashboard))
 
