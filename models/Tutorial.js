@@ -36,6 +36,9 @@ TutorialSchema.methods.summary = function() {
 		timestamp: this.timestamp,
 		schema:'tutorial',
 		id: this._id.toString(),
+
+		// the following are convenience methods for mustache templating:
+		isPremium: (this.price > 0) ? true : null,
 		fee: function(){
 			return (this.price == 0) ? 'Free' : '$'+this.price+'.00'
 		},
