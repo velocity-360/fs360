@@ -113,6 +113,13 @@ gulp.task('copy-dash-entypo', function(){
         .pipe(gulp.dest('./public/dist/dash/css/fonts/'))
 })
 
+gulp.task('copy-dash-summernote', function(){
+    return gulp.src(
+            ['./public/dash/dist/plugins/summernote/font/**']
+        )
+        .pipe(gulp.dest('./public/dist/dash/css/font/'))
+})
+
 gulp.task('copy-dash-fonts', function(){
     return gulp.src(
             [
@@ -138,6 +145,7 @@ gulp.task('dashboard-build', function(){
                 './public/dash/dist/plugins/clipboard/clipboard.min.js',
                 './public/dash/dist/plugins/filestyle/bootstrap-filestyle.min.js',
                 './public/dash/dist/plugins/pace/pace.min.js',
+                './public/dash/dist/plugins/summernote/summernote.min.js',
                 './public/dash/dist/js/apps.js',
                 './public/dash/dist/js/layout-default.js'
             ]
@@ -149,7 +157,7 @@ gulp.task('dashboard-build', function(){
         .pipe(gulp.dest('./public/dist/dash/js/'))
 });
 
-gulp.task('dash', ['dashboard-css', 'copy-dash-entypo', 'copy-dash-fonts', 'dashboard-build'], function(){})
+gulp.task('dash', ['dashboard-css', 'copy-dash-entypo', 'copy-dash-summernote', 'copy-dash-fonts', 'dashboard-build'], function(){})
 
 
 gulp.task('watch', function() {

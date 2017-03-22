@@ -4,6 +4,35 @@ import actions from '../../actions'
 import BaseContainer from './BaseContainer'
 
 class Dashboard extends Component {
+    componentDidMount(){
+        // WSYG Editor -  http://summernote.org/deep-dive/
+        $('#summernote').summernote({
+            height: 300,
+            dialogsInBody: true,
+            dialogsFade: true,
+            toolbar: [ // [groupName, [list of button]]
+                ['style', ['style']],
+                ['format', ['code']],
+                ['style', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'hr']]
+            ],
+            callbacks: {
+                onImageUpload: (files) => { // upload image to server and create imgNode...
+                    console.log('upload Image')
+                    const imgUrl = 'https://www.velocity360.io/img/girls.jpg'
+                    $('#summernote').summernote('insertImage', imgUrl, ($image) => {
+                      $image.css('width', $image.width() / 3)
+                    })
+                }
+            }
+        })
+    }
+
+    publishPost(){
+        const markupStr = $('#summernote').summernote('code')
+        console.log('publishPost: '+markupStr)
+    }
 
 	render(){
 		return (
@@ -27,7 +56,7 @@ class Dashboard extends Component {
                             <div className="panel-body">
                                 <div className="row">
                                     <div className="col-md-8 col-sm-6">
-                                        <div className="dropdown-menu dropdown-demo m-b-lg">
+                                        <div style={{paddingBottom:0}} className="dropdown-menu dropdown-demo m-b-lg">
 
                                             <div className="panel-heading borderless">
                                                 <h2 style={{fontFamily:'Pathway Gothic One', marginTop:0}}>React & Google Maps</h2>
@@ -66,7 +95,7 @@ class Dashboard extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="panel-body">
+                                            <div style={{background:'#f9f9f9', padding:12, borderTop:'1px solid #ededed'}}>
                                                 <div className="rs-col-stacked full-width-on-mobile borderless border-items m-a-0">
                                                     <div className="stacked-item p-a text-center">
                                                         <p className="text-muted m-a-0">Subscribers</p>
@@ -87,6 +116,19 @@ class Dashboard extends Component {
                                                 </div>
                                             </div>
                                         </div>
+
+                        <div className="panel panel-plain panel-rounded">
+                            <div className="panel-heading borderless">
+                                <h3 className="panel-title">Reply</h3>
+                            </div>
+                            <div className="panel-body p-t-0">
+                                <div className="form-group">
+                                    <textarea id="summernote" name="text" title="Contents"></textarea>
+                                </div>
+                                <button onClick={this.publishPost.bind(this)}>Publish</button>
+                            </div>
+                        </div>
+
 
                                     </div>
 
@@ -141,7 +183,6 @@ class Dashboard extends Component {
                                             </li>
                                         </ul>
                                     </div>
-
 
                                 </div>
                             </div>
