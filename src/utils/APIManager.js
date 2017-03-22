@@ -81,33 +81,35 @@ export default {
 	},
 
 	upload: (file, completion) => {
-		superagent
-		.get('https://media-service.appspot.com/api/upload')
-		.query(null)
-		.set('Accept', 'application/json')
-		.end((err, res) => {
-			if (err){ 
-				completion(err, null)
-				return
-			}
+		return new Promise((resolve, reject) => {
+			superagent
+			.get('https://media-service.appspot.com/api/upload')
+			.query(null)
+			.set('Accept', 'application/json')
+			.end((err, res) => {
+				if (err){ 
+					reject(err)
+					return
+				}
 
-			if (res.body.confirmation != 'success'){
-	    		completion({message:res.body.message}, null)
-	    		return
-			}
+				if (res.body.confirmation != 'success'){
+					reject(new Error(res.body.message))
+		    		return
+				}
 
-	        var uploadRequest = superagent.post(res.body.upload)
-	        uploadRequest.attach('file', file)
-	        uploadRequest.end((err, resp) => {
-	        	if (err){
-			      	console.log('UPLOAD ERROR: '+JSON.stringify(err))
-					completion(err, null)
-	              	return
-	        	}
+		        var uploadRequest = superagent.post(res.body.upload)
+		        uploadRequest.attach('file', file)
+		        uploadRequest.end((err, resp) => {
+		        	if (err){
+						reject(err)
+		              	return
+		        	}
 
-		      	var image = resp.body.image
-				completion(null, image)
-	        })
+			      	var image = resp.body.image
+			      	resolve(image)
+		        })
+			})
+
 		})
 	},
 

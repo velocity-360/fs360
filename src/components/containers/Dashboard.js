@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { APIManager } from '../../utils'
 import actions from '../../actions'
 import BaseContainer from './BaseContainer'
+import Loading from 'react-loading' // <Loading type='bars' color='#333' />, http://cezarywojtkowski.com/react-loading/
 
 class Dashboard extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isUploading: false
+        }
+    }
+
     componentDidMount(){
         // WSYG Editor -  http://summernote.org/deep-dive/
         $('#summernote').summernote({
-            height: 300,
+            height: 200,
             dialogsInBody: true,
             dialogsFade: true,
             toolbar: [ // [groupName, [list of button]]
@@ -19,15 +28,27 @@ class Dashboard extends Component {
             ],
             callbacks: {
                 onImageUpload: (files) => { // upload image to server and create imgNode...
-                    console.log('upload Image')
-                    const imgUrl = 'https://www.velocity360.io/img/girls.jpg'
-                    $('#summernote').summernote('insertImage', imgUrl, ($image) => {
-                      $image.css('width', $image.width() / 3)
+                    // console.log('upload Image: '+files[0].name)
+                    this.setState({isUploading: true})
+                    APIManager
+                    .upload(files[0])
+                    .then(response => {
+                        this.setState({isUploading: false})
+                        console.log('Upload: '+JSON.stringify(response))
+                        const imgUrl = response.address+'=s512'
+                        $('#summernote').summernote('insertImage', imgUrl, ($image) => {
+                            $image.css('width', $image.width() / 2)
+                        })
+                    })
+                    .catch(err => {
+                        this.setState({isUploading: false})
+                        console.log('Upload Error:'+err)
                     })
                 }
             }
         })
     }
+
 
     publishPost(){
         const markupStr = $('#summernote').summernote('code')
@@ -117,18 +138,19 @@ class Dashboard extends Component {
                                             </div>
                                         </div>
 
-                        <div className="panel panel-plain panel-rounded">
-                            <div className="panel-heading borderless">
-                                <h3 className="panel-title">Reply</h3>
-                            </div>
-                            <div className="panel-body p-t-0">
-                                <div className="form-group">
-                                    <textarea id="summernote" name="text" title="Contents"></textarea>
-                                </div>
-                                <button onClick={this.publishPost.bind(this)}>Publish</button>
-                            </div>
-                        </div>
-
+                                        <div className="panel panel-plain panel-rounded">
+                                            <div className="panel-heading borderless">
+                                                <h3 className="panel-title">Reply</h3>
+                                            </div>
+                                            <div className="panel-body p-t-0">
+                                                <div className="form-group">
+                                                    { (this.state.isUploading) ? <Loading type='bars' color='#333' /> : null }
+                                                    <textarea id="summernote" name="text" title="Contents"></textarea>
+                                                    <button onClick={this.publishPost.bind(this)}>Publish</button>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
 
                                     </div>
 
