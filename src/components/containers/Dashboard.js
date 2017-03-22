@@ -119,10 +119,6 @@ class Dashboard extends Component {
                                             <div style={{background:'#f9f9f9', padding:12, borderTop:'1px solid #ededed'}}>
                                                 <div className="rs-col-stacked full-width-on-mobile borderless border-items m-a-0">
                                                     <div className="stacked-item p-a text-center">
-                                                        <p className="text-muted m-a-0">Subscribers</p>
-                                                        <h3 className="m-t-0 f-w-400">213</h3>
-                                                    </div>
-                                                    <div className="stacked-item p-a text-center">
                                                         <p className="text-muted m-a-0">Category</p>
                                                         <h3 className="m-t-0 f-w-400 text-success">Node</h3>
                                                     </div>
@@ -133,6 +129,10 @@ class Dashboard extends Component {
                                                     <div className="stacked-item p-a text-center">
                                                         <p className="text-muted m-a-0">Units</p>
                                                         <h3 className="m-t-0 f-w-400 text-warning">10</h3>
+                                                    </div>
+                                                    <div className="stacked-item p-a text-center">
+                                                        <p className="text-muted m-a-0">Subscribe</p>
+                                                        <button className="btn btn-default btn-sm block-on-mobile"><i className="gcon gcon-print m-r"></i>$25</button>
                                                     </div>
                                                 </div>
                                             </div>
