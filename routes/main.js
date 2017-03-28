@@ -148,6 +148,26 @@ router.get('/account', function(req, res, next) {
 	})
 })
 
+
+router.get('/blog', function(req, res, next) {
+
+	var data = {}
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
+	    res.render('blog', data)
+		// var controller = controllers[page]
+		// return controller.find({})
+	})
+	// .then(function(entities){
+	// 	data[page] = entities
+	//     res.render(page, data)
+	// })
+	.catch(function(err){
+	    res.render('blog', data)
+	})
+})
+
 router.get('/:page', function(req, res, next) {
 	var page = req.params.page // 'courses', 'tutorials', 'account'
 	if (page == 'tracker'){
