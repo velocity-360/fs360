@@ -22,12 +22,13 @@ gulp.task('es6-es5', function(){
 
 gulp.task('css', function(){
     return gulp.src(
-            [            
+            [
                 './public/css/base.css',
                 './public/css/DateTimePicker.css',
                 './public/css/owl.carousel.css',
                 './public/css/owl.theme.default.css',
-                './public/css/social-share-kit/social-share-kit.css'
+                './public/css/social-share-kit/social-share-kit.css',
+                './public/css/custom.css',
             ]
         )
         .pipe(minifyCSS())
