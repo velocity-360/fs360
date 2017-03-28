@@ -38,7 +38,6 @@
                 <div class="panel-group" id="courses">
                     <div class="row">
                         <div class="col-md-9">
-
                             {{#posts}}
                             <div class="review_strip_single">
                                 <img alt="Pic" class="img-circle" src="{{image}}=s68-c" />
@@ -46,11 +45,10 @@
                                 <h4><a href="/post/{{slug}}">{{title}}</a></h4>
                                 <p>{{preview}}</p>
                                 <div style="text-align:right">
-                                    <a target="_blank" href="#" style="height:36px;border-radius:18px;margin-top:12px;padding-top:9px" class="btn_1 white">View</a>
+                                    <a href="/post/{{slug}}" style="height:36px;border-radius:18px;margin-top:12px;padding-top:9px" class="btn_1 white">View</a>
                                 </div>
                             </div>
                             {{/posts}}
-
                         </div>
                     </div>
                 </div>

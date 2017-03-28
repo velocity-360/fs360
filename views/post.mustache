@@ -40,7 +40,7 @@
 
                          <div class="col-md-9">
                             <div class="post">
-                                <a href="#"><img src="{{post.image}}=s320" alt="" class="img-responsive"></a>
+                                <a href="#"><img src="{{post.image}}=s320" alt="{{post.title}}" class="img-responsive"></a>
                                 <h1>{{post.title}}</h1>
                                 <hr />
                                 {{{post.text}}}
@@ -52,6 +52,7 @@
             </div>
         </div>
     </div> 
+
     <div id="tutorials" class="container_styled_1">
         <div class="container margin_60">
             <h2 class="main_title" style="font-family:Pathway Gothic One">
@@ -78,12 +79,10 @@
                     </div>
                 </div>
                 {{/tutorials}}
-
                 <div style="text-align:center">
                     <a href="/tutorials" class="btn_1 white">VIEW ALL TUTORIALS</a>
                 </div>
             </div>
-
         </div>
     </div>
   

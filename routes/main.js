@@ -151,6 +151,13 @@ router.get('/post/:slug', function(req, res, next) {
 	})
 	.then(function(response){
 		data['post'] = response.results[0]
+		data['tags'] = {
+			title: data.post.title,
+			url: 'https://www.velocity360.io/post/'+data.post.slug,
+			image: data.post.images,
+			description: data.post.preview
+		}
+
 		return controllers.tutorial.find({limit:6}) // fetch tutorials
 	})
 	.then(function(tutorials){
