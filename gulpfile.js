@@ -27,8 +27,8 @@ gulp.task('css', function(){
                 './public/css/DateTimePicker.css',
                 './public/css/owl.carousel.css',
                 './public/css/owl.theme.default.css',
-                './public/css/social-share-kit/social-share-kit.css',
                 './public/css/custom.css',
+                './public/css/social-share-kit/social-share-kit.css'
             ]
         )
         .pipe(minifyCSS())
