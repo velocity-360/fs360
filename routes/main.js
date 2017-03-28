@@ -31,58 +31,6 @@ matchRoutes = function(req, routes){
 	})
 }
 
-// router.get('/', function(req, res, next) {
-// 	var initialData = initial()
-// 	var initialState = null
-// 	var tags = {
-// 		title: 'Learn Full Stack Node, React, Redux',
-// 		url: 'https://www.velocity360.io',
-// 		image: 'https://www.velocity360.io/images/logo_round_green_260.png'
-// 	}
-
-// 	controllers.account.currentUser(req)
-// 	.then(function(currentUser){ // can be null
-// 		initialData['account'] = {currentUser: currentUser}
-// 		return controllers.tutorial.find({limit:6})
-// 	})
-// 	.then(function(tutorials){
-// 		var tutorialReducer = {
-// 			all: tutorials
-// 		}
-
-// 		tutorials.forEach(function(tutorial, i){
-// 			tutorialReducer[tutorial.id] = tutorial
-// 			tutorialReducer[tutorial.slug] = tutorial
-// 		})
-
-// 		initialData['tutorial'] = tutorialReducer
-
-// 		initialState = store.configureStore(initialData)
-// 		var routes = {
-// 			path: '/',
-// 			component: serverapp,
-// 			initial: initialState,
-// 			indexRoute: {
-// 				component: layout.Home
-// 			}
-// 		}
-
-// 		return matchRoutes(req, routes)
-// 	})
-// 	.then(function(renderProps){
-// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-// 	    res.render(template, {
-// 	    	react: html,
-// 	    	tags: tags,
-// 	    	preloadedState:JSON.stringify(initialState.getState())
-// 	    })
-// 	})
-// 	.catch(function(err){
-// 		console.log('ERROR: '+err)
-// 	})
-// })
-
 router.get('/', function(req, res, next) {
 	var data = {}
 	controllers.account.currentUser(req)
@@ -192,80 +140,28 @@ router.get('/:page', function(req, res, next) {
 	})
 })
 
+router.get('/post/:slug', function(req, res, next) {
+	var url = process.env.MICROSERVICES_URL+'/api/post'
 
-// router.get('/:page', function(req, res, next) {
-// 	var page = req.params.page // 'courses', 'online', 'account'
-// 	if (page == 'tracker'){
-// 		next()
-// 		return
-// 	}
-
-// 	var initialData = initial()
-// 	var initialState = null
-
-// 	controllers.account.currentUser(req)
-// 	.then(function(currentUser){
-// 		initialData['account'] = {currentUser: currentUser}
-// 		initialData['session'] = {selectedMenuItem: page}
-
-// 		var controller = controllers[page] // page can be course or tutorial
-// 		return controller.find({})
-// 	})
-// 	.then(function(entities){
-// 		var reducer = {all: []}
-// 		entities.forEach(function(entity, i) {
-// 			reducer[entity.id] = entity
-// 			reducer[entity.slug] = entity
-// 			reducer.all.push(entity)
-
-// 			if (entity.category != null){
-// 				var list = reducer[entity.category] || []
-// 				list.push(entity)
-// 				reducer[entity.category] = list
-// 			}
-// 		})
-
-// 		var base = null
-// 		if (page == 'online'){
-// 			initialData['tutorial'] = reducer // can be tutorial reducer
-// 			base = layout.Landing
-// 		}
-
-// 		if (page == 'courses'){
-// 			initialData['course'] = reducer // can be course reducer
-// 			base = layout.Split
-// 		}
-
-// 		if (page == 'tutorials'){
-// 			initialData['tutorial'] = reducer // can be tutorials reducer
-// 			base = layout.Split
-// 		}
-
-// 		initialState = store.configureStore(initialData)
-
-// 		var routes = {
-// 			path: '/'+page,
-// 			component: serverapp,
-// 			initial: initialState,
-// 			indexRoute: {
-// 				component: base
-// 			}
-// 		}
-
-// 		return matchRoutes(req, routes)		
-// 	})
-// 	.then(function(renderProps){
-// 		var html = ReactDOMServer.renderToString(React.createElement(ReactRouter.RouterContext, renderProps))
-// 		var template = (process.env.ENVIRONMENT == 'prod') ? 'index' : 'index-dev'
-// 	    res.render(template, {
-// 	    	react: html,
-// 	    	preloadedState:JSON.stringify(initialState.getState())
-// 	    })
-// 	})	
-// 	.catch(function(err){ // TODO: Handle Error
-// 		console.log('ERROR: '+err)
-// 	})
-// })
+	var data = {}
+	controllers.account.currentUser(req)
+	.then(function(currentUser){
+		data['currentUser'] = currentUser // can be null
+		return utils.Request.get(url, {limit:1, slug:req.params.slug, site:process.env.SITE_ID}) // fetch most recent 3 posts for sidebar
+	})
+	.then(function(response){
+		data['post'] = response.results[0]
+		return controllers.tutorial.find({limit:6}) // fetch tutorials
+	})
+	.then(function(tutorials){
+		data['tutorials'] = tutorials
+	    res.render('post', data)
+	})
+	.catch(function(err){
+		console.log('ERROR: '+err.message)
+	    res.render('post', data)
+	})
+})
 
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page

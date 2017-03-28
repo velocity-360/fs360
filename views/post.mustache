@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<html>
+<head>
+    {{>head}}
+</head>
+
+<body>
+    <!--[if lte IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+    <![endif]-->
+    <div class="layer"></div>
+    <div id="preloader">
+        <div data-loader="circle-side"></div>
+    </div>
+    {{>nav}}
+
+    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="/img/joe_light_blue.png" data-natural-width="1400" data-natural-height="350">
+        <div id="subheader">
+            <h1>Blog</h1>
+        </div>
+    </section>
+
+    <div id="tutorials" class="container margin_60_35" style="padding-top:64px">
+
+        <div class="row">
+            <div class="col-md-3" id="sidebar">
+                <div class="theiaStickySidebar">
+                    <div id="faq_box">
+                        <ul id="cat_nav">
+                            <li>{{>slack}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="panel-group" id="courses">
+                    <div class="row">
+
+                         <div class="col-md-9">
+                            <div class="post">
+                                <a href="#"><img src="{{post.image}}=s320" alt="" class="img-responsive"></a>
+                                <h1>{{post.title}}</h1>
+                                <hr />
+                                {{{post.text}}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div> 
+    <div id="tutorials" class="container_styled_1">
+        <div class="container margin_60">
+            <h2 class="main_title" style="font-family:Pathway Gothic One">
+                Tutorials
+            </h2>
+
+            <div class="row">
+                {{#tutorials}}
+                <div class="col-md-4 col-sm-4">
+                    <div class="box_feat">
+                        <a href='/tutorial/{{slug}}'>
+                            <img style="padding:3px;border:1px solid #ddd;background:#fff;margin-bottom:12px" src='https://media-service.appspot.com/site/images/{{image}}?crop=96' />
+                        </a>
+                        <h4><a href='/tutorial/{{slug}}'>{{title}}</a></h4>
+                        <hr />
+                        <p style="height:130px">{{preview}}</p>
+
+                        <span style="padding:3px;background:#f9f9f9;border:1px solid #ddd;margin-right:6px">
+                            {{fee}}
+                        </span>
+
+                        <span style="padding:3px;background:#f9f9f9;border:1px solid #ddd;margin-left:6px;margin-right:6px">{{ posts.length }} Units</span>
+                        <a href='/tutorial/{{slug}}' style="margin-left:6px" class="btn_1 white">View</a>
+                    </div>
+                </div>
+                {{/tutorials}}
+
+                <div style="text-align:center">
+                    <a href="/tutorials" class="btn_1 white">VIEW ALL TUTORIALS</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  
+    {{>footer}}
+    {{>javascripts}}
+</body>
+</html>
