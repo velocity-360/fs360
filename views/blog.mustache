@@ -39,42 +39,17 @@
                     <div class="row">
                         <div class="col-md-9">
 
+                            {{#posts}}
                             <div class="review_strip_single">
-                                <img alt="Pic" class="img-circle" src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=68" />
-                                <small> - March 25 -</small>
-                                <h4><a href="#">Blog Title</a></h4>
-                                <p>
-                                    In this series, we create a simple app that queries the Foursquare API for nearby venues based on a zip code and category entered by the user. This project has no server (Node...
-                                </p>
+                                <img alt="Pic" class="img-circle" src="{{image}}=s68-c" />
+                                <small> - {{dateString}} -</small>
+                                <h4><a href="#">{{title}}</a></h4>
+                                <p>{{preview}}</p>
                                 <div style="text-align:right">
                                     <a target="_blank" href="#" style="height:36px;border-radius:18px;margin-top:12px;padding-top:9px" class="btn_1 white">View</a>
                                 </div>
                             </div>
-
-                            <div class="review_strip_single">
-                                <img alt="Pic" class="img-circle" src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=68" />
-                                <small> - March 25 -</small>
-                                <h4><a href="#">Blog Title</a></h4>
-                                <p>
-                                    In this series, we create a simple app that queries the Foursquare API for nearby venues based on a zip code and category entered by the user. This project has no server (Node...
-                                </p>
-                                <div style="text-align:right">
-                                    <a target="_blank" href="#" style="height:36px;border-radius:18px;margin-top:12px;padding-top:9px" class="btn_1 white">View</a>
-                                </div>
-                            </div>
-
-                            <div class="review_strip_single">
-                                <img alt="Pic" class="img-circle" src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=68" />
-                                <small> - March 25 -</small>
-                                <h4><a href="#">Blog Title</a></h4>
-                                <p>
-                                    In this series, we create a simple app that queries the Foursquare API for nearby venues based on a zip code and category entered by the user. This project has no server (Node...
-                                </p>
-                                <div style="text-align:right">
-                                    <a target="_blank" href="#" style="height:36px;border-radius:18px;margin-top:12px;padding-top:9px" class="btn_1 white">View</a>
-                                </div>
-                            </div>
-
+                            {{/posts}}
 
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var TextUtils = require('../utils/TextUtils')
+var utils = require('../utils')
 
 var React = require('react')
 var ReactRouter = require('react-router')
@@ -150,20 +150,21 @@ router.get('/account', function(req, res, next) {
 
 
 router.get('/blog', function(req, res, next) {
+	var url = process.env.MICROSERVICES_URL+'/api/post'
 
 	var data = {}
 	controllers.account.currentUser(req)
 	.then(function(currentUser){
 		data['currentUser'] = currentUser // can be null
-	    res.render('blog', data)
-		// var controller = controllers[page]
-		// return controller.find({})
+		return utils.Request.get(url, {limit:3, type:'original', site:process.env.SITE_ID}) // fetch most recent 3 posts for sidebar
 	})
-	// .then(function(entities){
-	// 	data[page] = entities
-	//     res.render(page, data)
-	// })
+	.then(function(response){
+		// console.log('POSTS: '+JSON.stringify(response))
+		data['posts'] = response.results
+	    res.render('blog', data)
+	})
 	.catch(function(err){
+		console.log('ERROR: '+err.message)
 	    res.render('blog', data)
 	})
 })
