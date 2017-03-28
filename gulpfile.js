@@ -26,7 +26,8 @@ gulp.task('css', function(){
                 './public/css/base.css',
                 './public/css/DateTimePicker.css',
                 './public/css/owl.carousel.css',
-                './public/css/owl.theme.default.css'
+                './public/css/owl.theme.default.css',
+                './public/css/social-share-kit/social-share-kit.css'
             ]
         )
         .pipe(minifyCSS())
@@ -42,6 +43,14 @@ gulp.task('copy-fonts', function(){
         .pipe(gulp.dest('./public/dist/css/fontello/'))
 })
 
+
+gulp.task('copy-sharekit', function(){
+    return gulp.src(
+            ['./public/css/social-share-kit/fonts/**']
+        )
+        .pipe(gulp.dest('./public/dist/fonts/'))
+})
+
 gulp.task('copy-lightbox', function(){
     return gulp.src(
             ['./public/img/lightbox/**']
@@ -50,7 +59,7 @@ gulp.task('copy-lightbox', function(){
 })
 
 //gulp.task('copy', ['copy-fonts', 'copy-lightbox'], function(){})
-gulp.task('copy', ['copy-fonts'], function(){})
+gulp.task('copy', ['copy-fonts', 'copy-sharekit'], function(){})
 
 
 gulp.task('build', function(){
@@ -65,7 +74,8 @@ gulp.task('build', function(){
                 './public/js/sweetalert.min.js',
                 './public/js/velocity360.js',
                 './public/js/tutorials.js',
-                './public/js/courses.js'
+                './public/js/courses.js',
+                './public/js/social-share-kit.min.js'
     		]
     	)
         .pipe(gp_concat('gulp-concat.js'))

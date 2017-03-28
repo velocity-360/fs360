@@ -43,7 +43,20 @@
                                 <a href="#"><img src="{{post.image}}=s320" alt="{{post.title}}" class="img-responsive"></a>
                                 <h1>{{post.title}}</h1>
                                 <hr />
+                                <div class="ssk-group ssk-round clearfix bottommargin" style="float:right">
+                                    <a href="#" class="ssk ssk-facebook"></a>
+                                    <a href="#" class="ssk ssk-twitter"></a>
+                                    <a href="#" class="ssk ssk-email"></a>
+                                </div>
+
+                                <div class="clearfix" style="margin-bottom:24px"></div>
                                 {{{post.text}}}
+                                <div class="ssk-group ssk-round clearfix bottommargin">
+                                    <a href="#" class="ssk ssk-facebook"></a>
+                                    <a href="#" class="ssk ssk-twitter"></a>
+                                    <a href="#" class="ssk ssk-email"></a>
+                                </div>
+
                             </div>
                         </div>
 
@@ -88,5 +101,8 @@
   
     {{>footer}}
     {{>javascripts}}
+    <script type="text/javascript">
+        SocialShareKit.init()
+    </script>
 </body>
 </html>
