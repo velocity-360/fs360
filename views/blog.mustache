@@ -28,21 +28,7 @@
                 <div class="theiaStickySidebar">
                     <div id="faq_box">
                         <ul id="cat_nav">
-                            <li>
-                                <div style="padding:15px 15px">
-                                    <img src="/img/slack.png" /> 
-                                    <p style="margin-top:12px">
-                                        Join our Slack channel to ask questions about tutorials, get feedback on 
-                                        your code and to discuss general programming and industry topics: 
-                                    </p>
-                                    <div id="message-newsletter_2"></div>
-                                    <div class="form-group">
-                                        <input style="" type="text" onChange="updateVisitor(event)" id="name" placeholder="Name" class="form-control" /><br />
-                                        <input style="" type="text" onChange="updateVisitor(event)" id="email" placeholder="Email" class="form-control" />
-                                    </div>
-                                    <button onClick="slackRequest(event)" class="btn_1 white">Join</button>
-                                </div>
-                            </li>
+                            <li>{{>slack}}</li>
                         </ul>
                     </div>
                 </div>
