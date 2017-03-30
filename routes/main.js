@@ -175,11 +175,11 @@ router.get('/email/:template', function(req, res, next) {
 
 	var data = {}
 	controllers.tutorial
-	.find({limit:4})
+	.find({limit:3})
 	.then(function(results){
 		data['tutorials'] = results
 	    // res.render('email/'+template, data)
-	    return utils.Request.get(process.env.MICROSERVICES_URL+'/api/post', {limit:3, site:process.env.SITE_ID})
+	    return utils.Request.get(process.env.MICROSERVICES_URL+'/api/post', {limit:1, site:process.env.SITE_ID})
 	})
 	.then(function(response){
 		// console.log('POSTS: '+JSON.stringify(response.results))
