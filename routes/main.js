@@ -170,6 +170,28 @@ router.get('/post/:slug', function(req, res, next) {
 	})
 })
 
+router.get('/email/:template', function(req, res, next) {
+	var template = req.params.template
+
+	var data = {}
+	controllers.tutorial
+	.find({limit:4})
+	.then(function(results){
+		data['tutorials'] = results
+	    // res.render('email/'+template, data)
+	    return utils.Request.get(process.env.MICROSERVICES_URL+'/api/post', {limit:3, site:process.env.SITE_ID})
+	})
+	.then(function(response){
+		// console.log('POSTS: '+JSON.stringify(response.results))
+		data['post'] = response.results[0]
+	    res.render('email/'+template, data)
+	})
+	.catch(function(err){
+		console.log('ERROR: '+err)
+	    res.render('email/'+template, null)
+	})
+})
+
 router.get('/:page/:slug', function(req, res, next) {
 	var page = req.params.page
 	var slug = req.params.slug
